@@ -156,7 +156,7 @@ public class ReviewsService(AppDbContext db, ICurrentUser me, AccessService acce
     {
         page = Math.Max(1, page); pageSize = Math.Clamp(pageSize, 1, 100);
         var course = await db.Courses.AsNoTracking().FirstOrDefaultAsync(c => c.Id == courseId);
-        if (course is null || !AccessService.IsLive(course.Status)) throw AppException.NotFound("Course");
+        if (course is null || !AccessService.IsLive(course)) throw AppException.NotFound("Course");
         var q = db.CourseReviews.AsNoTracking().Where(r => r.CourseId == courseId && !r.Hidden);
         var total = await q.CountAsync();
         double? avg = total == 0 ? null : Math.Round(await q.AverageAsync(r => (double)r.Rating), 2);

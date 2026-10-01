@@ -13,7 +13,7 @@ namespace Mastemy.Api.Modules.YouTube;
 /// </summary>
 public static class VideoAssetSharing
 {
-    public record Usage(Guid AssetId, Guid LessonId, Guid CourseId, CourseStatus CourseStatus);
+    public record Usage(Guid AssetId, Guid LessonId, Guid CourseId, bool CourseLive);
 
     public static async Task<List<Usage>> UsagesAsync(AppDbContext db, IEnumerable<Guid> assetIds, CancellationToken ct)
     {
@@ -23,8 +23,8 @@ public static class VideoAssetSharing
                           join m in db.Modules.AsNoTracking() on l.ModuleId equals m.Id
                           join c in db.Courses.AsNoTracking() on m.CourseId equals c.Id
                           where l.VideoAssetId != null && ids.Contains(l.VideoAssetId!.Value)
-                          select new { AssetId = l.VideoAssetId!.Value, LessonId = l.Id, CourseId = c.Id, c.Status }).ToListAsync(ct);
-        return rows.Select(r => new Usage(r.AssetId, r.LessonId, r.CourseId, r.Status)).ToList();
+                          select new { AssetId = l.VideoAssetId!.Value, LessonId = l.Id, CourseId = c.Id, c.Status, c.PublishedAt }).ToListAsync(ct);
+        return rows.Select(r => new Usage(r.AssetId, r.LessonId, r.CourseId, AccessService.IsLive(r.Status, r.PublishedAt))).ToList();
     }
 
     /// <summary>
@@ -53,5 +53,5 @@ public static class VideoAssetSharing
 
     /// <summary>True when the asset is Ready and referenced by a lesson of a live course: link/import must not flip it.</summary>
     public static bool IsReadyAndLive(VideoAsset a, List<Usage> usages) =>
-        a.Status == VideoStatus.Ready && usages.Any(u => u.AssetId == a.Id && AccessService.IsLive(u.CourseStatus));
+        a.Status == VideoStatus.Ready && usages.Any(u => u.AssetId == a.Id && u.CourseLive);
 }

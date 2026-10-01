@@ -101,7 +101,7 @@ public class RefundAndPayoutTests(CommerceFixture fx) : IClassFixture<CommerceFi
 
     private async Task<Guid> SeedCertificate(Guid userId, Guid courseId, bool premiumAssessment)
     {
-        var assessment = new Assessment { CourseId = courseId, Title = "Final", IsPremium = premiumAssessment, CountsTowardCertificate = true };
+        var assessment = new Mastemy.Api.Domain.Assessment { CourseId = courseId, Title = "Final", IsPremium = premiumAssessment, CountsTowardCertificate = true };
         var attempt = new Attempt { AssessmentId = assessment.Id, UserId = userId, Status = AttemptStatus.Submitted, Passed = true, ScorePercent = 90 };
         var cert = new Certificate
         {

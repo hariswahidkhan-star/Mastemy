@@ -186,11 +186,18 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
     /// </summary>
     private async Task<bool> Persist(YouTubeUploadSession s)
     {
-        var n = await db.UploadSessions.Where(x => x.Id == s.Id && RelayWritable.Contains(x.Status))
-            .ExecuteUpdateAsync(u => u.SetProperty(x => x.Status, s.Status).SetProperty(x => x.ConfirmedOffset, s.ConfirmedOffset)
-                .SetProperty(x => x.UpstreamSessionUri, s.UpstreamSessionUri).SetProperty(x => x.FailureReason, s.FailureReason)
-                .SetProperty(x => x.ResultVideoId, s.ResultVideoId).SetProperty(x => x.UpdatedAt, s.UpdatedAt), CancellationToken.None);
-        db.Entry(s).State = EntityState.Unchanged;
+        // Snapshot first: the values are passed as query parameters (not read from the tracked entity during the update).
+        var (id, status, offset, uri, failure, result, updated) =
+            (s.Id, s.Status, s.ConfirmedOffset, s.UpstreamSessionUri, s.FailureReason, s.ResultVideoId, s.UpdatedAt);
+        var n = await db.UploadSessions.Where(x => x.Id == id && RelayWritable.Contains(x.Status))
+            .ExecuteUpdateAsync(u => u.SetProperty(x => x.Status, status).SetProperty(x => x.ConfirmedOffset, offset)
+                .SetProperty(x => x.UpstreamSessionUri, uri).SetProperty(x => x.FailureReason, failure)
+                .SetProperty(x => x.ResultVideoId, result).SetProperty(x => x.UpdatedAt, updated), CancellationToken.None);
+        // Accept the in-memory values as persisted so SaveChanges never issues an unconditional UPDATE for the session
+        // (setting State = Unchanged would revert the current values to the originals).
+        var entry = db.Entry(s);
+        entry.OriginalValues.SetValues(entry.CurrentValues);
+        entry.State = EntityState.Unchanged;
         await db.SaveChangesAsync(CancellationToken.None);
         if (n == 0) await db.Entry(s).ReloadAsync(CancellationToken.None);
         return n == 1;
