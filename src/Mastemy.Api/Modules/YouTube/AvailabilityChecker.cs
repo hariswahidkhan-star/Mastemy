@@ -14,11 +14,10 @@ public class AvailabilityCheckService(AppDbContext db, IYouTubeMetadataClient yt
     public async Task<AvailabilityRunResult> RunOnce(CancellationToken ct)
     {
         if (!yt.HasApiKey) return new(0, 0, false);
-        var live = new[] { CourseStatus.Published, CourseStatus.Updating };
         var assetIds = await db.Lessons.Where(l => l.VideoAssetId != null)
             .Join(db.Modules, l => l.ModuleId, m => m.Id, (l, m) => new { l.VideoAssetId, m.CourseId })
-            .Join(db.Courses, x => x.CourseId, c => c.Id, (x, c) => new { x.VideoAssetId, c.Status })
-            .Where(x => live.Contains(x.Status)).Select(x => x.VideoAssetId!.Value).Distinct().ToListAsync(ct);
+            .Join(db.Courses.Where(AccessService.IsLiveExpr), x => x.CourseId, c => c.Id, (x, c) => x.VideoAssetId!.Value)
+            .Distinct().ToListAsync(ct);
 
         var assets = await db.VideoAssets.Where(a => assetIds.Contains(a.Id) && a.Status == VideoStatus.Ready)
             .OrderBy(a => a.LastCheckedAt).ToListAsync(ct);

@@ -316,9 +316,9 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         if (order.Status != OrderStatus.Paid || order.PaidAt is null) throw AppException.Bad("Only paid orders can be refunded.", "order_not_paid");
         if (order.PaidAt.Value.AddDays(RefundWindowDays) < DateTime.UtcNow)
             throw AppException.Bad($"The refund window of {RefundWindowDays} days has passed.", "refund_window_expired");
-        if (await db.Refunds.AnyAsync(r => r.OrderId == orderId && (r.Status == "Requested" || r.Status == "Completed")))
+        if (await db.Refunds.AnyAsync(r => r.OrderId == orderId && (r.Status == "Requested" || r.Status == "Processing" || r.Status == "Completed")))
             throw AppException.Conflict("A refund request already exists for this order.", "refund_already_requested");
-        var r = new Refund { OrderId = orderId, Amount = order.Total, Reason = reason, Status = "Requested" };
+        var r = new Refund { OrderId = orderId, Amount = order.Total, Reason = reason, Status = "Requested", RequestedBy = uid };
         db.Refunds.Add(r);
         audit.Record("refund.requested", nameof(Refund), r.Id, new { orderId, reason });
         await db.SaveChangesAsync();
@@ -337,48 +337,99 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
 
     public async Task<RefundDto> DecideRefund(Guid refundId, DecisionInput input)
     {
-        me.RequireId();
-        var r = await db.Refunds.FirstOrDefaultAsync(x => x.Id == refundId) ?? throw AppException.NotFound("Refund");
-        if (r.Status != "Requested") throw AppException.Conflict($"Refund is already {r.Status}.", "refund_already_decided");
+        var uid = me.RequireId();
+        if (input.Decision is not ("Approve" or "Reject")) throw AppException.Bad("Decision must be Approve or Reject.");
+        var exists = await db.Refunds.AsNoTracking().FirstOrDefaultAsync(x => x.Id == refundId) ?? throw AppException.NotFound("Refund");
+        var now = DateTime.UtcNow;
+
+        // Atomic claim: exactly one decider can move Requested -> Processing (or -> Rejected). Losers get 409.
+        var target = input.Decision == "Reject" ? "Rejected" : "Processing";
+        var claimed = await db.Refunds.Where(x => x.Id == refundId && x.Status == "Requested")
+            .ExecuteUpdateAsync(s => s.SetProperty(x => x.Status, target).SetProperty(x => x.DecidedBy, (Guid?)uid).SetProperty(x => x.DecidedAt, (DateTime?)now));
+        if (claimed != 1)
+        {
+            var current = await db.Refunds.AsNoTracking().Where(x => x.Id == refundId).Select(x => x.Status).FirstAsync();
+            throw AppException.Conflict($"Refund is already {current}.", "refund_already_decided");
+        }
+        var r = await db.Refunds.FirstAsync(x => x.Id == refundId);
         var order = await db.Orders.FirstAsync(o => o.Id == r.OrderId);
 
         if (input.Decision == "Reject")
         {
-            r.Status = "Rejected";
             audit.Record("refund.rejected", nameof(Refund), r.Id, new { r.OrderId, input.Notes });
             await db.SaveChangesAsync();
+            return ToRefundDto(r, order);
         }
-        else if (input.Decision == "Approve")
+
+        ProviderRefundResult pr;
+        try
         {
             if (order.Status != OrderStatus.Paid) throw AppException.Conflict("Order is not in a refundable state.", "order_not_paid");
-            var payment = await db.Payments.Where(p => p.OrderId == order.Id).OrderBy(p => p.CreatedAt).FirstOrDefaultAsync()
+            var payment = await db.Payments.AsNoTracking().Where(p => p.OrderId == order.Id).OrderBy(p => p.CreatedAt).FirstOrDefaultAsync()
                           ?? throw AppException.Conflict("No captured payment found for this order.", "payment_missing");
-            // Provider first: we never mark a refund complete unless the provider accepted it (provider call is idempotent per order).
-            var pr = await provider.RefundPayment(payment.ProviderPaymentId, Money.ToMinor(r.Amount, order.Currency), order.Id);
-
-            await using var tx = await db.Database.BeginTransactionAsync();
-            var now = DateTime.UtcNow;
-            r.Status = "Completed";
-            r.ProviderRefundId = pr.RefundId;
-            order.Status = OrderStatus.Refunded;
-            // Revoke ONLY entitlements created by this order; Organization/Grant/other-order entitlements are untouched.
-            var ents = await db.Entitlements.Where(e => e.OrderId == order.Id && e.RevokedAt == null).ToListAsync();
-            foreach (var e in ents) e.RevokedAt = now;
-            var sales = await db.CommissionLedger.AsNoTracking().Where(c => c.OrderId == order.Id && c.Kind == "Sale").ToListAsync();
-            var reversed = await db.CommissionLedger.Where(c => c.OrderId == order.Id && c.Kind == "RefundReversal").Select(c => c.InstructorId).ToListAsync();
-            foreach (var s in sales.Where(s => !reversed.Contains(s.InstructorId)))
-                db.CommissionLedger.Add(new CommissionLedgerEntry
-                {
-                    InstructorId = s.InstructorId, OrderId = s.OrderId, CourseId = s.CourseId, Kind = "RefundReversal",
-                    GrossAmount = -s.GrossAmount, InstructorAmount = -s.InstructorAmount, PlatformAmount = -s.PlatformAmount, Currency = s.Currency,
-                });
-            audit.Record("refund.approved", nameof(Refund), r.Id, new { r.OrderId, pr.RefundId, revokedEntitlements = ents.Select(e => e.Id), input.Notes });
-            await db.SaveChangesAsync();
-            await tx.CommitAsync();
+            // Provider first: never mark a refund complete unless the provider accepted it (provider call is idempotent per order).
+            pr = await provider.RefundPayment(payment.ProviderPaymentId, Money.ToMinor(r.Amount, order.Currency), order.Id);
         }
-        else throw AppException.Bad("Decision must be Approve or Reject.");
+        catch
+        {
+            // Release the claim so the refund can be decided again.
+            await db.Refunds.Where(x => x.Id == refundId && x.Status == "Processing")
+                .ExecuteUpdateAsync(s => s.SetProperty(x => x.Status, "Requested").SetProperty(x => x.DecidedBy, (Guid?)null).SetProperty(x => x.DecidedAt, (DateTime?)null));
+            throw;
+        }
 
-        return new RefundDto(r.Id, r.OrderId, order.UserId, r.Amount, order.Currency, r.Reason, r.Status, r.ProviderRefundId, r.CreatedAt);
+        await using var tx = await db.Database.BeginTransactionAsync();
+        r.Status = "Completed";
+        r.ProviderRefundId = pr.RefundId;
+        order.Status = OrderStatus.Refunded;
+        // Revoke ONLY entitlements created by this order; Organization/Grant/other-order entitlements are untouched.
+        var ents = await db.Entitlements.Where(e => e.OrderId == order.Id && e.RevokedAt == null).ToListAsync();
+        foreach (var e in ents) e.RevokedAt = now;
+        var sales = await db.CommissionLedger.AsNoTracking().Where(c => c.OrderId == order.Id && c.Kind == "Sale").ToListAsync();
+        var reversed = await db.CommissionLedger.AsNoTracking().Where(c => c.OrderId == order.Id && c.Kind == "RefundReversal").Select(c => c.InstructorId).ToListAsync();
+        foreach (var s in sales.Where(s => !reversed.Contains(s.InstructorId)).GroupBy(s => s.InstructorId).Select(g => g.First()))
+            db.CommissionLedger.Add(new CommissionLedgerEntry
+            {
+                InstructorId = s.InstructorId, OrderId = s.OrderId, CourseId = s.CourseId, Kind = "RefundReversal",
+                GrossAmount = -s.GrossAmount, InstructorAmount = -s.InstructorAmount, PlatformAmount = -s.PlatformAmount, Currency = s.Currency,
+            });
+        var revokedCerts = await RevokePremiumCertificates(order, now);
+        audit.Record("refund.approved", nameof(Refund), r.Id, new { r.OrderId, pr.RefundId, revokedEntitlements = ents.Select(e => e.Id), revokedCertificates = revokedCerts, input.Notes });
+        await db.SaveChangesAsync();
+        await tx.CommitAsync();
+        return ToRefundDto(r, order);
+    }
+
+    private static RefundDto ToRefundDto(Refund r, Order order) =>
+        new(r.Id, r.OrderId, order.UserId, r.Amount, order.Currency, r.Reason, r.Status, r.ProviderRefundId, r.CreatedAt);
+
+    /// <summary>
+    /// A certificate earned through a premium (paid) assessment depends on the refunded purchase: revoke it unless the user
+    /// still holds another active entitlement for the course (e.g. organization grant or another order).
+    /// </summary>
+    private async Task<List<Guid>> RevokePremiumCertificates(Order order, DateTime now)
+    {
+        var courseIds = await db.OrderItems.AsNoTracking().Where(i => i.OrderId == order.Id).Select(i => i.CourseId).Distinct().ToListAsync();
+        var revoked = new List<Guid>();
+        foreach (var courseId in courseIds)
+        {
+            var stillEntitled = await db.Entitlements.AnyAsync(e => e.UserId == order.UserId && e.CourseId == courseId && e.OrderId != order.Id
+                && e.RevokedAt == null && e.StartsAt <= now && (e.EndsAt == null || e.EndsAt > now));
+            if (stillEntitled) continue;
+            var certs = await (from c in db.Certificates
+                               join at in db.Attempts on c.AttemptId equals at.Id
+                               join a in db.Assessments on at.AssessmentId equals a.Id
+                               where c.UserId == order.UserId && c.CourseId == courseId && c.Status == CertificateStatus.Valid && a.IsPremium
+                               select c).ToListAsync();
+            foreach (var c in certs)
+            {
+                c.Status = CertificateStatus.Revoked;
+                c.RevocationReason = "Refunded purchase: certificate was earned through premium assessment access.";
+                audit.Record("certificate.revoked", nameof(Certificate), c.Id, new { reason = "refund", order.Id, courseId });
+                revoked.Add(c.Id);
+            }
+        }
+        return revoked;
     }
 
     // ===================== Earnings & payouts =====================
@@ -426,9 +477,15 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
     public async Task<List<PayoutBatchDto>> PayoutBatches()
     {
         var list = await db.PayoutBatches.AsNoTracking().OrderByDescending(b => b.CreatedAt).Take(100).ToListAsync();
-        var res = new List<PayoutBatchDto>();
-        foreach (var b in list) res.Add(await BatchDto(b));
-        return res;
+        var ids = list.Select(b => b.Id).ToList();
+        var rows = await db.CommissionLedger.AsNoTracking().Where(e => e.PayoutBatchId != null && ids.Contains(e.PayoutBatchId!.Value))
+            .GroupBy(e => new { BatchId = e.PayoutBatchId!.Value, e.InstructorId, e.Currency })
+            .Select(g => new { g.Key.BatchId, g.Key.InstructorId, g.Key.Currency, Amount = g.Sum(e => e.InstructorAmount), Count = g.Count() })
+            .ToListAsync();
+        var byBatch = rows.ToLookup(r => r.BatchId);
+        return list.Select(b => new PayoutBatchDto(b.Id, b.Status, b.CreatedBy, b.ApprovedBy, b.CreatedAt,
+            byBatch[b.Id].Select(r => new PayoutLine(r.InstructorId, r.Currency, r.Amount, r.Count))
+                .OrderBy(l => l.Currency).ThenBy(l => l.InstructorId).ToList())).ToList();
     }
 
     public async Task<PayoutBatchDto> ApprovePayoutBatch(Guid id)
@@ -446,7 +503,7 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
 
 /// <summary>
 /// Commission split: instructor pool = gross × InstructorSharePercent, split between course instructors by
-/// RevenueSharePercent (normalised if shares exceed 100%). Each instructor amount is rounded down to 2 decimals;
+/// RevenueSharePercent (normalised if shares exceed 100%). Each instructor amount is rounded down to the currency's minor unit (0 decimals for zero-decimal currencies such as JPY, else 2);
 /// everything not paid to instructors (including rounding remainders and unallocated shares) goes to the platform,
 /// recorded on the first entry so that Σ(instructor) + Σ(platform) == gross exactly.
 /// </summary>
@@ -459,11 +516,12 @@ public static class CommissionSplit
         var payees = instructors.Where(i => i.RevenueSharePercent > 0).ToList();
         if (payees.Count == 0) return result;
         var pool = gross * poolPercent / 100m;
+        var decimals = Money.IsZeroDecimal(currency) ? 0 : 2; // minor units: JPY etc. have no fractional amounts
         var shareTotal = payees.Sum(i => i.RevenueSharePercent);
         var divisor = shareTotal > 100m ? shareTotal : 100m;
         foreach (var i in payees)
         {
-            var amt = Math.Round(pool * i.RevenueSharePercent / divisor, 2, MidpointRounding.ToZero);
+            var amt = Math.Round(pool * i.RevenueSharePercent / divisor, decimals, MidpointRounding.ToZero);
             result.Add(new CommissionLedgerEntry
             {
                 InstructorId = i.UserId, OrderId = orderId, CourseId = courseId, Kind = "Sale", GrossAmount = gross,

@@ -18,6 +18,8 @@ public class FakeStripeHandler : HttpMessageHandler
 {
     public ConcurrentQueue<(string Method, string Path, string Body)> Requests { get; } = new();
     private int _n;
+    public volatile bool FailRefunds;
+    public TimeSpan RefundDelay = TimeSpan.Zero;
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
     {
@@ -37,6 +39,10 @@ public class FakeStripeHandler : HttpMessageHandler
             var id = path["/v1/checkout/sessions/".Length..];
             return Json(HttpStatusCode.OK, $$"""{"id":"{{id}}","url":"https://checkout.stripe.test/{{id}}"}""");
         }
+        if (request.Method == HttpMethod.Post && path == "/v1/refunds" && FailRefunds)
+            return Json(HttpStatusCode.InternalServerError, """{"error":{"message":"provider down"}}""");
+        if (request.Method == HttpMethod.Post && path == "/v1/refunds" && RefundDelay > TimeSpan.Zero)
+            await Task.Delay(RefundDelay, ct);
         if (request.Method == HttpMethod.Post && path == "/v1/refunds")
             return Json(HttpStatusCode.OK, $$"""{"id":"re_test_{{Interlocked.Increment(ref _n)}}","status":"succeeded"}""");
         return Json(HttpStatusCode.NotFound, "{}");

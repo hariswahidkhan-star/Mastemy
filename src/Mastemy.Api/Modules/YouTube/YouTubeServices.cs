@@ -131,20 +131,31 @@ public class VideoLinkService(AppDbContext db, ICurrentUser me, AccessService ac
             if (string.IsNullOrWhiteSpace(title)) title = videoId;
         }
 
-        var asset = await db.VideoAssets.FirstOrDefaultAsync(a => a.YouTubeVideoId == videoId && a.ChannelId == channel.Id, ct);
+        var candidates = await db.VideoAssets.Where(a => a.YouTubeVideoId == videoId && a.ChannelId == channel.Id).ToListAsync(ct);
+        var usages = await VideoAssetSharing.UsagesAsync(db, candidates.Select(c => c.Id), ct);
+        var asset = await VideoAssetSharing.PickMutableAsync(me, access, candidates, lesson.Id, usages);
+        var isNew = asset is null;
         if (asset is null)
         {
             asset = new VideoAsset { YouTubeVideoId = videoId, ChannelId = channel.Id, UploaderId = uid };
             db.VideoAssets.Add(asset);
         }
-        asset.ObservedChannelId = observed;
+        // Never downgrade an already-Ready asset from link: the manual/oEmbed path cannot verify anything, and a transient
+        // non-Ready Data API result must not break live lessons (the availability checker is the authority for downgrades).
+        var keepStatus = !isNew && asset.Status == VideoStatus.Ready && status != VideoStatus.Ready
+                         && (manual || VideoAssetSharing.IsReadyAndLive(asset, usages));
+        if (!keepStatus)
+        {
+            asset.ObservedChannelId = observed;
+            asset.Status = status;
+            asset.StatusReason = reason;
+            asset.PrivacyStatus = privacy;
+            asset.Embeddable = embeddable;
+            asset.MetadataEnteredManually = manual;
+            asset.DurationSeconds = duration;
+        }
+        else status = asset.Status;
         asset.Title = title;
-        asset.DurationSeconds = duration;
-        asset.Status = status;
-        asset.StatusReason = reason;
-        asset.PrivacyStatus = privacy;
-        asset.Embeddable = embeddable;
-        asset.MetadataEnteredManually = manual;
         asset.RightsDeclared = true;
         asset.RightsDeclarationText = string.IsNullOrWhiteSpace(rightsText) ? asset.RightsDeclarationText : rightsText;
         asset.VideoOwnerUserId ??= channel.Mode == ChannelMode.InstructorOwned ? channel.OwnerUserId : null;

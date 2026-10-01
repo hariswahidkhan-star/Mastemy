@@ -17,14 +17,36 @@ public record ChannelDto(Guid Id, string ChannelId, string Title, ChannelMode Mo
 
 public record CreateChannelRequest(string? ChannelId, string? Title, ChannelMode Mode, Guid? OwnerUserId);
 public record OAuthStartDto(string AuthorizationUrl);
+public record OAuthStartResult(OAuthStartDto Dto, string Nonce);
+
+/// <summary>
+/// Single-use registry of consumed OAuth state nonces (replay protection). In-memory per process: in a multi-instance
+/// deployment a replay routed to a different instance within the 15-minute state lifetime is not detected there; the
+/// browser-bound nonce cookie (cleared on callback) still prevents cross-user/login-CSRF use of a stolen state.
+/// </summary>
+public class OAuthNonceStore
+{
+    private readonly System.Collections.Concurrent.ConcurrentDictionary<string, DateTime> _used = new(StringComparer.Ordinal);
+
+    /// <summary>Marks the nonce consumed; false if it was already used.</summary>
+    public bool TryConsume(string nonce, DateTime expiresAt)
+    {
+        var now = DateTime.UtcNow;
+        if (_used.Count > 1024)
+            foreach (var kv in _used) if (kv.Value < now) _used.TryRemove(kv.Key, out _);
+        return _used.TryAdd(nonce, expiresAt);
+    }
+}
 
 public partial class ChannelService(AppDbContext db, ICurrentUser me, AuditService audit, FeatureFlagService flags,
-    GoogleOAuthClient google, SecretProtector secrets, IDataProtectionProvider dp)
+    GoogleOAuthClient google, SecretProtector secrets, IDataProtectionProvider dp, OAuthNonceStore nonces)
 {
     [GeneratedRegex("^UC[A-Za-z0-9_-]{22}$")] private static partial Regex ChannelIdRx();
     public static bool IsValidChannelId(string? s) => s is not null && ChannelIdRx().IsMatch(s);
 
     private record StatePayload(Guid UserId, ChannelMode Mode, string Nonce);
+    public const string NonceCookieName = "mastemy_yt_oauth";
+    public static readonly TimeSpan StateLifetime = TimeSpan.FromMinutes(15);
     private ITimeLimitedDataProtector StateProtector => dp.CreateProtector("Mastemy.YouTube.OAuthState.v1").ToTimeLimitedDataProtector();
 
     public async Task<ChannelDto> Create(CreateChannelRequest req)
@@ -66,19 +88,24 @@ public partial class ChannelService(AppDbContext db, ICurrentUser me, AuditServi
         }
     }
 
-    public async Task<OAuthStartDto> Start(ChannelMode mode)
+    public async Task<OAuthStartResult> Start(ChannelMode mode)
     {
         var uid = me.RequireId();
         if (!Enum.IsDefined(mode)) throw AppException.Bad("Invalid mode.");
         google.RequireConfigured();
         await RequireMayConnect(uid, mode, r => Task.FromResult(me.IsInRole(r)));
-        var payload = JsonSerializer.Serialize(new StatePayload(uid, mode, Tokens.Random(16)));
-        var state = StateProtector.Protect(payload, TimeSpan.FromMinutes(15));
-        return new OAuthStartDto(google.BuildAuthorizationUrl(state));
+        var nonce = Tokens.Random(24);
+        var payload = JsonSerializer.Serialize(new StatePayload(uid, mode, nonce));
+        var state = StateProtector.Protect(payload, StateLifetime);
+        return new OAuthStartResult(new OAuthStartDto(google.BuildAuthorizationUrl(state)), nonce);
     }
 
     /// <summary>OAuth redirect target. Identity comes from the protected state (the browser redirect carries no bearer token).</summary>
-    public async Task<ChannelDto> Callback(string? code, string? state, string? error, CancellationToken ct)
+    /// <remarks>
+    /// The state is bound to the browser that started the flow (HttpOnly nonce cookie must equal the nonce inside the protected
+    /// state), each nonce is single-use, and when the callback request is authenticated it must be the same user.
+    /// </remarks>
+    public async Task<ChannelDto> Callback(string? code, string? state, string? error, string? cookieNonce, CancellationToken ct)
     {
         google.RequireConfigured();
         if (!string.IsNullOrEmpty(error)) throw AppException.Bad("Google authorization was not granted.", "oauth_denied");
@@ -87,7 +114,14 @@ public partial class ChannelService(AppDbContext db, ICurrentUser me, AuditServi
         try { p = JsonSerializer.Deserialize<StatePayload>(StateProtector.Unprotect(state)); }
         catch (Exception ex) when (ex is System.Security.Cryptography.CryptographicException or JsonException or FormatException)
         { throw AppException.Bad("The authorization request is invalid or expired. Start again.", "oauth_state_invalid"); }
-        if (p is null) throw AppException.Bad("The authorization request is invalid or expired. Start again.", "oauth_state_invalid");
+        if (p is null || string.IsNullOrEmpty(p.Nonce) || string.IsNullOrEmpty(cookieNonce)
+            || !System.Security.Cryptography.CryptographicOperations.FixedTimeEquals(
+                System.Text.Encoding.UTF8.GetBytes(p.Nonce), System.Text.Encoding.UTF8.GetBytes(cookieNonce)))
+            throw AppException.Bad("The authorization request is invalid or expired. Start again.", "oauth_state_invalid");
+        if (me.Id is { } current && current != p.UserId)
+            throw AppException.Bad("The authorization request belongs to a different user.", "oauth_state_invalid");
+        if (!nonces.TryConsume(p.Nonce, DateTime.UtcNow.Add(StateLifetime)))
+            throw AppException.Bad("This authorization request was already used. Start again.", "oauth_state_invalid");
 
         var user = await db.Users.Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == p.UserId, ct);
         if (user is null || user.IsSuspended) throw AppException.Forbidden();

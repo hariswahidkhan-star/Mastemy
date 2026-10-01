@@ -306,7 +306,10 @@ public class UploadRelayTests(UploadFactory f) : IClassFixture<UploadFactory>
         Assert.Equal("oauth_state_invalid", await (await anon.GetAsync("/api/youtube/oauth/callback?code=abc&state=forged")).ProblemType());
 
         f.Fake.OwnChannelId = "UC" + Guid.NewGuid().ToString("N")[..22];
-        var cb = await anon.GetAsync($"/api/youtube/oauth/callback?code=abc&state={Uri.EscapeDataString(q["state"]!)}");
+        var cookie = start.Headers.GetValues("Set-Cookie").Single(h => h.StartsWith(ChannelService.NonceCookieName + "="));
+        using var cbReq = new HttpRequestMessage(HttpMethod.Get, $"/api/youtube/oauth/callback?code=abc&state={Uri.EscapeDataString(q["state"]!)}");
+        cbReq.Headers.Add("Cookie", cookie.Split(';')[0]);
+        var cb = await anon.SendAsync(cbReq);
         var raw = await cb.Content.ReadAsStringAsync();
         Assert.Equal(HttpStatusCode.OK, cb.StatusCode);
         Assert.DoesNotContain("refresh", raw, StringComparison.OrdinalIgnoreCase);

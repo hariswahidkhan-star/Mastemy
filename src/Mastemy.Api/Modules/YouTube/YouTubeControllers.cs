@@ -23,12 +23,25 @@ public class YouTubeChannelsController(ChannelPolicy policy, ChannelService chan
     public async Task<IActionResult> Revoke(Guid id, CancellationToken ct) { await channels.Revoke(id, ct); return NoContent(); }
 
     [HttpGet("api/youtube/oauth/start"), Authorize]
-    public Task<OAuthStartDto> Start([FromQuery] ChannelMode mode) => channels.Start(mode);
+    public async Task<OAuthStartDto> Start([FromQuery] ChannelMode mode)
+    {
+        var r = await channels.Start(mode);
+        Response.Cookies.Append(ChannelService.NonceCookieName, r.Nonce, new CookieOptions
+        {
+            HttpOnly = true, Secure = Request.IsHttps, SameSite = SameSiteMode.Lax, Path = "/api/youtube/oauth",
+            MaxAge = ChannelService.StateLifetime, IsEssential = true,
+        });
+        return r.Dto;
+    }
 
     /// <summary>Google redirects the browser here; the protected state identifies the user. Tokens are never returned.</summary>
     [HttpGet("api/youtube/oauth/callback"), AllowAnonymous]
     public Task<ChannelDto> Callback([FromQuery] string? code, [FromQuery] string? state, [FromQuery] string? error, CancellationToken ct)
-        => channels.Callback(code, state, error, ct);
+    {
+        var cookie = Request.Cookies[ChannelService.NonceCookieName];
+        Response.Cookies.Delete(ChannelService.NonceCookieName, new CookieOptions { Path = "/api/youtube/oauth", Secure = Request.IsHttps, HttpOnly = true, SameSite = SameSiteMode.Lax });
+        return channels.Callback(code, state, error, cookie, ct);
+    }
 }
 
 [ApiController]
