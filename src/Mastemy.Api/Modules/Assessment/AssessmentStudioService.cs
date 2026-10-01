@@ -13,9 +13,14 @@ public class AssessmentStudioService(AppDbContext db, ICurrentUser me, AccessSer
         if (!await db.Courses.AnyAsync(c => c.Id == courseId)) throw AppException.NotFound("Course");
         await access.RequireCourseAuthorOrStaff(courseId);
         var list = await db.Assessments.AsNoTracking().Include(a => a.Questions).Where(a => a.CourseId == courseId).OrderBy(a => a.Title).ToListAsync();
-        var result = new List<AssessmentDto>();
-        foreach (var a in list) result.Add(await ToDto(a));
-        return result;
+        // One grouped query each for active-question and attempt counts (no per-assessment round trips).
+        var ids = list.Select(a => a.Id).ToList();
+        var active = await db.AssessmentQuestions.Where(x => ids.Contains(x.AssessmentId))
+            .Join(db.Questions, x => x.QuestionId, q => q.Id, (x, q) => new { x.AssessmentId, q.State })
+            .Where(x => x.State == QuestionState.Active).GroupBy(x => x.AssessmentId)
+            .Select(g => new { g.Key, Count = g.Count() }).ToDictionaryAsync(x => x.Key, x => x.Count);
+        var attempts = await db.Attempts.Where(x => ids.Contains(x.AssessmentId)).GroupBy(x => x.AssessmentId).Select(g => new { g.Key, Count = g.Count() }).ToDictionaryAsync(x => x.Key, x => x.Count);
+        return list.Select(a => ToDto(a, active.GetValueOrDefault(a.Id), attempts.GetValueOrDefault(a.Id))).ToList();
     }
 
     public async Task<AssessmentDto> Get(Guid id)
@@ -28,9 +33,10 @@ public class AssessmentStudioService(AppDbContext db, ICurrentUser me, AccessSer
     public async Task<AssessmentDto> Create(Guid courseId, AssessmentInput input)
     {
         me.RequireId();
-        if (!await db.Courses.AnyAsync(c => c.Id == courseId)) throw AppException.NotFound("Course");
+        var course = await db.Courses.AsNoTracking().FirstOrDefaultAsync(c => c.Id == courseId) ?? throw AppException.NotFound("Course");
         await access.RequireCourseEditor(courseId);
-        await Validate(courseId, input);
+        RequireEditable(course);
+        await Validate(course, input);
         var a = new AssessmentEntity { CourseId = courseId };
         Apply(a, input);
         db.Assessments.Add(a);
@@ -44,7 +50,9 @@ public class AssessmentStudioService(AppDbContext db, ICurrentUser me, AccessSer
         me.RequireId();
         var a = await db.Assessments.Include(x => x.Questions).FirstOrDefaultAsync(x => x.Id == id) ?? throw AppException.NotFound("Assessment");
         await access.RequireCourseEditor(a.CourseId);
-        await Validate(a.CourseId, input);
+        var course = await db.Courses.AsNoTracking().FirstAsync(c => c.Id == a.CourseId);
+        RequireEditable(course);
+        await Validate(course, input);
         Apply(a, input, setQuestions: false);
         var ids = input.QuestionIds!;
         db.AssessmentQuestions.RemoveRange(a.Questions.Where(q => !ids.Contains(q.QuestionId)).ToList());
@@ -65,6 +73,7 @@ public class AssessmentStudioService(AppDbContext db, ICurrentUser me, AccessSer
         me.RequireId();
         var a = await db.Assessments.Include(x => x.Questions).FirstOrDefaultAsync(x => x.Id == id) ?? throw AppException.NotFound("Assessment");
         await access.RequireCourseEditor(a.CourseId);
+        RequireEditable(await db.Courses.AsNoTracking().FirstAsync(c => c.Id == a.CourseId));
         if (await db.Attempts.AnyAsync(x => x.AssessmentId == id))
             throw AppException.Conflict("This assessment has learner attempts and cannot be deleted; results must be retained.", "assessment_has_attempts");
         db.AssessmentQuestions.RemoveRange(a.Questions);
@@ -73,18 +82,27 @@ public class AssessmentStudioService(AppDbContext db, ICurrentUser me, AccessSer
         await db.SaveChangesAsync();
     }
 
+    /// <summary>Assessments change only while the course itself is editable (not under review, approved, live or archived).</summary>
+    private static void RequireEditable(Course course)
+    {
+        if (course.Status is not (CourseStatus.Draft or CourseStatus.ChangesRequested or CourseStatus.Updating))
+            throw AppException.Conflict($"Assessments cannot be changed while the course is {course.Status}.", "course_not_editable");
+    }
+
     private static void Apply(AssessmentEntity a, AssessmentInput i, bool setQuestions = true)
     {
         a.Title = i.Title.Trim(); a.Kind = i.Kind; a.Mode = i.Mode; a.TimeLimitMinutes = i.TimeLimitMinutes; a.MaxAttempts = i.MaxAttempts;
         a.PassPercent = i.PassPercent; a.MultiSelectScoring = i.MultiSelectScoring; a.QuestionCount = i.QuestionCount;
+        a.ReviewPolicy = i.ReviewPolicy ?? AnswerReviewPolicy.AfterPassOrAttemptsExhausted;
         a.ShuffleQuestions = i.ShuffleQuestions ?? true; a.ShuffleOptions = i.ShuffleOptions ?? true;
         a.IsPremium = i.IsPremium; a.CountsTowardCertificate = i.CountsTowardCertificate; a.ModuleId = i.ModuleId; a.LessonId = i.LessonId;
         if (setQuestions) a.Questions = (i.QuestionIds ?? []).Select((q, idx) => new AssessmentQuestion { AssessmentId = a.Id, QuestionId = q, SortOrder = idx }).ToList();
     }
 
-    private async Task Validate(Guid courseId, AssessmentInput? i)
+    private async Task Validate(Course course, AssessmentInput? i)
     {
         if (i is null) throw AppException.Bad("Request body is required.");
+        var courseId = course.Id;
         var e = new List<string>();
         if (string.IsNullOrWhiteSpace(i.Title) || i.Title.Length > 200) e.Add("title is required (max 200 characters).");
         if (!Enum.IsDefined(i.Kind)) e.Add("kind is invalid.");
@@ -96,6 +114,9 @@ public class AssessmentStudioService(AppDbContext db, ICurrentUser me, AccessSer
         if (i.QuestionCount is < 0 or > 500) e.Add("questionCount must be between 0 (all) and 500.");
         if (i.CountsTowardCertificate && i.Mode != AssessmentMode.Exam)
             e.Add("Only Exam-mode assessments can count toward a certificate (Practice mode reveals answers during the attempt).");
+        if (i.CountsTowardCertificate && (i.PassPercent <= 0 || i.PassPercent < course.PassThresholdPercent))
+            e.Add($"Certificate assessments need a passPercent above 0 and at least the course pass threshold ({course.PassThresholdPercent:0.##}%).");
+        if (i.ReviewPolicy is { } rp && !Enum.IsDefined(rp)) e.Add("reviewPolicy is invalid.");
         var ids = i.QuestionIds ?? [];
         if (ids.Count == 0) e.Add("questionIds must contain at least one question.");
         if (ids.Distinct().Count() != ids.Count) e.Add("questionIds contains duplicates.");
@@ -109,11 +130,17 @@ public class AssessmentStudioService(AppDbContext db, ICurrentUser me, AccessSer
 
     private async Task<AssessmentDto> ToDto(AssessmentEntity a)
     {
-        var qids = a.Questions.OrderBy(q => q.SortOrder).Select(q => q.QuestionId).ToList();
+        var qids = a.Questions.Select(q => q.QuestionId).ToList();
         var active = await db.Questions.CountAsync(q => qids.Contains(q.Id) && q.State == QuestionState.Active);
         var attempts = await db.Attempts.CountAsync(x => x.AssessmentId == a.Id);
+        return ToDto(a, active, attempts);
+    }
+
+    private static AssessmentDto ToDto(AssessmentEntity a, int active, int attempts)
+    {
+        var qids = a.Questions.OrderBy(q => q.SortOrder).Select(q => q.QuestionId).ToList();
         return new AssessmentDto(a.Id, a.CourseId, a.ModuleId, a.LessonId, a.Title, a.Kind, a.Mode, a.TimeLimitMinutes, a.MaxAttempts,
             a.PassPercent, a.MultiSelectScoring, a.QuestionCount, a.ShuffleQuestions, a.ShuffleOptions, a.IsPremium,
-            a.CountsTowardCertificate, qids, active, attempts);
+            a.CountsTowardCertificate, qids, active, attempts, a.ReviewPolicy);
     }
 }

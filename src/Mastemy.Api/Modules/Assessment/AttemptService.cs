@@ -33,7 +33,7 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
             ? $"Passing this assessment (score >= {a.PassPercent:0.##}%) earns the course certificate. Certificates reflect assessed MCQ performance only, never video viewing."
             : "This assessment does not count toward a certificate.";
         return new AssessmentSummaryDto(a.Id, a.CourseId, a.ModuleId, a.LessonId, a.Title, a.Kind, a.Mode, a.TimeLimitMinutes, a.MaxAttempts,
-            a.PassPercent, a.MultiSelectScoring, count, a.IsPremium, locked, a.CountsTowardCertificate, Scoring.Rules, criteria, used, inProgress);
+            a.PassPercent, a.MultiSelectScoring, count, a.IsPremium, locked, a.CountsTowardCertificate, Scoring.Rules, criteria, used, inProgress, a.ReviewPolicy);
     }
 
     // ---------------- Start ----------------
@@ -136,7 +136,10 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
         {
             if (at.Status != AttemptStatus.InProgress) throw AppException.Conflict("This attempt is already finished.", "attempt_closed");
             if (IsOverdue(at)) { await Finalize(at, asm, AttemptStatus.Expired); expired = true; return; }
+            await RequirePremium(asm);
             var item = at.Items.FirstOrDefault(i => i.Id == itemId) ?? throw AppException.NotFound("Attempt item");
+            if (item.CheckedAt is not null)
+                throw AppException.Conflict("This answer was checked and is now locked.", "item_locked");
             var version = await db.QuestionVersions.AsNoTracking().Include(v => v.Options).FirstAsync(v => v.Id == item.QuestionVersionId);
             var allowed = ParseIds(item.OptionOrder);
             var selected = (input.SelectedOptionIds ?? []).Distinct().ToList();
@@ -162,8 +165,12 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
         await Locked(attemptId, async (at, asm) =>
         {
             if (asm.Mode != AssessmentMode.Practice) throw AppException.Forbidden("Answers can only be checked during practice assessments.");
+            if (at.Status != AttemptStatus.InProgress) throw AppException.Conflict("This attempt is already finished.", "attempt_closed");
             if (IsOverdue(at)) { await Finalize(at, asm, AttemptStatus.Expired); expired = true; return; }
+            await RequirePremium(asm);
             var item = at.Items.FirstOrDefault(i => i.Id == itemId) ?? throw AppException.NotFound("Attempt item");
+            // Revealing the answer locks the item so the learner cannot change it afterwards.
+            item.CheckedAt ??= DateTime.UtcNow;
             var v = await db.QuestionVersions.AsNoTracking().Include(x => x.Options).FirstAsync(x => x.Id == item.QuestionVersionId);
             var order = ParseIds(item.OptionOrder);
             var opts = order.Select(id => v.Options.First(o => o.Id == id)).ToList();
@@ -184,6 +191,7 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
         var (attempt, a) = await Locked(attemptId, async (at, asm) =>
         {
             if (at.Status != AttemptStatus.InProgress) return; // idempotent: already scored
+            if (!IsOverdue(at)) await RequirePremium(asm);
             await Finalize(at, asm, IsOverdue(at) ? AttemptStatus.Expired : AttemptStatus.Submitted);
         });
         await certificates.IssueIfEligible(attempt, a);
@@ -191,6 +199,13 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
     }
 
     // ---------------- Internals ----------------
+
+    /// <summary>Premium entitlement is re-checked on every write, so access lost mid-attempt (refund/revocation) stops the attempt.</summary>
+    private async Task RequirePremium(AssessmentEntity a)
+    {
+        if (a.IsPremium && !await access.HasPremiumAccess(a.CourseId))
+            throw new AppException(403, "Premium access for this assessment is no longer active.", "premium_required");
+    }
 
     private static bool IsOverdue(Attempt a) => a.Status == AttemptStatus.InProgress && a.DeadlineAt is { } d && DateTime.UtcNow > d;
 
@@ -249,8 +264,8 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
         var possible = at.Items.Count;
         at.PointsEarned = earned;
         at.PointsPossible = possible;
-        at.ScorePercent = possible == 0 ? 0 : Math.Round(earned / possible * 100m, 2);
-        at.Passed = at.ScorePercent >= at.PassPercent;
+        at.ScorePercent = Scoring.DisplayPercent(earned, possible);
+        at.Passed = Scoring.Passed(earned, possible, at.PassPercent);
         at.Status = status;
         at.SubmittedAt = status == AttemptStatus.Expired && at.DeadlineAt is { } d ? d : DateTime.UtcNow;
     }
@@ -304,12 +319,18 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
                 opts.Where(o => o.IsCorrect).Select(o => o.Id).ToList(),
                 opts.Select(o => new ReviewOptionDto(o.Id, o.Text, o.IsCorrect, selected.Contains(o.Id), o.Rationale)).ToList()));
         }
-        // Review is shown after scoring in both modes (Practice also allows per-item checks during the attempt).
+        // Practice: review always available. Exam: governed by the assessment's answer review policy.
+        var reveal = a.Mode == AssessmentMode.Practice;
+        if (!reveal)
+        {
+            var used = a.MaxAttempts is null ? 0 : await db.Attempts.CountAsync(x => x.AssessmentId == a.Id && x.UserId == at.UserId && x.Status != AttemptStatus.InProgress);
+            reveal = Scoring.RevealAnswers(a.ReviewPolicy, at.Passed == true, used, a.MaxAttempts);
+        }
         string? code = null;
         if (at.Passed == true && a.CountsTowardCertificate)
             code = await db.Certificates.AsNoTracking().Where(c => c.UserId == at.UserId && c.CourseId == a.CourseId).Select(c => c.Code).FirstOrDefaultAsync();
         return new AttemptResult(at.Id, at.Status, at.ScorePercent ?? 0, at.PointsEarned ?? 0, at.PointsPossible ?? 0, at.Passed ?? false,
             at.PassPercent, at.ScoringPolicy, correct, incorrect, unanswered,
-            topics.Select(kv => new TopicResult(kv.Key, kv.Value.c, kv.Value.t)).OrderBy(t => t.Tag).ToList(), review, code);
+            topics.Select(kv => new TopicResult(kv.Key, kv.Value.c, kv.Value.t)).OrderBy(t => t.Tag).ToList(), reveal ? review : null, code, reveal);
     }
 }

@@ -6,20 +6,20 @@ namespace Mastemy.Api.Modules.Assessment;
 public record AssessmentInput(
     string Title, AssessmentKind Kind, AssessmentMode Mode, int? TimeLimitMinutes, int? MaxAttempts, decimal PassPercent,
     MultiSelectScoring MultiSelectScoring, int QuestionCount, bool? ShuffleQuestions, bool? ShuffleOptions, bool IsPremium,
-    bool CountsTowardCertificate, Guid? ModuleId, Guid? LessonId, List<Guid>? QuestionIds);
+    bool CountsTowardCertificate, Guid? ModuleId, Guid? LessonId, List<Guid>? QuestionIds, AnswerReviewPolicy? ReviewPolicy = null);
 
 public record AssessmentDto(
     Guid Id, Guid CourseId, Guid? ModuleId, Guid? LessonId, string Title, AssessmentKind Kind, AssessmentMode Mode,
     int? TimeLimitMinutes, int? MaxAttempts, decimal PassPercent, MultiSelectScoring MultiSelectScoring, int QuestionCount,
     bool ShuffleQuestions, bool ShuffleOptions, bool IsPremium, bool CountsTowardCertificate, List<Guid> QuestionIds,
-    int ActiveQuestionCount, int AttemptCount);
+    int ActiveQuestionCount, int AttemptCount, AnswerReviewPolicy ReviewPolicy);
 
 // ---------- Learner ----------
 public record AssessmentSummaryDto(
     Guid Id, Guid CourseId, Guid? ModuleId, Guid? LessonId, string Title, AssessmentKind Kind, AssessmentMode Mode,
     int? TimeLimitMinutes, int? MaxAttempts, decimal PassPercent, MultiSelectScoring MultiSelectScoring, int QuestionCount,
     bool IsPremium, bool PremiumLocked, bool CountsTowardCertificate, string ScoringRules, string CertificateCriteria,
-    int? AttemptsUsed, Guid? InProgressAttemptId);
+    int? AttemptsUsed, Guid? InProgressAttemptId, AnswerReviewPolicy ReviewPolicy);
 
 public record LearnerOptionDto(Guid Id, string Text);
 
@@ -41,7 +41,7 @@ public record TopicResult(string Tag, int Correct, int Total);
 
 public record AttemptResult(Guid AttemptId, AttemptStatus Status, decimal ScorePercent, decimal PointsEarned, int PointsPossible,
     bool Passed, decimal PassPercent, MultiSelectScoring ScoringPolicy, int Correct, int Incorrect, int Unanswered,
-    List<TopicResult> Topics, List<ReviewItemDto>? Review, string? CertificateCode);
+    List<TopicResult> Topics, List<ReviewItemDto>? Review, string? CertificateCode, bool ReviewAvailable);
 
 public record AttemptDetail(AttemptView Attempt, AttemptResult? Result);
 
@@ -68,8 +68,8 @@ public static class Scoring
         "SingleChoice: 1 point when the single correct option is selected, otherwise 0. " +
         "MultipleSelect with AllOrNothing: 1 point only when exactly the set of correct options is selected, otherwise 0. " +
         "MultipleSelect with PartialCredit: max(0, (correct options selected - incorrect options selected) / number of correct options). " +
-        "Unanswered items score 0. Score % = points earned / number of questions x 100 (rounded to 2 decimals); " +
-        "the attempt passes when the score is greater than or equal to the pass percentage. Time-limited attempts are scored automatically at the deadline.";
+        "Unanswered items score 0. Score % = points earned / number of questions x 100 (displayed rounded to 2 decimals, half away from zero); " +
+        "the attempt passes when the unrounded score is greater than or equal to the pass percentage. Time-limited attempts are scored automatically at the deadline.";
 
     public static decimal Item(QuestionType type, IReadOnlyCollection<Guid> correct, IReadOnlyCollection<Guid> selected, MultiSelectScoring policy)
     {
@@ -82,4 +82,19 @@ public static class Scoring
         var wrong = selected.Count - right;
         return Math.Round(Math.Max(0m, (decimal)(right - wrong) / correct.Count), 4);
     }
+
+    /// <summary>Pass decision on the exact ratio (never on the rounded display value): earned/possible*100 >= passPercent.</summary>
+    public static bool Passed(decimal earned, int possible, decimal passPercent) =>
+        possible > 0 ? earned * 100m >= passPercent * possible : passPercent <= 0m;
+
+    public static decimal DisplayPercent(decimal earned, int possible) =>
+        possible == 0 ? 0m : Math.Round(earned / possible * 100m, 2, MidpointRounding.AwayFromZero);
+
+    /// <summary>Whether Exam-mode answer keys, rationales and explanations may be shown for a scored attempt.</summary>
+    public static bool RevealAnswers(AnswerReviewPolicy policy, bool passed, int attemptsUsed, int? maxAttempts) => policy switch
+    {
+        AnswerReviewPolicy.AfterSubmit => true,
+        AnswerReviewPolicy.AfterPassOrAttemptsExhausted => passed || (maxAttempts is { } m && attemptsUsed >= m),
+        _ => false,
+    };
 }

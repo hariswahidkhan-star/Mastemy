@@ -16,13 +16,13 @@ public record OptionDto(Guid Id, int SortOrder, string Text, bool IsCorrect, str
 
 public record QuestionVersionDto(Guid Id, int Version, QuestionType Type, string Language, string Stem, string Explanation,
     Difficulty Difficulty, string SkillCode, string CertificationObjective, List<string> Tags, string SourceReference,
-    bool AllowShuffle, DateTime CreatedAt, List<OptionDto> Options);
+    bool AllowShuffle, Guid? EditedBy, Guid? ReviewedBy, DateTime CreatedAt, List<OptionDto> Options);
 
 public record QuestionDto(Guid Id, Guid CourseId, string ExternalId, QuestionState State, int CurrentVersion,
     Guid? ModuleId, Guid? LessonId, Guid CreatedBy, Guid? ReviewedBy, DateTime CreatedAt, DateTime UpdatedAt,
-    QuestionVersionDto Version);
+    QuestionVersionDto Version, int? PendingVersion, QuestionState? PendingState, QuestionVersionDto? Pending);
 
-public record QuestionVersionSummary(Guid Id, int Version, DateTime CreatedAt);
+public record QuestionVersionSummary(Guid Id, int Version, DateTime CreatedAt, Guid? EditedBy, Guid? ReviewedBy);
 
 public record QuestionDetailDto(QuestionDto Question, List<QuestionVersionSummary> Versions);
 
@@ -113,9 +113,10 @@ public static partial class QuestionRules
     public static string Trunc(string s) => s.Length <= 40 ? s : s[..40] + "…";
 
     public static QuestionVersionDto ToDto(QuestionVersion v) => new(v.Id, v.Version, v.Type, v.Language, v.Stem, v.Explanation,
-        v.Difficulty, v.SkillCode, v.CertificationObjective, SplitTags(v.Tags), v.SourceReference, v.AllowShuffle, v.CreatedAt,
+        v.Difficulty, v.SkillCode, v.CertificationObjective, SplitTags(v.Tags), v.SourceReference, v.AllowShuffle, v.EditedBy, v.ReviewedBy, v.CreatedAt,
         v.Options.OrderBy(o => o.SortOrder).Select(o => new OptionDto(o.Id, o.SortOrder, o.Text, o.IsCorrect, o.Rationale)).ToList());
 
-    public static QuestionDto ToDto(Question q, QuestionVersion v) => new(q.Id, q.CourseId, q.ExternalId, q.State, q.CurrentVersion,
-        q.ModuleId, q.LessonId, q.CreatedBy, q.ReviewedBy, q.CreatedAt, q.UpdatedAt, ToDto(v));
+    public static QuestionDto ToDto(Question q, QuestionVersion v, QuestionVersion? pending = null) => new(q.Id, q.CourseId, q.ExternalId, q.State, q.CurrentVersion,
+        q.ModuleId, q.LessonId, q.CreatedBy, q.ReviewedBy, q.CreatedAt, q.UpdatedAt, ToDto(v),
+        pending is null ? null : q.PendingVersion, pending is null ? null : q.PendingState, pending is null ? null : ToDto(pending));
 }

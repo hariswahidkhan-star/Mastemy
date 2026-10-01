@@ -29,7 +29,8 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         var ids = items.Select(x => x.Id).ToList();
         var versions = await db.QuestionVersions.AsNoTracking().Include(v => v.Options)
             .Where(v => ids.Contains(v.QuestionId)).ToListAsync();
-        var dtos = items.Select(x => QuestionRules.ToDto(x, versions.First(v => v.QuestionId == x.Id && v.Version == x.CurrentVersion))).ToList();
+        var dtos = items.Select(x => QuestionRules.ToDto(x, versions.First(v => v.QuestionId == x.Id && v.Version == x.CurrentVersion),
+            x.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.QuestionId == x.Id && v.Version == pv) : null)).ToList();
         return new Paged<QuestionDto>(dtos, total, page, pageSize);
     }
 
@@ -39,7 +40,9 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         await access.RequireCourseAuthorOrStaff(q.CourseId);
         var versions = await db.QuestionVersions.AsNoTracking().Include(v => v.Options).Where(v => v.QuestionId == id).OrderBy(v => v.Version).ToListAsync();
         var current = versions.First(v => v.Version == q.CurrentVersion);
-        return new QuestionDetailDto(QuestionRules.ToDto(q, current), versions.Select(v => new QuestionVersionSummary(v.Id, v.Version, v.CreatedAt)).ToList());
+        var pending = q.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.Version == pv) : null;
+        return new QuestionDetailDto(QuestionRules.ToDto(q, current, pending),
+            versions.Select(v => new QuestionVersionSummary(v.Id, v.Version, v.CreatedAt, v.EditedBy, v.ReviewedBy)).ToList());
     }
 
     public async Task<QuestionDto> Create(Guid courseId, QuestionInput input)
@@ -55,7 +58,7 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
             CourseId = courseId, ExternalId = input.ExternalId.Trim(), ModuleId = input.ModuleId, LessonId = input.LessonId,
             CreatedBy = uid, State = QuestionState.Draft, CurrentVersion = 1,
         };
-        var v = NewVersion(q.Id, 1, input);
+        var v = NewVersion(q.Id, 1, input, uid);
         db.Questions.Add(q);
         db.QuestionVersions.Add(v);
         audit.Record("question.created", "Question", q.Id, new { q.ExternalId, courseId });
@@ -65,7 +68,7 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
 
     public async Task<QuestionDto> Update(Guid id, QuestionInput input)
     {
-        me.RequireId();
+        var uid = me.RequireId();
         var q = await db.Questions.FirstOrDefaultAsync(x => x.Id == id) ?? throw AppException.NotFound("Question");
         await access.RequireCourseEditor(q.CourseId);
         if (q.State == QuestionState.Retired) throw AppException.Conflict("Retired questions cannot be edited.", "question_retired");
@@ -73,46 +76,71 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         if (input.ExternalId != q.ExternalId && await db.Questions.AnyAsync(x => x.CourseId == q.CourseId && x.ExternalId == input.ExternalId && x.Id != id))
             throw AppException.Conflict($"A question with externalId '{input.ExternalId}' already exists in this course.", "duplicate_external_id");
 
-        var current = await db.QuestionVersions.Include(v => v.Options).FirstAsync(v => v.QuestionId == id && v.Version == q.CurrentVersion);
-        var usedInAttempt = await db.AttemptItems.AnyAsync(a => a.QuestionVersionId == current.Id);
-        var inPlace = q.State is QuestionState.Draft or QuestionState.Reviewed && !usedInAttempt;
         var previousState = q.State;
-        QuestionVersion result;
-        if (inPlace)
+        string action;
+        if (IsStaged(q))
         {
-            ApplyContent(current, input);
-            var keep = new HashSet<Guid>();
-            var order = 0;
-            foreach (var o in input.Options)
-            {
-                var existing = o.Id is { } oid ? current.Options.FirstOrDefault(x => x.Id == oid) : null;
-                if (existing is null)
-                {
-                    existing = new QuestionOption { QuestionVersionId = current.Id };
-                    db.QuestionOptions.Add(existing);
-                }
-                existing.SortOrder = order++; existing.Text = o.Text.Trim(); existing.IsCorrect = o.IsCorrect; existing.Rationale = o.Rationale.Trim();
-                keep.Add(existing.Id);
-            }
-            db.QuestionOptions.RemoveRange(current.Options.Where(x => !keep.Contains(x.Id)).ToList());
-            result = current;
+            // Live (or approved) content keeps being served; the edit is staged as a pending version with its own review.
+            var next = await NextVersionNumber(q.Id);
+            db.QuestionVersions.Add(NewVersion(q.Id, next, input, uid));
+            q.PendingVersion = next; q.PendingState = QuestionState.Draft;
+            action = "question.edit_staged";
         }
         else
         {
-            result = NewVersion(q.Id, q.CurrentVersion + 1, input);
-            db.QuestionVersions.Add(result);
-            q.CurrentVersion = result.Version;
+            var current = await db.QuestionVersions.Include(v => v.Options).FirstAsync(v => v.QuestionId == id && v.Version == q.CurrentVersion);
+            var usedInAttempt = await db.AttemptItems.AnyAsync(a => a.QuestionVersionId == current.Id);
+            if (!usedInAttempt)
+            {
+                ApplyContent(current, input);
+                current.EditedBy = uid; current.ReviewedBy = null;
+                var keep = new HashSet<Guid>();
+                var order = 0;
+                foreach (var o in input.Options)
+                {
+                    var existing = o.Id is { } oid ? current.Options.FirstOrDefault(x => x.Id == oid) : null;
+                    if (existing is null)
+                    {
+                        existing = new QuestionOption { QuestionVersionId = current.Id };
+                        db.QuestionOptions.Add(existing);
+                    }
+                    existing.SortOrder = order++; existing.Text = o.Text.Trim(); existing.IsCorrect = o.IsCorrect; existing.Rationale = o.Rationale.Trim();
+                    keep.Add(existing.Id);
+                }
+                db.QuestionOptions.RemoveRange(current.Options.Where(x => !keep.Contains(x.Id)).ToList());
+                action = "question.edited";
+            }
+            else
+            {
+                var next = await NextVersionNumber(q.Id);
+                db.QuestionVersions.Add(NewVersion(q.Id, next, input, uid));
+                q.CurrentVersion = next;
+                action = "question.versioned";
+            }
+            // Changed content must be reviewed again before it can be served.
+            q.State = QuestionState.Draft; q.ReviewedBy = null;
         }
         q.ExternalId = input.ExternalId.Trim();
         q.ModuleId = input.ModuleId; q.LessonId = input.LessonId;
-        // Changed content must be reviewed again before it can be served.
-        q.State = QuestionState.Draft; q.ReviewedBy = null;
         q.UpdatedAt = DateTime.UtcNow;
-        audit.Record(inPlace ? "question.edited" : "question.versioned", "Question", q.Id,
-            new { version = q.CurrentVersion, previousState = previousState.ToString() });
+        audit.Record(action, "Question", q.Id,
+            new { version = q.CurrentVersion, pendingVersion = q.PendingVersion, previousState = previousState.ToString() });
         await db.SaveChangesAsync();
-        var saved = await db.QuestionVersions.AsNoTracking().Include(v => v.Options).FirstAsync(v => v.Id == result.Id);
-        return QuestionRules.ToDto(q, saved);
+        return await Dto(q);
+    }
+
+    /// <summary>Active/Approved questions (or ones already carrying a staged edit) stage further edits instead of changing served content.</summary>
+    internal static bool IsStaged(Question q) => q.PendingVersion is not null || q.State is QuestionState.Active or QuestionState.Approved;
+
+    private async Task<int> NextVersionNumber(Guid questionId) =>
+        (await db.QuestionVersions.Where(v => v.QuestionId == questionId).MaxAsync(v => (int?)v.Version) ?? 0) + 1;
+
+    private async Task<QuestionDto> Dto(Question q)
+    {
+        var versions = await db.QuestionVersions.AsNoTracking().Include(v => v.Options)
+            .Where(v => v.QuestionId == q.Id && (v.Version == q.CurrentVersion || v.Version == q.PendingVersion)).ToListAsync();
+        return QuestionRules.ToDto(q, versions.First(v => v.Version == q.CurrentVersion),
+            q.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.Version == pv) : null);
     }
 
     private static readonly Dictionary<QuestionState, QuestionState[]> Allowed = new()
@@ -129,28 +157,61 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         var uid = me.RequireId();
         var q = await db.Questions.FirstOrDefaultAsync(x => x.Id == id) ?? throw AppException.NotFound("Question");
         await access.RequireCourseAuthorOrStaff(q.CourseId);
-        if (!Allowed[q.State].Contains(target))
-            throw AppException.Conflict($"Cannot move a question from {q.State} to {target}.", "invalid_transition");
+        // A staged edit moves through its own review; Retire always applies to the whole question (and discards the staged edit).
+        var onPending = q.PendingVersion is not null && target != QuestionState.Retired;
+        var fromState = onPending ? q.PendingState ?? QuestionState.Draft : q.State;
+        var allowed = onPending ? PendingAllowed : Allowed;
+        if (!allowed.TryGetValue(fromState, out var targets) || !targets.Contains(target))
+            throw AppException.Conflict($"Cannot move {(onPending ? "the pending version" : "a question")} from {fromState} to {target}.", "invalid_transition");
+        var versionNo = onPending ? q.PendingVersion!.Value : q.CurrentVersion;
+        var version = await db.QuestionVersions.FirstAsync(v => v.QuestionId == id && v.Version == versionNo);
+
         if (target is QuestionState.Reviewed or QuestionState.Approved or QuestionState.Active)
         {
             if (!me.CanReview) throw AppException.Forbidden("Only reviewers can review, approve or activate questions.");
             if (q.CreatedBy == uid) throw AppException.Forbidden("You cannot review or approve a question you created.");
-            q.ReviewedBy = uid;
+            if (version.EditedBy == uid) throw AppException.Forbidden("You cannot review or approve a version you edited.");
+            if (!me.IsStaff && await access.IsCourseAuthor(q.CourseId))
+                throw AppException.Forbidden("Course authors cannot review, approve or activate questions in their own course.");
+            if (target == QuestionState.Approved && version.ReviewedBy == uid)
+                throw AppException.Forbidden("Approval must be given by a different person than the reviewer.");
+            if (target == QuestionState.Reviewed) { version.ReviewedBy = uid; if (!onPending) q.ReviewedBy = uid; }
         }
         else if (!me.CanReview && !await access.IsCourseAuthor(q.CourseId))
             throw AppException.Forbidden();
-        if (target == QuestionState.Draft) q.ReviewedBy = null;
-        var from = q.State;
-        q.State = target; q.UpdatedAt = DateTime.UtcNow;
-        audit.Record("question.state_changed", "Question", q.Id, new { from = from.ToString(), to = target.ToString(), version = q.CurrentVersion });
+        if (target == QuestionState.Draft) { version.ReviewedBy = null; if (!onPending) q.ReviewedBy = null; }
+
+        if (onPending)
+        {
+            if (target == QuestionState.Active)
+            {
+                q.CurrentVersion = versionNo; q.PendingVersion = null; q.PendingState = null;
+                q.State = QuestionState.Active; q.ReviewedBy = version.ReviewedBy;
+            }
+            else q.PendingState = target;
+        }
+        else
+        {
+            q.State = target;
+            if (target == QuestionState.Retired) { q.PendingVersion = null; q.PendingState = null; }
+        }
+        q.UpdatedAt = DateTime.UtcNow;
+        audit.Record("question.state_changed", "Question", q.Id,
+            new { from = fromState.ToString(), to = target.ToString(), version = versionNo, pending = onPending });
         await db.SaveChangesAsync();
-        var v = await db.QuestionVersions.AsNoTracking().Include(x => x.Options).FirstAsync(x => x.QuestionId == id && x.Version == q.CurrentVersion);
-        return QuestionRules.ToDto(q, v);
+        return await Dto(q);
     }
 
-    internal static QuestionVersion NewVersion(Guid questionId, int version, QuestionInput input)
+    private static readonly Dictionary<QuestionState, QuestionState[]> PendingAllowed = new()
     {
-        var v = new QuestionVersion { QuestionId = questionId, Version = version };
+        [QuestionState.Draft] = [QuestionState.Reviewed],
+        [QuestionState.Reviewed] = [QuestionState.Approved, QuestionState.Draft],
+        [QuestionState.Approved] = [QuestionState.Active, QuestionState.Draft],
+    };
+
+    internal static QuestionVersion NewVersion(Guid questionId, int version, QuestionInput input, Guid editedBy)
+    {
+        var v = new QuestionVersion { QuestionId = questionId, Version = version, EditedBy = editedBy };
         ApplyContent(v, input);
         v.Options = input.Options.Select((o, i) => new QuestionOption
         {

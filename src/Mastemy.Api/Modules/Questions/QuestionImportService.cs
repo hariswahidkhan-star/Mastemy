@@ -363,6 +363,9 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
             throw AppException.Conflict(conflict + " Preview the file again with a new idempotencyKey. Nothing was imported.", "import_stale");
         }
 
+        var existingIds = existing.Select(q => q.Id).ToList();
+        var maxVersions = await db.QuestionVersions.Where(v => existingIds.Contains(v.QuestionId)).GroupBy(v => v.QuestionId)
+            .Select(g => new { g.Key, Max = g.Max(v => v.Version) }).ToDictionaryAsync(x => x.Key, x => x.Max);
         var created = 0; var updated = 0;
         var nowUtc = DateTime.UtcNow;
         foreach (var input in rows)
@@ -371,16 +374,25 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
             {
                 var q = new Question { CourseId = courseId, ExternalId = input.ExternalId, ModuleId = input.ModuleId, LessonId = input.LessonId, CreatedBy = uid, State = QuestionState.Draft };
                 db.Questions.Add(q);
-                db.QuestionVersions.Add(QuestionService.NewVersion(q.Id, 1, input));
+                db.QuestionVersions.Add(QuestionService.NewVersion(q.Id, 1, input, uid));
                 created++;
             }
             else
             {
                 var q = existing.First(x => x.ExternalId.Equals(input.ExternalId, StringComparison.OrdinalIgnoreCase));
-                q.CurrentVersion += 1;
-                db.QuestionVersions.Add(QuestionService.NewVersion(q.Id, q.CurrentVersion, input));
-                q.ModuleId = input.ModuleId; q.LessonId = input.LessonId;
-                q.State = QuestionState.Draft; q.ReviewedBy = null; q.UpdatedAt = nowUtc;
+                var next = maxVersions.GetValueOrDefault(q.Id) + 1;
+                db.QuestionVersions.Add(QuestionService.NewVersion(q.Id, next, input, uid));
+                if (QuestionService.IsStaged(q))
+                {
+                    // Served content stays live; the import is staged as a pending version that needs its own review.
+                    q.PendingVersion = next; q.PendingState = QuestionState.Draft;
+                }
+                else
+                {
+                    q.CurrentVersion = next;
+                    q.State = QuestionState.Draft; q.ReviewedBy = null;
+                }
+                q.ModuleId = input.ModuleId; q.LessonId = input.LessonId; q.UpdatedAt = nowUtc;
                 updated++;
             }
         }

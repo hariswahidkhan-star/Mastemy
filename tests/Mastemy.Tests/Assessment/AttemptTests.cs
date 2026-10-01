@@ -3,6 +3,7 @@ using System.Text.Json;
 using Mastemy.Api.Domain;
 using Mastemy.Api.Modules.Assessment;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using static Mastemy.Tests.Assessment.AssessmentFixture;
 
 namespace Mastemy.Tests.Assessment;
@@ -12,7 +13,7 @@ public class AttemptTests(AssessmentFixture fx) : IClassFixture<AssessmentFixtur
     private record Setup(Course Course, HttpClient Author, List<Guid> QuestionIds);
 
     /// <summary>Live course with one Active single-choice and one Active multiple-select question.</summary>
-    private async Task<Setup> LiveCourse(CourseStatus status = CourseStatus.Published)
+    private async Task<Setup> LiveCourse(CourseStatus status = CourseStatus.Updating)
     {
         var (authorId, author) = await fx.User(Roles.Instructor);
         var course = await fx.Course(authorId, status);
@@ -33,13 +34,14 @@ public class AttemptTests(AssessmentFixture fx) : IClassFixture<AssessmentFixtur
     }
 
     private static async Task<AssessmentDto> CreateAssessment(Setup s, AssessmentMode mode = AssessmentMode.Exam, MultiSelectScoring scoring = MultiSelectScoring.AllOrNothing,
-        int? maxAttempts = null, int? timeLimit = null, bool premium = false, bool cert = false, decimal pass = 70m)
+        int? maxAttempts = null, int? timeLimit = null, bool premium = false, bool cert = false, decimal pass = 70m,
+        AnswerReviewPolicy reviewPolicy = AnswerReviewPolicy.AfterPassOrAttemptsExhausted)
     {
         var body = new
         {
             title = "Quiz " + Guid.NewGuid().ToString("N")[..6], kind = AssessmentKind.FinalAssessment, mode, timeLimitMinutes = timeLimit,
             maxAttempts, passPercent = pass, multiSelectScoring = scoring, questionCount = 0, isPremium = premium, countsTowardCertificate = cert,
-            questionIds = s.QuestionIds,
+            questionIds = s.QuestionIds, reviewPolicy,
         };
         return await Read<AssessmentDto>(await s.Author.PostAsync($"/api/studio/courses/{s.Course.Id}/assessments", JsonBody(body)));
     }
@@ -114,7 +116,7 @@ public class AttemptTests(AssessmentFixture fx) : IClassFixture<AssessmentFixtur
     public async Task Multi_select_scoring_policies_apply_on_submit(MultiSelectScoring policy, decimal expectedScore, bool passed)
     {
         var s = await LiveCourse();
-        var a = await CreateAssessment(s, scoring: policy);
+        var a = await CreateAssessment(s, scoring: policy, reviewPolicy: AnswerReviewPolicy.AfterSubmit);
         var (_, learner) = await fx.User(Roles.Student);
         var view = await Read<AttemptView>(await learner.PostAsync($"/api/assessments/{a.Id}/attempts", null));
         await Answer(learner, view, QuestionType.SingleChoice, "S-right");
@@ -302,5 +304,193 @@ public class AttemptTests(AssessmentFixture fx) : IClassFixture<AssessmentFixtur
         await Read<AttemptView>(await learner.PostAsync($"/api/assessments/{a.Id}/attempts", null));
         Assert.Equal(HttpStatusCode.Conflict, (await s.Author.DeleteAsync($"/api/studio/assessments/{a.Id}")).StatusCode);
         Assert.Equal(HttpStatusCode.Forbidden, (await learner.GetAsync($"/api/studio/courses/{s.Course.Id}/assessments")).StatusCode);
+    }
+
+    private async Task<(Guid Id, HttpClient Client)> EntitledLearner(Guid courseId)
+    {
+        var (id, c) = await fx.User(Roles.Student);
+        await fx.WithDb(async db =>
+        {
+            db.Entitlements.Add(new Entitlement { UserId = id, CourseId = courseId, Source = EntitlementSource.Grant, StartsAt = DateTime.UtcNow.AddMinutes(-1) });
+            await db.SaveChangesAsync();
+        });
+        return (id, c);
+    }
+
+    private static object Body(Setup s, string mode = "Exam", decimal pass = 70, bool cert = false) => new
+    {
+        title = "T", kind = "ModuleTest", mode, passPercent = pass, multiSelectScoring = "AllOrNothing", questionCount = 0,
+        isPremium = false, countsTowardCertificate = cert, questionIds = s.QuestionIds,
+    };
+
+    [Fact]
+    public async Task Studio_changes_require_an_editable_course()
+    {
+        var s = await LiveCourse();
+        var a = await CreateAssessment(s);
+        await fx.WithDb(async db => { var c = await db.Courses.SingleAsync(x => x.Id == s.Course.Id); c.Status = CourseStatus.Published; await db.SaveChangesAsync(); });
+        async Task Is409(HttpResponseMessage r)
+        {
+            Assert.Equal(HttpStatusCode.Conflict, r.StatusCode);
+            Assert.Contains("course_not_editable", await r.Content.ReadAsStringAsync());
+        }
+        await Is409(await s.Author.PostAsync($"/api/studio/courses/{s.Course.Id}/assessments", JsonBody(Body(s))));
+        await Is409(await s.Author.PutAsync($"/api/studio/assessments/{a.Id}", JsonBody(Body(s))));
+        await Is409(await s.Author.DeleteAsync($"/api/studio/assessments/{a.Id}"));
+        foreach (var st in new[] { CourseStatus.InReview, CourseStatus.Approved, CourseStatus.Archived })
+        {
+            await fx.WithDb(async db => { var c = await db.Courses.SingleAsync(x => x.Id == s.Course.Id); c.Status = st; await db.SaveChangesAsync(); });
+            await Is409(await s.Author.PostAsync($"/api/studio/courses/{s.Course.Id}/assessments", JsonBody(Body(s))));
+        }
+        await fx.WithDb(async db => { var c = await db.Courses.SingleAsync(x => x.Id == s.Course.Id); c.Status = CourseStatus.ChangesRequested; await db.SaveChangesAsync(); });
+        Assert.Equal(HttpStatusCode.NoContent, (await s.Author.DeleteAsync($"/api/studio/assessments/{a.Id}")).StatusCode);
+    }
+
+    [Fact]
+    public async Task Certificate_assessments_need_exam_mode_and_course_threshold()
+    {
+        var s = await LiveCourse();
+        await fx.WithDb(async db => { var c = await db.Courses.SingleAsync(x => x.Id == s.Course.Id); c.PassThresholdPercent = 80; await db.SaveChangesAsync(); });
+        Assert.Equal(HttpStatusCode.BadRequest, (await s.Author.PostAsync($"/api/studio/courses/{s.Course.Id}/assessments", JsonBody(Body(s, pass: 75, cert: true)))).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await s.Author.PostAsync($"/api/studio/courses/{s.Course.Id}/assessments", JsonBody(Body(s, pass: 0, cert: true)))).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await s.Author.PostAsync($"/api/studio/courses/{s.Course.Id}/assessments", JsonBody(Body(s, mode: "Practice", pass: 90, cert: true)))).StatusCode);
+        Assert.Equal(HttpStatusCode.Created, (await s.Author.PostAsync($"/api/studio/courses/{s.Course.Id}/assessments", JsonBody(Body(s, pass: 80, cert: true)))).StatusCode);
+    }
+
+    [Fact]
+    public async Task Exam_review_follows_the_review_policy()
+    {
+        var s = await LiveCourse();
+        async Task<AttemptResult> Run(AssessmentDto a, HttpClient learner, bool pass)
+        {
+            var v = await Read<AttemptView>(await learner.PostAsync($"/api/assessments/{a.Id}/attempts", null));
+            if (pass)
+            {
+                await Answer(learner, v, QuestionType.SingleChoice, "S-right");
+                await Answer(learner, v, QuestionType.MultipleSelect, "M-right1", "M-right2");
+            }
+            return await Read<AttemptResult>(await learner.PostAsync($"/api/attempts/{v.Id}/submit", null));
+        }
+        var (_, l) = await fx.User(Roles.Student);
+
+        // Default (AfterPassOrAttemptsExhausted), unlimited attempts: a fail reveals nothing, a pass reveals.
+        var def = await CreateAssessment(s);
+        Assert.Equal(AnswerReviewPolicy.AfterPassOrAttemptsExhausted, def.ReviewPolicy);
+        var summary = await Read<AssessmentSummaryDto>(await l.GetAsync($"/api/assessments/{def.Id}"));
+        Assert.Equal(AnswerReviewPolicy.AfterPassOrAttemptsExhausted, summary.ReviewPolicy);
+        var failed = await Run(def, l, false);
+        Assert.Null(failed.Review);
+        Assert.False(failed.ReviewAvailable);
+        Assert.NotEmpty(failed.Topics); // score breakdown always available
+        var get = (await (await l.GetAsync($"/api/attempts/{failed.AttemptId}")).Content.ReadAsStringAsync()).ToLowerInvariant();
+        Assert.DoesNotContain("iscorrect", get);
+        Assert.DoesNotContain("rationale", get);
+        Assert.DoesNotContain("correctoptionids", get);
+        Assert.NotNull((await Run(def, l, true)).Review);
+
+        // Attempts exhausted reveals even on a fail.
+        var limited = await CreateAssessment(s, maxAttempts: 2);
+        Assert.Null((await Run(limited, l, false)).Review);
+        Assert.NotNull((await Run(limited, l, false)).Review);
+
+        // Never: not even after a pass.
+        var never = await CreateAssessment(s, reviewPolicy: AnswerReviewPolicy.Never);
+        var np = await Run(never, l, true);
+        Assert.True(np.Passed);
+        Assert.Null(np.Review);
+    }
+
+    [Fact]
+    public void Pass_uses_unrounded_ratio_and_display_rounds_half_away_from_zero()
+    {
+        // 2/3 = 66.666..% is displayed as 66.67 but does not meet a 66.67% threshold.
+        Assert.Equal(66.67m, Scoring.DisplayPercent(2, 3));
+        Assert.False(Scoring.Passed(2, 3, 66.67m));
+        Assert.True(Scoring.Passed(2, 3, 66.66m));
+        Assert.True(Scoring.Passed(7, 10, 70m));
+        Assert.Equal(0.13m, Scoring.DisplayPercent(1, 800)); // 0.125 -> 0.13 (not banker's 0.12)
+    }
+
+    [Fact]
+    public async Task Checked_practice_item_is_locked()
+    {
+        var s = await LiveCourse();
+        var practice = await CreateAssessment(s, mode: AssessmentMode.Practice);
+        var (_, learner) = await fx.User(Roles.Student);
+        var pv = await Read<AttemptView>(await learner.PostAsync($"/api/assessments/{practice.Id}/attempts", null));
+        var item = pv.Items.Single(i => i.Type == QuestionType.SingleChoice);
+        await Read<CheckResult>(await learner.PostAsync($"/api/attempts/{pv.Id}/items/{item.ItemId}/check", null));
+        var change = await learner.PutAsync($"/api/attempts/{pv.Id}/items/{item.ItemId}", JsonBody(new { selectedOptionIds = new[] { item.Options[0].Id }, flagged = false }));
+        Assert.Equal(HttpStatusCode.Conflict, change.StatusCode);
+        Assert.Contains("item_locked", await change.Content.ReadAsStringAsync());
+        Assert.NotNull((await fx.WithDb(db => db.AttemptItems.SingleAsync(x => x.Id == item.ItemId))).CheckedAt);
+        // Other items remain editable.
+        await Answer(learner, pv, QuestionType.MultipleSelect, "M-right1");
+    }
+
+    [Fact]
+    public async Task Losing_premium_access_blocks_saving_and_submitting()
+    {
+        var s = await LiveCourse();
+        var a = await CreateAssessment(s, premium: true);
+        var (learnerId, learner) = await EntitledLearner(s.Course.Id);
+        var v = await Read<AttemptView>(await learner.PostAsync($"/api/assessments/{a.Id}/attempts", null));
+        await Answer(learner, v, QuestionType.SingleChoice, "S-right");
+        await fx.WithDb(async db =>
+        {
+            foreach (var e in await db.Entitlements.Where(x => x.UserId == learnerId).ToListAsync()) e.RevokedAt = DateTime.UtcNow;
+            await db.SaveChangesAsync();
+        });
+        var item = v.Items.Single(i => i.Type == QuestionType.MultipleSelect);
+        Assert.Equal(HttpStatusCode.Forbidden, (await learner.PutAsync($"/api/attempts/{v.Id}/items/{item.ItemId}", JsonBody(new { selectedOptionIds = new[] { item.Options[0].Id }, flagged = false }))).StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, (await learner.PostAsync($"/api/attempts/{v.Id}/submit", null)).StatusCode);
+        Assert.Equal(AttemptStatus.InProgress, (await fx.WithDb(db => db.Attempts.SingleAsync(x => x.Id == v.Id))).Status);
+    }
+
+    [Fact]
+    public async Task Refund_revokes_certificate_only_when_earned_on_premium_assessment()
+    {
+        async Task<(Guid user, Guid course)> Earn(bool premium)
+        {
+            var s = await LiveCourse();
+            var a = await CreateAssessment(s, cert: true, premium: premium);
+            var (uid, l) = await EntitledLearner(s.Course.Id);
+            var v = await Read<AttemptView>(await l.PostAsync($"/api/assessments/{a.Id}/attempts", null));
+            await Answer(l, v, QuestionType.SingleChoice, "S-right");
+            await Answer(l, v, QuestionType.MultipleSelect, "M-right1", "M-right2");
+            Assert.NotNull((await Read<AttemptResult>(await l.PostAsync($"/api/attempts/{v.Id}/submit", null))).CertificateCode);
+            return (uid, s.Course.Id);
+        }
+        var paid = await Earn(true);
+        var free = await Earn(false);
+        using (var scope = fx.Factory.Services.CreateScope())
+        {
+            var svc = scope.ServiceProvider.GetRequiredService<CertificateService>();
+            await svc.RevokeForRefundAsync(paid.user, paid.course, "Order refunded");
+            await svc.RevokeForRefundAsync(paid.user, paid.course, "Order refunded"); // idempotent
+            await svc.RevokeForRefundAsync(free.user, free.course, "Order refunded");
+        }
+        var pc = await fx.WithDb(db => db.Certificates.SingleAsync(c => c.UserId == paid.user));
+        Assert.Equal(CertificateStatus.Revoked, pc.Status);
+        Assert.Equal("Order refunded", pc.RevocationReason);
+        Assert.Equal(1, await fx.WithDb(db => db.AuditLogs.CountAsync(l => l.Action == "certificate.revoked_for_refund" && l.EntityId == pc.Id.ToString())));
+        Assert.Equal(CertificateStatus.Valid, (await fx.WithDb(db => db.Certificates.SingleAsync(c => c.UserId == free.user))).Status);
+    }
+
+    [Fact]
+    public async Task Studio_list_reports_counts_per_assessment()
+    {
+        var s = await LiveCourse();
+        var a1 = await CreateAssessment(s);
+        var a2 = await CreateAssessment(s, reviewPolicy: AnswerReviewPolicy.AfterSubmit);
+        var (_, learner) = await fx.User(Roles.Student);
+        var v = await Read<AttemptView>(await learner.PostAsync($"/api/assessments/{a1.Id}/attempts", null));
+        await Read<AttemptResult>(await learner.PostAsync($"/api/attempts/{v.Id}/submit", null));
+        await Read<AttemptView>(await learner.PostAsync($"/api/assessments/{a1.Id}/attempts", null));
+        var list = await Read<List<AssessmentDto>>(await s.Author.GetAsync($"/api/studio/courses/{s.Course.Id}/assessments"));
+        var d1 = list.Single(x => x.Id == a1.Id); var d2 = list.Single(x => x.Id == a2.Id);
+        Assert.Equal(2, d1.AttemptCount); Assert.Equal(0, d2.AttemptCount);
+        Assert.Equal(2, d1.ActiveQuestionCount); Assert.Equal(2, d2.ActiveQuestionCount);
+        Assert.Equal(AnswerReviewPolicy.AfterSubmit, d2.ReviewPolicy);
     }
 }

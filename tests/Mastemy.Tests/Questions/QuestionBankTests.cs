@@ -45,6 +45,7 @@ public class QuestionBankTests(QuestionsFixture fx) : IClassFixture<QuestionsFix
     {
         var (authorId, author) = await fx.User(Roles.Instructor);
         var (_, reviewer) = await fx.User(Roles.Reviewer);
+        var (_, approver) = await fx.User(Roles.Reviewer);
         var course = await fx.Course(authorId);
 
         var created = await Read<QuestionDto>(await author.PostAsync($"/api/studio/courses/{course.Id}/questions", JsonBody(Input("Q-1"))));
@@ -55,17 +56,88 @@ public class QuestionBankTests(QuestionsFixture fx) : IClassFixture<QuestionsFix
         Assert.Equal(1, edited.CurrentVersion);
         Assert.Equal("What is two plus two?", edited.Version.Stem);
 
-        foreach (var s in new[] { "Reviewed", "Approved", "Active" })
-            await Read<QuestionDto>(await reviewer.PostAsync($"/api/studio/questions/{created.Id}/state", JsonBody(new { state = s })));
+        await Promote(created.Id, reviewer, approver);
 
+        // Editing a live question stages a pending version; learners keep getting version 1.
         var v2 = await Read<QuestionDto>(await author.PutAsync($"/api/studio/questions/{created.Id}", JsonBody(Input("Q-1", "Compute 2 + 2."))));
-        Assert.Equal(2, v2.CurrentVersion);
-        Assert.Equal(QuestionState.Draft, v2.State); // changed content must be re-reviewed
+        Assert.Equal(1, v2.CurrentVersion);
+        Assert.Equal(QuestionState.Active, v2.State);
+        Assert.Equal(2, v2.PendingVersion);
+        Assert.Equal(QuestionState.Draft, v2.PendingState);
+        Assert.Equal("What is two plus two?", v2.Version.Stem);
+        Assert.Equal("Compute 2 + 2.", v2.Pending!.Stem);
+        Assert.Equal(authorId, v2.Pending.EditedBy);
+
+        var detail = await Read<QuestionDetailDto>(await author.GetAsync($"/api/studio/questions/{created.Id}"));
+        Assert.Equal("What is two plus two?", detail.Question.Version.Stem);
+        Assert.Equal("Compute 2 + 2.", detail.Question.Pending!.Stem);
+
+        // The pending version goes through its own review; on activation it becomes current.
+        var afterReview = await Read<QuestionDto>(await reviewer.PostAsync($"/api/studio/questions/{created.Id}/state", JsonBody(new { state = "Reviewed" })));
+        Assert.Equal(QuestionState.Active, afterReview.State);
+        Assert.Equal(QuestionState.Reviewed, afterReview.PendingState);
+        await Read<QuestionDto>(await approver.PostAsync($"/api/studio/questions/{created.Id}/state", JsonBody(new { state = "Approved" })));
+        var live = await Read<QuestionDto>(await reviewer.PostAsync($"/api/studio/questions/{created.Id}/state", JsonBody(new { state = "Active" })));
+        Assert.Equal(2, live.CurrentVersion);
+        Assert.Null(live.PendingVersion);
+        Assert.Null(live.Pending);
+        Assert.Equal(QuestionState.Active, live.State);
+        Assert.Equal("Compute 2 + 2.", live.Version.Stem);
 
         var versions = await fx.WithDb(db => db.QuestionVersions.Where(v => v.QuestionId == created.Id).OrderBy(v => v.Version).ToListAsync());
         Assert.Equal(2, versions.Count);
         Assert.Equal("What is two plus two?", versions[0].Stem); // old version immutable and retained
         Assert.Equal("Compute 2 + 2.", versions[1].Stem);
+    }
+
+    private static async Task Promote(Guid id, HttpClient reviewer, HttpClient approver)
+    {
+        await Read<QuestionDto>(await reviewer.PostAsync($"/api/studio/questions/{id}/state", JsonBody(new { state = "Reviewed" })));
+        await Read<QuestionDto>(await approver.PostAsync($"/api/studio/questions/{id}/state", JsonBody(new { state = "Approved" })));
+        await Read<QuestionDto>(await approver.PostAsync($"/api/studio/questions/{id}/state", JsonBody(new { state = "Active" })));
+    }
+
+    [Fact]
+    public async Task Review_must_be_independent_of_editors_authors_and_the_reviewer()
+    {
+        var (authorId, author) = await fx.User(Roles.Instructor);
+        var (coAuthorId, coAuthor) = await fx.User(Roles.Instructor, Roles.Reviewer);
+        var (editorStaffId, staffEditor) = await fx.User(Roles.Admin);
+        var (_, reviewer) = await fx.User(Roles.Reviewer);
+        var (_, approver) = await fx.User(Roles.Reviewer);
+        var course = await fx.Course(authorId);
+        await fx.WithDb(async db =>
+        {
+            db.CourseInstructors.Add(new CourseInstructor { CourseId = course.Id, UserId = coAuthorId, Role = CourseInstructorRole.CoInstructor });
+            await db.SaveChangesAsync();
+        });
+        var q = await Read<QuestionDto>(await author.PostAsync($"/api/studio/courses/{course.Id}/questions", JsonBody(Input("Q-IND"))));
+        Assert.Equal(authorId, q.Version.EditedBy);
+
+        // A reviewer who is also an author on the course may not review it.
+        Assert.Equal(HttpStatusCode.Forbidden, (await coAuthor.PostAsync($"/api/studio/questions/{q.Id}/state", JsonBody(new { state = "Reviewed" }))).StatusCode);
+
+        // Staff who edited a version may not review it.
+        await Read<QuestionDto>(await staffEditor.PutAsync($"/api/studio/questions/{q.Id}", JsonBody(Input("Q-IND", "Staff edit"))));
+        Assert.Equal(editorStaffId, (await fx.WithDb(db => db.QuestionVersions.SingleAsync(v => v.QuestionId == q.Id))).EditedBy);
+        Assert.Equal(HttpStatusCode.Forbidden, (await staffEditor.PostAsync($"/api/studio/questions/{q.Id}/state", JsonBody(new { state = "Reviewed" }))).StatusCode);
+
+        var reviewed = await Read<QuestionDto>(await reviewer.PostAsync($"/api/studio/questions/{q.Id}/state", JsonBody(new { state = "Reviewed" })));
+        Assert.NotNull(reviewed.Version.ReviewedBy);
+        // The same person cannot also approve.
+        Assert.Equal(HttpStatusCode.Forbidden, (await reviewer.PostAsync($"/api/studio/questions/{q.Id}/state", JsonBody(new { state = "Approved" }))).StatusCode);
+        await Read<QuestionDto>(await approver.PostAsync($"/api/studio/questions/{q.Id}/state", JsonBody(new { state = "Approved" })));
+        await Read<QuestionDto>(await approver.PostAsync($"/api/studio/questions/{q.Id}/state", JsonBody(new { state = "Active" })));
+
+        // Staff (not a course author) may review a pending version they did not edit.
+        await Read<QuestionDto>(await author.PutAsync($"/api/studio/questions/{q.Id}", JsonBody(Input("Q-IND", "Author edit"))));
+        var staffReviewed = await Read<QuestionDto>(await staffEditor.PostAsync($"/api/studio/questions/{q.Id}/state", JsonBody(new { state = "Reviewed" })));
+        Assert.Equal(QuestionState.Reviewed, staffReviewed.PendingState);
+
+        // Retire still works and discards the staged edit.
+        var retired = await Read<QuestionDto>(await author.PostAsync($"/api/studio/questions/{q.Id}/state", JsonBody(new { state = "Retired" })));
+        Assert.Equal(QuestionState.Retired, retired.State);
+        Assert.Null(retired.PendingVersion);
     }
 
     [Fact]
@@ -219,16 +291,28 @@ public class QuestionBankTests(QuestionsFixture fx) : IClassFixture<QuestionsFix
         Assert.Equal(QuestionType.MultipleSelect, imp.Type);
         Assert.Equal(2, imp.Options.Count(o => o.IsCorrect));
 
-        // Update mode creates a new version in Draft.
+        // Update mode on a live question stages a pending version; the live version keeps serving.
         await fx.WithDb(async db => { var q = await db.Questions.SingleAsync(x => x.ExternalId == "IMP-1" && x.CourseId == course.Id); q.State = QuestionState.Active; await db.SaveChangesAsync(); });
         var up = await Read<ImportPreviewResult>(await Preview(author, course.Id, Header + "\n" + Row("IMP-1", course.Code, stem: "Updated stem"), "up-" + Guid.NewGuid(), "update"));
         Assert.Equal(0, up.ErrorCount);
         var uc = await Read<ImportCommitResult>(await author.PostAsync($"/api/studio/courses/{course.Id}/questions/import/{up.BatchId}/commit", null));
         Assert.Equal(1, uc.Updated);
         var updated = await fx.WithDb(db => db.Questions.SingleAsync(x => x.ExternalId == "IMP-1" && x.CourseId == course.Id));
-        Assert.Equal(2, updated.CurrentVersion);
-        Assert.Equal(QuestionState.Draft, updated.State);
-        Assert.Equal(2, await fx.WithDb(db => db.QuestionVersions.CountAsync(v => v.QuestionId == updated.Id)));
+        Assert.Equal(1, updated.CurrentVersion);
+        Assert.Equal(QuestionState.Active, updated.State);
+        Assert.Equal(2, updated.PendingVersion);
+        Assert.Equal(QuestionState.Draft, updated.PendingState);
+        var pending = await fx.WithDb(db => db.QuestionVersions.SingleAsync(v => v.QuestionId == updated.Id && v.Version == 2));
+        Assert.Equal("Updated stem", pending.Stem);
+        Assert.Equal(authorId, pending.EditedBy);
+
+        // Update mode on a never-live question replaces its content version and returns it to Draft.
+        var arUp = await Read<ImportPreviewResult>(await Preview(author, course.Id, Header + "\n" + Row("AR-1", course.Code, stem: "AR updated"), "up-" + Guid.NewGuid(), "update"));
+        await Read<ImportCommitResult>(await author.PostAsync($"/api/studio/courses/{course.Id}/questions/import/{arUp.BatchId}/commit", null));
+        var arQ = await fx.WithDb(db => db.Questions.SingleAsync(x => x.Id == arId));
+        Assert.Equal(2, arQ.CurrentVersion);
+        Assert.Null(arQ.PendingVersion);
+        Assert.Equal(QuestionState.Draft, arQ.State);
     }
 
     [Fact]
