@@ -140,19 +140,60 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
         return Dto(s);
     }
 
+    /// <summary>
+    /// Cancels an upload. Takes the per-session gate when it is free (briefly waiting); if a chunk transfer is in flight the
+    /// cancellation is still applied with a conditional update, and the in-flight chunk's own conditional writes then fail,
+    /// so a cancelled session is never overwritten. The gate is never removed here (removing it while in use would let a
+    /// second gate be created for the same session).
+    /// </summary>
     public async Task<UploadDto> Cancel(Guid id, CancellationToken ct)
     {
         var s = await Own(id, ct, allowStaff: true);
-        if (s.Status == UploadSessionStatus.Cancelled) return Dto(s);
-        if (s.Status is UploadSessionStatus.Completed) throw AppException.Conflict("Upload already completed; manage the video on YouTube.", "invalid_state");
-        // Nothing is deleted on YouTube; the upstream session is simply abandoned and expires there.
-        s.Status = UploadSessionStatus.Cancelled;
-        s.UpstreamSessionUri = null;
-        s.UpdatedAt = DateTime.UtcNow;
-        audit.Record("youtube.upload.cancelled", "YouTubeUploadSession", s.Id);
-        await db.SaveChangesAsync(ct);
-        Locks.TryRemove(s.Id, out _);
-        return Dto(s);
+        var gate = Locks.GetOrAdd(s.Id, _ => new SemaphoreSlim(1, 1));
+        var held = await gate.WaitAsync(TimeSpan.FromSeconds(2), ct);
+        try
+        {
+            await db.Entry(s).ReloadAsync(ct);
+            if (s.Status == UploadSessionStatus.Cancelled) return Dto(s);
+            if (s.Status is UploadSessionStatus.Completed) throw AppException.Conflict("Upload already completed; manage the video on YouTube.", "invalid_state");
+            // Nothing is deleted on YouTube; the upstream session is simply abandoned and expires there.
+            var now = DateTime.UtcNow;
+            var n = await db.UploadSessions
+                .Where(x => x.Id == s.Id && x.Status != UploadSessionStatus.Completed && x.Status != UploadSessionStatus.Cancelled)
+                .ExecuteUpdateAsync(u => u.SetProperty(x => x.Status, UploadSessionStatus.Cancelled)
+                    .SetProperty(x => x.UpstreamSessionUri, (string?)null).SetProperty(x => x.UpdatedAt, now), ct);
+            await db.Entry(s).ReloadAsync(ct);
+            if (n == 0)
+            {
+                if (s.Status is UploadSessionStatus.Completed) throw AppException.Conflict("Upload already completed; manage the video on YouTube.", "invalid_state");
+                return Dto(s);
+            }
+            audit.Record("youtube.upload.cancelled", "YouTubeUploadSession", s.Id, new { duringTransfer = !held });
+            await db.SaveChangesAsync(ct);
+            return Dto(s);
+        }
+        finally { if (held) gate.Release(); }
+    }
+
+    /// <summary>Statuses from which the relay itself may write session state (never Cancelled/Completed/Failed).</summary>
+    private static readonly UploadSessionStatus[] RelayWritable =
+        [UploadSessionStatus.Approved, UploadSessionStatus.Uploading, UploadSessionStatus.AwaitingSourceFile, UploadSessionStatus.Expired];
+
+    /// <summary>
+    /// Writes the relay-owned session fields only if the row is still in a relay-writable status (conditional UPDATE), then saves
+    /// any other pending changes (audit, assets). Returns false when the session was cancelled/failed concurrently; the in-memory
+    /// entity is then reloaded from the database.
+    /// </summary>
+    private async Task<bool> Persist(YouTubeUploadSession s)
+    {
+        var n = await db.UploadSessions.Where(x => x.Id == s.Id && RelayWritable.Contains(x.Status))
+            .ExecuteUpdateAsync(u => u.SetProperty(x => x.Status, s.Status).SetProperty(x => x.ConfirmedOffset, s.ConfirmedOffset)
+                .SetProperty(x => x.UpstreamSessionUri, s.UpstreamSessionUri).SetProperty(x => x.FailureReason, s.FailureReason)
+                .SetProperty(x => x.ResultVideoId, s.ResultVideoId).SetProperty(x => x.UpdatedAt, s.UpdatedAt), CancellationToken.None);
+        db.Entry(s).State = EntityState.Unchanged;
+        await db.SaveChangesAsync(CancellationToken.None);
+        if (n == 0) await db.Entry(s).ReloadAsync(CancellationToken.None);
+        return n == 1;
     }
 
     public async Task<UploadDto> Resume(Guid id, ResumeUploadRequest req, CancellationToken ct)
@@ -182,7 +223,7 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
                     throw AppException.Conflict($"Upload is {s.Status} and cannot be resumed.", "invalid_state");
             }
             s.UpdatedAt = DateTime.UtcNow;
-            await db.SaveChangesAsync(ct);
+            await Persist(s);
             return Dto(s);
         }
         finally { gate.Release(); }
@@ -232,7 +273,7 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
                 s.Status = UploadSessionStatus.Uploading;
                 s.UpdatedAt = DateTime.UtcNow;
                 audit.Record("youtube.upload.started", "YouTubeUploadSession", s.Id);
-                await db.SaveChangesAsync(ct);
+                if (!await Persist(s)) throw AppException.Conflict($"Upload is {s.Status}.", "invalid_state");
             }
 
             using var body = new BoundedReadStream(request.Body, length);
@@ -252,8 +293,6 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
                 throw new AppException(502, "The transfer to YouTube was interrupted. Reselect the file and resume.", "transfer_interrupted");
             }
             using (resp) await HandleUpstreamResponse(s, resp, channel, ct);
-            await db.SaveChangesAsync(CancellationToken.None);
-            if (s.Status is UploadSessionStatus.Completed) Locks.TryRemove(s.Id, out _);
             return Dto(s);
         }
         finally { gate.Release(); }
@@ -264,7 +303,7 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
         s.Status = UploadSessionStatus.AwaitingSourceFile;
         s.FailureReason = reason;
         s.UpdatedAt = DateTime.UtcNow;
-        await db.SaveChangesAsync(CancellationToken.None);
+        await Persist(s);
     }
 
     private async Task<string> Initiate(YouTubeUploadSession s, string token, CancellationToken ct)
@@ -338,6 +377,7 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
             s.ConfirmedOffset = offset;
             s.Status = UploadSessionStatus.Uploading;
             s.FailureReason = null;
+            await Persist(s);
             return;
         }
         if (code is 200 or 201)
@@ -363,8 +403,8 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
             s.UpstreamSessionUri = null;
             s.ConfirmedOffset = 0;
             s.FailureReason = "The YouTube upload session expired. Restart the upload with the same file.";
-            await db.SaveChangesAsync(CancellationToken.None);
-            throw AppException.Conflict(s.FailureReason, "upload_session_expired");
+            if (!await Persist(s)) throw AppException.Conflict($"Upload is {s.Status}.", "invalid_state");
+            throw AppException.Conflict(s.FailureReason!, "upload_session_expired");
         }
         var err = YouTubeErrors.FromResponse(resp.StatusCode, await resp.Content.ReadAsStringAsync(ct));
         if (code == 401) GoogleOAuthClient.Forget(channel.Id);
@@ -374,40 +414,57 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
 
     private async Task Complete(YouTubeUploadSession s, string videoId, YouTubeChannel channel, CancellationToken ct)
     {
+        // The bytes are on YouTube regardless of a concurrent cancel: always record the asset.
+        var asset = await db.VideoAssets.FirstOrDefaultAsync(a => a.YouTubeVideoId == videoId && a.ChannelId == channel.Id, CancellationToken.None);
+        if (asset is null)
+        {
+            asset = new VideoAsset { YouTubeVideoId = videoId, ChannelId = channel.Id, UploaderId = s.UserId };
+            db.VideoAssets.Add(asset);
+            asset.ObservedChannelId = channel.ChannelId;
+            asset.Title = s.Title;
+            asset.Status = VideoStatus.Processing;
+            asset.PrivacyStatus = s.PrivacyStatus;
+            asset.StatusReason = s.PrivacyStatus == "private"
+                ? "Uploaded as private: not learner-ready until made public/unlisted (unverified API projects are locked to private)."
+                : "Uploaded via API; waiting for YouTube processing. Recheck before publication.";
+            asset.RightsDeclared = true;
+            asset.RightsDeclarationText = $"Rights and metadata approved before transfer by staff user {s.ApprovedBy}.";
+            asset.VideoOwnerUserId = channel.Mode == ChannelMode.InstructorOwned ? channel.OwnerUserId : null;
+            asset.LastCheckedAt = DateTime.UtcNow;
+        }
+
         s.Status = UploadSessionStatus.Completed;
         s.ResultVideoId = videoId;
         s.ConfirmedOffset = s.FileSize;
         s.UpstreamSessionUri = null;
         s.FailureReason = null;
-
-        var asset = await db.VideoAssets.FirstOrDefaultAsync(a => a.YouTubeVideoId == videoId && a.ChannelId == channel.Id, ct);
-        if (asset is null)
+        s.UpdatedAt = DateTime.UtcNow;
+        if (await Persist(s))
         {
-            asset = new VideoAsset { YouTubeVideoId = videoId, ChannelId = channel.Id, UploaderId = s.UserId };
-            db.VideoAssets.Add(asset);
-        }
-        asset.ObservedChannelId = channel.ChannelId;
-        asset.Title = s.Title;
-        asset.Status = VideoStatus.Processing;
-        asset.PrivacyStatus = s.PrivacyStatus;
-        asset.StatusReason = s.PrivacyStatus == "private"
-            ? "Uploaded as private: not learner-ready until made public/unlisted (unverified API projects are locked to private)."
-            : "Uploaded via API; waiting for YouTube processing. Recheck before publication.";
-        asset.RightsDeclared = true;
-        asset.RightsDeclarationText = $"Rights and metadata approved before transfer by staff user {s.ApprovedBy}.";
-        asset.VideoOwnerUserId ??= channel.Mode == ChannelMode.InstructorOwned ? channel.OwnerUserId : null;
-        asset.LastCheckedAt = DateTime.UtcNow;
-
-        if (s.LessonId is { } lessonId)
-        {
-            var lesson = await db.Lessons.FirstOrDefaultAsync(l => l.Id == lessonId, ct);
-            if (lesson is not null)
+            if (s.LessonId is { } lessonId)
             {
-                var course = await db.Modules.Where(m => m.Id == lesson.ModuleId).Join(db.Courses, m => m.CourseId, c => c.Id, (m, c) => c).FirstOrDefaultAsync(ct);
-                if (course is not null && CourseRules.IsEditable(course.Status)) lesson.VideoAssetId = asset.Id;
+                var lesson = await db.Lessons.FirstOrDefaultAsync(l => l.Id == lessonId, CancellationToken.None);
+                if (lesson is not null)
+                {
+                    var course = await db.Modules.Where(m => m.Id == lesson.ModuleId).Join(db.Courses, m => m.CourseId, c => c.Id, (m, c) => c).FirstOrDefaultAsync(CancellationToken.None);
+                    if (course is not null && CourseRules.IsEditable(course.Status)) lesson.VideoAssetId = asset.Id;
+                }
             }
+            audit.Record("youtube.upload.completed", "YouTubeUploadSession", s.Id, new { videoId, assetId = asset.Id });
+            await db.SaveChangesAsync(CancellationToken.None);
+            return;
         }
-        audit.Record("youtube.upload.completed", "YouTubeUploadSession", s.Id, new { videoId, assetId = asset.Id });
+
+        // Cancelled (or failed) while the final chunk was in flight: keep the session's terminal status, remember the video,
+        // and do not attach it to the lesson.
+        const string reason = "Cancelled while the final chunk was in transfer; YouTube completed the upload. The video was recorded but not linked to the lesson.";
+        var now = DateTime.UtcNow;
+        await db.UploadSessions.Where(x => x.Id == s.Id && x.Status == UploadSessionStatus.Cancelled)
+            .ExecuteUpdateAsync(u => u.SetProperty(x => x.ResultVideoId, videoId).SetProperty(x => x.FailureReason, reason)
+                .SetProperty(x => x.ConfirmedOffset, s.FileSize).SetProperty(x => x.UpdatedAt, now), CancellationToken.None);
+        audit.Record("youtube.upload.completed_after_cancel", "YouTubeUploadSession", s.Id, new { videoId, assetId = asset.Id, status = s.Status.ToString() });
+        await db.SaveChangesAsync(CancellationToken.None);
+        await db.Entry(s).ReloadAsync(CancellationToken.None);
     }
 }
 

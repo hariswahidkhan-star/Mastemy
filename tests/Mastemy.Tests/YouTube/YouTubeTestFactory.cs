@@ -28,6 +28,9 @@ public class FakeYouTube : HttpMessageHandler
     public readonly ConcurrentBag<string> Requests = [];
     public string CompletedVideoId = "UpLoAdEd123";
     public string? LastInitiateBody;
+    /// <summary>Signalled when an upload chunk reached the fake; the response is then held until <see cref="HoldChunk"/> completes.</summary>
+    public volatile TaskCompletionSource? ChunkEntered;
+    public volatile TaskCompletionSource? HoldChunk;
     public string? LastInitiateQuery;
     public string OwnChannelId = "UCownownownownownownownow";
 
@@ -80,6 +83,8 @@ public class FakeYouTube : HttpMessageHandler
             ChunkRanges.Add($"{range.From}-{range.To}/{range.Length}");
             Assert.Equal(Received.Length, range.From);
             await using (var s = await req.Content.ReadAsStreamAsync(ct)) await s.CopyToAsync(Received, ct);
+            if (ChunkEntered is { } entered) entered.TrySetResult();
+            if (HoldChunk is { } hold) await hold.Task;
             if (Received.Length == range.Length) return Json(new { id = CompletedVideoId, status = new { uploadStatus = "uploaded" } });
             return Incomplete();
         }

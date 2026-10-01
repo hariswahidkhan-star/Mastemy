@@ -108,19 +108,23 @@ public class PlaylistImportService(AppDbContext db, ICurrentUser me, AccessServi
 
         var ids = items.Select(i => i.VideoId!).ToList();
         var existing = await db.VideoAssets.Where(a => a.ChannelId == channel.Id && ids.Contains(a.YouTubeVideoId)).ToListAsync(ct);
+        var usages = await VideoAssetSharing.UsagesAsync(db, existing.Select(a => a.Id), ct);
         var lessons = new List<PlaylistCommitLesson>();
         var n = 0;
         foreach (var it in items)
         {
             n++;
             var md = meta[it.VideoId!];
-            var asset = existing.FirstOrDefault(a => a.YouTubeVideoId == it.VideoId);
+            var asset = await VideoAssetSharing.PickMutableAsync(me, access,
+                existing.Where(a => a.YouTubeVideoId == it.VideoId).ToList(), null, usages);
             if (asset is null)
             {
                 asset = new VideoAsset { YouTubeVideoId = it.VideoId!, ChannelId = channel.Id, UploaderId = uid };
                 db.VideoAssets.Add(asset);
+                VideoLinkService.Apply(asset, md, channel.ChannelId);
             }
-            VideoLinkService.Apply(asset, md, channel.ChannelId);
+            else if (!(VideoAssetSharing.IsReadyAndLive(asset, usages) && evals[it.VideoId!].Status != VideoStatus.Ready))
+                VideoLinkService.Apply(asset, md, channel.ChannelId);
             asset.Title = it.Title!.Trim();
             asset.RightsDeclared = true;
             asset.RightsDeclarationText = string.IsNullOrWhiteSpace(rightsText) ? asset.RightsDeclarationText : rightsText;
