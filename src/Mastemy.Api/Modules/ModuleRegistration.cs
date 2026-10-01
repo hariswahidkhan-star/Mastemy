@@ -1,0 +1,16 @@
+namespace Mastemy.Api.Modules;
+
+public static class ModuleRegistration
+{
+    public static IServiceCollection AddMastemyModules(this IServiceCollection s, IConfiguration cfg)
+    {
+        Identity.IdentityModule.Add(s, cfg);
+        Catalog.CatalogModule.Add(s, cfg);
+        YouTube.YouTubeModule.Add(s, cfg);
+        Questions.QuestionsModule.Add(s, cfg);
+        Assessment.AssessmentModule.Add(s, cfg);
+        Learning.LearningModule.Add(s, cfg);
+        Commerce.CommerceModule.Add(s, cfg);
+        return s;
+    }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mastemy.example/schemas/mcq-import.json",
+  "title": "Mastemy MCQ import",
+  "description": "JSON equivalent of mcq-import-template.csv. Letters A-F are template conveniences; the server assigns stable option IDs on import.",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["ExternalId", "QuestionType", "Language", "CourseCode", "Stem", "OptionA", "OptionB", "CorrectOptions", "Explanation", "Difficulty"],
+    "properties": {
+      "ExternalId": { "type": "string", "minLength": 1, "maxLength": 100, "pattern": "^[A-Za-z0-9._-]+$" },
+      "QuestionType": { "enum": ["SingleChoice", "MultipleSelect"] },
+      "Language": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+      "CourseCode": { "type": "string", "minLength": 1, "maxLength": 50 },
+      "ModuleCode": { "type": ["string", "null"], "maxLength": 50 },
+      "LessonCode": { "type": ["string", "null"], "maxLength": 50 },
+      "SkillCode": { "type": ["string", "null"], "maxLength": 100 },
+      "CertificationObjective": { "type": ["string", "null"], "maxLength": 200 },
+      "Stem": { "type": "string", "minLength": 1, "maxLength": 8000 },
+      "OptionA": { "type": "string", "minLength": 1, "maxLength": 2000 },
+      "OptionB": { "type": "string", "minLength": 1, "maxLength": 2000 },
+      "OptionC": { "type": ["string", "null"], "maxLength": 2000 },
+      "OptionD": { "type": ["string", "null"], "maxLength": 2000 },
+      "OptionE": { "type": ["string", "null"], "maxLength": 2000 },
+      "OptionF": { "type": ["string", "null"], "maxLength": 2000 },
+      "CorrectOptions": {
+        "type": "array",
+        "items": { "enum": ["A", "B", "C", "D", "E", "F"] },
+        "minItems": 1,
+        "maxItems": 6,
+        "uniqueItems": true
+      },
+      "Explanation": { "type": "string", "minLength": 1, "maxLength": 8000 },
+      "ExplanationA": { "type": ["string", "null"], "maxLength": 4000 },
+      "ExplanationB": { "type": ["string", "null"], "maxLength": 4000 },
+      "ExplanationC": { "type": ["string", "null"], "maxLength": 4000 },
+      "ExplanationD": { "type": ["string", "null"], "maxLength": 4000 },
+      "ExplanationE": { "type": ["string", "null"], "maxLength": 4000 },
+      "ExplanationF": { "type": ["string", "null"], "maxLength": 4000 },
+      "Difficulty": { "enum": ["Easy", "Medium", "Hard"] },
+      "Tags": { "type": "array", "items": { "type": "string", "maxLength": 50 }, "uniqueItems": true },
+      "SourceReference": { "type": ["string", "null"], "maxLength": 500 },
+      "ReviewStatus": { "enum": ["Draft", "Reviewed", "Approved", "Active", "Retired"], "default": "Draft" }
+    },
+    "allOf": [
+      {
+        "if": { "properties": { "QuestionType": { "const": "SingleChoice" } } },
+        "then": { "properties": { "CorrectOptions": { "maxItems": 1 } } }
+      },
+      {
+        "if": { "properties": { "QuestionType": { "const": "MultipleSelect" } } },
+        "then": { "properties": { "CorrectOptions": { "minItems": 2 } } }
+      }
+    ]
+  },
+  "$comment": "Server-side checks not expressible here: each correct letter must reference a non-empty option; options must be distinct; options must be contiguous from A; duplicate ExternalId in file; course/module/lesson codes must exist and be owned by the importer; imported questions start in review regardless of ReviewStatus unless the importer may approve."
+}
