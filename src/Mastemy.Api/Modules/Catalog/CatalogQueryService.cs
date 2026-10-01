@@ -8,15 +8,12 @@ namespace Mastemy.Api.Modules.Catalog;
 /// <summary>Public (anonymous) catalog reads. Only live courses (AccessService.IsLive) are ever returned.</summary>
 public class CatalogQueryService(AppDbContext db)
 {
-    private static readonly CourseStatus[] LiveStatuses =
-        Enum.GetValues<CourseStatus>().Where(AccessService.IsLive).ToArray();
-
-    private IQueryable<Course> Live => db.Courses.AsNoTracking().Where(c => LiveStatuses.Contains(c.Status));
+    private IQueryable<Course> Live => db.Courses.AsNoTracking().Where(AccessService.IsLiveExpr);
 
     public async Task<List<CategoryDto>> Categories()
     {
         var counts = await db.CourseCategories.AsNoTracking()
-            .Where(cc => db.Courses.Any(c => c.Id == cc.CourseId && LiveStatuses.Contains(c.Status)))
+            .Where(cc => db.Courses.Where(AccessService.IsLiveExpr).Any(c => c.Id == cc.CourseId))
             .GroupBy(cc => cc.CategoryId)
             .Select(g => new { g.Key, Count = g.Count() })
             .ToDictionaryAsync(x => x.Key, x => x.Count);

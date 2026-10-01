@@ -77,6 +77,8 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
     public async Task<StudioCourseDto> Update(Guid id, UpdateCourseRequest req)
     {
         var c = await LoadEditableCourse(id, includeCategories: true);
+        var before = new object?[] { c.Title, c.Subtitle, c.Description, c.Audience, c.Prerequisites, c.Outcomes, c.Language, c.Level,
+            c.PromoVideoId, c.CredentialType, c.PassThresholdPercent, string.Join(",", c.Categories.Select(x => x.CategoryId).OrderBy(x => x)) };
         c.Title = RequireText(req.Title, "title", MaxTitle);
         c.Subtitle = Opt(req.Subtitle, "subtitle", MaxShort);
         c.Description = Opt(req.Description, "description", MaxMarkdown);
@@ -104,7 +106,13 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
             await SetCategories(c, req.CategoryIds);
         }
         c.UpdatedAt = DateTime.UtcNow;
-        audit.Record("course.updated", nameof(Course), c.Id, new { c.Title });
+        var after = new object?[] { c.Title, c.Subtitle, c.Description, c.Audience, c.Prerequisites, c.Outcomes, c.Language, c.Level,
+            c.PromoVideoId, c.CredentialType, c.PassThresholdPercent, string.Join(",", c.Categories.Select(x => x.CategoryId).OrderBy(x => x)) };
+        string[] names = ["title", "subtitle", "description", "audience", "prerequisites", "outcomes", "language", "level",
+            "promoVideoId", "credentialType", "passThresholdPercent", "categoryIds"];
+        var changed = names.Where((_, i) => !Equals(before[i], after[i])).ToArray();
+        audit.Record("course.updated", nameof(Course), c.Id, new { c.Title, changedFields = changed });
+        RecordContentChange(c, "update", nameof(Course), c.Id, changed);
         await db.SaveChangesAsync();
         return await Get(id);
     }
@@ -121,6 +129,7 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
         db.Modules.Add(m);
         Touch(c);
         audit.Record("module.created", nameof(CourseModule), m.Id, new { courseId, title });
+        RecordContentChange(c, "create", nameof(CourseModule), m.Id, ["title"]);
         await db.SaveChangesAsync();
         return new StudioModuleDto(m.Id, m.Code, m.Title, m.SortOrder, []);
     }
@@ -129,9 +138,11 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
     {
         var m = await db.Modules.FirstOrDefaultAsync(x => x.Id == moduleId) ?? throw AppException.NotFound("Module");
         var c = await LoadEditableCourse(m.CourseId);
+        var oldTitle = m.Title;
         m.Title = RequireText(req.Title, "title", MaxTitle);
         Touch(c);
         audit.Record("module.updated", nameof(CourseModule), m.Id, new { m.Title });
+        RecordContentChange(c, "update", nameof(CourseModule), m.Id, oldTitle == m.Title ? [] : ["title"]);
         await db.SaveChangesAsync();
     }
 
@@ -142,6 +153,8 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
         await EnsureStructuralDeleteAllowed(c);
         await using var tx = await db.Database.BeginTransactionAsync();
         var lessonIds = m.Lessons.Select(l => l.Id).ToList();
+        var readyVideoLessons = await db.Lessons.Where(l => l.ModuleId == m.Id && l.VideoAsset != null && l.VideoAsset.Status == VideoStatus.Ready)
+            .Select(l => l.Id).ToListAsync();
         await DetachLessons(lessonIds);
         await db.Questions.Where(q => q.ModuleId == moduleId).ExecuteUpdateAsync(s => s.SetProperty(q => q.ModuleId, (Guid?)null));
         await db.Assessments.Where(a => a.ModuleId == moduleId).ExecuteUpdateAsync(s => s.SetProperty(a => a.ModuleId, (Guid?)null));
@@ -150,6 +163,7 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
         db.Modules.Remove(m);
         Touch(c);
         audit.Record("module.deleted", nameof(CourseModule), m.Id, new { courseId = c.Id, m.Title, lessons = lessonIds });
+        RecordContentChange(c, "delete", nameof(CourseModule), m.Id, ["*"], new { m.Title, lessons = lessonIds, readyVideoLessons });
         await db.SaveChangesAsync();
         await tx.CommitAsync();
     }
@@ -161,6 +175,7 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
         ApplyOrder(modules, req.Ids, m => m.Id, (m, i) => m.SortOrder = i);
         Touch(c);
         audit.Record("module.reordered", nameof(Course), courseId, new { ids = req.Ids });
+        RecordContentChange(c, "reorder", nameof(CourseModule), courseId, ["sortOrder"]);
         await db.SaveChangesAsync();
     }
 
@@ -183,6 +198,7 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
         db.Lessons.Add(l);
         Touch(c);
         audit.Record("lesson.created", nameof(Lesson), l.Id, new { moduleId, l.Title });
+        RecordContentChange(c, "create", nameof(Lesson), l.Id, ["title", "objective", "isPreview"]);
         await db.SaveChangesAsync();
         return ToDto(l);
     }
@@ -190,11 +206,17 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
     public async Task<StudioLessonDto> UpdateLesson(Guid lessonId, LessonUpdateRequest req)
     {
         var (l, c) = await LoadEditableLesson(lessonId);
+        var before = (l.Title, l.Objective, l.IsPreview);
         l.Title = RequireText(req.Title, "title", MaxTitle);
         l.Objective = Opt(req.Objective, "objective", 4000);
         if (req.IsPreview is not null) l.IsPreview = req.IsPreview.Value;
         Touch(c);
-        audit.Record("lesson.updated", nameof(Lesson), l.Id, new { l.Title });
+        var changed = new List<string>();
+        if (before.Title != l.Title) changed.Add("title");
+        if (before.Objective != l.Objective) changed.Add("objective");
+        if (before.IsPreview != l.IsPreview) changed.Add("isPreview");
+        audit.Record("lesson.updated", nameof(Lesson), l.Id, new { l.Title, changedFields = changed });
+        RecordContentChange(c, "update", nameof(Lesson), l.Id, changed.ToArray());
         await db.SaveChangesAsync();
         return ToDto(l);
     }
@@ -206,10 +228,13 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
         await using var tx = await db.Database.BeginTransactionAsync();
         await DetachLessons([l.Id]);
         var videoAssetId = l.VideoAssetId;
+        var hadReadyVideo = l.VideoAsset is { Status: VideoStatus.Ready };
         l.VideoAssetId = null; // unlink only; the VideoAsset row is kept
         db.Lessons.Remove(l);
         Touch(c);
         audit.Record("lesson.deleted", nameof(Lesson), l.Id, new { courseId = c.Id, l.Title, unlinkedVideoAssetId = videoAssetId });
+        RecordContentChange(c, "delete", nameof(Lesson), l.Id, ["*"],
+            new { l.Title, unlinkedVideoAssetId = videoAssetId, hadReadyVideo });
         await db.SaveChangesAsync();
         await tx.CommitAsync();
     }
@@ -222,6 +247,7 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
         ApplyOrder(lessons, req.Ids, l => l.Id, (l, i) => l.SortOrder = i);
         Touch(c);
         audit.Record("lesson.reordered", nameof(CourseModule), moduleId, new { ids = req.Ids });
+        RecordContentChange(c, "reorder", nameof(Lesson), moduleId, ["sortOrder"]);
         await db.SaveChangesAsync();
     }
 
@@ -233,11 +259,15 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
         if (notes.Length > MaxMarkdown || (premium?.Length ?? 0) > MaxMarkdown) throw AppException.Bad("Notes are too long.");
         if (notes != l.NotesMarkdown || premium != l.PremiumNotesMarkdown)
         {
+            var changed = new List<string>();
+            if (notes != l.NotesMarkdown) changed.Add("notesMarkdown");
+            if (premium != l.PremiumNotesMarkdown) changed.Add("premiumNotesMarkdown");
             l.NotesMarkdown = notes;
             l.PremiumNotesMarkdown = premium;
             l.NotesVersion++;
             Touch(c);
-            audit.Record("lesson.notes.updated", nameof(Lesson), l.Id, new { l.NotesVersion });
+            audit.Record("lesson.notes.updated", nameof(Lesson), l.Id, new { l.NotesVersion, changedFields = changed });
+            RecordContentChange(c, "update", nameof(Lesson), l.Id, changed.ToArray(), new { l.NotesVersion });
             await db.SaveChangesAsync();
         }
         return ToDto(l);
@@ -313,6 +343,23 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
     }
 
     // ---------- helpers ----------
+    public const string ContentChangedAction = "course.content_changed";
+
+    /// <summary>
+    /// Course-scoped change log entry (entity + changed fields) so reviewers can see exactly what an instructor
+    /// edited since the last publish. There are no content snapshots yet: while a previously published course is
+    /// Updating/ChangesRequested, these edits are visible to learners before re-review, so every one is audited.
+    /// </summary>
+    private void RecordContentChange(Course c, string op, string entity, Guid entityId, string[] changedFields, object? extra = null)
+    {
+        if (changedFields.Length == 0) return;
+        audit.Record(ContentChangedAction, nameof(Course), c.Id, new
+        {
+            op, entity, entityId, changedFields, courseStatus = c.Status.ToString(),
+            liveUnreviewed = AccessService.IsLive(c), extra,
+        });
+    }
+
     private async Task<Course> LoadEditableCourse(Guid courseId, bool includeCategories = false)
     {
         var q = db.Courses.AsQueryable();

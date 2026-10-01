@@ -213,7 +213,7 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
     {
         var a = await db.Assessments.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id) ?? throw AppException.NotFound("Assessment");
         var course = await db.Courses.AsNoTracking().FirstAsync(c => c.Id == a.CourseId);
-        if (!AccessService.IsLive(course.Status)) throw AppException.NotFound("Assessment");
+        if (!AccessService.IsLive(course)) throw AppException.NotFound("Assessment");
         return (a, course);
     }
 

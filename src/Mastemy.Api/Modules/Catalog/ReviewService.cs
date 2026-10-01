@@ -87,6 +87,43 @@ public class ReviewService(AppDbContext db, ICurrentUser me, AccessService acces
                           u == null ? "" : u.DisplayName, r.Body, r.CreatedAt)).ToListAsync();
     }
 
+    /// <summary>Course content change log since the last publish (all changes for a never-published course).</summary>
+    public async Task<CourseChangesDto> Changes(Guid courseId)
+    {
+        me.RequireId();
+        var c = await db.Courses.AsNoTracking().FirstOrDefaultAsync(x => x.Id == courseId) ?? throw AppException.NotFound("Course");
+        var key = courseId.ToString();
+        var lastPublishId = await db.AuditLogs.AsNoTracking()
+            .Where(a => a.EntityType == nameof(Course) && a.EntityId == key && a.Action == "course.published")
+            .OrderByDescending(a => a.Id).Select(a => (long?)a.Id).FirstOrDefaultAsync();
+        var since = lastPublishId is null ? (DateTime?)null
+            : await db.AuditLogs.AsNoTracking().Where(a => a.Id == lastPublishId).Select(a => (DateTime?)a.CreatedAt).FirstAsync();
+        var floor = lastPublishId ?? 0;
+        var rows = await (from a in db.AuditLogs.AsNoTracking()
+                          join u in db.Users on a.ActorId equals u.Id into uj
+                          from u in uj.DefaultIfEmpty()
+                          where a.EntityType == nameof(Course) && a.EntityId == key && a.Id > floor
+                                && a.Action == StudioService.ContentChangedAction
+                          orderby a.Id
+                          select new { a.Id, a.ActorId, Name = u == null ? null : u.DisplayName, a.Details, a.CreatedAt })
+            .Take(5000).ToListAsync();
+        var items = rows.Select(r =>
+        {
+            System.Text.Json.JsonElement details = default;
+            if (r.Details is not null)
+                try { details = System.Text.Json.JsonDocument.Parse(r.Details).RootElement.Clone(); } catch (System.Text.Json.JsonException) { }
+            string? Str(string p) => details.ValueKind == System.Text.Json.JsonValueKind.Object && details.TryGetProperty(p, out var v)
+                && v.ValueKind == System.Text.Json.JsonValueKind.String ? v.GetString() : null;
+            var fields = details.ValueKind == System.Text.Json.JsonValueKind.Object && details.TryGetProperty("changedFields", out var f)
+                && f.ValueKind == System.Text.Json.JsonValueKind.Array
+                ? f.EnumerateArray().Where(x => x.ValueKind == System.Text.Json.JsonValueKind.String).Select(x => x.GetString()!).ToArray()
+                : [];
+            return new CourseChangeDto(r.Id, Str("op") ?? "", Str("entity") ?? "", Str("entityId"), fields, r.ActorId, r.Name,
+                r.CreatedAt, r.Details);
+        }).ToList();
+        return new CourseChangesDto(c.Id, c.Status, c.PublishedAt, since, items);
+    }
+
     public async Task<CourseStatusDto> Publish(Guid courseId)
     {
         me.RequireId();

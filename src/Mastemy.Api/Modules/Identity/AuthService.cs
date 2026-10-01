@@ -5,10 +5,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Mastemy.Api.Modules.Identity;
 
-public class AuthService(AppDbContext db, JwtIssuer jwt, JwtOptions opt, AuditService audit)
+public class AuthService(AppDbContext db, JwtIssuer jwt, JwtOptions opt, AuditService audit, LoginEmailRateLimiter emailLimiter)
 {
-    public const int MaxFailedLogins = 5;
-    public static readonly TimeSpan LockoutDuration = TimeSpan.FromMinutes(15);
+    /// <summary>Failures tolerated before per-account exponential backoff starts.</summary>
+    public const int BackoffThreshold = 5;
+    public static readonly TimeSpan MaxBackoff = TimeSpan.FromMinutes(15);
+
+    /// <summary>Backoff after <paramref name="failures"/> consecutive failures: 2^(n-5) seconds, capped at 15 minutes.</summary>
+    public static TimeSpan BackoffFor(int failures)
+    {
+        if (failures < BackoffThreshold) return TimeSpan.Zero;
+        var exp = failures - BackoffThreshold;
+        if (exp >= 10) return MaxBackoff; // 2^10 s > 15 min
+        var d = TimeSpan.FromSeconds(1 << exp);
+        return d > MaxBackoff ? MaxBackoff : d;
+    }
     private const string InvalidCredentials = "Invalid email or password.";
     private const string InvalidRefresh = "Invalid or expired refresh token.";
 
@@ -46,6 +57,9 @@ public class AuthService(AppDbContext db, JwtIssuer jwt, JwtOptions opt, AuditSe
     {
         if (string.IsNullOrWhiteSpace(req.Email) || string.IsNullOrEmpty(req.Password)) throw Unauthorized(InvalidCredentials);
         var normalized = IdentityValidation.NormalizeEmail(req.Email);
+        // Per-email fixed window (complements the per-IP "auth" policy); applies to unknown emails too.
+        if (!emailLimiter.TryAcquire(normalized))
+            throw new AppException(429, "Too many login attempts. Please try again later.", "rate_limited");
         var user = await db.Users.Include(u => u.Roles).FirstOrDefaultAsync(u => u.NormalizedEmail == normalized);
         var now = DateTime.UtcNow;
         if (user is null)
@@ -54,17 +68,19 @@ public class AuthService(AppDbContext db, JwtIssuer jwt, JwtOptions opt, AuditSe
             PasswordHasher.Verify(req.Password, DummyHash);
             throw Unauthorized(InvalidCredentials);
         }
+        // Inside the backoff window every attempt is rejected without verifying or counting, so an attacker
+        // cannot extend the delay faster than it elapses and the delay never exceeds MaxBackoff.
         if (user.LockoutUntil is { } until && until > now)
             throw Unauthorized(InvalidCredentials);
 
         if (!PasswordHasher.Verify(req.Password, user.PasswordHash))
         {
             user.FailedLoginCount++;
-            if (user.FailedLoginCount >= MaxFailedLogins)
+            var delay = BackoffFor(user.FailedLoginCount);
+            if (delay > TimeSpan.Zero)
             {
-                user.LockoutUntil = now.Add(LockoutDuration);
-                user.FailedLoginCount = 0;
-                audit.Record("user.locked_out", "User", user.Id);
+                user.LockoutUntil = now.Add(delay);
+                if (user.FailedLoginCount == BackoffThreshold) audit.Record("user.login_backoff_started", "User", user.Id);
             }
             await db.SaveChangesAsync();
             throw Unauthorized(InvalidCredentials);

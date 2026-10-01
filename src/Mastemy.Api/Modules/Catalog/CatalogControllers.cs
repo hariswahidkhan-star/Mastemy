@@ -68,6 +68,9 @@ public class CourseReviewController(ReviewService svc) : ControllerBase
     public Task<ReviewCommentDto> Comment(Guid id, ReviewCommentRequest req) => svc.AddComment(id, req);
 
     /// <summary>Reviewers, staff and the course's own instructors may read review comments.</summary>
+    [HttpGet("{id:guid}/changes"), Authorize(Policy = "Reviewer")]
+    public Task<CourseChangesDto> Changes(Guid id) => svc.Changes(id);
+
     [HttpGet("{id:guid}/comments"), Authorize]
     public Task<List<ReviewCommentDto>> Comments(Guid id) => svc.Comments(id);
 }

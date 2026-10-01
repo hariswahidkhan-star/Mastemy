@@ -209,4 +209,131 @@ public class CatalogIntegrationTests(CatalogFixture f) : IClassFixture<CatalogFi
         // editable again after changes requested
         Assert.Equal(HttpStatusCode.OK, (await a.PutJ($"/api/studio/lessons/{c1.Modules[0].Lessons[0].Id}/notes", new LessonNotesRequest("notes", null))).StatusCode);
     }
+
+    // ---------- Live continuity during re-review ----------
+
+    [Fact]
+    public async Task Previously_published_course_stays_live_through_re_review_and_PublishedAt_is_first_publish()
+    {
+        var c = await CreateCourse("Continuity Course");
+        var anon = f.Client();
+        var a = f.Client(f.InstructorA);
+
+        // Never-published course in review is not live.
+        await f.Read<CourseStatusDto>(await a.PostAsync($"/api/studio/courses/{c.Id}/submit", null));
+        Assert.Equal(HttpStatusCode.NotFound, (await anon.GetAsync($"/api/courses/{c.Slug}")).StatusCode);
+        await f.Read<CourseStatusDto>(await f.Client(f.Reviewer).PostJ($"/api/review/courses/{c.Id}/decision", new ReviewDecisionRequest("Approve", null)));
+        Assert.Equal(HttpStatusCode.NotFound, (await anon.GetAsync($"/api/courses/{c.Slug}")).StatusCode);
+        var first = await f.Read<CourseStatusDto>(await f.Client(f.Admin).PostAsync($"/api/admin/courses/{c.Id}/publish", null));
+        Assert.NotNull(first.PublishedAt);
+
+        async Task AssertLive()
+        {
+            Assert.Equal(HttpStatusCode.OK, (await anon.GetAsync($"/api/courses/{c.Slug}")).StatusCode);
+            var search = await f.Read<PagedResult<CourseCardDto>>(await anon.GetAsync("/api/courses?q=Continuity"));
+            Assert.Contains(search.Items, x => x.Id == c.Id);
+        }
+
+        await f.Read<CourseStatusDto>(await a.PostAsync($"/api/studio/courses/{c.Id}/start-update", null));
+        await AssertLive();
+        Assert.Equal(CourseStatus.InReview, (await f.Read<CourseStatusDto>(await a.PostAsync($"/api/studio/courses/{c.Id}/submit", null))).Status);
+        await AssertLive();
+        Assert.Equal(CourseStatus.ChangesRequested, (await f.Read<CourseStatusDto>(await f.Client(f.Reviewer).PostJ(
+            $"/api/review/courses/{c.Id}/decision", new ReviewDecisionRequest("RequestChanges", "Fix it")))).Status);
+        await AssertLive();
+        await f.Read<CourseStatusDto>(await a.PostAsync($"/api/studio/courses/{c.Id}/submit", null));
+        Assert.Equal(CourseStatus.Approved, (await f.Read<CourseStatusDto>(await f.Client(f.Reviewer).PostJ(
+            $"/api/review/courses/{c.Id}/decision", new ReviewDecisionRequest("Approve", null)))).Status);
+        await AssertLive();
+
+        var second = await f.Read<CourseStatusDto>(await f.Client(f.Admin).PostAsync($"/api/admin/courses/{c.Id}/publish", null));
+        Assert.Equal(CourseStatus.Published, second.Status);
+        Assert.True(Math.Abs((second.PublishedAt!.Value - first.PublishedAt!.Value).TotalMilliseconds) < 1);
+        await f.WithDb(async db => Assert.True((await db.Courses.SingleAsync(x => x.Id == c.Id)).UpdatedAt > first.PublishedAt!.Value.AddMilliseconds(1)));
+
+        await f.Read<CourseStatusDto>(await f.Client(f.Admin).PostAsync($"/api/admin/courses/{c.Id}/archive", null));
+        Assert.Equal(HttpStatusCode.NotFound, (await anon.GetAsync($"/api/courses/{c.Slug}")).StatusCode);
+    }
+
+    [Fact]
+    public void IsLive_rule_matches_spec()
+    {
+        var p = DateTime.UtcNow;
+        Assert.True(Mastemy.Api.Infrastructure.AccessService.IsLive(CourseStatus.Published, p));
+        Assert.True(Mastemy.Api.Infrastructure.AccessService.IsLive(CourseStatus.Updating, p));
+        foreach (var s in new[] { CourseStatus.InReview, CourseStatus.ChangesRequested, CourseStatus.Approved })
+        {
+            Assert.True(Mastemy.Api.Infrastructure.AccessService.IsLive(s, p));
+            Assert.False(Mastemy.Api.Infrastructure.AccessService.IsLive(s, null));
+        }
+        Assert.False(Mastemy.Api.Infrastructure.AccessService.IsLive(CourseStatus.Archived, p));
+        Assert.False(Mastemy.Api.Infrastructure.AccessService.IsLive(CourseStatus.Draft, null));
+    }
+
+    // ---------- Change log for reviewers ----------
+
+    [Fact]
+    public async Task Edits_while_updating_are_audited_and_listed_for_reviewers_since_last_publish()
+    {
+        var c = await CreateCourse("Changes Log Course", modules: 1, lessonsPerModule: 3);
+        var a = f.Client(f.InstructorA);
+        await Publish(c.Id);
+        await f.Read<CourseStatusDto>(await a.PostAsync($"/api/studio/courses/{c.Id}/start-update", null));
+
+        var lesson0 = c.Modules[0].Lessons[0];
+        await f.Read<StudioLessonDto>(await a.PutJ($"/api/studio/lessons/{lesson0.Id}/notes", new LessonNotesRequest(null, "Premium secret v2")));
+        var deleted = c.Modules[0].Lessons[2];
+        Assert.Equal(HttpStatusCode.NoContent, (await a.DeleteAsync($"/api/studio/lessons/{deleted.Id}")).StatusCode);
+
+        var changes = await f.Read<CourseChangesDto>(await f.Client(f.Reviewer).GetAsync($"/api/review/courses/{c.Id}/changes"));
+        Assert.NotNull(changes.SinceLastPublishAt);
+        // Pre-publish authoring (creates) is not included; only post-publish edits.
+        Assert.DoesNotContain(changes.Changes, x => x.Op == "create");
+        Assert.Contains(changes.Changes, x => x.Entity == "Lesson" && x.EntityId == lesson0.Id.ToString()
+                                              && x.ChangedFields.Contains("premiumNotesMarkdown") && !x.ChangedFields.Contains("notesMarkdown"));
+        var del = Assert.Single(changes.Changes, x => x.Op == "delete");
+        Assert.Equal(deleted.Id.ToString(), del.EntityId);
+        Assert.Contains("\"hadReadyVideo\":true", del.Details);
+        Assert.Contains("\"liveUnreviewed\":true", del.Details);
+        Assert.Equal(f.InstructorA.Id, del.ActorId);
+
+        Assert.Equal(HttpStatusCode.Forbidden, (await f.Client(f.Student).GetAsync($"/api/review/courses/{c.Id}/changes")).StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, (await a.GetAsync($"/api/review/courses/{c.Id}/changes")).StatusCode);
+    }
+
+    // ---------- Demoted / suspended instructors ----------
+
+    [Fact]
+    public async Task Demoted_or_suspended_course_instructor_loses_edit_access()
+    {
+        var c = await CreateCourse("Demotion Course", video: null);
+        var demoted = new User { Email = $"d{Guid.NewGuid():N}@test.local", DisplayName = "Demoted", PasswordHash = "x" };
+        demoted.NormalizedEmail = demoted.Email.ToUpperInvariant();
+        demoted.Roles.Add(new UserRole { UserId = demoted.Id, Role = Roles.Instructor });
+        await f.WithDb(async db =>
+        {
+            db.Users.Add(demoted);
+            db.CourseInstructors.Add(new CourseInstructor { CourseId = c.Id, UserId = demoted.Id, Role = CourseInstructorRole.CoInstructor });
+            await db.SaveChangesAsync();
+        });
+        var client = f.Client(demoted); // token keeps the Instructor claim
+        var req = new UpdateCourseRequest("Demotion Course", "Sub", "d", "a", "p", ["o"], "en", null, null, null, null, null);
+        Assert.Equal(HttpStatusCode.OK, (await client.PutJ($"/api/studio/courses/{c.Id}", req)).StatusCode);
+
+        await f.WithDb(async db =>
+        {
+            db.UserRoles.RemoveRange(db.UserRoles.Where(r => r.UserId == demoted.Id));
+            db.UserRoles.Add(new UserRole { UserId = demoted.Id, Role = Roles.Student });
+            await db.SaveChangesAsync();
+        });
+        Assert.Equal(HttpStatusCode.Forbidden, (await client.PutJ($"/api/studio/courses/{c.Id}", req)).StatusCode);
+
+        await f.WithDb(async db =>
+        {
+            db.UserRoles.Add(new UserRole { UserId = demoted.Id, Role = Roles.Instructor });
+            (await db.Users.SingleAsync(u => u.Id == demoted.Id)).IsSuspended = true;
+            await db.SaveChangesAsync();
+        });
+        Assert.Equal(HttpStatusCode.Forbidden, (await client.PutJ($"/api/studio/courses/{c.Id}", req)).StatusCode);
+    }
 }
