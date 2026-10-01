@@ -299,7 +299,10 @@ public class Question
     public Guid? LessonId { get; set; }
     public string ExternalId { get; set; } = "";
     public QuestionState State { get; set; } = QuestionState.Draft;
-    public int CurrentVersion { get; set; } = 1;
+    public int CurrentVersion { get; set; } = 1; // version served to learners while Active
+    // An edit to an Active/Approved question is staged here and reviewed separately; CurrentVersion keeps serving until it is Active.
+    public int? PendingVersion { get; set; }
+    public QuestionState? PendingState { get; set; }
     public Guid CreatedBy { get; set; }
     public Guid? ReviewedBy { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -322,6 +325,8 @@ public class QuestionVersion
     public string Tags { get; set; } = "";
     public string SourceReference { get; set; } = "";
     public bool AllowShuffle { get; set; } = true;
+    public Guid? EditedBy { get; set; } // author of this version; may not review it
+    public Guid? ReviewedBy { get; set; } // user who moved this version to Reviewed; may not also approve it
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public List<QuestionOption> Options { get; set; } = [];
 }
@@ -353,6 +358,8 @@ public class QuestionImportBatch
 public enum AssessmentKind { LessonPractice, ModuleTest, FinalAssessment, MockExam, Diagnostic }
 public enum AssessmentMode { Practice, Exam }
 public enum MultiSelectScoring { AllOrNothing, PartialCredit }
+/// <summary>When Exam-mode answer keys/rationales are revealed after submission (spec §15 "configured review point").</summary>
+public enum AnswerReviewPolicy { AfterPassOrAttemptsExhausted, AfterSubmit, Never }
 
 public class Assessment
 {
@@ -367,6 +374,7 @@ public class Assessment
     public int? MaxAttempts { get; set; }
     public decimal PassPercent { get; set; } = 70m;
     public MultiSelectScoring MultiSelectScoring { get; set; }
+    public AnswerReviewPolicy ReviewPolicy { get; set; } = AnswerReviewPolicy.AfterPassOrAttemptsExhausted;
     public int QuestionCount { get; set; }
     public bool ShuffleQuestions { get; set; } = true;
     public bool ShuffleOptions { get; set; } = true;
@@ -411,6 +419,7 @@ public class AttemptItem
     public string OptionOrder { get; set; } = ""; // comma-separated option ids as displayed
     public string SelectedOptionIds { get; set; } = "";
     public bool Flagged { get; set; }
+    public DateTime? CheckedAt { get; set; } // practice-mode answer reveal locks the item
     public decimal? Points { get; set; }
 }
 
@@ -491,7 +500,10 @@ public class Refund
     public Guid OrderId { get; set; }
     public decimal Amount { get; set; }
     public string Reason { get; set; } = "";
-    public string Status { get; set; } = "Requested"; // Requested, Completed, Rejected
+    public string Status { get; set; } = "Requested"; // Requested, Processing, Completed, Rejected
+    public Guid? RequestedBy { get; set; }
+    public Guid? DecidedBy { get; set; }
+    public DateTime? DecidedAt { get; set; }
     public string? ProviderRefundId { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }

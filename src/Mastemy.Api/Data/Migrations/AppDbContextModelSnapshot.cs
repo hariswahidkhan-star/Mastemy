@@ -59,6 +59,9 @@ namespace Mastemy.Api.Data.Migrations
                     b.Property<int>("QuestionCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("ReviewPolicy")
+                        .HasColumnType("int");
+
                     b.Property<bool>("ShuffleOptions")
                         .HasColumnType("tinyint(1)");
 
@@ -160,6 +163,9 @@ namespace Mastemy.Api.Data.Migrations
 
                     b.Property<Guid>("AttemptId")
                         .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("CheckedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("Flagged")
                         .HasColumnType("tinyint(1)");
@@ -1183,6 +1189,12 @@ namespace Mastemy.Api.Data.Migrations
                     b.Property<Guid?>("ModuleId")
                         .HasColumnType("char(36)");
 
+                    b.Property<int?>("PendingState")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PendingVersion")
+                        .HasColumnType("int");
+
                     b.Property<Guid?>("ReviewedBy")
                         .HasColumnType("char(36)");
 
@@ -1296,6 +1308,9 @@ namespace Mastemy.Api.Data.Migrations
                     b.Property<int>("Difficulty")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("EditedBy")
+                        .HasColumnType("char(36)");
+
                     b.Property<string>("Explanation")
                         .IsRequired()
                         .HasMaxLength(512)
@@ -1307,6 +1322,9 @@ namespace Mastemy.Api.Data.Migrations
                         .HasColumnType("varchar(512)");
 
                     b.Property<Guid>("QuestionId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("ReviewedBy")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("SkillCode")
@@ -1395,6 +1413,12 @@ namespace Mastemy.Api.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime?>("DecidedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("DecidedBy")
+                        .HasColumnType("char(36)");
+
                     b.Property<Guid>("OrderId")
                         .HasColumnType("char(36)");
 
@@ -1406,6 +1430,9 @@ namespace Mastemy.Api.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(512)
                         .HasColumnType("varchar(512)");
+
+                    b.Property<Guid?>("RequestedBy")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Status")
                         .IsRequired()

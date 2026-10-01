@@ -346,6 +346,9 @@ namespace Mastemy.Api.Data.Migrations
                     Amount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
                     Reason = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
                     Status = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    RequestedBy = table.Column<Guid>(type: "char(36)", nullable: true),
+                    DecidedBy = table.Column<Guid>(type: "char(36)", nullable: true),
+                    DecidedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     ProviderRefundId = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -566,6 +569,7 @@ namespace Mastemy.Api.Data.Migrations
                     MaxAttempts = table.Column<int>(type: "int", nullable: true),
                     PassPercent = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
                     MultiSelectScoring = table.Column<int>(type: "int", nullable: false),
+                    ReviewPolicy = table.Column<int>(type: "int", nullable: false),
                     QuestionCount = table.Column<int>(type: "int", nullable: false),
                     ShuffleQuestions = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     ShuffleOptions = table.Column<bool>(type: "tinyint(1)", nullable: false),
@@ -717,6 +721,8 @@ namespace Mastemy.Api.Data.Migrations
                     ExternalId = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
                     State = table.Column<int>(type: "int", nullable: false),
                     CurrentVersion = table.Column<int>(type: "int", nullable: false),
+                    PendingVersion = table.Column<int>(type: "int", nullable: true),
+                    PendingState = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<Guid>(type: "char(36)", nullable: false),
                     ReviewedBy = table.Column<Guid>(type: "char(36)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -866,6 +872,8 @@ namespace Mastemy.Api.Data.Migrations
                     Tags = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
                     SourceReference = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
                     AllowShuffle = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    EditedBy = table.Column<Guid>(type: "char(36)", nullable: true),
+                    ReviewedBy = table.Column<Guid>(type: "char(36)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
@@ -941,6 +949,7 @@ namespace Mastemy.Api.Data.Migrations
                     OptionOrder = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
                     SelectedOptionIds = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
                     Flagged = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    CheckedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     Points = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: true)
                 },
                 constraints: table =>

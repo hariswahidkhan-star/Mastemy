@@ -49,6 +49,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     {
         b.Properties<decimal>().HavePrecision(18, 4);
         b.Properties<string>().HaveMaxLength(512);
+        // MySQL DATETIME has no zone; all values are written as UTC, so mark them UTC on read (correct JSON 'Z' suffix).
+        b.Properties<DateTime>().HaveConversion<UtcDateTimeConverter>();
+        b.Properties<DateTime?>().HaveConversion<NullableUtcDateTimeConverter>();
     }
 
     protected override void OnModelCreating(ModelBuilder m)
@@ -150,3 +153,11 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         Text<CourseReview>(x => x.Body, x => x.InstructorReply);
     }
 }
+
+public class UtcDateTimeConverter() : Microsoft.EntityFrameworkCore.Storage.ValueConversion.ValueConverter<DateTime, DateTime>(
+    v => v.Kind == DateTimeKind.Local ? v.ToUniversalTime() : v,
+    v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+
+public class NullableUtcDateTimeConverter() : Microsoft.EntityFrameworkCore.Storage.ValueConversion.ValueConverter<DateTime?, DateTime?>(
+    v => v.HasValue && v.Value.Kind == DateTimeKind.Local ? v.Value.ToUniversalTime() : v,
+    v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : v);
