@@ -1,0 +1,36 @@
+import { defineConfig, devices } from '@playwright/test';
+import { existsSync, readdirSync } from 'node:fs';
+
+/**
+ * The suite runs against an already running stack (see README / CI):
+ *   API on :5080 (fresh database, Stripe pointed at fake-stripe.mjs), Vite on :5173, fake Stripe on :12111.
+ * Locally a preinstalled Chromium under /opt/pw-browsers is used when present; CI installs one with
+ * `npx playwright install chromium`.
+ */
+function localChromium(): string | undefined {
+  if (process.env.CI) return undefined;
+  const root = '/opt/pw-browsers';
+  if (!existsSync(root)) return undefined;
+  const dir = readdirSync(root).find((d) => /^chromium-\d+$/.test(d));
+  const exe = dir ? `${root}/${dir}/chrome-linux/chrome` : undefined;
+  return exe && existsSync(exe) ? exe : undefined;
+}
+
+export default defineConfig({
+  testDir: './tests',
+  timeout: 120_000,
+  expect: { timeout: 15_000 },
+  fullyParallel: false,
+  workers: 1,
+  retries: 0,
+  reporter: [['list'], ['html', { open: 'never', outputFolder: 'playwright-report' }]],
+  use: {
+    baseURL: process.env.E2E_BASE_URL ?? 'http://localhost:5173',
+    trace: 'retain-on-failure',
+    actionTimeout: 15_000,
+    navigationTimeout: 20_000,
+    screenshot: 'only-on-failure',
+    ...devices['Desktop Chrome'],
+    launchOptions: { executablePath: localChromium() },
+  },
+});

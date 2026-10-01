@@ -4,6 +4,7 @@ using Mastemy.Api.Data;
 using Mastemy.Api.Domain;
 using Mastemy.Api.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Mastemy.Api.Modules.YouTube;
 
 namespace Mastemy.Api.Modules.Catalog;
 
@@ -67,7 +68,8 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
             modules.Select(m => new StudioModuleDto(m.Id, m.Code, m.Title, m.SortOrder,
                 m.Lessons.OrderBy(l => l.SortOrder).Select(l => new StudioLessonDto(l.Id, l.Code, l.Title, l.Objective, l.SortOrder,
                     l.IsPreview, l.VideoAssetId, l.VideoAsset?.Status, l.VideoAsset?.YouTubeVideoId, l.VideoAsset?.DurationSeconds ?? 0,
-                    l.NotesMarkdown, l.PremiumNotesMarkdown, l.NotesVersion)).ToList())).ToList(),
+                    l.NotesMarkdown, l.PremiumNotesMarkdown, l.NotesVersion,
+                    l.VideoAsset is null ? null : VideoAssetDto.From(l.VideoAsset))).ToList())).ToList(),
             c.Instructors.OrderBy(i => i.Role).Select(i => new StudioInstructorDto(i.UserId,
                 users.GetValueOrDefault(i.UserId)?.DisplayName ?? "", users.GetValueOrDefault(i.UserId)?.Email ?? "",
                 i.Role, i.RevenueSharePercent)).ToList(),
@@ -408,7 +410,8 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
     }
 
     private static StudioLessonDto ToDto(Lesson l) => new(l.Id, l.Code, l.Title, l.Objective, l.SortOrder, l.IsPreview, l.VideoAssetId,
-        l.VideoAsset?.Status, l.VideoAsset?.YouTubeVideoId, l.VideoAsset?.DurationSeconds ?? 0, l.NotesMarkdown, l.PremiumNotesMarkdown, l.NotesVersion);
+        l.VideoAsset?.Status, l.VideoAsset?.YouTubeVideoId, l.VideoAsset?.DurationSeconds ?? 0, l.NotesMarkdown, l.PremiumNotesMarkdown, l.NotesVersion,
+        l.VideoAsset is null ? null : VideoAssetDto.From(l.VideoAsset));
 
     private static void Touch(Course c) => c.UpdatedAt = DateTime.UtcNow;
 

@@ -98,8 +98,8 @@ public class StripePaymentProvider(IHttpClientFactory httpFactory, IConfiguratio
         var form = new List<KeyValuePair<string, string>>
         {
             new("mode", "payment"),
-            new("success_url", cfg["Stripe:SuccessUrl"] is { Length: > 0 } s ? s : "http://localhost:5173/checkout/success"),
-            new("cancel_url", cfg["Stripe:CancelUrl"] is { Length: > 0 } c ? c : "http://localhost:5173/checkout/cancel"),
+            new("success_url", cfg["Stripe:SuccessUrl"] is { Length: > 0 } s ? s : "http://localhost:5173/me?checkout=success"),
+            new("cancel_url", cfg["Stripe:CancelUrl"] is { Length: > 0 } c ? c : "http://localhost:5173/me?checkout=cancel"),
             new("client_reference_id", oid),
             new("metadata[order_id]", oid),
             new("payment_intent_data[metadata][order_id]", oid),

@@ -146,18 +146,23 @@ public class YouTubeMetadataClient(IHttpClientFactory http, IOptions<YouTubeOpti
         return result;
     }
 
+    public static readonly TimeSpan OEmbedTimeout = TimeSpan.FromSeconds(8);
+
     public async Task<OEmbedResult> GetOEmbedAsync(string videoId, CancellationToken ct = default)
     {
         if (!YouTubeUrlParser.IsValidVideoId(videoId)) throw new ArgumentException("Invalid video id.", nameof(videoId));
         var watch = $"https://www.youtube.com/watch?v={videoId}";
         var url = $"{O.OEmbedUrl}?url={Uri.EscapeDataString(watch)}&format=json";
+        // oEmbed is only a best-effort hint for the manual path: never let an unreachable YouTube stall the request.
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        timeout.CancelAfter(OEmbedTimeout);
         try
         {
-            using var resp = await Client().GetAsync(url, ct);
+            using var resp = await Client().GetAsync(url, timeout.Token);
             if (resp.StatusCode is HttpStatusCode.NotFound or HttpStatusCode.BadRequest) return new OEmbedResult(OEmbedOutcome.NotFound, null, null, null);
             if (resp.StatusCode is HttpStatusCode.Unauthorized or HttpStatusCode.Forbidden) return new OEmbedResult(OEmbedOutcome.Unauthorized, null, null, null);
             if (!resp.IsSuccessStatusCode) return new OEmbedResult(OEmbedOutcome.Unavailable, null, null, null);
-            using var doc = JsonDocument.Parse(await resp.Content.ReadAsStringAsync(ct));
+            using var doc = JsonDocument.Parse(await resp.Content.ReadAsStringAsync(timeout.Token));
             var r = doc.RootElement;
             return new OEmbedResult(OEmbedOutcome.Found, Str(r, "title"), Str(r, "author_name"), Str(r, "author_url"));
         }

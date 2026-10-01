@@ -6,6 +6,8 @@ import { useQuery } from '@tanstack/react-query';
 import { api, downloadFile, qs } from '../../api/client';
 import { useApiMutation } from '../../api/hooks';
 import { QUESTION_STATES } from '../../api/types';
+import { toQuestionBody, toQuestionList } from '../../api/questions';
+import type { RawQuestionDto } from '../../api/questions';
 import type { QuestionDto, QuestionInput, QuestionState, StudioCourseDto } from '../../api/types';
 import { Button } from '../../components/ui/Button';
 import { Dialog } from '../../components/ui/Dialog';
@@ -125,9 +127,10 @@ function QuestionForm({
         moduleId: v.moduleId || null,
         lessonId: v.lessonId || null,
       };
+      const payload = toQuestionBody(body);
       return initial
-        ? api(`/api/studio/questions/${initial.id}`, { method: 'PUT', body })
-        : api(`/api/studio/courses/${course.id}/questions`, { method: 'POST', body });
+        ? api(`/api/studio/questions/${initial.id}`, { method: 'PUT', body: payload })
+        : api(`/api/studio/courses/${course.id}/questions`, { method: 'POST', body: payload });
     },
     [['studio', 'questions', course.id]],
     () => {
@@ -301,10 +304,10 @@ export function QuestionBank({ course }: { course: StudioCourseDto }) {
   const questions = useQuery({
     queryKey: listKey,
     queryFn: () =>
-      api<QuestionDto[] | { items: QuestionDto[] }>(
+      api<RawQuestionDto[] | { items: RawQuestionDto[] }>(
         `/api/studio/courses/${course.id}/questions${qs({ state, q })}`,
       ),
-    select: (d) => (Array.isArray(d) ? d : d.items),
+    select: toQuestionList,
   });
   const changeState = useApiMutation(
     ({ id, next }: { id: string; next: QuestionState }) =>
@@ -385,7 +388,8 @@ export function QuestionBank({ course }: { course: StudioCourseDto }) {
                           {NEXT_STATES[qq.state]
                             .filter(
                               (s) =>
-                                isReviewer || s === 'Reviewed' || s === 'Draft' || s === 'Retired',
+                                // Reviewed/Approved/Active need a reviewer who is not a course author.
+                                isReviewer || s === 'Draft' || s === 'Retired',
                             )
                             .map((s) => (
                               <Button

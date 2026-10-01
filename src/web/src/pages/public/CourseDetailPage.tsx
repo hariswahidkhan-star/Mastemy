@@ -340,7 +340,7 @@ export function CourseDetailView({ course }: { course: CourseDetailDto }) {
             ) : (
               <ul className="stack" style={{ listStyle: 'none', padding: 0 }}>
                 {course.instructors.map((i) => (
-                  <li key={i.id}>
+                  <li key={i.userId ?? i.id ?? i.displayName}>
                     <strong>{i.displayName}</strong>
                     {i.headline ? <span className="muted"> — {i.headline}</span> : null}
                   </li>

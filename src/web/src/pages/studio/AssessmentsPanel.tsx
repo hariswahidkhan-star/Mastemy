@@ -5,13 +5,10 @@ import { z } from 'zod';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../../api/client';
 import { useApiMutation } from '../../api/hooks';
+import { toQuestionList } from '../../api/questions';
+import type { RawQuestionDto } from '../../api/questions';
 import { ASSESSMENT_KINDS } from '../../api/types';
-import type {
-  AssessmentInput,
-  QuestionDto,
-  StudioAssessmentDto,
-  StudioCourseDto,
-} from '../../api/types';
+import type { AssessmentInput, StudioAssessmentDto, StudioCourseDto } from '../../api/types';
 import { Button } from '../../components/ui/Button';
 import { ConfirmDialog, Dialog } from '../../components/ui/Dialog';
 import { EmptyState } from '../../components/ui/EmptyState';
@@ -71,8 +68,10 @@ function AssessmentForm({
   const questions = useQuery({
     queryKey: ['studio', 'questions', course.id, { state: '', q: '' }],
     queryFn: () =>
-      api<QuestionDto[] | { items: QuestionDto[] }>(`/api/studio/courses/${course.id}/questions`),
-    select: (d) => (Array.isArray(d) ? d : d.items),
+      api<RawQuestionDto[] | { items: RawQuestionDto[] }>(
+        `/api/studio/courses/${course.id}/questions`,
+      ),
+    select: toQuestionList,
   });
   const {
     register,

@@ -140,7 +140,9 @@ export interface CategoryDto {
   courseCount: number;
 }
 export interface InstructorSummary {
-  id: Guid;
+  /** The API sends userId; id is kept for older mocks. */
+  userId?: Guid;
+  id?: Guid;
   displayName: string;
   role?: string;
   headline?: string; // assumed
@@ -153,8 +155,10 @@ export interface CourseCardDto {
   level: CourseLevel;
   language: string;
   status?: CourseStatus;
-  categorySlugs?: string[]; // assumed
-  instructors?: InstructorSummary[];
+  /** Category slugs. */
+  categories?: string[];
+  /** The catalogue sends display names; the course detail sends InstructorSummary objects. */
+  instructors?: InstructorSummary[] | string[];
   videoCount?: number;
   questionCount?: number;
   totalDurationSeconds?: number;
@@ -225,7 +229,7 @@ export interface StudioCourseDto {
   description: string;
   audience: string;
   prerequisites: string;
-  outcomes: string; // newline separated on write side
+  outcomes: string[];
   goals?: string; // assumed
   language: string;
   level: CourseLevel;
@@ -236,12 +240,14 @@ export interface StudioCourseDto {
 }
 export interface StudioModuleDto {
   id: Guid;
+  code?: string;
   title: string;
   sortOrder?: number;
   lessons: StudioLessonDto[];
 }
 export interface StudioLessonDto {
   id: Guid;
+  code?: string;
   title: string;
   objective: string;
   sortOrder?: number;
@@ -256,7 +262,7 @@ export interface CourseInput {
   description: string;
   audience: string;
   prerequisites: string;
-  outcomes: string;
+  outcomes: string[];
   goals?: string;
   language: string;
   level: CourseLevel;
@@ -370,7 +376,9 @@ export interface LearnerNoteDto {
 }
 export interface EntitlementDto {
   id: Guid;
-  courseId: Guid;
+  /** The API sends the course as a reference; the flat fields are kept for older mocks. */
+  course?: { id: Guid; slug: string; title: string };
+  courseId?: Guid;
   courseTitle?: string;
   courseSlug?: string;
   packageId?: Guid | null;
@@ -548,8 +556,5 @@ export interface EarningsEntry {
 }
 export interface EarningsDto {
   entries: EarningsEntry[];
-  totals: { gross?: number; instructor?: number; platform?: number; currency?: string } & Record<
-    string,
-    number | string | undefined
-  >;
+  totals: { currency: string; instructorAmount: number; grossSales: number; entries: number }[];
 }

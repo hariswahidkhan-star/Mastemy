@@ -110,13 +110,41 @@ export const YouTubePlayer = forwardRef<PlayerHandle, Props>(function YouTubePla
     };
   }, [videoId, lang]);
 
-  if (errorCode !== null || loadFailed) {
+  if (loadFailed && errorCode === null) {
+    // The IFrame API script could not load (blocked or offline). Fall back to the plain official
+    // embed so the free video stays available; only resume/progress tracking is lost.
+    const params = new URLSearchParams({
+      rel: '0',
+      playsinline: '1',
+      hl: lang,
+      start: String(Math.max(0, Math.floor(startRef.current ?? 0))),
+    });
+    return (
+      <div>
+        <div className="player-frame">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?${params}`}
+            title={t('player.label', { title })}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        </div>
+        <p className="small muted">
+          {t('player.basicEmbed')}{' '}
+          <a href={youtubeWatchUrl(videoId)} target="_blank" rel="noopener noreferrer">
+            {t('player.watchOnYouTube')}
+          </a>
+        </p>
+      </div>
+    );
+  }
+
+  if (errorCode !== null) {
     return (
       <div className="player-error" role="alert">
         <strong>{t('player.errorTitle')}</strong>
-        <p style={{ margin: 0 }}>
-          {loadFailed ? t('player.loadFailed') : t(playerErrorKey(errorCode ?? 0))}
-        </p>
+        <p style={{ margin: 0 }}>{t(playerErrorKey(errorCode))}</p>
         <a
           className="btn btn--primary btn--md"
           href={youtubeWatchUrl(videoId)}

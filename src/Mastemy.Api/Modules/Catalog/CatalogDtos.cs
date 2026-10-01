@@ -43,7 +43,7 @@ public record StudioCourseSummaryDto(Guid Id, string Code, string Slug, string T
 
 public record StudioLessonDto(Guid Id, string Code, string Title, string Objective, int SortOrder, bool IsPreview,
     Guid? VideoAssetId, VideoStatus? VideoStatus, string? YouTubeVideoId, int DurationSeconds,
-    string NotesMarkdown, string? PremiumNotesMarkdown, int NotesVersion);
+    string NotesMarkdown, string? PremiumNotesMarkdown, int NotesVersion, YouTube.VideoAssetDto? Video);
 public record StudioModuleDto(Guid Id, string Code, string Title, int SortOrder, IReadOnlyList<StudioLessonDto> Lessons);
 public record StudioInstructorDto(Guid UserId, string DisplayName, string Email, CourseInstructorRole Role, decimal RevenueSharePercent);
 

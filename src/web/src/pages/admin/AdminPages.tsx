@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { api, qs } from '../../api/client';
-import { useApiMutation } from '../../api/hooks';
+import { keys, useApiMutation, useChannels } from '../../api/hooks';
 import { asList } from '../../api/list';
 import { ROLES } from '../../api/types';
 import type {
@@ -16,6 +16,7 @@ import type {
   Role,
   VideoAssetDto,
   VideoStatus,
+  YouTubeChannelDto,
 } from '../../api/types';
 import { useAuth } from '../../auth/AuthProvider';
 import { Button } from '../../components/ui/Button';
@@ -715,19 +716,105 @@ const VIDEO_STATUSES: VideoStatus[] = [
   'Failed',
 ];
 
+function ChannelsSection() {
+  const { t } = useI18n();
+  const toast = useToast();
+  const channels = useChannels();
+  const [draft, setDraft] = useState({ channelId: '', title: '' });
+  const valid = /^UC[A-Za-z0-9_-]{22}$/.test(draft.channelId.trim()) && !!draft.title.trim();
+  const create = useApiMutation(
+    () =>
+      api<YouTubeChannelDto>('/api/admin/youtube/channels', {
+        method: 'POST',
+        body: {
+          channelId: draft.channelId.trim(),
+          title: draft.title.trim(),
+          mode: 'MastemyManaged',
+        },
+      }),
+    [keys.channels],
+    () => {
+      setDraft({ channelId: '', title: '' });
+      toast.success(t('channels.created'));
+    },
+  );
+  return (
+    <section className="card card--flat" style={{ marginBlockEnd: 'var(--space-5)' }}>
+      <h2>{t('channels.title')}</h2>
+      <p className="small muted">{t('channels.help')}</p>
+      {channels.data && channels.data.length > 0 ? (
+        <ul>
+          {channels.data.map((c) => (
+            <li key={c.id}>
+              {c.title} <span className="mono small">{c.channelId}</span> ·{' '}
+              {t(`channelMode.${c.mode}`)}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="muted">{t('channels.none')}</p>
+      )}
+      <form
+        className="row"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (valid) create.mutate(undefined);
+        }}
+      >
+        <Field label={t('channels.channelId')} hint={t('channels.channelIdHint')} className="grow">
+          <Input
+            value={draft.channelId}
+            onChange={(e) => setDraft({ ...draft, channelId: e.target.value })}
+          />
+        </Field>
+        <Field label={t('channels.name')} className="grow">
+          <Input
+            value={draft.title}
+            onChange={(e) => setDraft({ ...draft, title: e.target.value })}
+            maxLength={200}
+          />
+        </Field>
+        <Button type="submit" loading={create.isPending} disabled={!valid}>
+          {t('channels.add')}
+        </Button>
+      </form>
+      {create.isError ? <Notice tone="danger">{errorMessage(create.error, t)}</Notice> : null}
+    </section>
+  );
+}
+
 export function VideosPage() {
   const { t, fmtDate } = useI18n();
+  const { hasRole } = useAuth();
+  const toast = useToast();
   usePageMeta(t('admin.section.videos'), undefined, { noindex: true });
   const [status, setStatus] = useState('');
+  const [rejecting, setRejecting] = useState<{ video: VideoAssetDto; reason: string } | null>(null);
   const list = useQuery({
     queryKey: ['admin', 'videos', status],
     queryFn: () =>
       api<VideoAssetDto[] | Paged<VideoAssetDto>>(`/api/admin/youtube/videos${qs({ status })}`),
     select: asList,
   });
+  const confirm = useApiMutation(
+    (p: { id: string; approve: boolean; reason?: string }) =>
+      api<VideoAssetDto>(`/api/admin/youtube/videos/${p.id}/confirm`, {
+        method: 'POST',
+        body: { approve: p.approve, reason: p.reason },
+      }),
+    [['admin', 'videos']],
+    (v) => {
+      setRejecting(null);
+      toast.success(t('video.linked', { status: t(`status.${v.status}`) }));
+    },
+  );
   return (
     <>
       <PageHeader title={t('admin.section.videos')} subtitle={t('videos.subtitle')} />
+      {hasRole('Admin', 'SuperAdmin') ? <ChannelsSection /> : null}
+      {confirm.isError && !rejecting ? (
+        <Notice tone="danger">{errorMessage(confirm.error, t)}</Notice>
+      ) : null}
       <Field label={t('dashboard.status')}>
         <Select
           value={status}
@@ -750,6 +837,7 @@ export function VideosPage() {
                     <th scope="col">{t('dashboard.status')}</th>
                     <th scope="col">{t('video.statusReason')}</th>
                     <th scope="col">{t('video.lastChecked')}</th>
+                    <th scope="col">{t('common.actions')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -773,6 +861,27 @@ export function VideosPage() {
                       </td>
                       <td className="small">{v.statusReason ?? '—'}</td>
                       <td>{v.lastCheckedAt ? fmtDate(v.lastCheckedAt) : '—'}</td>
+                      <td>
+                        {v.status === 'InContentReview' ? (
+                          <div className="row">
+                            <Button
+                              size="sm"
+                              loading={confirm.isPending}
+                              onClick={() => confirm.mutate({ id: v.id, approve: true })}
+                              aria-label={t('videos.confirmFor', { title: v.title })}
+                            >
+                              {t('videos.confirm')}
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="secondary"
+                              onClick={() => setRejecting({ video: v, reason: '' })}
+                            >
+                              {t('applications.reject')}
+                            </Button>
+                          </div>
+                        ) : null}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -781,6 +890,37 @@ export function VideosPage() {
           )
         }
       </QueryState>
+      <ConfirmDialog
+        open={!!rejecting}
+        danger
+        title={t('videos.rejectTitle')}
+        body={
+          rejecting ? (
+            <>
+              <Field label={t('review.notes')} hint={t('review.notesRequired')}>
+                <Textarea
+                  value={rejecting.reason}
+                  onChange={(e) => setRejecting({ ...rejecting, reason: e.target.value })}
+                />
+              </Field>
+              {confirm.isError ? (
+                <Notice tone="danger">{errorMessage(confirm.error, t)}</Notice>
+              ) : null}
+            </>
+          ) : null
+        }
+        confirmLabel={t('review.recordDecision')}
+        loading={confirm.isPending}
+        onCancel={() => setRejecting(null)}
+        onConfirm={() =>
+          rejecting?.reason.trim() &&
+          confirm.mutate({
+            id: rejecting.video.id,
+            approve: false,
+            reason: rejecting.reason.trim(),
+          })
+        }
+      />
     </>
   );
 }

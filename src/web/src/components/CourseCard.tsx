@@ -31,7 +31,7 @@ export function CourseCard({ course, to }: { course: CourseCardDto; to?: string 
       </div>
       {course.instructors && course.instructors.length > 0 ? (
         <p className="small muted" style={{ margin: 0 }}>
-          {course.instructors.map((i) => i.displayName).join(', ')}
+          {course.instructors.map((i) => (typeof i === 'string' ? i : i.displayName)).join(', ')}
         </p>
       ) : null}
       {course.ratingCount && course.ratingAverage ? (

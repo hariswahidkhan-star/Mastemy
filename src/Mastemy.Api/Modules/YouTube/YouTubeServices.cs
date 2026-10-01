@@ -123,7 +123,9 @@ public class VideoLinkService(AppDbContext db, ICurrentUser me, AccessService ac
                     status = VideoStatus.Restricted; reason = "YouTube refused to embed this video (private or embedding disabled)."; embeddable = false; break;
                 default:
                     if (string.IsNullOrWhiteSpace(title) || duration <= 0)
-                        throw AppException.Bad("Without a YouTube Data API key, enter the lesson title and duration manually.", "manual_metadata_required");
+                        throw AppException.Bad(oe.Outcome == OEmbedOutcome.Unavailable
+                            ? "YouTube could not be reached to read this video's details (no YouTube Data API key is configured). Enter the title and duration manually; a reviewer will confirm the video before publication."
+                            : "Without a YouTube Data API key, enter the lesson title and duration manually.", "manual_metadata_required");
                     status = VideoStatus.InContentReview; reason = ManualReviewReason;
                     if (oe.Outcome == OEmbedOutcome.Found) embeddable = true;
                     break;

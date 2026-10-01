@@ -27,10 +27,10 @@ public record SubmitApplicationRequest(string? Headline, string? Bio, string? Ex
 public record DecisionRequest(string? Decision, string? Notes);
 public record ApplicationDto(Guid Id, Guid UserId, string Headline, string Bio, string ExpertiseEvidence, string TestVideoUrl,
     string? TestVideoId, bool AgreementAccepted, string AgreementVersion, ApplicationStatus Status, string? ReviewerNotes,
-    Guid? ReviewedBy, DateTime CreatedAt, DateTime? ReviewedAt)
+    Guid? ReviewedBy, DateTime CreatedAt, DateTime? ReviewedAt, string? ApplicantName = null, string? ApplicantEmail = null)
 {
-    public static ApplicationDto From(InstructorApplication a) => new(a.Id, a.UserId, a.Headline, a.Bio, a.ExpertiseEvidence,
-        a.TestVideoUrl, a.TestVideoId, a.AgreementAccepted, a.AgreementVersion, a.Status, a.ReviewerNotes, a.ReviewedBy,
-        a.CreatedAt, a.ReviewedAt);
+    public static ApplicationDto From(InstructorApplication a, User? applicant = null) => new(a.Id, a.UserId, a.Headline, a.Bio,
+        a.ExpertiseEvidence, a.TestVideoUrl, a.TestVideoId, a.AgreementAccepted, a.AgreementVersion, a.Status, a.ReviewerNotes,
+        a.ReviewedBy, a.CreatedAt, a.ReviewedAt, applicant?.DisplayName, applicant?.Email);
 }
 public record OnboardingStatusDto(bool RegistrationOpen, bool InviteOnly, bool Paused, ApplicationDto? MyApplication);

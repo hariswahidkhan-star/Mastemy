@@ -60,17 +60,58 @@ export function useCourse(slug: string) {
   });
 }
 
+interface ServerProgress {
+  positionSeconds: number;
+  completed: boolean;
+}
+type ServerLearnCourse = Omit<LearnCourseDto, 'id' | 'modules'> & {
+  courseId: string;
+  modules: {
+    id: string;
+    title: string;
+    lessons: (LearnCourseDto['modules'][number]['lessons'][number] & {
+      progress?: ServerProgress | null;
+    })[];
+  }[];
+};
+type ServerLessonView = LessonViewDto & { progress?: ServerProgress | null };
+
+/** The API nests per-learner progress; the UI reads it flattened onto each lesson. */
+export function toLearnCourse(d: ServerLearnCourse): LearnCourseDto {
+  return {
+    ...d,
+    id: d.courseId ?? (d as unknown as LearnCourseDto).id,
+    modules: d.modules.map((m) => ({
+      ...m,
+      lessons: m.lessons.map(({ progress, ...l }) => ({
+        ...l,
+        completed: progress?.completed ?? l.completed,
+        positionSeconds: progress?.positionSeconds ?? l.positionSeconds,
+      })),
+    })),
+  };
+}
+
+export function toLessonView({ progress, ...v }: ServerLessonView): LessonViewDto {
+  return {
+    ...v,
+    lesson: { ...v.lesson, positionSeconds: progress?.positionSeconds ?? v.lesson.positionSeconds },
+  };
+}
+
 export function useLearnCourse(slug: string) {
   return useQuery({
     queryKey: keys.learnCourse(slug),
-    queryFn: () => api<LearnCourseDto>(`/api/learn/courses/${encodeURIComponent(slug)}`),
+    queryFn: () => api<ServerLearnCourse>(`/api/learn/courses/${encodeURIComponent(slug)}`),
+    select: toLearnCourse,
   });
 }
 
 export function useLesson(id: string | undefined) {
   return useQuery({
     queryKey: keys.lesson(id ?? ''),
-    queryFn: () => api<LessonViewDto>(`/api/learn/lessons/${id}`),
+    queryFn: () => api<ServerLessonView>(`/api/learn/lessons/${id}`),
+    select: toLessonView,
     enabled: !!id,
   });
 }

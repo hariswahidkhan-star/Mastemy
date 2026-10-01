@@ -1,22 +1,143 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useSearchParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import { api, downloadFile } from '../../api/client';
-import { keys, useDashboard } from '../../api/hooks';
+import { keys, useApiMutation, useDashboard } from '../../api/hooks';
 import type { LearnerNoteDto } from '../../api/types';
 import { ButtonLink, Button } from '../../components/ui/Button';
+import { ConfirmDialog } from '../../components/ui/Dialog';
 import { EmptyState } from '../../components/ui/EmptyState';
 import { errorMessage } from '../../components/ui/ErrorState';
-import { Field, Input } from '../../components/ui/Field';
-import { Badge, PageHeader, QueryState, StatusBadge } from '../../components/ui/misc';
+import { Field, Input, Textarea } from '../../components/ui/Field';
+import { Badge, Notice, PageHeader, QueryState, StatusBadge } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
 
+interface OrderDto {
+  id: string;
+  status: string;
+  total: number;
+  currency: string;
+  createdAt: string;
+  paidAt: string | null;
+  items: { packageTitle: string; courseTitle: string }[];
+  refundStatus: string | null;
+  refundEligible: boolean;
+}
+
+function OrdersSection() {
+  const { t, fmtDate, fmtMoney } = useI18n();
+  const toast = useToast();
+  const orders = useQuery({
+    queryKey: ['me', 'orders'],
+    queryFn: () => api<OrderDto[]>('/api/me/orders'),
+  });
+  const [refunding, setRefunding] = useState<{ order: OrderDto; reason: string } | null>(null);
+  const request = useApiMutation(
+    (p: { id: string; reason: string }) =>
+      api(`/api/me/orders/${p.id}/refund-request`, { method: 'POST', body: { reason: p.reason } }),
+    [['me', 'orders']],
+    () => {
+      setRefunding(null);
+      toast.success(t('orders.refundRequested'));
+    },
+  );
+  return (
+    <section className="card">
+      <h2>{t('orders.title')}</h2>
+      <QueryState query={orders}>
+        {(list) =>
+          list.length === 0 ? (
+            <p className="muted">{t('orders.none')}</p>
+          ) : (
+            <div className="table-wrap">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th scope="col">{t('dashboard.date')}</th>
+                    <th scope="col">{t('orders.items')}</th>
+                    <th scope="col">{t('orders.total')}</th>
+                    <th scope="col">{t('dashboard.status')}</th>
+                    <th scope="col">{t('common.actions')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {list.map((o) => (
+                    <tr key={o.id}>
+                      <td>{fmtDate(o.paidAt ?? o.createdAt)}</td>
+                      <td>
+                        {o.items.map((i) => (
+                          <div key={i.packageTitle + i.courseTitle}>
+                            {i.packageTitle} <span className="small muted">· {i.courseTitle}</span>
+                          </div>
+                        ))}
+                      </td>
+                      <td>{fmtMoney(o.total, o.currency)}</td>
+                      <td>
+                        <StatusBadge status={o.status} />{' '}
+                        {o.refundStatus ? (
+                          <Badge>
+                            {t('orders.refund', { status: t(`status.${o.refundStatus}`) })}
+                          </Badge>
+                        ) : null}
+                      </td>
+                      <td>
+                        {o.refundEligible ? (
+                          <Button
+                            size="sm"
+                            variant="secondary"
+                            onClick={() => setRefunding({ order: o, reason: '' })}
+                          >
+                            {t('orders.requestRefund')}
+                          </Button>
+                        ) : null}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )
+        }
+      </QueryState>
+      <ConfirmDialog
+        open={!!refunding}
+        title={t('orders.requestRefund')}
+        body={
+          refunding ? (
+            <>
+              <p className="small">{t('course.defaultRefundTerms')}</p>
+              <Field label={t('orders.reason')} required>
+                <Textarea
+                  value={refunding.reason}
+                  onChange={(e) => setRefunding({ ...refunding, reason: e.target.value })}
+                />
+              </Field>
+              {request.isError ? (
+                <Notice tone="danger">{errorMessage(request.error, t)}</Notice>
+              ) : null}
+            </>
+          ) : null
+        }
+        confirmLabel={t('orders.submitRefund')}
+        loading={request.isPending}
+        onCancel={() => setRefunding(null)}
+        onConfirm={() =>
+          refunding?.reason.trim() &&
+          request.mutate({ id: refunding.order.id, reason: refunding.reason.trim() })
+        }
+      />
+    </section>
+  );
+}
+
 export function DashboardPage() {
   const { t, fmtDate } = useI18n();
   const dash = useDashboard();
+  const [params] = useSearchParams();
+  const checkout = params.get('checkout');
   usePageMeta(t('dashboard.title'), undefined, { noindex: true });
   return (
     <div className="container page">
@@ -28,6 +149,13 @@ export function DashboardPage() {
           </ButtonLink>
         }
       />
+      {checkout === 'success' ? (
+        <Notice tone="success" title={t('orders.checkoutSuccessTitle')}>
+          {t('orders.checkoutSuccess')}
+        </Notice>
+      ) : checkout === 'cancel' ? (
+        <Notice tone="info">{t('orders.checkoutCancelled')}</Notice>
+      ) : null}
       <QueryState query={dash}>
         {(d) => (
           <div className="stack">
@@ -84,14 +212,19 @@ export function DashboardPage() {
                     {d.entitlements.map((en) => (
                       <li key={en.id}>
                         <strong>
-                          {en.packageTitle ?? en.courseTitle ?? t('dashboard.package')}
+                          {en.packageTitle ??
+                            en.course?.title ??
+                            en.courseTitle ??
+                            t('dashboard.package')}
                         </strong>{' '}
                         <Badge tone={en.source === 'Purchase' ? 'accent' : 'neutral'}>
                           {t(`entitlement.${en.source}`)}
                         </Badge>
                         <div className="small muted">
-                          {en.courseSlug ? (
-                            <Link to={`/courses/${en.courseSlug}`}>{en.courseTitle}</Link>
+                          {(en.course?.slug ?? en.courseSlug) ? (
+                            <Link to={`/courses/${en.course?.slug ?? en.courseSlug}`}>
+                              {en.course?.title ?? en.courseTitle}
+                            </Link>
                           ) : null}{' '}
                           {en.endsAt
                             ? t('dashboard.until', { date: fmtDate(en.endsAt) })
@@ -127,6 +260,7 @@ export function DashboardPage() {
                 )}
               </section>
             </div>
+            <OrdersSection />
             <section className="card">
               <h2>{t('dashboard.attempts')}</h2>
               {d.recentAttempts.length === 0 ? (

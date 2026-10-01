@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { api, downloadFile } from '../../api/client';
 import { useApiMutation } from '../../api/hooks';
-import type { ImportPreview } from '../../api/types';
+import type { ImportPreview, StudioCourseDto } from '../../api/types';
 import { Button } from '../../components/ui/Button';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Field, Input, Select } from '../../components/ui/Field';
@@ -88,7 +88,7 @@ export function ImportPreviewView({
   );
 }
 
-export function ImportPanel({ courseId }: { courseId: string }) {
+export function ImportPanel({ courseId, course }: { courseId: string; course?: StudioCourseDto }) {
   const { t } = useI18n();
   const toast = useToast();
   const fileRef = useRef<HTMLInputElement>(null);
@@ -122,6 +122,25 @@ export function ImportPanel({ courseId }: { courseId: string }) {
   return (
     <div className="stack">
       <p>{t('import.help')}</p>
+      {course?.code ? (
+        <Notice tone="info" title={t('import.codesTitle')}>
+          <p style={{ margin: 0 }}>
+            {t('import.courseCode')}: <span className="mono">{course.code}</span>
+          </p>
+          {course.modules.length > 0 ? (
+            <ul className="small" style={{ marginBlockEnd: 0 }}>
+              {course.modules.map((m) => (
+                <li key={m.id}>
+                  <span className="mono">{m.code}</span> {m.title}
+                  {m.lessons.length > 0
+                    ? ` — ${m.lessons.map((l) => `${l.code ?? ''} ${l.title}`.trim()).join('; ')}`
+                    : ''}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </Notice>
+      ) : null}
       <div className="row">
         <Button
           variant="secondary"

@@ -29,7 +29,7 @@ function DetailsForm({ course }: { course: StudioCourseDto }) {
   const { t, lang } = useI18n();
   const toast = useToast();
   const categories = useCategories();
-  const schema = useMemo(() => courseSchema(t), [t]);
+  const schema = useMemo(() => courseSchema(t, false), [t]);
   const {
     register,
     handleSubmit,
@@ -38,7 +38,7 @@ function DetailsForm({ course }: { course: StudioCourseDto }) {
   } = useForm<CourseFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
-      goals: course.goals ?? '',
+      goals: '',
       audience: course.audience,
       categoryId: course.categoryIds?.[0] ? String(course.categoryIds[0]) : '',
       level: course.level,
@@ -47,7 +47,7 @@ function DetailsForm({ course }: { course: StudioCourseDto }) {
       subtitle: course.subtitle ?? '',
       description: course.description,
       prerequisites: course.prerequisites,
-      outcomes: course.outcomes,
+      outcomes: Array.isArray(course.outcomes) ? course.outcomes.join('\n') : course.outcomes,
     },
   });
   const save = useApiMutation(
@@ -93,9 +93,6 @@ function DetailsForm({ course }: { course: StudioCourseDto }) {
                 { value: 'ar', label: t('language.ar') },
               ]}
             />
-          </Field>
-          <Field label={t('wizard.goals')} error={errors.goals?.message} required>
-            <Textarea {...register('goals')} />
           </Field>
         </div>
         <div>
@@ -286,7 +283,7 @@ export function CourseEditorPage() {
               {
                 id: 'import',
                 label: t('studio.tab.import'),
-                content: <ImportPanel courseId={c.id} />,
+                content: <ImportPanel courseId={c.id} course={c} />,
               },
               {
                 id: 'assessments',

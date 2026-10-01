@@ -188,10 +188,14 @@ export function CourseWizardPage() {
               {t('common.back')}
             </Button>
           ) : null}
+          {/* Distinct keys: reusing the same <button> node would let the Continue click that reaches the
+              last step trigger the form's submit once React has turned it into the submit button. */}
           {step < STEPS.length - 1 ? (
-            <Button onClick={() => void next()}>{t('common.continue')}</Button>
+            <Button key="continue" onClick={() => void next()}>
+              {t('common.continue')}
+            </Button>
           ) : (
-            <Button type="submit" loading={create.isPending}>
+            <Button key="create" type="submit" loading={create.isPending}>
               {t('wizard.create')}
             </Button>
           )}

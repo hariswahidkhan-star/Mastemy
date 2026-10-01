@@ -18,6 +18,32 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { AttemptPlayer } from './AttemptPlayer';
 
+/** Server review items carry per-option rationales inside `options`. */
+type ServerReviewItem = ReviewItem & { options?: { id: string; rationale: string }[] };
+type ServerResult = Omit<AttemptResult, 'review'> & { review?: ServerReviewItem[] | null };
+
+function toResult(r: ServerResult): AttemptResult {
+  return {
+    ...r,
+    review: r.review?.map((i) => ({
+      ...i,
+      rationales:
+        i.rationales ??
+        (i.options ?? [])
+          .filter((o) => o.rationale)
+          .map((o) => ({ optionId: o.id, text: o.rationale })),
+    })),
+  };
+}
+
+/** GET /api/attempts/{id} returns `{ attempt, result }`; the page works with one flattened view. */
+function toAttemptView(
+  d: AttemptView | { attempt: AttemptView; result: ServerResult | null },
+): AttemptView {
+  if ('attempt' in d) return { ...d.attempt, result: d.result ? toResult(d.result) : null };
+  return d;
+}
+
 function rationaleFor(review: ReviewItem, optionId: string): string | undefined {
   const r = review.rationales;
   if (!r) return undefined;
@@ -179,7 +205,10 @@ export function AttemptPage() {
   usePageMeta(t('attempt.title'), undefined, { noindex: true });
   const attempt = useQuery({
     queryKey: ['attempt', id],
-    queryFn: () => api<AttemptView>(`/api/attempts/${id}`),
+    queryFn: () =>
+      api<AttemptView | { attempt: AttemptView; result: ServerResult | null }>(
+        `/api/attempts/${id}`,
+      ).then(toAttemptView),
     staleTime: Infinity,
     refetchOnWindowFocus: false,
   });
@@ -206,8 +235,8 @@ export function AttemptPage() {
     setSubmitting(true);
     try {
       await chain.current;
-      const res = await api<AttemptResult>(`/api/attempts/${id}/submit`, { method: 'POST' });
-      setResult(res);
+      const res = await api<ServerResult>(`/api/attempts/${id}/submit`, { method: 'POST' });
+      setResult(toResult(res));
       void qc.invalidateQueries({ queryKey: keys.dashboard });
       window.scrollTo({ top: 0 });
     } catch (e) {
@@ -219,7 +248,17 @@ export function AttemptPage() {
 
   const onCheck = useCallback(
     (itemId: string) =>
-      api<PracticeCheck>(`/api/attempts/${id}/items/${itemId}/check`, { method: 'POST' }),
+      api<
+        Omit<PracticeCheck, 'rationales'> & {
+          rationales: PracticeCheck['rationales'] | { optionId: string; rationale: string }[];
+        }
+      >(`/api/attempts/${id}/items/${itemId}/check`, { method: 'POST' }).then((c) => ({
+        ...c,
+        // The API sends [{ optionId, rationale }]; the player looks rationales up by option id.
+        rationales: Array.isArray(c.rationales)
+          ? Object.fromEntries(c.rationales.map((r) => [r.optionId, r.rationale]))
+          : c.rationales,
+      })),
     [id],
   );
 

@@ -7,7 +7,12 @@ export function errorMessage(error: unknown, t: TFunction): string {
   if (error instanceof ApiError) {
     if (error.status === 0) return t('errors.network');
     if (error.status === 401) return t('errors.unauthorized');
-    if (error.status === 403) return t('errors.forbidden');
+    // Business-rule refusals (problem type "forbidden") carry a specific reason worth showing,
+    // e.g. "Approval must be given by a different person than the reviewer."
+    if (error.status === 403)
+      return error.is('forbidden') && error.problem?.title
+        ? error.problem.title
+        : t('errors.forbidden');
     if (error.status === 404) return t('errors.notFound');
     if (error.status === 429) return t('errors.rateLimited');
     if (error.status >= 500 && !error.problem) return t('errors.server');

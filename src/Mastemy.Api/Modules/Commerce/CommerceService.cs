@@ -10,7 +10,7 @@ namespace Mastemy.Api.Modules.Commerce;
 // ---------- DTOs ----------
 public record PackageInput(string Title, string Contents, decimal Price, string Currency, int AccessDays);
 public record PackageDto(Guid Id, Guid CourseId, string Title, string Contents, decimal Price, string Currency, int AccessDays,
-    bool IsActive, string ApprovalStatus, DateTime CreatedAt);
+    bool IsActive, string ApprovalStatus, DateTime CreatedAt, string? CourseTitle = null);
 public record DecisionInput(string Decision, string? Notes);
 public record CheckoutInput(Guid PackageId, string IdempotencyKey);
 public record CheckoutResponse(Guid OrderId, string CheckoutUrl);
@@ -21,7 +21,7 @@ public record RefundRequestInput(string Reason);
 public record RefundDto(Guid Id, Guid OrderId, Guid UserId, decimal Amount, string Currency, string Reason, string Status,
     string? ProviderRefundId, DateTime CreatedAt);
 public record LedgerEntryDto(Guid Id, Guid OrderId, Guid CourseId, string Kind, decimal GrossAmount, decimal InstructorAmount,
-    decimal PlatformAmount, string Currency, Guid? PayoutBatchId, DateTime CreatedAt);
+    decimal PlatformAmount, string Currency, Guid? PayoutBatchId, DateTime CreatedAt, string? CourseTitle = null);
 public record CurrencyTotal(string Currency, decimal InstructorAmount, decimal GrossSales, int Entries);
 public record EarningsDto(List<LedgerEntryDto> Entries, List<CurrencyTotal> Totals);
 public record PayoutLine(Guid InstructorId, string Currency, decimal Amount, int Entries);
@@ -46,8 +46,8 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
 
     public static bool MentionsVideoAccess(string text) => VideoAccessPattern.IsMatch(text);
 
-    private static PackageDto ToDto(LearningPackage p) => new(p.Id, p.CourseId, p.Title, p.Contents, p.Price, p.Currency, p.AccessDays,
-        p.IsActive, p.ApprovalStatus, p.CreatedAt);
+    private static PackageDto ToDto(LearningPackage p, string? courseTitle = null) => new(p.Id, p.CourseId, p.Title, p.Contents, p.Price,
+        p.Currency, p.AccessDays, p.IsActive, p.ApprovalStatus, p.CreatedAt, courseTitle);
 
     public async Task<PackageDto> ProposePackage(Guid courseId, PackageInput input)
     {
@@ -81,14 +81,17 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         if (!await db.Courses.AnyAsync(c => c.Id == courseId)) throw AppException.NotFound("Course");
         await access.RequireCourseAuthorOrStaff(courseId);
         var list = await db.Packages.AsNoTracking().Where(p => p.CourseId == courseId).OrderByDescending(p => p.CreatedAt).ToListAsync();
-        return list.Select(ToDto).ToList();
+        return list.Select(p => ToDto(p)).ToList();
     }
 
     public async Task<List<PackageDto>> AdminPackages(string? status)
     {
         var q = db.Packages.AsNoTracking();
         if (!string.IsNullOrWhiteSpace(status)) q = q.Where(p => p.ApprovalStatus == status);
-        return (await q.OrderBy(p => p.CreatedAt).Take(500).ToListAsync()).Select(ToDto).ToList();
+        var list = await q.OrderBy(p => p.CreatedAt).Take(500).ToListAsync();
+        var courseIds = list.Select(p => p.CourseId).Distinct().ToList();
+        var titles = await db.Courses.AsNoTracking().Where(c => courseIds.Contains(c.Id)).ToDictionaryAsync(c => c.Id, c => c.Title);
+        return list.Select(p => ToDto(p, titles.GetValueOrDefault(p.CourseId))).ToList();
     }
 
     public async Task<PackageDto> DecidePackage(Guid id, DecisionInput input)
@@ -434,8 +437,8 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
 
     // ===================== Earnings & payouts =====================
 
-    private static LedgerEntryDto ToDto(CommissionLedgerEntry e) => new(e.Id, e.OrderId, e.CourseId, e.Kind, e.GrossAmount, e.InstructorAmount,
-        e.PlatformAmount, e.Currency, e.PayoutBatchId, e.CreatedAt);
+    private static LedgerEntryDto ToDto(CommissionLedgerEntry e, string? courseTitle = null) => new(e.Id, e.OrderId, e.CourseId, e.Kind,
+        e.GrossAmount, e.InstructorAmount, e.PlatformAmount, e.Currency, e.PayoutBatchId, e.CreatedAt, courseTitle);
 
     public async Task<EarningsDto> MyEarnings()
     {
@@ -443,7 +446,9 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         var entries = await db.CommissionLedger.AsNoTracking().Where(e => e.InstructorId == uid).OrderByDescending(e => e.CreatedAt).ToListAsync();
         var totals = entries.GroupBy(e => e.Currency).OrderBy(g => g.Key)
             .Select(g => new CurrencyTotal(g.Key, g.Sum(e => e.InstructorAmount), g.Where(e => e.Kind == "Sale").Sum(e => e.GrossAmount), g.Count())).ToList();
-        return new EarningsDto(entries.Select(ToDto).ToList(), totals);
+        var courseIds = entries.Select(e => e.CourseId).Distinct().ToList();
+        var titles = await db.Courses.AsNoTracking().Where(c => courseIds.Contains(c.Id)).ToDictionaryAsync(c => c.Id, c => c.Title);
+        return new EarningsDto(entries.Select(e => ToDto(e, titles.GetValueOrDefault(e.CourseId))).ToList(), totals);
     }
 
     private async Task<PayoutBatchDto> BatchDto(PayoutBatch b)

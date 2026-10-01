@@ -463,7 +463,7 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
             Columns,
             new string?[]
             {
-                "SAMPLE-0001", "SingleChoice", "en", "COURSE-CODE", "M01", "L01", "SKILL.CODE", "",
+                "SAMPLE-0001", "SingleChoice", "en", "COURSE-CODE", "M1", "M1.L1", "SKILL.CODE", "",
                 "Which statement best describes a large language model?",
                 "A database that retrieves stored answers", "A model that predicts the next text based on learned patterns", "", "", "", "",
                 "B", "LLMs generate text probabilistically and do not guarantee correctness.",

@@ -13,7 +13,8 @@ public record CurriculumLessonDto(Guid Id, string Code, string Title, int SortOr
 public record CurriculumModuleDto(Guid Id, string Code, string Title, int SortOrder, List<CurriculumLessonDto> Lessons);
 public record CurriculumDto(Guid CourseId, string Slug, string Title, string Subtitle, string Language, string Level,
     bool Enrolled, bool HasPremiumAccess, int ProgressPercent, Guid? LastLessonId, List<CurriculumModuleDto> Modules);
-public record LessonAssessmentDto(Guid Id, string Title, string Kind, string Mode, bool IsPremium);
+public record LessonAssessmentDto(Guid Id, string Title, string Kind, string Mode, bool IsPremium, int QuestionCount, decimal PassPercent,
+    int? TimeLimitMinutes, int? MaxAttempts, string MultiSelectScoring, bool CountsTowardCertificate, Guid? LessonId, Guid? ModuleId);
 public record LessonInfoDto(Guid Id, Guid ModuleId, Guid CourseId, string CourseSlug, string CourseTitle, string Code, string Title,
     string Objective, int SortOrder, bool IsPreview, int DurationSeconds, int NotesVersion, Guid? PrevLessonId, Guid? NextLessonId);
 public record LessonViewDto(LessonInfoDto Lesson, string? YoutubeVideoId, string NotesMarkdown, string? PremiumNotesMarkdown,
@@ -93,8 +94,12 @@ public class LearningService(AppDbContext db, ICurrentUser me, AccessService acc
         var idx = ordered.IndexOf(l.Id);
         var premium = await access.HasPremiumAccess(c.Id);
         var hasPremiumNotes = !string.IsNullOrWhiteSpace(l.PremiumNotesMarkdown);
-        var assessments = await db.Assessments.AsNoTracking().Where(a => a.LessonId == l.Id).OrderBy(a => a.Title)
-            .Select(a => new { a.Id, a.Title, a.Kind, a.Mode, a.IsPremium }).ToListAsync();
+        // Lesson practice plus the module's tests and course-wide exams, so every assessment is reachable from the lesson page.
+        var assessments = await db.Assessments.AsNoTracking()
+            .Where(a => a.CourseId == c.Id && (a.LessonId == l.Id || (a.LessonId == null && (a.ModuleId == l.ModuleId || a.ModuleId == null))))
+            .OrderBy(a => a.LessonId == null).ThenBy(a => a.ModuleId == null).ThenBy(a => a.Title)
+            .Select(a => new { a.Id, a.Title, a.Kind, a.Mode, a.IsPremium, a.QuestionCount, a.PassPercent, a.TimeLimitMinutes, a.MaxAttempts,
+                a.MultiSelectScoring, a.CountsTowardCertificate, a.LessonId, a.ModuleId }).ToListAsync();
         LessonProgressDto? prog = null;
         if (me.Id is { } uid)
         {
@@ -106,7 +111,9 @@ public class LearningService(AppDbContext db, ICurrentUser me, AccessService acc
             idx > 0 ? ordered[idx - 1] : null, idx >= 0 && idx < ordered.Count - 1 ? ordered[idx + 1] : null);
         return new LessonViewDto(info, PlayableVideoId(l.VideoAsset), l.NotesMarkdown,
             premium ? l.PremiumNotesMarkdown : null, hasPremiumNotes && !premium, hasPremiumNotes,
-            assessments.Select(a => new LessonAssessmentDto(a.Id, a.Title, a.Kind.ToString(), a.Mode.ToString(), a.IsPremium)).ToList(), prog);
+            assessments.Select(a => new LessonAssessmentDto(a.Id, a.Title, a.Kind.ToString(), a.Mode.ToString(), a.IsPremium, a.QuestionCount,
+                a.PassPercent, a.TimeLimitMinutes, a.MaxAttempts, a.MultiSelectScoring.ToString(), a.CountsTowardCertificate, a.LessonId,
+                a.ModuleId)).ToList(), prog);
     }
 
     public async Task<LessonProgressDto> UpsertProgress(Guid lessonId, ProgressInput input)

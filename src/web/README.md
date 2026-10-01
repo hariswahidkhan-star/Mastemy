@@ -45,7 +45,9 @@ src/
   "All video lessons are free to watch on YouTube; paid packages cover Mastemy study services only".
 - The player is the official IFrame Player API (script loaded once, `youtube-nocookie.com` host), with
   nothing drawn over it. Player error codes 2/5/100/101/150/153 show an explanation and a
-  "Watch on YouTube" link. Progress is saved best-effort every 15 s and on pause/end.
+  "Watch on YouTube" link. If the API script cannot load (blocked/offline), a plain official embed
+  iframe is shown instead so the video stays available (only progress saving is lost). Progress is
+  saved best-effort every 15 s and on pause/end.
 - Assessment attempts render only what `AttemptView` contains (no correctness); the countdown uses the
   `serverNow` offset; results come from `AttemptResult`.
 - Integrated YouTube upload: the "Upload via Mastemy" tab tries `POST /api/youtube/uploads`; a 403
@@ -54,24 +56,37 @@ src/
   (SHA-256 of first 1 MiB + last 1 MiB + size).
 - Every button calls a real endpoint from the contract; features without an endpoint are not shown.
 
-## Contract assumptions
+## API contract notes (verified end to end)
 
-The contract does not spell out every DTO field. Where the client needed one it is typed as optional
-in `src/api/types.ts` (marked "assumed") and the UI degrades gracefully when it is absent:
+The client was first built against `docs/api-contract.md` with mocks. It has since been run against the
+real API in a browser (`e2e/`, Playwright) and the mismatches were fixed. Where the server shape differs
+from what a screen wants, a small adapter in `src/api` converts it, so pages keep one view model:
 
-- List endpoints may return either a bare array or `{ items, total, page, pageSize }`.
-- `CourseDetailDto.credentialType` and `refundTerms` (fallback texts are shown when missing).
-- `LessonViewDto.lesson.positionSeconds` / `LearnCourseDto` lesson `positionSeconds`, `completed` for resume.
-- `AttemptView.mode`, `assessmentTitle` and `result` (present on `GET /api/attempts/{id}` once submitted).
-- `PracticeCheck.rationales` keyed by option id; review rationales as a map or `[{optionId,text}]`.
-- `GET /api/review/courses/{id}/comments` is readable by the course author (for the studio review tab).
-- `GET /api/admin/packages?status=Proposed` lists package proposals (the contract only lists the
-  decision endpoint). Refund/package decisions are posted as `{ decision: "Approve" | "Reject" }`.
-- `PUT /api/studio/lessons/{id}` accepts `{ title, objective, isPreview }`; studio course GET returns
-  modules → lessons including `notesMarkdown`, `premiumNotesMarkdown` and `video` (`VideoAssetDto`).
-- Chunk `PUT` may return `{ status, confirmedOffset }`; otherwise the client advances by the chunk size
-  and re-reads `GET /api/youtube/uploads/{id}` after a failure.
-- Problem `type` values are matched on their suffix (e.g. `.../uploads_disabled`, `payments_not_configured`).
+- `api/hooks.ts` — `toLearnCourse` / `toLessonView`: the API returns `courseId` and nests per-learner
+  `progress { positionSeconds, completed }`; the learn page reads them flattened onto lessons.
+- `api/questions.ts` — questions come as metadata + `version` (+ optional staged `pending` edit) and take
+  `tags` as a list; the question form edits a flat question with comma-separated tags.
+- `pages/assessment/AttemptPage.tsx` — `GET /api/attempts/{id}` returns `{ attempt, result }`; review
+  rationales arrive inside each item's `options`, practice-check rationales as `[{ optionId, rationale }]`.
+- Course `outcomes` are a string list on read and write (one per line in the form). The wizard's
+  "goals" step is guidance only; the API does not store it, so the editor does not show it.
+- `GET /api/studio/courses/{id}` lessons include `video` (`VideoAssetDto`) and `code`; the import panel
+  shows the course/module/lesson codes the CSV needs (`CourseCode`, `ModuleCode` `M1`, `LessonCode` `M1.L1`).
+- Catalogue cards list instructors as display names; the course page sends `{ userId, displayName, role }`.
+- Earnings `totals` is one entry per currency `{ currency, instructorAmount, grossSales, entries }`;
+  ledger rows and admin package proposals include `courseTitle`.
+- Lesson pages list lesson practice plus the module's tests and course-wide exams, each with its scoring
+  summary (`questionCount`, `passPercent`, `timeLimitMinutes`, ...).
+- Dashboard entitlements reference the course as `course { id, slug, title }`; orders and refund requests
+  use `GET /api/me/orders` and `POST /api/me/orders/{id}/refund-request`.
+- Admin screens added for endpoints the UI lacked: register a Mastemy-managed YouTube channel and
+  confirm/reject manually linked videos (YouTube videos page), and reviewer question review
+  (Draft → Reviewed → Approved → Active, review queue, including Draft courses).
+- Business-rule refusals (`403` with problem type `forbidden`) show the server's reason.
+- Remaining tolerance: list endpoints are read either as a bare array or `{ items, total, page, pageSize }`;
+  problem `type` values are matched on their suffix. `CourseDetailDto.refundTerms` is not sent, so the
+  platform refund text is shown. Upload chunk responses are re-read from `GET /api/youtube/uploads/{id}`
+  after a failure (not exercised end to end: integrated uploads need YouTube OAuth).
 
 ## SEO and crawlable public pages (plan, not implemented)
 

@@ -2,19 +2,21 @@ import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useQuery } from '@tanstack/react-query';
 import { api } from '../../api/client';
 import { useApiMutation } from '../../api/hooks';
+import type { PackageDto } from '../../api/types';
 import { Button } from '../../components/ui/Button';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Notice } from '../../components/ui/misc';
+import { Notice, StatusBadge } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 
 const VIDEO_WORDS = /\b(video access|watch videos|unlock videos?|video lessons?)\b/i;
 
 export function PackagesPanel({ courseId }: { courseId: string }) {
-  const { t } = useI18n();
+  const { t, fmtMoney } = useI18n();
   const toast = useToast();
   const s = useMemo(
     () =>
@@ -49,9 +51,14 @@ export function PackagesPanel({ courseId }: { courseId: string }) {
     resolver: zodResolver(s),
     defaultValues: { title: '', contents: '', price: '', currency: 'USD', accessDays: 365 },
   });
+  const listKey = ['studio', 'packages', courseId];
+  const packages = useQuery({
+    queryKey: listKey,
+    queryFn: () => api<PackageDto[]>(`/api/studio/courses/${courseId}/packages`),
+  });
   const propose = useApiMutation(
     (v: Out) => api(`/api/studio/courses/${courseId}/packages`, { method: 'POST', body: v }),
-    [],
+    [listKey],
     () => {
       reset();
       toast.success(t('packages.proposed'));
@@ -62,6 +69,21 @@ export function PackagesPanel({ courseId }: { courseId: string }) {
       <Notice tone="info" title={t('packages.policyTitle')}>
         {t('packages.policy')}
       </Notice>
+      {packages.data && packages.data.length > 0 ? (
+        <ul className="stack" style={{ listStyle: 'none', padding: 0 }}>
+          {packages.data.map((p) => (
+            <li key={p.id} className="card card--flat">
+              <div className="row row--between">
+                <strong>{p.title}</strong>
+                {p.approvalStatus ? <StatusBadge status={p.approvalStatus} /> : null}
+              </div>
+              <div className="small">
+                {fmtMoney(p.price, p.currency)} · {t('course.accessTerm', { days: p.accessDays })}
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : null}
       <form
         className="card card--flat"
         onSubmit={handleSubmit((v) => propose.mutate(v))}

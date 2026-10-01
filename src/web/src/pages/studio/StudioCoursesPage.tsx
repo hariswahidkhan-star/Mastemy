@@ -74,24 +74,22 @@ export function EarningsPage() {
       <PageHeader title={t('studio.earnings')} subtitle={t('studio.earningsSubtitle')} />
       <QueryState query={earnings}>
         {(e) => {
-          const currency =
-            (e.totals.currency as string | undefined) ?? e.entries[0]?.currency ?? 'USD';
-          const totals = Object.entries(e.totals).filter(([, v]) => typeof v === 'number') as [
-            string,
-            number,
-          ][];
+          // The API returns one total per currency: { currency, instructorAmount, grossSales, entries }.
+          const totals = Array.isArray(e.totals) ? e.totals : [];
           return (
             <div className="stack">
-              {totals.length > 0 ? (
-                <dl className="facts">
-                  {totals.map(([k, v]) => (
-                    <div key={k}>
-                      <dt>{t(`earnings.${k}`)}</dt>
-                      <dd>{fmtMoney(v, currency)}</dd>
-                    </div>
-                  ))}
+              {totals.map((tot) => (
+                <dl key={tot.currency} className="facts">
+                  <div>
+                    <dt>{t('earnings.gross')}</dt>
+                    <dd>{fmtMoney(tot.grossSales, tot.currency)}</dd>
+                  </div>
+                  <div>
+                    <dt>{t('earnings.instructor')}</dt>
+                    <dd>{fmtMoney(tot.instructorAmount, tot.currency)}</dd>
+                  </div>
                 </dl>
-              ) : null}
+              ))}
               {e.entries.length === 0 ? (
                 <EmptyState title={t('earnings.none')} description={t('earnings.noneBody')} />
               ) : (

@@ -4,7 +4,15 @@ import { useQuery } from '@tanstack/react-query';
 import { api, qs } from '../../api/client';
 import { useApiMutation } from '../../api/hooks';
 import { asList } from '../../api/list';
-import type { CourseStatus, Paged, ReviewCommentDto, StudioCourseDto } from '../../api/types';
+import { toQuestionList } from '../../api/questions';
+import type { RawQuestionDto } from '../../api/questions';
+import type {
+  CourseStatus,
+  Paged,
+  QuestionState,
+  ReviewCommentDto,
+  StudioCourseDto,
+} from '../../api/types';
 import { useAuth } from '../../auth/AuthProvider';
 import { Button } from '../../components/ui/Button';
 import { ConfirmDialog } from '../../components/ui/Dialog';
@@ -19,6 +27,8 @@ import { usePageMeta } from '../../lib/seo';
 
 type ReviewCourse = Pick<StudioCourseDto, 'id' | 'title' | 'slug' | 'status' | 'updatedAt'> & {
   ownerName?: string;
+  instructors?: string[];
+  isMyCourse?: boolean;
   modules?: StudioCourseDto['modules'];
 };
 
@@ -28,6 +38,100 @@ function parseTimestamp(v: string): number | null {
   const parts = s.split(':').map(Number);
   if (parts.some((p) => !Number.isFinite(p) || p < 0)) return NaN;
   return parts.reduce((acc, p) => acc * 60 + p, 0);
+}
+
+/** Reviewer transitions only: authors draft and retire questions in the studio. */
+const REVIEW_NEXT: Partial<Record<QuestionState, QuestionState>> = {
+  Draft: 'Reviewed',
+  Reviewed: 'Approved',
+  Approved: 'Active',
+};
+
+function QuestionReview({ courseId }: { courseId: string }) {
+  const { t } = useI18n();
+  const toast = useToast();
+  const key = ['review', 'questions', courseId];
+  const questions = useQuery({
+    queryKey: key,
+    queryFn: () =>
+      api<RawQuestionDto[] | { items: RawQuestionDto[] }>(
+        `/api/studio/courses/${courseId}/questions?pageSize=200`,
+      ),
+    select: toQuestionList,
+  });
+  const change = useApiMutation(
+    ({ id, next }: { id: string; next: QuestionState }) =>
+      api(`/api/studio/questions/${id}/state`, { method: 'POST', body: { state: next } }),
+    [key],
+    () => toast.success(t('question.stateChanged')),
+  );
+  return (
+    <section>
+      <h3>{t('review.questions')}</h3>
+      <p className="small muted">{t('review.questionsHelp')}</p>
+      <QueryState query={questions}>
+        {(list) =>
+          list.length === 0 ? (
+            <p className="muted">{t('question.none')}</p>
+          ) : (
+            <div className="table-wrap">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th scope="col">{t('question.externalId')}</th>
+                    <th scope="col">{t('question.stem')}</th>
+                    <th scope="col">{t('question.state')}</th>
+                    <th scope="col">{t('common.actions')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {list.map((q) => {
+                    const next = REVIEW_NEXT[q.state];
+                    return (
+                      <tr key={q.id}>
+                        <td className="mono">{q.externalId}</td>
+                        <td>
+                          {q.stem}
+                          <ul className="small" style={{ margin: 0 }}>
+                            {q.options.map((o) => (
+                              <li key={o.id ?? o.text}>
+                                {o.isCorrect ? '✓ ' : ''}
+                                {o.text}
+                              </li>
+                            ))}
+                          </ul>
+                        </td>
+                        <td>
+                          <StatusBadge status={q.state} />
+                        </td>
+                        <td>
+                          {next ? (
+                            <Button
+                              size="sm"
+                              variant="secondary"
+                              loading={change.isPending && change.variables?.id === q.id}
+                              onClick={() =>
+                                change.mutate(
+                                  { id: q.id, next },
+                                  { onError: (e) => toast.error(errorMessage(e, t)) },
+                                )
+                              }
+                            >
+                              {t(`question.to.${next}`)}
+                            </Button>
+                          ) : null}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )
+        }
+      </QueryState>
+    </section>
+  );
 }
 
 function CourseReview({ course, onChanged }: { course: ReviewCourse; onChanged: () => void }) {
@@ -124,6 +228,7 @@ function CourseReview({ course, onChanged }: { course: ReviewCourse; onChanged: 
         ) : null}
       </div>
       {admin.isError ? <Notice tone="danger">{errorMessage(admin.error, t)}</Notice> : null}
+      {course.isMyCourse ? null : <QuestionReview courseId={course.id} />}
       <section>
         <h3>{t('review.comments')}</h3>
         <QueryState query={comments}>
@@ -245,6 +350,7 @@ function CourseReview({ course, onChanged }: { course: ReviewCourse; onChanged: 
 
 const QUEUE_STATUSES: CourseStatus[] = [
   'InReview',
+  'Draft',
   'Approved',
   'ChangesRequested',
   'Published',
@@ -296,7 +402,7 @@ export function ReviewQueuePage() {
                     {items.map((c) => (
                       <tr key={c.id}>
                         <td>{c.title}</td>
-                        <td>{c.ownerName ?? '—'}</td>
+                        <td>{c.ownerName ?? (c.instructors?.join(', ') || '—')}</td>
                         <td>{fmtDate(c.updatedAt)}</td>
                         <td>
                           <Button

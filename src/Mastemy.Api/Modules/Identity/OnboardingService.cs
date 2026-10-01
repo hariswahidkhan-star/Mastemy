@@ -106,7 +106,9 @@ public class OnboardingService(AppDbContext db, FeatureFlagService flags, AuditS
         }
         var total = await query.CountAsync();
         var items = await query.OrderBy(a => a.CreatedAt).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-        return new(items.Select(ApplicationDto.From).ToList(), total, page, pageSize);
+        var userIds = items.Select(a => a.UserId).Distinct().ToList();
+        var users = await db.Users.AsNoTracking().Where(u => userIds.Contains(u.Id)).ToDictionaryAsync(u => u.Id);
+        return new(items.Select(a => ApplicationDto.From(a, users.GetValueOrDefault(a.UserId))).ToList(), total, page, pageSize);
     }
 
     public async Task<ApplicationDto> Decide(Guid id, DecisionRequest req)
