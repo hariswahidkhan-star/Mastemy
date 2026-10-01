@@ -1,0 +1,31 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env: { MYSQL_ROOT_PASSWORD: root, MYSQL_USER: mastemy, MYSQL_PASSWORD: mastemy_dev_pw, MYSQL_DATABASE: mastemy }
+        ports: ["3306:3306"]
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: "10.0.x" }
+      - run: mysql -h127.0.0.1 -uroot -proot -e "GRANT ALL ON *.* TO 'mastemy'@'%'; FLUSH PRIVILEGES;"
+      - run: dotnet build Mastemy.sln -c Release
+      - run: dotnet test Mastemy.sln -c Release --no-build
+        env: { MASTEMY_TEST_MYSQL: "Server=127.0.0.1;Port=3306;User=mastemy;Password=mastemy_dev_pw;" }
+  web:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: src/web } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build

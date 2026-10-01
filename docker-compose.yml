@@ -1,0 +1,23 @@
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: mastemy
+      MYSQL_USER: mastemy
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set MYSQL_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD in .env}
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_0900_ai_ci"]
+    volumes: [dbdata:/var/lib/mysql]
+    healthcheck: { test: ["CMD", "mysqladmin", "ping", "-h", "localhost"], interval: 10s, retries: 10 }
+  api:
+    build: { context: ., dockerfile: src/Mastemy.Api/Dockerfile }
+    env_file: .env
+    environment:
+      ConnectionStrings__Default: "Server=db;Port=3306;Database=mastemy;User=mastemy;Password=${MYSQL_PASSWORD};"
+    depends_on: { db: { condition: service_healthy } }
+    volumes: [appdata:/app/data]
+  web:
+    build: { context: ., dockerfile: deploy/web.Dockerfile }
+    ports: ["8080:80"]
+    depends_on: [api]
+volumes: { dbdata: {}, appdata: {} }
