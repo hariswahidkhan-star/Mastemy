@@ -11,6 +11,9 @@ public static class ModuleRegistration
         Assessment.AssessmentModule.Add(s, cfg);
         Learning.LearningModule.Add(s, cfg);
         Commerce.CommerceModule.Add(s, cfg);
+        Engagement.EngagementModule.Add(s, cfg);
+        Enterprise.EnterpriseModule.Add(s, cfg);
+        Resources.ResourcesModule.Add(s, cfg);
         return s;
     }
 }

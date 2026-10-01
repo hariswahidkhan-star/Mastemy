@@ -124,6 +124,7 @@ public class Course
     public Guid OwnerId { get; set; }
     public Guid? YouTubeChannelId { get; set; }
     public string? PromoVideoId { get; set; }
+    public int PublishedVersion { get; set; } // latest CourseSnapshot.Version (0 = never published)
     public string CredentialType { get; set; } = "Knowledge assessment certificate";
     public decimal PassThresholdPercent { get; set; } = 70m;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -244,6 +245,9 @@ public class YouTubeUploadSession
     public string FileFingerprint { get; set; } = ""; // client-computed hash of first/last chunks + size
     public string? UpstreamSessionUri { get; set; } // never exposed to client
     public long ConfirmedOffset { get; set; }
+    // Cross-instance chunk lock: a chunk may proceed only while holding an unexpired lease.
+    public string? LockToken { get; set; }
+    public DateTime? LockedUntil { get; set; }
     public UploadSessionStatus Status { get; set; } = UploadSessionStatus.AwaitingApproval;
     public string? ResultVideoId { get; set; }
     public string? FailureReason { get; set; }
@@ -524,6 +528,7 @@ public class Entitlement
     public Guid CourseId { get; set; }
     public Guid? PackageId { get; set; }
     public Guid? OrderId { get; set; }
+    public Guid? OrganizationId { get; set; }
     public EntitlementSource Source { get; set; }
     public DateTime StartsAt { get; set; } = DateTime.UtcNow;
     public DateTime? EndsAt { get; set; }
@@ -567,4 +572,147 @@ public class CourseReview
     public bool Hidden { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+}
+
+// ---------- Wave 2 ----------
+
+/// <summary>Immutable learner-facing copy of a course taken at each publish. Live reads come from the latest snapshot,
+/// so edits made while a course is Updating/in re-review are never exposed before approval.</summary>
+public class CourseSnapshot
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid CourseId { get; set; }
+    public int Version { get; set; }
+    public string PayloadJson { get; set; } = "";
+    public Guid PublishedBy { get; set; }
+    public DateTime PublishedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class WishlistItem
+{
+    public Guid UserId { get; set; }
+    public Guid CourseId { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class RecentlyViewed
+{
+    public Guid UserId { get; set; }
+    public Guid CourseId { get; set; }
+    public DateTime ViewedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class DiscussionThread
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid CourseId { get; set; }
+    public Guid? LessonId { get; set; }
+    public Guid AuthorId { get; set; }
+    public string Title { get; set; } = "";
+    public string Body { get; set; } = "";
+    public bool Hidden { get; set; }
+    public bool Resolved { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class DiscussionReply
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid ThreadId { get; set; }
+    public Guid AuthorId { get; set; }
+    public string Body { get; set; } = "";
+    public bool IsInstructorReply { get; set; }
+    public bool Hidden { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class Announcement
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid CourseId { get; set; }
+    public Guid AuthorId { get; set; }
+    public string Title { get; set; } = "";
+    public string Body { get; set; } = "";
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class Notification
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid UserId { get; set; }
+    public string Kind { get; set; } = ""; // announcement, reply, review_reply, course_updated, certificate
+    public string Title { get; set; } = "";
+    public string Link { get; set; } = "";
+    public DateTime? ReadAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class NotificationPreference
+{
+    public Guid UserId { get; set; }
+    public string Kind { get; set; } = "";
+    public bool InApp { get; set; } = true;
+    public bool Email { get; set; }
+}
+
+/// <summary>Non-video supporting file (PDF, slides, spreadsheet, captions). Never video: enforced by type allow-list.</summary>
+public class ResourceFile
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid CourseId { get; set; }
+    public Guid? LessonId { get; set; }
+    public string Kind { get; set; } = "Resource"; // Resource, Caption
+    public string Language { get; set; } = "";
+    public string FileName { get; set; } = "";
+    public string ContentType { get; set; } = "";
+    public long SizeBytes { get; set; }
+    public string Sha256 { get; set; } = "";
+    public string StorageKey { get; set; } = "";
+    public bool IsPremium { get; set; }
+    public int Version { get; set; } = 1;
+    public Guid UploadedBy { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class OAuthNonce
+{
+    public string Nonce { get; set; } = "";
+    public Guid UserId { get; set; }
+    public DateTime ExpiresAt { get; set; }
+    public DateTime? ConsumedAt { get; set; }
+}
+
+public enum OrgRole { Member, Manager, Admin }
+
+public class Organization
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public string Name { get; set; } = "";
+    public string Slug { get; set; } = "";
+    public int SeatLimit { get; set; }
+    public bool IsActive { get; set; } = true;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class OrganizationMember
+{
+    public Guid OrganizationId { get; set; }
+    public Guid UserId { get; set; }
+    public OrgRole Role { get; set; }
+    public string Department { get; set; } = "";
+    public DateTime JoinedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class OrganizationAssignment
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid OrganizationId { get; set; }
+    public Guid CourseId { get; set; }
+    public Guid? UserId { get; set; } // null = everyone in org (or department)
+    public string? Department { get; set; }
+    public bool GrantsPremium { get; set; }
+    public DateTime? DueAt { get; set; }
+    public Guid AssignedBy { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }

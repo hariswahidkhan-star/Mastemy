@@ -44,6 +44,19 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<CommissionLedgerEntry> CommissionLedger => Set<CommissionLedgerEntry>();
     public DbSet<PayoutBatch> PayoutBatches => Set<PayoutBatch>();
     public DbSet<CourseReview> CourseReviews => Set<CourseReview>();
+    public DbSet<CourseSnapshot> CourseSnapshots => Set<CourseSnapshot>();
+    public DbSet<WishlistItem> Wishlist => Set<WishlistItem>();
+    public DbSet<RecentlyViewed> RecentlyViewed => Set<RecentlyViewed>();
+    public DbSet<DiscussionThread> DiscussionThreads => Set<DiscussionThread>();
+    public DbSet<DiscussionReply> DiscussionReplies => Set<DiscussionReply>();
+    public DbSet<Announcement> Announcements => Set<Announcement>();
+    public DbSet<Notification> Notifications => Set<Notification>();
+    public DbSet<NotificationPreference> NotificationPreferences => Set<NotificationPreference>();
+    public DbSet<ResourceFile> ResourceFiles => Set<ResourceFile>();
+    public DbSet<OAuthNonce> OAuthNonces => Set<OAuthNonce>();
+    public DbSet<Organization> Organizations => Set<Organization>();
+    public DbSet<OrganizationMember> OrganizationMembers => Set<OrganizationMember>();
+    public DbSet<OrganizationAssignment> OrganizationAssignments => Set<OrganizationAssignment>();
 
     protected override void ConfigureConventions(ModelConfigurationBuilder b)
     {
@@ -151,6 +164,34 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         m.Entity<CommissionLedgerEntry>().HasIndex(x => new { x.OrderId, x.InstructorId, x.Kind }).IsUnique(); // no duplicate commission
         m.Entity<CourseReview>().HasIndex(x => new { x.CourseId, x.UserId }).IsUnique();
         Text<CourseReview>(x => x.Body, x => x.InstructorReply);
+
+        m.Entity<CourseSnapshot>().HasIndex(x => new { x.CourseId, x.Version }).IsUnique();
+        m.Entity<CourseSnapshot>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);
+        Text<CourseSnapshot>(x => x.PayloadJson);
+        m.Entity<WishlistItem>().HasKey(x => new { x.UserId, x.CourseId });
+        m.Entity<WishlistItem>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);
+        m.Entity<RecentlyViewed>().HasKey(x => new { x.UserId, x.CourseId });
+        m.Entity<RecentlyViewed>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);
+        m.Entity<DiscussionThread>().HasIndex(x => new { x.CourseId, x.CreatedAt });
+        m.Entity<DiscussionThread>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);
+        Text<DiscussionThread>(x => x.Body);
+        m.Entity<DiscussionReply>().HasOne<DiscussionThread>().WithMany().HasForeignKey(x => x.ThreadId);
+        Text<DiscussionReply>(x => x.Body);
+        m.Entity<Announcement>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);
+        Text<Announcement>(x => x.Body);
+        m.Entity<Notification>().HasIndex(x => new { x.UserId, x.ReadAt, x.CreatedAt });
+        m.Entity<NotificationPreference>().HasKey(x => new { x.UserId, x.Kind });
+        m.Entity<NotificationPreference>().Property(x => x.Kind).HasMaxLength(64);
+        m.Entity<ResourceFile>().HasIndex(x => new { x.CourseId, x.LessonId });
+        m.Entity<ResourceFile>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);
+        m.Entity<OAuthNonce>().HasKey(x => x.Nonce);
+        m.Entity<OAuthNonce>().Property(x => x.Nonce).HasMaxLength(128);
+        m.Entity<Organization>().HasIndex(x => x.Slug).IsUnique();
+        m.Entity<OrganizationMember>().HasKey(x => new { x.OrganizationId, x.UserId });
+        m.Entity<OrganizationMember>().HasOne<Organization>().WithMany().HasForeignKey(x => x.OrganizationId);
+        m.Entity<OrganizationMember>().HasOne<User>().WithMany().HasForeignKey(x => x.UserId);
+        m.Entity<OrganizationAssignment>().HasOne<Organization>().WithMany().HasForeignKey(x => x.OrganizationId);
+        m.Entity<OrganizationAssignment>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);
     }
 }
 

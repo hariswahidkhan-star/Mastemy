@@ -135,6 +135,7 @@ namespace Mastemy.Api.Data.Migrations
                     CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
                     PackageId = table.Column<Guid>(type: "char(36)", nullable: true),
                     OrderId = table.Column<Guid>(type: "char(36)", nullable: true),
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: true),
                     Source = table.Column<int>(type: "int", nullable: false),
                     StartsAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     EndsAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -184,6 +185,54 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "NotificationPreferences",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Kind = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: false),
+                    InApp = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Email = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NotificationPreferences", x => new { x.UserId, x.Kind });
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Kind = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    Title = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    Link = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    ReadAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "OAuthNonces",
+                columns: table => new
+                {
+                    Nonce = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    ExpiresAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ConsumedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OAuthNonces", x => x.Nonce);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -200,6 +249,23 @@ namespace Mastemy.Api.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Organizations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Name = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    Slug = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    SeatLimit = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Organizations", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -396,6 +462,34 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "OrganizationMembers",
+                columns: table => new
+                {
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Role = table.Column<int>(type: "int", nullable: false),
+                    Department = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    JoinedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrganizationMembers", x => new { x.OrganizationId, x.UserId });
+                    table.ForeignKey(
+                        name: "FK_OrganizationMembers_Organizations_OrganizationId",
+                        column: x => x.OrganizationId,
+                        principalTable: "Organizations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrganizationMembers_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "RefreshTokens",
                 columns: table => new
                 {
@@ -458,6 +552,7 @@ namespace Mastemy.Api.Data.Migrations
                     OwnerId = table.Column<Guid>(type: "char(36)", nullable: false),
                     YouTubeChannelId = table.Column<Guid>(type: "char(36)", nullable: true),
                     PromoVideoId = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true),
+                    PublishedVersion = table.Column<int>(type: "int", nullable: false),
                     CredentialType = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
                     PassThresholdPercent = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -501,6 +596,8 @@ namespace Mastemy.Api.Data.Migrations
                     FileFingerprint = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
                     UpstreamSessionUri = table.Column<string>(type: "longtext", maxLength: 512, nullable: true),
                     ConfirmedOffset = table.Column<long>(type: "bigint", nullable: false),
+                    LockToken = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true),
+                    LockedUntil = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     ResultVideoId = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true),
                     FailureReason = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true),
@@ -551,6 +648,29 @@ namespace Mastemy.Api.Data.Migrations
                         principalTable: "YouTubeChannels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Announcements",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    AuthorId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Title = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    Body = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Announcements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Announcements_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -641,6 +761,56 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "CourseSnapshots",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Version = table.Column<int>(type: "int", nullable: false),
+                    PayloadJson = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
+                    PublishedBy = table.Column<Guid>(type: "char(36)", nullable: false),
+                    PublishedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CourseSnapshots", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CourseSnapshots_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "DiscussionThreads",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    LessonId = table.Column<Guid>(type: "char(36)", nullable: true),
+                    AuthorId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Title = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    Body = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
+                    Hidden = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Resolved = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DiscussionThreads", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DiscussionThreads_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Enrollments",
                 columns: table => new
                 {
@@ -678,6 +848,38 @@ namespace Mastemy.Api.Data.Migrations
                         name: "FK_Modules_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "OrganizationAssignments",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: true),
+                    Department = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true),
+                    GrantsPremium = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DueAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    AssignedBy = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrganizationAssignments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrganizationAssignments_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrganizationAssignments_Organizations_OrganizationId",
+                        column: x => x.OrganizationId,
+                        principalTable: "Organizations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -741,6 +943,57 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "RecentlyViewed",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    ViewedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecentlyViewed", x => new { x.UserId, x.CourseId });
+                    table.ForeignKey(
+                        name: "FK_RecentlyViewed_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "ResourceFiles",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    LessonId = table.Column<Guid>(type: "char(36)", nullable: true),
+                    Kind = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    Language = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    FileName = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    ContentType = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    SizeBytes = table.Column<long>(type: "bigint", nullable: false),
+                    Sha256 = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    StorageKey = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    IsPremium = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Version = table.Column<int>(type: "int", nullable: false),
+                    UploadedBy = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ResourceFiles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ResourceFiles_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "ReviewComments",
                 columns: table => new
                 {
@@ -758,6 +1011,26 @@ namespace Mastemy.Api.Data.Migrations
                     table.PrimaryKey("PK_ReviewComments", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ReviewComments_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Wishlist",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Wishlist", x => new { x.UserId, x.CourseId });
+                    table.ForeignKey(
+                        name: "FK_Wishlist_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
@@ -790,6 +1063,30 @@ namespace Mastemy.Api.Data.Migrations
                         name: "FK_Attempts_Assessments_AssessmentId",
                         column: x => x.AssessmentId,
                         principalTable: "Assessments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "DiscussionReplies",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    ThreadId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    AuthorId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Body = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
+                    IsInstructorReply = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Hidden = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DiscussionReplies", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DiscussionReplies_DiscussionThreads_ThreadId",
+                        column: x => x.ThreadId,
+                        principalTable: "DiscussionThreads",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -994,6 +1291,11 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Announcements_CourseId",
+                table: "Announcements",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AssessmentQuestions_QuestionId",
                 table: "AssessmentQuestions",
                 column: "QuestionId");
@@ -1101,6 +1403,22 @@ namespace Mastemy.Api.Data.Migrations
                 column: "YouTubeChannelId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CourseSnapshots_CourseId_Version",
+                table: "CourseSnapshots",
+                columns: new[] { "CourseId", "Version" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DiscussionReplies_ThreadId",
+                table: "DiscussionReplies",
+                column: "ThreadId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DiscussionThreads_CourseId_CreatedAt",
+                table: "DiscussionThreads",
+                columns: new[] { "CourseId", "CreatedAt" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Enrollments_CourseId",
                 table: "Enrollments",
                 column: "CourseId");
@@ -1164,6 +1482,11 @@ namespace Mastemy.Api.Data.Migrations
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Notifications_UserId_ReadAt_CreatedAt",
+                table: "Notifications",
+                columns: new[] { "UserId", "ReadAt", "CreatedAt" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderId",
                 table: "OrderItems",
                 column: "OrderId");
@@ -1177,6 +1500,27 @@ namespace Mastemy.Api.Data.Migrations
                 name: "IX_Orders_UserId_IdempotencyKey",
                 table: "Orders",
                 columns: new[] { "UserId", "IdempotencyKey" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrganizationAssignments_CourseId",
+                table: "OrganizationAssignments",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrganizationAssignments_OrganizationId",
+                table: "OrganizationAssignments",
+                column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrganizationMembers_UserId",
+                table: "OrganizationMembers",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Organizations_Slug",
+                table: "Organizations",
+                column: "Slug",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -1213,6 +1557,11 @@ namespace Mastemy.Api.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_RecentlyViewed_CourseId",
+                table: "RecentlyViewed",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RefreshTokens_TokenHash",
                 table: "RefreshTokens",
                 column: "TokenHash",
@@ -1227,6 +1576,11 @@ namespace Mastemy.Api.Data.Migrations
                 name: "IX_Refunds_OrderId",
                 table: "Refunds",
                 column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ResourceFiles_CourseId_LessonId",
+                table: "ResourceFiles",
+                columns: new[] { "CourseId", "LessonId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ReviewComments_CourseId",
@@ -1255,6 +1609,11 @@ namespace Mastemy.Api.Data.Migrations
                 column: "YouTubeVideoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Wishlist_CourseId",
+                table: "Wishlist",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_YouTubeChannels_ChannelId",
                 table: "YouTubeChannels",
                 column: "ChannelId",
@@ -1264,6 +1623,9 @@ namespace Mastemy.Api.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Announcements");
+
             migrationBuilder.DropTable(
                 name: "AssessmentQuestions");
 
@@ -1289,6 +1651,12 @@ namespace Mastemy.Api.Data.Migrations
                 name: "CourseReviews");
 
             migrationBuilder.DropTable(
+                name: "CourseSnapshots");
+
+            migrationBuilder.DropTable(
+                name: "DiscussionReplies");
+
+            migrationBuilder.DropTable(
                 name: "Enrollments");
 
             migrationBuilder.DropTable(
@@ -1310,7 +1678,22 @@ namespace Mastemy.Api.Data.Migrations
                 name: "LessonProgress");
 
             migrationBuilder.DropTable(
+                name: "NotificationPreferences");
+
+            migrationBuilder.DropTable(
+                name: "Notifications");
+
+            migrationBuilder.DropTable(
+                name: "OAuthNonces");
+
+            migrationBuilder.DropTable(
                 name: "OrderItems");
+
+            migrationBuilder.DropTable(
+                name: "OrganizationAssignments");
+
+            migrationBuilder.DropTable(
+                name: "OrganizationMembers");
 
             migrationBuilder.DropTable(
                 name: "Packages");
@@ -1331,10 +1714,16 @@ namespace Mastemy.Api.Data.Migrations
                 name: "QuestionOptions");
 
             migrationBuilder.DropTable(
+                name: "RecentlyViewed");
+
+            migrationBuilder.DropTable(
                 name: "RefreshTokens");
 
             migrationBuilder.DropTable(
                 name: "Refunds");
+
+            migrationBuilder.DropTable(
+                name: "ResourceFiles");
 
             migrationBuilder.DropTable(
                 name: "ReviewComments");
@@ -1346,13 +1735,22 @@ namespace Mastemy.Api.Data.Migrations
                 name: "UserRoles");
 
             migrationBuilder.DropTable(
+                name: "Wishlist");
+
+            migrationBuilder.DropTable(
                 name: "Attempts");
 
             migrationBuilder.DropTable(
                 name: "Categories");
 
             migrationBuilder.DropTable(
+                name: "DiscussionThreads");
+
+            migrationBuilder.DropTable(
                 name: "Lessons");
+
+            migrationBuilder.DropTable(
+                name: "Organizations");
 
             migrationBuilder.DropTable(
                 name: "QuestionVersions");
