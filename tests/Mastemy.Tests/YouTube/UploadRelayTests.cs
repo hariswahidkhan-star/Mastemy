@@ -122,8 +122,13 @@ public class UploadRelayTests(UploadFactory f) : IClassFixture<UploadFactory>
         // Nothing written to disk: no new sizeable files in the content root or the temp directory.
         var after = Snapshot(contentRoot);
         Assert.Empty(after.Except(before));
+        // The shared temp directory is also written by unrelated processes (builds, other test classes), so assert
+        // precisely: no ASP.NET request-buffer file appeared and no new temp file contains any of the uploaded bytes.
+        var marker = payload.AsSpan(K256, 64).ToArray();
         var newTemp = new DirectoryInfo(Path.GetTempPath()).EnumerateFiles("*", SearchOption.TopDirectoryOnly)
-            .Where(x => x.LastWriteTimeUtc >= started && (x.Length >= K256 || x.Name.StartsWith("ASPNETCORE_", StringComparison.Ordinal))).ToList();
+            .Where(x => x.LastWriteTimeUtc >= started)
+            .Where(x => x.Name.StartsWith("ASPNETCORE_", StringComparison.Ordinal) || (x.Length >= 64 && FileContains(x, marker)))
+            .ToList();
         Assert.Empty(newTemp);
 
         var session = await f.WithDb(db => db.UploadSessions.AsNoTracking().FirstAsync(s => s.Id == up.Id));
@@ -136,6 +141,18 @@ public class UploadRelayTests(UploadFactory f) : IClassFixture<UploadFactory>
         var raw = await (await c.GetAsync($"/api/youtube/uploads/{up.Id}")).Content.ReadAsStringAsync();
         Assert.DoesNotContain(FakeYouTube.UploadHost, raw);
         Assert.DoesNotContain("ya29", raw);
+    }
+
+    private static bool FileContains(FileInfo file, byte[] marker)
+    {
+        try
+        {
+            if (file.Length > 64 * 1024 * 1024) return false;
+            var bytes = File.ReadAllBytes(file.FullName);
+            return bytes.AsSpan().IndexOf(marker) >= 0;
+        }
+        catch (IOException) { return false; }
+        catch (UnauthorizedAccessException) { return false; }
     }
 
     private static HashSet<string> Snapshot(string root) =>

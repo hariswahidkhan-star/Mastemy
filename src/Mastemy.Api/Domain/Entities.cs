@@ -274,7 +274,11 @@ public class LearnerNote
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public Guid UserId { get; set; }
-    public Guid LessonId { get; set; }
+    // Nullable so a learner's private notes survive removal of the lesson during course revision (spec §12).
+    public Guid? LessonId { get; set; }
+    public Guid CourseId { get; set; }
+    public string LessonTitleSnapshot { get; set; } = "";
+    public string CourseTitleSnapshot { get; set; } = "";
     public int? TimestampSeconds { get; set; }
     public string Body { get; set; } = "";
     public string Tags { get; set; } = "";

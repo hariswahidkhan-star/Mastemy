@@ -886,7 +886,10 @@ namespace Mastemy.Api.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false),
                     UserId = table.Column<Guid>(type: "char(36)", nullable: false),
-                    LessonId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    LessonId = table.Column<Guid>(type: "char(36)", nullable: true),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    LessonTitleSnapshot = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
+                    CourseTitleSnapshot = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
                     TimestampSeconds = table.Column<int>(type: "int", nullable: true),
                     Body = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
                     Tags = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: false),
@@ -901,7 +904,7 @@ namespace Mastemy.Api.Data.Migrations
                         column: x => x.LessonId,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 

@@ -118,6 +118,13 @@ public class LearningTests(LearningFixture fx) : IClassFixture<LearningFixture>
         var after = (await owner.GetFromJsonAsync<List<NoteDto>>("/api/me/notes?q=OSI"))!.Single();
         Assert.Equal("Lesson 1 (revised)", after.LessonTitle);
 
+        // Notes also survive removal of the lesson itself: the FK nulls LessonId and the title snapshot is kept.
+        await fx.Db(d => d.Lessons.Where(l => l.Id == seed.Lesson.Id).ExecuteDeleteAsync());
+        var orphan = (await owner.GetFromJsonAsync<List<NoteDto>>("/api/me/notes?q=OSI"))!.Single();
+        Assert.Null(orphan.LessonId);
+        Assert.Equal("Lesson 1", orphan.LessonTitle);
+        Assert.Contains("Remember the **OSI** model", await owner.GetStringAsync("/api/me/notes/export"));
+
         Assert.Equal(HttpStatusCode.NoContent, (await owner.DeleteAsync($"/api/me/notes/{note.Id}")).StatusCode);
     }
 

@@ -341,7 +341,8 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
     {
         if (lessonIds.Count == 0) return;
         await db.LessonProgress.Where(p => lessonIds.Contains(p.LessonId)).ExecuteDeleteAsync();
-        await db.LearnerNotes.Where(n => lessonIds.Contains(n.LessonId)).ExecuteDeleteAsync();
+        // Learner private notes are preserved (LessonId set to null by FK); they keep their title snapshots.
+        await db.LearnerNotes.Where(n => n.LessonId != null && lessonIds.Contains(n.LessonId.Value)).ExecuteUpdateAsync(u => u.SetProperty(n => n.LessonId, (Guid?)null));
         await db.Questions.Where(q => q.LessonId != null && lessonIds.Contains(q.LessonId.Value)).ExecuteUpdateAsync(s => s.SetProperty(q => q.LessonId, (Guid?)null));
         await db.Assessments.Where(a => a.LessonId != null && lessonIds.Contains(a.LessonId.Value)).ExecuteUpdateAsync(s => s.SetProperty(a => a.LessonId, (Guid?)null));
         await db.ReviewComments.Where(r => r.LessonId != null && lessonIds.Contains(r.LessonId.Value)).ExecuteUpdateAsync(s => s.SetProperty(r => r.LessonId, (Guid?)null));

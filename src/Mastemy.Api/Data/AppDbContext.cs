@@ -109,7 +109,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         m.Entity<LessonProgress>().HasOne<Lesson>().WithMany().HasForeignKey(x => x.LessonId);
         Text<LearnerNote>(x => x.Body);
         m.Entity<LearnerNote>().HasIndex(x => new { x.UserId, x.LessonId });
-        m.Entity<LearnerNote>().HasOne<Lesson>().WithMany().HasForeignKey(x => x.LessonId);
+        m.Entity<LearnerNote>().HasOne<Lesson>().WithMany().HasForeignKey(x => x.LessonId).OnDelete(DeleteBehavior.SetNull);
 
         m.Entity<Question>().HasIndex(x => new { x.CourseId, x.ExternalId }).IsUnique();
         m.Entity<Question>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);

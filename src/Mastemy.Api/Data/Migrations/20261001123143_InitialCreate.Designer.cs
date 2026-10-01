@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mastemy.Api.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261001121424_InitialCreate")]
+    [Migration("20261001123143_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -809,11 +809,24 @@ namespace Mastemy.Api.Data.Migrations
                         .HasMaxLength(512)
                         .HasColumnType("longtext");
 
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("CourseTitleSnapshot")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("LessonId")
+                    b.Property<Guid?>("LessonId")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("LessonTitleSnapshot")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("Tags")
                         .IsRequired()
@@ -1819,8 +1832,7 @@ namespace Mastemy.Api.Data.Migrations
                     b.HasOne("Mastemy.Api.Domain.Lesson", null)
                         .WithMany()
                         .HasForeignKey("LessonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Mastemy.Api.Domain.LearningPackage", b =>

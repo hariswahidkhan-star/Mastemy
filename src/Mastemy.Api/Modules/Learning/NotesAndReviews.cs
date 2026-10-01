@@ -8,7 +8,7 @@ namespace Mastemy.Api.Modules.Learning;
 
 public record NoteInput(Guid LessonId, int? TimestampSeconds, string Body, List<string>? Tags);
 public record NoteUpdateInput(int? TimestampSeconds, string Body, List<string>? Tags);
-public record NoteDto(Guid Id, Guid LessonId, string LessonTitle, Guid CourseId, string CourseTitle, int? TimestampSeconds,
+public record NoteDto(Guid Id, Guid? LessonId, string LessonTitle, Guid CourseId, string CourseTitle, int? TimestampSeconds,
     string Body, List<string> Tags, DateTime CreatedAt, DateTime UpdatedAt);
 
 public record ReviewInput(int Rating, string Body);
@@ -49,13 +49,15 @@ public class NotesService(AppDbContext db, ICurrentUser me)
         if (lessonId is not null) notes = notes.Where(n => n.LessonId == lessonId);
         if (!string.IsNullOrWhiteSpace(q)) { var qq = q.Trim(); notes = notes.Where(n => n.Body.Contains(qq) || n.Tags.Contains(qq.ToLower())); }
         if (!string.IsNullOrWhiteSpace(tag)) { var t = "," + tag.Trim().ToLowerInvariant() + ","; notes = notes.Where(n => ("," + n.Tags + ",").Contains(t)); }
+        // Left joins: notes whose lesson was removed in a course revision remain visible via their title snapshots.
         var rows = await (from n in notes
-                          join l in db.Lessons.AsNoTracking() on n.LessonId equals l.Id
-                          join m in db.Modules.AsNoTracking() on l.ModuleId equals m.Id
-                          join c in db.Courses.AsNoTracking() on m.CourseId equals c.Id
-                          orderby c.Title, m.SortOrder, l.SortOrder, n.TimestampSeconds, n.CreatedAt
-                          select new { n, LessonTitle = l.Title, CourseId = c.Id, CourseTitle = c.Title }).Take(2000).ToListAsync();
-        return rows.Select(x => new NoteDto(x.n.Id, x.n.LessonId, x.LessonTitle, x.CourseId, x.CourseTitle, x.n.TimestampSeconds, x.n.Body,
+                          join l0 in db.Lessons.AsNoTracking() on n.LessonId equals (Guid?)l0.Id into lj
+                          from l in lj.DefaultIfEmpty()
+                          join m0 in db.Modules.AsNoTracking() on l.ModuleId equals m0.Id into mj
+                          from m in mj.DefaultIfEmpty()
+                          orderby n.CourseTitleSnapshot, m.SortOrder, l.SortOrder, n.TimestampSeconds, n.CreatedAt
+                          select new { n, LessonTitle = l != null ? l.Title : n.LessonTitleSnapshot }).Take(2000).ToListAsync();
+        return rows.Select(x => new NoteDto(x.n.Id, x.n.LessonId, x.LessonTitle, x.n.CourseId, x.n.CourseTitleSnapshot, x.n.TimestampSeconds, x.n.Body,
             SplitTags(x.n.Tags), x.n.CreatedAt, x.n.UpdatedAt)).ToList();
     }
 
@@ -69,9 +71,10 @@ public class NotesService(AppDbContext db, ICurrentUser me)
                           join m in db.Modules on l.ModuleId equals m.Id
                           join c in db.Courses on m.CourseId equals c.Id
                           where l.Id == input.LessonId
-                          select c.Status).ToListAsync();
-        if (live.Count == 0 || !AccessService.IsLive(live[0])) throw AppException.NotFound("Lesson");
-        var n = new LearnerNote { UserId = uid, LessonId = input.LessonId, TimestampSeconds = input.TimestampSeconds, Body = input.Body, Tags = NormalizeTags(input.Tags) };
+                          select new { c.Status, CourseId = c.Id, CourseTitle = c.Title, LessonTitle = l.Title }).ToListAsync();
+        if (live.Count == 0 || !AccessService.IsLive(live[0].Status)) throw AppException.NotFound("Lesson");
+        var n = new LearnerNote { UserId = uid, LessonId = input.LessonId, CourseId = live[0].CourseId,
+            CourseTitleSnapshot = live[0].CourseTitle, LessonTitleSnapshot = live[0].LessonTitle, TimestampSeconds = input.TimestampSeconds, Body = input.Body, Tags = NormalizeTags(input.Tags) };
         db.LearnerNotes.Add(n);
         await db.SaveChangesAsync();
         return (await Load(uid, null, null, null, n.Id)).Single();
