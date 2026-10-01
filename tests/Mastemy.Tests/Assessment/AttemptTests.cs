@@ -448,36 +448,6 @@ public class AttemptTests(AssessmentFixture fx) : IClassFixture<AssessmentFixtur
     }
 
     [Fact]
-    public async Task Refund_revokes_certificate_only_when_earned_on_premium_assessment()
-    {
-        async Task<(Guid user, Guid course)> Earn(bool premium)
-        {
-            var s = await LiveCourse();
-            var a = await CreateAssessment(s, cert: true, premium: premium);
-            var (uid, l) = await EntitledLearner(s.Course.Id);
-            var v = await Read<AttemptView>(await l.PostAsync($"/api/assessments/{a.Id}/attempts", null));
-            await Answer(l, v, QuestionType.SingleChoice, "S-right");
-            await Answer(l, v, QuestionType.MultipleSelect, "M-right1", "M-right2");
-            Assert.NotNull((await Read<AttemptResult>(await l.PostAsync($"/api/attempts/{v.Id}/submit", null))).CertificateCode);
-            return (uid, s.Course.Id);
-        }
-        var paid = await Earn(true);
-        var free = await Earn(false);
-        using (var scope = fx.Factory.Services.CreateScope())
-        {
-            var svc = scope.ServiceProvider.GetRequiredService<CertificateService>();
-            await svc.RevokeForRefundAsync(paid.user, paid.course, "Order refunded");
-            await svc.RevokeForRefundAsync(paid.user, paid.course, "Order refunded"); // idempotent
-            await svc.RevokeForRefundAsync(free.user, free.course, "Order refunded");
-        }
-        var pc = await fx.WithDb(db => db.Certificates.SingleAsync(c => c.UserId == paid.user));
-        Assert.Equal(CertificateStatus.Revoked, pc.Status);
-        Assert.Equal("Order refunded", pc.RevocationReason);
-        Assert.Equal(1, await fx.WithDb(db => db.AuditLogs.CountAsync(l => l.Action == "certificate.revoked_for_refund" && l.EntityId == pc.Id.ToString())));
-        Assert.Equal(CertificateStatus.Valid, (await fx.WithDb(db => db.Certificates.SingleAsync(c => c.UserId == free.user))).Status);
-    }
-
-    [Fact]
     public async Task Studio_list_reports_counts_per_assessment()
     {
         var s = await LiveCourse();

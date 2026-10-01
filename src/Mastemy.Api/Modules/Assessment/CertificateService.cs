@@ -85,25 +85,6 @@ public class CertificateService(AppDbContext db, ICurrentUser me, AuditService a
             .ToListAsync();
     }
 
-    /// <summary>
-    /// Refund hook (called by Commerce): revokes the user's certificate for the course when it was earned on a premium
-    /// assessment, since the refunded package paid for that evidence. Free-assessment certificates are kept. Idempotent.
-    /// </summary>
-    public async Task RevokeForRefundAsync(Guid userId, Guid courseId, string reason)
-    {
-        var text = string.IsNullOrWhiteSpace(reason) ? "Premium access refunded." : reason.Trim();
-        if (text.Length > 500) text = text[..500];
-        var c = await db.Certificates.FirstOrDefaultAsync(x => x.UserId == userId && x.CourseId == courseId);
-        if (c is null || c.Status == CertificateStatus.Revoked) return;
-        var premium = await db.Attempts.Where(at => at.Id == c.AttemptId)
-            .Join(db.Assessments, at => at.AssessmentId, a => a.Id, (at, a) => a.IsPremium).FirstOrDefaultAsync();
-        if (!premium) return;
-        c.Status = CertificateStatus.Revoked;
-        c.RevocationReason = text;
-        audit.Record("certificate.revoked_for_refund", "Certificate", c.Id, new { c.Code, c.UserId, c.CourseId, reason = text });
-        await db.SaveChangesAsync();
-    }
-
     public async Task Revoke(Guid id, string? reason)
     {
         me.RequireId();
