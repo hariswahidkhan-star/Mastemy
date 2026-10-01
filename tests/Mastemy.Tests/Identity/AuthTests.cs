@@ -47,7 +47,7 @@ public class AuthTests(IdentityFixture f) : IClassFixture<IdentityFixture>
     }
 
     [Fact]
-    public async Task Login_locks_out_after_five_failures_with_generic_error()
+    public async Task Login_applies_exponential_backoff_after_five_failures_with_generic_error()
     {
         var u = await f.CreateUser();
         var c = f.Anon();
@@ -57,15 +57,84 @@ public class AuthTests(IdentityFixture f) : IClassFixture<IdentityFixture>
             Assert.Equal(HttpStatusCode.Unauthorized, bad.StatusCode);
             Assert.Contains("Invalid email or password", await bad.Content.ReadAsStringAsync());
         }
-        var locked = await c.PostAsJsonAsync("/api/auth/login", new { email = u.Email, password = IdentityFixture.Password });
-        Assert.Equal(HttpStatusCode.Unauthorized, locked.StatusCode);
-        await using var db = f.NewDb();
-        var stored = await db.Users.SingleAsync(x => x.Id == u.Id);
-        Assert.True(stored.LockoutUntil > DateTime.UtcNow.AddMinutes(14));
+        await using (var db = f.NewDb())
+        {
+            var stored = await db.Users.SingleAsync(x => x.Id == u.Id);
+            Assert.Equal(5, stored.FailedLoginCount);
+            // First backoff step is 1 second, never a 15 minute hard lock.
+            Assert.True(stored.LockoutUntil > DateTime.UtcNow.AddSeconds(-1));
+            Assert.True(stored.LockoutUntil < DateTime.UtcNow.AddSeconds(5));
+            // Pin the window open so the in-window check is deterministic.
+            stored.LockoutUntil = DateTime.UtcNow.AddMinutes(1);
+            await db.SaveChangesAsync();
+        }
+        var inWindow = await c.PostAsJsonAsync("/api/auth/login", new { email = u.Email, password = IdentityFixture.Password });
+        Assert.Equal(HttpStatusCode.Unauthorized, inWindow.StatusCode);
+        Assert.Contains("Invalid email or password", await inWindow.Content.ReadAsStringAsync());
+
+        await using (var db = f.NewDb())
+        {
+            var stored = await db.Users.SingleAsync(x => x.Id == u.Id);
+            Assert.Equal(5, stored.FailedLoginCount); // in-window attempts are not counted
+            stored.LockoutUntil = DateTime.UtcNow.AddSeconds(-1); // backoff elapsed
+            await db.SaveChangesAsync();
+        }
+        var ok = await c.PostAsJsonAsync("/api/auth/login", new { email = u.Email, password = IdentityFixture.Password });
+        Assert.Equal(HttpStatusCode.OK, ok.StatusCode);
+        await using (var db = f.NewDb())
+        {
+            var stored = await db.Users.SingleAsync(x => x.Id == u.Id);
+            Assert.Equal(0, stored.FailedLoginCount);
+            Assert.Null(stored.LockoutUntil);
+        }
 
         var unknown = await c.PostAsJsonAsync("/api/auth/login", new { email = "nobody@example.com", password = "WrongPass123" });
         Assert.Equal(HttpStatusCode.Unauthorized, unknown.StatusCode);
         Assert.Contains("Invalid email or password", await unknown.Content.ReadAsStringAsync());
+    }
+
+    [Fact]
+    public async Task Backoff_grows_exponentially_and_is_capped_at_fifteen_minutes()
+    {
+        Assert.Equal(TimeSpan.Zero, Mastemy.Api.Modules.Identity.AuthService.BackoffFor(4));
+        Assert.Equal(TimeSpan.FromSeconds(1), Mastemy.Api.Modules.Identity.AuthService.BackoffFor(5));
+        Assert.Equal(TimeSpan.FromSeconds(8), Mastemy.Api.Modules.Identity.AuthService.BackoffFor(8));
+        Assert.Equal(TimeSpan.FromSeconds(512), Mastemy.Api.Modules.Identity.AuthService.BackoffFor(14));
+        Assert.Equal(TimeSpan.FromMinutes(15), Mastemy.Api.Modules.Identity.AuthService.BackoffFor(15));
+        Assert.Equal(TimeSpan.FromMinutes(15), Mastemy.Api.Modules.Identity.AuthService.BackoffFor(500));
+
+        var u = await f.CreateUser();
+        await using (var db = f.NewDb())
+        {
+            var stored = await db.Users.SingleAsync(x => x.Id == u.Id);
+            stored.FailedLoginCount = 40;
+            await db.SaveChangesAsync();
+        }
+        var bad = await f.Anon().PostAsJsonAsync("/api/auth/login", new { email = u.Email, password = "WrongPass123" });
+        Assert.Equal(HttpStatusCode.Unauthorized, bad.StatusCode);
+        await using (var db = f.NewDb())
+        {
+            var stored = await db.Users.SingleAsync(x => x.Id == u.Id);
+            Assert.True(stored.LockoutUntil <= DateTime.UtcNow.AddMinutes(15).AddSeconds(5));
+            Assert.True(stored.LockoutUntil > DateTime.UtcNow.AddMinutes(14));
+        }
+    }
+
+    [Fact]
+    public async Task Login_is_rate_limited_per_email_independent_of_ip()
+    {
+        var email = $"rl{Guid.NewGuid():N}@example.com";
+        var c = f.Anon();
+        for (var i = 0; i < 10; i++)
+        {
+            var r = await c.PostAsJsonAsync("/api/auth/login", new { email, password = "WrongPass123" });
+            Assert.Equal(HttpStatusCode.Unauthorized, r.StatusCode);
+        }
+        var limited = await c.PostAsJsonAsync("/api/auth/login", new { email = email.ToUpperInvariant(), password = "WrongPass123" });
+        Assert.Equal((HttpStatusCode)429, limited.StatusCode);
+        // A different account from the same client is unaffected (per-IP limit is generous in tests).
+        var other = await c.PostAsJsonAsync("/api/auth/login", new { email = $"rl2{Guid.NewGuid():N}@example.com", password = "WrongPass123" });
+        Assert.Equal(HttpStatusCode.Unauthorized, other.StatusCode);
     }
 
     [Fact]

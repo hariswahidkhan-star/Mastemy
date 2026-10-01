@@ -37,3 +37,15 @@ Baseline: `mastemy_prd.docx` v1.0 (Oct 2026), not stored in this repository. Ove
 | 20 | Admin and enterprise | Partial | Review queue, feature flags, audit; enterprise planned |
 | 21 | Security, a11y, i18n, SEO | Partial | Auth, server authz, RTL; MFA, scanning, WCAG evidence, SEO planned |
 | 22 | Tests and deliverables | Partial | See repository tests; full E2E and acceptance matrix incomplete |
+
+## Known limitation: no content snapshots during course re-review
+
+A course that has ever been published (`PublishedAt` set on the first publish only; re-publishes bump `UpdatedAt`) stays publicly live while it is `Updating`, `InReview`, `ChangesRequested` or `Approved` (`AccessService.IsLive(status, publishedAt)`; the catalog uses the same rule in SQL). `Archived` is never live.
+
+Because there are no content snapshots yet, learners see the **working copy**: edits an instructor makes while the course is `Updating`/`ChangesRequested`, including deleting lessons/modules that have a Ready video and changing premium notes, become visible before a reviewer approves them. This is the instructor's responsibility. As a minimum safeguard:
+
+- Every studio edit records a course-scoped `course.content_changed` audit entry (operation, entity, entity id, changed field names, whether the course was live during the edit, and for deletions whether a Ready video was attached).
+- Reviewers can call `GET /api/review/courses/{id}/changes` (Reviewer policy) to list the entries made since the last `course.published` event.
+- Deleting lessons or modules is still blocked for a published course that has enrollments (`has_enrollments`).
+
+Planned follow-up: publish an immutable snapshot of the curriculum and notes, and serve learners the snapshot until the re-review is approved.
