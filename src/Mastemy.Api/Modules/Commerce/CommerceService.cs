@@ -133,7 +133,7 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         var pkg = await db.Packages.AsNoTracking().FirstOrDefaultAsync(p => p.Id == input.PackageId) ?? throw AppException.NotFound("Package");
         if (!pkg.IsActive || pkg.ApprovalStatus != "Approved") throw AppException.Bad("Package is not available for purchase.", "package_unavailable");
         var course = await db.Courses.AsNoTracking().FirstOrDefaultAsync(c => c.Id == pkg.CourseId) ?? throw AppException.NotFound("Course");
-        if (!AccessService.IsLive(course.Status)) throw AppException.Bad("Course is not available.", "course_unavailable");
+        if (!AccessService.IsLive(course)) throw AppException.Bad("Course is not available.", "course_unavailable");
 
         var order = new Order
         {

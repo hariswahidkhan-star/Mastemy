@@ -41,7 +41,7 @@ public class LearningService(AppDbContext db, ICurrentUser me, AccessService acc
     private async Task<Course> LiveCourseBySlug(string slug)
     {
         var c = await db.Courses.AsNoTracking().FirstOrDefaultAsync(x => x.Slug == slug);
-        if (c is null || !AccessService.IsLive(c.Status)) throw AppException.NotFound("Course");
+        if (c is null || !AccessService.IsLive(c)) throw AppException.NotFound("Course");
         return c;
     }
 
@@ -52,7 +52,7 @@ public class LearningService(AppDbContext db, ICurrentUser me, AccessService acc
                          join c in db.Courses.AsNoTracking() on m.CourseId equals c.Id
                          where l.Id == lessonId
                          select new { l, c }).FirstOrDefaultAsync();
-        if (row is null || !AccessService.IsLive(row.c.Status)) throw AppException.NotFound("Lesson");
+        if (row is null || !AccessService.IsLive(row.c)) throw AppException.NotFound("Lesson");
         return new LiveLesson(row.l, row.c);
     }
 
@@ -157,7 +157,7 @@ public class LearningService(AppDbContext db, ICurrentUser me, AccessService acc
     {
         var uid = me.RequireId();
         var c = await db.Courses.AsNoTracking().FirstOrDefaultAsync(x => x.Id == courseId);
-        if (c is null || !AccessService.IsLive(c.Status)) throw AppException.NotFound("Course");
+        if (c is null || !AccessService.IsLive(c)) throw AppException.NotFound("Course");
         var e = await EnsureEnrollment(uid, courseId);
         return new EnrollmentResult(e.Id, e.CourseId, e.CreatedAt);
     }

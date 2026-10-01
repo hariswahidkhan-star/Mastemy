@@ -44,7 +44,8 @@ public static class CourseStateMachine
         course.Status = to;
         course.UpdatedAt = nowUtc;
         if (action == CourseAction.Approve) course.ReviewedAt = nowUtc;
-        if (action == CourseAction.Publish) course.PublishedAt = nowUtc;
+        // PublishedAt marks the FIRST publish (live continuity); re-publishes only bump UpdatedAt.
+        if (action == CourseAction.Publish) course.PublishedAt ??= nowUtc;
         return to;
     }
 

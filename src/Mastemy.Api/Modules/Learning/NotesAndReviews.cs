@@ -71,8 +71,8 @@ public class NotesService(AppDbContext db, ICurrentUser me)
                           join m in db.Modules on l.ModuleId equals m.Id
                           join c in db.Courses on m.CourseId equals c.Id
                           where l.Id == input.LessonId
-                          select new { c.Status, CourseId = c.Id, CourseTitle = c.Title, LessonTitle = l.Title }).ToListAsync();
-        if (live.Count == 0 || !AccessService.IsLive(live[0].Status)) throw AppException.NotFound("Lesson");
+                          select new { c.Status, c.PublishedAt, CourseId = c.Id, CourseTitle = c.Title, LessonTitle = l.Title }).ToListAsync();
+        if (live.Count == 0 || !AccessService.IsLive(live[0].Status, live[0].PublishedAt)) throw AppException.NotFound("Lesson");
         var n = new LearnerNote { UserId = uid, LessonId = input.LessonId, CourseId = live[0].CourseId,
             CourseTitleSnapshot = live[0].CourseTitle, LessonTitleSnapshot = live[0].LessonTitle, TimestampSeconds = input.TimestampSeconds, Body = input.Body, Tags = NormalizeTags(input.Tags) };
         db.LearnerNotes.Add(n);
@@ -136,7 +136,7 @@ public class ReviewsService(AppDbContext db, ICurrentUser me, AccessService acce
     {
         var uid = me.RequireId();
         var course = await db.Courses.AsNoTracking().FirstOrDefaultAsync(c => c.Id == courseId);
-        if (course is null || !AccessService.IsLive(course.Status)) throw AppException.NotFound("Course");
+        if (course is null || !AccessService.IsLive(course)) throw AppException.NotFound("Course");
         if (input.Rating is < 1 or > 5) throw AppException.Bad("Rating must be between 1 and 5.");
         var body = (input.Body ?? "").Trim();
         if (body.Length > MaxBody) throw AppException.Bad($"Review must be at most {MaxBody} characters.");

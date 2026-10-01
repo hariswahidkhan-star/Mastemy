@@ -63,3 +63,8 @@ public record ReviewCommentRequest(Guid? LessonId, Guid? QuestionId, int? VideoT
 public record ReviewCommentDto(Guid Id, Guid? LessonId, Guid? QuestionId, int? VideoTimestampSeconds, Guid AuthorId,
     string AuthorName, string Body, DateTime CreatedAt);
 public record CourseStatusDto(Guid Id, CourseStatus Status, DateTime? ReviewedAt, DateTime? PublishedAt);
+
+public record CourseChangeDto(long AuditId, string Op, string Entity, string? EntityId, string[] ChangedFields,
+    Guid? ActorId, string? ActorName, DateTime At, string? Details);
+public record CourseChangesDto(Guid CourseId, CourseStatus Status, DateTime? FirstPublishedAt, DateTime? SinceLastPublishAt,
+    List<CourseChangeDto> Changes);

@@ -11,12 +11,20 @@ namespace Mastemy.Api.Infrastructure;
 /// </summary>
 public class AccessService(AppDbContext db, ICurrentUser me)
 {
-    /// <summary>Owner, co-instructor or editor of the course.</summary>
+    private static readonly string[] AuthoringRoles = [Roles.Instructor, Roles.Admin, Roles.SuperAdmin];
+
+    /// <summary>
+    /// Owner, co-instructor or editor of the course who still holds an authoring role (Instructor/Admin/SuperAdmin)
+    /// and is not suspended. Checked against the database, so a demoted or suspended user loses access immediately
+    /// even with an unexpired token.
+    /// </summary>
     public async Task<bool> IsCourseAuthor(Guid courseId, Guid? userId = null)
     {
         var uid = userId ?? me.Id;
         if (uid is null) return false;
-        return await db.CourseInstructors.AnyAsync(x => x.CourseId == courseId && x.UserId == uid);
+        return await db.CourseInstructors.AnyAsync(x => x.CourseId == courseId && x.UserId == uid
+            && db.Users.Any(u => u.Id == uid && !u.IsSuspended)
+            && db.UserRoles.Any(r => r.UserId == uid && AuthoringRoles.Contains(r.Role)));
     }
 
     public async Task RequireCourseAuthorOrStaff(Guid courseId)
@@ -43,6 +51,20 @@ public class AccessService(AppDbContext db, ICurrentUser me)
                                                   && e.StartsAt <= now && (e.EndsAt == null || e.EndsAt > now));
     }
 
-    /// <summary>Course is visible to learners (published or updating-with-published-version).</summary>
-    public static bool IsLive(CourseStatus s) => s is CourseStatus.Published or CourseStatus.Updating;
+    /// <summary>
+    /// Course is visible to learners. Published/Updating are live; a course that has ever been published
+    /// (PublishedAt set) stays live while it goes through re-review (InReview, ChangesRequested, Approved).
+    /// Archived and never-published courses are never live.
+    /// </summary>
+    public static bool IsLive(CourseStatus s, DateTime? publishedAt) =>
+        s is CourseStatus.Published or CourseStatus.Updating
+        || (publishedAt != null && s is CourseStatus.InReview or CourseStatus.ChangesRequested or CourseStatus.Approved);
+
+    public static bool IsLive(Course c) => IsLive(c.Status, c.PublishedAt);
+
+    /// <summary>SQL-translatable form of <see cref="IsLive(CourseStatus, DateTime?)"/> for catalog queries.</summary>
+    public static readonly System.Linq.Expressions.Expression<Func<Course, bool>> IsLiveExpr = c =>
+        c.Status == CourseStatus.Published || c.Status == CourseStatus.Updating
+        || (c.PublishedAt != null && (c.Status == CourseStatus.InReview || c.Status == CourseStatus.ChangesRequested
+                                      || c.Status == CourseStatus.Approved));
 }
