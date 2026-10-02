@@ -262,3 +262,10 @@ html:has(.ws-consent) body {
   text-decoration: line-through;
   color: var(--c-text-muted);
 }
+.ws-consent__details {
+  margin-block-end: var(--space-2);
+}
+.ws-consent__details > summary {
+  cursor: pointer;
+  min-block-size: 24px; /* WCAG 2.5.8 target size */
+}

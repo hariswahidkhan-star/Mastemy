@@ -72,7 +72,12 @@ export function ConsentBanner() {
   return (
     <section ref={ref} className="ws-consent" role="region" aria-labelledby="ws-consent-h">
       <h2 id="ws-consent-h">{t('workspace.consent.title')}</h2>
-      <p className="small">{t('workspace.consent.body')}</p>
+      {/* Compact by default: a short summary, with the full explanation one click away. */}
+      <p className="small">{t('workspace.consent.summary')}</p>
+      <details className="small ws-consent__details">
+        <summary>{t('workspace.consent.details')}</summary>
+        <p>{t('workspace.consent.body')}</p>
+      </details>
       <div className="row">
         <Button size="sm" loading={busy} onClick={() => choose(true)}>
           {t('workspace.consent.accept')}
