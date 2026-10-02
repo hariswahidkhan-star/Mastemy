@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0724",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0724-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Gemini returns a confident summary stating last quarter grew 12%. What should you do before sharing it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the 12% against the source rows yourself",
+     "correct": true,
+     "rationale": "Correct: AI output must be checked against the data; confident wording is not evidence."
+    },
+    {
+     "key": "B",
+     "text": "Share it immediately because the tone is confident",
+     "correct": false,
+     "rationale": "Confidence is not correctness; unverified figures can be wrong."
+    },
+    {
+     "key": "C",
+     "text": "Delete the source data to keep the sheet tidy",
+     "correct": false,
+     "rationale": "Removing source data makes verification impossible."
+    },
+    {
+     "key": "D",
+     "text": "Ask Gemini if it is sure",
+     "correct": false,
+     "rationale": "Re-asking the model does not independently confirm the number."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI output must be checked against the data; confident wording is not evidence.",
+   "outcome_refs": [
+    "MST-0724-D04.01"
+   ],
+   "domain_ref": "Verification",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0724-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which is the safest practice when a dataset contains regulated personal data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Confirm data-handling policy and admin controls before using the assistant",
+     "correct": true,
+     "rationale": "Correct: data boundaries and governance must be confirmed first."
+    },
+    {
+     "key": "B",
+     "text": "Paste everything so the model has full context",
+     "correct": false,
+     "rationale": "Sending regulated data without checking policy risks a breach."
+    },
+    {
+     "key": "C",
+     "text": "Rename the sheet to hide the content",
+     "correct": false,
+     "rationale": "Renaming does not change what data is processed."
+    },
+    {
+     "key": "D",
+     "text": "Assume the assistant never stores anything",
+     "correct": false,
+     "rationale": "Assumptions about retention are not a substitute for confirming policy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: data boundaries and governance must be confirmed before sending regulated data.",
+   "outcome_refs": [
+    "MST-0724-D06.01"
+   ],
+   "domain_ref": "Governance and privacy",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0724-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps help verify an AI-generated summary of a table? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Trace each cited figure back to specific source cells",
+     "correct": true,
+     "rationale": "Correct: tracing to source confirms the figure exists in the data."
+    },
+    {
+     "key": "B",
+     "text": "Recompute a key total manually and compare",
+     "correct": true,
+     "rationale": "Correct: an independent manual total catches generation errors."
+    },
+    {
+     "key": "C",
+     "text": "Increase the font size of the summary",
+     "correct": false,
+     "rationale": "Formatting has no bearing on correctness."
+    },
+    {
+     "key": "D",
+     "text": "Accept it if it reads fluently",
+     "correct": false,
+     "rationale": "Fluency is unrelated to numerical accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tracing to source cells and recomputing a total independently both verify generated figures.",
+   "outcome_refs": [
+    "MST-0724-D04.02"
+   ],
+   "domain_ref": "Verification",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

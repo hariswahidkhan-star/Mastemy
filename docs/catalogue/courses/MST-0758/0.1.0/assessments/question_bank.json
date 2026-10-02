@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0758",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0758-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should you define access patterns before designing a DynamoDB table?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Key and index design depend on how data is queried",
+     "correct": true,
+     "rationale": "Correct: DynamoDB is designed around access patterns; keys and indexes follow from them."
+    },
+    {
+     "key": "B",
+     "text": "DynamoDB auto-creates joins from the schema",
+     "correct": false,
+     "rationale": "DynamoDB does not support joins."
+    },
+    {
+     "key": "C",
+     "text": "Access patterns set the billing currency",
+     "correct": false,
+     "rationale": "Access patterns are unrelated to billing currency."
+    },
+    {
+     "key": "D",
+     "text": "Tables cannot be queried without a full scan",
+     "correct": false,
+     "rationale": "Well-designed keys and indexes allow efficient queries without scans."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: DynamoDB is designed around access patterns; keys and indexes follow from them.",
+   "outcome_refs": [
+    "MST-0758-D02.02"
+   ],
+   "domain_ref": "Key design",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0758-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A routine lookup of a customer's orders currently uses Scan and is slow and costly. What is the better approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Query a key or secondary index matching the access pattern",
+     "correct": true,
+     "rationale": "Correct: Query reads only matching items; Scan reads the whole table."
+    },
+    {
+     "key": "B",
+     "text": "Increase the Scan frequency",
+     "correct": false,
+     "rationale": "Scanning more often increases cost without fixing the pattern."
+    },
+    {
+     "key": "C",
+     "text": "Add more attributes to each item",
+     "correct": false,
+     "rationale": "Item size does not turn a Scan into an efficient lookup."
+    },
+    {
+     "key": "D",
+     "text": "Switch the table to a relational engine mid-request",
+     "correct": false,
+     "rationale": "You cannot swap engines per request; redesign the access pattern instead."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Query reads only matching items; Scan reads the whole table.",
+   "outcome_refs": [
+    "MST-0758-D04.01"
+   ],
+   "domain_ref": "Querying and indexes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0758-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO help mitigate a hot partition in DynamoDB? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Choose a high-cardinality partition key",
+     "correct": true,
+     "rationale": "Correct: a high-cardinality key spreads load across partitions."
+    },
+    {
+     "key": "B",
+     "text": "Add a write-sharding suffix to the key",
+     "correct": true,
+     "rationale": "Correct: sharding distributes writes that would otherwise hit one partition."
+    },
+    {
+     "key": "C",
+     "text": "Store all items under a single constant key",
+     "correct": false,
+     "rationale": "A constant key concentrates all load on one partition."
+    },
+    {
+     "key": "D",
+     "text": "Disable indexes entirely",
+     "correct": false,
+     "rationale": "Removing indexes does not address key distribution."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a high-cardinality key and write-sharding both spread load and relieve hot partitions.",
+   "outcome_refs": [
+    "MST-0758-D05.02"
+   ],
+   "domain_ref": "Capacity and throttling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

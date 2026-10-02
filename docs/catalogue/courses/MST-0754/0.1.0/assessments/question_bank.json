@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0754",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0754-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A private subnet instance needs to download OS updates but must not accept inbound connections. What provides this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A NAT gateway",
+     "correct": true,
+     "rationale": "Correct: a NAT gateway allows outbound-initiated traffic while blocking unsolicited inbound."
+    },
+    {
+     "key": "B",
+     "text": "An internet gateway attached to the subnet",
+     "correct": false,
+     "rationale": "An internet gateway would make the subnet public and allow inbound."
+    },
+    {
+     "key": "C",
+     "text": "A VPC peering connection",
+     "correct": false,
+     "rationale": "Peering connects VPCs; it does not provide internet egress."
+    },
+    {
+     "key": "D",
+     "text": "A security group allowing all inbound",
+     "correct": false,
+     "rationale": "Opening inbound is the opposite of the requirement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a NAT gateway allows outbound-initiated traffic while blocking unsolicited inbound.",
+   "outcome_refs": [
+    "MST-0754-D02.02"
+   ],
+   "domain_ref": "Routing and gateways",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0754-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How do security groups differ from network ACLs in a VPC?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Security groups are stateful; NACLs are stateless",
+     "correct": true,
+     "rationale": "Correct: security groups track connection state and auto-allow return traffic; NACLs evaluate each direction."
+    },
+    {
+     "key": "B",
+     "text": "Security groups are stateless; NACLs are stateful",
+     "correct": false,
+     "rationale": "This reverses the actual behaviour."
+    },
+    {
+     "key": "C",
+     "text": "Both are stateless",
+     "correct": false,
+     "rationale": "Security groups are stateful."
+    },
+    {
+     "key": "D",
+     "text": "Both operate only at the subnet level",
+     "correct": false,
+     "rationale": "Security groups apply to ENIs/instances; NACLs apply at the subnet."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: security groups are stateful (return traffic auto-allowed); NACLs are stateless.",
+   "outcome_refs": [
+    "MST-0754-D03.01"
+   ],
+   "domain_ref": "Traffic security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0754-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about VPC peering are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Peering is not transitive between VPCs",
+     "correct": true,
+     "rationale": "Correct: traffic does not route through a peered VPC to a third."
+    },
+    {
+     "key": "B",
+     "text": "Route tables must be updated on both VPCs",
+     "correct": true,
+     "rationale": "Correct: each VPC needs routes to the other's CIDR."
+    },
+    {
+     "key": "C",
+     "text": "Peering requires overlapping CIDR ranges",
+     "correct": false,
+     "rationale": "Overlapping CIDRs prevent peering."
+    },
+    {
+     "key": "D",
+     "text": "Peering automatically connects on-premises networks",
+     "correct": false,
+     "rationale": "Peering connects VPCs, not on-premises sites."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: peering is non-transitive and requires route-table entries on both sides.",
+   "outcome_refs": [
+    "MST-0754-D04.01"
+   ],
+   "domain_ref": "Connecting VPCs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

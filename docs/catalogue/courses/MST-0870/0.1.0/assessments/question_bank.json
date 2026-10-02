@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0870",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 90,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0870-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must hooks be called at the top level of a component and not inside conditions or loops?",
+   "options": [
+    {
+     "key": "A",
+     "text": "React relies on a consistent hook call order across renders",
+     "correct": true,
+     "rationale": "Correct: hooks are matched by call order, so the order must be stable every render."
+    },
+    {
+     "key": "B",
+     "text": "Conditionals make the bundle larger",
+     "correct": false,
+     "rationale": "Bundle size is unrelated to the rule of hooks."
+    },
+    {
+     "key": "C",
+     "text": "Loops are not allowed anywhere in React",
+     "correct": false,
+     "rationale": "Loops are fine in render logic; the rule is specifically about hook calls."
+    },
+    {
+     "key": "D",
+     "text": "Hooks only work in class components",
+     "correct": false,
+     "rationale": "Hooks work in function components, not classes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: hooks are matched by call order, so the order must be stable every render.",
+   "outcome_refs": [
+    "MST-0870-D01.02"
+   ],
+   "domain_ref": "Core hooks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0870-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An effect that fetches data but omits a value it uses from the dependency array will most likely:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a stale value from an old render (stale closure)",
+     "correct": true,
+     "rationale": "Correct: omitting a used dependency captures an outdated value from the render it was created in."
+    },
+    {
+     "key": "B",
+     "text": "Throw a compile-time error",
+     "correct": false,
+     "rationale": "It is a runtime/logic bug, not a compile error (a linter may warn)."
+    },
+    {
+     "key": "C",
+     "text": "Automatically re-run on every state change anyway",
+     "correct": false,
+     "rationale": "Omitting the dependency means it will not re-run when that value changes."
+    },
+    {
+     "key": "D",
+     "text": "Disable the component",
+     "correct": false,
+     "rationale": "The component still renders; the data just goes stale."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: omitting a used dependency captures an outdated value from the render it was created in.",
+   "outcome_refs": [
+    "MST-0870-D03.01"
+   ],
+   "domain_ref": "Effects",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0870-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate reasons to reach for useMemo or useCallback? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Avoid recomputing a genuinely expensive value each render",
+     "correct": true,
+     "rationale": "Correct: useMemo caches an expensive computation between renders."
+    },
+    {
+     "key": "B",
+     "text": "Keep a stable reference so a memoised child does not re-render",
+     "correct": true,
+     "rationale": "Correct: useCallback stabilises a function reference for memoised children."
+    },
+    {
+     "key": "C",
+     "text": "Wrap every value and function by default",
+     "correct": false,
+     "rationale": "Premature memoisation adds complexity and can hurt performance."
+    },
+    {
+     "key": "D",
+     "text": "Replace the need for correct dependency arrays",
+     "correct": false,
+     "rationale": "Memoisation hooks do not remove the need for correct dependencies."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: memoise genuinely expensive values and stabilise references for memoised children; do not memoise everything by default.",
+   "outcome_refs": [
+    "MST-0870-D05.01"
+   ],
+   "domain_ref": "Performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

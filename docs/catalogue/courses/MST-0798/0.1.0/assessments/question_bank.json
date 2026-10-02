@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0798",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0798-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AppSheet app repeatedly loads the wrong record when users tap a row. The most likely cause is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The table's row key is not unique",
+     "correct": true,
+     "rationale": "Correct: AppSheet needs a unique key to identify each row reliably."
+    },
+    {
+     "key": "B",
+     "text": "Too many views are defined",
+     "correct": false,
+     "rationale": "The number of views does not affect row identity."
+    },
+    {
+     "key": "C",
+     "text": "The Sheet has a header row",
+     "correct": false,
+     "rationale": "A header row is expected and normal."
+    },
+    {
+     "key": "D",
+     "text": "Gemini was not used to build it",
+     "correct": false,
+     "rationale": "Record identity depends on keys, not on AI assistance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AppSheet needs a unique key to identify each row reliably.",
+   "outcome_refs": [
+    "MST-0798-D02.01"
+   ],
+   "domain_ref": "Data modelling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0798-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Gemini drafts an AppSheet expression for a validation rule. Before using it you should:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Test it against sample rows including edge cases",
+     "correct": true,
+     "rationale": "Correct: generated logic must be verified against real and edge-case data."
+    },
+    {
+     "key": "B",
+     "text": "Deploy it to all users immediately",
+     "correct": false,
+     "rationale": "Deploying unverified logic risks breaking data capture."
+    },
+    {
+     "key": "C",
+     "text": "Assume it is correct because it compiled",
+     "correct": false,
+     "rationale": "Compiling does not prove the logic is right."
+    },
+    {
+     "key": "D",
+     "text": "Delete the sample data first",
+     "correct": false,
+     "rationale": "Sample data is needed to test the rule."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: generated logic must be verified against real and edge-case data.",
+   "outcome_refs": [
+    "MST-0798-D05.02"
+   ],
+   "domain_ref": "AI assistance and verification",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0798-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good governance practices before rolling out an operational app? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Restrict edit access by user role",
+     "correct": true,
+     "rationale": "Correct: least-privilege access protects operational data."
+    },
+    {
+     "key": "B",
+     "text": "Validate required fields and data types",
+     "correct": true,
+     "rationale": "Correct: validation keeps the captured data trustworthy."
+    },
+    {
+     "key": "C",
+     "text": "Give every user owner rights",
+     "correct": false,
+     "rationale": "Owner rights for all violates least privilege."
+    },
+    {
+     "key": "D",
+     "text": "Skip testing to ship faster",
+     "correct": false,
+     "rationale": "Skipping testing risks shipping broken workflows."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: role-based access and field validation are core governance steps before rollout.",
+   "outcome_refs": [
+    "MST-0798-D06.01"
+   ],
+   "domain_ref": "Governance and deployment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

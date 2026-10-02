@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0866",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0866-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to lay out a page with both rows and columns that align in two dimensions. Which is the best fit?",
+   "options": [
+    {
+     "key": "A",
+     "text": "CSS Grid",
+     "correct": true,
+     "rationale": "Correct: Grid is designed for two-dimensional row-and-column layouts."
+    },
+    {
+     "key": "B",
+     "text": "Flexbox alone",
+     "correct": false,
+     "rationale": "Flexbox is primarily one-dimensional; two-dimensional alignment is awkward with it."
+    },
+    {
+     "key": "C",
+     "text": "Floats",
+     "correct": false,
+     "rationale": "Floats are a legacy technique ill-suited to structured 2D layout."
+    },
+    {
+     "key": "D",
+     "text": "Absolute positioning for everything",
+     "correct": false,
+     "rationale": "Absolute positioning does not create a flexible responsive grid."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Grid is designed for two-dimensional row-and-column layouts.",
+   "outcome_refs": [
+    "MST-0866-D02.01"
+   ],
+   "domain_ref": "Grid",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0866-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why prefer CSS custom properties over hard-coded colour values in a design system?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They allow central theming and run-time changes from one source of truth",
+     "correct": true,
+     "rationale": "Correct: custom properties let tokens drive the whole system and support theming."
+    },
+    {
+     "key": "B",
+     "text": "They make the CSS file invalid",
+     "correct": false,
+     "rationale": "Custom properties are valid CSS."
+    },
+    {
+     "key": "C",
+     "text": "They disable the cascade",
+     "correct": false,
+     "rationale": "Custom properties participate in the cascade normally."
+    },
+    {
+     "key": "D",
+     "text": "They only work in print styles",
+     "correct": false,
+     "rationale": "They work across all media, not just print."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: custom properties let tokens drive the whole system and support theming.",
+   "outcome_refs": [
+    "MST-0866-D04.01"
+   ],
+   "domain_ref": "Custom properties and tokens",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0866-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep design-system CSS maintainable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a consistent naming convention",
+     "correct": true,
+     "rationale": "Correct: predictable names make styles discoverable and safe to change."
+    },
+    {
+     "key": "B",
+     "text": "Manage specificity and layering deliberately",
+     "correct": true,
+     "rationale": "Correct: controlled specificity avoids brittle overrides."
+    },
+    {
+     "key": "C",
+     "text": "Resolve every conflict with !important",
+     "correct": false,
+     "rationale": "!important escalates specificity wars and harms maintainability."
+    },
+    {
+     "key": "D",
+     "text": "Write deeply nested, element-coupled selectors",
+     "correct": false,
+     "rationale": "Deep coupling makes CSS fragile and hard to reuse."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: consistent naming and deliberate specificity/layering keep design-system CSS maintainable.",
+   "outcome_refs": [
+    "MST-0866-D06.02"
+   ],
+   "domain_ref": "Scalable CSS",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0723",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 90,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0723-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need a single formula in the header cell that returns results for the whole column as new rows are added. Which approach fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "ARRAYFORMULA wrapping the calculation",
+     "correct": true,
+     "rationale": "Correct: ARRAYFORMULA applies the calculation across the whole range and expands as data grows."
+    },
+    {
+     "key": "B",
+     "text": "Copying a formula down 1,000 rows",
+     "correct": false,
+     "rationale": "Manual fill does not auto-extend to new rows and clutters the sheet."
+    },
+    {
+     "key": "C",
+     "text": "A pivot table",
+     "correct": false,
+     "rationale": "A pivot summarises data; it does not place a per-row calculation back in the column."
+    },
+    {
+     "key": "D",
+     "text": "Conditional formatting",
+     "correct": false,
+     "rationale": "Conditional formatting changes appearance, not computed values."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ARRAYFORMULA applies the calculation across the whole range and expands as data grows.",
+   "outcome_refs": [
+    "MST-0723-D01.01"
+   ],
+   "domain_ref": "Advanced functions and arrays",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0723-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which function reshapes and summarises a range using an SQL-like statement inside Google Sheets?",
+   "options": [
+    {
+     "key": "A",
+     "text": "QUERY",
+     "correct": true,
+     "rationale": "Correct: QUERY runs an SQL-like SELECT/GROUP BY against a range."
+    },
+    {
+     "key": "B",
+     "text": "TRANSPOSE",
+     "correct": false,
+     "rationale": "TRANSPOSE only swaps rows and columns."
+    },
+    {
+     "key": "C",
+     "text": "SPARKLINE",
+     "correct": false,
+     "rationale": "SPARKLINE draws a tiny in-cell chart."
+    },
+    {
+     "key": "D",
+     "text": "JOIN",
+     "correct": false,
+     "rationale": "JOIN concatenates array values into a text string."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: QUERY runs an SQL-like SELECT/GROUP BY against a range.",
+   "outcome_refs": [
+    "MST-0723-D03.01"
+   ],
+   "domain_ref": "Reshaping data with QUERY",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0723-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques reduce broken references when a model is copied or extended? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lock constants with absolute references ($A$1)",
+     "correct": true,
+     "rationale": "Correct: absolute references keep the target fixed when copied."
+    },
+    {
+     "key": "B",
+     "text": "Use named ranges for key inputs",
+     "correct": true,
+     "rationale": "Correct: named ranges stay valid and readable as the model grows."
+    },
+    {
+     "key": "C",
+     "text": "Merge the input cells",
+     "correct": false,
+     "rationale": "Merging breaks many formulas and sorting."
+    },
+    {
+     "key": "D",
+     "text": "Delete the error rows",
+     "correct": false,
+     "rationale": "Deleting data hides the problem rather than fixing the reference."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: absolute references and named ranges both keep references stable as a model is copied or extended.",
+   "outcome_refs": [
+    "MST-0723-D05.02"
+   ],
+   "domain_ref": "Validation and auditing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

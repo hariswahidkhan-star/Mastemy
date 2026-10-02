@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0849",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 90,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0849-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Due to type erasure in Java generics, which statement is true at runtime?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Generic type parameters are not available at runtime",
+     "correct": true,
+     "rationale": "Correct: generics are erased, so List<String> and List<Integer> are the same raw type at runtime."
+    },
+    {
+     "key": "B",
+     "text": "Each parameterised type creates a distinct runtime class",
+     "correct": false,
+     "rationale": "Erasure means no distinct runtime classes are generated per type argument."
+    },
+    {
+     "key": "C",
+     "text": "You can use instanceof List<String> directly",
+     "correct": false,
+     "rationale": "The parameter is erased, so that check is not allowed."
+    },
+    {
+     "key": "D",
+     "text": "Primitives can be used directly as type parameters",
+     "correct": false,
+     "rationale": "Type parameters require reference types, hence boxing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: generics are erased, so parameterised types share one raw type at runtime.",
+   "outcome_refs": [
+    "MST-0849-D02.02"
+   ],
+   "domain_ref": "Generics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0849-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What happens if you call a terminal operation on a stream that was already consumed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An IllegalStateException is thrown",
+     "correct": true,
+     "rationale": "Correct: a stream can be operated on only once; reusing it throws IllegalStateException."
+    },
+    {
+     "key": "B",
+     "text": "It silently reprocesses the elements",
+     "correct": false,
+     "rationale": "Streams do not auto-reset for reuse."
+    },
+    {
+     "key": "C",
+     "text": "It returns the previous result from cache",
+     "correct": false,
+     "rationale": "There is no cached-result reuse for a consumed stream."
+    },
+    {
+     "key": "D",
+     "text": "It converts the stream into a List",
+     "correct": false,
+     "rationale": "Reuse does not convert the stream; it fails."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a stream can be operated on only once; reusing it throws IllegalStateException.",
+   "outcome_refs": [
+    "MST-0849-D03.01"
+   ],
+   "domain_ref": "Streams",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0849-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help write correct concurrent Java code? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use concurrent collections for shared mutable state",
+     "correct": true,
+     "rationale": "Correct: concurrent collections handle thread-safe access correctly."
+    },
+    {
+     "key": "B",
+     "text": "Guard compound check-then-act logic with proper synchronisation",
+     "correct": true,
+     "rationale": "Correct: compound actions are not atomic and need synchronisation."
+    },
+    {
+     "key": "C",
+     "text": "Assume all field reads are visible across threads without synchronisation",
+     "correct": false,
+     "rationale": "Without synchronisation/volatile, writes may not be visible to other threads."
+    },
+    {
+     "key": "D",
+     "text": "Share a non-thread-safe HashMap across threads freely",
+     "correct": false,
+     "rationale": "A plain HashMap is not thread-safe and can corrupt under concurrent writes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: concurrent collections and proper synchronisation of compound actions keep concurrent code correct.",
+   "outcome_refs": [
+    "MST-0849-D05.02"
+   ],
+   "domain_ref": "Concurrency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

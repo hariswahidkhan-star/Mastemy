@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0752",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0752-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A service control policy (SCP) in AWS Organizations is used to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set the maximum permissions available in member accounts",
+     "correct": true,
+     "rationale": "Correct: SCPs set permission boundaries; they restrict, never grant, access."
+    },
+    {
+     "key": "B",
+     "text": "Grant users new permissions directly",
+     "correct": false,
+     "rationale": "SCPs cannot grant access; identity policies do that within SCP limits."
+    },
+    {
+     "key": "C",
+     "text": "Create network routes between accounts",
+     "correct": false,
+     "rationale": "SCPs are about permissions, not networking."
+    },
+    {
+     "key": "D",
+     "text": "Store centralised audit logs",
+     "correct": false,
+     "rationale": "Logging is handled by CloudTrail and log aggregation, not SCPs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SCPs set permission boundaries; they restrict, never grant, access.",
+   "outcome_refs": [
+    "MST-0752-D03.01"
+   ],
+   "domain_ref": "Guardrails and SCPs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0752-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should an organization centralise CloudTrail and config logs in a landing zone?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A dedicated log-archive/audit account",
+     "correct": true,
+     "rationale": "Correct: a separate audit account isolates and protects centralised logs."
+    },
+    {
+     "key": "B",
+     "text": "Each workload account only",
+     "correct": false,
+     "rationale": "Per-account-only logging has no tamper-resistant central copy."
+    },
+    {
+     "key": "C",
+     "text": "A public S3 bucket",
+     "correct": false,
+     "rationale": "Public exposure of audit logs is a serious security risk."
+    },
+    {
+     "key": "D",
+     "text": "A developer's personal account",
+     "correct": false,
+     "rationale": "Audit logs must not live in an unmanaged personal account."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a separate audit account isolates and protects centralised logs.",
+   "outcome_refs": [
+    "MST-0752-D05.01"
+   ],
+   "domain_ref": "Centralised logging and audit",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0752-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid reasons to use multiple AWS accounts? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Strong blast-radius and security isolation",
+     "correct": true,
+     "rationale": "Correct: separate accounts limit the blast radius of mistakes and breaches."
+    },
+    {
+     "key": "B",
+     "text": "Clear cost separation by team or environment",
+     "correct": true,
+     "rationale": "Correct: account boundaries make cost attribution clean."
+    },
+    {
+     "key": "C",
+     "text": "To avoid ever using IAM",
+     "correct": false,
+     "rationale": "Multiple accounts still require IAM for access control."
+    },
+    {
+     "key": "D",
+     "text": "Because one account cannot run more than one service",
+     "correct": false,
+     "rationale": "A single account can run many services; that is not the reason."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: isolation of blast radius and clean cost separation are core reasons for multiple accounts.",
+   "outcome_refs": [
+    "MST-0752-D01.01"
+   ],
+   "domain_ref": "Multi-account strategy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

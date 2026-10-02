@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0803",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0803-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before executing a model-generated SQL query against BigQuery, the safest practice is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate it and run read-only with a cost/byte cap",
+     "correct": true,
+     "rationale": "Correct: validation and read-only limits prevent damaging or runaway queries."
+    },
+    {
+     "key": "B",
+     "text": "Run it with full write access for flexibility",
+     "correct": false,
+     "rationale": "Write access lets a bad query modify data."
+    },
+    {
+     "key": "C",
+     "text": "Trust it because the model produced valid syntax",
+     "correct": false,
+     "rationale": "Valid syntax does not mean the query is safe or correct."
+    },
+    {
+     "key": "D",
+     "text": "Remove all quota limits to avoid interruptions",
+     "correct": false,
+     "rationale": "Removing limits risks a very expensive query."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: validation and read-only limits prevent damaging or runaway queries.",
+   "outcome_refs": [
+    "MST-0803-D03.02"
+   ],
+   "domain_ref": "NL to SQL",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0803-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why define metrics in a semantic layer rather than in each generated query?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To give one consistent, trusted definition for every answer",
+     "correct": true,
+     "rationale": "Correct: a shared semantic layer keeps metrics consistent and trustworthy."
+    },
+    {
+     "key": "B",
+     "text": "To make queries run without BigQuery",
+     "correct": false,
+     "rationale": "Queries still execute on BigQuery."
+    },
+    {
+     "key": "C",
+     "text": "To avoid needing access controls",
+     "correct": false,
+     "rationale": "A semantic layer does not replace access control."
+    },
+    {
+     "key": "D",
+     "text": "To stop users from asking questions",
+     "correct": false,
+     "rationale": "The goal is to enable trustworthy questions, not block them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a shared semantic layer keeps metrics consistent and trustworthy.",
+   "outcome_refs": [
+    "MST-0803-D02.01"
+   ],
+   "domain_ref": "Semantic modelling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0803-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO keep a conversational-analytics answer trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ground the narrative in the actual query results",
+     "correct": true,
+     "rationale": "Correct: grounding ties the words to real returned figures."
+    },
+    {
+     "key": "B",
+     "text": "State clearly when the data cannot answer the question",
+     "correct": true,
+     "rationale": "Correct: honest refusal prevents fabricated answers."
+    },
+    {
+     "key": "C",
+     "text": "Fill gaps with plausible estimates",
+     "correct": false,
+     "rationale": "Estimating unseen figures misleads users."
+    },
+    {
+     "key": "D",
+     "text": "Hide the underlying SQL from reviewers",
+     "correct": false,
+     "rationale": "Hiding the SQL prevents verification."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: grounding in results and honest refusal both keep answers trustworthy.",
+   "outcome_refs": [
+    "MST-0803-D04.01"
+   ],
+   "domain_ref": "Grounding",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

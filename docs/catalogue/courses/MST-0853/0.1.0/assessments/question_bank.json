@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0853",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0853-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A list page issues one query for parents and then one query per parent for its children. This is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The N+1 select problem",
+     "correct": true,
+     "rationale": "Correct: one query plus N child queries is the classic N+1 problem."
+    },
+    {
+     "key": "B",
+     "text": "A deadlock",
+     "correct": false,
+     "rationale": "A deadlock is mutual lock waiting, not repeated queries."
+    },
+    {
+     "key": "C",
+     "text": "Correct and optimal behaviour",
+     "correct": false,
+     "rationale": "It is a well-known performance anti-pattern."
+    },
+    {
+     "key": "D",
+     "text": "A transaction rollback",
+     "correct": false,
+     "rationale": "No rollback is implied by the pattern."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: one query plus N child queries is the classic N+1 problem.",
+   "outcome_refs": [
+    "MST-0853-D05.01"
+   ],
+   "domain_ref": "N+1 and fetching",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0853-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Accessing a LAZY association after the transaction has closed typically causes:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A LazyInitializationException",
+     "correct": true,
+     "rationale": "Correct: lazy loading needs an open persistence context; outside it, it fails."
+    },
+    {
+     "key": "B",
+     "text": "A successful silent load from the database",
+     "correct": false,
+     "rationale": "There is no session to load from once the context is closed."
+    },
+    {
+     "key": "C",
+     "text": "A compile-time error",
+     "correct": false,
+     "rationale": "It is a runtime error, not a compile-time one."
+    },
+    {
+     "key": "D",
+     "text": "Automatic switch to EAGER",
+     "correct": false,
+     "rationale": "Fetch type does not change automatically at access time."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: lazy loading needs an open persistence context; outside it, it throws LazyInitializationException.",
+   "outcome_refs": [
+    "MST-0853-D04.02"
+   ],
+   "domain_ref": "Transactions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0853-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound ways to resolve an N+1 problem? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a fetch join in the query",
+     "correct": true,
+     "rationale": "Correct: a fetch join loads the association in one query."
+    },
+    {
+     "key": "B",
+     "text": "Use an entity graph to specify what to fetch",
+     "correct": true,
+     "rationale": "Correct: entity graphs declare eager fetching for a specific query."
+    },
+    {
+     "key": "C",
+     "text": "Make every association EAGER globally",
+     "correct": false,
+     "rationale": "Global EAGER causes over-fetching and new performance problems."
+    },
+    {
+     "key": "D",
+     "text": "Disable transactions entirely",
+     "correct": false,
+     "rationale": "Disabling transactions does not address the query count and harms correctness."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fetch joins and entity graphs both resolve N+1 without the harms of global EAGER.",
+   "outcome_refs": [
+    "MST-0853-D05.02"
+   ],
+   "domain_ref": "N+1 and fetching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

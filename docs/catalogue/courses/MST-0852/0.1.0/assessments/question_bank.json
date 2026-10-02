@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0852",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0852-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Spring Security, what is the difference between authentication and authorization?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Authentication verifies identity; authorization decides what that identity may do",
+     "correct": true,
+     "rationale": "Correct: authentication is 'who are you', authorization is 'what are you allowed to do'."
+    },
+    {
+     "key": "B",
+     "text": "They are two names for the same check",
+     "correct": false,
+     "rationale": "They are distinct concerns handled at different points."
+    },
+    {
+     "key": "C",
+     "text": "Authorization always runs before authentication",
+     "correct": false,
+     "rationale": "Identity must be established before access decisions."
+    },
+    {
+     "key": "D",
+     "text": "Authentication only applies to admin users",
+     "correct": false,
+     "rationale": "Authentication applies to any principal, not just admins."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: authentication is 'who are you', authorization is 'what are you allowed to do'.",
+   "outcome_refs": [
+    "MST-0852-D03.01"
+   ],
+   "domain_ref": "Authorization",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0852-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should stored user passwords use a strong encoder such as BCrypt?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To store a slow, salted one-way hash instead of recoverable passwords",
+     "correct": true,
+     "rationale": "Correct: a slow salted hash resists brute force and prevents storing plaintext."
+    },
+    {
+     "key": "B",
+     "text": "To encrypt passwords so they can be decrypted at login",
+     "correct": false,
+     "rationale": "Password verification should hash and compare, not decrypt."
+    },
+    {
+     "key": "C",
+     "text": "To make passwords shorter in the database",
+     "correct": false,
+     "rationale": "Hashing is about security, not size reduction."
+    },
+    {
+     "key": "D",
+     "text": "Because plaintext is fine behind a firewall",
+     "correct": false,
+     "rationale": "Storing plaintext is unsafe regardless of network controls."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a slow salted hash resists brute force and prevents storing plaintext.",
+   "outcome_refs": [
+    "MST-0852-D02.01"
+   ],
+   "domain_ref": "Authentication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0852-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate when securing a stateless JWT REST API? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate the token's signature and expiry on each request",
+     "correct": true,
+     "rationale": "Correct: every request must prove the token is authentic and current."
+    },
+    {
+     "key": "B",
+     "text": "Configure the API to not create server-side sessions",
+     "correct": true,
+     "rationale": "Correct: statelessness means no reliance on HTTP sessions."
+    },
+    {
+     "key": "C",
+     "text": "Store the user's password inside the JWT",
+     "correct": false,
+     "rationale": "Never put secrets like passwords in a token payload."
+    },
+    {
+     "key": "D",
+     "text": "Trust any token without checking its signature",
+     "correct": false,
+     "rationale": "Unverified tokens can be forged."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: validating signature/expiry per request and avoiding server sessions suit a stateless JWT API.",
+   "outcome_refs": [
+    "MST-0852-D04.02"
+   ],
+   "domain_ref": "Stateless APIs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
