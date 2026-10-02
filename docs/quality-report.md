@@ -150,7 +150,7 @@ The SSR server and nginx now send these headers:
 ## Tests
 
 - **Web unit tests:** 147 passing (vitest). `npm run lint` and `npm run typecheck` are clean.
-- **End to end:** `scripts/e2e-all.sh` with `E2E_PORT_BASE=6500` runs the vite preview, the SSR server and the full stack. The last full run reported 110 passed and 1 failed. That failure was the new 2.4.11 focus check on the lesson page, which is now fixed, and the quality, SSR and perf specs then passed 12/12.
+- **End to end:** `scripts/e2e-all.sh` with `E2E_PORT_BASE=6500` runs the vite preview, the SSR server and the full stack. Final run: **111 / 111 passed** in 18.7 minutes, including the new quality, SSR/CSP and perf specs.
 - **One existing workspace spec was adjusted.** It had depended on a race: an anonymous first fetch of a hidden thread. With auth-ready lazy rendering, the author now correctly sees the moderation notice with its Appeal button.
 
 ## CI jobs added

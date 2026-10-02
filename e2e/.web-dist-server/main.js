@@ -11953,13 +11953,18 @@ function ConsentBanner() {
 		update();
 		const ro = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(update);
 		ro?.observe(el);
-		const onFocus = (e) => {
-			const target = e.target;
+		const clear = (target) => {
 			if (!target?.getBoundingClientRect || el.contains(target)) return;
+			if (!target.matches(":focus-visible")) return;
 			const limit = window.innerHeight - el.offsetHeight;
 			const r = target.getBoundingClientRect();
-			if (r.bottom > limit) window.scrollBy({ top: r.bottom - limit + 8 });
+			if (r.bottom > limit) window.scrollBy({
+				top: r.bottom - limit + 8,
+				behavior: "instant"
+			});
 		};
+		const onFocus = (e) => clear(e.target);
+		clear(document.activeElement);
 		document.addEventListener("focusin", onFocus);
 		return () => {
 			document.removeEventListener("focusin", onFocus);
