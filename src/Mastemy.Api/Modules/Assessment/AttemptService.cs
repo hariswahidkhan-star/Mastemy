@@ -11,7 +11,8 @@ namespace Mastemy.Api.Modules.Assessment;
 /// Learner attempts. All scoring is server-side; learner views never contain correctness or rationales until allowed
 /// (Practice: per-item check and result review; Exam: review only after submission). Deadlines use server time.
 /// </summary>
-public class AttemptService(AppDbContext db, ICurrentUser me, AccessService access, CertificateService certificates)
+public class AttemptService(AppDbContext db, ICurrentUser me, AccessService access, CertificateService certificates,
+    Catalog.CourseSnapshotService snapshots)
 {
     // ---------------- Summary ----------------
 
@@ -209,12 +210,38 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
 
     private static bool IsOverdue(Attempt a) => a.Status == AttemptStatus.InProgress && a.DeadlineAt is { } d && DateTime.UtcNow > d;
 
+    /// <summary>
+    /// The assessment as the caller may take it. Learners only see assessments in the course's current published snapshot,
+    /// with the snapshot's settings (pass mark, scoring, time limit, attempts, review policy, premium) overlaid on the row,
+    /// so draft edits take effect only after re-publish. Course authors, reviewers and staff preview the live row.
+    /// </summary>
     private async Task<(AssessmentEntity, Course)> LoadLive(Guid id)
     {
         var a = await db.Assessments.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id) ?? throw AppException.NotFound("Assessment");
         var course = await db.Courses.AsNoTracking().FirstAsync(c => c.Id == a.CourseId);
         if (!AccessService.IsLive(course)) throw AppException.NotFound("Assessment");
-        return (a, course);
+        if (await IsPrivileged(a.CourseId)) return (a, course);
+        var published = await PublishedCopy(a.CourseId, a.Id) ?? throw AppException.NotFound("Assessment");
+        return (Overlay(a, published), course);
+    }
+
+    private async Task<bool> IsPrivileged(Guid courseId) =>
+        me.Id is not null && (me.IsStaff || me.CanReview || await access.IsCourseAuthor(courseId));
+
+    private async Task<Catalog.SnapshotAssessment?> PublishedCopy(Guid courseId, Guid assessmentId)
+    {
+        var pc = await snapshots.TryLiveById(courseId);
+        return pc?.Payload.Assessments?.FirstOrDefault(x => x.Id == assessmentId);
+    }
+
+    /// <summary>Applies published settings to a detached (AsNoTracking) assessment row.</summary>
+    private static AssessmentEntity Overlay(AssessmentEntity a, Catalog.SnapshotAssessment s)
+    {
+        a.Title = s.Title; a.Kind = s.Kind; a.Mode = s.Mode; a.IsPremium = s.IsPremium; a.ModuleId = s.ModuleId; a.LessonId = s.LessonId;
+        a.TimeLimitMinutes = s.TimeLimitMinutes; a.MaxAttempts = s.MaxAttempts; a.PassPercent = s.PassPercent;
+        a.MultiSelectScoring = s.MultiSelectScoring; a.ReviewPolicy = s.ReviewPolicy; a.QuestionCount = s.QuestionCount;
+        a.CountsTowardCertificate = s.CountsTowardCertificate;
+        return a;
     }
 
     private async Task<int> ActivePoolCount(AssessmentEntity a) =>
@@ -231,6 +258,8 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
         var attempt = await db.Attempts.Include(x => x.Items).FirstOrDefaultAsync(x => x.Id == attemptId);
         if (attempt is null || attempt.UserId != uid) throw AppException.NotFound("Attempt");
         var a = await db.Assessments.AsNoTracking().FirstAsync(x => x.Id == attempt.AssessmentId);
+        // Learners keep the published settings for review/attempt-limit decisions (live row if it left the snapshot).
+        if (!await IsPrivileged(a.CourseId) && await PublishedCopy(a.CourseId, a.Id) is { } published) a = Overlay(a, published);
         await action(attempt, a);
         await db.SaveChangesAsync();
         await tx.CommitAsync();

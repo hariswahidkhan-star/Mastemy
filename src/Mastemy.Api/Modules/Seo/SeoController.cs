@@ -3,6 +3,7 @@ using System.Text;
 using System.Xml;
 using Mastemy.Api.Data;
 using Mastemy.Api.Infrastructure;
+using Mastemy.Api.Modules.Catalog;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,7 @@ namespace Mastemy.Api.Modules.Seo;
 /// </summary>
 [ApiController]
 [AllowAnonymous]
-public class SeoController(AppDbContext db, IConfiguration cfg) : ControllerBase
+public class SeoController(AppDbContext db, IConfiguration cfg, CourseSnapshotService snapshots) : ControllerBase
 {
     public static readonly string[] StaticPaths = ["/", "/courses", "/free-lessons", "/verify", "/teach", "/about", "/help", "/contact"];
     public static readonly string[] DisallowedPaths = ["/me", "/studio", "/admin", "/attempts", "/learn/", "/api/", "/login", "/register"];
@@ -47,11 +48,14 @@ public class SeoController(AppDbContext db, IConfiguration cfg) : ControllerBase
             .OrderBy(c => c.Slug)
             .Select(c => new { c.Id, c.Slug, c.UpdatedAt, c.PublishedAt })
             .ToListAsync(ct);
-        var liveIds = courses.Select(c => c.Id).ToList();
-        var catRows = await db.CourseCategories.AsNoTracking()
-            .Where(cc => liveIds.Contains(cc.CourseId))
-            .Join(db.Categories, cc => cc.CategoryId, c => c.Id, (cc, c) => new { c.Slug, cc.CourseId })
-            .ToListAsync(ct);
+        var liveIds = courses.Select(c => c.Id).ToHashSet();
+        // Categories come from each live course's published snapshot (draft category edits are not advertised).
+        var catLists = await snapshots.LiveCards().Select(x => new { x.Id, x.CategoryIds }).ToListAsync(ct);
+        catLists.AddRange((await snapshots.LegacyCards()).Select(x => new { x.Id, x.CategoryIds }));
+        var catSlugs = await db.Categories.AsNoTracking().ToDictionaryAsync(c => c.Id, c => c.Slug, ct);
+        var catRows = catLists.SelectMany(x => CourseSnapshotService.ParseCategoryIds(x.CategoryIds)
+                .Where(catSlugs.ContainsKey).Select(id => new { Slug = catSlugs[id], CourseId = x.Id }))
+            .Where(r => liveIds.Contains(r.CourseId)).ToList();
         var courseLastMod = courses.ToDictionary(c => c.Id, c => Max(c.UpdatedAt, c.PublishedAt));
         // Categories without a live course are thin pages; they are reachable but not advertised.
         var categories = catRows.GroupBy(r => r.Slug).OrderBy(g => g.Key, StringComparer.Ordinal)

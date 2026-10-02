@@ -10,6 +10,8 @@ public class ResourceOptions
     public string RootPath { get; set; } = "data/resources";
     public long MaxFileBytes { get; set; } = 25L * 1024 * 1024;
     public long PerCourseQuotaBytes { get; set; } = 500L * 1024 * 1024;
+    /// <summary>Transcript searches allowed per client IP per minute.</summary>
+    public int TranscriptPerMinute { get; set; } = 60;
 }
 
 /// <summary>An uploaded body written to a private temporary file, hashed while streaming. Never addressable by users.</summary>
@@ -30,18 +32,29 @@ public sealed class StagedFile(string tempPath, string sha256, long size, byte[]
 }
 
 /// <summary>
-/// Content-addressed blob store for non-video resource files. Keys are lowercase SHA-256 hex digests and are the
-/// only thing that ever reaches the filesystem layer, so user-supplied file names can never influence a path.
+/// Content-addressed blob store for non-video resource files. Keys are "{courseId:N}/{sha256}" (per-course, so two
+/// courses never share a blob and one course's deletes can never remove another's file) or, for files uploaded before
+/// per-course keys, a bare lowercase SHA-256 digest. Keys are validated before reaching the filesystem layer, so
+/// user-supplied file names can never influence a path.
 /// </summary>
 public interface IResourceStorage
 {
     /// <summary>Streams <paramref name="body"/> to a temp file, hashing it. Throws 413 once <paramref name="maxBytes"/> is exceeded.</summary>
     Task<StagedFile> StageAsync(Stream body, long maxBytes, CancellationToken ct);
-    /// <summary>Moves a staged file into the store under its hash key (no-op if the blob already exists). Returns the key.</summary>
-    Task<string> CommitAsync(StagedFile staged, CancellationToken ct);
+    /// <summary>Moves a staged file into the store under <paramref name="key"/> (no-op if the blob already exists). Returns the key.</summary>
+    Task<string> CommitAsync(StagedFile staged, string key, CancellationToken ct);
     Stream OpenRead(string key);
     bool Exists(string key);
     Task DeleteAsync(string key, CancellationToken ct);
+}
+
+public static class ResourceStorageKeys
+{
+    /// <summary>Per-course storage key for a blob.</summary>
+    public static string For(Guid courseId, string sha256) => courseId.ToString("N") + "/" + sha256;
+
+    /// <summary>True for per-course keys; false for legacy bare-digest keys that may be shared across courses.</summary>
+    public static bool IsCourseScoped(string key) => key.Contains('/');
 }
 
 public partial class LocalDiskResourceStorage : IResourceStorage
@@ -56,13 +69,17 @@ public partial class LocalDiskResourceStorage : IResourceStorage
         Directory.CreateDirectory(tmp);
     }
 
-    [GeneratedRegex("^[0-9a-f]{64}$")]
+    [GeneratedRegex("^(?:([0-9a-f]{32})/)?([0-9a-f]{64})$")]
     private static partial Regex KeyPattern();
 
     private string PathFor(string key)
     {
-        if (!KeyPattern().IsMatch(key)) throw new ArgumentException("Invalid storage key.", nameof(key));
-        return Path.Combine(root, key[..2], key[2..4], key);
+        var m = KeyPattern().Match(key);
+        if (!m.Success) throw new ArgumentException("Invalid storage key.", nameof(key));
+        var sha = m.Groups[2].Value;
+        return m.Groups[1].Success
+            ? Path.Combine(root, m.Groups[1].Value, sha[..2], sha[2..4], sha)
+            : Path.Combine(root, sha[..2], sha[2..4], sha);
     }
 
     public async Task<StagedFile> StageAsync(Stream body, long maxBytes, CancellationToken ct)
@@ -96,9 +113,9 @@ public partial class LocalDiskResourceStorage : IResourceStorage
         }
     }
 
-    public Task<string> CommitAsync(StagedFile staged, CancellationToken ct)
+    public Task<string> CommitAsync(StagedFile staged, string key, CancellationToken ct)
     {
-        var dest = PathFor(staged.Sha256);
+        var dest = PathFor(key);
         Directory.CreateDirectory(Path.GetDirectoryName(dest)!);
         if (File.Exists(dest)) File.Delete(staged.TempPath);
         else
@@ -107,7 +124,7 @@ public partial class LocalDiskResourceStorage : IResourceStorage
             catch (IOException) when (File.Exists(dest)) { File.Delete(staged.TempPath); } // concurrent identical upload
         }
         staged.Committed = true;
-        return Task.FromResult(staged.Sha256);
+        return Task.FromResult(key);
     }
 
     public Stream OpenRead(string key) =>

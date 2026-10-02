@@ -16,6 +16,8 @@ public class ResourceTests(ResourcesFixture fx) : IClassFixture<ResourcesFixture
         return doc.RootElement.GetProperty("type").GetString()!;
     }
 
+    private string BlobPath(Guid courseId, string sha) => Path.Combine(fx.RootPath, courseId.ToString("N"), sha[..2], sha[2..4], sha);
+
     private static string UploadUrl(Course c, Guid? lessonId = null, bool premium = false, string kind = "Resource", string? lang = null) =>
         $"/api/studio/courses/{c.Id}/resources?kind={kind}&isPremium={premium.ToString().ToLowerInvariant()}"
         + (lessonId is { } l ? $"&lessonId={l}" : "") + (lang is null ? "" : $"&language={lang}");
@@ -125,8 +127,8 @@ public class ResourceTests(ResourcesFixture fx) : IClassFixture<ResourcesFixture
         Assert.Equal("passwd.pdf", dto.FileName);
         Assert.Matches("^[0-9a-f]{64}$", dto.Sha256);
         var stored = await fx.WithDb(db => db.ResourceFiles.SingleAsync(x => x.Id == dto.Id));
-        Assert.Equal(dto.Sha256, stored.StorageKey);
-        Assert.True(System.IO.File.Exists(Path.Combine(fx.RootPath, dto.Sha256[..2], dto.Sha256[2..4], dto.Sha256)));
+        Assert.Equal(course.Id.ToString("N") + "/" + dto.Sha256, stored.StorageKey);
+        Assert.True(System.IO.File.Exists(BlobPath(course.Id, dto.Sha256)));
 
         Assert.Equal("evil.txt", FileTypePolicy.SanitizeFileName(@"..\..\windows\evil.txt"));
         Assert.Equal("file", FileTypePolicy.SanitizeFileName(".."));
@@ -203,11 +205,12 @@ public class ResourceTests(ResourcesFixture fx) : IClassFixture<ResourcesFixture
         var (aid, author) = await fx.User(Roles.Instructor);
         var (course, lessonId) = await fx.Course(aid);
         var v1 = await Read<ResourceDto>(await author.PostAsync(UploadUrl(course, lessonId), File("notes.txt", "version one"u8.ToArray())));
+        Assert.True(System.IO.File.Exists(BlobPath(course.Id, v1.Sha256)));
         var v2 = await Read<ResourceDto>(await author.PutAsync($"/api/studio/resources/{v1.Id}/file", File("notes-v2.txt", "version two"u8.ToArray())));
         Assert.Equal(v1.Id, v2.Id);
         Assert.Equal(2, v2.Version);
         Assert.Equal("text/plain", v2.ContentType);
-        Assert.False(System.IO.File.Exists(Path.Combine(fx.RootPath, v1.Sha256[..2], v1.Sha256[2..4], v1.Sha256)));
+        Assert.False(System.IO.File.Exists(BlobPath(course.Id, v1.Sha256))); // never published: nothing serves the old version
         var anon = fx.Factory.CreateClient();
         Assert.Equal("version two", await anon.GetStringAsync($"/api/learn/resources/{v1.Id}/download"));
 
@@ -215,7 +218,7 @@ public class ResourceTests(ResourcesFixture fx) : IClassFixture<ResourcesFixture
         Assert.True(patched.IsPremium);
 
         Assert.Equal(HttpStatusCode.NoContent, (await author.DeleteAsync($"/api/studio/resources/{v1.Id}")).StatusCode);
-        Assert.False(System.IO.File.Exists(Path.Combine(fx.RootPath, v2.Sha256[..2], v2.Sha256[2..4], v2.Sha256)));
+        Assert.False(System.IO.File.Exists(BlobPath(course.Id, v2.Sha256)));
         Assert.Equal(HttpStatusCode.NotFound, (await anon.GetAsync($"/api/learn/resources/{v1.Id}/download")).StatusCode);
         Assert.Equal(1, await fx.WithDb(db => db.AuditLogs.CountAsync(a => a.Action == "resource.deleted" && a.EntityId == v1.Id.ToString())));
     }
