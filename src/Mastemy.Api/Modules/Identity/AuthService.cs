@@ -130,6 +130,7 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
             ? await db.RefreshTokens.Where(t => t.Id == token.Id && t.RevokedAt == null)
                 .ExecuteUpdateAsync(s => s.SetProperty(t => t.RevokedAt, now))
             : 0;
+        if (claimed == 0 && await TryGraceRetry(token, now)) claimed = 1;
         if (claimed == 0)
         {
             await db.RefreshTokens.Where(t => t.FamilyId == token.FamilyId && t.RevokedAt == null)
@@ -152,6 +153,26 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
         // A privileged user may not keep refreshing a session that was not MFA-authenticated once MFA is required.
         // auth_time stays the original sign-in time of the session, so refreshing never makes an MFA sign-in look "fresh".
         return await IssueTokens(user, token.FamilyId, session?.MfaAuthenticated ?? false, token.Id, session?.CreatedAt);
+    }
+
+    /// <summary>
+    /// Benign retry: a refresh whose response never reached the browser (reload/network cut) re-presents the token it just
+    /// rotated. Within a short grace window, and only if the successor was never used, the unused successor is revoked and
+    /// rotation continues from the presented token. Any other reuse (successor already used, outside the window) is treated
+    /// as theft and the whole family is revoked by the caller.
+    /// </summary>
+    private async Task<bool> TryGraceRetry(RefreshToken token, DateTime now)
+    {
+        var graceSeconds = cfg.GetValue("Auth:RefreshReuseGraceSeconds", 20);
+        if (graceSeconds <= 0 || token.RevokedAt is null || token.ReplacedById is null) return false;
+        if (now - token.RevokedAt.Value > TimeSpan.FromSeconds(graceSeconds)) return false;
+        // Atomically retire the unused successor; fails if it was already used (rotated or revoked).
+        var retired = await db.RefreshTokens
+            .Where(t => t.Id == token.ReplacedById && t.RevokedAt == null && t.ReplacedById == null)
+            .ExecuteUpdateAsync(x => x.SetProperty(t => t.RevokedAt, now));
+        if (retired == 0) return false;
+        audit.Record("auth.refresh_grace_retry", "User", token.UserId, new { familyId = token.FamilyId });
+        return true;
     }
 
     public async Task Logout(RefreshRequest req)

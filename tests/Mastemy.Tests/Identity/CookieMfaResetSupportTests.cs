@@ -63,7 +63,11 @@ public class CookieMfaResetSupportTests(SecurityFixture f) : IClassFixture<Secur
         var rotated = RefreshCookie(ok)!;
         Assert.NotEqual(CookieValue(set), CookieValue(rotated));
 
-        // Reusing the old cookie is a reuse: 401 and the cookie is cleared.
+        // Reusing the old cookie after its successor was used is theft: 401 and the cookie is cleared.
+        // (An immediate retry with an unused successor is a benign reload and covered by AuthTests.)
+        await using (var db = f.NewDb())
+            await db.RefreshTokens.Where(t => t.TokenHash == Mastemy.Api.Infrastructure.Tokens.Sha256(CookieValue(set)))
+                .ExecuteUpdateAsync(x => x.SetProperty(t => t.RevokedAt, DateTime.UtcNow.AddMinutes(-5)));
         var reuse = await c.SendAsync(Post("/api/auth/refresh", CookieValue(set), header: true));
         Assert.Equal(HttpStatusCode.Unauthorized, reuse.StatusCode);
         Assert.Contains("expires=thu, 01 jan 1970", RefreshCookie(reuse)!.ToLowerInvariant());

@@ -73,7 +73,7 @@ Without SMTP, no email is sent.
 | OpenAPI drift | `scripts/export-openapi.sh --check` | Compares the running API's document with `docs/openapi.json` |
 | Web lint / types / unit | `cd src/web && npm run lint && npm run typecheck && npm test` | Vitest + Testing Library |
 | Web build (client + SSR) | `cd src/web && npm run build` | |
-| End-to-end (Playwright) | `e2e/start-api.sh` (fresh DB, fake Stripe, SMTP sink, API :5080), `cd src/web && npm run dev`, then `cd e2e && npm ci && npx playwright test` | Same sequence as `.github/workflows/ci.yml`. Stripe and Anthropic are faked (`e2e/fake-stripe.mjs`, `e2e/fake-anthropic.mjs`). |
+| End-to-end (Playwright) | `scripts/e2e-all.sh` (fresh DB, fake Stripe, SMTP sink, API :5080), `cd src/web && npm run dev`, then `cd e2e && npm ci && npx playwright test` | Same sequence as `.github/workflows/ci.yml`. Stripe and Anthropic are faked (`e2e/fake-stripe.mjs`, `e2e/fake-anthropic.mjs`). |
 | Backup/restore drill | `scripts/restore-test.sh` | Evidence: `docs/operations/restore-test-evidence.md` |
 
 ## Configuration reference

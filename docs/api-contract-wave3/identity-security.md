@@ -129,3 +129,9 @@ action:
 
 Support cannot change roles, suspend, reset MFA, refund or use `/api/admin/*` Staff/Finance endpoints (403). Support is not in
 the MFA-mandatory privileged role list (gap: decide whether to require MFA for Support).
+
+## Refresh reuse grace window
+`Auth:RefreshReuseGraceSeconds` (default 20). If a refresh response never reaches the browser (reload or network cut) and the
+same token is presented again within the window, while its successor has never been used, the unused successor is retired and
+rotation continues. Any other reuse (successor already used, or outside the window) is treated as token theft and revokes the
+whole session family. Set to 0 to disable.

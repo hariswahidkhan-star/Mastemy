@@ -183,13 +183,41 @@ public class AuthTests(IdentityFixture f) : IClassFixture<IdentityFixture>
             Assert.NotNull(old.ReplacedById);
         }
 
-        // Reuse of the rotated-out token: rejected and the whole family (including the live token) is revoked.
+        // Reuse of the rotated-out token outside the grace window: rejected and the whole family is revoked.
+        await using (var db = f.NewDb())
+            await db.RefreshTokens.Where(t => t.TokenHash == Tokens.Sha256(first.RefreshToken))
+                .ExecuteUpdateAsync(x => x.SetProperty(t => t.RevokedAt, DateTime.UtcNow.AddMinutes(-5)));
         var reuse = await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = first.RefreshToken });
         Assert.Equal(HttpStatusCode.Unauthorized, reuse.StatusCode);
         var afterReuse = await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = second.RefreshToken });
         Assert.Equal(HttpStatusCode.Unauthorized, afterReuse.StatusCode);
         await using (var db = f.NewDb())
             Assert.All(await db.RefreshTokens.Where(t => t.UserId == u.Id).ToListAsync(), t => Assert.NotNull(t.RevokedAt));
+    }
+
+    [Fact]
+    public async Task Interrupted_refresh_can_be_retried_within_grace_but_used_successor_means_theft()
+    {
+        var u = await f.CreateUser();
+        var c = f.Anon();
+        var first = await Read(await c.PostAsJsonAsync("/api/auth/login", new { email = u.Email, password = IdentityFixture.Password }));
+        // Response to this refresh is "lost" (page reload); the browser still only holds `first`.
+        var lost = await Read(await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = first.RefreshToken }));
+
+        var retry = await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = first.RefreshToken });
+        Assert.Equal(HttpStatusCode.OK, retry.StatusCode);
+        var current = await Read(retry);
+        // The never-delivered successor is retired; the retried rotation is the live one.
+        Assert.Equal(HttpStatusCode.Unauthorized, (await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = lost.RefreshToken })).StatusCode);
+        // That attempt used a retired token -> treated as theft: whole family revoked, including `current`.
+        Assert.Equal(HttpStatusCode.Unauthorized, (await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = current.RefreshToken })).StatusCode);
+
+        // A fresh session: once the successor has itself been used, replaying the original is theft even inside the window.
+        var s1 = await Read(await c.PostAsJsonAsync("/api/auth/login", new { email = u.Email, password = IdentityFixture.Password }));
+        var s2 = await Read(await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = s1.RefreshToken }));
+        var s3 = await Read(await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = s2.RefreshToken }));
+        Assert.Equal(HttpStatusCode.Unauthorized, (await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = s1.RefreshToken })).StatusCode);
+        Assert.Equal(HttpStatusCode.Unauthorized, (await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = s3.RefreshToken })).StatusCode);
     }
 
     [Fact]
