@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0141",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1044,
+  "lesson_check_items": 54,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0141-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team marks items 'done' when code is written but untested and unintegrated. The strongest fix aligned with Scrum is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Strengthen the Definition of Done to include testing and integration",
+     "correct": true,
+     "rationale": "Correct: a robust Definition of Done ensures the Increment is truly usable."
+    },
+    {
+     "key": "B",
+     "text": "Remove the Definition of Done to go faster",
+     "correct": false,
+     "rationale": "Removing it worsens quality."
+    },
+    {
+     "key": "C",
+     "text": "Define 'done' as 'merged someday'",
+     "correct": false,
+     "rationale": "Vague criteria do not ensure a usable Increment."
+    },
+    {
+     "key": "D",
+     "text": "Let each developer decide privately",
+     "correct": false,
+     "rationale": "Inconsistent criteria break transparency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a robust Definition of Done ensures the Increment is truly usable.",
+   "outcome_refs": [
+    "MST-0141-D01.03"
+   ],
+   "domain_ref": "Scrum for Developers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0141-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In test-driven development, the correct order is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Write a failing test, make it pass, then refactor",
+     "correct": true,
+     "rationale": "Correct: red-green-refactor is the TDD cycle."
+    },
+    {
+     "key": "B",
+     "text": "Write all code first, then maybe add tests",
+     "correct": false,
+     "rationale": "That is not TDD."
+    },
+    {
+     "key": "C",
+     "text": "Refactor before any test exists",
+     "correct": false,
+     "rationale": "Refactoring without tests is risky and not TDD."
+    },
+    {
+     "key": "D",
+     "text": "Skip tests to save time",
+     "correct": false,
+     "rationale": "Skipping tests is the opposite of TDD."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: red-green-refactor is the TDD cycle.",
+   "outcome_refs": [
+    "MST-0141-D02.01"
+   ],
+   "domain_ref": "Engineering practices for agility",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0141-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices most directly keep an Increment releasable throughout the Sprint? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Integrating work continuously to keep the build green",
+     "correct": true,
+     "rationale": "Correct: continuous integration keeps the Increment releasable."
+    },
+    {
+     "key": "B",
+     "text": "Automated tests that run on every change",
+     "correct": true,
+     "rationale": "Correct: automated tests catch regressions early."
+    },
+    {
+     "key": "C",
+     "text": "Deferring all integration to the last day",
+     "correct": false,
+     "rationale": "Late integration risks a broken Increment."
+    },
+    {
+     "key": "D",
+     "text": "Disabling the test suite to speed merges",
+     "correct": false,
+     "rationale": "Disabling tests removes the safety net."
+    },
+    {
+     "key": "E",
+     "text": "Keeping one giant branch for months",
+     "correct": false,
+     "rationale": "Long-lived branches delay integration and risk conflicts."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: continuous integration keeps the Increment releasable. Correct: automated tests catch regressions early.",
+   "outcome_refs": [
+    "MST-0141-D03.01"
+   ],
+   "domain_ref": "Continuous integration and collaboration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

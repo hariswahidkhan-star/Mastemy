@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0145",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1044,
+  "lesson_check_items": 54,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0145-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Several teams on one product each finish their own work but only integrate at the very end, causing failures. Nexus addresses this by emphasising:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Continuous integration and managing cross-team dependencies throughout the Sprint",
+     "correct": true,
+     "rationale": "Correct: Nexus focuses on integration and dependency management to produce one Increment."
+    },
+    {
+     "key": "B",
+     "text": "Each team shipping separately with no integration",
+     "correct": false,
+     "rationale": "Separate shipping is exactly the problem."
+    },
+    {
+     "key": "C",
+     "text": "Adding more handoffs between teams",
+     "correct": false,
+     "rationale": "Nexus reduces, not adds, integration friction."
+    },
+    {
+     "key": "D",
+     "text": "Delaying all integration until release",
+     "correct": false,
+     "rationale": "Deferred integration causes the crunch."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Nexus focuses on integration and dependency management to produce one Increment.",
+   "outcome_refs": [
+    "MST-0145-D02.03"
+   ],
+   "domain_ref": "Dependencies and integration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0145-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The Nexus Integration Team exists primarily to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Coordinate and coach teams so they produce one integrated Increment",
+     "correct": true,
+     "rationale": "Correct: the NIT focuses on integration across teams."
+    },
+    {
+     "key": "B",
+     "text": "Do all the coding for every team",
+     "correct": false,
+     "rationale": "The NIT coordinates; it does not do all the work."
+    },
+    {
+     "key": "C",
+     "text": "Replace the Product Owner",
+     "correct": false,
+     "rationale": "The NIT does not replace the Product Owner."
+    },
+    {
+     "key": "D",
+     "text": "Manage individual performance reviews",
+     "correct": false,
+     "rationale": "That is not its purpose."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the NIT focuses on integration across teams.",
+   "outcome_refs": [
+    "MST-0145-D01.03"
+   ],
+   "domain_ref": "Scaling with Nexus",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0145-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices most reduce cross-team integration problems at scale? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Identifying and sequencing dependencies during cross-team refinement",
+     "correct": true,
+     "rationale": "Correct: surfacing dependencies early prevents late collisions."
+    },
+    {
+     "key": "B",
+     "text": "Integrating work frequently rather than at the end",
+     "correct": true,
+     "rationale": "Correct: frequent integration avoids a release crunch."
+    },
+    {
+     "key": "C",
+     "text": "Letting each team define its own private Definition of Done",
+     "correct": false,
+     "rationale": "Inconsistent 'done' breaks integration."
+    },
+    {
+     "key": "D",
+     "text": "Avoiding any cross-team communication",
+     "correct": false,
+     "rationale": "Isolation increases integration risk."
+    },
+    {
+     "key": "E",
+     "text": "Deferring integration testing to after release",
+     "correct": false,
+     "rationale": "Late testing finds failures too late."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: surfacing dependencies early prevents late collisions. Correct: frequent integration avoids a release crunch.",
+   "outcome_refs": [
+    "MST-0145-D02.01"
+   ],
+   "domain_ref": "Dependencies and integration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
