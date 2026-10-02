@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0722",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0722-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You copy a formula down a column, but one cell reference must always point to the same tax-rate cell. What should you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An absolute reference such as $B$1",
+     "correct": true,
+     "rationale": "Correct: locking the reference with $ keeps it fixed when copied."
+    },
+    {
+     "key": "B",
+     "text": "A relative reference such as B1",
+     "correct": false,
+     "rationale": "A relative reference shifts as the formula is copied."
+    },
+    {
+     "key": "C",
+     "text": "A new formula typed in every row",
+     "correct": false,
+     "rationale": "Retyping is error-prone and unnecessary."
+    },
+    {
+     "key": "D",
+     "text": "A merged cell",
+     "correct": false,
+     "rationale": "Merging cells does not fix a reference."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: locking the reference with $ keeps it fixed when copied.",
+   "outcome_refs": [
+    "MST-0722-D02.02"
+   ],
+   "domain_ref": "Formulas and references",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0722-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO tools help summarize a large table in Google Sheets? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A pivot table",
+     "correct": true,
+     "rationale": "Correct: pivot tables aggregate data by category."
+    },
+    {
+     "key": "B",
+     "text": "A chart built on the summary",
+     "correct": true,
+     "rationale": "Correct: a chart visualizes the summarized data."
+    },
+    {
+     "key": "C",
+     "text": "Manually retyping totals into a note",
+     "correct": false,
+     "rationale": "Manual totals are error-prone and not dynamic."
+    },
+    {
+     "key": "D",
+     "text": "Deleting rows until only totals remain",
+     "correct": false,
+     "rationale": "Deleting source data destroys the detail."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pivot tables and charts summarize and visualize data.",
+   "outcome_refs": [
+    "MST-0722-D05.01"
+   ],
+   "domain_ref": "Summarizing data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0722-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which function totals only the values that meet a condition?",
+   "options": [
+    {
+     "key": "A",
+     "text": "SUMIF",
+     "correct": true,
+     "rationale": "Correct: SUMIF totals values matching a criterion."
+    },
+    {
+     "key": "B",
+     "text": "COUNT",
+     "correct": false,
+     "rationale": "COUNT counts numeric cells; it does not total by condition."
+    },
+    {
+     "key": "C",
+     "text": "CONCATENATE",
+     "correct": false,
+     "rationale": "CONCATENATE joins text, not totals."
+    },
+    {
+     "key": "D",
+     "text": "TRIM",
+     "correct": false,
+     "rationale": "TRIM removes extra spaces from text."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SUMIF totals values matching a criterion.",
+   "outcome_refs": [
+    "MST-0722-D03.01"
+   ],
+   "domain_ref": "Core functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

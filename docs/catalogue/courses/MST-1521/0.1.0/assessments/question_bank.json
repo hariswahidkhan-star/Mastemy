@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1521",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1521-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which declaration creates a block-scoped binding that cannot be reassigned?",
+   "options": [
+    {
+     "key": "A",
+     "text": "const",
+     "correct": true,
+     "rationale": "Correct: const is block-scoped and cannot be reassigned."
+    },
+    {
+     "key": "B",
+     "text": "var",
+     "correct": false,
+     "rationale": "var is function-scoped and reassignable."
+    },
+    {
+     "key": "C",
+     "text": "let",
+     "correct": false,
+     "rationale": "let is block-scoped but can be reassigned."
+    },
+    {
+     "key": "D",
+     "text": "function",
+     "correct": false,
+     "rationale": "function declares a function, not a constant binding."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: const is block-scoped and cannot be reassigned.",
+   "outcome_refs": [
+    "MST-1521-D01.01"
+   ],
+   "domain_ref": "Variables and types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1521-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO array methods return a new array without mutating the original? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "map",
+     "correct": true,
+     "rationale": "Correct: map returns a new array of transformed values."
+    },
+    {
+     "key": "B",
+     "text": "filter",
+     "correct": true,
+     "rationale": "Correct: filter returns a new array of matching values."
+    },
+    {
+     "key": "C",
+     "text": "push",
+     "correct": false,
+     "rationale": "push mutates the original array."
+    },
+    {
+     "key": "D",
+     "text": "sort",
+     "correct": false,
+     "rationale": "sort mutates the array in place."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: map and filter return new arrays; push and sort mutate in place.",
+   "outcome_refs": [
+    "MST-1521-D04.01"
+   ],
+   "domain_ref": "Arrays and iteration",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1521-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the await keyword do inside an async function?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Pauses the function until the awaited promise settles, then resumes with its value",
+     "correct": true,
+     "rationale": "Correct: await suspends the async function until the promise resolves or rejects."
+    },
+    {
+     "key": "B",
+     "text": "Starts a new operating-system thread",
+     "correct": false,
+     "rationale": "await does not create threads."
+    },
+    {
+     "key": "C",
+     "text": "Converts the function to synchronous blocking code",
+     "correct": false,
+     "rationale": "await is non-blocking; it yields back to the event loop."
+    },
+    {
+     "key": "D",
+     "text": "Cancels the promise",
+     "correct": false,
+     "rationale": "await does not cancel promises."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: await suspends the async function until the promise resolves or rejects.",
+   "outcome_refs": [
+    "MST-1521-D06.02"
+   ],
+   "domain_ref": "Asynchronous JS",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

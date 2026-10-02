@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0838",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0838-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a SignalR hub provide?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A pipeline for the server and clients to call methods on each other",
+     "correct": true,
+     "rationale": "Correct: hubs enable bidirectional RPC between server and clients."
+    },
+    {
+     "key": "B",
+     "text": "A relational database for chat messages",
+     "correct": false,
+     "rationale": "A hub is not a database."
+    },
+    {
+     "key": "C",
+     "text": "A replacement for HTTPS",
+     "correct": false,
+     "rationale": "A hub is an application construct, not a transport-security layer."
+    },
+    {
+     "key": "D",
+     "text": "A static file server",
+     "correct": false,
+     "rationale": "Hubs handle real-time messaging, not static files."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: hubs enable bidirectional RPC between server and clients.",
+   "outcome_refs": [
+    "MST-0838-D02.01"
+   ],
+   "domain_ref": "Hubs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0838-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about SignalR transports are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "WebSockets is the preferred transport when available",
+     "correct": true,
+     "rationale": "Correct: WebSockets generally gives the best performance."
+    },
+    {
+     "key": "B",
+     "text": "SignalR automatically falls back to other transports when WebSockets is unavailable",
+     "correct": true,
+     "rationale": "Correct: it falls back to SSE or long polling."
+    },
+    {
+     "key": "C",
+     "text": "SignalR only works over WebSockets and fails otherwise",
+     "correct": false,
+     "rationale": "It falls back to other transports."
+    },
+    {
+     "key": "D",
+     "text": "Long polling is always faster than WebSockets",
+     "correct": false,
+     "rationale": "WebSockets is preferred for performance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: WebSockets is preferred, with automatic fallback to other transports.",
+   "outcome_refs": [
+    "MST-0838-D03.01"
+   ],
+   "domain_ref": "Transports",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0838-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To push an update only to agents handling a given queue, which SignalR feature fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Groups",
+     "correct": true,
+     "rationale": "Correct: groups let the server target a subset of connections."
+    },
+    {
+     "key": "B",
+     "text": "Broadcasting to all clients",
+     "correct": false,
+     "rationale": "Broadcasting would notify unrelated clients."
+    },
+    {
+     "key": "C",
+     "text": "A new hub per message",
+     "correct": false,
+     "rationale": "Creating hubs per message is unnecessary and wrong."
+    },
+    {
+     "key": "D",
+     "text": "Closing all other connections",
+     "correct": false,
+     "rationale": "Closing connections does not target a subset."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: groups let the server target a subset of connections.",
+   "outcome_refs": [
+    "MST-0838-D05.01"
+   ],
+   "domain_ref": "Targeting clients",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

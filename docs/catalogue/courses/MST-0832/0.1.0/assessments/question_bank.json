@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0832",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0832-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In an ASP.NET Core web app using OpenID Connect, which token is intended to prove the user's identity to the application?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The ID token",
+     "correct": true,
+     "rationale": "Correct: the ID token carries authenticated identity claims about the user."
+    },
+    {
+     "key": "B",
+     "text": "The access token",
+     "correct": false,
+     "rationale": "The access token authorizes calls to an API; it is not meant to identify the user to the app."
+    },
+    {
+     "key": "C",
+     "text": "The refresh token",
+     "correct": false,
+     "rationale": "The refresh token only obtains new tokens; it carries no identity claims for the app."
+    },
+    {
+     "key": "D",
+     "text": "The client secret",
+     "correct": false,
+     "rationale": "The client secret authenticates the application to the provider, not the user."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the ID token carries authenticated identity claims about the user.",
+   "outcome_refs": [
+    "MST-0832-D04.01"
+   ],
+   "domain_ref": "Tokens and APIs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0832-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices are recommended for an ASP.NET Core OpenID Connect web client? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a confidential client with the authorization code flow and PKCE",
+     "correct": true,
+     "rationale": "Correct: this is the recommended flow for server-side web apps."
+    },
+    {
+     "key": "B",
+     "text": "Store the client secret in Azure Key Vault or user secrets, not in appsettings checked into source control",
+     "correct": true,
+     "rationale": "Correct: secrets must be kept out of source control."
+    },
+    {
+     "key": "C",
+     "text": "Use an implicit-flow public client for the web app",
+     "correct": false,
+     "rationale": "Public clients are no longer recommended for web applications."
+    },
+    {
+     "key": "D",
+     "text": "Disable HTTPS to simplify local token exchange",
+     "correct": false,
+     "rationale": "TLS is required; disabling HTTPS exposes tokens."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a confidential code-flow client with PKCE, with secrets stored securely, is the recommended pattern.",
+   "outcome_refs": [
+    "MST-0832-D03.01"
+   ],
+   "domain_ref": "OpenID Connect integration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0832-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the recommended way to require authorization across a whole ASP.NET Core app while still allowing a few public pages?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set a fallback authorization policy that requires an authenticated user and mark public pages with [AllowAnonymous]",
+     "correct": true,
+     "rationale": "Correct: a fallback policy secures everything by default; [AllowAnonymous] opts specific endpoints out."
+    },
+    {
+     "key": "B",
+     "text": "Add [Authorize] to every single page individually",
+     "correct": false,
+     "rationale": "This is error-prone and easy to forget on a new page."
+    },
+    {
+     "key": "C",
+     "text": "Check the user inside each action method manually",
+     "correct": false,
+     "rationale": "Manual checks duplicate logic and are easy to miss."
+    },
+    {
+     "key": "D",
+     "text": "Rely on the OIDC provider to block unauthenticated requests",
+     "correct": false,
+     "rationale": "The provider authenticates; the app must still enforce authorization."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a fallback policy secures everything by default; [AllowAnonymous] opts specific endpoints out.",
+   "outcome_refs": [
+    "MST-0832-D05.01"
+   ],
+   "domain_ref": "Authorization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

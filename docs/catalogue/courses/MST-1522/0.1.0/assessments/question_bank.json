@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1522",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1522-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "At what point do TypeScript's type annotations take effect?",
+   "options": [
+    {
+     "key": "A",
+     "text": "At compile time; they are erased and do not exist at runtime",
+     "correct": true,
+     "rationale": "Correct: TypeScript types are checked at compile time and erased in the emitted JavaScript."
+    },
+    {
+     "key": "B",
+     "text": "At runtime, as enforced objects",
+     "correct": false,
+     "rationale": "Types do not exist at runtime."
+    },
+    {
+     "key": "C",
+     "text": "Only in the browser console",
+     "correct": false,
+     "rationale": "Type checking happens during compilation, not in the console."
+    },
+    {
+     "key": "D",
+     "text": "Never; they are only comments",
+     "correct": false,
+     "rationale": "They are checked by the compiler, not ignored like comments."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: TypeScript types are checked at compile time and erased in the emitted JavaScript.",
+   "outcome_refs": [
+    "MST-1522-D01.01"
+   ],
+   "domain_ref": "TypeScript basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1522-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate uses of TypeScript features? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a union type to represent a value that can be one of several specific types",
+     "correct": true,
+     "rationale": "Correct: unions model alternative types."
+    },
+    {
+     "key": "B",
+     "text": "Use generics to write reusable code that preserves type information",
+     "correct": true,
+     "rationale": "Correct: generics keep type safety across reusable code."
+    },
+    {
+     "key": "C",
+     "text": "Use any everywhere to avoid compiler errors",
+     "correct": false,
+     "rationale": "any discards type safety and defeats the purpose."
+    },
+    {
+     "key": "D",
+     "text": "Rely on types being enforced at runtime",
+     "correct": false,
+     "rationale": "Types are erased at runtime."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: unions and generics are core typed features; any and runtime enforcement are not.",
+   "outcome_refs": [
+    "MST-1522-D03.02"
+   ],
+   "domain_ref": "Interfaces and unions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1522-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A value has type string | null under strictNullChecks. What must you do before using string methods on it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Narrow the type, e.g. check it is not null, so TypeScript knows it is a string",
+     "correct": true,
+     "rationale": "Correct: narrowing removes null from the type before string operations."
+    },
+    {
+     "key": "B",
+     "text": "Cast it to any and ignore the warning",
+     "correct": false,
+     "rationale": "Casting to any discards safety and hides real bugs."
+    },
+    {
+     "key": "C",
+     "text": "Disable strictNullChecks",
+     "correct": false,
+     "rationale": "Disabling strictness removes the protection rather than handling the case."
+    },
+    {
+     "key": "D",
+     "text": "Nothing; TypeScript allows calling string methods on null",
+     "correct": false,
+     "rationale": "Calling string methods on null is an error under strict checks."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: narrowing removes null from the type before string operations.",
+   "outcome_refs": [
+    "MST-1522-D05.01"
+   ],
+   "domain_ref": "Narrowing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

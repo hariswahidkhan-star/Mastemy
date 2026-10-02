@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0783",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0783-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the Gemini + Sheets + Looker Studio workflow, what is the correct handling of an insight Gemini generates?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the insight against the underlying data before relying on it",
+     "correct": true,
+     "rationale": "Correct: AI-generated insights must be checked against the source numbers."
+    },
+    {
+     "key": "B",
+     "text": "Publish it immediately without checking",
+     "correct": false,
+     "rationale": "Unverified AI output can be wrong and misleading."
+    },
+    {
+     "key": "C",
+     "text": "Assume it is correct because it sounds confident",
+     "correct": false,
+     "rationale": "Confidence is not accuracy; verification is required."
+    },
+    {
+     "key": "D",
+     "text": "Delete the source data once Gemini has summarized it",
+     "correct": false,
+     "rationale": "The source data is needed for verification and refresh."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI-generated insights must be checked against the source numbers.",
+   "outcome_refs": [
+    "MST-0783-D03.02"
+   ],
+   "domain_ref": "Gemini-assisted analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0783-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps make the analytics pipeline more reliable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Clean and structure the data in Sheets before building the dashboard",
+     "correct": true,
+     "rationale": "Correct: clean input prevents misleading dashboards."
+    },
+    {
+     "key": "B",
+     "text": "Configure the Looker Studio data source to refresh so figures stay current",
+     "correct": true,
+     "rationale": "Correct: refresh keeps the dashboard current."
+    },
+    {
+     "key": "C",
+     "text": "Build the dashboard directly on an unclean export",
+     "correct": false,
+     "rationale": "Unclean data produces unreliable charts."
+    },
+    {
+     "key": "D",
+     "text": "Share the dashboard publicly to simplify access",
+     "correct": false,
+     "rationale": "Public sharing can expose sensitive figures."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: clean data and configured refresh improve reliability.",
+   "outcome_refs": [
+    "MST-0783-D02.01"
+   ],
+   "domain_ref": "Data preparation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0783-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to show how monthly revenue has changed over the past year. Which chart type is most appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A line (time-series) chart",
+     "correct": true,
+     "rationale": "Correct: a line chart shows change over time clearly."
+    },
+    {
+     "key": "B",
+     "text": "A pie chart",
+     "correct": false,
+     "rationale": "A pie chart shows composition at one point, not a trend."
+    },
+    {
+     "key": "C",
+     "text": "A single scorecard number",
+     "correct": false,
+     "rationale": "A scorecard shows one value, not the trend."
+    },
+    {
+     "key": "D",
+     "text": "A table of raw rows",
+     "correct": false,
+     "rationale": "Raw rows do not make the trend visible at a glance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a line chart shows change over time clearly.",
+   "outcome_refs": [
+    "MST-0783-D05.01"
+   ],
+   "domain_ref": "Building the dashboard",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

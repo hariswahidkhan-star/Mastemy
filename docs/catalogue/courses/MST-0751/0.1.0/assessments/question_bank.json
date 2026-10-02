@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0751",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 576,
+  "lesson_check_items": 80,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0751-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Under the AWS shared responsibility model, which is always the customer's responsibility?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Configuring their own IAM permissions and securing their data",
+     "correct": true,
+     "rationale": "Correct: customers are responsible for security 'in' the cloud, including access and data."
+    },
+    {
+     "key": "B",
+     "text": "The physical security of AWS data centers",
+     "correct": false,
+     "rationale": "Physical security is AWS's responsibility."
+    },
+    {
+     "key": "C",
+     "text": "Maintaining the hypervisor host hardware",
+     "correct": false,
+     "rationale": "The underlying hardware is AWS's responsibility."
+    },
+    {
+     "key": "D",
+     "text": "The global network backbone hardware",
+     "correct": false,
+     "rationale": "AWS manages the underlying infrastructure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: customers are responsible for security 'in' the cloud, including access and data.",
+   "outcome_refs": [
+    "MST-0751-D01.02"
+   ],
+   "domain_ref": "AWS foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0751-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve the availability of a workload on AWS? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Deploy across multiple Availability Zones",
+     "correct": true,
+     "rationale": "Correct: spreading across AZs survives a single-AZ failure."
+    },
+    {
+     "key": "B",
+     "text": "Use managed multi-AZ databases where appropriate",
+     "correct": true,
+     "rationale": "Correct: multi-AZ databases add failover resilience."
+    },
+    {
+     "key": "C",
+     "text": "Run everything in a single AZ to reduce latency",
+     "correct": false,
+     "rationale": "A single AZ is a single point of failure."
+    },
+    {
+     "key": "D",
+     "text": "Avoid backups to save storage cost",
+     "correct": false,
+     "rationale": "Skipping backups harms recoverability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: multi-AZ deployment and managed multi-AZ databases improve availability.",
+   "outcome_refs": [
+    "MST-0751-D07.01"
+   ],
+   "domain_ref": "Reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0751-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An application running on EC2 needs to read from an S3 bucket. What is the recommended way to grant access?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Attach an IAM role to the EC2 instance with least-privilege permissions",
+     "correct": true,
+     "rationale": "Correct: instance roles avoid long-lived keys and follow least privilege."
+    },
+    {
+     "key": "B",
+     "text": "Embed root account access keys in the app",
+     "correct": false,
+     "rationale": "Using root keys is insecure and over-privileged."
+    },
+    {
+     "key": "C",
+     "text": "Make the bucket public to everyone",
+     "correct": false,
+     "rationale": "Public buckets expose data unnecessarily."
+    },
+    {
+     "key": "D",
+     "text": "Share one IAM user's password with the app",
+     "correct": false,
+     "rationale": "Sharing user passwords is insecure and not how apps authenticate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: instance roles avoid long-lived keys and follow least privilege.",
+   "outcome_refs": [
+    "MST-0751-D06.01"
+   ],
+   "domain_ref": "Identity and access",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

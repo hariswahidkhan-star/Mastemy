@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0843",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0843-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What best describes .NET Aspire?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An opinionated stack for building observable, production-ready distributed apps, focused on dev-time orchestration and integrations",
+     "correct": true,
+     "rationale": "Correct: Aspire provides orchestration, integrations, tooling and service discovery."
+    },
+    {
+     "key": "B",
+     "text": "A replacement for Kubernetes in production",
+     "correct": false,
+     "rationale": "Aspire is not a production container orchestrator."
+    },
+    {
+     "key": "C",
+     "text": "A UI framework for mobile apps",
+     "correct": false,
+     "rationale": "That describes .NET MAUI, not Aspire."
+    },
+    {
+     "key": "D",
+     "text": "A relational database engine",
+     "correct": false,
+     "rationale": "Aspire orchestrates resources; it is not a database."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Aspire provides orchestration, integrations, tooling and service discovery.",
+   "outcome_refs": [
+    "MST-0843-D01.01"
+   ],
+   "domain_ref": "Aspire fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0843-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO capabilities does .NET Aspire provide? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Orchestration of multiple services and their dependencies at development time",
+     "correct": true,
+     "rationale": "Correct: Aspire coordinates services and dependencies."
+    },
+    {
+     "key": "B",
+     "text": "Pre-built integrations for common services such as databases and caches",
+     "correct": true,
+     "rationale": "Correct: integrations wire up common backing services."
+    },
+    {
+     "key": "C",
+     "text": "Automatic rewriting of your business logic",
+     "correct": false,
+     "rationale": "Aspire does not rewrite application logic."
+    },
+    {
+     "key": "D",
+     "text": "A guarantee that no production monitoring is needed",
+     "correct": false,
+     "rationale": "Aspire aids observability but does not remove the need for production monitoring."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Aspire provides orchestration and pre-built integrations.",
+   "outcome_refs": [
+    "MST-0843-D01.01"
+   ],
+   "domain_ref": "Aspire fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0843-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In an Aspire solution, what is the role of the AppHost project?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It defines and orchestrates the app's resources and their references",
+     "correct": true,
+     "rationale": "Correct: the AppHost is the orchestration entry point describing resources."
+    },
+    {
+     "key": "B",
+     "text": "It stores all user data",
+     "correct": false,
+     "rationale": "The AppHost orchestrates; it is not a data store."
+    },
+    {
+     "key": "C",
+     "text": "It compiles the mobile UI",
+     "correct": false,
+     "rationale": "That is unrelated to Aspire."
+    },
+    {
+     "key": "D",
+     "text": "It replaces the service's own Program.cs",
+     "correct": false,
+     "rationale": "Each service keeps its own entry point."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the AppHost is the orchestration entry point describing resources.",
+   "outcome_refs": [
+    "MST-0843-D01.02"
+   ],
+   "domain_ref": "Aspire fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

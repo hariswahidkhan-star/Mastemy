@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0756",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0756-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which feature protects objects from being permanently lost when they are overwritten or deleted?",
+   "options": [
+    {
+     "key": "A",
+     "text": "S3 Versioning",
+     "correct": true,
+     "rationale": "Correct: versioning retains previous versions of an object."
+    },
+    {
+     "key": "B",
+     "text": "A larger instance type",
+     "correct": false,
+     "rationale": "Instance type is unrelated to S3 object protection."
+    },
+    {
+     "key": "C",
+     "text": "Disabling encryption",
+     "correct": false,
+     "rationale": "Encryption is about confidentiality, not recovery from deletion."
+    },
+    {
+     "key": "D",
+     "text": "A security group",
+     "correct": false,
+     "rationale": "Security groups apply to network traffic, not S3 objects."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: versioning retains previous versions of an object.",
+   "outcome_refs": [
+    "MST-0756-D04.01"
+   ],
+   "domain_ref": "Lifecycle and versioning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0756-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices for securing an S3 bucket? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keep Block Public Access enabled unless public access is explicitly required",
+     "correct": true,
+     "rationale": "Correct: Block Public Access prevents accidental exposure."
+    },
+    {
+     "key": "B",
+     "text": "Grant access with a least-privilege bucket policy or IAM",
+     "correct": true,
+     "rationale": "Correct: least-privilege limits who can access objects."
+    },
+    {
+     "key": "C",
+     "text": "Make the bucket public for convenience",
+     "correct": false,
+     "rationale": "Public buckets risk data exposure."
+    },
+    {
+     "key": "D",
+     "text": "Share root account keys with applications",
+     "correct": false,
+     "rationale": "Root keys are insecure and over-privileged."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Block Public Access and least-privilege policies secure a bucket.",
+   "outcome_refs": [
+    "MST-0756-D02.01"
+   ],
+   "domain_ref": "Access control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0756-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Data is written once and rarely read again after 30 days. Which approach optimizes cost?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A lifecycle rule that transitions objects to a colder, cheaper storage class",
+     "correct": true,
+     "rationale": "Correct: lifecycle rules move aging data to lower-cost tiers automatically."
+    },
+    {
+     "key": "B",
+     "text": "Keep everything in S3 Standard forever",
+     "correct": false,
+     "rationale": "Standard is more expensive for rarely accessed data."
+    },
+    {
+     "key": "C",
+     "text": "Delete the data immediately to save cost",
+     "correct": false,
+     "rationale": "Deleting needed data is not an optimization."
+    },
+    {
+     "key": "D",
+     "text": "Move the data to an EC2 instance store",
+     "correct": false,
+     "rationale": "Instance store is ephemeral and unsuitable for retention."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: lifecycle rules move aging data to lower-cost tiers automatically.",
+   "outcome_refs": [
+    "MST-0756-D04.02"
+   ],
+   "domain_ref": "Lifecycle and versioning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

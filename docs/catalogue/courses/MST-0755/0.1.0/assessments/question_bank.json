@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0755",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0755-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which EC2 storage option provides durable block storage that persists independently of the instance lifecycle?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Amazon EBS",
+     "correct": true,
+     "rationale": "Correct: EBS volumes are durable and persist beyond instance stop/start."
+    },
+    {
+     "key": "B",
+     "text": "Instance store",
+     "correct": false,
+     "rationale": "Instance store is ephemeral and lost when the instance stops."
+    },
+    {
+     "key": "C",
+     "text": "A security group",
+     "correct": false,
+     "rationale": "A security group is a firewall, not storage."
+    },
+    {
+     "key": "D",
+     "text": "An AMI",
+     "correct": false,
+     "rationale": "An AMI is a launch template image, not attached block storage."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: EBS volumes are durable and persist beyond instance stop/start.",
+   "outcome_refs": [
+    "MST-0755-D03.01"
+   ],
+   "domain_ref": "Storage and networking",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0755-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO EC2 purchasing choices typically reduce cost for steady, long-running workloads? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reserved Instances",
+     "correct": true,
+     "rationale": "Correct: Reserved Instances discount steady long-term usage."
+    },
+    {
+     "key": "B",
+     "text": "Savings Plans",
+     "correct": true,
+     "rationale": "Correct: Savings Plans discount committed usage."
+    },
+    {
+     "key": "C",
+     "text": "On-Demand for 24x7 steady load",
+     "correct": false,
+     "rationale": "On-Demand is the most expensive for steady load."
+    },
+    {
+     "key": "D",
+     "text": "Launching the largest instance available regardless of need",
+     "correct": false,
+     "rationale": "Over-provisioning increases cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Reserved Instances and Savings Plans reduce cost for steady workloads.",
+   "outcome_refs": [
+    "MST-0755-D05.01"
+   ],
+   "domain_ref": "Cost optimization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0755-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To handle a variable web workload automatically, which EC2 feature adds or removes instances based on demand?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Auto Scaling groups",
+     "correct": true,
+     "rationale": "Correct: Auto Scaling adjusts capacity to demand."
+    },
+    {
+     "key": "B",
+     "text": "A larger single instance",
+     "correct": false,
+     "rationale": "A bigger single instance does not scale with demand automatically."
+    },
+    {
+     "key": "C",
+     "text": "An AMI",
+     "correct": false,
+     "rationale": "An AMI is an image, not a scaling mechanism."
+    },
+    {
+     "key": "D",
+     "text": "A key pair",
+     "correct": false,
+     "rationale": "A key pair is for secure login, not scaling."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Auto Scaling adjusts capacity to demand.",
+   "outcome_refs": [
+    "MST-0755-D04.01"
+   ],
+   "domain_ref": "Scaling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

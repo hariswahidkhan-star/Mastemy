@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0734",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0734-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A script that lives inside and is attached to a specific Google Sheet is best described as which kind of Apps Script project?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A bound script",
+     "correct": true,
+     "rationale": "Correct: a bound script is attached to a specific host document."
+    },
+    {
+     "key": "B",
+     "text": "A standalone script",
+     "correct": false,
+     "rationale": "A standalone script is not attached to a specific document."
+    },
+    {
+     "key": "C",
+     "text": "A browser extension",
+     "correct": false,
+     "rationale": "Apps Script projects are not browser extensions."
+    },
+    {
+     "key": "D",
+     "text": "A compiled binary",
+     "correct": false,
+     "rationale": "Apps Script is not compiled to a standalone binary."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a bound script is attached to a specific host document.",
+   "outcome_refs": [
+    "MST-0734-D01.02"
+   ],
+   "domain_ref": "Apps Script fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0734-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make an Apps Script Sheets automation more reliable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read and write ranges in bulk rather than cell by cell",
+     "correct": true,
+     "rationale": "Correct: bulk operations are far faster and avoid quota issues."
+    },
+    {
+     "key": "B",
+     "text": "Be mindful of per-service daily quotas",
+     "correct": true,
+     "rationale": "Correct: services such as email have daily limits."
+    },
+    {
+     "key": "C",
+     "text": "Request the broadest possible authorization scopes",
+     "correct": false,
+     "rationale": "Narrow scopes are safer; broad scopes over-permission the script."
+    },
+    {
+     "key": "D",
+     "text": "Loop one cell at a time for large sheets",
+     "correct": false,
+     "rationale": "Cell-by-cell access is slow and can hit limits."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: bulk range access and quota awareness improve reliability.",
+   "outcome_refs": [
+    "MST-0734-D03.02"
+   ],
+   "domain_ref": "Automating Sheets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0734-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want a script to run automatically every Monday morning without anyone opening the sheet. What should you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A time-based (installable) trigger",
+     "correct": true,
+     "rationale": "Correct: a time-based trigger runs on a schedule with the needed authorization."
+    },
+    {
+     "key": "B",
+     "text": "A simple onOpen trigger",
+     "correct": false,
+     "rationale": "onOpen only runs when the document is opened and cannot perform authorized actions."
+    },
+    {
+     "key": "C",
+     "text": "A manual menu click each week",
+     "correct": false,
+     "rationale": "That is not automatic."
+    },
+    {
+     "key": "D",
+     "text": "A formula in a cell",
+     "correct": false,
+     "rationale": "A formula cannot send email or run on a schedule."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a time-based trigger runs on a schedule with the needed authorization.",
+   "outcome_refs": [
+    "MST-0734-D05.02"
+   ],
+   "domain_ref": "Menus, triggers and UI",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

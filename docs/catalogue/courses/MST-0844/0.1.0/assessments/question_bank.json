@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0844",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0844-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is .NET MAUI?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A cross-platform framework for native mobile and desktop apps from one C# and XAML code base",
+     "correct": true,
+     "rationale": "Correct: MAUI targets Android, iOS, macOS and Windows from a single project."
+    },
+    {
+     "key": "B",
+     "text": "A server-side web API framework",
+     "correct": false,
+     "rationale": "That describes ASP.NET Core, not MAUI."
+    },
+    {
+     "key": "C",
+     "text": "A relational database",
+     "correct": false,
+     "rationale": "MAUI is a UI framework, not a database."
+    },
+    {
+     "key": "D",
+     "text": "A container orchestrator",
+     "correct": false,
+     "rationale": "MAUI does not orchestrate containers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MAUI targets Android, iOS, macOS and Windows from a single project.",
+   "outcome_refs": [
+    "MST-0844-D01.01"
+   ],
+   "domain_ref": "MAUI fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0844-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about the .NET MAUI single project? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "One shared project can target Android, iOS, macOS and Windows",
+     "correct": true,
+     "rationale": "Correct: a single project multi-targets several platforms."
+    },
+    {
+     "key": "B",
+     "text": "Platform-specific code lives in the Platforms folder and is built only for that platform",
+     "correct": true,
+     "rationale": "Correct: the build includes each Platforms subfolder only for its platform."
+    },
+    {
+     "key": "C",
+     "text": "You must create one separate project per target platform",
+     "correct": false,
+     "rationale": "The single project removes the need for per-platform projects."
+    },
+    {
+     "key": "D",
+     "text": "Shared resources must be duplicated into each platform folder",
+     "correct": false,
+     "rationale": "Resources are shared in the single project."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: one project multi-targets platforms, with platform code in the Platforms folder.",
+   "outcome_refs": [
+    "MST-0844-D02.01"
+   ],
+   "domain_ref": "Single project",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0844-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which pattern does .NET MAUI support for separating UI from logic through data binding?",
+   "options": [
+    {
+     "key": "A",
+     "text": "MVVM (Model-View-ViewModel)",
+     "correct": true,
+     "rationale": "Correct: MAUI supports data binding and the MVVM pattern."
+    },
+    {
+     "key": "B",
+     "text": "Storing state only in the XAML code-behind",
+     "correct": false,
+     "rationale": "Putting logic in code-behind defeats separation."
+    },
+    {
+     "key": "C",
+     "text": "Writing all logic in the platform native languages",
+     "correct": false,
+     "rationale": "MAUI lets you share logic in C#; MVVM organizes it."
+    },
+    {
+     "key": "D",
+     "text": "Using the database as the view model",
+     "correct": false,
+     "rationale": "A database is not a view model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MAUI supports data binding and the MVVM pattern.",
+   "outcome_refs": [
+    "MST-0844-D04.02"
+   ],
+   "domain_ref": "Data binding and MVVM",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

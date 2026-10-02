@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0837",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0837-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which transport protocol does gRPC on .NET use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "HTTP/2",
+     "correct": true,
+     "rationale": "Correct: gRPC relies on HTTP/2 features such as multiplexing and streaming."
+    },
+    {
+     "key": "B",
+     "text": "HTTP/1.1 only",
+     "correct": false,
+     "rationale": "gRPC requires HTTP/2, not HTTP/1.1."
+    },
+    {
+     "key": "C",
+     "text": "Raw UDP",
+     "correct": false,
+     "rationale": "gRPC runs over HTTP/2, not UDP."
+    },
+    {
+     "key": "D",
+     "text": "SMTP",
+     "correct": false,
+     "rationale": "SMTP is an email protocol, unrelated to gRPC."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: gRPC relies on HTTP/2 features such as multiplexing and streaming.",
+   "outcome_refs": [
+    "MST-0837-D01.01"
+   ],
+   "domain_ref": "gRPC fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0837-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are gRPC .NET client performance recommendations? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reuse a channel for multiple calls rather than creating one per call",
+     "correct": true,
+     "rationale": "Correct: creating a channel is expensive, so reuse it."
+    },
+    {
+     "key": "B",
+     "text": "Prefer async/await over blocking with .Result or .Wait()",
+     "correct": true,
+     "rationale": "Correct: blocking can cause thread pool starvation and deadlocks."
+    },
+    {
+     "key": "C",
+     "text": "Create a new GrpcChannel for every single call",
+     "correct": false,
+     "rationale": "Creating a channel per call is expensive and discouraged."
+    },
+    {
+     "key": "D",
+     "text": "Call gRPC methods synchronously with Task.Result",
+     "correct": false,
+     "rationale": "Blocking on gRPC calls harms performance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reuse channels and call methods asynchronously.",
+   "outcome_refs": [
+    "MST-0837-D04.02"
+   ],
+   "domain_ref": "Clients and channels",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0837-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should the service and message definitions for a gRPC service be authored?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In a .proto file, from which C# types are generated",
+     "correct": true,
+     "rationale": "Correct: the .proto contract is the source of truth and generates the C# assets."
+    },
+    {
+     "key": "B",
+     "text": "Directly in the generated C# files",
+     "correct": false,
+     "rationale": "Generated code is overwritten; edit the .proto instead."
+    },
+    {
+     "key": "C",
+     "text": "In appsettings.json",
+     "correct": false,
+     "rationale": "Contracts are not configured in appsettings."
+    },
+    {
+     "key": "D",
+     "text": "In an XML schema file",
+     "correct": false,
+     "rationale": "gRPC uses Protocol Buffers (.proto), not XML schema."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the .proto contract is the source of truth and generates the C# assets.",
+   "outcome_refs": [
+    "MST-0837-D02.01"
+   ],
+   "domain_ref": "Service contracts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
