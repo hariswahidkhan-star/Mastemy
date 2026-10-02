@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0084",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 3696,
+  "lesson_check_items": 288,
+  "module_check_items": 840,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 360,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0084-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The first stage of a predictive analytics project is best described as:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Defining the business problem and success criteria",
+     "correct": true,
+     "rationale": "Correct: a clear problem definition guides all later modelling."
+    },
+    {
+     "key": "B",
+     "text": "Deploying the final model to production",
+     "correct": false,
+     "rationale": "Deployment is a late stage, not the first."
+    },
+    {
+     "key": "C",
+     "text": "Tuning hyperparameters",
+     "correct": false,
+     "rationale": "Tuning comes after data and modelling steps begin."
+    },
+    {
+     "key": "D",
+     "text": "Writing the executive summary",
+     "correct": false,
+     "rationale": "Reporting is near the end of the project."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a clear problem definition guides all later modelling.",
+   "outcome_refs": [
+    "MST-0084-D01.01"
+   ],
+   "domain_ref": "Problem Definition and Data Collection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0084-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why split data into training and validation sets?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To estimate how the model generalizes to unseen data",
+     "correct": true,
+     "rationale": "Correct: validation data gives an unbiased estimate of generalization."
+    },
+    {
+     "key": "B",
+     "text": "To make the model train faster",
+     "correct": false,
+     "rationale": "Splitting is about validity, not speed."
+    },
+    {
+     "key": "C",
+     "text": "Because regulators forbid using all the data",
+     "correct": false,
+     "rationale": "That is not the reason for a train/validation split."
+    },
+    {
+     "key": "D",
+     "text": "To guarantee the model has zero error",
+     "correct": false,
+     "rationale": "No split guarantees zero error."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: validation data gives an unbiased estimate of generalization.",
+   "outcome_refs": [
+    "MST-0084-D02.01"
+   ],
+   "domain_ref": "Exploratory Data Analysis and Data Preparation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0084-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO good practices when preparing data for modelling.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Investigating and handling missing values deliberately",
+     "correct": true,
+     "rationale": "Correct: missing-data handling affects model quality and must be deliberate."
+    },
+    {
+     "key": "B",
+     "text": "Checking for and addressing obvious data-entry errors",
+     "correct": true,
+     "rationale": "Correct: cleaning erroneous values improves model reliability."
+    },
+    {
+     "key": "C",
+     "text": "Deleting any variable you do not personally like",
+     "correct": false,
+     "rationale": "Variable selection should be evidence-based, not arbitrary."
+    },
+    {
+     "key": "D",
+     "text": "Leaking the target variable into the predictors",
+     "correct": false,
+     "rationale": "Target leakage invalidates the model."
+    },
+    {
+     "key": "E",
+     "text": "Rounding all numbers to whole integers to simplify",
+     "correct": false,
+     "rationale": "Arbitrary rounding can destroy useful signal."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: missing-data handling affects model quality and must be deliberate.",
+   "outcome_refs": [
+    "MST-0084-D03.01"
+   ],
+   "domain_ref": "Generalized Linear Models in Practice",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

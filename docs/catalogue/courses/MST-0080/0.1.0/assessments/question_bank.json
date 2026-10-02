@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0080",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 3696,
+  "lesson_check_items": 288,
+  "module_check_items": 840,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 360,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0080-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "If claim counts follow a Poisson distribution, which statement is true?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The mean equals the variance",
+     "correct": true,
+     "rationale": "Correct: for a Poisson distribution the mean and variance are both equal to the rate parameter."
+    },
+    {
+     "key": "B",
+     "text": "The variance is always zero",
+     "correct": false,
+     "rationale": "A zero variance would mean a constant, not a Poisson count."
+    },
+    {
+     "key": "C",
+     "text": "It can take negative values",
+     "correct": false,
+     "rationale": "Count distributions are non-negative integers."
+    },
+    {
+     "key": "D",
+     "text": "It has no mean",
+     "correct": false,
+     "rationale": "The Poisson distribution has a finite mean equal to its rate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: for a Poisson distribution the mean and variance are both equal to the rate parameter.",
+   "outcome_refs": [
+    "MST-0080-D01.01"
+   ],
+   "domain_ref": "Severity, Frequency and Aggregate Models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0080-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An aggregate loss model S = X1 + ... + XN with N the claim count and X the severities assumes, in the collective risk model, that:",
+   "options": [
+    {
+     "key": "A",
+     "text": "N and the severities are independent and severities are identically distributed",
+     "correct": true,
+     "rationale": "Correct: the collective risk model assumes independence of frequency and severity and i.i.d. severities."
+    },
+    {
+     "key": "B",
+     "text": "Severities are always equal to the mean claim",
+     "correct": false,
+     "rationale": "Severities are random, not fixed at the mean."
+    },
+    {
+     "key": "C",
+     "text": "The number of claims is fixed in advance",
+     "correct": false,
+     "rationale": "That is the individual risk model, not the collective model."
+    },
+    {
+     "key": "D",
+     "text": "Losses can be negative",
+     "correct": false,
+     "rationale": "Severities are non-negative in standard loss models."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the collective risk model assumes independence of frequency and severity and i.i.d. severities.",
+   "outcome_refs": [
+    "MST-0080-D02.01"
+   ],
+   "domain_ref": "Parametric and Empirical Estimation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0080-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO quantities that increase as a deductible on a coverage increases, all else equal.",
+   "options": [
+    {
+     "key": "A",
+     "text": "The insurer’s expected payment per loss decreases, so the retained loss to the policyholder increases",
+     "correct": true,
+     "rationale": "Correct: a higher deductible shifts more loss to the policyholder."
+    },
+    {
+     "key": "B",
+     "text": "The expected number of payments the insurer makes (payments above the deductible) decreases",
+     "correct": false,
+     "rationale": "This decreases, not increases, so it is not a correct choice."
+    },
+    {
+     "key": "C",
+     "text": "The policyholder’s expected retained loss",
+     "correct": true,
+     "rationale": "Correct: the retained loss below the deductible rises with the deductible."
+    },
+    {
+     "key": "D",
+     "text": "The ground-up expected loss before any deductible",
+     "correct": false,
+     "rationale": "Ground-up loss does not depend on the deductible."
+    },
+    {
+     "key": "E",
+     "text": "The insurer’s expected payment per loss",
+     "correct": false,
+     "rationale": "This decreases with a higher deductible."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: a higher deductible shifts more loss to the policyholder.",
+   "outcome_refs": [
+    "MST-0080-D03.01"
+   ],
+   "domain_ref": "Credibility Theory",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

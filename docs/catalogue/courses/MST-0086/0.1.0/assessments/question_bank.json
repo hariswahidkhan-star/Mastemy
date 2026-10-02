@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0086",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 3696,
+  "lesson_check_items": 288,
+  "module_check_items": 840,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 360,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0086-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Bayesian analysis, a conjugate prior is one for which:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The posterior is in the same family as the prior",
+     "correct": true,
+     "rationale": "Correct: conjugacy means prior and posterior share the same distributional family."
+    },
+    {
+     "key": "B",
+     "text": "The prior must be uniform",
+     "correct": false,
+     "rationale": "Conjugate priors need not be uniform."
+    },
+    {
+     "key": "C",
+     "text": "The likelihood is ignored",
+     "correct": false,
+     "rationale": "The likelihood is always combined with the prior."
+    },
+    {
+     "key": "D",
+     "text": "The posterior is always normal",
+     "correct": false,
+     "rationale": "The posterior family depends on the conjugate pairing, not always normal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: conjugacy means prior and posterior share the same distributional family.",
+   "outcome_refs": [
+    "MST-0086-D01.01"
+   ],
+   "domain_ref": "Bayesian Analysis and Conjugate Priors",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0086-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A random-effects (mixed) model is preferred over a fixed-effects model when:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Groups are a random sample from a larger population and we want to generalize",
+     "correct": true,
+     "rationale": "Correct: random effects model group-level variation drawn from a population."
+    },
+    {
+     "key": "B",
+     "text": "There is exactly one observation total",
+     "correct": false,
+     "rationale": "A single observation cannot support a mixed model."
+    },
+    {
+     "key": "C",
+     "text": "All predictors are identical across observations",
+     "correct": false,
+     "rationale": "Identical predictors give no variation to model."
+    },
+    {
+     "key": "D",
+     "text": "The response variable is constant",
+     "correct": false,
+     "rationale": "A constant response has nothing to explain."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: random effects model group-level variation drawn from a population.",
+   "outcome_refs": [
+    "MST-0086-D02.01"
+   ],
+   "domain_ref": "Linear Mixed Models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0086-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that correctly describe simulation (Monte Carlo) methods.",
+   "options": [
+    {
+     "key": "A",
+     "text": "They approximate quantities of interest using many random draws",
+     "correct": true,
+     "rationale": "Correct: Monte Carlo estimates quantities from repeated random sampling."
+    },
+    {
+     "key": "B",
+     "text": "Accuracy generally improves as the number of simulations grows",
+     "correct": true,
+     "rationale": "Correct: Monte Carlo error typically shrinks with more draws."
+    },
+    {
+     "key": "C",
+     "text": "They always give the exact closed-form answer",
+     "correct": false,
+     "rationale": "Simulation gives approximations, not exact closed forms."
+    },
+    {
+     "key": "D",
+     "text": "They require no random number generation",
+     "correct": false,
+     "rationale": "Random draws are fundamental to Monte Carlo."
+    },
+    {
+     "key": "E",
+     "text": "They only work for normally distributed data",
+     "correct": false,
+     "rationale": "Monte Carlo applies to many distributions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Monte Carlo estimates quantities from repeated random sampling.",
+   "outcome_refs": [
+    "MST-0086-D03.01"
+   ],
+   "domain_ref": "Generalized Linear Models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

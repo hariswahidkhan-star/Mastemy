@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0083",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 3696,
+  "lesson_check_items": 288,
+  "module_check_items": 840,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 360,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0083-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In supervised learning, the training error is usually ____ the test error.",
+   "options": [
+    {
+     "key": "A",
+     "text": "lower than",
+     "correct": true,
+     "rationale": "Correct: models typically fit the training data better than unseen test data."
+    },
+    {
+     "key": "B",
+     "text": "exactly equal to",
+     "correct": false,
+     "rationale": "They are rarely exactly equal; a gap usually exists."
+    },
+    {
+     "key": "C",
+     "text": "unrelated to",
+     "correct": false,
+     "rationale": "They are related; the gap reflects generalization."
+    },
+    {
+     "key": "D",
+     "text": "always larger than",
+     "correct": false,
+     "rationale": "Training error is generally the smaller of the two."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: models typically fit the training data better than unseen test data.",
+   "outcome_refs": [
+    "MST-0083-D01.01"
+   ],
+   "domain_ref": "Basics of Statistical Learning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0083-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A generalized linear model (GLM) generalizes ordinary linear regression by introducing:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A link function and a response distribution from the exponential family",
+     "correct": true,
+     "rationale": "Correct: GLMs use a link function and an exponential-family response."
+    },
+    {
+     "key": "B",
+     "text": "A requirement that all predictors be categorical",
+     "correct": false,
+     "rationale": "GLM predictors can be continuous or categorical."
+    },
+    {
+     "key": "C",
+     "text": "The removal of the intercept term",
+     "correct": false,
+     "rationale": "GLMs usually retain an intercept."
+    },
+    {
+     "key": "D",
+     "text": "A ban on using a Gaussian response",
+     "correct": false,
+     "rationale": "Gaussian response is a valid special case of a GLM."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GLMs use a link function and an exponential-family response.",
+   "outcome_refs": [
+    "MST-0083-D02.01"
+   ],
+   "domain_ref": "Linear Models and Regression",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0083-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO techniques used to reduce overfitting in a predictive model.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Regularization (e.g. ridge or lasso penalties)",
+     "correct": true,
+     "rationale": "Correct: regularization shrinks coefficients and curbs overfitting."
+    },
+    {
+     "key": "B",
+     "text": "Cross-validation to tune complexity",
+     "correct": true,
+     "rationale": "Correct: cross-validation estimates out-of-sample performance to control complexity."
+    },
+    {
+     "key": "C",
+     "text": "Adding every available interaction term",
+     "correct": false,
+     "rationale": "Adding terms increases, not decreases, overfitting risk."
+    },
+    {
+     "key": "D",
+     "text": "Fitting the model only to the training set and never testing it",
+     "correct": false,
+     "rationale": "Not testing hides overfitting rather than reducing it."
+    },
+    {
+     "key": "E",
+     "text": "Using the smallest possible sample",
+     "correct": false,
+     "rationale": "Smaller samples typically worsen overfitting."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: regularization shrinks coefficients and curbs overfitting.",
+   "outcome_refs": [
+    "MST-0083-D03.01"
+   ],
+   "domain_ref": "Generalized Linear Models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0082",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 3696,
+  "lesson_check_items": 288,
+  "module_check_items": 840,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 360,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0082-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A heavy-tailed severity distribution, compared with a light-tailed one, is more likely to produce:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rare but very large losses",
+     "correct": true,
+     "rationale": "Correct: heavy tails assign more probability to extreme large values."
+    },
+    {
+     "key": "B",
+     "text": "Only losses below the mean",
+     "correct": false,
+     "rationale": "Heavy tails specifically allow large values above the mean."
+    },
+    {
+     "key": "C",
+     "text": "Negative losses",
+     "correct": false,
+     "rationale": "Severities are non-negative regardless of tail weight."
+    },
+    {
+     "key": "D",
+     "text": "A variance of exactly zero",
+     "correct": false,
+     "rationale": "A heavy-tailed loss distribution does not have zero variance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: heavy tails assign more probability to extreme large values.",
+   "outcome_refs": [
+    "MST-0082-D01.01"
+   ],
+   "domain_ref": "Loss Models and Severity Distributions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0082-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which goodness-of-fit consideration favours a more complex severity model only if justified?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Penalizing extra parameters, e.g. with AIC or BIC",
+     "correct": true,
+     "rationale": "Correct: information criteria penalize complexity to avoid overfitting."
+    },
+    {
+     "key": "B",
+     "text": "Always choosing the model with the most parameters",
+     "correct": false,
+     "rationale": "More parameters can overfit; complexity must be justified."
+    },
+    {
+     "key": "C",
+     "text": "Ignoring the log-likelihood entirely",
+     "correct": false,
+     "rationale": "The log-likelihood is central to model comparison."
+    },
+    {
+     "key": "D",
+     "text": "Selecting the model with the largest number of data points",
+     "correct": false,
+     "rationale": "Data size is not a model-selection criterion by itself."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: information criteria penalize complexity to avoid overfitting.",
+   "outcome_refs": [
+    "MST-0082-D02.01"
+   ],
+   "domain_ref": "Frequency Models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0082-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO purposes of purchasing reinsurance.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reducing the volatility of retained losses",
+     "correct": true,
+     "rationale": "Correct: reinsurance transfers volatility to the reinsurer."
+    },
+    {
+     "key": "B",
+     "text": "Increasing underwriting capacity",
+     "correct": true,
+     "rationale": "Correct: ceding risk frees capital and supports more capacity."
+    },
+    {
+     "key": "C",
+     "text": "Guaranteeing the insurer never pays any claim",
+     "correct": false,
+     "rationale": "Reinsurance shares risk; it does not eliminate all claims."
+    },
+    {
+     "key": "D",
+     "text": "Eliminating the need for reserves",
+     "correct": false,
+     "rationale": "Reserves are still required for retained and ceded business."
+    },
+    {
+     "key": "E",
+     "text": "Setting the risk-free rate",
+     "correct": false,
+     "rationale": "The risk-free rate is a market variable, not a reinsurance function."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reinsurance transfers volatility to the reinsurer.",
+   "outcome_refs": [
+    "MST-0082-D03.01"
+   ],
+   "domain_ref": "Aggregate Loss Models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

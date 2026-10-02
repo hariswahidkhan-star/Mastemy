@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0081",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 3696,
+  "lesson_check_items": 288,
+  "module_check_items": 840,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 360,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0081-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The actuarial present value of a whole life insurance of 1 payable at the end of the year of death is denoted:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A_x",
+     "correct": true,
+     "rationale": "Correct: A_x is the standard symbol for the APV of a whole life insurance."
+    },
+    {
+     "key": "B",
+     "text": "a_x",
+     "correct": false,
+     "rationale": "Lowercase a with a double-dot denotes an annuity, not an insurance."
+    },
+    {
+     "key": "C",
+     "text": "l_x",
+     "correct": false,
+     "rationale": "l_x is the number of lives surviving to age x in a life table."
+    },
+    {
+     "key": "D",
+     "text": "q_x",
+     "correct": false,
+     "rationale": "q_x is the one-year probability of death, not an APV."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: A_x is the standard symbol for the APV of a whole life insurance.",
+   "outcome_refs": [
+    "MST-0081-D01.01"
+   ],
+   "domain_ref": "Survival Models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0081-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Under the equivalence principle, the benefit premium is set so that:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The APV of premiums equals the APV of benefits at issue",
+     "correct": true,
+     "rationale": "Correct: the equivalence principle equates the APV of premiums and benefits."
+    },
+    {
+     "key": "B",
+     "text": "Premiums always exceed benefits by a 20% margin",
+     "correct": false,
+     "rationale": "That describes a loading, not the pure equivalence principle."
+    },
+    {
+     "key": "C",
+     "text": "The reserve is zero at every duration",
+     "correct": false,
+     "rationale": "Reserves are generally positive after issue."
+    },
+    {
+     "key": "D",
+     "text": "Premiums equal the sum insured",
+     "correct": false,
+     "rationale": "Premiums are far smaller than the sum insured in general."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the equivalence principle equates the APV of premiums and benefits.",
+   "outcome_refs": [
+    "MST-0081-D02.01"
+   ],
+   "domain_ref": "Life Insurance and Annuity Present Values",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0081-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that are true about a net premium policy reserve.",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is prospectively the APV of future benefits minus the APV of future premiums",
+     "correct": true,
+     "rationale": "Correct: this is the prospective reserve definition."
+    },
+    {
+     "key": "B",
+     "text": "It is generally zero at issue under the equivalence principle",
+     "correct": true,
+     "rationale": "Correct: at issue the APVs are equal, so the reserve is zero."
+    },
+    {
+     "key": "C",
+     "text": "It must always be negative",
+     "correct": false,
+     "rationale": "Reserves are typically non-negative after issue."
+    },
+    {
+     "key": "D",
+     "text": "It ignores mortality entirely",
+     "correct": false,
+     "rationale": "Reserves depend on mortality assumptions."
+    },
+    {
+     "key": "E",
+     "text": "It equals the sum insured at every duration",
+     "correct": false,
+     "rationale": "The reserve builds gradually and does not equal the sum insured until maturity/death."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: this is the prospective reserve definition.",
+   "outcome_refs": [
+    "MST-0081-D03.01"
+   ],
+   "domain_ref": "Premium Calculation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
