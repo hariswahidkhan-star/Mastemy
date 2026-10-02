@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0267",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 894,
+  "lesson_check_items": 72,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 93,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0267-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A large OSPF domain suffers excessive LSA flooding. Which design most directly reduces it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use stub/NSSA areas to limit external LSA propagation",
+     "correct": true,
+     "rationale": "Correct: stub-type areas block external LSAs, cutting flooding."
+    },
+    {
+     "key": "B",
+     "text": "Put every router in area 0",
+     "correct": false,
+     "rationale": "A single backbone area increases, not reduces, flooding."
+    },
+    {
+     "key": "C",
+     "text": "Increase the hello interval only",
+     "correct": false,
+     "rationale": "Hello timing does not control LSA flooding scope."
+    },
+    {
+     "key": "D",
+     "text": "Disable OSPF authentication",
+     "correct": false,
+     "rationale": "Authentication does not affect flooding volume."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: stub-type areas block external LSAs, cutting flooding.",
+   "outcome_refs": [
+    "MST-0267-D01.01"
+   ],
+   "domain_ref": "Advanced OSPF and IS-IS",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0267-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a route-reflector design, what problem can arise that you must plan around?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Path diversity can be lost because the RR reflects only its best path",
+     "correct": true,
+     "rationale": "Correct: an RR advertises only its best path, which can hide alternatives."
+    },
+    {
+     "key": "B",
+     "text": "iBGP sessions become impossible",
+     "correct": false,
+     "rationale": "Route reflection is a way to scale iBGP, not prevent it."
+    },
+    {
+     "key": "C",
+     "text": "BGP stops supporting policy",
+     "correct": false,
+     "rationale": "Policy still applies with route reflection."
+    },
+    {
+     "key": "D",
+     "text": "All eBGP sessions reset",
+     "correct": false,
+     "rationale": "Route reflection concerns iBGP scaling, not eBGP resets."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an RR advertises only its best path, which can hide alternatives.",
+   "outcome_refs": [
+    "MST-0267-D02.01"
+   ],
+   "domain_ref": "Advanced BGP, Policy and Instances",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0267-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about MPLS L3VPN identifiers are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The RD makes overlapping customer prefixes unique",
+     "correct": true,
+     "rationale": "Correct: the RD ensures VPNv4 prefix uniqueness."
+    },
+    {
+     "key": "B",
+     "text": "RTs determine which VRFs import a route",
+     "correct": true,
+     "rationale": "Correct: route targets control import/export between VRFs."
+    },
+    {
+     "key": "C",
+     "text": "The RD controls import/export policy",
+     "correct": false,
+     "rationale": "Import/export is controlled by RTs, not the RD."
+    },
+    {
+     "key": "D",
+     "text": "RTs guarantee prefix uniqueness",
+     "correct": false,
+     "rationale": "Uniqueness is the RD's job, not the RT's."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the RD ensures VPNv4 prefix uniqueness. Correct: route targets control import/export between VRFs.",
+   "outcome_refs": [
+    "MST-0267-D01.01"
+   ],
+   "domain_ref": "Advanced OSPF and IS-IS",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

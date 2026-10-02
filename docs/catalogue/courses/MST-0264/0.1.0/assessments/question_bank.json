@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0264",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 930,
+  "lesson_check_items": 90,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 93,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0264-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A national backbone needs scalable IGP hierarchy. Which IS-IS design supports this best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A level-1/level-2 hierarchy with regional L1 areas",
+     "correct": true,
+     "rationale": "Correct: L1/L2 hierarchy scales by summarising regional areas into the L2 core."
+    },
+    {
+     "key": "B",
+     "text": "A single flat level-2 domain for all routers",
+     "correct": false,
+     "rationale": "A flat domain does not scale to a national backbone."
+    },
+    {
+     "key": "C",
+     "text": "Running OSPF and IS-IS on every link simultaneously",
+     "correct": false,
+     "rationale": "Running both IGPs everywhere adds complexity without scaling benefit."
+    },
+    {
+     "key": "D",
+     "text": "Static routes only",
+     "correct": false,
+     "rationale": "Static routing cannot scale or converge for a backbone."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: L1/L2 hierarchy scales by summarising regional areas into the L2 core.",
+   "outcome_refs": [
+    "MST-0264-D01.01"
+   ],
+   "domain_ref": "Architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0264-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement about Segment Routing with MPLS is correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The path is encoded in the packet header, removing per-flow core state",
+     "correct": true,
+     "rationale": "Correct: SR source-routes via a label stack, so the core holds no per-flow state."
+    },
+    {
+     "key": "B",
+     "text": "Every core router must hold per-flow RSVP state",
+     "correct": false,
+     "rationale": "That describes RSVP-TE, not Segment Routing."
+    },
+    {
+     "key": "C",
+     "text": "It requires LDP on every node to function",
+     "correct": false,
+     "rationale": "SR-MPLS does not require LDP; it distributes labels via the IGP."
+    },
+    {
+     "key": "D",
+     "text": "It cannot do traffic engineering",
+     "correct": false,
+     "rationale": "SR explicitly supports traffic engineering via segment lists."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SR source-routes via a label stack, so the core holds no per-flow state.",
+   "outcome_refs": [
+    "MST-0264-D02.01"
+   ],
+   "domain_ref": "Networking",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0264-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO identifiers are required to deliver an MPLS L3VPN correctly for multiple customers? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Route distinguisher (RD) to keep prefixes unique",
+     "correct": true,
+     "rationale": "Correct: the RD makes overlapping customer prefixes unique in VPNv4."
+    },
+    {
+     "key": "B",
+     "text": "Route target (RT) to control import/export",
+     "correct": true,
+     "rationale": "Correct: RTs control which VRFs import and export the routes."
+    },
+    {
+     "key": "C",
+     "text": "A shared public IP for all customers",
+     "correct": false,
+     "rationale": "A shared public IP does not separate customer routing."
+    },
+    {
+     "key": "D",
+     "text": "A single global VRF for all customers",
+     "correct": false,
+     "rationale": "One global VRF would mix customer routes, defeating isolation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the RD makes overlapping customer prefixes unique in VPNv4. Correct: RTs control which VRFs import and export the routes.",
+   "outcome_refs": [
+    "MST-0264-D01.01"
+   ],
+   "domain_ref": "Architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0268",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 894,
+  "lesson_check_items": 72,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 93,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0268-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A service runs now but does not start after reboot. Which action makes it start at boot?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Enable the service with systemctl enable",
+     "correct": true,
+     "rationale": "Correct: enabling creates the boot-time symlink so it starts on reboot."
+    },
+    {
+     "key": "B",
+     "text": "Start the service with systemctl start",
+     "correct": false,
+     "rationale": "Starting runs it now but does not persist across reboot."
+    },
+    {
+     "key": "C",
+     "text": "Run the binary once manually",
+     "correct": false,
+     "rationale": "A manual run does not register the service for boot."
+    },
+    {
+     "key": "D",
+     "text": "Edit /etc/hostname",
+     "correct": false,
+     "rationale": "The hostname file is unrelated to service startup."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: enabling creates the boot-time symlink so it starts on reboot.",
+   "outcome_refs": [
+    "MST-0268-D01.01"
+   ],
+   "domain_ref": "Essential Tools and Running Systems",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0268-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A persistent mount must survive reboot. Where should it be defined?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In /etc/fstab",
+     "correct": true,
+     "rationale": "Correct: /etc/fstab defines mounts applied at boot."
+    },
+    {
+     "key": "B",
+     "text": "Only via a one-time mount command",
+     "correct": false,
+     "rationale": "A manual mount does not persist across reboot."
+    },
+    {
+     "key": "C",
+     "text": "In ~/.bashrc",
+     "correct": false,
+     "rationale": "Shell startup files do not configure system mounts."
+    },
+    {
+     "key": "D",
+     "text": "In /etc/hosts",
+     "correct": false,
+     "rationale": "The hosts file maps names to addresses, not mounts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: /etc/fstab defines mounts applied at boot.",
+   "outcome_refs": [
+    "MST-0268-D02.01"
+   ],
+   "domain_ref": "Local Storage and File Systems",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0268-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A web page returns a permission error though file permissions look correct on an SELinux-enforcing host. Which TWO steps are appropriate? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Check and correct the SELinux file context",
+     "correct": true,
+     "rationale": "Correct: a wrong SELinux context blocks access despite correct DAC permissions."
+    },
+    {
+     "key": "B",
+     "text": "Review SELinux denials in the audit log",
+     "correct": true,
+     "rationale": "Correct: audit denials reveal exactly what SELinux blocked."
+    },
+    {
+     "key": "C",
+     "text": "Set SELinux to permissive permanently to fix it",
+     "correct": false,
+     "rationale": "Disabling enforcement removes protection instead of fixing the context."
+    },
+    {
+     "key": "D",
+     "text": "Delete the web content",
+     "correct": false,
+     "rationale": "Deleting content does not resolve a context problem."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a wrong SELinux context blocks access despite correct DAC permissions. Correct: audit denials reveal exactly what SELinux blocked.",
+   "outcome_refs": [
+    "MST-0268-D01.01"
+   ],
+   "domain_ref": "Essential Tools and Running Systems",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

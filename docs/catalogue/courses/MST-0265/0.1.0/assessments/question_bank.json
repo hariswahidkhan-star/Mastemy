@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0265",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 894,
+  "lesson_check_items": 72,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 93,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0265-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A configuration change was typed but the device still behaves as before. What is the most likely reason?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The candidate configuration was not committed",
+     "correct": true,
+     "rationale": "Correct: Junos changes take effect only after a commit."
+    },
+    {
+     "key": "B",
+     "text": "The device needs a full reboot for any change",
+     "correct": false,
+     "rationale": "Most Junos changes apply on commit without a reboot."
+    },
+    {
+     "key": "C",
+     "text": "The CLI is in operational mode permanently",
+     "correct": false,
+     "rationale": "You can enter configuration mode to make and commit changes."
+    },
+    {
+     "key": "D",
+     "text": "Routing policy always blocks changes",
+     "correct": false,
+     "rationale": "Routing policy does not prevent configuration from committing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Junos changes take effect only after a commit.",
+   "outcome_refs": [
+    "MST-0265-D01.01"
+   ],
+   "domain_ref": "Networking and Junos OS Fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0265-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How is a transit packet handled differently from an exception packet on a Junos device?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Transit packets are forwarded by the data plane; exception packets go to the routing engine",
+     "correct": true,
+     "rationale": "Correct: the data plane forwards transit traffic while exceptions are punted to the RE."
+    },
+    {
+     "key": "B",
+     "text": "Both are always processed by the routing engine",
+     "correct": false,
+     "rationale": "Transit traffic is handled by the forwarding plane, not the RE."
+    },
+    {
+     "key": "C",
+     "text": "Exception packets are always dropped",
+     "correct": false,
+     "rationale": "Exception packets are processed by the RE, not simply dropped."
+    },
+    {
+     "key": "D",
+     "text": "Transit packets require a commit to forward",
+     "correct": false,
+     "rationale": "Forwarding does not require a configuration commit per packet."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the data plane forwards transit traffic while exceptions are punted to the RE.",
+   "outcome_refs": [
+    "MST-0265-D02.01"
+   ],
+   "domain_ref": "User Interfaces and Configuration Basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0265-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO safeguards let you apply a risky change while protecting against lockout? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use commit confirmed with a rollback timer",
+     "correct": true,
+     "rationale": "Correct: commit confirmed auto-rolls back if not confirmed in time."
+    },
+    {
+     "key": "B",
+     "text": "Review the change with show | compare before commit",
+     "correct": true,
+     "rationale": "Correct: comparing candidate vs active config catches mistakes before commit."
+    },
+    {
+     "key": "C",
+     "text": "Delete the rollback history first",
+     "correct": false,
+     "rationale": "Deleting rollback history removes your recovery options."
+    },
+    {
+     "key": "D",
+     "text": "Disable the management interface during the change",
+     "correct": false,
+     "rationale": "Disabling management risks the very lockout you want to avoid."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: commit confirmed auto-rolls back if not confirmed in time. Correct: comparing candidate vs active config catches mistakes before commit.",
+   "outcome_refs": [
+    "MST-0265-D01.01"
+   ],
+   "domain_ref": "Networking and Junos OS Fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0262",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 966,
+  "lesson_check_items": 108,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 93,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0262-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A design must protect data confidentiality at rest and allow fast bulk encryption. Which approach fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Symmetric encryption with a protected key",
+     "correct": true,
+     "rationale": "Correct: symmetric ciphers are efficient for bulk data; the key must be protected."
+    },
+    {
+     "key": "B",
+     "text": "Asymmetric encryption of all stored data",
+     "correct": false,
+     "rationale": "Asymmetric encryption is slow and impractical for bulk data at rest."
+    },
+    {
+     "key": "C",
+     "text": "Hashing the data",
+     "correct": false,
+     "rationale": "Hashing provides integrity, not confidentiality or recoverability."
+    },
+    {
+     "key": "D",
+     "text": "Base64 encoding",
+     "correct": false,
+     "rationale": "Encoding is reversible by anyone and provides no confidentiality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: symmetric ciphers are efficient for bulk data; the key must be protected.",
+   "outcome_refs": [
+    "MST-0262-D01.01"
+   ],
+   "domain_ref": "Security Concepts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0262-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a flat network, which control most directly limits east-west lateral movement after a host is compromised?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Network segmentation",
+     "correct": true,
+     "rationale": "Correct: segmentation restricts lateral movement between zones."
+    },
+    {
+     "key": "B",
+     "text": "A stronger perimeter firewall",
+     "correct": false,
+     "rationale": "A perimeter firewall governs north-south traffic, not lateral movement inside."
+    },
+    {
+     "key": "C",
+     "text": "Longer passwords",
+     "correct": false,
+     "rationale": "Password strength does not constrain lateral network reachability."
+    },
+    {
+     "key": "D",
+     "text": "More log storage",
+     "correct": false,
+     "rationale": "More logging aids detection but does not limit movement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: segmentation restricts lateral movement between zones.",
+   "outcome_refs": [
+    "MST-0262-D02.01"
+   ],
+   "domain_ref": "Network Security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0262-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are shared-responsibility duties that remain with the customer across IaaS, PaaS and SaaS? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Managing user identities and access",
+     "correct": true,
+     "rationale": "Correct: identity and access management stays with the customer in all models."
+    },
+    {
+     "key": "B",
+     "text": "Classifying and protecting their own data",
+     "correct": true,
+     "rationale": "Correct: data ownership and classification always stay with the customer."
+    },
+    {
+     "key": "C",
+     "text": "Securing the physical datacenter",
+     "correct": false,
+     "rationale": "Physical security is always the provider's responsibility."
+    },
+    {
+     "key": "D",
+     "text": "Patching the hypervisor",
+     "correct": false,
+     "rationale": "The hypervisor is the provider's responsibility in all three models."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: identity and access management stays with the customer in all models. Correct: data ownership and classification always stay with the customer.",
+   "outcome_refs": [
+    "MST-0262-D01.01"
+   ],
+   "domain_ref": "Security Concepts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

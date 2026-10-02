@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0271",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 624,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 57,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0271-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload should run only on dedicated nodes while other pods stay off them. Which combination achieves this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Taint the nodes and add a matching toleration to the workload",
+     "correct": true,
+     "rationale": "Correct: taints repel other pods while the tolerated workload can schedule."
+    },
+    {
+     "key": "B",
+     "text": "Add more CPU limits to the workload",
+     "correct": false,
+     "rationale": "Limits cap usage but do not reserve nodes."
+    },
+    {
+     "key": "C",
+     "text": "Delete the other pods repeatedly",
+     "correct": false,
+     "rationale": "Manual deletion does not prevent rescheduling onto the nodes."
+    },
+    {
+     "key": "D",
+     "text": "Expose the workload with a NodePort",
+     "correct": false,
+     "rationale": "NodePort is about networking, not node placement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: taints repel other pods while the tolerated workload can schedule.",
+   "outcome_refs": [
+    "MST-0271-D01.01"
+   ],
+   "domain_ref": "Cluster Architecture, Installation and Configuration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0271-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A ClusterIP service is unreachable from outside the cluster. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "ClusterIP is internal-only; external access needs NodePort, LoadBalancer or Ingress",
+     "correct": true,
+     "rationale": "Correct: ClusterIP is reachable only inside the cluster."
+    },
+    {
+     "key": "B",
+     "text": "ClusterIP requires a PersistentVolume",
+     "correct": false,
+     "rationale": "Storage is unrelated to service reachability."
+    },
+    {
+     "key": "C",
+     "text": "ClusterIP only works with privileged pods",
+     "correct": false,
+     "rationale": "Privilege level does not govern service exposure."
+    },
+    {
+     "key": "D",
+     "text": "ClusterIP needs a taint to function",
+     "correct": false,
+     "rationale": "Taints affect scheduling, not service reachability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ClusterIP is reachable only inside the cluster.",
+   "outcome_refs": [
+    "MST-0271-D02.01"
+   ],
+   "domain_ref": "Workloads and Scheduling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0271-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate first steps to diagnose a pod stuck in CrashLoopBackOff? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Inspect the pod's logs for the failing container",
+     "correct": true,
+     "rationale": "Correct: logs usually reveal why the container exits."
+    },
+    {
+     "key": "B",
+     "text": "Describe the pod to read its events",
+     "correct": true,
+     "rationale": "Correct: events surface scheduling, image and probe failures."
+    },
+    {
+     "key": "C",
+     "text": "Immediately delete the node",
+     "correct": false,
+     "rationale": "Deleting the node is disruptive and rarely the cause."
+    },
+    {
+     "key": "D",
+     "text": "Grant the pod cluster-admin",
+     "correct": false,
+     "rationale": "Elevating privileges does not diagnose a crash loop."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: logs usually reveal why the container exits. Correct: events surface scheduling, image and probe failures.",
+   "outcome_refs": [
+    "MST-0271-D01.01"
+   ],
+   "domain_ref": "Cluster Architecture, Installation and Configuration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

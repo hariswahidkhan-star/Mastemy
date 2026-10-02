@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0273",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 624,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 57,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0273-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To limit pod-to-pod traffic to only what is required, what should you apply first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A default-deny NetworkPolicy, then allow required flows",
+     "correct": true,
+     "rationale": "Correct: default-deny then explicit allow enforces least privilege."
+    },
+    {
+     "key": "B",
+     "text": "A LoadBalancer service for every pod",
+     "correct": false,
+     "rationale": "Exposing pods widely increases, not reduces, risk."
+    },
+    {
+     "key": "C",
+     "text": "Cluster-admin for all service accounts",
+     "correct": false,
+     "rationale": "Broad privileges weaken security posture."
+    },
+    {
+     "key": "D",
+     "text": "Disabling the API server audit log",
+     "correct": false,
+     "rationale": "Disabling auditing reduces visibility, not exposure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: default-deny then explicit allow enforces least privilege.",
+   "outcome_refs": [
+    "MST-0273-D01.01"
+   ],
+   "domain_ref": "Cluster Setup and Hardening",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0273-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which approach best ensures only trusted images run in the cluster?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Admission control that verifies image signatures/digests",
+     "correct": true,
+     "rationale": "Correct: admission-time verification blocks untrusted images."
+    },
+    {
+     "key": "B",
+     "text": "Trusting the 'latest' tag as immutable",
+     "correct": false,
+     "rationale": "Tags are mutable; 'latest' can change under you."
+    },
+    {
+     "key": "C",
+     "text": "Allowing any image from any registry",
+     "correct": false,
+     "rationale": "Unrestricted registries invite untrusted images."
+    },
+    {
+     "key": "D",
+     "text": "Running everything as root",
+     "correct": false,
+     "rationale": "Running as root worsens, not improves, security."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: admission-time verification blocks untrusted images.",
+   "outcome_refs": [
+    "MST-0273-D02.01"
+   ],
+   "domain_ref": "System Hardening",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0273-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO reduce a node's attack surface? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Remove unneeded packages and services",
+     "correct": true,
+     "rationale": "Correct: fewer installed services means fewer vulnerabilities."
+    },
+    {
+     "key": "B",
+     "text": "Apply a seccomp profile to restrict syscalls",
+     "correct": true,
+     "rationale": "Correct: seccomp limits the syscalls a workload can make."
+    },
+    {
+     "key": "C",
+     "text": "Run all workloads as privileged",
+     "correct": false,
+     "rationale": "Privileged workloads expand the attack surface."
+    },
+    {
+     "key": "D",
+     "text": "Open all firewall ports for convenience",
+     "correct": false,
+     "rationale": "Opening all ports maximises exposure."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fewer installed services means fewer vulnerabilities. Correct: seccomp limits the syscalls a workload can make.",
+   "outcome_refs": [
+    "MST-0273-D01.01"
+   ],
+   "domain_ref": "Cluster Setup and Hardening",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

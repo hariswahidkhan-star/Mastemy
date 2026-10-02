@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0270",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 624,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 57,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0270-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user needs to run one administrative command without full root. What is the least-privilege approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant a scoped sudo rule for that specific command",
+     "correct": true,
+     "rationale": "Correct: a scoped sudoers entry grants only the needed command."
+    },
+    {
+     "key": "B",
+     "text": "Add the user to the root group",
+     "correct": false,
+     "rationale": "Group membership can grant far more than one command."
+    },
+    {
+     "key": "C",
+     "text": "Share the root password",
+     "correct": false,
+     "rationale": "Sharing root credentials violates least privilege and accountability."
+    },
+    {
+     "key": "D",
+     "text": "Set the command setuid root for everyone",
+     "correct": false,
+     "rationale": "A world-executable setuid-root binary is a serious risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a scoped sudoers entry grants only the needed command.",
+   "outcome_refs": [
+    "MST-0270-D01.01"
+   ],
+   "domain_ref": "Essential Commands and Files",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0270-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A host can ping IPs but not resolve names. Which is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A DNS/name-resolution misconfiguration",
+     "correct": true,
+     "rationale": "Correct: reachable IPs with failed names points to DNS resolution."
+    },
+    {
+     "key": "B",
+     "text": "A routing loop",
+     "correct": false,
+     "rationale": "A routing problem would also break IP reachability."
+    },
+    {
+     "key": "C",
+     "text": "A full disk",
+     "correct": false,
+     "rationale": "Disk capacity does not selectively break name resolution."
+    },
+    {
+     "key": "D",
+     "text": "An expired user password",
+     "correct": false,
+     "rationale": "Authentication is unrelated to name resolution."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reachable IPs with failed names points to DNS resolution.",
+   "outcome_refs": [
+    "MST-0270-D02.01"
+   ],
+   "domain_ref": "Running Systems, Users and Groups",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0270-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps correctly add persistent LVM storage? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Create the logical volume and format it with a file system",
+     "correct": true,
+     "rationale": "Correct: an LV must be created and formatted before use."
+    },
+    {
+     "key": "B",
+     "text": "Add the mount to /etc/fstab and verify it mounts",
+     "correct": true,
+     "rationale": "Correct: an fstab entry makes the mount persistent across reboot."
+    },
+    {
+     "key": "C",
+     "text": "Mount it once manually and assume it persists",
+     "correct": false,
+     "rationale": "A manual mount does not survive reboot."
+    },
+    {
+     "key": "D",
+     "text": "Store data on it before creating a file system",
+     "correct": false,
+     "rationale": "You cannot store data before a file system exists."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an LV must be created and formatted before use. Correct: an fstab entry makes the mount persistent across reboot.",
+   "outcome_refs": [
+    "MST-0270-D01.01"
+   ],
+   "domain_ref": "Essential Commands and Files",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

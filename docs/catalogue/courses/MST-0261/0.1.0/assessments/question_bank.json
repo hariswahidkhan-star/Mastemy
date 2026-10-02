@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0261",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 894,
+  "lesson_check_items": 72,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 93,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0261-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "OSPF neighbours on a point-to-point link reach EXSTART/EXCHANGE but never FULL. Which cause is most likely?",
+   "options": [
+    {
+     "key": "A",
+     "text": "MTU mismatch between the two interfaces",
+     "correct": true,
+     "rationale": "Correct: an MTU mismatch stalls the database exchange at EXSTART/EXCHANGE."
+    },
+    {
+     "key": "B",
+     "text": "Different OSPF process IDs",
+     "correct": false,
+     "rationale": "Process IDs are locally significant and do not prevent adjacency."
+    },
+    {
+     "key": "C",
+     "text": "Mismatched hello/dead timers",
+     "correct": false,
+     "rationale": "Timer mismatch prevents reaching even 2-WAY/EXSTART, not stalling at EXCHANGE."
+    },
+    {
+     "key": "D",
+     "text": "Different interface bandwidth",
+     "correct": false,
+     "rationale": "Bandwidth affects cost, not adjacency formation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an MTU mismatch stalls the database exchange at EXSTART/EXCHANGE.",
+   "outcome_refs": [
+    "MST-0261-D01.01"
+   ],
+   "domain_ref": "Layer 3 Technologies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0261-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A DMVPN spoke cannot build a spoke-to-spoke tunnel though both reach the hub. Which component should you check first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "NHRP resolution and registration",
+     "correct": true,
+     "rationale": "Correct: spoke-to-spoke tunnels depend on NHRP resolving the peer's NBMA address."
+    },
+    {
+     "key": "B",
+     "text": "The hub's default route",
+     "correct": false,
+     "rationale": "Hub reachability already works, so the hub default route is not the blocker."
+    },
+    {
+     "key": "C",
+     "text": "The spoke's console password",
+     "correct": false,
+     "rationale": "Console access is unrelated to tunnel establishment."
+    },
+    {
+     "key": "D",
+     "text": "QoS shaping on the hub",
+     "correct": false,
+     "rationale": "Shaping may affect performance but does not stop tunnel resolution."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: spoke-to-spoke tunnels depend on NHRP resolving the peer's NBMA address.",
+   "outcome_refs": [
+    "MST-0261-D02.01"
+   ],
+   "domain_ref": "VPN Technologies",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0261-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions help a Control Plane Policing (CoPP) policy protect the router without breaking operations? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Permit routing-protocol traffic to the control plane",
+     "correct": true,
+     "rationale": "Correct: routing protocols must reach the control plane or adjacencies drop."
+    },
+    {
+     "key": "B",
+     "text": "Rate-limit management traffic such as SSH and SNMP",
+     "correct": true,
+     "rationale": "Correct: rate-limiting management protects the CPU from floods while allowing access."
+    },
+    {
+     "key": "C",
+     "text": "Drop all traffic destined to the control plane",
+     "correct": false,
+     "rationale": "Dropping everything would break routing and management entirely."
+    },
+    {
+     "key": "D",
+     "text": "Apply the policy only to transit data traffic",
+     "correct": false,
+     "rationale": "CoPP protects control-plane traffic, not transit data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: routing protocols must reach the control plane or adjacencies drop. Correct: rate-limiting management protects the CPU from floods while allowing access.",
+   "outcome_refs": [
+    "MST-0261-D01.01"
+   ],
+   "domain_ref": "Layer 3 Technologies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0269",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 894,
+  "lesson_check_items": 72,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 93,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0269-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A playbook task using the shell module reports 'changed' every run even when nothing changed. What is the issue?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The task is not idempotent and should use a proper module",
+     "correct": true,
+     "rationale": "Correct: shell commands are not idempotent; a dedicated module reports change accurately."
+    },
+    {
+     "key": "B",
+     "text": "Ansible always reports changed for every task",
+     "correct": false,
+     "rationale": "Idempotent modules report 'ok' when no change is needed."
+    },
+    {
+     "key": "C",
+     "text": "The inventory is missing",
+     "correct": false,
+     "rationale": "A missing inventory would stop execution, not misreport change."
+    },
+    {
+     "key": "D",
+     "text": "Handlers are disabled",
+     "correct": false,
+     "rationale": "Handlers affect notifications, not change detection on a task."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: shell commands are not idempotent; a dedicated module reports change accurately.",
+   "outcome_refs": [
+    "MST-0269-D01.01"
+   ],
+   "domain_ref": "Ansible Basics and Inventories",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0269-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two sources set the same variable. Which generally wins by Ansible precedence?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An extra-var passed on the command line",
+     "correct": true,
+     "rationale": "Correct: extra-vars have the highest precedence."
+    },
+    {
+     "key": "B",
+     "text": "A group_vars default",
+     "correct": false,
+     "rationale": "Group vars are overridden by higher-precedence sources like extra-vars."
+    },
+    {
+     "key": "C",
+     "text": "A role default",
+     "correct": false,
+     "rationale": "Role defaults are among the lowest precedence."
+    },
+    {
+     "key": "D",
+     "text": "An inventory file comment",
+     "correct": false,
+     "rationale": "A comment sets nothing and cannot win."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: extra-vars have the highest precedence.",
+   "outcome_refs": [
+    "MST-0269-D02.01"
+   ],
+   "domain_ref": "Playbooks and Task Control",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0269-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices correctly protect secrets in Ansible? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Encrypt sensitive variable files with Ansible Vault",
+     "correct": true,
+     "rationale": "Correct: Vault encrypts secrets at rest in the repository."
+    },
+    {
+     "key": "B",
+     "text": "Reference the encrypted file and supply the vault password at run time",
+     "correct": true,
+     "rationale": "Correct: supplying the password at run time decrypts without storing it in plaintext."
+    },
+    {
+     "key": "C",
+     "text": "Commit the plaintext password into group_vars",
+     "correct": false,
+     "rationale": "Committing plaintext secrets exposes them in version control."
+    },
+    {
+     "key": "D",
+     "text": "Echo the secret in a debug task for every run",
+     "correct": false,
+     "rationale": "Printing secrets leaks them into logs."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Vault encrypts secrets at rest in the repository. Correct: supplying the password at run time decrypts without storing it in plaintext.",
+   "outcome_refs": [
+    "MST-0269-D01.01"
+   ],
+   "domain_ref": "Ansible Basics and Inventories",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

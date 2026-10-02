@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0272",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 624,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 57,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0272-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Configuration should be injected into a container rather than baked into its image. Which Kubernetes object is designed for non-secret config?",
+   "options": [
+    {
+     "key": "A",
+     "text": "ConfigMap",
+     "correct": true,
+     "rationale": "Correct: a ConfigMap injects non-secret configuration as env vars or files."
+    },
+    {
+     "key": "B",
+     "text": "A second container image",
+     "correct": false,
+     "rationale": "Rebuilding the image defeats the purpose of externalising config."
+    },
+    {
+     "key": "C",
+     "text": "A NodePort service",
+     "correct": false,
+     "rationale": "A service exposes networking, not configuration."
+    },
+    {
+     "key": "D",
+     "text": "A taint",
+     "correct": false,
+     "rationale": "Taints control scheduling, not configuration injection."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a ConfigMap injects non-secret configuration as env vars or files.",
+   "outcome_refs": [
+    "MST-0272-D01.01"
+   ],
+   "domain_ref": "Application Design and Build",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0272-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A liveness probe keeps restarting a healthy app that starts slowly. What is the best fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add a startup probe or increase the initial delay",
+     "correct": true,
+     "rationale": "Correct: a startup probe/initial delay gives slow starters time before liveness checks."
+    },
+    {
+     "key": "B",
+     "text": "Remove all probes",
+     "correct": false,
+     "rationale": "Removing probes loses self-healing for genuine failures."
+    },
+    {
+     "key": "C",
+     "text": "Run the pod as privileged",
+     "correct": false,
+     "rationale": "Privilege does not change probe timing."
+    },
+    {
+     "key": "D",
+     "text": "Switch the service to NodePort",
+     "correct": false,
+     "rationale": "Service type is unrelated to probe restarts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a startup probe/initial delay gives slow starters time before liveness checks.",
+   "outcome_refs": [
+    "MST-0272-D02.01"
+   ],
+   "domain_ref": "Application Deployment",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0272-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO correctly handle a Secret for a containerised app? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store it in a Secret object and mount or inject it",
+     "correct": true,
+     "rationale": "Correct: Secrets are the intended object for sensitive values."
+    },
+    {
+     "key": "B",
+     "text": "Restrict access with RBAC",
+     "correct": true,
+     "rationale": "Correct: RBAC limits who can read the Secret."
+    },
+    {
+     "key": "C",
+     "text": "Store it in a ConfigMap in plain text",
+     "correct": false,
+     "rationale": "ConfigMaps are not for secrets and expose values."
+    },
+    {
+     "key": "D",
+     "text": "Hard-code it in the Dockerfile",
+     "correct": false,
+     "rationale": "Baking secrets into images leaks them to anyone with the image."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Secrets are the intended object for sensitive values. Correct: RBAC limits who can read the Secret.",
+   "outcome_refs": [
+    "MST-0272-D01.01"
+   ],
+   "domain_ref": "Application Design and Build",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

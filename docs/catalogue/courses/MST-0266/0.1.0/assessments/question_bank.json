@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0266",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 894,
+  "lesson_check_items": 72,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 93,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0266-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A new switch uplink creates an intermittent broadcast storm. Which protocol is designed to prevent the Layer 2 loop causing it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Spanning Tree Protocol",
+     "correct": true,
+     "rationale": "Correct: STP blocks redundant paths to prevent Layer 2 loops."
+    },
+    {
+     "key": "B",
+     "text": "BGP",
+     "correct": false,
+     "rationale": "BGP is a Layer 3 path-vector protocol, not a loop-prevention mechanism for bridging."
+    },
+    {
+     "key": "C",
+     "text": "DHCP",
+     "correct": false,
+     "rationale": "DHCP assigns addresses and does not prevent bridging loops."
+    },
+    {
+     "key": "D",
+     "text": "SNMP",
+     "correct": false,
+     "rationale": "SNMP is for monitoring, not loop prevention."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: STP blocks redundant paths to prevent Layer 2 loops.",
+   "outcome_refs": [
+    "MST-0266-D01.01"
+   ],
+   "domain_ref": "Layer 2 Switching and VLANs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0266-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To prefer one upstream ISP for outbound traffic within your AS, which BGP attribute is most appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Local preference",
+     "correct": true,
+     "rationale": "Correct: local preference is the standard way to influence outbound path selection AS-wide."
+    },
+    {
+     "key": "B",
+     "text": "MED",
+     "correct": false,
+     "rationale": "MED influences how a neighbour AS sends traffic to you, not your outbound choice."
+    },
+    {
+     "key": "C",
+     "text": "Origin code",
+     "correct": false,
+     "rationale": "Origin is a low-priority tiebreaker, not the primary outbound control."
+    },
+    {
+     "key": "D",
+     "text": "Router ID",
+     "correct": false,
+     "rationale": "Router ID is a final tiebreaker, not a policy control."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: local preference is the standard way to influence outbound path selection AS-wide.",
+   "outcome_refs": [
+    "MST-0266-D02.01"
+   ],
+   "domain_ref": "OSPF and IS-IS",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0266-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls harden an untrusted access-layer port? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Port security limiting learned MAC addresses",
+     "correct": true,
+     "rationale": "Correct: port security limits MACs to curb spoofing and CAM flooding."
+    },
+    {
+     "key": "B",
+     "text": "Storm control to cap broadcast/multicast rates",
+     "correct": true,
+     "rationale": "Correct: storm control limits broadcast/multicast floods."
+    },
+    {
+     "key": "C",
+     "text": "Enabling an unauthenticated trunk to all VLANs",
+     "correct": false,
+     "rationale": "An open trunk exposes every VLAN and weakens security."
+    },
+    {
+     "key": "D",
+     "text": "Disabling spanning tree on the port",
+     "correct": false,
+     "rationale": "Disabling STP invites loops rather than hardening the port."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: port security limits MACs to curb spoofing and CAM flooding. Correct: storm control limits broadcast/multicast floods.",
+   "outcome_refs": [
+    "MST-0266-D01.01"
+   ],
+   "domain_ref": "Layer 2 Switching and VLANs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

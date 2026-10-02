@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0281",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 624,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 57,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications). 80/20 instruction/assessment honoured upstream (I+A=T)."
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0281-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Terraform plan shows a resource must be replaced after you reordered items in a list used with count. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "count uses positional indexes, so reordering shifts resource addresses",
+     "correct": true,
+     "rationale": "Correct: count indexes by position, so reordering recreates resources."
+    },
+    {
+     "key": "B",
+     "text": "Terraform always replaces every resource on each plan",
+     "correct": false,
+     "rationale": "Terraform replaces only resources whose identity or immutable args change."
+    },
+    {
+     "key": "C",
+     "text": "The provider was uninstalled",
+     "correct": false,
+     "rationale": "A missing provider would error, not cause orderly replacement."
+    },
+    {
+     "key": "D",
+     "text": "State locking failed",
+     "correct": false,
+     "rationale": "Lock failure prevents the run; it does not cause replacement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: count indexes by position, so reordering recreates resources.",
+   "outcome_refs": [
+    "MST-0281-D01.01"
+   ],
+   "domain_ref": "IaC Concepts and Terraform Basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0281-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why configure remote state with locking for a team?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It prevents concurrent applies from corrupting shared state",
+     "correct": true,
+     "rationale": "Correct: locking serialises writes so concurrent applies cannot corrupt state."
+    },
+    {
+     "key": "B",
+     "text": "It encrypts the provider binary",
+     "correct": false,
+     "rationale": "Locking concerns state access, not provider binaries."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for a plan",
+     "correct": false,
+     "rationale": "A plan is still the way to preview changes."
+    },
+    {
+     "key": "D",
+     "text": "It disables variables",
+     "correct": false,
+     "rationale": "Remote state does not affect variable usage."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: locking serialises writes so concurrent applies cannot corrupt state.",
+   "outcome_refs": [
+    "MST-0281-D02.01"
+   ],
+   "domain_ref": "Terraform CLI and Core Workflow",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0281-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about the core Terraform workflow and state? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A saved plan file lets apply execute exactly what was reviewed",
+     "correct": true,
+     "rationale": "Correct: applying a saved plan guarantees it matches the reviewed plan."
+    },
+    {
+     "key": "B",
+     "text": "State should be changed with state commands, not hand-edited",
+     "correct": true,
+     "rationale": "Correct: manual state edits risk corruption; state commands are the safe path."
+    },
+    {
+     "key": "C",
+     "text": "apply re-reads configuration and ignores a saved plan",
+     "correct": false,
+     "rationale": "Applying a saved plan executes that plan, not a fresh read."
+    },
+    {
+     "key": "D",
+     "text": "State files never need protection",
+     "correct": false,
+     "rationale": "State can contain sensitive data and must be protected."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: applying a saved plan guarantees it matches the reviewed plan. Correct: manual state edits risk corruption; state commands are the safe path.",
+   "outcome_refs": [
+    "MST-0281-D01.01"
+   ],
+   "domain_ref": "IaC Concepts and Terraform Basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
