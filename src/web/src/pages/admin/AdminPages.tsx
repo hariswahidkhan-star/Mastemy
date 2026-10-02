@@ -37,6 +37,7 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { splitLines } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
 import { youtubeWatchUrl } from '../../lib/youtube';
+import { AdminUserSecurityCell } from '../account/AdminUserSecurity';
 
 // ---------------- Settings ----------------
 export function SettingsPage() {
@@ -205,6 +206,7 @@ export function UsersPage() {
                       <th scope="col">{t('auth.displayName')}</th>
                       <th scope="col">{t('auth.email')}</th>
                       <th scope="col">{t('users.roles')}</th>
+                      <th scope="col">{t('account.admin.security')}</th>
                       <th scope="col">{t('common.actions')}</th>
                     </tr>
                   </thead>
@@ -217,6 +219,9 @@ export function UsersPage() {
                         </td>
                         <td>{u.email}</td>
                         <td>{u.roles.map((r) => t(`role.${r}`)).join(', ') || '—'}</td>
+                        <td>
+                          <AdminUserSecurityCell user={u} />
+                        </td>
                         <td>
                           <div className="row">
                             {canAssign ? (

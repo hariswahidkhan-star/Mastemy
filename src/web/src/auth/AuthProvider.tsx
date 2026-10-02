@@ -8,7 +8,13 @@ interface AuthValue {
   user: UserDto | null;
   /** True until the initial refresh-token exchange has settled. */
   initializing: boolean;
-  login: (email: string, password: string) => Promise<UserDto>;
+  /** Returns the server's AuthResponse; the session is only established when `status` is "ok". For
+   * "mfa_required" / "mfa_enrollment_required" the caller completes the challenge, then calls `completeLogin`. */
+  login: (email: string, password: string) => Promise<AuthResponse>;
+  /** Establishes a full session from an AuthResponse (after MFA verification or enrollment). */
+  completeLogin: (auth: AuthResponse) => void;
+  /** Re-reads the current user (e.g. after email verification). */
+  refreshUser: () => Promise<void>;
   register: (input: {
     email: string;
     password: string;
@@ -67,12 +73,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         body: { email, password },
         noRetry: true,
       });
-      setSession(res);
-      qc.clear();
-      return res.user;
+      if (!res.status || res.status === 'ok') {
+        setSession(res);
+        qc.clear();
+      } else {
+        // A pending MFA step never leaves a previous user's session behind.
+        setSession(null);
+      }
+      return res;
     },
     [qc],
   );
+
+  const completeLogin = useCallback(
+    (auth: AuthResponse) => {
+      setSession(auth);
+      qc.clear();
+    },
+    [qc],
+  );
+
+  const refreshUser = useCallback(async () => {
+    try {
+      setUser(await api<UserDto>('/api/auth/me'));
+    } catch {
+      /* keep the current user */
+    }
+  }, []);
 
   const register = useCallback<AuthValue['register']>(
     async (input) => {
@@ -105,11 +132,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user,
       initializing,
       login,
+      completeLogin,
+      refreshUser,
       register,
       logout,
       hasRole: (...roles) => !!user && roles.some((r) => user.roles.includes(r)),
     }),
-    [user, initializing, login, register, logout],
+    [user, initializing, login, completeLogin, refreshUser, register, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
