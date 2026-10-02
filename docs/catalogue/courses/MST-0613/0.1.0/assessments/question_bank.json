@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0613",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0613-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "At a conceptual level, what problem does the Model Context Protocol aim to solve?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Providing a common way for AI applications to connect to tools and data sources",
+     "correct": true,
+     "rationale": "Correct: MCP is an open protocol standardising how clients connect to servers exposing tools/resources."
+    },
+    {
+     "key": "B",
+     "text": "Training large language models from scratch",
+     "correct": false,
+     "rationale": "MCP is about integration, not model training."
+    },
+    {
+     "key": "C",
+     "text": "Replacing all databases",
+     "correct": false,
+     "rationale": "MCP does not replace databases."
+    },
+    {
+     "key": "D",
+     "text": "Rendering user interfaces",
+     "correct": false,
+     "rationale": "MCP is not a UI framework."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MCP is an open protocol standardising how clients connect to servers exposing tools/resources.",
+   "outcome_refs": [
+    "MST-0613-D01.01"
+   ],
+   "domain_ref": "What MCP is and why",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0613-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are core MCP primitives a server can expose? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tools",
+     "correct": true,
+     "rationale": "Correct: tools are callable capabilities a server exposes."
+    },
+    {
+     "key": "B",
+     "text": "Resources",
+     "correct": true,
+     "rationale": "Correct: resources are data a server exposes to clients."
+    },
+    {
+     "key": "C",
+     "text": "Firewalls",
+     "correct": false,
+     "rationale": "A firewall is a network control, not an MCP primitive."
+    },
+    {
+     "key": "D",
+     "text": "Spreadsheets",
+     "correct": false,
+     "rationale": "A spreadsheet is not an MCP primitive."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tools are callable capabilities a server exposes.",
+   "outcome_refs": [
+    "MST-0613-D02.01"
+   ],
+   "domain_ref": "Core primitives",
+   "cognitive_level": "remember",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0613-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When designing an MCP server for an internal service, a sound security principle is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Expose only the capabilities needed, with authorization (least privilege)",
+     "correct": true,
+     "rationale": "Correct: least privilege limits what a connected client can do."
+    },
+    {
+     "key": "B",
+     "text": "Expose every internal operation for flexibility",
+     "correct": false,
+     "rationale": "Broad exposure increases risk."
+    },
+    {
+     "key": "C",
+     "text": "Skip input validation to simplify the server",
+     "correct": false,
+     "rationale": "Input validation is essential for safe exposure."
+    },
+    {
+     "key": "D",
+     "text": "Share one admin credential with all clients",
+     "correct": false,
+     "rationale": "Shared broad credentials violate least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: least privilege limits what a connected client can do.",
+   "outcome_refs": [
+    "MST-0613-D04.01"
+   ],
+   "domain_ref": "Safety and authorization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

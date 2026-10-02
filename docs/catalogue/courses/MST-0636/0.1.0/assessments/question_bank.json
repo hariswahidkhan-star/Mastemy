@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0636",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0636-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need a value that recalculates for whatever rows a PivotTable cell filters. Which object is correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A measure",
+     "correct": true,
+     "rationale": "Correct: measures evaluate in the current filter context of each cell."
+    },
+    {
+     "key": "B",
+     "text": "A calculated column",
+     "correct": false,
+     "rationale": "A calculated column is computed per row at refresh and does not react to PivotTable filter context."
+    },
+    {
+     "key": "C",
+     "text": "A worksheet named range",
+     "correct": false,
+     "rationale": "A named range is static and outside the Data Model."
+    },
+    {
+     "key": "D",
+     "text": "A data validation list",
+     "correct": false,
+     "rationale": "Data validation controls input, not calculation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: measures evaluate in the current filter context of each cell.",
+   "outcome_refs": [
+    "MST-0636-D03.01"
+   ],
+   "domain_ref": "Calculated columns and measures",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0636-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are characteristics of a well-formed star schema in the Data Model? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A central fact table linked to dimension tables",
+     "correct": true,
+     "rationale": "Correct: a star schema has one fact table joined to dimensions."
+    },
+    {
+     "key": "B",
+     "text": "Relationships defined between fact and dimension keys",
+     "correct": true,
+     "rationale": "Correct: relationships let filters flow from dimensions to the fact."
+    },
+    {
+     "key": "C",
+     "text": "All data merged into a single wide table",
+     "correct": false,
+     "rationale": "That is a flat table, the opposite of a star schema."
+    },
+    {
+     "key": "D",
+     "text": "No date table because dates live in the fact table",
+     "correct": false,
+     "rationale": "A dedicated date table is recommended for time intelligence."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a star schema has one fact table joined to dimensions.",
+   "outcome_refs": [
+    "MST-0636-D02.01"
+   ],
+   "domain_ref": "Relationships and star schema",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0636-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "CALCULATE is primarily used to do what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Evaluate an expression with a modified filter context",
+     "correct": true,
+     "rationale": "Correct: CALCULATE changes the filter context under which an expression is evaluated."
+    },
+    {
+     "key": "B",
+     "text": "Create a relationship between two tables",
+     "correct": false,
+     "rationale": "Relationships are defined in the model, not by CALCULATE."
+    },
+    {
+     "key": "C",
+     "text": "Import data from a CSV",
+     "correct": false,
+     "rationale": "Import is done by Get Data / Power Query, not DAX."
+    },
+    {
+     "key": "D",
+     "text": "Format a PivotTable",
+     "correct": false,
+     "rationale": "Formatting is not a DAX function."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: CALCULATE changes the filter context under which an expression is evaluated.",
+   "outcome_refs": [
+    "MST-0636-D04.01"
+   ],
+   "domain_ref": "DAX foundations: context",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

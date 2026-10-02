@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0596",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0596-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A RAG answer is wrong even though the correct passage was retrieved into context. Where is the fault most likely?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In generation (the model mis-used the available context)",
+     "correct": true,
+     "rationale": "Correct: if the right context was retrieved, the failure lies in how the answer was generated."
+    },
+    {
+     "key": "B",
+     "text": "In retrieval, which clearly succeeded",
+     "correct": false,
+     "rationale": "Retrieval succeeded here, so it is not the fault."
+    },
+    {
+     "key": "C",
+     "text": "In the network",
+     "correct": false,
+     "rationale": "A network issue is not indicated by this symptom."
+    },
+    {
+     "key": "D",
+     "text": "In the user's spelling",
+     "correct": false,
+     "rationale": "The symptom points to generation, not input spelling."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: if the right context was retrieved, the failure lies in how the answer was generated.",
+   "outcome_refs": [
+    "MST-0596-D05.01"
+   ],
+   "domain_ref": "Diagnosing and improving",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0596-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about evaluating a RAG system are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieval quality and answer quality should be measured separately",
+     "correct": true,
+     "rationale": "Correct: separating them lets you locate the fault."
+    },
+    {
+     "key": "B",
+     "text": "Answer grounding checks whether claims are supported by retrieved context",
+     "correct": true,
+     "rationale": "Correct: grounding/faithfulness measures support in the context."
+    },
+    {
+     "key": "C",
+     "text": "A fluent answer is proof it is faithful to the sources",
+     "correct": false,
+     "rationale": "Fluency is not evidence of faithfulness."
+    },
+    {
+     "key": "D",
+     "text": "One accuracy number fully describes retrieval quality",
+     "correct": false,
+     "rationale": "Retrieval needs measures like recall and precision, not a single number."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: separating them lets you locate the fault.",
+   "outcome_refs": [
+    "MST-0596-D01.01"
+   ],
+   "domain_ref": "Retrieval vs answer quality",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0596-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which measure captures how many of the relevant passages were successfully retrieved?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recall",
+     "correct": true,
+     "rationale": "Correct: recall measures the fraction of relevant items that were retrieved."
+    },
+    {
+     "key": "B",
+     "text": "Latency",
+     "correct": false,
+     "rationale": "Latency measures speed, not relevance coverage."
+    },
+    {
+     "key": "C",
+     "text": "Token cost",
+     "correct": false,
+     "rationale": "Cost is unrelated to retrieval coverage."
+    },
+    {
+     "key": "D",
+     "text": "Uptime",
+     "correct": false,
+     "rationale": "Uptime measures availability, not retrieval coverage."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: recall measures the fraction of relevant items that were retrieved.",
+   "outcome_refs": [
+    "MST-0596-D02.01"
+   ],
+   "domain_ref": "Retrieval metrics",
+   "cognitive_level": "remember",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

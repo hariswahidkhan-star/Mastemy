@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0692",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0692-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is a Conditional Access policy evaluated?",
+   "options": [
+    {
+     "key": "A",
+     "text": "After first-factor authentication completes",
+     "correct": true,
+     "rationale": "Correct: Conditional Access is enforced after first-factor authentication."
+    },
+    {
+     "key": "B",
+     "text": "Before any authentication begins",
+     "correct": false,
+     "rationale": "It is not a frontline pre-authentication defense."
+    },
+    {
+     "key": "C",
+     "text": "Only during password reset",
+     "correct": false,
+     "rationale": "It applies broadly, not only at password reset."
+    },
+    {
+     "key": "D",
+     "text": "Only for guest users",
+     "correct": false,
+     "rationale": "It applies to configured users, not only guests."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Conditional Access is enforced after first-factor authentication.",
+   "outcome_refs": [
+    "MST-0692-D03.01"
+   ],
+   "domain_ref": "Evaluation and combining policies",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0692-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are recommended safe-deployment practices for Conditional Access? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Exclude break-glass (emergency access) accounts from policies",
+     "correct": true,
+     "rationale": "Correct: excluding break-glass accounts prevents lockout from misconfiguration."
+    },
+    {
+     "key": "B",
+     "text": "Validate new policies in report-only mode first",
+     "correct": true,
+     "rationale": "Correct: report-only lets you see impact before enforcing."
+    },
+    {
+     "key": "C",
+     "text": "Enable security defaults alongside Conditional Access",
+     "correct": false,
+     "rationale": "They are mutually exclusive and should not be combined."
+    },
+    {
+     "key": "D",
+     "text": "Apply every new policy to all users immediately",
+     "correct": false,
+     "rationale": "Staged rollout with exclusions is safer than a blanket enforce."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: excluding break-glass accounts prevents lockout from misconfiguration.",
+   "outcome_refs": [
+    "MST-0692-D04.01"
+   ],
+   "domain_ref": "Safe deployment",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0692-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two policies apply to a user: one requires MFA, another requires a compliant device. What must the user satisfy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Both requirements, because assignments and applicable policies combine with AND",
+     "correct": true,
+     "rationale": "Correct: all applicable policies must be satisfied."
+    },
+    {
+     "key": "B",
+     "text": "Either one, whichever is easier",
+     "correct": false,
+     "rationale": "Applicable policies are not optional alternatives."
+    },
+    {
+     "key": "C",
+     "text": "Neither, because they conflict",
+     "correct": false,
+     "rationale": "They do not conflict; both apply."
+    },
+    {
+     "key": "D",
+     "text": "Only the newest policy",
+     "correct": false,
+     "rationale": "Policy age does not override the requirement to satisfy all applicable policies."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: all applicable policies must be satisfied.",
+   "outcome_refs": [
+    "MST-0692-D03.01"
+   ],
+   "domain_ref": "Evaluation and combining policies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

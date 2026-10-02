@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0554",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0554-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "On a large codebase, why can adding many unrelated files to the AI's context reduce suggestion quality?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Irrelevant context dilutes the signal the model uses to answer",
+     "correct": true,
+     "rationale": "Correct: noisy, irrelevant context makes it harder for the model to focus on the task."
+    },
+    {
+     "key": "B",
+     "text": "It is impossible to add more than one file",
+     "correct": false,
+     "rationale": "Multiple files can be added; the issue is relevance."
+    },
+    {
+     "key": "C",
+     "text": "Extra files are always encrypted",
+     "correct": false,
+     "rationale": "Encryption is not the issue here."
+    },
+    {
+     "key": "D",
+     "text": "More files always guarantee a better answer",
+     "correct": false,
+     "rationale": "More is not always better; relevance matters."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: noisy, irrelevant context makes it harder for the model to focus on the task.",
+   "outcome_refs": [
+    "MST-0554-D01.01"
+   ],
+   "domain_ref": "Why context matters",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0554-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices belong in a disciplined AI-assisted editing workflow? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read the generated diff before accepting it",
+     "correct": true,
+     "rationale": "Correct: reviewing the diff catches subtle or unwanted changes."
+    },
+    {
+     "key": "B",
+     "text": "Run tests against the generated change",
+     "correct": true,
+     "rationale": "Correct: tests validate that the change behaves correctly."
+    },
+    {
+     "key": "C",
+     "text": "Accept all suggestions automatically to save time",
+     "correct": false,
+     "rationale": "Blind acceptance risks introducing bugs."
+    },
+    {
+     "key": "D",
+     "text": "Skip review because the AI wrote it",
+     "correct": false,
+     "rationale": "AI authorship is a reason to review, not to skip review."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reviewing the diff catches subtle or unwanted changes.",
+   "outcome_refs": [
+    "MST-0554-D04.01"
+   ],
+   "domain_ref": "Verifying generated changes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0554-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How are project conventions best communicated to an AI coding assistant?",
+   "options": [
+    {
+     "key": "A",
+     "text": "By defining explicit project rules/conventions it can follow",
+     "correct": true,
+     "rationale": "Correct: explicit rules steer suggestions toward the project's patterns (exact mechanism pending official docs)."
+    },
+    {
+     "key": "B",
+     "text": "By assuming it infers them with no guidance",
+     "correct": false,
+     "rationale": "Conventions should be stated, not assumed."
+    },
+    {
+     "key": "C",
+     "text": "By deleting the test suite",
+     "correct": false,
+     "rationale": "Deleting tests harms quality and does not communicate conventions."
+    },
+    {
+     "key": "D",
+     "text": "By hiding the codebase from the tool",
+     "correct": false,
+     "rationale": "Hiding context does not communicate conventions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: explicit rules steer suggestions toward the project's patterns (exact mechanism pending official docs).",
+   "outcome_refs": [
+    "MST-0554-D03.01"
+   ],
+   "domain_ref": "Rules and conventions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

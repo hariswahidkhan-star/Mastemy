@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0675",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0675-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user asks Copilot Chat (basic, unlicensed) about a figure in an internal file they did not upload. Why might Copilot be unable to use it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Basic Copilot Chat cannot access organizational data via Microsoft Graph",
+     "correct": true,
+     "rationale": "Correct: the basic experience does not ground in tenant data via Graph; the file must be uploaded or a licensed experience used."
+    },
+    {
+     "key": "B",
+     "text": "Copilot deleted the file",
+     "correct": false,
+     "rationale": "Copilot does not delete organizational files."
+    },
+    {
+     "key": "C",
+     "text": "The file is always public",
+     "correct": false,
+     "rationale": "Access depends on permissions, and basic chat lacks Graph grounding."
+    },
+    {
+     "key": "D",
+     "text": "Copilot only works offline",
+     "correct": false,
+     "rationale": "Copilot is a cloud service, not offline-only."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the basic experience does not ground in tenant data via Graph; the file must be uploaded or a licensed experience used.",
+   "outcome_refs": [
+    "MST-0675-D01.01"
+   ],
+   "domain_ref": "The Microsoft 365 Copilot landscape",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0675-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true of the licensed Microsoft 365 Copilot experience? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can ground responses in organizational data via Microsoft Graph",
+     "correct": true,
+     "rationale": "Correct: the licensed experience grounds in tenant data the user can access."
+    },
+    {
+     "key": "B",
+     "text": "It trims results to content the signed-in user is permitted to see",
+     "correct": true,
+     "rationale": "Correct: permission trimming applies to Copilot responses."
+    },
+    {
+     "key": "C",
+     "text": "It bypasses sensitivity labels for speed",
+     "correct": false,
+     "rationale": "Copilot honours sensitivity labels."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees every answer is factually correct",
+     "correct": false,
+     "rationale": "Output must still be verified."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the licensed experience grounds in tenant data the user can access.",
+   "outcome_refs": [
+    "MST-0675-D03.01"
+   ],
+   "domain_ref": "Data protection, permissions and compliance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0675-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before including a Copilot-generated figure in a board summary, the correct step is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the figure against the trusted source",
+     "correct": true,
+     "rationale": "Correct: generated figures must be verified before professional use."
+    },
+    {
+     "key": "B",
+     "text": "Trust it because Copilot used organizational data",
+     "correct": false,
+     "rationale": "Grounding does not guarantee correctness; verify."
+    },
+    {
+     "key": "C",
+     "text": "Remove all figures from the summary",
+     "correct": false,
+     "rationale": "Removing figures is not required; verifying is."
+    },
+    {
+     "key": "D",
+     "text": "Share the prompt publicly",
+     "correct": false,
+     "rationale": "Sharing prompts is unrelated and may expose data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: generated figures must be verified before professional use.",
+   "outcome_refs": [
+    "MST-0675-D04.01"
+   ],
+   "domain_ref": "Verification and responsible use",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

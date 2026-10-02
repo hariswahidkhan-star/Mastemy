@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0545",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0545-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should an API key for an Anthropic integration be stored?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In a secret store or environment variable, never in source control",
+     "correct": true,
+     "rationale": "Correct: keys must be kept out of code and version control."
+    },
+    {
+     "key": "B",
+     "text": "Hard-coded in the client-side JavaScript",
+     "correct": false,
+     "rationale": "Client-side code exposes the key to anyone."
+    },
+    {
+     "key": "C",
+     "text": "Committed to the Git repository for the team",
+     "correct": false,
+     "rationale": "Committing keys leaks them to everyone with repo access."
+    },
+    {
+     "key": "D",
+     "text": "Printed in application logs",
+     "correct": false,
+     "rationale": "Logging keys exposes them in log stores."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: keys must be kept out of code and version control.",
+   "outcome_refs": [
+    "MST-0545-D02.01"
+   ],
+   "domain_ref": "Authentication and key management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0545-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound practices for a production API integration? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retry transient errors using exponential backoff",
+     "correct": true,
+     "rationale": "Correct: backoff avoids hammering the service on transient failures."
+    },
+    {
+     "key": "B",
+     "text": "Monitor token usage and cost",
+     "correct": true,
+     "rationale": "Correct: tracking usage controls cost and catches anomalies."
+    },
+    {
+     "key": "C",
+     "text": "Retry every error immediately in a tight loop",
+     "correct": false,
+     "rationale": "Tight-loop retries can worsen outages and hit rate limits."
+    },
+    {
+     "key": "D",
+     "text": "Assume responses never need error handling",
+     "correct": false,
+     "rationale": "Errors and rate limits must be handled."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: backoff avoids hammering the service on transient failures.",
+   "outcome_refs": [
+    "MST-0545-D04.01"
+   ],
+   "domain_ref": "Streaming, errors and retries",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0545-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To make a task's output more consistent across runs, you would primarily adjust:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Generation parameters toward more deterministic settings",
+     "correct": true,
+     "rationale": "Correct: lowering randomness-related parameters makes output more consistent (exact names pending official docs)."
+    },
+    {
+     "key": "B",
+     "text": "The API key value",
+     "correct": false,
+     "rationale": "The key does not affect output determinism."
+    },
+    {
+     "key": "C",
+     "text": "The HTTP method",
+     "correct": false,
+     "rationale": "The HTTP method does not control determinism."
+    },
+    {
+     "key": "D",
+     "text": "The log level",
+     "correct": false,
+     "rationale": "Logging does not affect generation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: lowering randomness-related parameters makes output more consistent (exact names pending official docs).",
+   "outcome_refs": [
+    "MST-0545-D03.01"
+   ],
+   "domain_ref": "Controlling generation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

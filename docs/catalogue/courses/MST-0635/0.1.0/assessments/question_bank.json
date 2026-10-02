@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0635",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0635-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An analyst needs to stack twelve monthly tables with identical columns into one table. Which Power Query operation fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Append queries",
+     "correct": true,
+     "rationale": "Correct: Append stacks rows from queries that share the same column structure."
+    },
+    {
+     "key": "B",
+     "text": "Merge queries",
+     "correct": false,
+     "rationale": "Merge joins columns from two queries on a key; it does not stack rows."
+    },
+    {
+     "key": "C",
+     "text": "Pivot column",
+     "correct": false,
+     "rationale": "Pivot reshapes rows into columns and does not combine separate queries."
+    },
+    {
+     "key": "D",
+     "text": "Group By",
+     "correct": false,
+     "rationale": "Group By aggregates within one query and does not stack tables."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Append stacks rows from queries that share the same column structure.",
+   "outcome_refs": [
+    "MST-0635-D03.01"
+   ],
+   "domain_ref": "Reshaping and combining queries",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0635-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about the Applied Steps list are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each step is recorded and can be selected to preview the data at that point",
+     "correct": true,
+     "rationale": "Correct: every transformation is saved as a reviewable step."
+    },
+    {
+     "key": "B",
+     "text": "Steps are applied non-destructively to the source data",
+     "correct": true,
+     "rationale": "Correct: the source is not altered; steps transform a working copy."
+    },
+    {
+     "key": "C",
+     "text": "Deleting a step always leaves later steps unaffected",
+     "correct": false,
+     "rationale": "Later steps often depend on earlier ones, so deletions can break them."
+    },
+    {
+     "key": "D",
+     "text": "The step list runs only once and cannot be refreshed",
+     "correct": false,
+     "rationale": "The step list re-runs on every refresh against current source data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: every transformation is saved as a reviewable step.",
+   "outcome_refs": [
+    "MST-0635-D01.01"
+   ],
+   "domain_ref": "Connecting to data and the Power Query Editor",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0635-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Reordering a filter earlier in a query against a SQL source can enable what benefit?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Query folding, pushing the filter back to the source",
+     "correct": true,
+     "rationale": "Correct: folding translates steps into a source query so less data is pulled."
+    },
+    {
+     "key": "B",
+     "text": "Automatic creation of a PivotTable",
+     "correct": false,
+     "rationale": "Folding does not create PivotTables."
+    },
+    {
+     "key": "C",
+     "text": "Conversion of the query to VBA",
+     "correct": false,
+     "rationale": "Power Query does not convert queries to VBA."
+    },
+    {
+     "key": "D",
+     "text": "Removal of the need to refresh",
+     "correct": false,
+     "rationale": "Refresh is still required to pull current data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: folding translates steps into a source query so less data is pulled.",
+   "outcome_refs": [
+    "MST-0635-D04.01"
+   ],
+   "domain_ref": "Query folding, refresh and parameters",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

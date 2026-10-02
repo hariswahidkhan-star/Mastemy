@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1445",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1445-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When calling Azure OpenAI in Azure AI Foundry via the API, which name must you reference?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The deployment name",
+     "correct": true,
+     "rationale": "Correct: Azure OpenAI always requires the deployment name, even in the model parameter."
+    },
+    {
+     "key": "B",
+     "text": "The subscription ID",
+     "correct": false,
+     "rationale": "The subscription ID is not used to select the model in the call."
+    },
+    {
+     "key": "C",
+     "text": "The resource group name",
+     "correct": false,
+     "rationale": "The resource group is not the model identifier in API calls."
+    },
+    {
+     "key": "D",
+     "text": "The region short code",
+     "correct": false,
+     "rationale": "The region is not how the API selects the deployed model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Azure OpenAI always requires the deployment name, even in the model parameter.",
+   "outcome_refs": [
+    "MST-1445-D02.01"
+   ],
+   "domain_ref": "Deploying a model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1445-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are recommended security practices for Azure OpenAI? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use Microsoft Entra ID (keyless) authentication where possible",
+     "correct": true,
+     "rationale": "Correct: Entra ID managed identity auth avoids storing keys in code."
+    },
+    {
+     "key": "B",
+     "text": "Store any required keys in Azure Key Vault, not in code",
+     "correct": true,
+     "rationale": "Correct: keys should be stored securely and never posted publicly."
+    },
+    {
+     "key": "C",
+     "text": "Commit the API key into source control for convenience",
+     "correct": false,
+     "rationale": "Keys must never be committed or posted publicly."
+    },
+    {
+     "key": "D",
+     "text": "Disable content filtering to speed responses",
+     "correct": false,
+     "rationale": "Content filtering is a safety control that should not be casually disabled."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Entra ID managed identity auth avoids storing keys in code.",
+   "outcome_refs": [
+    "MST-1445-D05.01"
+   ],
+   "domain_ref": "Security, content filtering and quota",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1445-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A low-volume pilot needs a simple way to set an effective rate limit on a deployment. Which setting applies?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The tokens-per-minute (TPM) rate limit / quota",
+     "correct": true,
+     "rationale": "Correct: TPM quota sets the effective rate limit for a deployment."
+    },
+    {
+     "key": "B",
+     "text": "The sensitivity label",
+     "correct": false,
+     "rationale": "Sensitivity labels are a Microsoft 365 data-protection feature, not a TPM limit."
+    },
+    {
+     "key": "C",
+     "text": "The workspace capacity SKU for Power BI",
+     "correct": false,
+     "rationale": "That is a Power BI concept, unrelated to Azure OpenAI TPM."
+    },
+    {
+     "key": "D",
+     "text": "The Conditional Access policy",
+     "correct": false,
+     "rationale": "Conditional Access governs sign-in, not model TPM limits."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: TPM quota sets the effective rate limit for a deployment.",
+   "outcome_refs": [
+    "MST-1445-D03.01"
+   ],
+   "domain_ref": "Deployment types and capacity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

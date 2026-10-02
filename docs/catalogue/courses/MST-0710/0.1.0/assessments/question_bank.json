@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0710",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0710-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In an embed-for-your-customers (app-owns-data) solution, what is true of the application's end users?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They do not need to sign in to Power BI or hold a Power BI license",
+     "correct": true,
+     "rationale": "Correct: in app-owns-data the app, not the user, owns the Power BI identity and licensing."
+    },
+    {
+     "key": "B",
+     "text": "Each must have a Power BI Pro license",
+     "correct": false,
+     "rationale": "That describes user-owns-data, not app-owns-data."
+    },
+    {
+     "key": "C",
+     "text": "Each must be added to the Power BI workspace",
+     "correct": false,
+     "rationale": "The service principal or master user is added, not every end user."
+    },
+    {
+     "key": "D",
+     "text": "They must install Power BI Desktop",
+     "correct": false,
+     "rationale": "End users view embedded content in the app, not Desktop."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: in app-owns-data the app, not the user, owns the Power BI identity and licensing.",
+   "outcome_refs": [
+    "MST-0710-D01.01"
+   ],
+   "domain_ref": "Embedded analytics models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0710-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO NuGet packages are used in the .NET app-owns-data tutorial? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Microsoft.Identity.Web",
+     "correct": true,
+     "rationale": "Correct: used to acquire Microsoft Entra tokens."
+    },
+    {
+     "key": "B",
+     "text": "Microsoft.PowerBI.Api",
+     "correct": true,
+     "rationale": "Correct: the client library for Power BI REST APIs and embed tokens."
+    },
+    {
+     "key": "C",
+     "text": "Microsoft.EntityFrameworkCore",
+     "correct": false,
+     "rationale": "Entity Framework is unrelated to Power BI embedding."
+    },
+    {
+     "key": "D",
+     "text": "Newtonsoft.Excel",
+     "correct": false,
+     "rationale": "This is not a real package used for embedding."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: used to acquire Microsoft Entra tokens.",
+   "outcome_refs": [
+    "MST-0710-D03.01"
+   ],
+   "domain_ref": "Tokens and the .NET embedding flow",
+   "cognitive_level": "remember",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0710-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before moving an embedded report to production, what must you buy if you developed with free trial tokens?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Power BI/Fabric capacity",
+     "correct": true,
+     "rationale": "Correct: production embedding requires a purchased capacity; otherwise a trial banner persists."
+    },
+    {
+     "key": "B",
+     "text": "A new Microsoft Entra tenant",
+     "correct": false,
+     "rationale": "A new tenant is not required for production."
+    },
+    {
+     "key": "C",
+     "text": "A separate Visual Studio license per user",
+     "correct": false,
+     "rationale": "That is unrelated to embedding in production."
+    },
+    {
+     "key": "D",
+     "text": "A master user license for every end user",
+     "correct": false,
+     "rationale": "End users do not need licenses in app-owns-data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: production embedding requires a purchased capacity; otherwise a trial banner persists.",
+   "outcome_refs": [
+    "MST-0710-D05.01"
+   ],
+   "domain_ref": "Workspace access and production",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

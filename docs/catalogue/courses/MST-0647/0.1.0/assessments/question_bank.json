@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0647",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0647-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a Power Automate-triggered Office Script avoid Workbook.getActiveWorksheet?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automated runs have no reliable active selection, so named references are safer",
+     "correct": true,
+     "rationale": "Correct: flows should reference objects by consistent names, not relative/active state."
+    },
+    {
+     "key": "B",
+     "text": "getActiveWorksheet is not a valid API",
+     "correct": false,
+     "rationale": "It is valid; it is just unreliable in automation."
+    },
+    {
+     "key": "C",
+     "text": "It deletes the active worksheet",
+     "correct": false,
+     "rationale": "It does not delete anything."
+    },
+    {
+     "key": "D",
+     "text": "It only works in VBA",
+     "correct": false,
+     "rationale": "It is an Office Scripts API, not VBA."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: flows should reference objects by consistent names, not relative/active state.",
+   "outcome_refs": [
+    "MST-0647-D05.01"
+   ],
+   "domain_ref": "Automation with Power Automate",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0647-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are recommended defensive practices in Office Scripts? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Check that a worksheet or table exists before calling methods on it",
+     "correct": true,
+     "rationale": "Correct: guarding against missing objects prevents abrupt failures."
+    },
+    {
+     "key": "B",
+     "text": "Use the Action Recorder to learn how an API is called",
+     "correct": true,
+     "rationale": "Correct: recording is the easiest way to discover the correct API calls."
+    },
+    {
+     "key": "C",
+     "text": "Assume every workbook always contains the expected sheet",
+     "correct": false,
+     "rationale": "Sheets can be renamed or removed between runs."
+    },
+    {
+     "key": "D",
+     "text": "Hard-code cell colours so the script cannot be reused",
+     "correct": false,
+     "rationale": "Parameterising improves reuse; hard-coding reduces it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: guarding against missing objects prevents abrupt failures.",
+   "outcome_refs": [
+    "MST-0647-D04.01"
+   ],
+   "domain_ref": "Robust, maintainable scripts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0647-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Office Scripts are written primarily in which language?",
+   "options": [
+    {
+     "key": "A",
+     "text": "TypeScript",
+     "correct": true,
+     "rationale": "Correct: Office Scripts use TypeScript (a superset of JavaScript)."
+    },
+    {
+     "key": "B",
+     "text": "VBA",
+     "correct": false,
+     "rationale": "VBA is the older Excel macro language, not Office Scripts."
+    },
+    {
+     "key": "C",
+     "text": "Python",
+     "correct": false,
+     "rationale": "Python in Excel is a separate feature from Office Scripts."
+    },
+    {
+     "key": "D",
+     "text": "DAX",
+     "correct": false,
+     "rationale": "DAX is a modelling formula language, not a scripting language."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Office Scripts use TypeScript (a superset of JavaScript).",
+   "outcome_refs": [
+    "MST-0647-D02.01"
+   ],
+   "domain_ref": "The Code Editor and TypeScript basics",
+   "cognitive_level": "remember",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
