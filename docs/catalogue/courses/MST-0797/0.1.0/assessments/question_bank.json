@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0797",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 388,
+  "lesson_check_items": 70,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0797-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Claude extracts an invoice total but marks the figure as low confidence because the scan was faint. What should happen?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Route it to a human to verify before any payment action",
+     "correct": true,
+     "rationale": "Correct: low-confidence financial data must be checked, not auto-processed."
+    },
+    {
+     "key": "B",
+     "text": "Use the figure anyway since Claude produced a value",
+     "correct": false,
+     "rationale": "A low-confidence value may be wrong and must not drive payment."
+    },
+    {
+     "key": "C",
+     "text": "Round the figure to the nearest hundred",
+     "correct": false,
+     "rationale": "Rounding an uncertain value does not make it correct."
+    },
+    {
+     "key": "D",
+     "text": "Discard the document entirely",
+     "correct": false,
+     "rationale": "Discarding a valid document is disproportionate; it needs review, not deletion."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: low-confidence financial data must be checked, not auto-processed.",
+   "outcome_refs": [
+    "MST-0797-D02.02"
+   ],
+   "domain_ref": "Claude extraction",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0797-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO properties keep a document-intake scenario safe to retry? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Idempotency so a document is not processed twice",
+     "correct": true,
+     "rationale": "Correct: idempotency prevents duplicate filing or actions on retry."
+    },
+    {
+     "key": "B",
+     "text": "Error handling that stops a failed document mid-flow",
+     "correct": true,
+     "rationale": "Correct: failed documents must not be half-processed and forgotten."
+    },
+    {
+     "key": "C",
+     "text": "Processing the newest document first regardless of errors",
+     "correct": false,
+     "rationale": "Order of processing does not address retry safety."
+    },
+    {
+     "key": "D",
+     "text": "Deleting the source file immediately on receipt",
+     "correct": false,
+     "rationale": "Deleting the source removes the ability to reprocess or audit."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: idempotency prevents duplicate filing or actions on retry.",
+   "outcome_refs": [
+    "MST-0797-D04.02"
+   ],
+   "domain_ref": "Orchestration in Make",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0797-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should govern how long processed documents are kept?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A defined retention policy appropriate to the document type",
+     "correct": true,
+     "rationale": "Correct: retention must be deliberate and matched to the data and obligations."
+    },
+    {
+     "key": "B",
+     "text": "Keeping everything forever in case it is needed",
+     "correct": false,
+     "rationale": "Indefinite retention of documents increases risk and cost."
+    },
+    {
+     "key": "C",
+     "text": "Deleting everything after processing to save space",
+     "correct": false,
+     "rationale": "Premature deletion can breach obligations and lose audit trails."
+    },
+    {
+     "key": "D",
+     "text": "Whatever Google Drive's default happens to be",
+     "correct": false,
+     "rationale": "Relying on an unexamined default is not a retention decision."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: retention must be deliberate and matched to the data and obligations.",
+   "outcome_refs": [
+    "MST-0797-D05.01"
+   ],
+   "domain_ref": "Operating the workflow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

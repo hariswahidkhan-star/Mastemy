@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0782",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 472,
+  "lesson_check_items": 70,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0782-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The board asks for 'a clearer picture of performance.' What is the right first step before using Claude?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Agree a defined metric brief with the board's decision in mind",
+     "correct": true,
+     "rationale": "Correct: the question and decision must be defined before any drafting."
+    },
+    {
+     "key": "B",
+     "text": "Ask Claude to generate a standard board template",
+     "correct": false,
+     "rationale": "A generic template does not answer this board's specific question."
+    },
+    {
+     "key": "C",
+     "text": "Start building charts in PowerPoint",
+     "correct": false,
+     "rationale": "Starting in the deck skips defining what is being measured."
+    },
+    {
+     "key": "D",
+     "text": "Export every table from the ERP for completeness",
+     "correct": false,
+     "rationale": "Dumping all data does not clarify the decision the board faces."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the question and decision must be defined before any drafting.",
+   "outcome_refs": [
+    "MST-0782-D01.02"
+   ],
+   "domain_ref": "Scoping the board report",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0782-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls make a board deck trustworthy before distribution? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A recorded data-as-of date",
+     "correct": true,
+     "rationale": "Correct: readers must know the currency of the figures."
+    },
+    {
+     "key": "B",
+     "text": "A human sign-off gate before release",
+     "correct": true,
+     "rationale": "Correct: a review gate catches errors before the board sees them."
+    },
+    {
+     "key": "C",
+     "text": "Hiding the underlying workbook",
+     "correct": false,
+     "rationale": "Hiding the source reduces auditability rather than risk."
+    },
+    {
+     "key": "D",
+     "text": "Auto-distributing on every data refresh",
+     "correct": false,
+     "rationale": "Unreviewed auto-distribution spreads errors faster."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: readers must know the currency of the figures.",
+   "outcome_refs": [
+    "MST-0782-D05.01"
+   ],
+   "domain_ref": "Production governance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0782-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A reconciliation total in the model does not tie to the source extract. What should you do first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Investigate the break before publishing any figure",
+     "correct": true,
+     "rationale": "Correct: a tie-out break signals a data or logic error to resolve first."
+    },
+    {
+     "key": "B",
+     "text": "Publish the model number because it is more detailed",
+     "correct": false,
+     "rationale": "More detail does not make an untied number correct."
+    },
+    {
+     "key": "C",
+     "text": "Average the model and source totals",
+     "correct": false,
+     "rationale": "Averaging hides rather than resolves the discrepancy."
+    },
+    {
+     "key": "D",
+     "text": "Remove the reconciliation to clean up the sheet",
+     "correct": false,
+     "rationale": "Deleting the check destroys the signal that found the problem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a tie-out break signals a data or logic error to resolve first.",
+   "outcome_refs": [
+    "MST-0782-D03.02"
+   ],
+   "domain_ref": "The Excel calculation layer",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

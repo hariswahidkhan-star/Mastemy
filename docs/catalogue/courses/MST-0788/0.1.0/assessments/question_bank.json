@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0788",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 388,
+  "lesson_check_items": 70,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0788-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Claude's account summary asserts a buying trigger that the supplied notes do not mention. What is the right action?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Treat it as an unsupported inference and verify before use",
+     "correct": true,
+     "rationale": "Correct: inferences not grounded in the inputs must be checked, not assumed."
+    },
+    {
+     "key": "B",
+     "text": "Include it in the proposal because it is persuasive",
+     "correct": false,
+     "rationale": "Persuasiveness does not make an ungrounded claim true."
+    },
+    {
+     "key": "C",
+     "text": "Ask Claude to add supporting detail",
+     "correct": false,
+     "rationale": "Asking the model to elaborate does not establish the claim."
+    },
+    {
+     "key": "D",
+     "text": "Drop all of Claude's summary to be safe",
+     "correct": false,
+     "rationale": "Discarding everything over one unsupported point is disproportionate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: inferences not grounded in the inputs must be checked, not assumed.",
+   "outcome_refs": [
+    "MST-0788-D02.02"
+   ],
+   "domain_ref": "Claude-assisted synthesis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0788-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO conditions should be met before a Claude-informed proposal is sent? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A human has reviewed the intelligence the proposal relies on",
+     "correct": true,
+     "rationale": "Correct: a review gate catches unverified or wrong claims."
+    },
+    {
+     "key": "B",
+     "text": "Key claims are backed by a recorded source",
+     "correct": true,
+     "rationale": "Correct: sourced claims are defensible to the customer."
+    },
+    {
+     "key": "C",
+     "text": "The proposal was generated in a single pass for speed",
+     "correct": false,
+     "rationale": "Speed is not a safeguard against error."
+    },
+    {
+     "key": "D",
+     "text": "All account intelligence is included regardless of relevance",
+     "correct": false,
+     "rationale": "Dumping everything weakens the proposal and the review."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a review gate catches unverified or wrong claims.",
+   "outcome_refs": [
+    "MST-0788-D05.01"
+   ],
+   "domain_ref": "Operating the workflow",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0788-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should synthesised intelligence be recorded on a Salesforce opportunity?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As sourced, dated notes linked to the correct account",
+     "correct": true,
+     "rationale": "Correct: provenance and correct linkage make the record trustworthy."
+    },
+    {
+     "key": "B",
+     "text": "As free text with no source, to save time",
+     "correct": false,
+     "rationale": "Unsourced notes cannot be judged or defended later."
+    },
+    {
+     "key": "C",
+     "text": "On any related record so it is easy to find",
+     "correct": false,
+     "rationale": "Loose linkage corrupts reporting and relationships."
+    },
+    {
+     "key": "D",
+     "text": "Only in the proposal document, not the CRM",
+     "correct": false,
+     "rationale": "Keeping it out of the CRM loses the shared record of truth."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: provenance and correct linkage make the record trustworthy.",
+   "outcome_refs": [
+    "MST-0788-D04.01"
+   ],
+   "domain_ref": "Working in Salesforce",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

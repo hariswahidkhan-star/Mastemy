@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0787",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 388,
+  "lesson_check_items": 70,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0787-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "ChatGPT returns a specific revenue figure for a prospect but cannot point to a source. How should the figure be treated?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As unverified until a reliable source confirms it",
+     "correct": true,
+     "rationale": "Correct: an unsourced figure must be verified before it is recorded as fact."
+    },
+    {
+     "key": "B",
+     "text": "Entered into the CRM because it is specific",
+     "correct": false,
+     "rationale": "Specificity is not evidence; the figure may be fabricated."
+    },
+    {
+     "key": "C",
+     "text": "Used to set the deal value immediately",
+     "correct": false,
+     "rationale": "Acting on an unverified figure risks a wrong commercial decision."
+    },
+    {
+     "key": "D",
+     "text": "Rounded and entered to look more cautious",
+     "correct": false,
+     "rationale": "Rounding an unverified number does not make it reliable."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an unsourced figure must be verified before it is recorded as fact.",
+   "outcome_refs": [
+    "MST-0787-D02.02"
+   ],
+   "domain_ref": "ChatGPT account research",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0787-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep CRM updates auditable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recording the source for each updated field",
+     "correct": true,
+     "rationale": "Correct: a source lets the next user judge the data's reliability."
+    },
+    {
+     "key": "B",
+     "text": "Recording the date the field was updated",
+     "correct": true,
+     "rationale": "Correct: a timestamp shows how current the value is."
+    },
+    {
+     "key": "C",
+     "text": "Overwriting old values with no history",
+     "correct": false,
+     "rationale": "Destroying history removes the audit trail."
+    },
+    {
+     "key": "D",
+     "text": "Creating a new record rather than updating the existing one",
+     "correct": false,
+     "rationale": "Duplicate records degrade CRM data quality."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a source lets the next user judge the data's reliability.",
+   "outcome_refs": [
+    "MST-0787-D04.02"
+   ],
+   "domain_ref": "Updating HubSpot",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0787-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which principle should govern what personal data the workflow writes to the CRM?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store only what is necessary and permitted for the sales purpose",
+     "correct": true,
+     "rationale": "Correct: data minimisation and permission limit what may be stored."
+    },
+    {
+     "key": "B",
+     "text": "Store everything found in case it is useful later",
+     "correct": false,
+     "rationale": "Collecting unnecessary personal data creates privacy risk."
+    },
+    {
+     "key": "C",
+     "text": "Store data only if ChatGPT marks it public",
+     "correct": false,
+     "rationale": "The model's classification is not a lawful basis for storage."
+    },
+    {
+     "key": "D",
+     "text": "Store contact data without any retention limit",
+     "correct": false,
+     "rationale": "Indefinite retention of personal data is a compliance risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: data minimisation and permission limit what may be stored.",
+   "outcome_refs": [
+    "MST-0787-D05.02"
+   ],
+   "domain_ref": "Operating the workflow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

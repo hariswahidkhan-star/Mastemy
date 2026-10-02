@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0805",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 388,
+  "lesson_check_items": 70,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0805-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Retrieval returns no passage relevant to the user's question. What should the answer be?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A statement that no supporting evidence was found",
+     "correct": true,
+     "rationale": "Correct: with no evidence, the honest answer is that none was found."
+    },
+    {
+     "key": "B",
+     "text": "A confident answer from Claude's general knowledge",
+     "correct": false,
+     "rationale": "An ungrounded answer defeats the purpose of evidence-based search."
+    },
+    {
+     "key": "C",
+     "text": "The highest-scoring passage even if irrelevant",
+     "correct": false,
+     "rationale": "An irrelevant passage does not support an answer."
+    },
+    {
+     "key": "D",
+     "text": "A paraphrase of the question as the answer",
+     "correct": false,
+     "rationale": "Restating the question is not an answer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with no evidence, the honest answer is that none was found.",
+   "outcome_refs": [
+    "MST-0805-D04.02"
+   ],
+   "domain_ref": "Grounded answers with Claude",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0805-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO indexing choices support accurate citations? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Chunks sized to return coherent, citable passages",
+     "correct": true,
+     "rationale": "Correct: well-sized chunks let the system point to a meaningful span."
+    },
+    {
+     "key": "B",
+     "text": "Source metadata attached to every chunk",
+     "correct": true,
+     "rationale": "Correct: metadata is what lets an answer cite the exact source."
+    },
+    {
+     "key": "C",
+     "text": "Discarding document structure to simplify the index",
+     "correct": false,
+     "rationale": "Losing structure makes passages harder to cite accurately."
+    },
+    {
+     "key": "D",
+     "text": "One giant chunk per document for completeness",
+     "correct": false,
+     "rationale": "An oversized chunk cannot pinpoint the supporting text."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: well-sized chunks let the system point to a meaningful span.",
+   "outcome_refs": [
+    "MST-0805-D02.02"
+   ],
+   "domain_ref": "Indexing with LlamaIndex",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0805-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A query's top vector match has a very low relevance score. How should it be handled?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply a relevance threshold and treat it as no match",
+     "correct": true,
+     "rationale": "Correct: a weak match should not be presented as supporting evidence."
+    },
+    {
+     "key": "B",
+     "text": "Return it anyway because it is the top result",
+     "correct": false,
+     "rationale": "Being top-ranked does not make a weak match relevant."
+    },
+    {
+     "key": "C",
+     "text": "Lower the threshold until something is returned",
+     "correct": false,
+     "rationale": "Forcing a return produces unsupported answers."
+    },
+    {
+     "key": "D",
+     "text": "Return all passages regardless of score",
+     "correct": false,
+     "rationale": "Returning everything buries any genuine evidence in noise."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a weak match should not be presented as supporting evidence.",
+   "outcome_refs": [
+    "MST-0805-D03.02"
+   ],
+   "domain_ref": "Vectors in Qdrant",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

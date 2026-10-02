@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0785",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 388,
+  "lesson_check_items": 70,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0785-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An employee asks a question not covered by any retrieved policy passage. What is the correct behaviour?",
+   "options": [
+    {
+     "key": "A",
+     "text": "State that no policy covers it and escalate to a human owner",
+     "correct": true,
+     "rationale": "Correct: ungrounded answers invent policy; the safe path is to escalate."
+    },
+    {
+     "key": "B",
+     "text": "Answer from Claude's general knowledge of similar policies",
+     "correct": false,
+     "rationale": "General knowledge is not this organisation's policy and may be wrong."
+    },
+    {
+     "key": "C",
+     "text": "Pick the closest policy and apply it anyway",
+     "correct": false,
+     "rationale": "Applying an unrelated policy misstates the rule."
+    },
+    {
+     "key": "D",
+     "text": "Return the longest available policy document",
+     "correct": false,
+     "rationale": "Length is not relevance and does not answer the question."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ungrounded answers invent policy; the safe path is to escalate.",
+   "outcome_refs": [
+    "MST-0785-D03.01"
+   ],
+   "domain_ref": "Grounded answering with Claude",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0785-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices stop a superseded policy from being served as current? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Marking the current version with explicit status metadata",
+     "correct": true,
+     "rationale": "Correct: status metadata lets retrieval prefer the live version."
+    },
+    {
+     "key": "B",
+     "text": "Moving superseded policies out of the retrieval scope",
+     "correct": true,
+     "rationale": "Correct: excluding old versions prevents them being returned."
+    },
+    {
+     "key": "C",
+     "text": "Keeping all drafts and finals in one undifferentiated library",
+     "correct": false,
+     "rationale": "Mixing versions is exactly what causes stale answers."
+    },
+    {
+     "key": "D",
+     "text": "Relying on file names alone to signal recency",
+     "correct": false,
+     "rationale": "File-name conventions drift and are not reliable status signals."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: status metadata lets retrieval prefer the live version.",
+   "outcome_refs": [
+    "MST-0785-D02.02"
+   ],
+   "domain_ref": "SharePoint policy sources",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0785-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should a Teams policy answer present itself to stay trustworthy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "With the cited source and a clear non-authoritative disclaimer",
+     "correct": true,
+     "rationale": "Correct: sources plus a disclaimer let users verify and escalate."
+    },
+    {
+     "key": "B",
+     "text": "As a definitive ruling to save the user time",
+     "correct": false,
+     "rationale": "Presenting it as a ruling overstates the assistant's authority."
+    },
+    {
+     "key": "C",
+     "text": "Without links, to keep the message short",
+     "correct": false,
+     "rationale": "Hiding sources removes the user's ability to verify."
+    },
+    {
+     "key": "D",
+     "text": "Only in a private channel the owner controls",
+     "correct": false,
+     "rationale": "Channel privacy does not address how the answer presents itself."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sources plus a disclaimer let users verify and escalate.",
+   "outcome_refs": [
+    "MST-0785-D04.02"
+   ],
+   "domain_ref": "Delivery in Microsoft Teams",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

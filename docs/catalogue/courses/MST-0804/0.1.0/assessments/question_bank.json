@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0804",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 472,
+  "lesson_check_items": 70,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0804-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An agent graph can revisit a node repeatedly with no condition to stop. What must you add?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A termination guard or step limit so the loop ends",
+     "correct": true,
+     "rationale": "Correct: an unbounded loop must have an explicit termination condition."
+    },
+    {
+     "key": "B",
+     "text": "A faster model so the loop finishes sooner",
+     "correct": false,
+     "rationale": "Speed does not stop an infinite loop; it just loops faster."
+    },
+    {
+     "key": "C",
+     "text": "More memory to hold the growing state",
+     "correct": false,
+     "rationale": "More memory postpones but does not prevent the runaway."
+    },
+    {
+     "key": "D",
+     "text": "A retry on each node to improve reliability",
+     "correct": false,
+     "rationale": "Retries add more iterations, worsening the loop."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an unbounded loop must have an explicit termination condition.",
+   "outcome_refs": [
+    "MST-0804-D02.02"
+   ],
+   "domain_ref": "Building the LangGraph graph",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0804-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO properties make persisted agent state safe to resume? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "State is durably written so a restart can resume it",
+     "correct": true,
+     "rationale": "Correct: durable persistence is what allows resumption after failure."
+    },
+    {
+     "key": "B",
+     "text": "Replayed steps are idempotent and do not duplicate actions",
+     "correct": true,
+     "rationale": "Correct: idempotency prevents a resumed step from acting twice."
+    },
+    {
+     "key": "C",
+     "text": "State is held only in process memory for speed",
+     "correct": false,
+     "rationale": "In-memory-only state is lost on restart."
+    },
+    {
+     "key": "D",
+     "text": "Each resume starts the task from the beginning",
+     "correct": false,
+     "rationale": "Restarting from scratch defeats the purpose of persisted state."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: durable persistence is what allows resumption after failure.",
+   "outcome_refs": [
+    "MST-0804-D04.02"
+   ],
+   "domain_ref": "Durable state in PostgreSQL",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0804-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the simplest safeguard against a runaway agent consuming unbounded cost?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A hard cap on steps and spend per run",
+     "correct": true,
+     "rationale": "Correct: explicit caps contain a misbehaving agent."
+    },
+    {
+     "key": "B",
+     "text": "Trusting the model to stop when appropriate",
+     "correct": false,
+     "rationale": "The model cannot be relied on to self-limit cost."
+    },
+    {
+     "key": "C",
+     "text": "Monitoring the bill at the end of the month",
+     "correct": false,
+     "rationale": "After-the-fact monitoring does not prevent the overrun."
+    },
+    {
+     "key": "D",
+     "text": "Using a cheaper model with no other limit",
+     "correct": false,
+     "rationale": "A cheaper model still runs away without a cap."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: explicit caps contain a misbehaving agent.",
+   "outcome_refs": [
+    "MST-0804-D05.02"
+   ],
+   "domain_ref": "Operating the agent",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0793",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 388,
+  "lesson_check_items": 70,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0793-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Claude-generated test passes even after you deliberately break the function it covers. What does this indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The test is not actually exercising the behaviour and must be fixed",
+     "correct": true,
+     "rationale": "Correct: a test that passes against broken code provides no protection."
+    },
+    {
+     "key": "B",
+     "text": "The function is correct after all",
+     "correct": false,
+     "rationale": "The function is broken by design; the test simply fails to catch it."
+    },
+    {
+     "key": "C",
+     "text": "The test is extra strict and can be trusted",
+     "correct": false,
+     "rationale": "It is not strict; it is ineffective."
+    },
+    {
+     "key": "D",
+     "text": "CI should be configured to skip the test",
+     "correct": false,
+     "rationale": "Skipping a useless test removes even the appearance of coverage without fixing it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a test that passes against broken code provides no protection.",
+   "outcome_refs": [
+    "MST-0793-D02.02"
+   ],
+   "domain_ref": "Claude Code with tests",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0793-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO conditions should block a merge to the protected branch? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A required test check is failing",
+     "correct": true,
+     "rationale": "Correct: merging over red tests ships known-broken code."
+    },
+    {
+     "key": "B",
+     "text": "Required review has not been completed",
+     "correct": true,
+     "rationale": "Correct: unreviewed changes bypass a key quality control."
+    },
+    {
+     "key": "C",
+     "text": "The branch name does not match a naming convention",
+     "correct": false,
+     "rationale": "Naming style is cosmetic and should not block a sound change."
+    },
+    {
+     "key": "D",
+     "text": "The pull request has fewer than ten commits",
+     "correct": false,
+     "rationale": "Commit count is not a quality signal."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: merging over red tests ships known-broken code.",
+   "outcome_refs": [
+    "MST-0793-D04.01"
+   ],
+   "domain_ref": "Quality and deployment gates",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0793-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the correct way to use a deployment secret in a GitHub Actions job?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Inject it from a secret store and keep it out of logs",
+     "correct": true,
+     "rationale": "Correct: secrets must be injected securely and never printed."
+    },
+    {
+     "key": "B",
+     "text": "Echo it during the job to confirm it is set",
+     "correct": false,
+     "rationale": "Echoing a secret leaks it into the build log."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code it in the workflow file",
+     "correct": false,
+     "rationale": "Committing a secret exposes it in the repository history."
+    },
+    {
+     "key": "D",
+     "text": "Store it in a plaintext file in the repo",
+     "correct": false,
+     "rationale": "A plaintext secret in the repo is a credential leak."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: secrets must be injected securely and never printed.",
+   "outcome_refs": [
+    "MST-0793-D05.02"
+   ],
+   "domain_ref": "Operating the pipeline",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
