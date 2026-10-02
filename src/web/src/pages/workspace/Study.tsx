@@ -118,6 +118,7 @@ function PlanForm({
   );
   const [hour, setHour] = useState(String(initial?.sessionHour ?? initial?.sessionHourUtc ?? 18));
   // Sessions are scheduled at a local hour in the profile time zone (UTC when unset).
+  // optional-query: time-zone default; UTC until the profile loads
   const profile = useQuery({
     queryKey: accountKeys.profile,
     queryFn: accountApi.profile,

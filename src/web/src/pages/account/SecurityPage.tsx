@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from 'react-router';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { z } from '../../lib/zod';
 import { accountApi, accountKeys } from '../../api/account';
 import type { SessionDto } from '../../api/account';
 import { useApiMutation } from '../../api/hooks';

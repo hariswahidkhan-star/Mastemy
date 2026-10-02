@@ -204,6 +204,7 @@ export function CourseLearnerActions({ courseId, slug }: { courseId: string; slu
 }
 
 function SignedInCourseActions({ courseId, slug }: { courseId: string; slug: string }) {
+  // optional-query: enrollment flag; defaults to "not enrolled"
   const learn = useLearnCourse(slug);
   const enrolled = !!learn.data?.enrolled;
   if (!enrolled) return null;

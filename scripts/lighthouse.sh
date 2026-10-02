@@ -8,7 +8,7 @@
 # on the key public pages and writes JSON reports + summary.json/summary.md to $LH_OUT.
 #
 # Environment (all optional): MYSQL_HOST/MYSQL_USER/MYSQL_PASSWORD, LH_DB (mastemy_lighthouse),
-# LH_PORT_BASE (6400 -> API 6400, SSR 6401), LH_OUT (lighthouse-results), LH_WEB_DIR (src/web: a web
+# LH_PORT_BASE (6400 -> API 6400, SSR 6401), LH_OUT ($TMPDIR/mastemy-lighthouse), LH_WEB_DIR (src/web: a web
 # checkout whose dist/ and dist-server/ are used), LH_SKIP_BUILD=1, LH_MIN (95; 0 = report only),
 # LH_RUNS (1: runs per page/form factor, the median performance run is kept), CHROME_PATH.
 # Only processes started here are stopped on exit.
@@ -23,7 +23,7 @@ LH_DB=${LH_DB:-mastemy_lighthouse}
 BASE=${LH_PORT_BASE:-6400}
 API_PORT=$BASE
 SSR_PORT=$((BASE + 1))
-OUT=$(mkdir -p "${LH_OUT:-$ROOT/lighthouse-results}" && cd "${LH_OUT:-$ROOT/lighthouse-results}" && pwd)
+OUT=$(mkdir -p "${LH_OUT:-${TMPDIR:-/tmp}/mastemy-lighthouse}" && cd "${LH_OUT:-${TMPDIR:-/tmp}/mastemy-lighthouse}" && pwd)
 WEB_DIR=$(cd "${LH_WEB_DIR:-$ROOT/src/web}" && pwd)
 LH_MIN=${LH_MIN:-95}
 LH_RUNS=${LH_RUNS:-1}

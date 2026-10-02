@@ -205,11 +205,14 @@ export function CertificationsPage() {
               description={t('discover.cert.emptyBody')}
             />
           ) : (
-            <ul className="dlist">
-              {list.map((c) => (
-                <CertificationCard key={c.id} c={c} />
-              ))}
-            </ul>
+            <>
+              <h2 className="visually-hidden">{t('discover.cert.listHeading')}</h2>
+              <ul className="dlist">
+                {list.map((c) => (
+                  <CertificationCard key={c.id} c={c} />
+                ))}
+              </ul>
+            </>
           )
         }
       </QueryState>
@@ -411,11 +414,14 @@ export function PathwaysPage() {
           list.length === 0 ? (
             <EmptyState title={t('discover.pathways.empty')} />
           ) : (
-            <ul className="dlist grid">
-              {list.map((p) => (
-                <PathwayCard key={p.id} p={p} />
-              ))}
-            </ul>
+            <>
+              <h2 className="visually-hidden">{t('discover.pathways.listHeading')}</h2>
+              <ul className="dlist grid">
+                {list.map((p) => (
+                  <PathwayCard key={p.id} p={p} />
+                ))}
+              </ul>
+            </>
           )
         }
       </QueryState>
@@ -556,6 +562,7 @@ export function CollectionPage() {
               title={title}
               subtitle={t('discover.collection.count', { n: c.courses.length })}
             />
+            <h2 className="visually-hidden">{t('discover.collection.listHeading')}</h2>
             <div className="grid">
               {c.courses.map((course) => (
                 <CourseCard key={course.id} course={course} />

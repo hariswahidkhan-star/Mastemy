@@ -14,7 +14,7 @@ import { useApiMutation, useCategories } from '../../api/hooks';
 import { useAuth } from '../../auth/AuthProvider';
 import { Button } from '../../components/ui/Button';
 import { Checkbox, Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Notice, PageHeader, QueryState } from '../../components/ui/misc';
+import { Notice, PageHeader, QueryState, QueryStatus } from '../../components/ui/misc';
 import { Tabs } from '../../components/ui/Tabs';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
@@ -160,6 +160,7 @@ function PlansTab() {
               ]}
             />
           </Field>
+          {f.scope === 'Category' ? <QueryStatus query={cats} /> : null}
           {f.scope === 'Category' ? (
             <Field label={t('commerce.staff.category')} required>
               <Select
@@ -331,6 +332,7 @@ function BundlesTab() {
               ]}
             />
           </Field>
+          <QueryStatus query={cats} />
           <Field label={t('commerce.staff.category')} hint={t('commerce.common.optional')}>
             <Select
               value={f.categoryId}

@@ -72,7 +72,23 @@ const TYPES: Record<string, string> = {
   '.map': 'application/json',
 };
 
-const template = await readFile(path.join(DIST, 'index.html'), 'utf8');
+/**
+ * The initial stylesheet(s) are inlined into every HTML response (a few kB compressed): the first paint
+ * then needs no extra round trip for render-blocking CSS. SSR_INLINE_CSS=0 keeps the <link> tags.
+ */
+async function inlineStyles(html: string): Promise<string> {
+  if (env.SSR_INLINE_CSS === '0') return html;
+  let out = html;
+  for (const m of html.matchAll(
+    /<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/g,
+  )) {
+    const css = await readFile(path.join(DIST, m[1]), 'utf8');
+    out = out.replace(m[0], () => `<style>${css.replace(/<\/style/gi, '<\\/style')}</style>`);
+  }
+  return out;
+}
+
+const template = await inlineStyles(await readFile(path.join(DIST, 'index.html'), 'utf8'));
 const cache = new Map<string, { at: number; status: number; html: string }>();
 
 /**
@@ -217,6 +233,9 @@ async function serveStatic(
     return false;
   }
   res.statusCode = 200;
+  // Share-card images and icons are fetched by other sites' link previews.
+  if (/\.(png|webp|avif|svg|ico)$/.test(file))
+    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
   res.setHeader(
     'Cache-Control',
     pathname.startsWith('/assets/')
@@ -269,17 +288,20 @@ async function handle(req: IncomingMessage, res: ServerResponse) {
   }
   if (await serveStatic(req, url.pathname, res)) return;
 
-  const key = ssrCacheKey(url.pathname, url.search);
+  // Two variants per URL: with and without the consent banner (first-time visitors get it in the HTML).
+  const consentCookie = /(?:^|;\s*)mastemy_consent=/.test(String(req.headers.cookie ?? ''));
+  const pageKey = ssrCacheKey(url.pathname, url.search);
+  const key = `${consentCookie ? 'c' : 'n'}|${pageKey}`;
   const hit = cache.get(key);
   let page = hit && Date.now() - hit.at < CACHE_MS ? hit : null;
   if (!page) {
     try {
-      const r = await renderPage(key, { template, baseUrl: BASE_URL });
+      const r = await renderPage(pageKey, { template, baseUrl: BASE_URL, consentCookie });
       page = { at: Date.now(), ...r };
       if (cache.size > 500) cache.delete(cache.keys().next().value as string);
       cache.set(key, page);
     } catch (err) {
-      console.error('SSR failed for', key, err);
+      console.error('SSR failed for', pageKey, err);
       // The client still renders the page; crawlers are told to come back.
       page = { at: 0, status: 503, html: renderShell(template, langFromSearch(url.search)) };
       res.setHeader('Retry-After', '60');

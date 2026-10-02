@@ -10,7 +10,7 @@ import type { StudioCourseDto } from '../../api/types';
 import { Button } from '../../components/ui/Button';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Notice, PageHeader } from '../../components/ui/misc';
+import { Notice, PageHeader, QueryStatus } from '../../components/ui/misc';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { courseSchema, toCourseInput } from './courseSchema';
@@ -112,6 +112,7 @@ export function CourseWizardPage() {
           </Field>
         </div>
         <div hidden={step !== 1}>
+          <QueryStatus query={categories} />
           <Field label={t('courses.category')} error={errors.categoryId?.message} required>
             <Select
               {...register('categoryId')}

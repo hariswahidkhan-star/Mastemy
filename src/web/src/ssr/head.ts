@@ -104,7 +104,20 @@ export function buildHead(h: HeadInput): string {
       out.push(tag(`<meta property="og:description" content="${esc(h.meta.description)}">`));
     out.push(tag(`<meta property="og:url" content="${esc(canonical)}">`));
     out.push(tag(`<meta property="og:locale" content="${h.lang === 'ar' ? 'ar_AR' : 'en_US'}">`));
-    out.push(tag(`<meta name="twitter:card" content="summary">`));
+    // Branded 1200x630 card generated at build (scripts/generate-images.mjs).
+    const image = `${h.baseUrl}/og-image.png`;
+    out.push(tag(`<meta property="og:image" content="${esc(image)}">`));
+    out.push(tag(`<meta property="og:image:type" content="image/png">`));
+    out.push(tag(`<meta property="og:image:width" content="1200">`));
+    out.push(tag(`<meta property="og:image:height" content="630">`));
+    out.push(
+      tag(`<meta property="og:image:alt" content="${SITE}: free video lessons and real practice">`),
+    );
+    out.push(tag(`<meta name="twitter:card" content="summary_large_image">`));
+    out.push(tag(`<meta name="twitter:title" content="${esc(title)}">`));
+    if (h.meta.description)
+      out.push(tag(`<meta name="twitter:description" content="${esc(h.meta.description)}">`));
+    out.push(tag(`<meta name="twitter:image" content="${esc(image)}">`));
     for (const ld of h.jsonLd) {
       out.push(
         `<script type="application/ld+json" data-ssr-path="${esc(h.pathname)}">${scriptJson(ld)}</script>`,

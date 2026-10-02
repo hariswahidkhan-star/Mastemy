@@ -23,6 +23,7 @@ export function FreeLessonsPage() {
             <EmptyState title={t('free.empty')} description={t('free.emptyBody')} />
           ) : (
             <>
+              <h2 className="visually-hidden">{t('free.listHeading')}</h2>
               <div className="grid">
                 {data.items.map((c) => (
                   <CourseCard key={c.id} course={c} />

@@ -8,7 +8,7 @@ import { useAuth } from '../../auth/AuthProvider';
 import { Button, ButtonLink } from '../../components/ui/Button';
 import { EmptyState } from '../../components/ui/EmptyState';
 import { Field, Input } from '../../components/ui/Field';
-import { Badge, Notice, PageHeader, QueryState } from '../../components/ui/misc';
+import { Badge, Notice, PageHeader, QueryState, QueryStatus } from '../../components/ui/misc';
 import { useI18n } from '../../i18n/I18nProvider';
 import { newIdempotencyKey, splitLines } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
@@ -91,7 +91,12 @@ function SignedInCurrentPlans({ children }: { children: (ids: Set<string>) => Re
       .filter((s) => s.status === 'Active' || s.status === 'PastDue')
       .map((s) => s.planId),
   );
-  return <>{children(ids)}</>;
+  return (
+    <>
+      <QueryStatus query={subs} />
+      {children(ids)}
+    </>
+  );
 }
 
 export function PlansPage() {

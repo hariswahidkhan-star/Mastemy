@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { z } from '../../lib/zod';
 import { api } from '../../api/client';
 import { keys, useApiMutation, useOnboardingStatus } from '../../api/hooks';
 import type { OnboardingStatus } from '../../api/types';
@@ -116,6 +116,7 @@ export function TeachPage() {
   return (
     <div className="container page" style={{ maxInlineSize: 860 }}>
       <PageHeader title={t('teach.title')} subtitle={t('teach.subtitle')} />
+      <h2 className="visually-hidden">{t('teach.pointsHeading')}</h2>
       <div className="grid-2" style={{ marginBlockEnd: 'var(--space-5)' }}>
         {(['model', 'channel', 'review', 'earn'] as const).map((k) => (
           <div key={k} className="card card--flat">

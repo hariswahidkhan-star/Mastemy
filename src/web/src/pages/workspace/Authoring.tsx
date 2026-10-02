@@ -31,7 +31,7 @@ import { Markdown } from '../../components/Markdown';
 import { Button } from '../../components/ui/Button';
 import { Dialog } from '../../components/ui/Dialog';
 import { Checkbox, Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Badge, Notice, QueryState, StatusBadge } from '../../components/ui/misc';
+import { Badge, Notice, QueryState, QueryStatus, StatusBadge } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { AiAssistPanel } from './AiPanels';
@@ -777,6 +777,7 @@ export function TranslationsPanel({ course }: { course: StudioCourseDto }) {
     <div className="stack">
       <h2>{t('workspace.translations.title')}</h2>
       <p className="small muted">{t('workspace.translations.help')}</p>
+      <QueryStatus query={mine} />
       {list.isError ? (
         <WsError error={list.error} />
       ) : (

@@ -6,7 +6,7 @@ import { Duration } from '../../components/Duration';
 import { Button } from '../../components/ui/Button';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Checkbox, Field, Input, Select } from '../../components/ui/Field';
-import { Notice } from '../../components/ui/misc';
+import { Notice, QueryStatus } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 
@@ -73,6 +73,7 @@ export function PlaylistImport({ courseId }: { courseId: string }) {
         <Field label={t('playlist.url')} required>
           <Input type="url" value={url} onChange={(e) => setUrl(e.target.value)} />
         </Field>
+        <QueryStatus query={channels} />
         <Field label={t('video.channel')} required>
           <Select
             value={channelId}

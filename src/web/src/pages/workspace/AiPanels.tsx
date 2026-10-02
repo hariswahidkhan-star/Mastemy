@@ -23,7 +23,7 @@ import { Markdown } from '../../components/Markdown';
 import { Button } from '../../components/ui/Button';
 import { ConfirmDialog } from '../../components/ui/Dialog';
 import { Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Badge, Notice, PageHeader, QueryState } from '../../components/ui/misc';
+import { Badge, Notice, PageHeader, QueryState, QueryStatus } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
@@ -255,7 +255,9 @@ function TutorInner({
   return (
     <div className="stack">
       <Notice tone="info">{t('workspace.tutor.intro')}</Notice>
+      <QueryStatus query={detail} />
       <div className="row">
+        <QueryStatus query={convs} />
         <Field label={t('workspace.tutor.conversation')}>
           <Select
             value={activeId ?? ''}

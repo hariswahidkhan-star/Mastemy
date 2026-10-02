@@ -22,7 +22,7 @@ import { ConfirmDialog, Dialog } from '../../components/ui/Dialog';
 import { EmptyState } from '../../components/ui/EmptyState';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Checkbox, Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Badge, Notice, PageHeader, QueryState } from '../../components/ui/misc';
+import { Badge, Notice, PageHeader, QueryState, QueryStatus } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import type { TFunction } from '../../i18n/I18nProvider';
@@ -113,6 +113,7 @@ export function PathwayAssignmentsTab({
     queryKey: w2keys.orgMembers(org.id),
     queryFn: () => api<MemberDto[]>(`/api/orgs/${org.id}/members`),
   });
+  // optional-query: course titles for ids; the ids are shown until they load
   const courseAssignments = useQuery({
     queryKey: w2keys.orgAssignments(org.id),
     queryFn: () => api<AssignmentDto[]>(`/api/orgs/${org.id}/assignments`),
@@ -215,6 +216,7 @@ export function PathwayAssignmentsTab({
               />
             </Field>
           ) : null}
+          {scope === 'User' ? <QueryStatus query={members} /> : null}
           {scope === 'User' ? (
             <Field label={t('finalb.ent.member')} required>
               <Select

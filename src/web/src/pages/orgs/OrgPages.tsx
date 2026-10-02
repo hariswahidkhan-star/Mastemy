@@ -892,6 +892,7 @@ export function OrgPage() {
     queryFn: () => api<OrgDto>(`/api/orgs/${id}`),
     retry: false,
   });
+  // optional-query: my role in this org; defaults to no management actions
   const mine = useMyOrgs();
   const myRole = mine.data?.find((o) => o.id === id)?.role;
   const staff = hasRole(...STAFF);

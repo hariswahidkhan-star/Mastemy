@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { z } from '../../lib/zod';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../../api/client';
 import { useApiMutation } from '../../api/hooks';
@@ -9,7 +9,7 @@ import type { PackageDto } from '../../api/types';
 import { Button } from '../../components/ui/Button';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Notice, StatusBadge } from '../../components/ui/misc';
+import { Notice, QueryStatus, StatusBadge } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 
@@ -69,6 +69,7 @@ export function PackagesPanel({ courseId }: { courseId: string }) {
       <Notice tone="info" title={t('packages.policyTitle')}>
         {t('packages.policy')}
       </Notice>
+      <QueryStatus query={packages} />
       {packages.data && packages.data.length > 0 ? (
         <ul className="stack" style={{ listStyle: 'none', padding: 0 }}>
           {packages.data.map((p) => (

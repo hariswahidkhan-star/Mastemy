@@ -101,8 +101,8 @@ function ProfileForm({ profile }: { profile: ProfileDto }) {
         >
           {profile.initials}
         </span>
-        <div>
-          <strong>{profile.email}</strong>{' '}
+        <div style={{ minInlineSize: 0 }}>
+          <strong style={{ overflowWrap: 'anywhere' }}>{profile.email}</strong>{' '}
           {profile.emailVerified ? (
             <Badge tone="success">{t('account.profile.emailVerified')}</Badge>
           ) : (
@@ -537,6 +537,7 @@ export function PrivacyPage() {
   const [confirm, setConfirm] = useState('');
   const [password, setPassword] = useState('');
   const [code, setCode] = useState('');
+  // optional-query: falls back to the signed-in user's mfaEnabled flag
   const mfa = useQuery({ queryKey: accountKeys.mfaStatus, queryFn: () => accountApi.mfaStatus() });
   const mfaEnabled = mfa.data?.enabled ?? !!user?.mfaEnabled;
   const doExport = async () => {

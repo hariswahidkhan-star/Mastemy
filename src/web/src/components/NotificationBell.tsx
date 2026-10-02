@@ -25,8 +25,13 @@ export function NotificationBellView({
   onOpenItem,
   onReadAll,
   readingAll,
+  failed,
+  onRetry,
 }: {
   data: NotificationPageDto | undefined;
+  /** The list could not be loaded (shows the error with a retry button instead of "Loading"). */
+  failed?: boolean;
+  onRetry?: () => void;
   open: boolean;
   onToggle: () => void;
   onOpenItem: (n: NotificationDto) => void;
@@ -75,7 +80,14 @@ export function NotificationBellView({
               {t('notifications.readAll')}
             </Button>
           </div>
-          {!data ? (
+          {!data && failed ? (
+            <p className="small" role="alert">
+              {t('errors.generic')}{' '}
+              <Button variant="ghost" size="sm" onClick={onRetry}>
+                {t('common.retry')}
+              </Button>
+            </p>
+          ) : !data ? (
             <p className="small muted">{t('common.loading')}</p>
           ) : data.items.length === 0 ? (
             <p className="small muted">{t('notifications.empty')}</p>
@@ -149,6 +161,8 @@ export function NotificationBell() {
     <div ref={ref}>
       <NotificationBellView
         data={query.data}
+        failed={query.isError}
+        onRetry={() => void refetch()}
         open={open}
         readingAll={readingAll}
         onToggle={() => {

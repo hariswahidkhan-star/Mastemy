@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { z } from '../../lib/zod';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { api, ApiError } from '../../api/client';
 import { keys, useApiMutation, useChannels } from '../../api/hooks';
@@ -11,7 +11,7 @@ import { Button } from '../../components/ui/Button';
 import { ConfirmDialog } from '../../components/ui/Dialog';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Checkbox, Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Notice, StatusBadge } from '../../components/ui/misc';
+import { Notice, QueryStatus, StatusBadge } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { fileFingerprint, recallUpload, rememberUpload, sendChunks } from '../../lib/upload';
@@ -379,6 +379,7 @@ export function UploadPanel({ lesson, courseId }: { lesson: StudioLessonDto; cou
           <p>
             {t('upload.session')}: {st ? <StatusBadge status={st} /> : t('common.loading')}
           </p>
+          <QueryStatus query={status} />
           {status.data?.failureReason ? (
             <Notice tone="danger">{status.data.failureReason}</Notice>
           ) : null}

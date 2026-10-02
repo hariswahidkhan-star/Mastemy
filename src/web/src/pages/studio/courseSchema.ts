@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '../../lib/zod';
 import { COURSE_LEVELS } from '../../api/types';
 import type { TFunction } from '../../i18n/I18nProvider';
 

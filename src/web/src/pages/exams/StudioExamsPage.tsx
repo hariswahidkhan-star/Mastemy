@@ -31,7 +31,14 @@ import { Button } from '../../components/ui/Button';
 import { ConfirmDialog, Dialog } from '../../components/ui/Dialog';
 import { EmptyState } from '../../components/ui/EmptyState';
 import { Checkbox, Field, Input, Select } from '../../components/ui/Field';
-import { Badge, Notice, PageHeader, Pagination, QueryState } from '../../components/ui/misc';
+import {
+  Badge,
+  Notice,
+  PageHeader,
+  Pagination,
+  QueryState,
+  QueryStatus,
+} from '../../components/ui/misc';
 import { Tabs } from '../../components/ui/Tabs';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
@@ -773,7 +780,7 @@ function ReusePanel({ course }: { course: StudioCourseDto }) {
             />
           </Field>
         ) : (
-          <Field label={t('exams.reuse.fromCourse')}>
+          <Field label={t('exams.reuse.fromCourse')} hint={<QueryStatus query={courses} />}>
             <Select
               value={fromCourse}
               onChange={(e) => {
@@ -1229,6 +1236,7 @@ function CourseCertificateTemplate({ course }: { course: StudioCourseDto }) {
   return (
     <div className="stack">
       <p className="small muted">{t('exams.cert.courseIntro')}</p>
+      <QueryStatus query={templates} />
       <QueryState query={current}>
         {() => (
           <form

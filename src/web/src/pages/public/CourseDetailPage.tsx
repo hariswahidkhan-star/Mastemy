@@ -25,6 +25,7 @@ import { CourseLearnerActions } from '../finala/Messaging';
 
 /** Signed-in only: enrollment decides whether the learner may post. */
 function SignedInQa({ course }: { course: CourseDetailDto }) {
+  // optional-query: enrollment flag; defaults to "not enrolled"
   const learn = useLearnCourse(course.slug);
   const isAuthor = useIsCourseAuthor(course.id);
   return (

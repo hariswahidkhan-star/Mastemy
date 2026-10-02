@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { UseQueryResult } from '@tanstack/react-query';
 import { useI18n } from '../../i18n/I18nProvider';
 import { Button } from './Button';
-import { ErrorState } from './ErrorState';
+import { ErrorState, errorMessage } from './ErrorState';
 import { Spinner } from './Spinner';
 
 export type BadgeTone = 'neutral' | 'info' | 'success' | 'warning' | 'danger' | 'accent';
@@ -62,6 +63,41 @@ export function QueryState<T>({
   if (query.isPending) return <Spinner label={loadingLabel ?? t('common.loading')} block />;
   if (query.isError) return <ErrorState error={query.error} onRetry={() => void query.refetch()} />;
   return <>{children(query.data)}</>;
+}
+
+/**
+ * Inline status for a secondary query (option lists, filters, side panels) whose data the page can do
+ * without for a moment: a small spinner while it loads, a one-line error with a retry button when it
+ * fails, nothing otherwise (also nothing while the query is disabled). Renders nothing on the server and
+ * in the hydration pass, so a query that failed during SSR cannot cause a hydration mismatch.
+ */
+export function QueryStatus({
+  query,
+  label,
+}: {
+  query: Pick<
+    UseQueryResult<unknown>,
+    'isPending' | 'isError' | 'error' | 'fetchStatus' | 'refetch'
+  >;
+  label?: string;
+}) {
+  const { t } = useI18n();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+  if (query.isError)
+    return (
+      <p className="query-status small" role="alert">
+        {label ? `${label}: ` : ''}
+        {errorMessage(query.error, t)}{' '}
+        <Button variant="ghost" size="sm" onClick={() => void query.refetch()}>
+          {t('common.retry')}
+        </Button>
+      </p>
+    );
+  if (query.isPending && query.fetchStatus !== 'idle')
+    return <Spinner label={label ? `${label}: ${t('common.loading')}` : t('common.loading')} />;
+  return null;
 }
 
 export function Pagination({

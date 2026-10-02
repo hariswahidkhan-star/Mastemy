@@ -22,7 +22,7 @@ import { RichContent } from '../../components/RichContent';
 import { Button, ButtonLink } from '../../components/ui/Button';
 import { EmptyState } from '../../components/ui/EmptyState';
 import { Checkbox, Field, Input } from '../../components/ui/Field';
-import { Badge, Notice, PageHeader, QueryState } from '../../components/ui/misc';
+import { Badge, Notice, PageHeader, QueryState, QueryStatus } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
@@ -200,6 +200,7 @@ export function PracticeBuilderPage() {
   return (
     <div className="container page stack">
       <PageHeader title={t('exams.builder.title')} subtitle={t('exams.builder.subtitle')} />
+      <QueryStatus query={dashboard} />
       <form
         className="card stack"
         noValidate

@@ -26,7 +26,7 @@ import { ConfirmDialog } from '../../components/ui/Dialog';
 import { EmptyState } from '../../components/ui/EmptyState';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Checkbox, Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Badge, Notice, Pagination, QueryState } from '../../components/ui/misc';
+import { Badge, Notice, Pagination, QueryState, QueryStatus } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { newIdempotencyKey, splitLines } from '../../lib/format';
@@ -291,6 +291,7 @@ export function ResourcesManager({ course }: { course: StudioCourseDto }) {
   return (
     <div className="stack">
       <p className="small muted">{t('resources.intro')}</p>
+      <QueryStatus query={usage} />
       {usage.data ? <UsageBar usage={usage.data} /> : null}
       {!editable ? <Notice tone="info">{t('resources.notEditable')}</Notice> : null}
       {editable ? (
@@ -835,6 +836,7 @@ export function YouTubePublishing({ course }: { course: StudioCourseDto }) {
         return (
           <div className="stack">
             <p className="small muted">{t('youtube.publishingIntro')}</p>
+            <QueryStatus query={resources} />
             <section className="card card--flat">
               <h3>{t('youtube.playlist')}</h3>
               <p className="small">{t('youtube.playlistHint')}</p>

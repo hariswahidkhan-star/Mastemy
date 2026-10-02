@@ -15,14 +15,14 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import path from 'node:path';
 
-const BUDGET_INITIAL_KB = Number(process.env.BUDGET_INITIAL_KB ?? 170);
-const BUDGET_ROUTE_KB = Number(process.env.BUDGET_ROUTE_KB ?? 250);
-const BUDGET_CSS_KB = Number(process.env.BUDGET_CSS_KB ?? 30);
+const BUDGET_INITIAL_KB = Number(process.env.BUDGET_INITIAL_KB ?? 150);
+const BUDGET_ROUTE_KB = Number(process.env.BUDGET_ROUTE_KB ?? 225);
+const BUDGET_CSS_KB = Number(process.env.BUDGET_CSS_KB ?? 12);
 
 const args = process.argv.slice(2);
 const jsonIdx = args.indexOf('--json');
 const jsonOut = jsonIdx >= 0 ? args[jsonIdx + 1] : null;
-const dist = path.resolve(args.find((a, i) => !a.startsWith('--') && i !== jsonIdx + 1) ?? 'dist');
+const dist = path.resolve(args.find((a, i) => !a.startsWith('--') && (jsonIdx < 0 || i !== jsonIdx + 1)) ?? 'dist');
 const manifest = JSON.parse(readFileSync(path.join(dist, '.vite', 'manifest.json'), 'utf8'));
 
 const gz = new Map();

@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router';
 import { hydrate } from '@tanstack/react-query';
 import { hasSessionHint } from './api/client';
 import { ensureLang, readStoredLang } from './i18n/I18nProvider';
+import { preloadLazy } from './lib/lazyNamed';
 import { AppTree, createQueryClient, SSR_GLOBAL } from './ssr/AppTree';
 import type { SsrPayload } from './ssr/AppTree';
 import './styles/tokens.css';
@@ -51,8 +52,12 @@ const tree = (
   </StrictMode>
 );
 
-// Arabic visitors fetch their dictionary (a separate chunk) before the first render.
-void ensureLang(canHydrate ? ssr.lang : readStoredLang()).then(() => {
+// Before the first render: the Arabic dictionary (a separate chunk) when needed, and, when hydrating, the
+// route chunks the server rendered, so hydration never suspends (see lib/lazyNamed).
+void Promise.all([
+  ensureLang(canHydrate ? ssr.lang : readStoredLang()),
+  canHydrate ? preloadLazy(ssr.lazy ?? []).catch(() => undefined) : undefined,
+]).then(() => {
   if (canHydrate) {
     hydrateRoot(container, tree);
   } else {

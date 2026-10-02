@@ -48,6 +48,7 @@ export function SearchCombobox({
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
   const debounced = useDebounced(text);
+  // optional-query: typeahead hints; the search itself works without them
   const suggestions = useSuggestions(open ? debounced : '');
   const items: SuggestionDto[] =
     open && debounced.trim().length >= 2 ? (suggestions.data ?? []) : [];

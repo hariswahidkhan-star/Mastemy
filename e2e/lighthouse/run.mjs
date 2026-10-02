@@ -45,8 +45,18 @@ function lighthouse(url, formFactor, file) {
     '--chrome-flags=--headless=new --no-sandbox --disable-dev-shm-usage',
   ];
   if (formFactor === 'desktop') args.push('--preset=desktop');
-  execFileSync('npx', args, { stdio: ['ignore', 'ignore', 'inherit'], env: process.env });
-  return JSON.parse(readFileSync(file, 'utf8'));
+  // Lighthouse occasionally fails to record a trace (NO_NAVSTART etc.); retry before giving up.
+  for (let attempt = 1; ; attempt++) {
+    try {
+      execFileSync('npx', args, { stdio: ['ignore', 'ignore', 'inherit'], env: process.env });
+      const report = JSON.parse(readFileSync(file, 'utf8'));
+      if (report.runtimeError) throw new Error(report.runtimeError.code);
+      return report;
+    } catch (e) {
+      if (attempt >= 3) throw e;
+      console.error(`lighthouse ${url} (${formFactor}) failed (${e.message.split('\n')[0]}); retrying`);
+    }
+  }
 }
 
 const rows = [];

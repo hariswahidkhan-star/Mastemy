@@ -1,48 +1,41 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import en from './en.json';
-import accountEn from './account.en.json';
-import commerceEn from './commerce.en.json';
-import discoverEn from './discover.en.json';
-import examsEn from './exams.en.json';
-import finalaEn from './finala.en.json';
-import finalbEn from './finalb.en.json';
-import workspaceEn from './workspace.en.json';
 
 export type Lang = 'en' | 'ar';
 type Dict = { [key: string]: string | Dict };
 
-/** Area dictionaries (`<area>.en.json` / `<area>.ar.json`) hold one top-level namespace each and are merged in. */
-const EXTRA_EN: Dict[] = [
-  accountEn as Dict,
-  commerceEn as Dict,
-  discoverEn as Dict,
-  examsEn as Dict,
-  finalaEn as Dict,
-  finalbEn as Dict,
-  workspaceEn as Dict,
-];
 /**
- * English ships in the main bundle (it is also the fallback for missing keys); Arabic is a separate chunk
- * loaded by `ensureLang` before the first render that needs it, so English visitors never download it.
+ * Only the core English dictionary (en.json) ships in the main bundle. The English area namespaces
+ * (`<area>.en.json`) and the whole Arabic dictionary are separate chunks that `ensureLang` loads before
+ * the first render (the browser entry and the SSR renderer await it; it is fetched in parallel with the
+ * route chunk). English is also the fallback for keys missing in Arabic.
  */
-const DICTS: Partial<Record<Lang, Dict>> = {
-  en: Object.assign({}, en as Dict, ...EXTRA_EN),
-};
-
+const DICTS: Partial<Record<Lang, Dict>> = { en: en as Dict };
+const loaded: Partial<Record<Lang, boolean>> = {};
 const loading: Partial<Record<Lang, Promise<void>>> = {};
+
+function loadEnglishAreas(): Promise<void> {
+  loading.en ??= import('./enAreas').then((m) => {
+    DICTS.en = Object.assign({}, en as Dict, m.EN_AREAS as Dict);
+    loaded.en = true;
+  });
+  return loading.en;
+}
 
 /** Load a language's dictionary (no-op when already loaded). Await it before rendering in that language. */
 export function ensureLang(lang: Lang): Promise<void> {
-  if (DICTS[lang]) return Promise.resolve();
-  loading[lang] ??= import('./ar').then((m) => {
+  if (loaded[lang]) return Promise.resolve();
+  if (lang === 'en') return loadEnglishAreas();
+  loading.ar ??= Promise.all([loadEnglishAreas(), import('./ar')]).then(([, m]) => {
     DICTS.ar = m.AR_DICT as Dict;
+    loaded.ar = true;
   });
-  return loading[lang];
+  return loading.ar;
 }
 
 export function isLangLoaded(lang: Lang): boolean {
-  return !!DICTS[lang];
+  return !!loaded[lang];
 }
 
 const STORAGE_KEY = 'mastemy.lang';

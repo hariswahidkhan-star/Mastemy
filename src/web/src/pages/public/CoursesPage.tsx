@@ -22,7 +22,7 @@ import { SearchCombobox } from '../../components/discover/SearchCombobox';
 import { Button } from '../../components/ui/Button';
 import { EmptyState } from '../../components/ui/EmptyState';
 import { Field, Input, Select } from '../../components/ui/Field';
-import { PageHeader, Pagination, QueryState } from '../../components/ui/misc';
+import { PageHeader, Pagination, QueryState, QueryStatus } from '../../components/ui/misc';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import '../../styles/discover.css';
@@ -107,6 +107,9 @@ function CourseBrowser({ fixedCategory }: { fixedCategory?: string }) {
           placeholder={t('home.searchPlaceholder')}
           onSubmit={(q) => update('q', q)}
         />
+        <QueryStatus query={instructors} label={t('discover.filters.instructor')} />
+        <QueryStatus query={skills} label={t('discover.filters.skill')} />
+        <QueryStatus query={certs} label={t('discover.filters.certification')} />
         <div className="dfilters" role="group" aria-label={t('discover.filters.label')}>
           {!fixedCategory ? (
             <Field label={t('courses.category')}>
@@ -256,6 +259,7 @@ function CourseBrowser({ fixedCategory }: { fixedCategory?: string }) {
                   <p className="muted small" aria-live="polite">
                     {t('courses.resultCount', { n: data.total })}
                   </p>
+                  <h2 className="visually-hidden">{t('courses.resultsHeading')}</h2>
                   <div className="grid">
                     {data.items.map((c) => (
                       <CourseCard key={c.id} course={c} />

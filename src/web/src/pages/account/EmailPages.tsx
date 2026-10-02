@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { z } from '../../lib/zod';
 import { accountApi } from '../../api/account';
 import { ApiError } from '../../api/client';
 import { useAuth } from '../../auth/AuthProvider';

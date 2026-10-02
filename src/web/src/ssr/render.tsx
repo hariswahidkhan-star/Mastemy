@@ -8,6 +8,8 @@ import type { CategoryDto, CourseDetailDto } from '../api/types';
 import { ensureLang } from '../i18n/I18nProvider';
 import type { Lang } from '../i18n/I18nProvider';
 import { HeadCollectorContext, SITE } from '../lib/seo';
+import { LazyCollectorContext } from '../lib/lazyNamed';
+import { ConsentCookieContext } from '../lib/analytics';
 import type { PageMeta } from '../lib/seo';
 import { AppTree, createQueryClient, SSR_GLOBAL } from './AppTree';
 import type { SsrPayload } from './AppTree';
@@ -49,7 +51,11 @@ const MAX_PASSES = 5;
  * so route-level `React.lazy` chunks are loaded and rendered on the server instead of their fallbacks.
  */
 async function renderComplete(node: ReactNode): Promise<string> {
-  const { prelude } = await prerender(node);
+  const { prelude } = await prerender(node, {
+    // Never outline large completed boundaries into hidden segments revealed by inline scripts.
+    progressiveChunkSize: Number.POSITIVE_INFINITY,
+    onError: (err) => console.error('SSR render error:', err),
+  });
   return new Response(prelude).text();
 }
 
@@ -58,6 +64,8 @@ export interface RenderOptions {
   template: string;
   /** Absolute public origin, e.g. https://mastemy.com (no trailing slash). */
   baseUrl: string;
+  /** The request carried the analytics consent cookie (no banner in the HTML). Default true. */
+  consentCookie?: boolean;
 }
 
 export interface RenderResult {
@@ -165,20 +173,26 @@ export async function renderPage(url: string, opts: RenderOptions): Promise<Rend
   qc.setDefaultOptions({ queries: { ...qc.getDefaultOptions().queries, retry: false } });
   let meta: PageMeta = { noindex: false };
   let body = '';
+  let lazyUsed = new Set<string>();
   for (let pass = 0; pass < MAX_PASSES; pass++) {
     meta = { noindex: false };
+    lazyUsed = new Set<string>();
     body = await renderComplete(
-      <HeadCollectorContext.Provider value={meta}>
-        <AppTree
-          queryClient={qc}
-          lang={lang}
-          router={(app) => <StaticRouter location={pathname + search}>{app}</StaticRouter>}
-        />
-      </HeadCollectorContext.Provider>,
+      <LazyCollectorContext.Provider value={lazyUsed}>
+        <ConsentCookieContext.Provider value={opts.consentCookie ?? true}>
+          <HeadCollectorContext.Provider value={meta}>
+            <AppTree
+              queryClient={qc}
+              lang={lang}
+              router={(app) => <StaticRouter location={pathname + search}>{app}</StaticRouter>}
+            />
+          </HeadCollectorContext.Provider>
+        </ConsentCookieContext.Provider>
+      </LazyCollectorContext.Provider>,
     );
     const fetched = await settle(qc);
-    // A pass that had to wait for a lazy route chunk reveals it with React's inline runtime scripts (which
-    // the CSP rightly blocks); once the chunk is loaded the next pass renders it in place, script-free.
+    // A pass that had to wait for a lazy route chunk may reveal it with React's inline runtime scripts
+    // (which the CSP blocks); once the chunk is loaded the next pass renders it in place, script-free.
     if (fetched === 0 && !body.includes('<script')) break;
   }
 
@@ -212,7 +226,7 @@ export async function renderPage(url: string, opts: RenderOptions): Promise<Rend
     });
   }
 
-  const payload: SsrPayload = { lang, state: dehydrate(qc) };
+  const payload: SsrPayload = { lang, state: dehydrate(qc), lazy: [...lazyUsed] };
   const head = buildHead({
     meta,
     pathname,

@@ -32,6 +32,7 @@ export function withinEditWindow(createdAt: string, now = Date.now()): boolean {
 export function useIsCourseAuthor(courseId: string | undefined): boolean {
   const { hasRole } = useAuth();
   const authorRole = hasRole(...AUTHOR_ROLES);
+  // optional-query: authorship flag; defaults to "not the author"
   const courses = useQuery({
     queryKey: keys.studioCourses,
     queryFn: () =>

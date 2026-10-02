@@ -11,7 +11,7 @@ import { Button } from '../../components/ui/Button';
 import { ConfirmDialog } from '../../components/ui/Dialog';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Notice, PageHeader, QueryState, StatusBadge } from '../../components/ui/misc';
+import { Notice, PageHeader, QueryState, QueryStatus, StatusBadge } from '../../components/ui/misc';
 import { Tabs } from '../../components/ui/Tabs';
 import { StudioTaxonomyPanel } from '../discover/StudioTaxonomyPanel';
 import { useToast } from '../../components/ui/Toast';
@@ -74,6 +74,7 @@ function DetailsForm({ course }: { course: StudioCourseDto }) {
           <Field label={t('wizard.subtitleLabel')}>
             <Input {...register('subtitle')} />
           </Field>
+          <QueryStatus query={categories} />
           <Field label={t('courses.category')} error={errors.categoryId?.message} required>
             <Select
               {...register('categoryId')}

@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../components/ui/Button';
 import { useI18n } from '../../i18n/I18nProvider';
-import { useConsent, useSetConsent } from '../../lib/analytics';
+import { useAuth } from '../../auth/AuthProvider';
+import { useConsent, useConsentCookieDecided, useSetConsent } from '../../lib/analytics';
 import { WsError } from './common';
 
 // ---------- consent banner ----------
 /**
  * Shown until the visitor or user makes a choice. Nothing is tracked before consent (events are only sent by
- * `useTrackEvent` when the server reports analytics=true). Renders nothing during SSR / first paint.
+ * `useTrackEvent` when the server reports analytics=true). A visitor without the consent cookie gets the
+ * banner in the server HTML (and the first client render); signed-in users wait for the server's answer,
+ * since their choice may be stored on the account.
  */
 export function ConsentBanner() {
   const { t } = useI18n();
@@ -16,7 +19,9 @@ export function ConsentBanner() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<unknown>(null);
   const ref = useRef<HTMLElement>(null);
-  const shown = consent.ready && !consent.decided;
+  const { user } = useAuth();
+  const cookieDecided = useConsentCookieDecided();
+  const shown = consent.ready ? !consent.decided : !user && !cookieDecided;
   // Reserve the docked banner's height at the bottom of the page (see .ws-consent).
   useEffect(() => {
     const el = ref.current;

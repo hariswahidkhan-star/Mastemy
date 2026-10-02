@@ -20,7 +20,7 @@ import { Button } from '../../components/ui/Button';
 import { Dialog } from '../../components/ui/Dialog';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Checkbox, Field, Input, Select } from '../../components/ui/Field';
-import { Notice, QueryState } from '../../components/ui/misc';
+import { Notice, QueryState, QueryStatus } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { CoverageTable } from '../../components/discover/Coverage';
@@ -308,6 +308,7 @@ function CertificationMapping({ course }: { course: StudioCourseDto }) {
         {t('discover.studio.certTitle')}
       </h2>
       <p className="small muted">{t('discover.studio.certNote')}</p>
+      <QueryStatus query={staff ? adminCerts : publicCerts} />
       <Field label={t('discover.studio.chooseCert')}>
         <Select
           value={certId}

@@ -53,20 +53,20 @@ describe('compare tray limits', () => {
         <CompareTray />
       </>,
     );
-    await user.click(screen.getByRole('button', { name: 'Add Course 1 to comparison' }));
+    await user.click(screen.getByRole('button', { name: 'Compare Course 1' }));
     const tray = screen.getByRole('complementary', { name: 'Courses selected for comparison' });
     expect(within(tray).getByRole('button', { name: 'Compare now' })).toBeDisabled();
     expect(within(tray).getByText('Select at least 2 courses.')).toBeInTheDocument();
-    await user.click(screen.getByRole('button', { name: 'Add Course 2 to comparison' }));
+    await user.click(screen.getByRole('button', { name: 'Compare Course 2' }));
     expect(within(tray).getByRole('button', { name: 'Compare now' })).toBeEnabled();
-    await user.click(screen.getByRole('button', { name: 'Add Course 3 to comparison' }));
-    await user.click(screen.getByRole('button', { name: 'Add Course 4 to comparison' }));
-    await user.click(screen.getByRole('button', { name: 'Add Course 5 to comparison' }));
+    await user.click(screen.getByRole('button', { name: 'Compare Course 3' }));
+    await user.click(screen.getByRole('button', { name: 'Compare Course 4' }));
+    await user.click(screen.getByRole('button', { name: 'Compare Course 5' }));
     expect(
       await screen.findByText('You can compare at most 4 courses. Remove one first.'),
     ).toBeInTheDocument();
     expect(within(tray).getByText('Compare (4/4)')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Add Course 5 to comparison' })).toHaveAttribute(
+    expect(screen.getByRole('button', { name: 'Compare Course 5' })).toHaveAttribute(
       'aria-pressed',
       'false',
     );

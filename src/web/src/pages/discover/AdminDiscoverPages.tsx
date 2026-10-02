@@ -47,7 +47,7 @@ import { ConfirmDialog, Dialog } from '../../components/ui/Dialog';
 import { EmptyState } from '../../components/ui/EmptyState';
 import { errorMessage } from '../../components/ui/ErrorState';
 import { Checkbox, Field, Input, Select, Textarea } from '../../components/ui/Field';
-import { Badge, Notice, PageHeader, QueryState } from '../../components/ui/misc';
+import { Badge, Notice, PageHeader, QueryState, QueryStatus } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
@@ -1377,6 +1377,7 @@ export function AdminCertificationDetailPage() {
             <h2 className="section__title" id="edit-h">
               {t('discover.admin.certs.details')}
             </h2>
+            <QueryStatus query={all} />
             <CertificationForm
               initial={c}
               allCerts={all.data}
@@ -1416,6 +1417,7 @@ function useNamedCourses(
   ids: string[],
   fetchNames: (() => Promise<{ id: string; title: string }[]>) | null,
 ) {
+  // optional-query: course titles for ids; the ids are shown until they load
   const names = useQuery({
     queryKey: ['admin', 'course-names', ids.join(',')],
     queryFn: () => (fetchNames ? fetchNames() : Promise.resolve([])),
@@ -1534,6 +1536,7 @@ function PathwayEditor({
             options={COURSE_LEVELS.map((l) => ({ value: l, label: t(`level.${l}`) }))}
           />
         </Field>
+        <QueryStatus query={categories} />
         <Field label={t('courses.category')}>
           <Select
             value={f.categoryId}
@@ -1838,6 +1841,7 @@ function CollectionEditor({
             }))}
           />
         </Field>
+        <QueryStatus query={categories} />
         <Field label={t('courses.category')} hint={t('discover.admin.collections.categoryHint')}>
           <Select
             value={f.categoryId}

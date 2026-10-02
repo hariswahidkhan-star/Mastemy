@@ -1,10 +1,13 @@
 FROM node:22-alpine AS build
+# Fonts for the share image / icons rendered at build time (scripts/generate-images.mjs, via sharp).
+RUN apk add --no-cache font-dejavu fontconfig
 WORKDIR /web
 COPY src/web/package.json src/web/package-lock.json ./
 RUN npm ci
 COPY src/web/ ./
-# Client bundle -> dist/, self-contained SSR server -> dist-server/ (no node_modules needed at runtime).
-RUN npm run build
+# Brand images (og-image.png/.webp/.avif, icons) -> public/, client bundle -> dist/, self-contained SSR
+# server -> dist-server/ (no node_modules needed at runtime); then enforce the bundle budgets.
+RUN npm run build && npm run budgets
 
 FROM node:22-alpine AS node
 

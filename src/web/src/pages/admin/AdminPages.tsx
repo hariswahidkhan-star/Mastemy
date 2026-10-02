@@ -30,6 +30,7 @@ import {
   PageHeader,
   Pagination,
   QueryState,
+  QueryStatus,
   StatusBadge,
 } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
@@ -749,6 +750,7 @@ function ChannelsSection() {
     <section className="card card--flat" style={{ marginBlockEnd: 'var(--space-5)' }}>
       <h2>{t('channels.title')}</h2>
       <p className="small muted">{t('channels.help')}</p>
+      <QueryStatus query={channels} />
       {channels.data && channels.data.length > 0 ? (
         <ul>
           {channels.data.map((c) => (

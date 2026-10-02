@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../api/client';
 import { wsKeys } from '../api/workspace';
@@ -17,6 +17,20 @@ export function readConsentCookie(cookie: string): 'analytics' | 'necessary' | n
     }
   }
   return null;
+}
+
+/**
+ * Server render only: whether the request carried the consent cookie (the SSR server reads the Cookie
+ * header). Lets the banner be part of the server HTML for first-time visitors, so it is painted with the
+ * page instead of appearing late (it would otherwise become the page's Largest Contentful Paint).
+ */
+export const ConsentCookieContext = createContext<boolean | null>(null);
+
+/** Whether a consent choice is recorded in the cookie: from the request on the server, else document.cookie. */
+export function useConsentCookieDecided(): boolean {
+  const server = useContext(ConsentCookieContext);
+  if (typeof document === 'undefined') return server ?? true;
+  return readConsentCookie(document.cookie) !== null;
 }
 
 export interface ConsentState {

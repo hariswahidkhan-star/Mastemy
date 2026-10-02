@@ -284,10 +284,10 @@ test.describe.serial('wave 2: discovery, engagement, resources, certificates, en
     await expect(page.getByRole('heading', { name: titleA })).toBeVisible();
 
     await page.goto(`/courses?q=${encodeURIComponent(run)}`);
-    await page.getByRole('button', { name: `Add ${titleA} to comparison` }).click();
+    await page.getByRole('button', { name: `Compare ${titleA}` }).click();
     const tray = page.getByRole('complementary', { name: 'Courses selected for comparison' });
     await expect(tray.getByRole('button', { name: 'Compare now' })).toBeDisabled();
-    await page.getByRole('button', { name: `Add ${titleB} to comparison` }).click();
+    await page.getByRole('button', { name: `Compare ${titleB}` }).click();
     await tray.getByRole('button', { name: 'Compare now' }).click();
     await expect(page).toHaveURL(/\/compare\?ids=/);
     const table = page.getByRole('table');

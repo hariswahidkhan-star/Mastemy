@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router';
 import { useAuth, AUTHOR_ROLES, STAFF_ROLES } from '../../auth/AuthProvider';
-import { useI18n } from '../../i18n/I18nProvider';
+import { ensureLang, useI18n } from '../../i18n/I18nProvider';
 import { useTheme } from '../../theme/ThemeProvider';
 import { Button } from '../ui/Button';
 import { useCompareTray } from '../../lib/compare';
@@ -120,6 +120,9 @@ export function Layout() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+                // Start fetching the other dictionary as soon as the visitor reaches for the button.
+                onPointerEnter={() => void ensureLang(lang === 'en' ? 'ar' : 'en')}
+                onFocus={() => void ensureLang(lang === 'en' ? 'ar' : 'en')}
                 aria-label={t('nav.switchLanguage')}
                 lang={lang === 'en' ? 'ar' : 'en'}
               >

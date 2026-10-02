@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { QueryStatus } from '../ui/misc';
 import type { FocusEvent, KeyboardEvent } from 'react';
 import { Link, useLocation } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
@@ -145,6 +146,7 @@ export function MegaMenu() {
             <h2 className="mega__heading" id={`${panelId}-certs`}>
               {t('discover.menu.certifications')}
             </h2>
+            <QueryStatus query={certs} />
             <ul className="mega__list">
               {(certs.data ?? []).slice(0, MAX_ITEMS).map((c) => (
                 <li key={c.id}>
@@ -162,6 +164,7 @@ export function MegaMenu() {
             <h2 className="mega__heading" id={`${panelId}-paths`}>
               {t('discover.menu.pathways')}
             </h2>
+            <QueryStatus query={pathways} />
             <ul className="mega__list">
               {(pathways.data ?? []).slice(0, MAX_ITEMS).map((p) => (
                 <li key={p.id}>

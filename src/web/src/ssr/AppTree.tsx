@@ -57,6 +57,8 @@ export interface SsrPayload {
   lang: Lang;
   /** Dehydrated react-query cache (successful public queries only). */
   state: unknown;
+  /** Lazy route components the page rendered; preloaded before hydration (see lib/lazyNamed). */
+  lazy?: string[];
 }
 
 export const SSR_GLOBAL = '__MASTEMY_SSR__';

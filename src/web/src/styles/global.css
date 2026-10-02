@@ -46,6 +46,11 @@ a:hover {
   outline-offset: 2px;
   border-radius: 4px;
 }
+/* Focus inside the embedded YouTube player is shown on its frame container (the iframe is clipped). */
+.player-frame:focus-within {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+}
 code,
 pre {
   font-family: var(--font-mono);
@@ -763,7 +768,6 @@ table {
 }
 .tabs__panel {
   padding-block: var(--space-4);
-  outline: none;
 }
 
 /* ---------- toast ---------- */

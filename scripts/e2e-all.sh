@@ -8,8 +8,11 @@
 #   scripts/e2e-all.sh                    # whole suite
 #   scripts/e2e-all.sh a11y.spec.ts       # extra args go to `playwright test`
 #
+# The production Node SSR server (dist-server, with SSR_PROXY_API=1) also runs, on E2E_SSR_URL, for the SSR /
+# CSP / web-vitals specs (ssr.spec.ts, perf.spec.ts).
+#
 # Environment (all optional): MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, E2E_DB, E2E_PORT_BASE (default 5080 -> API
-# 5080, web 5173, fakes on 12111/12131/12592, SMTP 2525/2580), E2E_SKIP_BUILD=1,
+# 5080, web 5173, SSR 5190, fakes on 12111/12131/12592, SMTP 2525/2580), E2E_SKIP_BUILD=1,
 # E2E_LOG_DIR, E2E_WEB=preview|dev (default preview: production bundle via
 # `vite preview`), E2E_WEB_DIST. Only processes started here are stopped on exit.
 set -euo pipefail
@@ -24,6 +27,7 @@ BASE=${E2E_PORT_BASE:-5080}
 OFF=$((BASE - 5080))
 API_PORT=$((5080 + OFF))
 WEB_PORT=$((5173 + OFF))
+SSR_PORT=$((5190 + OFF))
 STRIPE_PORT=$((12111 + OFF))
 AI_PORT=$((12131 + OFF))
 OIDC_PORT=$((12592 + OFF))
@@ -50,7 +54,7 @@ wait_for() { # url name pid
 }
 
 # A leftover server on one of our ports would answer the readiness checks in place of the fresh one.
-for port in $API_PORT $WEB_PORT $STRIPE_PORT $AI_PORT $OIDC_PORT $SMTP_PORT $SMTP_HTTP_PORT; do
+for port in $API_PORT $WEB_PORT $SSR_PORT $STRIPE_PORT $AI_PORT $OIDC_PORT $SMTP_PORT $SMTP_HTTP_PORT; do
   if (exec 3<>"/dev/tcp/127.0.0.1/$port") 2>/dev/null; then
     echo "port $port is already in use; stop that process or pick another E2E_PORT_BASE" >&2
     exit 1
@@ -61,8 +65,10 @@ for d in e2e src/web; do [ -d "$d/node_modules" ] || (cd "$d" && npm ci --no-aud
 if [ -z "${E2E_SKIP_BUILD:-}" ]; then
   dotnet build src/Mastemy.Api -c Release -nologo -v q
 fi
-if [ "${E2E_WEB:-preview}" != dev ] && { [ -z "${E2E_SKIP_BUILD:-}" ] || [ ! -f "$WEB_DIST/index.html" ]; }; then
-  (cd src/web && npx vite build --outDir "$WEB_DIST" --emptyOutDir --logLevel warn)
+if [ -z "${E2E_SKIP_BUILD:-}" ] || [ ! -f "$WEB_DIST/index.html" ] || [ ! -f "$WEB_DIST-server/main.js" ]; then
+  (cd src/web && node scripts/generate-images.mjs >/dev/null \
+    && npx vite build --outDir "$WEB_DIST" --emptyOutDir --logLevel warn \
+    && npx vite build --ssr server/main.ts --outDir "$WEB_DIST-server" --emptyOutDir --logLevel warn)
 fi
 
 echo "== fresh database $E2E_DB on $MYSQL_HOST"
@@ -112,16 +118,22 @@ else
 fi
 WEB_PID=$!; PIDS+=($WEB_PID)
 
+# The production SSR server on the same client build, forwarding /api to the API (no nginx here).
+DIST_DIR="$WEB_DIST" SSR_PROXY_API=1 PORT=$SSR_PORT API_INTERNAL_URL=http://localhost:$API_PORT \
+  PUBLIC_BASE_URL=http://localhost:$SSR_PORT node "$WEB_DIST-server/main.js" >"$LOG_DIR/ssr.log" 2>&1 &
+SSR_PID=$!; PIDS+=($SSR_PID)
+
 wait_for "http://localhost:$API_PORT/api/categories" api "$API_PID"
 wait_for "http://localhost:$WEB_PORT/" web "$WEB_PID"
+wait_for "http://localhost:$SSR_PORT/healthz" ssr "$SSR_PID"
 wait_for "http://localhost:$SMTP_HTTP_PORT/messages" smtp-sink "${PIDS[3]}"
-echo "== stack up: web :$WEB_PORT api :$API_PORT"
+echo "== stack up: web :$WEB_PORT ssr :$SSR_PORT api :$API_PORT"
 
 # The MFA secret cache belongs to this database; start clean.
 rm -f "${TMPDIR:-/tmp}/mastemy-e2e-mfa-http%3A%2F%2Flocalhost%3A$API_PORT.json"
 
 cd e2e
-E2E_BASE_URL=http://localhost:$WEB_PORT E2E_API_URL=http://localhost:$API_PORT \
+E2E_BASE_URL=http://localhost:$WEB_PORT E2E_API_URL=http://localhost:$API_PORT E2E_SSR_URL=http://localhost:$SSR_PORT \
 E2E_FAKE_STRIPE_URL=http://localhost:$STRIPE_PORT E2E_SMTP_SINK_URL=http://localhost:$SMTP_HTTP_PORT \
 E2E_FAKE_OIDC_URL=http://localhost:$OIDC_PORT MYSQL_HOST=$MYSQL_HOST \
   npx playwright test "$@"

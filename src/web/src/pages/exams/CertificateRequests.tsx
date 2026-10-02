@@ -9,7 +9,7 @@ import type { MyCertificateDto } from '../../api/wave2';
 import { Button } from '../../components/ui/Button';
 import { Dialog } from '../../components/ui/Dialog';
 import { Field, Input, Textarea } from '../../components/ui/Field';
-import { Badge, Notice } from '../../components/ui/misc';
+import { Badge, Notice, QueryStatus } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { examError } from './examErrors';
@@ -78,6 +78,8 @@ export function CertificateRequestsSection() {
     ...(appeals.data ?? []).map((a) => ({ ...a, kind: 'appeal' as const })),
   ].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   const acc = accommodations.data ?? [];
+  const failed = [certs, corrections, appeals].find((q) => q.isError);
+  if (failed) return <QueryStatus query={failed} label={t('exams.certReq.title')} />;
   if (list.length === 0 && requests.length === 0 && acc.length === 0) return null;
 
   return (
