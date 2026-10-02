@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1811",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1811-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Object-level org-wide default for an object is Private. What is the most appropriate way to give a specific group broader read access to those records?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Create a sharing rule (or use roles/permission sets) to open access for that group",
+     "correct": true,
+     "rationale": "Correct: with Private OWD, sharing rules, role hierarchy or sharing-granting mechanisms widen access."
+    },
+    {
+     "key": "B",
+     "text": "Change the object's field-level security",
+     "correct": false,
+     "rationale": "Field-level security controls fields, not record visibility."
+    },
+    {
+     "key": "C",
+     "text": "Delete the role hierarchy",
+     "correct": false,
+     "rationale": "Deleting the role hierarchy removes, not grants, access."
+    },
+    {
+     "key": "D",
+     "text": "Set the OWD to Private more strictly",
+     "correct": false,
+     "rationale": "That narrows access further, the opposite of the goal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with Private OWD, sharing rules, role hierarchy or sharing-granting mechanisms widen access.",
+   "outcome_refs": [
+    "MST-1811-D01.01"
+   ],
+   "domain_ref": "Advanced Security, Access and Sharing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1811-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to update a field on the same record before it is saved, with no external callout. Which is the most efficient choice?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A before-save record-triggered flow",
+     "correct": true,
+     "rationale": "Correct: a before-save record-triggered flow updates same-record fields efficiently without an extra DML."
+    },
+    {
+     "key": "B",
+     "text": "A scheduled flow that runs nightly",
+     "correct": false,
+     "rationale": "A nightly schedule does not update the record at save time."
+    },
+    {
+     "key": "C",
+     "text": "A screen flow launched manually",
+     "correct": false,
+     "rationale": "A screen flow needs user interaction; it is not for automatic before-save updates."
+    },
+    {
+     "key": "D",
+     "text": "An outbound message",
+     "correct": false,
+     "rationale": "An outbound message sends data externally; it does not set a field before save."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a before-save record-triggered flow updates same-record fields efficiently without an extra DML.",
+   "outcome_refs": [
+    "MST-1811-D02.01"
+   ],
+   "domain_ref": "Advanced Automation and Process Design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1811-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices that support a safe deployment of configuration changes to a Salesforce production org.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Testing changes in a sandbox before deploying",
+     "correct": true,
+     "rationale": "Correct: validating in a sandbox reduces the risk of breaking production."
+    },
+    {
+     "key": "B",
+     "text": "Using change sets or a deployment tool to migrate metadata",
+     "correct": true,
+     "rationale": "Correct: change sets / deployment tools provide a controlled migration path."
+    },
+    {
+     "key": "C",
+     "text": "Editing automation directly in production during business hours",
+     "correct": false,
+     "rationale": "Direct production edits are risky and bypass testing."
+    },
+    {
+     "key": "D",
+     "text": "Deleting the sandbox before validating the change",
+     "correct": false,
+     "rationale": "Removing the test environment defeats safe deployment."
+    },
+    {
+     "key": "E",
+     "text": "Skipping backups of affected data",
+     "correct": false,
+     "rationale": "Skipping backups increases risk during deployment."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: validating in a sandbox reduces the risk of breaking production.",
+   "outcome_refs": [
+    "MST-1811-D03.01"
+   ],
+   "domain_ref": "Analytics, Data Management, Deployment and Change",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

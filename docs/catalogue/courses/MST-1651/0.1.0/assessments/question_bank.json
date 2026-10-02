@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1651",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1651-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In ServiceNow HRSD, what does a Center of Excellence (COE) primarily represent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A grouping that owns a set of HR services and the cases raised against them",
+     "correct": true,
+     "rationale": "Correct: a COE (e.g. Benefits, Payroll) owns related HR services and their cases."
+    },
+    {
+     "key": "B",
+     "text": "A single employee's HR profile record",
+     "correct": false,
+     "rationale": "An HR profile is one employee's data, not a service-owning grouping."
+    },
+    {
+     "key": "C",
+     "text": "A network firewall zone",
+     "correct": false,
+     "rationale": "COE is an HRSD organisational concept, not infrastructure."
+    },
+    {
+     "key": "D",
+     "text": "A type of knowledge article",
+     "correct": false,
+     "rationale": "A COE is not a knowledge article; it owns services and cases."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a COE (e.g. Benefits, Payroll) owns related HR services and their cases.",
+   "outcome_refs": [
+    "MST-1651-D01.01"
+   ],
+   "domain_ref": "HRSD Foundations and Data Model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1651-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An employee submits an HR request through Employee Center. Which ServiceNow object most directly captures and tracks the work to fulfil it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An HR case",
+     "correct": true,
+     "rationale": "Correct: HR requests are tracked and fulfilled as HR cases."
+    },
+    {
+     "key": "B",
+     "text": "A CMDB configuration item",
+     "correct": false,
+     "rationale": "The CMDB tracks IT assets, not HR request fulfilment."
+    },
+    {
+     "key": "C",
+     "text": "A change request",
+     "correct": false,
+     "rationale": "Change requests manage IT changes, not HR service delivery."
+    },
+    {
+     "key": "D",
+     "text": "An incident record in ITSM",
+     "correct": false,
+     "rationale": "HRSD uses HR cases, not ITSM incidents, for HR requests."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: HR requests are tracked and fulfilled as HR cases.",
+   "outcome_refs": [
+    "MST-1651-D02.01"
+   ],
+   "domain_ref": "HR Case Management and Employee Center",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1651-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO ServiceNow capabilities that help keep sensitive HR case information confidential.",
+   "options": [
+    {
+     "key": "A",
+     "text": "HR-specific security/ACL configuration restricting who can read HR records",
+     "correct": true,
+     "rationale": "Correct: HR security and ACLs restrict access to sensitive HR data."
+    },
+    {
+     "key": "B",
+     "text": "Marking HR cases and documents as confidential/restricted to the HR role",
+     "correct": true,
+     "rationale": "Correct: confidentiality settings limit visibility of sensitive HR cases and documents."
+    },
+    {
+     "key": "C",
+     "text": "Publishing all HR knowledge articles to every employee by default",
+     "correct": false,
+     "rationale": "Broad publishing reduces rather than protects confidentiality."
+    },
+    {
+     "key": "D",
+     "text": "Disabling all logging on HR records",
+     "correct": false,
+     "rationale": "Disabling logging harms auditability and is not a confidentiality control."
+    },
+    {
+     "key": "E",
+     "text": "Granting the admin role to every fulfiller",
+     "correct": false,
+     "rationale": "Over-granting access weakens confidentiality."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: HR security and ACLs restrict access to sensitive HR data.",
+   "outcome_refs": [
+    "MST-1651-D03.01"
+   ],
+   "domain_ref": "Lifecycle Events, Documents, Integrations and Security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

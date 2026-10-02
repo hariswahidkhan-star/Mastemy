@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1258",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1258-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary purpose of a SIEM in a security operations centre?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To aggregate and correlate log/event data from many sources for detection and analysis",
+     "correct": true,
+     "rationale": "Correct: a SIEM centralises and correlates events across sources to support detection and investigation."
+    },
+    {
+     "key": "B",
+     "text": "To physically patch vulnerable servers automatically",
+     "correct": false,
+     "rationale": "Patching is a separate function; a SIEM does not apply patches."
+    },
+    {
+     "key": "C",
+     "text": "To replace the need for any human analysts",
+     "correct": false,
+     "rationale": "A SIEM supports analysts; it does not remove the need for human triage."
+    },
+    {
+     "key": "D",
+     "text": "To encrypt all data at rest across the enterprise",
+     "correct": false,
+     "rationale": "Encryption is a separate control, not the role of a SIEM."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a SIEM centralises and correlates events across sources to support detection and investigation.",
+   "outcome_refs": [
+    "MST-1258-D01.01"
+   ],
+   "domain_ref": "Security Operations Foundations and Monitoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1258-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During triage, an analyst confirms malware is actively spreading from one workstation to others. Which immediate action best limits damage?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Isolate/contain the affected host from the network",
+     "correct": true,
+     "rationale": "Correct: containment (network isolation) limits lateral spread while investigation continues."
+    },
+    {
+     "key": "B",
+     "text": "Immediately wipe and reimage every machine in the company",
+     "correct": false,
+     "rationale": "That is disproportionate and destroys evidence before scoping the incident."
+    },
+    {
+     "key": "C",
+     "text": "Wait until the next scheduled patch cycle",
+     "correct": false,
+     "rationale": "Waiting allows the malware to continue spreading."
+    },
+    {
+     "key": "D",
+     "text": "Ignore it because antivirus will handle it",
+     "correct": false,
+     "rationale": "Active spread requires a containment decision, not passive reliance on AV."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: containment (network isolation) limits lateral spread while investigation continues.",
+   "outcome_refs": [
+    "MST-1258-D03.01"
+   ],
+   "domain_ref": "Incident Response, Vulnerabilities and Hardening",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1258-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO items that are examples of indicators of compromise (IoCs).",
+   "options": [
+    {
+     "key": "A",
+     "text": "A known-malicious file hash found on an endpoint",
+     "correct": true,
+     "rationale": "Correct: a matching malicious hash is a classic IoC."
+    },
+    {
+     "key": "B",
+     "text": "Outbound traffic to a known command-and-control domain",
+     "correct": true,
+     "rationale": "Correct: communication with a known C2 domain is an IoC."
+    },
+    {
+     "key": "C",
+     "text": "A documented change-management approval",
+     "correct": false,
+     "rationale": "An approved change is normal activity, not an indicator of compromise."
+    },
+    {
+     "key": "D",
+     "text": "A scheduled, authorised vulnerability scan",
+     "correct": false,
+     "rationale": "An authorised scan is expected activity, not an IoC."
+    },
+    {
+     "key": "E",
+     "text": "A user successfully using single sign-on during business hours",
+     "correct": false,
+     "rationale": "Normal authenticated activity is not an indicator of compromise."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a matching malicious hash is a classic IoC.",
+   "outcome_refs": [
+    "MST-1258-D02.01"
+   ],
+   "domain_ref": "Threat Detection and Analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

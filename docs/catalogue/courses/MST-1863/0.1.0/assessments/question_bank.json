@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1863",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1863-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Unity, what is the correct relationship between a GameObject and a component such as a script?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A component (including a script) is attached to a GameObject to give it behaviour or data",
+     "correct": true,
+     "rationale": "Correct: GameObjects are containers; components attached to them provide behaviour and data."
+    },
+    {
+     "key": "B",
+     "text": "A GameObject is attached to a component",
+     "correct": false,
+     "rationale": "This reverses the relationship; components are added to GameObjects, not the other way round."
+    },
+    {
+     "key": "C",
+     "text": "A script runs independently of any GameObject in the scene",
+     "correct": false,
+     "rationale": "A MonoBehaviour script only runs when attached to an active GameObject."
+    },
+    {
+     "key": "D",
+     "text": "Components can exist in a scene without any GameObject",
+     "correct": false,
+     "rationale": "Components cannot exist on their own; they must belong to a GameObject."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GameObjects are containers; components attached to them provide behaviour and data.",
+   "outcome_refs": [
+    "MST-1863-D01.01"
+   ],
+   "domain_ref": "Unity Editor, GameObjects and the C# Scripting Basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1863-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a movement value commonly multiplied by Time.deltaTime in Update()?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To make movement speed independent of the frame rate",
+     "correct": true,
+     "rationale": "Correct: Time.deltaTime is the time since the last frame, so multiplying by it gives consistent speed regardless of frame rate."
+    },
+    {
+     "key": "B",
+     "text": "To make the object move exactly one unit per frame",
+     "correct": false,
+     "rationale": "That would make speed depend on frame rate, which is what deltaTime avoids."
+    },
+    {
+     "key": "C",
+     "text": "To convert the value from radians to degrees",
+     "correct": false,
+     "rationale": "Time.deltaTime has nothing to do with angle unit conversion."
+    },
+    {
+     "key": "D",
+     "text": "To pause the game when the frame rate drops",
+     "correct": false,
+     "rationale": "deltaTime scales motion; it does not pause anything."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Time.deltaTime is the time since the last frame, so multiplying by it gives consistent speed regardless of frame rate.",
+   "outcome_refs": [
+    "MST-1863-D02.01"
+   ],
+   "domain_ref": "Scripting Logic, Input and Movement",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1863-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO conditions that must be true for OnTriggerEnter to be called between two objects in Unity.",
+   "options": [
+    {
+     "key": "A",
+     "text": "At least one of the two colliders has 'Is Trigger' enabled",
+     "correct": true,
+     "rationale": "Correct: trigger callbacks require at least one collider marked Is Trigger."
+    },
+    {
+     "key": "B",
+     "text": "At least one of the objects has a Rigidbody component",
+     "correct": true,
+     "rationale": "Correct: trigger/collision messages require a Rigidbody on at least one of the participating objects."
+    },
+    {
+     "key": "C",
+     "text": "Both objects must have the same tag",
+     "correct": false,
+     "rationale": "Tags are optional filters in code; they are not required for the callback to fire."
+    },
+    {
+     "key": "D",
+     "text": "Both objects must be static",
+     "correct": false,
+     "rationale": "Static objects without a Rigidbody will not generate trigger callbacks."
+    },
+    {
+     "key": "E",
+     "text": "Both colliders must have 'Is Trigger' disabled",
+     "correct": false,
+     "rationale": "That describes a physical collision (OnCollisionEnter), not a trigger."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: trigger callbacks require at least one collider marked Is Trigger.",
+   "outcome_refs": [
+    "MST-1863-D03.01"
+   ],
+   "domain_ref": "Physics, Collisions, UI and Debugging",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

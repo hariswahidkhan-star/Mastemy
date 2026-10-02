@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1257",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1257-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a three-lines model applied to AI risk, which function owns and manages the risk of an AI system in day-to-day operations?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The first line: the business/operational unit that builds and runs the AI system",
+     "correct": true,
+     "rationale": "Correct: the first line owns and manages risk in its operations, including AI systems it runs."
+    },
+    {
+     "key": "B",
+     "text": "The second line: the independent risk and compliance function",
+     "correct": false,
+     "rationale": "The second line oversees and challenges, but does not own day-to-day operational risk."
+    },
+    {
+     "key": "C",
+     "text": "The third line: internal audit",
+     "correct": false,
+     "rationale": "Internal audit provides independent assurance; it does not own operational risk."
+    },
+    {
+     "key": "D",
+     "text": "The external regulator",
+     "correct": false,
+     "rationale": "Regulators set expectations but do not manage the organisation's operational risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the first line owns and manages risk in its operations, including AI systems it runs.",
+   "outcome_refs": [
+    "MST-1257-D01.01"
+   ],
+   "domain_ref": "AI Risk Governance and Fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1257-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A deployed credit-scoring model's accuracy degrades over months as customer behaviour changes. This is best described as:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Model drift (data/concept drift)",
+     "correct": true,
+     "rationale": "Correct: performance degradation from changing input or relationships over time is model/concept drift."
+    },
+    {
+     "key": "B",
+     "text": "A buffer overflow",
+     "correct": false,
+     "rationale": "That is a software memory vulnerability, unrelated to statistical degradation."
+    },
+    {
+     "key": "C",
+     "text": "Overfitting at training time",
+     "correct": false,
+     "rationale": "Overfitting is a training-time issue; this degradation appears after deployment as data changes."
+    },
+    {
+     "key": "D",
+     "text": "A prompt-injection attack",
+     "correct": false,
+     "rationale": "Prompt injection is an adversarial input technique, not gradual accuracy decay."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: performance degradation from changing input or relationships over time is model/concept drift.",
+   "outcome_refs": [
+    "MST-1257-D02.01"
+   ],
+   "domain_ref": "AI Lifecycle Risk Assessment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1257-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that correctly describe residual risk after applying controls to an AI system.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Residual risk is the risk that remains after controls are applied",
+     "correct": true,
+     "rationale": "Correct: residual risk is what is left once risk treatment/controls are in place."
+    },
+    {
+     "key": "B",
+     "text": "Residual risk should be formally accepted by an appropriate risk owner",
+     "correct": true,
+     "rationale": "Correct: remaining risk should be explicitly accepted (or further treated) by an accountable owner."
+    },
+    {
+     "key": "C",
+     "text": "Applying any control reduces residual risk to zero",
+     "correct": false,
+     "rationale": "Controls reduce, but rarely eliminate, risk; some residual risk almost always remains."
+    },
+    {
+     "key": "D",
+     "text": "Residual risk is the same as inherent risk",
+     "correct": false,
+     "rationale": "Inherent risk is before controls; residual risk is after."
+    },
+    {
+     "key": "E",
+     "text": "Residual risk never needs to be documented",
+     "correct": false,
+     "rationale": "Residual risk and its acceptance should be documented for governance and assurance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: residual risk is what is left once risk treatment/controls are in place.",
+   "outcome_refs": [
+    "MST-1257-D03.01"
+   ],
+   "domain_ref": "Risk Response, Controls, Assurance and Trustworthy AI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

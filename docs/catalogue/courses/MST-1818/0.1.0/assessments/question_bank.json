@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1818",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1818-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the 'clean core' principle encourage developers to do in ABAP Cloud?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Build extensions using released APIs and extension points so upgrades stay stable",
+     "correct": true,
+     "rationale": "Correct: clean core means using released/public APIs and stable extension points to keep the core upgrade-safe."
+    },
+    {
+     "key": "B",
+     "text": "Modify standard SAP tables directly for speed",
+     "correct": false,
+     "rationale": "Direct core modification is exactly what clean core avoids."
+    },
+    {
+     "key": "C",
+     "text": "Avoid version control entirely",
+     "correct": false,
+     "rationale": "Clean core is about stable extension, not abandoning version control."
+    },
+    {
+     "key": "D",
+     "text": "Only ever write code in the classic SAP GUI editor",
+     "correct": false,
+     "rationale": "ABAP Cloud development uses ADT; clean core is unrelated to insisting on SAP GUI."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: clean core means using released/public APIs and stable extension points to keep the core upgrade-safe.",
+   "outcome_refs": [
+    "MST-1818-D01.01"
+   ],
+   "domain_ref": "ABAP Cloud, BTP Environment and Clean Core",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1818-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In RAP, which artifact defines the create/update/delete behaviour and validations of a business object?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The behaviour definition (and its implementation)",
+     "correct": true,
+     "rationale": "Correct: the behaviour definition specifies the transactional behaviour, operations and validations of a RAP BO."
+    },
+    {
+     "key": "B",
+     "text": "The CDS data definition alone",
+     "correct": false,
+     "rationale": "The CDS data definition models data; it does not define transactional behaviour by itself."
+    },
+    {
+     "key": "C",
+     "text": "The transport request",
+     "correct": false,
+     "rationale": "A transport request moves objects between systems; it defines no behaviour."
+    },
+    {
+     "key": "D",
+     "text": "The package assignment",
+     "correct": false,
+     "rationale": "Package assignment organises objects; it defines no behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the behaviour definition specifies the transactional behaviour, operations and validations of a RAP BO.",
+   "outcome_refs": [
+    "MST-1818-D03.01"
+   ],
+   "domain_ref": "CDS Data Modelling and RAP",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1818-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that are TRUE about internal tables in modern ABAP.",
+   "options": [
+    {
+     "key": "A",
+     "text": "An internal table holds multiple rows of a structured type in memory",
+     "correct": true,
+     "rationale": "Correct: internal tables store multiple rows of a line type at runtime."
+    },
+    {
+     "key": "B",
+     "text": "Table expressions such as itab[ key = value ] can read a row directly",
+     "correct": true,
+     "rationale": "Correct: modern ABAP supports table expressions for direct row access."
+    },
+    {
+     "key": "C",
+     "text": "An internal table can hold only one row at a time",
+     "correct": false,
+     "rationale": "That describes a work area/structure, not an internal table."
+    },
+    {
+     "key": "D",
+     "text": "Internal tables cannot be declared inline",
+     "correct": false,
+     "rationale": "Modern ABAP supports inline declaration (e.g. DATA(itab) ...)."
+    },
+    {
+     "key": "E",
+     "text": "Internal tables are always persisted to the database automatically",
+     "correct": false,
+     "rationale": "Internal tables live in memory; persistence requires explicit database operations."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: internal tables store multiple rows of a line type at runtime.",
+   "outcome_refs": [
+    "MST-1818-D02.01"
+   ],
+   "domain_ref": "Modern ABAP Language and Data Handling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
