@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1819",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 556,
+  "lesson_check_items": 48,
+  "module_check_items": 140,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1819-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A company wants to extend SAP ERP without changing the core so upgrades stay clean. Which approach fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Modify the ERP source code directly",
+     "correct": false,
+     "rationale": "Core modification complicates upgrades, the exact outcome to avoid."
+    },
+    {
+     "key": "B",
+     "text": "Build a side-by-side extension on the platform",
+     "correct": true,
+     "rationale": "Correct: side-by-side extensibility keeps custom logic off the core, preserving clean upgrades."
+    },
+    {
+     "key": "C",
+     "text": "Export all data to spreadsheets",
+     "correct": false,
+     "rationale": "Spreadsheets do not extend the ERP functionally."
+    },
+    {
+     "key": "D",
+     "text": "Disable all standard modules",
+     "correct": false,
+     "rationale": "Disabling modules removes needed functionality and is not an extension approach."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: side-by-side extensibility keeps custom logic off the core, preserving clean upgrades.",
+   "outcome_refs": [
+    "MST-1819-D02.01"
+   ],
+   "domain_ref": "Application development and extension",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1819-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Within the platform account model, what is the typical relationship between a global account and a subaccount?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A subaccount contains many global accounts",
+     "correct": false,
+     "rationale": "The hierarchy is the reverse of this."
+    },
+    {
+     "key": "B",
+     "text": "A global account can contain multiple subaccounts",
+     "correct": true,
+     "rationale": "Correct: a global account is the top-level contract entity holding one or more subaccounts."
+    },
+    {
+     "key": "C",
+     "text": "They are unrelated billing systems",
+     "correct": false,
+     "rationale": "They are part of one hierarchical account model."
+    },
+    {
+     "key": "D",
+     "text": "A global account is a single application",
+     "correct": false,
+     "rationale": "A global account is an organisational/contract construct, not an app."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: a global account is the top-level contract entity holding one or more subaccounts.",
+   "outcome_refs": [
+    "MST-1819-D01.01"
+   ],
+   "domain_ref": "Platform fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1819-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO concepts belong to platform security and administration?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Authentication via a trusted identity provider",
+     "correct": true,
+     "rationale": "Correct: establishing trust with an IdP is an authentication concept."
+    },
+    {
+     "key": "B",
+     "text": "Authorisation through role collections",
+     "correct": true,
+     "rationale": "Correct: role collections grant authorisations to users."
+    },
+    {
+     "key": "C",
+     "text": "Choosing a marketing campaign budget",
+     "correct": false,
+     "rationale": "Campaign budgeting is unrelated to platform security."
+    },
+    {
+     "key": "D",
+     "text": "Designing a product's retail packaging",
+     "correct": false,
+     "rationale": "Packaging design is irrelevant to platform administration."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: establishing trust with an IdP is an authentication concept.",
+   "outcome_refs": [
+    "MST-1819-D04.01"
+   ],
+   "domain_ref": "Security and administration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

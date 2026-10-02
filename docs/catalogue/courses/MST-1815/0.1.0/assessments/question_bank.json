@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1815",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 556,
+  "lesson_check_items": 48,
+  "module_check_items": 140,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1815-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A marketer needs to send to a frequently changing audience defined by purchase data. Which sending source is most appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A static list manually maintained",
+     "correct": false,
+     "rationale": "A static list requires manual upkeep and suits stable audiences, not changing data-driven ones."
+    },
+    {
+     "key": "B",
+     "text": "A data extension populated from purchase data",
+     "correct": true,
+     "rationale": "Correct: a data extension driven by purchase data handles dynamic, attribute-rich audiences."
+    },
+    {
+     "key": "C",
+     "text": "The All Subscribers list directly",
+     "correct": false,
+     "rationale": "Sending to All Subscribers ignores targeting and risks over-sending."
+    },
+    {
+     "key": "D",
+     "text": "A single test subscriber",
+     "correct": false,
+     "rationale": "A test subscriber is for QA, not production sends."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: a data extension driven by purchase data handles dynamic, attribute-rich audiences.",
+   "outcome_refs": [
+    "MST-1815-D01.01"
+   ],
+   "domain_ref": "Subscriber and data management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1815-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main purpose of a fallback (default) value in a personalization string?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To encrypt subscriber data",
+     "correct": false,
+     "rationale": "Fallback values do not provide encryption."
+    },
+    {
+     "key": "B",
+     "text": "To display substitute text when the attribute is missing",
+     "correct": true,
+     "rationale": "Correct: a default value renders substitute text so emails do not show blanks for missing data."
+    },
+    {
+     "key": "C",
+     "text": "To increase send speed",
+     "correct": false,
+     "rationale": "Fallback values have no effect on send throughput."
+    },
+    {
+     "key": "D",
+     "text": "To bypass unsubscribe rules",
+     "correct": false,
+     "rationale": "They have nothing to do with unsubscribe handling."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: a default value renders substitute text so emails do not show blanks for missing data.",
+   "outcome_refs": [
+    "MST-1815-D02.01"
+   ],
+   "domain_ref": "Content and personalisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1815-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices most directly support strong email deliverability?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Authenticating the sending domain (e.g. SPF/DKIM)",
+     "correct": true,
+     "rationale": "Correct: domain authentication is a core deliverability practice."
+    },
+    {
+     "key": "B",
+     "text": "Maintaining list hygiene by removing hard bounces",
+     "correct": true,
+     "rationale": "Correct: removing hard bounces protects sender reputation and deliverability."
+    },
+    {
+     "key": "C",
+     "text": "Buying a third-party email list",
+     "correct": false,
+     "rationale": "Purchased lists harm reputation and deliverability and breach policy."
+    },
+    {
+     "key": "D",
+     "text": "Embedding one large image as the whole email",
+     "correct": false,
+     "rationale": "Image-only emails trigger spam filters and hurt deliverability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: domain authentication is a core deliverability practice.",
+   "outcome_refs": [
+    "MST-1815-D04.01"
+   ],
+   "domain_ref": "Deliverability and reporting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
