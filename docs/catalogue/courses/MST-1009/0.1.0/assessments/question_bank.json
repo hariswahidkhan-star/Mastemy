@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1009",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1009-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "At which point does threat modeling add the most value in the SDLC?",
+   "options": [
+    {
+     "key": "A",
+     "text": "During design, before code is written",
+     "correct": true,
+     "rationale": "Correct: modeling threats in design lets teams remove flaws cheaply before they are built in."
+    },
+    {
+     "key": "B",
+     "text": "Only after deployment to production",
+     "correct": false,
+     "rationale": "Post-deployment is the most expensive place to discover design flaws."
+    },
+    {
+     "key": "C",
+     "text": "During the marketing review",
+     "correct": false,
+     "rationale": "Marketing review is unrelated to technical threat modeling."
+    },
+    {
+     "key": "D",
+     "text": "Never; scanning tools make it unnecessary",
+     "correct": false,
+     "rationale": "Scanners catch implementation bugs, not design-level threats."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: modeling threats in design lets teams remove flaws cheaply before they are built in.",
+   "outcome_refs": [
+    "MST-1009-02.02"
+   ],
+   "domain_ref": "Requirements and design security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1009-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which tool type analyses your third-party and open-source dependencies for known vulnerabilities?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Software composition analysis (SCA)",
+     "correct": true,
+     "rationale": "Correct: SCA inventories dependencies and flags components with known vulnerabilities."
+    },
+    {
+     "key": "B",
+     "text": "Static application security testing (SAST)",
+     "correct": false,
+     "rationale": "SAST analyses your own source code, not dependency inventories."
+    },
+    {
+     "key": "C",
+     "text": "Dynamic application security testing (DAST)",
+     "correct": false,
+     "rationale": "DAST tests a running application from the outside."
+    },
+    {
+     "key": "D",
+     "text": "A linter for code style",
+     "correct": false,
+     "rationale": "A style linter does not track dependency vulnerabilities."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SCA inventories dependencies and flags components with known vulnerabilities.",
+   "outcome_refs": [
+    "MST-1009-03.02"
+   ],
+   "domain_ref": "Implementation and verification",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1009-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reflect shifting security left? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Writing testable security requirements during requirements gathering",
+     "correct": true,
+     "rationale": "Correct: defining security needs early makes them part of the build, not an afterthought."
+    },
+    {
+     "key": "B",
+     "text": "Running SAST automatically on pull requests",
+     "correct": true,
+     "rationale": "Correct: catching code flaws at PR time is earlier and cheaper than post-release."
+    },
+    {
+     "key": "C",
+     "text": "Performing all security testing only after go-live",
+     "correct": false,
+     "rationale": "Testing only after go-live is the opposite of shifting left."
+    },
+    {
+     "key": "D",
+     "text": "Delegating security entirely to an external audit at year end",
+     "correct": false,
+     "rationale": "An annual external audit alone leaves flaws in place for most of the cycle."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: defining security needs early makes them part of the build, not an afterthought.",
+   "outcome_refs": [
+    "MST-1009-01.01"
+   ],
+   "domain_ref": "Secure SDLC foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

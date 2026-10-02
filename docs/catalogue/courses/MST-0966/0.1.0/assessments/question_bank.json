@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0966",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0966-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An auditor asks which upstream sources feed a regulated financial field and who can access it. Which governance capability answers this most directly?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Column-level data lineage combined with access policies",
+     "correct": true,
+     "rationale": "Correct: column-level lineage traces the field's origins and linked access policies show who can see it."
+    },
+    {
+     "key": "B",
+     "text": "A nightly backup schedule",
+     "correct": false,
+     "rationale": "Backups protect against loss but do not trace origins or access."
+    },
+    {
+     "key": "C",
+     "text": "A data compression setting",
+     "correct": false,
+     "rationale": "Compression is a storage concern, unrelated to lineage or access."
+    },
+    {
+     "key": "D",
+     "text": "A dashboard refresh rate",
+     "correct": false,
+     "rationale": "Refresh frequency does not describe data origins or permissions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: column-level lineage traces the field's origins and linked access policies show who can see it.",
+   "outcome_refs": [
+    "MST-0966-03.04"
+   ],
+   "domain_ref": "Lineage and impact",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0966-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary role of a data steward in a governance operating model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Caring for the quality, meaning and proper use of data in a domain",
+     "correct": true,
+     "rationale": "Correct: stewards curate definitions, quality and appropriate use for their domain."
+    },
+    {
+     "key": "B",
+     "text": "Provisioning and patching the database servers",
+     "correct": false,
+     "rationale": "That is a custodian/operations responsibility, not stewardship."
+    },
+    {
+     "key": "C",
+     "text": "Setting the company's overall revenue targets",
+     "correct": false,
+     "rationale": "That is a business leadership role, not data stewardship."
+    },
+    {
+     "key": "D",
+     "text": "Writing the application's user interface",
+     "correct": false,
+     "rationale": "UI development is unrelated to data stewardship."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: stewards curate definitions, quality and appropriate use for their domain.",
+   "outcome_refs": [
+    "MST-0966-01.02"
+   ],
+   "domain_ref": "Governance foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0966-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help a data catalog stay trustworthy over time? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ongoing curation of business definitions and ownership",
+     "correct": true,
+     "rationale": "Correct: curation keeps metadata accurate as the data landscape changes."
+    },
+    {
+     "key": "B",
+     "text": "Linking glossary terms to the physical columns they describe",
+     "correct": true,
+     "rationale": "Correct: linking terms to columns keeps business meaning connected to real data."
+    },
+    {
+     "key": "C",
+     "text": "Populating it once at launch and leaving it unchanged",
+     "correct": false,
+     "rationale": "An unmaintained catalog quickly goes stale and loses trust."
+    },
+    {
+     "key": "D",
+     "text": "Hiding lineage so users are not confused",
+     "correct": false,
+     "rationale": "Lineage increases trust and impact analysis; hiding it reduces value."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: curation keeps metadata accurate as the data landscape changes.",
+   "outcome_refs": [
+    "MST-0966-02.03"
+   ],
+   "domain_ref": "Catalogs and metadata",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

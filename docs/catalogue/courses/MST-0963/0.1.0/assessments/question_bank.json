@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0963",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0963-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A pipeline step is retried after a transient failure and sometimes inserts duplicate rows. Which property should the step have to make retries safe?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Idempotency",
+     "correct": true,
+     "rationale": "Correct: an idempotent step produces the same result whether run once or many times, so retries do not duplicate data."
+    },
+    {
+     "key": "B",
+     "text": "Higher parallelism",
+     "correct": false,
+     "rationale": "More parallelism does not prevent duplicate inserts on retry."
+    },
+    {
+     "key": "C",
+     "text": "A larger batch size",
+     "correct": false,
+     "rationale": "Batch size does not control duplication on re-run."
+    },
+    {
+     "key": "D",
+     "text": "Streaming instead of batch",
+     "correct": false,
+     "rationale": "Switching to streaming does not by itself make a step idempotent."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an idempotent step produces the same result whether run once or many times, so retries do not duplicate data.",
+   "outcome_refs": [
+    "MST-0963-01.04"
+   ],
+   "domain_ref": "Pipeline foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0963-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which extraction approach pulls only rows changed since the last run using a tracked boundary value?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Incremental extraction with a high-water mark",
+     "correct": true,
+     "rationale": "Correct: a high-water mark records the last processed boundary so only newer rows are pulled."
+    },
+    {
+     "key": "B",
+     "text": "Full extraction every run",
+     "correct": false,
+     "rationale": "Full extraction reloads everything and does not use a boundary."
+    },
+    {
+     "key": "C",
+     "text": "Random sampling",
+     "correct": false,
+     "rationale": "Sampling pulls a subset, not specifically changed rows."
+    },
+    {
+     "key": "D",
+     "text": "Schema-on-read",
+     "correct": false,
+     "rationale": "Schema-on-read concerns interpretation at query time, not which rows are extracted."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a high-water mark records the last processed boundary so only newer rows are pulled.",
+   "outcome_refs": [
+    "MST-0963-02.01"
+   ],
+   "domain_ref": "Extraction and ingestion",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0963-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve the reliability of a data pipeline? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Routing invalid records to a dead-letter path for review",
+     "correct": true,
+     "rationale": "Correct: isolating bad records keeps the batch running and preserves them for investigation."
+    },
+    {
+     "key": "B",
+     "text": "Making load steps idempotent so re-runs are safe",
+     "correct": true,
+     "rationale": "Correct: idempotent loads make retries and reprocessing safe."
+    },
+    {
+     "key": "C",
+     "text": "Silently dropping any row that fails validation",
+     "correct": false,
+     "rationale": "Silent drops hide data loss and make failures hard to detect."
+    },
+    {
+     "key": "D",
+     "text": "Disabling all retries to avoid duplicates",
+     "correct": false,
+     "rationale": "The fix for retry duplication is idempotency, not removing resilience."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: isolating bad records keeps the batch running and preserves them for investigation.",
+   "outcome_refs": [
+    "MST-0963-03.04"
+   ],
+   "domain_ref": "Transformation and quality",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

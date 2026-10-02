@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1526",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1526-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Go program launches one goroutine per incoming request with no limit and eventually exhausts memory under load. What is the most appropriate fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Bound concurrency with a worker pool or semaphore channel",
+     "correct": true,
+     "rationale": "Correct: limiting the number of concurrent goroutines caps resource use under load."
+    },
+    {
+     "key": "B",
+     "text": "Call runtime.GC() after each request",
+     "correct": false,
+     "rationale": "Forcing GC does not address the unbounded number of live goroutines."
+    },
+    {
+     "key": "C",
+     "text": "Increase the channel buffer sizes",
+     "correct": false,
+     "rationale": "Larger buffers do not limit how many goroutines are created."
+    },
+    {
+     "key": "D",
+     "text": "Remove all defer statements",
+     "correct": false,
+     "rationale": "defer is unrelated to the number of goroutines spawned."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: limiting the number of concurrent goroutines caps resource use under load.",
+   "outcome_refs": [
+    "MST-1526-03.01"
+   ],
+   "domain_ref": "Concurrency with goroutines and channels",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1526-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two slices were created by slicing the same underlying array. Writing through one changes the other. What explains this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Slices share the same backing array unless explicitly copied",
+     "correct": true,
+     "rationale": "Correct: a slice is a view over a backing array; sub-slices share that storage."
+    },
+    {
+     "key": "B",
+     "text": "Go passes slices by reference like pointers to the same struct",
+     "correct": false,
+     "rationale": "Slices are passed by value, but the value includes a pointer to shared backing storage; the precise cause is the shared array."
+    },
+    {
+     "key": "C",
+     "text": "Maps and slices are the same type in Go",
+     "correct": false,
+     "rationale": "Maps and slices are distinct types with different semantics."
+    },
+    {
+     "key": "D",
+     "text": "The garbage collector merged the two slices",
+     "correct": false,
+     "rationale": "The GC does not merge distinct slices."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a slice is a view over a backing array; sub-slices share that storage.",
+   "outcome_refs": [
+    "MST-1526-02.01"
+   ],
+   "domain_ref": "Data structures and idioms",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1526-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help write correct concurrent Go code? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Run tests with the -race flag to detect data races",
+     "correct": true,
+     "rationale": "Correct: the race detector surfaces unsynchronised concurrent access."
+    },
+    {
+     "key": "B",
+     "text": "Use a context to signal cancellation and deadlines",
+     "correct": true,
+     "rationale": "Correct: context propagates cancellation so goroutines stop promptly."
+    },
+    {
+     "key": "C",
+     "text": "Share mutable state across goroutines without synchronisation",
+     "correct": false,
+     "rationale": "Unsynchronised shared mutable state causes data races."
+    },
+    {
+     "key": "D",
+     "text": "Ignore errors returned from goroutines",
+     "correct": false,
+     "rationale": "Dropping errors hides failures and leads to incorrect behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the race detector surfaces unsynchronised concurrent access.",
+   "outcome_refs": [
+    "MST-1526-03.03"
+   ],
+   "domain_ref": "Concurrency with goroutines and channels",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

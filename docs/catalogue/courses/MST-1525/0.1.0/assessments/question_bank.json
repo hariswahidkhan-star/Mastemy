@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1525",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1525-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A function returns a large object that is immediately used and discarded. Which modern C++ feature most directly avoids an unnecessary deep copy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Move semantics",
+     "correct": true,
+     "rationale": "Correct: move semantics transfer ownership of the resource instead of copying it."
+    },
+    {
+     "key": "B",
+     "text": "A raw pointer return",
+     "correct": false,
+     "rationale": "Returning a raw pointer reintroduces manual ownership and leak risk."
+    },
+    {
+     "key": "C",
+     "text": "Declaring the function inline",
+     "correct": false,
+     "rationale": "inline affects linkage/expansion, not copy avoidance for the returned object."
+    },
+    {
+     "key": "D",
+     "text": "Marking the parameter const",
+     "correct": false,
+     "rationale": "const on a parameter does not affect how the return value is moved or copied."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: move semantics transfer ownership of the resource instead of copying it.",
+   "outcome_refs": [
+    "MST-1525-04.01"
+   ],
+   "domain_ref": "Modern C++ and safe practice",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1525-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which smart pointer expresses sole ownership of a heap object with no reference counting overhead?",
+   "options": [
+    {
+     "key": "A",
+     "text": "std::unique_ptr",
+     "correct": true,
+     "rationale": "Correct: unique_ptr models exclusive ownership and has no reference-count overhead."
+    },
+    {
+     "key": "B",
+     "text": "std::shared_ptr",
+     "correct": false,
+     "rationale": "shared_ptr carries an atomic reference count for shared ownership."
+    },
+    {
+     "key": "C",
+     "text": "std::weak_ptr",
+     "correct": false,
+     "rationale": "weak_ptr is a non-owning observer of a shared_ptr."
+    },
+    {
+     "key": "D",
+     "text": "A raw pointer",
+     "correct": false,
+     "rationale": "A raw pointer expresses no ownership policy at all."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unique_ptr models exclusive ownership and has no reference-count overhead.",
+   "outcome_refs": [
+    "MST-1525-02.03"
+   ],
+   "domain_ref": "Memory and resource management",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1525-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are direct benefits of the RAII idiom in C++? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Resources are released when their owning object goes out of scope",
+     "correct": true,
+     "rationale": "Correct: the destructor runs deterministically at scope exit, freeing the resource."
+    },
+    {
+     "key": "B",
+     "text": "Cleanup still happens when an exception unwinds the stack",
+     "correct": true,
+     "rationale": "Correct: stack unwinding runs destructors, so RAII releases resources on exceptions."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for a type system",
+     "correct": false,
+     "rationale": "RAII is unrelated to whether the language is typed."
+    },
+    {
+     "key": "D",
+     "text": "It makes all code run faster",
+     "correct": false,
+     "rationale": "RAII is about correctness of resource release, not raw speed."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the destructor runs deterministically at scope exit, freeing the resource.",
+   "outcome_refs": [
+    "MST-1525-02.03"
+   ],
+   "domain_ref": "Memory and resource management",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

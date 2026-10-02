@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0938",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0938-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An algorithm runs in T(n) = 2T(n/2) + O(n). What is its asymptotic time complexity?",
+   "options": [
+    {
+     "key": "A",
+     "text": "O(n log n)",
+     "correct": true,
+     "rationale": "Correct: by the Master Theorem this balanced split with linear combine gives O(n log n)."
+    },
+    {
+     "key": "B",
+     "text": "O(n)",
+     "correct": false,
+     "rationale": "O(n) ignores the log n factor from the recursive halving levels."
+    },
+    {
+     "key": "C",
+     "text": "O(n^2)",
+     "correct": false,
+     "rationale": "O(n^2) would arise from a linear number of linear-work levels, not a halving recurrence."
+    },
+    {
+     "key": "D",
+     "text": "O(log n)",
+     "correct": false,
+     "rationale": "O(log n) omits the linear work done at each level."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: by the Master Theorem this balanced split with linear combine gives O(n log n).",
+   "outcome_refs": [
+    "MST-0938-01.04"
+   ],
+   "domain_ref": "Complexity analysis foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0938-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A problem must find the shortest path in an unweighted graph. Which algorithm is the most appropriate and efficient choice?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Breadth-first search",
+     "correct": true,
+     "rationale": "Correct: BFS finds shortest paths by edge count in unweighted graphs in O(V+E)."
+    },
+    {
+     "key": "B",
+     "text": "Dijkstra's algorithm with a priority queue",
+     "correct": false,
+     "rationale": "Dijkstra works but adds priority-queue overhead that is unnecessary when all edges have equal weight."
+    },
+    {
+     "key": "C",
+     "text": "Depth-first search",
+     "correct": false,
+     "rationale": "DFS does not guarantee the shortest path by edge count."
+    },
+    {
+     "key": "D",
+     "text": "Bellman-Ford",
+     "correct": false,
+     "rationale": "Bellman-Ford handles negative weights and is slower; it is overkill for an unweighted graph."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: BFS finds shortest paths by edge count in unweighted graphs in O(V+E).",
+   "outcome_refs": [
+    "MST-0938-03.01"
+   ],
+   "domain_ref": "Graph and optimisation algorithms",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0938-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO conditions indicate a problem is a good candidate for dynamic programming? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It has optimal substructure",
+     "correct": true,
+     "rationale": "Correct: an optimal solution is built from optimal solutions to subproblems."
+    },
+    {
+     "key": "B",
+     "text": "It has overlapping subproblems",
+     "correct": true,
+     "rationale": "Correct: the same subproblems recur, so caching their results avoids repeated work."
+    },
+    {
+     "key": "C",
+     "text": "Each subproblem is solved exactly once with no reuse",
+     "correct": false,
+     "rationale": "No reuse means memoisation gives no benefit; plain divide-and-conquer fits better."
+    },
+    {
+     "key": "D",
+     "text": "The problem is proven NP-hard",
+     "correct": false,
+     "rationale": "NP-hardness does not by itself imply a polynomial DP exists."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an optimal solution is built from optimal solutions to subproblems.",
+   "outcome_refs": [
+    "MST-0938-02.03"
+   ],
+   "domain_ref": "Core design techniques",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

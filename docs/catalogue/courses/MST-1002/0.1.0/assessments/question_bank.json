@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1002",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1002-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A read-heavy endpoint is overloading the database. Which change most directly reduces database read load for repeated queries?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add a cache in front of the database with an invalidation strategy",
+     "correct": true,
+     "rationale": "Correct: caching repeated reads offloads the database, provided staleness is managed by invalidation."
+    },
+    {
+     "key": "B",
+     "text": "Switch the database to synchronous replication",
+     "correct": false,
+     "rationale": "Synchronous replication adds write latency and does not reduce read load."
+    },
+    {
+     "key": "C",
+     "text": "Increase the API's request timeout",
+     "correct": false,
+     "rationale": "A longer timeout does not reduce the number of database reads."
+    },
+    {
+     "key": "D",
+     "text": "Remove the load balancer",
+     "correct": false,
+     "rationale": "Removing the load balancer reduces capacity and availability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: caching repeated reads offloads the database, provided staleness is managed by invalidation.",
+   "outcome_refs": [
+    "MST-1002-02.03"
+   ],
+   "domain_ref": "Scaling and data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1002-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During a network partition, a system must keep serving requests even if some replicas show slightly stale data. Which tradeoff is being chosen?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Availability over strong consistency",
+     "correct": true,
+     "rationale": "Correct: under a partition, serving possibly-stale data favours availability over strong consistency (per CAP)."
+    },
+    {
+     "key": "B",
+     "text": "Consistency over availability",
+     "correct": false,
+     "rationale": "Choosing consistency would reject requests it cannot serve consistently, reducing availability."
+    },
+    {
+     "key": "C",
+     "text": "Durability over latency",
+     "correct": false,
+     "rationale": "The scenario is about partition behaviour, not durability versus latency."
+    },
+    {
+     "key": "D",
+     "text": "Throughput over correctness of writes",
+     "correct": false,
+     "rationale": "The described choice concerns read staleness during a partition, not write correctness tradeoffs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: under a partition, serving possibly-stale data favours availability over strong consistency (per CAP).",
+   "outcome_refs": [
+    "MST-1002-03.01"
+   ],
+   "domain_ref": "Reliability and consistency",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1002-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve a system's resilience to downstream failures? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retries with exponential backoff and jitter",
+     "correct": true,
+     "rationale": "Correct: backoff with jitter spreads retries and avoids a synchronized thundering herd."
+    },
+    {
+     "key": "B",
+     "text": "Graceful degradation that serves reduced functionality",
+     "correct": true,
+     "rationale": "Correct: degrading gracefully keeps core service available when a dependency fails."
+    },
+    {
+     "key": "C",
+     "text": "Unlimited immediate retries on every error",
+     "correct": false,
+     "rationale": "Immediate unbounded retries amplify load and can cause cascading failure."
+    },
+    {
+     "key": "D",
+     "text": "Removing all timeouts so calls always wait",
+     "correct": false,
+     "rationale": "No timeouts let failures tie up resources and spread."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: backoff with jitter spreads retries and avoids a synchronized thundering herd.",
+   "outcome_refs": [
+    "MST-1002-04.01"
+   ],
+   "domain_ref": "Architecture and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

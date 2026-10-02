@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0970",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0970-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A 2-D array has rows as samples and columns as features. To compute the mean of each feature, which axis should be aggregated?",
+   "options": [
+    {
+     "key": "A",
+     "text": "axis=0 (down the rows, one result per column)",
+     "correct": true,
+     "rationale": "Correct: aggregating over axis=0 collapses the rows, giving one mean per feature column."
+    },
+    {
+     "key": "B",
+     "text": "axis=1 (across the columns, one result per row)",
+     "correct": false,
+     "rationale": "axis=1 collapses columns, giving a per-sample mean, not per-feature."
+    },
+    {
+     "key": "C",
+     "text": "Either axis gives the same result",
+     "correct": false,
+     "rationale": "The axes produce different results for a non-square, non-symmetric array."
+    },
+    {
+     "key": "D",
+     "text": "NumPy ignores the axis for mean",
+     "correct": false,
+     "rationale": "The axis argument directly controls which dimension is reduced."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: aggregating over axis=0 collapses the rows, giving one mean per feature column.",
+   "outcome_refs": [
+    "MST-0970-03.02"
+   ],
+   "domain_ref": "Computation and linear algebra",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0970-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A basic slice of a NumPy array is modified and the original array changes too. What explains this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Basic slicing returns a view that shares memory with the original",
+     "correct": true,
+     "rationale": "Correct: a basic slice is a view over the same buffer, so edits propagate."
+    },
+    {
+     "key": "B",
+     "text": "NumPy always deep-copies on slicing",
+     "correct": false,
+     "rationale": "Basic slicing returns a view, not a copy."
+    },
+    {
+     "key": "C",
+     "text": "The array dtype was float64",
+     "correct": false,
+     "rationale": "dtype does not determine view-versus-copy behaviour."
+    },
+    {
+     "key": "D",
+     "text": "Broadcasting duplicated the array",
+     "correct": false,
+     "rationale": "Broadcasting is unrelated to why a slice shares memory."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a basic slice is a view over the same buffer, so edits propagate.",
+   "outcome_refs": [
+    "MST-0970-01.04"
+   ],
+   "domain_ref": "The ndarray and its model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0970-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are reasons to vectorise code with NumPy instead of using Python loops? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Operations run in optimised compiled code over whole arrays",
+     "correct": true,
+     "rationale": "Correct: ufuncs push the loop into fast compiled code, avoiding per-element Python overhead."
+    },
+    {
+     "key": "B",
+     "text": "It typically reduces interpreter overhead per element",
+     "correct": true,
+     "rationale": "Correct: vectorised ops avoid the per-iteration Python bytecode cost."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees results are always more numerically precise",
+     "correct": false,
+     "rationale": "Vectorisation changes speed, not inherent numerical precision."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need to consider array shapes",
+     "correct": false,
+     "rationale": "Shape and broadcasting still matter when vectorising."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: ufuncs push the loop into fast compiled code, avoiding per-element Python overhead.",
+   "outcome_refs": [
+    "MST-0970-01.01"
+   ],
+   "domain_ref": "The ndarray and its model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

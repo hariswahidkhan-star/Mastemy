@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0939",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0939-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A class must let callers choose among interchangeable sorting behaviours at runtime without conditionals. Which pattern fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Strategy",
+     "correct": true,
+     "rationale": "Correct: the strategy pattern encapsulates interchangeable algorithms behind a common interface, selectable at runtime."
+    },
+    {
+     "key": "B",
+     "text": "Singleton",
+     "correct": false,
+     "rationale": "Singleton controls instance count, not interchangeable behaviour."
+    },
+    {
+     "key": "C",
+     "text": "Adapter",
+     "correct": false,
+     "rationale": "Adapter converts one interface to another; it does not select among algorithms."
+    },
+    {
+     "key": "D",
+     "text": "Builder",
+     "correct": false,
+     "rationale": "Builder constructs complex objects step by step; it does not swap behaviours."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the strategy pattern encapsulates interchangeable algorithms behind a common interface, selectable at runtime.",
+   "outcome_refs": [
+    "MST-0939-04.01"
+   ],
+   "domain_ref": "Behavioural patterns and applied design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0939-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A subclass overrides a method so that it throws on inputs the base class accepts. Which principle does this most directly violate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Liskov substitution principle",
+     "correct": true,
+     "rationale": "Correct: subtypes must be usable wherever the base type is expected; narrowing accepted inputs breaks substitutability."
+    },
+    {
+     "key": "B",
+     "text": "Single responsibility principle",
+     "correct": false,
+     "rationale": "SRP concerns how many reasons a class has to change, not substitutability."
+    },
+    {
+     "key": "C",
+     "text": "Interface segregation principle",
+     "correct": false,
+     "rationale": "ISP concerns fat interfaces forcing unused dependencies."
+    },
+    {
+     "key": "D",
+     "text": "Open-closed principle",
+     "correct": false,
+     "rationale": "OCP concerns extension without modification, not substitution behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: subtypes must be usable wherever the base type is expected; narrowing accepted inputs breaks substitutability.",
+   "outcome_refs": [
+    "MST-0939-02.02"
+   ],
+   "domain_ref": "Design principles (SOLID and beyond)",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0939-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid reasons to prefer composition over inheritance? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It avoids tight coupling to a base class's implementation",
+     "correct": true,
+     "rationale": "Correct: composition depends on interfaces, not a concrete parent's internals."
+    },
+    {
+     "key": "B",
+     "text": "It lets behaviour be swapped or combined at runtime",
+     "correct": true,
+     "rationale": "Correct: composed collaborators can be replaced without changing a class hierarchy."
+    },
+    {
+     "key": "C",
+     "text": "It always results in fewer lines of code",
+     "correct": false,
+     "rationale": "Composition can add delegation code; line count is not the reason."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees better runtime performance",
+     "correct": false,
+     "rationale": "Performance is not inherently improved by composition."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: composition depends on interfaces, not a concrete parent's internals.",
+   "outcome_refs": [
+    "MST-0939-01.02"
+   ],
+   "domain_ref": "Object-oriented foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1010",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1010-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A query is built by concatenating user input into a SQL string. Which fix most directly prevents SQL injection?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use parameterised queries (prepared statements)",
+     "correct": true,
+     "rationale": "Correct: parameterisation separates code from data so input cannot alter the query structure."
+    },
+    {
+     "key": "B",
+     "text": "Escape only single quotes in the input",
+     "correct": false,
+     "rationale": "Manual escaping is error-prone and misses encodings and contexts that parameterisation handles safely."
+    },
+    {
+     "key": "C",
+     "text": "Hide the SQL error messages",
+     "correct": false,
+     "rationale": "Hiding errors limits information leakage but does not stop the injection."
+    },
+    {
+     "key": "D",
+     "text": "Run the database on a different port",
+     "correct": false,
+     "rationale": "Changing the port does not affect query construction."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: parameterisation separates code from data so input cannot alter the query structure.",
+   "outcome_refs": [
+    "MST-1010-02.01"
+   ],
+   "domain_ref": "Injection and access-control risks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1010-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user changes an id in a URL and views another customer's order. Which OWASP risk category is this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Broken access control (insecure direct object reference)",
+     "correct": true,
+     "rationale": "Correct: missing server-side authorisation on an object reference is broken access control."
+    },
+    {
+     "key": "B",
+     "text": "Cryptographic failure",
+     "correct": false,
+     "rationale": "No encryption weakness is described; the flaw is authorisation."
+    },
+    {
+     "key": "C",
+     "text": "Cross-site scripting",
+     "correct": false,
+     "rationale": "XSS involves executing attacker script in a victim's browser, not object access."
+    },
+    {
+     "key": "D",
+     "text": "Security logging failure",
+     "correct": false,
+     "rationale": "The flaw is missing authorisation, not inadequate logging."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: missing server-side authorisation on an object reference is broken access control.",
+   "outcome_refs": [
+    "MST-1010-02.02"
+   ],
+   "domain_ref": "Injection and access-control risks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1010-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls help mitigate cross-site scripting? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Contextual output encoding of untrusted data",
+     "correct": true,
+     "rationale": "Correct: encoding output for its context prevents data from being interpreted as script."
+    },
+    {
+     "key": "B",
+     "text": "A restrictive Content Security Policy",
+     "correct": true,
+     "rationale": "Correct: a CSP limits which scripts can execute, reducing XSS impact."
+    },
+    {
+     "key": "C",
+     "text": "Storing passwords in plaintext",
+     "correct": false,
+     "rationale": "Plaintext passwords are a separate, serious flaw and do nothing against XSS."
+    },
+    {
+     "key": "D",
+     "text": "Disabling HTTPS",
+     "correct": false,
+     "rationale": "Disabling HTTPS weakens transport security and does not address XSS."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: encoding output for its context prevents data from being interpreted as script.",
+   "outcome_refs": [
+    "MST-1010-03.01"
+   ],
+   "domain_ref": "Client-side and data risks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

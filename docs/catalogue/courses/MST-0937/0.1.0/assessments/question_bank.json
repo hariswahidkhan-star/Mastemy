@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0937",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0937-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A program appends to a collection millions of times and only ever reads from the end. Which structure gives the best amortised performance with the least memory overhead?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A dynamic array (amortised O(1) append)",
+     "correct": true,
+     "rationale": "Correct: a dynamic array gives amortised O(1) append and has no per-element pointer overhead."
+    },
+    {
+     "key": "B",
+     "text": "A doubly linked list",
+     "correct": false,
+     "rationale": "A doubly linked list appends in O(1) but carries two pointers per node, wasting memory for this pattern."
+    },
+    {
+     "key": "C",
+     "text": "A balanced binary search tree",
+     "correct": false,
+     "rationale": "A BST adds O(log n) per insert and ordering you do not need here."
+    },
+    {
+     "key": "D",
+     "text": "A hash set",
+     "correct": false,
+     "rationale": "A hash set does not preserve insertion order and adds hashing overhead for no benefit."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a dynamic array gives amortised O(1) append and has no per-element pointer overhead.",
+   "outcome_refs": [
+    "MST-0937-01.01"
+   ],
+   "domain_ref": "Linear structures and their operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0937-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A hash table with chaining is showing lookups far slower than O(1). Which single cause most directly explains this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A high load factor with a poor hash spreading keys into few buckets",
+     "correct": true,
+     "rationale": "Correct: a high load factor plus poor distribution lengthens chains, pushing lookups toward O(n)."
+    },
+    {
+     "key": "B",
+     "text": "The table stores strings instead of integers",
+     "correct": false,
+     "rationale": "Key type alone does not break O(1) if the hash distributes well."
+    },
+    {
+     "key": "C",
+     "text": "The table was created with a capacity hint",
+     "correct": false,
+     "rationale": "A capacity hint reduces resizes and generally helps, not hurts."
+    },
+    {
+     "key": "D",
+     "text": "Open addressing is being used",
+     "correct": false,
+     "rationale": "The scenario states chaining, not open addressing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a high load factor plus poor distribution lengthens chains, pushing lookups toward O(n).",
+   "outcome_refs": [
+    "MST-0937-03.03"
+   ],
+   "domain_ref": "Hashing and associative structures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0937-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about binary search are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It requires the input to be sorted on the search key",
+     "correct": true,
+     "rationale": "Correct: binary search relies on ordering to discard half the range each step."
+    },
+    {
+     "key": "B",
+     "text": "It runs in O(log n) comparisons on a sorted array",
+     "correct": true,
+     "rationale": "Correct: each step halves the search range, giving logarithmic comparisons."
+    },
+    {
+     "key": "C",
+     "text": "It works in O(log n) on an unsorted array",
+     "correct": false,
+     "rationale": "Without ordering the halving assumption fails; you would need a linear scan."
+    },
+    {
+     "key": "D",
+     "text": "It needs a hash function",
+     "correct": false,
+     "rationale": "Binary search uses comparisons and ordering, not hashing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: binary search relies on ordering to discard half the range each step.",
+   "outcome_refs": [
+    "MST-0937-04.01"
+   ],
+   "domain_ref": "Core algorithms over structures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

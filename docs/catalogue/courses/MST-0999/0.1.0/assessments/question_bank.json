@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0999",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0999-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Several microservices call each other synchronously, so one service's slowness stalls the whole request chain. Which pattern most directly contains this failure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A circuit breaker with timeouts on the dependency call",
+     "correct": true,
+     "rationale": "Correct: a circuit breaker plus timeouts stops calls to a failing dependency from blocking the caller."
+    },
+    {
+     "key": "B",
+     "text": "Sharing a single database across all services",
+     "correct": false,
+     "rationale": "A shared database increases coupling and does not contain call-chain failures."
+    },
+    {
+     "key": "C",
+     "text": "Removing all asynchronous messaging",
+     "correct": false,
+     "rationale": "Removing async messaging increases synchronous coupling, worsening the problem."
+    },
+    {
+     "key": "D",
+     "text": "Deploying all services as one unit",
+     "correct": false,
+     "rationale": "That recreates a monolith rather than containing the failure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a circuit breaker plus timeouts stops calls to a failing dependency from blocking the caller.",
+   "outcome_refs": [
+    "MST-0999-04.01"
+   ],
+   "domain_ref": "Resilience and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0999-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A business operation spans three services and must stay consistent without a distributed transaction. Which pattern fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A saga with compensating actions",
+     "correct": true,
+     "rationale": "Correct: a saga coordinates local transactions and compensates on failure, giving eventual consistency without 2PC."
+    },
+    {
+     "key": "B",
+     "text": "A two-phase commit across all three databases",
+     "correct": false,
+     "rationale": "Distributed 2PC is the pattern microservices avoid due to coupling and availability costs."
+    },
+    {
+     "key": "C",
+     "text": "A single shared transaction table locked by all services",
+     "correct": false,
+     "rationale": "A shared lock reintroduces tight coupling and a bottleneck."
+    },
+    {
+     "key": "D",
+     "text": "Ignoring consistency entirely",
+     "correct": false,
+     "rationale": "The requirement is to stay consistent, so ignoring it is not a valid option."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a saga coordinates local transactions and compensates on failure, giving eventual consistency without 2PC.",
+   "outcome_refs": [
+    "MST-0999-03.02"
+   ],
+   "domain_ref": "Data and consistency",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0999-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO guidelines lead to healthy microservice boundaries? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Align each service to a business capability or bounded context",
+     "correct": true,
+     "rationale": "Correct: capability-aligned services change for one reason and stay cohesive."
+    },
+    {
+     "key": "B",
+     "text": "Give each service ownership of its own data",
+     "correct": true,
+     "rationale": "Correct: private data ownership reduces coupling and lets services evolve independently."
+    },
+    {
+     "key": "C",
+     "text": "Split services by technical layer (UI, logic, data)",
+     "correct": false,
+     "rationale": "Layer-based splits spread one change across many services."
+    },
+    {
+     "key": "D",
+     "text": "Share one database schema across all services",
+     "correct": false,
+     "rationale": "A shared schema couples services and blocks independent change."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: capability-aligned services change for one reason and stay cohesive.",
+   "outcome_refs": [
+    "MST-0999-01.02"
+   ],
+   "domain_ref": "Foundations and boundaries",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

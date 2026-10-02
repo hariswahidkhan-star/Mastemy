@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1004",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1004-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An input accepts integers from 1 to 100. Which set of values best reflects boundary-value analysis?",
+   "options": [
+    {
+     "key": "A",
+     "text": "0, 1, 100 and 101",
+     "correct": true,
+     "rationale": "Correct: boundary-value analysis tests just inside and just outside each limit."
+    },
+    {
+     "key": "B",
+     "text": "50 only",
+     "correct": false,
+     "rationale": "A single mid-range value tests neither boundary."
+    },
+    {
+     "key": "C",
+     "text": "Random values between 1 and 100",
+     "correct": false,
+     "rationale": "Random mid-range values are unlikely to probe the boundaries where defects cluster."
+    },
+    {
+     "key": "D",
+     "text": "Only 1 and 100",
+     "correct": false,
+     "rationale": "Testing just the valid edges omits the just-outside values that catch off-by-one errors."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: boundary-value analysis tests just inside and just outside each limit.",
+   "outcome_refs": [
+    "MST-1004-02.01"
+   ],
+   "domain_ref": "Test design techniques",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1004-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is 90% code coverage not proof that software is correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Coverage shows which lines ran, not whether their behaviour was verified",
+     "correct": true,
+     "rationale": "Correct: executing a line is not the same as asserting it produced the right result for all relevant cases."
+    },
+    {
+     "key": "B",
+     "text": "Coverage above 80% is always sufficient by standard",
+     "correct": false,
+     "rationale": "No standard threshold proves correctness; the limitation is conceptual."
+    },
+    {
+     "key": "C",
+     "text": "Coverage measures only integration tests",
+     "correct": false,
+     "rationale": "Coverage can be measured at any test level; that is not the issue."
+    },
+    {
+     "key": "D",
+     "text": "Coverage guarantees no boundary defects",
+     "correct": false,
+     "rationale": "Coverage says nothing specific about boundary conditions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: executing a line is not the same as asserting it produced the right result for all relevant cases.",
+   "outcome_refs": [
+    "MST-1004-03.04"
+   ],
+   "domain_ref": "Test levels and the pyramid",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1004-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements reflect a healthy application of the test pyramid? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Many fast unit tests form the base of the suite",
+     "correct": true,
+     "rationale": "Correct: a broad base of fast unit tests gives quick, stable feedback."
+    },
+    {
+     "key": "B",
+     "text": "Fewer, slower end-to-end tests sit at the top",
+     "correct": true,
+     "rationale": "Correct: expensive end-to-end tests are used sparingly for critical flows."
+    },
+    {
+     "key": "C",
+     "text": "Most tests should be slow end-to-end UI tests",
+     "correct": false,
+     "rationale": "A top-heavy suite is the ice-cream-cone anti-pattern: slow and brittle."
+    },
+    {
+     "key": "D",
+     "text": "Unit tests should be avoided to save time",
+     "correct": false,
+     "rationale": "Unit tests are the most cost-effective layer, not something to avoid."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a broad base of fast unit tests gives quick, stable feedback.",
+   "outcome_refs": [
+    "MST-1004-03.02"
+   ],
+   "domain_ref": "Test levels and the pyramid",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
