@@ -12,7 +12,7 @@ namespace Mastemy.Api.Modules.Commerce;
 // ---------- DTOs ----------
 public record CouponInput(string Code, string Kind, decimal? PercentOff, decimal? AmountOff, string? Currency, string Scope, Guid? ScopeId,
     int? MaxRedemptions, int? MaxPerUser, DateTime? StartsAt, DateTime? ExpiresAt, decimal? MinAmount,
-    List<string>? AllowedEmails = null, List<string>? AllowedDomains = null, Guid? AllowedOrganizationId = null);
+    List<string>? AllowedEmails = null, List<string>? AllowedDomains = null, Guid? AllowedOrganizationId = null, bool AllowsGifts = false);
 public record CouponDto(Guid Id, string Code, string Kind, decimal? PercentOff, decimal? AmountOff, string? Currency, string Scope, Guid? ScopeId,
     int? MaxRedemptions, int MaxPerUser, DateTime StartsAt, DateTime? ExpiresAt, decimal? MinAmount, string Status, bool CreatedByStaff,
     Guid CreatedBy, int Redemptions, List<string> AllowedEmails, List<string> AllowedDomains, Guid? AllowedOrganizationId, DateTime CreatedAt);
@@ -270,6 +270,18 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
 
     // ===================== Coupons =====================
 
+    /// <summary>
+    /// Locks the coupon row (SELECT ... FOR UPDATE) for the rest of the caller's transaction so that usage-limit counting and
+    /// the order insert are serialized per coupon. Unknown codes lock nothing (ApplyCoupon rejects them).
+    /// </summary>
+    public async Task LockCoupon(string code)
+    {
+        if (db.Database.CurrentTransaction is null) throw new InvalidOperationException("Coupon locks require a transaction.");
+        string norm;
+        try { norm = CommerceText.NormalizeCode(code, "Coupon code"); } catch (AppException) { return; }
+        await db.Database.ExecuteSqlInterpolatedAsync($"SELECT Id FROM Commerce_Coupons WHERE NormalizedCode = {norm} FOR UPDATE");
+    }
+
     private async Task ApplyCoupon(Quote q, Guid userId, string code, decimal? saleAmount, bool gift, Guid? excludeOrderId, DateTime now)
     {
         var norm = CommerceText.NormalizeCode(code, "Coupon code");
@@ -293,6 +305,7 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
         if (await db.CourseInstructors.AnyAsync(ci => courseIds.Contains(ci.CourseId) && ci.UserId == userId))
             throw AppException.Bad("Course instructors cannot use coupons on their own courses.", "coupon_self_use");
 
+        var giftsAllowed = gift && await db.Set<CouponGiftPolicy>().AnyAsync(p => p.CouponId == c.Id && p.AllowsGifts);
         if (c.Kind == "Scholarship")
         {
             if (gift) throw AppException.Bad("Scholarship codes cannot be used for gifts.", "coupon_not_applicable");
@@ -330,6 +343,10 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
             "Scholarship" => q.ListAmount,
             _ => 0m,
         };
+        // Gifts: staff Percent coupons and any coupon that would make the gift free are reserved for coupons that
+        // explicitly allow gifts (default false), so internal/100% codes cannot be laundered into transferable gift claims.
+        if (gift && !giftsAllowed && ((c.CreatedByStaff && c.Kind == "Percent") || discount >= q.ListAmount))
+            throw AppException.Bad("This coupon cannot be used for gift purchases.", "coupon_gift_not_allowed");
         if (!c.CreatedByStaff && c.Kind != "Scholarship" && discount > Money.Round(q.ListAmount * InstructorCouponMaxPercent / 100m, q.Currency))
             throw AppException.Bad("Coupon exceeds the instructor discount policy.", "coupon_exceeds_policy");
         var after = q.ListAmount - discount;
@@ -420,8 +437,10 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
             c.MinAmount = minAmount;
         }
         if (await db.Set<Coupon>().AnyAsync(x => x.NormalizedCode == norm)) throw AppException.Conflict("A coupon with this code already exists.", "coupon_code_taken");
+        if (input.AllowsGifts && !asStaff) throw AppException.Forbidden("Only staff can allow a coupon to be used for gifts.");
         db.Set<Coupon>().Add(c);
-        audit.Record("coupon.created", nameof(Coupon), c.Id, new { c.Code, c.Kind, c.PercentOff, c.AmountOff, c.Currency, c.Scope, c.ScopeId, c.MaxRedemptions, c.MaxPerUser, c.StartsAt, c.ExpiresAt, c.Status, asStaff });
+        if (input.AllowsGifts) db.Set<CouponGiftPolicy>().Add(new CouponGiftPolicy { CouponId = c.Id, AllowsGifts = true, SetBy = uid });
+        audit.Record("coupon.created", nameof(Coupon), c.Id, new { c.Code, c.Kind, c.PercentOff, c.AmountOff, c.Currency, c.Scope, c.ScopeId, c.MaxRedemptions, c.MaxPerUser, c.StartsAt, c.ExpiresAt, c.Status, asStaff, input.AllowsGifts });
         try { await db.SaveChangesAsync(); }
         catch (DbUpdateException) { throw AppException.Conflict("A coupon with this code already exists.", "coupon_code_taken"); }
         return await CouponDto(c);

@@ -450,8 +450,23 @@ public class Wave3AssessmentTests(AssessmentFixture fx) : IClassFixture<Assessme
 
         // Premium items stop working when the entitlement ends.
         var p = withPremium.Items.Single(i => i.Stem == "PP1 stem");
+        var right = p.Options.Single(o => o.Text == "PP1-right").Id;
+        await Read<PracticeItemView>(await learner.PutAsync($"/api/practice/sessions/{withPremium.Id}/items/{p.ItemId}", JsonBody(new { selectedOptionIds = new[] { right } })));
         await fx.WithDb(db => db.Entitlements.Where(e => e.UserId == uid).ExecuteUpdateAsync(x => x.SetProperty(e => e.RevokedAt, DateTime.UtcNow)));
         Assert.Equal(HttpStatusCode.Forbidden, (await learner.PostAsync($"/api/practice/sessions/{withPremium.Id}/items/{p.ItemId}/check", null)).StatusCode);
+
+        // Refund-then-finish: the score is returned but the premium item's key, rationales and explanation are stripped.
+        var finished = await Read<PracticeResult>(await learner.PostAsync($"/api/practice/sessions/{withPremium.Id}/finish", null));
+        Assert.Equal(1m, finished.PointsEarned);
+        Assert.Equal(1, finished.Correct);
+        var stripped = finished.Review.Single(r => r.Stem == "PP1 stem");
+        Assert.Empty(stripped.CorrectOptionIds);
+        Assert.Equal("", stripped.Explanation);
+        Assert.All(stripped.Options, o => { Assert.False(o.IsCorrect); Assert.Equal("", o.Rationale); });
+        var freeReview = finished.Review.Single(r => r.Stem == "PF1 stem");
+        Assert.NotEmpty(freeReview.CorrectOptionIds); // free items keep their review
+        var again = await Read<PracticeResult>(await learner.PostAsync($"/api/practice/sessions/{withPremium.Id}/finish", null)); // idempotent re-read
+        Assert.Empty(again.Review.Single(r => r.Stem == "PP1 stem").CorrectOptionIds);
     }
 
     // ---------------- Diagnostic recommendations ----------------

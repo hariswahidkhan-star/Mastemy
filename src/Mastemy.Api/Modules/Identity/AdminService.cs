@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Mastemy.Api.Modules.Identity;
 
-public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, AuthService auth)
+public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, AuthService auth, TokenSessionValidator tokenValidator)
 {
     public async Task<PagedResult<AdminUserDto>> ListUsers(string? q, int page, int pageSize)
     {
@@ -46,6 +46,7 @@ public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, 
         var @new = user.Roles.Select(r => r.Role).OrderBy(r => r).ToArray();
         audit.Record("user.roles_changed", "User", user.Id, new { old, @new });
         await db.SaveChangesAsync();
+        tokenValidator.Invalidate(user.Id); // a demoted user's outstanding tokens lose the removed roles immediately
         return ToDto(user, sec);
     }
 
@@ -70,6 +71,7 @@ public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, 
             await db.SaveChangesAsync();
         }
         if (suspended) await auth.RevokeAllForUser(user.Id);
+        tokenValidator.Invalidate(user.Id);
         return ToDto(user, await db.Set<UserSecurity>().AsNoTracking().FirstOrDefaultAsync(s => s.UserId == userId));
     }
 

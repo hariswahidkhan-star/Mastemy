@@ -395,8 +395,11 @@ public class SubscriptionService(AppDbContext db, ICurrentUser me, AuditService 
     /// Monthly instructor pool from subscription revenue (per currency), allocated by consumption share:
     ///   Revenue R = Σ subscription invoice payments in the month − Σ completed refunds of subscription orders decided in the month.
     ///   Pool P = floor(R × Commission:SubscriptionPoolPercent / 100).
-    ///   Units U_c = premium MCQ attempts submitted in the month on course c + premium resource downloads of course c in the month,
-    ///   counting only subscribers of that currency who held a subscription entitlement for c, and excluding the course's own instructors.
+    ///   Units U_c = Σ over eligible subscribers s of min(cap, |{(s, c, refId, utcDay)}|), where each element is a distinct
+    ///   (subscriber, course, assessmentId-or-resourceId, UTC day) of a submitted premium attempt or a premium resource download
+    ///   in the month, made while s held a subscription entitlement for c; cap = Subscriptions:MaxUnitsPerSubscriberPerCourse (default 30).
+    ///   Excluded subscribers: course instructors/owner of c (for c), staff (any role other than Student/Instructor), and users
+    ///   whose subscription payment was refunded or charged back (dispute not won) in the month.
     ///   Course amount A_c = floor(P × U_c / ΣU); A_c is split between instructors by RevenueSharePercent (CommissionSplit at 100%).
     ///   Rounding remainders and courses without payees stay with the platform. With ΣU = 0 nothing is allocated.
     /// One allocation per (year, month, currency) — re-running is a no-op. Ledger kind "SubscriptionPool".
@@ -436,16 +439,26 @@ public class SubscriptionService(AppDbContext db, ICurrentUser me, AuditService 
             var attempts = await (from at in db.Attempts.AsNoTracking()
                                   join a in db.Assessments.AsNoTracking() on at.AssessmentId equals a.Id
                                   where a.IsPremium && at.Status == AttemptStatus.Submitted && at.SubmittedAt >= start && at.SubmittedAt < end && userIds.Contains(at.UserId)
-                                  select new { at.UserId, a.CourseId, At = at.SubmittedAt!.Value }).ToListAsync();
+                                  select new { at.UserId, a.CourseId, RefId = (Guid?)a.Id, At = at.SubmittedAt!.Value }).ToListAsync();
             var downloads = await db.Set<ConsumptionEvent>().AsNoTracking()
                 .Where(c => c.Kind == "PremiumDownload" && c.OccurredAt >= start && c.OccurredAt < end && userIds.Contains(c.UserId))
-                .Select(c => new { c.UserId, c.CourseId, At = c.OccurredAt }).ToListAsync();
+                .Select(c => new { c.UserId, c.CourseId, c.RefId, At = c.OccurredAt }).ToListAsync();
             var courseIds = attempts.Select(a => a.CourseId).Concat(downloads.Select(d => d.CourseId)).Distinct().ToList();
             var instructors = await db.CourseInstructors.AsNoTracking().Where(ci => courseIds.Contains(ci.CourseId)).ToListAsync();
+            var owners = await db.Courses.AsNoTracking().Where(c => courseIds.Contains(c.Id)).Select(c => new { c.Id, c.OwnerId }).ToListAsync();
+            var authors = instructors.Select(i => (i.CourseId, i.UserId)).Concat(owners.Select(o => (CourseId: o.Id, UserId: o.OwnerId))).ToHashSet();
+            var staff = (await db.UserRoles.AsNoTracking()
+                .Where(r => userIds.Contains(r.UserId) && r.Role != Roles.Student && r.Role != Roles.Instructor)
+                .Select(r => r.UserId).ToListAsync()).ToHashSet();
+            var reversed = await ReversedSubscribers(userIds, start, end);
+            var cap = Math.Max(1, cfg.GetValue("Subscriptions:MaxUnitsPerSubscriberPerCourse", 30));
             var units = attempts.Concat(downloads)
+                .Where(x => x.RefId is not null)
+                .Where(x => !staff.Contains(x.UserId) && !reversed.Contains(x.UserId) && !authors.Contains((x.CourseId, x.UserId)))
                 .Where(x => subEnts.Any(e => e.UserId == x.UserId && e.CourseId == x.CourseId && e.StartsAt <= x.At))
-                .Where(x => !instructors.Any(i => i.CourseId == x.CourseId && i.UserId == x.UserId))
-                .GroupBy(x => x.CourseId).ToDictionary(g => g.Key, g => (long)g.Count());
+                .Select(x => (x.UserId, x.CourseId, RefId: x.RefId!.Value, Day: x.At.Date)).Distinct()
+                .GroupBy(x => (x.UserId, x.CourseId)).Select(g => (g.Key.CourseId, Units: (long)Math.Min(cap, g.Count())))
+                .GroupBy(x => x.CourseId).ToDictionary(g => g.Key, g => g.Sum(x => x.Units));
             var totalUnits = units.Values.Sum();
 
             var alloc = new PoolAllocation { Year = year, Month = month, Currency = currency, Revenue = revenue, PoolPercent = pct, Pool = pool, TotalUnits = totalUnits, CreatedBy = me.Id };
@@ -481,6 +494,24 @@ public class SubscriptionService(AppDbContext db, ICurrentUser me, AuditService 
         return result;
     }
 
+    /// <summary>Subscribers whose subscription payment was refunded (completed) or charged back (dispute not won) in [start, end).</summary>
+    private async Task<HashSet<Guid>> ReversedSubscribers(List<Guid> userIds, DateTime start, DateTime end)
+    {
+        var subOrders = from si in db.Set<SubscriptionInvoice>().AsNoTracking()
+                        join s in db.Set<Subscription>().AsNoTracking() on si.SubscriptionId equals s.Id
+                        where userIds.Contains(s.UserId)
+                        select new { si.OrderId, s.UserId };
+        var refunded = await (from so in subOrders
+                              join r in db.Refunds.AsNoTracking() on so.OrderId equals r.OrderId
+                              where r.Status == "Completed" && r.DecidedAt >= start && r.DecidedAt < end
+                              select so.UserId).ToListAsync();
+        var disputed = await (from so in subOrders
+                              join d in db.Set<Dispute>().AsNoTracking() on so.OrderId equals d.OrderId
+                              where d.Status != "Won" && d.CreatedAt < end && (d.ClosedAt == null || d.ClosedAt >= start)
+                              select so.UserId).ToListAsync();
+        return refunded.Concat(disputed).ToHashSet();
+    }
+
     public async Task<List<PoolAllocationDto>> Allocations(int? year)
     {
         var q = db.Set<PoolAllocation>().AsNoTracking();
@@ -496,8 +527,21 @@ public class SubscriptionService(AppDbContext db, ICurrentUser me, AuditService 
 /// <summary>Records premium consumption signals for the subscription pool (call from premium resource downloads).</summary>
 public class ConsumptionRecorder(AppDbContext db)
 {
+    /// <summary>
+    /// Records a premium download for the subscription pool. Deduplicated on (user, resource RefId, UTC day): repeated downloads
+    /// of the same file on the same day store nothing new (allocation also counts distinct (user, course, refId, day) only).
+    /// Course authors and staff are not recorded at all.
+    /// </summary>
     public async Task RecordPremiumDownload(Guid userId, Guid courseId, Guid resourceId)
     {
+        var day = DateTime.UtcNow.Date;
+        var next = day.AddDays(1);
+        if (await db.Set<ConsumptionEvent>().AnyAsync(c => c.UserId == userId && c.Kind == "PremiumDownload" && c.RefId == resourceId && c.OccurredAt >= day && c.OccurredAt < next))
+            return;
+        if (await db.CourseInstructors.AnyAsync(ci => ci.CourseId == courseId && ci.UserId == userId)
+            || await db.Courses.AnyAsync(c => c.Id == courseId && c.OwnerId == userId)
+            || await db.UserRoles.AnyAsync(r => r.UserId == userId && r.Role != Roles.Student && r.Role != Roles.Instructor))
+            return;
         db.Set<ConsumptionEvent>().Add(new ConsumptionEvent { UserId = userId, CourseId = courseId, Kind = "PremiumDownload", RefId = resourceId });
         await db.SaveChangesAsync();
     }

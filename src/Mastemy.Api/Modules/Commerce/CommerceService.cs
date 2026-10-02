@@ -147,6 +147,10 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         var billingName = input.BillingName?.Trim();
         if (billingName is { Length: > 200 }) throw AppException.Bad("Billing name must be at most 200 characters.");
 
+        // Coupon usage limits are enforced under a row lock: the coupon row is locked (SELECT ... FOR UPDATE) in the same
+        // transaction that counts redemptions + reservations and inserts the order, so concurrent checkouts serialize.
+        await using var tx = await db.Database.BeginTransactionAsync(System.Data.IsolationLevel.ReadCommitted);
+        if (!string.IsNullOrWhiteSpace(input.CouponCode)) await pricing.LockCoupon(input.CouponCode!);
         var q = await pricing.BuildQuote(uid, new QuoteInput(input.PackageId, input.BundleId, input.CouponCode, input.ReferralCode, input.AffiliateClickId,
             input.Currency, input.Country, gift), null);
         if (q.Amount > 0 && !provider.IsConfigured) throw new AppException(503, "Payments are not configured on this server.", "payments_not_configured");
@@ -172,12 +176,19 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         catch (DbUpdateException ex)
         {
             // Concurrent request with the same idempotency key won the race: return its session.
+            await tx.RollbackAsync();
             db.ChangeTracker.Clear();
             var winner = await db.Orders.Include(o => o.Items).FirstOrDefaultAsync(o => o.UserId == uid && o.IdempotencyKey == key);
             if (winner is null) throw new InvalidOperationException("Order could not be created.", ex);
             return await Resume(winner, input);
         }
-        if (q.Amount == 0) return await FulfillFree(order, detail, q);
+        if (q.Amount == 0)
+        {
+            var free = await FulfillFree(order, detail, q);
+            await tx.CommitAsync();
+            return free;
+        }
+        await tx.CommitAsync();
         var res = await EnsureSession(order);
         return res with { Amount = q.Amount, Currency = q.Currency, ListAmount = q.ListAmount, Discount = q.Discount, PriceSource = q.PriceSource,
             CompareAtAmount = q.CompareAtAmount, OfferEndsAt = q.OfferEndsAt };
@@ -202,7 +213,8 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
     /// <summary>Zero-amount orders (100% scholarship codes) need no payment provider: fulfilled immediately and audited.</summary>
     private async Task<CheckoutResponse> FulfillFree(Order order, OrderDetail detail, Quote q)
     {
-        await using var tx = await db.Database.BeginTransactionAsync();
+        // Runs inside the checkout transaction (which holds the coupon lock); committed by the caller.
+        if (db.Database.CurrentTransaction is null) throw new InvalidOperationException("Free fulfilment must run inside the checkout transaction.");
         var now = DateTime.UtcNow;
         var claimed = await db.Orders.Where(o => o.Id == order.Id && o.Status == OrderStatus.Pending)
             .ExecuteUpdateAsync(s => s.SetProperty(o => o.Status, OrderStatus.Paid).SetProperty(o => o.PaidAt, (DateTime?)now));
@@ -212,7 +224,6 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         await fulfillment.FulfillPaidOrder(order, detail, now);
         audit.Record("order.paid", nameof(Order), order.Id, new { free = true, q.CouponId });
         await db.SaveChangesAsync();
-        await tx.CommitAsync();
         return new CheckoutResponse(order.Id, null, "Paid", 0, q.Currency, q.ListAmount, q.Discount, q.PriceSource);
     }
 

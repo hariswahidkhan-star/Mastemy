@@ -6,6 +6,7 @@ using Mastemy.Api.Modules.Trust;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Mastemy.Api.Modules.Operations;
@@ -112,13 +113,35 @@ public record HealthReportDto(string Status, double? TotalDurationMs = null, Lis
 
 /// <summary>
 /// /health/live: process is up (no dependencies). /health/ready: dependencies (MySQL, resource storage, email outbox, scanner).
-/// Anonymous callers get only the overall status; Staff get per-check details. Unhealthy → 503, Degraded → 200.
+/// Non-staff callers get only <c>{status}</c> from a report cached for <see cref="PublicCacheTtl"/> (so anonymous traffic
+/// cannot drive DB/storage/scanner probes); Staff get per-check details computed fresh, cached for <see cref="StaffCacheTtl"/>.
+/// Unhealthy → 503, Degraded → 200.
 /// </summary>
 [ApiController]
 [AllowAnonymous]
 [Route("health")]
-public class HealthController(HealthCheckService health, ICurrentUser me) : ControllerBase
+public class HealthController(HealthCheckService health, ICurrentUser me, Microsoft.Extensions.Caching.Memory.IMemoryCache cache) : ControllerBase
 {
+    public static readonly TimeSpan PublicCacheTtl = TimeSpan.FromSeconds(10);
+    public static readonly TimeSpan StaffCacheTtl = TimeSpan.FromSeconds(2);
+    private static readonly SemaphoreSlim PublicGate = new(1, 1);
+    private static readonly SemaphoreSlim StaffGate = new(1, 1);
+
+    private async Task<HealthReport> Cached(string key, TimeSpan ttl, SemaphoreSlim gate)
+    {
+        if (cache.TryGetValue(key, out HealthReport? hit) && hit is not null) return hit;
+        await gate.WaitAsync(); // one probe at a time per audience; waiters reuse its result
+        try
+        {
+            if (cache.TryGetValue(key, out hit) && hit is not null) return hit;
+            // Not tied to the caller's abort token: the shared result must not be a cancellation artefact.
+            var report = await health.CheckHealthAsync(r => r.Tags.Contains("ready"), CancellationToken.None);
+            cache.Set(key, report, ttl);
+            return report;
+        }
+        finally { gate.Release(); }
+    }
+
     [HttpGet("live")]
     public IActionResult Live()
     {
@@ -127,15 +150,18 @@ public class HealthController(HealthCheckService health, ICurrentUser me) : Cont
     }
 
     [HttpGet("ready")]
-    public async Task<IActionResult> Ready(CancellationToken ct)
+    public async Task<IActionResult> Ready()
     {
-        var report = await health.CheckHealthAsync(r => r.Tags.Contains("ready"), ct);
         Response.Headers.CacheControl = "no-store";
-        var dto = me.IsStaff
-            ? new HealthReportDto(report.Status.ToString(), Math.Round(report.TotalDuration.TotalMilliseconds, 1),
-                report.Entries.Select(e => new HealthEntryDto(e.Key, e.Value.Status.ToString(), e.Value.Description,
-                    Math.Round(e.Value.Duration.TotalMilliseconds, 1), e.Value.Data.Count == 0 ? null : e.Value.Data)).ToList())
-            : new HealthReportDto(report.Status.ToString());
+        if (!me.IsStaff)
+        {
+            var pub = await Cached("health:ready:public", PublicCacheTtl, PublicGate);
+            return StatusCode(pub.Status == HealthStatus.Unhealthy ? 503 : 200, new { status = pub.Status.ToString() });
+        }
+        var report = await Cached("health:ready:staff", StaffCacheTtl, StaffGate);
+        var dto = new HealthReportDto(report.Status.ToString(), Math.Round(report.TotalDuration.TotalMilliseconds, 1),
+            report.Entries.Select(e => new HealthEntryDto(e.Key, e.Value.Status.ToString(), e.Value.Description,
+                Math.Round(e.Value.Duration.TotalMilliseconds, 1), e.Value.Data.Count == 0 ? null : e.Value.Data)).ToList());
         return StatusCode(report.Status == HealthStatus.Unhealthy ? 503 : 200, dto);
     }
 }
