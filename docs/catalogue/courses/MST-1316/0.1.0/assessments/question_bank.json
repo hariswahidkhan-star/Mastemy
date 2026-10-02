@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1316",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1316-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a support vector machine try to maximise?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The margin between classes around the decision boundary",
+     "correct": true,
+     "rationale": "Correct: SVMs maximise the separating margin."
+    },
+    {
+     "key": "B",
+     "text": "The number of support vectors",
+     "correct": false,
+     "rationale": "It does not maximise the count of support vectors."
+    },
+    {
+     "key": "C",
+     "text": "The depth of a decision tree",
+     "correct": false,
+     "rationale": "SVMs are not tree-based."
+    },
+    {
+     "key": "D",
+     "text": "The learning rate",
+     "correct": false,
+     "rationale": "Learning rate is not the SVM objective."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SVMs maximise the separating margin.",
+   "outcome_refs": [
+    "MST-1316-D01.02"
+   ],
+   "domain_ref": "Margins",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1316-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about SVM practice are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Feature scaling is usually important for good SVM performance",
+     "correct": true,
+     "rationale": "Correct: SVMs are sensitive to feature scale."
+    },
+    {
+     "key": "B",
+     "text": "The kernel trick allows non-linear boundaries without explicit high-dimensional features",
+     "correct": true,
+     "rationale": "Correct: kernels compute similarities implicitly."
+    },
+    {
+     "key": "C",
+     "text": "SVMs always scale effortlessly to millions of rows",
+     "correct": false,
+     "rationale": "Standard SVMs can scale poorly on very large data."
+    },
+    {
+     "key": "D",
+     "text": "Kernels create brand-new real data points",
+     "correct": false,
+     "rationale": "Kernels transform similarity, not add data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: SVMs are sensitive to feature scale.",
+   "outcome_refs": [
+    "MST-1316-D03.01"
+   ],
+   "domain_ref": "Kernels",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1316-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Increasing the C parameter in a soft-margin SVM tends to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Penalise misclassifications more, allowing a narrower margin",
+     "correct": true,
+     "rationale": "Correct: larger C prioritises correct classification over a wide margin."
+    },
+    {
+     "key": "B",
+     "text": "Always widen the margin regardless of errors",
+     "correct": false,
+     "rationale": "Larger C typically narrows the margin."
+    },
+    {
+     "key": "C",
+     "text": "Turn the SVM into a decision tree",
+     "correct": false,
+     "rationale": "C does not change the model family."
+    },
+    {
+     "key": "D",
+     "text": "Remove the need for data",
+     "correct": false,
+     "rationale": "Data is still required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: larger C prioritises correct classification over a wide margin.",
+   "outcome_refs": [
+    "MST-1316-D02.01"
+   ],
+   "domain_ref": "Soft margins",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

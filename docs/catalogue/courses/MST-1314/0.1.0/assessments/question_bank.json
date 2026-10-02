@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1314",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1314-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Precision answers which question?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Of the items predicted positive, how many were actually positive",
+     "correct": true,
+     "rationale": "Correct: precision is true positives over predicted positives."
+    },
+    {
+     "key": "B",
+     "text": "Of the actual positives, how many were found",
+     "correct": false,
+     "rationale": "That is recall."
+    },
+    {
+     "key": "C",
+     "text": "How many predictions were made in total",
+     "correct": false,
+     "rationale": "That is not what precision measures."
+    },
+    {
+     "key": "D",
+     "text": "How fast the model runs",
+     "correct": false,
+     "rationale": "Speed is unrelated to precision."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: precision is true positives over predicted positives.",
+   "outcome_refs": [
+    "MST-1314-D01.01"
+   ],
+   "domain_ref": "Metrics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1314-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help prevent data leakage? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fit scalers and encoders on the training fold only",
+     "correct": true,
+     "rationale": "Correct: fitting on training data prevents leakage."
+    },
+    {
+     "key": "B",
+     "text": "Keep the test set untouched until final evaluation",
+     "correct": true,
+     "rationale": "Correct: an untouched test set avoids leakage."
+    },
+    {
+     "key": "C",
+     "text": "Include the target variable among the features",
+     "correct": false,
+     "rationale": "That leaks the answer into inputs."
+    },
+    {
+     "key": "D",
+     "text": "Compute features using future information",
+     "correct": false,
+     "rationale": "Future information causes leakage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fitting on training data prevents leakage.",
+   "outcome_refs": [
+    "MST-1314-D02.02"
+   ],
+   "domain_ref": "Validation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1314-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "On a heavily imbalanced dataset, which curve is usually more informative than ROC?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The precision-recall curve",
+     "correct": true,
+     "rationale": "Correct: PR curves reflect minority-class performance better."
+    },
+    {
+     "key": "B",
+     "text": "A pie chart of class counts",
+     "correct": false,
+     "rationale": "A pie chart does not evaluate performance."
+    },
+    {
+     "key": "C",
+     "text": "A bar chart of feature names",
+     "correct": false,
+     "rationale": "That does not measure model quality."
+    },
+    {
+     "key": "D",
+     "text": "A histogram of IDs",
+     "correct": false,
+     "rationale": "IDs carry no evaluation signal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: PR curves reflect minority-class performance better.",
+   "outcome_refs": [
+    "MST-1314-D03.02"
+   ],
+   "domain_ref": "Curves and matrices",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

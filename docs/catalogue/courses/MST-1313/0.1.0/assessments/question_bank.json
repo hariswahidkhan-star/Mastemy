@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1313",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1313-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which best describes supervised learning?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Learning a mapping from inputs to known labelled outputs",
+     "correct": true,
+     "rationale": "Correct: supervised learning uses labelled examples."
+    },
+    {
+     "key": "B",
+     "text": "Learning with no data at all",
+     "correct": false,
+     "rationale": "Supervised learning needs labelled data."
+    },
+    {
+     "key": "C",
+     "text": "Finding structure in unlabelled data",
+     "correct": false,
+     "rationale": "That describes unsupervised learning."
+    },
+    {
+     "key": "D",
+     "text": "Learning only from rewards and penalties",
+     "correct": false,
+     "rationale": "That describes reinforcement learning."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: supervised learning uses labelled examples.",
+   "outcome_refs": [
+    "MST-1313-D02.01"
+   ],
+   "domain_ref": "Learning paradigms",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1313-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are signs of overfitting? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "High training accuracy but poor validation accuracy",
+     "correct": true,
+     "rationale": "Correct: a large train/val gap signals overfitting."
+    },
+    {
+     "key": "B",
+     "text": "The model memorises noise in the training data",
+     "correct": true,
+     "rationale": "Correct: fitting noise is overfitting."
+    },
+    {
+     "key": "C",
+     "text": "Equally poor accuracy on train and validation",
+     "correct": false,
+     "rationale": "That indicates underfitting, not overfitting."
+    },
+    {
+     "key": "D",
+     "text": "The model is too simple to learn the pattern",
+     "correct": false,
+     "rationale": "Too simple is underfitting."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a large train/val gap signals overfitting.",
+   "outcome_refs": [
+    "MST-1313-D04.02"
+   ],
+   "domain_ref": "Fitting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1313-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is accuracy a poor metric for a highly imbalanced classification task?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A model predicting only the majority class can score high while missing the minority",
+     "correct": true,
+     "rationale": "Correct: accuracy hides minority-class failure under imbalance."
+    },
+    {
+     "key": "B",
+     "text": "Accuracy cannot be computed on imbalanced data",
+     "correct": false,
+     "rationale": "It can be computed; it is just misleading."
+    },
+    {
+     "key": "C",
+     "text": "Accuracy always equals recall",
+     "correct": false,
+     "rationale": "They are different metrics."
+    },
+    {
+     "key": "D",
+     "text": "Imbalanced data has no correct labels",
+     "correct": false,
+     "rationale": "Labels exist; the issue is class balance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: accuracy hides minority-class failure under imbalance.",
+   "outcome_refs": [
+    "MST-1313-D05.01"
+   ],
+   "domain_ref": "Evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

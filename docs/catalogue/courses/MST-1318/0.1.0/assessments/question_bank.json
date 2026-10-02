@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1318",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1318-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the core idea of collaborative filtering?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recommend based on patterns among similar users or items, from interaction data",
+     "correct": true,
+     "rationale": "Correct: CF uses interaction patterns, not item content."
+    },
+    {
+     "key": "B",
+     "text": "Recommend using only the text description of each item",
+     "correct": false,
+     "rationale": "That describes content-based filtering."
+    },
+    {
+     "key": "C",
+     "text": "Recommend items completely at random",
+     "correct": false,
+     "rationale": "CF is pattern-based, not random."
+    },
+    {
+     "key": "D",
+     "text": "Recommend only the single most expensive item",
+     "correct": false,
+     "rationale": "Price alone is not collaborative filtering."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: CF uses interaction patterns, not item content.",
+   "outcome_refs": [
+    "MST-1318-D02.01"
+   ],
+   "domain_ref": "Collaborative filtering",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1318-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are real challenges for recommender systems? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cold start for new users or items with little data",
+     "correct": true,
+     "rationale": "Correct: sparse data makes recommendations hard."
+    },
+    {
+     "key": "B",
+     "text": "Feedback loops that reinforce already-popular items",
+     "correct": true,
+     "rationale": "Correct: loops can narrow exposure over time."
+    },
+    {
+     "key": "C",
+     "text": "Having any interaction data at all",
+     "correct": false,
+     "rationale": "Interaction data is an asset, not a problem."
+    },
+    {
+     "key": "D",
+     "text": "Users being able to rate items",
+     "correct": false,
+     "rationale": "Ratings help, not hinder, recommendation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: sparse data makes recommendations hard.",
+   "outcome_refs": [
+    "MST-1318-D05.01"
+   ],
+   "domain_ref": "Risks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1318-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can strong offline metrics mislead when evaluating a recommender?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They may not reflect real user behaviour and engagement online",
+     "correct": true,
+     "rationale": "Correct: offline metrics are proxies, not live outcomes."
+    },
+    {
+     "key": "B",
+     "text": "They cannot be computed from data",
+     "correct": false,
+     "rationale": "They are computed from data; the issue is validity."
+    },
+    {
+     "key": "C",
+     "text": "They always match online results exactly",
+     "correct": false,
+     "rationale": "They often diverge from online results."
+    },
+    {
+     "key": "D",
+     "text": "They measure hardware speed only",
+     "correct": false,
+     "rationale": "They measure recommendation quality proxies, not speed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: offline metrics are proxies, not live outcomes.",
+   "outcome_refs": [
+    "MST-1318-D04.01"
+   ],
+   "domain_ref": "Evaluation and cold start",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

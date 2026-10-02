@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1315",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1315-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does a decision tree make a prediction for a new example?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It follows splits from the root to a leaf and uses that leaf's outcome",
+     "correct": true,
+     "rationale": "Correct: predictions follow the path to a leaf."
+    },
+    {
+     "key": "B",
+     "text": "It averages all other models in the forest",
+     "correct": false,
+     "rationale": "That describes an ensemble, not a single tree."
+    },
+    {
+     "key": "C",
+     "text": "It solves a linear equation",
+     "correct": false,
+     "rationale": "Trees use splits, not a linear equation."
+    },
+    {
+     "key": "D",
+     "text": "It picks an answer at random",
+     "correct": false,
+     "rationale": "Predictions are determined by the splits."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: predictions follow the path to a leaf.",
+   "outcome_refs": [
+    "MST-1315-D01.01"
+   ],
+   "domain_ref": "Decision trees",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1315-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about random forests are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "They reduce variance by averaging many de-correlated trees",
+     "correct": true,
+     "rationale": "Correct: averaging diverse trees reduces variance."
+    },
+    {
+     "key": "B",
+     "text": "They use bootstrap samples and random feature subsets",
+     "correct": true,
+     "rationale": "Correct: these create tree diversity."
+    },
+    {
+     "key": "C",
+     "text": "They train a single very deep tree only",
+     "correct": false,
+     "rationale": "A forest is many trees, not one."
+    },
+    {
+     "key": "D",
+     "text": "They are a form of linear regression",
+     "correct": false,
+     "rationale": "They are tree ensembles, not linear models."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: averaging diverse trees reduces variance.",
+   "outcome_refs": [
+    "MST-1315-D03.02"
+   ],
+   "domain_ref": "Bagging",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1315-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does boosting differ from bagging?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Boosting trains models sequentially, each correcting prior errors",
+     "correct": true,
+     "rationale": "Correct: boosting is sequential and error-focused."
+    },
+    {
+     "key": "B",
+     "text": "Boosting trains all trees fully independently in parallel",
+     "correct": false,
+     "rationale": "That describes bagging, not boosting."
+    },
+    {
+     "key": "C",
+     "text": "Boosting never uses trees",
+     "correct": false,
+     "rationale": "Gradient boosting commonly uses trees."
+    },
+    {
+     "key": "D",
+     "text": "Boosting and bagging are identical",
+     "correct": false,
+     "rationale": "They differ in how models are combined."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: boosting is sequential and error-focused.",
+   "outcome_refs": [
+    "MST-1315-D04.01"
+   ],
+   "domain_ref": "Boosting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

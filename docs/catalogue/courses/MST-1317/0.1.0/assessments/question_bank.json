@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1317",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1317-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the first principal component in PCA capture?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The direction of greatest variance in the data",
+     "correct": true,
+     "rationale": "Correct: PC1 is the maximum-variance direction."
+    },
+    {
+     "key": "B",
+     "text": "The least important original feature",
+     "correct": false,
+     "rationale": "Components are not single original features."
+    },
+    {
+     "key": "C",
+     "text": "A random axis in the data",
+     "correct": false,
+     "rationale": "Components are chosen to maximise variance, not randomly."
+    },
+    {
+     "key": "D",
+     "text": "The target label values",
+     "correct": false,
+     "rationale": "PCA is unsupervised and ignores labels."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: PC1 is the maximum-variance direction.",
+   "outcome_refs": [
+    "MST-1317-D02.01"
+   ],
+   "domain_ref": "PCA mechanics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1317-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO cautions apply when reading a t-SNE plot? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Distances between clusters may not be meaningful",
+     "correct": true,
+     "rationale": "Correct: t-SNE does not preserve global distances well."
+    },
+    {
+     "key": "B",
+     "text": "Cluster sizes can be distorted by the method",
+     "correct": true,
+     "rationale": "Correct: apparent sizes are not reliable."
+    },
+    {
+     "key": "C",
+     "text": "The axes have fixed real-world units",
+     "correct": false,
+     "rationale": "t-SNE axes have no inherent units."
+    },
+    {
+     "key": "D",
+     "text": "It always preserves exact global geometry",
+     "correct": false,
+     "rationale": "Global geometry is not preserved."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: t-SNE does not preserve global distances well.",
+   "outcome_refs": [
+    "MST-1317-D04.01"
+   ],
+   "domain_ref": "Nonlinear methods",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1317-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should you choose the number of PCA components to keep?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keep enough to explain a target share of total variance",
+     "correct": true,
+     "rationale": "Correct: explained-variance thresholds guide the choice."
+    },
+    {
+     "key": "B",
+     "text": "Always keep exactly two components",
+     "correct": false,
+     "rationale": "Two is only for 2-D plotting, not a general rule."
+    },
+    {
+     "key": "C",
+     "text": "Keep the components explaining the least variance",
+     "correct": false,
+     "rationale": "Low-variance components are usually dropped."
+    },
+    {
+     "key": "D",
+     "text": "Keep as many as there are rows",
+     "correct": false,
+     "rationale": "That defeats the purpose of reduction."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: explained-variance thresholds guide the choice.",
+   "outcome_refs": [
+    "MST-1317-D03.02"
+   ],
+   "domain_ref": "Interpreting PCA",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

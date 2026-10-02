@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1308",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 214,
+  "lesson_check_items": 40,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1308-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In gradient descent, why do we move in the direction opposite to the gradient?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The negative gradient points toward lower loss",
+     "correct": true,
+     "rationale": "Correct: descent follows the downhill direction."
+    },
+    {
+     "key": "B",
+     "text": "The gradient points toward the global maximum of accuracy",
+     "correct": false,
+     "rationale": "The gradient points uphill in loss, not toward accuracy."
+    },
+    {
+     "key": "C",
+     "text": "Direction does not affect the result",
+     "correct": false,
+     "rationale": "Direction determines whether loss rises or falls."
+    },
+    {
+     "key": "D",
+     "text": "It increases the loss on purpose",
+     "correct": false,
+     "rationale": "Descent reduces loss, not increases it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: descent follows the downhill direction.",
+   "outcome_refs": [
+    "MST-1308-D03.01"
+   ],
+   "domain_ref": "Gradient descent",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1308-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO problems can a poorly chosen learning rate cause? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Divergence or overshooting the minimum if too large",
+     "correct": true,
+     "rationale": "Correct: too large a step can overshoot."
+    },
+    {
+     "key": "B",
+     "text": "Extremely slow training if too small",
+     "correct": true,
+     "rationale": "Correct: tiny steps converge very slowly."
+    },
+    {
+     "key": "C",
+     "text": "Guaranteed instant convergence",
+     "correct": false,
+     "rationale": "No learning rate guarantees instant convergence."
+    },
+    {
+     "key": "D",
+     "text": "Elimination of all local minima",
+     "correct": false,
+     "rationale": "Learning rate does not remove local minima."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: too large a step can overshoot.",
+   "outcome_refs": [
+    "MST-1308-D03.02"
+   ],
+   "domain_ref": "Gradient descent",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1308-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a derivative tell you about a function at a point?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its instantaneous rate of change (slope)",
+     "correct": true,
+     "rationale": "Correct: the derivative is the slope at that point."
+    },
+    {
+     "key": "B",
+     "text": "Its total area under the curve",
+     "correct": false,
+     "rationale": "That is integration, not differentiation."
+    },
+    {
+     "key": "C",
+     "text": "Its maximum value overall",
+     "correct": false,
+     "rationale": "A derivative is local, not a global maximum."
+    },
+    {
+     "key": "D",
+     "text": "Its number of inputs",
+     "correct": false,
+     "rationale": "The derivative concerns change, not input count."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the derivative is the slope at that point.",
+   "outcome_refs": [
+    "MST-1308-D01.01"
+   ],
+   "domain_ref": "Derivatives",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
