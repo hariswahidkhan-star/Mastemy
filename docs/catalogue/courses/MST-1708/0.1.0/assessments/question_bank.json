@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1708",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1708-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The buyer of a call option has:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The right, but not the obligation, to buy the underlying at the strike",
+     "correct": true,
+     "rationale": "Correct: a call grants a right to buy, not an obligation."
+    },
+    {
+     "key": "B",
+     "text": "An obligation to buy the underlying at expiry",
+     "correct": false,
+     "rationale": "Buyers hold a right; sellers may have obligations."
+    },
+    {
+     "key": "C",
+     "text": "The right to sell the underlying at the strike",
+     "correct": false,
+     "rationale": "That describes a put, not a call."
+    },
+    {
+     "key": "D",
+     "text": "A guaranteed profit if the price rises at all",
+     "correct": false,
+     "rationale": "The premium must be recovered before any profit."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a call grants a right to buy, not an obligation.",
+   "outcome_refs": [
+    "MST-1708-D03.01"
+   ],
+   "domain_ref": "Options basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1708-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two statements about exchange-traded futures are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "They are standardised contracts",
+     "correct": true,
+     "rationale": "Correct: futures are standardised by the exchange."
+    },
+    {
+     "key": "B",
+     "text": "They are typically marked to market daily via margin",
+     "correct": true,
+     "rationale": "Correct: daily settlement through margin is standard for futures."
+    },
+    {
+     "key": "C",
+     "text": "They are privately customised between two parties",
+     "correct": false,
+     "rationale": "That describes forwards, not futures."
+    },
+    {
+     "key": "D",
+     "text": "They carry no leverage",
+     "correct": false,
+     "rationale": "Futures are leveraged instruments."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: futures are standardised by the exchange.",
+   "outcome_refs": [
+    "MST-1708-D02.02"
+   ],
+   "domain_ref": "Forwards and futures",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1708-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A long call has a strike of 50 and cost a premium of 3. The underlying is at 52 at expiry. The holder's net result is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A loss of 1 per unit",
+     "correct": true,
+     "rationale": "Correct: intrinsic value 2 minus premium 3 is a net loss of 1."
+    },
+    {
+     "key": "B",
+     "text": "A profit of 2 per unit",
+     "correct": false,
+     "rationale": "That ignores the 3 premium paid."
+    },
+    {
+     "key": "C",
+     "text": "Breakeven",
+     "correct": false,
+     "rationale": "Breakeven is at 53, not 52."
+    },
+    {
+     "key": "D",
+     "text": "A loss of the full 3 premium",
+     "correct": false,
+     "rationale": "The 2 of intrinsic value offsets part of the premium."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: intrinsic value 2 minus premium 3 is a net loss of 1.",
+   "outcome_refs": [
+    "MST-1708-D04.01"
+   ],
+   "domain_ref": "Option payoffs and strategies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

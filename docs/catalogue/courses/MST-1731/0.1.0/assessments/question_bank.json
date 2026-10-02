@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1731",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1731-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A one-day 99% Value at Risk of 1 million means:",
+   "options": [
+    {
+     "key": "A",
+     "text": "On about 1 day in 100, the loss is expected to exceed 1 million",
+     "correct": true,
+     "rationale": "Correct: VaR is a threshold exceeded with the stated small probability."
+    },
+    {
+     "key": "B",
+     "text": "The maximum possible loss is exactly 1 million",
+     "correct": false,
+     "rationale": "VaR is not a maximum; losses can exceed it."
+    },
+    {
+     "key": "C",
+     "text": "The portfolio will lose 1 million every day",
+     "correct": false,
+     "rationale": "VaR is not a daily certain loss."
+    },
+    {
+     "key": "D",
+     "text": "There is zero chance of losing more than 1 million",
+     "correct": false,
+     "rationale": "Losses beyond VaR can and do occur."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: VaR is a threshold exceeded with the stated small probability.",
+   "outcome_refs": [
+    "MST-1731-D04.01"
+   ],
+   "domain_ref": "Risk measurement",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1731-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two are limitations of assuming returns are normally distributed? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Real returns show fatter tails (more extreme events) than the normal",
+     "correct": true,
+     "rationale": "Correct: markets exhibit fat tails the normal understates."
+    },
+    {
+     "key": "B",
+     "text": "It can understate the probability of large crashes",
+     "correct": true,
+     "rationale": "Correct: the normal underestimates extreme losses."
+    },
+    {
+     "key": "C",
+     "text": "It perfectly captures market crashes",
+     "correct": false,
+     "rationale": "It does the opposite, understating crashes."
+    },
+    {
+     "key": "D",
+     "text": "It makes volatility impossible to measure",
+     "correct": false,
+     "rationale": "Volatility is still measurable regardless."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: markets exhibit fat tails the normal understates.",
+   "outcome_refs": [
+    "MST-1731-D01.02"
+   ],
+   "domain_ref": "Math and stats foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1731-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The no-arbitrage principle in pricing states that:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Two assets with identical cash flows should have the same price",
+     "correct": true,
+     "rationale": "Correct: otherwise a riskless profit would be possible."
+    },
+    {
+     "key": "B",
+     "text": "Everyone can always earn a guaranteed risk-free profit",
+     "correct": false,
+     "rationale": "No-arbitrage implies such free profits are competed away."
+    },
+    {
+     "key": "C",
+     "text": "Prices never change",
+     "correct": false,
+     "rationale": "Prices change; no-arbitrage is about consistency, not stasis."
+    },
+    {
+     "key": "D",
+     "text": "Risk does not affect value",
+     "correct": false,
+     "rationale": "Risk is central to valuation; this is unrelated."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: otherwise a riskless profit would be possible.",
+   "outcome_refs": [
+    "MST-1731-D03.01"
+   ],
+   "domain_ref": "Pricing foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
