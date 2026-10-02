@@ -176,7 +176,7 @@ public class RegradeService(AppDbContext db, ICurrentUser me, AuditService audit
         }
         // 4) Tell every affected learner.
         if (affectedUsers.Count > 0)
-            await notifications.Publish(affectedUsers, "regrade", "A question in one of your assessments was corrected and your result was re-scored", "/me/attempts");
+            await notifications.Publish(affectedUsers, Engagement.NotificationKinds.CourseUpdated, "A question in one of your assessments was corrected and your result was re-scored", "/me/attempts");
         var final = await db.Set<RegradeRequest>().AsNoTracking().FirstAsync(x => x.Id == id);
         return await Detail(final, issued, flagged);
     }

@@ -32,13 +32,13 @@ public class PracticeController(PracticeService svc) : ControllerBase
     [HttpGet("api/practice/review/due")]
     public Task<List<DueReviewDto>> Due([FromQuery] int limit = 50) => svc.Due(limit);
 
-    [HttpGet("api/me/bookmarks")]
+    [HttpGet("api/me/question-bookmarks")]
     public Task<List<BookmarkDto>> Bookmarks() => svc.Bookmarks();
 
-    [HttpPut("api/me/bookmarks/{questionId:guid}")]
+    [HttpPut("api/me/question-bookmarks/{questionId:guid}")]
     public async Task<IActionResult> Bookmark(Guid questionId) { await svc.Bookmark(questionId); return NoContent(); }
 
-    [HttpDelete("api/me/bookmarks/{questionId:guid}")]
+    [HttpDelete("api/me/question-bookmarks/{questionId:guid}")]
     public async Task<IActionResult> Unbookmark(Guid questionId) { await svc.Unbookmark(questionId); return NoContent(); }
 }
 

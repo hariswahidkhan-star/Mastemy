@@ -100,7 +100,7 @@ public class Wave3AlgorithmTests
     public void Item_statistics_report_p_value_and_point_biserial_with_intervals()
     {
         // Strong learners (high rest score) answer correctly: discrimination must be high and positive.
-        var data = Enumerable.Range(0, 40).Select(k => (Correct: k >= 20, Rest: k / 40.0)).ToList();
+        var data = Enumerable.Range(0, 40).Select(k => (Correct: k >= 20, RestScore: k / 40.0)).ToList();
         var s = ItemStatistics.Compute(data);
         Assert.True(s.SufficientData);
         Assert.Equal(40, s.N);
