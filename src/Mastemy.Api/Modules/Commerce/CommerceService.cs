@@ -36,7 +36,7 @@ public record WebhookResult(string Status, string? Detail = null);
 
 public class CommerceService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit,
     IPaymentProvider provider, ILogger<CommerceService> log, PricingService pricing, FulfillmentService fulfillment,
-    FinanceService finance, SubscriptionService subscriptions)
+    FinanceService finance, SubscriptionService subscriptions, Mastemy.Api.Modules.Authoring.CourseScopeService scope)
 {
     // ===================== Packages =====================
 
@@ -57,7 +57,7 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
     public async Task<PackageDto> ProposePackage(Guid courseId, PackageInput input)
     {
         if (!await db.Courses.AnyAsync(c => c.Id == courseId)) throw AppException.NotFound("Course");
-        await access.RequireCourseEditor(courseId);
+        await scope.RequireCourseManager(courseId); // Editors cannot set prices
         var title = (input.Title ?? "").Trim();
         var contents = (input.Contents ?? "").Trim();
         var currency = (input.Currency ?? "").Trim();

@@ -190,4 +190,17 @@ public class CouponTests(CommerceFixture fx) : IClassFixture<CommerceFixture>
         Assert.Equal("Coupon", q.PriceSource);
         Assert.Null(q.OfferEndsAt);
     }
+
+    [Fact]
+    public async Task Editor_co_instructors_cannot_change_pricing()
+    {
+        var seed = await fx.SeedCourse(40m);
+        var (editor, editorClient) = await fx.User(Roles.Instructor);
+        await fx.Db(async d => { d.CourseInstructors.Add(new CourseInstructor { CourseId = seed.Course.Id, UserId = editor.Id, Role = CourseInstructorRole.Editor }); await d.SaveChangesAsync(); });
+        Assert.Equal("editor_scope", await Kit.ErrorCode(await editorClient.PostAsJsonAsync("/api/studio/coupons", new { code = Code(), kind = "Percent", percentOff = 10, scope = "Course", scopeId = seed.Course.Id })));
+        Assert.Equal("editor_scope", await Kit.ErrorCode(await editorClient.PostAsJsonAsync($"/api/studio/packages/{seed.Package.Id}/prices", new { currency = "EUR", amount = 30 })));
+        Assert.Equal("editor_scope", await Kit.ErrorCode(await editorClient.PostAsJsonAsync($"/api/studio/courses/{seed.Course.Id}/referral-codes", new { })));
+        Assert.Equal("editor_scope", await Kit.ErrorCode(await editorClient.PostAsJsonAsync($"/api/studio/courses/{seed.Course.Id}/packages",
+            new { title = "Exam prep", contents = "Mock exams", price = 20, currency = "USD", accessDays = 30 })));
+    }
 }

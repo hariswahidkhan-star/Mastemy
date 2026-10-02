@@ -115,7 +115,8 @@ public static class CommerceText
     public static List<string> Lines(string s) => s.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
 }
 
-public class PricingService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit, IConfiguration cfg)
+public class PricingService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit, IConfiguration cfg,
+    Mastemy.Api.Modules.Authoring.CourseScopeService scope)
 {
     private decimal InstructorCouponMaxPercent => Math.Clamp(cfg.GetValue("Commerce:InstructorCouponMaxPercent", 50m), 0m, 100m);
     private int ReservationMinutes => Math.Max(1, cfg.GetValue("Commerce:CouponReservationMinutes", 60));
@@ -380,7 +381,7 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
         if (!asStaff)
         {
             if (c.Scope is not ("Course" or "Package")) throw AppException.Forbidden("Instructors can only create coupons for their own courses or packages.");
-            if (!await access.IsCourseAuthor(scopeCourse!.Value, uid)) throw AppException.Forbidden("You are not an instructor on this course.");
+            await scope.RequireCourseManager(scopeCourse!.Value); // Editors cannot change pricing
         }
 
         switch (kind)
@@ -477,7 +478,7 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
     {
         var uid = me.RequireId();
         if (!await db.Courses.AnyAsync(c => c.Id == courseId)) throw AppException.NotFound("Course");
-        if (!await access.IsCourseAuthor(courseId, uid)) throw AppException.Forbidden("You are not an instructor on this course.");
+        await scope.RequireCourseManager(courseId);
         var code = string.IsNullOrWhiteSpace(input.Code) ? "R" + Tokens.Random(9).Replace("-", "x").Replace("_", "y").ToUpperInvariant() : input.Code!.Trim();
         var norm = CommerceText.NormalizeCode(code, "Referral code");
         if (await db.Set<ReferralCode>().AnyAsync(r => r.NormalizedCode == norm)) throw AppException.Conflict("This referral code is taken.", "referral_code_taken");
@@ -554,7 +555,7 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
     {
         var uid = me.RequireId();
         var pkg = await db.Packages.AsNoTracking().FirstOrDefaultAsync(p => p.Id == packageId) ?? throw AppException.NotFound("Package");
-        await access.RequireCourseEditor(pkg.CourseId);
+        await scope.RequireCourseManager(pkg.CourseId);
         var cur = CommerceText.Currency(input.Currency);
         CommerceText.ValidAmount(input.Amount, cur);
         var countries = (input.Countries ?? []).Select(c => CommerceText.OptionalCountry(c) ?? throw AppException.Bad("Country codes must not be empty.", "invalid_country"))
@@ -698,7 +699,7 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
         var uid = me.RequireId();
         var p = await db.Set<Promotion>().FirstOrDefaultAsync(x => x.Id == promotionId) ?? throw AppException.NotFound("Promotion");
         var pkg = await db.Packages.AsNoTracking().FirstOrDefaultAsync(x => x.Id == input.PackageId) ?? throw AppException.NotFound("Package");
-        await access.RequireCourseEditor(pkg.CourseId);
+        await scope.RequireCourseManager(pkg.CourseId);
         if (p.Status != "Scheduled" || p.EndsAt <= DateTime.UtcNow) throw AppException.Conflict("Promotion is not open for participation.", "promotion_closed");
         if (!pkg.IsActive || pkg.ApprovalStatus != "Approved") throw AppException.Bad("Only approved, active packages can join a sale.", "package_unavailable");
         if (!await IsHonestReference(pkg.Id, pkg.Currency, pkg.Price, DateTime.UtcNow))
@@ -715,7 +716,7 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
     {
         var p = await db.Set<Promotion>().FirstOrDefaultAsync(x => x.Id == promotionId) ?? throw AppException.NotFound("Promotion");
         var pkg = await db.Packages.AsNoTracking().FirstOrDefaultAsync(x => x.Id == input.PackageId) ?? throw AppException.NotFound("Package");
-        await access.RequireCourseEditor(pkg.CourseId);
+        await scope.RequireCourseManager(pkg.CourseId);
         var existing = await db.Set<PromotionParticipation>().FirstOrDefaultAsync(x => x.PromotionId == p.Id && x.PackageId == pkg.Id && x.WithdrawnAt == null)
                        ?? throw AppException.NotFound("Participation");
         existing.WithdrawnAt = DateTime.UtcNow;
