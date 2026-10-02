@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1500",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1500-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is SPICE in Amazon QuickSight?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An in-memory engine that stores imported data for fast queries",
+     "correct": true,
+     "rationale": "Correct: SPICE caches data in memory for performance."
+    },
+    {
+     "key": "B",
+     "text": "A SQL dialect unique to QuickSight",
+     "correct": false,
+     "rationale": "SPICE is a storage/compute engine, not a SQL dialect."
+    },
+    {
+     "key": "C",
+     "text": "A row-level security rule",
+     "correct": false,
+     "rationale": "SPICE is not a security feature."
+    },
+    {
+     "key": "D",
+     "text": "A chart type",
+     "correct": false,
+     "rationale": "SPICE is not a visualization type."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SPICE is the in-memory engine.",
+   "outcome_refs": [
+    "MST-1500-D01.01"
+   ],
+   "domain_ref": "QuickSight foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1500-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO let you control what data different users see in a shared dashboard? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Row-level security rules",
+     "correct": true,
+     "rationale": "Correct: RLS filters rows per user/group."
+    },
+    {
+     "key": "B",
+     "text": "Sharing with specific groups rather than everyone",
+     "correct": true,
+     "rationale": "Correct: scoped sharing limits access."
+    },
+    {
+     "key": "C",
+     "text": "Deleting the dataset",
+     "correct": false,
+     "rationale": "Deleting the dataset removes the dashboard entirely."
+    },
+    {
+     "key": "D",
+     "text": "Turning off SPICE",
+     "correct": false,
+     "rationale": "Disabling SPICE affects performance, not access control."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: RLS and scoped sharing control visibility.",
+   "outcome_refs": [
+    "MST-1500-D04.01"
+   ],
+   "domain_ref": "Sharing and security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1500-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A calculated field for profit margin should be defined where?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In the dataset, so all analyses reuse it",
+     "correct": true,
+     "rationale": "Correct: dataset-level calculated fields are reusable across analyses."
+    },
+    {
+     "key": "B",
+     "text": "In the billing console",
+     "correct": false,
+     "rationale": "Billing is unrelated to dataset fields."
+    },
+    {
+     "key": "C",
+     "text": "In an IAM policy",
+     "correct": false,
+     "rationale": "IAM controls access, not calculated fields."
+    },
+    {
+     "key": "D",
+     "text": "In the VPC settings",
+     "correct": false,
+     "rationale": "Networking is unrelated to calculated fields."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: define reusable calculated fields in the dataset.",
+   "outcome_refs": [
+    "MST-1500-D02.01"
+   ],
+   "domain_ref": "Data preparation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

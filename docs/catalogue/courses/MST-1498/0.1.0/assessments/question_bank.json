@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1498",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1498-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In IAM Identity Center, what is a permission set?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A reusable collection of policies that defines access when assigned to a user/group in an account",
+     "correct": true,
+     "rationale": "Correct: permission sets define access provisioned into accounts."
+    },
+    {
+     "key": "B",
+     "text": "A long-lived IAM user password",
+     "correct": false,
+     "rationale": "Permission sets are not IAM user passwords."
+    },
+    {
+     "key": "C",
+     "text": "A VPC network ACL",
+     "correct": false,
+     "rationale": "That is unrelated networking, not identity."
+    },
+    {
+     "key": "D",
+     "text": "An S3 bucket policy",
+     "correct": false,
+     "rationale": "A bucket policy is resource-level, not an Identity Center permission set."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a permission set defines assignable access.",
+   "outcome_refs": [
+    "MST-1498-D02.01"
+   ],
+   "domain_ref": "Permission sets and accounts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1498-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are typically used to integrate a corporate identity provider with Identity Center? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "SAML 2.0 for single sign-on",
+     "correct": true,
+     "rationale": "Correct: SAML federates authentication."
+    },
+    {
+     "key": "B",
+     "text": "SCIM for automatic user/group provisioning",
+     "correct": true,
+     "rationale": "Correct: SCIM syncs users and groups."
+    },
+    {
+     "key": "C",
+     "text": "FTP for identity sync",
+     "correct": false,
+     "rationale": "FTP is not an identity protocol."
+    },
+    {
+     "key": "D",
+     "text": "Hard-coded IAM access keys per user",
+     "correct": false,
+     "rationale": "Access keys are what federation avoids."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: SAML and SCIM integrate the IdP.",
+   "outcome_refs": [
+    "MST-1498-D03.01"
+   ],
+   "domain_ref": "External identity federation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1498-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which practice best applies least privilege in Identity Center?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assign narrowly scoped permission sets matching each group's job",
+     "correct": true,
+     "rationale": "Correct: scoped permission sets follow least privilege."
+    },
+    {
+     "key": "B",
+     "text": "Assign AdministratorAccess to all users",
+     "correct": false,
+     "rationale": "That is over-privileged."
+    },
+    {
+     "key": "C",
+     "text": "Disable MFA to simplify login",
+     "correct": false,
+     "rationale": "Disabling MFA weakens security."
+    },
+    {
+     "key": "D",
+     "text": "Use a single shared login for the team",
+     "correct": false,
+     "rationale": "Shared logins break accountability and least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: scope permission sets to the job.",
+   "outcome_refs": [
+    "MST-1498-D04.01"
+   ],
+   "domain_ref": "Least privilege and sessions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

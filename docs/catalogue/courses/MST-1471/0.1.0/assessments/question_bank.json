@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1471",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1471-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Cloud Operations tool is used to explore and chart time-series metrics ad hoc?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Metrics Explorer",
+     "correct": true,
+     "rationale": "Correct: Metrics Explorer builds ad-hoc charts from time-series metrics."
+    },
+    {
+     "key": "B",
+     "text": "Cloud Logging",
+     "correct": false,
+     "rationale": "Logging stores and queries log entries, not metric time series."
+    },
+    {
+     "key": "C",
+     "text": "Error Reporting",
+     "correct": false,
+     "rationale": "Error Reporting aggregates application errors, not arbitrary metrics."
+    },
+    {
+     "key": "D",
+     "text": "Cloud Trace",
+     "correct": false,
+     "rationale": "Trace analyzes request latency spans, not general metrics."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Metrics Explorer builds ad-hoc charts from time-series metrics.",
+   "outcome_refs": [
+    "MST-1471-D01.01"
+   ],
+   "domain_ref": "Monitoring foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1471-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are needed to make an alerting policy actually notify a human? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A condition that defines when the policy is triggered",
+     "correct": true,
+     "rationale": "Correct: a condition defines the triggering state."
+    },
+    {
+     "key": "B",
+     "text": "At least one notification channel attached to the policy",
+     "correct": true,
+     "rationale": "Correct: without a channel no notification is delivered."
+    },
+    {
+     "key": "C",
+     "text": "A paid support plan",
+     "correct": false,
+     "rationale": "Alerting does not require a specific support plan."
+    },
+    {
+     "key": "D",
+     "text": "Deleting all logs-based metrics",
+     "correct": false,
+     "rationale": "Deleting metrics is unrelated and harmful."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a policy needs a triggering condition and a notification channel.",
+   "outcome_refs": [
+    "MST-1471-D03.01"
+   ],
+   "domain_ref": "Alerting and incident response",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1471-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A service has a 99.9% monthly availability SLO. What does the error budget represent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The allowed amount of unavailability (~0.1%) before the SLO is breached",
+     "correct": true,
+     "rationale": "Correct: the error budget is the permitted shortfall from 100%."
+    },
+    {
+     "key": "B",
+     "text": "A guarantee of zero downtime",
+     "correct": false,
+     "rationale": "An SLO is a target, not a zero-downtime guarantee."
+    },
+    {
+     "key": "C",
+     "text": "The monthly billing credit for outages",
+     "correct": false,
+     "rationale": "Error budget is a reliability concept, not a billing credit."
+    },
+    {
+     "key": "D",
+     "text": "The number of alerting policies allowed",
+     "correct": false,
+     "rationale": "It has nothing to do with alerting policy count."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the error budget is the permitted unavailability before the SLO is breached.",
+   "outcome_refs": [
+    "MST-1471-D04.01"
+   ],
+   "domain_ref": "Reliability and SLOs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

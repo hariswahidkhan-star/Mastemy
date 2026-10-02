@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1502",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1502-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a bursty MVP API that is often idle, which compute keeps idle cost near zero?",
+   "options": [
+    {
+     "key": "A",
+     "text": "AWS Lambda, billed per request and duration",
+     "correct": true,
+     "rationale": "Correct: Lambda charges only when invoked, so idle cost is near zero."
+    },
+    {
+     "key": "B",
+     "text": "A large always-on EC2 instance",
+     "correct": false,
+     "rationale": "An always-on instance bills continuously."
+    },
+    {
+     "key": "C",
+     "text": "A dedicated host reservation",
+     "correct": false,
+     "rationale": "Dedicated hosts are costly and overkill for an MVP."
+    },
+    {
+     "key": "D",
+     "text": "A multi-node EKS cluster",
+     "correct": false,
+     "rationale": "A full cluster is excessive for a bursty MVP."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Lambda minimizes idle cost.",
+   "outcome_refs": [
+    "MST-1502-D02.01"
+   ],
+   "domain_ref": "Building the MVP",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1502-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are baseline security practices for a startup AWS account? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Avoid using the root account for daily tasks and enable MFA on it",
+     "correct": true,
+     "rationale": "Correct: protecting root and avoiding its daily use is foundational."
+    },
+    {
+     "key": "B",
+     "text": "Grant least-privilege IAM roles instead of broad admin",
+     "correct": true,
+     "rationale": "Correct: least privilege limits blast radius."
+    },
+    {
+     "key": "C",
+     "text": "Share one IAM user among the whole team",
+     "correct": false,
+     "rationale": "Shared users break accountability and least privilege."
+    },
+    {
+     "key": "D",
+     "text": "Disable CloudTrail to save money",
+     "correct": false,
+     "rationale": "Disabling the audit trail harms security."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: protect root and use least-privilege IAM.",
+   "outcome_refs": [
+    "MST-1502-D03.01"
+   ],
+   "domain_ref": "Security and identity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1502-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which guardrail best prevents a surprise AWS bill for a startup?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An AWS Budget with alerts",
+     "correct": true,
+     "rationale": "Correct: budget alerts warn before overspend."
+    },
+    {
+     "key": "B",
+     "text": "Turning off all logging",
+     "correct": false,
+     "rationale": "That does not control cost and hurts visibility."
+    },
+    {
+     "key": "C",
+     "text": "Using the root account everywhere",
+     "correct": false,
+     "rationale": "That is a security risk, not a cost guardrail."
+    },
+    {
+     "key": "D",
+     "text": "Reserving capacity for ten years",
+     "correct": false,
+     "rationale": "Large upfront commitments can waste money for a startup."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: budget alerts prevent surprise bills.",
+   "outcome_refs": [
+    "MST-1502-D01.01"
+   ],
+   "domain_ref": "Getting started",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

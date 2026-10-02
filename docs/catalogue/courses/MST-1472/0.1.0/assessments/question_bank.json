@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1472",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1472-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Apigee, which component receives the client request before it reaches the backend?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The proxy endpoint",
+     "correct": true,
+     "rationale": "Correct: the proxy endpoint faces the client; the target endpoint faces the backend."
+    },
+    {
+     "key": "B",
+     "text": "The target endpoint",
+     "correct": false,
+     "rationale": "The target endpoint connects to the backend service, not the client."
+    },
+    {
+     "key": "C",
+     "text": "The API product",
+     "correct": false,
+     "rationale": "An API product bundles proxies for consumption; it does not receive requests."
+    },
+    {
+     "key": "D",
+     "text": "The developer app",
+     "correct": false,
+     "rationale": "A developer app holds credentials; it does not process the request flow."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the proxy endpoint faces the client.",
+   "outcome_refs": [
+    "MST-1472-D02.01"
+   ],
+   "domain_ref": "Building API proxies",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1472-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO policies help protect a backend from traffic overload? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Spike Arrest",
+     "correct": true,
+     "rationale": "Correct: Spike Arrest smooths sudden traffic bursts."
+    },
+    {
+     "key": "B",
+     "text": "Quota",
+     "correct": true,
+     "rationale": "Correct: Quota caps total calls over a period."
+    },
+    {
+     "key": "C",
+     "text": "AssignMessage only",
+     "correct": false,
+     "rationale": "AssignMessage manipulates messages; it does not limit traffic."
+    },
+    {
+     "key": "D",
+     "text": "ExtractVariables",
+     "correct": false,
+     "rationale": "ExtractVariables reads values; it does not throttle traffic."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Spike Arrest and Quota both constrain traffic.",
+   "outcome_refs": [
+    "MST-1472-D03.01"
+   ],
+   "domain_ref": "Securing and controlling traffic",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1472-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of an API product in Apigee?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To bundle one or more proxies/resources for controlled consumption by apps",
+     "correct": true,
+     "rationale": "Correct: products package API resources with access and quota settings."
+    },
+    {
+     "key": "B",
+     "text": "To store the backend source code",
+     "correct": false,
+     "rationale": "Apigee does not store backend application code."
+    },
+    {
+     "key": "C",
+     "text": "To replace the need for environments",
+     "correct": false,
+     "rationale": "Environments still host deployed proxies."
+    },
+    {
+     "key": "D",
+     "text": "To generate OAuth tokens directly from the backend",
+     "correct": false,
+     "rationale": "Token handling is done via policies, not the product object."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an API product packages resources for consumption.",
+   "outcome_refs": [
+    "MST-1472-D04.01"
+   ],
+   "domain_ref": "Operating and productizing APIs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

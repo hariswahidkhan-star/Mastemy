@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1474",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1474-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the '6 Rs' framework, 'rehost' refers to which approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lift and shift with minimal changes",
+     "correct": true,
+     "rationale": "Correct: rehost moves a workload largely unchanged."
+    },
+    {
+     "key": "B",
+     "text": "Rewriting the application as microservices",
+     "correct": false,
+     "rationale": "That is refactor/re-architect."
+    },
+    {
+     "key": "C",
+     "text": "Retiring the workload",
+     "correct": false,
+     "rationale": "That is 'retire'."
+    },
+    {
+     "key": "D",
+     "text": "Replacing it with SaaS",
+     "correct": false,
+     "rationale": "That is 'repurchase'."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: rehost is lift and shift.",
+   "outcome_refs": [
+    "MST-1474-D01.01"
+   ],
+   "domain_ref": "Migration planning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1474-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors most affect how you move a large on-prem dataset to Google Cloud? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Available network bandwidth",
+     "correct": true,
+     "rationale": "Correct: bandwidth drives online transfer feasibility and time."
+    },
+    {
+     "key": "B",
+     "text": "Total data volume",
+     "correct": true,
+     "rationale": "Correct: volume vs time window may require offline Transfer Appliance."
+    },
+    {
+     "key": "C",
+     "text": "The color of the admin console theme",
+     "correct": false,
+     "rationale": "Irrelevant to transfer planning."
+    },
+    {
+     "key": "D",
+     "text": "The number of IAM custom roles",
+     "correct": false,
+     "rationale": "Not a primary data-transfer factor."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: volume and bandwidth drive the transfer method.",
+   "outcome_refs": [
+    "MST-1474-D03.01"
+   ],
+   "domain_ref": "Data and database migration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1474-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Moving a self-managed database to Cloud SQL is an example of which strategy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Replatform",
+     "correct": true,
+     "rationale": "Correct: moving to a managed equivalent with some change is replatforming."
+    },
+    {
+     "key": "B",
+     "text": "Rehost",
+     "correct": false,
+     "rationale": "Rehost keeps the same self-managed stack on a VM."
+    },
+    {
+     "key": "C",
+     "text": "Retire",
+     "correct": false,
+     "rationale": "The workload is kept, not retired."
+    },
+    {
+     "key": "D",
+     "text": "Retain",
+     "correct": false,
+     "rationale": "Retain means leaving it on-prem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: moving to Cloud SQL is replatforming.",
+   "outcome_refs": [
+    "MST-1474-D02.01"
+   ],
+   "domain_ref": "Rehost and replatform",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

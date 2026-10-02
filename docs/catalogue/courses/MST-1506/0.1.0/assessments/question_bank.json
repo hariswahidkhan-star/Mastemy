@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1506",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1506-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does Amazon Bedrock primarily provide?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Managed access to foundation models via a single API",
+     "correct": true,
+     "rationale": "Correct: Bedrock offers foundation models through a managed API."
+    },
+    {
+     "key": "B",
+     "text": "A relational database engine",
+     "correct": false,
+     "rationale": "That is RDS, not Bedrock."
+    },
+    {
+     "key": "C",
+     "text": "A container registry",
+     "correct": false,
+     "rationale": "That is ECR, not Bedrock."
+    },
+    {
+     "key": "D",
+     "text": "A DNS service",
+     "correct": false,
+     "rationale": "That is Route 53, not Bedrock."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Bedrock provides managed foundation models.",
+   "outcome_refs": [
+    "MST-1506-D01.01"
+   ],
+   "domain_ref": "GenAI foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1506-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are responsible steps before shipping a Bedrock GenAI assistant? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Define an evaluation set and measure quality",
+     "correct": true,
+     "rationale": "Correct: evaluation catches errors and regressions."
+    },
+    {
+     "key": "B",
+     "text": "Apply guardrails to filter harmful content",
+     "correct": true,
+     "rationale": "Correct: guardrails reduce unsafe outputs."
+    },
+    {
+     "key": "C",
+     "text": "Disable logging to hide failures",
+     "correct": false,
+     "rationale": "Hiding failures is irresponsible."
+    },
+    {
+     "key": "D",
+     "text": "Answer without grounding to save effort",
+     "correct": false,
+     "rationale": "Ungrounded answers increase hallucination."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: evaluation and guardrails are responsible steps.",
+   "outcome_refs": [
+    "MST-1506-D04.01"
+   ],
+   "domain_ref": "Evaluation, safety and cost",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1506-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a RAG app, embeddings are used to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Represent text as vectors so similar passages can be retrieved",
+     "correct": true,
+     "rationale": "Correct: embeddings power similarity retrieval."
+    },
+    {
+     "key": "B",
+     "text": "Retrain the model on your documents",
+     "correct": false,
+     "rationale": "RAG retrieves context rather than retraining."
+    },
+    {
+     "key": "C",
+     "text": "Encrypt the model weights",
+     "correct": false,
+     "rationale": "Embeddings are not an encryption mechanism."
+    },
+    {
+     "key": "D",
+     "text": "Replace the generative model",
+     "correct": false,
+     "rationale": "A generative model still produces the answer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: embeddings enable retrieval.",
+   "outcome_refs": [
+    "MST-1506-D03.01"
+   ],
+   "domain_ref": "Retrieval-augmented generation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

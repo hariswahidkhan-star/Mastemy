@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1508",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1508-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a service control policy (SCP) in AWS Organizations do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sets the maximum available permissions for accounts/OUs",
+     "correct": true,
+     "rationale": "Correct: an SCP is a guardrail capping permissions; it does not grant them."
+    },
+    {
+     "key": "B",
+     "text": "Grants IAM permissions to users directly",
+     "correct": false,
+     "rationale": "SCPs do not grant; IAM policies grant within the SCP boundary."
+    },
+    {
+     "key": "C",
+     "text": "Encrypts S3 buckets",
+     "correct": false,
+     "rationale": "SCPs are permission boundaries, not encryption."
+    },
+    {
+     "key": "D",
+     "text": "Creates VPC subnets",
+     "correct": false,
+     "rationale": "SCPs do not manage networking."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an SCP caps permissions as a guardrail.",
+   "outcome_refs": [
+    "MST-1508-D02.01"
+   ],
+   "domain_ref": "Preventive guardrails",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1508-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO AWS services provide detective governance evidence? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "AWS CloudTrail for API activity logging",
+     "correct": true,
+     "rationale": "Correct: CloudTrail records API calls for audit."
+    },
+    {
+     "key": "B",
+     "text": "AWS Config for resource configuration history and rules",
+     "correct": true,
+     "rationale": "Correct: Config tracks config state and compliance."
+    },
+    {
+     "key": "C",
+     "text": "Amazon SES",
+     "correct": false,
+     "rationale": "SES sends email; it is not a governance evidence service."
+    },
+    {
+     "key": "D",
+     "text": "Amazon Polly",
+     "correct": false,
+     "rationale": "Polly is text-to-speech, unrelated to governance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: CloudTrail and Config provide detective evidence.",
+   "outcome_refs": [
+    "MST-1508-D03.01"
+   ],
+   "domain_ref": "Detective controls",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1508-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Under the shared responsibility model, AWS compliance certifications cover:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The security 'of' the cloud (AWS-managed infrastructure)",
+     "correct": true,
+     "rationale": "Correct: AWS attests the infrastructure; the customer must still configure their workloads correctly."
+    },
+    {
+     "key": "B",
+     "text": "All of the customer's own configurations automatically",
+     "correct": false,
+     "rationale": "Customer configuration is the customer's responsibility."
+    },
+    {
+     "key": "C",
+     "text": "The customer's application code",
+     "correct": false,
+     "rationale": "Customers own their application code and data."
+    },
+    {
+     "key": "D",
+     "text": "Nothing at all",
+     "correct": false,
+     "rationale": "AWS certifications do cover the infrastructure layer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: certifications cover security 'of' the cloud.",
+   "outcome_refs": [
+    "MST-1508-D01.01"
+   ],
+   "domain_ref": "Governance foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

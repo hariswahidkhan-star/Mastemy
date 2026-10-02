@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1478",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1478-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which service is designed to ingest high-volume streaming events for a pipeline?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Pub/Sub",
+     "correct": true,
+     "rationale": "Correct: Pub/Sub is a scalable messaging service for event ingestion."
+    },
+    {
+     "key": "B",
+     "text": "Cloud SQL",
+     "correct": false,
+     "rationale": "Cloud SQL is a relational database, not an event ingestion bus."
+    },
+    {
+     "key": "C",
+     "text": "Looker Studio",
+     "correct": false,
+     "rationale": "Looker Studio is for dashboards, not ingestion."
+    },
+    {
+     "key": "D",
+     "text": "Secret Manager",
+     "correct": false,
+     "rationale": "Secret Manager stores secrets, not events."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Pub/Sub ingests streaming events.",
+   "outcome_refs": [
+    "MST-1478-D02.01"
+   ],
+   "domain_ref": "Ingestion and processing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1478-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques reduce BigQuery query cost on a large table? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Partition the table so queries prune by date",
+     "correct": true,
+     "rationale": "Correct: partition pruning scans fewer bytes."
+    },
+    {
+     "key": "B",
+     "text": "Select only the columns you need instead of SELECT *",
+     "correct": true,
+     "rationale": "Correct: BigQuery bills by bytes scanned per column."
+    },
+    {
+     "key": "C",
+     "text": "Always run queries on the largest slot reservation",
+     "correct": false,
+     "rationale": "That does not reduce bytes scanned/cost per query."
+    },
+    {
+     "key": "D",
+     "text": "Store everything as a single CSV string column",
+     "correct": false,
+     "rationale": "That harms performance and cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: partitioning and selecting needed columns cut scanned bytes.",
+   "outcome_refs": [
+    "MST-1478-D03.01"
+   ],
+   "domain_ref": "Storage and querying",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1478-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A report that only needs hourly-updated totals, not instant results, is best served by:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A scheduled batch pipeline",
+     "correct": true,
+     "rationale": "Correct: batch fits periodic, latency-tolerant needs at lower cost."
+    },
+    {
+     "key": "B",
+     "text": "A low-latency streaming pipeline for every event",
+     "correct": false,
+     "rationale": "Streaming adds cost/complexity not needed here."
+    },
+    {
+     "key": "C",
+     "text": "Manual spreadsheet exports",
+     "correct": false,
+     "rationale": "Manual exports are not a reliable pipeline."
+    },
+    {
+     "key": "D",
+     "text": "Disabling the pipeline entirely",
+     "correct": false,
+     "rationale": "That defeats the requirement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: batch suits hourly, latency-tolerant reporting.",
+   "outcome_refs": [
+    "MST-1478-D01.01"
+   ],
+   "domain_ref": "Pipeline design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1505",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1505-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which service is best for decoupling a producer from multiple downstream consumers by events?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Amazon EventBridge",
+     "correct": true,
+     "rationale": "Correct: EventBridge routes events to multiple targets, decoupling producers and consumers."
+    },
+    {
+     "key": "B",
+     "text": "Amazon EC2",
+     "correct": false,
+     "rationale": "EC2 is compute, not an event router."
+    },
+    {
+     "key": "C",
+     "text": "Amazon S3 only",
+     "correct": false,
+     "rationale": "S3 is storage; it is not an event-routing bus."
+    },
+    {
+     "key": "D",
+     "text": "AWS IAM",
+     "correct": false,
+     "rationale": "IAM manages access, not event routing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: EventBridge decouples via events.",
+   "outcome_refs": [
+    "MST-1505-D02.01"
+   ],
+   "domain_ref": "API and event patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1505-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO handle failures in asynchronous serverless processing? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Configure a dead-letter queue for messages that keep failing",
+     "correct": true,
+     "rationale": "Correct: a DLQ captures messages after retries are exhausted."
+    },
+    {
+     "key": "B",
+     "text": "Enable retries with backoff",
+     "correct": true,
+     "rationale": "Correct: retries handle transient failures."
+    },
+    {
+     "key": "C",
+     "text": "Delete the function on first error",
+     "correct": false,
+     "rationale": "Deleting the function stops all processing."
+    },
+    {
+     "key": "D",
+     "text": "Ignore errors and hope they resolve",
+     "correct": false,
+     "rationale": "Ignoring errors loses data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: retries and a DLQ handle async failures.",
+   "outcome_refs": [
+    "MST-1505-D03.01"
+   ],
+   "domain_ref": "State, async and errors",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1505-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which workload is the weakest fit for AWS Lambda?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A long-running job that runs for hours continuously",
+     "correct": true,
+     "rationale": "Correct: very long continuous jobs exceed Lambda's model and limits."
+    },
+    {
+     "key": "B",
+     "text": "A short event-triggered transformation",
+     "correct": false,
+     "rationale": "Short event-driven work fits Lambda well."
+    },
+    {
+     "key": "C",
+     "text": "An API handler returning quickly",
+     "correct": false,
+     "rationale": "Quick API handlers fit Lambda."
+    },
+    {
+     "key": "D",
+     "text": "A scheduled lightweight task",
+     "correct": false,
+     "rationale": "Scheduled short tasks fit Lambda."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: hours-long continuous jobs fit Lambda poorly.",
+   "outcome_refs": [
+    "MST-1505-D01.01"
+   ],
+   "domain_ref": "Serverless foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

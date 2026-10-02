@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1501",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1501-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which protocol is commonly used for lightweight device messaging with AWS IoT Core?",
+   "options": [
+    {
+     "key": "A",
+     "text": "MQTT",
+     "correct": true,
+     "rationale": "Correct: MQTT is a lightweight pub/sub protocol used by IoT devices."
+    },
+    {
+     "key": "B",
+     "text": "SMTP",
+     "correct": false,
+     "rationale": "SMTP is for email, not device telemetry."
+    },
+    {
+     "key": "C",
+     "text": "SNMP only",
+     "correct": false,
+     "rationale": "SNMP is network management, not the IoT Core device protocol."
+    },
+    {
+     "key": "D",
+     "text": "FTP",
+     "correct": false,
+     "rationale": "FTP is file transfer, not IoT messaging."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MQTT is the lightweight IoT messaging protocol.",
+   "outcome_refs": [
+    "MST-1501-D01.01"
+   ],
+   "domain_ref": "IoT foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1501-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices secure device connections at scale? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Issue a unique certificate per device",
+     "correct": true,
+     "rationale": "Correct: per-device certs limit blast radius if one is compromised."
+    },
+    {
+     "key": "B",
+     "text": "Attach least-privilege IoT policies scoping allowed topics",
+     "correct": true,
+     "rationale": "Correct: scoped policies restrict what a device can do."
+    },
+    {
+     "key": "C",
+     "text": "Reuse one certificate for all devices",
+     "correct": false,
+     "rationale": "A shared cert is a security risk."
+    },
+    {
+     "key": "D",
+     "text": "Allow every device to publish to every topic",
+     "correct": false,
+     "rationale": "Over-broad topic access violates least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: per-device certs and scoped policies secure the fleet.",
+   "outcome_refs": [
+    "MST-1501-D02.01"
+   ],
+   "domain_ref": "Secure device connectivity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1501-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a device shadow store?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The desired and reported state of a device, persisted in the cloud",
+     "correct": true,
+     "rationale": "Correct: shadows hold state so apps can read/set it even when the device is offline."
+    },
+    {
+     "key": "B",
+     "text": "The device's firmware binary",
+     "correct": false,
+     "rationale": "Shadows store state, not firmware images."
+    },
+    {
+     "key": "C",
+     "text": "The MQTT broker logs",
+     "correct": false,
+     "rationale": "That is logging, not the shadow."
+    },
+    {
+     "key": "D",
+     "text": "The billing data",
+     "correct": false,
+     "rationale": "Shadows do not store billing information."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a shadow stores desired/reported device state.",
+   "outcome_refs": [
+    "MST-1501-D04.01"
+   ],
+   "domain_ref": "Device management",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

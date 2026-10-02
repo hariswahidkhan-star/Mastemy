@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1499",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1499-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A web app runs in a single Availability Zone. Which change most improves reliability?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Deploy across multiple Availability Zones with failover",
+     "correct": true,
+     "rationale": "Correct: multi-AZ removes the single-AZ failure point."
+    },
+    {
+     "key": "B",
+     "text": "Add more CPU to the single instance",
+     "correct": false,
+     "rationale": "Vertical scaling does not address AZ failure."
+    },
+    {
+     "key": "C",
+     "text": "Delete the load balancer",
+     "correct": false,
+     "rationale": "Removing the LB reduces resilience."
+    },
+    {
+     "key": "D",
+     "text": "Turn off health checks",
+     "correct": false,
+     "rationale": "Disabling health checks harms reliability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: multi-AZ improves reliability.",
+   "outcome_refs": [
+    "MST-1499-D02.01"
+   ],
+   "domain_ref": "Reliability and resilience",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1499-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO changes best help a read-heavy application scale? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add a caching layer for hot reads",
+     "correct": true,
+     "rationale": "Correct: caching offloads repeated reads."
+    },
+    {
+     "key": "B",
+     "text": "Add read replicas to the database",
+     "correct": true,
+     "rationale": "Correct: replicas distribute read load."
+    },
+    {
+     "key": "C",
+     "text": "Remove all monitoring",
+     "correct": false,
+     "rationale": "Unrelated and harmful to operations."
+    },
+    {
+     "key": "D",
+     "text": "Store all data in one giant row",
+     "correct": false,
+     "rationale": "That harms performance, not helps."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: caching and read replicas scale reads.",
+   "outcome_refs": [
+    "MST-1499-D03.01"
+   ],
+   "domain_ref": "Performance and scalability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1499-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of the AWS Well-Architected Framework?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To provide pillars and best practices for reviewing and improving architectures",
+     "correct": true,
+     "rationale": "Correct: it offers a structured way to evaluate workloads."
+    },
+    {
+     "key": "B",
+     "text": "To automatically fix all infrastructure",
+     "correct": false,
+     "rationale": "It is guidance, not an auto-remediation tool."
+    },
+    {
+     "key": "C",
+     "text": "To bill customers for reviews",
+     "correct": false,
+     "rationale": "The framework is not a billing mechanism."
+    },
+    {
+     "key": "D",
+     "text": "To replace all monitoring tools",
+     "correct": false,
+     "rationale": "It does not replace monitoring tooling."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it is a structured review framework.",
+   "outcome_refs": [
+    "MST-1499-D01.01"
+   ],
+   "domain_ref": "Well-Architected foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

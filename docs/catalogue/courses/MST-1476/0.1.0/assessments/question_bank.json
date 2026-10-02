@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1476",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1476-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a low-traffic MVP that must minimize idle cost, which compute option fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cloud Run, which scales to zero when idle",
+     "correct": true,
+     "rationale": "Correct: scale-to-zero means no cost when there is no traffic."
+    },
+    {
+     "key": "B",
+     "text": "A large always-on Compute Engine VM",
+     "correct": false,
+     "rationale": "An always-on VM bills even when idle."
+    },
+    {
+     "key": "C",
+     "text": "A multi-zone GKE Standard cluster",
+     "correct": false,
+     "rationale": "A full cluster is overkill and costly for an MVP."
+    },
+    {
+     "key": "D",
+     "text": "A bare-metal reservation",
+     "correct": false,
+     "rationale": "Bare metal is far too much for an MVP."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Cloud Run scales to zero, minimizing idle cost.",
+   "outcome_refs": [
+    "MST-1476-D02.01"
+   ],
+   "domain_ref": "Building the MVP",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1476-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO guardrails help a startup avoid surprise bills? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Budget alerts on the billing account",
+     "correct": true,
+     "rationale": "Correct: budget alerts warn before overspend."
+    },
+    {
+     "key": "B",
+     "text": "Quotas/limits on autoscaling",
+     "correct": true,
+     "rationale": "Correct: caps prevent runaway scaling cost."
+    },
+    {
+     "key": "C",
+     "text": "Giving everyone the owner role",
+     "correct": false,
+     "rationale": "That is a security risk, not a cost guardrail."
+    },
+    {
+     "key": "D",
+     "text": "Disabling all logging",
+     "correct": false,
+     "rationale": "Disabling logging harms observability and is not a cost guardrail."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: budget alerts and scaling caps control cost.",
+   "outcome_refs": [
+    "MST-1476-D01.01"
+   ],
+   "domain_ref": "Getting started",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1476-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should a startup store a third-party API key used by its app?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Secret Manager",
+     "correct": true,
+     "rationale": "Correct: Secret Manager stores secrets securely with access control."
+    },
+    {
+     "key": "B",
+     "text": "Hard-coded in the source repo",
+     "correct": false,
+     "rationale": "Hard-coding secrets is a serious security risk."
+    },
+    {
+     "key": "C",
+     "text": "In a public Cloud Storage bucket",
+     "correct": false,
+     "rationale": "A public bucket exposes the secret."
+    },
+    {
+     "key": "D",
+     "text": "In the app's log output",
+     "correct": false,
+     "rationale": "Logging secrets leaks them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: use Secret Manager.",
+   "outcome_refs": [
+    "MST-1476-D03.01"
+   ],
+   "domain_ref": "Security and identity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

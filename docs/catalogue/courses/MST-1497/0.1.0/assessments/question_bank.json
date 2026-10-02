@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1497",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1497-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does an AWS Budget alert do when spend approaches the threshold?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Notifies you; it does not automatically stop resources",
+     "correct": true,
+     "rationale": "Correct: budgets alert but do not enforce a hard cap by themselves."
+    },
+    {
+     "key": "B",
+     "text": "Immediately shuts down all running services",
+     "correct": false,
+     "rationale": "Budgets do not automatically terminate resources."
+    },
+    {
+     "key": "C",
+     "text": "Refunds the overage",
+     "correct": false,
+     "rationale": "Budgets do not issue refunds."
+    },
+    {
+     "key": "D",
+     "text": "Deletes the account",
+     "correct": false,
+     "rationale": "Budgets never delete the account."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a budget alerts but does not hard-stop spend.",
+   "outcome_refs": [
+    "MST-1497-D03.01"
+   ],
+   "domain_ref": "Budgets and alerts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1497-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are effective ways to reduce steady-state AWS compute cost? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Purchase a Savings Plan or Reserved Instance for predictable usage",
+     "correct": true,
+     "rationale": "Correct: commitments discount steady usage."
+    },
+    {
+     "key": "B",
+     "text": "Right-size over-provisioned instances",
+     "correct": true,
+     "rationale": "Correct: matching size to need removes waste."
+    },
+    {
+     "key": "C",
+     "text": "Leave idle instances running",
+     "correct": false,
+     "rationale": "Idle resources waste money."
+    },
+    {
+     "key": "D",
+     "text": "Turn off all monitoring",
+     "correct": false,
+     "rationale": "That does not reduce compute cost and hurts visibility."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: commitments and right-sizing cut steady cost.",
+   "outcome_refs": [
+    "MST-1497-D04.01"
+   ],
+   "domain_ref": "Cost optimization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1497-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To attribute costs to specific teams, you should first:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply cost allocation tags to resources",
+     "correct": true,
+     "rationale": "Correct: tags enable cost breakdown by team/project once activated."
+    },
+    {
+     "key": "B",
+     "text": "Create a new AWS account per invoice line",
+     "correct": false,
+     "rationale": "Per-line accounts are impractical; tags are the mechanism."
+    },
+    {
+     "key": "C",
+     "text": "Disable Cost Explorer",
+     "correct": false,
+     "rationale": "Cost Explorer is needed for analysis."
+    },
+    {
+     "key": "D",
+     "text": "Delete untagged resources",
+     "correct": false,
+     "rationale": "Deleting resources is not how allocation works."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: cost allocation tags enable attribution.",
+   "outcome_refs": [
+    "MST-1497-D02.01"
+   ],
+   "domain_ref": "Visibility and allocation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

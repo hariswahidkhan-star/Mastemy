@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1496",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1496-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Systems Manager feature lets you get a shell on an instance without opening inbound SSH?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Session Manager",
+     "correct": true,
+     "rationale": "Correct: Session Manager provides shell access via the SSM agent, no open ports."
+    },
+    {
+     "key": "B",
+     "text": "Run Command",
+     "correct": false,
+     "rationale": "Run Command executes scripts but is not an interactive shell session."
+    },
+    {
+     "key": "C",
+     "text": "Patch Manager",
+     "correct": false,
+     "rationale": "Patch Manager applies patches, not shells."
+    },
+    {
+     "key": "D",
+     "text": "Parameter Store",
+     "correct": false,
+     "rationale": "Parameter Store holds configuration values."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Session Manager gives portless shell access.",
+   "outcome_refs": [
+    "MST-1496-D02.01"
+   ],
+   "domain_ref": "Operations at scale",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1496-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are required for an EC2 instance to be managed by Systems Manager? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The SSM Agent installed and running",
+     "correct": true,
+     "rationale": "Correct: the agent is required for SSM management."
+    },
+    {
+     "key": "B",
+     "text": "An instance role granting SSM permissions",
+     "correct": true,
+     "rationale": "Correct: the instance needs IAM permissions for SSM."
+    },
+    {
+     "key": "C",
+     "text": "A public IP address",
+     "correct": false,
+     "rationale": "A public IP is not required (VPC endpoints work)."
+    },
+    {
+     "key": "D",
+     "text": "Port 22 open to the internet",
+     "correct": false,
+     "rationale": "Open SSH is not required and is discouraged."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the agent and an instance role are required.",
+   "outcome_refs": [
+    "MST-1496-D01.01"
+   ],
+   "domain_ref": "Systems Manager overview",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1496-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should a sensitive database password be stored in Parameter Store?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As a SecureString parameter encrypted with KMS",
+     "correct": true,
+     "rationale": "Correct: SecureString encrypts the value at rest with KMS."
+    },
+    {
+     "key": "B",
+     "text": "As a plaintext String parameter",
+     "correct": false,
+     "rationale": "Plaintext exposes the secret."
+    },
+    {
+     "key": "C",
+     "text": "In the instance user-data script",
+     "correct": false,
+     "rationale": "User-data is readable and not a secret store."
+    },
+    {
+     "key": "D",
+     "text": "In a public S3 bucket",
+     "correct": false,
+     "rationale": "A public bucket leaks the secret."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: use a SecureString parameter.",
+   "outcome_refs": [
+    "MST-1496-D04.01"
+   ],
+   "domain_ref": "Parameters and automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

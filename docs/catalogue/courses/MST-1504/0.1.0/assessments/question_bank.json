@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1504",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1504-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which service lets you run SQL directly over data stored in S3 without loading it elsewhere?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Amazon Athena",
+     "correct": true,
+     "rationale": "Correct: Athena queries S3 data in place using SQL."
+    },
+    {
+     "key": "B",
+     "text": "Amazon SNS",
+     "correct": false,
+     "rationale": "SNS is pub/sub notifications, not SQL query."
+    },
+    {
+     "key": "C",
+     "text": "AWS IAM",
+     "correct": false,
+     "rationale": "IAM manages access, not queries."
+    },
+    {
+     "key": "D",
+     "text": "Amazon Route 53",
+     "correct": false,
+     "rationale": "Route 53 is DNS, not query."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Athena queries S3 in place.",
+   "outcome_refs": [
+    "MST-1504-D04.01"
+   ],
+   "domain_ref": "Query and orchestration",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1504-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO improve analytics performance/cost on an S3 data lake? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Partition data by a commonly filtered key such as date",
+     "correct": true,
+     "rationale": "Correct: partitioning prunes scanned data."
+    },
+    {
+     "key": "B",
+     "text": "Use a columnar format like Parquet",
+     "correct": true,
+     "rationale": "Correct: columnar formats cut scanned bytes and improve speed."
+    },
+    {
+     "key": "C",
+     "text": "Store data as many tiny uncompressed files",
+     "correct": false,
+     "rationale": "Tiny files hurt performance."
+    },
+    {
+     "key": "D",
+     "text": "Keep everything in one giant JSON file",
+     "correct": false,
+     "rationale": "That harms query efficiency."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: partitioning and Parquet improve performance/cost.",
+   "outcome_refs": [
+    "MST-1504-D03.01"
+   ],
+   "domain_ref": "Data lake and storage",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1504-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the AWS Glue Data Catalog primarily store?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Metadata (schemas, table and partition definitions) for datasets",
+     "correct": true,
+     "rationale": "Correct: the catalog holds metadata, not the data itself."
+    },
+    {
+     "key": "B",
+     "text": "The actual raw data files",
+     "correct": false,
+     "rationale": "Data lives in S3; the catalog stores metadata."
+    },
+    {
+     "key": "C",
+     "text": "User passwords",
+     "correct": false,
+     "rationale": "The catalog does not store credentials."
+    },
+    {
+     "key": "D",
+     "text": "Billing invoices",
+     "correct": false,
+     "rationale": "It does not store billing data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the Glue Data Catalog stores metadata.",
+   "outcome_refs": [
+    "MST-1504-D02.01"
+   ],
+   "domain_ref": "Ingestion and transformation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

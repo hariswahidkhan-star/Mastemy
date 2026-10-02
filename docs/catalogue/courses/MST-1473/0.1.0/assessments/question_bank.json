@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1473",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1473-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a Dataproc Spark job, where should durable input and output data normally live?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cloud Storage",
+     "correct": true,
+     "rationale": "Correct: Cloud Storage decouples storage from ephemeral clusters and is durable."
+    },
+    {
+     "key": "B",
+     "text": "The cluster's local HDFS only",
+     "correct": false,
+     "rationale": "HDFS on the cluster is lost when the cluster is deleted."
+    },
+    {
+     "key": "C",
+     "text": "The master node's boot disk",
+     "correct": false,
+     "rationale": "The boot disk is not durable data storage and disappears with the cluster."
+    },
+    {
+     "key": "D",
+     "text": "BigQuery streaming buffer",
+     "correct": false,
+     "rationale": "That is unrelated to Spark durable file storage."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Cloud Storage is the durable data layer for ephemeral clusters.",
+   "outcome_refs": [
+    "MST-1473-D03.01"
+   ],
+   "domain_ref": "Data and storage",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1473-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce Dataproc cost? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use ephemeral clusters scoped to a job",
+     "correct": true,
+     "rationale": "Correct: paying only while the job runs cuts idle cost."
+    },
+    {
+     "key": "B",
+     "text": "Enable autoscaling to match worker count to load",
+     "correct": true,
+     "rationale": "Correct: autoscaling avoids over-provisioning."
+    },
+    {
+     "key": "C",
+     "text": "Keep a large cluster running 24/7 just in case",
+     "correct": false,
+     "rationale": "Idle always-on clusters waste money."
+    },
+    {
+     "key": "D",
+     "text": "Store all data on expensive persistent SSD HDFS",
+     "correct": false,
+     "rationale": "That increases cost versus Cloud Storage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: ephemeral clusters and autoscaling reduce cost.",
+   "outcome_refs": [
+    "MST-1473-D04.01"
+   ],
+   "domain_ref": "Cost and scaling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1473-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does Dataproc primarily provide?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A managed service for running Spark and Hadoop clusters",
+     "correct": true,
+     "rationale": "Correct: Dataproc manages Spark/Hadoop cluster provisioning and lifecycle."
+    },
+    {
+     "key": "B",
+     "text": "A serverless SQL warehouse",
+     "correct": false,
+     "rationale": "That describes BigQuery, not Dataproc."
+    },
+    {
+     "key": "C",
+     "text": "A message queue",
+     "correct": false,
+     "rationale": "That describes Pub/Sub, not Dataproc."
+    },
+    {
+     "key": "D",
+     "text": "A container registry",
+     "correct": false,
+     "rationale": "That is Artifact Registry, not Dataproc."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Dataproc is managed Spark/Hadoop.",
+   "outcome_refs": [
+    "MST-1473-D01.01"
+   ],
+   "domain_ref": "Dataproc fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

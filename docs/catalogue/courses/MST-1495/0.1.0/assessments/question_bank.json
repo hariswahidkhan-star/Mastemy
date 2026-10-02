@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1495",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1495-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which AWS service orchestrates the stages of a release pipeline?",
+   "options": [
+    {
+     "key": "A",
+     "text": "CodePipeline",
+     "correct": true,
+     "rationale": "Correct: CodePipeline models and runs the stages of a release."
+    },
+    {
+     "key": "B",
+     "text": "CodeBuild",
+     "correct": false,
+     "rationale": "CodeBuild compiles and tests; it does not orchestrate stages."
+    },
+    {
+     "key": "C",
+     "text": "CodeDeploy",
+     "correct": false,
+     "rationale": "CodeDeploy handles deployment, not overall orchestration."
+    },
+    {
+     "key": "D",
+     "text": "CloudWatch",
+     "correct": false,
+     "rationale": "CloudWatch monitors; it does not orchestrate a pipeline."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: CodePipeline orchestrates pipeline stages.",
+   "outcome_refs": [
+    "MST-1495-D02.01"
+   ],
+   "domain_ref": "Build and pipeline",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1495-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO benefits does a blue/green deployment provide? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fast rollback by shifting traffic back to the old environment",
+     "correct": true,
+     "rationale": "Correct: the old 'blue' environment remains available for rollback."
+    },
+    {
+     "key": "B",
+     "text": "Reduced downtime by switching traffic to a tested new environment",
+     "correct": true,
+     "rationale": "Correct: traffic shifts once the new environment is ready."
+    },
+    {
+     "key": "C",
+     "text": "Eliminating the need for any testing",
+     "correct": false,
+     "rationale": "Testing is still required."
+    },
+    {
+     "key": "D",
+     "text": "Guaranteeing zero cost",
+     "correct": false,
+     "rationale": "Running two environments can increase cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: blue/green gives fast rollback and reduced downtime.",
+   "outcome_refs": [
+    "MST-1495-D03.01"
+   ],
+   "domain_ref": "Deployment strategies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1495-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why add a manual approval action in a CodePipeline before production deploy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To require human sign-off before promoting a change to production",
+     "correct": true,
+     "rationale": "Correct: approval gates let a human authorize the production release."
+    },
+    {
+     "key": "B",
+     "text": "To compile the source code",
+     "correct": false,
+     "rationale": "Compilation is CodeBuild's job."
+    },
+    {
+     "key": "C",
+     "text": "To store artifacts",
+     "correct": false,
+     "rationale": "Artifact storage is not an approval action."
+    },
+    {
+     "key": "D",
+     "text": "To replace automated tests",
+     "correct": false,
+     "rationale": "Approvals complement, not replace, tests."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a manual approval gates the production promotion.",
+   "outcome_refs": [
+    "MST-1495-D04.01"
+   ],
+   "domain_ref": "Quality and IaC",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1503",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 264,
+  "lesson_check_items": 56,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 28,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1503-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which ECR feature helps catch known vulnerabilities in container images?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Image scanning (scan on push)",
+     "correct": true,
+     "rationale": "Correct: ECR scanning detects known CVEs in images."
+    },
+    {
+     "key": "B",
+     "text": "Longer image tags",
+     "correct": false,
+     "rationale": "Tag length does not affect security scanning."
+    },
+    {
+     "key": "C",
+     "text": "Making the repo public",
+     "correct": false,
+     "rationale": "Public repos increase exposure, not security."
+    },
+    {
+     "key": "D",
+     "text": "Disabling encryption",
+     "correct": false,
+     "rationale": "Disabling encryption weakens security."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ECR image scanning finds known vulnerabilities.",
+   "outcome_refs": [
+    "MST-1503-D02.01"
+   ],
+   "domain_ref": "Image and supply-chain security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1503-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO apply least privilege to containers? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assign IAM roles per task/pod (IRSA) scoped to needs",
+     "correct": true,
+     "rationale": "Correct: per-workload roles limit permissions."
+    },
+    {
+     "key": "B",
+     "text": "Restrict pod-to-pod traffic with network policies",
+     "correct": true,
+     "rationale": "Correct: network policy limits lateral movement."
+    },
+    {
+     "key": "C",
+     "text": "Give every pod the node's full instance role",
+     "correct": false,
+     "rationale": "That over-permissions every workload."
+    },
+    {
+     "key": "D",
+     "text": "Run all containers as root with host access",
+     "correct": false,
+     "rationale": "That maximizes blast radius."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: per-pod roles and network policy enforce least privilege.",
+   "outcome_refs": [
+    "MST-1503-D03.01"
+   ],
+   "domain_ref": "Runtime and access controls",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1503-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Under the shared responsibility model for managed containers, who secures the application code in the image?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The customer",
+     "correct": true,
+     "rationale": "Correct: customers are responsible for their application and image contents."
+    },
+    {
+     "key": "B",
+     "text": "Only AWS",
+     "correct": false,
+     "rationale": "AWS secures the underlying platform, not your app code."
+    },
+    {
+     "key": "C",
+     "text": "The image registry vendor",
+     "correct": false,
+     "rationale": "The registry stores images; it does not vet your code."
+    },
+    {
+     "key": "D",
+     "text": "No one is responsible",
+     "correct": false,
+     "rationale": "Security is a shared responsibility, with the customer owning the app."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the customer secures the app in the image.",
+   "outcome_refs": [
+    "MST-1503-D01.01"
+   ],
+   "domain_ref": "Container security foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
