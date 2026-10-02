@@ -106,6 +106,18 @@ public sealed class FakeOidcProvider : HttpMessageHandler
     private static HttpResponseMessage Json(object o) => new(HttpStatusCode.OK) { Content = JsonContent.Create(o) };
 }
 
+/// <summary>In-memory DNS: TXT records set by tests; <see cref="Down"/> simulates an unreachable resolver.</summary>
+public sealed class FakeDns : IDnsTxtResolver
+{
+    public ConcurrentDictionary<string, List<string>> Txt { get; } = new(StringComparer.OrdinalIgnoreCase);
+    public bool Down { get; set; }
+    public Task<IReadOnlyList<string>> LookupTxt(string name, CancellationToken ct)
+    {
+        if (Down) throw new DnsLookupException("The DNS resolver is unreachable.");
+        return Task.FromResult<IReadOnlyList<string>>(Txt.TryGetValue(name, out var v) ? v.ToList() : []);
+    }
+}
+
 public class EnterprisePhase2Fixture : IAsyncLifetime
 {
     public const string RedirectUri = "https://api.test/api/sso/callback";
@@ -113,6 +125,7 @@ public class EnterprisePhase2Fixture : IAsyncLifetime
     public string DbName { get; } = "mastemy_t_" + Guid.NewGuid().ToString("N");
     public string RootPath { get; } = Path.Combine(Path.GetTempPath(), "mastemy-ent2-" + Guid.NewGuid().ToString("N"));
     public FakeOidcProvider Idp { get; } = new();
+    public FakeDns Dns { get; } = new();
     public WebApplicationFactory<Program> Factory { get; private set; } = null!;
 
     public async Task InitializeAsync()
@@ -132,6 +145,7 @@ public class EnterprisePhase2Fixture : IAsyncLifetime
             b.ConfigureTestServices(s =>
             {
                 s.AddSingleton<IMalwareScanner, FakeScanner>();
+                s.AddSingleton<IDnsTxtResolver>(Dns);
                 s.AddHttpClient(OidcMetadataClient.HttpClientName).ConfigurePrimaryHttpMessageHandler(() => Idp);
             });
         });
@@ -171,7 +185,15 @@ public class EnterprisePhase2Fixture : IAsyncLifetime
         return c;
     }
 
-    public HttpClient Anonymous() => Factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+    /// <summary>No automatic cookies: SSO tests pass the Secure binder cookie explicitly (TestServer runs over http).</summary>
+    public HttpClient Anonymous() => Factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false, HandleCookies = false });
+
+    public HttpClient Browserless(User u)
+    {
+        var c = Factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false, HandleCookies = false });
+        c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Factory.Services.GetRequiredService<JwtIssuer>().Issue(u));
+        return c;
+    }
 
     public async Task<Course> LiveCourse(bool live = true)
     {

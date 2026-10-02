@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mastemy.Api.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261002025913_InitialCreate")]
+    [Migration("20261002042423_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -5183,6 +5183,65 @@ namespace Mastemy.Api.Data.Migrations
                     b.ToTable("Enterprise_SsoConfigs", (string)null);
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.OrgSsoDomain", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("DecidedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("DecisionNote")
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
+
+                    b.Property<string>("Domain")
+                        .IsRequired()
+                        .HasMaxLength(253)
+                        .HasColumnType("varchar(253)");
+
+                    b.Property<DateTime?>("LastDnsCheckAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("VerificationToken")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<DateTime?>("VerifiedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("VerifiedVia")
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Domain", "Status");
+
+                    b.HasIndex("OrganizationId", "Domain")
+                        .IsUnique();
+
+                    b.HasIndex("Status", "CreatedAt");
+
+                    b.ToTable("Enterprise_SsoDomains", (string)null);
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.SeatRequest", b =>
                 {
                     b.Property<Guid>("Id")
@@ -5244,6 +5303,11 @@ namespace Mastemy.Api.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
+                    b.Property<string>("IssuerHash")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
                     b.Property<DateTime>("LastLoginAt")
                         .HasColumnType("datetime(6)");
 
@@ -5262,7 +5326,9 @@ namespace Mastemy.Api.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("OrganizationId", "Subject")
+                    b.HasIndex("OrganizationId", "UserId");
+
+                    b.HasIndex("OrganizationId", "IssuerHash", "Subject")
                         .IsUnique();
 
                     b.ToTable("Enterprise_SsoIdentities", (string)null);
@@ -5271,6 +5337,11 @@ namespace Mastemy.Api.Data.Migrations
             modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.SsoLoginState", b =>
                 {
                     b.Property<string>("StateHash")
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.Property<string>("BinderHash")
+                        .IsRequired()
                         .HasMaxLength(64)
                         .HasColumnType("varchar(64)");
 
@@ -5288,6 +5359,10 @@ namespace Mastemy.Api.Data.Migrations
                     b.Property<DateTime>("ExpiresAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("HandoffBinderHash")
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
                     b.Property<DateTime?>("HandoffExpiresAt")
                         .HasColumnType("datetime(6)");
 
@@ -5297,6 +5372,9 @@ namespace Mastemy.Api.Data.Migrations
 
                     b.Property<DateTime?>("HandoffUsedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("LinkUserId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Nonce")
                         .IsRequired()

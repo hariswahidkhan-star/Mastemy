@@ -75,6 +75,12 @@ public partial class CategoryAdminService(AppDbContext db, AuditService audit)
             throw AppException.Conflict("This category has subcategories. Move or delete them first.", "category_has_children");
         if (await db.Set<Taxonomy.Pathway>().AnyAsync(p => p.CategoryId == id))
             throw AppException.Conflict("Pathways belong to this category. Reassign them first.", "category_has_pathways");
+        if (await db.Set<Commerce.Plan>().AnyAsync(p => p.CategoryId == id))
+            throw AppException.Conflict("Subscription plans are scoped to this category. Reassign them first.", "category_in_use");
+        if (await db.Set<Commerce.Bundle>().AnyAsync(b => b.CategoryId == id))
+            throw AppException.Conflict("Bundles belong to this category. Reassign them first.", "category_in_use");
+        if (await db.Set<Taxonomy.Collection>().AnyAsync(x => x.CategoryId == id))
+            throw AppException.Conflict("Collections are featured on this category. Reassign them first.", "category_in_use");
         db.Categories.Remove(c);
         audit.Record("category.deleted", nameof(Category), id, new { c.Slug, c.NameEn, c.NameAr, c.ParentId });
         await db.SaveChangesAsync();

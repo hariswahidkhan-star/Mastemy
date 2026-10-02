@@ -66,36 +66,81 @@ provider, so no `Payment` row is written; cancellation/credit notes for unpaid e
 
 ## Single sign-on (OIDC only)
 
-**SAML is out of scope. SCIM provisioning is out of scope** (users are provisioned just-in-time at first SSO login; removals are
-done by org admins in Mastemy).
+**SAML is out of scope. SCIM provisioning is out of scope** (brand-new users are provisioned just-in-time at first SSO login;
+removals are done by org admins in Mastemy).
 
 | Method | Path | Who |
 |---|---|---|
-| GET / PUT / DELETE | `/api/orgs/{id}/sso` | Admin |
-| GET | `/api/sso/{orgSlug}/start?returnTo=/path` | anonymous → 302 to the IdP |
-| GET | `/api/sso/callback?code=&state=` | IdP redirect → 302 to `Sso:CompletionUrl?handoff=…&returnTo=…` or `?error=<code>` |
-| POST | `/api/sso/exchange` | anonymous — `{ handoff }` → normal `AuthResponse` (access + refresh token); rate-limited (`auth`) |
+| GET / PUT / DELETE | `/api/orgs/{id}/sso` | org Admin |
+| POST | `/api/orgs/{id}/sso/domains/{domainId}/verify` | org Admin — DNS TXT check; rate-limited (`auth`) |
+| GET | `/api/admin/enterprise/sso-domains?status=Pending\|Verified\|Rejected` | Staff |
+| POST | `/api/admin/enterprise/sso-domains/{domainId}/approve` · `/reject` | Staff — `{ note }` (required to reject); audited |
+| GET | `/api/sso/{orgSlug}/start?returnTo=/path` | anonymous → 302 to the IdP; sets the binder cookie; rate-limited (`auth`) |
+| POST | `/api/sso/{orgSlug}/link/start` | **signed-in** user — `{ returnTo? }` → `{ authorizationUrl }`; sets the binder cookie; rate-limited (`auth`) |
+| GET | `/api/sso/callback?code=&state=` | IdP redirect → 302 to `Sso:CompletionUrl` with `?handoff=…&returnTo=…`, `?linked=<orgSlug>&returnTo=…` or `?error=<code>` |
+| POST | `/api/sso/exchange` | anonymous + binder cookie — `{ handoff }` → normal `AuthResponse`; rate-limited (`auth`) |
 
 Config input `{ issuer (https), clientId, clientSecret (required on create, optional on update), allowedDomains: string[] (1–50), enabled }`.
 The client secret is encrypted with `SecretProtector` and never returned (`hasClientSecret` only) nor audited.
+The config DTO also returns `domains: [{ id, domain, status: Pending|Verified|Rejected, txtRecordName, txtRecordValue, verifiedVia: dns|staff|null, verifiedAt, decisionNote, lastDnsCheckAt }]`.
 
-Flow: authorization code + **state** (random, stored hashed, single use, `Sso:StateLifetimeMinutes` default 10) + **nonce** +
-**PKCE S256** (verifier stored encrypted). The discovery document (`/.well-known/openid-configuration`, issuer must match) and
-JWKS are fetched over https and cached (`Sso:MetadataCacheMinutes`, default 60); an unknown key id triggers one JWKS refetch
-(throttled to every 30 s) for key rotation. The `id_token` is validated for `iss`, `aud` = client id, `exp` (2-minute skew),
-`nonce`, and an **RS256 or ES256** signature from the JWKS.
+### Domain verification
 
-Provisioning: `email_verified` must be true (`sso_email_unverified`) and the email domain must be allowed (`sso_domain_not_allowed`).
-A known (org, subject) pair signs in its linked user. Otherwise an existing Mastemy account with that email is linked **only if its
-own email is verified** (`sso_link_requires_verified_email`); else a new Student account is created (email marked verified, random
-unusable password). The user joins the org as **Member** if not already a member, subject to the seat limit (`seat_limit_reached`).
-**Privileged accounts** (Admin, SuperAdmin, Finance, Reviewer, Moderator — the MFA policy roles) can never sign in via SSO
-(`sso_privileged_not_allowed`); suspended accounts are refused. Tokens are issued by the Identity `AuthService.StartSession`, so
-sessions, refresh rotation and logout work as for password logins. The handoff code is single use and valid for 2 minutes.
+Each allowed domain gets a verification row (`Enterprise_SsoDomains`) that starts **Pending** with a random token. **Only Verified
+domains are honoured at the callback** (`sso_domain_not_allowed` otherwise). A domain becomes Verified by either:
+
+- **DNS TXT**: the org Admin publishes `_mastemy-sso.<domain>` TXT = `txtRecordValue` (`mastemy-sso-verify=…`) and calls
+  `…/verify`. Mismatch / missing record → 409 `domain_verification_failed`; resolver unreachable → 503 `dns_unavailable`. The lookup
+  is a single recursive UDP query to the system resolver (`/etc/resolv.conf`, or `Sso:DnsServer`), through `IDnsTxtResolver`.
+- **Staff approval**: `/api/admin/enterprise/sso-domains/{id}/approve` (audited `org.sso.domain_approved`); reject with a reason
+  (`org.sso.domain_rejected`). A rejected domain cannot be self-verified (409 `domain_rejected`).
+
+A domain already Verified by another organization cannot be verified again (409 `domain_claimed`). **Public consumer email domains**
+(gmail.com, outlook.com, hotmail.com, yahoo.\*, icloud.com, proton.me, protonmail.com, aol.com, gmx.\*, mail.ru, yandex.\*, qq.com,
+163.com, … — `PublicEmailDomains`) can never be saved (400 `public_email_domain`), approved, or honoured. Re-saving the config keeps
+existing rows (and tokens); removed domains are dropped; deleting the config drops all rows.
+
+### Login flow
+
+Authorization code + **state** (random, stored hashed, single use, `Sso:StateLifetimeMinutes` default 10) + **nonce** + **PKCE S256**
+(verifier stored encrypted). The discovery document (issuer must match) and JWKS are fetched over https and cached
+(`Sso:MetadataCacheMinutes`); an unknown key id triggers one throttled JWKS refetch. The `id_token` is validated for `iss`, `aud`,
+`exp` (2-minute skew), `nonce` and an **RS256/ES256** signature.
+
+**Login CSRF / browser binding**: start (and link-start) sets `mastemy_sso` — HttpOnly, Secure, SameSite=Lax, Path `/api/sso`,
+random value whose SHA-256 is stored on the login state. The callback requires the matching cookie (`sso_session_mismatch`
+otherwise; the state is not consumed) and replaces it with a fresh binder whose hash is stored with the handoff code; the exchange
+requires that cookie too (401 `sso_session_mismatch`) and clears it. Browsers must call the exchange with `credentials: 'include'`.
+
+### Accounts and identities
+
+Identities (`Enterprise_SsoIdentities`) are keyed by **(organization, issuer, sub)**; later logins match on `sub`, never on email.
+`email_verified` must be true and the email domain Verified for the org. Then:
+
+- known (org, issuer, sub) → that user signs in;
+- unknown sub, **email not used by any Mastemy account** → a new Student account is provisioned (email marked verified, random
+  unusable password) and linked;
+- unknown sub, **email already belongs to a Mastemy account** → **never auto-linked**: error `sso_link_required`. The owner signs in
+  with password (+ MFA when enrolled), then in Security settings uses **Link organization SSO** →
+  `POST /api/sso/{orgSlug}/link/start` → IdP → callback binds the identity to **that session user** when the IdP email equals the
+  user's verified email (`sso_link_email_mismatch`, `sso_link_requires_verified_email`, `sso_identity_in_use`, `sso_already_linked`),
+  audited `sso.identity_linked`, and redirects with `?linked=<orgSlug>` (no tokens issued).
+
+The user joins the org as **Member** if needed, subject to the seat limit (`seat_limit_reached`). **Privileged accounts** (MFA policy
+roles) can never sign in or link via SSO (`sso_privileged_not_allowed`); suspended accounts are refused. Tokens come from
+`AuthService.StartSession` and the refresh token is set as the HttpOnly refresh cookie. The handoff code is single use, 2 minutes.
+
+Expired login states are deleted by `SsoStateCleanup` (background, every 10 minutes) and opportunistically on start.
 
 Other callback error codes: `sso_invalid_state`, `sso_idp_error`, `sso_invalid_request`, `sso_token_exchange_failed`,
-`sso_invalid_token`, `sso_email_missing`, `sso_provider_unavailable`, `sso_not_available`. Start returns 404 `sso_not_available`
-when the org has no enabled configuration and **503 `sso_not_configured`** when `Sso:RedirectUri` / `Sso:CompletionUrl` are not set.
+`sso_invalid_token`, `sso_email_missing`, `sso_provider_unavailable`, `sso_not_available`, `sso_conflict`. Start returns 404
+`sso_not_available` when the org has no enabled configuration and **503 `sso_not_configured`** when `Sso:RedirectUri` /
+`Sso:CompletionUrl` are not set.
 
-Config keys: `Sso:RedirectUri`, `Sso:CompletionUrl`, `Sso:StateLifetimeMinutes`, `Sso:MetadataCacheMinutes`,
-`Sso:AllowInsecureHttp` (development only), `Enterprise:OrgMaterialQuotaBytes`.
+Config keys: `Sso:RedirectUri`, `Sso:CompletionUrl`, `Sso:StateLifetimeMinutes`, `Sso:MetadataCacheMinutes`, `Sso:DnsServer`
+(optional), `Sso:AllowInsecureHttp` (development only), `Enterprise:OrgMaterialQuotaBytes`.
+
+Schema (module-owned; the lead regenerates migrations): new table `Enterprise_SsoDomains`; `Enterprise_SsoLoginStates` gains
+`BinderHash`, `HandoffBinderHash`, `LinkUserId`; `Enterprise_SsoIdentities` gains `IssuerHash` with unique index
+(OrganizationId, IssuerHash, Subject) replacing (OrganizationId, Subject). Existing identity rows need `IssuerHash = SHA256(Issuer)`
+(upper-case hex) backfilled.

@@ -24,4 +24,5 @@ Validation and conflicts:
 - `parentId` must exist (`invalid_parent`); a category cannot be moved under itself or any of its descendants (`category_cycle`);
   the tree is at most 4 levels deep (`category_too_deep`).
 - Delete returns **409** when the category still has courses — current `CourseCategories` rows or published snapshot versions that
-  reference it (`category_has_courses`) — has subcategories (`category_has_children`) or owns Taxonomy pathways (`category_has_pathways`).
+  reference it (`category_has_courses`) — has subcategories (`category_has_children`), owns Taxonomy pathways (`category_has_pathways`),
+  or is referenced by Commerce subscription plans, Commerce bundles or Taxonomy collections (`category_in_use`).

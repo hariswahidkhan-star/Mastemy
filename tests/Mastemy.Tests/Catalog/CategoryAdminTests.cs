@@ -131,4 +131,39 @@ public class CategoryAdminTests(CategoryAdminFixture f) : IClassFixture<Category
         Assert.Equal(HttpStatusCode.NotFound, (await staff.DeleteAsync($"api/admin/categories/{parent.Id}")).StatusCode);
         Assert.True(await f.Db(d => d.AuditLogs.AnyAsync(a => a.Action == "category.deleted" && a.EntityId == used.Id.ToString())));
     }
+
+    [Fact]
+    public async Task Cannot_delete_category_referenced_by_plans_bundles_or_collections()
+    {
+        var (_, staff) = await f.User(Roles.Admin);
+        async Task AssertInUse(int id)
+        {
+            var res = await staff.DeleteAsync($"api/admin/categories/{id}");
+            Assert.Equal(HttpStatusCode.Conflict, res.StatusCode);
+            Assert.Contains("category_in_use", await res.Content.ReadAsStringAsync());
+        }
+        var tag = Guid.NewGuid().ToString("N")[..10];
+
+        var forPlan = await Create(staff, Slug());
+        await f.Db(async d => { d.Set<Mastemy.Api.Modules.Commerce.Plan>().Add(new() { Code = "p" + tag, Name = "P", Scope = "Category", CategoryId = forPlan.Id }); await d.SaveChangesAsync(); });
+        await AssertInUse(forPlan.Id);
+
+        var forBundle = await Create(staff, Slug());
+        await f.Db(async d => { d.Set<Mastemy.Api.Modules.Commerce.Bundle>().Add(new() { Title = "B", CategoryId = forBundle.Id }); await d.SaveChangesAsync(); });
+        await AssertInUse(forBundle.Id);
+
+        var forCollection = await Create(staff, Slug());
+        await f.Db(async d => { d.Set<Mastemy.Api.Modules.Taxonomy.Collection>().Add(new() { Slug = "col-" + tag, TitleEn = "C", CategoryId = forCollection.Id }); await d.SaveChangesAsync(); });
+        await AssertInUse(forCollection.Id);
+
+        // Once the references move away, the delete goes through.
+        await f.Db(async d =>
+        {
+            await d.Set<Mastemy.Api.Modules.Commerce.Plan>().Where(p => p.CategoryId == forPlan.Id).ExecuteUpdateAsync(s => s.SetProperty(p => p.CategoryId, (int?)null));
+            await d.Set<Mastemy.Api.Modules.Commerce.Bundle>().Where(p => p.CategoryId == forBundle.Id).ExecuteUpdateAsync(s => s.SetProperty(p => p.CategoryId, (int?)null));
+            await d.Set<Mastemy.Api.Modules.Taxonomy.Collection>().Where(p => p.CategoryId == forCollection.Id).ExecuteUpdateAsync(s => s.SetProperty(p => p.CategoryId, (int?)null));
+        });
+        foreach (var id in new[] { forPlan.Id, forBundle.Id, forCollection.Id })
+            Assert.Equal(HttpStatusCode.NoContent, (await staff.DeleteAsync($"api/admin/categories/{id}")).StatusCode);
+    }
 }

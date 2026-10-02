@@ -691,6 +691,29 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Enterprise_SsoDomains",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Domain = table.Column<string>(type: "varchar(253)", maxLength: 253, nullable: false),
+                    Status = table.Column<string>(type: "varchar(16)", maxLength: 16, nullable: false),
+                    VerificationToken = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    VerifiedVia = table.Column<string>(type: "varchar(16)", maxLength: 16, nullable: true),
+                    VerifiedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DecidedBy = table.Column<Guid>(type: "char(36)", nullable: true),
+                    DecisionNote = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: true),
+                    LastDnsCheckAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enterprise_SsoDomains", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Enterprise_SsoIdentities",
                 columns: table => new
                 {
@@ -698,6 +721,7 @@ namespace Mastemy.Api.Data.Migrations
                     OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
                     Issuer = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
                     Subject = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
+                    IssuerHash = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: false),
                     UserId = table.Column<Guid>(type: "char(36)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     LastLoginAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
@@ -723,6 +747,9 @@ namespace Mastemy.Api.Data.Migrations
                     UserId = table.Column<Guid>(type: "char(36)", nullable: true),
                     HandoffExpiresAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     HandoffUsedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    BinderHash = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: false),
+                    HandoffBinderHash = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: true),
+                    LinkUserId = table.Column<Guid>(type: "char(36)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
@@ -4745,10 +4772,31 @@ namespace Mastemy.Api.Data.Migrations
                 columns: new[] { "Status", "CreatedAt" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enterprise_SsoIdentities_OrganizationId_Subject",
-                table: "Enterprise_SsoIdentities",
-                columns: new[] { "OrganizationId", "Subject" },
+                name: "IX_Enterprise_SsoDomains_Domain_Status",
+                table: "Enterprise_SsoDomains",
+                columns: new[] { "Domain", "Status" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_SsoDomains_OrganizationId_Domain",
+                table: "Enterprise_SsoDomains",
+                columns: new[] { "OrganizationId", "Domain" },
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_SsoDomains_Status_CreatedAt",
+                table: "Enterprise_SsoDomains",
+                columns: new[] { "Status", "CreatedAt" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_SsoIdentities_OrganizationId_IssuerHash_Subject",
+                table: "Enterprise_SsoIdentities",
+                columns: new[] { "OrganizationId", "IssuerHash", "Subject" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_SsoIdentities_OrganizationId_UserId",
+                table: "Enterprise_SsoIdentities",
+                columns: new[] { "OrganizationId", "UserId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Enterprise_SsoIdentities_UserId",
@@ -5457,6 +5505,9 @@ namespace Mastemy.Api.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Enterprise_SsoConfigs");
+
+            migrationBuilder.DropTable(
+                name: "Enterprise_SsoDomains");
 
             migrationBuilder.DropTable(
                 name: "Enterprise_SsoIdentities");

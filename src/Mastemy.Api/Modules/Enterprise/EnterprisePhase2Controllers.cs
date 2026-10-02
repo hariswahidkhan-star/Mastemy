@@ -9,7 +9,7 @@ namespace Mastemy.Api.Modules.Enterprise;
 [ApiController]
 [Authorize]
 [Route("api/orgs/{id:guid}")]
-public class OrgPhase2Controller(EnterprisePhase2Service svc, SsoConfigService sso) : ControllerBase
+public class OrgPhase2Controller(EnterprisePhase2Service svc, SsoConfigService sso, SsoDomainService domains) : ControllerBase
 {
     [HttpGet("pathway-assignments")] public Task<List<PathwayAssignmentDto>> Pathways(Guid id) => svc.PathwayAssignments(id);
     [HttpPost("pathway-assignments")] public Task<PathwayAssignmentDto> AssignPathway(Guid id, PathwayAssignmentInput input) => svc.AssignPathway(id, input);
@@ -49,40 +49,88 @@ public class OrgPhase2Controller(EnterprisePhase2Service svc, SsoConfigService s
     [HttpGet("sso")] public Task<SsoConfigDto> GetSso(Guid id) => sso.Get(id);
     [HttpPut("sso")] public Task<SsoConfigDto> PutSso(Guid id, SsoConfigInput input) => sso.Put(id, input);
     [HttpDelete("sso")] public async Task<IActionResult> DeleteSso(Guid id) { await sso.Delete(id); return NoContent(); }
+
+    /// <summary>Checks the DNS TXT record _mastemy-sso.&lt;domain&gt; and marks the domain Verified when it carries the token.</summary>
+    [HttpPost("sso/domains/{domainId:guid}/verify")]
+    [Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("auth")]
+    public Task<SsoDomainDto> VerifyDomain(Guid id, Guid domainId, CancellationToken ct) => domains.VerifyDns(id, domainId, ct);
 }
 
 [ApiController]
 [Authorize(Policy = "Staff")]
 [Route("api/admin/enterprise")]
-public class AdminEnterpriseController(EnterprisePhase2Service svc) : ControllerBase
+public class AdminEnterpriseController(EnterprisePhase2Service svc, SsoDomainService domains) : ControllerBase
 {
     [HttpGet("seat-requests")] public Task<List<SeatRequestDto>> SeatRequests([FromQuery] string? status) => svc.AllSeatRequests(status);
     [HttpPost("seat-requests/{id:guid}/reject")] public Task<SeatRequestDto> Reject(Guid id, RejectSeatRequestInput input) => svc.RejectSeatRequest(id, input);
     [HttpGet("orders")] public Task<List<EnterpriseOrderDto>> Orders() => svc.AllOrders();
     [HttpPost("orders")] public async Task<IActionResult> Create(EnterpriseOrderInput input) => StatusCode(201, await svc.CreateOrder(input));
     [HttpPost("orders/{id:guid}/mark-paid")] public Task<EnterpriseOrderDto> MarkPaid(Guid id, MarkPaidInput input) => svc.MarkPaid(id, input);
+
+    [HttpGet("sso-domains")] public Task<List<StaffSsoDomainDto>> SsoDomains([FromQuery] string? status) => domains.StaffList(status);
+    [HttpPost("sso-domains/{id:guid}/approve")] public Task<StaffSsoDomainDto> ApproveDomain(Guid id, SsoDomainDecisionInput input) => domains.Decide(id, true, input);
+    [HttpPost("sso-domains/{id:guid}/reject")] public Task<StaffSsoDomainDto> RejectDomain(Guid id, SsoDomainDecisionInput input) => domains.Decide(id, false, input);
 }
 
 [ApiController]
 [AllowAnonymous]
 [Route("api/sso")]
-public class SsoController(SsoLoginService svc, Identity.RefreshCookies cookies) : ControllerBase
+public class SsoController(SsoLoginService svc, Identity.RefreshCookies cookies, Infrastructure.ICurrentUser me) : ControllerBase
 {
+    /// <summary>Browser-binding cookie (login CSRF): set by start/link-start, checked + rotated by the callback, checked + cleared by exchange.</summary>
+    public const string BinderCookie = "mastemy_sso";
+    public const string BinderPath = "/api/sso";
+
+    private static CookieOptions BinderOptions(DateTimeOffset? expires) => new()
+    {
+        HttpOnly = true, Secure = true, SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax, Path = BinderPath, IsEssential = true, Expires = expires,
+    };
+
+    private void SetBinder(string value, DateTimeOffset expires) => Response.Cookies.Append(BinderCookie, value, BinderOptions(expires));
+    private void ClearBinder() => Response.Cookies.Delete(BinderCookie, BinderOptions(null));
+    private string? Binder => Request.Cookies.TryGetValue(BinderCookie, out var v) ? v : null;
+
     /// <summary>Redirects the browser to the organization's identity provider.</summary>
     [HttpGet("{orgSlug}/start")]
-    public async Task<IActionResult> Start(string orgSlug, [FromQuery] string? returnTo, CancellationToken ct) =>
-        Redirect(await svc.Start(orgSlug, returnTo, ct));
+    [Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("auth")]
+    public async Task<IActionResult> Start(string orgSlug, [FromQuery] string? returnTo, CancellationToken ct)
+    {
+        var s = await svc.Start(orgSlug, returnTo, ct);
+        SetBinder(s.Binder, s.ExpiresAt);
+        Response.Headers[HeaderNames.CacheControl] = "no-store";
+        return Redirect(s.AuthorizationUrl);
+    }
 
-    /// <summary>IdP redirect target. Always redirects to Sso:CompletionUrl with ?handoff=… or ?error=….</summary>
+    /// <summary>Signed-in user: begins linking this account to the organization's IdP. Returns the URL to navigate to.</summary>
+    [HttpPost("{orgSlug}/link/start")]
+    [Authorize]
+    [Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("auth")]
+    public async Task<SsoLinkStartDto> LinkStart(string orgSlug, SsoLinkStartInput? input, CancellationToken ct)
+    {
+        var s = await svc.StartLink(me.RequireId(), orgSlug, input?.ReturnTo, ct);
+        SetBinder(s.Binder, s.ExpiresAt);
+        Response.Headers[HeaderNames.CacheControl] = "no-store";
+        return new SsoLinkStartDto(s.AuthorizationUrl);
+    }
+
+    /// <summary>IdP redirect target. Always redirects to Sso:CompletionUrl with ?handoff=, ?linked= or ?error=.</summary>
     [HttpGet("callback")]
     public async Task<IActionResult> Callback([FromQuery] string? code, [FromQuery] string? state, [FromQuery] string? error, CancellationToken ct)
     {
         Response.Headers[HeaderNames.CacheControl] = "no-store";
-        return Redirect(await svc.Callback(code, state, error, ct));
+        var r = await svc.Callback(code, state, error, Binder, ct);
+        if (r.HandoffBinder is not null) SetBinder(r.HandoffBinder, DateTimeOffset.UtcNow + SsoLoginService.HandoffLifetime);
+        else ClearBinder();
+        return Redirect(r.RedirectUrl);
     }
 
     [HttpPost("exchange")]
     [Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("auth")]
     // Browser sessions use the HttpOnly refresh cookie, same as password login.
-    public async Task<AuthResponse> Exchange(SsoExchangeInput input, CancellationToken ct) => cookies.Issue(Response, await svc.Exchange(input, ct));
+    public async Task<AuthResponse> Exchange(SsoExchangeInput input, CancellationToken ct)
+    {
+        var res = await svc.Exchange(input, Binder, ct);
+        ClearBinder();
+        return cookies.Issue(Response, res);
+    }
 }

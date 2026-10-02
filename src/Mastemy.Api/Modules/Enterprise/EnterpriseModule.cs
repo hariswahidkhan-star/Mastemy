@@ -15,5 +15,8 @@ public static class EnterpriseModule
         s.AddSingleton<OidcMetadataClient>();
         s.AddScoped<SsoConfigService>();
         s.AddScoped<SsoLoginService>();
+        s.AddScoped<SsoDomainService>();
+        s.AddSingleton<IDnsTxtResolver, SystemDnsTxtResolver>();
+        s.AddHostedService<SsoStateCleanup>();
     }
 }
