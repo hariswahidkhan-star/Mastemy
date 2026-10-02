@@ -16,7 +16,7 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderPage, renderShell, langFromSearch } from '../src/ssr/render';
+import { renderPage, renderShell, langFromSearch, ssrCacheKey } from '../src/ssr/render';
 
 const env = process.env;
 const baseUrlRaw = (env.PUBLIC_BASE_URL ?? '').trim();
@@ -123,7 +123,7 @@ async function handle(req: IncomingMessage, res: ServerResponse) {
   }
   if (await serveStatic(url.pathname, res)) return;
 
-  const key = url.pathname + url.search;
+  const key = ssrCacheKey(url.pathname, url.search);
   const hit = cache.get(key);
   let page = hit && Date.now() - hit.at < CACHE_MS ? hit : null;
   if (!page) {

@@ -27,6 +27,13 @@ import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
+import { DiscussionsPanel, EnrollToPost, useIsCourseAuthor } from '../engagement/Discussions';
+import {
+  AnnouncementsList,
+  LessonResources,
+  ReportIssueButton,
+  TranscriptPanel,
+} from '../engagement/LessonExtras';
 
 const PROGRESS_INTERVAL_MS = 15_000;
 
@@ -318,6 +325,7 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
   const player = useRef<PlayerHandle>(null);
   const [tab, setTab] = useState('overview');
   const lessonId = view.lesson.id;
+  const isAuthor = useIsCourseAuthor(course.id);
   const save = useProgressSaver(lessonId, !!user, player);
   const flat = course.modules.flatMap((m) => m.lessons);
   const idx = flat.findIndex((l) => l.id === lessonId);
@@ -361,6 +369,7 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
           {view.lesson.title}
         </h1>
         <div className="row">
+          <ReportIssueButton courseId={course.id} lessonId={lessonId} />
           {prev ? (
             <ButtonLink variant="secondary" size="sm" to={`/learn/${course.slug}/${prev.id}`}>
               {t('learn.previous')}
@@ -440,6 +449,38 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
             id: 'practice',
             label: t('learn.practice'),
             content: <PracticeList assessments={view.assessments} />,
+          },
+          {
+            id: 'resources',
+            label: t('resources.tab'),
+            content: <LessonResources lessonId={lessonId} courseSlug={course.slug} />,
+          },
+          {
+            id: 'transcript',
+            label: t('transcript.title'),
+            content: <TranscriptPanel lessonId={lessonId} player={player} />,
+          },
+          {
+            id: 'qa',
+            label: t('qa.tab'),
+            content: (
+              <DiscussionsPanel
+                courseId={course.id}
+                lessonId={lessonId}
+                basePath={`/courses/${course.slug}`}
+                canPost={!!user && (!!course.enrolled || isAuthor)}
+                notAllowedReason={<EnrollToPost courseId={course.id} slug={course.slug} />}
+              />
+            ),
+          },
+          {
+            id: 'announcements',
+            label: t('announcements.title'),
+            content: user ? (
+              <AnnouncementsList courseId={course.id} />
+            ) : (
+              <p className="muted">{t('announcements.enrollToSee')}</p>
+            ),
           },
         ]}
       />

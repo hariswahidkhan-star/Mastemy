@@ -52,17 +52,37 @@ export function isPublicRoute(pathname: string): boolean {
 }
 
 function inject(template: string, opts: { lang: Lang; head: string; body: string; tail: string }) {
+  // Function replacers only: a string replacement would expand `$&`, `$'` and "$`" found in course text.
+  const htmlTag = `<html lang="${opts.lang}" dir="${opts.lang === 'ar' ? 'rtl' : 'ltr'}">`;
   let html = template
-    .replace(
-      /<html[^>]*>/,
-      `<html lang="${opts.lang}" dir="${opts.lang === 'ar' ? 'rtl' : 'ltr'}">`,
-    )
-    .replace(/\s*<title>[\s\S]*?<\/title>/, '')
-    .replace(/\s*<meta name="description"[^>]*>/, '')
-    .replace(/\s*<meta name="robots"[^>]*>/, '');
-  html = html.replace('</head>', `    ${opts.head}\n  </head>`);
-  html = html.replace('<div id="root"></div>', `<div id="root">${opts.body}</div>${opts.tail}`);
+    .replace(/<html[^>]*>/, () => htmlTag)
+    .replace(/\s*<title>[\s\S]*?<\/title>/, () => '')
+    .replace(/\s*<meta name="description"[^>]*>/, () => '')
+    .replace(/\s*<meta name="robots"[^>]*>/, () => '');
+  html = html.replace('</head>', () => `    ${opts.head}\n  </head>`);
+  html = html.replace(
+    '<div id="root"></div>',
+    () => `<div id="root">${opts.body}</div>${opts.tail}`,
+  );
   return html;
+}
+
+/** Query parameters that change what a public page renders; everything else is ignored for caching. */
+export const CACHE_PARAMS = ['lang', 'q', 'page', 'sort', 'category', 'level', 'language'] as const;
+
+/**
+ * SSR cache key: pathname plus the whitelisted parameters in a fixed order, so junk or reordered query
+ * strings cannot multiply cache entries. Empty values are dropped.
+ */
+export function ssrCacheKey(pathname: string, search: string): string {
+  const src = new URLSearchParams(search);
+  const out = new URLSearchParams();
+  for (const k of CACHE_PARAMS) {
+    const v = src.get(k);
+    if (v !== null && v !== '') out.set(k, v);
+  }
+  const qs = out.toString();
+  return qs ? `${pathname}?${qs}` : pathname;
 }
 
 /** Fetch every query the last render registered but has no data for yet. */

@@ -24,6 +24,7 @@ import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
+import { DiffPanel } from '../studio/Wave2Panels';
 
 type ReviewCourse = Pick<StudioCourseDto, 'id' | 'title' | 'slug' | 'status' | 'updatedAt'> & {
   ownerName?: string;
@@ -228,6 +229,12 @@ function CourseReview({ course, onChanged }: { course: ReviewCourse; onChanged: 
         ) : null}
       </div>
       {admin.isError ? <Notice tone="danger">{errorMessage(admin.error, t)}</Notice> : null}
+      <details className="card card--flat">
+        <summary>
+          <strong>{t('diff.title')}</strong>
+        </summary>
+        <DiffPanel courseId={course.id} />
+      </details>
       {course.isMyCourse ? null : <QuestionReview courseId={course.id} />}
       <section>
         <h3>{t('review.comments')}</h3>

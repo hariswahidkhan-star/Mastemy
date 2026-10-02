@@ -11,6 +11,7 @@ export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[] }[] = [
   { to: '/admin/packages', key: 'packages', roles: ['Admin', 'SuperAdmin', 'Finance'] },
   { to: '/admin/refunds', key: 'refunds', roles: ['Finance', 'Admin', 'SuperAdmin'] },
   { to: '/admin/users', key: 'users', roles: ['Support', 'Admin', 'SuperAdmin'] },
+  { to: '/admin/orgs', key: 'orgs', roles: ['Admin', 'SuperAdmin'] },
   { to: '/admin/settings', key: 'settings', roles: ['Admin', 'SuperAdmin'] },
   { to: '/admin/audit', key: 'audit', roles: ['Finance', 'Admin', 'SuperAdmin'] },
 ];

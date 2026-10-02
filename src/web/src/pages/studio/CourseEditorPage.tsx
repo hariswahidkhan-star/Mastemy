@@ -24,6 +24,7 @@ import { CurriculumEditor } from './CurriculumEditor';
 import { ImportPanel } from './ImportPanel';
 import { PackagesPanel } from './PackagesPanel';
 import { QuestionBank } from './QuestionBank';
+import { EngagementPanel, PublicationPanel, ResourcesManager } from './Wave2Panels';
 
 function DetailsForm({ course }: { course: StudioCourseDto }) {
   const { t, lang } = useI18n();
@@ -294,6 +295,21 @@ export function CourseEditorPage() {
                 id: 'packages',
                 label: t('studio.tab.packages'),
                 content: <PackagesPanel courseId={c.id} />,
+              },
+              {
+                id: 'resources',
+                label: t('studio.tab.resources'),
+                content: <ResourcesManager course={c} />,
+              },
+              {
+                id: 'engagement',
+                label: t('studio.tab.engagement'),
+                content: <EngagementPanel course={c} />,
+              },
+              {
+                id: 'publication',
+                label: t('studio.tab.publication'),
+                content: <PublicationPanel course={c} />,
               },
               { id: 'review', label: t('studio.tab.review'), content: <ReviewPanel course={c} /> },
             ]}

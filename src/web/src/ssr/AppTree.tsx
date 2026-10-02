@@ -7,6 +7,7 @@ import { ToastProvider } from '../components/ui/Toast';
 import { I18nProvider } from '../i18n/I18nProvider';
 import type { Lang } from '../i18n/I18nProvider';
 import { ThemeProvider } from '../theme/ThemeProvider';
+import { CompareProvider } from '../lib/compare';
 
 export function createQueryClient(): QueryClient {
   return new QueryClient({
@@ -41,7 +42,9 @@ export function AppTree({
       <I18nProvider initialLang={lang}>
         <ThemeProvider>
           <ToastProvider>
-            <AuthProvider>{router(<App />)}</AuthProvider>
+            <AuthProvider>
+              <CompareProvider>{router(<App />)}</CompareProvider>
+            </AuthProvider>
           </ToastProvider>
         </ThemeProvider>
       </I18nProvider>
