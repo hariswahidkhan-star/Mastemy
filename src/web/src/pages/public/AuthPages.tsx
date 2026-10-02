@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -11,6 +11,8 @@ import { Field, Input, Select } from '../../components/ui/Field';
 import { Notice } from '../../components/ui/misc';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
+import type { AuthResponse } from '../../api/types';
+import { MfaChallenge, MfaEnrollmentWizard } from '../account/Mfa';
 
 function safeNext(next: string | null): string {
   // Only same-origin relative paths are allowed as post-login redirects.
@@ -19,9 +21,10 @@ function safeNext(next: string | null): string {
 
 export function LoginPage() {
   const { t } = useI18n();
-  const { login } = useAuth();
+  const { login, completeLogin } = useAuth();
   const navigate = useNavigate();
   const [params] = useSearchParams();
+  const [pending, setPending] = useState<AuthResponse | null>(null);
   usePageMeta(t('auth.loginTitle'), undefined, { noindex: true });
   const schema = useMemo(
     () =>
@@ -39,8 +42,50 @@ export function LoginPage() {
   } = useForm<V>({ resolver: zodResolver(schema) });
   const m = useMutation({
     mutationFn: (v: V) => login(v.email, v.password),
-    onSuccess: () => navigate(safeNext(params.get('next')), { replace: true }),
+    onSuccess: (res) => {
+      if (!res.status || res.status === 'ok')
+        navigate(safeNext(params.get('next')), { replace: true });
+      else setPending(res);
+    },
   });
+  const finish = (session: AuthResponse) => {
+    completeLogin(session);
+    navigate(safeNext(params.get('next')), { replace: true });
+  };
+
+  if (pending?.status === 'mfa_required' && pending.mfaToken)
+    return (
+      <div className="container page" style={{ maxInlineSize: 480 }}>
+        <div className="card">
+          <h1 className="page-title" style={{ marginBlockEnd: 'var(--space-4)' }}>
+            {t('account.mfa.challengeTitle')}
+          </h1>
+          <MfaChallenge
+            mfaToken={pending.mfaToken}
+            onDone={finish}
+            onRestart={() => {
+              setPending(null);
+              m.reset();
+            }}
+          />
+        </div>
+      </div>
+    );
+  if (pending?.status === 'mfa_enrollment_required' && pending.accessToken)
+    return (
+      <div className="container page" style={{ maxInlineSize: 640 }}>
+        <div className="card">
+          <h1 className="page-title" style={{ marginBlockEnd: 'var(--space-4)' }}>
+            {t('account.mfa.enrollTitle')}
+          </h1>
+          <MfaEnrollmentWizard
+            token={pending.accessToken}
+            intro={t('account.mfa.requiredIntro')}
+            onDone={finish}
+          />
+        </div>
+      </div>
+    );
 
   return (
     <div className="container page" style={{ maxInlineSize: 480 }}>
@@ -58,6 +103,9 @@ export function LoginPage() {
         <Button type="submit" loading={m.isPending} style={{ inlineSize: '100%' }}>
           {t('auth.loginButton')}
         </Button>
+        <p className="small" style={{ marginBlockStart: 'var(--space-4)' }}>
+          <Link to="/forgot-password">{t('account.password.forgotLink')}</Link>
+        </p>
         <p className="small" style={{ marginBlockStart: 'var(--space-4)' }}>
           {t('auth.noAccount')} <Link to="/register">{t('nav.register')}</Link>
         </p>
@@ -109,7 +157,8 @@ export function RegisterPage() {
         displayName: v.displayName,
         preferredLanguage: v.preferredLanguage,
       }),
-    onSuccess: () => navigate('/me', { replace: true }),
+    // Optional onboarding: learning goals (skippable) before the dashboard.
+    onSuccess: () => navigate('/welcome', { replace: true }),
   });
 
   return (

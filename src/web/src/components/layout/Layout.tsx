@@ -7,6 +7,7 @@ import { Button } from '../ui/Button';
 import { CompareTray } from '../Discovery';
 import { NotificationBell } from '../NotificationBell';
 import { MegaMenu } from '../discover/MegaMenu';
+import { EmailVerificationBanner } from '../../pages/account/EmailPages';
 
 function Logo() {
   return (
@@ -45,6 +46,7 @@ export function Layout() {
     { to: '/verify', label: t('nav.verify'), show: true },
     { to: '/teach', label: t('nav.teach'), show: !hasRole(...AUTHOR_ROLES) },
     { to: '/me', label: t('nav.dashboard'), show: !!user },
+    { to: '/me/profile', label: t('account.nav.account'), show: !!user },
     { to: '/studio', label: t('nav.studio'), show: hasRole(...AUTHOR_ROLES) },
     { to: '/admin', label: t('nav.admin'), show: hasRole(...STAFF_ROLES) },
   ];
@@ -139,6 +141,7 @@ export function Layout() {
         </div>
       </header>
       <main id="main" className="site-main" tabIndex={-1}>
+        <EmailVerificationBanner />
         <Outlet />
       </main>
       <CompareTray />

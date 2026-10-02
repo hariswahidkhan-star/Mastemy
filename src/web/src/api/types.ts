@@ -85,16 +85,24 @@ export interface UserDto {
   displayName: string;
   preferredLanguage: string;
   roles: Role[];
+  emailVerified?: boolean;
+  mfaEnabled?: boolean;
 }
+/** `status`: "ok" (token pair), "mfa_required" (post `mfaToken` + code to /api/auth/mfa/verify) or
+ * "mfa_enrollment_required" (`accessToken` is a restricted enrollment-only token, no refresh token). */
+export type LoginStatus = 'ok' | 'mfa_required' | 'mfa_enrollment_required';
 export interface AuthResponse {
-  accessToken: string;
-  refreshToken: string;
-  expiresAt: IsoDate;
+  accessToken: string | null;
+  refreshToken: string | null;
+  expiresAt: IsoDate | null;
   user: UserDto;
+  status?: LoginStatus;
+  mfaToken?: string | null;
 }
 export interface AdminUserDto extends UserDto {
-  isSuspended?: boolean; // assumed
-  createdAt?: IsoDate; // assumed
+  isSuspended?: boolean;
+  lockoutUntil?: IsoDate | null;
+  createdAt?: IsoDate;
 }
 export type PlatformSettings = Record<string, boolean>;
 export interface AuditEntry {

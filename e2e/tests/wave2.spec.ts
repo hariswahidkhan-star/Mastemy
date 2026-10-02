@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import type { APIRequestContext } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 import type { Actor } from './helpers';
-import { ADMIN, API, PASSWORD, email, label, login, newActor, run } from './helpers';
+import { ADMIN, API, PASSWORD, apiLogin, email, label, login, newActor, run } from './helpers';
 
 /**
  * Wave 2: discovery, Q&A, announcements, notifications, resources, certificate PDF and enterprise
@@ -41,10 +41,8 @@ class Api {
 
 async function signIn(request: APIRequestContext, mail: string, password = PASSWORD) {
   const api = new Api(request);
-  const res = await api.post<{ accessToken: string; user: { id: string } }>('/api/auth/login', {
-    email: mail,
-    password,
-  });
+  // Privileged users answer the MFA challenge (or enroll) inside apiLogin.
+  const res = await apiLogin(request, mail, password);
   api.token = res.accessToken;
   return { api, userId: res.user.id };
 }
@@ -93,6 +91,8 @@ test.describe.serial('wave 2: discovery, engagement, resources, certificates, en
     const reviewerId = await registerApi(request, 'Rami Reviewer', people.reviewer);
     studentId = await registerApi(request, 'Salma Student', people.student);
     await adminApi.put(`/api/admin/users/${instructorId}/roles`, { roles: ['Student', 'Instructor'] });
+    // Privileged roles require a verified email address.
+    await adminApi.post(`/api/admin/users/${reviewerId}/email-verification/mark-verified`);
     await adminApi.put(`/api/admin/users/${reviewerId}/roles`, { roles: ['Student', 'Reviewer'] });
     const channel = await adminApi.post<{ id: string }>('/api/admin/youtube/channels', {
       channelId: `UC${`w2${run}`.padEnd(22, 'y').slice(0, 22)}`,
