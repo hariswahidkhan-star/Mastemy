@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0926",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0926-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Haskell, why is the IO type needed for reading input or printing output?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It keeps effects explicit in the type system and lets the pure core stay referentially transparent while effects run at the edges",
+     "correct": true,
+     "rationale": "Correct: IO marks effectful computations so purity is preserved and effects are sequenced explicitly."
+    },
+    {
+     "key": "B",
+     "text": "It makes the program run faster by caching results",
+     "correct": false,
+     "rationale": "IO is about modelling effects, not caching or speed."
+    },
+    {
+     "key": "C",
+     "text": "It is required for any arithmetic operation",
+     "correct": false,
+     "rationale": "Pure arithmetic needs no IO."
+    },
+    {
+     "key": "D",
+     "text": "It automatically parallelises the code",
+     "correct": false,
+     "rationale": "IO does not imply parallelism."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: IO marks effectful computations so purity is preserved and effects are sequenced explicitly.",
+   "outcome_refs": [
+    "MST-0926-D07.01"
+   ],
+   "domain_ref": "Working with IO and the Maybe and Either types",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0926-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Haskell type classes are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A type class defines a set of functions that instance types must implement",
+     "correct": true,
+     "rationale": "Correct: a type class specifies an interface that each instance provides."
+    },
+    {
+     "key": "B",
+     "text": "They enable ad-hoc polymorphism so one function name works across many types",
+     "correct": true,
+     "rationale": "Correct: type classes give overloaded behaviour resolved by the type."
+    },
+    {
+     "key": "C",
+     "text": "A type can belong to at most one type class",
+     "correct": false,
+     "rationale": "A type can be an instance of many type classes."
+    },
+    {
+     "key": "D",
+     "text": "Type class methods are dispatched on a runtime object header like OOP virtual methods",
+     "correct": false,
+     "rationale": "Dispatch is resolved by type, typically at compile time, not via a runtime object header."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a type class specifies an interface that each instance provides.; Correct: type classes give overloaded behaviour resolved by the type.",
+   "outcome_refs": [
+    "MST-0926-D03.02"
+   ],
+   "domain_ref": "Types, type classes and type inference",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0926-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does laziness allow you to do with an expression like take 5 [1..] ?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Produce only the elements that are demanded, so an infinite list can be used safely",
+     "correct": true,
+     "rationale": "Correct: lazy evaluation computes values only as needed, so take 5 forces just five elements."
+    },
+    {
+     "key": "B",
+     "text": "Evaluate the whole infinite list first and then slice it",
+     "correct": false,
+     "rationale": "That would never terminate; laziness avoids forcing the whole list."
+    },
+    {
+     "key": "C",
+     "text": "Convert the list into a strict array in memory",
+     "correct": false,
+     "rationale": "Laziness avoids building the full structure, not forces it."
+    },
+    {
+     "key": "D",
+     "text": "Run the computation on multiple cores automatically",
+     "correct": false,
+     "rationale": "Laziness is about evaluation order, not parallelism."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: lazy evaluation computes values only as needed, so take 5 forces just five elements.",
+   "outcome_refs": [
+    "MST-0926-D05.01"
+   ],
+   "domain_ref": "Laziness, recursion and folds",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

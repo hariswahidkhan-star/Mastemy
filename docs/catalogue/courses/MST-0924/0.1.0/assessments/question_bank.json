@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0924",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0924-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Elixir, what does the match operator = do in the expression {:ok, value} = result?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It matches the right side against the pattern and binds value if the shapes agree, raising otherwise",
+     "correct": true,
+     "rationale": "Correct: = is pattern matching; it binds variables when the pattern fits and raises a MatchError when it does not."
+    },
+    {
+     "key": "B",
+     "text": "It copies result into a mutable variable that can later be reassigned in place",
+     "correct": false,
+     "rationale": "Elixir data is immutable; = does not create a mutable cell."
+    },
+    {
+     "key": "C",
+     "text": "It compares the two sides and returns a boolean",
+     "correct": false,
+     "rationale": "Comparison returning a boolean uses == , not the match operator."
+    },
+    {
+     "key": "D",
+     "text": "It sends result as a message to the current process",
+     "correct": false,
+     "rationale": "Message passing uses send/receive, not =."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: = is pattern matching; it binds variables when the pattern fits and raises a MatchError when it does not.",
+   "outcome_refs": [
+    "MST-0924-D02.01"
+   ],
+   "domain_ref": "Pattern matching, immutability and the pipe operator",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0924-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about OTP supervision in Elixir are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A supervisor can restart a child process after it crashes according to a restart strategy",
+     "correct": true,
+     "rationale": "Correct: supervisors monitor children and restart them per the chosen strategy."
+    },
+    {
+     "key": "B",
+     "text": "The let-it-crash approach favours isolating failures and restarting to a known-good state",
+     "correct": true,
+     "rationale": "Correct: processes are allowed to fail and supervision returns the system to a clean state."
+    },
+    {
+     "key": "C",
+     "text": "Supervised processes share mutable global memory for speed",
+     "correct": false,
+     "rationale": "Each process has isolated state; there is no shared mutable memory."
+    },
+    {
+     "key": "D",
+     "text": "A crashed process can never be restarted automatically",
+     "correct": false,
+     "rationale": "Automatic restart is exactly what a supervisor provides."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: supervisors monitor children and restart them per the chosen strategy.; Correct: processes are allowed to fail and supervision returns the system to a clean state.",
+   "outcome_refs": [
+    "MST-0924-D05.02"
+   ],
+   "domain_ref": "OTP: GenServers, supervisors and fault tolerance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0924-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is an Ecto changeset used before inserting a record rather than inserting raw attributes?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It casts, filters and validates incoming data so invalid or unexpected fields are rejected before hitting the database",
+     "correct": true,
+     "rationale": "Correct: changesets centralise casting and validation, protecting the database from bad input."
+    },
+    {
+     "key": "B",
+     "text": "It makes the insert run asynchronously in a separate process",
+     "correct": false,
+     "rationale": "Changesets are about validation, not concurrency."
+    },
+    {
+     "key": "C",
+     "text": "It encrypts every field automatically",
+     "correct": false,
+     "rationale": "Changesets do not encrypt data by default."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for a database migration",
+     "correct": false,
+     "rationale": "Schema structure still requires migrations; changesets validate data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: changesets centralise casting and validation, protecting the database from bad input.",
+   "outcome_refs": [
+    "MST-0924-D07.02"
+   ],
+   "domain_ref": "Ecto: schemas, changesets and queries",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

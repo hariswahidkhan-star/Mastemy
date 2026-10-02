@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0948",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0948-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does enabling WAL (write-ahead logging) mode in SQLite primarily improve?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Readers can continue reading while a writer is appending, improving read-write concurrency",
+     "correct": true,
+     "rationale": "Correct: WAL lets readers see a consistent snapshot while a single writer appends changes."
+    },
+    {
+     "key": "B",
+     "text": "It allows many simultaneous writers to the same database",
+     "correct": false,
+     "rationale": "SQLite still permits only one writer at a time, even in WAL mode."
+    },
+    {
+     "key": "C",
+     "text": "It encrypts the database file",
+     "correct": false,
+     "rationale": "WAL does not provide encryption."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for indexes",
+     "correct": false,
+     "rationale": "WAL is about journaling and concurrency, not query planning."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: WAL lets readers see a consistent snapshot while a single writer appends changes.",
+   "outcome_refs": [
+    "MST-0948-D06.02"
+   ],
+   "domain_ref": "Concurrency, journaling and WAL mode",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0948-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about SQLite are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Foreign key enforcement must be turned on per connection with a pragma",
+     "correct": true,
+     "rationale": "Correct: foreign keys are off by default and enabled with PRAGMA foreign_keys = ON."
+    },
+    {
+     "key": "B",
+     "text": "SQLite stores the whole database in a single file",
+     "correct": true,
+     "rationale": "Correct: a SQLite database is a single cross-platform file."
+    },
+    {
+     "key": "C",
+     "text": "SQLite requires a separate server process to run",
+     "correct": false,
+     "rationale": "SQLite is embedded and serverless; it runs in-process."
+    },
+    {
+     "key": "D",
+     "text": "Column types are strictly enforced like in most client-server databases",
+     "correct": false,
+     "rationale": "SQLite uses flexible type affinity rather than strict typing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: foreign keys are off by default and enabled with PRAGMA foreign_keys = ON.; Correct: a SQLite database is a single cross-platform file.",
+   "outcome_refs": [
+    "MST-0948-D02.02"
+   ],
+   "domain_ref": "Schema design, data types and constraints",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0948-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A frequent lookup by email is slow on a large table. What is the most direct fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Create an index on the email column so the planner can avoid a full table scan",
+     "correct": true,
+     "rationale": "Correct: an index lets the query planner locate matching rows without scanning every row."
+    },
+    {
+     "key": "B",
+     "text": "Rewrite the query to SELECT * instead of listing columns",
+     "correct": false,
+     "rationale": "Selecting more columns does not speed up the lookup."
+    },
+    {
+     "key": "C",
+     "text": "Disable transactions on the connection",
+     "correct": false,
+     "rationale": "Transactions are unrelated to lookup speed here."
+    },
+    {
+     "key": "D",
+     "text": "Switch the column to JSON storage",
+     "correct": false,
+     "rationale": "JSON storage would not accelerate an equality lookup."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an index lets the query planner locate matching rows without scanning every row.",
+   "outcome_refs": [
+    "MST-0948-D05.01"
+   ],
+   "domain_ref": "Indexes, the query planner and performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

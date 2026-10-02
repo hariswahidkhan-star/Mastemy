@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0998",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0998-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A client sends the same POST to create a charge twice because of a network retry. What API design prevents a duplicate charge?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Accepting an idempotency key so the server returns the original result instead of creating a second charge",
+     "correct": true,
+     "rationale": "Correct: idempotency keys let the server de-duplicate retried create requests."
+    },
+    {
+     "key": "B",
+     "text": "Returning 200 OK for every request regardless of outcome",
+     "correct": false,
+     "rationale": "Masking outcomes with 200 does not prevent duplicates."
+    },
+    {
+     "key": "C",
+     "text": "Removing authentication from the endpoint",
+     "correct": false,
+     "rationale": "Auth is unrelated to duplicate prevention."
+    },
+    {
+     "key": "D",
+     "text": "Disabling pagination on list endpoints",
+     "correct": false,
+     "rationale": "Pagination has nothing to do with retry safety."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: idempotency keys let the server de-duplicate retried create requests.",
+   "outcome_refs": [
+    "MST-0998-D04.02"
+   ],
+   "domain_ref": "Error handling and consistency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0998-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which changes to a JSON REST API are generally backward compatible? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Adding a new optional field to a response",
+     "correct": true,
+     "rationale": "Correct: adding an optional field does not break existing clients that ignore unknown fields."
+    },
+    {
+     "key": "B",
+     "text": "Adding a new optional query parameter with a sensible default",
+     "correct": true,
+     "rationale": "Correct: a new optional parameter with a default does not affect existing callers."
+    },
+    {
+     "key": "C",
+     "text": "Renaming an existing response field",
+     "correct": false,
+     "rationale": "Renaming a field breaks clients that read the old name."
+    },
+    {
+     "key": "D",
+     "text": "Changing a field's type from string to object",
+     "correct": false,
+     "rationale": "Changing an existing field's type is a breaking change."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: adding an optional field does not break existing clients that ignore unknown fields.; Correct: a new optional parameter with a default does not affect existing callers.",
+   "outcome_refs": [
+    "MST-0998-D06.02"
+   ],
+   "domain_ref": "Versioning and backward compatibility",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0998-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which status code best indicates the client sent a syntactically invalid request body?",
+   "options": [
+    {
+     "key": "A",
+     "text": "400 Bad Request",
+     "correct": true,
+     "rationale": "Correct: 400 signals a client-side error such as a malformed request."
+    },
+    {
+     "key": "B",
+     "text": "500 Internal Server Error",
+     "correct": false,
+     "rationale": "500 indicates a server fault, not a client input error."
+    },
+    {
+     "key": "C",
+     "text": "200 OK",
+     "correct": false,
+     "rationale": "200 implies success, which is misleading for an invalid request."
+    },
+    {
+     "key": "D",
+     "text": "301 Moved Permanently",
+     "correct": false,
+     "rationale": "301 is a redirect, unrelated to request validity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 400 signals a client-side error such as a malformed request.",
+   "outcome_refs": [
+    "MST-0998-D02.02"
+   ],
+   "domain_ref": "HTTP semantics, status codes and methods",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1033",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1033-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of three-way matching in accounts payable?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To confirm the invoice agrees with the purchase order and the goods receipt before payment",
+     "correct": true,
+     "rationale": "Correct: three-way matching checks invoice against PO and receipt to prevent paying for goods not ordered or received."
+    },
+    {
+     "key": "B",
+     "text": "To split one invoice across three cost centres automatically",
+     "correct": false,
+     "rationale": "Three-way matching compares three documents; it does not split costs."
+    },
+    {
+     "key": "C",
+     "text": "To pay the vendor three times for redundancy",
+     "correct": false,
+     "rationale": "It prevents overpayment, not triplicate payment."
+    },
+    {
+     "key": "D",
+     "text": "To convert the invoice into three separate approvals",
+     "correct": false,
+     "rationale": "It refers to three documents, not three approvers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: three-way matching checks invoice against PO and receipt to prevent paying for goods not ordered or received.",
+   "outcome_refs": [
+    "MST-1033-D03.02"
+   ],
+   "domain_ref": "Purchase orders and three-way matching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1033-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which practices strengthen controls against accounts payable fraud? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verifying vendor bank-detail changes through an independent channel",
+     "correct": true,
+     "rationale": "Correct: independently confirming bank changes defeats a common invoice-redirection scheme."
+    },
+    {
+     "key": "B",
+     "text": "Separating vendor setup from invoice approval and payment",
+     "correct": true,
+     "rationale": "Correct: segregation of duties stops one person from both creating a vendor and paying it."
+    },
+    {
+     "key": "C",
+     "text": "Letting the person who approves invoices also create new vendors",
+     "correct": false,
+     "rationale": "Combining these duties removes a key control."
+    },
+    {
+     "key": "D",
+     "text": "Removing the audit trail to speed up processing",
+     "correct": false,
+     "rationale": "An audit trail is a core control, not an obstacle to remove."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: independently confirming bank changes defeats a common invoice-redirection scheme.; Correct: segregation of duties stops one person from both creating a vendor and paying it.",
+   "outcome_refs": [
+    "MST-1033-D07.01"
+   ],
+   "domain_ref": "Fraud prevention and compliance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1033-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A supplier offers 2/10 net 30. Taking the discount means:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Paying within 10 days to take a 2 percent discount instead of paying the full amount at 30 days",
+     "correct": true,
+     "rationale": "Correct: 2/10 net 30 gives a 2 percent discount for payment within 10 days, otherwise full amount by day 30."
+    },
+    {
+     "key": "B",
+     "text": "Paying 2 percent extra if you wait the full 30 days",
+     "correct": false,
+     "rationale": "It is a discount for early payment, not a surcharge."
+    },
+    {
+     "key": "C",
+     "text": "Paying in 2 days or forfeiting the order",
+     "correct": false,
+     "rationale": "The early-payment window is 10 days, not 2."
+    },
+    {
+     "key": "D",
+     "text": "Receiving 30 percent off for paying in 2 days",
+     "correct": false,
+     "rationale": "The figures are a 2 percent discount within 10 days."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 2/10 net 30 gives a 2 percent discount for payment within 10 days, otherwise full amount by day 30.",
+   "outcome_refs": [
+    "MST-1033-D06.02"
+   ],
+   "domain_ref": "Payments, terms and early-payment discounts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

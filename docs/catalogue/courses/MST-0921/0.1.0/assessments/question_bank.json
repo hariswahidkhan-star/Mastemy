@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0921",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0921-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Julia, what does adding a dot to an operator or function call (for example x .+ 1) do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It applies the operation element-wise across the array without building intermediate temporaries when fused",
+     "correct": true,
+     "rationale": "Correct: the dot syntax broadcasts and fuses element-wise operations, avoiding temporary allocations."
+    },
+    {
+     "key": "B",
+     "text": "It converts the array to a different numeric type",
+     "correct": false,
+     "rationale": "Type conversion is done with functions like convert or constructors, not the dot."
+    },
+    {
+     "key": "C",
+     "text": "It forces the computation to run on the GPU",
+     "correct": false,
+     "rationale": "GPU execution requires a GPU array type and package, not the broadcast dot."
+    },
+    {
+     "key": "D",
+     "text": "It makes the operation run in parallel across threads",
+     "correct": false,
+     "rationale": "Broadcasting is element-wise, not automatically multithreaded."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the dot syntax broadcasts and fuses element-wise operations, avoiding temporary allocations.",
+   "outcome_refs": [
+    "MST-0921-D03.02"
+   ],
+   "domain_ref": "Arrays, broadcasting and linear algebra",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0921-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about multiple dispatch in Julia are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A method can be chosen based on the types of all of its arguments, not just the first",
+     "correct": true,
+     "rationale": "Correct: Julia selects the most specific method using the types of every argument."
+    },
+    {
+     "key": "B",
+     "text": "Adding a new method for existing types extends a function without editing the original definition",
+     "correct": true,
+     "rationale": "Correct: you can add methods to an existing generic function for new type combinations."
+    },
+    {
+     "key": "C",
+     "text": "Dispatch is resolved only on the runtime value, never on the type",
+     "correct": false,
+     "rationale": "Dispatch is resolved on argument types, which is how specialisation happens."
+    },
+    {
+     "key": "D",
+     "text": "Each function may define only one method",
+     "correct": false,
+     "rationale": "A generic function can have many methods for different type signatures."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Julia selects the most specific method using the types of every argument.; Correct: you can add methods to an existing generic function for new type combinations.",
+   "outcome_refs": [
+    "MST-0921-D02.02"
+   ],
+   "domain_ref": "Types, multiple dispatch and methods",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0921-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A function shows red ::Any annotations under @code_warntype. What is the most likely consequence?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The compiler cannot specialise the code, so it runs slower and allocates more",
+     "correct": true,
+     "rationale": "Correct: type instability prevents specialisation and causes boxing and extra allocation."
+    },
+    {
+     "key": "B",
+     "text": "The function will raise a syntax error at parse time",
+     "correct": false,
+     "rationale": "Type instability is a performance issue, not a syntax error."
+    },
+    {
+     "key": "C",
+     "text": "The function cannot be exported from a module",
+     "correct": false,
+     "rationale": "Exporting is unrelated to type stability."
+    },
+    {
+     "key": "D",
+     "text": "The results will be numerically incorrect",
+     "correct": false,
+     "rationale": "Results are still correct; only performance suffers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: type instability prevents specialisation and causes boxing and extra allocation.",
+   "outcome_refs": [
+    "MST-0921-D06.01"
+   ],
+   "domain_ref": "Performance: type stability and profiling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

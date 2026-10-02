@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0951",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0951-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Cypher, why use MERGE instead of CREATE when importing a node that may already exist?",
+   "options": [
+    {
+     "key": "A",
+     "text": "MERGE matches an existing node with the given pattern or creates it if none is found, avoiding duplicates",
+     "correct": true,
+     "rationale": "Correct: MERGE is get-or-create, so repeated imports do not duplicate the node."
+    },
+    {
+     "key": "B",
+     "text": "MERGE always deletes the node first and recreates it",
+     "correct": false,
+     "rationale": "MERGE does not delete; it matches or creates."
+    },
+    {
+     "key": "C",
+     "text": "MERGE runs faster because it skips indexes",
+     "correct": false,
+     "rationale": "MERGE benefits from indexes; it does not skip them."
+    },
+    {
+     "key": "D",
+     "text": "MERGE can only be used on relationships, not nodes",
+     "correct": false,
+     "rationale": "MERGE works on both nodes and relationships."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MERGE is get-or-create, so repeated imports do not duplicate the node.",
+   "outcome_refs": [
+    "MST-0951-D04.02"
+   ],
+   "domain_ref": "Creating and updating data with Cypher",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0951-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about property-graph modelling in Neo4j are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Both nodes and relationships can carry properties",
+     "correct": true,
+     "rationale": "Correct: properties can be stored on nodes and on relationships."
+    },
+    {
+     "key": "B",
+     "text": "Relationships are first-class and are traversed without computing joins at query time",
+     "correct": true,
+     "rationale": "Correct: relationships are stored directly, so traversals avoid relational-style joins."
+    },
+    {
+     "key": "C",
+     "text": "A relationship can exist without connecting any nodes",
+     "correct": false,
+     "rationale": "A relationship always connects a start and an end node."
+    },
+    {
+     "key": "D",
+     "text": "Labels and relationship types are interchangeable",
+     "correct": false,
+     "rationale": "Labels classify nodes; relationship types classify relationships; they are not interchangeable."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: properties can be stored on nodes and on relationships.; Correct: relationships are stored directly, so traversals avoid relational-style joins.",
+   "outcome_refs": [
+    "MST-0951-D02.01"
+   ],
+   "domain_ref": "Nodes, relationships and properties",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0951-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A variable-length pattern like (a)-[*]->(b) is running extremely slowly. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The path length is unbounded, so the traversal explores an exponentially large number of paths",
+     "correct": true,
+     "rationale": "Correct: an unbounded variable-length path can blow up combinatorially; bounding the depth controls it."
+    },
+    {
+     "key": "B",
+     "text": "Cypher does not support variable-length paths",
+     "correct": false,
+     "rationale": "Cypher does support them; the problem is the missing bound."
+    },
+    {
+     "key": "C",
+     "text": "RETURN clauses always make queries slow",
+     "correct": false,
+     "rationale": "RETURN itself is not the bottleneck here."
+    },
+    {
+     "key": "D",
+     "text": "MERGE is implicitly being called on every node",
+     "correct": false,
+     "rationale": "No MERGE is involved in a MATCH traversal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an unbounded variable-length path can blow up combinatorially; bounding the depth controls it.",
+   "outcome_refs": [
+    "MST-0951-D05.01"
+   ],
+   "domain_ref": "Patterns, paths and variable-length traversals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

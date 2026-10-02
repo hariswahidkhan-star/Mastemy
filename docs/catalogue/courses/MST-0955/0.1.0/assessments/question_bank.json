@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0955",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0955-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can Snowflake scale query compute up and down without affecting stored data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Storage and compute are separate layers, so virtual warehouses can resize independently of the data they read",
+     "correct": true,
+     "rationale": "Correct: Snowflake decouples storage from compute, letting warehouses scale on their own."
+    },
+    {
+     "key": "B",
+     "text": "Every warehouse keeps its own private copy of all the data",
+     "correct": false,
+     "rationale": "Warehouses read from shared storage; they do not each copy all data."
+    },
+    {
+     "key": "C",
+     "text": "Scaling compute automatically deletes unused tables",
+     "correct": false,
+     "rationale": "Resizing compute does not alter stored data."
+    },
+    {
+     "key": "D",
+     "text": "Compute scaling only works if the tables are temporary",
+     "correct": false,
+     "rationale": "Scaling is independent of table type."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Snowflake decouples storage from compute, letting warehouses scale on their own.",
+   "outcome_refs": [
+    "MST-0955-D01.01"
+   ],
+   "domain_ref": "Snowflake architecture and core concepts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0955-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Snowflake access control and governance are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Privileges are typically granted to roles, which are then granted to users",
+     "correct": true,
+     "rationale": "Correct: Snowflake uses role-based access control with a role hierarchy."
+    },
+    {
+     "key": "B",
+     "text": "A masking policy can hide a column's value from users who lack the required role",
+     "correct": true,
+     "rationale": "Correct: dynamic data masking returns masked values based on the querying role."
+    },
+    {
+     "key": "C",
+     "text": "Resource monitors change the schema of governed tables",
+     "correct": false,
+     "rationale": "Resource monitors track and cap credit usage; they do not alter schemas."
+    },
+    {
+     "key": "D",
+     "text": "Granting privileges directly to each user is the recommended default",
+     "correct": false,
+     "rationale": "The recommended model grants through roles, not directly to users."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Snowflake uses role-based access control with a role hierarchy.; Correct: dynamic data masking returns masked values based on the querying role.",
+   "outcome_refs": [
+    "MST-0955-D07.01"
+   ],
+   "domain_ref": "Security: roles, access control and masking",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0955-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A table was dropped by mistake an hour ago. What Snowflake feature recovers it most directly?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Time Travel, which can restore the table to a point within its retention window with UNDROP",
+     "correct": true,
+     "rationale": "Correct: Time Travel lets you UNDROP or query a table as of an earlier time within retention."
+    },
+    {
+     "key": "B",
+     "text": "Auto-suspend on the virtual warehouse",
+     "correct": false,
+     "rationale": "Auto-suspend manages compute cost, not data recovery."
+    },
+    {
+     "key": "C",
+     "text": "A resource monitor",
+     "correct": false,
+     "rationale": "Resource monitors track spend, not data history."
+    },
+    {
+     "key": "D",
+     "text": "A masking policy",
+     "correct": false,
+     "rationale": "Masking controls visibility of values, not recovery of dropped objects."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Time Travel lets you UNDROP or query a table as of an earlier time within retention.",
+   "outcome_refs": [
+    "MST-0955-D06.01"
+   ],
+   "domain_ref": "Time Travel, cloning and continuous data pipelines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
