@@ -14,7 +14,7 @@ ASP.NET Core maps `__` to configuration sections.
 | `Stripe__WebhookSecret` | For payments | Endpoint signing secret (`whsec_...`) |
 | `YouTube__ApiKey` | Optional | Metadata validation; without it, manual metadata entry |
 | `YouTube__OAuthClientId` / `YouTube__OAuthClientSecret` | Optional | Only for the flagged uploader / channel connections |
-| `Features__*` | Optional | Initial flag defaults, e.g. `Features__YouTubeApiUploadsEnabled=false`; runtime changes are made by SuperAdmin and audited |
+| (feature flags) | — | Not environment variables: stored in the database, changed by a SuperAdmin under Admin → Settings (audited). Full key list: `README.md` |
 
 Never commit secrets; supply via the host's secret store or an untracked `.env`.
 
