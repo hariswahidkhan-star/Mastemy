@@ -1,0 +1,173 @@
+{
+ "course_id": "MST-0234",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1044,
+  "lesson_check_items": 54,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_required_form_A": 108,
+  "items_final_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0234-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Snowflake, which best describes how micro-partitions improve query performance?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They store the entire table in memory permanently",
+     "correct": false,
+     "rationale": "Micro-partitions are columnar storage units, not an in-memory cache of the whole table."
+    },
+    {
+     "key": "B",
+     "text": "They let the engine prune partitions whose metadata cannot match the filter",
+     "correct": true,
+     "rationale": "Correct: micro-partition metadata enables pruning of non-matching partitions."
+    },
+    {
+     "key": "C",
+     "text": "They disable the use of virtual warehouses",
+     "correct": false,
+     "rationale": "Warehouses still provide compute."
+    },
+    {
+     "key": "D",
+     "text": "They require manual indexing by the user",
+     "correct": false,
+     "rationale": "Snowflake does not use user-managed indexes."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: micro-partition metadata enables pruning of non-matching partitions.",
+   "outcome_refs": [
+    "MST-0234-D02.02"
+   ],
+   "domain_ref": "Snowflake Architecture and Data Modelling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0234-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user accidentally dropped a table 10 minutes ago. What recovers it fastest?",
+   "options": [
+    {
+     "key": "A",
+     "text": "UNDROP TABLE using Time Travel",
+     "correct": true,
+     "rationale": "Correct: Time Travel's UNDROP restores the recently dropped table."
+    },
+    {
+     "key": "B",
+     "text": "Wait for fail-safe to self-restore",
+     "correct": false,
+     "rationale": "Fail-safe is Snowflake-managed recovery, not a user self-service option."
+    },
+    {
+     "key": "C",
+     "text": "Rebuild the table manually from source",
+     "correct": false,
+     "rationale": "That is slower and unnecessary within the Time Travel window."
+    },
+    {
+     "key": "D",
+     "text": "Nothing can recover it",
+     "correct": false,
+     "rationale": "Time Travel can recover it within the retention window."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Time Travel's UNDROP restores the recently dropped table.",
+   "outcome_refs": [
+    "MST-0234-D05.01"
+   ],
+   "domain_ref": "Data Protection and Recovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0234-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices consistent with least-privilege access design in Snowflake.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant privileges to roles and assign roles to users",
+     "correct": true,
+     "rationale": "Correct: role-based grants support least privilege."
+    },
+    {
+     "key": "B",
+     "text": "Grant ACCOUNTADMIN to every analyst",
+     "correct": false,
+     "rationale": "That over-privileges users."
+    },
+    {
+     "key": "C",
+     "text": "Separate functional roles from access roles",
+     "correct": true,
+     "rationale": "Correct: separating functional and access roles is a recommended pattern."
+    },
+    {
+     "key": "D",
+     "text": "Grant privileges directly to each user",
+     "correct": false,
+     "rationale": "Direct user grants are harder to govern."
+    },
+    {
+     "key": "E",
+     "text": "Share one login across the team",
+     "correct": false,
+     "rationale": "Shared logins break accountability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: role-based grants support least privilege.",
+   "outcome_refs": [
+    "MST-0234-D01.02"
+   ],
+   "domain_ref": "Accounts and Security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

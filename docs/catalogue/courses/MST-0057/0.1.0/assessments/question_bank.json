@@ -1,0 +1,173 @@
+{
+ "course_id": "MST-0057",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 3276,
+  "lesson_check_items": 78,
+  "module_check_items": 840,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_required_form_A": 360,
+  "items_final_form": 360,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0057-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A one-day 99% VaR model produces 12 exceptions in 250 trading days. What does this most likely indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The model is well calibrated",
+     "correct": false,
+     "rationale": "About 2-3 exceptions are expected at 99% over 250 days, not 12."
+    },
+    {
+     "key": "B",
+     "text": "The model understates risk and fails backtesting",
+     "correct": true,
+     "rationale": "Correct: far more exceptions than expected signals the model underestimates risk."
+    },
+    {
+     "key": "C",
+     "text": "The model overstates risk",
+     "correct": false,
+     "rationale": "Too many exceptions means under-, not over-statement."
+    },
+    {
+     "key": "D",
+     "text": "Exceptions are irrelevant to VaR validation",
+     "correct": false,
+     "rationale": "Exception counts are the basis of VaR backtesting."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: far more exceptions than expected signals the model underestimates risk.",
+   "outcome_refs": [
+    "MST-0057-D01.01"
+   ],
+   "domain_ref": "Market Risk Measurement and Management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0057-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Expected loss on a loan is best expressed as:",
+   "options": [
+    {
+     "key": "A",
+     "text": "PD x LGD x EAD",
+     "correct": true,
+     "rationale": "Correct: expected loss is probability of default times loss given default times exposure at default."
+    },
+    {
+     "key": "B",
+     "text": "PD + LGD + EAD",
+     "correct": false,
+     "rationale": "The components are multiplied, not added."
+    },
+    {
+     "key": "C",
+     "text": "EAD divided by PD",
+     "correct": false,
+     "rationale": "This is not the expected-loss relationship."
+    },
+    {
+     "key": "D",
+     "text": "LGD minus recovery rate",
+     "correct": false,
+     "rationale": "LGD already reflects the recovery rate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: expected loss is probability of default times loss given default times exposure at default.",
+   "outcome_refs": [
+    "MST-0057-D02.01"
+   ],
+   "domain_ref": "Credit Risk Measurement and Management",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0057-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that correctly distinguish funding liquidity risk from market liquidity risk.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Funding liquidity risk is the risk of being unable to meet cash obligations as they fall due",
+     "correct": true,
+     "rationale": "Correct: funding liquidity concerns meeting obligations."
+    },
+    {
+     "key": "B",
+     "text": "Market liquidity risk never affects asset prices",
+     "correct": false,
+     "rationale": "Market liquidity risk directly affects the price at which assets can be sold."
+    },
+    {
+     "key": "C",
+     "text": "The two risks are identical in a stress event",
+     "correct": false,
+     "rationale": "They are distinct, though they can reinforce one another."
+    },
+    {
+     "key": "D",
+     "text": "Market liquidity risk is the risk of being unable to sell an asset without a large price concession",
+     "correct": true,
+     "rationale": "Correct: that is the definition of market liquidity risk."
+    },
+    {
+     "key": "E",
+     "text": "Funding liquidity risk only applies to equities",
+     "correct": false,
+     "rationale": "Funding liquidity risk is not asset-class specific."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "D"
+   ],
+   "explanation": "Correct: funding liquidity concerns meeting obligations.",
+   "outcome_refs": [
+    "MST-0057-D04.01"
+   ],
+   "domain_ref": "Liquidity and Treasury Risk",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

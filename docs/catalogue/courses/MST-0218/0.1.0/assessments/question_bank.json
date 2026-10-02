@@ -1,0 +1,173 @@
+{
+ "course_id": "MST-0218",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1044,
+  "lesson_check_items": 54,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_required_form_A": 108,
+  "items_final_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0218-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload needs to run stateless containers with automatic scaling to zero and no cluster management. Which service fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Compute Engine managed instance group",
+     "correct": false,
+     "rationale": "That still requires VM and scaling management and does not scale to zero cleanly."
+    },
+    {
+     "key": "B",
+     "text": "Cloud Run",
+     "correct": true,
+     "rationale": "Correct: Cloud Run runs stateless containers, scales to zero and needs no cluster management."
+    },
+    {
+     "key": "C",
+     "text": "Google Kubernetes Engine Standard",
+     "correct": false,
+     "rationale": "GKE Standard requires managing the cluster."
+    },
+    {
+     "key": "D",
+     "text": "Cloud Storage",
+     "correct": false,
+     "rationale": "Cloud Storage is object storage, not a compute service."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: Cloud Run runs stateless containers, scales to zero and needs no cluster management.",
+   "outcome_refs": [
+    "MST-0218-D01.02"
+   ],
+   "domain_ref": "Designing and Planning a Cloud Solution Architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0218-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To grant least-privilege access, you should prefer:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Predefined or custom IAM roles scoped to the needed permissions",
+     "correct": true,
+     "rationale": "Correct: predefined/custom roles support least privilege."
+    },
+    {
+     "key": "B",
+     "text": "The primitive Owner role for all users",
+     "correct": false,
+     "rationale": "Owner is overly broad and violates least privilege."
+    },
+    {
+     "key": "C",
+     "text": "Sharing one service account key with everyone",
+     "correct": false,
+     "rationale": "That is insecure and over-permissioned."
+    },
+    {
+     "key": "D",
+     "text": "Disabling IAM entirely",
+     "correct": false,
+     "rationale": "IAM cannot be disabled and is required for access control."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: predefined/custom roles support least privilege.",
+   "outcome_refs": [
+    "MST-0218-D03.01"
+   ],
+   "domain_ref": "Designing for Security and Compliance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0218-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices that improve a service's reliability per Google SRE principles.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Define SLOs and track an error budget",
+     "correct": true,
+     "rationale": "Correct: SLOs and error budgets are core SRE practices."
+    },
+    {
+     "key": "B",
+     "text": "Remove all monitoring to reduce noise",
+     "correct": false,
+     "rationale": "Removing monitoring harms reliability."
+    },
+    {
+     "key": "C",
+     "text": "Design multi-zone or multi-region redundancy",
+     "correct": true,
+     "rationale": "Correct: redundancy across zones/regions improves availability."
+    },
+    {
+     "key": "D",
+     "text": "Deploy straight to production without rollback",
+     "correct": false,
+     "rationale": "That increases risk, not reliability."
+    },
+    {
+     "key": "E",
+     "text": "Treat an SLA as identical to an internal SLO",
+     "correct": false,
+     "rationale": "SLA and SLO are distinct."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: SLOs and error budgets are core SRE practices.",
+   "outcome_refs": [
+    "MST-0218-D06.01"
+   ],
+   "domain_ref": "Ensuring Reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

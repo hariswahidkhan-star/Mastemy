@@ -1,0 +1,173 @@
+{
+ "course_id": "MST-0240",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 786,
+  "lesson_check_items": 42,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_required_form_A": 81,
+  "items_final_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0240-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Agentforce, what is the role of a 'topic'?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It stores the user's password",
+     "correct": false,
+     "rationale": "Topics do not store credentials."
+    },
+    {
+     "key": "B",
+     "text": "It groups related instructions and actions the agent can use for a job to be done",
+     "correct": true,
+     "rationale": "Correct: a topic organises instructions and actions for a category of work."
+    },
+    {
+     "key": "C",
+     "text": "It is the physical server the agent runs on",
+     "correct": false,
+     "rationale": "Topics are configuration, not infrastructure."
+    },
+    {
+     "key": "D",
+     "text": "It replaces the need for any actions",
+     "correct": false,
+     "rationale": "Topics reference actions; they do not remove the need for them."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: a topic organises instructions and actions for a category of work.",
+   "outcome_refs": [
+    "MST-0240-D02.01"
+   ],
+   "domain_ref": "Agent Builder and Actions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0240-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why ground an Agentforce agent in Data Cloud or knowledge data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To base responses on trusted company data and reduce hallucination",
+     "correct": true,
+     "rationale": "Correct: grounding anchors responses in trusted, retrievable company data."
+    },
+    {
+     "key": "B",
+     "text": "To make the agent respond more slowly",
+     "correct": false,
+     "rationale": "Grounding is about accuracy, not slowing responses."
+    },
+    {
+     "key": "C",
+     "text": "To remove the need for testing",
+     "correct": false,
+     "rationale": "Grounding does not replace testing."
+    },
+    {
+     "key": "D",
+     "text": "To disable guardrails",
+     "correct": false,
+     "rationale": "Grounding does not disable guardrails."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: grounding anchors responses in trusted, retrievable company data.",
+   "outcome_refs": [
+    "MST-0240-D04.01"
+   ],
+   "domain_ref": "Data Cloud and Grounding",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0240-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO steps that belong in responsibly deploying an Agentforce agent.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Run a test set in Testing Center before go-live",
+     "correct": true,
+     "rationale": "Correct: testing before deployment is a required step."
+    },
+    {
+     "key": "B",
+     "text": "Deploy directly to production untested to save time",
+     "correct": false,
+     "rationale": "Deploying untested is not responsible."
+    },
+    {
+     "key": "C",
+     "text": "Monitor conversation transcripts after launch",
+     "correct": true,
+     "rationale": "Correct: post-launch monitoring supports tuning and safety."
+    },
+    {
+     "key": "D",
+     "text": "Remove all escalation paths to humans",
+     "correct": false,
+     "rationale": "Escalation paths should be retained."
+    },
+    {
+     "key": "E",
+     "text": "Ground the agent on ungoverned data",
+     "correct": false,
+     "rationale": "Grounding data should be governed."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: testing before deployment is a required step.",
+   "outcome_refs": [
+    "MST-0240-D05.01"
+   ],
+   "domain_ref": "Testing, Deployment and Monitoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

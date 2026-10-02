@@ -1,0 +1,173 @@
+{
+ "course_id": "MST-0079",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 3264,
+  "lesson_check_items": 72,
+  "module_check_items": 840,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_required_form_A": 360,
+  "items_final_form": 360,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0079-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A deposit grows at a nominal annual rate of 8% compounded quarterly. What is the effective annual rate (to the nearest 0.01%)?",
+   "options": [
+    {
+     "key": "A",
+     "text": "8.00%",
+     "correct": false,
+     "rationale": "8% is the nominal rate, not the effective rate under quarterly compounding."
+    },
+    {
+     "key": "B",
+     "text": "8.24%",
+     "correct": true,
+     "rationale": "Correct: (1+0.08/4)^4 - 1 = 0.0824."
+    },
+    {
+     "key": "C",
+     "text": "8.16%",
+     "correct": false,
+     "rationale": "This corresponds to semi-annual, not quarterly, compounding."
+    },
+    {
+     "key": "D",
+     "text": "8.33%",
+     "correct": false,
+     "rationale": "This is not produced by (1+0.02)^4."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: (1+0.08/4)^4 - 1 = 0.0824.",
+   "outcome_refs": [
+    "MST-0079-D01.01"
+   ],
+   "domain_ref": "Time Value of Money",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0079-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a bond priced above par, which relationship holds?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The coupon rate exceeds the yield to maturity",
+     "correct": true,
+     "rationale": "Correct: a premium bond has a coupon above its yield."
+    },
+    {
+     "key": "B",
+     "text": "The coupon rate equals the yield to maturity",
+     "correct": false,
+     "rationale": "That gives a price at par."
+    },
+    {
+     "key": "C",
+     "text": "The coupon rate is below the yield to maturity",
+     "correct": false,
+     "rationale": "That gives a discount bond."
+    },
+    {
+     "key": "D",
+     "text": "The bond must be callable",
+     "correct": false,
+     "rationale": "Premium pricing does not require a call feature."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a premium bond has a coupon above its yield.",
+   "outcome_refs": [
+    "MST-0079-D04.01"
+   ],
+   "domain_ref": "Bonds",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0079-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO conditions required for Redington immunisation of a liability at a given interest rate.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Present value of assets equals present value of liabilities",
+     "correct": true,
+     "rationale": "Correct: PV matching is the first Redington condition."
+    },
+    {
+     "key": "B",
+     "text": "Asset duration is much larger than liability duration",
+     "correct": false,
+     "rationale": "Durations must be equal, not larger."
+    },
+    {
+     "key": "C",
+     "text": "Asset convexity exceeds liability convexity",
+     "correct": true,
+     "rationale": "Correct: greater asset convexity is the third Redington condition."
+    },
+    {
+     "key": "D",
+     "text": "The portfolio holds only zero-coupon bonds",
+     "correct": false,
+     "rationale": "Redington does not require zero-coupon bonds."
+    },
+    {
+     "key": "E",
+     "text": "Yields must be expected to fall",
+     "correct": false,
+     "rationale": "Immunisation guards against small shifts in either direction."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: PV matching is the first Redington condition.",
+   "outcome_refs": [
+    "MST-0079-D06.02"
+   ],
+   "domain_ref": "Immunisation and Interest-Rate Risk",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

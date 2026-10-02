@@ -1,0 +1,173 @@
+{
+ "course_id": "MST-0228",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 564,
+  "lesson_check_items": 48,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_required_form_A": 54,
+  "items_final_form": 54,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0228-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does Delta Lake add on top of files in object storage?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A separate proprietary database server",
+     "correct": false,
+     "rationale": "Delta Lake is a storage layer over open files, not a separate server."
+    },
+    {
+     "key": "B",
+     "text": "ACID transactions and a transaction log over Parquet files",
+     "correct": true,
+     "rationale": "Correct: Delta adds ACID transactions via a transaction log on Parquet."
+    },
+    {
+     "key": "C",
+     "text": "Automatic deletion of all historical data",
+     "correct": false,
+     "rationale": "Delta retains history and supports time travel."
+    },
+    {
+     "key": "D",
+     "text": "A replacement for Spark",
+     "correct": false,
+     "rationale": "Delta works with Spark; it does not replace it."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: Delta adds ACID transactions via a transaction log on Parquet.",
+   "outcome_refs": [
+    "MST-0228-D01.02"
+   ],
+   "domain_ref": "Databricks Lakehouse Platform",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0228-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which tool incrementally ingests new files as they arrive in cloud storage?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Auto Loader",
+     "correct": true,
+     "rationale": "Correct: Auto Loader incrementally and efficiently ingests new files."
+    },
+    {
+     "key": "B",
+     "text": "A full-table COPY on every run",
+     "correct": false,
+     "rationale": "That reprocesses everything and is not incremental."
+    },
+    {
+     "key": "C",
+     "text": "Unity Catalog",
+     "correct": false,
+     "rationale": "Unity Catalog governs access; it does not ingest files."
+    },
+    {
+     "key": "D",
+     "text": "A SQL warehouse dashboard",
+     "correct": false,
+     "rationale": "That visualises data; it does not ingest files."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Auto Loader incrementally and efficiently ingests new files.",
+   "outcome_refs": [
+    "MST-0228-D03.01"
+   ],
+   "domain_ref": "Incremental Data Processing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0228-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO responsibilities of Unity Catalog.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Centralised access control across workspaces",
+     "correct": true,
+     "rationale": "Correct: Unity Catalog centralises governance and access control."
+    },
+    {
+     "key": "B",
+     "text": "Executing Spark jobs on a cluster",
+     "correct": false,
+     "rationale": "Clusters execute jobs, not Unity Catalog."
+    },
+    {
+     "key": "C",
+     "text": "Data lineage tracking for tables",
+     "correct": true,
+     "rationale": "Correct: Unity Catalog captures lineage."
+    },
+    {
+     "key": "D",
+     "text": "Replacing Delta Lake storage",
+     "correct": false,
+     "rationale": "It governs data; it does not replace the storage format."
+    },
+    {
+     "key": "E",
+     "text": "Scheduling production jobs",
+     "correct": false,
+     "rationale": "Jobs/Workflows handle scheduling."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: Unity Catalog centralises governance and access control.",
+   "outcome_refs": [
+    "MST-0228-D05.01"
+   ],
+   "domain_ref": "Data Governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
