@@ -9,6 +9,7 @@ import { NotificationBell } from '../NotificationBell';
 import { MegaMenu } from '../discover/MegaMenu';
 import { EmailVerificationBanner } from '../../pages/account/EmailPages';
 import { ConsentBanner, ConsentSettingsButton } from '../../pages/workspace/Consent';
+import { AttributionCapture } from '../../pages/commerce/shared';
 
 function Logo() {
   return (
@@ -44,6 +45,7 @@ export function Layout() {
   const navItems: { to: string; label: string; show: boolean }[] = [
     { to: '/courses', label: t('nav.courses'), show: true },
     { to: '/free-lessons', label: t('nav.freeLessons'), show: true },
+    { to: '/plans', label: t('commerce.nav.plans'), show: true },
     { to: '/verify', label: t('nav.verify'), show: true },
     { to: '/teach', label: t('nav.teach'), show: !hasRole(...AUTHOR_ROLES) },
     { to: '/me', label: t('nav.dashboard'), show: !!user },
@@ -150,6 +152,7 @@ export function Layout() {
       <ConsentBanner />
       <main id="main" className="site-main" tabIndex={-1}>
         <EmailVerificationBanner />
+        <AttributionCapture />
         <Outlet />
       </main>
       <CompareTray />

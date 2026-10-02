@@ -13,7 +13,7 @@ import { Field, Select, Textarea } from '../../components/ui/Field';
 import { Badge, Notice, QueryState } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
-import { newIdempotencyKey, splitLines } from '../../lib/format';
+import { splitLines } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
 import { CompareToggle, WishlistButton } from '../../components/Discovery';
 import { DiscussionsPanel, EnrollToPost, useIsCourseAuthor } from '../engagement/Discussions';
@@ -75,33 +75,13 @@ export function FreeVideoNotice() {
 function PackageCard({ pkg, courseId }: { pkg: PackageDto; courseId?: string }) {
   const { t, fmtMoney } = useI18n();
   const { user } = useAuth();
-  const toast = useToast();
   const navigate = useNavigate();
-  const [busy, setBusy] = useState(false);
-  const [problem, setProblem] = useState<string | null>(null);
   const track = useEventSender();
-
-  const buy = async () => {
-    if (!user) {
-      navigate(`/login?next=${encodeURIComponent(window.location.pathname)}`);
-      return;
-    }
-    setBusy(true);
-    setProblem(null);
+  // Checkout (coupon, region, gift, server quote) lives on its own page; signed-out buyers log in first.
+  const go = (gift: boolean) => {
     track('checkout_start', courseId);
-    try {
-      const res = await api<{ checkoutUrl: string }>('/api/checkout', {
-        method: 'POST',
-        body: { packageId: pkg.id, idempotencyKey: newIdempotencyKey() },
-      });
-      window.location.assign(res.checkoutUrl);
-    } catch (e) {
-      if (e instanceof ApiError && e.is('payments_not_configured'))
-        setProblem(t('course.paymentsUnavailable'));
-      else toast.error(errorMessage(e, t));
-    } finally {
-      setBusy(false);
-    }
+    const to = `/checkout/package/${pkg.id}${gift ? '?gift=1' : ''}`;
+    navigate(user ? to : `/login?next=${encodeURIComponent(to)}`);
   };
 
   return (
@@ -118,9 +98,11 @@ function PackageCard({ pkg, courseId }: { pkg: PackageDto; courseId?: string }) 
         ))}
       </ul>
       <p className="small muted">{t('course.packageNotVideo')}</p>
-      {problem ? <Notice tone="warning">{problem}</Notice> : null}
-      <Button onClick={() => void buy()} loading={busy} style={{ inlineSize: '100%' }}>
+      <Button onClick={() => go(false)} style={{ inlineSize: '100%' }}>
         {t('course.buyPackage')}
+      </Button>
+      <Button variant="ghost" size="sm" onClick={() => go(true)} style={{ inlineSize: '100%' }}>
+        {t('commerce.gift.giveAsGift')}
       </Button>
     </div>
   );

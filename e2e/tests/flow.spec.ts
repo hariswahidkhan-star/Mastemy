@@ -450,6 +450,9 @@ test.describe.serial('author → publish → learn → assess → refund → sta
     await registerUser(page, 'Sara Student', people.student);
     await page.goto(`/courses/${courseSlug}`);
     await page.getByRole('button', { name: 'Buy package' }).click();
+    // The checkout page shows the server quote (coupon/region/gift options) before handing over to Stripe.
+    await expect(page.getByTestId('quote')).toContainText('$49.00');
+    await page.getByRole('button', { name: 'Continue to payment' }).click();
     // Fake Stripe hands back a Checkout URL that returns to the success page; nothing is paid yet.
     await expect(page).toHaveURL(/\/me\?checkout=success/);
     await expect(page.getByText('Payment submitted')).toBeVisible();

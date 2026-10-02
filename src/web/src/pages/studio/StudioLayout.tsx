@@ -18,6 +18,12 @@ export function StudioLayout() {
           <li>
             <NavLink to="/studio/earnings">{t('studio.earnings')}</NavLink>
           </li>
+          <li>
+            <NavLink to="/studio/commerce">{t('commerce.nav.studioPricing')}</NavLink>
+          </li>
+          <li>
+            <NavLink to="/studio/payouts">{t('commerce.nav.payouts')}</NavLink>
+          </li>
         </ul>
       </nav>
       <div>

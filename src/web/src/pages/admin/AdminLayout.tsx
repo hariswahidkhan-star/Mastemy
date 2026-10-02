@@ -11,6 +11,8 @@ export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[]; label?: s
   { to: '/admin/videos', key: 'videos', roles: ['Reviewer', 'Admin', 'SuperAdmin'] },
   { to: '/admin/packages', key: 'packages', roles: ['Admin', 'SuperAdmin', 'Finance'] },
   { to: '/admin/refunds', key: 'refunds', roles: ['Finance', 'Admin', 'SuperAdmin'] },
+  { to: '/admin/finance', key: 'commerce.nav.finance', roles: ['Finance', 'Admin', 'SuperAdmin'] },
+  { to: '/admin/commerce', key: 'commerce.nav.staff', roles: ['Admin', 'SuperAdmin'] },
   { to: '/admin/users', key: 'users', roles: ['Support', 'Admin', 'SuperAdmin'] },
   { to: '/admin/orgs', key: 'orgs', roles: ['Admin', 'SuperAdmin'] },
   { to: '/admin/settings', key: 'settings', roles: ['Admin', 'SuperAdmin'] },
@@ -47,7 +49,7 @@ export function AdminLayout() {
           {ADMIN_SECTIONS.filter((s) => hasRole(...s.roles)).map((s) => (
             <li key={s.to}>
               <NavLink to={s.to} end>
-                {t(s.label ?? `admin.section.${s.key}`)}
+                {t(s.label ?? (s.key.includes('.') ? s.key : `admin.section.${s.key}`))}
               </NavLink>
             </li>
           ))}

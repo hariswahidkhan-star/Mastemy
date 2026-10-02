@@ -20,6 +20,7 @@ import { discoverRoutes } from './routes/discoverRoutes';
 import { accountRoutes } from './routes/accountRoutes';
 import { examsRoutes } from './routes/examsRoutes';
 import { workspaceRoutes } from './routes/workspaceRoutes';
+import { commerceAdminRoutes, commerceRoutes, commerceStudioRoutes } from './routes/commerceRoutes';
 
 const LearnPage = lazy(() =>
   import('./pages/learn/LearnPage').then((m) => ({ default: m.LearnPage })),
@@ -268,6 +269,7 @@ export function App() {
             }
           />
           <Route path="courses/:id/issues" element={<StudioIssuesRedirect />} />
+          {commerceStudioRoutes}
           <Route
             path="courses/:id/lessons/:lessonId"
             element={
@@ -365,6 +367,7 @@ export function App() {
               </RequireRole>
             }
           />
+          {commerceAdminRoutes}
           <Route
             path="audit"
             element={
@@ -380,6 +383,7 @@ export function App() {
         {accountRoutes}
         {examsRoutes}
         {workspaceRoutes}
+        {commerceRoutes}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

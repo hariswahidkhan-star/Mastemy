@@ -17,6 +17,7 @@ import { usePageMeta } from '../../lib/seo';
 import { CertificatesSection, MyOrganizationsSection } from './MeWave2';
 import { CertificateRequestsSection } from '../exams/CertificateRequests';
 import { ContinueLearningSection } from '../workspace/Study';
+import { SubscriptionsSection } from '../commerce/MeCommerce';
 
 interface OrderDto {
   id: string;
@@ -175,6 +176,7 @@ export function DashboardPage() {
           <div className="stack">
             <ContinueLearningSection />
             <MyOrganizationsSection />
+            <SubscriptionsSection />
             <section className="card">
               <h2>{t('dashboard.continue')}</h2>
               {d.enrollments.length === 0 ? (
