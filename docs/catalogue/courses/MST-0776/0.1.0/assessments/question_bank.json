@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0776",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 328,
+  "lesson_check_items": 40,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0776-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Bedrock agent can update order records. What control most directly reduces the risk of an unintended destructive change?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate the tool arguments and require confirmation for destructive actions",
+     "correct": true,
+     "rationale": "Correct: validation plus confirmation gates risky operations."
+    },
+    {
+     "key": "B",
+     "text": "Give the agent broad permissions to act freely",
+     "correct": false,
+     "rationale": "Broad permissions increase, not reduce, the risk."
+    },
+    {
+     "key": "C",
+     "text": "Remove all logging of agent actions",
+     "correct": false,
+     "rationale": "Removing logs makes problems harder to catch, not safer."
+    },
+    {
+     "key": "D",
+     "text": "Increase the model temperature",
+     "correct": false,
+     "rationale": "Higher temperature makes behaviour less predictable."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: validation plus confirmation gates risky operations.",
+   "outcome_refs": [
+    "MST-0776-D03.01"
+   ],
+   "domain_ref": "Control and security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0776-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO settings help keep agent orchestration predictable and affordable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cap the number of orchestration steps per request",
+     "correct": true,
+     "rationale": "Correct: a step budget prevents runaway loops and cost."
+    },
+    {
+     "key": "B",
+     "text": "Monitor token usage and invocation cost",
+     "correct": true,
+     "rationale": "Correct: cost monitoring catches runaway spend early."
+    },
+    {
+     "key": "C",
+     "text": "Allow unlimited recursive tool calls",
+     "correct": false,
+     "rationale": "Unbounded recursion risks loops and cost blowups."
+    },
+    {
+     "key": "D",
+     "text": "Disable traces to reduce overhead",
+     "correct": false,
+     "rationale": "Traces are how you diagnose and control agent behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-0776-D04.01"
+   ],
+   "domain_ref": "Testing, deployment and cost",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0776-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want a Bedrock agent to call a backend function to look up order status. Which construct connects the agent to that function?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An action group with an API schema backed by a Lambda function",
+     "correct": true,
+     "rationale": "Correct: action groups define callable actions, commonly backed by Lambda."
+    },
+    {
+     "key": "B",
+     "text": "A larger context window alone",
+     "correct": false,
+     "rationale": "Context size does not connect an external function."
+    },
+    {
+     "key": "C",
+     "text": "A second knowledge base",
+     "correct": false,
+     "rationale": "Knowledge bases retrieve documents, they do not call functions."
+    },
+    {
+     "key": "D",
+     "text": "A higher temperature setting",
+     "correct": false,
+     "rationale": "Temperature does not provide tool connectivity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: action groups define callable actions, commonly backed by Lambda.",
+   "outcome_refs": [
+    "MST-0776-D02.01"
+   ],
+   "domain_ref": "Action groups and tools",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

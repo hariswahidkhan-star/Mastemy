@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0746",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 328,
+  "lesson_check_items": 40,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0746-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Cloud Run service receives bursty traffic and each container can safely handle many simultaneous requests. To raise throughput most cost-effectively, what should you adjust first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Increase the per-container concurrency setting",
+     "correct": true,
+     "rationale": "Correct: higher concurrency lets each instance serve more requests, reducing the instance count needed."
+    },
+    {
+     "key": "B",
+     "text": "Lower concurrency to 1 and add more instances",
+     "correct": false,
+     "rationale": "This wastes resources and raises cost when containers can handle parallel requests."
+    },
+    {
+     "key": "C",
+     "text": "Switch the service to a Compute Engine VM",
+     "correct": false,
+     "rationale": "That abandons the serverless model without addressing the concurrency setting."
+    },
+    {
+     "key": "D",
+     "text": "Disable autoscaling",
+     "correct": false,
+     "rationale": "Disabling autoscaling removes the mechanism that handles bursts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: higher concurrency lets each instance serve more requests, reducing the instance count needed.",
+   "outcome_refs": [
+    "MST-0746-D02.01"
+   ],
+   "domain_ref": "Scaling and resources",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0746-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "You are rolling out a risky change to a Cloud Run service. Which TWO actions support a safe, reversible release? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Deploy the change as a new revision and send it only a small traffic percentage",
+     "correct": true,
+     "rationale": "Correct: a canary limits exposure while you watch metrics."
+    },
+    {
+     "key": "B",
+     "text": "Keep the previous revision available to roll back to",
+     "correct": true,
+     "rationale": "Correct: an intact prior revision makes rollback immediate."
+    },
+    {
+     "key": "C",
+     "text": "Delete the previous revision immediately after deploying",
+     "correct": false,
+     "rationale": "Deleting it removes the rollback target."
+    },
+    {
+     "key": "D",
+     "text": "Send 100% of traffic to the new revision at once",
+     "correct": false,
+     "rationale": "That is the opposite of a controlled canary."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-0746-D03.01"
+   ],
+   "domain_ref": "Revisions and traffic",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0746-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An internal Cloud Run API should be callable only from within the VPC and services should not use broad default credentials. Which configuration best meets this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set internal ingress and assign a dedicated least-privilege service account",
+     "correct": true,
+     "rationale": "Correct: internal ingress plus a scoped service account enforces both requirements."
+    },
+    {
+     "key": "B",
+     "text": "Make the service public and rely on a password in the app",
+     "correct": false,
+     "rationale": "Public ingress exposes the service beyond the VPC."
+    },
+    {
+     "key": "C",
+     "text": "Use the default service account with Owner role",
+     "correct": false,
+     "rationale": "Owner is far broader than least privilege."
+    },
+    {
+     "key": "D",
+     "text": "Allow unauthenticated invocations",
+     "correct": false,
+     "rationale": "Unauthenticated access contradicts the internal-only requirement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: internal ingress plus a scoped service account enforces both requirements.",
+   "outcome_refs": [
+    "MST-0746-D04.01"
+   ],
+   "domain_ref": "Security, integration and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

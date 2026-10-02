@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0748",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 328,
+  "lesson_check_items": 40,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0748-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Vertex AI assistant sometimes invents product details. Which change most directly reduces these fabrications?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ground responses in a retrieved, authoritative document set",
+     "correct": true,
+     "rationale": "Correct: grounding supplies real context the model must answer from."
+    },
+    {
+     "key": "B",
+     "text": "Increase the temperature parameter",
+     "correct": false,
+     "rationale": "Higher temperature increases randomness and likely more fabrication."
+    },
+    {
+     "key": "C",
+     "text": "Remove the system instructions",
+     "correct": false,
+     "rationale": "Removing guidance tends to worsen reliability."
+    },
+    {
+     "key": "D",
+     "text": "Ask the model to be more confident",
+     "correct": false,
+     "rationale": "Confidence wording does not improve factual accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: grounding supplies real context the model must answer from.",
+   "outcome_refs": [
+    "MST-0748-D02.01"
+   ],
+   "domain_ref": "Grounding and retrieval",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0748-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls help keep a tool-using agent safe and predictable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate tool-call arguments before executing them",
+     "correct": true,
+     "rationale": "Correct: validation prevents malformed or unsafe calls."
+    },
+    {
+     "key": "B",
+     "text": "Cap the number of reasoning/tool steps per request",
+     "correct": true,
+     "rationale": "Correct: a step budget prevents runaway loops and cost."
+    },
+    {
+     "key": "C",
+     "text": "Let the agent execute any shell command it proposes",
+     "correct": false,
+     "rationale": "Unrestricted execution is a serious safety risk."
+    },
+    {
+     "key": "D",
+     "text": "Hide all errors from the agent",
+     "correct": false,
+     "rationale": "Agents need error signals to recover sensibly."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-0748-D03.01"
+   ],
+   "domain_ref": "Agents and tools",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0748-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before launching an AI feature, your team wants an objective way to track quality across changes. What should you build first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A labelled evaluation set scored against a rubric",
+     "correct": true,
+     "rationale": "Correct: a fixed eval set makes quality comparable across versions."
+    },
+    {
+     "key": "B",
+     "text": "A larger marketing page",
+     "correct": false,
+     "rationale": "Marketing does not measure model quality."
+    },
+    {
+     "key": "C",
+     "text": "A single hand-picked demo prompt",
+     "correct": false,
+     "rationale": "One prompt is not a reliable quality measure."
+    },
+    {
+     "key": "D",
+     "text": "A higher token limit",
+     "correct": false,
+     "rationale": "Token limits do not measure quality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a fixed eval set makes quality comparable across versions.",
+   "outcome_refs": [
+    "MST-0748-D04.01"
+   ],
+   "domain_ref": "Evaluation, deployment and operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

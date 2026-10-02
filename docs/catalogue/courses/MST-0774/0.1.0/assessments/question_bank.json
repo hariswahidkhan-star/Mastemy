@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0774",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 328,
+  "lesson_check_items": 40,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0774-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Bedrock assistant must answer strictly from approved company documents and show where each answer came from. Which approach fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ground answers with a knowledge base and return citations",
+     "correct": true,
+     "rationale": "Correct: a knowledge base supplies approved context and citations show provenance."
+    },
+    {
+     "key": "B",
+     "text": "Raise the temperature to encourage creativity",
+     "correct": false,
+     "rationale": "Creativity increases the risk of unsupported answers."
+    },
+    {
+     "key": "C",
+     "text": "Fine-tune on random internet text",
+     "correct": false,
+     "rationale": "Unapproved data undermines the 'approved documents only' requirement."
+    },
+    {
+     "key": "D",
+     "text": "Remove all retrieval and rely on the base model",
+     "correct": false,
+     "rationale": "Without retrieval the assistant cannot cite approved sources."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a knowledge base supplies approved context and citations show provenance.",
+   "outcome_refs": [
+    "MST-0774-D02.01"
+   ],
+   "domain_ref": "Knowledge bases and RAG",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0774-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices follow least privilege for Bedrock access? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant only the specific Bedrock actions the caller needs",
+     "correct": true,
+     "rationale": "Correct: scoping actions limits what a principal can do."
+    },
+    {
+     "key": "B",
+     "text": "Restrict access to the specific models in use",
+     "correct": true,
+     "rationale": "Correct: limiting model access reduces exposure."
+    },
+    {
+     "key": "C",
+     "text": "Attach a policy allowing bedrock:* to every role",
+     "correct": false,
+     "rationale": "Wildcard permissions violate least privilege."
+    },
+    {
+     "key": "D",
+     "text": "Share one admin key among all applications",
+     "correct": false,
+     "rationale": "Shared admin keys remove accountability and over-permit."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-0774-D03.01"
+   ],
+   "domain_ref": "Security and data handling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0774-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before launch, your team wants to compare answer quality across prompt changes objectively. What should you create first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A labelled evaluation set scored with a rubric",
+     "correct": true,
+     "rationale": "Correct: a fixed, labelled set makes quality comparable across changes."
+    },
+    {
+     "key": "B",
+     "text": "A single favourite demo prompt",
+     "correct": false,
+     "rationale": "One prompt is not a reliable measure."
+    },
+    {
+     "key": "C",
+     "text": "A bigger marketing budget",
+     "correct": false,
+     "rationale": "Marketing does not measure quality."
+    },
+    {
+     "key": "D",
+     "text": "A higher max-token limit",
+     "correct": false,
+     "rationale": "Token limits do not measure answer quality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a fixed, labelled set makes quality comparable across changes.",
+   "outcome_refs": [
+    "MST-0774-D04.01"
+   ],
+   "domain_ref": "Evaluation, deployment and cost",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0750",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 328,
+  "lesson_check_items": 40,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0750-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants alerts that reflect what users actually experience rather than internal machine state. Which signal is the best basis for the alert?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A service-level indicator such as request success rate or latency",
+     "correct": true,
+     "rationale": "Correct: SLIs describe user-facing behaviour, the right basis for SLO alerts."
+    },
+    {
+     "key": "B",
+     "text": "Raw CPU utilization of one VM",
+     "correct": false,
+     "rationale": "CPU can be high or low without reflecting user impact."
+    },
+    {
+     "key": "C",
+     "text": "The number of log lines written",
+     "correct": false,
+     "rationale": "Log volume does not map to user experience."
+    },
+    {
+     "key": "D",
+     "text": "The count of deployed revisions",
+     "correct": false,
+     "rationale": "Deployment count is unrelated to live user experience."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SLIs describe user-facing behaviour, the right basis for SLO alerts.",
+   "outcome_refs": [
+    "MST-0750-D04.01"
+   ],
+   "domain_ref": "Reliability and SLOs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0750-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve cost attribution on Google Cloud? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply consistent labels to resources for team and environment",
+     "correct": true,
+     "rationale": "Correct: labels enable fine-grained attribution."
+    },
+    {
+     "key": "B",
+     "text": "Export billing data for detailed analysis",
+     "correct": true,
+     "rationale": "Correct: billing export supports custom cost reporting."
+    },
+    {
+     "key": "C",
+     "text": "Put every workload in a single project",
+     "correct": false,
+     "rationale": "One project collapses the boundaries useful for attribution."
+    },
+    {
+     "key": "D",
+     "text": "Disable billing reports to save overhead",
+     "correct": false,
+     "rationale": "Disabling reports removes the visibility you need."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-0750-D01.01"
+   ],
+   "domain_ref": "Cost visibility",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0750-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload runs continuously at a predictable level all year. Which pricing approach is most likely to lower cost appropriately?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use committed use discounts for the steady baseline",
+     "correct": true,
+     "rationale": "Correct: commitments suit predictable, steady usage."
+    },
+    {
+     "key": "B",
+     "text": "Keep everything on-demand regardless of usage",
+     "correct": false,
+     "rationale": "On-demand is costlier for steady baseline load."
+    },
+    {
+     "key": "C",
+     "text": "Commit to the peak capacity you ever briefly hit",
+     "correct": false,
+     "rationale": "Committing to peak over-commits for steady load."
+    },
+    {
+     "key": "D",
+     "text": "Turn the workload off during business hours",
+     "correct": false,
+     "rationale": "That breaks a workload that must run continuously."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: commitments suit predictable, steady usage.",
+   "outcome_refs": [
+    "MST-0750-D02.01"
+   ],
+   "domain_ref": "Budgets and optimization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

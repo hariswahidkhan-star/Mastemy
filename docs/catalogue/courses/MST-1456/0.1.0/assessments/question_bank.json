@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1456",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 260,
+  "lesson_check_items": 40,
+  "module_check_items": 50,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1456-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before building a custom classifier, a team wants a quick quality reference with minimal effort. What is the sensible first step on Vertex AI?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Establish a baseline using a foundation model",
+     "correct": true,
+     "rationale": "Correct: a foundation-model baseline is fast and sets a reference to beat."
+    },
+    {
+     "key": "B",
+     "text": "Train a large custom model immediately",
+     "correct": false,
+     "rationale": "Custom training is costly before a baseline exists."
+    },
+    {
+     "key": "C",
+     "text": "Deploy to production without evaluation",
+     "correct": false,
+     "rationale": "Deploying first skips the quality check."
+    },
+    {
+     "key": "D",
+     "text": "Delete the labelled data to save storage",
+     "correct": false,
+     "rationale": "Labelled data is needed for evaluation and tuning."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a foundation-model baseline is fast and sets a reference to beat.",
+   "outcome_refs": [
+    "MST-1456-D02.01"
+   ],
+   "domain_ref": "Models and training",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1456-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support honest model evaluation? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Measure quality on a held-out test set the model did not train on",
+     "correct": true,
+     "rationale": "Correct: held-out data gives an unbiased estimate."
+    },
+    {
+     "key": "B",
+     "text": "Report the metric relevant to the task, not just overall accuracy",
+     "correct": true,
+     "rationale": "Correct: task-appropriate metrics avoid misleading conclusions."
+    },
+    {
+     "key": "C",
+     "text": "Evaluate only on the training data",
+     "correct": false,
+     "rationale": "Training-data metrics overstate real performance."
+    },
+    {
+     "key": "D",
+     "text": "Pick the metric after seeing which one looks best",
+     "correct": false,
+     "rationale": "Choosing metrics post hoc biases the result."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-1456-D03.01"
+   ],
+   "domain_ref": "Evaluation and deployment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1456-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A deployed Vertex AI endpoint serves few requests but keeps incurring cost. What is the most likely cause to check first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The endpoint keeps provisioned resources running while idle",
+     "correct": true,
+     "rationale": "Correct: endpoints can hold resources and bill even when idle."
+    },
+    {
+     "key": "B",
+     "text": "The notebook was closed",
+     "correct": false,
+     "rationale": "A closed notebook does not drive endpoint cost."
+    },
+    {
+     "key": "C",
+     "text": "The training data is too small",
+     "correct": false,
+     "rationale": "Dataset size is unrelated to idle serving cost."
+    },
+    {
+     "key": "D",
+     "text": "The model is too accurate",
+     "correct": false,
+     "rationale": "Accuracy does not cause idle cost."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: endpoints can hold resources and bill even when idle.",
+   "outcome_refs": [
+    "MST-1456-D04.01"
+   ],
+   "domain_ref": "Responsible AI and cost",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

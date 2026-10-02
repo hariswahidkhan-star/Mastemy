@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0777",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 328,
+  "lesson_check_items": 40,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0777-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A support assistant occasionally echoes customers' personal data in its logged responses. Which guardrail capability most directly addresses this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "PII detection and redaction on inputs and outputs",
+     "correct": true,
+     "rationale": "Correct: redacting PII prevents personal data from appearing in responses and logs."
+    },
+    {
+     "key": "B",
+     "text": "A larger model",
+     "correct": false,
+     "rationale": "Model size does not prevent PII exposure."
+    },
+    {
+     "key": "C",
+     "text": "Higher temperature",
+     "correct": false,
+     "rationale": "Temperature does not address privacy."
+    },
+    {
+     "key": "D",
+     "text": "Removing the system prompt",
+     "correct": false,
+     "rationale": "Removing guidance does not redact personal data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: redacting PII prevents personal data from appearing in responses and logs.",
+   "outcome_refs": [
+    "MST-0777-D03.01"
+   ],
+   "domain_ref": "Privacy and grounding",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0777-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about evaluating guardrails are sound? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Test against an adversarial red-team set, not only benign inputs",
+     "correct": true,
+     "rationale": "Correct: adversarial tests reveal real bypasses."
+    },
+    {
+     "key": "B",
+     "text": "Track both blocked-harmful and wrongly-blocked-benign rates",
+     "correct": true,
+     "rationale": "Correct: both over- and under-blocking matter."
+    },
+    {
+     "key": "C",
+     "text": "Assume any configured guardrail is fully effective",
+     "correct": false,
+     "rationale": "Effectiveness must be measured, not assumed."
+    },
+    {
+     "key": "D",
+     "text": "Only test inputs the guardrail was designed around",
+     "correct": false,
+     "rationale": "That biases results and misses gaps."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-0777-D04.01"
+   ],
+   "domain_ref": "Testing and governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0777-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Stakeholders worry a public assistant could answer questions on a prohibited subject. Which guardrail feature fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Configure a denied topic for that subject",
+     "correct": true,
+     "rationale": "Correct: denied topics block responses on defined subjects."
+    },
+    {
+     "key": "B",
+     "text": "Increase max tokens",
+     "correct": false,
+     "rationale": "Token limits do not restrict subject matter."
+    },
+    {
+     "key": "C",
+     "text": "Switch to a smaller model",
+     "correct": false,
+     "rationale": "Model size does not enforce topic policy."
+    },
+    {
+     "key": "D",
+     "text": "Disable logging",
+     "correct": false,
+     "rationale": "Disabling logging hides activity rather than restricting topics."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: denied topics block responses on defined subjects.",
+   "outcome_refs": [
+    "MST-0777-D02.01"
+   ],
+   "domain_ref": "Content and topic controls",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

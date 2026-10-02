@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0779",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 328,
+  "lesson_check_items": 40,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0779-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A seller's reported revenue does not match the bank payout. Which data must be reconciled to explain the difference most directly?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Financial events such as fees, refunds and adjustments",
+     "correct": true,
+     "rationale": "Correct: payouts reflect order totals net of fees, refunds and adjustments."
+    },
+    {
+     "key": "B",
+     "text": "The product images",
+     "correct": false,
+     "rationale": "Images do not affect payout amounts."
+    },
+    {
+     "key": "C",
+     "text": "The listing title keywords",
+     "correct": false,
+     "rationale": "Keywords affect discovery, not payout reconciliation."
+    },
+    {
+     "key": "D",
+     "text": "The account's time zone only",
+     "correct": false,
+     "rationale": "Time zone alone does not explain a revenue-to-payout gap."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: payouts reflect order totals net of fees, refunds and adjustments.",
+   "outcome_refs": [
+    "MST-0779-D03.01"
+   ],
+   "domain_ref": "Orders and finance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0779-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help a Selling Partner integration stay reliable under API quotas? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Respect rate limits and apply exponential backoff on throttling",
+     "correct": true,
+     "rationale": "Correct: backoff keeps the integration within quotas."
+    },
+    {
+     "key": "B",
+     "text": "Monitor account health and request status",
+     "correct": true,
+     "rationale": "Correct: monitoring catches throttling and account issues early."
+    },
+    {
+     "key": "C",
+     "text": "Send as many requests as fast as possible",
+     "correct": false,
+     "rationale": "That triggers throttling and failures."
+    },
+    {
+     "key": "D",
+     "text": "Ignore error responses and retry immediately in a tight loop",
+     "correct": false,
+     "rationale": "Tight retry loops worsen throttling."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-0779-D04.01"
+   ],
+   "domain_ref": "Reporting, metrics and limits",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0779-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement best describes access to Selling Partner API data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A selling partner authorizes an application to act on the account's data",
+     "correct": true,
+     "rationale": "Correct: access is granted through a selling-partner authorization, not a personal login."
+    },
+    {
+     "key": "B",
+     "text": "Anyone can read any seller's data without authorization",
+     "correct": false,
+     "rationale": "Seller data requires explicit authorization."
+    },
+    {
+     "key": "C",
+     "text": "Access requires no credentials at all",
+     "correct": false,
+     "rationale": "Credentials and authorization are required."
+    },
+    {
+     "key": "D",
+     "text": "Data is only available by email request",
+     "correct": false,
+     "rationale": "Data is retrieved programmatically under authorization."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: access is granted through a selling-partner authorization, not a personal login.",
+   "outcome_refs": [
+    "MST-0779-D01.01"
+   ],
+   "domain_ref": "Platform and access",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

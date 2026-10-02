@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0747",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 452,
+  "lesson_check_items": 60,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0747-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A pod is scheduled but traffic is sent to it before the app finishes loading, causing errors. Which configuration fixes this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add a readiness probe so the pod receives traffic only when ready",
+     "correct": true,
+     "rationale": "Correct: readiness probes gate Service endpoints until the app can serve."
+    },
+    {
+     "key": "B",
+     "text": "Add a liveness probe only",
+     "correct": false,
+     "rationale": "Liveness restarts unhealthy pods but does not delay traffic during startup."
+    },
+    {
+     "key": "C",
+     "text": "Increase the replica count",
+     "correct": false,
+     "rationale": "More replicas still send traffic to pods before they are ready."
+    },
+    {
+     "key": "D",
+     "text": "Remove resource limits",
+     "correct": false,
+     "rationale": "Limits are unrelated to startup readiness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: readiness probes gate Service endpoints until the app can serve.",
+   "outcome_refs": [
+    "MST-0747-D03.01"
+   ],
+   "domain_ref": "Scaling and reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0747-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices follow GKE security guidance for workloads that call Google Cloud APIs? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use Workload Identity to map Kubernetes service accounts to Google service accounts",
+     "correct": true,
+     "rationale": "Correct: Workload Identity avoids long-lived keys."
+    },
+    {
+     "key": "B",
+     "text": "Apply least-privilege IAM roles to the mapped service account",
+     "correct": true,
+     "rationale": "Correct: scoping the Google service account limits blast radius."
+    },
+    {
+     "key": "C",
+     "text": "Copy a service-account JSON key into a Secret and mount it",
+     "correct": false,
+     "rationale": "Long-lived keys are what Workload Identity is meant to eliminate."
+    },
+    {
+     "key": "D",
+     "text": "Grant cluster-admin to all application pods",
+     "correct": false,
+     "rationale": "That grossly over-privileges workloads."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-0747-D04.01"
+   ],
+   "domain_ref": "Security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0747-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Your team wants managed nodes with minimal node operations and per-pod billing. Which GKE mode best fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Autopilot",
+     "correct": true,
+     "rationale": "Correct: Autopilot manages nodes and bills per pod resource request."
+    },
+    {
+     "key": "B",
+     "text": "Standard with manual node pools",
+     "correct": false,
+     "rationale": "Standard requires managing node pools yourself."
+    },
+    {
+     "key": "C",
+     "text": "A self-managed Kubernetes cluster on VMs",
+     "correct": false,
+     "rationale": "That maximizes operational burden."
+    },
+    {
+     "key": "D",
+     "text": "Cloud Run only",
+     "correct": false,
+     "rationale": "Cloud Run is not a Kubernetes cluster for this workload model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Autopilot manages nodes and bills per pod resource request.",
+   "outcome_refs": [
+    "MST-0747-D01.01"
+   ],
+   "domain_ref": "Clusters and node pools",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1480",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 260,
+  "lesson_check_items": 40,
+  "module_check_items": 50,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1480-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An IAM request matches one policy that allows an action and another that explicitly denies it. What is the result?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The request is denied",
+     "correct": true,
+     "rationale": "Correct: an explicit deny always overrides any allow in IAM evaluation."
+    },
+    {
+     "key": "B",
+     "text": "The request is allowed",
+     "correct": false,
+     "rationale": "An explicit deny cannot be overridden by an allow."
+    },
+    {
+     "key": "C",
+     "text": "The request is allowed only on weekdays",
+     "correct": false,
+     "rationale": "No time rule applies; explicit deny wins."
+    },
+    {
+     "key": "D",
+     "text": "The result is random",
+     "correct": false,
+     "rationale": "IAM evaluation is deterministic, not random."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an explicit deny always overrides any allow in IAM evaluation.",
+   "outcome_refs": [
+    "MST-1480-D02.01"
+   ],
+   "domain_ref": "Policies and evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1480-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support least privilege in AWS IAM? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant only the specific actions and resources needed",
+     "correct": true,
+     "rationale": "Correct: scoping actions and resources is the core of least privilege."
+    },
+    {
+     "key": "B",
+     "text": "Use roles with temporary credentials instead of long-lived keys",
+     "correct": true,
+     "rationale": "Correct: temporary credentials reduce the risk of leaked static keys."
+    },
+    {
+     "key": "C",
+     "text": "Attach AdministratorAccess to every user",
+     "correct": false,
+     "rationale": "Blanket admin violates least privilege."
+    },
+    {
+     "key": "D",
+     "text": "Share one access key across the whole team",
+     "correct": false,
+     "rationale": "Shared keys remove accountability and over-permit."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-1480-D04.01"
+   ],
+   "domain_ref": "Least privilege and auditing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1480-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An application on an EC2 instance needs to read from an S3 bucket. What is the recommended way to grant this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Attach an IAM role to the instance with a scoped S3 read policy",
+     "correct": true,
+     "rationale": "Correct: an instance role provides temporary, scoped credentials without static keys."
+    },
+    {
+     "key": "B",
+     "text": "Embed a long-lived access key in the application code",
+     "correct": false,
+     "rationale": "Hardcoded keys are a major security risk."
+    },
+    {
+     "key": "C",
+     "text": "Make the bucket public",
+     "correct": false,
+     "rationale": "Public buckets expose data far beyond the app's needs."
+    },
+    {
+     "key": "D",
+     "text": "Grant the instance AdministratorAccess",
+     "correct": false,
+     "rationale": "Admin far exceeds a bucket-read requirement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an instance role provides temporary, scoped credentials without static keys.",
+   "outcome_refs": [
+    "MST-1480-D03.01"
+   ],
+   "domain_ref": "Roles and temporary credentials",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

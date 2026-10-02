@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1452",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 260,
+  "lesson_check_items": 40,
+  "module_check_items": 50,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1452-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A new teammate needs to view resources in a project but should not change them. Following least privilege, what do you grant?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A predefined Viewer role scoped to the project",
+     "correct": true,
+     "rationale": "Correct: Viewer grants read access without change rights, scoped appropriately."
+    },
+    {
+     "key": "B",
+     "text": "The Owner role",
+     "correct": false,
+     "rationale": "Owner far exceeds read-only needs."
+    },
+    {
+     "key": "C",
+     "text": "The Editor role",
+     "correct": false,
+     "rationale": "Editor allows changes the teammate should not make."
+    },
+    {
+     "key": "D",
+     "text": "No role; share your own credentials",
+     "correct": false,
+     "rationale": "Credential sharing breaks accountability and security."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Viewer grants read access without change rights, scoped appropriately.",
+   "outcome_refs": [
+    "MST-1452-D03.01"
+   ],
+   "domain_ref": "Identity and access",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1452-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about the Google Cloud resource hierarchy are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Resources live inside projects",
+     "correct": true,
+     "rationale": "Correct: projects are the basic container for resources."
+    },
+    {
+     "key": "B",
+     "text": "IAM policies can be set at project level and inherited",
+     "correct": true,
+     "rationale": "Correct: policies set higher in the hierarchy are inherited downward."
+    },
+    {
+     "key": "C",
+     "text": "A billing account is the same thing as a project",
+     "correct": false,
+     "rationale": "Billing accounts and projects are distinct."
+    },
+    {
+     "key": "D",
+     "text": "Projects cannot have IAM policies",
+     "correct": false,
+     "rationale": "Projects are a primary place to set IAM policies."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-1452-D01.01"
+   ],
+   "domain_ref": "Getting started",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1452-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want to be warned before a small project's spend exceeds a set amount. What should you configure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A budget with threshold alerts",
+     "correct": true,
+     "rationale": "Correct: budgets with alerts notify you as spend approaches a limit."
+    },
+    {
+     "key": "B",
+     "text": "A larger machine type",
+     "correct": false,
+     "rationale": "Machine size does not warn about spend."
+    },
+    {
+     "key": "C",
+     "text": "A second billing account",
+     "correct": false,
+     "rationale": "Adding accounts does not create spend alerts."
+    },
+    {
+     "key": "D",
+     "text": "Nothing; billing stops automatically at a limit",
+     "correct": false,
+     "rationale": "Budgets alert but do not automatically stop all spend."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: budgets with alerts notify you as spend approaches a limit.",
+   "outcome_refs": [
+    "MST-1452-D04.01"
+   ],
+   "domain_ref": "Deploy and secure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

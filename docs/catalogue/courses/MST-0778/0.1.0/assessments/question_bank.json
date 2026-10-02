@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0778",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 328,
+  "lesson_check_items": 40,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0778-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Contacts enter a queue in Amazon Connect but no agent ever receives them. What is the most likely missing configuration?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A routing profile linking agents to that queue",
+     "correct": true,
+     "rationale": "Correct: routing profiles connect agents to queues so contacts are delivered."
+    },
+    {
+     "key": "B",
+     "text": "A larger instance size",
+     "correct": false,
+     "rationale": "Instance size does not deliver queued contacts to agents."
+    },
+    {
+     "key": "C",
+     "text": "A second phone number",
+     "correct": false,
+     "rationale": "Another number does not fix queue-to-agent routing."
+    },
+    {
+     "key": "D",
+     "text": "A longer greeting prompt",
+     "correct": false,
+     "rationale": "Prompt length is unrelated to agent assignment."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: routing profiles connect agents to queues so contacts are delivered.",
+   "outcome_refs": [
+    "MST-0778-D01.01"
+   ],
+   "domain_ref": "Instance and routing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0778-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve a support line's efficiency in Amazon Connect? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Offer self-service in the flow for common questions",
+     "correct": true,
+     "rationale": "Correct: self-service deflects routine contacts from agents."
+    },
+    {
+     "key": "B",
+     "text": "Build modular, reusable contact flows",
+     "correct": true,
+     "rationale": "Correct: modular flows are easier to maintain and reuse."
+    },
+    {
+     "key": "C",
+     "text": "Route every contact directly to an agent",
+     "correct": false,
+     "rationale": "That removes the benefit of automation."
+    },
+    {
+     "key": "D",
+     "text": "Hide all metrics from supervisors",
+     "correct": false,
+     "rationale": "Supervisors need metrics to manage service levels."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both keyed options are right; the distractors are wrong for the reasons given.",
+   "outcome_refs": [
+    "MST-0778-D02.01"
+   ],
+   "domain_ref": "Contact flows",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0778-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Call recordings in a contact center contain sensitive data. What is the appropriate access approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Restrict recording access to authorized roles only",
+     "correct": true,
+     "rationale": "Correct: least-privilege access protects sensitive recordings."
+    },
+    {
+     "key": "B",
+     "text": "Allow all agents to access all recordings",
+     "correct": false,
+     "rationale": "Broad access over-exposes sensitive data."
+    },
+    {
+     "key": "C",
+     "text": "Make recordings publicly downloadable",
+     "correct": false,
+     "rationale": "Public access is a serious data risk."
+    },
+    {
+     "key": "D",
+     "text": "Disable security to simplify access",
+     "correct": false,
+     "rationale": "Disabling security endangers sensitive data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: least-privilege access protects sensitive recordings.",
+   "outcome_refs": [
+    "MST-0778-D04.01"
+   ],
+   "domain_ref": "Analytics, security and cost",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
