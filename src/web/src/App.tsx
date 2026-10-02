@@ -16,6 +16,7 @@ import { TeachPage } from './pages/public/TeachPage';
 import { VerifyPage } from './pages/public/VerifyPage';
 import { ComparePage } from './pages/public/ComparePage';
 import { ThreadPage } from './pages/engagement/Discussions';
+import { commerceAdminRoutes, commerceRoutes, commerceStudioRoutes } from './routes/commerceRoutes';
 
 const LearnPage = lazy(() =>
   import('./pages/learn/LearnPage').then((m) => ({ default: m.LearnPage })),
@@ -264,6 +265,7 @@ export function App() {
             }
           />
           <Route path="courses/:id/issues" element={<StudioIssuesRedirect />} />
+          {commerceStudioRoutes}
           <Route
             path="courses/:id/lessons/:lessonId"
             element={
@@ -361,6 +363,7 @@ export function App() {
               </RequireRole>
             }
           />
+          {commerceAdminRoutes}
           <Route
             path="audit"
             element={
@@ -372,6 +375,7 @@ export function App() {
             }
           />
         </Route>
+        {commerceRoutes}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

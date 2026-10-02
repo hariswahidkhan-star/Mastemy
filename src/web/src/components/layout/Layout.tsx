@@ -6,6 +6,7 @@ import { useTheme } from '../../theme/ThemeProvider';
 import { Button } from '../ui/Button';
 import { CompareTray } from '../Discovery';
 import { NotificationBell } from '../NotificationBell';
+import { AttributionCapture } from '../../pages/commerce/shared';
 
 function Logo() {
   return (
@@ -41,6 +42,7 @@ export function Layout() {
   const navItems: { to: string; label: string; show: boolean }[] = [
     { to: '/courses', label: t('nav.courses'), show: true },
     { to: '/free-lessons', label: t('nav.freeLessons'), show: true },
+    { to: '/plans', label: t('commerce.nav.plans'), show: true },
     { to: '/verify', label: t('nav.verify'), show: true },
     { to: '/teach', label: t('nav.teach'), show: !hasRole(...AUTHOR_ROLES) },
     { to: '/me', label: t('nav.dashboard'), show: !!user },
@@ -137,6 +139,7 @@ export function Layout() {
         </div>
       </header>
       <main id="main" className="site-main" tabIndex={-1}>
+        <AttributionCapture />
         <Outlet />
       </main>
       <CompareTray />

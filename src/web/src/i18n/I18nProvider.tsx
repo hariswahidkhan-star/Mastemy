@@ -2,11 +2,16 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import type { ReactNode } from 'react';
 import en from './en.json';
 import ar from './ar.json';
+import commerceEn from './commerce.en.json';
+import commerceAr from './commerce.ar.json';
 
 export type Lang = 'en' | 'ar';
 type Dict = { [key: string]: string | Dict };
 
-const DICTS: Record<Lang, Dict> = { en: en as Dict, ar: ar as Dict };
+const DICTS: Record<Lang, Dict> = {
+  en: { ...(en as Dict), ...(commerceEn as Dict) },
+  ar: { ...(ar as Dict), ...(commerceAr as Dict) },
+};
 const STORAGE_KEY = 'mastemy.lang';
 
 function lookup(dict: Dict, key: string): string | undefined {

@@ -15,6 +15,7 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
 import { CertificatesSection, MyOrganizationsSection } from './MeWave2';
+import { SubscriptionsSection } from '../commerce/MeCommerce';
 
 interface OrderDto {
   id: string;
@@ -172,6 +173,7 @@ export function DashboardPage() {
         {(d) => (
           <div className="stack">
             <MyOrganizationsSection />
+            <SubscriptionsSection />
             <section className="card">
               <h2>{t('dashboard.continue')}</h2>
               {d.enrollments.length === 0 ? (
