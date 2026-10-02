@@ -96,7 +96,8 @@ function ProfileForm({ profile }: { profile: ProfileDto }) {
             display: 'grid',
             placeItems: 'center',
             fontWeight: 700,
-            background: 'var(--color-accent-soft, var(--color-surface-2, #e8eefc))',
+            background: 'var(--c-primary-soft)',
+            color: 'var(--c-text)',
           }}
         >
           {profile.initials}

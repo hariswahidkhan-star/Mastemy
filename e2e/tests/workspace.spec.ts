@@ -375,8 +375,12 @@ test.describe
     // The author no longer sees it and appeals.
     const sp = student.page;
     await sp.goto(`/courses/${course.slug}/discussions/${threadId}`);
-    await expect(sp.getByText('This content is not available')).toBeVisible();
-    await sp.getByRole('button', { name: 'Appeal' }).click();
+    // Signed in, the author sees the moderation notice (an anonymous fetch reads as "not available");
+    // both offer the appeal.
+    await expect(
+      sp.getByText(/Your post was hidden by a moderator|This content is not available/).first(),
+    ).toBeVisible();
+    await sp.getByRole('button', { name: 'Appeal' }).first().click();
     const appeal = sp.getByRole('dialog', {
       name: 'Appeal a moderation decision',
     });

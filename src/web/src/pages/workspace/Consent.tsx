@@ -31,7 +31,17 @@ export function ConsentBanner() {
     update();
     const ro = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(update);
     ro?.observe(el);
+    // Keep keyboard focus clear of the docked banner (WCAG 2.4.11): scroll a control it would cover.
+    const onFocus = (e: FocusEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target?.getBoundingClientRect || el.contains(target)) return;
+      const limit = window.innerHeight - el.offsetHeight;
+      const r = target.getBoundingClientRect();
+      if (r.bottom > limit) window.scrollBy({ top: r.bottom - limit + 8 });
+    };
+    document.addEventListener('focusin', onFocus);
     return () => {
+      document.removeEventListener('focusin', onFocus);
       ro?.disconnect();
       root.style.removeProperty('--consent-h');
     };
