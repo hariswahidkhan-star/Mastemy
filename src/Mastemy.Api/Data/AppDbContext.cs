@@ -72,6 +72,10 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
     protected override void OnModelCreating(ModelBuilder m)
     {
+        // Modules own their newer entities: each adds an IEntityTypeConfiguration<T> in its own folder and uses
+        // db.Set<T>(); they are discovered here, so parallel module work never edits this shared file.
+        m.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+
         // Long text columns
         void Text<T>(params System.Linq.Expressions.Expression<Func<T, string?>>[] props) where T : class
         { foreach (var p in props) m.Entity<T>().Property(p).HasColumnType("longtext"); }
