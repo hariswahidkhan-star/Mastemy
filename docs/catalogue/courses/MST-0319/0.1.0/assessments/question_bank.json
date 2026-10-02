@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0319",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0319-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A reviewer checks whether code meets its design specification. This activity is primarily:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verification",
+     "correct": true,
+     "rationale": "Correct: verification checks that the product is built according to its specification."
+    },
+    {
+     "key": "B",
+     "text": "Validation",
+     "correct": false,
+     "rationale": "Validation checks the product meets the user's actual needs, not the spec."
+    },
+    {
+     "key": "C",
+     "text": "Deployment",
+     "correct": false,
+     "rationale": "Deployment is release, not a check against the specification."
+    },
+    {
+     "key": "D",
+     "text": "Requirements elicitation",
+     "correct": false,
+     "rationale": "Elicitation gathers needs; it is not a conformance check."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: verification checks that the product is built according to its specification.",
+   "outcome_refs": [
+    "MST-0319-D03.01"
+   ],
+   "domain_ref": "Verification, validation, testing and metrics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0319-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "Which practice most directly prevents an unauthorised change from reaching a released build?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Configuration management with change control",
+     "correct": true,
+     "rationale": "Correct: controlled change management governs what enters a baseline."
+    },
+    {
+     "key": "B",
+     "text": "Writing more unit tests",
+     "correct": false,
+     "rationale": "Tests find defects but do not control which changes are admitted."
+    },
+    {
+     "key": "C",
+     "text": "Increasing team size",
+     "correct": false,
+     "rationale": "Adding staff does not govern change admission."
+    },
+    {
+     "key": "D",
+     "text": "Longer release cycles",
+     "correct": false,
+     "rationale": "Cycle length does not by itself control unauthorised changes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: controlled change management governs what enters a baseline.",
+   "outcome_refs": [
+    "MST-0319-D02.03"
+   ],
+   "domain_ref": "Software engineering processes and configuration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0319-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO activities that are forms of static testing (no code execution).",
+   "options": [
+    {
+     "key": "A",
+     "text": "Code inspection",
+     "correct": true,
+     "rationale": "Correct: inspection examines artifacts without executing code."
+    },
+    {
+     "key": "B",
+     "text": "Requirements walkthrough",
+     "correct": true,
+     "rationale": "Correct: a walkthrough reviews an artifact without execution."
+    },
+    {
+     "key": "C",
+     "text": "Load testing",
+     "correct": false,
+     "rationale": "Load testing executes the system under demand."
+    },
+    {
+     "key": "D",
+     "text": "Unit test execution",
+     "correct": false,
+     "rationale": "Executing unit tests is dynamic testing."
+    },
+    {
+     "key": "E",
+     "text": "Smoke testing a build",
+     "correct": false,
+     "rationale": "Smoke testing runs the build, so it is dynamic."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: inspection examines artifacts without executing code. Correct: a walkthrough reviews an artifact without execution.",
+   "outcome_refs": [
+    "MST-0319-D03.02"
+   ],
+   "domain_ref": "Software quality management and standards",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
