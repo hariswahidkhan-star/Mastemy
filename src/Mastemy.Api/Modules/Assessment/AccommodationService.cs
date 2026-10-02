@@ -11,8 +11,9 @@ public record AccommodationDto(Guid Id, Guid UserId, Guid? AssessmentId, int Ext
 public record MyAccommodationDto(Guid Id, Guid? AssessmentId, int ExtraTimePercent, bool Untimed, DateTime CreatedAt);
 public record AssessmentPickerDto(Guid Id, string Title, Guid CourseId, string CourseCode, string CourseTitle, AssessmentKind Kind,
     AssessmentMode Mode, int? TimeLimitMinutes, bool CountsTowardCertificate);
-public record AssessmentPolicyInput(bool AllowPause, int MaxPauseMinutes, int? MaxExposuresPerQuestion);
-public record AssessmentPolicyDto(Guid AssessmentId, bool AllowPause, int MaxPauseMinutes, int? MaxExposuresPerQuestion, DateTime? UpdatedAt);
+public record AssessmentPolicyInput(bool AllowPause, int MaxPauseMinutes, int? MaxExposuresPerQuestion, decimal? NegativeMarkingPerWrong = null);
+public record AssessmentPolicyDto(Guid AssessmentId, bool AllowPause, int MaxPauseMinutes, int? MaxExposuresPerQuestion, DateTime? UpdatedAt,
+    decimal NegativeMarkingPerWrong = 0m);
 
 /// <summary>
 /// Testing accommodations (spec §15): staff grant a learner extra time (percent) and/or untimed delivery, for one assessment
@@ -120,7 +121,7 @@ public class AccommodationService(AppDbContext db, ICurrentUser me, AuditService
         await access.RequireCourseAuthorOrStaff(a.CourseId);
         var p = await db.Set<AssessmentPolicy>().AsNoTracking().FirstOrDefaultAsync(x => x.AssessmentId == assessmentId);
         return p is null ? new AssessmentPolicyDto(assessmentId, false, 0, null, null)
-            : new AssessmentPolicyDto(assessmentId, p.AllowPause, p.MaxPauseMinutes, p.MaxExposuresPerQuestion, p.UpdatedAt);
+            : new AssessmentPolicyDto(assessmentId, p.AllowPause, p.MaxPauseMinutes, p.MaxExposuresPerQuestion, p.UpdatedAt, p.NegativeMarkingPerWrong);
     }
 
     /// <summary>
@@ -138,14 +139,18 @@ public class AccommodationService(AppDbContext db, ICurrentUser me, AuditService
         if (!input.AllowPause && input.MaxPauseMinutes != 0) e.Add("maxPauseMinutes must be 0 when pausing is not allowed.");
         if (input.AllowPause && a.TimeLimitMinutes is null) e.Add("Pausing only applies to timed assessments.");
         if (input.MaxExposuresPerQuestion is < 1 or > 100) e.Add("maxExposuresPerQuestion must be between 1 and 100 (or null for unlimited).");
+        if (input.NegativeMarkingPerWrong is < 0m or > 1m) e.Add("negativeMarkingPerWrong must be between 0 and 1.");
+        if (input.NegativeMarkingPerWrong is > 0m && a.Mode != AssessmentMode.Exam) e.Add("Negative marking only applies to Exam-mode assessments.");
+        if (input.NegativeMarkingPerWrong is { } nm && decimal.Round(nm, 4) != nm) e.Add("negativeMarkingPerWrong supports at most 4 decimal places.");
         if (e.Count > 0) throw AppException.Bad(string.Join(" ", e), "validation_failed");
         var p = await db.Set<AssessmentPolicy>().FirstOrDefaultAsync(x => x.AssessmentId == assessmentId);
         if (p is null) { p = new AssessmentPolicy { AssessmentId = assessmentId }; db.Set<AssessmentPolicy>().Add(p); }
         p.AllowPause = input.AllowPause; p.MaxPauseMinutes = input.MaxPauseMinutes; p.MaxExposuresPerQuestion = input.MaxExposuresPerQuestion;
+        if (input.NegativeMarkingPerWrong is { } neg) p.NegativeMarkingPerWrong = neg; // null keeps the current rate
         p.UpdatedAt = DateTime.UtcNow;
-        audit.Record("assessment.policy_updated", "Assessment", assessmentId, new { input.AllowPause, input.MaxPauseMinutes, input.MaxExposuresPerQuestion });
+        audit.Record("assessment.policy_updated", "Assessment", assessmentId, new { input.AllowPause, input.MaxPauseMinutes, input.MaxExposuresPerQuestion, p.NegativeMarkingPerWrong });
         await db.SaveChangesAsync();
-        return new AssessmentPolicyDto(assessmentId, p.AllowPause, p.MaxPauseMinutes, p.MaxExposuresPerQuestion, p.UpdatedAt);
+        return new AssessmentPolicyDto(assessmentId, p.AllowPause, p.MaxPauseMinutes, p.MaxExposuresPerQuestion, p.UpdatedAt, p.NegativeMarkingPerWrong);
     }
 
     private static AccommodationDto Dto(Accommodation x) =>

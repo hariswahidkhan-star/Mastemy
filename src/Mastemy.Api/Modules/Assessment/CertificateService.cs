@@ -12,7 +12,7 @@ namespace Mastemy.Api.Modules.Assessment;
 /// the certificate) — never for watching videos. Issuance is idempotent per (user, course).
 /// </summary>
 public class CertificateService(AppDbContext db, ICurrentUser me, AuditService audit, IConfiguration cfg,
-    Mastemy.Api.Modules.Engagement.INotificationService notifications, Resources.IResourceStorage storage)
+    Mastemy.Api.Modules.Engagement.INotificationService notifications, Resources.IResourceStorage storage, CompletionAwardService completion)
 {
     /// <summary>Unambiguous alphabet: no 0/O, 1/I/L.</summary>
     public const string Alphabet = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
@@ -91,7 +91,15 @@ public class CertificateService(AppDbContext db, ICurrentUser me, AuditService a
     public async Task<(byte[] Pdf, string Code)> Pdf(string code)
     {
         var normalized = NormalizeCode(code);
-        var c = await db.Certificates.AsNoTracking().FirstOrDefaultAsync(x => x.Code == normalized) ?? throw AppException.NotFound("Certificate");
+        var c = await db.Certificates.AsNoTracking().FirstOrDefaultAsync(x => x.Code == normalized);
+        if (c is null)
+        {
+            var aw = await db.Set<CompletionAward>().AsNoTracking().FirstOrDefaultAsync(x => x.Code == normalized) ?? throw AppException.NotFound("Certificate");
+            var owner = me.Id is { } u && u == aw.UserId;
+            if (!owner && !aw.PubliclyVisible) throw AppException.NotFound("Certificate");
+            if (aw.Status == CertificateStatus.Revoked) throw new AppException(410, "This completion award has been revoked.", "certificate_revoked");
+            return (CertificatePdf.RenderCompletion(aw, VerificationUrl(aw.Code), await Design(aw.CourseId)), aw.Code);
+        }
         var isOwner = me.Id is { } uid && uid == c.UserId;
         if (!isOwner && !c.PubliclyVisible) throw AppException.NotFound("Certificate");
         if (c.Status == CertificateStatus.Revoked) throw new AppException(410, "This certificate has been revoked.", "certificate_revoked");
@@ -142,7 +150,18 @@ public class CertificateService(AppDbContext db, ICurrentUser me, AuditService a
     public async Task<MyCertificateDto> SetVisibility(Guid id, bool publiclyVisible)
     {
         var uid = me.RequireId();
-        var c = await db.Certificates.FirstOrDefaultAsync(x => x.Id == id && x.UserId == uid) ?? throw AppException.NotFound("Certificate");
+        var c = await db.Certificates.FirstOrDefaultAsync(x => x.Id == id && x.UserId == uid);
+        if (c is null)
+        {
+            var aw = await db.Set<CompletionAward>().FirstOrDefaultAsync(x => x.Id == id && x.UserId == uid) ?? throw AppException.NotFound("Certificate");
+            if (aw.PubliclyVisible != publiclyVisible)
+            {
+                aw.PubliclyVisible = publiclyVisible;
+                audit.Record("completion_award.visibility_changed", "CompletionAward", aw.Id, new { aw.Code, publiclyVisible });
+                await db.SaveChangesAsync();
+            }
+            return AwardDto(aw);
+        }
         if (c.PubliclyVisible != publiclyVisible)
         {
             c.PubliclyVisible = publiclyVisible;
@@ -157,17 +176,63 @@ public class CertificateService(AppDbContext db, ICurrentUser me, AuditService a
     {
         var normalized = NormalizeCode(code);
         var c = await db.Certificates.AsNoTracking().FirstOrDefaultAsync(x => x.Code == normalized);
-        if (c is null || !c.PubliclyVisible) throw AppException.NotFound("Certificate");
+        if (c is null)
+        {
+            var aw = await db.Set<CompletionAward>().AsNoTracking().FirstOrDefaultAsync(x => x.Code == normalized);
+            if (aw is null || !aw.PubliclyVisible) throw AppException.NotFound("Certificate");
+            return new CertificateVerification(aw.Code, aw.RecipientName, aw.CourseTitle, aw.IssuedAt, aw.Status,
+                CompletionAwardService.Criteria(aw.LessonCount, aw.SnapshotVersion), CredentialKinds.Completion, CredentialKinds.CompletionTitle,
+                CredentialKinds.CompletionVerificationLabel);
+        }
+        if (!c.PubliclyVisible) throw AppException.NotFound("Certificate");
         return new CertificateVerification(c.Code, c.RecipientName, c.CourseTitle, c.IssuedAt, c.Status, c.AssessmentCriteria);
     }
 
     public async Task<List<MyCertificateDto>> Mine()
     {
         var uid = me.RequireId();
-        return await db.Certificates.AsNoTracking().Where(c => c.UserId == uid).OrderByDescending(c => c.IssuedAt)
+        await completion.Sweep(uid); // completion awards are issued as soon as the learner looks for them after finishing
+        var certs = await db.Certificates.AsNoTracking().Where(c => c.UserId == uid)
             .Select(c => new MyCertificateDto(c.Id, c.Code, c.CourseId, c.CourseTitle, c.RecipientName, c.IssuedAt, c.Status,
-                c.ScorePercent, c.AssessmentCriteria, c.PubliclyVisible))
+                c.ScorePercent, c.AssessmentCriteria, c.PubliclyVisible, CredentialKinds.AssessedKnowledge, CredentialKinds.AssessedTitle))
             .ToListAsync();
+        var awards = await db.Set<CompletionAward>().AsNoTracking().Where(a => a.UserId == uid).ToListAsync();
+        return certs.Concat(awards.Select(AwardDto)).OrderByDescending(c => c.IssuedAt).ToList();
+    }
+
+    private static MyCertificateDto AwardDto(CompletionAward a) => new(a.Id, a.Code, a.CourseId, a.CourseTitle, a.RecipientName, a.IssuedAt,
+        a.Status, 0m, CompletionAwardService.Criteria(a.LessonCount, a.SnapshotVersion), a.PubliclyVisible, CredentialKinds.Completion,
+        CredentialKinds.CompletionTitle);
+
+    /// <summary>
+    /// LinkedIn "Add to profile" (certification) link. The name says which kind of credential it is, so a completion award is
+    /// never presented as an assessed certificate. Requires a valid, publicly visible credential and an absolute
+    /// Certificates:VerifyBaseUrl (otherwise 503 — LinkedIn needs a public verification URL).
+    /// </summary>
+    public async Task<CertificateShareDto> Share(Guid id)
+    {
+        var uid = me.RequireId();
+        string kind, code, courseTitle; DateTime issued; CertificateStatus status; bool visible;
+        if (await db.Certificates.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id && x.UserId == uid) is { } c)
+        { kind = CredentialKinds.AssessedKnowledge; code = c.Code; courseTitle = c.CourseTitle; issued = c.IssuedAt; status = c.Status; visible = c.PubliclyVisible; }
+        else if (await db.Set<CompletionAward>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id && x.UserId == uid) is { } a)
+        { kind = CredentialKinds.Completion; code = a.Code; courseTitle = a.CourseTitle; issued = a.IssuedAt; status = a.Status; visible = a.PubliclyVisible; }
+        else throw AppException.NotFound("Certificate");
+        if (status == CertificateStatus.Revoked) throw new AppException(410, "This credential has been revoked.", "certificate_revoked");
+        if (!visible) throw AppException.Conflict("Make the credential publicly verifiable before sharing it.", "certificate_not_public");
+        var verify = VerificationUrl(code);
+        if (!Uri.TryCreate(verify, UriKind.Absolute, out var vu) || (vu.Scheme != Uri.UriSchemeHttps && vu.Scheme != Uri.UriSchemeHttp))
+            throw new AppException(503, "Public certificate verification URL is not configured (Certificates:VerifyBaseUrl).", "verify_url_not_configured");
+        var name = kind == CredentialKinds.Completion
+            ? $"Certificate of Completion: {courseTitle} (lesson completion, not assessed)"
+            : $"Certificate of Assessed Knowledge: {courseTitle}";
+        var url = "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME" +
+                  "&name=" + Uri.EscapeDataString(name) +
+                  "&organizationName=" + Uri.EscapeDataString("Mastemy") +
+                  "&issueYear=" + issued.Year + "&issueMonth=" + issued.Month +
+                  "&certUrl=" + Uri.EscapeDataString(verify) +
+                  "&certId=" + Uri.EscapeDataString(code);
+        return new CertificateShareDto(id, kind, name, url, verify);
     }
 
     public async Task Revoke(Guid id, string? reason)
@@ -175,7 +240,16 @@ public class CertificateService(AppDbContext db, ICurrentUser me, AuditService a
         me.RequireId();
         if (!me.IsStaff) throw AppException.Forbidden();
         if (string.IsNullOrWhiteSpace(reason) || reason.Length > 500) throw AppException.Bad("reason is required (max 500 characters).");
-        var c = await db.Certificates.FirstOrDefaultAsync(x => x.Id == id) ?? throw AppException.NotFound("Certificate");
+        var c = await db.Certificates.FirstOrDefaultAsync(x => x.Id == id);
+        if (c is null)
+        {
+            var aw = await db.Set<CompletionAward>().FirstOrDefaultAsync(x => x.Id == id) ?? throw AppException.NotFound("Certificate");
+            if (aw.Status == CertificateStatus.Revoked) throw AppException.Conflict("Completion award is already revoked.", "already_revoked");
+            aw.Status = CertificateStatus.Revoked; aw.RevocationReason = reason.Trim();
+            audit.Record("completion_award.revoked", "CompletionAward", aw.Id, new { aw.Code, aw.UserId, aw.CourseId, reason = aw.RevocationReason });
+            await db.SaveChangesAsync();
+            return;
+        }
         if (c.Status == CertificateStatus.Revoked) throw AppException.Conflict("Certificate is already revoked.", "already_revoked");
         c.Status = CertificateStatus.Revoked;
         c.RevocationReason = reason.Trim();

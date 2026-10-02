@@ -44,7 +44,7 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         var current = versions.First(v => v.Version == q.CurrentVersion);
         var pending = q.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.Version == pv) : null;
         var meta = await db.Set<QuestionMeta>().AsNoTracking().FirstOrDefaultAsync(m => m.QuestionId == id);
-        return new QuestionDetailDto(QuestionRules.ToDto(q, current, pending) with { Meta = QuestionMetaDto.From(meta) },
+        return new QuestionDetailDto(await WorkedSolutions.Attach(db, QuestionRules.ToDto(q, current, pending) with { Meta = QuestionMetaDto.From(meta) }),
             versions.Select(v => new QuestionVersionSummary(v.Id, v.Version, v.CreatedAt, v.EditedBy, v.ReviewedBy)).ToList());
     }
 
@@ -67,9 +67,10 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         var meta = new QuestionMeta { QuestionId = q.Id };
         ApplyMeta(meta, input);
         db.Set<QuestionMeta>().Add(meta);
+        await WorkedSolutions.Stage(db, v.Id, input.WorkedSolution);
         audit.Record("question.created", "Question", q.Id, new { q.ExternalId, courseId });
         await db.SaveChangesAsync();
-        return QuestionRules.ToDto(q, v) with { Meta = QuestionMetaDto.From(meta) };
+        return await WorkedSolutions.Attach(db, QuestionRules.ToDto(q, v) with { Meta = QuestionMetaDto.From(meta) });
     }
 
     public async Task<QuestionDto> Update(Guid id, QuestionInput input)
@@ -88,7 +89,9 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         {
             // Live (or approved) content keeps being served; the edit is staged as a pending version with its own review.
             var next = await NextVersionNumber(q.Id);
-            db.QuestionVersions.Add(NewVersion(q.Id, next, input, uid));
+            var staged = NewVersion(q.Id, next, input, uid);
+            db.QuestionVersions.Add(staged);
+            await WorkedSolutions.Stage(db, staged.Id, input.WorkedSolution);
             q.PendingVersion = next; q.PendingState = QuestionState.Draft;
             action = "question.edit_staged";
         }
@@ -99,6 +102,7 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
             if (!usedInAttempt)
             {
                 ApplyContent(current, input);
+                await WorkedSolutions.Stage(db, current.Id, input.WorkedSolution);
                 current.EditedBy = uid; current.ReviewedBy = null;
                 var keep = new HashSet<Guid>();
                 var order = 0;
@@ -119,7 +123,9 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
             else
             {
                 var next = await NextVersionNumber(q.Id);
-                db.QuestionVersions.Add(NewVersion(q.Id, next, input, uid));
+                var nv = NewVersion(q.Id, next, input, uid);
+                db.QuestionVersions.Add(nv);
+                await WorkedSolutions.Stage(db, nv.Id, input.WorkedSolution);
                 q.CurrentVersion = next;
                 action = "question.versioned";
             }
@@ -149,8 +155,8 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         var versions = await db.QuestionVersions.AsNoTracking().Include(v => v.Options)
             .Where(v => v.QuestionId == q.Id && (v.Version == q.CurrentVersion || v.Version == q.PendingVersion)).ToListAsync();
         var meta = await db.Set<QuestionMeta>().AsNoTracking().FirstOrDefaultAsync(m => m.QuestionId == q.Id);
-        return QuestionRules.ToDto(q, versions.First(v => v.Version == q.CurrentVersion),
-            q.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.Version == pv) : null) with { Meta = QuestionMetaDto.From(meta) };
+        return await WorkedSolutions.Attach(db, QuestionRules.ToDto(q, versions.First(v => v.Version == q.CurrentVersion),
+            q.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.Version == pv) : null) with { Meta = QuestionMetaDto.From(meta) });
     }
 
     internal static void ApplyMeta(QuestionMeta meta, QuestionInput input)

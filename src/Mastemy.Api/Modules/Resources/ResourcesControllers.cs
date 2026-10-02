@@ -53,7 +53,8 @@ internal static class MultipartUpload
 public class StudioResourcesController(ResourceService svc) : ControllerBase
 {
     [HttpGet("api/studio/courses/{courseId:guid}/resources")]
-    public Task<List<ResourceDto>> List(Guid courseId) => svc.StudioList(courseId);
+    public Task<List<ResourceDto>> List(Guid courseId, [FromQuery] string? kind = null, [FromQuery] string? type = null) =>
+        svc.StudioList(courseId, kind, type);
 
     [HttpGet("api/studio/courses/{courseId:guid}/resources/usage")]
     public Task<ResourceUsageDto> Usage(Guid courseId) => svc.Usage(courseId);

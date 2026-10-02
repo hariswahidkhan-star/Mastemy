@@ -15,7 +15,7 @@ public record SnapshotModule(Guid Id, string Code, string Title, int SortOrder, 
 /// <summary>Learner-facing assessment settings frozen at publish (question pools stay live; question edits are staged by the bank).</summary>
 public record SnapshotAssessment(Guid Id, string Title, AssessmentKind Kind, AssessmentMode Mode, bool IsPremium, Guid? ModuleId, Guid? LessonId,
     int? TimeLimitMinutes, int? MaxAttempts, decimal PassPercent, MultiSelectScoring MultiSelectScoring, AnswerReviewPolicy ReviewPolicy,
-    int QuestionCount, bool CountsTowardCertificate);
+    int QuestionCount, bool CountsTowardCertificate, decimal NegativeMarkingPerWrong = 0m);
 /// <summary>A resource/caption file as published. StorageKey pins the blob version learners download until the next publish.</summary>
 public record SnapshotResource(Guid Id, Guid? LessonId, string Kind, string Language, string FileName, string ContentType, long SizeBytes,
     bool IsPremium, int Version, string StorageKey, string Sha256);
@@ -100,10 +100,17 @@ public class CourseSnapshotService(AppDbContext db, ICurrentUser me, AccessServi
             await DraftAssessments(courseId), await DraftResources(courseId));
     }
 
-    private Task<List<SnapshotAssessment>> DraftAssessments(Guid courseId) =>
-        db.Assessments.AsNoTracking().Where(a => a.CourseId == courseId).OrderBy(a => a.Title).ThenBy(a => a.Id)
+    private async Task<List<SnapshotAssessment>> DraftAssessments(Guid courseId)
+    {
+        var list = await db.Assessments.AsNoTracking().Where(a => a.CourseId == courseId).OrderBy(a => a.Title).ThenBy(a => a.Id)
             .Select(a => new SnapshotAssessment(a.Id, a.Title, a.Kind, a.Mode, a.IsPremium, a.ModuleId, a.LessonId, a.TimeLimitMinutes,
-                a.MaxAttempts, a.PassPercent, a.MultiSelectScoring, a.ReviewPolicy, a.QuestionCount, a.CountsTowardCertificate)).ToListAsync();
+                a.MaxAttempts, a.PassPercent, a.MultiSelectScoring, a.ReviewPolicy, a.QuestionCount, a.CountsTowardCertificate, 0m)).ToListAsync();
+        // Exam-mode negative-marking rate (Assessment module policy side table) is frozen with the published settings.
+        var ids = list.Select(a => a.Id).ToList();
+        var neg = await db.Set<Assessment.AssessmentPolicy>().AsNoTracking().Where(p => ids.Contains(p.AssessmentId) && p.NegativeMarkingPerWrong > 0)
+            .ToDictionaryAsync(p => p.AssessmentId, p => p.NegativeMarkingPerWrong);
+        return list.Select(a => a.Mode == AssessmentMode.Exam && neg.TryGetValue(a.Id, out var n) ? a with { NegativeMarkingPerWrong = n } : a).ToList();
+    }
 
     private Task<List<SnapshotResource>> DraftResources(Guid courseId) =>
         db.ResourceFiles.AsNoTracking().Where(r => r.CourseId == courseId && r.DeletedAt == null).OrderBy(r => r.FileName).ThenBy(r => r.Id)

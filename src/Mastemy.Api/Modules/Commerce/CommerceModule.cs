@@ -14,6 +14,7 @@ public static class CommerceModule
         s.AddScoped<FinanceService>();
         s.AddScoped<SubscriptionService>();
         s.AddScoped<GiftService>();
+        s.AddScoped<OrderBrowserService>();
         s.AddScoped<ConsumptionRecorder>();
         s.AddHostedService<CommerceJobs>();
     }

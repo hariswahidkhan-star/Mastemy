@@ -163,7 +163,9 @@ public class RegradeService(AppDbContext db, ICurrentUser me, AuditService audit
                 var oldEarned = at.PointsEarned ?? 0; var oldScore = at.ScorePercent ?? 0; var oldPassed = at.Passed == true;
                 foreach (var item in at.Items.Where(i => i.QuestionVersionId == vid))
                     item.Points = Scoring.Item(version.Type, correct, Ids(item.SelectedOptionIds), at.ScoringPolicy);
-                var earned = at.Items.Sum(i => i.Points ?? 0);
+                var perWrong = await db.Set<AttemptExtension>().AsNoTracking().Where(x => x.AttemptId == at.Id).Select(x => x.NegativeMarkingPerWrong).FirstOrDefaultAsync();
+                var wrongCount = at.Items.Count(i => i.Points == 0m && !string.IsNullOrEmpty(i.SelectedOptionIds));
+                var earned = Scoring.ApplyNegativeMarking(at.Items.Sum(i => i.Points ?? 0), wrongCount, perWrong);
                 var possible = at.PointsPossible ?? at.Items.Count;
                 at.PointsEarned = earned;
                 at.ScorePercent = Scoring.DisplayPercent(earned, possible);

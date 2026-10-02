@@ -264,7 +264,7 @@ public class AttemptTests(AssessmentFixture fx) : IClassFixture<AssessmentFixtur
         using (var doc = JsonDocument.Parse(await verify.Content.ReadAsStringAsync()))
         {
             var keys = doc.RootElement.EnumerateObject().Select(p => p.Name).OrderBy(x => x).ToArray();
-            Assert.Equal(new[] { "assessmentCriteria", "code", "courseTitle", "issuedAt", "recipientName", "status" }, keys);
+            Assert.Equal(new[] { "assessmentCriteria", "code", "courseTitle", "issuedAt", "kind", "recipientName", "status", "title", "verificationLabel" }, keys);
             var criteria = doc.RootElement.GetProperty("assessmentCriteria").GetString()!;
             Assert.Contains("multiple-choice", criteria);
             Assert.Contains("video viewing", criteria); // explicitly not assessed

@@ -16,6 +16,8 @@ public static class SecurityClaims
     public const string AmrMfa = "mfa";
     /// <summary>Refresh-token family (session) id the access token belongs to.</summary>
     public const string SessionId = "sid";
+    /// <summary>OIDC auth_time: unix seconds of the sign-in that started this session (kept across refreshes).</summary>
+    public const string AuthTime = "auth_time";
     /// <summary>Marks a restricted token; only value: <see cref="MfaEnrollmentUse"/>.</summary>
     public const string TokenUse = "token_use";
     public const string MfaEnrollmentUse = "mfa_enrollment";
@@ -37,8 +39,9 @@ public class AccessTokenFactory(JwtOptions opt)
 {
     public static readonly TimeSpan EnrollmentTokenLifetime = TimeSpan.FromMinutes(10);
 
-    public string Issue(User user, Guid sessionId, bool mfa)
+    public string Issue(User user, Guid sessionId, bool mfa, DateTime? authTimeUtc = null)
     {
+        var authTime = new DateTimeOffset(DateTime.SpecifyKind(authTimeUtc ?? DateTime.UtcNow, DateTimeKind.Utc)).ToUnixTimeSeconds();
         var claims = new List<Claim>
         {
             new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
@@ -47,6 +50,7 @@ public class AccessTokenFactory(JwtOptions opt)
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new(SecurityClaims.Amr, mfa ? SecurityClaims.AmrMfa : SecurityClaims.AmrPassword),
             new(SecurityClaims.SessionId, sessionId.ToString()),
+            new(SecurityClaims.AuthTime, authTime.ToString(System.Globalization.CultureInfo.InvariantCulture), ClaimValueTypes.Integer64),
         };
         claims.AddRange(user.Roles.Select(r => new Claim(ClaimTypes.Role, r.Role)));
         return Write(claims, DateTime.UtcNow.AddMinutes(opt.AccessTokenMinutes));

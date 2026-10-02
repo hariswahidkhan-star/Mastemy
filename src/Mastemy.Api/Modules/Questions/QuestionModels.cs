@@ -9,7 +9,7 @@ public record QuestionInput(
     string ExternalId, QuestionType Type, string Language, string Stem, string Explanation, Difficulty Difficulty,
     string? SkillCode, string? CertificationObjective, List<string>? Tags, string? SourceReference, bool AllowShuffle,
     Guid? ModuleId, Guid? LessonId, List<OptionInput> Options,
-    CognitiveLevel? CognitiveLevel = null, Guid? CaseGroupId = null, int? CaseGroupOrder = null);
+    CognitiveLevel? CognitiveLevel = null, Guid? CaseGroupId = null, int? CaseGroupOrder = null, string? WorkedSolution = null);
 
 public record StateChangeInput(QuestionState State);
 
@@ -17,7 +17,7 @@ public record OptionDto(Guid Id, int SortOrder, string Text, bool IsCorrect, str
 
 public record QuestionVersionDto(Guid Id, int Version, QuestionType Type, string Language, string Stem, string Explanation,
     Difficulty Difficulty, string SkillCode, string CertificationObjective, List<string> Tags, string SourceReference,
-    bool AllowShuffle, Guid? EditedBy, Guid? ReviewedBy, DateTime CreatedAt, List<OptionDto> Options);
+    bool AllowShuffle, Guid? EditedBy, Guid? ReviewedBy, DateTime CreatedAt, List<OptionDto> Options, string? WorkedSolution = null);
 
 public record QuestionDto(Guid Id, Guid CourseId, string ExternalId, QuestionState State, int CurrentVersion,
     Guid? ModuleId, Guid? LessonId, Guid CreatedBy, Guid? ReviewedBy, DateTime CreatedAt, DateTime UpdatedAt,
@@ -87,6 +87,8 @@ public static partial class QuestionRules
         var ids = new HashSet<Guid>();
         RichText.Validate("stem", q.Stem, e, ids);
         RichText.Validate("explanation", q.Explanation, e, ids);
+        Text(e, "workedSolution", q.WorkedSolution, WorkedSolutions.MaxLength, required: false);
+        if (!string.IsNullOrWhiteSpace(q.WorkedSolution)) RichText.Validate("workedSolution", q.WorkedSolution, e, ids);
         Line(e, "skillCode", q.SkillCode, MaxSkill);
         Line(e, "certificationObjective", q.CertificationObjective, MaxObjective);
         Line(e, "sourceReference", q.SourceReference, MaxSource);
@@ -130,7 +132,8 @@ public static partial class QuestionRules
     /// <summary>Course resources referenced as images anywhere in the question.</summary>
     public static HashSet<Guid> ResourceIds(QuestionInput q)
     {
-        var set = new HashSet<Guid>(RichText.ResourceIds(q.Stem).Concat(RichText.ResourceIds(q.Explanation)));
+        var set = new HashSet<Guid>(RichText.ResourceIds(q.Stem).Concat(RichText.ResourceIds(q.Explanation))
+            .Concat(string.IsNullOrWhiteSpace(q.WorkedSolution) ? [] : RichText.ResourceIds(q.WorkedSolution)));
         foreach (var o in q.Options ?? []) { set.UnionWith(RichText.ResourceIds(o.Text)); set.UnionWith(RichText.ResourceIds(o.Rationale)); }
         return set;
     }

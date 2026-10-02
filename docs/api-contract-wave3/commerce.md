@@ -168,3 +168,18 @@ note issued after the seller configuration was removed reuses the original invoi
 | `Invoice:SellerName`, `Invoice:SellerAddress`, `Invoice:SellerTaxId` | — (PDF 503 when missing) |
 | `Tax:Mode` | None (`Inclusive` to enable) |
 | `Stripe:SecretKey`, `Stripe:WebhookSecret`, `Stripe:ApiBaseUrl`, `Stripe:SuccessUrl`, `Stripe:CancelUrl` | existing |
+
+## Order browser (final wave)
+
+`GET /api/admin/orders` — policy Finance (Finance, Admin, SuperAdmin). Query: `status` (OrderStatus, case-insensitive),
+`email` (exact buyer email, case-insensitive), `courseId`, `from`/`to` (UTC, on CreatedAt), `currency` (ISO-3),
+`coupon` (code, case-insensitive), `page` (>=1), `pageSize` (1-100, default 25). Newest first.
+Response `{ items: [{ id, userId, buyerEmail, status, kind, total, currency, discountAmount, refundedAmount, couponCode,
+itemCount, createdAt, paidAt }], total, page, pageSize }`. 400 on invalid filters.
+
+`GET /api/admin/orders/{id}` — Finance. `{ order, priceSource, country, listAmount, items[{courseTitle,...}], payments
+(full provider ids), refunds, invoices, ledger (commission entries linked by order or ledger source), disputes }`.
+
+`GET /api/support/orders?email=&orderId=` — policy Support (Support, Admin, SuperAdmin), read-only, at least one filter
+(400 `lookup_required`), max 50. `{ id, userId, maskedBuyerEmail, status, total, currency, createdAt, paidAt, courseTitles,
+maskedPaymentIds ("pi_…WXYZ"), refunds[{amount,status,createdAt}], invoiceNumbers }` — no ledger/commission data.

@@ -64,3 +64,8 @@ the payload never contains questions, options, `isCorrect`, rationales or explan
 - Staff: `GET /api/admin/agreements`, `POST /api/admin/agreements {version, title, body}` (immutable; duplicate version → 409).
 - `GET /api/studio/agreement` → `{current, required, accepted, acceptedAt}`; `POST /api/studio/agreement/accept {version}` (must equal current, else 409 `agreement_version_mismatch`; idempotent).
 - Submit (`POST /api/studio/courses/{id}/submit`) by a non-staff user requires acceptance of the **current** version → otherwise 409 `agreement_required`. Current = `Authoring:RequiredAgreementVersion` when set (503 `agreement_misconfigured` if it does not exist), else the latest published version. With no agreement published, submission is not blocked.
+
+## Studio resource filters (final wave)
+
+`GET /api/studio/courses/{courseId}/resources?kind=&type=` — `kind` = Resource | Caption; `type` = content-type family
+(`image`, `audio`, `video`, `text`, `application`) or an exact content type (`application/pdf`). 400 `invalid_kind` / `invalid_type`.

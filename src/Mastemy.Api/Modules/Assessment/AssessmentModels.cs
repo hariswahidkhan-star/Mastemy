@@ -20,7 +20,8 @@ public record AssessmentSummaryDto(
     int? TimeLimitMinutes, int? MaxAttempts, decimal PassPercent, MultiSelectScoring MultiSelectScoring, int QuestionCount,
     bool IsPremium, bool PremiumLocked, bool CountsTowardCertificate, string ScoringRules, string CertificateCriteria,
     int? AttemptsUsed, Guid? InProgressAttemptId, AnswerReviewPolicy ReviewPolicy,
-    bool AllowPause = false, int MaxPauseMinutes = 0, int? EffectiveTimeLimitMinutes = null, bool AccommodationApplied = false);
+    bool AllowPause = false, int MaxPauseMinutes = 0, int? EffectiveTimeLimitMinutes = null, bool AccommodationApplied = false,
+    decimal NegativeMarkingPerWrong = 0m, string? NegativeMarkingRules = null);
 
 public record LearnerOptionDto(Guid Id, string Text);
 
@@ -42,7 +43,7 @@ public record SaveItemInput(List<Guid>? SelectedOptionIds, bool Flagged);
 public record ReviewOptionDto(Guid Id, string Text, bool IsCorrect, bool Selected, string Rationale);
 
 public record ReviewItemDto(Guid ItemId, int SortOrder, QuestionType Type, string Stem, string Explanation, decimal Points,
-    bool Correct, List<Guid> SelectedOptionIds, List<Guid> CorrectOptionIds, List<ReviewOptionDto> Options);
+    bool Correct, List<Guid> SelectedOptionIds, List<Guid> CorrectOptionIds, List<ReviewOptionDto> Options, string? WorkedSolution = null);
 
 public record TopicResult(string Tag, int Correct, int Total);
 
@@ -58,14 +59,17 @@ public record AttemptListItem(Guid Id, Guid AssessmentId, string AssessmentTitle
 
 public record RationaleDto(Guid OptionId, string Rationale);
 
-public record CheckResult(Guid ItemId, bool Correct, List<Guid> CorrectOptionIds, List<RationaleDto> Rationales, string Explanation);
+public record CheckResult(Guid ItemId, bool Correct, List<Guid> CorrectOptionIds, List<RationaleDto> Rationales, string Explanation,
+    string? WorkedSolution = null);
 
 // ---------- Certificates ----------
 public record CertificateVerification(string Code, string RecipientName, string CourseTitle, DateTime IssuedAt,
-    CertificateStatus Status, string AssessmentCriteria);
+    CertificateStatus Status, string AssessmentCriteria, string Kind = CredentialKinds.AssessedKnowledge,
+    string Title = CredentialKinds.AssessedTitle, string VerificationLabel = CredentialKinds.AssessedVerificationLabel);
 
 public record MyCertificateDto(Guid Id, string Code, Guid CourseId, string CourseTitle, string RecipientName, DateTime IssuedAt,
-    CertificateStatus Status, decimal ScorePercent, string AssessmentCriteria, bool PubliclyVisible);
+    CertificateStatus Status, decimal ScorePercent, string AssessmentCriteria, bool PubliclyVisible,
+    string Kind = CredentialKinds.AssessedKnowledge, string Title = CredentialKinds.AssessedTitle);
 
 public record RevokeInput(string Reason);
 
@@ -82,6 +86,16 @@ public static class Scoring
         "MultipleSelect with PartialCredit: max(0, (correct options selected - incorrect options selected) / number of correct options). " +
         "Unanswered items score 0. Score % = points earned / number of questions x 100 (displayed rounded to 2 decimals, half away from zero); " +
         "the attempt passes when the unrounded score is greater than or equal to the pass percentage. Time-limited attempts are scored automatically at the deadline.";
+
+    /// <summary>Disclosed in the assessment summary before an attempt whenever an Exam-mode negative-marking rate is set.</summary>
+    public static string NegativeRules(decimal perWrong) =>
+        $"Negative marking: {perWrong.ToString("0.####", System.Globalization.CultureInfo.InvariantCulture)} point(s) are deducted for each wrong answer. " +
+        "A wrong answer is an answered item that earns 0 points; unanswered items and items earning partial credit (MultipleSelect with PartialCredit) " +
+        "are never penalised. The attempt total is floored at 0 and the pass decision uses the penalised total.";
+
+    /// <summary>Wrong = answered and earned 0. Penalised total = max(0, earned - perWrong x wrong).</summary>
+    public static decimal ApplyNegativeMarking(decimal earned, int wrong, decimal perWrong) =>
+        perWrong <= 0m ? earned : Math.Max(0m, earned - perWrong * wrong);
 
     public static decimal Item(QuestionType type, IReadOnlyCollection<Guid> correct, IReadOnlyCollection<Guid> selected, MultiSelectScoring policy)
     {
