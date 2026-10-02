@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0730",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0730-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should you always do with a Gemini-generated reply before it goes out?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read and verify it for accuracy and intent",
+     "correct": true,
+     "rationale": "Correct: generated replies must be reviewed before sending."
+    },
+    {
+     "key": "B",
+     "text": "Send it immediately to save time",
+     "correct": false,
+     "rationale": "Sending unread risks errors and misstatements."
+    },
+    {
+     "key": "C",
+     "text": "Forward it to everyone in your contacts",
+     "correct": false,
+     "rationale": "That is unrelated and inappropriate."
+    },
+    {
+     "key": "D",
+     "text": "Delete the original thread",
+     "correct": false,
+     "rationale": "Deleting context does not improve the reply."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: generated replies must be reviewed before sending.",
+   "outcome_refs": [
+    "MST-0730-D05.01"
+   ],
+   "domain_ref": "Verifying output",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0730-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which task is Gemini in Gmail best suited to when facing a 25-message thread?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Summarising the thread into key points",
+     "correct": true,
+     "rationale": "Correct: thread summarisation condenses long conversations into key points."
+    },
+    {
+     "key": "B",
+     "text": "Permanently deleting the oldest messages",
+     "correct": false,
+     "rationale": "That is not a Gemini summarisation task."
+    },
+    {
+     "key": "C",
+     "text": "Changing the account password",
+     "correct": false,
+     "rationale": "Unrelated to summarisation."
+    },
+    {
+     "key": "D",
+     "text": "Blocking the sender",
+     "correct": false,
+     "rationale": "Blocking is a moderation action, not summarisation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: thread summarisation condenses long conversations into key points.",
+   "outcome_refs": [
+    "MST-0730-D03.01"
+   ],
+   "domain_ref": "Summarising threads",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0730-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO checks matter when Gemini extracts action items from a thread? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Confirm each task is attributed to the correct owner",
+     "correct": true,
+     "rationale": "Correct: misattribution is a common extraction error."
+    },
+    {
+     "key": "B",
+     "text": "Verify dates and commitments against the original messages",
+     "correct": true,
+     "rationale": "Correct: extracted details must be checked against the source."
+    },
+    {
+     "key": "C",
+     "text": "Assume every extracted task is final",
+     "correct": false,
+     "rationale": "Extraction can be wrong and needs review."
+    },
+    {
+     "key": "D",
+     "text": "Send the list before reading it",
+     "correct": false,
+     "rationale": "Unreviewed output should not be sent."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: confirming owners and verifying details against the source are both needed.",
+   "outcome_refs": [
+    "MST-0730-D04.01"
+   ],
+   "domain_ref": "Action planning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

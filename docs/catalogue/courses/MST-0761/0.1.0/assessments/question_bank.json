@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0761",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0761-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the Fargate launch type remove the need to manage, compared with the EC2 launch type?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The underlying container host instances",
+     "correct": true,
+     "rationale": "Correct: Fargate runs tasks without you provisioning or patching EC2 hosts."
+    },
+    {
+     "key": "B",
+     "text": "The task definition",
+     "correct": false,
+     "rationale": "You still define tasks on Fargate."
+    },
+    {
+     "key": "C",
+     "text": "The container image",
+     "correct": false,
+     "rationale": "You still build and supply images."
+    },
+    {
+     "key": "D",
+     "text": "IAM roles",
+     "correct": false,
+     "rationale": "IAM roles are still required for tasks."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Fargate runs tasks without you provisioning or patching EC2 hosts.",
+   "outcome_refs": [
+    "MST-0761-D02.02"
+   ],
+   "domain_ref": "Launch types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0761-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the safest way to give a container access to a database password in ECS?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reference it from Secrets Manager or SSM Parameter Store in the task definition",
+     "correct": true,
+     "rationale": "Correct: referencing a managed secret avoids embedding credentials in the image."
+    },
+    {
+     "key": "B",
+     "text": "Hard-code it in the container image",
+     "correct": false,
+     "rationale": "Baking credentials into an image is insecure and hard to rotate."
+    },
+    {
+     "key": "C",
+     "text": "Print it to the container logs",
+     "correct": false,
+     "rationale": "Logging secrets exposes them."
+    },
+    {
+     "key": "D",
+     "text": "Store it in the task name",
+     "correct": false,
+     "rationale": "Task names are not a secret store."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: referencing a managed secret avoids embedding credentials in the image.",
+   "outcome_refs": [
+    "MST-0761-D03.01"
+   ],
+   "domain_ref": "Task definitions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0761-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true when running ECS tasks in awsvpc network mode? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each task gets its own elastic network interface",
+     "correct": true,
+     "rationale": "Correct: awsvpc gives each task a dedicated ENI."
+    },
+    {
+     "key": "B",
+     "text": "Security groups can be applied at the task level",
+     "correct": true,
+     "rationale": "Correct: tasks can have their own security groups in awsvpc mode."
+    },
+    {
+     "key": "C",
+     "text": "Tasks must use bridge-mode port mappings",
+     "correct": false,
+     "rationale": "Bridge mode is a different, incompatible networking mode."
+    },
+    {
+     "key": "D",
+     "text": "Tasks cannot be placed behind a load balancer",
+     "correct": false,
+     "rationale": "awsvpc tasks integrate with load balancers."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: awsvpc gives each task its own ENI and task-level security groups.",
+   "outcome_refs": [
+    "MST-0761-D04.01"
+   ],
+   "domain_ref": "Networking and discovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

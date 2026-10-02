@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0726",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0726-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which action lets Gemini in Docs base its draft on a specific file already in your Drive?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reference the file with an @mention in the prompt",
+     "correct": true,
+     "rationale": "Correct: @mentioning a Drive file gives Gemini that document as grounding context."
+    },
+    {
+     "key": "B",
+     "text": "Change the document's font",
+     "correct": false,
+     "rationale": "Formatting has no effect on what sources Gemini can use."
+    },
+    {
+     "key": "C",
+     "text": "Share the document publicly",
+     "correct": false,
+     "rationale": "Public sharing changes access for people, not the grounding of a prompt."
+    },
+    {
+     "key": "D",
+     "text": "Export the file to PDF",
+     "correct": false,
+     "rationale": "Exporting creates a copy; it does not provide the file as a prompt source."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: @mentioning a Drive file gives Gemini that document as grounding context.",
+   "outcome_refs": [
+    "MST-0726-D03.01"
+   ],
+   "domain_ref": "Grounding in your sources",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0726-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A generated paragraph states a confident but unsupported statistic. What is the responsible next step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the figure against a trusted source before keeping it",
+     "correct": true,
+     "rationale": "Correct: AI output must be fact-checked; confident phrasing is not evidence."
+    },
+    {
+     "key": "B",
+     "text": "Publish it because Gemini generated it",
+     "correct": false,
+     "rationale": "Generation does not guarantee accuracy."
+    },
+    {
+     "key": "C",
+     "text": "Make the font bold to highlight it",
+     "correct": false,
+     "rationale": "Formatting does not address accuracy."
+    },
+    {
+     "key": "D",
+     "text": "Delete the whole document",
+     "correct": false,
+     "rationale": "Removing everything is disproportionate and unnecessary."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI output must be fact-checked; confident phrasing is not evidence.",
+   "outcome_refs": [
+    "MST-0726-D04.01"
+   ],
+   "domain_ref": "Verifying and editing output",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0726-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support responsible use of Gemini in Docs with sensitive material? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Follow your organisation's data-handling policy before using confidential files",
+     "correct": true,
+     "rationale": "Correct: confidential content is still governed by data policy."
+    },
+    {
+     "key": "B",
+     "text": "Disclose where AI assistance was used in the final document",
+     "correct": true,
+     "rationale": "Correct: disclosure supports transparency and review."
+    },
+    {
+     "key": "C",
+     "text": "Assume all generated claims are verified",
+     "correct": false,
+     "rationale": "Output is not automatically verified."
+    },
+    {
+     "key": "D",
+     "text": "Share drafts publicly to get faster output",
+     "correct": false,
+     "rationale": "Public sharing does not speed generation and risks exposure."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: following data policy and disclosing AI assistance are both responsible practices.",
+   "outcome_refs": [
+    "MST-0726-D06.01"
+   ],
+   "domain_ref": "Responsible and private use",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0764",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0764-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the AWS CDK produce when you synthesise an app?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A CloudFormation template that is then deployed",
+     "correct": true,
+     "rationale": "Correct: CDK synthesises to CloudFormation templates, which deploy the resources."
+    },
+    {
+     "key": "B",
+     "text": "Raw machine code that bypasses AWS",
+     "correct": false,
+     "rationale": "CDK does not bypass AWS; it generates CloudFormation."
+    },
+    {
+     "key": "C",
+     "text": "A database backup",
+     "correct": false,
+     "rationale": "Synthesis has nothing to do with backups."
+    },
+    {
+     "key": "D",
+     "text": "A billing invoice",
+     "correct": false,
+     "rationale": "Synthesis does not create invoices."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: CDK synthesises to CloudFormation templates, which deploy the resources.",
+   "outcome_refs": [
+    "MST-0764-D01.02"
+   ],
+   "domain_ref": "CDK fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0764-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why are L2 constructs usually preferred over L1 (Cfn) constructs?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They provide sensible defaults and helper methods, reducing error-prone boilerplate",
+     "correct": true,
+     "rationale": "Correct: L2 constructs add opinionated defaults and convenience over raw L1 resources."
+    },
+    {
+     "key": "B",
+     "text": "They skip CloudFormation entirely",
+     "correct": false,
+     "rationale": "All constructs still synthesise to CloudFormation."
+    },
+    {
+     "key": "C",
+     "text": "They are the only way to deploy",
+     "correct": false,
+     "rationale": "L1 constructs can also deploy."
+    },
+    {
+     "key": "D",
+     "text": "They disable IAM",
+     "correct": false,
+     "rationale": "Construct level does not disable IAM."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: L2 constructs add opinionated defaults and convenience over raw L1 resources.",
+   "outcome_refs": [
+    "MST-0764-D02.02"
+   ],
+   "domain_ref": "Construct levels",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0764-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps belong in a safe CDK deployment workflow? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Bootstrap the target account and region before first deploy",
+     "correct": true,
+     "rationale": "Correct: bootstrapping provisions the resources CDK needs to deploy."
+    },
+    {
+     "key": "B",
+     "text": "Run cdk diff to review changes before deploying",
+     "correct": true,
+     "rationale": "Correct: diff shows what will change before you apply it."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code the same account ID for every environment",
+     "correct": false,
+     "rationale": "Hard-coding accounts breaks multi-environment deploys."
+    },
+    {
+     "key": "D",
+     "text": "Skip tests because the code compiles",
+     "correct": false,
+     "rationale": "Compiling does not guarantee correct resources."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: bootstrapping and reviewing cdk diff are both part of a safe workflow.",
+   "outcome_refs": [
+    "MST-0764-D03.01"
+   ],
+   "domain_ref": "CLI workflow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

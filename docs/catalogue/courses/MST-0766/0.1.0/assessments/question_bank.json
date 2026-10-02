@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0766",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0766-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary role of Amazon GuardDuty?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Continuous threat detection from logs and network/DNS activity",
+     "correct": true,
+     "rationale": "Correct: GuardDuty analyses data sources to detect threats and generate findings."
+    },
+    {
+     "key": "B",
+     "text": "Aggregating findings from many security tools",
+     "correct": false,
+     "rationale": "That is Security Hub's role, not GuardDuty's."
+    },
+    {
+     "key": "C",
+     "text": "Recording resource configuration history",
+     "correct": false,
+     "rationale": "That is AWS Config's role."
+    },
+    {
+     "key": "D",
+     "text": "Signing IAM policies",
+     "correct": false,
+     "rationale": "GuardDuty does not sign policies."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GuardDuty analyses data sources to detect threats and generate findings.",
+   "outcome_refs": [
+    "MST-0766-D02.01"
+   ],
+   "domain_ref": "Threat detection",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0766-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During incident response, why isolate a compromised EC2 instance before terminating it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To contain the threat while preserving forensic evidence for investigation",
+     "correct": true,
+     "rationale": "Correct: isolation contains the incident and keeps evidence that termination would destroy."
+    },
+    {
+     "key": "B",
+     "text": "Because termination is impossible on AWS",
+     "correct": false,
+     "rationale": "Termination is possible; it just destroys evidence."
+    },
+    {
+     "key": "C",
+     "text": "To increase its instance size",
+     "correct": false,
+     "rationale": "Isolation is not about resizing."
+    },
+    {
+     "key": "D",
+     "text": "To make it publicly accessible",
+     "correct": false,
+     "rationale": "Isolation reduces, not increases, exposure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: isolation contains the incident and keeps evidence that termination would destroy.",
+   "outcome_refs": [
+    "MST-0766-D06.01"
+   ],
+   "domain_ref": "Incident response",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0766-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements correctly distinguish AWS Config from CloudTrail? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Config records resource configuration state over time",
+     "correct": true,
+     "rationale": "Correct: Config tracks the configuration of resources and changes to it."
+    },
+    {
+     "key": "B",
+     "text": "CloudTrail records API activity and who performed it",
+     "correct": true,
+     "rationale": "Correct: CloudTrail logs API calls and the calling principal."
+    },
+    {
+     "key": "C",
+     "text": "Config detects threats from network traffic",
+     "correct": false,
+     "rationale": "Threat detection is GuardDuty's role, not Config's."
+    },
+    {
+     "key": "D",
+     "text": "CloudTrail aggregates security standard scores",
+     "correct": false,
+     "rationale": "Standard scoring is Security Hub's role."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Config records resource state while CloudTrail records API activity and the principal.",
+   "outcome_refs": [
+    "MST-0766-D04.01"
+   ],
+   "domain_ref": "Audit and configuration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

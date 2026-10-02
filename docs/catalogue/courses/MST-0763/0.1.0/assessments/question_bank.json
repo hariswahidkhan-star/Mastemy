@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0763",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0763-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a CloudFormation change set let you do before updating a stack?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Preview exactly which resources will be added, modified or deleted",
+     "correct": true,
+     "rationale": "Correct: a change set previews the impact of an update before you execute it."
+    },
+    {
+     "key": "B",
+     "text": "Permanently delete the stack",
+     "correct": false,
+     "rationale": "Change sets preview updates; they do not delete stacks."
+    },
+    {
+     "key": "C",
+     "text": "Bypass IAM permissions",
+     "correct": false,
+     "rationale": "Change sets do not bypass permissions."
+    },
+    {
+     "key": "D",
+     "text": "Encrypt all resources automatically",
+     "correct": false,
+     "rationale": "Change sets do not encrypt resources."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a change set previews the impact of an update before you execute it.",
+   "outcome_refs": [
+    "MST-0763-D02.01"
+   ],
+   "domain_ref": "Stacks and change sets",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0763-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which feature detects when stack resources were changed outside CloudFormation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Drift detection",
+     "correct": true,
+     "rationale": "Correct: drift detection reports resources that differ from the template's expected state."
+    },
+    {
+     "key": "B",
+     "text": "A mapping",
+     "correct": false,
+     "rationale": "Mappings provide static lookups, not change detection."
+    },
+    {
+     "key": "C",
+     "text": "An output",
+     "correct": false,
+     "rationale": "Outputs export values; they do not detect drift."
+    },
+    {
+     "key": "D",
+     "text": "A parameter",
+     "correct": false,
+     "rationale": "Parameters accept input; they do not detect drift."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: drift detection reports resources that differ from the template's expected state.",
+   "outcome_refs": [
+    "MST-0763-D02.02"
+   ],
+   "domain_ref": "Stacks and change sets",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0763-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve the safety of CloudFormation deployments? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use change sets to preview updates before executing",
+     "correct": true,
+     "rationale": "Correct: previewing changes reduces surprise impact."
+    },
+    {
+     "key": "B",
+     "text": "Apply a stack policy to protect critical resources from replacement",
+     "correct": true,
+     "rationale": "Correct: stack policies guard sensitive resources."
+    },
+    {
+     "key": "C",
+     "text": "Embed plaintext secrets in template parameters",
+     "correct": false,
+     "rationale": "Plaintext secrets in templates are insecure."
+    },
+    {
+     "key": "D",
+     "text": "Edit resources directly in the console to move faster",
+     "correct": false,
+     "rationale": "Out-of-band edits cause drift and risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: change sets and stack policies both improve deployment safety.",
+   "outcome_refs": [
+    "MST-0763-D06.01"
+   ],
+   "domain_ref": "Safety and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

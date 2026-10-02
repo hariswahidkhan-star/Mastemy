@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0762",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 512,
+  "lesson_check_items": 90,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0762-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Amazon EKS, who is responsible for managing the Kubernetes control plane?",
+   "options": [
+    {
+     "key": "A",
+     "text": "AWS manages the control plane; you manage worker nodes and workloads",
+     "correct": true,
+     "rationale": "Correct: EKS runs and scales the control plane for you under the shared responsibility model."
+    },
+    {
+     "key": "B",
+     "text": "You install and patch the control plane on your own EC2 instances",
+     "correct": false,
+     "rationale": "EKS manages the control plane; you do not run it yourself."
+    },
+    {
+     "key": "C",
+     "text": "Kubernetes.org hosts it remotely",
+     "correct": false,
+     "rationale": "That is not how EKS works."
+    },
+    {
+     "key": "D",
+     "text": "It is fully serverless with no worker nodes ever",
+     "correct": false,
+     "rationale": "Workloads still need nodes or Fargate profiles."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: EKS runs and scales the control plane for you under the shared responsibility model.",
+   "outcome_refs": [
+    "MST-0762-D01.01"
+   ],
+   "domain_ref": "EKS architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0762-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the recommended way to give a specific pod permission to read an S3 bucket?",
+   "options": [
+    {
+     "key": "A",
+     "text": "IAM Roles for Service Accounts (IRSA)",
+     "correct": true,
+     "rationale": "Correct: IRSA scopes AWS permissions to a pod's service account rather than the whole node."
+    },
+    {
+     "key": "B",
+     "text": "Attach the policy to the node instance role",
+     "correct": false,
+     "rationale": "That grants the permission to every pod on the node, violating least privilege."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code access keys in the pod spec",
+     "correct": false,
+     "rationale": "Static keys in specs are insecure."
+    },
+    {
+     "key": "D",
+     "text": "Make the bucket public",
+     "correct": false,
+     "rationale": "Public buckets expose data broadly and do not scope pod access."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: IRSA scopes AWS permissions to a pod's service account rather than the whole node.",
+   "outcome_refs": [
+    "MST-0762-D04.01"
+   ],
+   "domain_ref": "Identity and access",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0762-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO components help a workload scale and stay available on EKS? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A node autoscaler such as Cluster Autoscaler or Karpenter",
+     "correct": true,
+     "rationale": "Correct: a node autoscaler adds capacity when pods cannot be scheduled."
+    },
+    {
+     "key": "B",
+     "text": "A PodDisruptionBudget to limit voluntary disruptions",
+     "correct": true,
+     "rationale": "Correct: a PDB keeps a minimum number of pods available during disruptions."
+    },
+    {
+     "key": "C",
+     "text": "Deleting readiness probes",
+     "correct": false,
+     "rationale": "Removing probes harms availability signalling."
+    },
+    {
+     "key": "D",
+     "text": "Making all pods use the same node",
+     "correct": false,
+     "rationale": "Concentrating pods reduces availability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a node autoscaler and a PodDisruptionBudget both support scaling and availability.",
+   "outcome_refs": [
+    "MST-0762-D05.01"
+   ],
+   "domain_ref": "Workloads and reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

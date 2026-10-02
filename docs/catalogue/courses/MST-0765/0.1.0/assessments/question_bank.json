@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0765",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0765-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which CloudWatch feature lets you run ad-hoc queries across log data to investigate an incident?",
+   "options": [
+    {
+     "key": "A",
+     "text": "CloudWatch Logs Insights",
+     "correct": true,
+     "rationale": "Correct: Logs Insights runs interactive queries over log groups."
+    },
+    {
+     "key": "B",
+     "text": "A metric alarm",
+     "correct": false,
+     "rationale": "Alarms evaluate thresholds; they do not run log queries."
+    },
+    {
+     "key": "C",
+     "text": "A dashboard widget",
+     "correct": false,
+     "rationale": "Widgets visualise data but do not provide ad-hoc log querying."
+    },
+    {
+     "key": "D",
+     "text": "A namespace",
+     "correct": false,
+     "rationale": "A namespace is a metric container, not a query tool."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Logs Insights runs interactive queries over log groups.",
+   "outcome_refs": [
+    "MST-0765-D04.01"
+   ],
+   "domain_ref": "Logs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0765-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want one alarm that only fires when both high latency AND high error rate are true. What do you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A composite alarm combining the two metric alarms",
+     "correct": true,
+     "rationale": "Correct: composite alarms combine multiple alarm states with logic such as AND."
+    },
+    {
+     "key": "B",
+     "text": "A single metric alarm",
+     "correct": false,
+     "rationale": "A single metric alarm cannot combine two independent metrics with logic."
+    },
+    {
+     "key": "C",
+     "text": "A log retention setting",
+     "correct": false,
+     "rationale": "Retention controls storage, not alarm logic."
+    },
+    {
+     "key": "D",
+     "text": "A dashboard",
+     "correct": false,
+     "rationale": "Dashboards visualise but do not alarm."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: composite alarms combine multiple alarm states with logic such as AND.",
+   "outcome_refs": [
+    "MST-0765-D03.02"
+   ],
+   "domain_ref": "Alarms",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0765-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions help control CloudWatch Logs cost? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set appropriate retention periods on log groups",
+     "correct": true,
+     "rationale": "Correct: retention limits how long logs are stored and billed."
+    },
+    {
+     "key": "B",
+     "text": "Filter or sample noisy, low-value logs",
+     "correct": true,
+     "rationale": "Correct: reducing ingested volume lowers cost."
+    },
+    {
+     "key": "C",
+     "text": "Keep all logs indefinitely by default",
+     "correct": false,
+     "rationale": "Indefinite retention increases cost."
+    },
+    {
+     "key": "D",
+     "text": "Duplicate every log into three groups",
+     "correct": false,
+     "rationale": "Duplication raises both ingestion and storage cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: setting retention and filtering noisy logs both control cost.",
+   "outcome_refs": [
+    "MST-0765-D06.01"
+   ],
+   "domain_ref": "Strategy and cost",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

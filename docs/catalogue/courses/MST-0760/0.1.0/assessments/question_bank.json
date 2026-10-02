@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0760",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0760-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the correct role of an API key in API Gateway?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To identify a client for usage plans and throttling, not to authenticate it",
+     "correct": true,
+     "rationale": "Correct: API keys track and meter clients via usage plans; they are not an authentication mechanism."
+    },
+    {
+     "key": "B",
+     "text": "To securely authenticate the caller's identity",
+     "correct": false,
+     "rationale": "API keys are not an authentication mechanism and must not be relied on for identity."
+    },
+    {
+     "key": "C",
+     "text": "To encrypt the payload in transit",
+     "correct": false,
+     "rationale": "TLS handles transport encryption, not API keys."
+    },
+    {
+     "key": "D",
+     "text": "To replace IAM entirely",
+     "correct": false,
+     "rationale": "API keys do not replace IAM-based authorization."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: API keys track and meter clients via usage plans; they are not an authentication mechanism.",
+   "outcome_refs": [
+    "MST-0760-D03.01"
+   ],
+   "domain_ref": "Authentication and authorization",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0760-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which deployment approach shifts a small percentage of traffic to a new version to limit blast radius?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A canary release on the stage",
+     "correct": true,
+     "rationale": "Correct: a canary release routes a small traffic percentage to the new deployment."
+    },
+    {
+     "key": "B",
+     "text": "Deleting the old stage",
+     "correct": false,
+     "rationale": "Deleting a stage removes it entirely rather than testing gradually."
+    },
+    {
+     "key": "C",
+     "text": "Disabling CloudWatch logs",
+     "correct": false,
+     "rationale": "Turning off logging does not control traffic."
+    },
+    {
+     "key": "D",
+     "text": "Increasing the cache TTL",
+     "correct": false,
+     "rationale": "Cache TTL is unrelated to gradual rollout."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a canary release routes a small traffic percentage to the new deployment.",
+   "outcome_refs": [
+    "MST-0760-D05.01"
+   ],
+   "domain_ref": "Deployment and stages",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0760-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO mechanisms help protect and control access to an API Gateway endpoint? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Cognito or Lambda authorizer on the method",
+     "correct": true,
+     "rationale": "Correct: authorizers validate the caller before the request reaches the integration."
+    },
+    {
+     "key": "B",
+     "text": "A resource policy restricting source VPC or IP",
+     "correct": true,
+     "rationale": "Correct: resource policies constrain who can invoke the API."
+    },
+    {
+     "key": "C",
+     "text": "Raising the stage cache size",
+     "correct": false,
+     "rationale": "Cache size affects performance, not access control."
+    },
+    {
+     "key": "D",
+     "text": "Renaming the API",
+     "correct": false,
+     "rationale": "The API name has no security effect."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: authorizers and resource policies both control access; cache and naming do not.",
+   "outcome_refs": [
+    "MST-0760-D03.02"
+   ],
+   "domain_ref": "Authentication and authorization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
