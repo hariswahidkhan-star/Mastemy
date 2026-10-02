@@ -162,7 +162,10 @@ test.describe.serial('SSR server: headers, SEO metadata, CSP', () => {
     await login(page, course.studentEmail);
     await page.goto(`/learn/${course.slug}/${course.lessonId}`);
     await expect(page.locator('main h1').first()).toBeVisible();
-    await expect(page.locator('iframe[src*="youtube"], .player-frame').first()).toBeVisible();
+    // The player mounts in one of three states, all governed by the same CSP: the IFrame API player
+    // (.player-frame), the plain-embed fallback when www.youtube.com is unreachable (sandboxes), or the
+    // player's own error panel when YouTube is reachable and rejects the fake seed video id (GitHub runners).
+    await expect(page.locator('iframe[src*="youtube"], .player-frame, .player-error').first()).toBeVisible();
     await page.waitForTimeout(1000);
     const found = await violations();
     await ctx.close();

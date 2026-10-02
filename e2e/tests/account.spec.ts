@@ -148,6 +148,9 @@ test.describe.serial('account: security, verification, profile and data rights',
     await page.goto('/login');
     await page.getByRole('link', { name: 'Forgot your password?' }).click();
     await expect(page).toHaveURL(/\/forgot-password$/);
+    // The URL changes before the lazily loaded reset page renders; until then 'Email' still resolves to the
+    // sign-in form, so wait for the reset page itself before filling (CI race: the address went into the login field).
+    await expect(page.getByRole('heading', { level: 1, name: 'Reset your password' })).toBeVisible();
     const uniform = 'If an account exists for that email address, a password reset link has been sent.';
     await page.getByLabel('Email').fill(email('nobody'));
     await page.getByRole('button', { name: 'Send reset link' }).click();
@@ -155,6 +158,7 @@ test.describe.serial('account: security, verification, profile and data rights',
 
     const before = await lastMailId(request, people.learner);
     await page.goto('/forgot-password');
+    await expect(page.getByRole('heading', { level: 1, name: 'Reset your password' })).toBeVisible();
     await page.getByLabel('Email').fill(people.learner);
     await page.getByRole('button', { name: 'Send reset link' }).click();
     await expect(page.getByText(uniform)).toBeVisible();
