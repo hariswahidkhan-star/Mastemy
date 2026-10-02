@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1145",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 384,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 36,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1145-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Cost variance (CV) is calculated as:",
+   "options": [
+    {
+     "key": "A",
+     "text": "EV minus AC",
+     "correct": true,
+     "rationale": "Correct: CV = earned value - actual cost; negative means over budget."
+    },
+    {
+     "key": "B",
+     "text": "AC minus EV",
+     "correct": false,
+     "rationale": "That inverts the sign of the variance."
+    },
+    {
+     "key": "C",
+     "text": "EV minus PV",
+     "correct": false,
+     "rationale": "That is schedule variance, not cost variance."
+    },
+    {
+     "key": "D",
+     "text": "PV minus AC",
+     "correct": false,
+     "rationale": "Not a defined EVM variance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: CV = earned value - actual cost; negative means over budget.",
+   "outcome_refs": [
+    "MST-1145-D03.02"
+   ],
+   "domain_ref": "Variances",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1145-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A project reports CPI = 0.8 and SPI = 1.1. Which TWO statements are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The project is over budget for the work done",
+     "correct": true,
+     "rationale": "Correct: CPI < 1 means cost overrun."
+    },
+    {
+     "key": "B",
+     "text": "The project is ahead of schedule",
+     "correct": true,
+     "rationale": "Correct: SPI > 1 means ahead of schedule."
+    },
+    {
+     "key": "C",
+     "text": "The project is under budget",
+     "correct": false,
+     "rationale": "CPI < 1 indicates over budget, not under."
+    },
+    {
+     "key": "D",
+     "text": "The project is behind schedule",
+     "correct": false,
+     "rationale": "SPI > 1 indicates ahead, not behind."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: CPI < 1 means cost overrun.",
+   "outcome_refs": [
+    "MST-1145-D04.02"
+   ],
+   "domain_ref": "Performance indices",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1145-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "If EV = 400 and PV = 500 at the data date, the schedule variance indicates the project is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Behind schedule, because SV = EV - PV = -100",
+     "correct": true,
+     "rationale": "Correct: a negative SV means less value earned than planned."
+    },
+    {
+     "key": "B",
+     "text": "Ahead of schedule",
+     "correct": false,
+     "rationale": "A negative SV means behind, not ahead."
+    },
+    {
+     "key": "C",
+     "text": "Over budget",
+     "correct": false,
+     "rationale": "Schedule variance speaks to time, not cost."
+    },
+    {
+     "key": "D",
+     "text": "Exactly on plan",
+     "correct": false,
+     "rationale": "SV is non-zero, so it is not on plan."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a negative SV means less value earned than planned.",
+   "outcome_refs": [
+    "MST-1145-D03.01"
+   ],
+   "domain_ref": "Variances",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1182",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 384,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 36,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1182-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When AI proposes account codings for a batch of transactions, the accountant should:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Review and verify the suggestions before posting",
+     "correct": true,
+     "rationale": "Correct: AI output requires human verification for accuracy and control."
+    },
+    {
+     "key": "B",
+     "text": "Post all suggestions automatically to save time",
+     "correct": false,
+     "rationale": "Unreviewed auto-posting undermines controls."
+    },
+    {
+     "key": "C",
+     "text": "Assume the AI is always right",
+     "correct": false,
+     "rationale": "AI can misclassify; verification is required."
+    },
+    {
+     "key": "D",
+     "text": "Delete the ledger and rebuild it from AI output",
+     "correct": false,
+     "rationale": "Reckless and uncontrolled."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI output requires human verification for accuracy and control.",
+   "outcome_refs": [
+    "MST-1182-D02.01"
+   ],
+   "domain_ref": "Coding and reconciliations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1182-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound governance controls for AI in the close? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Maintain an audit trail of AI-assisted steps and human sign-off",
+     "correct": true,
+     "rationale": "Correct: traceability supports audit and accountability."
+    },
+    {
+     "key": "B",
+     "text": "Avoid entering confidential data into uncontrolled tools",
+     "correct": true,
+     "rationale": "Correct: data privacy must be protected."
+    },
+    {
+     "key": "C",
+     "text": "Let AI approve its own journal entries",
+     "correct": false,
+     "rationale": "That removes segregation of duties."
+    },
+    {
+     "key": "D",
+     "text": "Hide AI use from the auditors",
+     "correct": false,
+     "rationale": "Concealment undermines the audit trail."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: traceability supports audit and accountability.",
+   "outcome_refs": [
+    "MST-1182-D06.01"
+   ],
+   "domain_ref": "Governance and ethics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1182-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI tool flags 40 transactions as anomalies. The appropriate response is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Triage and investigate the flags by risk, treating them as leads not conclusions",
+     "correct": true,
+     "rationale": "Correct: flags are signals to investigate, not confirmed errors."
+    },
+    {
+     "key": "B",
+     "text": "Reverse all 40 transactions immediately",
+     "correct": false,
+     "rationale": "Flags are not confirmed errors."
+    },
+    {
+     "key": "C",
+     "text": "Ignore them all as false positives",
+     "correct": false,
+     "rationale": "Dismissing without review defeats the control."
+    },
+    {
+     "key": "D",
+     "text": "Delete the anomaly report",
+     "correct": false,
+     "rationale": "That discards useful control information."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: flags are signals to investigate, not confirmed errors.",
+   "outcome_refs": [
+    "MST-1182-D04.01"
+   ],
+   "domain_ref": "Anomaly detection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

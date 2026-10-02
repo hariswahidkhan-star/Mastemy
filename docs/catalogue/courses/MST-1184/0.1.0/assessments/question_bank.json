@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1184",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 384,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 36,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1184-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI cash-flow forecast should be used by treasury as:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A probabilistic estimate with an error band, validated against actuals",
+     "correct": true,
+     "rationale": "Correct: forecasts carry uncertainty and must be backtested."
+    },
+    {
+     "key": "B",
+     "text": "A guaranteed figure that needs no checking",
+     "correct": false,
+     "rationale": "Forecasts are uncertain and require validation."
+    },
+    {
+     "key": "C",
+     "text": "A reason to stop monitoring cash",
+     "correct": false,
+     "rationale": "Monitoring remains essential."
+    },
+    {
+     "key": "D",
+     "text": "A replacement for all treasury judgement",
+     "correct": false,
+     "rationale": "Human judgement remains central."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: forecasts carry uncertainty and must be backtested.",
+   "outcome_refs": [
+    "MST-1184-D02.01"
+   ],
+   "domain_ref": "Cash-flow forecasting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1184-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls should surround AI-based payment-anomaly detection? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Human approval before any flagged payment is released or blocked",
+     "correct": true,
+     "rationale": "Correct: a human control preserves segregation of duties."
+    },
+    {
+     "key": "B",
+     "text": "An audit trail of flags and decisions",
+     "correct": true,
+     "rationale": "Correct: traceability supports audit and accountability."
+    },
+    {
+     "key": "C",
+     "text": "Letting the model release payments autonomously",
+     "correct": false,
+     "rationale": "That removes essential controls."
+    },
+    {
+     "key": "D",
+     "text": "Disabling logging to speed processing",
+     "correct": false,
+     "rationale": "Removing logs destroys the audit trail."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a human control preserves segregation of duties.",
+   "outcome_refs": [
+    "MST-1184-D05.01"
+   ],
+   "domain_ref": "Fraud and anomalies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1184-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Managing cash to a single AI forecast without scenarios is risky because it:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ignores the range of plausible outcomes and leaves no buffer plan",
+     "correct": true,
+     "rationale": "Correct: scenarios and stress views protect against forecast error."
+    },
+    {
+     "key": "B",
+     "text": "Is always more accurate than scenario analysis",
+     "correct": false,
+     "rationale": "A single point estimate is not more reliable than a scenario range."
+    },
+    {
+     "key": "C",
+     "text": "Eliminates the need for a liquidity buffer",
+     "correct": false,
+     "rationale": "Buffers are still needed given uncertainty."
+    },
+    {
+     "key": "D",
+     "text": "Guarantees the forecast will be met",
+     "correct": false,
+     "rationale": "No forecast is guaranteed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: scenarios and stress views protect against forecast error.",
+   "outcome_refs": [
+    "MST-1184-D03.02"
+   ],
+   "domain_ref": "Liquidity insight",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
