@@ -1,6 +1,6 @@
 // @vitest-environment node
 import type { CourseDetailDto } from '../api/types';
-import { renderPage } from '../ssr/render';
+import { renderPage, ssrCacheKey } from '../ssr/render';
 
 const TEMPLATE = `<!doctype html>
 <html lang="en" dir="ltr">
@@ -145,4 +145,37 @@ describe('server rendering', () => {
       expect(fetchMock).not.toHaveBeenCalled();
     },
   );
+
+  it('keeps "$" patterns in course text intact (no String.replace expansion)', async () => {
+    const tricky = "Costs $' and $& and $` explained";
+    mockApi({
+      '/api/courses/intro-ml': () => json({ ...course, title: tricky, description: "Body $' $&" }),
+      '/api/courses/c1/reviews': () => json([]),
+    });
+    const { status, html } = await renderPage('/courses/intro-ml', {
+      template: TEMPLATE,
+      baseUrl: BASE,
+    });
+    expect(status).toBe(200);
+    // Exactly one document skeleton: nothing of the template was spliced back in.
+    expect(html.match(/<\/head>/g)).toHaveLength(1);
+    expect(html.match(/<div id="root">/g)).toHaveLength(1);
+    expect(html.match(/<!doctype html>/gi)).toHaveLength(1);
+    expect(html).toContain('Costs $&#39; and $&amp; and $` explained · Mastemy</title>');
+    expect(html).toMatch(/<div id="root">.*Costs \$(&#x27;|&#39;) and \$&amp; and \$` explained/s);
+  });
+});
+
+describe('ssrCacheKey', () => {
+  it('keeps only rendering parameters in a fixed order', () => {
+    expect(ssrCacheKey('/courses', '?utm_source=x&page=2&q=ml&fbclid=1')).toBe(
+      '/courses?q=ml&page=2',
+    );
+    expect(ssrCacheKey('/courses', '?page=2&q=ml')).toBe(ssrCacheKey('/courses', '?q=ml&page=2'));
+    expect(ssrCacheKey('/courses/x', '?lang=ar&junk=1')).toBe('/courses/x?lang=ar');
+    expect(ssrCacheKey('/', '?a=1&b=2&q=')).toBe('/');
+    expect(ssrCacheKey('/courses', '?sort=newest&category=tech&level=Beginner&language=en')).toBe(
+      '/courses?sort=newest&category=tech&level=Beginner&language=en',
+    );
+  });
 });

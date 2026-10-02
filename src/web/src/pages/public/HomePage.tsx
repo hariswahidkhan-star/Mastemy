@@ -10,6 +10,7 @@ import { Input } from '../../components/ui/Field';
 import { QueryState } from '../../components/ui/misc';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
+import { RecentlyViewedRail } from './ComparePage';
 
 function Collection({
   title,
@@ -130,6 +131,7 @@ export function HomePage() {
             ))}
           </div>
         </section>
+        <RecentlyViewedRail />
         <Collection
           title={t('home.new')}
           query={{ sort: 'newest' }}

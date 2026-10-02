@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import type { ReactNode } from 'react';
-import { Route, Routes } from 'react-router';
+import { Navigate, Route, Routes, useParams } from 'react-router';
 import { AUTHOR_ROLES, STAFF_ROLES } from './auth/AuthProvider';
 import { RequireRole } from './auth/RequireRole';
 import { Layout } from './components/layout/Layout';
@@ -14,6 +14,8 @@ import { HomePage } from './pages/public/HomePage';
 import { AboutPage, ContactPage, HelpPage, NotFoundPage } from './pages/public/StaticPages';
 import { TeachPage } from './pages/public/TeachPage';
 import { VerifyPage } from './pages/public/VerifyPage';
+import { ComparePage } from './pages/public/ComparePage';
+import { ThreadPage } from './pages/engagement/Discussions';
 
 const LearnPage = lazy(() =>
   import('./pages/learn/LearnPage').then((m) => ({ default: m.LearnPage })),
@@ -52,6 +54,22 @@ const AdminIndex = lazy(() =>
   import('./pages/admin/AdminLayout').then((m) => ({ default: m.AdminIndex })),
 );
 const admin = () => import('./pages/admin/AdminPages');
+const meW2 = () => import('./pages/me/MeWave2');
+const NotificationsPage = lazy(() => meW2().then((m) => ({ default: m.NotificationsPage })));
+const NotificationSettingsPage = lazy(() =>
+  meW2().then((m) => ({ default: m.NotificationSettingsPage })),
+);
+const WishlistPage = lazy(() =>
+  import('./pages/public/ComparePage').then((m) => ({ default: m.WishlistPage })),
+);
+const CourseAnnouncementsPage = lazy(() =>
+  import('./pages/engagement/LessonExtras').then((m) => ({ default: m.CourseAnnouncementsPage })),
+);
+const orgs = () => import('./pages/orgs/OrgPages');
+const MyOrgsPage = lazy(() => orgs().then((m) => ({ default: m.MyOrgsPage })));
+const OrgPage = lazy(() => orgs().then((m) => ({ default: m.OrgPage })));
+const AdminOrgsPage = lazy(() => orgs().then((m) => ({ default: m.AdminOrgsPage })));
+const AcceptInvitationPage = lazy(() => orgs().then((m) => ({ default: m.AcceptInvitationPage })));
 const SettingsPage = lazy(() => admin().then((m) => ({ default: m.SettingsPage })));
 const UsersPage = lazy(() => admin().then((m) => ({ default: m.UsersPage })));
 const ApplicationsPage = lazy(() => admin().then((m) => ({ default: m.ApplicationsPage })));
@@ -59,6 +77,20 @@ const PackagesApprovalPage = lazy(() => admin().then((m) => ({ default: m.Packag
 const RefundsPage = lazy(() => admin().then((m) => ({ default: m.RefundsPage })));
 const VideosPage = lazy(() => admin().then((m) => ({ default: m.VideosPage })));
 const AuditPage = lazy(() => admin().then((m) => ({ default: m.AuditPage })));
+
+/** Notification links for reported issues land on the course editor's engagement tab. */
+function StudioIssuesRedirect() {
+  const { id = '' } = useParams();
+  return <Navigate to={`/studio/courses/${id}?tab=engagement`} replace />;
+}
+
+function Private({ children }: { children: ReactNode }) {
+  return (
+    <RequireRole>
+      <Lazy>{children}</Lazy>
+    </RequireRole>
+  );
+}
 
 function Lazy({ children }: { children: ReactNode }) {
   const { t } = useI18n();
@@ -74,6 +106,64 @@ export function App() {
         <Route index element={<HomePage />} />
         <Route path="courses" element={<CoursesPage />} />
         <Route path="courses/:slug" element={<CourseDetailPage />} />
+        <Route path="courses/:slug/discussions/:threadId" element={<ThreadPage />} />
+        <Route
+          path="courses/:slug/announcements"
+          element={
+            <Private>
+              <CourseAnnouncementsPage />
+            </Private>
+          }
+        />
+        <Route path="compare" element={<ComparePage />} />
+        <Route
+          path="me/wishlist"
+          element={
+            <Private>
+              <WishlistPage />
+            </Private>
+          }
+        />
+        <Route
+          path="me/notifications"
+          element={
+            <Private>
+              <NotificationsPage />
+            </Private>
+          }
+        />
+        <Route
+          path="me/settings/notifications"
+          element={
+            <Private>
+              <NotificationSettingsPage />
+            </Private>
+          }
+        />
+        <Route
+          path="orgs"
+          element={
+            <Private>
+              <MyOrgsPage />
+            </Private>
+          }
+        />
+        <Route
+          path="orgs/:id"
+          element={
+            <Private>
+              <OrgPage />
+            </Private>
+          }
+        />
+        <Route
+          path="org-invitations/accept"
+          element={
+            <Private>
+              <AcceptInvitationPage />
+            </Private>
+          }
+        />
         <Route path="categories/:slug" element={<CategoryPage />} />
         <Route path="free-lessons" element={<FreeLessonsPage />} />
         <Route path="verify" element={<VerifyPage />} />
@@ -173,6 +263,7 @@ export function App() {
               </Lazy>
             }
           />
+          <Route path="courses/:id/issues" element={<StudioIssuesRedirect />} />
           <Route
             path="courses/:id/lessons/:lessonId"
             element={
@@ -246,6 +337,16 @@ export function App() {
               <RequireRole roles={['Support', 'Admin', 'SuperAdmin']}>
                 <Lazy>
                   <UsersPage />
+                </Lazy>
+              </RequireRole>
+            }
+          />
+          <Route
+            path="orgs"
+            element={
+              <RequireRole roles={['Admin', 'SuperAdmin']}>
+                <Lazy>
+                  <AdminOrgsPage />
                 </Lazy>
               </RequireRole>
             }

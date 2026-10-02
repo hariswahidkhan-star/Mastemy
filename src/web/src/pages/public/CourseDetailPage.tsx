@@ -15,6 +15,51 @@ import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { newIdempotencyKey, splitLines } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
+import { CompareToggle, WishlistButton } from '../../components/Discovery';
+import { DiscussionsPanel, EnrollToPost, useIsCourseAuthor } from '../engagement/Discussions';
+import { RelatedCourses, useTrackCourseView } from './ComparePage';
+import { useLearnCourse } from '../../api/hooks';
+
+/** Signed-in only: enrollment decides whether the learner may post. */
+function SignedInQa({ course }: { course: CourseDetailDto }) {
+  const learn = useLearnCourse(course.slug);
+  const isAuthor = useIsCourseAuthor(course.id);
+  return (
+    <DiscussionsPanel
+      courseId={course.id}
+      basePath={`/courses/${course.slug}`}
+      canPost={!!learn.data?.enrolled || isAuthor}
+      notAllowedReason={<EnrollToPost courseId={course.id} slug={course.slug} />}
+    />
+  );
+}
+
+function CourseQa({ course }: { course: CourseDetailDto }) {
+  const { t } = useI18n();
+  const { user } = useAuth();
+  return (
+    <section className="section" aria-labelledby="qa-h">
+      <div className="section__head">
+        <h2 id="qa-h" className="section__title">
+          {t('qa.title')}
+        </h2>
+        {user ? (
+          <Link to={`/courses/${course.slug}/announcements`}>{t('announcements.title')}</Link>
+        ) : null}
+      </div>
+      {user ? (
+        <SignedInQa course={course} />
+      ) : (
+        <DiscussionsPanel
+          courseId={course.id}
+          basePath={`/courses/${course.slug}`}
+          canPost={false}
+          notAllowedReason={<EnrollToPost courseId={course.id} slug={course.slug} />}
+        />
+      )}
+    </section>
+  );
+}
 
 export function FreeVideoNotice() {
   const { t } = useI18n();
@@ -180,9 +225,10 @@ export function CourseDetailView({ course }: { course: CourseDetailDto }) {
   const toast = useToast();
   const firstLesson = course.modules.flatMap((m) => m.lessons).find((l) => l.hasVideo);
   const previews = course.modules.flatMap((m) => m.lessons).filter((l) => l.isPreview);
+  useTrackCourseView(course.id);
   const enroll = useApiMutation(
     () => api(`/api/learn/courses/${course.id}/enroll`, { method: 'POST' }),
-    [keys.dashboard],
+    [keys.dashboard, keys.learnCourse(course.slug)],
     () => toast.success(t('course.enrolled')),
   );
 
@@ -205,6 +251,10 @@ export function CourseDetailView({ course }: { course: CourseDetailDto }) {
             {course.status === 'Updating' ? (
               <Badge tone="info">{t('status.Updating')}</Badge>
             ) : null}
+          </div>
+          <div className="row" style={{ marginBlockEnd: 'var(--space-3)' }}>
+            <WishlistButton courseId={course.id} title={course.title} />
+            <CompareToggle item={{ id: course.id, slug: course.slug, title: course.title }} />
           </div>
           <FreeVideoNotice />
           <dl className="facts">
@@ -349,6 +399,8 @@ export function CourseDetailView({ course }: { course: CourseDetailDto }) {
             )}
           </section>
           <Reviews course={course} />
+          <CourseQa course={course} />
+          <RelatedCourses courseId={course.id} />
         </div>
 
         <aside className="sticky-aside stack" aria-label={t('course.studyOptions')}>
@@ -374,7 +426,7 @@ export function CourseDetailView({ course }: { course: CourseDetailDto }) {
             ) : null}
             {enroll.isError ? <Notice tone="danger">{errorMessage(enroll.error, t)}</Notice> : null}
           </div>
-          <div className="card">
+          <div className="card" id="packages">
             <h2>{t('course.packages')}</h2>
             {course.packages.length === 0 ? (
               <p className="small muted">{t('course.noPackages')}</p>

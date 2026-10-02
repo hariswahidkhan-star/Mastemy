@@ -78,7 +78,7 @@ export interface HeadInput {
 export function buildHead(h: HeadInput): string {
   const title = fullTitle(h.meta.title);
   const noindex = !h.indexable || h.meta.noindex;
-  const tag = (s: string) => s.replace(/>$/, ` data-ssr-path="${esc(h.pathname)}">`);
+  const tag = (s: string) => s.replace(/>$/, () => ` data-ssr-path="${esc(h.pathname)}">`);
   const out: string[] = [`<title>${esc(title)}</title>`];
   if (h.meta.description)
     out.push(`<meta name="description" content="${esc(h.meta.description)}">`);

@@ -90,6 +90,37 @@ from what a screen wants, a small adapter in `src/api` converts it, so pages kee
   platform refund text is shown. Upload chunk responses are re-read from `GET /api/youtube/uploads/{id}`
   after a failure (not exercised end to end: integrated uploads need YouTube OAuth).
 
+## Wave 2 screens (`docs/api-contract-wave2/`)
+
+All calls and DTO shapes live in `src/api/wave2.ts` (field names checked against the C# records).
+
+- **Discovery**: wishlist toggle on course cards and the course page, `/me/wishlist`; "Recently viewed" rail on
+  the home page (signed-in only, recorded when a course page is opened); compare tray (2–4 courses, kept in
+  `localStorage`, read after mount so SSR output does not change) and `/compare?ids=…`; related courses on the
+  course page.
+- **Learning workspace tabs**: Resources (free downloads, premium items locked with a link to the packages),
+  Transcript (cues parsed from `captions/{id}/vtt`, server-side search via the transcript endpoint, click to
+  seek; the IFrame player cannot load external VTT), Q&A (search, resolved filter, lesson filter, enrol-to-post
+  prompt), Announcements; "Report an issue" dialog. Threads live at `/courses/:slug/discussions/:id` (the
+  notification link form with a course id also works): replies, instructor badge, edit within 24 h, resolve for
+  course instructors, hide/unhide with a reason for moderators.
+- **Notifications**: header bell (unread count, polled every 60 s, dropdown), `/me/notifications`,
+  `/me/settings/notifications` (per-kind in-app/email; a notice explains when `emailAvailable=false`). Only
+  in-app links (`/…`) are followed.
+- **Certificates**: dashboard list from `/api/me/certificates` with PDF download and an optimistic public/private
+  toggle.
+- **Studio course editor**: Resources tab (upload with progress via XHR, quota bar, replace, premium toggle,
+  delete confirm, caption tracks with language; upload errors such as `video_not_allowed` are mapped in
+  `lib/resourceErrors.ts`), Engagement tab (announcement composer with `Idempotency-Key`, 429 message; Q&A inbox
+  defaulting to unresolved; issues inbox; `/studio/courses/:id/issues` redirects here), Publication tab
+  (structured diff, published-snapshot preview, YouTube playlist sync / thumbnail / caption push shown only for
+  authorized channels the user may manage, with a reconnect hint on `channel_not_authorized` /
+  `youtube_scope_missing`). Reviewers see the same diff in the review queue.
+- **Enterprise**: `/orgs` and `/orgs/:id` (members, invitations with shareable accept links when no email is
+  queued, pending list + revoke, bulk CSV preview → commit, roles/departments, assignments with due date and
+  premium grant, progress report + CSV), `/admin/orgs` for staff, `/org-invitations/accept?token=…`, and
+  "Assigned by your organization" on `/me` with due/overdue badges.
+
 ## SEO and server rendering (spec §21)
 
 Implemented:

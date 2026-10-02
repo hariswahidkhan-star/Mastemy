@@ -4,6 +4,8 @@ import { useAuth, AUTHOR_ROLES, STAFF_ROLES } from '../../auth/AuthProvider';
 import { useI18n } from '../../i18n/I18nProvider';
 import { useTheme } from '../../theme/ThemeProvider';
 import { Button } from '../ui/Button';
+import { CompareTray } from '../Discovery';
+import { NotificationBell } from '../NotificationBell';
 
 function Logo() {
   return (
@@ -106,6 +108,7 @@ export function Layout() {
               </Button>
               {user ? (
                 <>
+                  <NotificationBell />
                   <span className="header-user" title={user.email}>
                     {user.displayName}
                   </span>
@@ -136,6 +139,7 @@ export function Layout() {
       <main id="main" className="site-main" tabIndex={-1}>
         <Outlet />
       </main>
+      <CompareTray />
       <footer className="site-footer">
         <div className="container site-footer__inner">
           <div>

@@ -14,6 +14,7 @@ import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
+import { CertificatesSection, MyOrganizationsSection } from './MeWave2';
 
 interface OrderDto {
   id: string;
@@ -144,9 +145,20 @@ export function DashboardPage() {
       <PageHeader
         title={t('dashboard.title')}
         actions={
-          <ButtonLink to="/me/notes" variant="secondary">
-            {t('dashboard.myNotes')}
-          </ButtonLink>
+          <>
+            <ButtonLink to="/me/notes" variant="secondary">
+              {t('dashboard.myNotes')}
+            </ButtonLink>
+            <ButtonLink to="/me/wishlist" variant="secondary">
+              {t('wishlist.title')}
+            </ButtonLink>
+            <ButtonLink to="/me/notifications" variant="secondary">
+              {t('notifications.title')}
+            </ButtonLink>
+            <ButtonLink to="/orgs" variant="secondary">
+              {t('orgs.title')}
+            </ButtonLink>
+          </>
         }
       />
       {checkout === 'success' ? (
@@ -159,6 +171,7 @@ export function DashboardPage() {
       <QueryState query={dash}>
         {(d) => (
           <div className="stack">
+            <MyOrganizationsSection />
             <section className="card">
               <h2>{t('dashboard.continue')}</h2>
               {d.enrollments.length === 0 ? (
@@ -241,24 +254,7 @@ export function DashboardPage() {
                   {t('dashboard.freeEnrollmentsBody', { n: d.enrollments.length })}
                 </p>
               </section>
-              <section className="card">
-                <h2>{t('dashboard.certificates')}</h2>
-                {d.certificates.length === 0 ? (
-                  <p className="muted">{t('dashboard.noCertificates')}</p>
-                ) : (
-                  <ul className="stack" style={{ listStyle: 'none', padding: 0 }}>
-                    {d.certificates.map((c) => (
-                      <li key={c.code}>
-                        <strong>{c.courseTitle}</strong> <StatusBadge status={c.status} />
-                        <div className="small">
-                          <Link to={`/verify/${encodeURIComponent(c.code)}`}>{c.code}</Link> ·{' '}
-                          {fmtDate(c.issuedAt)}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </section>
+              <CertificatesSection />
             </div>
             <OrdersSection />
             <section className="card">

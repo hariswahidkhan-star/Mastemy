@@ -292,6 +292,8 @@ export interface YouTubeChannelDto {
 export interface VideoAssetDto {
   id: Guid;
   youTubeVideoId: string;
+  /** Mastemy channel record the video belongs to (VideoAssetDto.ChannelId). */
+  channelId?: Guid | null;
   title: string;
   durationSeconds: number;
   status: VideoStatus;
