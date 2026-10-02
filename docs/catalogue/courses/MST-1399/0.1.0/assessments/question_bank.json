@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1399",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 238,
+  "lesson_check_items": 60,
+  "module_check_items": 34,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1399-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI system recommends a grid control action during peak demand. What is the safest approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keep human oversight and fail-safes before acting on the recommendation",
+     "correct": true,
+     "rationale": "Correct: safety-critical actions need human oversight and fail-safes."
+    },
+    {
+     "key": "B",
+     "text": "Automate the action with no review",
+     "correct": false,
+     "rationale": "Unsupervised control of critical systems is unsafe."
+    },
+    {
+     "key": "C",
+     "text": "Assume the AI cannot be wrong under load",
+     "correct": false,
+     "rationale": "Models can fail, especially under unusual conditions."
+    },
+    {
+     "key": "D",
+     "text": "Ignore the recommendation entirely",
+     "correct": false,
+     "rationale": "AI can add value when used with oversight."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: safety-critical actions need human oversight and fail-safes.",
+   "outcome_refs": [
+    "MST-1399-D03.02"
+   ],
+   "domain_ref": "Reliability and safety",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1399-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors are especially important when deploying AI in critical infrastructure? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Robust governance and human oversight",
+     "correct": true,
+     "rationale": "Correct: oversight manages model and safety risk."
+    },
+    {
+     "key": "B",
+     "text": "Cybersecurity of connected operational systems",
+     "correct": true,
+     "rationale": "Correct: connected AI expands the attack surface."
+    },
+    {
+     "key": "C",
+     "text": "Removing all human monitoring to cut costs",
+     "correct": false,
+     "rationale": "Removing oversight raises safety risk."
+    },
+    {
+     "key": "D",
+     "text": "Scaling before any pilot evaluation",
+     "correct": false,
+     "rationale": "Unevaluated scaling is reckless in critical systems."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: oversight manages model and safety risk.",
+   "outcome_refs": [
+    "MST-1399-D05.02"
+   ],
+   "domain_ref": "Risk, governance and rollout",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1399-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must demand-forecast assumptions be examined before acting on them?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Forecasts can rest on flawed assumptions that lead to poor decisions",
+     "correct": true,
+     "rationale": "Correct: unchecked assumptions can make a forecast misleading."
+    },
+    {
+     "key": "B",
+     "text": "Forecasts are always exact",
+     "correct": false,
+     "rationale": "Forecasts carry uncertainty and assumptions."
+    },
+    {
+     "key": "C",
+     "text": "Assumptions never affect the result",
+     "correct": false,
+     "rationale": "Assumptions strongly shape forecast outputs."
+    },
+    {
+     "key": "D",
+     "text": "Only the vendor needs to understand the forecast",
+     "correct": false,
+     "rationale": "Operators must understand forecasts they rely on."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unchecked assumptions can make a forecast misleading.",
+   "outcome_refs": [
+    "MST-1399-D02.01"
+   ],
+   "domain_ref": "Forecasting and optimisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

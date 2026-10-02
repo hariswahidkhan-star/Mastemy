@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1412",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 238,
+  "lesson_check_items": 60,
+  "module_check_items": 34,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1412-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model flags a transaction as likely fraud. What is the responsible next step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Investigate before acting, treating the score as a signal not proof",
+     "correct": true,
+     "rationale": "Correct: a score is a signal that needs investigation, not proof."
+    },
+    {
+     "key": "B",
+     "text": "Permanently block the customer with no review",
+     "correct": false,
+     "rationale": "Acting on a score alone can harm innocent customers."
+    },
+    {
+     "key": "C",
+     "text": "Assume the model is always right",
+     "correct": false,
+     "rationale": "Models produce false positives."
+    },
+    {
+     "key": "D",
+     "text": "Ignore the alert entirely",
+     "correct": false,
+     "rationale": "Alerts should be triaged, not ignored."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a score is a signal that needs investigation, not proof.",
+   "outcome_refs": [
+    "MST-1412-D02.02"
+   ],
+   "domain_ref": "Alerts and scores",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1412-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support responsible AI fraud detection? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keep human oversight of high-stakes actions like blocking",
+     "correct": true,
+     "rationale": "Correct: oversight protects customers from wrongful action."
+    },
+    {
+     "key": "B",
+     "text": "Monitor models for bias across customer groups",
+     "correct": true,
+     "rationale": "Correct: bias monitoring guards fairness."
+    },
+    {
+     "key": "C",
+     "text": "Automate permanent blocks with no review",
+     "correct": false,
+     "rationale": "That risks serious harm to innocent customers."
+    },
+    {
+     "key": "D",
+     "text": "Use customer data without regard to privacy rules",
+     "correct": false,
+     "rationale": "Privacy rules still apply."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: oversight protects customers from wrongful action.",
+   "outcome_refs": [
+    "MST-1412-D05.01"
+   ],
+   "domain_ref": "Oversight and investigation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1412-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why manage the false-positive rate in a fraud model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Too many false positives harm genuine customers and erode trust",
+     "correct": true,
+     "rationale": "Correct: false positives create friction and harm for innocent customers."
+    },
+    {
+     "key": "B",
+     "text": "False positives have no customer impact",
+     "correct": false,
+     "rationale": "They cause friction and harm."
+    },
+    {
+     "key": "C",
+     "text": "Only the detection rate matters",
+     "correct": false,
+     "rationale": "Both detection and false positives matter."
+    },
+    {
+     "key": "D",
+     "text": "False positives always indicate real fraud",
+     "correct": false,
+     "rationale": "By definition they are wrongly flagged legitimate cases."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: false positives create friction and harm for innocent customers.",
+   "outcome_refs": [
+    "MST-1412-D03.01"
+   ],
+   "domain_ref": "False positives and impact",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

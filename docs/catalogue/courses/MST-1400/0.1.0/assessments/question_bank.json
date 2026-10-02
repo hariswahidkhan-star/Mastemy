@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1400",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 238,
+  "lesson_check_items": 60,
+  "module_check_items": 34,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1400-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A churn model flags a customer as high-risk. What is the responsible next step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Review the recommendation for fairness and accuracy before acting",
+     "correct": true,
+     "rationale": "Correct: churn scores can be biased or wrong and need review."
+    },
+    {
+     "key": "B",
+     "text": "Automatically cut the customer's service",
+     "correct": false,
+     "rationale": "Acting blindly on a score can harm customers unfairly."
+    },
+    {
+     "key": "C",
+     "text": "Assume the score is always correct",
+     "correct": false,
+     "rationale": "Models can be wrong or biased."
+    },
+    {
+     "key": "D",
+     "text": "Ignore privacy rules when using the data",
+     "correct": false,
+     "rationale": "Privacy rules still apply to customer data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: churn scores can be biased or wrong and need review.",
+   "outcome_refs": [
+    "MST-1400-D03.02"
+   ],
+   "domain_ref": "Customers and churn",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1400-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support responsible AI use in telecom? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use customer and network data within privacy and security rules",
+     "correct": true,
+     "rationale": "Correct: lawful, secure data use protects customers and the operator."
+    },
+    {
+     "key": "B",
+     "text": "Monitor models for bias and reliability over time",
+     "correct": true,
+     "rationale": "Correct: ongoing oversight catches drift and unfair outcomes."
+    },
+    {
+     "key": "C",
+     "text": "Share raw customer data with any vendor on request",
+     "correct": false,
+     "rationale": "Uncontrolled sharing breaches privacy and security."
+    },
+    {
+     "key": "D",
+     "text": "Deploy models once and never review them",
+     "correct": false,
+     "rationale": "Models degrade and need monitoring."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: lawful, secure data use protects customers and the operator.",
+   "outcome_refs": [
+    "MST-1400-D04.02"
+   ],
+   "domain_ref": "Data, privacy and security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1400-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why verify the root cause behind an AI fault-detection alert?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Alerts can be false positives or point to the wrong cause",
+     "correct": true,
+     "rationale": "Correct: verification avoids acting on misleading alerts."
+    },
+    {
+     "key": "B",
+     "text": "Alerts are always correct",
+     "correct": false,
+     "rationale": "AI alerts can be wrong."
+    },
+    {
+     "key": "C",
+     "text": "Root cause never matters for action",
+     "correct": false,
+     "rationale": "Correct action depends on the real cause."
+    },
+    {
+     "key": "D",
+     "text": "Verification wastes time with no benefit",
+     "correct": false,
+     "rationale": "Verification prevents costly wrong actions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: verification avoids acting on misleading alerts.",
+   "outcome_refs": [
+    "MST-1400-D02.02"
+   ],
+   "domain_ref": "Network operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

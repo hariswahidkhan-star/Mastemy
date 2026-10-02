@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1405",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 238,
+  "lesson_check_items": 60,
+  "module_check_items": 34,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1405-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI surrogate model predicts a part will pass a stress test. What should the engineer do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate the prediction against physics-based analysis and standards",
+     "correct": true,
+     "rationale": "Correct: surrogates must be validated before sign-off."
+    },
+    {
+     "key": "B",
+     "text": "Approve the part immediately",
+     "correct": false,
+     "rationale": "Unvalidated predictions are not sign-off evidence."
+    },
+    {
+     "key": "C",
+     "text": "Assume the surrogate is as reliable as full analysis",
+     "correct": false,
+     "rationale": "Surrogates can be inaccurate outside their range."
+    },
+    {
+     "key": "D",
+     "text": "Ignore relevant engineering standards",
+     "correct": false,
+     "rationale": "Standards still apply."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: surrogates must be validated before sign-off.",
+   "outcome_refs": [
+    "MST-1405-D03.01"
+   ],
+   "domain_ref": "Simulation and optimisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1405-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support responsible AI use in engineering design? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify AI outputs against physics and applicable standards",
+     "correct": true,
+     "rationale": "Correct: verification protects safety and quality."
+    },
+    {
+     "key": "B",
+     "text": "Keep engineering oversight and sign-off",
+     "correct": true,
+     "rationale": "Correct: human oversight remains essential."
+    },
+    {
+     "key": "C",
+     "text": "Treat generated designs as final without analysis",
+     "correct": false,
+     "rationale": "Generated designs need validation."
+    },
+    {
+     "key": "D",
+     "text": "Ignore IP risks in reused design data",
+     "correct": false,
+     "rationale": "IP risks must be managed."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: verification protects safety and quality.",
+   "outcome_refs": [
+    "MST-1405-D04.01"
+   ],
+   "domain_ref": "Validation and standards",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1405-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is generative design an option generator rather than a final answer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its options still require engineering judgement, analysis and validation",
+     "correct": true,
+     "rationale": "Correct: generated options are starting points, not verified solutions."
+    },
+    {
+     "key": "B",
+     "text": "It always produces the optimal manufacturable part",
+     "correct": false,
+     "rationale": "Options may be impractical or unverified."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for analysis",
+     "correct": false,
+     "rationale": "Analysis is still required."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees compliance with standards",
+     "correct": false,
+     "rationale": "Compliance must be checked separately."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: generated options are starting points, not verified solutions.",
+   "outcome_refs": [
+    "MST-1405-D02.02"
+   ],
+   "domain_ref": "Generative design",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
