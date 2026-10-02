@@ -26,6 +26,15 @@ export interface RawQuestionDto {
   pendingVersion?: number | null;
   pendingState?: QuestionState | null;
   pending?: RawVersion | null;
+  meta?: {
+    cognitiveLevel: string | null;
+    caseGroupId: string | null;
+    caseGroupOrder: number;
+    sourceQuestionId: string | null;
+    sourceVersion: number | null;
+    sourceCourseId: string | null;
+    reusable: boolean;
+  } | null;
 }
 
 /**
@@ -58,6 +67,13 @@ export function toQuestion(raw: RawQuestionDto): QuestionDto {
       isCorrect: o.isCorrect,
       rationale: o.rationale,
     })),
+    cognitiveLevel: raw.meta?.cognitiveLevel ?? null,
+    caseGroupId: raw.meta?.caseGroupId ?? null,
+    caseGroupOrder: raw.meta?.caseGroupOrder ?? 0,
+    sourceQuestionId: raw.meta?.sourceQuestionId ?? null,
+    sourceVersion: raw.meta?.sourceVersion ?? null,
+    sourceCourseId: raw.meta?.sourceCourseId ?? null,
+    reusable: raw.meta?.reusable ?? false,
   };
 }
 

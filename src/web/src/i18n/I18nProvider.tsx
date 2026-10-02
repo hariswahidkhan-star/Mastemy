@@ -2,23 +2,26 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import type { ReactNode } from 'react';
 import en from './en.json';
 import ar from './ar.json';
-import discoverEn from './discover.en.json';
-import discoverAr from './discover.ar.json';
 import accountEn from './account.en.json';
 import accountAr from './account.ar.json';
+import discoverEn from './discover.en.json';
+import discoverAr from './discover.ar.json';
+import examsEn from './exams.en.json';
+import examsAr from './exams.ar.json';
 
 export type Lang = 'en' | 'ar';
 type Dict = { [key: string]: string | Dict };
 
 /** Area dictionaries (`<area>.en.json` / `<area>.ar.json`) hold one top-level namespace each and are merged in. */
 const EXTRA: Record<Lang, Dict[]> = {
-  en: [accountEn as Dict, discoverEn as Dict],
-  ar: [accountAr as Dict, discoverAr as Dict],
+  en: [accountEn as Dict, discoverEn as Dict, examsEn as Dict],
+  ar: [accountAr as Dict, discoverAr as Dict, examsAr as Dict],
 };
 const DICTS: Record<Lang, Dict> = {
   en: Object.assign({}, en as Dict, ...EXTRA.en),
   ar: Object.assign({}, ar as Dict, ...EXTRA.ar),
 };
+
 const STORAGE_KEY = 'mastemy.lang';
 
 function lookup(dict: Dict, key: string): string | undefined {

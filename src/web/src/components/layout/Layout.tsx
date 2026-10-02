@@ -47,6 +47,12 @@ export function Layout() {
     { to: '/teach', label: t('nav.teach'), show: !hasRole(...AUTHOR_ROLES) },
     { to: '/me', label: t('nav.dashboard'), show: !!user },
     { to: '/me/profile', label: t('account.nav.account'), show: !!user },
+    { to: '/practice', label: t('exams.nav.practice'), show: !!user },
+    {
+      to: '/staff/exams',
+      label: t('exams.nav.staff'),
+      show: hasRole('Reviewer', 'Admin', 'SuperAdmin'),
+    },
     { to: '/studio', label: t('nav.studio'), show: hasRole(...AUTHOR_ROLES) },
     { to: '/admin', label: t('nav.admin'), show: hasRole(...STAFF_ROLES) },
   ];

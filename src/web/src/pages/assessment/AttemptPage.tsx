@@ -17,10 +17,17 @@ import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { AttemptPlayer } from './AttemptPlayer';
+import type { WaveAttempt } from './AttemptPlayer';
+import { RichContent } from '../../components/RichContent';
+import { ChallengeButton, RecommendationsPanel } from '../exams/AttemptExtras';
 
 /** Server review items carry per-option rationales inside `options`. */
 type ServerReviewItem = ReviewItem & { options?: { id: string; rationale: string }[] };
-type ServerResult = Omit<AttemptResult, 'review'> & { review?: ServerReviewItem[] | null };
+type ServerResult = Omit<AttemptResult, 'review'> & {
+  review?: ServerReviewItem[] | null;
+  readinessDisclaimer?: string;
+  regraded?: boolean;
+};
 
 function toResult(r: ServerResult): AttemptResult {
   return {
@@ -54,9 +61,11 @@ function rationaleFor(review: ReviewItem, optionId: string): string | undefined 
 export function AttemptResultView({
   result,
   items,
+  attemptId,
 }: {
-  result: AttemptResult;
+  result: AttemptResult & { readinessDisclaimer?: string; regraded?: boolean };
   items: AttemptItemView[];
+  attemptId?: string;
 }) {
   const { t } = useI18n();
   const byId = new Map(items.map((i) => [i.itemId, i]));
@@ -103,8 +112,10 @@ export function AttemptResultView({
             </Link>
           </Notice>
         ) : null}
-        <p className="small muted">{t('result.disclaimer')}</p>
+        {result.regraded ? <Notice tone="info">{t('exams.result.regraded')}</Notice> : null}
+        <p className="small muted">{result.readinessDisclaimer ?? t('result.disclaimer')}</p>
       </div>
+      {attemptId ? <RecommendationsPanel attemptId={attemptId} /> : null}
       {result.topics.length > 0 ? (
         <div className="card">
           <h2>{t('result.topics')}</h2>
@@ -141,12 +152,12 @@ export function AttemptResultView({
               const selected = r.selectedOptionIds ?? item?.selectedOptionIds ?? [];
               return (
                 <li key={r.itemId}>
-                  <p style={{ fontWeight: 600, whiteSpace: 'pre-wrap' }}>
-                    {r.stem ?? item?.stem}{' '}
+                  <div style={{ fontWeight: 600 }}>
+                    <RichContent source={r.stem ?? item?.stem ?? ''} />{' '}
                     <Badge tone={r.correct ? 'success' : 'danger'}>
                       {r.correct ? t('result.itemCorrect') : t('result.itemIncorrect')}
                     </Badge>
-                  </p>
+                  </div>
                   <ul style={{ listStyle: 'none', padding: 0 }}>
                     {(item?.options ?? []).map((o) => {
                       const isCorrect = r.correctOptionIds.includes(o.id);
@@ -164,14 +175,15 @@ export function AttemptResultView({
                         >
                           <span>
                             <span>
-                              {o.text} {chosen ? <Badge>{t('result.yourAnswer')}</Badge> : null}{' '}
+                              <RichContent source={o.text} inline />{' '}
+                              {chosen ? <Badge>{t('result.yourAnswer')}</Badge> : null}{' '}
                               {isCorrect ? (
                                 <Badge tone="success">{t('result.correctAnswer')}</Badge>
                               ) : null}
                             </span>
                             {rationaleFor(r, o.id) ? (
                               <span className="small muted" style={{ display: 'block' }}>
-                                {rationaleFor(r, o.id)}
+                                <RichContent source={rationaleFor(r, o.id) ?? ''} inline />
                               </span>
                             ) : null}
                           </span>
@@ -179,7 +191,16 @@ export function AttemptResultView({
                       );
                     })}
                   </ul>
-                  {r.explanation ? <p className="small">{r.explanation}</p> : null}
+                  {r.explanation ? (
+                    <div className="small">
+                      <RichContent source={r.explanation} />
+                    </div>
+                  ) : null}
+                  {attemptId ? (
+                    <ChallengeButton
+                      path={`/api/attempts/${attemptId}/items/${r.itemId}/challenge`}
+                    />
+                  ) : null}
                 </li>
               );
             })}
@@ -262,6 +283,15 @@ export function AttemptPage() {
     [id],
   );
 
+  const onPause = useCallback(
+    () => api<WaveAttempt>(`/api/attempts/${id}/pause`, { method: 'POST' }),
+    [id],
+  );
+  const onResume = useCallback(
+    () => api<WaveAttempt>(`/api/attempts/${id}/resume`, { method: 'POST' }),
+    [id],
+  );
+
   return (
     <div className="container page">
       <QueryState query={attempt}>
@@ -280,7 +310,7 @@ export function AttemptPage() {
                 }
               />
               {finalResult ? (
-                <AttemptResultView result={finalResult} items={a.items} />
+                <AttemptResultView result={finalResult} items={a.items} attemptId={a.id} />
               ) : a.status !== 'InProgress' ? (
                 <Notice tone="info">{t('attempt.closed')}</Notice>
               ) : (
@@ -290,6 +320,8 @@ export function AttemptPage() {
                   onSubmit={onSubmit}
                   onCheck={a.mode === 'Practice' ? onCheck : undefined}
                   submitting={submitting}
+                  onPause={onPause}
+                  onResume={onResume}
                 />
               )}
             </>

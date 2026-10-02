@@ -451,12 +451,21 @@ export interface QuestionInput {
   moduleId?: Guid | null;
   lessonId?: Guid | null;
   options: QuestionOptionInput[];
+  /** Wave 3 (§13): optional on input; `meta` on read. */
+  cognitiveLevel?: string | null;
+  caseGroupId?: Guid | null;
+  caseGroupOrder?: number | null;
 }
 export interface QuestionDto extends QuestionInput {
   id: Guid;
   state: QuestionState;
   currentVersion: number;
   updatedAt?: IsoDate;
+  /** Wave 3 provenance of copied questions and staff reusable flag. */
+  sourceQuestionId?: Guid | null;
+  sourceVersion?: number | null;
+  sourceCourseId?: Guid | null;
+  reusable?: boolean;
 }
 export interface ImportPreviewRow {
   row: number;

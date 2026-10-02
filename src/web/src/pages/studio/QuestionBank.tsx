@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
+import { Link } from 'react-router';
+import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useQuery } from '@tanstack/react-query';
@@ -19,6 +20,9 @@ import { useToast } from '../../components/ui/Toast';
 import { useAuth } from '../../auth/AuthProvider';
 import { useI18n } from '../../i18n/I18nProvider';
 import type { TFunction } from '../../i18n/I18nProvider';
+import { COGNITIVE_LEVELS, useCaseGroups } from '../../api/exams';
+import { RichContent } from '../../components/RichContent';
+import { RichEditor } from '../exams/RichEditor';
 
 function questionSchema(t: TFunction) {
   return z
@@ -42,6 +46,9 @@ function questionSchema(t: TFunction) {
       allowShuffle: z.boolean(),
       moduleId: z.string().optional(),
       lessonId: z.string().optional(),
+      cognitiveLevel: z.string().optional(),
+      caseGroupId: z.string().optional(),
+      caseGroupOrder: z.number().int().min(0).max(1000).optional(),
       options: z
         .array(
           z.object({
@@ -99,6 +106,9 @@ function QuestionForm({
           language: initial.language === 'ar' ? 'ar' : 'en',
           moduleId: initial.moduleId ?? '',
           lessonId: initial.lessonId ?? '',
+          cognitiveLevel: initial.cognitiveLevel ?? '',
+          caseGroupId: initial.caseGroupId ?? '',
+          caseGroupOrder: initial.caseGroupOrder ?? 0,
         }
       : {
           externalId: '',
@@ -114,18 +124,26 @@ function QuestionForm({
           allowShuffle: true,
           moduleId: '',
           lessonId: '',
+          cognitiveLevel: '',
+          caseGroupId: '',
+          caseGroupOrder: 0,
           options: [emptyOption(), emptyOption(), emptyOption(), emptyOption()],
         },
   });
   const { fields, append, remove } = useFieldArray({ control, name: 'options' });
   const moduleId = watch('moduleId');
   const lessons = course.modules.find((m) => m.id === moduleId)?.lessons ?? [];
+  const caseGroups = useCaseGroups(course.id);
+  const caseGroupId = watch('caseGroupId');
   const save = useApiMutation(
     (v: QForm) => {
       const body: QuestionInput = {
         ...v,
         moduleId: v.moduleId || null,
         lessonId: v.lessonId || null,
+        cognitiveLevel: v.cognitiveLevel || null,
+        caseGroupId: v.caseGroupId || null,
+        caseGroupOrder: v.caseGroupId ? (v.caseGroupOrder ?? 0) : null,
       };
       const payload = toQuestionBody(body);
       return initial
@@ -178,9 +196,21 @@ function QuestionForm({
           />
         </Field>
       </div>
-      <Field label={t('question.stem')} error={errors.stem?.message} required>
-        <Textarea rows={4} {...register('stem')} />
-      </Field>
+      <Controller
+        control={control}
+        name="stem"
+        render={({ field }) => (
+          <RichEditor
+            label={t('question.stem')}
+            value={field.value}
+            onChange={field.onChange}
+            courseId={course.id}
+            error={errors.stem?.message}
+            required
+            hint={t('exams.editor.hint')}
+          />
+        )}
+      />
       <fieldset className="stack" style={{ border: 'none', padding: 0 }}>
         <legend className="field__label">{t('question.options')}</legend>
         {fields.map((f, i) => (
@@ -203,6 +233,7 @@ function QuestionForm({
             >
               <Input {...register(`options.${i}.text`)} />
             </Field>
+            <OptionPreview text={watch(`options.${i}.text`)} />
             <Checkbox label={t('question.isCorrect')} {...register(`options.${i}.isCorrect`)} />
             <Field
               label={t('question.rationale')}
@@ -230,9 +261,21 @@ function QuestionForm({
           </Button>
         </div>
       </fieldset>
-      <Field label={t('question.explanation')} error={errors.explanation?.message} required>
-        <Textarea rows={3} {...register('explanation')} />
-      </Field>
+      <Controller
+        control={control}
+        name="explanation"
+        render={({ field }) => (
+          <RichEditor
+            label={t('question.explanation')}
+            value={field.value}
+            onChange={field.onChange}
+            courseId={course.id}
+            error={errors.explanation?.message}
+            required
+            rows={3}
+          />
+        )}
+      />
       <div className="split">
         <Field label={t('question.skillCode')}>
           <Input {...register('skillCode')} />
@@ -266,6 +309,32 @@ function QuestionForm({
           />
         </Field>
       </div>
+      <div className="split">
+        <Field label={t('exams.q.cognitiveLevel')}>
+          <Select
+            {...register('cognitiveLevel')}
+            placeholder={t('exams.q.noLevel')}
+            options={COGNITIVE_LEVELS.map((l) => ({ value: l, label: t(`exams.level.${l}`) }))}
+          />
+        </Field>
+        <Field label={t('exams.q.caseGroup')} hint={t('exams.q.caseGroupHint')}>
+          <Select
+            {...register('caseGroupId')}
+            placeholder={t('exams.q.noCaseGroup')}
+            options={(caseGroups.data ?? []).map((g) => ({ value: g.id, label: g.title }))}
+          />
+        </Field>
+        {caseGroupId ? (
+          <Field label={t('exams.q.caseGroupOrder')} error={errors.caseGroupOrder?.message}>
+            <Input
+              type="number"
+              min={0}
+              max={1000}
+              {...register('caseGroupOrder', { valueAsNumber: true })}
+            />
+          </Field>
+        ) : null}
+      </div>
       <Checkbox
         label={t('question.allowShuffle')}
         hint={t('question.allowShuffleHint')}
@@ -281,6 +350,17 @@ function QuestionForm({
         </Button>
       </div>
     </form>
+  );
+}
+
+/** Compact live preview of an option's Markdown/math (only when it uses formatting). */
+function OptionPreview({ text }: { text: string | undefined }) {
+  const { t } = useI18n();
+  if (!text || !/[$*_`|!]/.test(text)) return null;
+  return (
+    <div className="small muted">
+      {t('exams.editor.preview')}: <RichContent source={text} inline />
+    </div>
   );
 }
 
@@ -319,6 +399,9 @@ export function QuestionBank({ course }: { course: StudioCourseDto }) {
 
   return (
     <div className="stack">
+      <Notice tone="info">
+        <Link to={`/studio/courses/${course.id}/exams`}>{t('exams.studio.link')}</Link>
+      </Notice>
       <div className="row row--between">
         <form className="row" role="search" onSubmit={(e) => e.preventDefault()}>
           <Field label={t('courses.search')}>
@@ -374,7 +457,15 @@ export function QuestionBank({ course }: { course: StudioCourseDto }) {
                       <td className="mono">{qq.externalId}</td>
                       <td>{qq.stem.length > 120 ? `${qq.stem.slice(0, 120)}…` : qq.stem}</td>
                       <td>
-                        <Badge>{t(`question.${qq.type}`)}</Badge>
+                        <Badge>{t(`question.${qq.type}`)}</Badge>{' '}
+                        {qq.cognitiveLevel ? (
+                          <Badge tone="info">{t(`exams.level.${qq.cognitiveLevel}`)}</Badge>
+                        ) : null}{' '}
+                        {!qq.allowShuffle ? <Badge>{t('exams.q.noShuffle')}</Badge> : null}{' '}
+                        {qq.caseGroupId ? <Badge tone="accent">{t('exams.q.inCase')}</Badge> : null}{' '}
+                        {qq.sourceQuestionId ? (
+                          <Badge tone="warning">{t('exams.q.copied')}</Badge>
+                        ) : null}
                       </td>
                       <td>
                         <StatusBadge status={qq.state} />{' '}
