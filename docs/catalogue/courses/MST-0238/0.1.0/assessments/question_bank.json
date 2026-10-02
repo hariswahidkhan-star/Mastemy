@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0238",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 798,
+  "lesson_check_items": 48,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0238-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need the regional average sales to appear on every row regardless of the view's level of detail. Which Tableau feature is designed for this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A basic SUM aggregation",
+     "correct": false,
+     "rationale": "A basic aggregate follows the view's level of detail and cannot fix the granularity."
+    },
+    {
+     "key": "B",
+     "text": "A FIXED level-of-detail (LOD) expression",
+     "correct": true,
+     "rationale": "Correct: a FIXED LOD expression computes a value at a specified granularity independent of the view."
+    },
+    {
+     "key": "C",
+     "text": "A quick filter",
+     "correct": false,
+     "rationale": "A filter limits data shown, it does not compute a fixed-level value."
+    },
+    {
+     "key": "D",
+     "text": "A tooltip",
+     "correct": false,
+     "rationale": "A tooltip displays values; it does not compute them at a fixed level."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: a FIXED LOD expression computes a value at a specified granularity independent of the view.",
+   "outcome_refs": [
+    "MST-0238-D02.01"
+   ],
+   "domain_ref": "Explore and Analyze Data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0238-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the key difference between a join and a data blend in Tableau?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A join combines tables at the row level from (usually) the same source; a blend combines aggregated data from separate sources",
+     "correct": true,
+     "rationale": "Correct: joins merge rows typically within one connection, while blends combine aggregated results across different data sources on a linking field."
+    },
+    {
+     "key": "B",
+     "text": "They are identical",
+     "correct": false,
+     "rationale": "They behave differently at the row vs aggregate level."
+    },
+    {
+     "key": "C",
+     "text": "A blend always runs faster than a join",
+     "correct": false,
+     "rationale": "Performance depends on the data, not a fixed rule."
+    },
+    {
+     "key": "D",
+     "text": "A join can only use one field ever",
+     "correct": false,
+     "rationale": "Joins can use multiple key fields."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: joins merge rows typically within one connection, while blends combine aggregated results across different data sources on a linking field.",
+   "outcome_refs": [
+    "MST-0238-D01.02"
+   ],
+   "domain_ref": "Connect to and Transform Data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0238-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices when publishing a workbook to Tableau Cloud? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set permissions so only intended audiences can view the data",
+     "correct": true,
+     "rationale": "Correct: scoping permissions protects data."
+    },
+    {
+     "key": "B",
+     "text": "Configure an appropriate extract refresh schedule",
+     "correct": true,
+     "rationale": "Correct: scheduling refresh keeps published data current."
+    },
+    {
+     "key": "C",
+     "text": "Publish with full access to all users by default",
+     "correct": false,
+     "rationale": "Default-open access can expose sensitive data."
+    },
+    {
+     "key": "D",
+     "text": "Embed your personal password in the workbook",
+     "correct": false,
+     "rationale": "Embedding personal credentials is insecure."
+    },
+    {
+     "key": "E",
+     "text": "Delete the underlying data source after publishing",
+     "correct": false,
+     "rationale": "Removing the source breaks refresh and the workbook."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Both keyed options are correct; all-or-nothing scoring requires exactly the keyed set.",
+   "outcome_refs": [
+    "MST-0238-D04.01"
+   ],
+   "domain_ref": "Publish and Manage Content",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

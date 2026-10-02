@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0229",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1032,
+  "lesson_check_items": 48,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0229-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a medallion (bronze/silver/gold) architecture, what is the typical purpose of the bronze layer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Serve curated, business-ready aggregates",
+     "correct": false,
+     "rationale": "That describes the gold layer."
+    },
+    {
+     "key": "B",
+     "text": "Store raw ingested data with minimal transformation",
+     "correct": true,
+     "rationale": "Correct: the bronze layer captures raw ingested data, preserving source fidelity before cleansing."
+    },
+    {
+     "key": "C",
+     "text": "Hold only the final dashboards",
+     "correct": false,
+     "rationale": "Dashboards are not a data layer."
+    },
+    {
+     "key": "D",
+     "text": "Replace the need for silver and gold layers",
+     "correct": false,
+     "rationale": "Bronze is the first of three layers, not a replacement."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: the bronze layer captures raw ingested data, preserving source fidelity before cleansing.",
+   "outcome_refs": [
+    "MST-0229-D02.02"
+   ],
+   "domain_ref": "Data Ingestion, Transformation and Modeling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0229-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Databricks feature provides incremental, exactly-once file ingestion as new files arrive?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A one-time full table overwrite",
+     "correct": false,
+     "rationale": "Overwrite reprocesses everything and is not incremental."
+    },
+    {
+     "key": "B",
+     "text": "Auto Loader",
+     "correct": true,
+     "rationale": "Correct: Auto Loader incrementally and efficiently ingests new files as they land, tracking what has been processed."
+    },
+    {
+     "key": "C",
+     "text": "A static SELECT query",
+     "correct": false,
+     "rationale": "A static query does not track new arrivals."
+    },
+    {
+     "key": "D",
+     "text": "Manual CSV upload",
+     "correct": false,
+     "rationale": "Manual upload is neither incremental nor automated."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: Auto Loader incrementally and efficiently ingests new files as they land, tracking what has been processed.",
+   "outcome_refs": [
+    "MST-0229-D02.01"
+   ],
+   "domain_ref": "Data Ingestion, Transformation and Modeling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0229-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO support governance and least-privilege access on Databricks? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Unity Catalog grants on tables and schemas",
+     "correct": true,
+     "rationale": "Correct: Unity Catalog manages fine-grained access to data assets."
+    },
+    {
+     "key": "B",
+     "text": "Scoped service principals for automated jobs",
+     "correct": true,
+     "rationale": "Correct: scoped service principals limit automation permissions."
+    },
+    {
+     "key": "C",
+     "text": "Sharing one admin token with all engineers",
+     "correct": false,
+     "rationale": "Shared admin tokens break least privilege."
+    },
+    {
+     "key": "D",
+     "text": "Making every table world-readable",
+     "correct": false,
+     "rationale": "World-readable tables violate least privilege."
+    },
+    {
+     "key": "E",
+     "text": "Disabling access controls to speed development",
+     "correct": false,
+     "rationale": "Disabling controls removes governance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Both keyed options are correct; all-or-nothing scoring requires exactly the keyed set.",
+   "outcome_refs": [
+    "MST-0229-D03.01"
+   ],
+   "domain_ref": "Security, Governance and Data Quality",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

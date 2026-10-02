@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0215",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 798,
+  "lesson_check_items": 48,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0215-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Google Cloud resource sits above projects and lets you apply IAM policies and organization policies to groups of projects?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A region",
+     "correct": false,
+     "rationale": "A region is a geographic location, not a policy scope."
+    },
+    {
+     "key": "B",
+     "text": "A folder in the resource hierarchy",
+     "correct": true,
+     "rationale": "Correct: folders group projects and allow IAM and org policies to be applied and inherited."
+    },
+    {
+     "key": "C",
+     "text": "A VPC network",
+     "correct": false,
+     "rationale": "A VPC is a networking construct, not a policy-grouping layer above projects."
+    },
+    {
+     "key": "D",
+     "text": "A Compute Engine instance",
+     "correct": false,
+     "rationale": "An instance is a single VM, not a grouping layer."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: folders group projects and allow IAM and org policies to be applied and inherited.",
+   "outcome_refs": [
+    "MST-0215-D01.01"
+   ],
+   "domain_ref": "Setting up a cloud solution environment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0215-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to run a containerized microservice with automatic scaling and managed Kubernetes. Which service fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cloud Storage",
+     "correct": false,
+     "rationale": "Cloud Storage is object storage, not a container runtime."
+    },
+    {
+     "key": "B",
+     "text": "Google Kubernetes Engine (GKE)",
+     "correct": true,
+     "rationale": "Correct: GKE provides managed Kubernetes with autoscaling for containerized workloads."
+    },
+    {
+     "key": "C",
+     "text": "Cloud SQL",
+     "correct": false,
+     "rationale": "Cloud SQL is a managed relational database."
+    },
+    {
+     "key": "D",
+     "text": "Cloud DNS",
+     "correct": false,
+     "rationale": "Cloud DNS provides name resolution, not container hosting."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: GKE provides managed Kubernetes with autoscaling for containerized workloads.",
+   "outcome_refs": [
+    "MST-0215-D03.01"
+   ],
+   "domain_ref": "Deploying and implementing a cloud solution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0215-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support least-privilege access in a Google Cloud project? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Granting predefined or custom roles scoped to needed permissions",
+     "correct": true,
+     "rationale": "Correct: granular predefined/custom roles support least privilege."
+    },
+    {
+     "key": "B",
+     "text": "Using service accounts with only the permissions a workload needs",
+     "correct": true,
+     "rationale": "Correct: narrowly scoped service accounts follow least privilege."
+    },
+    {
+     "key": "C",
+     "text": "Giving every user the Owner role",
+     "correct": false,
+     "rationale": "Owner is overly broad and violates least privilege."
+    },
+    {
+     "key": "D",
+     "text": "Sharing a single admin login among the team",
+     "correct": false,
+     "rationale": "Shared logins break accountability and least privilege."
+    },
+    {
+     "key": "E",
+     "text": "Disabling IAM entirely",
+     "correct": false,
+     "rationale": "IAM cannot be disabled and is required for access control."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Both keyed options are correct; all-or-nothing scoring requires exactly the keyed set.",
+   "outcome_refs": [
+    "MST-0215-D04.02"
+   ],
+   "domain_ref": "Ensuring operation, access and security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
