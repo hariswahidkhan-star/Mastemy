@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0508",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0508-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should you do with an explanation Codex gives about unfamiliar code?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Check it against the actual code before relying on it",
+     "correct": true,
+     "rationale": "Correct: verify explanations against the source."
+    },
+    {
+     "key": "B",
+     "text": "Accept it as always correct",
+     "correct": false,
+     "rationale": "Explanations can be wrong and need checking."
+    },
+    {
+     "key": "C",
+     "text": "Delete the code it describes",
+     "correct": false,
+     "rationale": "Understanding code does not require deleting it."
+    },
+    {
+     "key": "D",
+     "text": "Ignore the code and trust the summary only",
+     "correct": false,
+     "rationale": "The code is the source of truth, not the summary."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: verify explanations against the source.",
+   "outcome_refs": [
+    "MST-0508-M01.02"
+   ],
+   "domain_ref": "Understanding a repository",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0508-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why plan a feature file-by-file before letting Codex implement it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It clarifies the affected surface and the tests that must change",
+     "correct": true,
+     "rationale": "Correct: a plan maps scope and the tests involved."
+    },
+    {
+     "key": "B",
+     "text": "It makes the repository smaller",
+     "correct": false,
+     "rationale": "Planning does not reduce repo size."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need to read any diffs",
+     "correct": false,
+     "rationale": "Diffs must still be read after implementation."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees no bugs",
+     "correct": false,
+     "rationale": "Planning reduces risk but does not guarantee bug-free code."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a plan maps scope and the tests involved.",
+   "outcome_refs": [
+    "MST-0508-M02.01"
+   ],
+   "domain_ref": "Planning a feature",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0508-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep Codex-assisted development safe in a real codebase? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read every diff before accepting it",
+     "correct": true,
+     "rationale": "Correct: reviewing diffs catches unwanted changes."
+    },
+    {
+     "key": "B",
+     "text": "Keep changes on a branch under review and version control",
+     "correct": true,
+     "rationale": "Correct: branches and review contain risk."
+    },
+    {
+     "key": "C",
+     "text": "Let the agent edit and merge with no review",
+     "correct": false,
+     "rationale": "Unreviewed merges are unsafe."
+    },
+    {
+     "key": "D",
+     "text": "Skip running the tests to save time",
+     "correct": false,
+     "rationale": "Tests verify the change and should be run."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reviewing diffs catches unwanted changes.",
+   "outcome_refs": [
+    "MST-0508-M04.01"
+   ],
+   "domain_ref": "Working safely",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

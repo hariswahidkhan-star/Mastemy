@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0506",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0506-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What most directly drives the cost of an OpenAI API call?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The number of input and output tokens and the model used",
+     "correct": true,
+     "rationale": "Correct: token count and model choice drive cost."
+    },
+    {
+     "key": "B",
+     "text": "The time of day the call is made",
+     "correct": false,
+     "rationale": "Time of day does not set token-based cost."
+    },
+    {
+     "key": "C",
+     "text": "The number of developers on the team",
+     "correct": false,
+     "rationale": "Team size does not determine per-call cost."
+    },
+    {
+     "key": "D",
+     "text": "The colour scheme of the application",
+     "correct": false,
+     "rationale": "UI styling has no bearing on API cost."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: token count and model choice drive cost.",
+   "outcome_refs": [
+    "MST-0506-M01.01"
+   ],
+   "domain_ref": "Cost foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0506-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the correct response to receiving a 429 rate-limit error?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Back off and retry after a delay, ideally with exponential backoff",
+     "correct": true,
+     "rationale": "Correct: backoff eases pressure and respects the limit."
+    },
+    {
+     "key": "B",
+     "text": "Retry immediately in a tight loop",
+     "correct": false,
+     "rationale": "Immediate retries worsen rate-limit pressure."
+    },
+    {
+     "key": "C",
+     "text": "Switch to the largest available model",
+     "correct": false,
+     "rationale": "Model size does not resolve a rate-limit error."
+    },
+    {
+     "key": "D",
+     "text": "Stop all monitoring",
+     "correct": false,
+     "rationale": "Monitoring should continue, not stop."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: backoff eases pressure and respects the limit.",
+   "outcome_refs": [
+    "MST-0506-M03.02"
+   ],
+   "domain_ref": "Rate limits",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0506-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques reduce API cost without needlessly harming quality? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Trim prompts to the context actually needed",
+     "correct": true,
+     "rationale": "Correct: removing unneeded tokens cuts cost."
+    },
+    {
+     "key": "B",
+     "text": "Use a smaller, right-sized model for routine tasks",
+     "correct": true,
+     "rationale": "Correct: smaller models suit simpler tasks at lower cost."
+    },
+    {
+     "key": "C",
+     "text": "Always use the largest model for every task",
+     "correct": false,
+     "rationale": "Oversized models waste cost on simple tasks."
+    },
+    {
+     "key": "D",
+     "text": "Cut context until the output quality collapses",
+     "correct": false,
+     "rationale": "Over-trimming harms quality, defeating the goal."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: removing unneeded tokens cuts cost.",
+   "outcome_refs": [
+    "MST-0506-M02.02"
+   ],
+   "domain_ref": "Reducing cost",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0510",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 612,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0510-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should the OpenAI API call be made from the .NET backend rather than the React browser client?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To keep the API key secret and off the client",
+     "correct": true,
+     "rationale": "Correct: the key must stay server-side, never in the browser."
+    },
+    {
+     "key": "B",
+     "text": "Because React cannot make HTTP requests",
+     "correct": false,
+     "rationale": "React can make requests; the issue is key exposure."
+    },
+    {
+     "key": "C",
+     "text": "To make responses non-streaming",
+     "correct": false,
+     "rationale": "Backend calls can still stream."
+    },
+    {
+     "key": "D",
+     "text": "To avoid writing any tests",
+     "correct": false,
+     "rationale": "Tests are still needed regardless of where the call is made."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the key must stay server-side, never in the browser.",
+   "outcome_refs": [
+    "MST-0510-M01.01"
+   ],
+   "domain_ref": "Architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0510-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should a streaming assistant UI handle tokens as they arrive?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Render them incrementally so the user sees output immediately",
+     "correct": true,
+     "rationale": "Correct: incremental rendering improves responsiveness."
+    },
+    {
+     "key": "B",
+     "text": "Wait for the full response before showing anything",
+     "correct": false,
+     "rationale": "Blocking until completion hurts responsiveness."
+    },
+    {
+     "key": "C",
+     "text": "Discard tokens until the stream ends",
+     "correct": false,
+     "rationale": "Discarding tokens defeats streaming."
+    },
+    {
+     "key": "D",
+     "text": "Show only the first token",
+     "correct": false,
+     "rationale": "The full streamed response should be rendered."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: incremental rendering improves responsiveness.",
+   "outcome_refs": [
+    "MST-0510-M03.01"
+   ],
+   "domain_ref": "React front end",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0510-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps belong in getting the assistant production-ready? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add input and output guardrails on the backend",
+     "correct": true,
+     "rationale": "Correct: guardrails are part of a safe production assistant."
+    },
+    {
+     "key": "B",
+     "text": "Add monitoring and a spend alert after deployment",
+     "correct": true,
+     "rationale": "Correct: production operation needs monitoring and cost control."
+    },
+    {
+     "key": "C",
+     "text": "Ship the API key in the browser bundle",
+     "correct": false,
+     "rationale": "Exposing the key is a security failure."
+    },
+    {
+     "key": "D",
+     "text": "Skip any evaluation of answer quality",
+     "correct": false,
+     "rationale": "Quality must be evaluated before and after release."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: guardrails are part of a safe production assistant.",
+   "outcome_refs": [
+    "MST-0510-M05.01"
+   ],
+   "domain_ref": "Security, testing and evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

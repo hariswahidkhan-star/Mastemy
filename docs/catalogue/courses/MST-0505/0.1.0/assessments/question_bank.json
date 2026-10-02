@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0505",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0505-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a few hand-picked examples a weak basis for judging model quality?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They are not representative, so they can hide common failures",
+     "correct": true,
+     "rationale": "Correct: unrepresentative samples mislead quality judgements."
+    },
+    {
+     "key": "B",
+     "text": "They always overstate cost",
+     "correct": false,
+     "rationale": "Representativeness, not cost, is the issue."
+    },
+    {
+     "key": "C",
+     "text": "They make the model slower",
+     "correct": false,
+     "rationale": "Sample choice does not change model speed."
+    },
+    {
+     "key": "D",
+     "text": "They remove the need for metrics",
+     "correct": false,
+     "rationale": "Metrics are still needed to measure quality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unrepresentative samples mislead quality judgements.",
+   "outcome_refs": [
+    "MST-0505-M01.01"
+   ],
+   "domain_ref": "Evaluation foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0505-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When comparing two prompt versions, why must the same dataset be used?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Different datasets make the comparison unfair and the result unreliable",
+     "correct": true,
+     "rationale": "Correct: a fair comparison holds the dataset constant."
+    },
+    {
+     "key": "B",
+     "text": "It makes the evaluation run faster",
+     "correct": false,
+     "rationale": "Speed is not the reason."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for graders",
+     "correct": false,
+     "rationale": "Graders are still needed to score results."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees both versions pass",
+     "correct": false,
+     "rationale": "Using the same dataset does not guarantee passing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a fair comparison holds the dataset constant.",
+   "outcome_refs": [
+    "MST-0505-M03.02"
+   ],
+   "domain_ref": "Running evaluations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0505-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help catch regressions before release? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Gate prompt and model changes on an evaluation check",
+     "correct": true,
+     "rationale": "Correct: gating blocks changes that fail the evaluation."
+    },
+    {
+     "key": "B",
+     "text": "Use a representative labelled dataset for the evaluation",
+     "correct": true,
+     "rationale": "Correct: representative data detects real regressions."
+    },
+    {
+     "key": "C",
+     "text": "Ship changes with no evaluation to move faster",
+     "correct": false,
+     "rationale": "Skipping evaluation lets regressions through."
+    },
+    {
+     "key": "D",
+     "text": "Evaluate only on examples the new version already passes",
+     "correct": false,
+     "rationale": "Cherry-picked passing cases hide regressions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: gating blocks changes that fail the evaluation.",
+   "outcome_refs": [
+    "MST-0505-M04.02"
+   ],
+   "domain_ref": "Regression testing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

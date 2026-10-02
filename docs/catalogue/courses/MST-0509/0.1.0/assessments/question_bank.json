@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0509",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0509-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should a developer do with tests that Codex generates?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read them to confirm they are correct and meaningful",
+     "correct": true,
+     "rationale": "Correct: generated tests must be reviewed for value and correctness."
+    },
+    {
+     "key": "B",
+     "text": "Assume they are always correct",
+     "correct": false,
+     "rationale": "Generated tests can be wrong or trivial."
+    },
+    {
+     "key": "C",
+     "text": "Delete them immediately",
+     "correct": false,
+     "rationale": "Useful generated tests should be kept, not deleted."
+    },
+    {
+     "key": "D",
+     "text": "Merge them without running them",
+     "correct": false,
+     "rationale": "Tests should be run and reviewed before merging."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: generated tests must be reviewed for value and correctness.",
+   "outcome_refs": [
+    "MST-0509-M01.01"
+   ],
+   "domain_ref": "Testing with Codex",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0509-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must a refactor be backed by tests?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tests confirm behaviour is preserved while the code changes",
+     "correct": true,
+     "rationale": "Correct: tests guard against behaviour changes during refactoring."
+    },
+    {
+     "key": "B",
+     "text": "Tests make the refactor larger",
+     "correct": false,
+     "rationale": "Tests do not increase refactor size."
+    },
+    {
+     "key": "C",
+     "text": "Tests remove the need for review",
+     "correct": false,
+     "rationale": "Human review is still needed."
+    },
+    {
+     "key": "D",
+     "text": "Tests guarantee faster code",
+     "correct": false,
+     "rationale": "Tests verify behaviour, not performance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: tests guard against behaviour changes during refactoring.",
+   "outcome_refs": [
+    "MST-0509-M03.02"
+   ],
+   "domain_ref": "Controlled refactoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0509-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep Codex-assisted refactoring under human control? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keep each change small and reviewable",
+     "correct": true,
+     "rationale": "Correct: small changes are easier to review and revert."
+    },
+    {
+     "key": "B",
+     "text": "Be able to revert a change that breaks a test",
+     "correct": true,
+     "rationale": "Correct: a revert path limits blast radius."
+    },
+    {
+     "key": "C",
+     "text": "Run one large automated refactor with no revert path",
+     "correct": false,
+     "rationale": "Large irreversible refactors are risky."
+    },
+    {
+     "key": "D",
+     "text": "Let Codex approve its own pull request",
+     "correct": false,
+     "rationale": "A human reviewer, not the agent, should approve."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: small changes are easier to review and revert.",
+   "outcome_refs": [
+    "MST-0509-M04.02"
+   ],
+   "domain_ref": "Human control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

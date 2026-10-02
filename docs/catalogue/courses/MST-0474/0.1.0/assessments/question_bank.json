@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0474",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0474-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main purpose of a custom GPT's instruction block?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To define the GPT's purpose, scope and behaviour clearly",
+     "correct": true,
+     "rationale": "Correct: instructions set purpose, scope and how the GPT should behave."
+    },
+    {
+     "key": "B",
+     "text": "To store the conversation history permanently",
+     "correct": false,
+     "rationale": "Instructions configure behaviour; they do not store history."
+    },
+    {
+     "key": "C",
+     "text": "To reduce the cost of each message",
+     "correct": false,
+     "rationale": "Instructions are about behaviour, not billing."
+    },
+    {
+     "key": "D",
+     "text": "To replace the need for any testing",
+     "correct": false,
+     "rationale": "Instructions do not remove the need to test the GPT."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: instructions set purpose, scope and how the GPT should behave.",
+   "outcome_refs": [
+    "MST-0474-M01.01"
+   ],
+   "domain_ref": "Designing a custom GPT",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0474-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When should a custom GPT use an action or API call instead of a knowledge file?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When it needs live or frequently changing data the file cannot hold",
+     "correct": true,
+     "rationale": "Correct: actions fetch live data; knowledge files are static snapshots."
+    },
+    {
+     "key": "B",
+     "text": "Always, because actions are better than files",
+     "correct": false,
+     "rationale": "Actions are not always better; static reference belongs in knowledge files."
+    },
+    {
+     "key": "C",
+     "text": "Never, because files can hold any data",
+     "correct": false,
+     "rationale": "Files are static and cannot hold live or changing data."
+    },
+    {
+     "key": "D",
+     "text": "Only when no knowledge files exist",
+     "correct": false,
+     "rationale": "The choice depends on whether data is live, not on file count."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: actions fetch live data; knowledge files are static snapshots.",
+   "outcome_refs": [
+    "MST-0474-M02.02"
+   ],
+   "domain_ref": "Knowledge and tools",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0474-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO governance controls should be in place before sharing a custom GPT across a workspace? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A named owner responsible for the GPT",
+     "correct": true,
+     "rationale": "Correct: a named owner is accountable for the GPT."
+    },
+    {
+     "key": "B",
+     "text": "A review step before publishing or updating",
+     "correct": true,
+     "rationale": "Correct: review before release catches scope and safety issues."
+    },
+    {
+     "key": "C",
+     "text": "Removing all instructions to keep it flexible",
+     "correct": false,
+     "rationale": "Removing instructions removes scope and control."
+    },
+    {
+     "key": "D",
+     "text": "Giving every user edit rights by default",
+     "correct": false,
+     "rationale": "Unrestricted edit rights undermine governance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a named owner is accountable for the GPT.",
+   "outcome_refs": [
+    "MST-0474-M04.02"
+   ],
+   "domain_ref": "Governance and sharing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

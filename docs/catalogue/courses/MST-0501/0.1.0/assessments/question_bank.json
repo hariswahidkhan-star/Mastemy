@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0501",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0501-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does retrieval (file search) solve for an LLM application?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It grounds responses in your own documents instead of relying only on the model's training",
+     "correct": true,
+     "rationale": "Correct: retrieval supplies relevant source text so answers are grounded."
+    },
+    {
+     "key": "B",
+     "text": "It makes the model respond faster in every case",
+     "correct": false,
+     "rationale": "Retrieval adds a lookup step; speed is not its purpose."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need to verify any answer",
+     "correct": false,
+     "rationale": "Grounded answers still require verification against sources."
+    },
+    {
+     "key": "D",
+     "text": "It eliminates all token costs",
+     "correct": false,
+     "rationale": "Retrieval does not remove token costs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: retrieval supplies relevant source text so answers are grounded.",
+   "outcome_refs": [
+    "MST-0501-M01.01"
+   ],
+   "domain_ref": "Retrieval foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0501-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is chunking documents (rather than indexing each whole document) important for file search?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Smaller, well-bounded chunks let retrieval return the precise relevant passage",
+     "correct": true,
+     "rationale": "Correct: good chunks improve retrieval precision."
+    },
+    {
+     "key": "B",
+     "text": "It permanently reduces the number of documents",
+     "correct": false,
+     "rationale": "Chunking splits content; it does not reduce the document set."
+    },
+    {
+     "key": "C",
+     "text": "It makes citations unnecessary",
+     "correct": false,
+     "rationale": "Citations remain important regardless of chunking."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees the model never makes an error",
+     "correct": false,
+     "rationale": "Chunking improves retrieval but does not guarantee correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: good chunks improve retrieval precision.",
+   "outcome_refs": [
+    "MST-0501-M02.01"
+   ],
+   "domain_ref": "Preparing and indexing documents",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0501-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve the reliability of a retrieval application? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Show citations to the source passages used",
+     "correct": true,
+     "rationale": "Correct: citations let users verify grounded answers."
+    },
+    {
+     "key": "B",
+     "text": "Evaluate retrieval against question and expected-source pairs",
+     "correct": true,
+     "rationale": "Correct: evaluation measures whether the right sources are found."
+    },
+    {
+     "key": "C",
+     "text": "Pass every retrieved chunk to the model regardless of relevance",
+     "correct": false,
+     "rationale": "Irrelevant chunks add noise and cost."
+    },
+    {
+     "key": "D",
+     "text": "Trust any confident answer even when no source is returned",
+     "correct": false,
+     "rationale": "A confident answer with no source is a failure mode, not reliability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: citations let users verify grounded answers.",
+   "outcome_refs": [
+    "MST-0501-M04.01"
+   ],
+   "domain_ref": "Evaluation and citations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

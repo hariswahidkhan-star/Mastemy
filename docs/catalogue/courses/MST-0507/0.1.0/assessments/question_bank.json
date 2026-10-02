@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0507",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0507-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a prompt-injection attack?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Untrusted content tricks the model into following instructions it should not",
+     "correct": true,
+     "rationale": "Correct: injection hides adversarial instructions in untrusted content."
+    },
+    {
+     "key": "B",
+     "text": "A way to make the model respond faster",
+     "correct": false,
+     "rationale": "Injection is an attack, not a performance feature."
+    },
+    {
+     "key": "C",
+     "text": "A method for reducing token cost",
+     "correct": false,
+     "rationale": "Injection has nothing to do with cost."
+    },
+    {
+     "key": "D",
+     "text": "A type of billing error",
+     "correct": false,
+     "rationale": "Injection is a safety threat, not a billing issue."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: injection hides adversarial instructions in untrusted content.",
+   "outcome_refs": [
+    "MST-0507-M01.02"
+   ],
+   "domain_ref": "Threat foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0507-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should retrieved document or web text be treated in an LLM application?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As untrusted data, kept separate from trusted instructions",
+     "correct": true,
+     "rationale": "Correct: untrusted content must not be treated as instructions."
+    },
+    {
+     "key": "B",
+     "text": "As trusted instructions the model should always follow",
+     "correct": false,
+     "rationale": "Treating retrieved text as instructions enables injection."
+    },
+    {
+     "key": "C",
+     "text": "As a replacement for all guardrails",
+     "correct": false,
+     "rationale": "Retrieved text does not replace guardrails."
+    },
+    {
+     "key": "D",
+     "text": "As a billing optimisation",
+     "correct": false,
+     "rationale": "This is a safety concern, not billing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: untrusted content must not be treated as instructions.",
+   "outcome_refs": [
+    "MST-0507-M03.01"
+   ],
+   "domain_ref": "Injection defenses",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0507-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls help defend an assistant against prompt injection? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Scope tools to least privilege",
+     "correct": true,
+     "rationale": "Correct: least privilege limits what an injection can achieve."
+    },
+    {
+     "key": "B",
+     "text": "Validate outputs before acting on them",
+     "correct": true,
+     "rationale": "Correct: output validation catches unsafe actions."
+    },
+    {
+     "key": "C",
+     "text": "Trust any instruction found in retrieved text",
+     "correct": false,
+     "rationale": "Trusting retrieved instructions is the vulnerability itself."
+    },
+    {
+     "key": "D",
+     "text": "Remove all logging of suspicious inputs",
+     "correct": false,
+     "rationale": "Logging is needed to detect and respond to attacks."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: least privilege limits what an injection can achieve.",
+   "outcome_refs": [
+    "MST-0507-M02.02"
+   ],
+   "domain_ref": "Guardrails",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

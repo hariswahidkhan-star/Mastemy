@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0503",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0503-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a realistic expectation when using a vision model on a poor-quality scanned document?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Accuracy can degrade, so outputs may need validation or human review",
+     "correct": true,
+     "rationale": "Correct: poor scans reduce accuracy and need safeguards."
+    },
+    {
+     "key": "B",
+     "text": "It will always extract every field perfectly",
+     "correct": false,
+     "rationale": "Perfect extraction is not guaranteed on poor scans."
+    },
+    {
+     "key": "C",
+     "text": "It cannot read any text at all",
+     "correct": false,
+     "rationale": "It can often read text, just with reduced accuracy."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for a defined output schema",
+     "correct": false,
+     "rationale": "A schema is still needed for reliable downstream use."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: poor scans reduce accuracy and need safeguards.",
+   "outcome_refs": [
+    "MST-0503-M01.01"
+   ],
+   "domain_ref": "Vision foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0503-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why request structured output (a defined schema) when extracting data from documents?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Downstream systems can consume consistent fields reliably",
+     "correct": true,
+     "rationale": "Correct: structured fields integrate cleanly downstream."
+    },
+    {
+     "key": "B",
+     "text": "It makes the image unnecessary",
+     "correct": false,
+     "rationale": "The image is still the source of the data."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the model is always correct",
+     "correct": false,
+     "rationale": "A schema shapes output but does not guarantee correctness."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need to measure accuracy",
+     "correct": false,
+     "rationale": "Accuracy must still be measured."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: structured fields integrate cleanly downstream.",
+   "outcome_refs": [
+    "MST-0503-M02.02"
+   ],
+   "domain_ref": "Structuring the task",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0503-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO safeguards make a document-extraction application more trustworthy? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validating extracted values such as checking a total",
+     "correct": true,
+     "rationale": "Correct: validation catches extraction errors."
+    },
+    {
+     "key": "B",
+     "text": "Routing low-confidence results to a human reviewer",
+     "correct": true,
+     "rationale": "Correct: a human-review path handles uncertain cases."
+    },
+    {
+     "key": "C",
+     "text": "Publishing extracted numbers with no checks",
+     "correct": false,
+     "rationale": "Unchecked numbers are a reliability risk."
+    },
+    {
+     "key": "D",
+     "text": "Measuring accuracy on no examples at all",
+     "correct": false,
+     "rationale": "Accuracy must be measured on labelled examples."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: validation catches extraction errors.",
+   "outcome_refs": [
+    "MST-0503-M03.02"
+   ],
+   "domain_ref": "Reliable extraction",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
