@@ -14,6 +14,7 @@ public static class ModuleRegistration
         Engagement.EngagementModule.Add(s, cfg);
         Enterprise.EnterpriseModule.Add(s, cfg);
         Resources.ResourcesModule.Add(s, cfg);
+        Ai.AiModule.Add(s, cfg);
         return s;
     }
 }
