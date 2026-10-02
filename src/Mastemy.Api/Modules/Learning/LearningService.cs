@@ -81,11 +81,10 @@ public class LearningService(AppDbContext db, ICurrentUser me, AccessService acc
         var premium = await access.HasPremiumAccess(c.Id);
         var hasPremiumNotes = !string.IsNullOrWhiteSpace(l.PremiumNotesMarkdown);
         // Lesson practice plus the module's tests and course-wide exams, so every assessment is reachable from the lesson page.
-        var assessments = await db.Assessments.AsNoTracking()
-            .Where(a => a.CourseId == c.Id && (a.LessonId == l.Id || (a.LessonId == null && (a.ModuleId == module.Id || a.ModuleId == null))))
-            .OrderBy(a => a.LessonId == null).ThenBy(a => a.ModuleId == null).ThenBy(a => a.Title)
-            .Select(a => new { a.Id, a.Title, a.Kind, a.Mode, a.IsPremium, a.QuestionCount, a.PassPercent, a.TimeLimitMinutes, a.MaxAttempts,
-                a.MultiSelectScoring, a.CountsTowardCertificate, a.LessonId, a.ModuleId }).ToListAsync();
+        // Published settings only: assessments added or changed in the draft appear after the next publish.
+        var assessments = (pc.Payload.Assessments ?? [])
+            .Where(a => a.LessonId == l.Id || (a.LessonId == null && (a.ModuleId == module.Id || a.ModuleId == null)))
+            .OrderBy(a => a.LessonId == null).ThenBy(a => a.ModuleId == null).ThenBy(a => a.Title, StringComparer.Ordinal).ToList();
         LessonProgressDto? prog = null;
         if (me.Id is { } uid)
         {
@@ -196,7 +195,10 @@ public class LearningService(AppDbContext db, ICurrentUser me, AccessService acc
                           where e.UserId == uid && e.RevokedAt == null
                           orderby e.StartsAt descending
                           select new { e, c.Id, c.Slug, c.Title, PackageTitle = p == null ? null : p.Title }).ToListAsync();
-        var entDtos = ents.Select(x => new DashboardEntitlementDto(x.e.Id, new CourseRef(x.Id, x.Slug, x.Title), x.e.PackageId, x.PackageTitle,
+        // Published title for live courses (snapshot columns), working title only for courses no longer live.
+        var entCards = await snapshots.CardsFor(ents.Select(x => x.Id).Distinct().ToList());
+        var entDtos = ents.Select(x => new DashboardEntitlementDto(x.e.Id,
+            new CourseRef(x.Id, x.Slug, entCards.TryGetValue(x.Id, out var card) ? card.Title : x.Title), x.e.PackageId, x.PackageTitle,
             x.e.Source.ToString(), x.e.StartsAt, x.e.EndsAt, x.e.StartsAt <= now && (x.e.EndsAt == null || x.e.EndsAt > now))).ToList();
 
         var certs = await db.Certificates.AsNoTracking().Where(c => c.UserId == uid).OrderByDescending(c => c.IssuedAt)

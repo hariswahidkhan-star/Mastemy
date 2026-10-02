@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Mastemy.Api.Data;
 using Mastemy.Api.Domain;
 using Mastemy.Api.Infrastructure;
@@ -9,25 +10,40 @@ namespace Mastemy.Api.Modules.Catalog;
 /// Public (anonymous) catalog reads. Only live courses (AccessService.IsLive) are ever returned, and every learner-facing
 /// field (title, description, level, language, categories, curriculum, counts) comes from the course's latest published
 /// snapshot, never from the working copy, so unreviewed edits are invisible until the next publish.
-/// Search: SQL prefilters live courses with LIKE on the snapshot JSON (one predicate per term), then matches the terms
-/// exactly against the snapshot's title/subtitle/description and filters/sorts/pages in memory. Adequate for v1 scale
-/// (a few thousand live courses); the index plan is a denormalized CourseSnapshot search column with a FULLTEXT index.
+/// Lists (categories, search) run in SQL over the current snapshots' denormalized columns (Title, Level, Language,
+/// CategoryIds ",1,5,", LessonCount, TotalDurationSeconds, SearchText): one escaped LIKE per search term on SearchText,
+/// filters on Level/Language/CategoryIds, ORDER BY + LIMIT/OFFSET in SQL. Payloads are never deserialized for lists.
+/// Legacy live courses that predate snapshots (PublishedVersion = 0) are built in memory and merged (rare).
 /// </summary>
 public class CatalogQueryService(AppDbContext db, CourseSnapshotService snapshots)
 {
-    private IQueryable<Course> Live => db.Courses.AsNoTracking().Where(AccessService.IsLiveExpr);
-
     public async Task<List<CategoryDto>> Categories()
     {
-        var live = await Live.ToListAsync();
-        var published = await snapshots.ForCourses(live);
-        var counts = published.Values.SelectMany(p => p.Payload.Categories.Distinct()).GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
+        var catLists = await snapshots.LiveCards().Select(x => x.CategoryIds).ToListAsync();
+        catLists.AddRange((await snapshots.LegacyCards()).Select(x => x.CategoryIds));
+        var counts = catLists.SelectMany(CourseSnapshotService.ParseCategoryIds).GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
         var cats = await db.Categories.AsNoTracking().OrderBy(c => c.SortOrder).ThenBy(c => c.NameEn).ToListAsync();
         return cats.Select(c => new CategoryDto(c.Id, c.Slug, c.NameEn, c.NameAr, c.ParentId, c.IsAcademy, counts.GetValueOrDefault(c.Id))).ToList();
     }
 
     public static string EscapeLike(string term) =>
         term.Replace("!", "!!").Replace("%", "!%").Replace("_", "!_");
+
+    /// <summary>OR of <c>CategoryIds LIKE '%,id,%'</c> over the given ids (SQL-translatable).</summary>
+    public static Expression<Func<LiveCard, bool>> AnyCategory(IEnumerable<int> ids)
+    {
+        var x = Expression.Parameter(typeof(LiveCard), "x");
+        var like = typeof(DbFunctionsExtensions).GetMethod(nameof(DbFunctionsExtensions.Like),
+            [typeof(DbFunctions), typeof(string), typeof(string)])!;
+        Expression? body = null;
+        foreach (var id in ids.Distinct())
+        {
+            var call = Expression.Call(like, Expression.Property(null, typeof(EF), nameof(EF.Functions)), Expression.Property(x, nameof(LiveCard.CategoryIds)),
+                Expression.Constant("%," + id + ",%"));
+            body = body is null ? call : Expression.OrElse(body, call);
+        }
+        return Expression.Lambda<Func<LiveCard, bool>>(body ?? Expression.Constant(false), x);
+    }
 
     public async Task<PagedResult<CourseCardDto>> Search(string? q, string? category, CourseLevel? level, string? language,
         string? sort, int page, int pageSize)
@@ -36,64 +52,77 @@ public class CatalogQueryService(AppDbContext db, CourseSnapshotService snapshot
         pageSize = Math.Clamp(pageSize <= 0 ? 20 : pageSize, 1, 50);
         var sortKey = (sort ?? "newest").ToLowerInvariant();
         if (sortKey is not ("newest" or "updated" or "title")) throw AppException.Bad("sort must be one of newest, updated, title.");
-        var query = Live;
 
         var terms = string.IsNullOrWhiteSpace(q) ? [] : q.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-            .Select(t => t.Length > 64 ? t[..64] : t).Distinct().Take(8).ToList();
-        foreach (var t in terms)
-        {
-            // Prefilter on the published snapshot (legacy never-snapshotted courses are prefiltered on their rows).
-            var pattern = "%" + EscapeLike(t) + "%";
-            query = query.Where(c => db.CourseSnapshots.Any(s => s.CourseId == c.Id && s.Version == c.PublishedVersion
-                                                                 && EF.Functions.Like(s.PayloadJson, pattern, "!"))
-                                     || (c.PublishedVersion == 0 && (EF.Functions.Like(c.Title, pattern, "!")
-                                         || EF.Functions.Like(c.Subtitle, pattern, "!") || EF.Functions.Like(c.Description, pattern, "!"))));
-        }
-        HashSet<int>? catIds = null;
+            .Select(t => (t.Length > 64 ? t[..64] : t).ToLowerInvariant()).Distinct().Take(8).ToList();
+        List<int>? catIds = null;
         if (!string.IsNullOrWhiteSpace(category))
         {
-            catIds = (await CategoryAndDescendants(category.Trim())).ToHashSet();
+            catIds = await CategoryAndDescendants(category.Trim());
             if (catIds.Count == 0) return new PagedResult<CourseCardDto>([], 0, page, pageSize);
         }
         var lang = string.IsNullOrWhiteSpace(language) ? null : language.Trim();
 
-        var candidates = await query.ToListAsync();
-        var published = await snapshots.ForCourses(candidates);
-        IEnumerable<PublishedCourse> filtered = published.Values.Where(p =>
-            terms.All(t => Contains(p.Payload.Title, t) || Contains(p.Payload.Subtitle, t) || Contains(p.Payload.Description, t))
-            && (catIds is null || p.Payload.Categories.Any(catIds.Contains))
-            && (level is null || p.Payload.Level == level)
-            && (lang is null || string.Equals(p.Payload.Language, lang, StringComparison.OrdinalIgnoreCase)));
-        filtered = sortKey switch
+        var query = snapshots.LiveCards();
+        foreach (var t in terms)
         {
-            "newest" => filtered.OrderByDescending(p => p.Course.PublishedAt).ThenBy(p => p.Course.Id),
-            "updated" => filtered.OrderByDescending(p => p.Course.UpdatedAt).ThenBy(p => p.Course.Id),
-            _ => filtered.OrderBy(p => p.Payload.Title, StringComparer.OrdinalIgnoreCase).ThenBy(p => p.Course.Id),
-        };
-        var all = filtered.ToList();
-        var pageItems = all.Skip((page - 1) * pageSize).Take(pageSize).ToList();
-        var ids = pageItems.Select(p => p.Course.Id).ToList();
+            var pattern = "%" + EscapeLike(t) + "%";
+            query = query.Where(x => EF.Functions.Like(x.SearchText, pattern, "!"));
+        }
+        if (catIds is not null) query = query.Where(AnyCategory(catIds));
+        if (level is { } lv) query = query.Where(x => x.Level == lv);
+        if (lang is not null) query = query.Where(x => x.Language == lang);
 
+        // Legacy (never-snapshotted) live courses are filtered with the same rules in memory.
+        var catPatterns = catIds?.Select(id => "," + id + ",").ToList();
+        var legacy = (await snapshots.LegacyCards()).Where(x =>
+            terms.All(t => x.SearchText.Contains(t, StringComparison.Ordinal))
+            && (catPatterns is null || catPatterns.Any(p => x.CategoryIds.Contains(p, StringComparison.Ordinal)))
+            && (level is null || x.Level == level)
+            && (lang is null || string.Equals(x.Language, lang, StringComparison.OrdinalIgnoreCase))).ToList();
+
+        List<LiveCard> pageItems;
+        int total;
+        if (legacy.Count == 0)
+        {
+            total = await query.CountAsync();
+            pageItems = await Sorted(query, sortKey).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+        }
+        else
+        {
+            var all = await query.ToListAsync();
+            all.AddRange(legacy);
+            var ordered = sortKey switch
+            {
+                "newest" => all.OrderByDescending(x => x.PublishedAt).ThenBy(x => x.Id),
+                "updated" => all.OrderByDescending(x => x.UpdatedAt).ThenBy(x => x.Id),
+                _ => all.OrderBy(x => x.Title, StringComparer.OrdinalIgnoreCase).ThenBy(x => x.Id),
+            };
+            total = all.Count;
+            pageItems = ordered.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        }
+        var ids = pageItems.Select(p => p.Id).ToList();
         var catSlugs = await db.Categories.AsNoTracking().ToDictionaryAsync(c => c.Id, c => c.Slug);
         var instr = await InstructorRows(ids);
-        var videos = await snapshots.VideoStates(pageItems.SelectMany(p => p.Payload.Modules.SelectMany(m => m.Lessons)));
         var ratings = await RatingRows(ids);
 
-        var items = pageItems.Select(p =>
+        var items = pageItems.Select(c =>
         {
-            var c = p.Course;
             ratings.TryGetValue(c.Id, out var r);
-            var states = p.Payload.Modules.SelectMany(m => m.Lessons).Select(l => videos[l.Id]).Where(v => v.Playable).ToList();
-            return new CourseCardDto(c.Id, c.Slug, c.Code, p.Payload.Title, p.Payload.Subtitle, p.Payload.Level, p.Payload.Language,
-                p.Payload.Categories.Where(catSlugs.ContainsKey).Select(x => catSlugs[x]).ToArray(),
+            return new CourseCardDto(c.Id, c.Slug, c.Code, c.Title, c.Subtitle, c.Level, c.Language,
+                CourseSnapshotService.ParseCategoryIds(c.CategoryIds).Where(catSlugs.ContainsKey).Select(x => catSlugs[x]).ToArray(),
                 instr.Where(x => x.CourseId == c.Id).Select(x => x.DisplayName).ToArray(),
-                states.Count, states.Sum(v => v.DurationSeconds), r?.Avg, r?.Count ?? 0, c.PublishedAt, c.UpdatedAt);
+                c.LessonCount, c.TotalDurationSeconds, r?.Avg, r?.Count ?? 0, c.PublishedAt, c.UpdatedAt);
         }).ToList();
-        return new PagedResult<CourseCardDto>(items, all.Count, page, pageSize);
+        return new PagedResult<CourseCardDto>(items, total, page, pageSize);
     }
 
-    private static bool Contains(string? haystack, string term) =>
-        haystack is not null && haystack.Contains(term, StringComparison.OrdinalIgnoreCase);
+    private static IQueryable<LiveCard> Sorted(IQueryable<LiveCard> q, string sortKey) => sortKey switch
+    {
+        "newest" => q.OrderByDescending(x => x.PublishedAt).ThenBy(x => x.Id),
+        "updated" => q.OrderByDescending(x => x.UpdatedAt).ThenBy(x => x.Id),
+        _ => q.OrderBy(x => x.Title).ThenBy(x => x.Id),
+    };
 
     private async Task<List<int>> CategoryAndDescendants(string slugOrId)
     {
@@ -137,6 +166,7 @@ public class CatalogQueryService(AppDbContext db, CourseSnapshotService snapshot
             }).ToList())).ToList();
         var allLessons = moduleDtos.SelectMany(m => m.Lessons).ToList();
 
+        // Active question count stays live: question edits are already staged by the bank's own review/versioning.
         var questionCount = await db.Questions.AsNoTracking().CountAsync(q => q.CourseId == c.Id && q.State == QuestionState.Active);
         var catSlugs = await db.Categories.AsNoTracking().Where(cat => p.Categories.Contains(cat.Id))
             .OrderBy(cat => cat.SortOrder).Select(cat => cat.Slug).ToArrayAsync();

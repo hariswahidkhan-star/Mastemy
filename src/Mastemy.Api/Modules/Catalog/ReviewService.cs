@@ -7,7 +7,8 @@ namespace Mastemy.Api.Modules.Catalog;
 
 /// <summary>Course review decisions, review comments, and staff publish/archive.</summary>
 public class ReviewService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit,
-    CourseSnapshotService snapshots, Mastemy.Api.Modules.Engagement.INotificationService notifications)
+    CourseSnapshotService snapshots, Mastemy.Api.Modules.Engagement.INotificationService notifications,
+    Mastemy.Api.Modules.Resources.ResourceBlobJanitor resourceJanitor)
 {
     public async Task<List<ReviewQueueItemDto>> Queue(CourseStatus? status)
     {
@@ -136,6 +137,7 @@ public class ReviewService(AppDbContext db, ICurrentUser me, AccessService acces
         var now = DateTime.UtcNow;
         CourseStateMachine.Apply(c, CourseAction.Publish, now);
         // Freeze the reviewed content: learners are served this snapshot until the next publish.
+        var previousVersion = c.PublishedVersion;
         var snap = await snapshots.AddSnapshot(c, uid, now);
         audit.Record("course.published", nameof(Course), c.Id, new { from = from.ToString(), to = c.Status.ToString(), version = snap.Version });
         try { await db.SaveChangesAsync(); }
@@ -143,6 +145,8 @@ public class ReviewService(AppDbContext db, ICurrentUser me, AccessService acces
         {
             throw AppException.Conflict("The course was published concurrently; reload and try again.", "concurrent_publish");
         }
+        // Resource files deleted or replaced since the previous publish are purged once the new snapshot stops serving them.
+        await resourceJanitor.AfterPublish(c.Id, previousVersion);
         if (snap.Version > 1)
         {
             // Content-update notice to enrolled learners (spec §9), respecting their "course_updated" preference.

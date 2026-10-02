@@ -85,7 +85,7 @@ public class StudioResourcesController(ResourceService svc) : ControllerBase
 
 [ApiController]
 [AllowAnonymous]
-public class LearnResourcesController(ResourceService svc) : ControllerBase
+public class LearnResourcesController(ResourceService svc, TranscriptRateLimiter transcriptLimiter) : ControllerBase
 {
     [HttpGet("api/learn/lessons/{lessonId:guid}/resources")]
     public Task<List<LearnerResourceDto>> List(Guid lessonId) => svc.LessonResources(lessonId);
@@ -113,6 +113,9 @@ public class LearnResourcesController(ResourceService svc) : ControllerBase
     }
 
     [HttpGet("api/learn/lessons/{lessonId:guid}/transcript")]
-    public Task<List<TranscriptMatch>> Transcript(Guid lessonId, [FromQuery] string? q, [FromQuery] string? language, CancellationToken ct) =>
-        svc.Transcript(lessonId, q, language, ct);
+    public Task<List<TranscriptMatch>> Transcript(Guid lessonId, [FromQuery] string? q, [FromQuery] string? language, CancellationToken ct)
+    {
+        transcriptLimiter.Acquire(HttpContext.Connection.RemoteIpAddress);
+        return svc.Transcript(lessonId, q, language, ct);
+    }
 }

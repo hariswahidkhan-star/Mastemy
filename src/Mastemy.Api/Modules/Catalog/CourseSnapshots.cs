@@ -12,9 +12,16 @@ namespace Mastemy.Api.Modules.Catalog;
 public record SnapshotLesson(Guid Id, string Code, string Title, string Objective, int SortOrder, bool IsPreview,
     Guid? VideoAssetId, string? YoutubeVideoId, int DurationSeconds, string NotesMarkdown, string? PremiumNotesMarkdown, int NotesVersion);
 public record SnapshotModule(Guid Id, string Code, string Title, int SortOrder, List<SnapshotLesson> Lessons);
+/// <summary>Learner-facing assessment settings frozen at publish (question pools stay live; question edits are staged by the bank).</summary>
+public record SnapshotAssessment(Guid Id, string Title, AssessmentKind Kind, AssessmentMode Mode, bool IsPremium, Guid? ModuleId, Guid? LessonId,
+    int? TimeLimitMinutes, int? MaxAttempts, decimal PassPercent, MultiSelectScoring MultiSelectScoring, AnswerReviewPolicy ReviewPolicy,
+    int QuestionCount, bool CountsTowardCertificate);
+/// <summary>A resource/caption file as published. StorageKey pins the blob version learners download until the next publish.</summary>
+public record SnapshotResource(Guid Id, Guid? LessonId, string Kind, string Language, string FileName, string ContentType, long SizeBytes,
+    bool IsPremium, int Version, string StorageKey, string Sha256);
 public record CourseSnapshotPayload(string Title, string Subtitle, string Description, string Audience, string Prerequisites,
     string Outcomes, string Language, CourseLevel Level, string CredentialType, decimal PassThresholdPercent, string? PromoVideoId,
-    int[] Categories, List<SnapshotModule> Modules)
+    int[] Categories, List<SnapshotModule> Modules, List<SnapshotAssessment>? Assessments = null, List<SnapshotResource>? Resources = null)
 {
     public IEnumerable<(SnapshotModule Module, SnapshotLesson Lesson)> OrderedLessons() =>
         Modules.OrderBy(m => m.SortOrder).SelectMany(m => m.Lessons.OrderBy(l => l.SortOrder).Select(l => (m, l)));
@@ -27,6 +34,27 @@ public record PublishedCourse(Course Course, int Version, CourseSnapshotPayload 
 public record SnapshotVideoState(string? YoutubeVideoId, int DurationSeconds, string? UnavailableReason)
 {
     public bool Playable => YoutubeVideoId is not null;
+}
+
+/// <summary>Card/list projection of a live course's current snapshot (no payload deserialization).</summary>
+public class LiveCard
+{
+    public Guid Id { get; init; }
+    public string Slug { get; init; } = "";
+    public string Code { get; init; } = "";
+    public string Title { get; init; } = "";
+    public string Subtitle { get; init; } = "";
+    public CourseLevel Level { get; init; }
+    public string Language { get; init; } = "";
+    public string CategoryIds { get; init; } = "";
+    public string SearchText { get; init; } = "";
+    public int LessonCount { get; init; }
+    public int TotalDurationSeconds { get; init; }
+    public DateTime? PublishedAt { get; init; }
+    public DateTime UpdatedAt { get; init; }
+    public DateTime CreatedAt { get; init; }
+    public DateTime? ReviewedAt { get; init; }
+    public string CredentialType { get; init; } = "";
 }
 
 // ---------- API DTOs ----------
@@ -68,27 +96,69 @@ public class CourseSnapshotService(AppDbContext db, ICurrentUser me, AccessServi
             modules.OrderBy(m => m.SortOrder).Select(m => new SnapshotModule(m.Id, m.Code, m.Title, m.SortOrder,
                 m.Lessons.OrderBy(l => l.SortOrder).Select(l => new SnapshotLesson(l.Id, l.Code, l.Title, l.Objective, l.SortOrder, l.IsPreview,
                     l.VideoAssetId, string.IsNullOrEmpty(l.VideoAsset?.YouTubeVideoId) ? null : l.VideoAsset!.YouTubeVideoId,
-                    l.VideoAsset?.DurationSeconds ?? 0, l.NotesMarkdown, l.PremiumNotesMarkdown, l.NotesVersion)).ToList())).ToList());
+                    l.VideoAsset?.DurationSeconds ?? 0, l.NotesMarkdown, l.PremiumNotesMarkdown, l.NotesVersion)).ToList())).ToList(),
+            await DraftAssessments(courseId), await DraftResources(courseId));
     }
 
-    /// <summary>Adds the next snapshot for a tracked course and bumps PublishedVersion. Caller saves.</summary>
+    private Task<List<SnapshotAssessment>> DraftAssessments(Guid courseId) =>
+        db.Assessments.AsNoTracking().Where(a => a.CourseId == courseId).OrderBy(a => a.Title).ThenBy(a => a.Id)
+            .Select(a => new SnapshotAssessment(a.Id, a.Title, a.Kind, a.Mode, a.IsPremium, a.ModuleId, a.LessonId, a.TimeLimitMinutes,
+                a.MaxAttempts, a.PassPercent, a.MultiSelectScoring, a.ReviewPolicy, a.QuestionCount, a.CountsTowardCertificate)).ToListAsync();
+
+    private Task<List<SnapshotResource>> DraftResources(Guid courseId) =>
+        db.ResourceFiles.AsNoTracking().Where(r => r.CourseId == courseId && r.DeletedAt == null).OrderBy(r => r.FileName).ThenBy(r => r.Id)
+            .Select(r => new SnapshotResource(r.Id, r.LessonId, r.Kind, r.Language, r.FileName, r.ContentType, r.SizeBytes, r.IsPremium,
+                r.Version, r.StorageKey, r.Sha256)).ToListAsync();
+
+    /// <summary>Lower-cased text the catalog search matches against (title, subtitle, description, outcomes).</summary>
+    public static string SearchTextOf(CourseSnapshotPayload p) =>
+        string.Join('\n', p.Title, p.Subtitle, p.Description, p.Outcomes).ToLowerInvariant();
+
+    public static string CategoryIdsOf(IEnumerable<int> ids)
+    {
+        var list = ids.Distinct().OrderBy(x => x).ToList();
+        return list.Count == 0 ? "" : "," + string.Join(',', list) + ",";
+    }
+
+    public static int[] ParseCategoryIds(string csv) =>
+        csv.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(x => int.TryParse(x, out var v) ? v : -1).Where(x => x >= 0).ToArray();
+
+    /// <summary>
+    /// Adds the next snapshot for a tracked course and bumps PublishedVersion, with its denormalized card/search columns and
+    /// one SnapshotLessons index row per lesson. Caller saves.
+    /// </summary>
     public async Task<CourseSnapshot> AddSnapshot(Course course, Guid publishedBy, DateTime nowUtc)
     {
         var payload = await BuildFromDraft(course.Id);
         var maxVersion = await db.CourseSnapshots.Where(s => s.CourseId == course.Id).MaxAsync(s => (int?)s.Version) ?? 0;
+        var lessons = payload.OrderedLessons().Select(x => x.Lesson).ToList();
+        var ready = await ReadyVideoDurations(lessons);
         var snap = new CourseSnapshot
         {
             CourseId = course.Id, Version = Math.Max(course.PublishedVersion, maxVersion) + 1,
             PayloadJson = JsonSerializer.Serialize(payload, Json), PublishedBy = publishedBy, PublishedAt = nowUtc,
+            Title = payload.Title, Subtitle = payload.Subtitle, Level = payload.Level, Language = payload.Language,
+            CategoryIds = CategoryIdsOf(payload.Categories), LessonCount = lessons.Count,
+            TotalDurationSeconds = lessons.Sum(l => ready.GetValueOrDefault(l.Id)), SearchText = SearchTextOf(payload),
         };
         db.CourseSnapshots.Add(snap);
+        foreach (var l in lessons.DistinctBy(l => l.Id))
+            db.SnapshotLessons.Add(new Domain.SnapshotLesson { LessonId = l.Id, SnapshotId = snap.Id, CourseId = course.Id, Version = snap.Version });
         course.PublishedVersion = snap.Version;
         return snap;
     }
 
+    /// <summary>Durations of lessons whose video asset is currently Ready (absent otherwise).</summary>
+    private async Task<Dictionary<Guid, int>> ReadyVideoDurations(IReadOnlyCollection<SnapshotLesson> lessons)
+    {
+        var states = await VideoStates(lessons);
+        return states.Where(kv => kv.Value.Playable).ToDictionary(kv => kv.Key, kv => kv.Value.DurationSeconds);
+    }
+
     /// <summary>
     /// Latest payloads for the given live courses. Courses that went live before snapshots existed (PublishedVersion = 0,
-    /// e.g. legacy data) fall back to an in-memory build of their current rows until their next publish.
+    /// e.g. legacy data) fall back to an in-memory build of their current rows until their next publish. Snapshots written
+    /// before assessments/resources were frozen have those lists filled from the current rows.
     /// </summary>
     public async Task<Dictionary<Guid, PublishedCourse>> ForCourses(IReadOnlyCollection<Course> courses)
     {
@@ -101,9 +171,11 @@ public class CourseSnapshotService(AppDbContext db, ICurrentUser me, AccessServi
         foreach (var c in courses)
         {
             var s = snaps.FirstOrDefault(x => x.CourseId == c.Id);
-            result[c.Id] = s is not null
-                ? new PublishedCourse(c, s.Version, Deserialize(s.PayloadJson))
-                : new PublishedCourse(c, 0, await BuildFromDraft(c.Id));
+            if (s is null) { result[c.Id] = new PublishedCourse(c, 0, await BuildFromDraft(c.Id)); continue; }
+            var p = Deserialize(s.PayloadJson);
+            if (p.Assessments is null) p = p with { Assessments = await DraftAssessments(c.Id) };
+            if (p.Resources is null) p = p with { Resources = await DraftResources(c.Id) };
+            result[c.Id] = new PublishedCourse(c, s.Version, p);
         }
         return result;
     }
@@ -118,37 +190,98 @@ public class CourseSnapshotService(AppDbContext db, ICurrentUser me, AccessServi
         return await ForCourse(c);
     }
 
-    public async Task<PublishedCourse> LiveById(Guid id, string what = "Course")
+    public async Task<PublishedCourse> LiveById(Guid id, string what = "Course") =>
+        await TryLiveById(id) ?? throw AppException.NotFound(what);
+
+    /// <summary>The live course rendered from its latest snapshot, or null when the course does not exist or is not live.</summary>
+    public async Task<PublishedCourse?> TryLiveById(Guid id)
     {
         var c = await db.Courses.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
-        if (c is null || !AccessService.IsLive(c)) throw AppException.NotFound(what);
-        return await ForCourse(c);
+        return c is null || !AccessService.IsLive(c) ? null : await ForCourse(c);
     }
 
     /// <summary>
-    /// Finds the live course whose latest snapshot contains the lesson. Works for lessons deleted from the working copy
-    /// after the snapshot was taken; lessons added since the last publish are not found (404).
+    /// Finds the live course whose latest snapshot contains the lesson, via the indexed SnapshotLessons table. Works for
+    /// lessons deleted from the working copy after the snapshot was taken; lessons added since the last publish are not
+    /// found (404). Legacy live courses without a snapshot (PublishedVersion = 0) resolve through their working rows.
     /// </summary>
     public async Task<(PublishedCourse Course, SnapshotModule Module, SnapshotLesson Lesson)> LiveLesson(Guid lessonId)
     {
-        var candidates = await (from l in db.Lessons.AsNoTracking()
-                                join m in db.Modules.AsNoTracking() on l.ModuleId equals m.Id
-                                where l.Id == lessonId
-                                select m.CourseId).ToListAsync();
-        var key = "%" + lessonId.ToString() + "%";
-        candidates.AddRange(await (from s in db.CourseSnapshots.AsNoTracking()
-                                   join c in db.Courses on s.CourseId equals c.Id
-                                   where s.Version == c.PublishedVersion && EF.Functions.Like(s.PayloadJson, key)
-                                   select s.CourseId).ToListAsync());
-        foreach (var courseId in candidates.Distinct())
+        var candidates = await (from sl in db.SnapshotLessons.AsNoTracking()
+                                join c in db.Courses.AsNoTracking() on sl.CourseId equals c.Id
+                                where sl.LessonId == lessonId && sl.Version == c.PublishedVersion
+                                select c).ToListAsync();
+        if (candidates.Count == 0)
         {
-            var c = await db.Courses.AsNoTracking().FirstOrDefaultAsync(x => x.Id == courseId);
-            if (c is null || !AccessService.IsLive(c)) continue;
+            // Legacy course (never snapshotted) or a snapshot written before the lesson index existed: resolve the
+            // working-copy lesson's course; its payload decides below whether the lesson is actually published.
+            candidates = await (from l in db.Lessons.AsNoTracking()
+                                join m in db.Modules.AsNoTracking() on l.ModuleId equals m.Id
+                                join c in db.Courses.AsNoTracking() on m.CourseId equals c.Id
+                                where l.Id == lessonId && (c.PublishedVersion == 0
+                                      || !db.SnapshotLessons.Any(sl => sl.CourseId == c.Id && sl.Version == c.PublishedVersion))
+                                select c).ToListAsync();
+        }
+        foreach (var c in candidates.DistinctBy(c => c.Id))
+        {
+            if (!AccessService.IsLive(c)) continue;
             var pc = await ForCourse(c);
             foreach (var (m, l) in pc.Payload.OrderedLessons())
                 if (l.Id == lessonId) return (pc, m, l);
         }
         throw AppException.NotFound("Lesson");
+    }
+
+    // ---------- Card / list read model (SQL over the current snapshots' denormalized columns) ----------
+
+    /// <summary>Live courses joined to their current snapshot's card columns. Excludes legacy courses (PublishedVersion = 0).</summary>
+    public IQueryable<LiveCard> LiveCards() =>
+        from c in db.Courses.AsNoTracking().Where(AccessService.IsLiveExpr)
+        join s in db.CourseSnapshots.AsNoTracking() on new { Id = c.Id, V = c.PublishedVersion } equals new { Id = s.CourseId, V = s.Version }
+        select new LiveCard
+        {
+            Id = c.Id, Slug = c.Slug, Code = c.Code, Title = s.Title, Subtitle = s.Subtitle, Level = s.Level, Language = s.Language,
+            CategoryIds = s.CategoryIds, SearchText = s.SearchText, LessonCount = s.LessonCount, TotalDurationSeconds = s.TotalDurationSeconds,
+            PublishedAt = c.PublishedAt, UpdatedAt = c.UpdatedAt, CreatedAt = c.CreatedAt, ReviewedAt = c.ReviewedAt, CredentialType = c.CredentialType,
+        };
+
+    /// <summary>
+    /// Cards for live legacy courses (PublishedVersion = 0) built in memory from their working rows. Rare (pre-snapshot data
+    /// only), so callers union these with <see cref="LiveCards"/> results in memory.
+    /// </summary>
+    public async Task<List<LiveCard>> LegacyCards(IReadOnlyCollection<Guid>? onlyIds = null)
+    {
+        var q = db.Courses.AsNoTracking().Where(AccessService.IsLiveExpr).Where(c => c.PublishedVersion == 0);
+        if (onlyIds is not null) q = q.Where(c => onlyIds.Contains(c.Id));
+        var courses = await q.ToListAsync();
+        if (courses.Count == 0) return [];
+        var published = await ForCourses(courses);
+        var result = new List<LiveCard>();
+        foreach (var pc in published.Values)
+        {
+            var lessons = pc.Payload.OrderedLessons().Select(x => x.Lesson).ToList();
+            var ready = await ReadyVideoDurations(lessons);
+            var c = pc.Course;
+            result.Add(new LiveCard
+            {
+                Id = c.Id, Slug = c.Slug, Code = c.Code, Title = pc.Payload.Title, Subtitle = pc.Payload.Subtitle, Level = pc.Payload.Level,
+                Language = pc.Payload.Language, CategoryIds = CategoryIdsOf(pc.Payload.Categories), SearchText = SearchTextOf(pc.Payload),
+                LessonCount = lessons.Count, TotalDurationSeconds = ready.Values.Sum(), PublishedAt = c.PublishedAt, UpdatedAt = c.UpdatedAt,
+                CreatedAt = c.CreatedAt, ReviewedAt = c.ReviewedAt, CredentialType = c.CredentialType,
+            });
+        }
+        return result;
+    }
+
+    /// <summary>Card rows for the given live course ids (snapshot columns; legacy courses built in memory). Non-live ids are absent.</summary>
+    public async Task<Dictionary<Guid, LiveCard>> CardsFor(IReadOnlyCollection<Guid> ids)
+    {
+        if (ids.Count == 0) return [];
+        var list = ids.Distinct().ToList();
+        var rows = await LiveCards().Where(x => list.Contains(x.Id)).ToListAsync();
+        var missing = list.Except(rows.Select(r => r.Id)).ToList();
+        if (missing.Count > 0) rows.AddRange(await LegacyCards(missing));
+        return rows.ToDictionary(r => r.Id);
     }
 
     /// <summary>Current video states for snapshot lessons. Playback is never gated, except that a video whose asset is
