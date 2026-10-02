@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0282",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0282-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What must happen before a freshly started Vault server can serve secrets?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It must be unsealed using the required threshold of unseal key shares",
+     "correct": true,
+     "rationale": "Correct: Vault starts sealed and must be unsealed before it can decrypt data and serve requests."
+    },
+    {
+     "key": "B",
+     "text": "Its storage backend must be deleted",
+     "correct": false,
+     "rationale": "Deleting storage would destroy Vault's data, not make it ready."
+    },
+    {
+     "key": "C",
+     "text": "All policies must be removed",
+     "correct": false,
+     "rationale": "Removing policies does not unseal Vault and would break access control."
+    },
+    {
+     "key": "D",
+     "text": "Audit logging must be disabled",
+     "correct": false,
+     "rationale": "Disabling audit logging is unrelated to unsealing and is not required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Vault starts sealed and must be unsealed before it can decrypt data and serve requests.",
+   "outcome_refs": [
+    "MST-0282-D01.01"
+   ],
+   "domain_ref": "Vault architecture and core concepts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0282-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a key advantage of Vault dynamic secrets over long-lived static credentials?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Credentials are generated on demand and expire automatically via leases",
+     "correct": true,
+     "rationale": "Correct: dynamic secrets are short-lived and revoked on lease expiry, reducing exposure."
+    },
+    {
+     "key": "B",
+     "text": "They never need to be revoked",
+     "correct": false,
+     "rationale": "Dynamic secrets are specifically designed to be revoked or expired."
+    },
+    {
+     "key": "C",
+     "text": "They are stored permanently in plaintext",
+     "correct": false,
+     "rationale": "Vault does not store secrets in plaintext; this is incorrect and insecure."
+    },
+    {
+     "key": "D",
+     "text": "They remove the need for any authentication to Vault",
+     "correct": false,
+     "rationale": "Clients must still authenticate to Vault to obtain dynamic secrets."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: dynamic secrets are short-lived and revoked on lease expiry, reducing exposure.",
+   "outcome_refs": [
+    "MST-0282-D03.01"
+   ],
+   "domain_ref": "Secrets engines and secure operation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0282-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that correctly describe Vault ACL policies.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Policies grant capabilities (such as read or create) on specific paths",
+     "correct": true,
+     "rationale": "Correct: policies attach capabilities to paths to authorize actions."
+    },
+    {
+     "key": "B",
+     "text": "A token's effective permissions come from the policies attached to it",
+     "correct": true,
+     "rationale": "Correct: a token can only do what its attached policies allow."
+    },
+    {
+     "key": "C",
+     "text": "Policies are written to automatically unseal Vault",
+     "correct": false,
+     "rationale": "Policies do not unseal Vault; unsealing uses key shares."
+    },
+    {
+     "key": "D",
+     "text": "By default a policy grants access to every path in Vault",
+     "correct": false,
+     "rationale": "Vault is deny-by-default; access must be explicitly granted."
+    },
+    {
+     "key": "E",
+     "text": "Policies store the encrypted secret values themselves",
+     "correct": false,
+     "rationale": "Secret values are stored by secrets engines, not inside policies."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: policies attach capabilities to paths to authorize actions.",
+   "outcome_refs": [
+    "MST-0282-D02.01"
+   ],
+   "domain_ref": "Authentication and policies",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

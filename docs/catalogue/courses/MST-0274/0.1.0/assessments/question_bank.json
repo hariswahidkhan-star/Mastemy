@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0274",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0274-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Kubernetes object is primarily responsible for keeping a declared number of identical Pod replicas running?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Deployment (through its ReplicaSet)",
+     "correct": true,
+     "rationale": "Correct: a Deployment manages a ReplicaSet that maintains the declared replica count."
+    },
+    {
+     "key": "B",
+     "text": "A single Pod",
+     "correct": false,
+     "rationale": "A Pod is one unit and does not self-replicate or maintain a replica count."
+    },
+    {
+     "key": "C",
+     "text": "A Service",
+     "correct": false,
+     "rationale": "A Service provides stable networking to Pods; it does not manage replica count."
+    },
+    {
+     "key": "D",
+     "text": "A ConfigMap",
+     "correct": false,
+     "rationale": "A ConfigMap stores configuration data and does not run or scale Pods."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Deployment manages a ReplicaSet that maintains the declared replica count.",
+   "outcome_refs": [
+    "MST-0274-D01.01"
+   ],
+   "domain_ref": "Kubernetes fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0274-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a Kubernetes Service mainly provide for a set of Pods?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A stable network endpoint and load balancing across the Pods",
+     "correct": true,
+     "rationale": "Correct: a Service gives a stable address and distributes traffic to matching Pods."
+    },
+    {
+     "key": "B",
+     "text": "Persistent disk storage for the Pods",
+     "correct": false,
+     "rationale": "Durable storage is provided by volumes and PersistentVolumes, not a Service."
+    },
+    {
+     "key": "C",
+     "text": "Container image building",
+     "correct": false,
+     "rationale": "Image building happens outside the cluster; a Service does not build images."
+    },
+    {
+     "key": "D",
+     "text": "Cluster user authentication",
+     "correct": false,
+     "rationale": "Authentication is handled by the API server and identity providers, not a Service."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Service gives a stable address and distributes traffic to matching Pods.",
+   "outcome_refs": [
+    "MST-0274-D01.01"
+   ],
+   "domain_ref": "Kubernetes fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0274-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO components that normally run on the Kubernetes control plane.",
+   "options": [
+    {
+     "key": "A",
+     "text": "kube-apiserver",
+     "correct": true,
+     "rationale": "Correct: the API server is the control-plane front end for all cluster operations."
+    },
+    {
+     "key": "B",
+     "text": "etcd",
+     "correct": true,
+     "rationale": "Correct: etcd is the control-plane key-value store holding cluster state."
+    },
+    {
+     "key": "C",
+     "text": "A container running the user's web application",
+     "correct": false,
+     "rationale": "Application containers run as workloads on worker nodes, not as control-plane components."
+    },
+    {
+     "key": "D",
+     "text": "The container runtime on a worker node",
+     "correct": false,
+     "rationale": "The container runtime runs on worker nodes, not on the control plane."
+    },
+    {
+     "key": "E",
+     "text": "An external load balancer appliance",
+     "correct": false,
+     "rationale": "An external load balancer is infrastructure outside the cluster, not a control-plane component."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the API server is the control-plane front end for all cluster operations.",
+   "outcome_refs": [
+    "MST-0274-D01.01"
+   ],
+   "domain_ref": "Kubernetes fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

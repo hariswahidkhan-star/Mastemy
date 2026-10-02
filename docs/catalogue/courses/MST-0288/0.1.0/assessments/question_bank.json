@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0288",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0288-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In most industrial control environments, which priority is typically ranked HIGHEST?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Safety and availability of the physical process",
+     "correct": true,
+     "rationale": "Correct: in OT, safety and keeping the process running are usually paramount."
+    },
+    {
+     "key": "B",
+     "text": "Confidentiality of marketing data",
+     "correct": false,
+     "rationale": "Marketing confidentiality is not the primary OT concern."
+    },
+    {
+     "key": "C",
+     "text": "Maximising social media engagement",
+     "correct": false,
+     "rationale": "This is unrelated to ICS priorities."
+    },
+    {
+     "key": "D",
+     "text": "Frequent unscheduled reboots",
+     "correct": false,
+     "rationale": "Unscheduled reboots threaten availability and are undesirable."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: in OT, safety and keeping the process running are usually paramount.",
+   "outcome_refs": [
+    "MST-0288-D01.01"
+   ],
+   "domain_ref": "ICS/OT architecture and components",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0288-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the Purdue model mainly used for in ICS security?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Organising control system components into hierarchical levels and zones",
+     "correct": true,
+     "rationale": "Correct: the Purdue model structures ICS into levels to guide segmentation."
+    },
+    {
+     "key": "B",
+     "text": "Encrypting all industrial traffic automatically",
+     "correct": false,
+     "rationale": "The Purdue model is an architectural reference, not an encryption tool."
+    },
+    {
+     "key": "C",
+     "text": "Scheduling plant maintenance shifts",
+     "correct": false,
+     "rationale": "It is not a workforce scheduling model."
+    },
+    {
+     "key": "D",
+     "text": "Measuring electricity billing",
+     "correct": false,
+     "rationale": "It does not handle billing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the Purdue model structures ICS into levels to guide segmentation.",
+   "outcome_refs": [
+    "MST-0288-D01.01"
+   ],
+   "domain_ref": "ICS/OT architecture and components",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0288-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO challenges that make securing OT different from securing typical IT.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Legacy devices may not support modern patching or authentication",
+     "correct": true,
+     "rationale": "Correct: many OT devices are long-lived and cannot be easily patched."
+    },
+    {
+     "key": "B",
+     "text": "Availability and safety often outweigh taking systems offline for updates",
+     "correct": true,
+     "rationale": "Correct: downtime can be unacceptable, constraining security actions."
+    },
+    {
+     "key": "C",
+     "text": "OT environments always have the newest hardware",
+     "correct": false,
+     "rationale": "OT often runs long-lived legacy equipment, not the newest hardware."
+    },
+    {
+     "key": "D",
+     "text": "Industrial protocols were all designed with strong built-in security",
+     "correct": false,
+     "rationale": "Many industrial protocols lack built-in authentication or encryption."
+    },
+    {
+     "key": "E",
+     "text": "Safety is irrelevant in industrial settings",
+     "correct": false,
+     "rationale": "Safety is a central concern in industrial settings."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: many OT devices are long-lived and cannot be easily patched.",
+   "outcome_refs": [
+    "MST-0288-D03.01"
+   ],
+   "domain_ref": "ICS security controls and incident response",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

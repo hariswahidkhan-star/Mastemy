@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0280",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0280-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which DNS record type maps a hostname directly to an IPv4 address?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A record",
+     "correct": true,
+     "rationale": "Correct: an A record maps a name to an IPv4 address."
+    },
+    {
+     "key": "B",
+     "text": "MX record",
+     "correct": false,
+     "rationale": "An MX record identifies mail servers for a domain, not a host's IPv4 address."
+    },
+    {
+     "key": "C",
+     "text": "CNAME record",
+     "correct": false,
+     "rationale": "A CNAME aliases one name to another name, not directly to an address."
+    },
+    {
+     "key": "D",
+     "text": "TXT record",
+     "correct": false,
+     "rationale": "A TXT record stores arbitrary text, not an address mapping."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an A record maps a name to an IPv4 address.",
+   "outcome_refs": [
+    "MST-0280-D01.01"
+   ],
+   "domain_ref": "Domain name and web services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0280-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary role of a mail transfer agent (MTA)?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Route and deliver email between mail servers",
+     "correct": true,
+     "rationale": "Correct: an MTA transfers email between servers using SMTP."
+    },
+    {
+     "key": "B",
+     "text": "Display email in a user's graphical client",
+     "correct": false,
+     "rationale": "That is a mail user agent (MUA), not an MTA."
+    },
+    {
+     "key": "C",
+     "text": "Resolve hostnames to IP addresses",
+     "correct": false,
+     "rationale": "That is the role of DNS, not an MTA."
+    },
+    {
+     "key": "D",
+     "text": "Serve web pages over HTTP",
+     "correct": false,
+     "rationale": "Serving web pages is a web server's role, not an MTA's."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an MTA transfers email between servers using SMTP.",
+   "outcome_refs": [
+    "MST-0280-D02.01"
+   ],
+   "domain_ref": "File sharing and email services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0280-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that correctly describe firewall packet filtering.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rules can permit or deny traffic based on port and protocol",
+     "correct": true,
+     "rationale": "Correct: packet filters match on attributes such as port and protocol."
+    },
+    {
+     "key": "B",
+     "text": "A default-deny policy blocks traffic not explicitly allowed",
+     "correct": true,
+     "rationale": "Correct: default-deny is a common, safer baseline posture."
+    },
+    {
+     "key": "C",
+     "text": "Packet filtering inspects the full application payload by default",
+     "correct": false,
+     "rationale": "Basic packet filtering works at network/transport layers, not deep payload inspection."
+    },
+    {
+     "key": "D",
+     "text": "Firewall rules never need to be saved to persist across reboots",
+     "correct": false,
+     "rationale": "Rules usually must be saved or made persistent to survive a reboot."
+    },
+    {
+     "key": "E",
+     "text": "A firewall removes the need for service-level authentication",
+     "correct": false,
+     "rationale": "Services still require their own authentication regardless of the firewall."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: packet filters match on attributes such as port and protocol.",
+   "outcome_refs": [
+    "MST-0280-D03.01"
+   ],
+   "domain_ref": "System security, firewalls and VPNs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

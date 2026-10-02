@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0286",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0286-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which sequence correctly describes the TCP three-way handshake?",
+   "options": [
+    {
+     "key": "A",
+     "text": "SYN, SYN-ACK, ACK",
+     "correct": true,
+     "rationale": "Correct: the client sends SYN, the server replies SYN-ACK, and the client sends ACK."
+    },
+    {
+     "key": "B",
+     "text": "ACK, SYN, FIN",
+     "correct": false,
+     "rationale": "This is not the handshake sequence; FIN is used to close a connection."
+    },
+    {
+     "key": "C",
+     "text": "FIN, FIN-ACK, RST",
+     "correct": false,
+     "rationale": "These flags relate to closing or resetting, not establishing, a connection."
+    },
+    {
+     "key": "D",
+     "text": "PSH, URG, ACK",
+     "correct": false,
+     "rationale": "These flags do not form the connection-establishment handshake."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the client sends SYN, the server replies SYN-ACK, and the client sends ACK.",
+   "outcome_refs": [
+    "MST-0286-D01.01"
+   ],
+   "domain_ref": "Network protocols and packet analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0286-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main difference between signature-based and anomaly-based intrusion detection?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Signature-based matches known patterns; anomaly-based flags deviations from a baseline",
+     "correct": true,
+     "rationale": "Correct: signatures detect known bad patterns while anomaly detection flags unusual behaviour."
+    },
+    {
+     "key": "B",
+     "text": "Signature-based requires no rules at all",
+     "correct": false,
+     "rationale": "Signature-based detection depends on defined signatures/rules."
+    },
+    {
+     "key": "C",
+     "text": "Anomaly-based can only detect previously seen attacks",
+     "correct": false,
+     "rationale": "Anomaly detection targets deviations, including novel behaviour."
+    },
+    {
+     "key": "D",
+     "text": "They are identical and interchangeable terms",
+     "correct": false,
+     "rationale": "They are distinct detection approaches."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: signatures detect known bad patterns while anomaly detection flags unusual behaviour.",
+   "outcome_refs": [
+    "MST-0286-D02.01"
+   ],
+   "domain_ref": "Traffic analysis and detection",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0286-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO signs that network traffic may indicate a port scan.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Connection attempts to many different ports on one host in a short time",
+     "correct": true,
+     "rationale": "Correct: sweeping many ports quickly is a classic scan indicator."
+    },
+    {
+     "key": "B",
+     "text": "Many SYN packets with few completed handshakes",
+     "correct": true,
+     "rationale": "Correct: SYN scans leave many half-open connections."
+    },
+    {
+     "key": "C",
+     "text": "A single long-lived, fully established HTTPS session",
+     "correct": false,
+     "rationale": "A normal established session is not itself a scan indicator."
+    },
+    {
+     "key": "D",
+     "text": "A DNS reply to a legitimate query",
+     "correct": false,
+     "rationale": "A normal DNS reply is expected traffic."
+    },
+    {
+     "key": "E",
+     "text": "An NTP time-sync request on schedule",
+     "correct": false,
+     "rationale": "Scheduled time sync is normal, expected traffic."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: sweeping many ports quickly is a classic scan indicator.",
+   "outcome_refs": [
+    "MST-0286-D02.01"
+   ],
+   "domain_ref": "Traffic analysis and detection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0278",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0278-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which file traditionally stores local user account information (excluding passwords) on a Linux system?",
+   "options": [
+    {
+     "key": "A",
+     "text": "/etc/passwd",
+     "correct": true,
+     "rationale": "Correct: /etc/passwd holds user account entries; hashed passwords live in /etc/shadow."
+    },
+    {
+     "key": "B",
+     "text": "/etc/hostname",
+     "correct": false,
+     "rationale": "/etc/hostname stores the system hostname, not user accounts."
+    },
+    {
+     "key": "C",
+     "text": "/etc/fstab",
+     "correct": false,
+     "rationale": "/etc/fstab describes filesystems to mount, not user accounts."
+    },
+    {
+     "key": "D",
+     "text": "/etc/crontab",
+     "correct": false,
+     "rationale": "/etc/crontab defines scheduled jobs, not user accounts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: /etc/passwd holds user account entries; hashed passwords live in /etc/shadow.",
+   "outcome_refs": [
+    "MST-0278-D02.01"
+   ],
+   "domain_ref": "Administrative tasks and services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0278-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary purpose of cron on a Linux system?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Run commands automatically on a recurring schedule",
+     "correct": true,
+     "rationale": "Correct: cron executes jobs at scheduled times defined in crontabs."
+    },
+    {
+     "key": "B",
+     "text": "Manage software packages",
+     "correct": false,
+     "rationale": "Package management is handled by apt/dpkg or yum/rpm, not cron."
+    },
+    {
+     "key": "C",
+     "text": "Configure network interfaces",
+     "correct": false,
+     "rationale": "Network configuration uses tools like ip or NetworkManager, not cron."
+    },
+    {
+     "key": "D",
+     "text": "Encrypt filesystems",
+     "correct": false,
+     "rationale": "Encryption is handled by tools such as LUKS, not cron."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: cron executes jobs at scheduled times defined in crontabs.",
+   "outcome_refs": [
+    "MST-0278-D02.01"
+   ],
+   "domain_ref": "Administrative tasks and services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0278-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices that improve SSH server security.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Disabling direct root login over SSH",
+     "correct": true,
+     "rationale": "Correct: disabling root login reduces the risk of a high-value brute-force target."
+    },
+    {
+     "key": "B",
+     "text": "Using key-based authentication instead of passwords",
+     "correct": true,
+     "rationale": "Correct: key-based auth is stronger than reusable passwords."
+    },
+    {
+     "key": "C",
+     "text": "Allowing empty passwords for convenience",
+     "correct": false,
+     "rationale": "Empty passwords are a serious security weakness."
+    },
+    {
+     "key": "D",
+     "text": "Running the SSH daemon as every user simultaneously",
+     "correct": false,
+     "rationale": "This is not a real or meaningful configuration."
+    },
+    {
+     "key": "E",
+     "text": "Sharing one private key among all administrators",
+     "correct": false,
+     "rationale": "Shared private keys remove accountability and increase risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: disabling root login reduces the risk of a high-value brute-force target.",
+   "outcome_refs": [
+    "MST-0278-D03.01"
+   ],
+   "domain_ref": "Networking fundamentals and security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

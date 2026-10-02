@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0285",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0285-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During live incident response, which data should generally be collected FIRST?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Volatile data such as memory and running process state",
+     "correct": true,
+     "rationale": "Correct: following the order of volatility, volatile data is captured before it is lost."
+    },
+    {
+     "key": "B",
+     "text": "A full offline disk image before anything else",
+     "correct": false,
+     "rationale": "Imaging disks first can lose volatile evidence that disappears at shutdown."
+    },
+    {
+     "key": "C",
+     "text": "Printed copies of the user manual",
+     "correct": false,
+     "rationale": "This is irrelevant to evidence collection."
+    },
+    {
+     "key": "D",
+     "text": "The organisation's marketing materials",
+     "correct": false,
+     "rationale": "These are not forensic evidence."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: following the order of volatility, volatile data is captured before it is lost.",
+   "outcome_refs": [
+    "MST-0285-D01.01"
+   ],
+   "domain_ref": "Incident response and forensic methodology",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0285-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is maintaining a chain of custody important in a forensic investigation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It documents who handled evidence and when, supporting its integrity and admissibility",
+     "correct": true,
+     "rationale": "Correct: chain of custody records handling to show evidence was not altered."
+    },
+    {
+     "key": "B",
+     "text": "It speeds up the computer being investigated",
+     "correct": false,
+     "rationale": "Chain of custody has nothing to do with system performance."
+    },
+    {
+     "key": "C",
+     "text": "It encrypts the suspect's network traffic",
+     "correct": false,
+     "rationale": "Chain of custody is a documentation practice, not encryption."
+    },
+    {
+     "key": "D",
+     "text": "It automatically identifies the attacker",
+     "correct": false,
+     "rationale": "It records handling; it does not attribute the attack."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: chain of custody records handling to show evidence was not altered.",
+   "outcome_refs": [
+    "MST-0285-D01.01"
+   ],
+   "domain_ref": "Incident response and forensic methodology",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0285-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO artefacts commonly analysed when investigating program execution on a Windows host.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Prefetch files",
+     "correct": true,
+     "rationale": "Correct: prefetch files record evidence of program execution."
+    },
+    {
+     "key": "B",
+     "text": "Registry keys associated with execution and persistence",
+     "correct": true,
+     "rationale": "Correct: certain registry keys record run history and persistence."
+    },
+    {
+     "key": "C",
+     "text": "The monitor's brightness setting",
+     "correct": false,
+     "rationale": "Display brightness is not forensic evidence of execution."
+    },
+    {
+     "key": "D",
+     "text": "The keyboard layout language only",
+     "correct": false,
+     "rationale": "Keyboard layout alone does not indicate program execution."
+    },
+    {
+     "key": "E",
+     "text": "The desktop wallpaper image dimensions",
+     "correct": false,
+     "rationale": "Wallpaper dimensions are not execution evidence."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: prefetch files record evidence of program execution.",
+   "outcome_refs": [
+    "MST-0285-D02.01"
+   ],
+   "domain_ref": "Host and filesystem analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

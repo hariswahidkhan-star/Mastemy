@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0277",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0277-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which command displays the amount of free and used disk space on mounted filesystems?",
+   "options": [
+    {
+     "key": "A",
+     "text": "df",
+     "correct": true,
+     "rationale": "Correct: df reports filesystem disk space usage."
+    },
+    {
+     "key": "B",
+     "text": "du",
+     "correct": false,
+     "rationale": "du estimates file and directory space usage, not free space per filesystem."
+    },
+    {
+     "key": "C",
+     "text": "ps",
+     "correct": false,
+     "rationale": "ps reports running processes, not disk space."
+    },
+    {
+     "key": "D",
+     "text": "top",
+     "correct": false,
+     "rationale": "top shows process and system activity, not filesystem free space."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: df reports filesystem disk space usage.",
+   "outcome_refs": [
+    "MST-0277-D03.01"
+   ],
+   "domain_ref": "Filesystems and the filesystem hierarchy",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0277-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a shell pipeline, what does the pipe symbol ( | ) do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sends the standard output of one command as the standard input of the next",
+     "correct": true,
+     "rationale": "Correct: a pipe connects one command's stdout to the next command's stdin."
+    },
+    {
+     "key": "B",
+     "text": "Runs two commands at the same time with no connection",
+     "correct": false,
+     "rationale": "That describes backgrounding with &, not a pipe."
+    },
+    {
+     "key": "C",
+     "text": "Redirects output into a file",
+     "correct": false,
+     "rationale": "Redirecting to a file uses > or >>, not a pipe."
+    },
+    {
+     "key": "D",
+     "text": "Comments out the rest of the line",
+     "correct": false,
+     "rationale": "Comments use #, not the pipe symbol."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a pipe connects one command's stdout to the next command's stdin.",
+   "outcome_refs": [
+    "MST-0277-D02.01"
+   ],
+   "domain_ref": "GNU and Unix commands",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0277-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO commands commonly used as part of Debian package management.",
+   "options": [
+    {
+     "key": "A",
+     "text": "apt",
+     "correct": true,
+     "rationale": "Correct: apt is a high-level Debian package management front end."
+    },
+    {
+     "key": "B",
+     "text": "dpkg",
+     "correct": true,
+     "rationale": "Correct: dpkg is the low-level Debian package tool."
+    },
+    {
+     "key": "C",
+     "text": "yum",
+     "correct": false,
+     "rationale": "yum manages RPM packages on Red Hat-family systems, not Debian."
+    },
+    {
+     "key": "D",
+     "text": "systemctl",
+     "correct": false,
+     "rationale": "systemctl controls services and units, not package management."
+    },
+    {
+     "key": "E",
+     "text": "grep",
+     "correct": false,
+     "rationale": "grep searches text; it is not a package management tool."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: apt is a high-level Debian package management front end.",
+   "outcome_refs": [
+    "MST-0277-D01.01"
+   ],
+   "domain_ref": "System architecture and package management",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

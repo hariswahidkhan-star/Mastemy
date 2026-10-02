@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1511",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1511-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Kubernetes object maintains a declared number of identical Pod replicas?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Deployment (via its ReplicaSet)",
+     "correct": true,
+     "rationale": "Correct: a Deployment manages a ReplicaSet that keeps the declared replica count."
+    },
+    {
+     "key": "B",
+     "text": "A single Pod",
+     "correct": false,
+     "rationale": "A lone Pod does not maintain a replica count."
+    },
+    {
+     "key": "C",
+     "text": "A ConfigMap",
+     "correct": false,
+     "rationale": "A ConfigMap holds configuration data; it does not run Pods."
+    },
+    {
+     "key": "D",
+     "text": "A Namespace",
+     "correct": false,
+     "rationale": "A Namespace is an organisational boundary, not a replica controller."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Deployment manages a ReplicaSet that keeps the declared replica count.",
+   "outcome_refs": [
+    "MST-1511-D01.01"
+   ],
+   "domain_ref": "Kubernetes fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1511-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the Container Runtime Interface (CRI) allow Kubernetes to do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use different container runtimes through a standard interface",
+     "correct": true,
+     "rationale": "Correct: the CRI lets Kubernetes work with any compliant runtime."
+    },
+    {
+     "key": "B",
+     "text": "Build container images directly in the API server",
+     "correct": false,
+     "rationale": "Kubernetes does not build images; the CRI concerns running containers."
+    },
+    {
+     "key": "C",
+     "text": "Replace the need for container images",
+     "correct": false,
+     "rationale": "Containers still require images; the CRI does not remove them."
+    },
+    {
+     "key": "D",
+     "text": "Store cluster state instead of etcd",
+     "correct": false,
+     "rationale": "Cluster state is stored in etcd, not via the CRI."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the CRI lets Kubernetes work with any compliant runtime.",
+   "outcome_refs": [
+    "MST-1511-D02.01"
+   ],
+   "domain_ref": "Container orchestration and runtime",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1511-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO signals commonly used in cloud native observability.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Metrics",
+     "correct": true,
+     "rationale": "Correct: metrics are numeric measurements over time, a core observability signal."
+    },
+    {
+     "key": "B",
+     "text": "Logs",
+     "correct": true,
+     "rationale": "Correct: logs are event records, a core observability signal."
+    },
+    {
+     "key": "C",
+     "text": "The office Wi-Fi password",
+     "correct": false,
+     "rationale": "This is unrelated to observability signals."
+    },
+    {
+     "key": "D",
+     "text": "The number of chairs in the data centre",
+     "correct": false,
+     "rationale": "This is not an observability signal."
+    },
+    {
+     "key": "E",
+     "text": "The developer's favourite colour",
+     "correct": false,
+     "rationale": "This is not an observability signal."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: metrics are numeric measurements over time, a core observability signal.",
+   "outcome_refs": [
+    "MST-1511-D03.01"
+   ],
+   "domain_ref": "Delivery, observability and architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

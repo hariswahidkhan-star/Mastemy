@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0287",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0287-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does 'shift-left' mean in a DevSecOps pipeline?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Introducing security activities earlier in the development lifecycle",
+     "correct": true,
+     "rationale": "Correct: shift-left moves security testing and review earlier, closer to coding."
+    },
+    {
+     "key": "B",
+     "text": "Moving all servers to the left data centre",
+     "correct": false,
+     "rationale": "Shift-left is a process concept, not a physical relocation."
+    },
+    {
+     "key": "C",
+     "text": "Deploying only after the project ends",
+     "correct": false,
+     "rationale": "That delays, rather than shifts security earlier."
+    },
+    {
+     "key": "D",
+     "text": "Removing security reviews entirely",
+     "correct": false,
+     "rationale": "Shift-left adds earlier security, it does not remove it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: shift-left moves security testing and review earlier, closer to coding.",
+   "outcome_refs": [
+    "MST-0287-D01.01"
+   ],
+   "domain_ref": "DevSecOps and secure pipelines",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0287-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does policy as code primarily address for infrastructure as code?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automatically enforcing security and compliance rules on infrastructure definitions",
+     "correct": true,
+     "rationale": "Correct: policy as code checks IaC against rules before provisioning."
+    },
+    {
+     "key": "B",
+     "text": "Writing application unit tests",
+     "correct": false,
+     "rationale": "Unit tests validate application logic, not infrastructure policy."
+    },
+    {
+     "key": "C",
+     "text": "Designing a user interface",
+     "correct": false,
+     "rationale": "UI design is unrelated to policy as code."
+    },
+    {
+     "key": "D",
+     "text": "Replacing the need for any cloud provider",
+     "correct": false,
+     "rationale": "Policy as code governs infrastructure; it does not replace providers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: policy as code checks IaC against rules before provisioning.",
+   "outcome_refs": [
+    "MST-0287-D02.01"
+   ],
+   "domain_ref": "Infrastructure as code and cloud automation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0287-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO security tests commonly automated inside a CI/CD pipeline.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Static application security testing (SAST)",
+     "correct": true,
+     "rationale": "Correct: SAST analyses source code for vulnerabilities in CI."
+    },
+    {
+     "key": "B",
+     "text": "Software composition analysis (SCA) for dependencies",
+     "correct": true,
+     "rationale": "Correct: SCA flags known-vulnerable third-party components."
+    },
+    {
+     "key": "C",
+     "text": "Repainting the office walls",
+     "correct": false,
+     "rationale": "This is not a software security test."
+    },
+    {
+     "key": "D",
+     "text": "Manually emailing code to each developer",
+     "correct": false,
+     "rationale": "This is not an automated security test."
+    },
+    {
+     "key": "E",
+     "text": "Disabling all logging during builds",
+     "correct": false,
+     "rationale": "Disabling logging reduces visibility and is not a security test."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: SAST analyses source code for vulnerabilities in CI.",
+   "outcome_refs": [
+    "MST-0287-D03.01"
+   ],
+   "domain_ref": "Pipeline security testing and monitoring",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

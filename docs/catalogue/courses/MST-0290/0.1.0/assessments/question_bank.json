@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0290",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0290-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Within this preparation, where may OSCP-style penetration testing techniques be practised?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Only within an authorised lab or systems you have explicit permission to test",
+     "correct": true,
+     "rationale": "Correct: offensive techniques must only be used on authorised, in-scope systems."
+    },
+    {
+     "key": "B",
+     "text": "On any public website that seems insecure",
+     "correct": false,
+     "rationale": "Testing systems without authorisation is illegal and unethical."
+    },
+    {
+     "key": "C",
+     "text": "On a neighbour's network without asking",
+     "correct": false,
+     "rationale": "This is unauthorised and illegal."
+    },
+    {
+     "key": "D",
+     "text": "On any system, because learning justifies it",
+     "correct": false,
+     "rationale": "Learning does not authorise testing systems you do not have permission for."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: offensive techniques must only be used on authorised, in-scope systems.",
+   "outcome_refs": [
+    "MST-0290-D01.01"
+   ],
+   "domain_ref": "Methodology and the authorised lab mindset",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0290-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is thorough enumeration emphasised before attempting exploitation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It reveals the attack surface and guides which paths are worth pursuing",
+     "correct": true,
+     "rationale": "Correct: good enumeration surfaces services and weaknesses that direct the effort."
+    },
+    {
+     "key": "B",
+     "text": "It permanently fixes all vulnerabilities",
+     "correct": false,
+     "rationale": "Enumeration gathers information; it does not remediate anything."
+    },
+    {
+     "key": "C",
+     "text": "It replaces the need to write a report",
+     "correct": false,
+     "rationale": "Reporting is still required regardless of enumeration."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees a successful exploit every time",
+     "correct": false,
+     "rationale": "No step guarantees successful exploitation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: good enumeration surfaces services and weaknesses that direct the effort.",
+   "outcome_refs": [
+    "MST-0290-D02.01"
+   ],
+   "domain_ref": "Enumeration and service analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0290-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO items that belong in a professional penetration-test report.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reproducible steps that demonstrate each finding",
+     "correct": true,
+     "rationale": "Correct: reproducible steps let others verify the finding."
+    },
+    {
+     "key": "B",
+     "text": "Remediation recommendations for each issue",
+     "correct": true,
+     "rationale": "Correct: actionable remediation guidance is a core report element."
+    },
+    {
+     "key": "C",
+     "text": "The tester's personal opinions about the client's staff",
+     "correct": false,
+     "rationale": "Personal opinions about staff are unprofessional and out of scope."
+    },
+    {
+     "key": "D",
+     "text": "Deliberately vague details so issues cannot be fixed",
+     "correct": false,
+     "rationale": "Vague findings undermine the report's purpose."
+    },
+    {
+     "key": "E",
+     "text": "Credentials published openly for anyone to reuse",
+     "correct": false,
+     "rationale": "Publishing credentials is irresponsible and insecure."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reproducible steps let others verify the finding.",
+   "outcome_refs": [
+    "MST-0290-D03.01"
+   ],
+   "domain_ref": "Exploitation, escalation and reporting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

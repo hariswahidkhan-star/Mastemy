@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0279",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0279-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which technology lets you resize a volume online by grouping physical volumes into a flexible pool?",
+   "options": [
+    {
+     "key": "A",
+     "text": "LVM (Logical Volume Manager)",
+     "correct": true,
+     "rationale": "Correct: LVM abstracts physical volumes into volume groups and resizable logical volumes."
+    },
+    {
+     "key": "B",
+     "text": "A swap partition",
+     "correct": false,
+     "rationale": "Swap provides virtual memory; it does not manage flexible volumes."
+    },
+    {
+     "key": "C",
+     "text": "A static /etc/fstab entry alone",
+     "correct": false,
+     "rationale": "An fstab entry records a mount; it does not provide volume flexibility."
+    },
+    {
+     "key": "D",
+     "text": "The cron daemon",
+     "correct": false,
+     "rationale": "cron schedules jobs and is unrelated to volume management."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: LVM abstracts physical volumes into volume groups and resizable logical volumes.",
+   "outcome_refs": [
+    "MST-0279-D02.01"
+   ],
+   "domain_ref": "System startup and advanced storage",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0279-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the load average reported by tools such as uptime primarily reflect?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The average number of processes runnable or waiting over recent time windows",
+     "correct": true,
+     "rationale": "Correct: load average reflects runnable and uninterruptible processes over 1/5/15 minutes."
+    },
+    {
+     "key": "B",
+     "text": "The exact percentage of RAM in use",
+     "correct": false,
+     "rationale": "Memory usage is reported separately, not by load average."
+    },
+    {
+     "key": "C",
+     "text": "Network throughput in megabits per second",
+     "correct": false,
+     "rationale": "Load average does not measure network throughput."
+    },
+    {
+     "key": "D",
+     "text": "Disk capacity remaining",
+     "correct": false,
+     "rationale": "Disk capacity is reported by df, not load average."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: load average reflects runnable and uninterruptible processes over 1/5/15 minutes.",
+   "outcome_refs": [
+    "MST-0279-D01.01"
+   ],
+   "domain_ref": "Capacity planning and the kernel",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0279-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO true statements about software RAID.",
+   "options": [
+    {
+     "key": "A",
+     "text": "RAID 1 mirrors data across disks for redundancy",
+     "correct": true,
+     "rationale": "Correct: RAID 1 keeps identical copies on multiple disks."
+    },
+    {
+     "key": "B",
+     "text": "RAID is not a replacement for regular backups",
+     "correct": true,
+     "rationale": "Correct: RAID protects against disk failure, not accidental deletion or corruption."
+    },
+    {
+     "key": "C",
+     "text": "RAID 0 increases redundancy by duplicating data",
+     "correct": false,
+     "rationale": "RAID 0 stripes for performance and provides no redundancy."
+    },
+    {
+     "key": "D",
+     "text": "RAID guarantees protection against file deletion by users",
+     "correct": false,
+     "rationale": "RAID does not protect against user or application data loss."
+    },
+    {
+     "key": "E",
+     "text": "RAID levels cannot affect read or write performance",
+     "correct": false,
+     "rationale": "RAID levels do affect performance characteristics."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: RAID 1 keeps identical copies on multiple disks.",
+   "outcome_refs": [
+    "MST-0279-D02.01"
+   ],
+   "domain_ref": "System startup and advanced storage",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

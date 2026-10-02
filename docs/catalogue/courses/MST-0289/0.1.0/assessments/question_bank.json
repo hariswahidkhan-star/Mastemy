@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0289",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0289-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What must an ethical hacker obtain before testing a target system?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Written authorisation and an agreed scope from the system owner",
+     "correct": true,
+     "rationale": "Correct: authorised, scoped engagement is the defining feature of ethical hacking."
+    },
+    {
+     "key": "B",
+     "text": "A faster internet connection only",
+     "correct": false,
+     "rationale": "Bandwidth is irrelevant to the legality of testing."
+    },
+    {
+     "key": "C",
+     "text": "The target's social media password by trickery",
+     "correct": false,
+     "rationale": "Obtaining credentials by trickery without authorisation is not ethical or legal."
+    },
+    {
+     "key": "D",
+     "text": "Permission from a random third party",
+     "correct": false,
+     "rationale": "Only the system owner (or authorised party) can grant permission."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: authorised, scoped engagement is the defining feature of ethical hacking.",
+   "outcome_refs": [
+    "MST-0289-D01.01"
+   ],
+   "domain_ref": "Ethical hacking foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0289-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which activity best describes the enumeration phase?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Extracting detailed information such as usernames, shares and services from identified systems",
+     "correct": true,
+     "rationale": "Correct: enumeration gathers detailed resource and account information."
+    },
+    {
+     "key": "B",
+     "text": "Physically destroying the target hardware",
+     "correct": false,
+     "rationale": "Destruction is not enumeration and is not part of authorised testing."
+    },
+    {
+     "key": "C",
+     "text": "Writing the final client report",
+     "correct": false,
+     "rationale": "Reporting is a later phase, not enumeration."
+    },
+    {
+     "key": "D",
+     "text": "Buying new servers for the client",
+     "correct": false,
+     "rationale": "Procurement is unrelated to enumeration."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: enumeration gathers detailed resource and account information.",
+   "outcome_refs": [
+    "MST-0289-D02.01"
+   ],
+   "domain_ref": "Scanning, enumeration and system attacks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0289-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO effective countermeasures against SQL injection.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Using parameterised queries / prepared statements",
+     "correct": true,
+     "rationale": "Correct: parameterised queries separate code from data and prevent injection."
+    },
+    {
+     "key": "B",
+     "text": "Validating and sanitising user input",
+     "correct": true,
+     "rationale": "Correct: input validation reduces the chance of malicious input being processed."
+    },
+    {
+     "key": "C",
+     "text": "Storing database passwords in the page source",
+     "correct": false,
+     "rationale": "Exposing credentials in page source is a serious vulnerability, not a countermeasure."
+    },
+    {
+     "key": "D",
+     "text": "Disabling all database backups",
+     "correct": false,
+     "rationale": "Disabling backups does not prevent injection and harms recovery."
+    },
+    {
+     "key": "E",
+     "text": "Granting every web user database admin rights",
+     "correct": false,
+     "rationale": "Excessive privileges worsen the impact of an injection."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: parameterised queries separate code from data and prevent injection.",
+   "outcome_refs": [
+    "MST-0289-D03.01"
+   ],
+   "domain_ref": "Application, network and emerging-threat concepts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

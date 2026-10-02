@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1512",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1512-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which mechanism authorizes what an authenticated subject may do in a Kubernetes cluster?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Role-Based Access Control (RBAC)",
+     "correct": true,
+     "rationale": "Correct: RBAC binds subjects to roles that grant specific permissions."
+    },
+    {
+     "key": "B",
+     "text": "A readiness probe",
+     "correct": false,
+     "rationale": "Readiness probes signal traffic-readiness, not authorization."
+    },
+    {
+     "key": "C",
+     "text": "A ResourceQuota",
+     "correct": false,
+     "rationale": "ResourceQuota limits resource usage, not permitted actions."
+    },
+    {
+     "key": "D",
+     "text": "A horizontal Pod autoscaler",
+     "correct": false,
+     "rationale": "Autoscalers adjust replica counts, not authorization."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RBAC binds subjects to roles that grant specific permissions.",
+   "outcome_refs": [
+    "MST-1512-D01.01"
+   ],
+   "domain_ref": "Cloud native security fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1512-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What do the 4Cs of cloud native security refer to?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cloud, Cluster, Container and Code layers of security",
+     "correct": true,
+     "rationale": "Correct: the 4Cs describe nested security layers from cloud down to code."
+    },
+    {
+     "key": "B",
+     "text": "Four cloud providers you must use",
+     "correct": false,
+     "rationale": "The 4Cs are security layers, not providers."
+    },
+    {
+     "key": "C",
+     "text": "Four container runtimes required by Kubernetes",
+     "correct": false,
+     "rationale": "The 4Cs are not runtimes."
+    },
+    {
+     "key": "D",
+     "text": "Four compliance auditors",
+     "correct": false,
+     "rationale": "The 4Cs are layers, not auditors."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the 4Cs describe nested security layers from cloud down to code.",
+   "outcome_refs": [
+    "MST-1512-D01.01"
+   ],
+   "domain_ref": "Cloud native security fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1512-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices that improve container supply-chain security.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Signing and verifying container images",
+     "correct": true,
+     "rationale": "Correct: signing and verification establish image provenance and integrity."
+    },
+    {
+     "key": "B",
+     "text": "Scanning images for known vulnerabilities before deployment",
+     "correct": true,
+     "rationale": "Correct: scanning catches known vulnerable components early."
+    },
+    {
+     "key": "C",
+     "text": "Running all containers as root",
+     "correct": false,
+     "rationale": "Running as root increases risk."
+    },
+    {
+     "key": "D",
+     "text": "Disabling audit logging",
+     "correct": false,
+     "rationale": "Disabling audit logging reduces security visibility."
+    },
+    {
+     "key": "E",
+     "text": "Pulling images only from untrusted public sources",
+     "correct": false,
+     "rationale": "Untrusted sources increase supply-chain risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: signing and verification establish image provenance and integrity.",
+   "outcome_refs": [
+    "MST-1512-D03.01"
+   ],
+   "domain_ref": "Supply-chain, runtime and compliance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
