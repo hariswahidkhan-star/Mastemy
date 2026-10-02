@@ -5,11 +5,13 @@ using Mastemy.Api.Domain;
 using Mastemy.Api.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Mastemy.Api.Modules.YouTube;
+using Mastemy.Api.Modules.Authoring;
 
 namespace Mastemy.Api.Modules.Catalog;
 
 /// <summary>Instructor authoring: course metadata, curriculum, notes, co-instructors, validation and lifecycle actions.</summary>
-public partial class StudioService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit)
+public partial class StudioService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit,
+    CourseScopeService scope, AgreementService agreements)
 {
     private const int MaxTitle = 200;
     private const int MaxShort = 500;
@@ -76,9 +78,12 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
             CourseStateMachine.IsEditable(c.Status), c.CreatedAt, c.UpdatedAt, c.ReviewedAt, c.PublishedAt);
     }
 
-    public async Task<StudioCourseDto> Update(Guid id, UpdateCourseRequest req)
+    public async Task<StudioCourseDto> Update(Guid id, UpdateCourseRequest req, string? ifMatch = null)
     {
         var c = await LoadEditableCourse(id, includeCategories: true);
+        // Optional optimistic concurrency for course metadata: a stale If-Match (another tab saved meanwhile) is refused.
+        if (!string.IsNullOrWhiteSpace(ifMatch) && !ETags.Matches(ifMatch, CourseETag(c.UpdatedAt)))
+            throw ETags.Stale("The course was changed by someone else. Reload and retry.");
         var before = new object?[] { c.Title, c.Subtitle, c.Description, c.Audience, c.Prerequisites, c.Outcomes, c.Language, c.Level,
             c.PromoVideoId, c.CredentialType, c.PassThresholdPercent, string.Join(",", c.Categories.Select(x => x.CategoryId).OrderBy(x => x)) };
         c.Title = RequireText(req.Title, "title", MaxTitle);
@@ -253,9 +258,19 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
         await db.SaveChangesAsync();
     }
 
-    public async Task<StudioLessonDto> UpdateNotes(Guid lessonId, LessonNotesRequest req)
+    /// <summary>
+    /// Saves lesson notes under optimistic concurrency. <paramref name="ifMatch"/> must carry the lesson's current notes ETag
+    /// (<see cref="NotesETag"/>, i.e. its NotesVersion): missing -> 428, stale -> 412. Every effective save bumps NotesVersion and
+    /// stores a <see cref="LessonRevision"/> (author, time, full text); the unique (lesson, revision) index makes two racing
+    /// saves from the same base version fail with 412 instead of silently overwriting each other.
+    /// </summary>
+    public async Task<StudioLessonDto> UpdateNotes(Guid lessonId, LessonNotesRequest req, string? ifMatch, int? restoredFrom = null)
     {
+        if (string.IsNullOrWhiteSpace(ifMatch))
+            throw new AppException(428, "If-Match header with the lesson notes ETag is required.", "precondition_required");
         var (l, c) = await LoadEditableLesson(lessonId);
+        if (!ETags.Matches(ifMatch, NotesETag(l.NotesVersion)))
+            throw ETags.Stale("These notes were changed by someone else. Reload to see the latest revision before saving.");
         var notes = req.NotesMarkdown ?? "";
         var premium = string.IsNullOrWhiteSpace(req.PremiumNotesMarkdown) ? null : req.PremiumNotesMarkdown;
         if (notes.Length > MaxMarkdown || (premium?.Length ?? 0) > MaxMarkdown) throw AppException.Bad("Notes are too long.");
@@ -264,16 +279,43 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
             var changed = new List<string>();
             if (notes != l.NotesMarkdown) changed.Add("notesMarkdown");
             if (premium != l.PremiumNotesMarkdown) changed.Add("premiumNotesMarkdown");
+            await EnsureBaseRevision(l, c.Id);
             l.NotesMarkdown = notes;
             l.PremiumNotesMarkdown = premium;
             l.NotesVersion++;
+            db.Set<LessonRevision>().Add(new LessonRevision
+            {
+                LessonId = l.Id, CourseId = c.Id, Revision = l.NotesVersion, NotesMarkdown = notes, PremiumNotesMarkdown = premium,
+                AuthorId = me.Id, RestoredFromRevision = restoredFrom,
+            });
             Touch(c);
-            audit.Record("lesson.notes.updated", nameof(Lesson), l.Id, new { l.NotesVersion, changedFields = changed });
-            RecordContentChange(c, "update", nameof(Lesson), l.Id, changed.ToArray(), new { l.NotesVersion });
-            await db.SaveChangesAsync();
+            audit.Record(restoredFrom is null ? "lesson.notes.updated" : "lesson.notes.restored", nameof(Lesson), l.Id,
+                new { l.NotesVersion, changedFields = changed, restoredFrom });
+            RecordContentChange(c, restoredFrom is null ? "update" : "restore", nameof(Lesson), l.Id, changed.ToArray(),
+                new { l.NotesVersion, restoredFrom });
+            try { await db.SaveChangesAsync(); }
+            catch (DbUpdateException)
+            {
+                db.ChangeTracker.Clear();
+                throw ETags.Stale("These notes were changed by someone else. Reload to see the latest revision before saving.");
+            }
         }
         return ToDto(l);
     }
+
+    /// <summary>Lessons edited before revision tracking existed get their current text recorded as the base revision once.</summary>
+    private async Task EnsureBaseRevision(Lesson l, Guid courseId)
+    {
+        if (await db.Set<LessonRevision>().AnyAsync(r => r.LessonId == l.Id && r.Revision == l.NotesVersion)) return;
+        db.Set<LessonRevision>().Add(new LessonRevision
+        {
+            LessonId = l.Id, CourseId = courseId, Revision = l.NotesVersion, NotesMarkdown = l.NotesMarkdown,
+            PremiumNotesMarkdown = l.PremiumNotesMarkdown, AuthorId = null,
+        });
+    }
+
+    public static string NotesETag(int notesVersion) => $"\"n{notesVersion}\"";
+    public static string CourseETag(DateTime updatedAt) => $"\"c{updatedAt.Ticks}\"";
 
     // ---------- Co-instructors ----------
     public async Task<StudioCourseDto> AddCoInstructor(Guid courseId, CoInstructorRequest req)
@@ -321,7 +363,8 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
 
     public async Task<CourseStatusDto> Submit(Guid courseId)
     {
-        await access.RequireCourseEditor(courseId);
+        await scope.RequireCourseManager(courseId); // editors cannot submit
+        await agreements.RequireAccepted();
         var c = await db.Courses.FirstOrDefaultAsync(x => x.Id == courseId) ?? throw AppException.NotFound("Course");
         var from = c.Status;
         CourseStateMachine.Next(from, CourseAction.Submit); // 409 before running validation when state is wrong
@@ -335,7 +378,7 @@ public partial class StudioService(AppDbContext db, ICurrentUser me, AccessServi
 
     public async Task<CourseStatusDto> StartUpdate(Guid courseId)
     {
-        await access.RequireCourseEditor(courseId);
+        await scope.RequireCourseManager(courseId);
         var c = await db.Courses.FirstOrDefaultAsync(x => x.Id == courseId) ?? throw AppException.NotFound("Course");
         var from = c.Status;
         CourseStateMachine.Apply(c, CourseAction.StartUpdate, DateTime.UtcNow);
