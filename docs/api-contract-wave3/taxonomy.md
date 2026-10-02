@@ -28,8 +28,9 @@ Module: `src/Mastemy.Api/Modules/Taxonomy` (tables prefixed `Taxonomy_`). Catalo
 | POST | `/api/pathways/{slug}/enroll` | Requires auth. Enrolls the learner in every live course of the pathway (learning is free; premium packages are bought per course). Idempotent: `{pathwayId, enrolled, alreadyEnrolled, courseIds}`. |
 | GET | `/api/collections/{slug}` | Active collection with its live courses. 404 when inactive or empty. |
 | GET | `/api/academies/{slug}` | Academy category (`IsAcademy`), its pathways, collections with that `categoryId` (featured), and up to 24 newest live courses in the category tree. |
-| GET | `/api/instructors?q=&page=&pageSize=` | Non-suspended users with the Instructor role who teach at least one live course: `{id, displayName, liveCourseCount, ratingAverage, ratingCount}`. Bio and headline are not included (the account module owns profiles). |
-| GET | `/api/instructors/{id}` | Same fields plus live course cards. 404 otherwise. |
+| GET | `/api/instructors?q=&page=&pageSize=` | Non-suspended users with the Instructor role who teach at least one live course: `{id, displayName, liveCourseCount, ratingAverage, ratingCount, headline}`. `headline` comes from `Account_Profiles` and is set only when the instructor turned on `publicInstructorProfile` (and the profile is not deleted); otherwise null. |
+| GET | `/api/instructors/{id}` | Same fields plus `bio` and live course cards. 404 otherwise. |
+| GET | `/api/notes-library?q=&page=&pageSize=` | Live courses ordered by title (pageSize 1–50): `{items: [{course: CourseCard, hasNotes, lessonsWithNotes}], total, page, pageSize}`. `hasNotes` is computed from the published snapshot payload (any lesson with non-empty free or premium notes); note text is never returned. |
 
 ## Studio (course authors and staff)
 | Method | Route | Notes |
@@ -37,6 +38,7 @@ Module: `src/Mastemy.Api/Modules/Taxonomy` (tables prefixed `Taxonomy_`). Catalo
 | GET | `/api/studio/courses/{id}/skills` | Working skill set (authors, reviewers, staff). |
 | PUT | `/api/studio/courses/{id}/skills` | `{codes: string[]}` (≤30; each must exist and be active). Course editors and staff. Audited. **Snapshot-safe:** each link is stored with `AddedAt`/`RemovedAt`, and the public sees a link only if it was in effect when the current snapshot was published, so changes appear at the next publish. Legacy live courses without a snapshot show no skills. |
 | GET | `/api/studio/courses/{courseId}/certifications/{certId}/coverage` | Coverage report (authors, reviewers, staff). |
+| GET | `/api/studio/courses/{courseId}/certifications/{certId}/mappings` | Current mappings `{certificationId, courseId, linked, objectives: [{objectiveId, code, title, lessonIds, questionIds}]}` limited to this course's lessons/questions (authors, reviewers, staff; 403 otherwise). |
 | PUT | `/api/studio/objectives/{objectiveId}/courses/{courseId}/lessons` | `{ids}` replaces the course's lessons mapped to the objective. The course must be linked to the certification first (409 `course_not_linked`). |
 | PUT | `/api/studio/objectives/{objectiveId}/courses/{courseId}/questions` | Same, for the course's questions. |
 
@@ -54,6 +56,8 @@ Certification directory (Reviewer or Staff; every change is audited):
 - `POST /api/admin/certifications/{id}/objectives`, `PUT|DELETE /api/admin/certification-objectives/{id}` (weights total ≤ 100)
 - `PUT|DELETE /api/admin/certifications/{id}/courses/{courseId}` (course ↔ certification link)
 - `GET /api/admin/certifications/{id}/coverage?courseId=`
+- `GET /api/admin/certifications/{id}/mappings?courseId=` (same payload as the studio mappings read)
+- `GET /api/admin/certifications/{id}/courses`: linked courses `[{courseId, slug, title, status, isLive, linkedAt}]`, live or not
 - `POST /api/admin/certifications/flag-stale` (Staff; does the same as the daily job)
 
 State rules:
@@ -72,7 +76,7 @@ State rules:
 Pathways, collections, bestsellers and backlog (Staff, audited):
 - `GET/POST /api/admin/pathways`, `PUT|DELETE /api/admin/pathways/{id}`: `{slug, titleEn, titleAr, descriptionEn, descriptionAr, level, categoryId, isPublished, sortOrder, courseIds (ordered), skillCodes}`
 - `GET/POST /api/admin/collections`, `PUT|DELETE /api/admin/collections/{id}`: `{slug, titleEn, titleAr, kind: Editorial|Topic, categoryId, activeFrom, activeTo, sortOrder, courseIds}`
-- `GET /api/admin/bestsellers`, `POST /api/admin/bestsellers/recompute`
+- `GET /api/admin/bestsellers` (rows `{courseId, courseTitle, courseSlug, distinctBuyers, netRevenue, eligible, windowStart, computedAt}`), `POST /api/admin/bestsellers/recompute`
 - `GET /api/admin/course-ideas?state=&q=`, `GET|PUT|DELETE /api/admin/course-ideas/{id}`, `POST /api/admin/course-ideas`, `POST /api/admin/course-ideas/{id}/state`, `POST /api/admin/course-ideas/import-roadmap` `{markdown?}`
 
 ## Bestseller rule
@@ -103,3 +107,20 @@ Checks on transitions:
 - Ideas that are in production or published cannot be deleted.
 
 Roadmap import parses the `| # | Candidate | Group | Brief |` table (100 rows) into `Idea` rows. It skips titles that already exist, so running it again is safe. If no markdown is posted, it reads `Taxonomy:RoadmapPath`, or else `docs/course-roadmap.md` above the content root. If neither exists it returns 503 `roadmap_unavailable`. The import never runs automatically.
+
+## Search vocabulary cache
+The "did you mean" vocabulary (live snapshot titles + active skill names) is cached in memory for 10 minutes. Publishing or
+archiving a course invalidates the cache of the API instance that handled the request. In a multi-instance deployment
+the other instances keep their copy until the 10-minute TTL expires, so a new title can take up to 10 minutes to appear in
+their suggestions.
+
+## Sitemap and robots (`/sitemap.xml`, `/robots.txt`; `Seo:PublicBaseUrl` required, else 503 `seo_not_configured`)
+Every entry is listed in English and with `?lang=ar`, each carrying `en`/`ar`/`x-default` hreflang alternates.
+- Static: `/`, `/courses`, `/free-lessons`, `/verify`, `/teach`, `/about`, `/help`, `/contact`, `/categories`, `/certifications`,
+  `/pathways`, `/instructors`, `/packages`, `/practice`, `/notes-library`, `/business`, `/articles`, `/bestseller-rule`, `/plans`, `/bundles`.
+- Dynamic: live courses; categories with a live course; academies (`IsAcademy` categories with a live course in their tree);
+  publicly visible certifications (visible state, reviewer set, checked within the freshness window); published pathways with a
+  live course; active collections with a live course; articles `free-video-and-paid-study-services`,
+  `how-mcq-certificates-work`, `prepare-for-a-certification-exam`; public instructor profiles (`/instructors/{id}`, same rule as the directory).
+- robots.txt disallows `/me`, `/studio`, `/admin`, `/attempts`, `/learn/`, `/api/`, `/login`, `/register`, `/checkout`, `/gift`,
+  `/orgs`, `/staff`, `/review`, `/practice/session` (covers `/practice/sessions`).

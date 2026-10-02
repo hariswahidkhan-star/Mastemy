@@ -4,6 +4,7 @@ using System.Xml;
 using Mastemy.Api.Data;
 using Mastemy.Api.Infrastructure;
 using Mastemy.Api.Modules.Catalog;
+using Mastemy.Api.Modules.Taxonomy;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,10 +19,17 @@ namespace Mastemy.Api.Modules.Seo;
 /// </summary>
 [ApiController]
 [AllowAnonymous]
-public class SeoController(AppDbContext db, IConfiguration cfg, CourseSnapshotService snapshots) : ControllerBase
+public class SeoController(AppDbContext db, IConfiguration cfg, CourseSnapshotService snapshots, CertificationService certifications,
+    DiscoveryService discovery, InstructorDirectoryService instructors) : ControllerBase
 {
-    public static readonly string[] StaticPaths = ["/", "/courses", "/free-lessons", "/verify", "/teach", "/about", "/help", "/contact"];
-    public static readonly string[] DisallowedPaths = ["/me", "/studio", "/admin", "/attempts", "/learn/", "/api/", "/login", "/register"];
+    public static readonly string[] StaticPaths = ["/", "/courses", "/free-lessons", "/verify", "/teach", "/about", "/help", "/contact",
+        "/categories", "/certifications", "/pathways", "/instructors", "/packages", "/practice", "/notes-library", "/business", "/articles",
+        "/bestseller-rule", "/plans", "/bundles"];
+    public static readonly string[] DisallowedPaths = ["/me", "/studio", "/admin", "/attempts", "/learn/", "/api/", "/login", "/register",
+        "/checkout", "/gift", "/orgs", "/staff", "/review", "/practice/session"];
+
+    /// <summary>Editorial articles shipped with the web app (static content; slugs must match the web routes).</summary>
+    public static readonly string[] ArticleSlugs = ["free-video-and-paid-study-services", "how-mcq-certificates-work", "prepare-for-a-certification-exam"];
 
     private string? BaseUrl
     {
@@ -62,6 +70,27 @@ public class SeoController(AppDbContext db, IConfiguration cfg, CourseSnapshotSe
             .Select(g => (Slug: g.Key, LastMod: g.Max(r => courseLastMod[r.CourseId]))).ToList();
         DateTime? siteLastMod = courses.Count == 0 ? null : courseLastMod.Values.Max();
 
+        // Academies: IsAcademy categories with at least one live course in the category or its descendants.
+        var allCats = await db.Categories.AsNoTracking().Select(c => new { c.Id, c.Slug, c.ParentId, c.IsAcademy }).ToListAsync(ct);
+        var liveCatIds = catLists.Where(x => liveIds.Contains(x.Id))
+            .SelectMany(x => CourseSnapshotService.ParseCategoryIds(x.CategoryIds).Select(id => (Cat: id, Course: x.Id))).ToList();
+        var academies = new List<(string Slug, DateTime? LastMod)>();
+        foreach (var a in allCats.Where(c => c.IsAcademy).OrderBy(c => c.Slug, StringComparer.Ordinal))
+        {
+            var tree = new HashSet<int> { a.Id };
+            for (var grew = true; grew;)
+            {
+                grew = false;
+                foreach (var c in allCats) if (c.ParentId is { } pid && tree.Contains(pid) && tree.Add(c.Id)) grew = true;
+            }
+            var members = liveCatIds.Where(x => tree.Contains(x.Cat)).Select(x => courseLastMod[x.Course]).ToList();
+            if (members.Count > 0) academies.Add((a.Slug, members.Max()));
+        }
+        var certs = await certifications.PublicCertifications().OrderBy(c => c.Slug).Select(c => new { c.Slug, c.LastCheckedAt }).ToListAsync(ct);
+        var pathways = (await discovery.PublicPathways()).Select(p => p.Slug).OrderBy(x => x, StringComparer.Ordinal).ToList();
+        var collections = (await discovery.ActiveCollections(null, null, false)).Select(c => c.Slug).OrderBy(x => x, StringComparer.Ordinal).ToList();
+        var instructorIds = await instructors.PublicInstructorIds().OrderBy(x => x).ToListAsync(ct);
+
         var ms = new MemoryStream();
         using (var w = XmlWriter.Create(ms, new XmlWriterSettings { Indent = true, Encoding = new UTF8Encoding(false) }))
         {
@@ -95,6 +124,12 @@ public class SeoController(AppDbContext db, IConfiguration cfg, CourseSnapshotSe
             foreach (var p in StaticPaths) Entry(p, p is "/" or "/courses" ? siteLastMod : null);
             foreach (var c in categories) Entry("/categories/" + Uri.EscapeDataString(c.Slug), c.LastMod);
             foreach (var c in courses) Entry("/courses/" + Uri.EscapeDataString(c.Slug), courseLastMod[c.Id]);
+            foreach (var a in academies) Entry("/academies/" + Uri.EscapeDataString(a.Slug), a.LastMod);
+            foreach (var c in certs) Entry("/certifications/" + Uri.EscapeDataString(c.Slug), c.LastCheckedAt);
+            foreach (var slug in pathways) Entry("/pathways/" + Uri.EscapeDataString(slug), null);
+            foreach (var slug in collections) Entry("/collections/" + Uri.EscapeDataString(slug), null);
+            foreach (var slug in ArticleSlugs) Entry("/articles/" + slug, null);
+            foreach (var id in instructorIds) Entry("/instructors/" + id.ToString(), null);
             w.WriteEndElement();
             w.WriteEndDocument();
         }

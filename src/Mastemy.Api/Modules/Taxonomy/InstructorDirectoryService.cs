@@ -8,12 +8,12 @@ namespace Mastemy.Api.Modules.Taxonomy;
 
 /// <summary>
 /// Public instructor directory: non-suspended users holding the Instructor role who teach at least one live course.
-/// Exposes only the display name, live courses and aggregate genuine (non-hidden) ratings; profile bio/headline is
-/// intentionally not read here (owned by the account module).
+/// Exposes the display name, live courses and aggregate genuine (non-hidden) ratings, plus the account profile's headline/bio
+/// only when the instructor opted into a public profile (Account_Profiles.PublicInstructorProfile, not deleted).
 /// </summary>
 public class InstructorDirectoryService(AppDbContext db, CatalogQueryService catalog)
 {
-    private IQueryable<Guid> PublicInstructorIds() =>
+    public IQueryable<Guid> PublicInstructorIds() =>
         from u in db.Users.AsNoTracking()
         where !u.IsSuspended && db.UserRoles.Any(r => r.UserId == u.Id && r.Role == Roles.Instructor)
               && db.CourseInstructors.Any(ci => ci.UserId == u.Id && db.Courses.Where(AccessService.IsLiveExpr).Any(c => c.Id == ci.CourseId))
@@ -36,6 +36,13 @@ public class InstructorDirectoryService(AppDbContext db, CatalogQueryService cat
         });
     }
 
+    private async Task<Dictionary<Guid, (string Headline, string Bio)>> PublicProfiles(List<Guid> userIds) =>
+        await db.Set<Mastemy.Api.Modules.Account.AccountProfile>().AsNoTracking()
+            .Where(p => userIds.Contains(p.UserId) && p.PublicInstructorProfile && p.DeletedAt == null)
+            .ToDictionaryAsync(p => p.UserId, p => (p.Headline, p.Bio));
+
+    private static string? NonEmpty(string? s) => string.IsNullOrWhiteSpace(s) ? null : s;
+
     public async Task<PagedResult<InstructorSummaryDto>> List(string? q, int page, int pageSize)
     {
         page = Math.Max(1, page);
@@ -51,10 +58,12 @@ public class InstructorDirectoryService(AppDbContext db, CatalogQueryService cat
         var rows = await users.OrderBy(u => u.DisplayName).ThenBy(u => u.Id).Skip((page - 1) * pageSize).Take(pageSize)
             .Select(u => new { u.Id, u.DisplayName }).ToListAsync();
         var agg = await Aggregates(rows.Select(r => r.Id).ToList());
+        var profiles = await PublicProfiles(rows.Select(r => r.Id).ToList());
         return new PagedResult<InstructorSummaryDto>(rows.Select(r =>
         {
             var a = agg[r.Id];
-            return new InstructorSummaryDto(r.Id, r.DisplayName, a.Courses, a.Avg, a.Count);
+            return new InstructorSummaryDto(r.Id, r.DisplayName, a.Courses, a.Avg, a.Count,
+                profiles.TryGetValue(r.Id, out var p) ? NonEmpty(p.Headline) : null);
         }).ToList(), total, page, pageSize);
     }
 
@@ -66,6 +75,9 @@ public class InstructorDirectoryService(AppDbContext db, CatalogQueryService cat
                                join c in db.Courses.AsNoTracking().Where(AccessService.IsLiveExpr) on ci.CourseId equals c.Id
                                where ci.UserId == id orderby c.PublishedAt descending select c.Id).ToListAsync();
         var a = (await Aggregates([id]))[id];
-        return new InstructorProfileDto(id, name, a.Courses, a.Avg, a.Count, await catalog.Cards(courseIds));
+        var profiles = await PublicProfiles([id]);
+        var has = profiles.TryGetValue(id, out var p);
+        return new InstructorProfileDto(id, name, a.Courses, a.Avg, a.Count, await catalog.Cards(courseIds),
+            has ? NonEmpty(p.Headline) : null, has ? NonEmpty(p.Bio) : null);
     }
 }

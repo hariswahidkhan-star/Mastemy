@@ -8,7 +8,7 @@ namespace Mastemy.Api.Modules.Catalog;
 /// <summary>Course review decisions, review comments, and staff publish/archive.</summary>
 public class ReviewService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit,
     CourseSnapshotService snapshots, Mastemy.Api.Modules.Engagement.INotificationService notifications,
-    Mastemy.Api.Modules.Resources.ResourceBlobJanitor resourceJanitor)
+    Mastemy.Api.Modules.Resources.ResourceBlobJanitor resourceJanitor, Microsoft.Extensions.Caching.Memory.IMemoryCache cache)
 {
     public async Task<List<ReviewQueueItemDto>> Queue(CourseStatus? status)
     {
@@ -145,6 +145,7 @@ public class ReviewService(AppDbContext db, ICurrentUser me, AccessService acces
         {
             throw AppException.Conflict("The course was published concurrently; reload and try again.", "concurrent_publish");
         }
+        CatalogQueryService.InvalidateVocabulary(cache); // new/changed titles feed search suggestions immediately
         // Resource files deleted or replaced since the previous publish are purged once the new snapshot stops serving them.
         await resourceJanitor.AfterPublish(c.Id, previousVersion);
         if (snap.Version > 1)
@@ -164,6 +165,7 @@ public class ReviewService(AppDbContext db, ICurrentUser me, AccessService acces
         CourseStateMachine.Apply(c, CourseAction.Archive, DateTime.UtcNow);
         audit.Record("course.archived", nameof(Course), c.Id, new { from = from.ToString(), to = c.Status.ToString() });
         await db.SaveChangesAsync();
+        CatalogQueryService.InvalidateVocabulary(cache);
         return new CourseStatusDto(c.Id, c.Status, c.ReviewedAt, c.PublishedAt);
     }
 }

@@ -44,6 +44,10 @@ public class DiscoveryController(DiscoveryService discovery, SkillService skills
     public Task<PagedResult<InstructorSummaryDto>> Instructors([FromQuery] string? q, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
         => instructors.List(q, page, pageSize);
     [HttpGet("instructors/{id:guid}")] public Task<InstructorProfileDto> Instructor(Guid id) => instructors.Profile(id);
+
+    [HttpGet("notes-library")]
+    public Task<PagedResult<NotesLibraryItemDto>> NotesLibrary([FromServices] NotesLibraryService notes, [FromQuery] string? q,
+        [FromQuery] int page = 1, [FromQuery] int pageSize = 20) => notes.List(q, page, pageSize);
 }
 
 // ---------- Studio (course authors; checks are per course in the services) ----------
@@ -58,6 +62,9 @@ public class TaxonomyStudioController(SkillService skills, CertificationService 
 
     [HttpGet("courses/{courseId:guid}/certifications/{certId:guid}/coverage")]
     public Task<CoverageReportDto> Coverage(Guid courseId, Guid certId) => certs.CourseCoverage(certId, courseId);
+
+    [HttpGet("courses/{courseId:guid}/certifications/{certId:guid}/mappings")]
+    public Task<CertificationMappingsDto> Mappings(Guid courseId, Guid certId) => certs.Mappings(certId, courseId);
 
     [HttpPut("objectives/{objectiveId:guid}/courses/{courseId:guid}/lessons"), Authorize(Policy = "Instructor")]
     public Task<CoverageReportDto> MapLessons(Guid objectiveId, Guid courseId, MappingRequest req) => certs.MapLessons(objectiveId, courseId, req);
@@ -111,6 +118,12 @@ public class AdminCertificationsController(CertificationService svc) : Controlle
     [HttpGet("certifications/{id:guid}/coverage")]
     public Task<CoverageReportDto> Coverage(Guid id, [FromQuery] Guid? courseId) => svc.Coverage(id, courseId);
 
+    [HttpGet("certifications/{id:guid}/courses")]
+    public Task<List<LinkedCourseDto>> LinkedCourses(Guid id) => svc.LinkedCourses(id);
+
+    [HttpGet("certifications/{id:guid}/mappings")]
+    public Task<CertificationMappingsDto> Mappings(Guid id, [FromQuery] Guid courseId) => svc.Mappings(id, courseId);
+
     [HttpPost("certifications/flag-stale"), Authorize(Policy = "Staff")]
     public async Task<object> FlagStale() => new { flagged = await svc.FlagStale(DateTime.UtcNow) };
 }
@@ -134,7 +147,11 @@ public class AdminDiscoveryController(DiscoveryService discovery, BestsellerServ
     public async Task<IActionResult> DeleteCollection(Guid id) { await discovery.DeleteCollection(id); return NoContent(); }
 
     [HttpGet("bestsellers")]
-    public Task<List<BestsellerStat>> Bestsellers() => db.Set<BestsellerStat>().AsNoTracking().OrderByDescending(b => b.DistinctBuyers).ToListAsync();
+    public Task<List<BestsellerRowDto>> Bestsellers() =>
+        (from b in db.Set<BestsellerStat>().AsNoTracking()
+         join c in db.Courses.AsNoTracking() on b.CourseId equals c.Id
+         orderby b.DistinctBuyers descending, c.Title
+         select new BestsellerRowDto(b.CourseId, c.Title, c.Slug, b.DistinctBuyers, b.NetRevenue, b.Eligible, b.WindowStart, b.ComputedAt)).ToListAsync();
     [HttpPost("bestsellers/recompute")] public Task<BestsellerRunDto> Recompute() => bestsellers.Recompute(DateTime.UtcNow);
 
     [HttpGet("course-ideas")] public Task<List<CourseIdeaDto>> Ideas([FromQuery] CourseIdeaState? state, [FromQuery] string? q) => backlog.List(state, q);

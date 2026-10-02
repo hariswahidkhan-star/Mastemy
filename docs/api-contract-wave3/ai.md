@@ -17,7 +17,7 @@ Exam-mode attempt in the course: tutor, practice generation and practice check a
 | Method | Path | Notes |
 |---|---|---|
 | GET | `/api/ai/status` | `{configured, model, message}`, so the UI can show "not configured". |
-| GET | `/api/ai/usage/me` | `{period, plan (free/premium/instructor), usedTokens, limitTokens, remainingTokens}` |
+| GET | `/api/ai/usage/me` | `{period, plan (free/premium/instructor/subscription:{planCode}), usedTokens, limitTokens, remainingTokens}`. Budget order: instructor/staff tier; then, when the user holds a current `Subscription` entitlement backed by an `Active`/`PastDue` subscription, the plan's `aiAllowance × Ai:TokensPerAllowanceRequest` tokens (largest plan wins; a 0 allowance falls through); then premium (any entitlement); then free. |
 | POST | `/api/ai/tutor/conversations` | `{courseId, title?}`. Live course; caller must be enrolled, entitled, an author or staff. |
 | GET | `/api/ai/tutor/conversations?courseId=` | Only the caller's own conversations. |
 | GET | `/api/ai/tutor/conversations/{id}` | Owner only (404 for everyone else, staff included). Messages with citations. |
@@ -64,7 +64,7 @@ text is wrapped in `<course_material>` / `<source>` delimiters, and any forged d
 `ApiKey` (empty = disabled), `BaseUrl` (default `https://api.anthropic.com`), `Model` (default `claude-opus-5-5`), `Effort` (medium),
 `RefusalFallback` (true), `TimeoutSeconds` (300), `TutorMaxOutputTokens` (4096), `GenerationMaxOutputTokens` (16000),
 `MaxUserMessageChars` (2000), `MaxAssistInputChars` (60000), `HistoryTurns` (6), `RetrievalTopK` (6), `RetrievalMinScore` (0.5),
-`ChunkTokens` (800), `UserMonthlyTokens` (200k), `PremiumUserMonthlyTokens` (600k; applies with any active entitlement), `InstructorMonthlyTokens` (2M),
+`ChunkTokens` (800), `UserMonthlyTokens` (200k), `PremiumUserMonthlyTokens` (600k; applies with any active entitlement), `InstructorMonthlyTokens` (2M), `TokensPerAllowanceRequest` (8000; converts a subscription plan's `aiAllowance` requests into a monthly token budget),
 `OrgMonthlyTokens` (5M), `GlobalMonthlyTokens` (200M), `PerUserPerMinute` (10), `ConversationRetentionDays` (90), `PracticeSetHours` (24),
 `IndexPollSeconds` (30), `BackgroundEnabled` (true), `StemSimilarityThreshold` (0.6), `Pricing:{model}:{InputPerMTok, OutputPerMTok, CacheReadPerMTok, CacheWritePerMTok}`.
 

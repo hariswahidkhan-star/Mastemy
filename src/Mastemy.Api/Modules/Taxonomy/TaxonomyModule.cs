@@ -13,6 +13,7 @@ public static class TaxonomyModule
         s.AddScoped<DiscoveryService>();
         s.AddScoped<BestsellerService>();
         s.AddScoped<InstructorDirectoryService>();
+        s.AddScoped<NotesLibraryService>();
         s.AddScoped<BacklogService>();
         s.AddHostedService<TaxonomyDailyJob>();
     }
