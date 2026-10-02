@@ -280,7 +280,7 @@ public class Wave3AssessmentTests(AssessmentFixture fx) : IClassFixture<Assessme
         var resultA = await Read<AttemptDetail>(await learnerA.GetAsync($"/api/attempts/{va.Id}"));
         Assert.True(resultA.Result!.Regraded);
         Assert.True(resultA.Result.Passed);
-        Assert.True(await fx.WithDb(db => db.Notifications.AnyAsync(n => n.UserId == bId && n.Kind == "course_updated" && n.Title.Contains("re-scored"))));
+        Assert.True(await fx.WithDb(db => db.Notifications.AnyAsync(n => n.UserId == bId && n.Kind == "regrade" && n.Title.Contains("re-scored"))));
         Assert.True(await fx.WithDb(db => db.AuditLogs.AnyAsync(x => x.Action == "regrade.applied" && x.EntityId == proposal.Id.ToString())));
 
         // Staff decide on the flag: revoke. The learner appeals; another staff member reinstates.
@@ -523,7 +523,7 @@ public class Wave3AssessmentTests(AssessmentFixture fx) : IClassFixture<Assessme
             JsonBody(new { resolution = "Retire", note = "Ambiguous; retired." })));
         Assert.Equal(ChallengeStatus.Resolved, resolved.Status);
         Assert.Equal(QuestionState.Retired, (await fx.WithDb(db => db.Questions.SingleAsync(x => x.Id == q.Id))).State);
-        Assert.True(await fx.WithDb(db => db.Notifications.AnyAsync(n => n.UserId == learnerId && n.Kind == "course_updated" && n.Title.Contains("challenge"))));
+        Assert.True(await fx.WithDb(db => db.Notifications.AnyAsync(n => n.UserId == learnerId && n.Kind == "question_challenge" && n.Title.Contains("challenge"))));
         var mine = await Read<List<MyChallengeDto>>(await learner.GetAsync("/api/me/question-challenges"));
         Assert.Equal(ChallengeResolution.Retire, mine.Single(c => c.Id == ch.Id).Resolution);
         Assert.Equal(HttpStatusCode.Conflict, (await reviewer.PostAsync($"/api/review/question-challenges/{ch.Id}/resolve",
