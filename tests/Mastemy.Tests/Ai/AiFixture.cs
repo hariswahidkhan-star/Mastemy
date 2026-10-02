@@ -91,6 +91,7 @@ public class AiFixture : IAsyncLifetime
         {
             b.UseSetting("ConnectionStrings:Default", ConnectionString);
             b.UseSetting("Jwt:Key", "test-signing-key-0123456789-abcdefghijklmnop");
+            b.UseSetting("Security:RequireMfaForPrivileged", "false");
             b.UseSetting("Database:MigrateOnStartup", "false");
             b.UseSetting("Resources:RootPath", RootPath);
             b.UseSetting("Ai:ApiKey", ApiKey);
