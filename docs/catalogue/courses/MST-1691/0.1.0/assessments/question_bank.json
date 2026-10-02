@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1691",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1691-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does defence in depth aim to achieve?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Multiple independent layers so one failure does not cause a breach",
+     "correct": true,
+     "rationale": "Correct: layered controls provide redundancy if one fails."
+    },
+    {
+     "key": "B",
+     "text": "A single strong perimeter that needs nothing else",
+     "correct": false,
+     "rationale": "A single layer is exactly what defence in depth avoids."
+    },
+    {
+     "key": "C",
+     "text": "Removing all internal controls once the firewall is set",
+     "correct": false,
+     "rationale": "Internal controls remain essential."
+    },
+    {
+     "key": "D",
+     "text": "Encrypting data only, with no other control",
+     "correct": false,
+     "rationale": "Defence in depth spans many control types."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: layered controls provide redundancy if one fails.",
+   "outcome_refs": [
+    "MST-1691-D02.01"
+   ],
+   "domain_ref": "Defence in depth",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1691-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements reflect zero-trust principles? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify every request regardless of network location",
+     "correct": true,
+     "rationale": "Correct: zero trust does not grant implicit trust by location."
+    },
+    {
+     "key": "B",
+     "text": "Grant the least privilege needed for each task",
+     "correct": true,
+     "rationale": "Correct: least privilege limits blast radius."
+    },
+    {
+     "key": "C",
+     "text": "Trust any device once it is inside the perimeter",
+     "correct": false,
+     "rationale": "Implicit perimeter trust is what zero trust rejects."
+    },
+    {
+     "key": "D",
+     "text": "Give all users administrator rights for speed",
+     "correct": false,
+     "rationale": "Broad admin rights violate least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B.",
+   "outcome_refs": [
+    "MST-1691-D04.01"
+   ],
+   "domain_ref": "Zero trust and least privilege",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1691-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why segment a flat network into trust zones?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To contain an intruder and limit lateral movement",
+     "correct": true,
+     "rationale": "Correct: segmentation stops a compromise spreading freely."
+    },
+    {
+     "key": "B",
+     "text": "To make every host reachable from every other host",
+     "correct": false,
+     "rationale": "That is the flat design segmentation replaces."
+    },
+    {
+     "key": "C",
+     "text": "To remove the need for authentication",
+     "correct": false,
+     "rationale": "Segmentation complements, not replaces, authentication."
+    },
+    {
+     "key": "D",
+     "text": "To increase east-west traffic without inspection",
+     "correct": false,
+     "rationale": "Segmentation adds inspection at boundaries."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: segmentation stops a compromise spreading freely.",
+   "outcome_refs": [
+    "MST-1691-D03.01"
+   ],
+   "domain_ref": "Segmentation and trust boundaries",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

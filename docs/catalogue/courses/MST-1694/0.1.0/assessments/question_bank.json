@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1694",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1694-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why are default configurations a security risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Defaults favour easy setup and are widely known to attackers",
+     "correct": true,
+     "rationale": "Correct: well-known defaults (accounts, ports, settings) are easy targets."
+    },
+    {
+     "key": "B",
+     "text": "Defaults are encrypted and cannot be read",
+     "correct": false,
+     "rationale": "Defaults are published and well known, not hidden."
+    },
+    {
+     "key": "C",
+     "text": "Defaults disable all services automatically",
+     "correct": false,
+     "rationale": "Defaults usually enable many services."
+    },
+    {
+     "key": "D",
+     "text": "Defaults always meet every compliance standard",
+     "correct": false,
+     "rationale": "Defaults rarely meet hardening standards."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: well-known defaults (accounts, ports, settings) are easy targets.",
+   "outcome_refs": [
+    "MST-1694-D01.01"
+   ],
+   "domain_ref": "Secure configuration foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1694-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions reduce a system's attack surface? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Disable services and ports the system does not need",
+     "correct": true,
+     "rationale": "Correct: fewer running services means fewer entry points."
+    },
+    {
+     "key": "B",
+     "text": "Remove or disable default and unused accounts",
+     "correct": true,
+     "rationale": "Correct: default accounts are common attack targets."
+    },
+    {
+     "key": "C",
+     "text": "Enable every optional feature by default",
+     "correct": false,
+     "rationale": "More features means more attack surface."
+    },
+    {
+     "key": "D",
+     "text": "Keep sample accounts active for convenience",
+     "correct": false,
+     "rationale": "Sample accounts are a known weakness."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B.",
+   "outcome_refs": [
+    "MST-1694-D03.01"
+   ],
+   "domain_ref": "Attack surface reduction",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1694-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is configuration drift and why does it matter?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Gradual divergence from the baseline that reopens vulnerabilities over time",
+     "correct": true,
+     "rationale": "Correct: unmanaged changes erode the hardened state."
+    },
+    {
+     "key": "B",
+     "text": "A one-time setting that never changes",
+     "correct": false,
+     "rationale": "Drift is change over time, not a fixed setting."
+    },
+    {
+     "key": "C",
+     "text": "A type of network cable fault",
+     "correct": false,
+     "rationale": "Drift here refers to configuration, not cabling."
+    },
+    {
+     "key": "D",
+     "text": "An encryption algorithm for backups",
+     "correct": false,
+     "rationale": "Drift is not an encryption method."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unmanaged changes erode the hardened state.",
+   "outcome_refs": [
+    "MST-1694-D05.01"
+   ],
+   "domain_ref": "Maintaining a hardened state",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

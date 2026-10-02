@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1693",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1693-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must at least one backup copy be offline or immutable to defend against ransomware?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So attackers who reach the live systems cannot also delete or encrypt the backups",
+     "correct": true,
+     "rationale": "Correct: offline/immutable copies survive an attack that destroys online backups."
+    },
+    {
+     "key": "B",
+     "text": "Because offline backups restore faster than any other",
+     "correct": false,
+     "rationale": "Resilience, not speed, is the reason."
+    },
+    {
+     "key": "C",
+     "text": "Because immutable backups need no testing",
+     "correct": false,
+     "rationale": "Backups must still be tested."
+    },
+    {
+     "key": "D",
+     "text": "Because online backups cannot be reached by ransomware",
+     "correct": false,
+     "rationale": "Online, writable backups can be encrypted or deleted."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: offline/immutable copies survive an attack that destroys online backups.",
+   "outcome_refs": [
+    "MST-1693-D04.01"
+   ],
+   "domain_ref": "Resilient backups",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1693-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls help limit how far ransomware spreads once inside a network? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Network segmentation between zones",
+     "correct": true,
+     "rationale": "Correct: segmentation contains lateral movement."
+    },
+    {
+     "key": "B",
+     "text": "Least-privilege access for users and admins",
+     "correct": true,
+     "rationale": "Correct: limited privileges reduce what malware can reach."
+    },
+    {
+     "key": "C",
+     "text": "Giving every user local administrator rights",
+     "correct": false,
+     "rationale": "Broad admin rights help ransomware spread."
+    },
+    {
+     "key": "D",
+     "text": "Disabling all logging during an incident",
+     "correct": false,
+     "rationale": "Disabling logging blinds responders and aids the attacker."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B.",
+   "outcome_refs": [
+    "MST-1693-D02.02"
+   ],
+   "domain_ref": "Prevention",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1693-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is paying a ransom an unreliable recovery strategy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Payment does not guarantee working decryption or that data was not copied",
+     "correct": true,
+     "rationale": "Correct: decryption may fail and data may already be stolen."
+    },
+    {
+     "key": "B",
+     "text": "Payment always restores all data perfectly",
+     "correct": false,
+     "rationale": "Recovery after payment is frequently incomplete."
+    },
+    {
+     "key": "C",
+     "text": "Paying removes the attacker from the network",
+     "correct": false,
+     "rationale": "Payment does not evict the attacker or close the entry point."
+    },
+    {
+     "key": "D",
+     "text": "Paying prevents any future attack",
+     "correct": false,
+     "rationale": "Paying can mark an organisation as a willing target."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: decryption may fail and data may already be stolen.",
+   "outcome_refs": [
+    "MST-1693-D05.02"
+   ],
+   "domain_ref": "Incident response and recovery",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

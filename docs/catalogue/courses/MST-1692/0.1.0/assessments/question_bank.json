@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1692",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1692-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main advantage of just-in-time privileged access over standing admin rights?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Privileges exist only when needed, shrinking the window of exposure",
+     "correct": true,
+     "rationale": "Correct: time-bound access reduces the attack window."
+    },
+    {
+     "key": "B",
+     "text": "It removes the need to authenticate administrators",
+     "correct": false,
+     "rationale": "Authentication is still required."
+    },
+    {
+     "key": "C",
+     "text": "It makes all accounts permanent administrators",
+     "correct": false,
+     "rationale": "That is the opposite of JIT."
+    },
+    {
+     "key": "D",
+     "text": "It eliminates the need for any auditing",
+     "correct": false,
+     "rationale": "Auditing remains essential under JIT."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: time-bound access reduces the attack window.",
+   "outcome_refs": [
+    "MST-1692-D02.02"
+   ],
+   "domain_ref": "Least privilege and just-in-time",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1692-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices strengthen privileged credential management? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Vault privileged passwords and rotate them automatically",
+     "correct": true,
+     "rationale": "Correct: vaulting plus rotation limits reuse and exposure."
+    },
+    {
+     "key": "B",
+     "text": "Retrieve secrets from a vault instead of hard-coding them",
+     "correct": true,
+     "rationale": "Correct: removing hard-coded secrets reduces leakage risk."
+    },
+    {
+     "key": "C",
+     "text": "Share one admin password across the whole team",
+     "correct": false,
+     "rationale": "Shared passwords destroy accountability and are easily leaked."
+    },
+    {
+     "key": "D",
+     "text": "Store credentials in a plaintext spreadsheet",
+     "correct": false,
+     "rationale": "Plaintext storage is a major exposure."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B.",
+   "outcome_refs": [
+    "MST-1692-D03.01"
+   ],
+   "domain_ref": "Credential vaulting and secrets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1692-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why record privileged sessions even for trusted staff?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To provide accountability and evidence of who did what",
+     "correct": true,
+     "rationale": "Correct: recording supports audit, investigation and deterrence."
+    },
+    {
+     "key": "B",
+     "text": "Because trusted staff never make mistakes",
+     "correct": false,
+     "rationale": "Trusted staff still err; recording helps investigate."
+    },
+    {
+     "key": "C",
+     "text": "To slow down administrators deliberately",
+     "correct": false,
+     "rationale": "The goal is accountability, not slowing work."
+    },
+    {
+     "key": "D",
+     "text": "Because recording replaces access controls",
+     "correct": false,
+     "rationale": "Recording complements, not replaces, access controls."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: recording supports audit, investigation and deterrence.",
+   "outcome_refs": [
+    "MST-1692-D04.01"
+   ],
+   "domain_ref": "Session management and monitoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

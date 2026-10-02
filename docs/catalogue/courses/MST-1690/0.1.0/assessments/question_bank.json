@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1690",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1690-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a private database subnet not have a route to an internet gateway?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It exposes the database directly to the internet, widening the attack surface",
+     "correct": true,
+     "rationale": "Correct: private tiers should not be directly internet-reachable."
+    },
+    {
+     "key": "B",
+     "text": "Internet gateways slow down databases",
+     "correct": false,
+     "rationale": "The concern is exposure, not speed."
+    },
+    {
+     "key": "C",
+     "text": "Databases cannot use IP addresses",
+     "correct": false,
+     "rationale": "Databases use IP addressing like any host."
+    },
+    {
+     "key": "D",
+     "text": "It would disable the security groups",
+     "correct": false,
+     "rationale": "A route does not disable security groups."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: private tiers should not be directly internet-reachable.",
+   "outcome_refs": [
+    "MST-1690-D03.02"
+   ],
+   "domain_ref": "Routing and gateways",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1690-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices when planning cloud IP addressing? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Choose CIDR ranges that do not overlap on-premises networks",
+     "correct": true,
+     "rationale": "Correct: overlaps break routing to on-premises."
+    },
+    {
+     "key": "B",
+     "text": "Leave room to add subnets as the environment grows",
+     "correct": true,
+     "rationale": "Correct: planning headroom avoids re-addressing later."
+    },
+    {
+     "key": "C",
+     "text": "Reuse the same CIDR in every network for simplicity",
+     "correct": false,
+     "rationale": "Identical ranges collide when networks connect."
+    },
+    {
+     "key": "D",
+     "text": "Assign one giant subnet with no segmentation",
+     "correct": false,
+     "rationale": "Flat networks remove isolation between tiers."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B.",
+   "outcome_refs": [
+    "MST-1690-D02.02"
+   ],
+   "domain_ref": "Virtual networks and addressing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1690-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A private subnet's instances need to download patches but must not accept inbound internet traffic. What fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A NAT gateway for outbound-only internet access",
+     "correct": true,
+     "rationale": "Correct: NAT allows outbound connections without inbound exposure."
+    },
+    {
+     "key": "B",
+     "text": "An internet gateway with a public IP on each instance",
+     "correct": false,
+     "rationale": "That exposes instances to inbound traffic."
+    },
+    {
+     "key": "C",
+     "text": "No gateway at all",
+     "correct": false,
+     "rationale": "With no route the patches cannot be fetched."
+    },
+    {
+     "key": "D",
+     "text": "A VPN only to another cloud",
+     "correct": false,
+     "rationale": "A VPN to another cloud does not reach public patch servers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: NAT allows outbound connections without inbound exposure.",
+   "outcome_refs": [
+    "MST-1690-D03.02"
+   ],
+   "domain_ref": "Routing and gateways",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1687",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1687-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A host has IP 169.254.10.5. What does this most likely indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The host failed to obtain an address from DHCP",
+     "correct": true,
+     "rationale": "Correct: 169.254.x.x is an APIPA self-assigned address, meaning no DHCP reply."
+    },
+    {
+     "key": "B",
+     "text": "The host has a working static public address",
+     "correct": false,
+     "rationale": "169.254.x.x is a link-local range, not a public address."
+    },
+    {
+     "key": "C",
+     "text": "DNS resolution has failed",
+     "correct": false,
+     "rationale": "This is an addressing symptom, not DNS."
+    },
+    {
+     "key": "D",
+     "text": "The default gateway is correctly set",
+     "correct": false,
+     "rationale": "An APIPA address usually has no usable gateway."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 169.254.x.x is an APIPA self-assigned address, meaning no DHCP reply.",
+   "outcome_refs": [
+    "MST-1687-D04.01"
+   ],
+   "domain_ref": "DNS, DHCP and name resolution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1687-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps belong early in a structured troubleshooting methodology? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Define the problem clearly",
+     "correct": true,
+     "rationale": "Correct: a clear problem statement guides every later step."
+    },
+    {
+     "key": "B",
+     "text": "Gather information about scope and recent changes",
+     "correct": true,
+     "rationale": "Correct: scope and recent changes narrow the cause."
+    },
+    {
+     "key": "C",
+     "text": "Replace hardware before testing",
+     "correct": false,
+     "rationale": "Swapping hardware first wastes effort and hides the cause."
+    },
+    {
+     "key": "D",
+     "text": "Close the ticket before verifying",
+     "correct": false,
+     "rationale": "Closing early skips verification entirely."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B.",
+   "outcome_refs": [
+    "MST-1687-D01.02"
+   ],
+   "domain_ref": "Troubleshooting methodology",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1687-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user can ping the default gateway but cannot load any website. Where should you look first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Name resolution and the path beyond the gateway",
+     "correct": true,
+     "rationale": "Correct: local link works, so investigate DNS and upstream routing."
+    },
+    {
+     "key": "B",
+     "text": "The network cable to the user's PC",
+     "correct": false,
+     "rationale": "Reaching the gateway shows the local link is up."
+    },
+    {
+     "key": "C",
+     "text": "The user's monitor",
+     "correct": false,
+     "rationale": "The display is unrelated to connectivity."
+    },
+    {
+     "key": "D",
+     "text": "The switch port LED colour",
+     "correct": false,
+     "rationale": "Gateway reachability already confirms Layer 1-2 locally."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: local link works, so investigate DNS and upstream routing.",
+   "outcome_refs": [
+    "MST-1687-D03.02"
+   ],
+   "domain_ref": "DNS, DHCP and name resolution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}
