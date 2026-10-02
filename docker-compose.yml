@@ -14,6 +14,8 @@ services:
     env_file: .env
     environment:
       Seo__PublicBaseUrl: ${PUBLIC_BASE_URL:?set PUBLIC_BASE_URL in .env}
+      # nginx (web container) terminates TLS; trust its forwarded headers only from the compose network.
+      Network__TrustedProxies__0: ${NETWORK_TRUSTED_PROXY_CIDR:-172.16.0.0/12}
       ConnectionStrings__Default: "Server=db;Port=3306;Database=mastemy;User=mastemy;Password=${MYSQL_PASSWORD};"
     depends_on: { db: { condition: service_healthy } }
     volumes: [appdata:/app/data]
