@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1210",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1210-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "AI summarises an alert as benign. What should the analyst do before closing it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the summary against the underlying logs and evidence",
+     "correct": true,
+     "rationale": "Correct: AI triage summaries must be confirmed against raw evidence before closure."
+    },
+    {
+     "key": "B",
+     "text": "Close the alert immediately to reduce the queue",
+     "correct": false,
+     "rationale": "Closing on an unverified summary can miss a real incident."
+    },
+    {
+     "key": "C",
+     "text": "Escalate every benign alert to management",
+     "correct": false,
+     "rationale": "Blanket escalation defeats the purpose of triage."
+    },
+    {
+     "key": "D",
+     "text": "Delete the logs to save storage",
+     "correct": false,
+     "rationale": "Deleting evidence undermines investigation and custody."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI triage summaries must be confirmed against raw evidence before closure.",
+   "outcome_refs": [
+    "MST-1210-D02.01"
+   ],
+   "domain_ref": "Triage and investigation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1210-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO risks are specific to using AI on attacker-influenced content in a SOC? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Prompt injection hidden in ingested text manipulating the AI",
+     "correct": true,
+     "rationale": "Correct: adversaries can embed instructions that subvert AI output."
+    },
+    {
+     "key": "B",
+     "text": "Sensitive incident data leaking into an uncontrolled tool",
+     "correct": true,
+     "rationale": "Correct: entering incident data into uncontrolled tools risks exposure."
+    },
+    {
+     "key": "C",
+     "text": "Faster log summarisation for the analyst",
+     "correct": false,
+     "rationale": "Faster summarisation is a benefit, not a risk."
+    },
+    {
+     "key": "D",
+     "text": "Having a searchable case history",
+     "correct": false,
+     "rationale": "Searchable history is a benefit, not a risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: adversaries can embed instructions that subvert AI output.",
+   "outcome_refs": [
+    "MST-1210-D04.01"
+   ],
+   "domain_ref": "Adversarial and data risk",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1210-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should containment actions not be fully automated from AI output alone?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A wrong automated block can disrupt the business, so a human must confirm consequential actions",
+     "correct": true,
+     "rationale": "Correct: consequential containment needs human judgement to avoid false-positive harm."
+    },
+    {
+     "key": "B",
+     "text": "AI can never help with containment",
+     "correct": false,
+     "rationale": "AI can assist; the point is human confirmation of consequential actions."
+    },
+    {
+     "key": "C",
+     "text": "Automation is always faster and therefore always correct",
+     "correct": false,
+     "rationale": "Speed does not guarantee correctness."
+    },
+    {
+     "key": "D",
+     "text": "Containment decisions have no business impact",
+     "correct": false,
+     "rationale": "Containment can have significant business impact."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: consequential containment needs human judgement to avoid false-positive harm.",
+   "outcome_refs": [
+    "MST-1210-D05.01"
+   ],
+   "domain_ref": "Decisions and auditability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1152",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1152-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What best distinguishes a Revit wall from a wall drawn in 2D CAD?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Revit wall is a data-rich object that reports type, height and area and updates views automatically",
+     "correct": true,
+     "rationale": "Correct: Revit elements carry information and propagate changes, unlike CAD lines."
+    },
+    {
+     "key": "B",
+     "text": "The Revit wall is simply two parallel lines",
+     "correct": false,
+     "rationale": "That describes a CAD representation, not a BIM object."
+    },
+    {
+     "key": "C",
+     "text": "A Revit wall cannot be scheduled",
+     "correct": false,
+     "rationale": "Revit walls can be scheduled because they carry data."
+    },
+    {
+     "key": "D",
+     "text": "CAD walls update plans and sections automatically",
+     "correct": false,
+     "rationale": "CAD lines do not propagate changes across views."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Revit elements carry information and propagate changes, unlike CAD lines.",
+   "outcome_refs": [
+    "MST-1152-D01.01"
+   ],
+   "domain_ref": "BIM and the Revit model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1152-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "You change a parameter on a door and every door of that kind in the model updates. Which TWO statements are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "You edited a type parameter",
+     "correct": true,
+     "rationale": "Correct: type parameters affect all instances of that type."
+    },
+    {
+     "key": "B",
+     "text": "Instance parameters would have changed only the selected door",
+     "correct": true,
+     "rationale": "Correct: instance parameters are local to the one element."
+    },
+    {
+     "key": "C",
+     "text": "You edited an instance parameter",
+     "correct": false,
+     "rationale": "An instance parameter would not have updated every door."
+    },
+    {
+     "key": "D",
+     "text": "Type and instance parameters behave identically",
+     "correct": false,
+     "rationale": "They differ precisely in scope of effect."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: type parameters affect all instances of that type.",
+   "outcome_refs": [
+    "MST-1152-D03.02"
+   ],
+   "domain_ref": "Families, types and parameters",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1152-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An element is present in a 3D view but missing from a floor plan. What should you check first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The view range of the plan view",
+     "correct": true,
+     "rationale": "Correct: view range commonly hides elements above or below the cut plane."
+    },
+    {
+     "key": "B",
+     "text": "Whether the element was deleted from the model",
+     "correct": false,
+     "rationale": "It appears in 3D, so it has not been deleted."
+    },
+    {
+     "key": "C",
+     "text": "The project's units setting",
+     "correct": false,
+     "rationale": "Units do not control element visibility in a view."
+    },
+    {
+     "key": "D",
+     "text": "The title block on the sheet",
+     "correct": false,
+     "rationale": "Title blocks do not affect what shows in a plan view."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: view range commonly hides elements above or below the cut plane.",
+   "outcome_refs": [
+    "MST-1152-D04.01"
+   ],
+   "domain_ref": "Views and coordination",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

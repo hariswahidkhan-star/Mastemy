@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1144",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1144-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A task in Microsoft Project does not move when you link a predecessor that finishes later. What is the most likely reason?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The task is set to manually scheduled",
+     "correct": true,
+     "rationale": "Correct: manually scheduled tasks ignore dependency-driven date changes until switched to automatic."
+    },
+    {
+     "key": "B",
+     "text": "Microsoft Project does not support task links",
+     "correct": false,
+     "rationale": "Project fully supports dependency links."
+    },
+    {
+     "key": "C",
+     "text": "The predecessor has no resources assigned",
+     "correct": false,
+     "rationale": "Resource assignment does not control whether links move dates."
+    },
+    {
+     "key": "D",
+     "text": "The project has no baseline",
+     "correct": false,
+     "rationale": "A baseline records a reference; it does not affect link-driven scheduling."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: manually scheduled tasks ignore dependency-driven date changes until switched to automatic.",
+   "outcome_refs": [
+    "MST-1144-D01.02"
+   ],
+   "domain_ref": "Tasks and outlining",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1144-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "You change a task's assignment units from 100% to 50% and want to understand the effect. Which TWO statements are correct for a fixed-units, effort-driven task? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Duration can lengthen because the same work is done at a lower rate",
+     "correct": true,
+     "rationale": "Correct: with fixed units and fixed work, reducing the rate extends duration."
+    },
+    {
+     "key": "B",
+     "text": "Work stays the same unless you change it",
+     "correct": true,
+     "rationale": "Correct: the amount of work is held; only how it spreads over time changes."
+    },
+    {
+     "key": "C",
+     "text": "Duration is unaffected by assignment units",
+     "correct": false,
+     "rationale": "Units directly influence duration for effort-driven, fixed-units tasks."
+    },
+    {
+     "key": "D",
+     "text": "Work automatically halves when units halve",
+     "correct": false,
+     "rationale": "Work is not reduced by changing units; it is the planned effort."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: with fixed units and fixed work, reducing the rate extends duration.",
+   "outcome_refs": [
+    "MST-1144-D03.02"
+   ],
+   "domain_ref": "Resources and assignments",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1144-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "At the halfway status date a task shows positive finish variance. What does this indicate against the baseline?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The task is forecast to finish later than the baseline planned",
+     "correct": true,
+     "rationale": "Correct: positive finish variance means the current finish is later than baseline."
+    },
+    {
+     "key": "B",
+     "text": "The task finished earlier than planned",
+     "correct": false,
+     "rationale": "An earlier finish would show negative variance."
+    },
+    {
+     "key": "C",
+     "text": "The baseline has been deleted",
+     "correct": false,
+     "rationale": "Variance requires a baseline to exist, so it has not been deleted."
+    },
+    {
+     "key": "D",
+     "text": "The task has no resources",
+     "correct": false,
+     "rationale": "Variance reflects dates, not resource assignment."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: positive finish variance means the current finish is later than baseline.",
+   "outcome_refs": [
+    "MST-1144-D04.02"
+   ],
+   "domain_ref": "Baselines and tracking",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1164",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1164-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Demand variability doubles while the target service level and lead time stay the same. What happens to required safety stock?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It increases, because safety stock scales with demand variability",
+     "correct": true,
+     "rationale": "Correct: higher demand standard deviation requires more safety stock for the same service level."
+    },
+    {
+     "key": "B",
+     "text": "It falls, because variability reduces the need for buffer",
+     "correct": false,
+     "rationale": "Greater variability increases, not reduces, the buffer needed."
+    },
+    {
+     "key": "C",
+     "text": "It stays the same, because only lead time matters",
+     "correct": false,
+     "rationale": "Both demand variability and lead time drive safety stock."
+    },
+    {
+     "key": "D",
+     "text": "It drops to zero",
+     "correct": false,
+     "rationale": "Zero safety stock would collapse the service level under variability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: higher demand standard deviation requires more safety stock for the same service level.",
+   "outcome_refs": [
+    "MST-1164-D03.01"
+   ],
+   "domain_ref": "Safety stock and reorder points",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1164-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "You are segmenting a range with ABC and XYZ. Which TWO statements correctly describe the axes? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "ABC ranks items by value or spend contribution",
+     "correct": true,
+     "rationale": "Correct: ABC is a value/Pareto classification."
+    },
+    {
+     "key": "B",
+     "text": "XYZ classifies items by demand variability or predictability",
+     "correct": true,
+     "rationale": "Correct: XYZ captures how steady or erratic demand is."
+    },
+    {
+     "key": "C",
+     "text": "ABC ranks items by demand variability",
+     "correct": false,
+     "rationale": "Variability is the XYZ axis, not ABC."
+    },
+    {
+     "key": "D",
+     "text": "XYZ ranks items by unit price only",
+     "correct": false,
+     "rationale": "XYZ is about variability, not price."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: ABC is a value/Pareto classification.",
+   "outcome_refs": [
+    "MST-1164-D04.02"
+   ],
+   "domain_ref": "Inventory policies and segmentation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1164-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An item has very high inventory turns but also frequent stockouts. What is the most likely diagnosis?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Safety stock or reorder point is set too low for the demand variability",
+     "correct": true,
+     "rationale": "Correct: high turns with stockouts points to under-buffering, not healthy flow."
+    },
+    {
+     "key": "B",
+     "text": "The item is overstocked",
+     "correct": false,
+     "rationale": "Overstock would show low turns, not stockouts."
+    },
+    {
+     "key": "C",
+     "text": "Turns and stockouts are unrelated and need no action",
+     "correct": false,
+     "rationale": "The pattern is a clear signal to revisit the policy."
+    },
+    {
+     "key": "D",
+     "text": "The forecast is perfect",
+     "correct": false,
+     "rationale": "Recurring stockouts indicate the policy or forecast needs work."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: high turns with stockouts points to under-buffering, not healthy flow.",
+   "outcome_refs": [
+    "MST-1164-D05.02"
+   ],
+   "domain_ref": "Inventory performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

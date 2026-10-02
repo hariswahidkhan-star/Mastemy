@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1143",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1143-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An activity shows total float of zero but is not on the longest path reported by P6. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A constraint or calendar is driving the activity, not network logic",
+     "correct": true,
+     "rationale": "Correct: constraints and calendars can produce zero float independently of the longest logic path."
+    },
+    {
+     "key": "B",
+     "text": "P6 cannot show float for constrained activities",
+     "correct": false,
+     "rationale": "P6 does compute float for constrained activities; the value is simply affected by the constraint."
+    },
+    {
+     "key": "C",
+     "text": "The activity has no predecessors",
+     "correct": false,
+     "rationale": "Missing predecessors affects float but would not by itself force it to zero off the critical path."
+    },
+    {
+     "key": "D",
+     "text": "Total float is always zero for every activity",
+     "correct": false,
+     "rationale": "Total float varies across the network; it is not universally zero."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: constraints and calendars can produce zero float independently of the longest logic path.",
+   "outcome_refs": [
+    "MST-1143-D02.02"
+   ],
+   "domain_ref": "Resource and cost control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1143-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "During a progress update you want a reliable earned-value picture. Which TWO actions are required? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Advance the data date to the status date before reading SPI/CPI",
+     "correct": true,
+     "rationale": "Correct: earned-value indices are meaningless unless the data date reflects the as-of point."
+    },
+    {
+     "key": "B",
+     "text": "Record actual progress against the current baseline",
+     "correct": true,
+     "rationale": "Correct: EV compares actual progress to the baseline, so a baseline must be assigned and progress recorded."
+    },
+    {
+     "key": "C",
+     "text": "Delete the baseline before updating",
+     "correct": false,
+     "rationale": "Deleting the baseline removes the reference EV is measured against."
+    },
+    {
+     "key": "D",
+     "text": "Set every remaining activity to 100% complete",
+     "correct": false,
+     "rationale": "Marking unfinished work complete falsifies the status and the indices."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: earned-value indices are meaningless unless the data date reflects the as-of point.",
+   "outcome_refs": [
+    "MST-1143-D03.02"
+   ],
+   "domain_ref": "Baselines and progress tracking",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1143-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A project board wants a one-page view of what is at risk in the next month. Which P6 output best fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A filtered layout of near-critical activities in the next 30 days, grouped by responsibility",
+     "correct": true,
+     "rationale": "Correct: a filtered, grouped layout targets the board's decision horizon."
+    },
+    {
+     "key": "B",
+     "text": "The full activity table exported to a spreadsheet",
+     "correct": false,
+     "rationale": "The full table buries the signal the board needs in detail."
+    },
+    {
+     "key": "C",
+     "text": "A resource histogram for the whole project",
+     "correct": false,
+     "rationale": "A whole-project histogram does not isolate the next month's risk."
+    },
+    {
+     "key": "D",
+     "text": "The raw baseline with no progress applied",
+     "correct": false,
+     "rationale": "A baseline without progress shows the plan, not current risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a filtered, grouped layout targets the board's decision horizon.",
+   "outcome_refs": [
+    "MST-1143-D05.02"
+   ],
+   "domain_ref": "Reporting and communication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
