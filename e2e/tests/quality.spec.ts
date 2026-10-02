@@ -66,13 +66,51 @@ async function noHorizontalScroll(page: Page) {
   }));
 }
 
+/**
+ * Resolves once layout has stopped moving: scroll position, the docked consent banner (position, yield state) and its
+ * reserved height (--consent-h, updated by a ResizeObserver) are unchanged for three consecutive animation frames.
+ * Measuring focus while a late banner, a font swap or a focus-triggered scroll is still being applied made the audit
+ * flaky; waiting for a settled frame keeps the assertion exactly as strict.
+ */
+async function settle(page: Page) {
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) => {
+        let last = '';
+        let stable = 0;
+        const deadline = performance.now() + 3000;
+        const tick = () => {
+          const b = document.querySelector('.ws-consent');
+          const r = b?.getBoundingClientRect();
+          const key = [
+            scrollX,
+            scrollY,
+            document.documentElement.style.getPropertyValue('--consent-h'),
+            r ? `${r.top}:${r.height}:${b!.className}` : '-',
+            document.activeElement?.getBoundingClientRect().top ?? '-',
+          ].join('|');
+          stable = key === last ? stable + 1 : 0;
+          last = key;
+          if (stable >= 3 || performance.now() > deadline) resolve();
+          else requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }),
+  );
+}
+
 /** Tabs through the page; returns problems with focus visibility (2.4.7) and obscured focus (2.4.11). */
 async function focusAudit(page: Page, stops = 30): Promise<string[]> {
   const problems: string[] = [];
+  // Start from a settled page: web fonts applied, late requests (consent state for signed-in users) answered.
+  await page.waitForLoadState('networkidle');
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
+  await settle(page);
   await page.locator('body').focus();
   const seen = new Set<string>();
   for (let i = 0; i < stops; i++) {
     await page.keyboard.press('Tab');
+    await settle(page);
     const r = await page.evaluate(() => {
       const el = document.activeElement as HTMLElement | null;
       // Focus inside a third-party frame (the YouTube player) is drawn by that frame's own document.
