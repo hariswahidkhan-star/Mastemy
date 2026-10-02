@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1569",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 400,
+  "lesson_check_items": 80,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1569-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is making application servers stateless important for horizontal scaling?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Any request can be served by any instance, so you can add instances behind a load balancer freely",
+     "correct": true,
+     "rationale": "Correct: statelessness removes server affinity that blocks scale-out."
+    },
+    {
+     "key": "B",
+     "text": "It eliminates the need for a database",
+     "correct": false,
+     "rationale": "State moves to shared stores, not disappears."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees strong consistency",
+     "correct": false,
+     "rationale": "Statelessness is unrelated to consistency guarantees."
+    },
+    {
+     "key": "D",
+     "text": "It removes all latency",
+     "correct": false,
+     "rationale": "It does not remove latency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: statelessness removes server affinity that blocks scale-out.",
+   "outcome_refs": [
+    "MST-1569-D02.02"
+   ],
+   "domain_ref": "Scaling basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1569-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What risk does a poorly chosen shard key introduce?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Hotspots, where one shard receives disproportionate load",
+     "correct": true,
+     "rationale": "Correct: skewed keys concentrate traffic on a single shard."
+    },
+    {
+     "key": "B",
+     "text": "Automatic strong consistency across shards",
+     "correct": false,
+     "rationale": "Sharding does not provide that."
+    },
+    {
+     "key": "C",
+     "text": "Elimination of the need for caching",
+     "correct": false,
+     "rationale": "Sharding and caching are independent."
+    },
+    {
+     "key": "D",
+     "text": "Guaranteed even latency everywhere",
+     "correct": false,
+     "rationale": "Poor keys cause uneven latency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: skewed keys concentrate traffic on a single shard.",
+   "outcome_refs": [
+    "MST-1569-D05.01"
+   ],
+   "domain_ref": "Partitioning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1569-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about caching are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A read-through cache can reduce load on the primary datastore for hot keys",
+     "correct": true,
+     "rationale": "Correct: frequently read data is served from cache."
+    },
+    {
+     "key": "B",
+     "text": "Cache invalidation strategy must be designed to avoid serving stale data",
+     "correct": true,
+     "rationale": "Correct: invalidation is a core, hard part of caching."
+    },
+    {
+     "key": "C",
+     "text": "Caching removes the need to ever read the database",
+     "correct": false,
+     "rationale": "False; cache misses and writes still hit the datastore."
+    },
+    {
+     "key": "D",
+     "text": "A CDN is only useful for dynamic, per-user API responses",
+     "correct": false,
+     "rationale": "False; CDNs excel at static/cacheable content."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: frequently read data is served from cache.; Correct: invalidation is a core, hard part of caching.",
+   "outcome_refs": [
+    "MST-1569-D03.01"
+   ],
+   "domain_ref": "Caching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

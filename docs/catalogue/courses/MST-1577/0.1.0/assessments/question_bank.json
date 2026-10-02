@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1577",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 400,
+  "lesson_check_items": 80,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1577-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must you check a project's licence before contributing or reusing its code?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Licences impose obligations (e.g. attribution or share-alike) that affect how code may be used and redistributed",
+     "correct": true,
+     "rationale": "Correct: licence terms are legally binding."
+    },
+    {
+     "key": "B",
+     "text": "Licences only matter for paid software",
+     "correct": false,
+     "rationale": "Open-source licences carry obligations too."
+    },
+    {
+     "key": "C",
+     "text": "All open-source licences are identical",
+     "correct": false,
+     "rationale": "They differ significantly, e.g. MIT vs GPL."
+    },
+    {
+     "key": "D",
+     "text": "A licence prevents you from reading the code",
+     "correct": false,
+     "rationale": "Licences govern use/redistribution, not reading."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: licence terms are legally binding.",
+   "outcome_refs": [
+    "MST-1577-D01.02"
+   ],
+   "domain_ref": "Open-source foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1577-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What makes a good first open-source contribution?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A small, well-scoped change (e.g. a good-first-issue) that respects the project's process",
+     "correct": true,
+     "rationale": "Correct: small scoped changes are easier to land and learn from."
+    },
+    {
+     "key": "B",
+     "text": "A sweeping rewrite of the core architecture",
+     "correct": false,
+     "rationale": "Too large and risky for a first PR."
+    },
+    {
+     "key": "C",
+     "text": "A change opened without reading CONTRIBUTING.md",
+     "correct": false,
+     "rationale": "Ignoring process reduces acceptance."
+    },
+    {
+     "key": "D",
+     "text": "A PR with unrelated commits bundled together",
+     "correct": false,
+     "rationale": "That hampers review."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: small scoped changes are easier to land and learn from.",
+   "outcome_refs": [
+    "MST-1577-D02.02"
+   ],
+   "domain_ref": "Finding a project",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1577-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which practices improve the chance a pull request is merged? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Write a clear PR description that links the issue it addresses",
+     "correct": true,
+     "rationale": "Correct: context helps reviewers evaluate the change."
+    },
+    {
+     "key": "B",
+     "text": "Respond to review feedback constructively and update the PR",
+     "correct": true,
+     "rationale": "Correct: iterating professionally builds trust."
+    },
+    {
+     "key": "C",
+     "text": "Bundle several unrelated changes into one PR",
+     "correct": false,
+     "rationale": "False; unrelated changes complicate review."
+    },
+    {
+     "key": "D",
+     "text": "Skip running the project's tests locally",
+     "correct": false,
+     "rationale": "False; failing CI delays or blocks merging."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: context helps reviewers evaluate the change.; Correct: iterating professionally builds trust.",
+   "outcome_refs": [
+    "MST-1577-D06.02"
+   ],
+   "domain_ref": "Pull requests",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

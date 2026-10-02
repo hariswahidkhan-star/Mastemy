@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1597",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1597-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What happens to a qubit in superposition when it is measured?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It collapses to a classical 0 or 1 with a probability given by its amplitudes",
+     "correct": true,
+     "rationale": "Correct: measurement yields a definite classical outcome probabilistically."
+    },
+    {
+     "key": "B",
+     "text": "It returns both 0 and 1 simultaneously as output",
+     "correct": false,
+     "rationale": "Measurement gives one classical value."
+    },
+    {
+     "key": "C",
+     "text": "It remains in superposition unchanged",
+     "correct": false,
+     "rationale": "Measurement collapses the state."
+    },
+    {
+     "key": "D",
+     "text": "It always returns 0",
+     "correct": false,
+     "rationale": "The outcome is probabilistic, not always 0."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: measurement yields a definite classical outcome probabilistically.",
+   "outcome_refs": [
+    "MST-1597-D05.01"
+   ],
+   "domain_ref": "Measurement",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1597-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does entanglement NOT allow faster-than-light communication?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Measurement outcomes are random locally; no information is transmitted without a classical channel",
+     "correct": true,
+     "rationale": "Correct: the no-signalling principle holds despite correlations."
+    },
+    {
+     "key": "B",
+     "text": "Entanglement is too slow to be useful",
+     "correct": false,
+     "rationale": "Speed is not the reason; it is no-signalling."
+    },
+    {
+     "key": "C",
+     "text": "Entangled qubits cannot be measured",
+     "correct": false,
+     "rationale": "They can be measured."
+    },
+    {
+     "key": "D",
+     "text": "The qubits must be physically touching",
+     "correct": false,
+     "rationale": "Entanglement persists over distance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the no-signalling principle holds despite correlations.",
+   "outcome_refs": [
+    "MST-1597-D04.02"
+   ],
+   "domain_ref": "Entanglement",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1597-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about quantum computing are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Quantum gates are reversible, unlike many classical logic gates",
+     "correct": true,
+     "rationale": "Correct: unitary operations are reversible."
+    },
+    {
+     "key": "B",
+     "text": "Quantum speedups are known for specific problems, not all computation",
+     "correct": true,
+     "rationale": "Correct: e.g. Grover/Shor target particular problem classes."
+    },
+    {
+     "key": "C",
+     "text": "A qubit measurement reliably returns a deterministic value every run",
+     "correct": false,
+     "rationale": "False; outcomes are probabilistic."
+    },
+    {
+     "key": "D",
+     "text": "Current hardware runs large algorithms without error concerns",
+     "correct": false,
+     "rationale": "False; decoherence and noise are major limits (NISQ era)."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: unitary operations are reversible.; Correct: e.g. Grover/Shor target particular problem classes.",
+   "outcome_refs": [
+    "MST-1597-D06.02"
+   ],
+   "domain_ref": "Circuits and algorithms",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

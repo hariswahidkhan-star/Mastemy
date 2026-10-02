@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1576",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 400,
+  "lesson_check_items": 80,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1576-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the core idea of the red-green-refactor cycle in TDD?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Write a failing test, make it pass simply, then improve the design while keeping tests green",
+     "correct": true,
+     "rationale": "Correct: that is the three-step TDD loop."
+    },
+    {
+     "key": "B",
+     "text": "Write all code first, then add tests at the end",
+     "correct": false,
+     "rationale": "That is test-after, not TDD."
+    },
+    {
+     "key": "C",
+     "text": "Refactor before writing any test",
+     "correct": false,
+     "rationale": "Refactoring comes after a passing test."
+    },
+    {
+     "key": "D",
+     "text": "Delete tests once the code works",
+     "correct": false,
+     "rationale": "Tests are kept as a safety net."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: that is the three-step TDD loop.",
+   "outcome_refs": [
+    "MST-1576-D04.01"
+   ],
+   "domain_ref": "Test-driven development",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1576-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does trunk-based development with small batches shorten feedback loops?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Frequent small integrations surface conflicts and defects quickly rather than at a late merge",
+     "correct": true,
+     "rationale": "Correct: small, frequent merges reduce integration risk."
+    },
+    {
+     "key": "B",
+     "text": "It removes the need for a CI pipeline",
+     "correct": false,
+     "rationale": "CI is essential to trunk-based development."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees zero merge conflicts",
+     "correct": false,
+     "rationale": "It reduces, not eliminates, conflicts."
+    },
+    {
+     "key": "D",
+     "text": "It eliminates the need for tests",
+     "correct": false,
+     "rationale": "Tests remain critical."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: small, frequent merges reduce integration risk.",
+   "outcome_refs": [
+    "MST-1576-D02.02"
+   ],
+   "domain_ref": "Version control workflow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1576-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about continuous integration are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The build should run automatically on every push",
+     "correct": true,
+     "rationale": "Correct: automated builds catch breakage early."
+    },
+    {
+     "key": "B",
+     "text": "A broken main build should be fixed before starting new work",
+     "correct": true,
+     "rationale": "Correct: keeping the build green protects the team."
+    },
+    {
+     "key": "C",
+     "text": "CI means deploying manually once a quarter",
+     "correct": false,
+     "rationale": "False; that contradicts continuous integration."
+    },
+    {
+     "key": "D",
+     "text": "CI removes the need for automated tests",
+     "correct": false,
+     "rationale": "False; CI relies on automated tests to be useful."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: automated builds catch breakage early.; Correct: keeping the build green protects the team.",
+   "outcome_refs": [
+    "MST-1576-D03.01"
+   ],
+   "domain_ref": "Continuous integration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

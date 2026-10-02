@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1554",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1554-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a Pydantic model provide to a FastAPI endpoint?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automatic request validation and typed parsing of the body",
+     "correct": true,
+     "rationale": "Correct: Pydantic validates and coerces input against the declared types."
+    },
+    {
+     "key": "B",
+     "text": "A production ASGI server",
+     "correct": false,
+     "rationale": "The server (e.g. Uvicorn) is separate."
+    },
+    {
+     "key": "C",
+     "text": "Database migrations",
+     "correct": false,
+     "rationale": "Pydantic does not manage schemas."
+    },
+    {
+     "key": "D",
+     "text": "HTML template rendering",
+     "correct": false,
+     "rationale": "That is unrelated to Pydantic models."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Pydantic validates and coerces input against the declared types.",
+   "outcome_refs": [
+    "MST-1554-D04.01"
+   ],
+   "domain_ref": "Pydantic models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1554-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is declaring a FastAPI path operation with async def a poor choice?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When the handler performs blocking CPU-bound work",
+     "correct": true,
+     "rationale": "Correct: blocking work in an async handler stalls the event loop; use a thread/process pool."
+    },
+    {
+     "key": "B",
+     "text": "When calling an async database client",
+     "correct": false,
+     "rationale": "That is an ideal use of async."
+    },
+    {
+     "key": "C",
+     "text": "When awaiting an HTTP request to another service",
+     "correct": false,
+     "rationale": "I/O awaits are exactly what async is for."
+    },
+    {
+     "key": "D",
+     "text": "When the endpoint returns JSON",
+     "correct": false,
+     "rationale": "Return type does not dictate sync vs async."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: blocking work in an async handler stalls the event loop; use a thread/process pool.",
+   "outcome_refs": [
+    "MST-1554-D05.02"
+   ],
+   "domain_ref": "Async and concurrency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1554-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements comparing Flask and FastAPI are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "FastAPI generates OpenAPI docs automatically from type hints and models",
+     "correct": true,
+     "rationale": "Correct: interactive docs come for free from the declarations."
+    },
+    {
+     "key": "B",
+     "text": "Flask is a WSGI framework while FastAPI is built on ASGI",
+     "correct": true,
+     "rationale": "Correct: this underlies their concurrency models."
+    },
+    {
+     "key": "C",
+     "text": "Flask validates request bodies automatically from type hints",
+     "correct": false,
+     "rationale": "False; Flask needs explicit validation or an extension."
+    },
+    {
+     "key": "D",
+     "text": "FastAPI cannot define synchronous endpoints",
+     "correct": false,
+     "rationale": "False; plain def path operations are supported."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: interactive docs come for free from the declarations.; Correct: this underlies their concurrency models.",
+   "outcome_refs": [
+    "MST-1554-D03.01"
+   ],
+   "domain_ref": "FastAPI foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

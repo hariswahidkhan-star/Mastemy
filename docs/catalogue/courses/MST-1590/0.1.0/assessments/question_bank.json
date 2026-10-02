@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1590",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1590-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should physics-related movement use FixedUpdate rather than Update in Unity?",
+   "options": [
+    {
+     "key": "A",
+     "text": "FixedUpdate runs on the physics timestep, giving consistent, frame-rate-independent physics",
+     "correct": true,
+     "rationale": "Correct: physics should be driven on the fixed timestep."
+    },
+    {
+     "key": "B",
+     "text": "Update never runs during gameplay",
+     "correct": false,
+     "rationale": "Update runs every frame."
+    },
+    {
+     "key": "C",
+     "text": "FixedUpdate renders the frame",
+     "correct": false,
+     "rationale": "Rendering is not FixedUpdate's job."
+    },
+    {
+     "key": "D",
+     "text": "Update cannot access components",
+     "correct": false,
+     "rationale": "Update can access components fine."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: physics should be driven on the fixed timestep.",
+   "outcome_refs": [
+    "MST-1590-D02.02"
+   ],
+   "domain_ref": "Scripting with C#",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1590-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is required for two Unity objects to generate a physics collision?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Appropriate colliders, with at least one having a Rigidbody",
+     "correct": true,
+     "rationale": "Correct: colliders define shape and a Rigidbody enables physics interaction."
+    },
+    {
+     "key": "B",
+     "text": "Only a script with no components",
+     "correct": false,
+     "rationale": "Components are required for physics."
+    },
+    {
+     "key": "C",
+     "text": "A UI Canvas on each object",
+     "correct": false,
+     "rationale": "Canvas is for UI, not collisions."
+    },
+    {
+     "key": "D",
+     "text": "Identical materials",
+     "correct": false,
+     "rationale": "Materials do not drive collisions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: colliders define shape and a Rigidbody enables physics interaction.",
+   "outcome_refs": [
+    "MST-1590-D04.01"
+   ],
+   "domain_ref": "Physics and collisions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1590-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about Unity prefabs are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A prefab is a reusable template you can instantiate many times",
+     "correct": true,
+     "rationale": "Correct: prefabs promote reuse and consistency."
+    },
+    {
+     "key": "B",
+     "text": "Editing the prefab asset updates its instances",
+     "correct": true,
+     "rationale": "Correct: changes to the source propagate to instances."
+    },
+    {
+     "key": "C",
+     "text": "Prefabs cannot be instantiated at runtime",
+     "correct": false,
+     "rationale": "False; Instantiate spawns prefabs at runtime."
+    },
+    {
+     "key": "D",
+     "text": "Each prefab can exist only once in a scene",
+     "correct": false,
+     "rationale": "False; you can place many instances."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: prefabs promote reuse and consistency.; Correct: changes to the source propagate to instances.",
+   "outcome_refs": [
+    "MST-1590-D06.01"
+   ],
+   "domain_ref": "Prefabs and assets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

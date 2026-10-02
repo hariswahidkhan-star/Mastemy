@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1552",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1552-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the correct order for registering error-handling middleware in Express?",
+   "options": [
+    {
+     "key": "A",
+     "text": "After all routes, as the last middleware with four parameters (err, req, res, next)",
+     "correct": true,
+     "rationale": "Correct: Express identifies error middleware by its four-argument signature and it must come last."
+    },
+    {
+     "key": "B",
+     "text": "Before any routes so it runs first",
+     "correct": false,
+     "rationale": "Then it would never catch route errors."
+    },
+    {
+     "key": "C",
+     "text": "Inside each route handler only",
+     "correct": false,
+     "rationale": "A centralised handler avoids duplication and catches forwarded errors."
+    },
+    {
+     "key": "D",
+     "text": "It must have exactly two parameters",
+     "correct": false,
+     "rationale": "Error middleware is recognised by its four parameters."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Express identifies error middleware by its four-argument signature and it must come last.",
+   "outcome_refs": [
+    "MST-1552-D04.01"
+   ],
+   "domain_ref": "Error handling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1552-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which HTTP status code best indicates a resource was successfully created?",
+   "options": [
+    {
+     "key": "A",
+     "text": "201 Created",
+     "correct": true,
+     "rationale": "Correct: 201 signals a new resource was created."
+    },
+    {
+     "key": "B",
+     "text": "200 OK",
+     "correct": false,
+     "rationale": "200 is a generic success, less precise for creation."
+    },
+    {
+     "key": "C",
+     "text": "204 No Content",
+     "correct": false,
+     "rationale": "204 means success with no body, used for deletes/updates."
+    },
+    {
+     "key": "D",
+     "text": "400 Bad Request",
+     "correct": false,
+     "rationale": "400 indicates a client error, not success."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 201 signals a new resource was created.",
+   "outcome_refs": [
+    "MST-1552-D03.01"
+   ],
+   "domain_ref": "Building REST endpoints",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1552-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which practices improve an async Express route handler? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Wrap awaited calls so rejected promises are passed to next(err)",
+     "correct": true,
+     "rationale": "Correct: unhandled rejections otherwise crash or hang the request."
+    },
+    {
+     "key": "B",
+     "text": "Return appropriate status codes for validation failures",
+     "correct": true,
+     "rationale": "Correct: clear status codes communicate outcomes to clients."
+    },
+    {
+     "key": "C",
+     "text": "Perform all database work synchronously to avoid promises",
+     "correct": false,
+     "rationale": "False; blocking the event loop harms throughput."
+    },
+    {
+     "key": "D",
+     "text": "Catch errors and silently return 200",
+     "correct": false,
+     "rationale": "False; hiding errors as success misleads clients."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: unhandled rejections otherwise crash or hang the request.; Correct: clear status codes communicate outcomes to clients.",
+   "outcome_refs": [
+    "MST-1552-D04.02"
+   ],
+   "domain_ref": "Error handling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

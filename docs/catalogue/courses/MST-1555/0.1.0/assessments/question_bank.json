@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1555",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1555-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does GraphQL primarily reduce over-fetching compared with REST?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Clients request exactly the fields they need in a single query",
+     "correct": true,
+     "rationale": "Correct: the client specifies the shape of the response."
+    },
+    {
+     "key": "B",
+     "text": "It compresses the HTTP response automatically",
+     "correct": false,
+     "rationale": "Compression is unrelated to the GraphQL model."
+    },
+    {
+     "key": "C",
+     "text": "It caches all responses on the server",
+     "correct": false,
+     "rationale": "GraphQL does not mandate server caching."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for a backend database",
+     "correct": false,
+     "rationale": "A data source is still required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the client specifies the shape of the response.",
+   "outcome_refs": [
+    "MST-1555-D01.01"
+   ],
+   "domain_ref": "GraphQL foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1555-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does a DataLoader solve in a GraphQL server?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The N+1 problem, by batching and caching related lookups within a request",
+     "correct": true,
+     "rationale": "Correct: it coalesces many per-field lookups into batched calls."
+    },
+    {
+     "key": "B",
+     "text": "Schema validation at build time",
+     "correct": false,
+     "rationale": "That is handled by the type system/tooling."
+    },
+    {
+     "key": "C",
+     "text": "Authentication of clients",
+     "correct": false,
+     "rationale": "Auth is handled via context, not DataLoader."
+    },
+    {
+     "key": "D",
+     "text": "Rendering the GraphQL playground",
+     "correct": false,
+     "rationale": "Unrelated to batching."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it coalesces many per-field lookups into batched calls.",
+   "outcome_refs": [
+    "MST-1555-D06.02"
+   ],
+   "domain_ref": "Performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1555-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about GraphQL mutations are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Input types group the arguments a mutation accepts",
+     "correct": true,
+     "rationale": "Correct: input types keep mutation signatures tidy and reusable."
+    },
+    {
+     "key": "B",
+     "text": "Returning the modified object lets clients update their cache",
+     "correct": true,
+     "rationale": "Correct: returning the payload avoids an extra query."
+    },
+    {
+     "key": "C",
+     "text": "Mutations are read-only operations",
+     "correct": false,
+     "rationale": "False; mutations perform writes."
+    },
+    {
+     "key": "D",
+     "text": "A schema may define at most one mutation",
+     "correct": false,
+     "rationale": "False; a schema can define many mutations."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: input types keep mutation signatures tidy and reusable.; Correct: returning the payload avoids an extra query.",
+   "outcome_refs": [
+    "MST-1555-D05.02"
+   ],
+   "domain_ref": "Mutations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

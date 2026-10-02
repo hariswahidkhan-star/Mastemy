@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1599",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1599-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does Amdahl's law tell us about parallel speedup?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The serial fraction of a program bounds the maximum achievable speedup regardless of core count",
+     "correct": true,
+     "rationale": "Correct: even small serial portions cap speedup."
+    },
+    {
+     "key": "B",
+     "text": "Speedup grows linearly with cores without limit",
+     "correct": false,
+     "rationale": "Amdahl's law shows diminishing returns."
+    },
+    {
+     "key": "C",
+     "text": "Adding cores always doubles performance",
+     "correct": false,
+     "rationale": "Not once the serial fraction dominates."
+    },
+    {
+     "key": "D",
+     "text": "Memory speed is irrelevant to speedup",
+     "correct": false,
+     "rationale": "Amdahl's law is about serial fraction, but memory still matters in practice."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: even small serial portions cap speedup.",
+   "outcome_refs": [
+    "MST-1599-D02.02"
+   ],
+   "domain_ref": "Performance analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1599-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does reordering nested loops to improve cache locality speed up a numerical kernel?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Accessing memory in a contiguous, cache-friendly order reduces costly cache misses",
+     "correct": true,
+     "rationale": "Correct: locality keeps data in fast cache levels."
+    },
+    {
+     "key": "B",
+     "text": "It reduces the number of arithmetic operations",
+     "correct": false,
+     "rationale": "Loop reorder changes access order, not op count."
+    },
+    {
+     "key": "C",
+     "text": "It parallelises the loop automatically",
+     "correct": false,
+     "rationale": "Reordering alone does not parallelise."
+    },
+    {
+     "key": "D",
+     "text": "It eliminates the need for profiling",
+     "correct": false,
+     "rationale": "Profiling is still needed to target work."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: locality keeps data in fast cache levels.",
+   "outcome_refs": [
+    "MST-1599-D03.02"
+   ],
+   "domain_ref": "Memory and caches",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1599-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about parallel computing are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Unsynchronised access to shared mutable data can cause a data race",
+     "correct": true,
+     "rationale": "Correct: races produce nondeterministic, incorrect results."
+    },
+    {
+     "key": "B",
+     "text": "In distributed computing, excessive communication can dominate and limit scaling",
+     "correct": true,
+     "rationale": "Correct: communication overhead caps speedup."
+    },
+    {
+     "key": "C",
+     "text": "Adding more cores always yields proportional, unlimited speedup",
+     "correct": false,
+     "rationale": "False; Amdahl's law bounds it."
+    },
+    {
+     "key": "D",
+     "text": "GPU offload has no data-transfer cost",
+     "correct": false,
+     "rationale": "False; host-device transfers are a real cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: races produce nondeterministic, incorrect results.; Correct: communication overhead caps speedup.",
+   "outcome_refs": [
+    "MST-1599-D05.02"
+   ],
+   "domain_ref": "Shared-memory parallelism",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

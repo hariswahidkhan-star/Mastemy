@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1567",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 400,
+  "lesson_check_items": 80,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1567-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should refactoring and adding new behaviour be kept in separate commits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So that a behaviour-preserving change is easy to verify and review separately from functional change",
+     "correct": true,
+     "rationale": "Correct: mixing them makes it hard to tell what changed behaviour."
+    },
+    {
+     "key": "B",
+     "text": "Because refactoring always breaks tests",
+     "correct": false,
+     "rationale": "Good refactoring keeps tests green."
+    },
+    {
+     "key": "C",
+     "text": "Because commits must never contain tests",
+     "correct": false,
+     "rationale": "Tests belong with changes."
+    },
+    {
+     "key": "D",
+     "text": "Because IDEs forbid mixed commits",
+     "correct": false,
+     "rationale": "No such restriction exists."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: mixing them makes it hard to tell what changed behaviour.",
+   "outcome_refs": [
+    "MST-1567-D01.02"
+   ],
+   "domain_ref": "Why refactor",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1567-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of a characterization test before refactoring untested code?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It captures the code's current observable behaviour so refactoring can preserve it",
+     "correct": true,
+     "rationale": "Correct: it pins down behaviour as a safety net."
+    },
+    {
+     "key": "B",
+     "text": "It documents the desired future behaviour",
+     "correct": false,
+     "rationale": "It records current, not desired, behaviour."
+    },
+    {
+     "key": "C",
+     "text": "It replaces the need for refactoring",
+     "correct": false,
+     "rationale": "It enables safe refactoring."
+    },
+    {
+     "key": "D",
+     "text": "It measures performance",
+     "correct": false,
+     "rationale": "It characterises behaviour, not speed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it pins down behaviour as a safety net.",
+   "outcome_refs": [
+    "MST-1567-D02.01"
+   ],
+   "domain_ref": "Safety nets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1567-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which are recognised code smells with standard refactorings? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Long method, addressed by Extract Method",
+     "correct": true,
+     "rationale": "Correct: extracting smaller methods improves readability."
+    },
+    {
+     "key": "B",
+     "text": "Duplicated code, addressed by extracting a shared method",
+     "correct": true,
+     "rationale": "Correct: removing duplication reduces maintenance cost."
+    },
+    {
+     "key": "C",
+     "text": "Having unit tests for a class",
+     "correct": false,
+     "rationale": "False; tests are desirable, not a smell."
+    },
+    {
+     "key": "D",
+     "text": "Using descriptive variable names",
+     "correct": false,
+     "rationale": "False; good names are the goal, not a smell."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: extracting smaller methods improves readability.; Correct: removing duplication reduces maintenance cost.",
+   "outcome_refs": [
+    "MST-1567-D03.02"
+   ],
+   "domain_ref": "Code smells",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

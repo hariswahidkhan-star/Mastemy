@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1588",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 400,
+  "lesson_check_items": 80,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1588-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does 'shifting security left' mean in DevSecOps?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Moving security checks earlier into development and the pipeline rather than only before release",
+     "correct": true,
+     "rationale": "Correct: earlier feedback is cheaper and faster to fix."
+    },
+    {
+     "key": "B",
+     "text": "Delaying all security testing until production",
+     "correct": false,
+     "rationale": "That is shifting right, the opposite."
+    },
+    {
+     "key": "C",
+     "text": "Assigning security to a single gatekeeper team",
+     "correct": false,
+     "rationale": "Shift-left shares responsibility."
+    },
+    {
+     "key": "D",
+     "text": "Disabling automated scans to move faster",
+     "correct": false,
+     "rationale": "That removes security, not shifts it left."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: earlier feedback is cheaper and faster to fix.",
+   "outcome_refs": [
+    "MST-1588-D01.01"
+   ],
+   "domain_ref": "DevSecOps foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1588-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of Software Composition Analysis (SCA) in a pipeline?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Detecting known vulnerabilities in third-party and open-source dependencies",
+     "correct": true,
+     "rationale": "Correct: SCA inventories dependencies and flags known CVEs."
+    },
+    {
+     "key": "B",
+     "text": "Scanning your own source code for logic bugs",
+     "correct": false,
+     "rationale": "That is SAST, not SCA."
+    },
+    {
+     "key": "C",
+     "text": "Testing a running application from the outside",
+     "correct": false,
+     "rationale": "That is DAST."
+    },
+    {
+     "key": "D",
+     "text": "Encrypting network traffic",
+     "correct": false,
+     "rationale": "Unrelated to SCA."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SCA inventories dependencies and flags known CVEs.",
+   "outcome_refs": [
+    "MST-1588-D05.01"
+   ],
+   "domain_ref": "Dependency security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1588-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which practices make security gates sustainable in CI/CD? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fail builds on critical/high findings while triaging lower-severity ones",
+     "correct": true,
+     "rationale": "Correct: risk-based gating protects without blocking everything."
+    },
+    {
+     "key": "B",
+     "text": "Scan for committed secrets automatically on every change",
+     "correct": true,
+     "rationale": "Correct: catching secrets early prevents leaks."
+    },
+    {
+     "key": "C",
+     "text": "Block the build on every low-severity informational finding",
+     "correct": false,
+     "rationale": "False; that stalls delivery and breeds alert fatigue."
+    },
+    {
+     "key": "D",
+     "text": "Store secrets in the repository for convenience",
+     "correct": false,
+     "rationale": "False; secrets must stay out of source control."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: risk-based gating protects without blocking everything.; Correct: catching secrets early prevents leaks.",
+   "outcome_refs": [
+    "MST-1588-D08.01"
+   ],
+   "domain_ref": "Policy and gates",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1591",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1591-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Unreal's gameplay framework, what is the role of the GameMode?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It defines the rules of play, including the default pawn, controller and game state",
+     "correct": true,
+     "rationale": "Correct: GameMode sets up the framework classes and rules."
+    },
+    {
+     "key": "B",
+     "text": "It stores the player's input key bindings only",
+     "correct": false,
+     "rationale": "Input mappings are configured separately."
+    },
+    {
+     "key": "C",
+     "text": "It renders all materials",
+     "correct": false,
+     "rationale": "Rendering is not GameMode's responsibility."
+    },
+    {
+     "key": "D",
+     "text": "It is the physics engine",
+     "correct": false,
+     "rationale": "GameMode is not the physics system."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GameMode sets up the framework classes and rules.",
+   "outcome_refs": [
+    "MST-1591-D03.01"
+   ],
+   "domain_ref": "Gameplay framework",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1591-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is C++ generally preferred over Blueprint in Unreal?",
+   "options": [
+    {
+     "key": "A",
+     "text": "For performance-critical or complex core systems, while Blueprint suits rapid iteration and designer-facing logic",
+     "correct": true,
+     "rationale": "Correct: a common split is core in C++, iteration in Blueprint."
+    },
+    {
+     "key": "B",
+     "text": "C++ is always required; Blueprint cannot ship games",
+     "correct": false,
+     "rationale": "False; many games ship heavy Blueprint use."
+    },
+    {
+     "key": "C",
+     "text": "Blueprint is always faster than C++",
+     "correct": false,
+     "rationale": "Generally C++ is faster for hot paths."
+    },
+    {
+     "key": "D",
+     "text": "They cannot be used in the same project",
+     "correct": false,
+     "rationale": "They interoperate within a project."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a common split is core in C++, iteration in Blueprint.",
+   "outcome_refs": [
+    "MST-1591-D07.01"
+   ],
+   "domain_ref": "C++ and Blueprints together",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1591-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about Unreal Blueprints are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Blueprints are a visual scripting system driven by events and nodes",
+     "correct": true,
+     "rationale": "Correct: logic is built from event-driven node graphs."
+    },
+    {
+     "key": "B",
+     "text": "C++ properties and functions can be exposed to Blueprints",
+     "correct": true,
+     "rationale": "Correct: UPROPERTY/UFUNCTION macros expose them."
+    },
+    {
+     "key": "C",
+     "text": "Blueprints cannot define variables or functions",
+     "correct": false,
+     "rationale": "False; they support both."
+    },
+    {
+     "key": "D",
+     "text": "A single massive Blueprint graph is the recommended structure",
+     "correct": false,
+     "rationale": "False; large tangled graphs are discouraged."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: logic is built from event-driven node graphs.; Correct: UPROPERTY/UFUNCTION macros expose them.",
+   "outcome_refs": [
+    "MST-1591-D02.02"
+   ],
+   "domain_ref": "Blueprints",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

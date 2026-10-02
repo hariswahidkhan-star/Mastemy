@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1548",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1548-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must a unique nonce be used for each AES-GCM encryption under the same key?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Nonce reuse under one key breaks confidentiality and allows forging authentication tags",
+     "correct": true,
+     "rationale": "Correct: GCM nonce reuse is catastrophic, leaking the authentication key material."
+    },
+    {
+     "key": "B",
+     "text": "It makes encryption faster",
+     "correct": false,
+     "rationale": "Nonce uniqueness is about security, not speed."
+    },
+    {
+     "key": "C",
+     "text": "It is only needed when the key is weak",
+     "correct": false,
+     "rationale": "Reuse is dangerous regardless of key strength."
+    },
+    {
+     "key": "D",
+     "text": "Nonces are optional in GCM",
+     "correct": false,
+     "rationale": "GCM requires a nonce per message."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GCM nonce reuse is catastrophic, leaking the authentication key material.",
+   "outcome_refs": [
+    "MST-1548-D02.02"
+   ],
+   "domain_ref": "Symmetric encryption",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1548-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why are bcrypt, scrypt and Argon2 preferred over SHA-256 for password storage?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They are deliberately slow and tunable, resisting brute-force and GPU attacks",
+     "correct": true,
+     "rationale": "Correct: adjustable work factors slow attackers down."
+    },
+    {
+     "key": "B",
+     "text": "They are faster than SHA-256",
+     "correct": false,
+     "rationale": "They are intentionally slower, which is the point."
+    },
+    {
+     "key": "C",
+     "text": "They do not require a salt",
+     "correct": false,
+     "rationale": "They still use salts; slowness is the differentiator."
+    },
+    {
+     "key": "D",
+     "text": "They produce shorter hashes",
+     "correct": false,
+     "rationale": "Output length is not the security property here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: adjustable work factors slow attackers down.",
+   "outcome_refs": [
+    "MST-1548-D04.01"
+   ],
+   "domain_ref": "Password storage",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1548-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about HMAC are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It provides integrity and authenticity using a shared secret key",
+     "correct": true,
+     "rationale": "Correct: HMAC binds a message to a key holder."
+    },
+    {
+     "key": "B",
+     "text": "It is stronger than a bare hash for verifying a message came from a key holder",
+     "correct": true,
+     "rationale": "Correct: a plain hash offers no authenticity."
+    },
+    {
+     "key": "C",
+     "text": "It encrypts the message so it cannot be read",
+     "correct": false,
+     "rationale": "False; HMAC does not provide confidentiality."
+    },
+    {
+     "key": "D",
+     "text": "It eliminates the need for a secret key",
+     "correct": false,
+     "rationale": "False; the shared secret is essential to HMAC."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: HMAC binds a message to a key holder.; Correct: a plain hash offers no authenticity.",
+   "outcome_refs": [
+    "MST-1548-D03.02"
+   ],
+   "domain_ref": "Hash functions and MACs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

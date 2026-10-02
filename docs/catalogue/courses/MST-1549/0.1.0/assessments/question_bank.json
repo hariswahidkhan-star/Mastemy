@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1549",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1549-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "If a problem has n up to 2x10^5 with a 1-second limit, which complexity is most appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "O(n log n)",
+     "correct": true,
+     "rationale": "Correct: around 2e5*18 operations fits comfortably in a second."
+    },
+    {
+     "key": "B",
+     "text": "O(n^2)",
+     "correct": false,
+     "rationale": "4e10 operations is far too slow for the limit."
+    },
+    {
+     "key": "C",
+     "text": "O(2^n)",
+     "correct": false,
+     "rationale": "Exponential is infeasible for n=2e5."
+    },
+    {
+     "key": "D",
+     "text": "O(n!)",
+     "correct": false,
+     "rationale": "Factorial is infeasible beyond tiny n."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: around 2e5*18 operations fits comfortably in a second.",
+   "outcome_refs": [
+    "MST-1549-D01.02"
+   ],
+   "domain_ref": "Contest fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1549-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Binary search on the answer requires the feasibility predicate to be:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Monotonic, so once it becomes true it stays true",
+     "correct": true,
+     "rationale": "Correct: monotonicity is what lets binary search converge."
+    },
+    {
+     "key": "B",
+     "text": "Computable only in constant time",
+     "correct": false,
+     "rationale": "The check can be more expensive; monotonicity is the requirement."
+    },
+    {
+     "key": "C",
+     "text": "Always false at the midpoint",
+     "correct": false,
+     "rationale": "That would make the search meaningless."
+    },
+    {
+     "key": "D",
+     "text": "Independent of the input",
+     "correct": false,
+     "rationale": "It must depend on the candidate answer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: monotonicity is what lets binary search converge.",
+   "outcome_refs": [
+    "MST-1549-D03.02"
+   ],
+   "domain_ref": "Sorting and searching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1549-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about 0/1 knapsack dynamic programming are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A 1D rolling array can replace the 2D table if the capacity loop runs in reverse",
+     "correct": true,
+     "rationale": "Correct: reverse iteration prevents reusing an item more than once."
+    },
+    {
+     "key": "B",
+     "text": "Its time complexity is pseudo-polynomial, O(n*W)",
+     "correct": true,
+     "rationale": "Correct: it depends on the numeric capacity W, not just n."
+    },
+    {
+     "key": "C",
+     "text": "It always runs in O(n log n)",
+     "correct": false,
+     "rationale": "False; it is O(n*W)."
+    },
+    {
+     "key": "D",
+     "text": "Greedy by value/weight always gives the optimal 0/1 solution",
+     "correct": false,
+     "rationale": "False; that only works for the fractional knapsack."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reverse iteration prevents reusing an item more than once.; Correct: it depends on the numeric capacity W, not just n.",
+   "outcome_refs": [
+    "MST-1549-D05.02"
+   ],
+   "domain_ref": "Dynamic programming",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

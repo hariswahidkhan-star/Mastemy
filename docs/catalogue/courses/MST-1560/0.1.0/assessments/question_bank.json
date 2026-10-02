@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1560",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1560-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must local UI state in a composable be wrapped in remember { mutableStateOf(...) }?",
+   "options": [
+    {
+     "key": "A",
+     "text": "remember keeps the state across recompositions instead of resetting each time",
+     "correct": true,
+     "rationale": "Correct: without remember the value is re-initialised on every recomposition."
+    },
+    {
+     "key": "B",
+     "text": "mutableStateOf starts a background thread",
+     "correct": false,
+     "rationale": "It does not; it creates observable state."
+    },
+    {
+     "key": "C",
+     "text": "It is required to compile any composable",
+     "correct": false,
+     "rationale": "Composables compile without state."
+    },
+    {
+     "key": "D",
+     "text": "It renders the UI to XML",
+     "correct": false,
+     "rationale": "Compose does not use XML layouts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without remember the value is re-initialised on every recomposition.",
+   "outcome_refs": [
+    "MST-1560-D03.01"
+   ],
+   "domain_ref": "State and recomposition",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1560-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the benefit of 'state hoisting' in Compose?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It makes a composable stateless and reusable by passing value plus an onValueChange callback",
+     "correct": true,
+     "rationale": "Correct: hoisting gives callers control and improves testability/reuse."
+    },
+    {
+     "key": "B",
+     "text": "It stores state permanently on disk",
+     "correct": false,
+     "rationale": "Hoisting concerns where state lives in the tree, not persistence."
+    },
+    {
+     "key": "C",
+     "text": "It disables recomposition",
+     "correct": false,
+     "rationale": "It does not disable recomposition."
+    },
+    {
+     "key": "D",
+     "text": "It merges all composables into one",
+     "correct": false,
+     "rationale": "Hoisting does not merge composables."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: hoisting gives callers control and improves testability/reuse.",
+   "outcome_refs": [
+    "MST-1560-D04.02"
+   ],
+   "domain_ref": "State hoisting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1560-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which practices improve a LazyColumn list in Compose? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Provide stable keys for items so state and position survive updates",
+     "correct": true,
+     "rationale": "Correct: keys let Compose track items across changes."
+    },
+    {
+     "key": "B",
+     "text": "Hoist item click handling up via callbacks",
+     "correct": true,
+     "rationale": "Correct: unidirectional flow keeps items reusable and testable."
+    },
+    {
+     "key": "C",
+     "text": "Render all items eagerly like a plain Column",
+     "correct": false,
+     "rationale": "False; that defeats the laziness and hurts performance."
+    },
+    {
+     "key": "D",
+     "text": "Mutate list state directly inside the item composable",
+     "correct": false,
+     "rationale": "False; events should flow up to the state owner."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: keys let Compose track items across changes.; Correct: unidirectional flow keeps items reusable and testable.",
+   "outcome_refs": [
+    "MST-1560-D05.01"
+   ],
+   "domain_ref": "Lists",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1580",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 400,
+  "lesson_check_items": 80,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1580-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is storing the pipeline definition as a Jenkinsfile in the repository ('pipeline as code') preferred over UI configuration?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The pipeline is versioned, reviewable and reproducible alongside the code",
+     "correct": true,
+     "rationale": "Correct: pipeline-as-code brings the benefits of version control to CI."
+    },
+    {
+     "key": "B",
+     "text": "It makes builds run without any agent",
+     "correct": false,
+     "rationale": "Agents are still required to run work."
+    },
+    {
+     "key": "C",
+     "text": "It disables credentials entirely",
+     "correct": false,
+     "rationale": "Credentials are managed separately and securely."
+    },
+    {
+     "key": "D",
+     "text": "It prevents the pipeline from ever failing",
+     "correct": false,
+     "rationale": "It does not change failure behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: pipeline-as-code brings the benefits of version control to CI.",
+   "outcome_refs": [
+    "MST-1580-D02.02"
+   ],
+   "domain_ref": "Jobs and pipelines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1580-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should a secret (e.g. a deploy token) be used in a Jenkins pipeline?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Stored in the credentials store and injected into the stage, never printed to the log",
+     "correct": true,
+     "rationale": "Correct: the credentials store keeps secrets out of source and logs."
+    },
+    {
+     "key": "B",
+     "text": "Hardcoded as a string in the Jenkinsfile",
+     "correct": false,
+     "rationale": "That exposes the secret in version control."
+    },
+    {
+     "key": "C",
+     "text": "Echoed to the console for debugging",
+     "correct": false,
+     "rationale": "Printing secrets leaks them in build logs."
+    },
+    {
+     "key": "D",
+     "text": "Emailed to the whole team",
+     "correct": false,
+     "rationale": "That is an obvious leak."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the credentials store keeps secrets out of source and logs.",
+   "outcome_refs": [
+    "MST-1580-D05.02"
+   ],
+   "domain_ref": "Credentials and security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1580-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about declarative Jenkins pipelines are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A pipeline is composed of stages, each containing steps",
+     "correct": true,
+     "rationale": "Correct: that is the declarative structure."
+    },
+    {
+     "key": "B",
+     "text": "A post section can run steps based on build outcome (always/success/failure)",
+     "correct": true,
+     "rationale": "Correct: post conditions handle cleanup and notifications."
+    },
+    {
+     "key": "C",
+     "text": "Declarative pipelines cannot run stages in parallel",
+     "correct": false,
+     "rationale": "False; parallel stages are supported."
+    },
+    {
+     "key": "D",
+     "text": "All builds should run on the controller for speed",
+     "correct": false,
+     "rationale": "False; running work on the controller is discouraged."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: that is the declarative structure.; Correct: post conditions handle cleanup and notifications.",
+   "outcome_refs": [
+    "MST-1580-D03.01"
+   ],
+   "domain_ref": "Declarative pipelines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

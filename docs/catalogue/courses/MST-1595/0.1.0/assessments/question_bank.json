@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1595",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1595-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does a Raspberry Pi fundamentally differ from a typical microcontroller like an Arduino?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Pi runs a full Linux operating system on an application processor, not bare-metal firmware",
+     "correct": true,
+     "rationale": "Correct: it is a small Linux computer, enabling services, networking and a filesystem."
+    },
+    {
+     "key": "B",
+     "text": "The Pi has no way to control GPIO pins",
+     "correct": false,
+     "rationale": "It can control GPIO, just under an OS."
+    },
+    {
+     "key": "C",
+     "text": "The Pi cannot run Python",
+     "correct": false,
+     "rationale": "Python is a primary language on the Pi."
+    },
+    {
+     "key": "D",
+     "text": "The Pi has less capability than an 8-bit MCU",
+     "correct": false,
+     "rationale": "It is far more capable than a typical MCU."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it is a small Linux computer, enabling services, networking and a filesystem.",
+   "outcome_refs": [
+    "MST-1595-D01.02"
+   ],
+   "domain_ref": "Raspberry Pi foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1595-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a systemd service preferred over starting a script manually for a long-running Pi project?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It starts the script automatically at boot and can restart it on failure",
+     "correct": true,
+     "rationale": "Correct: systemd manages lifecycle and survives reboots."
+    },
+    {
+     "key": "B",
+     "text": "It makes the Pi boot faster by skipping Linux",
+     "correct": false,
+     "rationale": "The Pi still boots Linux."
+    },
+    {
+     "key": "C",
+     "text": "It converts the script to C automatically",
+     "correct": false,
+     "rationale": "systemd does not transpile code."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for networking",
+     "correct": false,
+     "rationale": "Unrelated to networking."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: systemd manages lifecycle and survives reboots.",
+   "outcome_refs": [
+    "MST-1595-D06.01"
+   ],
+   "domain_ref": "Services and scheduling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1595-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about the Raspberry Pi's hardware are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its GPIO pins operate at 3.3V, so a 5V device may need level shifting",
+     "correct": true,
+     "rationale": "Correct: driving/reading 5V directly can damage the Pi."
+    },
+    {
+     "key": "B",
+     "text": "It has no built-in analog-to-digital converter, so analog sensors need an external ADC",
+     "correct": true,
+     "rationale": "Correct: unlike many MCUs, the Pi lacks an onboard ADC."
+    },
+    {
+     "key": "C",
+     "text": "Its GPIO pins are 5V tolerant by default",
+     "correct": false,
+     "rationale": "False; they are 3.3V and not 5V tolerant."
+    },
+    {
+     "key": "D",
+     "text": "It includes a built-in ADC for analog sensors",
+     "correct": false,
+     "rationale": "False; an external ADC is required."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: driving/reading 5V directly can damage the Pi.; Correct: unlike many MCUs, the Pi lacks an onboard ADC.",
+   "outcome_refs": [
+    "MST-1595-D03.01"
+   ],
+   "domain_ref": "GPIO basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

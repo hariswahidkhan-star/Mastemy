@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1594",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1594-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why use millis() instead of delay() for timing multiple tasks in a sketch?",
+   "options": [
+    {
+     "key": "A",
+     "text": "delay() blocks all other code, while millis() lets the loop keep running and handle several tasks",
+     "correct": true,
+     "rationale": "Correct: non-blocking timing keeps the program responsive."
+    },
+    {
+     "key": "B",
+     "text": "millis() is less accurate than delay()",
+     "correct": false,
+     "rationale": "millis-based timing is generally preferred for multitasking."
+    },
+    {
+     "key": "C",
+     "text": "delay() uses no CPU at all",
+     "correct": false,
+     "rationale": "delay() blocks the CPU from other work."
+    },
+    {
+     "key": "D",
+     "text": "millis() stops the loop entirely",
+     "correct": false,
+     "rationale": "It does not block the loop."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: non-blocking timing keeps the program responsive.",
+   "outcome_refs": [
+    "MST-1594-D04.02"
+   ],
+   "domain_ref": "Timing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1594-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a small motor usually be driven through a transistor or driver rather than directly from an Arduino pin?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A logic pin cannot supply enough current and the motor's inductive load can damage the microcontroller",
+     "correct": true,
+     "rationale": "Correct: a driver handles the current and protects the MCU."
+    },
+    {
+     "key": "B",
+     "text": "Motors require no current to run",
+     "correct": false,
+     "rationale": "Motors draw significant current."
+    },
+    {
+     "key": "C",
+     "text": "A pin outputs AC suitable for motors",
+     "correct": false,
+     "rationale": "Pins output DC logic levels."
+    },
+    {
+     "key": "D",
+     "text": "Transistors slow the motor down",
+     "correct": false,
+     "rationale": "A driver enables, not slows, the motor."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a driver handles the current and protects the MCU.",
+   "outcome_refs": [
+    "MST-1594-D07.01"
+   ],
+   "domain_ref": "Actuators and power",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1594-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about reading inputs on an Arduino are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A digital input left unconnected can float, so a pull-up or pull-down resistor is used",
+     "correct": true,
+     "rationale": "Correct: pull resistors give a defined logic level."
+    },
+    {
+     "key": "B",
+     "text": "A mechanical button can bounce, registering multiple transitions per press",
+     "correct": true,
+     "rationale": "Correct: debouncing filters out the bounce."
+    },
+    {
+     "key": "C",
+     "text": "analogRead returns a true analog voltage, not a number",
+     "correct": false,
+     "rationale": "False; it returns a digitised integer from the ADC."
+    },
+    {
+     "key": "D",
+     "text": "Floating inputs always read a stable LOW",
+     "correct": false,
+     "rationale": "False; they read unpredictably."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pull resistors give a defined logic level.; Correct: debouncing filters out the bounce.",
+   "outcome_refs": [
+    "MST-1594-D05.01"
+   ],
+   "domain_ref": "Debouncing and input",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

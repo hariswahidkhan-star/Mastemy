@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1558",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1558-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does repeatedly reading offsetHeight then changing styles in a loop cause 'layout thrashing'?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each read forces a synchronous layout after the previous write invalidated it",
+     "correct": true,
+     "rationale": "Correct: interleaving reads and writes forces repeated reflows."
+    },
+    {
+     "key": "B",
+     "text": "It causes the garbage collector to run",
+     "correct": false,
+     "rationale": "Thrashing is about forced reflow, not GC."
+    },
+    {
+     "key": "C",
+     "text": "It blocks the network thread",
+     "correct": false,
+     "rationale": "Layout runs on the main thread, not the network."
+    },
+    {
+     "key": "D",
+     "text": "It disables the compositor",
+     "correct": false,
+     "rationale": "The compositor is not disabled by reads."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: interleaving reads and writes forces repeated reflows.",
+   "outcome_refs": [
+    "MST-1558-D02.02"
+   ],
+   "domain_ref": "The rendering pipeline",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1558-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the event loop, when do microtasks (e.g. resolved promise callbacks) run relative to macrotasks?",
+   "options": [
+    {
+     "key": "A",
+     "text": "All pending microtasks drain before the next macrotask runs",
+     "correct": true,
+     "rationale": "Correct: the microtask queue is emptied after each task before rendering/next task."
+    },
+    {
+     "key": "B",
+     "text": "After all macrotasks have finished",
+     "correct": false,
+     "rationale": "No; microtasks run between tasks."
+    },
+    {
+     "key": "C",
+     "text": "Only when the stack is never empty",
+     "correct": false,
+     "rationale": "They run when the stack empties."
+    },
+    {
+     "key": "D",
+     "text": "Microtasks and macrotasks run in registration order together",
+     "correct": false,
+     "rationale": "They are separate queues with microtasks prioritised."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the microtask queue is emptied after each task before rendering/next task.",
+   "outcome_refs": [
+    "MST-1558-D05.01"
+   ],
+   "domain_ref": "The event loop in depth",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1558-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which changes typically avoid a full layout (reflow)? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Animating transform and opacity, which the compositor can handle",
+     "correct": true,
+     "rationale": "Correct: these can be composited without layout."
+    },
+    {
+     "key": "B",
+     "text": "Batching DOM reads together and writes together",
+     "correct": true,
+     "rationale": "Correct: avoids interleaved forced reflows."
+    },
+    {
+     "key": "C",
+     "text": "Changing an element's width in a tight loop",
+     "correct": false,
+     "rationale": "False; width changes trigger layout."
+    },
+    {
+     "key": "D",
+     "text": "Querying getBoundingClientRect after every style write",
+     "correct": false,
+     "rationale": "False; that forces synchronous layout."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: these can be composited without layout.; Correct: avoids interleaved forced reflows.",
+   "outcome_refs": [
+    "MST-1558-D02.01"
+   ],
+   "domain_ref": "The rendering pipeline",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

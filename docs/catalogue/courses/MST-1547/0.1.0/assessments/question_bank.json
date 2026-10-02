@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1547",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1547-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement about the subset construction is correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It converts an NFA into an equivalent DFA whose states are sets of NFA states",
+     "correct": true,
+     "rationale": "Correct: DFA states correspond to subsets of NFA states reachable on an input."
+    },
+    {
+     "key": "B",
+     "text": "It proves that NFAs recognise more languages than DFAs",
+     "correct": false,
+     "rationale": "Wrong: the construction shows they recognise exactly the same class."
+    },
+    {
+     "key": "C",
+     "text": "It minimises the number of states in a DFA",
+     "correct": false,
+     "rationale": "Minimisation is a separate algorithm (e.g. Hopcroft's)."
+    },
+    {
+     "key": "D",
+     "text": "It only works for deterministic inputs",
+     "correct": false,
+     "rationale": "It is specifically for converting non-deterministic automata."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: DFA states correspond to subsets of NFA states reachable on an input.",
+   "outcome_refs": [
+    "MST-1547-D01.02"
+   ],
+   "domain_ref": "Finite automata and regular languages",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1547-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does the pumping lemma help prove a language is NOT regular?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A regular language must allow long strings to be pumped; exhibiting a string that cannot be is a contradiction",
+     "correct": true,
+     "rationale": "Correct: it is used contrapositively to derive a contradiction."
+    },
+    {
+     "key": "B",
+     "text": "It constructs the minimal DFA for the language",
+     "correct": false,
+     "rationale": "That is not what the lemma does."
+    },
+    {
+     "key": "C",
+     "text": "It shows every context-free language is regular",
+     "correct": false,
+     "rationale": "False; CFLs are a strictly larger class."
+    },
+    {
+     "key": "D",
+     "text": "It enumerates all strings the language accepts",
+     "correct": false,
+     "rationale": "The lemma is not an enumeration procedure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it is used contrapositively to derive a contradiction.",
+   "outcome_refs": [
+    "MST-1547-D03.01"
+   ],
+   "domain_ref": "Non-regularity and the pumping lemma",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1547-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about the halting problem are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is undecidable: no algorithm decides it for all inputs",
+     "correct": true,
+     "rationale": "Correct: Turing proved no total decider exists."
+    },
+    {
+     "key": "B",
+     "text": "It is recognisable: a machine can accept all halting instances",
+     "correct": true,
+     "rationale": "Correct: simulate and accept if it halts, giving recognisability but not decidability."
+    },
+    {
+     "key": "C",
+     "text": "It is in P",
+     "correct": false,
+     "rationale": "False; it is not even decidable, so complexity classes like P do not apply."
+    },
+    {
+     "key": "D",
+     "text": "It can be solved by a sufficiently large finite automaton",
+     "correct": false,
+     "rationale": "False; finite automata cannot even recognise it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Turing proved no total decider exists.; Correct: simulate and accept if it halts, giving recognisability but not decidability.",
+   "outcome_refs": [
+    "MST-1547-D07.02"
+   ],
+   "domain_ref": "Decidability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

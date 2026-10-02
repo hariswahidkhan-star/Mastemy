@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1553",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1553-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does using select_related/prefetch_related solve in the Django ORM?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The N+1 query problem when accessing related objects in a loop",
+     "correct": true,
+     "rationale": "Correct: they fetch related rows up front, avoiding one query per object."
+    },
+    {
+     "key": "B",
+     "text": "Applying database migrations",
+     "correct": false,
+     "rationale": "Migrations are a separate system."
+    },
+    {
+     "key": "C",
+     "text": "Rendering templates faster",
+     "correct": false,
+     "rationale": "They optimise queries, not template rendering."
+    },
+    {
+     "key": "D",
+     "text": "Validating form input",
+     "correct": false,
+     "rationale": "That is handled by forms, not these QuerySet methods."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: they fetch related rows up front, avoiding one query per object.",
+   "outcome_refs": [
+    "MST-1553-D02.02"
+   ],
+   "domain_ref": "Models and the ORM",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1553-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should you use named URL reversing (e.g. reverse()/{% url %}) instead of hardcoded paths?",
+   "options": [
+    {
+     "key": "A",
+     "text": "URLs can change in one place without breaking links throughout the app",
+     "correct": true,
+     "rationale": "Correct: reversing keeps links in sync with URLconf."
+    },
+    {
+     "key": "B",
+     "text": "It makes templates render without a context",
+     "correct": false,
+     "rationale": "Unrelated to reversing."
+    },
+    {
+     "key": "C",
+     "text": "It disables CSRF protection",
+     "correct": false,
+     "rationale": "Reversing has nothing to do with CSRF."
+    },
+    {
+     "key": "D",
+     "text": "It is required for the ORM to work",
+     "correct": false,
+     "rationale": "The ORM is independent of URL reversing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reversing keeps links in sync with URLconf.",
+   "outcome_refs": [
+    "MST-1553-D04.02"
+   ],
+   "domain_ref": "Views and URLs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1553-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about Django migrations are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "makemigrations records model changes and migrate applies them to the database",
+     "correct": true,
+     "rationale": "Correct: that is the two-step workflow."
+    },
+    {
+     "key": "B",
+     "text": "Data migrations can backfill or transform existing rows",
+     "correct": true,
+     "rationale": "Correct: RunPython lets you migrate data, not just schema."
+    },
+    {
+     "key": "C",
+     "text": "Migrations should be edited directly in the database instead",
+     "correct": false,
+     "rationale": "False; bypassing migrations causes drift."
+    },
+    {
+     "key": "D",
+     "text": "Migrations eliminate the need for models",
+     "correct": false,
+     "rationale": "False; migrations are generated from model definitions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: that is the two-step workflow.; Correct: RunPython lets you migrate data, not just schema.",
+   "outcome_refs": [
+    "MST-1553-D03.01"
+   ],
+   "domain_ref": "Migrations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

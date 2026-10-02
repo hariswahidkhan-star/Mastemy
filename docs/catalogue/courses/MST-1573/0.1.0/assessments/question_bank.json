@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1573",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 400,
+  "lesson_check_items": 80,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1573-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What distinguishes a 'blocking' review comment from a 'nit'?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A blocking comment identifies an issue that must be resolved before merge; a nit is a minor, optional suggestion",
+     "correct": true,
+     "rationale": "Correct: labelling severity helps authors prioritise."
+    },
+    {
+     "key": "B",
+     "text": "A nit must always be fixed before merge",
+     "correct": false,
+     "rationale": "Nits are optional by definition."
+    },
+    {
+     "key": "C",
+     "text": "Blocking comments are only about formatting",
+     "correct": false,
+     "rationale": "Formatting is usually a nit, not blocking."
+    },
+    {
+     "key": "D",
+     "text": "There is no practical difference",
+     "correct": false,
+     "rationale": "The distinction guides what gates the merge."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: labelling severity helps authors prioritise.",
+   "outcome_refs": [
+    "MST-1573-D04.01"
+   ],
+   "domain_ref": "Prioritising issues",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1573-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why are smaller pull requests generally easier to review well?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reviewers can reason about the full change and catch more issues than in a large diff",
+     "correct": true,
+     "rationale": "Correct: review quality drops as diff size grows."
+    },
+    {
+     "key": "B",
+     "text": "They always contain fewer bugs regardless of content",
+     "correct": false,
+     "rationale": "Size does not guarantee correctness."
+    },
+    {
+     "key": "C",
+     "text": "They skip CI checks",
+     "correct": false,
+     "rationale": "Size does not change CI behaviour."
+    },
+    {
+     "key": "D",
+     "text": "They do not need tests",
+     "correct": false,
+     "rationale": "Tests are still expected."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: review quality drops as diff size grows.",
+   "outcome_refs": [
+    "MST-1573-D05.01"
+   ],
+   "domain_ref": "Reviewing effectively",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1573-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which practices make code-review feedback more effective? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Make comments specific and actionable, pointing to the line and a concrete suggestion",
+     "correct": true,
+     "rationale": "Correct: authors can act on precise feedback."
+    },
+    {
+     "key": "B",
+     "text": "Critique the code, not the author",
+     "correct": true,
+     "rationale": "Correct: keeping it impersonal sustains a healthy culture."
+    },
+    {
+     "key": "C",
+     "text": "Delay reviews indefinitely to be thorough",
+     "correct": false,
+     "rationale": "False; slow reviews block the team."
+    },
+    {
+     "key": "D",
+     "text": "Block merges over personal style preferences",
+     "correct": false,
+     "rationale": "False; subjective nits should not gate merges."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: authors can act on precise feedback.; Correct: keeping it impersonal sustains a healthy culture.",
+   "outcome_refs": [
+    "MST-1573-D03.01"
+   ],
+   "domain_ref": "Giving feedback",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1593",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 448,
+  "lesson_check_items": 80,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1593-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should an interrupt service routine (ISR) be kept short and avoid blocking?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A long ISR delays other interrupts and can cause missed events or latency",
+     "correct": true,
+     "rationale": "Correct: ISRs should do minimal work and defer the rest."
+    },
+    {
+     "key": "B",
+     "text": "ISRs cannot access any variables",
+     "correct": false,
+     "rationale": "They can access variables, carefully."
+    },
+    {
+     "key": "C",
+     "text": "ISRs run only once per power cycle",
+     "correct": false,
+     "rationale": "They run on each triggering event."
+    },
+    {
+     "key": "D",
+     "text": "A long ISR speeds up the main loop",
+     "correct": false,
+     "rationale": "It harms responsiveness, not helps."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ISRs should do minimal work and defer the rest.",
+   "outcome_refs": [
+    "MST-1593-D04.02"
+   ],
+   "domain_ref": "Interrupts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1593-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must a variable shared between an ISR and main code often be declared volatile?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It prevents the compiler from caching the value, ensuring each access reads the real memory",
+     "correct": true,
+     "rationale": "Correct: volatile stops optimisations that would miss ISR updates."
+    },
+    {
+     "key": "B",
+     "text": "It makes the variable thread-safe by itself",
+     "correct": false,
+     "rationale": "volatile does not guarantee atomicity."
+    },
+    {
+     "key": "C",
+     "text": "It allocates the variable on the heap",
+     "correct": false,
+     "rationale": "volatile does not control allocation."
+    },
+    {
+     "key": "D",
+     "text": "It speeds up access to the variable",
+     "correct": false,
+     "rationale": "It typically prevents caching, not speeds up."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: volatile stops optimisations that would miss ISR updates.",
+   "outcome_refs": [
+    "MST-1593-D07.02"
+   ],
+   "domain_ref": "Memory and concurrency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1593-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about embedded development are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Hardware timers/PWM are preferred over busy-wait delays for periodic tasks",
+     "correct": true,
+     "rationale": "Correct: timers free the CPU and keep timing accurate."
+    },
+    {
+     "key": "B",
+     "text": "A peripheral often needs its clock enabled before use",
+     "correct": true,
+     "rationale": "Correct: forgetting the clock gate is a common bug."
+    },
+    {
+     "key": "C",
+     "text": "Embedded targets typically have abundant RAM like desktops",
+     "correct": false,
+     "rationale": "False; memory is tightly constrained."
+    },
+    {
+     "key": "D",
+     "text": "Dynamic allocation in a tight loop is best practice on MCUs",
+     "correct": false,
+     "rationale": "False; it risks fragmentation and is usually avoided."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: timers free the CPU and keep timing accurate.; Correct: forgetting the clock gate is a common bug.",
+   "outcome_refs": [
+    "MST-1593-D06.01"
+   ],
+   "domain_ref": "Timers and PWM",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
