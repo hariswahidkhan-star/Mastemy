@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0975",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0975-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A dataset of incomes is strongly right-skewed. Which measure best represents a typical value?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The median",
+     "correct": true,
+     "rationale": "Correct: the median resists the pull of extreme high values in a skewed distribution."
+    },
+    {
+     "key": "B",
+     "text": "The mean",
+     "correct": false,
+     "rationale": "The mean is dragged upward by large outliers in a right-skewed distribution."
+    },
+    {
+     "key": "C",
+     "text": "The maximum",
+     "correct": false,
+     "rationale": "The maximum is an extreme, not a typical value."
+    },
+    {
+     "key": "D",
+     "text": "The range",
+     "correct": false,
+     "rationale": "The range measures spread, not a typical value."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: for skewed data the median is a more representative centre than the mean.",
+   "outcome_refs": [
+    "MST-0975-D01.01"
+   ],
+   "domain_ref": "Describing data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0975-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about a 95% confidence interval for a mean are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A larger sample size tends to narrow the interval",
+     "correct": true,
+     "rationale": "Correct: larger samples reduce the standard error, narrowing the interval."
+    },
+    {
+     "key": "B",
+     "text": "It is built from the sample's standard error",
+     "correct": true,
+     "rationale": "Correct: the interval uses the standard error of the estimate."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the true mean lies inside this specific interval",
+     "correct": false,
+     "rationale": "The 95% refers to the long-run procedure, not certainty for one interval."
+    },
+    {
+     "key": "D",
+     "text": "It is the same as the standard deviation of the data",
+     "correct": false,
+     "rationale": "The interval and the data's standard deviation are different quantities."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a confidence interval is based on the standard error and narrows with larger samples.",
+   "outcome_refs": [
+    "MST-0975-D04.02"
+   ],
+   "domain_ref": "Sampling and estimation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0975-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a p-value of 0.03 mean in a hypothesis test?",
+   "options": [
+    {
+     "key": "A",
+     "text": "If the null hypothesis were true, data this extreme would occur about 3% of the time",
+     "correct": true,
+     "rationale": "Correct: the p-value is the probability of data at least this extreme assuming the null is true."
+    },
+    {
+     "key": "B",
+     "text": "There is a 3% chance the null hypothesis is true",
+     "correct": false,
+     "rationale": "The p-value is not the probability that the null is true."
+    },
+    {
+     "key": "C",
+     "text": "The effect is 3% in size",
+     "correct": false,
+     "rationale": "A p-value is not an effect size."
+    },
+    {
+     "key": "D",
+     "text": "The result is practically important",
+     "correct": false,
+     "rationale": "Statistical significance does not establish practical importance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a p-value measures how surprising the data are if the null hypothesis holds.",
+   "outcome_refs": [
+    "MST-0975-D05.02"
+   ],
+   "domain_ref": "Hypothesis testing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

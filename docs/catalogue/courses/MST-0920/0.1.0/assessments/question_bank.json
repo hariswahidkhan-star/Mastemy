@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0920",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0920-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In R, what does `x[1]` return when `x <- c(10, 20, 30)`?",
+   "options": [
+    {
+     "key": "A",
+     "text": "10",
+     "correct": true,
+     "rationale": "Correct: R vectors are 1-indexed, so position 1 is the first element."
+    },
+    {
+     "key": "B",
+     "text": "20",
+     "correct": false,
+     "rationale": "20 is at index 2; R does not use zero-based indexing."
+    },
+    {
+     "key": "C",
+     "text": "0",
+     "correct": false,
+     "rationale": "R has no element at index 0 for this vector."
+    },
+    {
+     "key": "D",
+     "text": "An error",
+     "correct": false,
+     "rationale": "Index 1 is valid and returns the first element."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: R uses 1-based indexing, so x[1] is the first element.",
+   "outcome_refs": [
+    "MST-0920-D01.02"
+   ],
+   "domain_ref": "R foundations and the environment",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0920-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO tidyverse functions reshape or transform columns of a data frame? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "mutate()",
+     "correct": true,
+     "rationale": "Correct: mutate() adds or changes columns."
+    },
+    {
+     "key": "B",
+     "text": "pivot_longer()",
+     "correct": true,
+     "rationale": "Correct: pivot_longer() reshapes wide columns into key-value rows."
+    },
+    {
+     "key": "C",
+     "text": "install.packages()",
+     "correct": false,
+     "rationale": "This installs packages; it does not transform data."
+    },
+    {
+     "key": "D",
+     "text": "library()",
+     "correct": false,
+     "rationale": "This loads a package; it does not transform data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: mutate() transforms columns and pivot_longer() reshapes them.",
+   "outcome_refs": [
+    "MST-0920-D03.01"
+   ],
+   "domain_ref": "Data wrangling with the tidyverse",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0920-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is knitting an R Markdown document more reproducible than saving a workspace image?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It re-runs the code from the source each time, so results match the code",
+     "correct": true,
+     "rationale": "Correct: knitting executes the analysis fresh, keeping outputs consistent with the code."
+    },
+    {
+     "key": "B",
+     "text": "It compresses the data more efficiently",
+     "correct": false,
+     "rationale": "Reproducibility is about re-executing code, not compression."
+    },
+    {
+     "key": "C",
+     "text": "It prevents anyone from editing the code",
+     "correct": false,
+     "rationale": "The source remains editable; that is not the point."
+    },
+    {
+     "key": "D",
+     "text": "It stores results without the code",
+     "correct": false,
+     "rationale": "A workspace image stores results without code, which is the less reproducible option."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: knitting re-executes the source so outputs always reflect the current code.",
+   "outcome_refs": [
+    "MST-0920-D06.02"
+   ],
+   "domain_ref": "Reproducible reporting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0929",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0929-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which command substitution captures the output of `date` into the variable `now` in modern Bash?",
+   "options": [
+    {
+     "key": "A",
+     "text": "now=$(date)",
+     "correct": true,
+     "rationale": "Correct: $(...) runs the command and assigns its standard output to the variable."
+    },
+    {
+     "key": "B",
+     "text": "now=date",
+     "correct": false,
+     "rationale": "This assigns the literal string 'date', not the command's output."
+    },
+    {
+     "key": "C",
+     "text": "now=<date>",
+     "correct": false,
+     "rationale": "Angle brackets are used for redirection, not command substitution."
+    },
+    {
+     "key": "D",
+     "text": "now==$(date)",
+     "correct": false,
+     "rationale": "== is a comparison operator; assignment uses a single =."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: $(...) runs the command and assigns its standard output to the variable.",
+   "outcome_refs": [
+    "MST-0929-D02.01"
+   ],
+   "domain_ref": "Variables, quoting and expansion",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0929-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A script must stop on the first error and treat unset variables as failures. Which TWO options of `set` help enforce this? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "set -e (errexit)",
+     "correct": true,
+     "rationale": "Correct: -e makes the script exit when a command returns a non-zero status."
+    },
+    {
+     "key": "B",
+     "text": "set -u (nounset)",
+     "correct": true,
+     "rationale": "Correct: -u makes referencing an unset variable an error."
+    },
+    {
+     "key": "C",
+     "text": "set -x (xtrace)",
+     "correct": false,
+     "rationale": "-x prints commands for debugging; it does not change error behaviour."
+    },
+    {
+     "key": "D",
+     "text": "set -v (verbose)",
+     "correct": false,
+     "rationale": "-v echoes input lines; it does not affect error handling."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: -e exits on error and -u fails on unset variables; together they harden a script.",
+   "outcome_refs": [
+    "MST-0929-D06.01"
+   ],
+   "domain_ref": "Robust automation and scheduling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0929-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can a script that runs fine in an interactive shell fail when run by cron?",
+   "options": [
+    {
+     "key": "A",
+     "text": "cron runs with a minimal environment and a different PATH",
+     "correct": true,
+     "rationale": "Correct: cron does not load the interactive shell profile, so PATH and variables differ."
+    },
+    {
+     "key": "B",
+     "text": "cron cannot execute Bash scripts",
+     "correct": false,
+     "rationale": "cron can run any executable, including Bash scripts."
+    },
+    {
+     "key": "C",
+     "text": "cron always runs as a different CPU architecture",
+     "correct": false,
+     "rationale": "cron runs on the same machine and architecture."
+    },
+    {
+     "key": "D",
+     "text": "cron strips all comments from the script",
+     "correct": false,
+     "rationale": "cron does not modify the script contents."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: cron uses a minimal environment, so absolute paths and explicit variables are needed.",
+   "outcome_refs": [
+    "MST-0929-D06.02"
+   ],
+   "domain_ref": "Robust automation and scheduling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

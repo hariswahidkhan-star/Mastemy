@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0930",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0930-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What flows between stages of a PowerShell pipeline?",
+   "options": [
+    {
+     "key": "A",
+     "text": ".NET objects",
+     "correct": true,
+     "rationale": "Correct: PowerShell passes rich objects, not plain text, between pipeline stages."
+    },
+    {
+     "key": "B",
+     "text": "Only plain text lines",
+     "correct": false,
+     "rationale": "Unlike traditional shells, PowerShell passes objects, not text."
+    },
+    {
+     "key": "C",
+     "text": "Binary file handles",
+     "correct": false,
+     "rationale": "The pipeline carries objects, not raw file handles."
+    },
+    {
+     "key": "D",
+     "text": "HTML fragments",
+     "correct": false,
+     "rationale": "Objects, not HTML, move through the pipeline."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the PowerShell pipeline passes objects, enabling property access without text parsing.",
+   "outcome_refs": [
+    "MST-0930-D02.01"
+   ],
+   "domain_ref": "Objects and the pipeline",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0930-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO comparison operators are valid in PowerShell? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "-eq",
+     "correct": true,
+     "rationale": "Correct: -eq tests equality in PowerShell."
+    },
+    {
+     "key": "B",
+     "text": "-gt",
+     "correct": true,
+     "rationale": "Correct: -gt tests greater-than in PowerShell."
+    },
+    {
+     "key": "C",
+     "text": "==",
+     "correct": false,
+     "rationale": "== is not a PowerShell comparison operator."
+    },
+    {
+     "key": "D",
+     "text": ">",
+     "correct": false,
+     "rationale": "> is redirection in PowerShell, not comparison."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: PowerShell uses word operators such as -eq and -gt, not == or >.",
+   "outcome_refs": [
+    "MST-0930-D03.02"
+   ],
+   "domain_ref": "Variables, types and operators",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0930-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which cmdlet lists the properties and methods available on an object?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Get-Member",
+     "correct": true,
+     "rationale": "Correct: Get-Member reveals an object's properties and methods."
+    },
+    {
+     "key": "B",
+     "text": "Get-Content",
+     "correct": false,
+     "rationale": "Get-Content reads file contents, not object members."
+    },
+    {
+     "key": "C",
+     "text": "Get-History",
+     "correct": false,
+     "rationale": "Get-History lists previously run commands."
+    },
+    {
+     "key": "D",
+     "text": "Get-Location",
+     "correct": false,
+     "rationale": "Get-Location returns the current path."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Get-Member inspects the members of objects in the pipeline.",
+   "outcome_refs": [
+    "MST-0930-D01.02"
+   ],
+   "domain_ref": "PowerShell fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

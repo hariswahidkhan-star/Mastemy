@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0982",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0982-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "At which layer of the TCP/IP model does IP addressing and routing operate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The internet (network) layer",
+     "correct": true,
+     "rationale": "Correct: IP addressing and routing between networks live at the internet/network layer."
+    },
+    {
+     "key": "B",
+     "text": "The application layer",
+     "correct": false,
+     "rationale": "The application layer handles protocols like HTTP, not IP routing."
+    },
+    {
+     "key": "C",
+     "text": "The link layer",
+     "correct": false,
+     "rationale": "The link layer handles local delivery and MAC addressing, not routing between networks."
+    },
+    {
+     "key": "D",
+     "text": "The transport layer",
+     "correct": false,
+     "rationale": "The transport layer handles TCP/UDP segments, not IP routing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: IP addressing and inter-network routing happen at the internet/network layer.",
+   "outcome_refs": [
+    "MST-0982-D03.02"
+   ],
+   "domain_ref": "The transport and network layers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0982-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements correctly contrast TCP and UDP? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "TCP provides ordered, reliable delivery with acknowledgements",
+     "correct": true,
+     "rationale": "Correct: TCP guarantees ordered, acknowledged delivery."
+    },
+    {
+     "key": "B",
+     "text": "UDP has lower overhead and no built-in delivery guarantee",
+     "correct": true,
+     "rationale": "Correct: UDP is connectionless with minimal overhead and no reliability guarantee."
+    },
+    {
+     "key": "C",
+     "text": "UDP retransmits lost segments automatically",
+     "correct": false,
+     "rationale": "UDP does not retransmit; that is a TCP feature."
+    },
+    {
+     "key": "D",
+     "text": "TCP is connectionless",
+     "correct": false,
+     "rationale": "TCP is connection-oriented, not connectionless."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: TCP is reliable and ordered; UDP is lightweight and connectionless.",
+   "outcome_refs": [
+    "MST-0982-D03.01"
+   ],
+   "domain_ref": "The transport and network layers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0982-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user can reach a server by IP address but not by its hostname. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A DNS name-resolution problem",
+     "correct": true,
+     "rationale": "Correct: reachability by IP but not by name points to DNS resolution."
+    },
+    {
+     "key": "B",
+     "text": "A failed physical cable",
+     "correct": false,
+     "rationale": "The IP connection works, so the physical link is fine."
+    },
+    {
+     "key": "C",
+     "text": "An exhausted DHCP pool",
+     "correct": false,
+     "rationale": "The host already has a working address, so DHCP is not the issue here."
+    },
+    {
+     "key": "D",
+     "text": "A depleted CPU on the client",
+     "correct": false,
+     "rationale": "CPU load would not selectively break name resolution."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: working IP connectivity with failing name access indicates a DNS issue.",
+   "outcome_refs": [
+    "MST-0982-D04.01"
+   ],
+   "domain_ref": "Core services: DNS and DHCP",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

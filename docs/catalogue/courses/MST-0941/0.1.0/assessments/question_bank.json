@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0941",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0941-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which clause filters groups after aggregation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "HAVING",
+     "correct": true,
+     "rationale": "Correct: HAVING filters rows produced after GROUP BY aggregation."
+    },
+    {
+     "key": "B",
+     "text": "WHERE",
+     "correct": false,
+     "rationale": "WHERE filters individual rows before grouping."
+    },
+    {
+     "key": "C",
+     "text": "ORDER BY",
+     "correct": false,
+     "rationale": "ORDER BY sorts the final result; it does not filter groups."
+    },
+    {
+     "key": "D",
+     "text": "LIMIT",
+     "correct": false,
+     "rationale": "LIMIT caps the number of returned rows; it does not filter groups."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: HAVING applies conditions to aggregated groups, unlike WHERE which filters rows first.",
+   "outcome_refs": [
+    "MST-0941-D04.02"
+   ],
+   "domain_ref": "Aggregation and grouping",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0941-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO join results keep rows from the left table even when there is no matching right-table row? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "LEFT JOIN",
+     "correct": true,
+     "rationale": "Correct: a LEFT JOIN keeps all left rows, filling unmatched right columns with NULL."
+    },
+    {
+     "key": "B",
+     "text": "FULL OUTER JOIN",
+     "correct": true,
+     "rationale": "Correct: a FULL OUTER JOIN keeps unmatched rows from both sides, including the left."
+    },
+    {
+     "key": "C",
+     "text": "INNER JOIN",
+     "correct": false,
+     "rationale": "An INNER JOIN drops left rows that have no match."
+    },
+    {
+     "key": "D",
+     "text": "CROSS JOIN",
+     "correct": false,
+     "rationale": "A CROSS JOIN pairs every row with every other row; it is not match-based."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: LEFT JOIN and FULL OUTER JOIN both preserve unmatched left-table rows.",
+   "outcome_refs": [
+    "MST-0941-D03.02"
+   ],
+   "domain_ref": "Joining tables",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0941-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does a window function differ from a GROUP BY aggregate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It returns a value per row without collapsing the rows",
+     "correct": true,
+     "rationale": "Correct: window functions compute across a set but keep every input row."
+    },
+    {
+     "key": "B",
+     "text": "It always sorts the table permanently",
+     "correct": false,
+     "rationale": "Window functions do not permanently sort stored data."
+    },
+    {
+     "key": "C",
+     "text": "It can only be used on primary keys",
+     "correct": false,
+     "rationale": "Window functions apply to any columns, not just keys."
+    },
+    {
+     "key": "D",
+     "text": "It removes duplicate rows automatically",
+     "correct": false,
+     "rationale": "Window functions do not deduplicate rows."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a window function produces a result for each row rather than collapsing groups.",
+   "outcome_refs": [
+    "MST-0941-D06.01"
+   ],
+   "domain_ref": "Window functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
