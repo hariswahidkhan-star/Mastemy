@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0533",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0533-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why plan a multi-file feature with Claude Code before editing any code?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A plan exposes the files and interfaces involved and the order of safe steps before mistakes are made",
+     "correct": true,
+     "rationale": "Correct: planning surfaces dependencies and ordering so changes stay coherent."
+    },
+    {
+     "key": "B",
+     "text": "Planning removes the need to run the tests",
+     "correct": false,
+     "rationale": "Tests are still required; planning does not replace verification."
+    },
+    {
+     "key": "C",
+     "text": "Planning guarantees the feature is bug-free",
+     "correct": false,
+     "rationale": "No planning step guarantees bug-free code."
+    },
+    {
+     "key": "D",
+     "text": "Planning lets Claude Code skip reviewing the diff",
+     "correct": false,
+     "rationale": "Review is still necessary after implementation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: planning surfaces dependencies and ordering so changes stay coherent.",
+   "outcome_refs": [
+    "MST-0533-D01.01"
+   ],
+   "domain_ref": "Planning before coding",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0533-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO properties should each step of a decomposed feature have? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It leaves the codebase in a working, buildable state",
+     "correct": true,
+     "rationale": "Correct: working intermediate states keep the change recoverable."
+    },
+    {
+     "key": "B",
+     "text": "It has a defined way to verify it succeeded",
+     "correct": true,
+     "rationale": "Correct: a per-step check catches errors early."
+    },
+    {
+     "key": "C",
+     "text": "It touches as many files as possible at once",
+     "correct": false,
+     "rationale": "Maximising blast radius per step makes failures harder to isolate."
+    },
+    {
+     "key": "D",
+     "text": "It is never reviewed until the whole feature is done",
+     "correct": false,
+     "rationale": "Deferring all review increases the cost of mistakes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: working intermediate states keep the change recoverable.",
+   "outcome_refs": [
+    "MST-0533-D02.01"
+   ],
+   "domain_ref": "Decomposing a feature into ordered steps",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0533-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During implementation Claude Code also renames unrelated variables across the repo. In review, this is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Scope creep that should be removed from this change",
+     "correct": true,
+     "rationale": "Correct: unrelated edits expand risk and should be split out."
+    },
+    {
+     "key": "B",
+     "text": "A helpful bonus to merge as-is",
+     "correct": false,
+     "rationale": "Unrelated changes bundled in obscure review and raise risk."
+    },
+    {
+     "key": "C",
+     "text": "Irrelevant because the tests pass",
+     "correct": false,
+     "rationale": "Passing tests do not justify unreviewed scope expansion."
+    },
+    {
+     "key": "D",
+     "text": "Required before the feature can work",
+     "correct": false,
+     "rationale": "The rename is unrelated to the feature's requirements."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unrelated edits expand risk and should be split out.",
+   "outcome_refs": [
+    "MST-0533-D04.01"
+   ],
+   "domain_ref": "Reviewing the change",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

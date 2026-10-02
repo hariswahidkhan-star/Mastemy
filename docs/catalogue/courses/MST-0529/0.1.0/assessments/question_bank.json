@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0529",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0529-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team runs the same CSV-to-Excel summary every month with identical formatting rules. Why is packaging it as a Skill preferable to re-prompting each time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Skill captures the instructions, scripts and formatting once so the task runs consistently and repeatably",
+     "correct": true,
+     "rationale": "Correct: a Skill encodes the repeatable procedure, reducing drift between runs."
+    },
+    {
+     "key": "B",
+     "text": "A Skill makes Claude respond faster on every unrelated request",
+     "correct": false,
+     "rationale": "A Skill does not speed up unrelated requests; it standardises a specific task."
+    },
+    {
+     "key": "C",
+     "text": "A Skill removes the need to ever verify the output",
+     "correct": false,
+     "rationale": "Output must still be verified; a Skill standardises the steps, not correctness."
+    },
+    {
+     "key": "D",
+     "text": "A Skill lets Claude edit the source CSV in place without permission",
+     "correct": false,
+     "rationale": "A Skill does not grant unrequested write access to source files."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Skill encodes the repeatable procedure, reducing drift between runs.",
+   "outcome_refs": [
+    "MST-0529-D01.01"
+   ],
+   "domain_ref": "What Claude Skills are and when document work needs one",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0529-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO checks should a document Skill perform before its output is trusted for a board pack? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reconcile every total in the output against the source export",
+     "correct": true,
+     "rationale": "Correct: totals must trace back to the source to catch transformation errors."
+    },
+    {
+     "key": "B",
+     "text": "Confirm the output file opens without a format error",
+     "correct": true,
+     "rationale": "Correct: a corrupt or unreadable file is an immediate failure to catch early."
+    },
+    {
+     "key": "C",
+     "text": "Check that the output file is larger than the source",
+     "correct": false,
+     "rationale": "File size is not a meaningful correctness signal."
+    },
+    {
+     "key": "D",
+     "text": "Ask Claude whether it is confident in the numbers",
+     "correct": false,
+     "rationale": "A model's stated confidence is not independent verification."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: totals must trace back to the source to catch transformation errors.",
+   "outcome_refs": [
+    "MST-0529-D04.01"
+   ],
+   "domain_ref": "Verifying Skill output before professional use",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0529-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A source workbook contains client-identifying data. Before a Skill processes it, what is the right first step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Classify the document's sensitivity and confirm retention and sharing settings allow this use",
+     "correct": true,
+     "rationale": "Correct: sensitivity classification and settings come before processing confidential data."
+    },
+    {
+     "key": "B",
+     "text": "Run the Skill immediately to save time",
+     "correct": false,
+     "rationale": "Processing confidential data before checking settings is the risk being avoided."
+    },
+    {
+     "key": "C",
+     "text": "Rename the file so the data looks anonymised",
+     "correct": false,
+     "rationale": "Renaming does not remove identifying content from the data."
+    },
+    {
+     "key": "D",
+     "text": "Share the file publicly so the team can all run the Skill",
+     "correct": false,
+     "rationale": "Public sharing increases exposure of confidential data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sensitivity classification and settings come before processing confidential data.",
+   "outcome_refs": [
+    "MST-0529-D05.01"
+   ],
+   "domain_ref": "Confidential document content and safe Skill use",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

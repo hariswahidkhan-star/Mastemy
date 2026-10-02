@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0535",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0535-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A type error appears in a generated React component. Claude Code proposes casting the value to any. The better fix is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Model the correct type so the error reflects real data instead of being suppressed",
+     "correct": true,
+     "rationale": "Correct: precise types catch real mismatches; any discards that safety."
+    },
+    {
+     "key": "B",
+     "text": "Cast to any to move on quickly",
+     "correct": false,
+     "rationale": "any removes type safety and hides real mismatches."
+    },
+    {
+     "key": "C",
+     "text": "Disable TypeScript for the file",
+     "correct": false,
+     "rationale": "Disabling checks defeats the purpose of using TypeScript."
+    },
+    {
+     "key": "D",
+     "text": "Delete the component",
+     "correct": false,
+     "rationale": "Deleting working UI is not a fix for a type error."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: precise types catch real mismatches; any discards that safety.",
+   "outcome_refs": [
+    "MST-0535-D02.01"
+   ],
+   "domain_ref": "Typing and component idioms",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0535-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO checks help verify a React/TypeScript change before shipping? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The type-checker passes with no new errors",
+     "correct": true,
+     "rationale": "Correct: a clean type-check is a baseline front-end gate."
+    },
+    {
+     "key": "B",
+     "text": "The running app shows no new console errors",
+     "correct": true,
+     "rationale": "Correct: runtime console errors reveal problems a build may not."
+    },
+    {
+     "key": "C",
+     "text": "The component file has more lines than before",
+     "correct": false,
+     "rationale": "Line count is not a correctness signal."
+    },
+    {
+     "key": "D",
+     "text": "The CSS file was renamed",
+     "correct": false,
+     "rationale": "A rename is unrelated to verifying the change."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a clean type-check is a baseline front-end gate.",
+   "outcome_refs": [
+    "MST-0535-D05.01"
+   ],
+   "domain_ref": "Verifying UI changes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0535-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A list shows a stale value after an update. The most likely cause to investigate first is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A missing or incorrect effect/hook dependency",
+     "correct": true,
+     "rationale": "Correct: stale values commonly stem from dependency-array mistakes."
+    },
+    {
+     "key": "B",
+     "text": "The network being offline",
+     "correct": false,
+     "rationale": "Offline status would usually surface differently, not as a stale render."
+    },
+    {
+     "key": "C",
+     "text": "The TypeScript compiler version",
+     "correct": false,
+     "rationale": "Compiler version rarely causes a stale rendered value."
+    },
+    {
+     "key": "D",
+     "text": "The file being too long",
+     "correct": false,
+     "rationale": "File length does not cause stale state."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: stale values commonly stem from dependency-array mistakes.",
+   "outcome_refs": [
+    "MST-0535-D04.01"
+   ],
+   "domain_ref": "Debugging rendering and state",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

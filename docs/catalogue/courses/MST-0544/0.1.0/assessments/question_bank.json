@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0544",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0544-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Answers degrade midway through a long Claude Code session full of unrelated files. The most direct fix is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Prune irrelevant context so only the relevant files remain in view",
+     "correct": true,
+     "rationale": "Correct: irrelevant context dilutes attention and degrades answers."
+    },
+    {
+     "key": "B",
+     "text": "Add even more files so Claude has everything",
+     "correct": false,
+     "rationale": "More irrelevant context worsens the problem."
+    },
+    {
+     "key": "C",
+     "text": "Switch to a slower keyboard",
+     "correct": false,
+     "rationale": "Input speed is unrelated to context quality."
+    },
+    {
+     "key": "D",
+     "text": "Restart the computer",
+     "correct": false,
+     "rationale": "A machine restart does not address bloated session context."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: irrelevant context dilutes attention and degrades answers.",
+   "outcome_refs": [
+    "MST-0544-D02.01"
+   ],
+   "domain_ref": "Keeping context relevant",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0544-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO help manage a long, costly Claude Code session? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Summarising progress to carry forward only what matters",
+     "correct": true,
+     "rationale": "Correct: a summary preserves state while shedding token load."
+    },
+    {
+     "key": "B",
+     "text": "Resetting a bloated session cleanly when it goes stale",
+     "correct": true,
+     "rationale": "Correct: a reset removes accumulated irrelevant context."
+    },
+    {
+     "key": "C",
+     "text": "Including every file in the repo just in case",
+     "correct": false,
+     "rationale": "Indiscriminate inclusion raises cost and hurts quality."
+    },
+    {
+     "key": "D",
+     "text": "Never summarising so nothing is lost",
+     "correct": false,
+     "rationale": "Hoarding all context is what degrades the session."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a summary preserves state while shedding token load.",
+   "outcome_refs": [
+    "MST-0544-D03.01"
+   ],
+   "domain_ref": "Managing long sessions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0544-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workflow has many mechanical, low-risk steps. A sensible cost trade-off is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a smaller, cheaper model for the mechanical steps where quality allows",
+     "correct": true,
+     "rationale": "Correct: matching model to task risk controls cost without hurting outcomes."
+    },
+    {
+     "key": "B",
+     "text": "Always use the largest model for every step",
+     "correct": false,
+     "rationale": "Max compute on trivial steps wastes cost."
+    },
+    {
+     "key": "C",
+     "text": "Avoid models entirely and do it by hand",
+     "correct": false,
+     "rationale": "That discards the automation's value unnecessarily."
+    },
+    {
+     "key": "D",
+     "text": "Run every step twice to be safe",
+     "correct": false,
+     "rationale": "Doubling runs doubles cost without clear benefit."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: matching model to task risk controls cost without hurting outcomes.",
+   "outcome_refs": [
+    "MST-0544-D05.01"
+   ],
+   "domain_ref": "Right-sizing the trade-off",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0530",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0530-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A shared Skill changes its output from a Markdown table to JSON, breaking three downstream automations. How should this be versioned?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As a breaking (major) version, with migration notes and a deprecation window for the old version",
+     "correct": true,
+     "rationale": "Correct: an output-contract change that breaks consumers is a breaking version needing migration support."
+    },
+    {
+     "key": "B",
+     "text": "As a patch, because the logic is unchanged",
+     "correct": false,
+     "rationale": "The output contract changed and consumers broke; that is not a patch."
+    },
+    {
+     "key": "C",
+     "text": "With no version change, since users will adapt",
+     "correct": false,
+     "rationale": "Silent breaking changes are exactly the failure to avoid."
+    },
+    {
+     "key": "D",
+     "text": "By deleting the old Skill immediately",
+     "correct": false,
+     "rationale": "Immediate deletion gives consumers no migration window."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an output-contract change that breaks consumers is a breaking version needing migration support.",
+   "outcome_refs": [
+    "MST-0530-D03.01"
+   ],
+   "domain_ref": "Versioning and change communication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0530-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in a Skill's evaluation set so regressions are caught? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Representative inputs paired with expected outputs",
+     "correct": true,
+     "rationale": "Correct: expected outputs let you detect when behaviour drifts."
+    },
+    {
+     "key": "B",
+     "text": "Clear pass criteria that distinguish regressions from acceptable variation",
+     "correct": true,
+     "rationale": "Correct: without criteria you cannot decide whether a diff is a failure."
+    },
+    {
+     "key": "C",
+     "text": "A note that the author ran it once and it looked fine",
+     "correct": false,
+     "rationale": "A single happy-path run is not a repeatable evaluation."
+    },
+    {
+     "key": "D",
+     "text": "The total number of times the Skill has been run",
+     "correct": false,
+     "rationale": "Run count does not evaluate correctness."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: expected outputs let you detect when behaviour drifts.",
+   "outcome_refs": [
+    "MST-0530-D02.01"
+   ],
+   "domain_ref": "Evaluating a Skill with test cases",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0530-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A reporting Skill is used by many squads but only the platform team should change its logic. What access model fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Run access for all squads, edit access limited to the owning team",
+     "correct": true,
+     "rationale": "Correct: least-privilege separates safe use from controlled change."
+    },
+    {
+     "key": "B",
+     "text": "Edit access for everyone so fixes are fast",
+     "correct": false,
+     "rationale": "Broad edit access invites uncontrolled, breaking changes."
+    },
+    {
+     "key": "C",
+     "text": "No access for squads so nothing breaks",
+     "correct": false,
+     "rationale": "Blocking the intended users defeats the Skill's purpose."
+    },
+    {
+     "key": "D",
+     "text": "Run access only for the owning team",
+     "correct": false,
+     "rationale": "The squads are the intended users and need run access."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: least-privilege separates safe use from controlled change.",
+   "outcome_refs": [
+    "MST-0530-D04.01"
+   ],
+   "domain_ref": "Distribution and access control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

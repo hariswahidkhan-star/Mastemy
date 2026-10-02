@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0538",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0538-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before refactoring a complex, untested legacy function, the safest first step is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add characterisation tests that capture current behaviour",
+     "correct": true,
+     "rationale": "Correct: capturing existing behaviour lets you refactor without changing it unknowingly."
+    },
+    {
+     "key": "B",
+     "text": "Rewrite it from scratch immediately",
+     "correct": false,
+     "rationale": "Rewriting without a safety net risks silent behaviour changes."
+    },
+    {
+     "key": "C",
+     "text": "Delete it and see what breaks",
+     "correct": false,
+     "rationale": "Removing code to probe dependencies is reckless in production code."
+    },
+    {
+     "key": "D",
+     "text": "Rename its variables first",
+     "correct": false,
+     "rationale": "Renaming does not protect behaviour during a refactor."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: capturing existing behaviour lets you refactor without changing it unknowingly.",
+   "outcome_refs": [
+    "MST-0538-D03.01"
+   ],
+   "domain_ref": "Refactoring behind a safety net",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0538-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO make a large refactor reviewable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Splitting it into small, ordered steps",
+     "correct": true,
+     "rationale": "Correct: small steps are far easier to review correctly."
+    },
+    {
+     "key": "B",
+     "text": "Keeping each step building and passing tests",
+     "correct": true,
+     "rationale": "Correct: green intermediate states keep the refactor recoverable."
+    },
+    {
+     "key": "C",
+     "text": "Bundling unrelated feature changes to save a PR",
+     "correct": false,
+     "rationale": "Mixing changes obscures review and raises risk."
+    },
+    {
+     "key": "D",
+     "text": "Avoiding tests so the diff is smaller",
+     "correct": false,
+     "rationale": "Dropping tests removes the safety net the refactor needs."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: small steps are far easier to review correctly.",
+   "outcome_refs": [
+    "MST-0538-D04.01"
+   ],
+   "domain_ref": "Making large refactors reviewable",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0538-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An audit lists twenty findings. What should drive which to fix first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Their impact weighed against the effort to fix them",
+     "correct": true,
+     "rationale": "Correct: impact-versus-effort prioritisation maximises value."
+    },
+    {
+     "key": "B",
+     "text": "Which one is quickest to fix regardless of impact",
+     "correct": false,
+     "rationale": "Easiest-first can leave the biggest risks untouched."
+    },
+    {
+     "key": "C",
+     "text": "Alphabetical order of file names",
+     "correct": false,
+     "rationale": "File name order has no bearing on risk."
+    },
+    {
+     "key": "D",
+     "text": "Which the newest team member prefers",
+     "correct": false,
+     "rationale": "Preference is not a prioritisation basis for risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: impact-versus-effort prioritisation maximises value.",
+   "outcome_refs": [
+    "MST-0538-D02.01"
+   ],
+   "domain_ref": "Prioritising findings",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0532",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0532-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Claude Code keeps running the wrong test command in a repo. What is the most durable fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Record the correct test command in CLAUDE.md so it is applied every session",
+     "correct": true,
+     "rationale": "Correct: encoding the command in project context stops the repeated correction."
+    },
+    {
+     "key": "B",
+     "text": "Re-type the correct command every time it is wrong",
+     "correct": false,
+     "rationale": "Repeating yourself does not persist the rule across sessions."
+    },
+    {
+     "key": "C",
+     "text": "Delete the test suite so there is nothing to run",
+     "correct": false,
+     "rationale": "Removing tests is harmful and does not address the instruction."
+    },
+    {
+     "key": "D",
+     "text": "Rename the repository",
+     "correct": false,
+     "rationale": "The repo name does not determine the test command."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: encoding the command in project context stops the repeated correction.",
+   "outcome_refs": [
+    "MST-0532-D05.01"
+   ],
+   "domain_ref": "Diagnosing missing or harmful context",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0532-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in a well-written CLAUDE.md? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The exact commands to build, test and lint the project",
+     "correct": true,
+     "rationale": "Correct: concrete commands let Claude Code act correctly without guessing."
+    },
+    {
+     "key": "B",
+     "text": "Concrete conventions and do-nots specific to the repo",
+     "correct": true,
+     "rationale": "Correct: testable conventions reduce repeated corrections."
+    },
+    {
+     "key": "C",
+     "text": "A copy of the entire source tree",
+     "correct": false,
+     "rationale": "The source tree is already available; duplicating it is noise."
+    },
+    {
+     "key": "D",
+     "text": "Secrets such as API keys and passwords",
+     "correct": false,
+     "rationale": "Secrets must never be placed in project context files."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: concrete commands let Claude Code act correctly without guessing.",
+   "outcome_refs": [
+    "MST-0532-D02.01"
+   ],
+   "domain_ref": "Writing an effective CLAUDE.md",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0532-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A monorepo's web package uses a different import style from the rest. Where should that rule live?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In a CLAUDE.md scoped to the web package directory",
+     "correct": true,
+     "rationale": "Correct: directory-scoped context applies the rule only where it is relevant."
+    },
+    {
+     "key": "B",
+     "text": "In the root CLAUDE.md so it applies everywhere",
+     "correct": false,
+     "rationale": "Root scope would wrongly impose the web style on other packages."
+    },
+    {
+     "key": "C",
+     "text": "In a code comment in one file",
+     "correct": false,
+     "rationale": "A single comment does not reliably steer Claude Code across the package."
+    },
+    {
+     "key": "D",
+     "text": "Nowhere; the style should be abandoned",
+     "correct": false,
+     "rationale": "The package has a valid reason for its style; scope the rule instead."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: directory-scoped context applies the rule only where it is relevant.",
+   "outcome_refs": [
+    "MST-0532-D03.02"
+   ],
+   "domain_ref": "Scoping context across a repository",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

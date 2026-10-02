@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0537",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0537-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a test-driven workflow, why confirm the new test fails before writing the implementation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A test that does not fail first may be asserting nothing or already satisfied, giving false confidence",
+     "correct": true,
+     "rationale": "Correct: a failing-first test proves it actually exercises the new behaviour."
+    },
+    {
+     "key": "B",
+     "text": "Failing tests run faster than passing ones",
+     "correct": false,
+     "rationale": "Execution speed is not the reason."
+    },
+    {
+     "key": "C",
+     "text": "A test must fail at least once to be committed",
+     "correct": false,
+     "rationale": "There is no such mechanical rule; the point is validity."
+    },
+    {
+     "key": "D",
+     "text": "Claude Code refuses to implement until a test fails",
+     "correct": false,
+     "rationale": "This is a discipline, not a tool restriction."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a failing-first test proves it actually exercises the new behaviour.",
+   "outcome_refs": [
+    "MST-0537-D02.01"
+   ],
+   "domain_ref": "Writing a good failing test",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0537-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO describe correct regression repair from a bug report? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reproduce the bug as a failing test before fixing it",
+     "correct": true,
+     "rationale": "Correct: a reproduction test proves the bug and guards against regression."
+    },
+    {
+     "key": "B",
+     "text": "Confirm the whole suite still passes after the fix",
+     "correct": true,
+     "rationale": "Correct: the fix must not break other behaviour."
+    },
+    {
+     "key": "C",
+     "text": "Fix the code and skip adding a test to save time",
+     "correct": false,
+     "rationale": "Without a test the bug can silently return."
+    },
+    {
+     "key": "D",
+     "text": "Delete the failing scenario from the backlog",
+     "correct": false,
+     "rationale": "Removing the report does not fix or guard the defect."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a reproduction test proves the bug and guards against regression.",
+   "outcome_refs": [
+    "MST-0537-D04.01"
+   ],
+   "domain_ref": "Regression repair from a bug report",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0537-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A test passes whether or not the function under test is called. This test is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tautological and untrustworthy; it should be repaired or removed",
+     "correct": true,
+     "rationale": "Correct: a test that cannot fail provides no protection."
+    },
+    {
+     "key": "B",
+     "text": "Ideal because it never breaks the build",
+     "correct": false,
+     "rationale": "A test that never fails gives false confidence."
+    },
+    {
+     "key": "C",
+     "text": "Fine as long as coverage numbers rise",
+     "correct": false,
+     "rationale": "Coverage from a meaningless test is misleading."
+    },
+    {
+     "key": "D",
+     "text": "A good smoke test by design",
+     "correct": false,
+     "rationale": "A smoke test still asserts something meaningful."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a test that cannot fail provides no protection.",
+   "outcome_refs": [
+    "MST-0537-D05.01"
+   ],
+   "domain_ref": "Keeping the suite trustworthy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

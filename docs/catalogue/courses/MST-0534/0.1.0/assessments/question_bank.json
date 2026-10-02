@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0534",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0534-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A generated C# method triggers a nullable reference warning. The correct response is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Address the null-safety issue the warning identifies, not suppress it blindly",
+     "correct": true,
+     "rationale": "Correct: nullable warnings flag real null-handling gaps that should be resolved."
+    },
+    {
+     "key": "B",
+     "text": "Disable nullable reference types for the whole project",
+     "correct": false,
+     "rationale": "Disabling the feature hides genuine null-safety issues."
+    },
+    {
+     "key": "C",
+     "text": "Add a pragma to suppress it without understanding it",
+     "correct": false,
+     "rationale": "Blind suppression leaves the underlying risk in place."
+    },
+    {
+     "key": "D",
+     "text": "Ignore it because the code compiles",
+     "correct": false,
+     "rationale": "A warning can precede a real NullReferenceException at runtime."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: nullable warnings flag real null-handling gaps that should be resolved.",
+   "outcome_refs": [
+    "MST-0534-D03.01"
+   ],
+   "domain_ref": "C# idioms in generated code",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0534-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate ways to verify a .NET change before shipping it? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Run dotnet build and confirm no new analyzer warnings",
+     "correct": true,
+     "rationale": "Correct: a clean analyzed build is a baseline quality gate."
+    },
+    {
+     "key": "B",
+     "text": "Run the affected project's tests with dotnet test",
+     "correct": true,
+     "rationale": "Correct: targeted tests confirm the change behaves as intended."
+    },
+    {
+     "key": "C",
+     "text": "Confirm the file count in the project increased",
+     "correct": false,
+     "rationale": "File count is not a correctness signal."
+    },
+    {
+     "key": "D",
+     "text": "Ask Claude Code to assert that it is confident",
+     "correct": false,
+     "rationale": "A model's confidence is not verification."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a clean analyzed build is a baseline quality gate.",
+   "outcome_refs": [
+    "MST-0534-D05.01"
+   ],
+   "domain_ref": "Verifying C# changes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0534-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An xUnit test fails after a change. Claude Code suggests editing the test's expected value to match the new output. This is wrong because:",
+   "options": [
+    {
+     "key": "A",
+     "text": "It may hide the defect the test correctly detected rather than fixing the cause",
+     "correct": true,
+     "rationale": "Correct: changing the assertion to pass can mask a real regression."
+    },
+    {
+     "key": "B",
+     "text": "xUnit tests can never be edited",
+     "correct": false,
+     "rationale": "Tests can be edited when the requirement legitimately changed."
+    },
+    {
+     "key": "C",
+     "text": "Tests always take priority over code",
+     "correct": false,
+     "rationale": "Neither blindly wins; the point is to fix the true cause."
+    },
+    {
+     "key": "D",
+     "text": "The test file is read-only",
+     "correct": false,
+     "rationale": "Writability is not the issue; correctness of the fix is."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: changing the assertion to pass can mask a real regression.",
+   "outcome_refs": [
+    "MST-0534-D04.01"
+   ],
+   "domain_ref": "Debugging and fixing failing tests",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

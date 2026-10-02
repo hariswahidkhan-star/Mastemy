@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0543",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0543-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A task only needs to read source files. What permission posture fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant read access and withhold write, execute and network it does not need",
+     "correct": true,
+     "rationale": "Correct: least-privilege grants only what the task requires."
+    },
+    {
+     "key": "B",
+     "text": "Grant full read, write, execute and network to avoid prompts",
+     "correct": false,
+     "rationale": "Over-granting expands the blast radius unnecessarily."
+    },
+    {
+     "key": "C",
+     "text": "Grant write access in case it is needed later",
+     "correct": false,
+     "rationale": "Speculative grants violate least-privilege."
+    },
+    {
+     "key": "D",
+     "text": "Disable all permissions so it can do nothing",
+     "correct": false,
+     "rationale": "Blocking the needed read prevents the task entirely."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: least-privilege grants only what the task requires.",
+   "outcome_refs": [
+    "MST-0543-D02.01"
+   ],
+   "domain_ref": "Sandboxing by risk",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0543-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO protect secrets when working with Claude Code? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keep API keys in a secret manager or environment, not in prompts",
+     "correct": true,
+     "rationale": "Correct: secrets belong outside prompts and context files."
+    },
+    {
+     "key": "B",
+     "text": "Prevent secrets from appearing in command output and logs",
+     "correct": true,
+     "rationale": "Correct: leaked output is a common exfiltration path."
+    },
+    {
+     "key": "C",
+     "text": "Paste the production key into CLAUDE.md for convenience",
+     "correct": false,
+     "rationale": "Context files must never contain secrets."
+    },
+    {
+     "key": "D",
+     "text": "Echo the key to confirm it is correct",
+     "correct": false,
+     "rationale": "Echoing a secret leaks it into logs and history."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: secrets belong outside prompts and context files.",
+   "outcome_refs": [
+    "MST-0543-D03.01"
+   ],
+   "domain_ref": "Protecting secrets",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0543-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A single narrow step needs one extra permission. The right approach is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant the minimum scoped permission for that step, not a broad one",
+     "correct": true,
+     "rationale": "Correct: scope the grant to the narrow action actually required."
+    },
+    {
+     "key": "B",
+     "text": "Grant full permissions to avoid future prompts",
+     "correct": false,
+     "rationale": "Broad grants to unblock one step violate least-privilege."
+    },
+    {
+     "key": "C",
+     "text": "Abandon the task entirely",
+     "correct": false,
+     "rationale": "A scoped grant lets the task proceed safely."
+    },
+    {
+     "key": "D",
+     "text": "Disable the permission model for the session",
+     "correct": false,
+     "rationale": "Turning off controls removes all protection."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: scope the grant to the narrow action actually required.",
+   "outcome_refs": [
+    "MST-0543-D04.01"
+   ],
+   "domain_ref": "Refusing out-of-bounds actions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

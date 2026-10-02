@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0539",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0539-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which task is the best candidate for subagent delegation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Investigating three independent modules that do not share state",
+     "correct": true,
+     "rationale": "Correct: independent work parallelises cleanly with little coordination cost."
+    },
+    {
+     "key": "B",
+     "text": "Designing one shared interface every module must agree on",
+     "correct": false,
+     "rationale": "A single coupled decision is better kept in one place."
+    },
+    {
+     "key": "C",
+     "text": "Renaming one variable in one file",
+     "correct": false,
+     "rationale": "Trivial inline work gains nothing from delegation."
+    },
+    {
+     "key": "D",
+     "text": "A task whose steps each depend on the previous result",
+     "correct": false,
+     "rationale": "Strictly sequential work cannot be parallelised usefully."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: independent work parallelises cleanly with little coordination cost.",
+   "outcome_refs": [
+    "MST-0539-D02.01"
+   ],
+   "domain_ref": "Deciding when to delegate",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0539-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in a well-scoped subagent brief? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The specific inputs the subagent should work from",
+     "correct": true,
+     "rationale": "Correct: clear inputs keep the subagent on the intended material."
+    },
+    {
+     "key": "B",
+     "text": "A definition of the report the subagent must return",
+     "correct": true,
+     "rationale": "Correct: a defined output makes results combinable."
+    },
+    {
+     "key": "C",
+     "text": "An instruction to do whatever it thinks best with no bounds",
+     "correct": false,
+     "rationale": "Unbounded scope produces results that are hard to combine."
+    },
+    {
+     "key": "D",
+     "text": "The parent's entire unrelated conversation history",
+     "correct": false,
+     "rationale": "Irrelevant context adds noise and overhead."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: clear inputs keep the subagent on the intended material.",
+   "outcome_refs": [
+    "MST-0539-D03.01"
+   ],
+   "domain_ref": "Scoping a subagent task",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0539-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two subagents return proposals with incompatible interfaces. The right action is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reconcile them into one coherent decision before proceeding",
+     "correct": true,
+     "rationale": "Correct: conflicts must be resolved so the combined result is consistent."
+    },
+    {
+     "key": "B",
+     "text": "Merge both as-is and let callers pick",
+     "correct": false,
+     "rationale": "Shipping contradictory interfaces pushes the conflict downstream."
+    },
+    {
+     "key": "C",
+     "text": "Discard both reports and start over",
+     "correct": false,
+     "rationale": "The investigations have value; reconcile rather than discard."
+    },
+    {
+     "key": "D",
+     "text": "Pick the longer report automatically",
+     "correct": false,
+     "rationale": "Length is not a basis for resolving a design conflict."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: conflicts must be resolved so the combined result is consistent.",
+   "outcome_refs": [
+    "MST-0539-D04.01"
+   ],
+   "domain_ref": "Combining results",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

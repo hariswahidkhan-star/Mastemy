@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0536",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0536-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A generated Python script uses a bare 'except: pass' around a data-loading step. Why is this a problem?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It hides errors so a failed load can silently produce wrong results",
+     "correct": true,
+     "rationale": "Correct: swallowing exceptions masks failures and corrupts downstream results."
+    },
+    {
+     "key": "B",
+     "text": "Bare except runs faster than specific handling",
+     "correct": false,
+     "rationale": "Performance is not the issue; silent failure is."
+    },
+    {
+     "key": "C",
+     "text": "Python forbids the except keyword",
+     "correct": false,
+     "rationale": "except is valid Python; the problem is swallowing the error."
+    },
+    {
+     "key": "D",
+     "text": "It always crashes the interpreter",
+     "correct": false,
+     "rationale": "It does the opposite: it suppresses the crash and hides the fault."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: swallowing exceptions masks failures and corrupts downstream results.",
+   "outcome_refs": [
+    "MST-0536-D02.01"
+   ],
+   "domain_ref": "Idiomatic Python and error handling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0536-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO checks validate a CSV join transformation? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Compare row counts before and after against expectations",
+     "correct": true,
+     "rationale": "Correct: unexpected row counts reveal dropped or duplicated rows."
+    },
+    {
+     "key": "B",
+     "text": "Reconcile a key total against the source export",
+     "correct": true,
+     "rationale": "Correct: totals confirm the transformation preserved the data."
+    },
+    {
+     "key": "C",
+     "text": "Confirm the script printed the word 'done'",
+     "correct": false,
+     "rationale": "A success message is not evidence the data is correct."
+    },
+    {
+     "key": "D",
+     "text": "Check that the output file name is shorter",
+     "correct": false,
+     "rationale": "File name length is irrelevant to correctness."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: unexpected row counts reveal dropped or duplicated rows.",
+   "outcome_refs": [
+    "MST-0536-D03.01"
+   ],
+   "domain_ref": "Validating data transformations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0536-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An automation script overwrites production data and could be run twice by mistake. The safest design is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Make it idempotent and add a dry-run before destructive operations",
+     "correct": true,
+     "rationale": "Correct: idempotency and dry-run protect against accidental re-runs."
+    },
+    {
+     "key": "B",
+     "text": "Run it faster so the window for mistakes is smaller",
+     "correct": false,
+     "rationale": "Speed does not prevent a destructive double-run."
+    },
+    {
+     "key": "C",
+     "text": "Remove all logging to reduce clutter",
+     "correct": false,
+     "rationale": "Less logging makes failures harder to detect, not safer."
+    },
+    {
+     "key": "D",
+     "text": "Trust the operator never to re-run it",
+     "correct": false,
+     "rationale": "Relying on perfect operators is not a safety design."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: idempotency and dry-run protect against accidental re-runs.",
+   "outcome_refs": [
+    "MST-0536-D04.01"
+   ],
+   "domain_ref": "Safe, re-runnable automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

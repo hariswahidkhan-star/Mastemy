@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0542",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0542-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What authority should Claude Code automation in CI retain by default?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Advisory: it can summarise and flag, but humans approve merges and deploys",
+     "correct": true,
+     "rationale": "Correct: keeping merge and deploy authority with people preserves control."
+    },
+    {
+     "key": "B",
+     "text": "Full authority to merge and deploy unattended",
+     "correct": false,
+     "rationale": "Unattended merge/deploy removes human oversight of risk."
+    },
+    {
+     "key": "C",
+     "text": "No ability to read the code at all",
+     "correct": false,
+     "rationale": "That would prevent it from adding any review value."
+    },
+    {
+     "key": "D",
+     "text": "Authority to delete branches it dislikes",
+     "correct": false,
+     "rationale": "Destructive actions must not be automated unattended."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: keeping merge and deploy authority with people preserves control.",
+   "outcome_refs": [
+    "MST-0542-D02.01"
+   ],
+   "domain_ref": "Scoping automated actions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0542-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO make an automated PR review trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It records what it checked and what it did not",
+     "correct": true,
+     "rationale": "Correct: an audit trail bounds how much to trust the review."
+    },
+    {
+     "key": "B",
+     "text": "Humans retain final approval on merges",
+     "correct": true,
+     "rationale": "Correct: a human gate keeps accountability with people."
+    },
+    {
+     "key": "C",
+     "text": "It merges automatically when it finds no issues",
+     "correct": false,
+     "rationale": "Silent auto-merge removes the human oversight that review needs."
+    },
+    {
+     "key": "D",
+     "text": "It hides its reasoning to keep the PR clean",
+     "correct": false,
+     "rationale": "Hidden reasoning cannot be audited or trusted."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an audit trail bounds how much to trust the review.",
+   "outcome_refs": [
+    "MST-0542-D05.01"
+   ],
+   "domain_ref": "Auditable automated review",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0542-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A CI check fails. The best first response with Claude Code is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read the job log to identify the root cause before acting",
+     "correct": true,
+     "rationale": "Correct: reading the failure log is faster and safer than blind re-runs."
+    },
+    {
+     "key": "B",
+     "text": "Re-run the job repeatedly hoping it passes",
+     "correct": false,
+     "rationale": "Blind re-runs waste time and can mask a real failure."
+    },
+    {
+     "key": "C",
+     "text": "Disable the failing check",
+     "correct": false,
+     "rationale": "Disabling checks removes the signal rather than addressing it."
+    },
+    {
+     "key": "D",
+     "text": "Merge anyway since it is probably flaky",
+     "correct": false,
+     "rationale": "Assuming flakiness without evidence can ship a real defect."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reading the failure log is faster and safer than blind re-runs.",
+   "outcome_refs": [
+    "MST-0542-D04.01"
+   ],
+   "domain_ref": "Interpreting CI results",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

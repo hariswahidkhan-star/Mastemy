@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0540",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0540-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A hook that must stop a bad edit from completing should be:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A blocking hook whose non-zero exit prevents the action",
+     "correct": true,
+     "rationale": "Correct: enforcement requires a blocking hook, not an advisory note."
+    },
+    {
+     "key": "B",
+     "text": "An advisory message the user may ignore",
+     "correct": false,
+     "rationale": "An advisory hook cannot enforce the policy."
+    },
+    {
+     "key": "C",
+     "text": "A comment in CLAUDE.md",
+     "correct": false,
+     "rationale": "A comment does not actively block an action."
+    },
+    {
+     "key": "D",
+     "text": "A manual checklist step",
+     "correct": false,
+     "rationale": "A manual step is not automatic enforcement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: enforcement requires a blocking hook, not an advisory note.",
+   "outcome_refs": [
+    "MST-0540-D02.01"
+   ],
+   "domain_ref": "Enforcing policy with hooks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0540-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO properties should a good Claude Code hook have? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fast enough not to disrupt normal work",
+     "correct": true,
+     "rationale": "Correct: slow hooks block every action and frustrate use."
+    },
+    {
+     "key": "B",
+     "text": "Deterministic and safe to run repeatedly",
+     "correct": true,
+     "rationale": "Correct: idempotent, deterministic hooks are reliable."
+    },
+    {
+     "key": "C",
+     "text": "Runs the entire slow test suite on every keystroke",
+     "correct": false,
+     "rationale": "Heavy work on every event belongs in CI, not a hook."
+    },
+    {
+     "key": "D",
+     "text": "Produces different results each run",
+     "correct": false,
+     "rationale": "Non-determinism makes a hook untrustworthy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: slow hooks block every action and frustrate use.",
+   "outcome_refs": [
+    "MST-0540-D03.01"
+   ],
+   "domain_ref": "Keeping hooks fast and safe",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0540-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Every Claude Code action suddenly hangs after a hook was added. The first thing to check is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Whether the hook is slow or waiting, blocking each action",
+     "correct": true,
+     "rationale": "Correct: a slow or hanging hook blocks the actions it wraps."
+    },
+    {
+     "key": "B",
+     "text": "Whether the model weights changed",
+     "correct": false,
+     "rationale": "The timing points to the newly added hook, not the model."
+    },
+    {
+     "key": "C",
+     "text": "Whether the repository needs renaming",
+     "correct": false,
+     "rationale": "The repo name is unrelated to a hanging hook."
+    },
+    {
+     "key": "D",
+     "text": "Whether the network is down",
+     "correct": false,
+     "rationale": "The symptom coincides with the hook, not a network change."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a slow or hanging hook blocks the actions it wraps.",
+   "outcome_refs": [
+    "MST-0540-D04.01"
+   ],
+   "domain_ref": "Debugging hooks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
