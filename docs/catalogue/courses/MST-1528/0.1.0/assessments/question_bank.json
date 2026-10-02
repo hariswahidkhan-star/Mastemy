@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1528",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 492,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1528-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the Elvis operator ?: do in Kotlin?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Provides a default value when the left-hand expression is null",
+     "correct": true,
+     "rationale": "Correct: a ?: b evaluates to a if non-null, otherwise b."
+    },
+    {
+     "key": "B",
+     "text": "Force-unwraps a nullable value, throwing if null",
+     "correct": false,
+     "rationale": "That is the !! operator, not ?:."
+    },
+    {
+     "key": "C",
+     "text": "Declares a nullable type",
+     "correct": false,
+     "rationale": "A trailing ? on a type declares nullability; ?: supplies a fallback."
+    },
+    {
+     "key": "D",
+     "text": "Calls a method only if the receiver is null",
+     "correct": false,
+     "rationale": "The safe-call ?. calls only when non-null; ?: supplies a default."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a ?: b evaluates to a if non-null, otherwise b.",
+   "outcome_refs": [
+    "MST-1528-D01.01"
+   ],
+   "domain_ref": "Kotlin basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1528-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Kotlin data classes are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "They auto-generate equals, hashCode and toString from the properties",
+     "correct": true,
+     "rationale": "Correct: the compiler derives these from the primary-constructor properties."
+    },
+    {
+     "key": "B",
+     "text": "They support destructuring into component variables",
+     "correct": true,
+     "rationale": "Correct: componentN functions enable val (a, b) = obj."
+    },
+    {
+     "key": "C",
+     "text": "They cannot have any methods",
+     "correct": false,
+     "rationale": "Data classes can declare additional methods."
+    },
+    {
+     "key": "D",
+     "text": "Their properties are always mutable",
+     "correct": false,
+     "rationale": "Properties can be val (immutable) or var."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the compiler derives these from the primary-constructor properties.; Correct: componentN functions enable val (a, b) = obj.",
+   "outcome_refs": [
+    "MST-1528-D02.01"
+   ],
+   "domain_ref": "Null safety and control flow",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1528-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why prefer a Kotlin sequence over a plain list for a long chain of transformations on large data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A sequence evaluates lazily, avoiding intermediate collections at each step",
+     "correct": true,
+     "rationale": "Correct: sequences process elements on demand instead of materialising a new list per operation."
+    },
+    {
+     "key": "B",
+     "text": "A sequence runs the work on multiple threads automatically",
+     "correct": false,
+     "rationale": "Sequences are lazy, not automatically parallel."
+    },
+    {
+     "key": "C",
+     "text": "A sequence guarantees the data is sorted",
+     "correct": false,
+     "rationale": "Sequences do not sort unless you ask them to."
+    },
+    {
+     "key": "D",
+     "text": "A sequence makes the collection mutable",
+     "correct": false,
+     "rationale": "Laziness is unrelated to mutability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sequences process elements on demand instead of materialising a new list per operation.",
+   "outcome_refs": [
+    "MST-1528-D03.01"
+   ],
+   "domain_ref": "Functions and lambdas",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

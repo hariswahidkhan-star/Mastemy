@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0940",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0940-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can regular expressions alone not parse nested, balanced parentheses?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Balanced nesting requires counting/memory beyond the power of regular languages",
+     "correct": true,
+     "rationale": "Correct: arbitrary nesting is context-free, not regular, so it needs a stack-based parser."
+    },
+    {
+     "key": "B",
+     "text": "Regular expressions cannot match the '(' character",
+     "correct": false,
+     "rationale": "They can match any character, including parentheses."
+    },
+    {
+     "key": "C",
+     "text": "Parentheses are reserved tokens that lexers skip",
+     "correct": false,
+     "rationale": "Lexers tokenise parentheses; the issue is grammatical power, not skipping."
+    },
+    {
+     "key": "D",
+     "text": "Regular expressions are too slow",
+     "correct": false,
+     "rationale": "The limitation is expressive power, not speed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: arbitrary nesting is context-free, not regular, so it needs a stack-based parser.",
+   "outcome_refs": [
+    "MST-0940-D01.01"
+   ],
+   "domain_ref": "Language processing overview",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0940-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about compiler phases are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lexical analysis groups characters into tokens",
+     "correct": true,
+     "rationale": "Correct: the lexer turns the character stream into tokens."
+    },
+    {
+     "key": "B",
+     "text": "Semantic analysis checks scopes and types using a symbol table",
+     "correct": true,
+     "rationale": "Correct: it validates meaning after parsing produces a tree."
+    },
+    {
+     "key": "C",
+     "text": "Parsing generates final machine code",
+     "correct": false,
+     "rationale": "Parsing builds a tree; code generation comes later."
+    },
+    {
+     "key": "D",
+     "text": "Optimization must run before parsing",
+     "correct": false,
+     "rationale": "Optimization operates on an IR produced after parsing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the lexer turns the character stream into tokens.; Correct: it validates meaning after parsing produces a tree.",
+   "outcome_refs": [
+    "MST-0940-D02.01"
+   ],
+   "domain_ref": "Lexical analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0940-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is an abstract syntax tree (AST)?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A tree representation of program structure with syntactic noise removed",
+     "correct": true,
+     "rationale": "Correct: the AST captures the essential structure for later phases, dropping punctuation detail."
+    },
+    {
+     "key": "B",
+     "text": "A list of raw tokens from the lexer",
+     "correct": false,
+     "rationale": "Tokens are a flat stream; the AST is a structured tree built by the parser."
+    },
+    {
+     "key": "C",
+     "text": "The final assembly output",
+     "correct": false,
+     "rationale": "The AST is an internal representation, not target code."
+    },
+    {
+     "key": "D",
+     "text": "A table mapping registers to variables",
+     "correct": false,
+     "rationale": "That describes register allocation, not the AST."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the AST captures the essential structure for later phases, dropping punctuation detail.",
+   "outcome_refs": [
+    "MST-0940-D03.01"
+   ],
+   "domain_ref": "Parsing and grammars",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

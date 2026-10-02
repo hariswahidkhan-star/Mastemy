@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0953",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0953-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does Elasticsearch use an inverted index for full-text search?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It maps each term to the documents containing it, making term lookups fast",
+     "correct": true,
+     "rationale": "Correct: the inverted index lets search jump straight to matching documents per term."
+    },
+    {
+     "key": "B",
+     "text": "It stores documents in insertion order for sequential scans",
+     "correct": false,
+     "rationale": "Sequential scanning is what the inverted index avoids."
+    },
+    {
+     "key": "C",
+     "text": "It enforces a fixed relational schema",
+     "correct": false,
+     "rationale": "Elasticsearch is schema-flexible and document-oriented."
+    },
+    {
+     "key": "D",
+     "text": "It compresses documents to save disk only",
+     "correct": false,
+     "rationale": "Its purpose is fast term lookup, not primarily compression."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the inverted index lets search jump straight to matching documents per term.",
+   "outcome_refs": [
+    "MST-0953-D01.01"
+   ],
+   "domain_ref": "Search fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0953-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about text vs keyword fields are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "text fields are analyzed and suited to full-text match queries",
+     "correct": true,
+     "rationale": "Correct: text fields are tokenized for relevance-based matching."
+    },
+    {
+     "key": "B",
+     "text": "keyword fields are stored as-is and suited to exact match, sorting and aggregations",
+     "correct": true,
+     "rationale": "Correct: keyword fields are not analyzed, so they aggregate and sort reliably."
+    },
+    {
+     "key": "C",
+     "text": "You should aggregate on analyzed text fields by default",
+     "correct": false,
+     "rationale": "Aggregating on analyzed text is discouraged and often disabled."
+    },
+    {
+     "key": "D",
+     "text": "term queries on a text field match the original untokenized string",
+     "correct": false,
+     "rationale": "term matches exact tokens, so it often fails on analyzed text."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: text fields are tokenized for relevance-based matching.; Correct: keyword fields are not analyzed, so they aggregate and sort reliably.",
+   "outcome_refs": [
+    "MST-0953-D02.01"
+   ],
+   "domain_ref": "Mapping and analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0953-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the benefit of placing an exact-match clause in filter context rather than query context?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It skips relevance scoring and can be cached, improving performance",
+     "correct": true,
+     "rationale": "Correct: filters answer yes/no, are cacheable and do not compute a score."
+    },
+    {
+     "key": "B",
+     "text": "It increases the relevance score of matches",
+     "correct": false,
+     "rationale": "Filter context does not contribute to scoring."
+    },
+    {
+     "key": "C",
+     "text": "It forces a full re-index of the data",
+     "correct": false,
+     "rationale": "Filter context has nothing to do with re-indexing."
+    },
+    {
+     "key": "D",
+     "text": "It converts the field to a text field",
+     "correct": false,
+     "rationale": "Query context does not change field mappings."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: filters answer yes/no, are cacheable and do not compute a score.",
+   "outcome_refs": [
+    "MST-0953-D03.01"
+   ],
+   "domain_ref": "Querying with the Query DSL",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

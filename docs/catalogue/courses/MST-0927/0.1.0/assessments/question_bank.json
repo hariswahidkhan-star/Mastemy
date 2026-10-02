@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0927",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0927-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Lua, what is the value of an array index that has never been assigned?",
+   "options": [
+    {
+     "key": "A",
+     "text": "nil",
+     "correct": true,
+     "rationale": "Correct: any unset key in a table evaluates to nil."
+    },
+    {
+     "key": "B",
+     "text": "0",
+     "correct": false,
+     "rationale": "Lua does not default numeric keys to 0."
+    },
+    {
+     "key": "C",
+     "text": "An empty string",
+     "correct": false,
+     "rationale": "Unset keys are nil, not an empty string."
+    },
+    {
+     "key": "D",
+     "text": "It raises an index error",
+     "correct": false,
+     "rationale": "Reading an unset key is legal and returns nil."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: any unset key in a table evaluates to nil.",
+   "outcome_refs": [
+    "MST-0927-D01.01"
+   ],
+   "domain_ref": "Lua language basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0927-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Lua tables are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A table can act as both an array and a hash map at once",
+     "correct": true,
+     "rationale": "Correct: tables are the single structured type and mix integer and other keys freely."
+    },
+    {
+     "key": "B",
+     "text": "Metatables let you customise behaviour such as addition or indexing",
+     "correct": true,
+     "rationale": "Correct: metamethods like __add and __index hook into operations."
+    },
+    {
+     "key": "C",
+     "text": "Array indices conventionally start at 0",
+     "correct": false,
+     "rationale": "Lua arrays conventionally start at 1."
+    },
+    {
+     "key": "D",
+     "text": "Tables are immutable once created",
+     "correct": false,
+     "rationale": "Tables are mutable; you can add and change keys any time."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tables are the single structured type and mix integer and other keys freely.; Correct: metamethods like __add and __index hook into operations.",
+   "outcome_refs": [
+    "MST-0927-D02.01"
+   ],
+   "domain_ref": "Control flow and functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0927-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does coroutine.yield do inside a running coroutine?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Suspends the coroutine and returns control and values to the resumer",
+     "correct": true,
+     "rationale": "Correct: yield pauses execution so it can be resumed later from the same point."
+    },
+    {
+     "key": "B",
+     "text": "Starts a new OS thread",
+     "correct": false,
+     "rationale": "Coroutines are cooperative and single-threaded, not OS threads."
+    },
+    {
+     "key": "C",
+     "text": "Permanently terminates the coroutine",
+     "correct": false,
+     "rationale": "The coroutine is suspended, not finished, and can be resumed."
+    },
+    {
+     "key": "D",
+     "text": "Blocks until another coroutine finishes",
+     "correct": false,
+     "rationale": "yield simply hands control back; it does not wait on another coroutine."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: yield pauses execution so it can be resumed later from the same point.",
+   "outcome_refs": [
+    "MST-0927-D03.01"
+   ],
+   "domain_ref": "Tables",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0954",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0954-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is columnar storage well suited to analytical aggregate queries?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Only the columns referenced are read, and similar values compress well",
+     "correct": true,
+     "rationale": "Correct: column-wise access scans less data and compresses better for aggregates."
+    },
+    {
+     "key": "B",
+     "text": "It makes single-row inserts and updates extremely fast",
+     "correct": false,
+     "rationale": "That favours row stores; columnar is weak at per-row OLTP writes."
+    },
+    {
+     "key": "C",
+     "text": "It enforces foreign-key constraints efficiently",
+     "correct": false,
+     "rationale": "Columnar storage is about scan efficiency, not referential integrity."
+    },
+    {
+     "key": "D",
+     "text": "It stores each row contiguously for point lookups",
+     "correct": false,
+     "rationale": "That describes row storage, the opposite of columnar."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: column-wise access scans less data and compresses better for aggregates.",
+   "outcome_refs": [
+    "MST-0954-D01.01"
+   ],
+   "domain_ref": "Columnar analytics foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0954-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about ClickHouse MergeTree are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "ORDER BY defines the on-disk sort order used by the sparse primary index",
+     "correct": true,
+     "rationale": "Correct: data is ordered by the ORDER BY key, enabling granule pruning."
+    },
+    {
+     "key": "B",
+     "text": "Data is written as parts that merge together in the background",
+     "correct": true,
+     "rationale": "Correct: inserts create parts that MergeTree compacts over time."
+    },
+    {
+     "key": "C",
+     "text": "The primary key enforces row uniqueness like in OLTP databases",
+     "correct": false,
+     "rationale": "The primary key is for ordering/indexing, not a uniqueness constraint."
+    },
+    {
+     "key": "D",
+     "text": "Each inserted row is indexed individually with a B-tree",
+     "correct": false,
+     "rationale": "ClickHouse uses a sparse index over granules, not a per-row B-tree."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: data is ordered by the ORDER BY key, enabling granule pruning.; Correct: inserts create parts that MergeTree compacts over time.",
+   "outcome_refs": [
+    "MST-0954-D02.01"
+   ],
+   "domain_ref": "Tables and the MergeTree engine",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0954-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should you insert data into ClickHouse in large batches rather than one row at a time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each insert creates a part, and too many tiny parts overwhelm background merging",
+     "correct": true,
+     "rationale": "Correct: batching reduces part count and avoids too-many-parts problems."
+    },
+    {
+     "key": "B",
+     "text": "Single-row inserts are rejected by ClickHouse",
+     "correct": false,
+     "rationale": "They are allowed but inefficient, not rejected."
+    },
+    {
+     "key": "C",
+     "text": "Batching disables compression",
+     "correct": false,
+     "rationale": "Batching does not turn off compression."
+    },
+    {
+     "key": "D",
+     "text": "Large batches bypass the MergeTree engine",
+     "correct": false,
+     "rationale": "Batched inserts still go through MergeTree."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: batching reduces part count and avoids too-many-parts problems.",
+   "outcome_refs": [
+    "MST-0954-D03.01"
+   ],
+   "domain_ref": "Querying and performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

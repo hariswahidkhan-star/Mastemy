@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0952",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0952-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should drive table design in Apache Cassandra?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The queries the application must answer",
+     "correct": true,
+     "rationale": "Correct: Cassandra is query-first, so tables are shaped around read access patterns."
+    },
+    {
+     "key": "B",
+     "text": "A fully normalized entity-relationship diagram",
+     "correct": false,
+     "rationale": "Normalization and joins are a relational approach, not Cassandra's model."
+    },
+    {
+     "key": "C",
+     "text": "Minimising total stored bytes above all else",
+     "correct": false,
+     "rationale": "Denormalization and duplication are expected to serve queries efficiently."
+    },
+    {
+     "key": "D",
+     "text": "The order rows were inserted",
+     "correct": false,
+     "rationale": "Row ordering comes from clustering columns, not insertion order of design."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Cassandra is query-first, so tables are shaped around read access patterns.",
+   "outcome_refs": [
+    "MST-0952-D01.01"
+   ],
+   "domain_ref": "Cassandra architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0952-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about a Cassandra primary key are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The partition key determines which node stores the row",
+     "correct": true,
+     "rationale": "Correct: the partition key is hashed to a token that maps to nodes."
+    },
+    {
+     "key": "B",
+     "text": "Clustering columns control the sort order of rows within a partition",
+     "correct": true,
+     "rationale": "Correct: they define on-disk ordering inside each partition."
+    },
+    {
+     "key": "C",
+     "text": "The primary key enforces foreign-key relationships",
+     "correct": false,
+     "rationale": "Cassandra has no foreign keys or referential integrity."
+    },
+    {
+     "key": "D",
+     "text": "Any column can be used in WHERE without being part of the key or an index",
+     "correct": false,
+     "rationale": "Filtering generally requires key columns or an explicit index."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the partition key is hashed to a token that maps to nodes.; Correct: they define on-disk ordering inside each partition.",
+   "outcome_refs": [
+    "MST-0952-D02.01"
+   ],
+   "domain_ref": "Data modeling for Cassandra",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0952-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "With replication factor 3, why do QUORUM writes and QUORUM reads return consistent data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A write to 2 replicas and a read from 2 replicas are guaranteed to overlap on at least one node",
+     "correct": true,
+     "rationale": "Correct: when read replicas + write replicas exceed RF, their sets must intersect."
+    },
+    {
+     "key": "B",
+     "text": "QUORUM writes to all 3 replicas synchronously",
+     "correct": false,
+     "rationale": "QUORUM requires a majority (2 of 3), not all replicas."
+    },
+    {
+     "key": "C",
+     "text": "Cassandra locks the partition during the write",
+     "correct": false,
+     "rationale": "Cassandra does not use locking for this; it relies on replica overlap."
+    },
+    {
+     "key": "D",
+     "text": "Reads always go to a single master replica",
+     "correct": false,
+     "rationale": "There is no master; QUORUM contacts a majority of replicas."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: when read replicas + write replicas exceed RF, their sets must intersect.",
+   "outcome_refs": [
+    "MST-0952-D03.01"
+   ],
+   "domain_ref": "CQL in practice",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

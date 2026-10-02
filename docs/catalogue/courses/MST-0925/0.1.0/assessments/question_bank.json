@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0925",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0925-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Erlang, what happens when you match 1 = X where X is already bound to 2?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A pattern-match exception is raised because the values differ",
+     "correct": true,
+     "rationale": "Correct: = is a match operator, not assignment; an already-bound variable must match or it fails."
+    },
+    {
+     "key": "B",
+     "text": "X is reassigned to 1",
+     "correct": false,
+     "rationale": "Erlang variables are single-assignment; they are never reassigned."
+    },
+    {
+     "key": "C",
+     "text": "The expression silently returns false",
+     "correct": false,
+     "rationale": "A failed match raises an exception rather than returning a boolean."
+    },
+    {
+     "key": "D",
+     "text": "The code will not compile",
+     "correct": false,
+     "rationale": "It compiles; the failure happens at run time when the match is evaluated."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: = is a match operator, not assignment; an already-bound variable must match or it fails.",
+   "outcome_refs": [
+    "MST-0925-D01.01"
+   ],
+   "domain_ref": "Erlang and the BEAM runtime",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0925-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Erlang processes are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Processes communicate only by sending asynchronous messages",
+     "correct": true,
+     "rationale": "Correct: processes share no memory and exchange immutable messages."
+    },
+    {
+     "key": "B",
+     "text": "Spawning a process is lightweight compared with an OS thread",
+     "correct": true,
+     "rationale": "Correct: BEAM processes are cheap, so systems commonly run many thousands."
+    },
+    {
+     "key": "C",
+     "text": "Processes share a common mutable heap for speed",
+     "correct": false,
+     "rationale": "Each process has its own heap; there is no shared mutable memory."
+    },
+    {
+     "key": "D",
+     "text": "A receive block can read another process's mailbox directly",
+     "correct": false,
+     "rationale": "A process can only read its own mailbox."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: processes share no memory and exchange immutable messages.; Correct: BEAM processes are cheap, so systems commonly run many thousands.",
+   "outcome_refs": [
+    "MST-0925-D02.01"
+   ],
+   "domain_ref": "Functional foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0925-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main idea behind the 'let it crash' philosophy with OTP supervisors?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Let a faulty process fail fast and have a supervisor restart it into a known-good state",
+     "correct": true,
+     "rationale": "Correct: isolation plus supervised restart keeps the system healthy without defensive error handling everywhere."
+    },
+    {
+     "key": "B",
+     "text": "Disable error logging so crashes are invisible",
+     "correct": false,
+     "rationale": "Crashes are logged; the point is recovery, not hiding faults."
+    },
+    {
+     "key": "C",
+     "text": "Catch every possible exception inside the worker",
+     "correct": false,
+     "rationale": "That is the opposite of the philosophy, which avoids defensive over-handling."
+    },
+    {
+     "key": "D",
+     "text": "Restart the entire node on any error",
+     "correct": false,
+     "rationale": "Supervisors restart the failed child, not usually the whole node."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: isolation plus supervised restart keeps the system healthy without defensive error handling everywhere.",
+   "outcome_refs": [
+    "MST-0925-D03.01"
+   ],
+   "domain_ref": "Processes and message passing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0933",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0933-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In which COBOL division are record layouts and variables described?",
+   "options": [
+    {
+     "key": "A",
+     "text": "DATA DIVISION",
+     "correct": true,
+     "rationale": "Correct: the DATA DIVISION defines files and working storage, including record layouts."
+    },
+    {
+     "key": "B",
+     "text": "PROCEDURE DIVISION",
+     "correct": false,
+     "rationale": "The PROCEDURE DIVISION holds executable logic, not data definitions."
+    },
+    {
+     "key": "C",
+     "text": "IDENTIFICATION DIVISION",
+     "correct": false,
+     "rationale": "That division names the program and its author."
+    },
+    {
+     "key": "D",
+     "text": "ENVIRONMENT DIVISION",
+     "correct": false,
+     "rationale": "That division maps files to the system, not record layouts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the DATA DIVISION defines files and working storage, including record layouts.",
+   "outcome_refs": [
+    "MST-0933-D01.01"
+   ],
+   "domain_ref": "COBOL program structure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0933-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about the COBOL PICTURE clause are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "PIC 9(5) describes a five-digit numeric field",
+     "correct": true,
+     "rationale": "Correct: 9 denotes a digit position and (5) repeats it five times."
+    },
+    {
+     "key": "B",
+     "text": "Edited pictures like PIC $$,$$9.99 are for display formatting",
+     "correct": true,
+     "rationale": "Correct: edited clauses insert symbols for presentation, not computation."
+    },
+    {
+     "key": "C",
+     "text": "PIC X fields are used for arithmetic",
+     "correct": false,
+     "rationale": "X denotes alphanumeric data, which is not used directly in arithmetic."
+    },
+    {
+     "key": "D",
+     "text": "A PICTURE clause sets the paragraph execution order",
+     "correct": false,
+     "rationale": "PICTURE describes data; it has nothing to do with control flow."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: 9 denotes a digit position and (5) repeats it five times.; Correct: edited clauses insert symbols for presentation, not computation.",
+   "outcome_refs": [
+    "MST-0933-D02.01"
+   ],
+   "domain_ref": "Data definition and the PICTURE clause",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0933-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a COBOL program check FILE STATUS after file operations?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To detect and handle I/O conditions such as end-of-file or a failed open",
+     "correct": true,
+     "rationale": "Correct: the status code reports success or specific error conditions so the program can react."
+    },
+    {
+     "key": "B",
+     "text": "To speed up sequential reads",
+     "correct": false,
+     "rationale": "It reports outcomes; it does not change performance."
+    },
+    {
+     "key": "C",
+     "text": "To automatically sort the file",
+     "correct": false,
+     "rationale": "Sorting is a separate operation, unrelated to file status."
+    },
+    {
+     "key": "D",
+     "text": "To allocate working storage",
+     "correct": false,
+     "rationale": "Working storage is defined in the DATA DIVISION, not via file status."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the status code reports success or specific error conditions so the program can react.",
+   "outcome_refs": [
+    "MST-0933-D03.01"
+   ],
+   "domain_ref": "Procedure logic",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

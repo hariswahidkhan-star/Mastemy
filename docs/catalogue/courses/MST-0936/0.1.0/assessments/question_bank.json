@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0936",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 492,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0936-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does two's complement representation make convenient in hardware?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Subtraction can be performed using the same adder circuitry as addition",
+     "correct": true,
+     "rationale": "Correct: negative numbers are formed so that a single adder handles both add and subtract."
+    },
+    {
+     "key": "B",
+     "text": "Floating-point division becomes exact",
+     "correct": false,
+     "rationale": "Two's complement is for integers and does not make float division exact."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for a sign bit",
+     "correct": false,
+     "rationale": "The high-order bit still indicates sign in two's complement."
+    },
+    {
+     "key": "D",
+     "text": "It doubles the addressable memory",
+     "correct": false,
+     "rationale": "It is a number encoding, unrelated to address space size."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: negative numbers are formed so that a single adder handles both add and subtract.",
+   "outcome_refs": [
+    "MST-0936-D01.01"
+   ],
+   "domain_ref": "Computer architecture foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0936-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about the stack in assembly are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "CALL typically pushes a return address onto the stack",
+     "correct": true,
+     "rationale": "Correct: so RET can return to the instruction after the call."
+    },
+    {
+     "key": "B",
+     "text": "The stack pointer must be balanced across a procedure to avoid corruption",
+     "correct": true,
+     "rationale": "Correct: unbalanced pushes/pops can overwrite the return address."
+    },
+    {
+     "key": "C",
+     "text": "The stack can only hold one value at a time",
+     "correct": false,
+     "rationale": "The stack is a LIFO region holding many values."
+    },
+    {
+     "key": "D",
+     "text": "PUSH and POP operate on the program counter directly",
+     "correct": false,
+     "rationale": "They operate on the stack via the stack pointer, not the program counter."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: so RET can return to the instruction after the call.; Correct: unbalanced pushes/pops can overwrite the return address.",
+   "outcome_refs": [
+    "MST-0936-D02.01"
+   ],
+   "domain_ref": "Instruction set and registers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0936-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does endianness matter when reading a multi-byte integer from memory?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It determines whether the most significant byte is stored first or last",
+     "correct": true,
+     "rationale": "Correct: byte order changes how the same bytes are assembled into a value."
+    },
+    {
+     "key": "B",
+     "text": "It sets the clock speed of the CPU",
+     "correct": false,
+     "rationale": "Endianness is byte ordering, not clock speed."
+    },
+    {
+     "key": "C",
+     "text": "It controls how many registers exist",
+     "correct": false,
+     "rationale": "Register count is independent of endianness."
+    },
+    {
+     "key": "D",
+     "text": "It encrypts the value in memory",
+     "correct": false,
+     "rationale": "Endianness is a storage order, not encryption."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: byte order changes how the same bytes are assembled into a value.",
+   "outcome_refs": [
+    "MST-0936-D03.01"
+   ],
+   "domain_ref": "Arithmetic, logic and flags",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0965",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0965-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which best describes master data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Core business entities such as customers and products that are shared across systems",
+     "correct": true,
+     "rationale": "Correct: master data is the shared, relatively stable entities used across processes."
+    },
+    {
+     "key": "B",
+     "text": "High-volume event records like individual sales transactions",
+     "correct": false,
+     "rationale": "Those are transactional data, not master data."
+    },
+    {
+     "key": "C",
+     "text": "Temporary data held only in application memory",
+     "correct": false,
+     "rationale": "Master data is persistent and shared, not transient."
+    },
+    {
+     "key": "D",
+     "text": "Log files produced by applications",
+     "correct": false,
+     "rationale": "Logs are operational data, not master data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: master data is the shared, relatively stable entities used across processes.",
+   "outcome_refs": [
+    "MST-0965-D01.01"
+   ],
+   "domain_ref": "MDM foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0965-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about building a golden record are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Matching links records that refer to the same real-world entity",
+     "correct": true,
+     "rationale": "Correct: matching identifies duplicates across sources."
+    },
+    {
+     "key": "B",
+     "text": "Survivorship rules decide which attribute values win in the merged record",
+     "correct": true,
+     "rationale": "Correct: survivorship selects the best value per field."
+    },
+    {
+     "key": "C",
+     "text": "A golden record is created by deleting all source records",
+     "correct": false,
+     "rationale": "Sources are usually retained; the golden record is a consolidated view."
+    },
+    {
+     "key": "D",
+     "text": "Probabilistic matching requires every field to match exactly",
+     "correct": false,
+     "rationale": "Exact matching is deterministic; probabilistic allows scored, partial matches."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: matching identifies duplicates across sources.; Correct: survivorship selects the best value per field.",
+   "outcome_refs": [
+    "MST-0965-D02.01"
+   ],
+   "domain_ref": "Data domains and governance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0965-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why manage reference data (such as country or currency codes) centrally?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To keep consistent, versioned code sets that all systems share and map to",
+     "correct": true,
+     "rationale": "Correct: central management avoids divergent, conflicting code lists across systems."
+    },
+    {
+     "key": "B",
+     "text": "Because reference data changes many times per second",
+     "correct": false,
+     "rationale": "Reference data is relatively stable, not high-velocity."
+    },
+    {
+     "key": "C",
+     "text": "To replace the need for master data entirely",
+     "correct": false,
+     "rationale": "Reference data complements, not replaces, master data."
+    },
+    {
+     "key": "D",
+     "text": "Because codes must never be versioned",
+     "correct": false,
+     "rationale": "Versioning with effective dates is a key reference-data practice."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: central management avoids divergent, conflicting code lists across systems.",
+   "outcome_refs": [
+    "MST-0965-D03.01"
+   ],
+   "domain_ref": "MDM architecture styles",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

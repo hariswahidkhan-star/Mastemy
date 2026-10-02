@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0976",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0976-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does randomly assigning users to control and treatment support a causal conclusion?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Randomization balances confounders on average, so outcome differences are attributable to the treatment",
+     "correct": true,
+     "rationale": "Correct: random assignment makes the groups comparable except for the treatment."
+    },
+    {
+     "key": "B",
+     "text": "It guarantees the sample is representative of all users",
+     "correct": false,
+     "rationale": "Randomization balances groups against each other; it does not ensure population representativeness."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for a control group",
+     "correct": false,
+     "rationale": "A control group is still required for comparison."
+    },
+    {
+     "key": "D",
+     "text": "It makes the p-value always significant",
+     "correct": false,
+     "rationale": "Randomization does not control significance, which depends on effect and sample size."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: random assignment makes the groups comparable except for the treatment.",
+   "outcome_refs": [
+    "MST-0976-D01.01"
+   ],
+   "domain_ref": "Foundations of experimentation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0976-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about experiment analysis are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Repeatedly checking results and stopping when significant inflates the false-positive rate",
+     "correct": true,
+     "rationale": "Correct: peeking without correction increases spurious significant findings."
+    },
+    {
+     "key": "B",
+     "text": "A statistically significant lift may still be too small to matter in practice",
+     "correct": true,
+     "rationale": "Correct: statistical and practical significance are distinct."
+    },
+    {
+     "key": "C",
+     "text": "A non-significant result proves the treatment has no effect",
+     "correct": false,
+     "rationale": "It fails to detect an effect; it does not prove none exists."
+    },
+    {
+     "key": "D",
+     "text": "Testing many metrics needs no adjustment for multiple comparisons",
+     "correct": false,
+     "rationale": "Multiple comparisons require adjustment to control false positives."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: peeking without correction increases spurious significant findings.; Correct: statistical and practical significance are distinct.",
+   "outcome_refs": [
+    "MST-0976-D02.01"
+   ],
+   "domain_ref": "Designing an A/B test",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0976-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does statistical power describe in an experiment?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The probability of detecting a true effect of a given size if it exists",
+     "correct": true,
+     "rationale": "Correct: power is the chance of correctly rejecting the null when the effect is real."
+    },
+    {
+     "key": "B",
+     "text": "The probability that the null hypothesis is true",
+     "correct": false,
+     "rationale": "Power is not the probability the null is true."
+    },
+    {
+     "key": "C",
+     "text": "The size of the observed effect",
+     "correct": false,
+     "rationale": "Effect size is separate from power."
+    },
+    {
+     "key": "D",
+     "text": "The significance threshold chosen for the test",
+     "correct": false,
+     "rationale": "That is alpha, the false-positive rate, not power."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: power is the chance of correctly rejecting the null when the effect is real.",
+   "outcome_refs": [
+    "MST-0976-D03.01"
+   ],
+   "domain_ref": "Statistics for experiments",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

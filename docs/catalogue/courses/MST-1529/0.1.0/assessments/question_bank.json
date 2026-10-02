@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1529",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 492,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1529-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Scala, why is Option preferred over returning null for a possibly-absent value?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It makes absence explicit in the type and forces the caller to handle it",
+     "correct": true,
+     "rationale": "Correct: Option[T] encodes Some/None so the compiler and reader see the possibility of no value."
+    },
+    {
+     "key": "B",
+     "text": "It runs faster than returning null",
+     "correct": false,
+     "rationale": "The benefit is safety and clarity, not raw speed."
+    },
+    {
+     "key": "C",
+     "text": "It prevents the method from ever failing",
+     "correct": false,
+     "rationale": "Option models absence; it does not stop all failures."
+    },
+    {
+     "key": "D",
+     "text": "It automatically retries the computation",
+     "correct": false,
+     "rationale": "Option carries no retry behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Option[T] encodes Some/None so the compiler and reader see the possibility of no value.",
+   "outcome_refs": [
+    "MST-1529-D01.01"
+   ],
+   "domain_ref": "Scala basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1529-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Scala are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Case classes provide pattern matching and value-based equality",
+     "correct": true,
+     "rationale": "Correct: case classes generate equals and support match extraction."
+    },
+    {
+     "key": "B",
+     "text": "Traits can be mixed into a class to compose behaviour",
+     "correct": true,
+     "rationale": "Correct: multiple traits can be combined via mixin composition."
+    },
+    {
+     "key": "C",
+     "text": "Scala has no support for immutable collections",
+     "correct": false,
+     "rationale": "Immutable collections are the default and are first-class."
+    },
+    {
+     "key": "D",
+     "text": "Functions cannot be passed as arguments",
+     "correct": false,
+     "rationale": "Functions are first-class values in Scala."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: case classes generate equals and support match extraction.; Correct: multiple traits can be combined via mixin composition.",
+   "outcome_refs": [
+    "MST-1529-D02.01"
+   ],
+   "domain_ref": "Functions and functional style",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1529-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a Future[T] represent in Scala?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A value that may become available later, computed asynchronously",
+     "correct": true,
+     "rationale": "Correct: a Future holds the eventual result of an asynchronous computation."
+    },
+    {
+     "key": "B",
+     "text": "A guaranteed immediate result",
+     "correct": false,
+     "rationale": "The result is eventual, not immediate."
+    },
+    {
+     "key": "C",
+     "text": "A mutable variable shared across threads",
+     "correct": false,
+     "rationale": "A Future is a read-once eventual result, not a shared mutable variable."
+    },
+    {
+     "key": "D",
+     "text": "A compile-time constant",
+     "correct": false,
+     "rationale": "Its value is produced at run time, not at compile time."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Future holds the eventual result of an asynchronous computation.",
+   "outcome_refs": [
+    "MST-1529-D03.01"
+   ],
+   "domain_ref": "Collections",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

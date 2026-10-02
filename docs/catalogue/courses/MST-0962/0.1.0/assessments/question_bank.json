@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0962",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 492,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0962-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does an open table format such as Delta Lake or Iceberg add on top of Parquet files in object storage?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A metadata layer providing ACID transactions, schema evolution and time travel",
+     "correct": true,
+     "rationale": "Correct: the table format tracks files and snapshots to give database-like guarantees over object storage."
+    },
+    {
+     "key": "B",
+     "text": "A faster columnar compression than Parquet",
+     "correct": false,
+     "rationale": "Compression is a property of the file format; the table format adds transactional metadata."
+    },
+    {
+     "key": "C",
+     "text": "A replacement for all SQL query engines",
+     "correct": false,
+     "rationale": "Table formats are read by engines; they do not replace them."
+    },
+    {
+     "key": "D",
+     "text": "Guaranteed single-node storage",
+     "correct": false,
+     "rationale": "They are designed for distributed object storage, not single nodes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the table format tracks files and snapshots to give database-like guarantees over object storage.",
+   "outcome_refs": [
+    "MST-0962-D01.01"
+   ],
+   "domain_ref": "From warehouse and lake to lakehouse",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0962-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about the medallion (bronze/silver/gold) architecture are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Bronze holds raw ingested data, silver holds cleaned/conformed data",
+     "correct": true,
+     "rationale": "Correct: data is progressively refined from bronze to silver."
+    },
+    {
+     "key": "B",
+     "text": "Gold tables are curated for business consumption and reporting",
+     "correct": true,
+     "rationale": "Correct: gold is the aggregated, business-ready layer."
+    },
+    {
+     "key": "C",
+     "text": "Business dashboards should read directly from the bronze layer",
+     "correct": false,
+     "rationale": "Dashboards should read curated gold, not raw bronze."
+    },
+    {
+     "key": "D",
+     "text": "Each layer must use a different storage system",
+     "correct": false,
+     "rationale": "The layers are logical and typically share the same lakehouse storage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: data is progressively refined from bronze to silver.; Correct: gold is the aggregated, business-ready layer.",
+   "outcome_refs": [
+    "MST-0962-D02.01"
+   ],
+   "domain_ref": "Open table formats",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0962-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is partitioning a lakehouse table on a very high-cardinality column usually a mistake?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It produces a huge number of tiny files that slow queries and metadata handling",
+     "correct": true,
+     "rationale": "Correct: excessive partitions fragment data into small files and bloat metadata."
+    },
+    {
+     "key": "B",
+     "text": "It makes ACID transactions impossible",
+     "correct": false,
+     "rationale": "ACID is provided by the table format regardless of partitioning."
+    },
+    {
+     "key": "C",
+     "text": "It prevents the use of Parquet",
+     "correct": false,
+     "rationale": "Partitioning does not change the underlying file format."
+    },
+    {
+     "key": "D",
+     "text": "It encrypts the data unintentionally",
+     "correct": false,
+     "rationale": "Partitioning is unrelated to encryption."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: excessive partitions fragment data into small files and bloat metadata.",
+   "outcome_refs": [
+    "MST-0962-D03.01"
+   ],
+   "domain_ref": "ACID, time travel and schema evolution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0967",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0967-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is hashing a user identifier not sufficient to make a dataset anonymous?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The same input always hashes to the same value, so records remain linkable and re-identifiable",
+     "correct": true,
+     "rationale": "Correct: deterministic hashes preserve linkage and can be reversed via lookup or combined with quasi-identifiers."
+    },
+    {
+     "key": "B",
+     "text": "Hashing deletes the underlying record",
+     "correct": false,
+     "rationale": "Hashing transforms an identifier; it does not delete data."
+    },
+    {
+     "key": "C",
+     "text": "Hashing encrypts all other columns too",
+     "correct": false,
+     "rationale": "Hashing one field does not protect the rest of the record."
+    },
+    {
+     "key": "D",
+     "text": "Hashes cannot be stored in a database",
+     "correct": false,
+     "rationale": "Hashes are routinely stored; that is not the issue."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: deterministic hashes preserve linkage and can be reversed via lookup or combined with quasi-identifiers.",
+   "outcome_refs": [
+    "MST-0967-D01.01"
+   ],
+   "domain_ref": "Privacy engineering foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0967-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about privacy-protective access control are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Least privilege means granting only the access needed for a task",
+     "correct": true,
+     "rationale": "Correct: minimizing standing access reduces exposure of personal data."
+    },
+    {
+     "key": "B",
+     "text": "Purpose limitation restricts data use to the reason it was collected",
+     "correct": true,
+     "rationale": "Correct: data accessed for one purpose should not be freely reused for another."
+    },
+    {
+     "key": "C",
+     "text": "Broad default access is fine as long as actions are logged",
+     "correct": false,
+     "rationale": "Logging does not substitute for limiting access in the first place."
+    },
+    {
+     "key": "D",
+     "text": "Row-level security cannot restrict which records a user sees",
+     "correct": false,
+     "rationale": "Row-level security exists precisely to restrict visible rows."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: minimizing standing access reduces exposure of personal data.; Correct: data accessed for one purpose should not be freely reused for another.",
+   "outcome_refs": [
+    "MST-0967-D02.01"
+   ],
+   "domain_ref": "Data classification and inventory",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0967-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a quasi-identifier in the context of re-identification risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A field that is not uniquely identifying alone but can identify someone when combined with others",
+     "correct": true,
+     "rationale": "Correct: attributes like ZIP, birth date and gender together can single out individuals."
+    },
+    {
+     "key": "B",
+     "text": "A government-issued unique ID number",
+     "correct": false,
+     "rationale": "That is a direct identifier, not a quasi-identifier."
+    },
+    {
+     "key": "C",
+     "text": "An encryption key used for masking",
+     "correct": false,
+     "rationale": "A quasi-identifier is data content, not a key."
+    },
+    {
+     "key": "D",
+     "text": "A randomly generated token with no meaning",
+     "correct": false,
+     "rationale": "A meaningless token is not a quasi-identifier."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: attributes like ZIP, birth date and gender together can single out individuals.",
+   "outcome_refs": [
+    "MST-0967-D03.01"
+   ],
+   "domain_ref": "De-identification techniques",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

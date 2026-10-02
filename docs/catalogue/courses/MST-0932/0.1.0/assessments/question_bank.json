@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0932",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0932-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is 'implicit none' recommended at the top of a modern Fortran program unit?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It forces every variable to be explicitly declared, catching typos at compile time",
+     "correct": true,
+     "rationale": "Correct: without it, undeclared names get implicit types and typos become silent bugs."
+    },
+    {
+     "key": "B",
+     "text": "It enables parallel execution automatically",
+     "correct": false,
+     "rationale": "It has nothing to do with parallelism."
+    },
+    {
+     "key": "C",
+     "text": "It switches the compiler to fixed-form source",
+     "correct": false,
+     "rationale": "Source form is independent of implicit none."
+    },
+    {
+     "key": "D",
+     "text": "It makes all variables double precision",
+     "correct": false,
+     "rationale": "It does not change types; it requires explicit declaration."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without it, undeclared names get implicit types and typos become silent bugs.",
+   "outcome_refs": [
+    "MST-0932-D01.01"
+   ],
+   "domain_ref": "Modern Fortran basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0932-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Fortran arrays are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Arrays are stored in column-major order",
+     "correct": true,
+     "rationale": "Correct: the leftmost index varies fastest in memory."
+    },
+    {
+     "key": "B",
+     "text": "Whole-array operations can replace explicit element loops",
+     "correct": true,
+     "rationale": "Correct: Fortran supports array-valued expressions and sections."
+    },
+    {
+     "key": "C",
+     "text": "Arrays are stored in row-major order like C",
+     "correct": false,
+     "rationale": "Fortran is column-major, unlike C's row-major."
+    },
+    {
+     "key": "D",
+     "text": "Array bounds must always start at 1",
+     "correct": false,
+     "rationale": "Lower bounds are configurable, e.g. dimension(0:9)."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the leftmost index varies fastest in memory.; Correct: Fortran supports array-valued expressions and sections.",
+   "outcome_refs": [
+    "MST-0932-D02.01"
+   ],
+   "domain_ref": "Arrays and array operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0932-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does iso_c_binding provide in modern Fortran?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Standardised interoperability types and conventions for calling between Fortran and C",
+     "correct": true,
+     "rationale": "Correct: it defines matching kinds and binding so Fortran and C can exchange data safely."
+    },
+    {
+     "key": "B",
+     "text": "Automatic GPU offloading",
+     "correct": false,
+     "rationale": "GPU offloading is a separate concern, not what the module provides."
+    },
+    {
+     "key": "C",
+     "text": "A built-in unit-testing framework",
+     "correct": false,
+     "rationale": "It is about C interoperability, not testing."
+    },
+    {
+     "key": "D",
+     "text": "Garbage collection for allocatables",
+     "correct": false,
+     "rationale": "Allocatables are managed by scope rules, not by this module."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it defines matching kinds and binding so Fortran and C can exchange data safely.",
+   "outcome_refs": [
+    "MST-0932-D03.01"
+   ],
+   "domain_ref": "Procedures and modules",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
