@@ -83,7 +83,7 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 
 | Step | Course ID | Title | Hours |
 |---|---|---|---|
-| 1 | `MST-1642` | CompTIA Tech+ Exam Prep | 20 |
+| 1 | `MST-1642` | CompTIA Tech+ Exam Prep | 25 |
 | 2 | `MST-0249` | CompTIA Network+ | 45 |
 | 3 | `MST-0250` | CompTIA Security+ | 45 |
 | 4 | `MST-0251` | CompTIA CySA+ | 45 |
@@ -182,8 +182,8 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 | 1 | `MST-1741` | Lean Six Sigma White Belt | 8 |
 | 2 | `MST-0311` | ASQ Certified Six Sigma Yellow Belt: CSSYB | 45 |
 | 3 | `MST-0312` | ASQ Certified Six Sigma Green Belt: CSSGB | 45 |
-| 4 | `MST-0313` | ASQ Certified Six Sigma Black Belt: CSSBB | 45 |
-| 5 | `MST-0314` | ASQ Certified Master Black Belt: CMBB | 60 |
+| 4 | `MST-0313` | ASQ Certified Six Sigma Black Belt: CSSBB | 25 |
+| 5 | `MST-0314` | ASQ Certified Master Black Belt: CMBB | 25 |
 
 ## PW-GENAI-ENG - Generative AI Engineer
 
@@ -223,7 +223,7 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 | 3 | `MST-0392` | IELTS General Training: Complete Four-Skill Teaching and Knowledge Practice | 80 |
 | 4 | `MST-0399` | TOEFL iBT: Comprehensive Test Preparation | 80 |
 | 5 | `MST-0400` | PTE Academic: Comprehensive Test Preparation | 80 |
-| 6 | `MST-0401` | OET Nursing: Healthcare English Preparation | 45 |
+| 6 | `MST-0401` | OET Nursing: Healthcare English Preparation | 25 |
 
 ## PW-FULLSTACK - Full-Stack Web Developer
 
@@ -262,7 +262,7 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 | 1 | `MST-1161` | Supply Chain Management: End-to-End Planning | 40 |
 | 2 | `MST-0303` | ASCM APICS Certified in Planning and Inventory Management: CPIM | 45 |
 | 3 | `MST-0304` | ASCM APICS Certified Supply Chain Professional: CSCP | 60 |
-| 4 | `MST-0305` | ASCM APICS Certified in Logistics, Transportation and Distribution: CLTD | 45 |
+| 4 | `MST-0305` | ASCM APICS Certified in Logistics, Transportation and Distribution: CLTD | 25 |
 
 ## PW-SALESFORCE - Salesforce Administrator
 
