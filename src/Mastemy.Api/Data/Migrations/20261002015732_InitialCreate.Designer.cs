@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mastemy.Api.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261002012528_InitialCreate")]
+    [Migration("20261002015732_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -3828,6 +3828,25 @@ namespace Mastemy.Api.Data.Migrations
                     b.ToTable("Commerce_Coupons", (string)null);
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Commerce.CouponGiftPolicy", b =>
+                {
+                    b.Property<Guid>("CouponId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("AllowsGifts")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("SetAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("SetBy")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("CouponId");
+
+                    b.ToTable("Commerce_CouponGiftPolicies", (string)null);
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Commerce.CouponRedemption", b =>
                 {
                     b.Property<Guid>("Id")
@@ -6796,6 +6815,15 @@ namespace Mastemy.Api.Data.Migrations
                     b.HasOne("Mastemy.Api.Domain.LearningPackage", null)
                         .WithMany()
                         .HasForeignKey("PackageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Commerce.CouponGiftPolicy", b =>
+                {
+                    b.HasOne("Mastemy.Api.Modules.Commerce.Coupon", null)
+                        .WithMany()
+                        .HasForeignKey("CouponId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -1306,6 +1306,27 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Commerce_CouponGiftPolicies",
+                columns: table => new
+                {
+                    CouponId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    AllowsGifts = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    SetBy = table.Column<Guid>(type: "char(36)", nullable: false),
+                    SetAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Commerce_CouponGiftPolicies", x => x.CouponId);
+                    table.ForeignKey(
+                        name: "FK_Commerce_CouponGiftPolicies_Commerce_Coupons_CouponId",
+                        column: x => x.CouponId,
+                        principalTable: "Commerce_Coupons",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Commerce_CouponRedemptions",
                 columns: table => new
                 {
@@ -4746,6 +4767,9 @@ namespace Mastemy.Api.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Commerce_ConsumptionEvents");
+
+            migrationBuilder.DropTable(
+                name: "Commerce_CouponGiftPolicies");
 
             migrationBuilder.DropTable(
                 name: "Commerce_CouponRedemptions");
