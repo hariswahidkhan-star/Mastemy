@@ -19,16 +19,23 @@ public record AssessmentSummaryDto(
     Guid Id, Guid CourseId, Guid? ModuleId, Guid? LessonId, string Title, AssessmentKind Kind, AssessmentMode Mode,
     int? TimeLimitMinutes, int? MaxAttempts, decimal PassPercent, MultiSelectScoring MultiSelectScoring, int QuestionCount,
     bool IsPremium, bool PremiumLocked, bool CountsTowardCertificate, string ScoringRules, string CertificateCriteria,
-    int? AttemptsUsed, Guid? InProgressAttemptId, AnswerReviewPolicy ReviewPolicy);
+    int? AttemptsUsed, Guid? InProgressAttemptId, AnswerReviewPolicy ReviewPolicy,
+    bool AllowPause = false, int MaxPauseMinutes = 0, int? EffectiveTimeLimitMinutes = null, bool AccommodationApplied = false);
 
 public record LearnerOptionDto(Guid Id, string Text);
 
 /// <summary>An item as shown to a learner during an attempt. Deliberately has no correctness or rationale fields.</summary>
 public record AttemptItemView(Guid ItemId, int SortOrder, QuestionType Type, string Stem, List<LearnerOptionDto> Options,
-    List<Guid> SelectedOptionIds, bool Flagged);
+    List<Guid> SelectedOptionIds, bool Flagged, Guid? CaseGroupId = null);
+
+/// <summary>Case exhibit shared by consecutive items of an attempt (frozen at attempt start).</summary>
+public record AttemptCaseDto(Guid CaseGroupId, string Title, string ExhibitMarkdown, List<Guid> ResourceIds, List<Guid> ItemIds);
+
+public record AttemptPauseState(bool AllowPause, bool Paused, DateTime? PausedAt, int PauseSecondsRemaining);
 
 public record AttemptView(Guid Id, Guid AssessmentId, AssessmentMode Mode, AttemptStatus Status, DateTime StartedAt,
-    DateTime? DeadlineAt, DateTime ServerNow, DateTime? SubmittedAt, List<AttemptItemView> Items);
+    DateTime? DeadlineAt, DateTime ServerNow, DateTime? SubmittedAt, List<AttemptItemView> Items,
+    List<AttemptCaseDto>? Cases = null, AttemptPauseState? Pause = null, int? ExtraTimePercent = null, bool Untimed = false);
 
 public record SaveItemInput(List<Guid>? SelectedOptionIds, bool Flagged);
 
@@ -41,7 +48,8 @@ public record TopicResult(string Tag, int Correct, int Total);
 
 public record AttemptResult(Guid AttemptId, AttemptStatus Status, decimal ScorePercent, decimal PointsEarned, int PointsPossible,
     bool Passed, decimal PassPercent, MultiSelectScoring ScoringPolicy, int Correct, int Incorrect, int Unanswered,
-    List<TopicResult> Topics, List<ReviewItemDto>? Review, string? CertificateCode, bool ReviewAvailable);
+    List<TopicResult> Topics, List<ReviewItemDto>? Review, string? CertificateCode, bool ReviewAvailable,
+    bool ReadinessIsEstimate = true, string ReadinessDisclaimer = Scoring.ReadinessDisclaimer, bool Regraded = false);
 
 public record AttemptDetail(AttemptView Attempt, AttemptResult? Result);
 
@@ -64,6 +72,10 @@ public record RevokeInput(string Reason);
 /// <summary>Server-side scoring rules (also published verbatim by the assessment summary endpoint).</summary>
 public static class Scoring
 {
+    public const string ReadinessDisclaimer =
+        "Scores, topic breakdowns and recommendations are practice estimates based on this platform's questions only. " +
+        "They are not a prediction or guarantee of passing any external or official examination.";
+
     public const string Rules =
         "SingleChoice: 1 point when the single correct option is selected, otherwise 0. " +
         "MultipleSelect with AllOrNothing: 1 point only when exactly the set of correct options is selected, otherwise 0. " +
@@ -98,3 +110,10 @@ public static class Scoring
         _ => false,
     };
 }
+
+// ---------- Reports ----------
+public record SkillResultDto(string Skill, decimal PointsEarned, int Questions, decimal AccuracyPercent, bool Weak);
+public record LessonRecommendationDto(Guid LessonId, string ModuleTitle, string LessonTitle, List<string> WeakSkills, int Misses);
+/// <summary>Diagnostic report. <see cref="ReadinessIsEstimate"/> is always true: no pass guarantee is ever implied.</summary>
+public record RecommendationsDto(Guid AttemptId, Domain.AssessmentKind Kind, List<SkillResultDto> Skills, List<LessonRecommendationDto> Lessons,
+    bool ReadinessIsEstimate, string ReadinessDisclaimer);

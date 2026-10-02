@@ -8,7 +8,8 @@ public record OptionInput(Guid? Id, string Text, bool IsCorrect, string Rational
 public record QuestionInput(
     string ExternalId, QuestionType Type, string Language, string Stem, string Explanation, Difficulty Difficulty,
     string? SkillCode, string? CertificationObjective, List<string>? Tags, string? SourceReference, bool AllowShuffle,
-    Guid? ModuleId, Guid? LessonId, List<OptionInput> Options);
+    Guid? ModuleId, Guid? LessonId, List<OptionInput> Options,
+    CognitiveLevel? CognitiveLevel = null, Guid? CaseGroupId = null, int? CaseGroupOrder = null);
 
 public record StateChangeInput(QuestionState State);
 
@@ -20,7 +21,16 @@ public record QuestionVersionDto(Guid Id, int Version, QuestionType Type, string
 
 public record QuestionDto(Guid Id, Guid CourseId, string ExternalId, QuestionState State, int CurrentVersion,
     Guid? ModuleId, Guid? LessonId, Guid CreatedBy, Guid? ReviewedBy, DateTime CreatedAt, DateTime UpdatedAt,
-    QuestionVersionDto Version, int? PendingVersion, QuestionState? PendingState, QuestionVersionDto? Pending);
+    QuestionVersionDto Version, int? PendingVersion, QuestionState? PendingState, QuestionVersionDto? Pending,
+    QuestionMetaDto? Meta = null);
+
+public record QuestionMetaDto(CognitiveLevel? CognitiveLevel, Guid? CaseGroupId, int CaseGroupOrder, Guid? SourceQuestionId,
+    int? SourceVersion, Guid? SourceCourseId, bool Reusable)
+{
+    public static QuestionMetaDto From(QuestionMeta? m) => m is null
+        ? new QuestionMetaDto(null, null, 0, null, null, null, false)
+        : new QuestionMetaDto(m.CognitiveLevel, m.CaseGroupId, m.CaseGroupOrder, m.SourceQuestionId, m.SourceVersion, m.SourceCourseId, m.Reusable);
+}
 
 public record QuestionVersionSummary(Guid Id, int Version, DateTime CreatedAt, Guid? EditedBy, Guid? ReviewedBy);
 
@@ -72,6 +82,11 @@ public static partial class QuestionRules
         if (string.IsNullOrWhiteSpace(q.Language) || !LanguageRx().IsMatch(q.Language)) e.Add("language must look like 'en' or 'ar' (optionally 'en-US').");
         Text(e, "stem", q.Stem, MaxStem, required: true);
         Text(e, "explanation", q.Explanation, MaxExplanation, required: true);
+        if (q.CognitiveLevel is { } cl && !Enum.IsDefined(cl)) e.Add("cognitiveLevel must be Remember, Understand, Apply, Analyze or Evaluate.");
+        if (q.CaseGroupOrder is < 0 or > 1000) e.Add("caseGroupOrder must be between 0 and 1000.");
+        var ids = new HashSet<Guid>();
+        RichText.Validate("stem", q.Stem, e, ids);
+        RichText.Validate("explanation", q.Explanation, e, ids);
         Line(e, "skillCode", q.SkillCode, MaxSkill);
         Line(e, "certificationObjective", q.CertificationObjective, MaxObjective);
         Line(e, "sourceReference", q.SourceReference, MaxSource);
@@ -87,6 +102,8 @@ public static partial class QuestionRules
             var label = $"option {(char)('A' + Math.Min(i, 25))}";
             Text(e, $"{label} text", o.Text, MaxOption, required: true);
             Text(e, $"{label} rationale", o.Rationale, MaxRationale, required: true);
+            RichText.Validate($"{label} text", o.Text, e, ids);
+            RichText.Validate($"{label} rationale", o.Rationale, e, ids);
         }
         var dup = opts.Where(o => !string.IsNullOrWhiteSpace(o.Text)).GroupBy(o => o.Text.Trim(), StringComparer.OrdinalIgnoreCase).FirstOrDefault(g => g.Count() > 1);
         if (dup is not null) e.Add($"option text must be distinct (duplicate: '{Trunc(dup.Key)}').");
@@ -108,6 +125,14 @@ public static partial class QuestionRules
         if (string.IsNullOrEmpty(v)) return;
         if (v.Length > max) e.Add($"{name} exceeds {max} characters.");
         if (HasBadSingleLine(v)) e.Add($"{name} contains control characters or line breaks.");
+    }
+
+    /// <summary>Course resources referenced as images anywhere in the question.</summary>
+    public static HashSet<Guid> ResourceIds(QuestionInput q)
+    {
+        var set = new HashSet<Guid>(RichText.ResourceIds(q.Stem).Concat(RichText.ResourceIds(q.Explanation)));
+        foreach (var o in q.Options ?? []) { set.UnionWith(RichText.ResourceIds(o.Text)); set.UnionWith(RichText.ResourceIds(o.Rationale)); }
+        return set;
     }
 
     public static string Trunc(string s) => s.Length <= 40 ? s : s[..40] + "…";
