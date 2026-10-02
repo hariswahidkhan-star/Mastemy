@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0906",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0906-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does RAII solve in C++?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It ties a resource's lifetime to an object's scope so cleanup happens automatically, even on exceptions",
+     "correct": true,
+     "rationale": "Correct: RAII acquires in the constructor and releases in the destructor, guaranteeing cleanup when the object goes out of scope."
+    },
+    {
+     "key": "B",
+     "text": "It makes all allocation happen on the stack",
+     "correct": false,
+     "rationale": "RAII manages lifetime; the resource can still live on the heap."
+    },
+    {
+     "key": "C",
+     "text": "It disables exceptions",
+     "correct": false,
+     "rationale": "RAII works with exceptions; it does not disable them."
+    },
+    {
+     "key": "D",
+     "text": "It forces manual delete calls everywhere",
+     "correct": false,
+     "rationale": "RAII removes the need for manual delete, the opposite of this."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RAII acquires in the constructor and releases in the destructor, guaranteeing cleanup when the object goes out of scope.",
+   "outcome_refs": [
+    "MST-0906-D01.01"
+   ],
+   "domain_ref": "Modern C++ foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0906-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about unique_ptr and shared_ptr are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "unique_ptr expresses exclusive ownership and cannot be copied",
+     "correct": true,
+     "rationale": "Correct: unique_ptr is move-only and models a single owner."
+    },
+    {
+     "key": "B",
+     "text": "shared_ptr uses reference counting and can create cycles that leak",
+     "correct": true,
+     "rationale": "Correct: cyclic shared_ptrs keep each other alive; weak_ptr breaks the cycle."
+    },
+    {
+     "key": "C",
+     "text": "shared_ptr is always faster than unique_ptr",
+     "correct": false,
+     "rationale": "shared_ptr carries reference-counting overhead unique_ptr does not."
+    },
+    {
+     "key": "D",
+     "text": "unique_ptr requires manual delete to free its resource",
+     "correct": false,
+     "rationale": "unique_ptr frees automatically in its destructor."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: unique_ptr is move-only and models a single owner.; Correct: cyclic shared_ptrs keep each other alive; weak_ptr breaks the cycle.",
+   "outcome_refs": [
+    "MST-0906-D02.01"
+   ],
+   "domain_ref": "Objects, classes and RAII",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0906-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You modify a std::vector by inserting elements while holding an iterator into it. What is the risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Insertion can reallocate the buffer, invalidating existing iterators",
+     "correct": true,
+     "rationale": "Correct: growth may move the storage, so previously obtained iterators dangle."
+    },
+    {
+     "key": "B",
+     "text": "The vector becomes read-only",
+     "correct": false,
+     "rationale": "Vectors do not become read-only; the issue is iterator invalidation."
+    },
+    {
+     "key": "C",
+     "text": "Nothing; vector iterators are always stable",
+     "correct": false,
+     "rationale": "Vector iterators are not stable across reallocation."
+    },
+    {
+     "key": "D",
+     "text": "The elements are automatically sorted",
+     "correct": false,
+     "rationale": "Insertion does not sort the vector."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: growth may move the storage, so previously obtained iterators dangle.",
+   "outcome_refs": [
+    "MST-0906-D03.01"
+   ],
+   "domain_ref": "Memory and smart pointers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

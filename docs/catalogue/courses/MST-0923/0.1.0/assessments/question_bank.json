@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0923",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0923-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which F# construct is designed to make illegal states unrepresentable for a value that is exactly one of several named shapes?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Discriminated union",
+     "correct": true,
+     "rationale": "Correct: a discriminated union lets the type hold exactly one of a fixed set of cases, so impossible combinations cannot be constructed."
+    },
+    {
+     "key": "B",
+     "text": "A record with nullable fields",
+     "correct": false,
+     "rationale": "A record groups several fields that all exist at once, and nullable fields reintroduce the illegal states you are trying to remove."
+    },
+    {
+     "key": "C",
+     "text": "A string constant",
+     "correct": false,
+     "rationale": "A string can hold any text, so the compiler cannot restrict it to the valid cases."
+    },
+    {
+     "key": "D",
+     "text": "A mutable class with an enum flag",
+     "correct": false,
+     "rationale": "An enum plus separate fields lets invalid combinations exist and be mutated into existence."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a discriminated union lets the type hold exactly one of a fixed set of cases, so impossible combinations cannot be constructed.",
+   "outcome_refs": [
+    "MST-0923-D01.01"
+   ],
+   "domain_ref": "Functional foundations and the F# toolchain",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0923-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which of the following are pure, immutable-by-default behaviours you can rely on in idiomatic F#? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A let binding introduces an immutable value unless mark with mutable",
+     "correct": true,
+     "rationale": "Correct: let bindings are immutable by default; you must opt into mutation with mutable."
+    },
+    {
+     "key": "B",
+     "text": "List.map returns a new list rather than modifying the input",
+     "correct": true,
+     "rationale": "Correct: the List module functions produce new collections and leave the input unchanged."
+    },
+    {
+     "key": "C",
+     "text": "Records are reference-mutable so fields can be reassigned freely",
+     "correct": false,
+     "rationale": "Record fields are immutable by default; you create a changed copy with the with syntax."
+    },
+    {
+     "key": "D",
+     "text": "The pipeline operator mutates its left operand in place",
+     "correct": false,
+     "rationale": "The |> operator simply passes a value as the last argument to a function; it mutates nothing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: let bindings are immutable by default; you must opt into mutation with mutable.; Correct: the List module functions produce new collections and leave the input unchanged.",
+   "outcome_refs": [
+    "MST-0923-D02.01"
+   ],
+   "domain_ref": "Core types: tuples, records and unions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0923-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A validation pipeline should stop at the first failure and otherwise pass the value along. Which type best models this in F#?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Result<'T,'Error>",
+     "correct": true,
+     "rationale": "Correct: Result carries either a success value or an error, and binding chains short-circuit on the first Error."
+    },
+    {
+     "key": "B",
+     "text": "A thrown exception caught at the top",
+     "correct": false,
+     "rationale": "Exceptions work but are discouraged for expected validation failures because they bypass the type system and are hard to compose."
+    },
+    {
+     "key": "C",
+     "text": "A bool returned from each step",
+     "correct": false,
+     "rationale": "A bool loses the error detail and does not carry the successful value forward."
+    },
+    {
+     "key": "D",
+     "text": "A nullable reference",
+     "correct": false,
+     "rationale": "Null cannot distinguish between the different failure reasons and reintroduces null-reference risks."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Result carries either a success value or an error, and binding chains short-circuit on the first Error.",
+   "outcome_refs": [
+    "MST-0923-D03.01"
+   ],
+   "domain_ref": "Pattern matching and control flow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

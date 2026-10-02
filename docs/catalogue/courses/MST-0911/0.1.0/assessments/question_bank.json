@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0911",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 468,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 36,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0911-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must retrying a failed request generally be paired with idempotency for writes?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Without idempotency a retry can apply the same write twice, duplicating its effect",
+     "correct": true,
+     "rationale": "Correct: retries can land after a request actually succeeded, so writes must be safe to repeat."
+    },
+    {
+     "key": "B",
+     "text": "Idempotency makes retries run faster",
+     "correct": false,
+     "rationale": "Speed is not the point; correctness under duplication is."
+    },
+    {
+     "key": "C",
+     "text": "Retries are only ever used for reads",
+     "correct": false,
+     "rationale": "Writes are retried too, which is exactly why idempotency matters."
+    },
+    {
+     "key": "D",
+     "text": "Idempotency disables retries",
+     "correct": false,
+     "rationale": "It enables safe retries, not disables them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: retries can land after a request actually succeeded, so writes must be safe to repeat.",
+   "outcome_refs": [
+    "MST-0911-D01.01"
+   ],
+   "domain_ref": "Advanced concurrency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0911-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about distributed systems are accurate? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Network calls can be slow, reordered, duplicated or lost",
+     "correct": true,
+     "rationale": "Correct: the network is unreliable, which designs must assume."
+    },
+    {
+     "key": "B",
+     "text": "Under a network partition a system must trade off availability against consistency",
+     "correct": true,
+     "rationale": "Correct: this is the core CAP trade-off during partitions."
+    },
+    {
+     "key": "C",
+     "text": "Remote calls behave exactly like local function calls",
+     "correct": false,
+     "rationale": "Remote calls add latency and failure modes local calls do not have."
+    },
+    {
+     "key": "D",
+     "text": "Exactly-once delivery is free and automatic over a network",
+     "correct": false,
+     "rationale": "Exactly-once is hard; systems usually build it atop at-least-once plus idempotency."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the network is unreliable, which designs must assume.; Correct: this is the core CAP trade-off during partitions.",
+   "outcome_refs": [
+    "MST-0911-D02.01"
+   ],
+   "domain_ref": "Service communication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0911-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is pprof used for in a Go service?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Collecting CPU, memory and goroutine profiles to find real performance hot spots",
+     "correct": true,
+     "rationale": "Correct: pprof gathers profiles so optimisation targets measured bottlenecks."
+    },
+    {
+     "key": "B",
+     "text": "Automatically rewriting slow code",
+     "correct": false,
+     "rationale": "pprof measures; it does not rewrite code."
+    },
+    {
+     "key": "C",
+     "text": "Encrypting traffic between services",
+     "correct": false,
+     "rationale": "pprof is a profiler, not a security tool."
+    },
+    {
+     "key": "D",
+     "text": "Generating protobuf stubs",
+     "correct": false,
+     "rationale": "Code generation is protoc's job, not pprof's."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: pprof gathers profiles so optimisation targets measured bottlenecks.",
+   "outcome_refs": [
+    "MST-0911-D03.01"
+   ],
+   "domain_ref": "Resilience and reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

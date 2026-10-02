@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0908",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0908-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does Rust's ownership system guarantee without a garbage collector?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Memory is freed exactly once when its owner goes out of scope, preventing leaks and double-frees",
+     "correct": true,
+     "rationale": "Correct: each value has a single owner and is dropped deterministically at scope end."
+    },
+    {
+     "key": "B",
+     "text": "All data is copied on every assignment",
+     "correct": false,
+     "rationale": "Values are moved, not copied, unless the type is Copy."
+    },
+    {
+     "key": "C",
+     "text": "Memory is never freed until the program exits",
+     "correct": false,
+     "rationale": "Values are dropped when their owner leaves scope."
+    },
+    {
+     "key": "D",
+     "text": "A background thread collects unused memory",
+     "correct": false,
+     "rationale": "Rust has no garbage collector; cleanup is scope-based."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: each value has a single owner and is dropped deterministically at scope end.",
+   "outcome_refs": [
+    "MST-0908-D01.01"
+   ],
+   "domain_ref": "Rust foundations and ownership",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0908-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which borrowing rules does the Rust borrow checker enforce? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "You may have many shared (&) references OR one mutable (&mut) reference, not both at once",
+     "correct": true,
+     "rationale": "Correct: this prevents data races and aliasing bugs at compile time."
+    },
+    {
+     "key": "B",
+     "text": "A reference must not outlive the value it points to",
+     "correct": true,
+     "rationale": "Correct: lifetimes ensure references never dangle."
+    },
+    {
+     "key": "C",
+     "text": "Every value may have unlimited simultaneous mutable references",
+     "correct": false,
+     "rationale": "Only one mutable reference is allowed at a time."
+    },
+    {
+     "key": "D",
+     "text": "References can freely outlive their referents",
+     "correct": false,
+     "rationale": "That would create dangling references, which the checker forbids."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: this prevents data races and aliasing bugs at compile time.; Correct: lifetimes ensure references never dangle.",
+   "outcome_refs": [
+    "MST-0908-D02.01"
+   ],
+   "domain_ref": "Borrowing and lifetimes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0908-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the ? operator do in a function returning Result?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It returns the Ok value, or short-circuits by returning the Err from the function",
+     "correct": true,
+     "rationale": "Correct: ? unwraps on success and propagates the error on failure, converting it as needed."
+    },
+    {
+     "key": "B",
+     "text": "It panics if the value is an error",
+     "correct": false,
+     "rationale": "That is unwrap/expect; ? propagates instead of panicking."
+    },
+    {
+     "key": "C",
+     "text": "It ignores the error and continues",
+     "correct": false,
+     "rationale": "? does not silently ignore errors; it returns them."
+    },
+    {
+     "key": "D",
+     "text": "It converts a Result into a bool",
+     "correct": false,
+     "rationale": "? extracts or propagates; it does not yield a bool."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ? unwraps on success and propagates the error on failure, converting it as needed.",
+   "outcome_refs": [
+    "MST-0908-D03.01"
+   ],
+   "domain_ref": "Types: structs, enums, pattern matching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

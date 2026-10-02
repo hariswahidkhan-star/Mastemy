@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0910",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0910-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Go, how does a type satisfy an interface?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Implicitly, by having the required methods; no explicit declaration is needed",
+     "correct": true,
+     "rationale": "Correct: Go uses structural typing, so any type with the interface's methods satisfies it."
+    },
+    {
+     "key": "B",
+     "text": "By listing 'implements InterfaceName' in the type declaration",
+     "correct": false,
+     "rationale": "Go has no implements keyword; satisfaction is implicit."
+    },
+    {
+     "key": "C",
+     "text": "By inheriting from the interface",
+     "correct": false,
+     "rationale": "Go has no class inheritance; interfaces are satisfied structurally."
+    },
+    {
+     "key": "D",
+     "text": "By registering the type at runtime",
+     "correct": false,
+     "rationale": "No registration is needed; the compiler checks method sets."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Go uses structural typing, so any type with the interface's methods satisfies it.",
+   "outcome_refs": [
+    "MST-0910-D01.01"
+   ],
+   "domain_ref": "Go foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0910-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which practices help avoid goroutine leaks and data races? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use context cancellation or closed channels so goroutines can exit",
+     "correct": true,
+     "rationale": "Correct: giving goroutines a way to stop prevents leaks."
+    },
+    {
+     "key": "B",
+     "text": "Protect shared mutable state with a mutex or confine it to one goroutine",
+     "correct": true,
+     "rationale": "Correct: synchronisation or confinement prevents data races."
+    },
+    {
+     "key": "C",
+     "text": "Share a plain map across goroutines for speed",
+     "correct": false,
+     "rationale": "Concurrent map access without synchronisation is a data race."
+    },
+    {
+     "key": "D",
+     "text": "Launch goroutines without any way to signal them to stop",
+     "correct": false,
+     "rationale": "That is exactly how goroutines leak."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: giving goroutines a way to stop prevents leaks.; Correct: synchronisation or confinement prevents data races.",
+   "outcome_refs": [
+    "MST-0910-D02.01"
+   ],
+   "domain_ref": "Errors and idioms",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0910-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of passing a context.Context to a blocking operation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It carries deadlines and cancellation so the operation can stop early when the caller no longer needs it",
+     "correct": true,
+     "rationale": "Correct: context propagates cancellation and deadlines across call boundaries."
+    },
+    {
+     "key": "B",
+     "text": "It stores global configuration for the program",
+     "correct": false,
+     "rationale": "Context is for request-scoped cancellation/values, not global config."
+    },
+    {
+     "key": "C",
+     "text": "It makes the operation run on more CPU cores",
+     "correct": false,
+     "rationale": "Context does not control parallelism."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees the operation never fails",
+     "correct": false,
+     "rationale": "Context does not prevent failure; it enables cancellation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: context propagates cancellation and deadlines across call boundaries.",
+   "outcome_refs": [
+    "MST-0910-D03.01"
+   ],
+   "domain_ref": "Goroutines and channels",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

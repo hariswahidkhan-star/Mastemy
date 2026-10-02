@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1728",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 342,
+  "lesson_check_items": 84,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1728-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A month-end schedule must foot exactly to the penny, but the total shows a 0.01 difference. What is the most appropriate fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply ROUND to the calculated values at the defined precision so displayed and underlying figures agree",
+     "correct": true,
+     "rationale": "Correct: rounding the underlying values removes sub-cent floating-point residue so the schedule ties."
+    },
+    {
+     "key": "B",
+     "text": "Manually type the correct total over the formula",
+     "correct": false,
+     "rationale": "Overtyping the formula breaks the audit trail and will silently go wrong next period."
+    },
+    {
+     "key": "C",
+     "text": "Widen the column so more decimals show",
+     "correct": false,
+     "rationale": "Showing more decimals reveals the difference but does not make the schedule foot."
+    },
+    {
+     "key": "D",
+     "text": "Delete the rows that cause the mismatch",
+     "correct": false,
+     "rationale": "Removing data to force a tie misstates the figures."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: rounding the underlying values removes sub-cent floating-point residue so the schedule ties.",
+   "outcome_refs": [
+    "MST-1728-D01.01"
+   ],
+   "domain_ref": "Excel foundations for accountants",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1728-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which practices strengthen the integrity of an accounting workbook? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Separate input cells from formula cells and protect the formulas",
+     "correct": true,
+     "rationale": "Correct: isolating and locking formulas prevents accidental overwrites while leaving inputs editable."
+    },
+    {
+     "key": "B",
+     "text": "Add independent check cells that flag when a statement does not tie",
+     "correct": true,
+     "rationale": "Correct: built-in checks catch errors before the report is relied upon."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code totals once they look right to speed up refresh",
+     "correct": false,
+     "rationale": "Hard-coded totals stop updating and hide later errors."
+    },
+    {
+     "key": "D",
+     "text": "Keep all versions in one file by overwriting it each month",
+     "correct": false,
+     "rationale": "Overwriting destroys the audit trail and the ability to compare periods."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: isolating and locking formulas prevents accidental overwrites while leaving inputs editable.; Correct: built-in checks catch errors before the report is relied upon.",
+   "outcome_refs": [
+    "MST-1728-D02.01"
+   ],
+   "domain_ref": "Core accounting formulas",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1728-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why map each trial-balance account to a financial-statement line with a lookup that flags unmapped accounts?",
+   "options": [
+    {
+     "key": "A",
+     "text": "New or renamed accounts are caught instead of being silently omitted from the statements",
+     "correct": true,
+     "rationale": "Correct: a flag on unmapped accounts surfaces gaps so nothing drops out of the report unnoticed."
+    },
+    {
+     "key": "B",
+     "text": "It makes the workbook calculate faster",
+     "correct": false,
+     "rationale": "Speed is not the reason; completeness and control are."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need to reconcile at all",
+     "correct": false,
+     "rationale": "Mapping supports reporting but does not replace reconciliation."
+    },
+    {
+     "key": "D",
+     "text": "It converts the accounts to cash basis automatically",
+     "correct": false,
+     "rationale": "Mapping assigns lines; it does not change the accounting basis."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a flag on unmapped accounts surfaces gaps so nothing drops out of the report unnoticed.",
+   "outcome_refs": [
+    "MST-1728-D03.01"
+   ],
+   "domain_ref": "Lookups and linking schedules",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

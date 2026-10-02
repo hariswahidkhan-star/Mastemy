@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0907",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 468,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 36,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0907-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is the C++ memory model and choice of memory order important when using std::atomic?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It defines which reorderings are allowed, so incorrect ordering can cause subtle data races or stale reads",
+     "correct": true,
+     "rationale": "Correct: memory order constrains visibility and reordering; getting it wrong breaks correctness in ways that are hard to reproduce."
+    },
+    {
+     "key": "B",
+     "text": "It makes atomics slower but never affects correctness",
+     "correct": false,
+     "rationale": "Ordering directly affects correctness, not merely speed."
+    },
+    {
+     "key": "C",
+     "text": "It is only relevant on single-core machines",
+     "correct": false,
+     "rationale": "It matters specifically on multi-core, concurrent execution."
+    },
+    {
+     "key": "D",
+     "text": "Atomics ignore memory order entirely",
+     "correct": false,
+     "rationale": "Atomics take a memory-order argument that governs their guarantees."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: memory order constrains visibility and reordering; getting it wrong breaks correctness in ways that are hard to reproduce.",
+   "outcome_refs": [
+    "MST-0907-D01.01"
+   ],
+   "domain_ref": "Advanced templates",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0907-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which claims about optimisation in C++ are sound? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Profile first to find the actual hot path before optimising",
+     "correct": true,
+     "rationale": "Correct: measurement prevents wasting effort on code that does not matter."
+    },
+    {
+     "key": "B",
+     "text": "Improving data cache locality can beat micro-optimising instructions",
+     "correct": true,
+     "rationale": "Correct: memory-access patterns often dominate performance on modern CPUs."
+    },
+    {
+     "key": "C",
+     "text": "volatile makes shared data thread-safe",
+     "correct": false,
+     "rationale": "volatile does not provide atomicity or ordering; atomics or locks do."
+    },
+    {
+     "key": "D",
+     "text": "Marking everything inline always makes code faster",
+     "correct": false,
+     "rationale": "Over-inlining can bloat code and hurt the instruction cache."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: measurement prevents wasting effort on code that does not matter.; Correct: memory-access patterns often dominate performance on modern CPUs.",
+   "outcome_refs": [
+    "MST-0907-D02.01"
+   ],
+   "domain_ref": "Generic library design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0907-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the benefit of CRTP (the curiously recurring template pattern) over runtime polymorphism here?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It provides compile-time polymorphism, avoiding virtual-call and vtable overhead on a hot path",
+     "correct": true,
+     "rationale": "Correct: CRTP resolves the call at compile time, removing virtual dispatch cost where it matters."
+    },
+    {
+     "key": "B",
+     "text": "It makes the class usable without templates",
+     "correct": false,
+     "rationale": "CRTP is a template technique, not a way to avoid templates."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees thread safety",
+     "correct": false,
+     "rationale": "CRTP says nothing about concurrency."
+    },
+    {
+     "key": "D",
+     "text": "It replaces the need for a destructor",
+     "correct": false,
+     "rationale": "CRTP does not change resource management."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: CRTP resolves the call at compile time, removing virtual dispatch cost where it matters.",
+   "outcome_refs": [
+    "MST-0907-D03.01"
+   ],
+   "domain_ref": "Move semantics and performance types",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

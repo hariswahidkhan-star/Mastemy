@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0905",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0905-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After calling free(p), what must you avoid doing with p?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Dereferencing or freeing it again, because it is now a dangling pointer",
+     "correct": true,
+     "rationale": "Correct: after free the pointer no longer owns valid memory; using or freeing it again is undefined behaviour."
+    },
+    {
+     "key": "B",
+     "text": "Setting it to NULL",
+     "correct": false,
+     "rationale": "Setting it to NULL is actually a recommended safety step, not something to avoid."
+    },
+    {
+     "key": "C",
+     "text": "Printing its former address value",
+     "correct": false,
+     "rationale": "Printing the (now stale) value is harmless; dereferencing it is the danger."
+    },
+    {
+     "key": "D",
+     "text": "Declaring a new pointer of the same type",
+     "correct": false,
+     "rationale": "Declaring other pointers is unrelated and fine."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: after free the pointer no longer owns valid memory; using or freeing it again is undefined behaviour.",
+   "outcome_refs": [
+    "MST-0905-D01.01"
+   ],
+   "domain_ref": "C fundamentals and the build process",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0905-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which conditions are undefined behaviour in C? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reading an element past the end of an array",
+     "correct": true,
+     "rationale": "Correct: out-of-bounds access is undefined behaviour."
+    },
+    {
+     "key": "B",
+     "text": "Using the value of an uninitialised local variable",
+     "correct": true,
+     "rationale": "Correct: reading an indeterminate value is undefined behaviour."
+    },
+    {
+     "key": "C",
+     "text": "Assigning NULL to a pointer",
+     "correct": false,
+     "rationale": "Assigning NULL is well defined and common."
+    },
+    {
+     "key": "D",
+     "text": "Calling free on a pointer returned by malloc exactly once",
+     "correct": false,
+     "rationale": "Freeing a valid allocation once is the correct, defined behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: out-of-bounds access is undefined behaviour.; Correct: reading an indeterminate value is undefined behaviour.",
+   "outcome_refs": [
+    "MST-0905-D02.01"
+   ],
+   "domain_ref": "Operators, control flow and functions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0905-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must you check the return value of malloc?",
+   "options": [
+    {
+     "key": "A",
+     "text": "malloc can return NULL when allocation fails, and using that pointer is undefined behaviour",
+     "correct": true,
+     "rationale": "Correct: on failure malloc returns NULL, so dereferencing it without checking is a crash or worse."
+    },
+    {
+     "key": "B",
+     "text": "malloc always succeeds, so the check is only for style",
+     "correct": false,
+     "rationale": "malloc can fail; the check is functional, not cosmetic."
+    },
+    {
+     "key": "C",
+     "text": "The check frees the memory automatically",
+     "correct": false,
+     "rationale": "Checking the pointer does not free anything."
+    },
+    {
+     "key": "D",
+     "text": "Without the check the memory is allocated twice",
+     "correct": false,
+     "rationale": "No double allocation occurs; the risk is a NULL dereference."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: on failure malloc returns NULL, so dereferencing it without checking is a crash or worse.",
+   "outcome_refs": [
+    "MST-0905-D03.01"
+   ],
+   "domain_ref": "Pointers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

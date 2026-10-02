@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0903",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0903-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do Python threads generally not speed up a CPU-bound pure-Python computation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Global Interpreter Lock lets only one thread execute Python bytecode at a time",
+     "correct": true,
+     "rationale": "Correct: the GIL serialises bytecode execution, so CPU-bound threads cannot run in true parallel."
+    },
+    {
+     "key": "B",
+     "text": "Threads cannot share any memory",
+     "correct": false,
+     "rationale": "Threads share memory; that is not the limitation here."
+    },
+    {
+     "key": "C",
+     "text": "Python has no threading library",
+     "correct": false,
+     "rationale": "Python has a threading module; the GIL is the constraint."
+    },
+    {
+     "key": "D",
+     "text": "Creating a thread is slower than the whole computation",
+     "correct": false,
+     "rationale": "Thread creation cost is not the reason; the GIL is."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the GIL serialises bytecode execution, so CPU-bound threads cannot run in true parallel.",
+   "outcome_refs": [
+    "MST-0903-D01.01"
+   ],
+   "domain_ref": "Concurrency concepts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0903-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which techniques bound or control concurrency when fetching many URLs with asyncio? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Limit in-flight requests with an asyncio.Semaphore",
+     "correct": true,
+     "rationale": "Correct: a semaphore caps how many coroutines run the protected section at once."
+    },
+    {
+     "key": "B",
+     "text": "Apply per-request timeouts and cancel stragglers",
+     "correct": true,
+     "rationale": "Correct: timeouts plus cancellation stop slow requests from stalling the batch."
+    },
+    {
+     "key": "C",
+     "text": "Replace await with time.sleep to pace requests",
+     "correct": false,
+     "rationale": "time.sleep blocks the event loop and stalls all coroutines."
+    },
+    {
+     "key": "D",
+     "text": "Run each fetch in its own process for isolation",
+     "correct": false,
+     "rationale": "Spawning a process per I/O request is wasteful and defeats async's purpose."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a semaphore caps how many coroutines run the protected section at once.; Correct: timeouts plus cancellation stop slow requests from stalling the batch.",
+   "outcome_refs": [
+    "MST-0903-D02.01"
+   ],
+   "domain_ref": "Threads and processes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0903-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What happens if you call an async function like data = fetch(url) without awaiting it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It returns a coroutine object that never runs until awaited or scheduled as a task",
+     "correct": true,
+     "rationale": "Correct: calling a coroutine just creates it; it must be awaited or scheduled to execute."
+    },
+    {
+     "key": "B",
+     "text": "It runs immediately and blocks until done",
+     "correct": false,
+     "rationale": "Calling does not run the body; awaiting or scheduling does."
+    },
+    {
+     "key": "C",
+     "text": "It raises a syntax error",
+     "correct": false,
+     "rationale": "It is valid syntax; it simply produces an un-run coroutine."
+    },
+    {
+     "key": "D",
+     "text": "It runs in a background thread automatically",
+     "correct": false,
+     "rationale": "No thread is created; nothing executes until the loop drives it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: calling a coroutine just creates it; it must be awaited or scheduled to execute.",
+   "outcome_refs": [
+    "MST-0903-D03.01"
+   ],
+   "domain_ref": "async/await foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0901",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 608,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0901-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the with statement provide when opening a file in Python?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It guarantees the file is closed when the block exits, even on an error",
+     "correct": true,
+     "rationale": "Correct: with uses the context-manager protocol to release the resource reliably."
+    },
+    {
+     "key": "B",
+     "text": "It makes file reads run concurrently",
+     "correct": false,
+     "rationale": "with does not add concurrency; it manages resource cleanup."
+    },
+    {
+     "key": "C",
+     "text": "It converts the file contents to JSON automatically",
+     "correct": false,
+     "rationale": "Parsing JSON is a separate step with the json module."
+    },
+    {
+     "key": "D",
+     "text": "It prevents any exception from being raised inside the block",
+     "correct": false,
+     "rationale": "with still lets exceptions propagate; it only ensures cleanup happens."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with uses the context-manager protocol to release the resource reliably.",
+   "outcome_refs": [
+    "MST-0901-D01.01"
+   ],
+   "domain_ref": "Getting started with Python",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0901-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Python dictionaries are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keys must be hashable, such as strings or numbers",
+     "correct": true,
+     "rationale": "Correct: dictionary keys must be hashable so they can be located quickly."
+    },
+    {
+     "key": "B",
+     "text": "Looking up a value by key is on average fast regardless of size",
+     "correct": true,
+     "rationale": "Correct: dict lookups are average constant-time thanks to hashing."
+    },
+    {
+     "key": "C",
+     "text": "Dictionaries keep values sorted by key automatically",
+     "correct": false,
+     "rationale": "Dictionaries preserve insertion order, not sorted order."
+    },
+    {
+     "key": "D",
+     "text": "A list can be used directly as a dictionary key",
+     "correct": false,
+     "rationale": "Lists are unhashable and cannot be dictionary keys."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: dictionary keys must be hashable so they can be located quickly.; Correct: dict lookups are average constant-time thanks to hashing.",
+   "outcome_refs": [
+    "MST-0901-D02.01"
+   ],
+   "domain_ref": "Core data types and operators",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0901-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is using a mutable default argument such as def f(items=[]) a common bug?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The same list is shared across all calls that rely on the default, so state leaks between calls",
+     "correct": true,
+     "rationale": "Correct: the default is evaluated once at definition, so every call reuses and mutates the same list."
+    },
+    {
+     "key": "B",
+     "text": "Python forbids default arguments entirely",
+     "correct": false,
+     "rationale": "Default arguments are allowed; mutable ones are just risky."
+    },
+    {
+     "key": "C",
+     "text": "The list is recreated on every call, wasting memory",
+     "correct": false,
+     "rationale": "The opposite is true: it is created once and reused."
+    },
+    {
+     "key": "D",
+     "text": "It makes the function run in a separate thread",
+     "correct": false,
+     "rationale": "Default arguments have nothing to do with threading."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the default is evaluated once at definition, so every call reuses and mutates the same list.",
+   "outcome_refs": [
+    "MST-0901-D03.01"
+   ],
+   "domain_ref": "Control flow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0902",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 492,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 36,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0902-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main memory advantage of a generator over returning a list?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It yields items one at a time, so the whole sequence need never be held in memory",
+     "correct": true,
+     "rationale": "Correct: a generator produces values lazily on demand, keeping memory flat regardless of length."
+    },
+    {
+     "key": "B",
+     "text": "It sorts the items as it produces them",
+     "correct": false,
+     "rationale": "Generators do not sort; they yield in the order produced."
+    },
+    {
+     "key": "C",
+     "text": "It runs the producing code in parallel",
+     "correct": false,
+     "rationale": "Generators are single-threaded and lazy, not parallel."
+    },
+    {
+     "key": "D",
+     "text": "It caches every produced value for reuse",
+     "correct": false,
+     "rationale": "A plain generator does not cache; once consumed, values are gone."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a generator produces values lazily on demand, keeping memory flat regardless of length.",
+   "outcome_refs": [
+    "MST-0902-D01.01"
+   ],
+   "domain_ref": "Idiomatic Python and data model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0902-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which are correct reasons to use functools.wraps when writing a decorator? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It preserves the wrapped function's __name__ and __doc__",
+     "correct": true,
+     "rationale": "Correct: wraps copies identifying metadata to the wrapper."
+    },
+    {
+     "key": "B",
+     "text": "It keeps introspection and debugging tools showing the original function",
+     "correct": true,
+     "rationale": "Correct: tools that read metadata then report the real function."
+    },
+    {
+     "key": "C",
+     "text": "It makes the decorator run asynchronously",
+     "correct": false,
+     "rationale": "wraps has nothing to do with async execution."
+    },
+    {
+     "key": "D",
+     "text": "It is required for the decorator to accept arguments",
+     "correct": false,
+     "rationale": "Parameterised decorators are a separate pattern; wraps is about metadata."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: wraps copies identifying metadata to the wrapper.; Correct: tools that read metadata then report the real function.",
+   "outcome_refs": [
+    "MST-0902-D02.01"
+   ],
+   "domain_ref": "Iterators and generators",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0902-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is a metaclass the appropriate tool rather than a class decorator?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When you must customise class creation itself, such as registering or validating every subclass automatically",
+     "correct": true,
+     "rationale": "Correct: metaclasses hook into class construction, which is what per-subclass behaviour requires."
+    },
+    {
+     "key": "B",
+     "text": "Whenever you want to add a method to a single class",
+     "correct": false,
+     "rationale": "A plain method or class decorator handles that far more simply."
+    },
+    {
+     "key": "C",
+     "text": "To speed up attribute access",
+     "correct": false,
+     "rationale": "Attribute speed is addressed by __slots__/descriptors, not metaclasses."
+    },
+    {
+     "key": "D",
+     "text": "To make instances immutable",
+     "correct": false,
+     "rationale": "Immutability is better achieved with properties, frozen dataclasses or __slots__."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: metaclasses hook into class construction, which is what per-subclass behaviour requires.",
+   "outcome_refs": [
+    "MST-0902-D03.01"
+   ],
+   "domain_ref": "Comprehensions and functional tools",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

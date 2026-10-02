@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0904",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0904-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why build shell commands with a list of arguments to subprocess rather than one concatenated string with shell=True?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It avoids shell-injection and quoting bugs by passing arguments directly to the program",
+     "correct": true,
+     "rationale": "Correct: passing an argument list bypasses the shell, so untrusted values cannot inject commands."
+    },
+    {
+     "key": "B",
+     "text": "It runs the command faster",
+     "correct": false,
+     "rationale": "Speed is not the reason; safety and correctness are."
+    },
+    {
+     "key": "C",
+     "text": "It is the only way to capture output",
+     "correct": false,
+     "rationale": "Output capture works either way; the list form is about safety."
+    },
+    {
+     "key": "D",
+     "text": "It automatically retries failed commands",
+     "correct": false,
+     "rationale": "subprocess does not add retries; that is your logic."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: passing an argument list bypasses the shell, so untrusted values cannot inject commands.",
+   "outcome_refs": [
+    "MST-0904-D01.01"
+   ],
+   "domain_ref": "CLI design and argument parsing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0904-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which practices make a CLI tool well-behaved in automation pipelines? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Return a non-zero exit code on failure so callers can detect it",
+     "correct": true,
+     "rationale": "Correct: exit codes are how shells and scripts know whether a step succeeded."
+    },
+    {
+     "key": "B",
+     "text": "Send diagnostics to logs/stderr and keep stdout for real output",
+     "correct": true,
+     "rationale": "Correct: separating diagnostics from results lets output be piped cleanly."
+    },
+    {
+     "key": "C",
+     "text": "Always exit 0 so the pipeline never stops",
+     "correct": false,
+     "rationale": "Masking failures with exit 0 hides real errors from the pipeline."
+    },
+    {
+     "key": "D",
+     "text": "Print progress bars into stdout that is being piped to a file",
+     "correct": false,
+     "rationale": "Progress noise in piped stdout corrupts the real output."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: exit codes are how shells and scripts know whether a step succeeded.; Correct: separating diagnostics from results lets output be piped cleanly.",
+   "outcome_refs": [
+    "MST-0904-D02.01"
+   ],
+   "domain_ref": "Interacting with the system",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0904-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What makes a batch file operation idempotent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Running it again after a partial failure produces the same end state without duplicating work",
+     "correct": true,
+     "rationale": "Correct: idempotency means re-running converges on the same result, which makes retries safe."
+    },
+    {
+     "key": "B",
+     "text": "It can only ever be run once",
+     "correct": false,
+     "rationale": "That is the opposite of idempotency."
+    },
+    {
+     "key": "C",
+     "text": "It runs twice as fast the second time",
+     "correct": false,
+     "rationale": "Speed is unrelated to idempotency."
+    },
+    {
+     "key": "D",
+     "text": "It disables logging on the second run",
+     "correct": false,
+     "rationale": "Logging behaviour is unrelated to idempotency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: idempotency means re-running converges on the same result, which makes retries safe.",
+   "outcome_refs": [
+    "MST-0904-D03.01"
+   ],
+   "domain_ref": "Configuration, environment and logging",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

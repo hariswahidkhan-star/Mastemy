@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0909",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 468,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 36,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0909-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is holding a std::sync::Mutex guard across an .await point in async Rust a problem?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The task may be suspended while holding the lock, blocking other tasks and risking deadlock",
+     "correct": true,
+     "rationale": "Correct: the guard is held across suspension, so other tasks waiting on the lock stall; an async-aware mutex is preferred."
+    },
+    {
+     "key": "B",
+     "text": "std mutexes cannot compile in async code at all",
+     "correct": false,
+     "rationale": "They compile; the problem is holding the guard across await."
+    },
+    {
+     "key": "C",
+     "text": "It automatically converts to an async mutex",
+     "correct": false,
+     "rationale": "No automatic conversion happens; the risk remains."
+    },
+    {
+     "key": "D",
+     "text": "It makes the lock faster",
+     "correct": false,
+     "rationale": "It does not improve performance; it creates a hazard."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the guard is held across suspension, so other tasks waiting on the lock stall; an async-aware mutex is preferred.",
+   "outcome_refs": [
+    "MST-0909-D01.01"
+   ],
+   "domain_ref": "Async Rust foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0909-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which are sound resilience practices for an async service under load? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply timeouts so slow dependencies cannot stall requests indefinitely",
+     "correct": true,
+     "rationale": "Correct: timeouts bound how long a request waits on a dependency."
+    },
+    {
+     "key": "B",
+     "text": "Bound concurrency so the service sheds or queues load instead of collapsing",
+     "correct": true,
+     "rationale": "Correct: backpressure protects the service from being overwhelmed."
+    },
+    {
+     "key": "C",
+     "text": "Retry immediately and unboundedly on every failure",
+     "correct": false,
+     "rationale": "Unbounded immediate retries amplify an outage; use backoff and limits."
+    },
+    {
+     "key": "D",
+     "text": "Return full internal stack traces to every client",
+     "correct": false,
+     "rationale": "Leaking internals is a security and clarity problem."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: timeouts bound how long a request waits on a dependency.; Correct: backpressure protects the service from being overwhelmed.",
+   "outcome_refs": [
+    "MST-0909-D02.01"
+   ],
+   "domain_ref": "Shared state and synchronisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0909-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does spawning a tokio task with tokio::spawn require of the task's data, and why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The future must be Send so it can run on the multi-threaded runtime's worker threads",
+     "correct": true,
+     "rationale": "Correct: tasks may move between worker threads, so their captured data must be Send."
+    },
+    {
+     "key": "B",
+     "text": "The future must be Copy",
+     "correct": false,
+     "rationale": "Copy is not required; Send (and 'static) is."
+    },
+    {
+     "key": "C",
+     "text": "Nothing; any data can be captured freely",
+     "correct": false,
+     "rationale": "The Send/'static bounds are real constraints."
+    },
+    {
+     "key": "D",
+     "text": "The future must block until completion",
+     "correct": false,
+     "rationale": "Spawned tasks run concurrently; they do not block the spawner."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: tasks may move between worker threads, so their captured data must be Send.",
+   "outcome_refs": [
+    "MST-0909-D03.01"
+   ],
+   "domain_ref": "Building services",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
