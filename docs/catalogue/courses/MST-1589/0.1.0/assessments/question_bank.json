@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1589",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 398,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 35,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1589-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can Nginx's event-driven model serve many concurrent connections efficiently?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It handles many connections per worker with asynchronous events instead of one thread each",
+     "correct": true,
+     "rationale": "Correct: an event loop multiplexes many connections per worker, avoiding per-connection thread overhead."
+    },
+    {
+     "key": "B",
+     "text": "It opens a new operating-system process for every single request",
+     "correct": false,
+     "rationale": "That is the model Nginx avoids; it would not scale well."
+    },
+    {
+     "key": "C",
+     "text": "It refuses connections beyond a small fixed number",
+     "correct": false,
+     "rationale": "The event model exists to handle large numbers, not to cap them low."
+    },
+    {
+     "key": "D",
+     "text": "It serves only one client at a time",
+     "correct": false,
+     "rationale": "It serves many clients concurrently."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an event loop multiplexes many connections per worker, avoiding per-connection thread overhead.",
+   "outcome_refs": [
+    "MST-1589-D01.01"
+   ],
+   "domain_ref": "Web server fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1589-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid roles for Nginx in front of an application? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Terminating TLS and forwarding plain requests to the app",
+     "correct": true,
+     "rationale": "Correct: TLS termination at the proxy is a standard Nginx role."
+    },
+    {
+     "key": "B",
+     "text": "Load-balancing requests across several upstream app servers",
+     "correct": true,
+     "rationale": "Correct: distributing traffic across upstreams is a core reverse-proxy role."
+    },
+    {
+     "key": "C",
+     "text": "Replacing the application's database",
+     "correct": false,
+     "rationale": "Nginx is a web server/proxy, not a database."
+    },
+    {
+     "key": "D",
+     "text": "Compiling the application source code",
+     "correct": false,
+     "rationale": "Nginx does not build application code."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: TLS termination at the proxy is a standard Nginx role.",
+   "outcome_refs": [
+    "MST-1589-D03.01"
+   ],
+   "domain_ref": "Reverse proxy and load balancing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1589-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Clients get intermittent 502 Bad Gateway responses from an Nginx reverse proxy. What is the best first diagnostic step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Check the Nginx error log and the upstream server's health",
+     "correct": true,
+     "rationale": "Correct: a 502 means the upstream failed to respond properly; the error log and upstream status reveal why."
+    },
+    {
+     "key": "B",
+     "text": "Delete the Nginx configuration file",
+     "correct": false,
+     "rationale": "Deleting the config removes the proxy rather than diagnosing the fault."
+    },
+    {
+     "key": "C",
+     "text": "Assume the client's browser is broken",
+     "correct": false,
+     "rationale": "A systemic 502 points at the proxy or upstream, not individual browsers."
+    },
+    {
+     "key": "D",
+     "text": "Disable logging to reduce noise",
+     "correct": false,
+     "rationale": "Disabling logs removes the evidence needed to diagnose the error."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a 502 means the upstream failed to respond properly; the error log and upstream status reveal why.",
+   "outcome_refs": [
+    "MST-1589-D05.01"
+   ],
+   "domain_ref": "Operations, logging and security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

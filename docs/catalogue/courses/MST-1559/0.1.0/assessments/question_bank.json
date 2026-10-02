@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1559",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 450,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1559-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary benefit of rendering a component inside a shadow DOM?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its internal markup and styles are encapsulated from the surrounding page",
+     "correct": true,
+     "rationale": "Correct: the shadow tree scopes styles and structure so the page and component do not interfere."
+    },
+    {
+     "key": "B",
+     "text": "It makes the component load faster than any alternative",
+     "correct": false,
+     "rationale": "Encapsulation is about isolation, not a guaranteed speed gain."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need to define a custom element",
+     "correct": false,
+     "rationale": "A custom element is still defined; shadow DOM is its internal tree."
+    },
+    {
+     "key": "D",
+     "text": "It lets page CSS freely restyle the component internals",
+     "correct": false,
+     "rationale": "Shadow DOM prevents, not enables, arbitrary external styling of internals."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the shadow tree scopes styles and structure so the page and component do not interfere.",
+   "outcome_refs": [
+    "MST-1559-D03.01"
+   ],
+   "domain_ref": "Shadow DOM and encapsulation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1559-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about a custom element's lifecycle are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "connectedCallback runs when the element is inserted into the document",
+     "correct": true,
+     "rationale": "Correct: connectedCallback fires on insertion and is a safe place for setup."
+    },
+    {
+     "key": "B",
+     "text": "attributeChangedCallback runs for attributes listed in observedAttributes",
+     "correct": true,
+     "rationale": "Correct: only observed attributes trigger the callback."
+    },
+    {
+     "key": "C",
+     "text": "The constructor is the right place to inspect child elements and attributes",
+     "correct": false,
+     "rationale": "Children and attributes may not be ready in the constructor; defer that work to connectedCallback."
+    },
+    {
+     "key": "D",
+     "text": "Lifecycle callbacks only work inside a specific framework",
+     "correct": false,
+     "rationale": "They are part of the standard and work framework-independently."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: connectedCallback fires on insertion and is a safe place for setup.",
+   "outcome_refs": [
+    "MST-1559-D02.01"
+   ],
+   "domain_ref": "Custom elements",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1559-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A parent needs to know when a custom rating element's value changes. What is the idiomatic mechanism?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Dispatch a custom event from the element that the parent listens for",
+     "correct": true,
+     "rationale": "Correct: custom events are the standard way a web component notifies listeners of changes."
+    },
+    {
+     "key": "B",
+     "text": "Have the parent poll the element's internals every second",
+     "correct": false,
+     "rationale": "Polling is wasteful and brittle compared with an event."
+    },
+    {
+     "key": "C",
+     "text": "Reach into the element's shadow DOM from the parent",
+     "correct": false,
+     "rationale": "Reaching into internals breaks encapsulation and the component contract."
+    },
+    {
+     "key": "D",
+     "text": "Reload the page on every change",
+     "correct": false,
+     "rationale": "Reloading destroys state and is not a notification mechanism."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: custom events are the standard way a web component notifies listeners of changes.",
+   "outcome_refs": [
+    "MST-1559-D04.01"
+   ],
+   "domain_ref": "Attributes, properties and events",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

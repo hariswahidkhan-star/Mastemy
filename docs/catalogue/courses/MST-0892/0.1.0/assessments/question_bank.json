@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0892",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 398,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 35,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0892-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team changes only React component JavaScript and some styling, with no new native dependency. Which delivery path is appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ship it as an EAS Update over the air to the existing build",
+     "correct": true,
+     "rationale": "Correct: pure JavaScript and asset changes within the same runtime version can ship over the air without a new store build."
+    },
+    {
+     "key": "B",
+     "text": "Submit a brand-new build to both app stores and wait for review",
+     "correct": false,
+     "rationale": "A full store submission is unnecessary when no native code or runtime version changed."
+    },
+    {
+     "key": "C",
+     "text": "Bump the native runtime version and rebuild",
+     "correct": false,
+     "rationale": "The runtime version only changes when the native layer changes; it did not here."
+    },
+    {
+     "key": "D",
+     "text": "Nothing can be delivered without Xcode on a local machine",
+     "correct": false,
+     "rationale": "EAS builds in the cloud and OTA updates need no local native toolchain."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: pure JavaScript and asset changes within the same runtime version can ship over the air without a new store build.",
+   "outcome_refs": [
+    "MST-0892-D01.01"
+   ],
+   "domain_ref": "Expo project foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0892-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO changes CANNOT be delivered through an EAS Update over the air and require a new native build? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Adding a new native module that needs native code",
+     "correct": true,
+     "rationale": "Correct: new native code is compiled into the binary and cannot ship over the air."
+    },
+    {
+     "key": "B",
+     "text": "Changing the app's minimum supported OS, which alters the native build",
+     "correct": true,
+     "rationale": "Correct: native build configuration changes require a rebuilt binary."
+    },
+    {
+     "key": "C",
+     "text": "Editing the text of an on-screen label",
+     "correct": false,
+     "rationale": "Text changes are JavaScript and can ship over the air."
+    },
+    {
+     "key": "D",
+     "text": "Adjusting a stylesheet colour",
+     "correct": false,
+     "rationale": "Style changes are JavaScript and can ship over the air."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: new native code is compiled into the binary and cannot ship over the air.",
+   "outcome_refs": [
+    "MST-0892-D03.01"
+   ],
+   "domain_ref": "Over-the-air updates with EAS Update",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0892-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A production OTA update introduces a crash. What is the fastest safe response using EAS Update?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Republish the previous known-good update to the production branch",
+     "correct": true,
+     "rationale": "Correct: republishing the last good update rolls clients back without a store review."
+    },
+    {
+     "key": "B",
+     "text": "Submit a new build and wait for store review",
+     "correct": false,
+     "rationale": "Store review is slow and unnecessary when a prior good JavaScript bundle exists."
+    },
+    {
+     "key": "C",
+     "text": "Delete the app from the stores",
+     "correct": false,
+     "rationale": "Removing the app harms all users and does not fix the update."
+    },
+    {
+     "key": "D",
+     "text": "Ask every user to reinstall",
+     "correct": false,
+     "rationale": "Users cannot be relied on to reinstall and it does not address the bad bundle."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: republishing the last good update rolls clients back without a store review.",
+   "outcome_refs": [
+    "MST-0892-D04.01"
+   ],
+   "domain_ref": "Release channels and rollout",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

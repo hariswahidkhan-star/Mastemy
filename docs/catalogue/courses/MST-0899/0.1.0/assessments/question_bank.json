@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0899",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 398,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 35,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0899-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the clearest distinction between internationalization (i18n) and localization (l10n)?",
+   "options": [
+    {
+     "key": "A",
+     "text": "i18n prepares the product to support many locales; l10n adapts it to a specific locale",
+     "correct": true,
+     "rationale": "Correct: i18n is the engineering groundwork, l10n is the per-locale adaptation such as translation."
+    },
+    {
+     "key": "B",
+     "text": "i18n means translating strings; l10n means writing code",
+     "correct": false,
+     "rationale": "This reverses the roles; translation is part of l10n."
+    },
+    {
+     "key": "C",
+     "text": "They are identical terms",
+     "correct": false,
+     "rationale": "They name distinct, sequential activities."
+    },
+    {
+     "key": "D",
+     "text": "i18n applies only to right-to-left languages",
+     "correct": false,
+     "rationale": "i18n applies to all locales, not only RTL ones."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: i18n is the engineering groundwork, l10n is the per-locale adaptation such as translation.",
+   "outcome_refs": [
+    "MST-0899-D01.01"
+   ],
+   "domain_ref": "i18n foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0899-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices correctly support a right-to-left layout? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use CSS logical properties such as margin-inline-start instead of margin-left",
+     "correct": true,
+     "rationale": "Correct: logical properties flip automatically with text direction."
+    },
+    {
+     "key": "B",
+     "text": "Set the dir attribute so the browser lays out bidi text correctly",
+     "correct": true,
+     "rationale": "Correct: the dir attribute drives bidirectional layout and text direction."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code every margin to the left side",
+     "correct": false,
+     "rationale": "Fixed left-side margins do not flip for RTL and break the layout."
+    },
+    {
+     "key": "D",
+     "text": "Mirror all icons including directional-neutral ones like a clock",
+     "correct": false,
+     "rationale": "Neutral icons such as a clock must not be mirrored; only direction-dependent icons like a back arrow flip."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: logical properties flip automatically with text direction.",
+   "outcome_refs": [
+    "MST-0899-D03.01"
+   ],
+   "domain_ref": "Right-to-left layout",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0899-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A translated German label is 40% longer than the English original and overflows its button. What is the best fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Design the layout to accommodate text expansion with flexible sizing",
+     "correct": true,
+     "rationale": "Correct: allowing for text expansion is a core i18n layout requirement."
+    },
+    {
+     "key": "B",
+     "text": "Forbid translations longer than the English text",
+     "correct": false,
+     "rationale": "Languages legitimately expand; forbidding it would mistranslate content."
+    },
+    {
+     "key": "C",
+     "text": "Shrink the font until any text fits",
+     "correct": false,
+     "rationale": "Arbitrary shrinking harms readability and accessibility."
+    },
+    {
+     "key": "D",
+     "text": "Truncate the translation silently",
+     "correct": false,
+     "rationale": "Silent truncation loses meaning and is a defect, not a fix."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: allowing for text expansion is a core i18n layout requirement.",
+   "outcome_refs": [
+    "MST-0899-D04.01"
+   ],
+   "domain_ref": "Content and asset localization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

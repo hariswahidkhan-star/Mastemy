@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1556",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 450,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1556-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A page loads a large render-blocking stylesheet in the head before any content paints. What is the most direct improvement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reduce and prioritise critical CSS so rendering is not blocked by non-critical styles",
+     "correct": true,
+     "rationale": "Correct: delivering only critical CSS first unblocks the first paint while the rest loads non-blocking."
+    },
+    {
+     "key": "B",
+     "text": "Add a second copy of the stylesheet",
+     "correct": false,
+     "rationale": "Duplicating the stylesheet adds bytes and does not unblock rendering."
+    },
+    {
+     "key": "C",
+     "text": "Convert the CSS to a large inline image",
+     "correct": false,
+     "rationale": "An image cannot replace stylesheet rules and would add weight."
+    },
+    {
+     "key": "D",
+     "text": "Ignore it because CSS never affects load time",
+     "correct": false,
+     "rationale": "Render-blocking CSS directly delays first paint."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: delivering only critical CSS first unblocks the first paint while the rest loads non-blocking.",
+   "outcome_refs": [
+    "MST-1556-D02.01"
+   ],
+   "domain_ref": "The critical rendering path",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1556-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques reduce the amount of JavaScript executed on initial load? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Code splitting so non-critical code loads on demand",
+     "correct": true,
+     "rationale": "Correct: splitting defers code until it is needed, shrinking the initial payload."
+    },
+    {
+     "key": "B",
+     "text": "Tree shaking to drop unused exports from the bundle",
+     "correct": true,
+     "rationale": "Correct: tree shaking removes dead code from the shipped bundle."
+    },
+    {
+     "key": "C",
+     "text": "Inlining every dependency into one large bundle",
+     "correct": false,
+     "rationale": "One large bundle increases, not reduces, initial JavaScript."
+    },
+    {
+     "key": "D",
+     "text": "Running all analytics synchronously at startup",
+     "correct": false,
+     "rationale": "Synchronous startup work adds main-thread cost, worsening load."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: splitting defers code until it is needed, shrinking the initial payload.",
+   "outcome_refs": [
+    "MST-1556-D04.01"
+   ],
+   "domain_ref": "JavaScript and runtime cost",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1556-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before optimising, what should guide which fixes to make first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Measurement showing where time is actually spent, ranked by impact",
+     "correct": true,
+     "rationale": "Correct: measuring first ensures effort targets the real bottlenecks."
+    },
+    {
+     "key": "B",
+     "text": "Guessing based on which code looks oldest",
+     "correct": false,
+     "rationale": "Code age is not evidence of a performance bottleneck."
+    },
+    {
+     "key": "C",
+     "text": "Optimising the smallest files first for quick wins",
+     "correct": false,
+     "rationale": "Small files are rarely the bottleneck; impact should drive order."
+    },
+    {
+     "key": "D",
+     "text": "Changing everything at once without measuring",
+     "correct": false,
+     "rationale": "Changing everything blindly makes impact impossible to attribute."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: measuring first ensures effort targets the real bottlenecks.",
+   "outcome_refs": [
+    "MST-1556-D05.01"
+   ],
+   "domain_ref": "A performance optimisation workflow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

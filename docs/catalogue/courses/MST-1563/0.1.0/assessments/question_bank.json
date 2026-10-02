@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1563",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 450,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1563-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A mobile app disables TLS certificate validation 'to make development easier' and ships that way. Why is this dangerous?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It lets an attacker intercept and alter traffic via a man-in-the-middle, defeating HTTPS protection",
+     "correct": true,
+     "rationale": "Correct: without certificate validation the client will trust an attacker's certificate, exposing all traffic."
+    },
+    {
+     "key": "B",
+     "text": "It only slows the app down slightly",
+     "correct": false,
+     "rationale": "The issue is a serious confidentiality and integrity breach, not speed."
+    },
+    {
+     "key": "C",
+     "text": "It improves security by skipping checks",
+     "correct": false,
+     "rationale": "Skipping validation removes protection; it does not improve security."
+    },
+    {
+     "key": "D",
+     "text": "It has no effect because HTTPS is used",
+     "correct": false,
+     "rationale": "HTTPS with disabled validation provides no real protection."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without certificate validation the client will trust an attacker's certificate, exposing all traffic.",
+   "outcome_refs": [
+    "MST-1563-D03.01"
+   ],
+   "domain_ref": "Secure communication",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1563-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound practices for storing sensitive data on a mobile device? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store secrets in the platform keystore or keychain rather than plain files",
+     "correct": true,
+     "rationale": "Correct: platform secure storage is designed to protect keys and secrets."
+    },
+    {
+     "key": "B",
+     "text": "Avoid logging tokens or credentials to disk",
+     "correct": true,
+     "rationale": "Correct: tokens written to logs or disk can be read by other processes or attackers."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code an API secret in the app binary",
+     "correct": false,
+     "rationale": "Secrets in the binary can be extracted by reverse engineering."
+    },
+    {
+     "key": "D",
+     "text": "Save passwords in plain text for convenience",
+     "correct": false,
+     "rationale": "Plain-text passwords are trivially compromised."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: platform secure storage is designed to protect keys and secrets.",
+   "outcome_refs": [
+    "MST-1563-D02.01"
+   ],
+   "domain_ref": "Secure data storage",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1563-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team relies on client-side obfuscation to keep an embedded API key secret. What is the correct understanding?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Obfuscation raises the effort but cannot keep a client-side secret truly secret; secrets belong server-side",
+     "correct": true,
+     "rationale": "Correct: anything shipped to the client can be extracted; real secrets must stay on the server."
+    },
+    {
+     "key": "B",
+     "text": "Obfuscation makes the key mathematically impossible to recover",
+     "correct": false,
+     "rationale": "Obfuscation only delays analysis; it does not make recovery impossible."
+    },
+    {
+     "key": "C",
+     "text": "A client-side key is as safe as a server-side one",
+     "correct": false,
+     "rationale": "Client-side secrets are inherently exposed, unlike server-side ones."
+    },
+    {
+     "key": "D",
+     "text": "Obfuscation removes the need for server authorisation",
+     "correct": false,
+     "rationale": "Server-side authorisation is still required regardless of obfuscation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: anything shipped to the client can be extracted; real secrets must stay on the server.",
+   "outcome_refs": [
+    "MST-1563-D05.01"
+   ],
+   "domain_ref": "Hardening and the secure lifecycle",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

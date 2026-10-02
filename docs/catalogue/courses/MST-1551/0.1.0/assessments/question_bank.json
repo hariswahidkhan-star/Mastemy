@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1551",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 450,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1551-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A child component receives a value through props and tries to reassign that prop directly. Why is this discouraged in Vue?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Props flow one way from parent to child; the child should emit an event to request a change",
+     "correct": true,
+     "rationale": "Correct: one-way data flow means the child emits an event and the parent owns the update."
+    },
+    {
+     "key": "B",
+     "text": "Props are faster than events so mutation is fine",
+     "correct": false,
+     "rationale": "The concern is data-flow direction and predictability, not speed."
+    },
+    {
+     "key": "C",
+     "text": "Vue has no way to send data to a parent",
+     "correct": false,
+     "rationale": "Vue sends data upward through emitted events."
+    },
+    {
+     "key": "D",
+     "text": "Props cannot hold objects",
+     "correct": false,
+     "rationale": "Props can hold objects; that is unrelated to the anti-pattern."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: one-way data flow means the child emits an event and the parent owns the update.",
+   "outcome_refs": [
+    "MST-1551-D02.01"
+   ],
+   "domain_ref": "Components and composition",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1551-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate uses of a computed property rather than a watcher? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Deriving a filtered list from a source array and a search term",
+     "correct": true,
+     "rationale": "Correct: a derived value from reactive inputs is a textbook computed property."
+    },
+    {
+     "key": "B",
+     "text": "Showing a full name built from first and last name fields",
+     "correct": true,
+     "rationale": "Correct: combining reactive fields into a derived string suits a computed property."
+    },
+    {
+     "key": "C",
+     "text": "Sending an analytics request when a value changes",
+     "correct": false,
+     "rationale": "A side effect belongs in a watcher, not a computed property."
+    },
+    {
+     "key": "D",
+     "text": "Persisting a value to local storage on change",
+     "correct": false,
+     "rationale": "Persisting on change is a side effect, which is a watcher's job."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a derived value from reactive inputs is a textbook computed property.",
+   "outcome_refs": [
+    "MST-1551-D03.01"
+   ],
+   "domain_ref": "Reactivity in depth",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1551-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A large route view slows initial load because it is bundled eagerly. Which Vue technique helps most?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Load the view as an async (lazily loaded) component so it splits into its own chunk",
+     "correct": true,
+     "rationale": "Correct: lazy loading splits the view into a separate chunk fetched on demand, shrinking the initial bundle."
+    },
+    {
+     "key": "B",
+     "text": "Move all its state into a global store",
+     "correct": false,
+     "rationale": "Global state does not change what is bundled at startup."
+    },
+    {
+     "key": "C",
+     "text": "Add more watchers to the view",
+     "correct": false,
+     "rationale": "Watchers do not reduce bundle size or initial load."
+    },
+    {
+     "key": "D",
+     "text": "Render the view twice",
+     "correct": false,
+     "rationale": "Rendering twice increases work, not performance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: lazy loading splits the view into a separate chunk fetched on demand, shrinking the initial bundle.",
+   "outcome_refs": [
+    "MST-1551-D05.01"
+   ],
+   "domain_ref": "Build, tooling and performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

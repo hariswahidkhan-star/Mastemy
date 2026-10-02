@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1561",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 450,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1561-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does Flutter render its user interface?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It draws its own widgets onto a canvas rather than wrapping native platform controls",
+     "correct": true,
+     "rationale": "Correct: Flutter renders widgets with its own engine, which is why the UI looks consistent across platforms."
+    },
+    {
+     "key": "B",
+     "text": "It wraps each platform's native UI controls directly",
+     "correct": false,
+     "rationale": "Flutter does not wrap native controls; it draws its own."
+    },
+    {
+     "key": "C",
+     "text": "It outputs HTML and CSS for every platform",
+     "correct": false,
+     "rationale": "Flutter renders through its engine, not by emitting HTML/CSS to native apps."
+    },
+    {
+     "key": "D",
+     "text": "It requires a separate UI codebase per platform",
+     "correct": false,
+     "rationale": "A single widget codebase targets multiple platforms."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Flutter renders widgets with its own engine, which is why the UI looks consistent across platforms.",
+   "outcome_refs": [
+    "MST-1561-D01.01"
+   ],
+   "domain_ref": "Flutter fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1561-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO situations call for a StatefulWidget rather than a StatelessWidget? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A counter whose displayed value changes when tapped",
+     "correct": true,
+     "rationale": "Correct: mutable UI state that changes over the widget's life needs a StatefulWidget."
+    },
+    {
+     "key": "B",
+     "text": "A form field that tracks and updates its own input",
+     "correct": true,
+     "rationale": "Correct: tracking changing input over time requires state."
+    },
+    {
+     "key": "C",
+     "text": "A label that always shows a fixed string",
+     "correct": false,
+     "rationale": "A fixed label has no changing state and can be stateless."
+    },
+    {
+     "key": "D",
+     "text": "An icon that never changes",
+     "correct": false,
+     "rationale": "An unchanging icon needs no state."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: mutable UI state that changes over the widget's life needs a StatefulWidget.",
+   "outcome_refs": [
+    "MST-1561-D03.01"
+   ],
+   "domain_ref": "State management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1561-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A screen fetches data from the network. What must the UI handle besides the success case?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The loading and error states while and if the request fails",
+     "correct": true,
+     "rationale": "Correct: robust async UIs render loading and error states, not only the success case."
+    },
+    {
+     "key": "B",
+     "text": "Nothing; the data always arrives instantly",
+     "correct": false,
+     "rationale": "Network requests take time and can fail, so other states are required."
+    },
+    {
+     "key": "C",
+     "text": "Only the error state, never loading",
+     "correct": false,
+     "rationale": "Loading must be shown too while the request is in flight."
+    },
+    {
+     "key": "D",
+     "text": "Only a blank screen until done",
+     "correct": false,
+     "rationale": "A blank screen gives no feedback and hides errors."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: robust async UIs render loading and error states, not only the success case.",
+   "outcome_refs": [
+    "MST-1561-D04.01"
+   ],
+   "domain_ref": "Navigation and data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

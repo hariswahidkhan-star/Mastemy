@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0893",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 398,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 35,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0893-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does web code in a Capacitor app invoke a native device feature such as the camera?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Through a Capacitor plugin that bridges JavaScript calls to native code",
+     "correct": true,
+     "rationale": "Correct: plugins expose a JavaScript API that the Capacitor bridge forwards to native implementations."
+    },
+    {
+     "key": "B",
+     "text": "By running native Swift or Kotlin directly inside the web view",
+     "correct": false,
+     "rationale": "Web views run web code; native code runs behind the bridge, not inside the view."
+    },
+    {
+     "key": "C",
+     "text": "It cannot; hybrid apps have no access to native features",
+     "correct": false,
+     "rationale": "Hybrid apps reach native features precisely through the plugin bridge."
+    },
+    {
+     "key": "D",
+     "text": "By reinstalling the app for each feature",
+     "correct": false,
+     "rationale": "Reinstalling is unrelated to how a feature is invoked."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: plugins expose a JavaScript API that the Capacitor bridge forwards to native implementations.",
+   "outcome_refs": [
+    "MST-0893-D03.01"
+   ],
+   "domain_ref": "Capacitor native bridge and plugins",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0893-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Ionic's platform-adaptive styling are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Components can render with iOS or Android conventions depending on the platform",
+     "correct": true,
+     "rationale": "Correct: Ionic adapts component appearance to match each platform's conventions."
+    },
+    {
+     "key": "B",
+     "text": "A shared theme can define colours and variables reused across platforms",
+     "correct": true,
+     "rationale": "Correct: theming through CSS variables is shared and reused."
+    },
+    {
+     "key": "C",
+     "text": "Styling must be rewritten natively for each platform",
+     "correct": false,
+     "rationale": "Styling is defined once in web CSS, not rewritten natively."
+    },
+    {
+     "key": "D",
+     "text": "Ionic forbids any custom theming",
+     "correct": false,
+     "rationale": "Ionic explicitly supports custom themes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Ionic adapts component appearance to match each platform's conventions.",
+   "outcome_refs": [
+    "MST-0893-D02.01"
+   ],
+   "domain_ref": "Building UI with Ionic components",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0893-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After changing the web build, which Capacitor step makes the change appear in the native app?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Copy/sync the web assets into the native projects, then run them",
+     "correct": true,
+     "rationale": "Correct: the sync workflow copies the built web assets into the native projects before they run."
+    },
+    {
+     "key": "B",
+     "text": "Nothing; native apps read the web source folder live",
+     "correct": false,
+     "rationale": "Native apps run copied assets, not the live source folder."
+    },
+    {
+     "key": "C",
+     "text": "Resubmit to the app store for every local change",
+     "correct": false,
+     "rationale": "Store submission is not needed to test a synced change locally."
+    },
+    {
+     "key": "D",
+     "text": "Delete the native folders and regenerate the whole project",
+     "correct": false,
+     "rationale": "A routine sync suffices; regenerating everything is unnecessary."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the sync workflow copies the built web assets into the native projects before they run.",
+   "outcome_refs": [
+    "MST-0893-D04.01"
+   ],
+   "domain_ref": "Native project integration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

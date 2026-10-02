@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1562",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 450,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1562-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A screen mixes UI rendering, business rules and direct network calls in one class, making it hard to test. Which principle most directly addresses this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Separation of concerns across layers",
+     "correct": true,
+     "rationale": "Correct: separating UI, logic and data into layers makes each independently testable and maintainable."
+    },
+    {
+     "key": "B",
+     "text": "Adding more global variables",
+     "correct": false,
+     "rationale": "More globals increase coupling and worsen testability."
+    },
+    {
+     "key": "C",
+     "text": "Removing all abstractions",
+     "correct": false,
+     "rationale": "Removing structure makes the tangle worse, not better."
+    },
+    {
+     "key": "D",
+     "text": "Rendering the screen on a background thread",
+     "correct": false,
+     "rationale": "Threading does not address the mixing of responsibilities."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: separating UI, logic and data into layers makes each independently testable and maintainable.",
+   "outcome_refs": [
+    "MST-1562-D01.01"
+   ],
+   "domain_ref": "Architecture goals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1562-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are benefits of unidirectional data flow with a single source of truth? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "State changes are predictable and easier to trace",
+     "correct": true,
+     "rationale": "Correct: one-way flow makes it clear how and where state changes."
+    },
+    {
+     "key": "B",
+     "text": "There is one authoritative copy of state to reason about",
+     "correct": true,
+     "rationale": "Correct: a single source of truth avoids divergent copies."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the app needs no network code",
+     "correct": false,
+     "rationale": "Data flow design is unrelated to whether networking exists."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for any state at all",
+     "correct": false,
+     "rationale": "State still exists; it is organised, not eliminated."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: one-way flow makes it clear how and where state changes.",
+   "outcome_refs": [
+    "MST-1562-D03.01"
+   ],
+   "domain_ref": "State and data flow",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1562-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why introduce a repository between the UI and the data sources?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It gives the UI one interface and hides whether data comes from cache or network",
+     "correct": true,
+     "rationale": "Correct: the repository abstracts data sources so the UI depends on an interface, aiding testing and caching."
+    },
+    {
+     "key": "B",
+     "text": "It makes the UI call the database directly",
+     "correct": false,
+     "rationale": "A repository exists precisely to stop the UI calling data sources directly."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any remote data",
+     "correct": false,
+     "rationale": "Repositories coordinate remote and local data; they do not remove remote data."
+    },
+    {
+     "key": "D",
+     "text": "It is only a naming convention with no effect",
+     "correct": false,
+     "rationale": "It changes dependencies and testability, not just naming."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the repository abstracts data sources so the UI depends on an interface, aiding testing and caching.",
+   "outcome_refs": [
+    "MST-1562-D04.01"
+   ],
+   "domain_ref": "Data and persistence layer",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

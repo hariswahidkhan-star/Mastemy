@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1557",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 450,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1557-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does a Tailwind utility class fundamentally differ from an inline style attribute?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Utilities are predefined, constrained classes tied to a design scale and support states and breakpoints",
+     "correct": true,
+     "rationale": "Correct: utilities draw from a configured design scale and support variants like hover and responsive prefixes that inline styles cannot."
+    },
+    {
+     "key": "B",
+     "text": "They are identical in every way",
+     "correct": false,
+     "rationale": "They differ in constraint, reuse and variant support."
+    },
+    {
+     "key": "C",
+     "text": "Utilities cannot set colour",
+     "correct": false,
+     "rationale": "Utilities set colour via theme-driven classes."
+    },
+    {
+     "key": "D",
+     "text": "Inline styles support responsive breakpoints but utilities do not",
+     "correct": false,
+     "rationale": "This is backwards; utilities support breakpoints, inline styles do not."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: utilities draw from a configured design scale and support variants like hover and responsive prefixes that inline styles cannot.",
+   "outcome_refs": [
+    "MST-1557-D01.01"
+   ],
+   "domain_ref": "Utility-first fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1557-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep a Tailwind production build small and correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Configure content paths so the scanner sees every file that uses classes",
+     "correct": true,
+     "rationale": "Correct: accurate content paths let Tailwind keep used classes and purge the rest."
+    },
+    {
+     "key": "B",
+     "text": "Write complete class names statically so the scanner can detect them",
+     "correct": true,
+     "rationale": "Correct: static, complete class names are detectable; dynamically concatenated ones are not."
+    },
+    {
+     "key": "C",
+     "text": "Build class names by concatenating fragments at runtime",
+     "correct": false,
+     "rationale": "Concatenated fragments are invisible to the scanner and get purged."
+    },
+    {
+     "key": "D",
+     "text": "Disable purging and ship every possible class",
+     "correct": false,
+     "rationale": "Shipping all classes produces an enormous stylesheet."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: accurate content paths let Tailwind keep used classes and purge the rest.",
+   "outcome_refs": [
+    "MST-1557-D05.01"
+   ],
+   "domain_ref": "Production build and tooling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1557-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A button's utility classes are repeated across dozens of files. What is the most maintainable fix in most frameworks?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Extract a reusable button component that encapsulates the classes",
+     "correct": true,
+     "rationale": "Correct: a component centralises the markup and classes so changes happen in one place."
+    },
+    {
+     "key": "B",
+     "text": "Copy the classes into every new file by hand",
+     "correct": false,
+     "rationale": "Copying perpetuates the duplication being fixed."
+    },
+    {
+     "key": "C",
+     "text": "Delete the styling entirely",
+     "correct": false,
+     "rationale": "Removing styling is not a maintainability fix."
+    },
+    {
+     "key": "D",
+     "text": "Move everything into inline styles",
+     "correct": false,
+     "rationale": "Inline styles lose variant support and do not reduce duplication."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a component centralises the markup and classes so changes happen in one place.",
+   "outcome_refs": [
+    "MST-1557-D04.01"
+   ],
+   "domain_ref": "Reuse and maintainability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

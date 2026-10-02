@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1598",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 450,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1598-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which workload is the best candidate to move from JavaScript to WebAssembly?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A CPU-intensive, compute-bound routine such as image or signal processing",
+     "correct": true,
+     "rationale": "Correct: compute-bound hot paths are where Wasm's predictable, near-native execution helps most."
+    },
+    {
+     "key": "B",
+     "text": "A few DOM updates that run once on page load",
+     "correct": false,
+     "rationale": "Light, occasional DOM work gains little and Wasm cannot touch the DOM directly anyway."
+    },
+    {
+     "key": "C",
+     "text": "Reading a cookie",
+     "correct": false,
+     "rationale": "Trivial I/O work does not benefit from Wasm."
+    },
+    {
+     "key": "D",
+     "text": "Changing a CSS class",
+     "correct": false,
+     "rationale": "Styling changes are not compute-bound and gain nothing from Wasm."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: compute-bound hot paths are where Wasm's predictable, near-native execution helps most.",
+   "outcome_refs": [
+    "MST-1598-D01.01"
+   ],
+   "domain_ref": "WebAssembly fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1598-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about WebAssembly are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Wasm runs in a sandbox and cannot directly access arbitrary system memory or the DOM",
+     "correct": true,
+     "rationale": "Correct: Wasm is sandboxed and reaches the DOM and system only through JavaScript or host APIs."
+    },
+    {
+     "key": "B",
+     "text": "JavaScript and Wasm can share data through linear memory",
+     "correct": true,
+     "rationale": "Correct: linear memory is the shared buffer used to pass data across the boundary."
+    },
+    {
+     "key": "C",
+     "text": "Wasm fully replaces JavaScript in the browser",
+     "correct": false,
+     "rationale": "Wasm complements JavaScript; JavaScript still orchestrates and reaches the DOM."
+    },
+    {
+     "key": "D",
+     "text": "Wasm is always faster than JavaScript for every task",
+     "correct": false,
+     "rationale": "Wasm helps compute-bound work but is not universally faster, especially with boundary overhead."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Wasm is sandboxed and reaches the DOM and system only through JavaScript or host APIs.",
+   "outcome_refs": [
+    "MST-1598-D05.01"
+   ],
+   "domain_ref": "Performance, security and the wider ecosystem",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1598-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How is a string typically passed from JavaScript into a WebAssembly function?",
+   "options": [
+    {
+     "key": "A",
+     "text": "By writing its bytes into the module's linear memory and passing a pointer and length",
+     "correct": true,
+     "rationale": "Correct: complex data crosses the boundary through linear memory using a pointer and length, often via binding tools."
+    },
+    {
+     "key": "B",
+     "text": "By passing the JavaScript string object directly by reference for free",
+     "correct": false,
+     "rationale": "Rich objects do not cross the boundary by reference without serialization into memory."
+    },
+    {
+     "key": "C",
+     "text": "Strings cannot be used with WebAssembly at all",
+     "correct": false,
+     "rationale": "Strings are routinely passed via linear memory."
+    },
+    {
+     "key": "D",
+     "text": "By rendering the string to the DOM first",
+     "correct": false,
+     "rationale": "The DOM is unrelated to passing data into a Wasm function."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: complex data crosses the boundary through linear memory using a pointer and length, often via binding tools.",
+   "outcome_refs": [
+    "MST-1598-D03.01"
+   ],
+   "domain_ref": "JavaScript and Wasm interop",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0900",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 512,
+  "lesson_check_items": 80,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 50,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0900-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A platform's main pain is that eight teams constantly block each other in one large codebase. Which architectural goal most directly addresses this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Clear module boundaries aligned to team ownership",
+     "correct": true,
+     "rationale": "Correct: boundaries aligned to ownership let teams work independently and reduce blocking."
+    },
+    {
+     "key": "B",
+     "text": "Adding more global shared state",
+     "correct": false,
+     "rationale": "More shared global state increases coupling and blocking, not less."
+    },
+    {
+     "key": "C",
+     "text": "Rendering every page on the server",
+     "correct": false,
+     "rationale": "Rendering strategy does not resolve team coordination pain."
+    },
+    {
+     "key": "D",
+     "text": "Removing the design system",
+     "correct": false,
+     "rationale": "Removing shared components worsens consistency without helping autonomy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: boundaries aligned to ownership let teams work independently and reduce blocking.",
+   "outcome_refs": [
+    "MST-0900-D02.01"
+   ],
+   "domain_ref": "Modularity and micro-frontends",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0900-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are genuine costs of adopting micro-frontends? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Operational and integration complexity across independently deployed pieces",
+     "correct": true,
+     "rationale": "Correct: composing independently deployed frontends adds integration and operational overhead."
+    },
+    {
+     "key": "B",
+     "text": "Risk of duplicated dependencies and larger total payload",
+     "correct": true,
+     "rationale": "Correct: independent bundles can duplicate shared libraries and inflate payload."
+    },
+    {
+     "key": "C",
+     "text": "They eliminate all need for coordination between teams",
+     "correct": false,
+     "rationale": "Coordination is still required for shared contracts and shells."
+    },
+    {
+     "key": "D",
+     "text": "They are always faster for end users",
+     "correct": false,
+     "rationale": "They can be slower due to duplication and composition cost; speed is not guaranteed."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: composing independently deployed frontends adds integration and operational overhead.",
+   "outcome_refs": [
+    "MST-0900-D02.01"
+   ],
+   "domain_ref": "Modularity and micro-frontends",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0900-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Course catalogue data is read on almost every page and changes rarely. Which strategy fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cache it with revalidation so reads are fast and occasional changes still propagate",
+     "correct": true,
+     "rationale": "Correct: caching read-heavy, rarely changing data with revalidation balances speed and freshness."
+    },
+    {
+     "key": "B",
+     "text": "Refetch it from the server on every render",
+     "correct": false,
+     "rationale": "Refetching rarely changing data on every render wastes requests and slows pages."
+    },
+    {
+     "key": "C",
+     "text": "Store it in per-component local state only",
+     "correct": false,
+     "rationale": "Local state cannot be shared efficiently across many pages."
+    },
+    {
+     "key": "D",
+     "text": "Never cache any data",
+     "correct": false,
+     "rationale": "Refusing to cache read-heavy stable data needlessly harms performance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: caching read-heavy, rarely changing data with revalidation balances speed and freshness.",
+   "outcome_refs": [
+    "MST-0900-D03.01"
+   ],
+   "domain_ref": "State and data architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
