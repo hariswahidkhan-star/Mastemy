@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1392",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 204,
+  "lesson_check_items": 48,
+  "module_check_items": 34,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1392-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does an in-spreadsheet AI prompt usually work better when it references a specific range?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It gives the AI the exact data context to act on",
+     "correct": true,
+     "rationale": "Correct: scoping to a range improves relevance and accuracy."
+    },
+    {
+     "key": "B",
+     "text": "It makes the workbook file smaller",
+     "correct": false,
+     "rationale": "Referencing a range does not shrink the file."
+    },
+    {
+     "key": "C",
+     "text": "It prevents the AI from ever making mistakes",
+     "correct": false,
+     "rationale": "Context helps but does not guarantee correctness."
+    },
+    {
+     "key": "D",
+     "text": "It disables all formulas in the sheet",
+     "correct": false,
+     "rationale": "It does not disable formulas."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a specific range gives the AI the right context instead of guessing which data to use.",
+   "outcome_refs": [
+    "MST-1392-D01.02"
+   ],
+   "domain_ref": "AI in the spreadsheet",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1392-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps help verify AI-generated spreadsheet output? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Spot-check results against the source data",
+     "correct": true,
+     "rationale": "Correct: comparison to source catches wrong outputs."
+    },
+    {
+     "key": "B",
+     "text": "Accept any formula that returns a number",
+     "correct": false,
+     "rationale": "A returned number can still be wrong."
+    },
+    {
+     "key": "C",
+     "text": "Test a generated formula on known edge cases",
+     "correct": true,
+     "rationale": "Correct: edge-case testing reveals hidden errors."
+    },
+    {
+     "key": "D",
+     "text": "Hide the formula so no one can question it",
+     "correct": false,
+     "rationale": "Hiding logic reduces, not improves, trust."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: spot-checking against source data and testing a formula on edge cases both catch errors.",
+   "outcome_refs": [
+    "MST-1392-D04.01"
+   ],
+   "domain_ref": "Accuracy and governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1392-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "AI suggests a pie chart for a 12-month sales trend. Why is this a poor choice?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Pie charts show parts of a whole, not change over time",
+     "correct": true,
+     "rationale": "Correct: trends are better shown with a line or column chart."
+    },
+    {
+     "key": "B",
+     "text": "Pie charts cannot be made in spreadsheets",
+     "correct": false,
+     "rationale": "They can be made; they are just the wrong fit here."
+    },
+    {
+     "key": "C",
+     "text": "Twelve months is too few to chart",
+     "correct": false,
+     "rationale": "Twelve points is fine to chart."
+    },
+    {
+     "key": "D",
+     "text": "Charts should never be used for sales data",
+     "correct": false,
+     "rationale": "Charts are appropriate for sales data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a pie chart hides change over time; a line or column chart shows a trend better.",
+   "outcome_refs": [
+    "MST-1392-D03.02"
+   ],
+   "domain_ref": "Analysis and presentation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

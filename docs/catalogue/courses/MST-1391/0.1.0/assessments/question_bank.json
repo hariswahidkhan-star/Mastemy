@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1391",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 204,
+  "lesson_check_items": 48,
+  "module_check_items": 34,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1391-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which task is the best candidate for automation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A rare one-off task that changes every time",
+     "correct": false,
+     "rationale": "Low volume and high variability make automation poor value."
+    },
+    {
+     "key": "B",
+     "text": "A high-volume, repetitive task with consistent steps",
+     "correct": true,
+     "rationale": "Correct: repetitive, stable tasks give the best automation return."
+    },
+    {
+     "key": "C",
+     "text": "A task requiring sensitive human judgement each time",
+     "correct": false,
+     "rationale": "Judgement-heavy tasks are poor automation candidates."
+    },
+    {
+     "key": "D",
+     "text": "A task no one understands or has mapped",
+     "correct": false,
+     "rationale": "Unmapped, broken processes should be fixed first."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: high-volume, rule-based, repetitive tasks with stable inputs automate best.",
+   "outcome_refs": [
+    "MST-1391-D01.01"
+   ],
+   "domain_ref": "Foundations of AI automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1391-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in a safe automation's governance? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Access controls on who can edit the automation",
+     "correct": true,
+     "rationale": "Correct: access control limits unsafe changes."
+    },
+    {
+     "key": "B",
+     "text": "A cost or usage limit with alerts",
+     "correct": true,
+     "rationale": "Correct: cost limits prevent runaway spend."
+    },
+    {
+     "key": "C",
+     "text": "Removing all logging to save storage",
+     "correct": false,
+     "rationale": "Logging is needed to monitor and debug."
+    },
+    {
+     "key": "D",
+     "text": "Letting anyone change production flows freely",
+     "correct": false,
+     "rationale": "Unrestricted changes are a governance risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: access controls and cost limits are core governance safeguards.",
+   "outcome_refs": [
+    "MST-1391-D04.02"
+   ],
+   "domain_ref": "Reliability and governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1391-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An automation step sometimes fails because an external API times out. What is the best design response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add retries with backoff and a fallback path",
+     "correct": true,
+     "rationale": "Correct: this handles transient failures gracefully."
+    },
+    {
+     "key": "B",
+     "text": "Assume the API never fails and ignore it",
+     "correct": false,
+     "rationale": "Ignoring failures makes the automation fragile."
+    },
+    {
+     "key": "C",
+     "text": "Delete the step so it cannot fail",
+     "correct": false,
+     "rationale": "Removing needed functionality is not a fix."
+    },
+    {
+     "key": "D",
+     "text": "Run the whole flow again from scratch every time",
+     "correct": false,
+     "rationale": "Full restarts are wasteful and may duplicate work."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: add retries with backoff and a fallback so a transient failure does not break the whole flow.",
+   "outcome_refs": [
+    "MST-1391-D03.02"
+   ],
+   "domain_ref": "Data and integration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
