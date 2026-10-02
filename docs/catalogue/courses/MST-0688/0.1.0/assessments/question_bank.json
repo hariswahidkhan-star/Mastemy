@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0688",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 288,
+  "lesson_check_items": 50,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0688-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You deploy the same Bicep file twice with unchanged properties. What happens on the second deployment?",
+   "options": [
+    {
+     "key": "A",
+     "text": "No changes are made because Bicep deployments are idempotent",
+     "correct": true,
+     "rationale": "Correct: redeploying an unchanged file leaves resources in the same state."
+    },
+    {
+     "key": "B",
+     "text": "A duplicate set of resources is created",
+     "correct": false,
+     "rationale": "Bicep is idempotent; it does not duplicate unchanged resources."
+    },
+    {
+     "key": "C",
+     "text": "The deployment fails because the resources exist",
+     "correct": false,
+     "rationale": "Existing matching resources do not cause failure."
+    },
+    {
+     "key": "D",
+     "text": "All resources are deleted and recreated",
+     "correct": false,
+     "rationale": "Unchanged resources are not recreated."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: redeploying an unchanged file leaves resources in the same state.",
+   "outcome_refs": [
+    "MST-0688-D02.01"
+   ],
+   "domain_ref": "Authoring resources",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0688-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Bicep are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Bicep files compile to standard ARM JSON templates",
+     "correct": true,
+     "rationale": "Correct: Bicep transpiles to ARM templates."
+    },
+    {
+     "key": "B",
+     "text": "Modules let you break a deployment into reusable components",
+     "correct": true,
+     "rationale": "Correct: modules group related resources for reuse."
+    },
+    {
+     "key": "C",
+     "text": "Bicep requires you to manage a separate state file",
+     "correct": false,
+     "rationale": "Azure stores state; Bicep has no separate state file to manage."
+    },
+    {
+     "key": "D",
+     "text": "Bicep can only deploy a single resource per file",
+     "correct": false,
+     "rationale": "A Bicep file can define many resources and modules."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Bicep transpiles to ARM templates.",
+   "outcome_refs": [
+    "MST-0688-D04.01"
+   ],
+   "domain_ref": "Modules, what-if and deployment",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0688-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which operation previews what a deployment will create, update or delete before you run it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The what-if operation",
+     "correct": true,
+     "rationale": "Correct: what-if previews the changes a deployment would make."
+    },
+    {
+     "key": "B",
+     "text": "The compile command",
+     "correct": false,
+     "rationale": "Compiling produces ARM JSON; it does not preview live changes."
+    },
+    {
+     "key": "C",
+     "text": "A secure parameter",
+     "correct": false,
+     "rationale": "Secure parameters protect secrets; they do not preview changes."
+    },
+    {
+     "key": "D",
+     "text": "A resource lock",
+     "correct": false,
+     "rationale": "Locks prevent changes; they do not preview a deployment."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: what-if previews the changes a deployment would make.",
+   "outcome_refs": [
+    "MST-0688-D04.02"
+   ],
+   "domain_ref": "Modules, what-if and deployment",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

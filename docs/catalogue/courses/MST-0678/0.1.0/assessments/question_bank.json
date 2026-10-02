@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0678",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 278,
+  "lesson_check_items": 45,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0678-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user asks Copilot about a document they have no permission to open. What happens?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Copilot does not return that content, because it respects existing permissions",
+     "correct": true,
+     "rationale": "Correct: Copilot honours the user's existing access; inaccessible data is not returned."
+    },
+    {
+     "key": "B",
+     "text": "Copilot returns it because AI overrides permissions",
+     "correct": false,
+     "rationale": "Copilot does not override Microsoft 365 permissions."
+    },
+    {
+     "key": "C",
+     "text": "Copilot returns it only if encrypted",
+     "correct": false,
+     "rationale": "Encryption adds protection; it does not grant access."
+    },
+    {
+     "key": "D",
+     "text": "Copilot deletes the document",
+     "correct": false,
+     "rationale": "Copilot does not delete content in response to a query."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Copilot honours the user's existing access; inaccessible data is not returned.",
+   "outcome_refs": [
+    "MST-0678-D01.01"
+   ],
+   "domain_ref": "Copilot and the permission model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0678-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about sensitivity labels and Copilot are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Copilot output can inherit the sensitivity label of its source content",
+     "correct": true,
+     "rationale": "Correct: label inheritance carries protection to generated items."
+    },
+    {
+     "key": "B",
+     "text": "For encrypted content, users need the EXTRACT usage right for Copilot to return the text",
+     "correct": true,
+     "rationale": "Correct: EXTRACT (plus VIEW) is required to return encrypted content."
+    },
+    {
+     "key": "C",
+     "text": "Labels are irrelevant once Copilot is enabled",
+     "correct": false,
+     "rationale": "Labels remain a key protection layer with Copilot."
+    },
+    {
+     "key": "D",
+     "text": "Applying a label removes all access controls",
+     "correct": false,
+     "rationale": "Labels add, not remove, protection and controls."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: label inheritance carries protection to generated items.",
+   "outcome_refs": [
+    "MST-0678-D02.01"
+   ],
+   "domain_ref": "Sensitivity labels and encryption",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0678-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When should oversharing be remediated relative to enabling Copilot?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Before and as an ongoing activity, because Copilot can surface overshared data faster",
+     "correct": true,
+     "rationale": "Correct: remediate oversharing before and continuously, since AI amplifies the risk."
+    },
+    {
+     "key": "B",
+     "text": "Only after users complain",
+     "correct": false,
+     "rationale": "Reactive-only remediation leaves data exposed."
+    },
+    {
+     "key": "C",
+     "text": "Never; Copilot handles it automatically",
+     "correct": false,
+     "rationale": "Copilot does not fix permissions automatically."
+    },
+    {
+     "key": "D",
+     "text": "Only for external users",
+     "correct": false,
+     "rationale": "Internal oversharing is also a risk Copilot can amplify."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: remediate oversharing before and continuously, since AI amplifies the risk.",
+   "outcome_refs": [
+    "MST-0678-D03.01"
+   ],
+   "domain_ref": "Oversharing remediation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

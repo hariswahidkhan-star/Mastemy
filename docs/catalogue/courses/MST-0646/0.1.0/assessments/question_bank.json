@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0646",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 298,
+  "lesson_check_items": 55,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0646-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must a workbook containing macros be saved with the .xlsm extension?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The standard .xlsx format cannot store macro code",
+     "correct": true,
+     "rationale": "Correct: macro code requires the macro-enabled .xlsm format."
+    },
+    {
+     "key": "B",
+     "text": "Because .xlsm files calculate faster",
+     "correct": false,
+     "rationale": "The extension is about storing macros, not speed."
+    },
+    {
+     "key": "C",
+     "text": "Because VBA only runs on Windows files",
+     "correct": false,
+     "rationale": "The extension requirement is about format, not platform."
+    },
+    {
+     "key": "D",
+     "text": "Because .xlsx cannot contain charts",
+     "correct": false,
+     "rationale": ".xlsx can contain charts; the issue is macro storage."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: macro code requires the macro-enabled .xlsm format.",
+   "outcome_refs": [
+    "MST-0646-D01.01"
+   ],
+   "domain_ref": "The VBA editor and the macro recorder",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0646-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices in Excel VBA? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reference ranges directly instead of using Select then Selection",
+     "correct": true,
+     "rationale": "Correct: direct references are faster and more reliable."
+    },
+    {
+     "key": "B",
+     "text": "Declare variables with Dim and an explicit type",
+     "correct": true,
+     "rationale": "Correct: explicit typing catches errors and documents intent."
+    },
+    {
+     "key": "C",
+     "text": "Put all logic in a single long Sub for simplicity",
+     "correct": false,
+     "rationale": "Large monolithic subs are harder to maintain and reuse."
+    },
+    {
+     "key": "D",
+     "text": "Rely on the macro recorder's code without refactoring",
+     "correct": false,
+     "rationale": "Recorded code is literal and usually needs refactoring."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: direct references are faster and more reliable.",
+   "outcome_refs": [
+    "MST-0646-D04.01"
+   ],
+   "domain_ref": "Procedures, error handling and maintainability",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0646-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In VBA, which statement sets a Range object variable to A1:D5 on Sheet1?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set myRange = Worksheets(\"Sheet1\").Range(\"A1:D5\")",
+     "correct": true,
+     "rationale": "Correct: object variables are assigned with Set and a Range reference."
+    },
+    {
+     "key": "B",
+     "text": "myRange = Worksheets(\"Sheet1\").Range(\"A1:D5\")",
+     "correct": false,
+     "rationale": "Assigning an object without Set raises an error."
+    },
+    {
+     "key": "C",
+     "text": "Dim myRange = Range(\"A1:D5\")",
+     "correct": false,
+     "rationale": "Dim declares; it does not assign a value on the same line this way."
+    },
+    {
+     "key": "D",
+     "text": "Let myRange = \"A1:D5\"",
+     "correct": false,
+     "rationale": "Let assigns values, not object references, and a string is not a Range."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: object variables are assigned with Set and a Range reference.",
+   "outcome_refs": [
+    "MST-0646-D02.02"
+   ],
+   "domain_ref": "The Excel object model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

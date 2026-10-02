@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0633",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 298,
+  "lesson_check_items": 55,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0633-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A formula references Table1[Amount]. A user adds 50 new rows to the table. What happens to the formula result?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It automatically includes the new rows because the structured reference expands",
+     "correct": true,
+     "rationale": "Correct: structured references expand and contract with the table."
+    },
+    {
+     "key": "B",
+     "text": "It keeps the original row count and ignores new rows",
+     "correct": false,
+     "rationale": "Structured references are not fixed to the original size."
+    },
+    {
+     "key": "C",
+     "text": "It returns an error until the formula is edited",
+     "correct": false,
+     "rationale": "No edit is required; the reference adjusts automatically."
+    },
+    {
+     "key": "D",
+     "text": "It only updates after the workbook is reopened",
+     "correct": false,
+     "rationale": "The reference updates on recalculation, not on reopen."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: structured references expand and contract with the table.",
+   "outcome_refs": [
+    "MST-0633-D01.02"
+   ],
+   "domain_ref": "Excel tables and structured references",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0633-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about Excel data validation? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A list rule can present an in-cell dropdown of allowed values",
+     "correct": true,
+     "rationale": "Correct: list validation can show an in-cell dropdown."
+    },
+    {
+     "key": "B",
+     "text": "A custom rule can use a formula that returns TRUE for valid entries",
+     "correct": true,
+     "rationale": "Correct: custom validation evaluates a formula per entry."
+    },
+    {
+     "key": "C",
+     "text": "Validation always blocks a plain paste of an invalid value",
+     "correct": false,
+     "rationale": "A plain paste can bypass validation; it is not always triggered."
+    },
+    {
+     "key": "D",
+     "text": "Validation permanently locks the cell against any future edits",
+     "correct": false,
+     "rationale": "Validation constrains entries; it does not lock the cell."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: list validation can show an in-cell dropdown.",
+   "outcome_refs": [
+    "MST-0633-D02.01"
+   ],
+   "domain_ref": "Data validation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0633-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why separate inputs, calculations and outputs onto distinct areas of a workbook?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So assumptions can be changed in one place without hunting through formulas",
+     "correct": true,
+     "rationale": "Correct: isolating inputs makes a model easier to update and audit."
+    },
+    {
+     "key": "B",
+     "text": "Because Excel refuses to calculate across sheets otherwise",
+     "correct": false,
+     "rationale": "Excel calculates across sheets fine; this is a design choice."
+    },
+    {
+     "key": "C",
+     "text": "To reduce the file size of the workbook",
+     "correct": false,
+     "rationale": "Layering does not meaningfully change file size."
+    },
+    {
+     "key": "D",
+     "text": "Because named ranges only work on separate sheets",
+     "correct": false,
+     "rationale": "Named ranges work regardless of layering."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: isolating inputs makes a model easier to update and audit.",
+   "outcome_refs": [
+    "MST-0633-D03.01"
+   ],
+   "domain_ref": "Workbook architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0663",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 278,
+  "lesson_check_items": 45,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0663-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After Copilot drafts an email reply, what is the recommended next step before sending?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Review and edit the draft, verifying any facts it states",
+     "correct": true,
+     "rationale": "Correct: Copilot output should be reviewed and verified before sending."
+    },
+    {
+     "key": "B",
+     "text": "Send immediately to save time",
+     "correct": false,
+     "rationale": "Unreviewed AI drafts may contain errors or wrong tone."
+    },
+    {
+     "key": "C",
+     "text": "Forward it to Copilot again to send automatically",
+     "correct": false,
+     "rationale": "Copilot does not send on its own; the user remains responsible."
+    },
+    {
+     "key": "D",
+     "text": "Delete the original thread",
+     "correct": false,
+     "rationale": "Deleting context is unnecessary and risky."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Copilot output should be reviewed and verified before sending.",
+   "outcome_refs": [
+    "MST-0663-D01.01"
+   ],
+   "domain_ref": "Drafting and refining with Copilot",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0663-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are things Copilot in Outlook can help a user do? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Summarise a long email thread into key points",
+     "correct": true,
+     "rationale": "Correct: Copilot can summarise email conversations."
+    },
+    {
+     "key": "B",
+     "text": "Provide coaching feedback on tone and clarity of a draft",
+     "correct": true,
+     "rationale": "Correct: Get Coaching offers suggestions on tone, sentiment and clarity."
+    },
+    {
+     "key": "C",
+     "text": "Return content from files the user has no permission to open",
+     "correct": false,
+     "rationale": "Copilot honours existing permissions and cannot surface inaccessible data."
+    },
+    {
+     "key": "D",
+     "text": "Guarantee that every drafted fact is accurate",
+     "correct": false,
+     "rationale": "Copilot can be wrong; users must verify facts."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Copilot can summarise email conversations.",
+   "outcome_refs": [
+    "MST-0663-D03.01"
+   ],
+   "domain_ref": "Summarising threads and inbox triage",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0663-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user runs Get Coaching on a draft. How should the suggestions be treated?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As optional recommendations the user can choose to apply or ignore",
+     "correct": true,
+     "rationale": "Correct: coaching suggestions are selectable, not mandatory."
+    },
+    {
+     "key": "B",
+     "text": "As mandatory edits that must all be accepted",
+     "correct": false,
+     "rationale": "Users choose which, if any, suggestions to apply."
+    },
+    {
+     "key": "C",
+     "text": "As a final send trigger",
+     "correct": false,
+     "rationale": "Coaching does not send the email."
+    },
+    {
+     "key": "D",
+     "text": "As changes already saved to the message",
+     "correct": false,
+     "rationale": "Suggestions apply only when the user chooses to."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: coaching suggestions are selectable, not mandatory.",
+   "outcome_refs": [
+    "MST-0663-D02.01"
+   ],
+   "domain_ref": "Coaching and message quality",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

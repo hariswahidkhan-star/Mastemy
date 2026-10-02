@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0701",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 278,
+  "lesson_check_items": 45,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0701-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is OneLake in Microsoft Fabric?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A single, tenant-wide logical data lake that serves all Fabric workloads",
+     "correct": true,
+     "rationale": "Correct: OneLake is the unified store built into every Fabric tenant."
+    },
+    {
+     "key": "B",
+     "text": "A separate storage account you must provision per workload",
+     "correct": false,
+     "rationale": "OneLake is built in and shared, not provisioned per workload."
+    },
+    {
+     "key": "C",
+     "text": "A Power BI report type",
+     "correct": false,
+     "rationale": "OneLake is storage, not a report type."
+    },
+    {
+     "key": "D",
+     "text": "An on-premises file server",
+     "correct": false,
+     "rationale": "OneLake is a cloud SaaS data lake on ADLS Gen2."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: OneLake is the unified store built into every Fabric tenant.",
+   "outcome_refs": [
+    "MST-0701-D01.01"
+   ],
+   "domain_ref": "Fabric platform and OneLake",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0701-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about lakehouse and warehouse in Fabric are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Both store data in Delta format on OneLake and share the same SQL engine",
+     "correct": true,
+     "rationale": "Correct: both use Delta on OneLake and a common SQL engine."
+    },
+    {
+     "key": "B",
+     "text": "A lakehouse suits Spark-based data engineering with structured and unstructured data",
+     "correct": true,
+     "rationale": "Correct: the lakehouse is built for Spark and mixed data types."
+    },
+    {
+     "key": "C",
+     "text": "A warehouse requires copying data out of OneLake first",
+     "correct": false,
+     "rationale": "The warehouse stores data in OneLake in Delta format, no copy required."
+    },
+    {
+     "key": "D",
+     "text": "A lakehouse cannot be queried with T-SQL at all",
+     "correct": false,
+     "rationale": "A lakehouse exposes a SQL analytics endpoint for T-SQL queries."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: both use Delta on OneLake and a common SQL engine.",
+   "outcome_refs": [
+    "MST-0701-D02.01"
+   ],
+   "domain_ref": "Lakehouse and warehouse",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0701-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the Fabric hierarchy, which is correct from top to bottom?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tenant, then workspaces, then items such as lakehouses",
+     "correct": true,
+     "rationale": "Correct: a tenant contains workspaces, which contain items."
+    },
+    {
+     "key": "B",
+     "text": "Item, then tenant, then workspace",
+     "correct": false,
+     "rationale": "That ordering is wrong; the tenant is at the top."
+    },
+    {
+     "key": "C",
+     "text": "Workspace, then tenant, then item",
+     "correct": false,
+     "rationale": "The tenant is above the workspace, not below."
+    },
+    {
+     "key": "D",
+     "text": "Lakehouse, then tenant, then workspace",
+     "correct": false,
+     "rationale": "A lakehouse is an item inside a workspace inside a tenant."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a tenant contains workspaces, which contain items.",
+   "outcome_refs": [
+    "MST-0701-D03.01"
+   ],
+   "domain_ref": "Workspaces and the item hierarchy",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0637",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 278,
+  "lesson_check_items": 45,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0637-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A PivotTable summarises a source table. New rows are added to the source. What must happen for the PivotTable to reflect them?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Refresh the PivotTable (and ensure the source range or table includes the new rows)",
+     "correct": true,
+     "rationale": "Correct: PivotTables show a cached summary and update on refresh."
+    },
+    {
+     "key": "B",
+     "text": "Nothing; PivotTables always show the latest source instantly",
+     "correct": false,
+     "rationale": "PivotTables use cached data and need a refresh."
+    },
+    {
+     "key": "C",
+     "text": "Delete and recreate the PivotTable each time",
+     "correct": false,
+     "rationale": "A refresh is sufficient; recreation is unnecessary."
+    },
+    {
+     "key": "D",
+     "text": "Convert the PivotTable to a chart",
+     "correct": false,
+     "rationale": "Charting does not refresh the underlying summary."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: PivotTables show a cached summary and update on refresh.",
+   "outcome_refs": [
+    "MST-0637-D01.01"
+   ],
+   "domain_ref": "PivotTables and PivotCharts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0637-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO chart choices are appropriate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A line chart to show a monthly trend over two years",
+     "correct": true,
+     "rationale": "Correct: line charts suit continuous time series."
+    },
+    {
+     "key": "B",
+     "text": "A clustered column chart to compare values across a few categories",
+     "correct": true,
+     "rationale": "Correct: column charts compare discrete categories well."
+    },
+    {
+     "key": "C",
+     "text": "A pie chart to compare twelve months of revenue",
+     "correct": false,
+     "rationale": "Pie charts handle few parts of a whole, not a time series."
+    },
+    {
+     "key": "D",
+     "text": "A 3-D exploding pie to show precise differences",
+     "correct": false,
+     "rationale": "3-D distortion makes precise comparison harder, not easier."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: line charts suit continuous time series.",
+   "outcome_refs": [
+    "MST-0637-D02.01"
+   ],
+   "domain_ref": "Charts and visual encoding",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0637-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main risk of applying many conditional-formatting colour rules to one table?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Visual noise that hides the exceptions you wanted to highlight",
+     "correct": true,
+     "rationale": "Correct: too much formatting defeats the purpose of exception reporting."
+    },
+    {
+     "key": "B",
+     "text": "Excel disables the rules after a set number",
+     "correct": false,
+     "rationale": "Excel does not cap rules at a small number that would cause this."
+    },
+    {
+     "key": "C",
+     "text": "The underlying values are permanently changed",
+     "correct": false,
+     "rationale": "Formatting does not change underlying values."
+    },
+    {
+     "key": "D",
+     "text": "PivotTables stop refreshing",
+     "correct": false,
+     "rationale": "Conditional formatting does not affect refresh."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: too much formatting defeats the purpose of exception reporting.",
+   "outcome_refs": [
+    "MST-0637-D03.01"
+   ],
+   "domain_ref": "Conditional formatting and exception reporting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

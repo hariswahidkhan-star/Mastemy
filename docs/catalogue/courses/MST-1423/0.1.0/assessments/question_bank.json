@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1423",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1423-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A formula in C2 is =A2*$B$1 and is copied down to C3. What does C3 reference?",
+   "options": [
+    {
+     "key": "A",
+     "text": "=A3*$B$1",
+     "correct": true,
+     "rationale": "Correct: the relative reference A2 shifts to A3 while the absolute $B$1 stays fixed."
+    },
+    {
+     "key": "B",
+     "text": "=A2*$B$1",
+     "correct": false,
+     "rationale": "The relative part would change when copied down a row."
+    },
+    {
+     "key": "C",
+     "text": "=A3*$B$2",
+     "correct": false,
+     "rationale": "$B$1 is absolute, so its row does not shift."
+    },
+    {
+     "key": "D",
+     "text": "=A2*$B$2",
+     "correct": false,
+     "rationale": "Neither change here is correct for a downward copy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the relative reference A2 shifts to A3 while the absolute $B$1 stays fixed.",
+   "outcome_refs": [
+    "MST-1423-D01.01"
+   ],
+   "domain_ref": "Formula fundamentals and references",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1423-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about VLOOKUP are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It searches for the lookup value in the first column of the table range",
+     "correct": true,
+     "rationale": "Correct: VLOOKUP matches against the leftmost column of the range."
+    },
+    {
+     "key": "B",
+     "text": "With FALSE (exact match) it returns #N/A when no match is found",
+     "correct": true,
+     "rationale": "Correct: an exact-match VLOOKUP returns #N/A for a missing value."
+    },
+    {
+     "key": "C",
+     "text": "It can return a value from a column to the left of the lookup column",
+     "correct": false,
+     "rationale": "VLOOKUP cannot look left; INDEX/MATCH or XLOOKUP is needed for that."
+    },
+    {
+     "key": "D",
+     "text": "Approximate match requires the lookup column to be sorted descending",
+     "correct": false,
+     "rationale": "Approximate match requires ascending order, not descending."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: VLOOKUP matches against the leftmost column of the range.",
+   "outcome_refs": [
+    "MST-1423-D03.01"
+   ],
+   "domain_ref": "Lookup and reference functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1423-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to total sales where Region is 'West' and Amount is above 1000. Which function fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "SUMIFS",
+     "correct": true,
+     "rationale": "Correct: SUMIFS sums values that meet multiple criteria."
+    },
+    {
+     "key": "B",
+     "text": "SUM",
+     "correct": false,
+     "rationale": "SUM cannot apply criteria."
+    },
+    {
+     "key": "C",
+     "text": "COUNTIFS",
+     "correct": false,
+     "rationale": "COUNTIFS counts rows, it does not total amounts."
+    },
+    {
+     "key": "D",
+     "text": "VLOOKUP",
+     "correct": false,
+     "rationale": "VLOOKUP retrieves one value, it does not aggregate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SUMIFS sums values that meet multiple criteria.",
+   "outcome_refs": [
+    "MST-1423-D04.02"
+   ],
+   "domain_ref": "Aggregation and summarisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

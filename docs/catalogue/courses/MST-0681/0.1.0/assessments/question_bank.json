@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0681",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0681-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Azure construct lets you apply Azure Policy and RBAC across several subscriptions at once?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Management group",
+     "correct": true,
+     "rationale": "Correct: management groups sit above subscriptions and pass policy and access down."
+    },
+    {
+     "key": "B",
+     "text": "Resource group",
+     "correct": false,
+     "rationale": "A resource group lives inside a single subscription."
+    },
+    {
+     "key": "C",
+     "text": "Availability zone",
+     "correct": false,
+     "rationale": "Availability zones are datacenter groupings for resiliency, not governance scope."
+    },
+    {
+     "key": "D",
+     "text": "Storage account",
+     "correct": false,
+     "rationale": "A storage account holds data; it is not a governance scope."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: management groups sit above subscriptions and pass policy and access down.",
+   "outcome_refs": [
+    "MST-0681-D02.02"
+   ],
+   "domain_ref": "Resource organisation and governance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0681-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Azure resiliency are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Availability zones are physically separate locations within one Azure region",
+     "correct": true,
+     "rationale": "Correct: zones are separate locations inside a region."
+    },
+    {
+     "key": "B",
+     "text": "Region pairs replicate across two regions for disaster recovery",
+     "correct": true,
+     "rationale": "Correct: region pairs provide cross-region resilience."
+    },
+    {
+     "key": "C",
+     "text": "Availability zones protect against a whole-region outage",
+     "correct": false,
+     "rationale": "Zones are within a region; a region pair addresses regional loss."
+    },
+    {
+     "key": "D",
+     "text": "Region pairs exist within a single datacenter",
+     "correct": false,
+     "rationale": "Region pairs span two regions, not one datacenter."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: zones are separate locations inside a region.",
+   "outcome_refs": [
+    "MST-0681-D01.01"
+   ],
+   "domain_ref": "Global infrastructure and resiliency",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0681-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An event-driven task runs briefly and sporadically, and the team wants no servers to manage. Best compute choice?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure Functions (serverless)",
+     "correct": true,
+     "rationale": "Correct: Functions suit short, event-driven, serverless workloads."
+    },
+    {
+     "key": "B",
+     "text": "A dedicated virtual machine running 24/7",
+     "correct": false,
+     "rationale": "An always-on VM wastes cost for sporadic work."
+    },
+    {
+     "key": "C",
+     "text": "A virtual machine scale set",
+     "correct": false,
+     "rationale": "Scale sets manage many VMs; overkill for sporadic events."
+    },
+    {
+     "key": "D",
+     "text": "An on-premises server",
+     "correct": false,
+     "rationale": "This defeats the goal of no servers to manage."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Functions suit short, event-driven, serverless workloads.",
+   "outcome_refs": [
+    "MST-0681-D03.01"
+   ],
+   "domain_ref": "Compute and application hosting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

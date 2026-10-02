@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0707",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 278,
+  "lesson_check_items": 45,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0707-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should most data cleaning happen in a Power BI solution?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In Power Query, before the data reaches the model",
+     "correct": true,
+     "rationale": "Correct: transform data in Power Query so the model stays clean."
+    },
+    {
+     "key": "B",
+     "text": "Manually in each visual on the report page",
+     "correct": false,
+     "rationale": "Cleaning per visual is fragile and not repeatable."
+    },
+    {
+     "key": "C",
+     "text": "Only after publishing to the service",
+     "correct": false,
+     "rationale": "Cleaning belongs upstream, before modelling and publishing."
+    },
+    {
+     "key": "D",
+     "text": "It is unnecessary if you write enough DAX",
+     "correct": false,
+     "rationale": "DAX cannot substitute for proper data preparation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: transform data in Power Query so the model stays clean.",
+   "outcome_refs": [
+    "MST-0707-D01.01"
+   ],
+   "domain_ref": "Getting and transforming data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0707-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Power BI data modelling are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A star schema separates a fact table from related dimension tables",
+     "correct": true,
+     "rationale": "Correct: the star schema is the recommended model shape."
+    },
+    {
+     "key": "B",
+     "text": "Relationships define how tables filter one another by cardinality and direction",
+     "correct": true,
+     "rationale": "Correct: relationships set cardinality and cross-filter direction."
+    },
+    {
+     "key": "C",
+     "text": "A single flat table is always preferable to a star schema",
+     "correct": false,
+     "rationale": "A star schema is generally preferred over one flat table."
+    },
+    {
+     "key": "D",
+     "text": "Relationships are unnecessary if every table is imported",
+     "correct": false,
+     "rationale": "Relationships are what let tables interact correctly."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the star schema is the recommended model shape.",
+   "outcome_refs": [
+    "MST-0707-D02.01"
+   ],
+   "domain_ref": "Data modelling and relationships",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0707-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need a total that responds to slicers and filters on the report. What should you create?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A DAX measure",
+     "correct": true,
+     "rationale": "Correct: measures evaluate in the current filter context, responding to slicers."
+    },
+    {
+     "key": "B",
+     "text": "A calculated column computed row-by-row at load",
+     "correct": false,
+     "rationale": "A calculated column does not react to report filters like a measure."
+    },
+    {
+     "key": "C",
+     "text": "A static text box",
+     "correct": false,
+     "rationale": "A text box does not compute a filtered total."
+    },
+    {
+     "key": "D",
+     "text": "A new data source",
+     "correct": false,
+     "rationale": "Adding a source does not create a responsive total."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: measures evaluate in the current filter context, responding to slicers.",
+   "outcome_refs": [
+    "MST-0707-D03.01"
+   ],
+   "domain_ref": "DAX measures",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

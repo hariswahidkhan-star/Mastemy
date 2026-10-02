@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0711",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 278,
+  "lesson_check_items": 45,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0711-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Power Apps canvas apps build logic using which formula language?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Power Fx, an Excel-like low-code formula language",
+     "correct": true,
+     "rationale": "Correct: canvas apps use Power Fx, based on Excel formulas."
+    },
+    {
+     "key": "B",
+     "text": "Transact-SQL",
+     "correct": false,
+     "rationale": "T-SQL is for relational databases, not canvas-app logic."
+    },
+    {
+     "key": "C",
+     "text": "DAX",
+     "correct": false,
+     "rationale": "DAX is Power BI's modelling language, not canvas-app logic."
+    },
+    {
+     "key": "D",
+     "text": "Bicep",
+     "correct": false,
+     "rationale": "Bicep is for Azure infrastructure, not canvas apps."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: canvas apps use Power Fx, based on Excel formulas.",
+   "outcome_refs": [
+    "MST-0711-D02.01"
+   ],
+   "domain_ref": "Power Fx formulas",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0711-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about canvas-app data are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A gallery's Items property can be set to a data source to show its records",
+     "correct": true,
+     "rationale": "Correct: binding Items to a data source displays records."
+    },
+    {
+     "key": "B",
+     "text": "A collection is a data source local to the app and only temporary",
+     "correct": true,
+     "rationale": "Correct: collections are local, in-app, and not shared across devices."
+    },
+    {
+     "key": "C",
+     "text": "SubmitForm writes changes directly without any data source",
+     "correct": false,
+     "rationale": "SubmitForm writes to the form's connected data source."
+    },
+    {
+     "key": "D",
+     "text": "Connected data sources cannot be edited from the app",
+     "correct": false,
+     "rationale": "Apps can read and write to connected data sources."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: binding Items to a data source displays records.",
+   "outcome_refs": [
+    "MST-0711-D03.01"
+   ],
+   "domain_ref": "Data sources, galleries and forms",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0711-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does delegation matter when a canvas app uses a large data source?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Non-delegable operations are processed on only a subset of rows, risking wrong results",
+     "correct": true,
+     "rationale": "Correct: non-delegable queries operate on a row limit and can silently truncate."
+    },
+    {
+     "key": "B",
+     "text": "Delegation changes the app's colour theme",
+     "correct": false,
+     "rationale": "Delegation concerns data processing, not styling."
+    },
+    {
+     "key": "C",
+     "text": "Delegation deletes old records automatically",
+     "correct": false,
+     "rationale": "Delegation does not delete data."
+    },
+    {
+     "key": "D",
+     "text": "Delegation is only about screen navigation",
+     "correct": false,
+     "rationale": "Delegation is about where data queries are processed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: non-delegable queries operate on a row limit and can silently truncate.",
+   "outcome_refs": [
+    "MST-0711-D04.02"
+   ],
+   "domain_ref": "Records, navigation and delegation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0665",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 268,
+  "lesson_check_items": 40,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0665-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does Copilot in Teams need in order to produce a meeting summary with speaker attribution?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A meeting transcript with attributed speakers",
+     "correct": true,
+     "rationale": "Correct: Copilot relies on a transcript with speaker attribution."
+    },
+    {
+     "key": "B",
+     "text": "Only the meeting title",
+     "correct": false,
+     "rationale": "A title alone cannot produce a content summary."
+    },
+    {
+     "key": "C",
+     "text": "A recording with no transcript",
+     "correct": false,
+     "rationale": "Attribution and summary depend on the transcript, not just a recording."
+    },
+    {
+     "key": "D",
+     "text": "Administrator approval for each summary",
+     "correct": false,
+     "rationale": "Per-summary admin approval is not the mechanism."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Copilot relies on a transcript with speaker attribution.",
+   "outcome_refs": [
+    "MST-0665-D01.01"
+   ],
+   "domain_ref": "Meeting summaries and recap",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0665-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO outputs can Copilot intelligent recap provide after a meeting? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "AI-generated action items from the discussion",
+     "correct": true,
+     "rationale": "Correct: recap surfaces AI-generated tasks/action items."
+    },
+    {
+     "key": "B",
+     "text": "Name mentions showing where a person was referenced",
+     "correct": true,
+     "rationale": "Correct: recap includes mentions with timestamps."
+    },
+    {
+     "key": "C",
+     "text": "A guaranteed error-free transcript requiring no review",
+     "correct": false,
+     "rationale": "Transcripts and summaries can contain errors and need review."
+    },
+    {
+     "key": "D",
+     "text": "Access to meetings the user was not entitled to see",
+     "correct": false,
+     "rationale": "Copilot respects access; it does not expose unauthorised meetings."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: recap surfaces AI-generated tasks/action items.",
+   "outcome_refs": [
+    "MST-0665-D02.01"
+   ],
+   "domain_ref": "Notes, action items and mentions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0665-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before assigning a task from an AI-generated action item, a good practice is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the attributed decision against the transcript or participants",
+     "correct": true,
+     "rationale": "Correct: AI attributions should be checked before acting."
+    },
+    {
+     "key": "B",
+     "text": "Assume the AI owner assignment is always correct",
+     "correct": false,
+     "rationale": "AI can misattribute; verification is needed."
+    },
+    {
+     "key": "C",
+     "text": "Delete the recap to avoid duplication",
+     "correct": false,
+     "rationale": "Deleting the recap loses useful context."
+    },
+    {
+     "key": "D",
+     "text": "Disable transcription for future meetings",
+     "correct": false,
+     "rationale": "Transcription is what enables recap in the first place."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI attributions should be checked before acting.",
+   "outcome_refs": [
+    "MST-0665-D04.02"
+   ],
+   "domain_ref": "Action follow-through and verification",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

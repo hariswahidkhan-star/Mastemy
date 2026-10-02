@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0638",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 298,
+  "lesson_check_items": 55,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0638-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why keep every assumption in a clearly labelled input cell rather than typed inside formulas?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So the model can be re-run with new assumptions in one place and audited",
+     "correct": true,
+     "rationale": "Correct: separating inputs makes the model updatable and auditable."
+    },
+    {
+     "key": "B",
+     "text": "Because Excel cannot calculate with constants in formulas",
+     "correct": false,
+     "rationale": "Excel calculates with constants fine; this is a modelling discipline."
+    },
+    {
+     "key": "C",
+     "text": "To make the file open faster",
+     "correct": false,
+     "rationale": "This is not a performance measure."
+    },
+    {
+     "key": "D",
+     "text": "Because Scenario Manager only reads named cells",
+     "correct": false,
+     "rationale": "Scenario Manager can use cell references regardless."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: separating inputs makes the model updatable and auditable.",
+   "outcome_refs": [
+    "MST-0638-D01.01"
+   ],
+   "domain_ref": "Model structure and drivers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0638-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Excel What-If tools are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Goal Seek finds the input value that produces a target formula result",
+     "correct": true,
+     "rationale": "Correct: Goal Seek solves for one input to reach a target."
+    },
+    {
+     "key": "B",
+     "text": "Scenario Manager can store and switch between sets of input values",
+     "correct": true,
+     "rationale": "Correct: Scenario Manager saves named sets of changing cells."
+    },
+    {
+     "key": "C",
+     "text": "A data table permanently replaces the model's base case",
+     "correct": false,
+     "rationale": "A data table reports results; it does not overwrite the base case."
+    },
+    {
+     "key": "D",
+     "text": "Goal Seek can solve for multiple inputs at once",
+     "correct": false,
+     "rationale": "Goal Seek changes only one cell; Solver handles multiple."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Goal Seek solves for one input to reach a target.",
+   "outcome_refs": [
+    "MST-0638-D03.01"
+   ],
+   "domain_ref": "Scenario analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0638-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A two-variable data table is best used to show how one output responds to changes in how many inputs?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Two inputs varied across rows and columns",
+     "correct": true,
+     "rationale": "Correct: a two-variable data table varies two inputs simultaneously."
+    },
+    {
+     "key": "B",
+     "text": "One input only",
+     "correct": false,
+     "rationale": "That is a one-variable data table."
+    },
+    {
+     "key": "C",
+     "text": "Three or more inputs",
+     "correct": false,
+     "rationale": "Data tables support at most two input variables."
+    },
+    {
+     "key": "D",
+     "text": "None; it only reformats the output",
+     "correct": false,
+     "rationale": "A data table recomputes results across input combinations."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a two-variable data table varies two inputs simultaneously.",
+   "outcome_refs": [
+    "MST-0638-D04.01"
+   ],
+   "domain_ref": "Sensitivity and model integrity",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
