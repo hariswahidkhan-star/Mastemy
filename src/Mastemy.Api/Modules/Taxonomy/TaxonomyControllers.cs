@@ -10,6 +10,18 @@ namespace Mastemy.Api.Modules.Taxonomy;
 
 public record CourseTaxonomyDto(IReadOnlyList<SkillDto> Skills, IReadOnlyList<PublicCertificationSummaryDto> Certifications);
 
+/// <summary>
+/// Pathway enrollment lives outside the class-level [AllowAnonymous] DiscoveryController: [AllowAnonymous] on a controller
+/// overrides [Authorize] on its actions, so mixing them silently made this write endpoint anonymous (A01).
+/// </summary>
+[ApiController]
+[Route("api")]
+[Authorize]
+public class PathwayEnrollmentController(DiscoveryService discovery) : ControllerBase
+{
+    [HttpPost("pathways/{slug}/enroll")] public Task<PathwayEnrollResultDto> Enroll(string slug) => discovery.EnrollInPathway(slug);
+}
+
 // ---------- Public ----------
 [ApiController]
 [Route("api")]
@@ -35,7 +47,6 @@ public class DiscoveryController(DiscoveryService discovery, SkillService skills
 
     [HttpGet("pathways")] public Task<List<PathwaySummaryDto>> Pathways([FromQuery] CourseLevel? level) => discovery.PublicPathways(level);
     [HttpGet("pathways/{slug}")] public Task<PathwayDetailDto> Pathway(string slug) => discovery.PublicPathway(slug);
-    [HttpPost("pathways/{slug}/enroll"), Authorize] public Task<PathwayEnrollResultDto> Enroll(string slug) => discovery.EnrollInPathway(slug);
 
     [HttpGet("collections/{slug}")] public Task<CollectionDto> Collection(string slug) => discovery.PublicCollection(slug);
     [HttpGet("academies/{slug}")] public Task<AcademyDto> Academy(string slug) => discovery.Academy(slug);

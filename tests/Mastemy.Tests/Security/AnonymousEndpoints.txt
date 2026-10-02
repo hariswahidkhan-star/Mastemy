@@ -1,0 +1,75 @@
+# Reviewed anonymous API surface (OWASP A01). Justifications: docs/security/owasp-checklist.md#a01.
+# AuthorizationSweepTests fails if an endpoint is anonymous but not listed here, or listed but gone.
+# --- Health / crawlers
+GET /health
+GET /health/live
+GET /health/ready
+GET /robots.txt
+GET /sitemap.xml
+GET /api/seo/robots.txt
+GET /api/seo/sitemap.xml
+# --- Authentication flows (rate limited: "auth")
+POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/refresh
+POST /api/auth/logout
+POST /api/auth/mfa/verify
+POST /api/auth/email/verify
+POST /api/auth/password/forgot
+POST /api/auth/password/reset
+GET /api/sso/{orgSlug}/start
+GET /api/sso/callback
+POST /api/sso/exchange
+GET /api/youtube/oauth/callback
+# --- Webhooks (signature verified)
+POST /api/webhooks/stripe
+# --- Public catalog / marketing (read-only, published content only)
+GET /api/home
+GET /api/categories
+GET /api/skills
+GET /api/courses
+GET /api/courses/compare
+GET /api/courses/{slug}
+GET /api/courses/{slug}/languages
+GET /api/courses/{slug}/taxonomy
+GET /api/courses/{id:guid}/related
+GET /api/courses/{id:guid}/reviews
+GET /api/courses/{id:guid}/discussions
+GET /api/discussions/{id:guid}
+GET /api/academies/{slug}
+GET /api/collections/{slug}
+GET /api/pathways
+GET /api/pathways/{slug}
+GET /api/certifications
+GET /api/certifications/{slug}
+GET /api/instructors
+GET /api/instructors/{id:guid}
+GET /api/instructors/{id:guid}/profile
+GET /api/notes-library
+GET /api/search/suggestions
+GET /api/bundles
+GET /api/plans
+GET /api/commerce/currencies
+GET /api/packages/{id:guid}/price
+GET /api/assessments/{id:guid}
+GET /api/instructor-onboarding/status
+GET /api/templates/mcq-import.csv
+GET /api/templates/mcq-import.xlsx
+# --- Learning previews (service enforces free-preview / entitlement per item)
+GET /api/learn/courses/{slug}
+GET /api/learn/lessons/{id:guid}
+GET /api/learn/lessons/{lessonId:guid}/captions
+GET /api/learn/lessons/{lessonId:guid}/resources
+GET /api/learn/lessons/{lessonId:guid}/transcript
+GET /api/learn/captions/{id:guid}/vtt
+GET /api/learn/resources/{id:guid}/download
+# --- Capability URLs (unguessable secret in the path)
+GET /api/calendar/{token}.ics
+GET /api/certificates/{code}/pdf
+GET /api/certificates/verify/{code}
+# --- Anonymous writes (rate limited)
+POST /api/analytics/events
+GET /api/analytics/consent
+PUT /api/analytics/consent
+POST /api/affiliates/clicks
+POST /api/complaints

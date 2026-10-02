@@ -539,8 +539,11 @@ public class FinanceService(AppDbContext db, ICurrentUser me, AuditService audit
             e.InstructorAmount, e.PlatformAmount, e.PayoutBatchId)).ToList(), opening);
     }
 
-    private static string Csv(string s) => s.IndexOfAny([',', '"', '\n', '\r']) >= 0 || s.StartsWith('=') || s.StartsWith('+') || s.StartsWith('-') || s.StartsWith('@')
-        ? "\"" + (s.StartsWith('=') || s.StartsWith('+') || s.StartsWith('-') || s.StartsWith('@') ? "'" : "") + s.Replace("\"", "\"\"") + "\"" : s;
+    private static string Csv(string s)
+    {
+        var formula = s.Length > 0 && s[0] is '=' or '+' or '-' or '@' or '\t' or '\r';
+        return formula || s.IndexOfAny([',', '"', '\n', '\r']) >= 0 ? "\"" + (formula ? "'" : "") + s.Replace("\"", "\"\"") + "\"" : s;
+    }
 
     public async Task<(byte[] Content, string ContentType, string FileName)> StatementFile(Guid instructorId, int year, int month, string? format)
     {

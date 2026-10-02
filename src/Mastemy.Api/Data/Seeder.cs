@@ -33,7 +33,7 @@ public static class Seeder
         ("sustainability", "Sustainability", "الاستدامة", true),
     ];
 
-    public static async Task SeedAsync(AppDbContext db, IConfiguration cfg, ILogger log)
+    public static async Task SeedAsync(AppDbContext db, IConfiguration cfg, ILogger log, bool allowAccountSeed = true)
     {
         var existing = await db.Categories.Select(c => c.Slug).ToListAsync();
         var order = 0;
@@ -46,7 +46,8 @@ public static class Seeder
 
         var email = cfg["Seed:SuperAdminEmail"];
         var pw = cfg["Seed:SuperAdminPassword"];
-        if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(pw))
+        // Account seeding runs only in Development or with an explicit one-off Seed:AllowSuperAdminBootstrap.
+        if (allowAccountSeed && !string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(pw))
         {
             var norm = email.Trim().ToUpperInvariant();
             if (!await db.Users.AnyAsync(u => u.NormalizedEmail == norm))
@@ -55,7 +56,7 @@ public static class Seeder
                 foreach (var r in new[] { Roles.SuperAdmin, Roles.Admin, Roles.Instructor, Roles.Reviewer, Roles.Student })
                     u.Roles.Add(new UserRole { UserId = u.Id, Role = r });
                 db.Users.Add(u);
-                log.LogInformation("Seeded SuperAdmin account {Email}", email);
+                log.LogInformation("Seeded SuperAdmin account {Email}", Mastemy.Api.Infrastructure.LogRedaction.MaskEmail(email));
             }
         }
         await db.SaveChangesAsync();

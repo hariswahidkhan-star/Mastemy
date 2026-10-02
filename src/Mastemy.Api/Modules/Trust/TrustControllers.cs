@@ -8,7 +8,7 @@ namespace Mastemy.Api.Modules.Trust;
 [AllowAnonymous]
 public class ComplaintsController(TrustService svc, ComplaintRateLimiter limiter) : ControllerBase
 {
-    [HttpPost("api/complaints")]
+    [HttpPost("api/complaints"), Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("public-write")]
     public async Task<IActionResult> File(FileComplaintInput input)
     {
         limiter.Acquire(HttpContext.Connection.RemoteIpAddress);

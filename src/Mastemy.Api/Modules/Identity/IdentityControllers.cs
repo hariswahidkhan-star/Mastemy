@@ -30,7 +30,7 @@ public class AuthController(AuthService auth, ICurrentUser me, RefreshCookies co
         }
     }
 
-    [HttpPost("logout"), AllowAnonymous]
+    [HttpPost("logout"), AllowAnonymous, EnableRateLimiting("auth")]
     public async Task<IActionResult> Logout([FromBody(EmptyBodyBehavior = Microsoft.AspNetCore.Mvc.ModelBinding.EmptyBodyBehavior.Allow)] RefreshRequest? req)
     {
         var token = cookies.Resolve(Request, req?.RefreshToken);
