@@ -26,14 +26,14 @@ Generated. Pathways from the v1 catalogue, re-keyed to MST-NNNN IDs through `cat
 | 1 | `MST-0168` | Microsoft DP-900: Azure Data Fundamentals | 25 |
 | 2 | `MST-0174` | Microsoft PL-300: Power BI Data Analyst Associate | 40 |
 | 3 | `MST-0171` | Microsoft DP-600: Fabric Analytics Engineer Associate | 40 |
-| 4 | `MST-0172` | Microsoft DP-700: Fabric Data Engineer Associate | 30 |
+| 4 | `MST-0172` | Microsoft DP-700: Fabric Data Engineer Associate | 22.916666666666668 |
 
 ## PW-MS-SECURITY - Microsoft Security
 
 | Step | Course ID | Title | Hours |
 |---|---|---|---|
 | 1 | `MST-0176` | Microsoft SC-900: Security, Compliance, and Identity Fundamentals | 25 |
-| 2 | `MST-0179` | Microsoft SC-300: Identity and Access Administrator Associate | 30 |
+| 2 | `MST-0179` | Microsoft SC-300: Identity and Access Administrator Associate | 28.333333333333332 |
 | 3 | `MST-0178` | Microsoft SC-200: Security Operations Analyst Associate | 30 |
 | 4 | `MST-0177` | Microsoft SC-100: Cybersecurity Architect Expert Exam Preparation | 60 |
 
@@ -42,7 +42,7 @@ Generated. Pathways from the v1 catalogue, re-keyed to MST-NNNN IDs through `cat
 | Step | Course ID | Title | Hours |
 |---|---|---|---|
 | 1 | `MST-0173` | Microsoft PL-900: Power Platform Fundamentals | 25 |
-| 2 | `MST-0175` | Microsoft PL-400: Power Platform Developer Associate | 30 |
+| 2 | `MST-0175` | Microsoft PL-400: Power Platform Developer Associate | 27.916666666666668 |
 
 Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per official Microsoft retirement page (SRC-MS-RETIRE-OFFICIAL)); MST-MIC-MS-PL600-001 dropped (retired-excluded: retired 2026-06-30 per official Microsoft retirement page)
 

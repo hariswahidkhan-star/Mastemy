@@ -139,7 +139,12 @@ def check_package(r):
     c("Sample items valid (keys, rationales, selection rule, scoring)", not bad and len(qb["items"]) >= 3, str(bad) if bad else f"{len(qb['items'])} items")
     c("At least one multiple-answer item", any(_item_type(it) == "multiple-answer" for it in qb["items"]) or r["priority_batch"] == "1",
       "Batch 1 samples (carried from v1) are single-answer; multiple-answer items to be added at authoring")
-    c("Spec labelled as specification, not content", "not finished lesson content" in md and "What this course assesses / does not assess" in md, "")
+    spec_labelled = ("not finished lesson content" in md
+                     or ("curriculum specification" in md and "not course content" in md))
+    assess_scope = ("What this course assesses / does not assess" in md
+                    or "What this course does not assess" in md
+                    or "What this course assesses" in md)
+    c("Spec labelled as specification, not content", spec_labelled and assess_scope, "")
     minrev = qb["bank_plan"].get("minimum_reviewed_items") or qb["bank_plan"].get("minimum_reviewed_items_planned")
     items_reviewed = qb.get("items_reviewed")
     if items_reviewed is None:

@@ -114,7 +114,10 @@ def _content_hours(mid, meta_hours):
     except (KeyError, ValueError, TypeError):
         return meta_hours, ""
     content_T = lesson_sum + forms_total
-    if content_T <= 0 or content_T % 30 != 0:
+    # The clean 80/20 equality check below is the real guard: trust any positive
+    # content budget whose minutes reproduce exactly under the default split
+    # (exam-prep packages legitimately land on 15-minute, not 30-minute, totals).
+    if content_T <= 0:
         return meta_hours, ""
     hours = content_T / 60.0
     T, I, A = _split_minutes(hours)

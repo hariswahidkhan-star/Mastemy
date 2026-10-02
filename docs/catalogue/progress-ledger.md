@@ -7,14 +7,14 @@ Last generated: 2026-10-02, by the catalogue generator. Stages are counted separ
 | Field | Count |
 |---|---|
 | Candidate courses (rows) | 1878 |
-| Distinct courses after dedup - strict | 1739 |
+| Distinct courses after dedup - strict | 1740 |
 | Distinct courses after dedup - inclusive | 1869 |
-| Courses verified against an official issuer source this session | 21 |
-| Courses with partial vendor-documentation evidence | 32 |
-| Full curriculum specifications | 380 |
+| Courses verified against an official issuer source this session | 35 |
+| Courses with partial vendor-documentation evidence | 56 |
+| Full curriculum specifications | 470 |
 | Full curricula completed as teaching content | 0 |
 | Lesson scripts completed | 0 |
-| Draft sample items (unreviewed) | 1140 |
+| Draft sample items (unreviewed) | 1410 |
 | Reviewed items | 0 |
 | Videos generated | 0 |
 | Videos uploaded | 0 |
@@ -24,9 +24,9 @@ Last generated: 2026-10-02, by the catalogue generator. Stages are counted separ
 
 ## Depth of work
 
-- **inventory** (1498): catalogue row with derived identity fields, 80/20 time plan, class, evidence status and dedup status.
+- **inventory** (1408): catalogue row with derived identity fields, 80/20 time plan, class, evidence status and dedup status.
 - **blueprint** (0): no separate blueprint stage was produced this run.
-- **full-curriculum-spec** (380): course package in `courses/<id>/0.1.0/` - outcomes, modules and lessons with minutes, worked-application titles, misconceptions, integrative case, coverage matrix (mapped, not taught), assessment forms and bank plan, 3 draft sample items, YouTube manifest with no videos.
+- **full-curriculum-spec** (470): course package in `courses/<id>/0.1.0/` - outcomes, modules and lessons with minutes, worked-application titles, misconceptions, integrative case, coverage matrix (mapped, not taught), assessment forms and bank plan, 3 draft sample items, YouTube manifest with no videos.
 - **produced** (0): no lesson scripts, notes, captions, item banks or videos exist.
 
 ## Batches
@@ -56,10 +56,10 @@ Last generated: 2026-10-02, by the catalogue generator. Stages are counted separ
 
 ## Verification position
 
-- n/a-no-official-syllabus: 1171
-- unverified-needs-official-check: 654
-- vendor-docs-partial: 32
-- verified-official-source: 21
+- n/a-no-official-syllabus: 1147
+- unverified-needs-official-check: 640
+- vendor-docs-partial: 56
+- verified-official-source: 35
 
 ## Next batch
 
