@@ -44,43 +44,88 @@ public class SmtpEmailSender(IOptions<EmailOptions> options) : IEmailSender
 /// <summary>Cross-module entry point for user notifications. Respects per-kind in-app/email preferences.</summary>
 public interface INotificationService
 {
-    /// <summary>Creates in-app notifications (saved immediately) for users who have not disabled the kind, and sends
-    /// email to users who opted in when email is configured. Returns the number of in-app notifications created.</summary>
+    /// <summary>Creates in-app notifications for users who have not disabled the kind and, when SMTP is configured, queues
+    /// email (outbox) for users who opted in. Never sends email inline. Runs inside the caller's transaction when one is
+    /// open, otherwise in its own. Returns the number of in-app notifications created.</summary>
     Task<int> Publish(IEnumerable<Guid> userIds, string kind, string title, string link);
 }
 
-public class NotificationService(AppDbContext db, ICurrentUser me, IEmailSender email, IOptions<EmailOptions> emailOpt,
-    ILogger<NotificationService> log) : INotificationService
+/// <summary>Stages outbound email rows (caller saves). Rows are only created when SMTP is configured.</summary>
+public class EmailOutbox(AppDbContext db, IEmailSender sender)
 {
+    public bool Enabled => sender.IsConfigured;
+
+    public bool Enqueue(string to, string subject, string body)
+    {
+        if (!Enabled || string.IsNullOrWhiteSpace(to)) return false;
+        db.EmailOutbox.Add(new EmailOutboxMessage
+        {
+            ToAddress = to.Length > 512 ? to[..512] : to,
+            Subject = subject.Length > 512 ? subject[..512] : subject,
+            Body = body,
+        });
+        return true;
+    }
+}
+
+public class NotificationService(AppDbContext db, ICurrentUser me, IEmailSender email, IOptions<EmailOptions> emailOpt) : INotificationService
+{
+    public const int ChunkSize = 1000;
+
     public async Task<int> Publish(IEnumerable<Guid> userIds, string kind, string title, string link)
     {
         if (!NotificationKinds.All.Contains(kind)) throw new ArgumentException($"Unknown notification kind '{kind}'.", nameof(kind));
         var ids = userIds.Distinct().ToList();
         if (ids.Count == 0) return 0;
         title = title.Length > 300 ? title[..300] : title;
-        var prefs = await db.NotificationPreferences.AsNoTracking()
-            .Where(p => p.Kind == kind && ids.Contains(p.UserId)).ToDictionaryAsync(p => p.UserId);
-        var inApp = ids.Where(id => !prefs.TryGetValue(id, out var p) || p.InApp).ToList();
-        foreach (var id in inApp)
-            db.Notifications.Add(new Notification { UserId = id, Kind = kind, Title = title, Link = link });
-        await db.SaveChangesAsync();
-
-        if (email.IsConfigured)
+        var ownTx = db.Database.CurrentTransaction is null ? await db.Database.BeginTransactionAsync() : null;
+        try
         {
-            var emailIds = prefs.Values.Where(p => p.Email).Select(p => p.UserId).ToList();
-            if (emailIds.Count > 0)
+            var created = 0;
+            var now = DateTime.UtcNow;
+            var url = string.IsNullOrEmpty(emailOpt.Value.PublicBaseUrl) ? link : emailOpt.Value.PublicBaseUrl.TrimEnd('/') + link;
+            foreach (var chunk in ids.Chunk(ChunkSize).Select(c => c.ToList()))
             {
+                var prefs = await db.NotificationPreferences.AsNoTracking()
+                    .Where(p => p.Kind == kind && chunk.Contains(p.UserId)).ToDictionaryAsync(p => p.UserId);
+                var inApp = chunk.Where(id => !prefs.TryGetValue(id, out var p) || p.InApp).ToList();
+                if (inApp.Count > 0) { await InsertNotifications(inApp, kind, title, link, now); created += inApp.Count; }
+
+                if (!email.IsConfigured) continue; // no SMTP: no outbox rows at all
+                var emailIds = prefs.Values.Where(p => p.Email).Select(p => p.UserId).ToList();
+                if (emailIds.Count == 0) continue;
                 var targets = await db.Users.AsNoTracking().Where(u => emailIds.Contains(u.Id) && !u.IsSuspended)
                     .Select(u => u.Email).ToListAsync();
-                var url = string.IsNullOrEmpty(emailOpt.Value.PublicBaseUrl) ? link : emailOpt.Value.PublicBaseUrl.TrimEnd('/') + link;
                 foreach (var to in targets)
-                {
-                    try { await email.SendAsync(to, title, $"{title}\n\n{url}"); }
-                    catch (Exception ex) { log.LogWarning(ex, "Notification email ({Kind}) failed", kind); }
-                }
+                    db.EmailOutbox.Add(new EmailOutboxMessage
+                    {
+                        ToAddress = to, Subject = title, Body = $"{title}\n\n{url}", NextAttemptAt = now, CreatedAt = now,
+                    });
+                await db.SaveChangesAsync();
             }
+            if (ownTx is not null) await ownTx.CommitAsync();
+            return created;
         }
-        return inApp.Count;
+        finally
+        {
+            if (ownTx is not null) await ownTx.DisposeAsync();
+        }
+    }
+
+    /// <summary>One multi-row INSERT per chunk (fan-out to thousands of learners must not be row-by-row).</summary>
+    private Task<int> InsertNotifications(List<Guid> users, string kind, string title, string link, DateTime now)
+    {
+        var sql = new System.Text.StringBuilder(
+            "INSERT INTO `Notifications` (`Id`,`UserId`,`Kind`,`Title`,`Link`,`ReadAt`,`CreatedAt`) VALUES ");
+        var args = new List<object> { kind, title, link, now };
+        for (var i = 0; i < users.Count; i++)
+        {
+            if (i > 0) sql.Append(',');
+            sql.Append("({").Append(args.Count).Append("},{").Append(args.Count + 1).Append("},{0},{1},{2},NULL,{3})");
+            args.Add(Guid.NewGuid().ToString());
+            args.Add(users[i].ToString());
+        }
+        return db.Database.ExecuteSqlRawAsync(sql.ToString(), args);
     }
 
     public async Task<NotificationPageDto> List(int page, int pageSize, bool unreadOnly)

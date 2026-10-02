@@ -107,7 +107,7 @@ public class FakeYouTube : HttpMessageHandler
             Assert.Equal(Received.Length, range.From);
             await using (var s = await req.Content.ReadAsStreamAsync(ct)) await s.CopyToAsync(Received, ct);
             if (ChunkEntered is { } entered) entered.TrySetResult();
-            if (HoldChunk is { } hold) await hold.Task;
+            if (HoldChunk is { } hold) await hold.Task.WaitAsync(ct); // honours cancellation (lease-loss abort)
             if (Received.Length == range.Length) return Json(new { id = CompletedVideoId, status = new { uploadStatus = "uploaded" } });
             return Incomplete();
         }

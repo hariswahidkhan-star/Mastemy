@@ -65,7 +65,8 @@ public class DiscussionsController(DiscussionService svc) : ControllerBase
 public class AnnouncementsController(AnnouncementService svc) : ControllerBase
 {
     [HttpPost("api/studio/courses/{id:guid}/announcements")]
-    public Task<AnnouncementCreatedDto> Create(Guid id, AnnouncementInput input) => svc.Create(id, input);
+    public Task<AnnouncementCreatedDto> Create(Guid id, AnnouncementInput input, [FromHeader(Name = "Idempotency-Key")] string? idempotencyKey)
+        => svc.Create(id, input, idempotencyKey);
 
     [HttpGet("api/courses/{id:guid}/announcements")]
     public Task<EngagementPage<AnnouncementDto>> List(Guid id, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)

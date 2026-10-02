@@ -29,9 +29,9 @@ public record ReplyDto(Guid Id, Guid ThreadId, Guid AuthorId, string AuthorName,
 public record ThreadDetailDto(ThreadSummaryDto Thread, List<ReplyDto> Replies);
 
 // Announcements
-public record AnnouncementInput(string? Title, string? Body);
+public record AnnouncementInput(string? Title, string? Body, string? ClientRequestId = null);
 public record AnnouncementDto(Guid Id, Guid CourseId, Guid AuthorId, string AuthorName, string Title, string Body, DateTime CreatedAt);
-public record AnnouncementCreatedDto(AnnouncementDto Announcement, int NotifiedCount);
+public record AnnouncementCreatedDto(AnnouncementDto Announcement, int NotifiedCount, bool Duplicate = false);
 
 // Notifications
 public record NotificationDto(Guid Id, string Kind, string Title, string Link, DateTime? ReadAt, DateTime CreatedAt);

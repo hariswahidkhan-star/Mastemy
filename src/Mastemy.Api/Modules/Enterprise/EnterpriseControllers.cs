@@ -23,14 +23,19 @@ public class OrgsController(EnterpriseService svc, EnterpriseReportService repor
     [HttpGet] public Task<OrgDto> Get(Guid id) => svc.GetOrg(id);
 
     [HttpGet("members")] public Task<List<MemberDto>> Members(Guid id) => svc.Members(id);
-    [HttpPost("members")] public Task<MemberDto> Add(Guid id, AddMemberInput input) => svc.AddMember(id, input);
+    /// <summary>Invites an email address (uniform response; membership is created on acceptance).</summary>
+    [HttpPost("members")] public Task<InvitationCreatedDto> Invite(Guid id, AddMemberInput input) => svc.Invite(id, input);
+    [HttpGet("invitations")] public Task<List<InvitationDto>> Invitations(Guid id) => svc.Invitations(id);
+
+    [HttpDelete("invitations/{invitationId:guid}")]
+    public async Task<IActionResult> Revoke(Guid id, Guid invitationId) { await svc.RevokeInvitation(id, invitationId); return NoContent(); }
     [HttpPatch("members/{userId:guid}")] public Task<MemberDto> Update(Guid id, Guid userId, UpdateMemberInput input) => svc.UpdateMember(id, userId, input);
 
     [HttpDelete("members/{userId:guid}")]
     public async Task<IActionResult> Remove(Guid id, Guid userId) { await svc.RemoveMember(id, userId); return NoContent(); }
 
     [HttpPost("members/bulk/preview")] public Task<BulkPreviewDto> BulkPreview(Guid id, BulkMembersInput input) => svc.BulkPreview(id, input);
-    [HttpPost("members/bulk")] public Task<BulkPreviewDto> BulkCommit(Guid id, BulkMembersInput input) => svc.BulkCommit(id, input);
+    [HttpPost("members/bulk")] public Task<BulkInviteResultDto> BulkCommit(Guid id, BulkMembersInput input) => svc.BulkCommit(id, input);
 
     [HttpGet("assignments")] public Task<List<AssignmentDto>> Assignments(Guid id) => svc.Assignments(id);
     [HttpPost("assignments")] public Task<AssignmentDto> Assign(Guid id, AssignmentInput input) => svc.CreateAssignment(id, input);
@@ -52,4 +57,5 @@ public class OrgsController(EnterpriseService svc, EnterpriseReportService repor
 public class MyOrgsController(EnterpriseService svc) : ControllerBase
 {
     [HttpGet("api/me/organizations")] public Task<List<MyOrgDto>> Mine() => svc.MyOrganizations();
+    [HttpPost("api/org-invitations/accept")] public Task<AcceptedInvitationDto> Accept(AcceptInvitationInput input) => svc.AcceptInvitation(input);
 }

@@ -11,6 +11,7 @@ public class DiscussionService(AppDbContext db, ICurrentUser me, AccessService a
 {
     public const int TitleMax = 200, BodyMax = 5000;
     public static readonly TimeSpan EditWindow = TimeSpan.FromHours(24);
+    public static readonly TimeSpan ReplyNotificationWindow = TimeSpan.FromMinutes(10);
 
     private bool IsModerator => me.IsStaff || me.IsInRole(Roles.Moderator);
 
@@ -114,13 +115,22 @@ public class DiscussionService(AppDbContext db, ICurrentUser me, AccessService a
             ThreadId = t.Id, AuthorId = uid, Body = TextRules.PlainText(input.Body, "Body", 1, BodyMax),
             IsInstructorReply = await access.IsCourseAuthor(t.CourseId),
         };
+        await using var tx = await db.Database.BeginTransactionAsync();
+        // Thread row lock serializes concurrent replies so the notification throttle below is race-free.
+        await db.Database.ExecuteSqlInterpolatedAsync($"SELECT `Id` FROM `DiscussionThreads` WHERE `Id` = {t.Id.ToString()} FOR UPDATE");
         db.DiscussionReplies.Add(reply);
         t.UpdatedAt = DateTime.UtcNow;
         await db.SaveChangesAsync();
         if (t.AuthorId != uid)
-            await notify.Publish([t.AuthorId], NotificationKinds.Reply,
-                (reply.IsInstructorReply ? "The instructor replied to: " : "New reply to: ") + t.Title,
-                $"/courses/{t.CourseId}/discussions/{t.Id}");
+        {
+            var link = $"/courses/{t.CourseId}/discussions/{t.Id}";
+            var since = DateTime.UtcNow - ReplyNotificationWindow;
+            // Coalesce: at most one "reply" notification per (thread author, thread) per window.
+            if (!await db.Notifications.AnyAsync(n => n.UserId == t.AuthorId && n.Kind == NotificationKinds.Reply && n.Link == link && n.CreatedAt > since))
+                await notify.Publish([t.AuthorId], NotificationKinds.Reply,
+                    (reply.IsInstructorReply ? "The instructor replied to: " : "New reply to: ") + t.Title, link);
+        }
+        await tx.CommitAsync();
         var names = await Names([uid]);
         return new ReplyDto(reply.Id, reply.ThreadId, uid, names.GetValueOrDefault(uid, ""), reply.Body, reply.IsInstructorReply, false, reply.CreatedAt);
     }

@@ -3,6 +3,7 @@ using System.Net.Http.Json;
 using Mastemy.Api.Domain;
 using Mastemy.Api.Modules.Engagement;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Mastemy.Tests.Engagement;
 
@@ -234,6 +235,8 @@ public class AnnouncementAndNotificationTests(EngagementFixture fx) : IClassFixt
         await fx.Enroll(u.Id, s.Course.Id); await fx.Enroll(v.Id, s.Course.Id);
         var owner = fx.Client(s.Owner, fx.EmailFactory);
         Assert.Equal(HttpStatusCode.OK, (await owner.PostAsJsonAsync($"/api/studio/courses/{s.Course.Id}/announcements", new AnnouncementInput("Mail me", "x"))).StatusCode);
+        Assert.DoesNotContain(fx.Email.Sent, m => m.To == u.Email); // never sent inline: queued in the outbox
+        while (await fx.EmailFactory.Services.GetRequiredService<EmailOutboxWorker>().ProcessBatchAsync() > 0) { }
         Assert.Contains(fx.Email.Sent, m => m.To == u.Email);
         Assert.DoesNotContain(fx.Email.Sent, m => m.To == v.Email);
     }

@@ -5,6 +5,11 @@
   and renewed while a chunk streams. Config `YouTube:UploadLeaseSeconds` (default 120). A second concurrent chunk/resume on any
   instance gets `409 chunk_in_progress`. `DELETE /api/youtube/uploads/{id}` waits up to 2 s for the lease; if a chunk is in flight
   the cancel is still applied (conditional update) and the chunk holder never overwrites it.
+- Every relay write of session state (status, confirmedOffset, upstream URI, failure, result) is a conditional UPDATE on
+  `LockToken == <this holder's token>`. If the lease renewer finds the lease gone (another instance took it after it expired) or
+  renewal fails twice in a row, it cancels the in-flight upstream transfer; the chunk/resume request then returns
+  `409 lease_lost` and the stale holder writes nothing (its staged audit/asset rows are discarded). Clients should
+  `GET /api/youtube/uploads/{id}` and resume from the reported `confirmedOffset`.
 - OAuth state nonces are stored in `OAuthNonces` (inserted at `/oauth/start`, consumed once at callback on any instance);
   expired rows are removed hourly. OAuth now also requests `youtube.force-ssl` (needed for playlists/captions).
 

@@ -6,11 +6,17 @@ public record OrgDto(Guid Id, string Name, string Slug, int SeatLimit, int Seats
 
 public record AddMemberInput(string Email, string? Role, string? Department);
 public record UpdateMemberInput(string? Role, string? Department);
-public record MemberDto(Guid UserId, string Email, string DisplayName, string Role, string Department, DateTime JoinedAt);
+public record MemberDto(Guid UserId, string? Email, string DisplayName, string Role, string Department, DateTime JoinedAt);
 
 public record BulkMembersInput(string Csv, string? Department);
 public record BulkRowResult(int Line, string Email, string? Error);
 public record BulkPreviewDto(int Total, int Valid, int SeatsAvailable, bool CanCommit, List<BulkRowResult> Rows);
+public record BulkInviteResultDto(int Total, int Invited, int SeatsAvailable, List<BulkRowResult> Rows, List<InvitationCreatedDto> Invitations);
+
+public record InvitationCreatedDto(Guid Id, string Email, string Role, string Department, DateTime ExpiresAt, string Token, bool EmailQueued);
+public record InvitationDto(Guid Id, string Email, string Role, string Department, Guid InvitedBy, DateTime CreatedAt, DateTime ExpiresAt);
+public record AcceptInvitationInput(string? Token);
+public record AcceptedInvitationDto(Guid OrganizationId, string OrganizationName, string OrganizationSlug, string Role, string Department);
 
 public record AssignmentInput(Guid CourseId, Guid? UserId, string? Department, DateTime? DueAt, bool GrantsPremium);
 public record AssignmentDto(Guid Id, Guid CourseId, string CourseTitle, string Scope, Guid? UserId, string? Department,

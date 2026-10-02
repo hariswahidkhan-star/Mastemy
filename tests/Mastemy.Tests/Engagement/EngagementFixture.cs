@@ -14,8 +14,13 @@ public class RecordingEmailSender : IEmailSender
 {
     public ConcurrentQueue<(string To, string Subject)> Sent { get; } = new();
     public bool IsConfigured => true;
+    /// <summary>Number of upcoming sends that throw (simulated SMTP outage).</summary>
+    public int FailRemaining;
     public Task SendAsync(string to, string subject, string body, CancellationToken ct = default)
     {
+        if (Interlocked.Decrement(ref FailRemaining) >= 0)
+            throw new System.Net.Mail.SmtpException(System.Net.Mail.SmtpStatusCode.ServiceNotAvailable, "smtp.secret-host.example: auth user=admin pass=hunter2");
+        Interlocked.Exchange(ref FailRemaining, 0);
         Sent.Enqueue((to, subject));
         return Task.CompletedTask;
     }
@@ -37,6 +42,7 @@ public class EngagementFixture : IAsyncLifetime
             b.UseSetting("Jwt:Key", "test-signing-key-0123456789abcdef0123456789abcdef");
             b.UseSetting("Database:MigrateOnStartup", "false");
             b.UseSetting("Email:SmtpHost", "");
+            b.UseSetting("Email:PollIntervalSeconds", "3600"); // tests drive the outbox worker explicitly
             if (withEmail) b.ConfigureServices(s => s.AddSingleton<IEmailSender>(Email));
         });
 

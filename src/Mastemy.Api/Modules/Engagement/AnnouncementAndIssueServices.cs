@@ -10,7 +10,25 @@ public class AnnouncementService(AppDbContext db, ICurrentUser me, AccessService
 {
     public const int MaxPer24h = 3, TitleMax = 200, BodyMax = 5000;
 
-    public async Task<AnnouncementCreatedDto> Create(Guid courseId, AnnouncementInput input)
+    public const string CreatedAction = "announcement.created";
+    public static readonly TimeSpan IdempotencyWindow = TimeSpan.FromHours(24);
+
+    private record CreatedDetails(Guid AnnouncementId, string Title, string? IdempotencyKey, int Notified);
+
+    /// <summary>Row-locks the course for the rest of the caller's transaction (serializes per-course rate-limit checks).</summary>
+    internal static Task LockCourse(AppDbContext db, Guid courseId) =>
+        db.Database.ExecuteSqlInterpolatedAsync($"SELECT `Id` FROM `Courses` WHERE `Id` = {courseId.ToString()} FOR UPDATE");
+
+    /// <summary>The key is hashed so arbitrary client strings never land in the audit details verbatim.</summary>
+    private static string? HashKey(string? key)
+    {
+        if (string.IsNullOrWhiteSpace(key)) return null;
+        var k = key.Trim();
+        if (k.Length > 200) throw AppException.Bad("Idempotency key must be at most 200 characters.", "invalid_idempotency_key");
+        return Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(k))).ToLowerInvariant();
+    }
+
+    public async Task<AnnouncementCreatedDto> Create(Guid courseId, AnnouncementInput input, string? idempotencyKey = null)
     {
         var uid = me.RequireId();
         var c = await db.Courses.AsNoTracking().FirstOrDefaultAsync(x => x.Id == courseId) ?? throw AppException.NotFound("Course");
@@ -18,20 +36,50 @@ public class AnnouncementService(AppDbContext db, ICurrentUser me, AccessService
         if (!AccessService.IsLive(c)) throw AppException.Conflict("Announcements can only be posted on a live course.", "course_not_live");
         var title = TextRules.PlainText(input.Title, "Title", 3, TitleMax);
         var body = TextRules.PlainText(input.Body, "Body", 1, BodyMax);
-        var since = DateTime.UtcNow.AddHours(-24);
+        var key = HashKey(string.IsNullOrWhiteSpace(idempotencyKey) ? input.ClientRequestId : idempotencyKey);
+        var cid = courseId.ToString();
+
+        await using var tx = await db.Database.BeginTransactionAsync();
+        await LockCourse(db, courseId);
+        var since = DateTime.UtcNow - IdempotencyWindow;
+        if (key is not null)
+        {
+            var marker = $"\"IdempotencyKey\":\"{key}\"";
+            var prior = await db.AuditLogs.AsNoTracking()
+                .Where(x => x.Action == CreatedAction && x.EntityType == "Course" && x.EntityId == cid && x.ActorId == uid
+                            && x.CreatedAt > since && x.Details!.Contains(marker))
+                .OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+            if (prior?.Details is not null)
+            {
+                var d = JsonSerializer.Deserialize<CreatedDetails>(prior.Details)!;
+                var existing = await db.Announcements.AsNoTracking().FirstOrDefaultAsync(x => x.Id == d.AnnouncementId);
+                if (existing is not null)
+                {
+                    await tx.CommitAsync();
+                    return new AnnouncementCreatedDto(await ToDto(existing), d.Notified, Duplicate: true);
+                }
+            }
+        }
         if (await db.Announcements.CountAsync(a => a.CourseId == courseId && a.CreatedAt > since) >= MaxPer24h)
             throw new AppException(429, $"At most {MaxPer24h} announcements per course in 24 hours.", "announcement_rate_limited");
 
         var a = new Announcement { CourseId = courseId, AuthorId = uid, Title = title, Body = body };
         db.Announcements.Add(a);
-        audit.Record("announcement.created", "Course", courseId, new { announcementId = a.Id, title });
         await db.SaveChangesAsync();
 
         var recipients = await db.Enrollments.AsNoTracking().Where(e => e.CourseId == courseId && e.UserId != uid)
             .Select(e => e.UserId).Distinct().ToListAsync();
         var n = await notify.Publish(recipients, NotificationKinds.Announcement, $"{c.Title}: {title}", $"/courses/{c.Slug}/announcements");
-        var name = await db.Users.AsNoTracking().Where(u => u.Id == uid).Select(u => u.DisplayName).FirstOrDefaultAsync() ?? "";
-        return new AnnouncementCreatedDto(new AnnouncementDto(a.Id, a.CourseId, uid, name, a.Title, a.Body, a.CreatedAt), n);
+        audit.Record(CreatedAction, "Course", courseId, new CreatedDetails(a.Id, title, key, n));
+        await db.SaveChangesAsync();
+        await tx.CommitAsync();
+        return new AnnouncementCreatedDto(await ToDto(a), n);
+    }
+
+    private async Task<AnnouncementDto> ToDto(Announcement a)
+    {
+        var name = await db.Users.AsNoTracking().Where(u => u.Id == a.AuthorId).Select(u => u.DisplayName).FirstOrDefaultAsync() ?? "";
+        return new AnnouncementDto(a.Id, a.CourseId, a.AuthorId, name, a.Title, a.Body, a.CreatedAt);
     }
 
     public async Task<EngagementPage<AnnouncementDto>> List(Guid courseId, int page, int pageSize)
@@ -79,16 +127,22 @@ public class IssueReportService(AppDbContext db, ICurrentUser me, AccessService 
         var body = TextRules.PlainText(input.Body, "Body", 5, BodyMax);
         var cid = courseId.ToString();
         var since = DateTime.UtcNow.AddHours(-24);
+        await using var tx = await db.Database.BeginTransactionAsync();
+        await AnnouncementService.LockCourse(db, courseId);
         if (await db.AuditLogs.CountAsync(a => a.Action == Action && a.EntityType == "Course" && a.EntityId == cid && a.ActorId == uid && a.CreatedAt > since) >= MaxPerUserPerDay)
             throw new AppException(429, "Too many issue reports for this course today.", "issue_rate_limited");
 
-        audit.Record(Action, "Course", courseId, new Details(input.LessonId, cat.ToString(), body));
+        var row = new AuditLog
+        {
+            ActorId = uid, Action = Action, EntityType = "Course", EntityId = cid,
+            Details = JsonSerializer.Serialize(new Details(input.LessonId, cat.ToString(), body)),
+        };
+        db.AuditLogs.Add(row);
         await db.SaveChangesAsync();
-        var row = await db.AuditLogs.AsNoTracking().Where(a => a.Action == Action && a.EntityId == cid && a.ActorId == uid)
-            .OrderByDescending(a => a.Id).FirstAsync();
 
         var authors = await db.CourseInstructors.AsNoTracking().Where(i => i.CourseId == courseId).Select(i => i.UserId).ToListAsync();
         await notify.Publish(authors, NotificationKinds.IssueReported, $"Issue reported on {c.Title}: {cat}", $"/studio/courses/{courseId}/issues");
+        await tx.CommitAsync();
         var name = await db.Users.AsNoTracking().Where(u => u.Id == uid).Select(u => u.DisplayName).FirstOrDefaultAsync() ?? "";
         return new IssueDto(row.Id, courseId, input.LessonId, cat.ToString(), body, uid, name, row.CreatedAt);
     }

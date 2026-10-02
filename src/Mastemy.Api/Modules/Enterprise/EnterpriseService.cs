@@ -2,15 +2,21 @@ using System.Text.RegularExpressions;
 using Mastemy.Api.Data;
 using Mastemy.Api.Domain;
 using Mastemy.Api.Infrastructure;
+using System.Security.Cryptography;
+using System.Text;
+using Mastemy.Api.Modules.Engagement;
 using Mastemy.Api.Modules.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Mastemy.Api.Modules.Enterprise;
 
-public partial class EnterpriseService(AppDbContext db, ICurrentUser me, AuditService audit, OrgEntitlementSync sync)
+public partial class EnterpriseService(AppDbContext db, ICurrentUser me, AuditService audit, OrgEntitlementSync sync,
+    EmailOutbox outbox, IOptions<EmailOptions> emailOpt)
 {
     public const int MaxSeatLimit = 100_000;
     public const int MaxBulkRows = 1000;
+    public static readonly TimeSpan InvitationLifetime = TimeSpan.FromDays(14);
 
     [GeneratedRegex("^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$")]
     private static partial Regex SlugRx();
@@ -89,38 +95,127 @@ public partial class EnterpriseService(AppDbContext db, ICurrentUser me, AuditSe
         return ToDto(org, await db.OrganizationMembers.CountAsync(m => m.OrganizationId == id));
     }
 
+    /// <summary>Emails are visible only to org Admins and staff; Managers see display names and departments.</summary>
     public async Task<List<MemberDto>> Members(Guid id)
     {
-        await RequireManager(id);
-        return await (from m in db.OrganizationMembers
-                      join u in db.Users on m.UserId equals u.Id
-                      where m.OrganizationId == id
-                      orderby u.Email
-                      select new MemberDto(u.Id, u.Email, u.DisplayName, m.Role.ToString(), m.Department, m.JoinedAt)).ToListAsync();
+        var (_, callerRole) = await RequireManager(id);
+        var showEmail = callerRole is null or OrgRole.Admin;
+        var rows = await (from m in db.OrganizationMembers
+                          join u in db.Users on m.UserId equals u.Id
+                          where m.OrganizationId == id
+                          orderby u.DisplayName, u.Id
+                          select new { u.Id, u.Email, u.DisplayName, m.Role, m.Department, m.JoinedAt }).ToListAsync();
+        return rows.Select(r => new MemberDto(r.Id, showEmail ? r.Email : null, r.DisplayName, r.Role.ToString(), r.Department, r.JoinedAt)).ToList();
     }
 
-    public async Task<MemberDto> AddMember(Guid id, AddMemberInput input)
+    // ---------------- Invitations ----------------
+
+    /// <summary>
+    /// Invites any email address. The response is identical whether or not an account exists for it (no account
+    /// enumeration); membership is created only when the matching user accepts. Seats are checked at acceptance.
+    /// </summary>
+    public async Task<InvitationCreatedDto> Invite(Guid id, AddMemberInput input)
     {
         var (_, callerRole) = await RequireManager(id);
         var role = ParseRole(input.Role) ?? OrgRole.Member;
         RequireCanGrant(callerRole, role);
         var dept = NormalizeDepartment(input.Department);
-        var user = await FindUserByEmail(input.Email) ?? throw AppException.NotFound("User account with that email");
+        var email = IdentityValidation.RequireEmail(input.Email);
 
         await using var tx = await db.Database.BeginTransactionAsync();
         var org = await LockActiveOrg(id);
-        if (await db.OrganizationMembers.AnyAsync(m => m.OrganizationId == id && m.UserId == user.Id))
-            throw AppException.Conflict("User is already a member of this organization.", "already_member");
-        var used = await db.OrganizationMembers.CountAsync(m => m.OrganizationId == id);
-        if (used + 1 > org.SeatLimit) throw AppException.Conflict("Seat limit reached for this organization.", "seat_limit_reached");
-        var m = new OrganizationMember { OrganizationId = id, UserId = user.Id, Role = role, Department = dept };
-        db.OrganizationMembers.Add(m);
-        await db.SaveChangesAsync();
-        var (granted, _) = await sync.Reconcile(id);
-        audit.Record("org.member.added", nameof(Organization), id, new { userId = user.Id, role = role.ToString(), department = dept, granted });
+        var created = await IssueInvitation(org, email, role, dept);
+        audit.Record("org.invitation.created", nameof(Organization), id,
+            new { invitationId = created.Id, role = role.ToString(), department = dept });
         await db.SaveChangesAsync();
         await tx.CommitAsync();
-        return new MemberDto(user.Id, user.Email, user.DisplayName, role.ToString(), dept, m.JoinedAt);
+        return created;
+    }
+
+    /// <summary>Revokes any earlier pending invitation for the same address, stages a new one (and its email). Caller saves.</summary>
+    private async Task<InvitationCreatedDto> IssueInvitation(Organization org, string email, OrgRole role, string dept)
+    {
+        var normalized = IdentityValidation.NormalizeEmail(email);
+        var now = DateTime.UtcNow;
+        await db.OrganizationInvitations.Where(i => i.OrganizationId == org.Id && i.NormalizedEmail == normalized && i.AcceptedAt == null && i.RevokedAt == null)
+            .ExecuteUpdateAsync(s => s.SetProperty(i => i.RevokedAt, now));
+        var token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32)).TrimEnd('=').Replace('+', '-').Replace('/', '_');
+        var inv = new OrganizationInvitation
+        {
+            OrganizationId = org.Id, Email = email, NormalizedEmail = normalized, Role = role, Department = dept,
+            TokenHash = HashToken(token), InvitedBy = me.RequireId(), ExpiresAt = now + InvitationLifetime, CreatedAt = now,
+        };
+        db.OrganizationInvitations.Add(inv);
+        var baseUrl = emailOpt.Value.PublicBaseUrl.TrimEnd('/');
+        var queued = outbox.Enqueue(email, $"You're invited to join {org.Name} on Mastemy",
+            $"You have been invited to join {org.Name} on Mastemy.\n\nSign in with this email address and open:\n" +
+            $"{baseUrl}/org-invitations/accept?token={token}\n\nThis invitation expires on {inv.ExpiresAt:yyyy-MM-dd} (UTC).");
+        return new InvitationCreatedDto(inv.Id, email, role.ToString(), dept, inv.ExpiresAt, token, queued);
+    }
+
+    public static string HashToken(string token) =>
+        Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(token))).ToLowerInvariant();
+
+    public async Task<List<InvitationDto>> Invitations(Guid id)
+    {
+        await RequireManager(id);
+        var now = DateTime.UtcNow;
+        return await db.OrganizationInvitations.AsNoTracking()
+            .Where(i => i.OrganizationId == id && i.AcceptedAt == null && i.RevokedAt == null && i.ExpiresAt > now)
+            .OrderBy(i => i.CreatedAt)
+            .Select(i => new InvitationDto(i.Id, i.Email, i.Role.ToString(), i.Department, i.InvitedBy, i.CreatedAt, i.ExpiresAt))
+            .ToListAsync();
+    }
+
+    public async Task RevokeInvitation(Guid id, Guid invitationId)
+    {
+        var (_, callerRole) = await RequireManager(id);
+        await using var tx = await db.Database.BeginTransactionAsync();
+        await LockOrg(id);
+        var inv = await db.OrganizationInvitations.FirstOrDefaultAsync(i => i.Id == invitationId && i.OrganizationId == id
+                      && i.AcceptedAt == null && i.RevokedAt == null) ?? throw AppException.NotFound("Invitation");
+        if (inv.Role != OrgRole.Member) RequireAdmin(callerRole, "Only an organization Admin can revoke Manager or Admin invitations.");
+        inv.RevokedAt = DateTime.UtcNow;
+        audit.Record("org.invitation.revoked", nameof(Organization), id, new { invitationId });
+        await db.SaveChangesAsync();
+        await tx.CommitAsync();
+    }
+
+    /// <summary>
+    /// Accepts an invitation as the signed-in user. The invitation's address must match the caller's account email
+    /// (case-insensitive); otherwise 404, so a token never reveals anything to the wrong account. Seat limit is enforced
+    /// under the organization row lock.
+    /// </summary>
+    public async Task<AcceptedInvitationDto> AcceptInvitation(AcceptInvitationInput input)
+    {
+        var uid = me.RequireId();
+        var token = (input.Token ?? "").Trim();
+        if (token.Length is 0 or > 200) throw AppException.Bad("token is required.", "invalid_token");
+        var hash = HashToken(token);
+        var user = await db.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id == uid) ?? throw AppException.NotFound("Invitation");
+        var found = await db.OrganizationInvitations.AsNoTracking().FirstOrDefaultAsync(i => i.TokenHash == hash);
+        if (found is null || found.RevokedAt is not null || found.NormalizedEmail != IdentityValidation.NormalizeEmail(user.Email))
+            throw AppException.NotFound("Invitation");
+
+        await using var tx = await db.Database.BeginTransactionAsync();
+        var org = await LockActiveOrg(found.OrganizationId);
+        var inv = await db.OrganizationInvitations.FirstAsync(i => i.Id == found.Id); // re-read under the org lock
+        if (inv.RevokedAt is not null) throw AppException.NotFound("Invitation");
+        if (inv.AcceptedAt is not null) throw AppException.Conflict("This invitation has already been used.", "invitation_used");
+        if (inv.ExpiresAt <= DateTime.UtcNow) throw AppException.Conflict("This invitation has expired.", "invitation_expired");
+        if (await db.OrganizationMembers.AnyAsync(m => m.OrganizationId == org.Id && m.UserId == uid))
+            throw AppException.Conflict("You are already a member of this organization.", "already_member");
+        var used = await db.OrganizationMembers.CountAsync(m => m.OrganizationId == org.Id);
+        if (used + 1 > org.SeatLimit) throw AppException.Conflict("This organization has no free seats. Ask an administrator for help.", "seat_limit_reached");
+        db.OrganizationMembers.Add(new OrganizationMember { OrganizationId = org.Id, UserId = uid, Role = inv.Role, Department = inv.Department });
+        inv.AcceptedAt = DateTime.UtcNow;
+        await db.SaveChangesAsync();
+        var (granted, _) = await sync.Reconcile(org.Id);
+        audit.Record("org.member.added", nameof(Organization), org.Id,
+            new { userId = uid, invitationId = inv.Id, role = inv.Role.ToString(), department = inv.Department, granted });
+        await db.SaveChangesAsync();
+        await tx.CommitAsync();
+        return new AcceptedInvitationDto(org.Id, org.Name, org.Slug, inv.Role.ToString(), inv.Department);
     }
 
     public async Task<MemberDto> UpdateMember(Guid id, Guid userId, UpdateMemberInput input)
@@ -139,7 +234,13 @@ public partial class EnterpriseService(AppDbContext db, ICurrentUser me, AuditSe
             if (m.Role == OrgRole.Admin && await IsLastAdmin(id)) throw AppException.Conflict("Cannot demote the last organization Admin.", "last_admin");
             m.Role = r;
         }
-        if (newDept is not null) m.Department = newDept;
+        if (newDept is not null && !string.Equals(newDept, m.Department, StringComparison.Ordinal))
+        {
+            if (callerRole is OrgRole.Manager && await ChangesPremiumCoverage(id, m, newDept))
+                throw new AppException(403, "Only an organization Admin can move a member between departments with different premium access.",
+                    "premium_scope_requires_admin");
+            m.Department = newDept;
+        }
         await db.SaveChangesAsync();
         var (granted, revoked) = await sync.Reconcile(id);
         audit.Record("org.member.updated", nameof(Organization), id,
@@ -147,7 +248,17 @@ public partial class EnterpriseService(AppDbContext db, ICurrentUser me, AuditSe
         await db.SaveChangesAsync();
         await tx.CommitAsync();
         var u = await db.Users.AsNoTracking().FirstAsync(x => x.Id == userId);
-        return new MemberDto(u.Id, u.Email, u.DisplayName, m.Role.ToString(), m.Department, m.JoinedAt);
+        return new MemberDto(u.Id, callerRole is null or OrgRole.Admin ? u.Email : null, u.DisplayName, m.Role.ToString(), m.Department, m.JoinedAt);
+    }
+
+    /// <summary>True when moving the member to <paramref name="newDept"/> would grant or revoke any premium course.</summary>
+    private async Task<bool> ChangesPremiumCoverage(Guid orgId, OrganizationMember m, string newDept)
+    {
+        var premium = await db.OrganizationAssignments.AsNoTracking().Where(a => a.OrganizationId == orgId && a.GrantsPremium).ToListAsync();
+        var moved = new OrganizationMember { OrganizationId = m.OrganizationId, UserId = m.UserId, Role = m.Role, Department = newDept };
+        var before = premium.Where(a => OrgEntitlementSync.Covers(a, m)).Select(a => a.CourseId).ToHashSet();
+        var after = premium.Where(a => OrgEntitlementSync.Covers(a, moved)).Select(a => a.CourseId).ToHashSet();
+        return !before.SetEquals(after);
     }
 
     public async Task RemoveMember(Guid id, Guid userId)
@@ -171,35 +282,37 @@ public partial class EnterpriseService(AppDbContext db, ICurrentUser me, AuditSe
     public async Task<BulkPreviewDto> BulkPreview(Guid id, BulkMembersInput input)
     {
         await RequireManager(id);
-        var (rows, _) = await ValidateBulk(id, input);
         var org = await db.Organizations.AsNoTracking().FirstAsync(o => o.Id == id);
         var available = Math.Max(0, org.SeatLimit - await db.OrganizationMembers.CountAsync(m => m.OrganizationId == id));
+        var (rows, _) = ValidateBulk(input, available);
         var valid = rows.Count(r => r.Error is null);
-        return new BulkPreviewDto(rows.Count, valid, available, rows.Count > 0 && valid == rows.Count && valid <= available, rows);
+        return new BulkPreviewDto(rows.Count, valid, available, rows.Count > 0 && valid == rows.Count, rows);
     }
 
-    public async Task<BulkPreviewDto> BulkCommit(Guid id, BulkMembersInput input)
+    /// <summary>Creates one invitation per row (all-or-nothing). Seats are consumed only when invitations are accepted.</summary>
+    public async Task<BulkInviteResultDto> BulkCommit(Guid id, BulkMembersInput input)
     {
         await RequireManager(id);
         var dept = NormalizeDepartment(input.Department);
         await using var tx = await db.Database.BeginTransactionAsync();
         var org = await LockActiveOrg(id);
-        var (rows, users) = await ValidateBulk(id, input);
+        var available = Math.Max(0, org.SeatLimit - await db.OrganizationMembers.CountAsync(m => m.OrganizationId == id));
+        var (rows, emails) = ValidateBulk(input, available);
         if (rows.Count == 0) throw AppException.Bad("CSV contains no emails.", "empty_csv");
-        if (rows.Any(r => r.Error is not null)) throw AppException.Bad("CSV has invalid rows; fix them and preview again. Nothing was added.", "invalid_rows");
-        var used = await db.OrganizationMembers.CountAsync(m => m.OrganizationId == id);
-        if (used + users.Count > org.SeatLimit)
-            throw AppException.Conflict($"Adding {users.Count} members would exceed the seat limit ({org.SeatLimit - used} available). Nothing was added.", "seat_limit_reached");
-        foreach (var u in users) db.OrganizationMembers.Add(new OrganizationMember { OrganizationId = id, UserId = u.Id, Role = OrgRole.Member, Department = dept });
-        await db.SaveChangesAsync();
-        var (granted, _) = await sync.Reconcile(id);
-        audit.Record("org.member.bulk_added", nameof(Organization), id, new { count = users.Count, department = dept, granted });
+        if (rows.Any(r => r.Error is not null)) throw AppException.Bad("CSV has invalid rows; fix them and preview again. Nothing was sent.", "invalid_rows");
+        var invitations = new List<InvitationCreatedDto>();
+        foreach (var e in emails) invitations.Add(await IssueInvitation(org, e, OrgRole.Member, dept));
+        audit.Record("org.invitation.bulk_created", nameof(Organization), id, new { count = invitations.Count, department = dept });
         await db.SaveChangesAsync();
         await tx.CommitAsync();
-        return new BulkPreviewDto(rows.Count, rows.Count, org.SeatLimit - used - users.Count, true, rows);
+        return new BulkInviteResultDto(rows.Count, invitations.Count, available, rows, invitations);
     }
 
-    private async Task<(List<BulkRowResult> Rows, List<User> Users)> ValidateBulk(Guid id, BulkMembersInput input)
+    /// <summary>
+    /// Uniform per-row validation: format, duplicates within the file, and seat capacity (rows beyond the free seats).
+    /// Deliberately never consults user accounts or memberships, so the result carries no account-existence signal.
+    /// </summary>
+    private (List<BulkRowResult> Rows, List<string> Emails) ValidateBulk(BulkMembersInput input, int available)
     {
         if (input.Csv is null) throw AppException.Bad("Csv is required.");
         if (input.Csv.Length > 512 * 1024) throw AppException.Bad("CSV is too large.", "too_large");
@@ -216,26 +329,25 @@ public partial class EnterpriseService(AppDbContext db, ICurrentUser me, AuditSe
             lines.Add((i + 1, cell));
         }
         if (lines.Count > MaxBulkRows) throw AppException.Bad($"At most {MaxBulkRows} rows per upload.", "too_many_rows");
-        var normalized = lines.Select(l => IdentityValidation.NormalizeEmail(l.Email)).Distinct().ToList();
-        var users = await db.Users.AsNoTracking().Where(u => normalized.Contains(u.NormalizedEmail)).ToListAsync();
-        var byEmail = users.ToDictionary(u => u.NormalizedEmail);
-        var ids = users.Select(u => u.Id).ToList();
-        var existing = (await db.OrganizationMembers.Where(m => m.OrganizationId == id && ids.Contains(m.UserId)).Select(m => m.UserId).ToListAsync()).ToHashSet();
         var seen = new HashSet<string>();
         var rows = new List<BulkRowResult>();
-        var toAdd = new List<User>();
+        var ok = new List<string>();
         foreach (var (line, email) in lines)
         {
-            var n = IdentityValidation.NormalizeEmail(email);
             string? error = null;
-            if (email.Length == 0 || email.Length > 254 || !email.Contains('@')) error = "Invalid email address.";
-            else if (!seen.Add(n)) error = "Duplicate email in file.";
-            else if (!byEmail.TryGetValue(n, out var u)) error = "No user account with this email.";
-            else if (existing.Contains(u.Id)) error = "Already a member.";
-            else toAdd.Add(u);
+            if (!IsValidEmail(email)) error = "Invalid email address.";
+            else if (!seen.Add(IdentityValidation.NormalizeEmail(email))) error = "Duplicate email in file.";
+            else if (ok.Count >= available) error = "Exceeds available seats.";
+            else ok.Add(email);
             rows.Add(new BulkRowResult(line, email, error));
         }
-        return (rows, toAdd);
+        return (rows, ok);
+    }
+
+    private static bool IsValidEmail(string email)
+    {
+        try { IdentityValidation.RequireEmail(email); return true; }
+        catch (AppException) { return false; }
     }
 
     // ---------------- Assignments ----------------
@@ -365,13 +477,6 @@ public partial class EnterpriseService(AppDbContext db, ICurrentUser me, AuditSe
         var org = await db.Organizations.AsNoTracking().FirstOrDefaultAsync(o => o.Id == id) ?? throw AppException.NotFound("Organization");
         if (!org.IsActive) throw AppException.Conflict("Organization is deactivated.", "org_inactive");
         return org;
-    }
-
-    private async Task<User?> FindUserByEmail(string? email)
-    {
-        if (string.IsNullOrWhiteSpace(email) || email.Length > 254 || !email.Contains('@')) throw AppException.Bad("A valid email is required.", "invalid_email");
-        var n = IdentityValidation.NormalizeEmail(email);
-        return await db.Users.AsNoTracking().FirstOrDefaultAsync(u => u.NormalizedEmail == n);
     }
 
     private static OrgRole? ParseRole(string? role)

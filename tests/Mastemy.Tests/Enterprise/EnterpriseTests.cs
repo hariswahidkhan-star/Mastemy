@@ -17,14 +17,30 @@ public class EnterpriseTests(EnterpriseFixture f) : IClassFixture<EnterpriseFixt
         Assert.Equal(HttpStatusCode.OK, res.StatusCode);
         var org = (await res.Content.ReadFromJsonAsync<OrgDto>())!;
         var (admin, adminClient) = await f.User();
-        (await staff.PostAsJsonAsync($"api/orgs/{org.Id}/members", new AddMemberInput(admin.Email, "Admin", "Ops"))).EnsureSuccessStatusCode();
+        await Join(org, staff, admin, adminClient, "Ops", "Admin");
         return (org, admin, adminClient, staff);
+    }
+
+    internal static async Task<InvitationCreatedDto> Invite(OrgDto org, HttpClient by, string email, string? role = null, string? dept = null)
+    {
+        var res = await by.PostAsJsonAsync($"api/orgs/{org.Id}/members", new AddMemberInput(email, role, dept));
+        Assert.Equal(HttpStatusCode.OK, res.StatusCode);
+        return (await res.Content.ReadFromJsonAsync<InvitationCreatedDto>())!;
+    }
+
+    internal static Task<HttpResponseMessage> Accept(HttpClient as_, string token) =>
+        as_.PostAsJsonAsync("api/org-invitations/accept", new AcceptInvitationInput(token));
+
+    private static async Task Join(OrgDto org, HttpClient by, User u, HttpClient uc, string dept = "", string role = "Member")
+    {
+        var inv = await Invite(org, by, u.Email, role, dept);
+        (await Accept(uc, inv.Token)).EnsureSuccessStatusCode();
     }
 
     private async Task<(User U, HttpClient C)> Member(OrgDto org, HttpClient by, string dept = "", string role = "Member")
     {
         var (u, c) = await f.User();
-        (await by.PostAsJsonAsync($"api/orgs/{org.Id}/members", new AddMemberInput(u.Email, role, dept))).EnsureSuccessStatusCode();
+        await Join(org, by, u, c, dept, role);
         return (u, c);
     }
 
@@ -70,9 +86,13 @@ public class EnterpriseTests(EnterpriseFixture f) : IClassFixture<EnterpriseFixt
     public async Task Seat_limit_holds_under_parallel_adds()
     {
         var (org, _, admin, _) = await NewOrg(seats: 4); // admin uses 1 seat -> 3 free
-        var users = new List<User>();
-        for (var i = 0; i < 12; i++) users.Add((await f.User()).User);
-        var results = await Task.WhenAll(users.Select(u => admin.PostAsJsonAsync($"api/orgs/{org.Id}/members", new AddMemberInput(u.Email, null, null))));
+        var users = new List<(User U, HttpClient C, string Token)>();
+        for (var i = 0; i < 12; i++)
+        {
+            var (u, c) = await f.User();
+            users.Add((u, c, (await Invite(org, admin, u.Email)).Token)); // invitations do not consume seats
+        }
+        var results = await Task.WhenAll(users.Select(x => Accept(x.C, x.Token)));
         Assert.Equal(3, results.Count(r => r.StatusCode == HttpStatusCode.OK));
         Assert.All(results.Where(r => r.StatusCode != HttpStatusCode.OK), r => Assert.Equal(HttpStatusCode.Conflict, r.StatusCode));
         Assert.Equal(4, await f.Db(d => d.OrganizationMembers.CountAsync(m => m.OrganizationId == org.Id)));
@@ -158,8 +178,8 @@ public class EnterpriseTests(EnterpriseFixture f) : IClassFixture<EnterpriseFixt
         var (a, _, adminA, staff) = await NewOrg();
         var (b, _, adminB, _) = await NewOrg();
         var course = await f.Course();
-        var (u, _) = await Member(a, adminA);
-        (await adminB.PostAsJsonAsync($"api/orgs/{b.Id}/members", new AddMemberInput(u.Email, null, null))).EnsureSuccessStatusCode();
+        var (u, uc) = await Member(a, adminA);
+        await Join(b, adminB, u, uc);
         await adminA.PostAsJsonAsync($"api/orgs/{a.Id}/assignments", new AssignmentInput(course.Course.Id, null, null, null, true));
         await adminB.PostAsJsonAsync($"api/orgs/{b.Id}/assignments", new AssignmentInput(course.Course.Id, null, null, null, true));
         Assert.Equal(2, (await ActiveEnts(u.Id, course.Course.Id)).Count);
@@ -193,28 +213,40 @@ public class EnterpriseTests(EnterpriseFixture f) : IClassFixture<EnterpriseFixt
     }
 
     [Fact]
-    public async Task Bulk_csv_preview_and_atomic_commit()
+    public async Task Bulk_csv_preview_is_uniform_and_commit_creates_invitations()
     {
-        var (org, _, admin, _) = await NewOrg(seats: 4);
-        var (u1, _) = await f.User();
+        var (org, _, admin, _) = await NewOrg(seats: 4); // 3 free seats
+        var (u1, u1c) = await f.User();
         var (u2, _) = await f.User();
+        // nobody@nowhere.test has no account: it must validate exactly like an existing account's email.
         var bad = $"email\n{u1.Email}\nnobody@nowhere.test\n{u1.Email.ToUpperInvariant()}\nnot-an-email\n";
         var prev = (await (await admin.PostAsJsonAsync($"api/orgs/{org.Id}/members/bulk/preview", new BulkMembersInput(bad, "Sales"))).Content.ReadFromJsonAsync<BulkPreviewDto>())!;
         Assert.False(prev.CanCommit);
         Assert.Equal(4, prev.Total);
-        Assert.Equal(1, prev.Valid);
+        Assert.Equal(2, prev.Valid);
+        Assert.Null(prev.Rows.Single(r => r.Email == "nobody@nowhere.test").Error);
+        Assert.Equal("Duplicate email in file.", prev.Rows.Single(r => r.Email == u1.Email.ToUpperInvariant()).Error);
         Assert.Equal(HttpStatusCode.BadRequest, (await admin.PostAsJsonAsync($"api/orgs/{org.Id}/members/bulk", new BulkMembersInput(bad, "Sales"))).StatusCode);
-        Assert.Equal(1, await f.Db(d => d.OrganizationMembers.CountAsync(m => m.OrganizationId == org.Id)));
+        Assert.Equal(0, await f.Db(d => d.OrganizationInvitations.CountAsync(i => i.OrganizationId == org.Id && i.Department == "Sales")));
 
         var (u3, _) = await f.User();
-        var (u4, _) = await f.User();
-        var tooMany = $"{u1.Email}\n{u2.Email}\n{u3.Email}\n{u4.Email}\n";
-        Assert.Equal(HttpStatusCode.Conflict, (await admin.PostAsJsonAsync($"api/orgs/{org.Id}/members/bulk", new BulkMembersInput(tooMany, null))).StatusCode);
-        Assert.Equal(1, await f.Db(d => d.OrganizationMembers.CountAsync(m => m.OrganizationId == org.Id)));
+        var tooMany = $"{u1.Email}\n{u2.Email}\n{u3.Email}\nghost@nowhere.test\n";
+        var over = (await (await admin.PostAsJsonAsync($"api/orgs/{org.Id}/members/bulk/preview", new BulkMembersInput(tooMany, null))).Content.ReadFromJsonAsync<BulkPreviewDto>())!;
+        Assert.Equal(3, over.SeatsAvailable);
+        Assert.Equal("Exceeds available seats.", over.Rows.Last().Error);
+        Assert.False(over.CanCommit);
+        var overCommit = await admin.PostAsJsonAsync($"api/orgs/{org.Id}/members/bulk", new BulkMembersInput(tooMany, null));
+        Assert.Equal(HttpStatusCode.BadRequest, overCommit.StatusCode);
 
         var ok = $"{u1.Email}\n{u2.Email}\n";
-        Assert.Equal(HttpStatusCode.OK, (await admin.PostAsJsonAsync($"api/orgs/{org.Id}/members/bulk", new BulkMembersInput(ok, "Sales"))).StatusCode);
-        Assert.Equal(2, await f.Db(d => d.OrganizationMembers.CountAsync(m => m.OrganizationId == org.Id && m.Department == "Sales")));
+        var res = await admin.PostAsJsonAsync($"api/orgs/{org.Id}/members/bulk", new BulkMembersInput(ok, "Sales"));
+        Assert.Equal(HttpStatusCode.OK, res.StatusCode);
+        var result = (await res.Content.ReadFromJsonAsync<BulkInviteResultDto>())!;
+        Assert.Equal(2, result.Invited);
+        Assert.Equal(1, await f.Db(d => d.OrganizationMembers.CountAsync(m => m.OrganizationId == org.Id))); // nothing joined yet
+        Assert.Equal(2, (await admin.GetFromJsonAsync<List<InvitationDto>>($"api/orgs/{org.Id}/invitations"))!.Count);
+        (await Accept(u1c, result.Invitations.Single(i => i.Email == u1.Email).Token)).EnsureSuccessStatusCode();
+        Assert.Equal(1, await f.Db(d => d.OrganizationMembers.CountAsync(m => m.OrganizationId == org.Id && m.Department == "Sales")));
     }
 
     [Fact]
