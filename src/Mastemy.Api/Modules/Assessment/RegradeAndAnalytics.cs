@@ -16,6 +16,8 @@ public record RegradeDetailDto(RegradeDto Regrade, List<RegradeResultDto> Result
 public record CertificateFlagDto(Guid Id, Guid CertificateId, string CertificateCode, Guid UserId, Guid? RegradeId, string Reason,
     CertificateFlagStatus Status, Guid? DecidedBy, DateTime? DecidedAt, string? DecisionNote, DateTime CreatedAt);
 public record CertificateFlagDecisionInput(bool Revoke, string Note);
+public record RegradePreviewDto(Guid RegradeId, int AffectedAttempts, int ChangedAttempts, int NewlyPassing, int NewlyFailing,
+    int CertificatesToFlag, List<RegradeResultDto> Results);
 
 /// <summary>
 /// Regrading after a key error (spec §15): a reviewer proposes a corrected key for one question version; a different staff
@@ -74,6 +76,41 @@ public class RegradeService(AppDbContext db, ICurrentUser me, AuditService audit
         if (!me.CanReview) throw AppException.Forbidden();
         var r = await db.Set<RegradeRequest>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id) ?? throw AppException.NotFound("Regrade");
         return await Detail(r, []);
+    }
+
+    /// <summary>
+    /// Dry run of <see cref="Approve"/>: re-scores every finished attempt that used the version with the proposed key, in
+    /// memory only (no tracking, nothing written), so reviewers and staff can see the impact before deciding.
+    /// </summary>
+    public async Task<RegradePreviewDto> Preview(Guid id)
+    {
+        me.RequireId();
+        if (!me.CanReview) throw AppException.Forbidden();
+        var r = await db.Set<RegradeRequest>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id) ?? throw AppException.NotFound("Regrade");
+        if (r.Status != RegradeStatus.Proposed) throw AppException.Conflict("Only pending regrades can be previewed; see the applied results instead.", "regrade_decided");
+        var vid = r.QuestionVersionId;
+        var version = await db.QuestionVersions.AsNoTracking().FirstAsync(v => v.Id == vid);
+        var newKey = Ids(r.NewCorrectOptionIds);
+        var attempts = await db.Attempts.AsNoTracking().Include(a => a.Items)
+            .Where(a => a.Status != AttemptStatus.InProgress && a.Items.Any(i => i.QuestionVersionId == vid))
+            .OrderBy(a => a.SubmittedAt).ToListAsync();
+        var results = new List<RegradeResultDto>();
+        var failingIds = new List<Guid>();
+        foreach (var at in attempts)
+        {
+            var oldEarned = at.PointsEarned ?? 0; var oldScore = at.ScorePercent ?? 0; var oldPassed = at.Passed == true;
+            var earned = at.Items.Sum(i => i.QuestionVersionId == vid
+                ? Scoring.Item(version.Type, newKey, Ids(i.SelectedOptionIds), at.ScoringPolicy)
+                : i.Points ?? 0);
+            var possible = at.PointsPossible ?? at.Items.Count;
+            var passed = Scoring.Passed(earned, possible, at.PassPercent);
+            results.Add(new RegradeResultDto(at.Id, at.UserId, oldEarned, earned, oldScore, Scoring.DisplayPercent(earned, possible), oldPassed, passed));
+            if (oldPassed && !passed) failingIds.Add(at.Id);
+        }
+        var certs = failingIds.Count == 0 ? 0
+            : await db.Certificates.CountAsync(c => failingIds.Contains(c.AttemptId) && c.Status == CertificateStatus.Valid);
+        return new RegradePreviewDto(r.Id, results.Count, results.Count(x => x.NewPointsEarned != x.OldPointsEarned),
+            results.Count(x => !x.OldPassed && x.NewPassed), failingIds.Count, certs, results);
     }
 
     public async Task<RegradeDto> Reject(Guid id, RegradeDecisionInput input)

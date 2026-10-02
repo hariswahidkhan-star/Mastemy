@@ -71,3 +71,18 @@ Revocation stops refresh. An access token that was already issued stays valid un
 
 - `Security:RequireMfaForPrivileged` (bool, default `true`).
 - Uses the existing `Email:*` settings (SMTP and `PublicBaseUrl`) and `Jwt:*`.
+
+
+## Re-authentication signals (final wave)
+- `GET /api/auth/me` adds `requiresReauth`: true when the caller's token roles differ from the stored roles (e.g. a role was
+  granted after sign-in) or when the account holds a privileged role (Admin, SuperAdmin, Finance, Reviewer, Moderator) and
+  the token lacks `amr=mfa`. The UI should prompt the user to sign in again. (Tokens carrying a *removed* role are already
+  rejected by the token validator.)
+- `PUT /api/admin/users/{id}/roles` responses add `signInAgainRequired` and `notice` when the roles actually changed, and the
+  user receives an in-app notification of kind `account_security` ("Your account roles changed. Please sign in again…",
+  link `/login?reason=roles_changed`), subject to their notification preferences.
+
+## User lookup (final wave)
+`GET /api/admin/users/lookup?q=&limit=10` (Staff) — minimal picker for trust/suspension UIs. `q` (2–200 chars) matches a
+display-name substring, an email prefix, an exact email or an exact user id. Returns
+`[{ id, displayName, maskedEmail, isSuspended }]` (max 25); emails are masked as `j***e@e***.com`.

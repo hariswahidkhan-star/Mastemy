@@ -30,11 +30,14 @@ public record VideoRepairDto(Guid Id, string YouTubeVideoId, string Title, Video
 public record OverdueCourseDto(Guid Id, string Code, string Title, DateTime? LastPublishedAt);
 public record ReviewQueuesDto(long CoursesInReview, long QuestionsAwaitingReview, long QuestionsAwaitingApproval, long InstructorApplications,
     long RefundRequests, long UploadApprovals);
+public record AiFeatureUsageDto(string Feature, long Calls, long InputTokens, long OutputTokens, decimal CostEstimate);
+public record AiUsageSummaryDto(long Calls, long DistinctUsers, long InputTokens, long OutputTokens, long CacheReadTokens,
+    long CacheWriteTokens, decimal CostEstimate, List<AiFeatureUsageDto> ByFeature);
 public record AdminDashboardDto(DateTime From, DateTime To, string Bucket, DateTime GeneratedAt,
     long TotalUsers, long NewSignupsInRange, List<BucketPointDto> SignupsOverTime,
     long ActiveLearnersInRange, List<BucketPointDto> ActiveLearnersOverTime, long PublishedCourses,
     List<CurrencyTotalDto> OrdersByCurrency, List<CurrencyBucketDto> RevenueOverTime, List<CurrencyTotalDto> RefundsByCurrency,
-    long PendingRefundRequests, object? AiUsage, long VideosNeedingRepair, List<VideoRepairDto> VideosNeedingRepairSample,
+    long PendingRefundRequests, AiUsageSummaryDto AiUsage, long VideosNeedingRepair, List<VideoRepairDto> VideosNeedingRepairSample,
     int ContentReviewMonths, long OverdueContentUpdates, List<OverdueCourseDto> OverdueContentSample, ReviewQueuesDto ReviewQueues);
 
 // Raw SQL row shapes (column aliases match property names).
@@ -202,6 +205,21 @@ public class AnalyticsReportService(AppDbContext db, ICurrentUser me, CourseScop
         return dto;
     }
 
+    /// <summary>Totals of metered AI provider calls (Ai_Usage) created in [f, t).</summary>
+    private async Task<AiUsageSummaryDto> AiUsage(DateTime f, DateTime t)
+    {
+        var q = db.Set<Ai.AiUsageRecord>().AsNoTracking().Where(u => u.CreatedAt >= f && u.CreatedAt < t);
+        var byFeature = (await q.GroupBy(u => u.Feature).Select(g => new
+            {
+                Feature = g.Key, Calls = g.LongCount(), In = g.Sum(x => (long)x.InputTokens), Out = g.Sum(x => (long)x.OutputTokens),
+                CacheR = g.Sum(x => (long)x.CacheReadTokens), CacheW = g.Sum(x => (long)x.CacheWriteTokens), Cost = g.Sum(x => x.CostEstimate),
+            }).ToListAsync()).OrderByDescending(x => x.Cost).ThenBy(x => x.Feature, StringComparer.Ordinal).ToList();
+        var users = await q.Select(u => u.UserId).Distinct().LongCountAsync();
+        return new AiUsageSummaryDto(byFeature.Sum(x => x.Calls), users, byFeature.Sum(x => x.In), byFeature.Sum(x => x.Out),
+            byFeature.Sum(x => x.CacheR), byFeature.Sum(x => x.CacheW), byFeature.Sum(x => x.Cost),
+            byFeature.Select(x => new AiFeatureUsageDto(x.Feature, x.Calls, x.In, x.Out, x.Cost)).ToList());
+    }
+
     private async Task<AdminDashboardDto> ComputeAdmin(DateTime f, DateTime t, string b)
     {
         var now = DateTime.UtcNow;
@@ -252,7 +270,7 @@ public class AnalyticsReportService(AppDbContext db, ICurrentUser me, CourseScop
 
         return new AdminDashboardDto(f, t, b, now, totalUsers, signups.Sum(x => x.Value), Points(signups), activeInRange, Points(active), published,
             orders, revenueOverTime.Select(r => new CurrencyBucketDto(r.Bucket, r.Currency, r.Amount)).ToList(), refunds, pendingRefunds,
-            null, // AI usage is not tracked by any table yet; reported as null rather than a fabricated zero.
+            await AiUsage(f, t),
             repairCount, repairSample, months, overdueCount, overdue, queues);
     }
 }

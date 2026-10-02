@@ -9,6 +9,7 @@ namespace Mastemy.Api.Modules.YouTube;
 
 public record PagedResult<T>(IReadOnlyList<T> Items, int Total, int Page, int PageSize);
 public record ConfirmVideoRequest(bool Approve, string? Reason);
+public record MarkVideoRequest(string? Status, string? Reason);
 
 [ApiController]
 public class YouTubeChannelsController(ChannelPolicy policy, ChannelService channels) : ControllerBase
@@ -66,6 +67,9 @@ public class YouTubeVideosController(VideoLinkService videos, PlaylistImportServ
 
     [HttpPost("api/admin/youtube/videos/{id:guid}/confirm"), Authorize(Policy = "Reviewer")]
     public Task<VideoAssetDto> Confirm(Guid id, ConfirmVideoRequest req, CancellationToken ct) => videos.ReviewerConfirm(id, req.Approve, req.Reason, ct);
+
+    [HttpPost("api/admin/youtube/videos/{id:guid}/mark"), Authorize(Policy = "Staff")]
+    public Task<VideoAssetDto> Mark(Guid id, MarkVideoRequest req, CancellationToken ct) => videos.StaffMark(id, req?.Status, req?.Reason, ct);
 
     [HttpPost("api/studio/courses/{id:guid}/import-playlist"), Authorize(Policy = "Instructor")]
     public Task<PlaylistPreviewDto> Preview(Guid id, PlaylistPreviewRequest req, CancellationToken ct) => playlists.Preview(id, req, ct);

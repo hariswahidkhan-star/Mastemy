@@ -8,5 +8,7 @@ public static class AnalyticsModule
         s.AddSingleton<AnalyticsRateLimiter>();
         s.AddScoped<AnalyticsIngestService>();
         s.AddScoped<AnalyticsReportService>();
+        s.AddSingleton<AnalyticsRetentionWorker>();
+        s.AddHostedService(sp => sp.GetRequiredService<AnalyticsRetentionWorker>());
     }
 }

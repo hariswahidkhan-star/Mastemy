@@ -163,12 +163,25 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
         tokenValidator.Invalidate(token.UserId);
     }
 
-    public async Task<UserDto> Me(Guid userId)
+    public async Task<UserDto> Me(Guid userId, System.Security.Claims.ClaimsPrincipal? principal = null)
     {
         var user = await db.Users.AsNoTracking().Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == userId)
                    ?? throw AppException.NotFound("User");
         var sec = await db.Set<UserSecurity>().AsNoTracking().FirstOrDefaultAsync(s => s.UserId == userId);
-        return UserDto.From(user, sec);
+        var dto = UserDto.From(user, sec);
+        return principal is null ? dto : dto with { RequiresReauth = RequiresReauth(principal, dto.Roles) };
+    }
+
+    /// <summary>
+    /// True when the caller's token no longer matches the account: its roles differ from the stored roles (e.g. a role was
+    /// granted after sign-in) or the account holds a privileged role while the token lacks amr=mfa. The UI then prompts the
+    /// user to sign in again.
+    /// </summary>
+    public static bool RequiresReauth(System.Security.Claims.ClaimsPrincipal principal, IReadOnlyCollection<string> dbRoles)
+    {
+        var tokenRoles = principal.FindAll(System.Security.Claims.ClaimTypes.Role).Select(c => c.Value).ToHashSet(StringComparer.Ordinal);
+        if (!tokenRoles.SetEquals(dbRoles)) return true;
+        return SecurityClaims.IsPrivileged(dbRoles) && principal.FindFirst(SecurityClaims.Amr)?.Value != SecurityClaims.AmrMfa;
     }
 
     public async Task RevokeAllForUser(Guid userId)

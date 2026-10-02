@@ -31,7 +31,7 @@ public record PagedResult<T>(List<T> Items, int Total, int Page, int PageSize);
 
 public static class TrustNotificationKinds
 {
-    public const string TrustSafety = "trust_safety";
+    public const string TrustSafety = NotificationKinds.TrustSafety;
 }
 
 /// <summary>Fixed-window limit on complaint filing per client IP (anonymous filing must not be a spam vector).</summary>
@@ -52,7 +52,8 @@ public sealed class ComplaintRateLimiter(IConfiguration cfg)
 }
 
 /// <summary>Trust &amp; safety workflows (spec §20): complaints/takedowns, content holds, instructor suspension, moderation appeals.</summary>
-public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, AccessService access, EmailOutbox email, ILogger<TrustService> log)
+public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, AccessService access, EmailOutbox email, ILogger<TrustService> log,
+    INotificationService notifications)
 {
     public const string HeldBatchStatus = "Held";
 
@@ -179,7 +180,7 @@ public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, 
                 c.Status = ComplaintStatus.Dismissed;
                 break;
             case ComplaintAction.Hide:
-                effect = await HideTarget(c, staff);
+                effect = await HideTarget(c, staff, note);
                 c.Status = ComplaintStatus.Actioned;
                 break;
             case ComplaintAction.Archive:
@@ -202,14 +203,14 @@ public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, 
             $"Your {c.Type} complaint about {c.TargetType} content in \"{courseTitle}\" {outcome}.\n\nReference: {c.Id}\n\n{note}");
         if (c.ReporterUserId is { } reporterId)
         {
-            Notify([reporterId], $"Your complaint {outcome}.", $"/account/complaints/{c.Id}");
+            await Notify([reporterId], $"Your complaint {outcome}.", $"/account/complaints/{c.Id}");
             complainantNotified = true;
         }
         var instructors = 0;
         if (action != ComplaintAction.Dismiss)
         {
             var ids = await db.CourseInstructors.Where(x => x.CourseId == c.CourseId).Select(x => x.UserId).ToListAsync();
-            Notify(ids, $"Content in \"{courseTitle}\" was removed after a {c.Type} complaint.", $"/studio/courses/{c.CourseId}");
+            await Notify(ids, $"Content in \"{courseTitle}\" was removed after a {c.Type} complaint.", $"/studio/courses/{c.CourseId}");
             var emails = await db.Users.Where(u => ids.Contains(u.Id)).Select(u => u.Email).ToListAsync();
             foreach (var to in emails)
                 email.Enqueue(to, $"Takedown notice: {courseTitle}",
@@ -222,7 +223,7 @@ public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, 
         return new ComplaintResolutionDto((await ToDtos([c]))[0], complainantNotified, instructors);
     }
 
-    private async Task<object> HideTarget(Complaint c, Guid staff)
+    private async Task<object> HideTarget(Complaint c, Guid staff, string note)
     {
         switch (c.TargetType)
         {
@@ -235,10 +236,12 @@ public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, 
             case ComplaintTarget.Discussion:
                 var thread = await db.DiscussionThreads.FirstAsync(x => x.Id == c.TargetId);
                 thread.Hidden = true; thread.UpdatedAt = DateTime.UtcNow;
+                await ModerationNotes.Set(db, ModerationNote.Thread, thread.Id, $"Removed after a {c.Type} complaint. {note}".Trim());
                 return new { hidden = "discussion" };
             case ComplaintTarget.DiscussionReply:
                 var reply = await db.DiscussionReplies.FirstAsync(x => x.Id == c.TargetId);
                 reply.Hidden = true;
+                await ModerationNotes.Set(db, ModerationNote.Reply, reply.Id, $"Removed after a {c.Type} complaint. {note}".Trim());
                 return new { hidden = "discussion_reply" };
             default:
                 var holdType = c.TargetType == ComplaintTarget.Lesson ? HoldTarget.Lesson : HoldTarget.Resource;
@@ -251,12 +254,9 @@ public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, 
         }
     }
 
-    private void Notify(IEnumerable<Guid> userIds, string title, string link)
-    {
-        var now = DateTime.UtcNow;
-        foreach (var uid in userIds.Distinct())
-            db.Notifications.Add(new Notification { UserId = uid, Kind = TrustNotificationKinds.TrustSafety, Title = title.Length > 300 ? title[..300] : title, Link = link, CreatedAt = now });
-    }
+    /// <summary>In-app (and opted-in email) notification through the shared service, so per-kind preferences apply.</summary>
+    private Task Notify(IEnumerable<Guid> userIds, string title, string link) =>
+        notifications.Publish(userIds, TrustNotificationKinds.TrustSafety, title, link);
 
     // ---------- holds ----------
 
@@ -320,7 +320,7 @@ public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, 
         db.PayoutBatches.Add(batch);
         var s = new InstructorSuspension { UserId = userId, Reason = reason, HadInstructorRole = hadRole is not null, HoldBatchId = batch.Id, SuspendedBy = staff };
         db.Set<InstructorSuspension>().Add(s);
-        Notify([userId], "Your instructor account has been suspended. Studio editing and payouts are on hold.", "/studio");
+        await Notify([userId], "Your instructor account has been suspended. Studio editing and payouts are on hold.", "/studio");
         email.Enqueue(user.Email, "Your Mastemy instructor account is suspended",
             $"Your instructor privileges are suspended. Learners keep access to your published courses; studio edits and payouts are on hold.\n\nReason: {reason}");
         await db.SaveChangesAsync();
@@ -347,7 +347,7 @@ public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, 
         var released = await db.CommissionLedger.Where(e => e.PayoutBatchId == s.HoldBatchId)
             .ExecuteUpdateAsync(u => u.SetProperty(e => e.PayoutBatchId, (Guid?)null));
         await db.PayoutBatches.Where(b => b.Id == s.HoldBatchId && b.Status == HeldBatchStatus).ExecuteDeleteAsync();
-        Notify([userId], "Your instructor account has been reinstated.", "/studio");
+        await Notify([userId], "Your instructor account has been reinstated.", "/studio");
         audit.Record("instructor.reinstated", nameof(User), userId, new { suspensionId = s.Id, note, releasedEntries = released });
         await db.SaveChangesAsync();
         await tx.CommitAsync();
@@ -449,14 +449,16 @@ public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, 
                     break;
                 case ComplaintTarget.Discussion:
                     await db.DiscussionThreads.Where(r => r.Id == a.TargetId).ExecuteUpdateAsync(u => u.SetProperty(r => r.Hidden, false).SetProperty(r => r.UpdatedAt, DateTime.UtcNow));
+                    await ModerationNotes.Clear(db, ModerationNote.Thread, a.TargetId);
                     break;
                 case ComplaintTarget.DiscussionReply:
                     await db.DiscussionReplies.Where(r => r.Id == a.TargetId).ExecuteUpdateAsync(u => u.SetProperty(r => r.Hidden, false));
+                    await ModerationNotes.Clear(db, ModerationNote.Reply, a.TargetId);
                     break;
             }
         }
         a.Status = decision; a.DecidedBy = staff; a.DecisionNote = note; a.DecidedAt = DateTime.UtcNow;
-        Notify([a.AppellantId], decision == AppealStatus.Reinstated ? "Your appeal was accepted and the content is visible again." : "Your appeal was reviewed and the decision was upheld.",
+        await Notify([a.AppellantId], decision == AppealStatus.Reinstated ? "Your appeal was accepted and the content is visible again." : "Your appeal was reviewed and the decision was upheld.",
             "/account/appeals");
         audit.Record("appeal.decided", nameof(ModerationAppeal), a.Id, new { decision = decision.ToString(), target = a.TargetType.ToString(), a.TargetId, note });
         await db.SaveChangesAsync();

@@ -172,6 +172,46 @@ public class OperationsTests(OperationsFixture fx) : IClassFixture<OperationsFix
     }
 
     [Fact]
+    public async Task Staff_mark_override_is_audited_and_broken_video_notices_respect_preferences()
+    {
+        var (_, _, asset, ownerId) = await LiveCourseWithVideo(VideoStatus.Ready);
+        var (_, staff) = await fx.User(Roles.Admin);
+        var (_, reviewer) = await fx.User(Roles.Reviewer);
+        var url = $"/api/admin/youtube/videos/{asset.Id}/mark";
+
+        Assert.Equal(HttpStatusCode.Forbidden, (await reviewer.PostAsync(url, JsonBody(new { status = "Restricted", reason = "Gone" }))).StatusCode);
+        var ready = await staff.PostAsync(url, JsonBody(new { status = "Ready", reason = "Looks fine" }));
+        Assert.Equal(HttpStatusCode.BadRequest, ready.StatusCode);
+        Assert.Contains("use_confirm", await ready.Content.ReadAsStringAsync());
+        Assert.Equal(HttpStatusCode.BadRequest, (await staff.PostAsync(url, JsonBody(new { status = "Processing", reason = "x" }))).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await staff.PostAsync(url, JsonBody(new { status = "Restricted", reason = " " }))).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await staff.PostAsync($"/api/admin/youtube/videos/{Guid.NewGuid()}/mark", JsonBody(new { status = "Failed", reason = "x" }))).StatusCode);
+
+        var marked = await staff.PostAsync(url, JsonBody(new { status = "restricted", reason = "Video made private by the channel owner." }));
+        Assert.Equal(HttpStatusCode.OK, marked.StatusCode);
+        var row = await fx.WithDb(db => db.VideoAssets.AsNoTracking().SingleAsync(v => v.Id == asset.Id));
+        Assert.Equal((VideoStatus.Restricted, "Video made private by the channel owner."), (row.Status, row.StatusReason));
+        Assert.True(await fx.WithDb(db => db.AuditLogs.AnyAsync(a => a.Action == "video.marked" && a.EntityId == asset.Id.ToString() && a.Details!.Contains("Ready"))));
+
+        // Upload-pipeline states cannot be overridden.
+        var (upId, _) = await fx.User(Roles.Instructor);
+        var uploading = new VideoAsset { YouTubeVideoId = "up" + Guid.NewGuid().ToString("N")[..9], Title = "U", Status = VideoStatus.Uploading, UploaderId = upId };
+        await fx.WithDb(async db => { db.VideoAssets.Add(uploading); await db.SaveChangesAsync(); });
+        Assert.Equal(HttpStatusCode.Conflict, (await staff.PostAsync($"/api/admin/youtube/videos/{uploading.Id}/mark", JsonBody(new { status = "Failed", reason = "stuck" }))).StatusCode);
+
+        // The owner turned broken_video in-app notifications off: the notice is sent through the service and skipped.
+        await fx.WithDb(async db =>
+        {
+            db.NotificationPreferences.Add(new NotificationPreference { UserId = ownerId, Kind = "broken_video", InApp = false });
+            await db.SaveChangesAsync();
+        });
+        var notice = await Read<BrokenLinkNoticeDto>(await staff.PostAsync($"/api/admin/operations/broken-links/{asset.Id}/notify", null));
+        Assert.Equal(1, notice.Recipients);
+        Assert.False(await fx.WithDb(db => db.Notifications.AnyAsync(n => n.UserId == ownerId && n.Kind == "broken_video")));
+        Assert.Equal(1, notice.CoursesNotified);
+    }
+
+    [Fact]
     public async Task Broken_link_queue_lists_live_snapshot_lessons_and_notify_alerts_instructors()
     {
         var (course, lessonId, asset, ownerId) = await LiveCourseWithVideo(VideoStatus.Restricted);

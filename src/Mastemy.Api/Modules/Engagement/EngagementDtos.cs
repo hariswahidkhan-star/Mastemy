@@ -26,7 +26,13 @@ public record ThreadSummaryDto(Guid Id, Guid CourseId, Guid? LessonId, Guid Auth
     string Body, bool Resolved, bool Hidden, int ReplyCount, DateTime CreatedAt, DateTime UpdatedAt);
 public record ReplyDto(Guid Id, Guid ThreadId, Guid AuthorId, string AuthorName, string Body, bool IsInstructorReply,
     bool Hidden, DateTime CreatedAt);
-public record ThreadDetailDto(ThreadSummaryDto Thread, List<ReplyDto> Replies);
+/// <summary>Present only for the author of a post hidden by moderation (everyone else gets 404).</summary>
+public record ModerationNoticeDto(bool Hidden, string Reason, DateTime? HiddenAt, string AppealTargetType, Guid AppealTargetId,
+    string AppealUrl, string AppealsPage);
+public record ThreadDetailDto(ThreadSummaryDto Thread, List<ReplyDto> Replies, ModerationNoticeDto? Moderation = null)
+{
+    public bool Hidden => Thread.Hidden;
+}
 
 // Announcements
 public record AnnouncementInput(string? Title, string? Body, string? ClientRequestId = null);
@@ -50,9 +56,9 @@ public static class NotificationKinds
     public const string Announcement = "announcement", Reply = "reply", ReviewReply = "review_reply",
         CourseUpdated = "course_updated", Certificate = "certificate", IssueReported = "issue_reported",
         StudyReminder = "study_reminder", TrustSafety = "trust_safety", BrokenVideo = "broken_video",
-        QuestionChallenge = "question_challenge", Regrade = "regrade";
+        QuestionChallenge = "question_challenge", Regrade = "regrade", AccountSecurity = "account_security";
     public static readonly string[] All = [Announcement, Reply, ReviewReply, CourseUpdated, Certificate, IssueReported,
-        StudyReminder, TrustSafety, BrokenVideo, QuestionChallenge, Regrade];
+        StudyReminder, TrustSafety, BrokenVideo, QuestionChallenge, Regrade, AccountSecurity];
 }
 
 public static partial class TextRules

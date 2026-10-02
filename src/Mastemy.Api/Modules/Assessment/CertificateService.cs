@@ -103,7 +103,11 @@ public class CertificateService(AppDbContext db, ICurrentUser me, AuditService a
     {
         var t = await db.Set<CourseCertificateSetting>().AsNoTracking().Where(s => s.CourseId == courseId)
             .Join(db.Set<CertificateTemplate>(), s => s.TemplateId, t => t.Id, (s, t) => t).FirstOrDefaultAsync();
-        if (t is null) return null;
+        return t is null ? null : await DesignOf(t);
+    }
+
+    private async Task<CertificateDesign> DesignOf(CertificateTemplate t)
+    {
         byte[]? logo = null;
         if (t.LogoResourceId is { } lid && await db.ResourceFiles.AsNoTracking().FirstOrDefaultAsync(r => r.Id == lid && r.DeletedAt == null) is { } file
             && file.SizeBytes <= 2 * 1024 * 1024 && storage.Exists(file.StorageKey))
@@ -114,6 +118,24 @@ public class CertificateService(AppDbContext db, ICurrentUser me, AuditService a
             logo = ms.ToArray();
         }
         return new CertificateDesign(t.TitleText, t.PrimaryColor, t.AccentColor, t.SignatureName, t.SignatureTitle, logo);
+    }
+
+    /// <summary>
+    /// Staff preview of a certificate template: a sample certificate (sample learner and course, code "SAMPLE-PREVIEW")
+    /// rendered with that template. Nothing is stored and the code does not verify.
+    /// </summary>
+    public async Task<byte[]> PreviewTemplate(Guid templateId)
+    {
+        me.RequireId();
+        if (!me.IsStaff) throw AppException.Forbidden();
+        var t = await db.Set<CertificateTemplate>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == templateId)
+                ?? throw AppException.NotFound("Certificate template");
+        var sample = new Certificate
+        {
+            Code = "SAMPLE-PREVIEW", RecipientName = "Sample Learner", CourseTitle = "Sample Course: Foundations",
+            AssessmentCriteria = "Final exam, pass mark 70%", ScorePercent = 86m, IssuedAt = DateTime.UtcNow,
+        };
+        return CertificatePdf.Render(sample, VerificationUrl(sample.Code), await DesignOf(t));
     }
 
     /// <summary>Learner controls whether their certificate is publicly verifiable/downloadable.</summary>

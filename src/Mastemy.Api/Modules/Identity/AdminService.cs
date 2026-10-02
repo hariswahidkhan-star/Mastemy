@@ -5,8 +5,38 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Mastemy.Api.Modules.Identity;
 
-public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, AuthService auth, TokenSessionValidator tokenValidator)
+public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, AuthService auth, TokenSessionValidator tokenValidator,
+    Engagement.INotificationService notifications)
 {
+    public const string ReauthNotice = "Roles changed. The user must sign in again for the new roles to take effect; removed roles stop working immediately.";
+
+    public async Task<List<UserLookupDto>> Lookup(string? q, int limit)
+    {
+        limit = Math.Clamp(limit, 1, 25);
+        var term = (q ?? "").Trim();
+        if (term.Length < 2) throw AppException.Bad("q must be at least 2 characters.");
+        if (term.Length > 200) throw AppException.Bad("q is too long (max 200 characters).");
+        var norm = term.ToLowerInvariant();
+        var id = Guid.TryParse(term, out var g) ? g : (Guid?)null;
+        var rows = await db.Users.AsNoTracking()
+            .Where(u => u.Id == id || u.NormalizedEmail == norm || u.DisplayName.Contains(term) || u.NormalizedEmail.StartsWith(norm))
+            .OrderBy(u => u.DisplayName).Take(limit)
+            .Select(u => new { u.Id, u.DisplayName, u.Email, u.IsSuspended }).ToListAsync();
+        return rows.Select(u => new UserLookupDto(u.Id, u.DisplayName, MaskEmail(u.Email), u.IsSuspended)).ToList();
+    }
+
+    /// <summary>"jane.doe@example.com" → "j***e@e***.com".</summary>
+    public static string MaskEmail(string email)
+    {
+        var at = email.IndexOf('@');
+        if (at <= 0) return "***";
+        var local = email[..at]; var domain = email[(at + 1)..];
+        var maskedLocal = local.Length <= 2 ? local[0] + "***" : $"{local[0]}***{local[^1]}";
+        var dot = domain.LastIndexOf('.');
+        var maskedDomain = dot <= 0 ? "***" : $"{domain[0]}***{domain[dot..]}";
+        return $"{maskedLocal}@{maskedDomain}";
+    }
+
     public async Task<PagedResult<AdminUserDto>> ListUsers(string? q, int page, int pageSize)
     {
         (page, pageSize) = IdentityValidation.Paging(page, pageSize);
@@ -47,7 +77,11 @@ public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, 
         audit.Record("user.roles_changed", "User", user.Id, new { old, @new });
         await db.SaveChangesAsync();
         tokenValidator.Invalidate(user.Id); // a demoted user's outstanding tokens lose the removed roles immediately
-        return ToDto(user, sec);
+        var changed = !old.SequenceEqual(@new);
+        if (changed)
+            await notifications.Publish([user.Id], Engagement.NotificationKinds.AccountSecurity,
+                "Your account roles changed. Please sign in again to continue.", "/login?reason=roles_changed");
+        return ToDto(user, sec) with { SignInAgainRequired = changed, Notice = changed ? ReauthNotice : null };
     }
 
     public async Task<AdminUserDto> Get(Guid userId)

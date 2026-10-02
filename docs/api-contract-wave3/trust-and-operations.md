@@ -75,3 +75,19 @@ Configuration: `Scanning:ClamAvHost`, `Scanning:ClamAvPort` (3310), `Scanning:Mo
 | GET | /health | anon | unchanged legacy probe |
 
 Every response carries `X-Correlation-Id` (inbound value reused when it matches `[A-Za-z0-9._-]{1,64}`, otherwise generated); it is also the request's `TraceIdentifier` and a `CorrelationId` logging scope.
+
+
+## Final-wave additions
+- **Notifications**: trust & safety (`trust_safety`) and broken-video (`broken_video`) notices are now published through
+  `INotificationService`, so per-kind in-app/email preferences apply. For broken videos the detailed action-needed email is
+  still sent to instructors with no explicit preference for the kind; opted-in users get the service's email instead and
+  opted-out users get none.
+- **Hidden-post notice for authors**: moderator hides (`/api/moderation/discussions|discussion-replies/{id}/hide`) and
+  complaint takedowns record the reason (`Engagement_ModerationNotes`). `GET /api/discussions/{id}` on a hidden thread
+  returns **200 to its author only** with `hidden: true` and `moderation: { hidden, reason, hiddenAt, appealTargetType:
+  "Discussion", appealTargetId, appealUrl: "/api/appeals", appealsPage: "/account/appeals" }` (no replies). Everyone else
+  still gets 404; moderators see the post. Unhiding or a reinstating appeal clears the notice.
+- **Manual video status override**: `POST /api/admin/youtube/videos/{id}/mark` (Staff) body `{ status: "Restricted"|"Failed",
+  reason }` (reason 1–1000 chars, required). `Ready` is refused with 400 `use_confirm` — it is only reachable through
+  reviewer confirmation (`/confirm`). Videos still in the upload pipeline (Draft, AwaitingApproval, AwaitingSourceFile,
+  Uploading) → 409 `invalid_state`. Audited as `video.marked` with from/to/reason. Returns `VideoAssetDto`.
