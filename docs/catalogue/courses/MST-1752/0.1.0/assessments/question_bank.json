@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1752",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 270,
+  "lesson_check_items": 60,
+  "module_check_items": 50,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1752-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In BPMN, what is the primary role of an exclusive gateway?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To route the flow down exactly one of several mutually exclusive paths",
+     "correct": true,
+     "rationale": "Correct: an exclusive (XOR) gateway selects a single path based on a condition."
+    },
+    {
+     "key": "B",
+     "text": "To start the process",
+     "correct": false,
+     "rationale": "That is the role of a start event, not a gateway."
+    },
+    {
+     "key": "C",
+     "text": "To run several paths at the same time",
+     "correct": false,
+     "rationale": "That describes a parallel (AND) gateway."
+    },
+    {
+     "key": "D",
+     "text": "To represent a task performed by a person",
+     "correct": false,
+     "rationale": "A task, not a gateway, represents work performed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an exclusive (XOR) gateway selects a single path based on a condition.",
+   "outcome_refs": [
+    "MST-1752-D04.01"
+   ],
+   "domain_ref": "Modelling decisions and flows",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1752-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which practices improve a BPMN process map? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Placing each activity in the lane of the role that performs it",
+     "correct": true,
+     "rationale": "Correct: lanes make responsibilities and handoffs explicit."
+    },
+    {
+     "key": "B",
+     "text": "Including exception paths, not only the happy path",
+     "correct": true,
+     "rationale": "Correct: real processes have exceptions that must be shown."
+    },
+    {
+     "key": "C",
+     "text": "Keeping everything in a single lane for simplicity",
+     "correct": false,
+     "rationale": "This hides who does what and obscures handoffs."
+    },
+    {
+     "key": "D",
+     "text": "Using events and gateways to mean the same thing",
+     "correct": false,
+     "rationale": "They have distinct meanings; conflating them breaks the model."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: lanes make responsibilities and handoffs explicit.",
+   "outcome_refs": [
+    "MST-1752-D03.01"
+   ],
+   "domain_ref": "Lanes and participants",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1752-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A reviewer praises a diagram as 'much nicer looking' though the underlying process still has the same delays. What misconception does this reflect?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A tidier diagram is not the same as an improved process",
+     "correct": true,
+     "rationale": "Correct: readability helps analysis but does not by itself fix the process."
+    },
+    {
+     "key": "B",
+     "text": "Diagrams should never be made readable",
+     "correct": false,
+     "rationale": "Readability is valuable; it is just not the end goal."
+    },
+    {
+     "key": "C",
+     "text": "BPMN cannot represent delays",
+     "correct": false,
+     "rationale": "BPMN can model timing and bottlenecks."
+    },
+    {
+     "key": "D",
+     "text": "Process maps cannot drive improvement",
+     "correct": false,
+     "rationale": "They can, but only when the actual flow changes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: readability helps analysis but does not by itself fix the process.",
+   "outcome_refs": [
+    "MST-1752-D05.02"
+   ],
+   "domain_ref": "Quality and improvement",
+   "cognitive_level": "apply",
+   "difficulty": "easy (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

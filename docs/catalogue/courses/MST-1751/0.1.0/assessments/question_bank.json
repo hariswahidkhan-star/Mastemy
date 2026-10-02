@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1751",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 270,
+  "lesson_check_items": 60,
+  "module_check_items": 50,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1751-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which best describes the purpose of a user story?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A short placeholder that prompts a conversation about a need",
+     "correct": true,
+     "rationale": "Correct: stories capture intent and trigger discussion, not full specs."
+    },
+    {
+     "key": "B",
+     "text": "A complete, signed-off requirements specification",
+     "correct": false,
+     "rationale": "Stories deliberately avoid being exhaustive up-front specs."
+    },
+    {
+     "key": "C",
+     "text": "A technical design document for developers",
+     "correct": false,
+     "rationale": "Design is separate; a story expresses user value."
+    },
+    {
+     "key": "D",
+     "text": "A fixed contract that cannot change",
+     "correct": false,
+     "rationale": "Stories are refined and can change as understanding grows."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: stories capture intent and trigger discussion, not full specs.",
+   "outcome_refs": [
+    "MST-1751-D01.01"
+   ],
+   "domain_ref": "Thinking in user stories",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1751-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about splitting a large story are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each slice should still deliver observable user value",
+     "correct": true,
+     "rationale": "Correct: vertical slices keep each piece valuable and demonstrable."
+    },
+    {
+     "key": "B",
+     "text": "Splitting should keep stories small enough to finish in one iteration",
+     "correct": true,
+     "rationale": "Correct: right-sized stories improve flow and feedback."
+    },
+    {
+     "key": "C",
+     "text": "Stories should be split by technical layer such as 'the database part'",
+     "correct": false,
+     "rationale": "Layer splits produce pieces with no standalone user value."
+    },
+    {
+     "key": "D",
+     "text": "A split story must never have acceptance criteria",
+     "correct": false,
+     "rationale": "Every story, including slices, needs acceptance criteria."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: vertical slices keep each piece valuable and demonstrable.",
+   "outcome_refs": [
+    "MST-1751-D03.01"
+   ],
+   "domain_ref": "Splitting and sizing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1751-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A story is marked 'done' although two of its five acceptance criteria are unmet. What principle is violated?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Definition of done requires all acceptance criteria to be satisfied",
+     "correct": true,
+     "rationale": "Correct: partial completion is not done and hides remaining work."
+    },
+    {
+     "key": "B",
+     "text": "Acceptance criteria are optional",
+     "correct": false,
+     "rationale": "They define what done means for the story."
+    },
+    {
+     "key": "C",
+     "text": "Done means the developer feels finished",
+     "correct": false,
+     "rationale": "Done is defined by agreed criteria, not personal judgement."
+    },
+    {
+     "key": "D",
+     "text": "Stories should not have acceptance criteria",
+     "correct": false,
+     "rationale": "Criteria are essential to judging completion."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: partial completion is not done and hides remaining work.",
+   "outcome_refs": [
+    "MST-1751-D05.01"
+   ],
+   "domain_ref": "From backlog to delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
