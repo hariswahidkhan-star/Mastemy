@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1301",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 624,
+  "lesson_check_items": 90,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1301-Q0001",
+   "item_version": "0.1.0",
+   "stem": "A team needs an LLM assistant to answer from a large, frequently updated internal document set with citations. Which approach fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieval-augmented generation (RAG)",
+     "correct": true,
+     "rationale": "Correct: RAG retrieves current documents at query time and supports citations without retraining."
+    },
+    {
+     "key": "B",
+     "text": "Full fine-tuning on the documents weekly",
+     "correct": false,
+     "rationale": "Frequent full fine-tuning is costly and lags updates versus retrieval."
+    },
+    {
+     "key": "C",
+     "text": "A longer system prompt with no retrieval",
+     "correct": false,
+     "rationale": "A static prompt cannot hold or update a large document set."
+    },
+    {
+     "key": "D",
+     "text": "Reducing the model's temperature to 0",
+     "correct": false,
+     "rationale": "Temperature controls randomness, not access to documents."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "RAG retrieves current documents at query time and supports citations.",
+   "outcome_refs": [
+    "MST-1301-D02.01"
+   ],
+   "domain_ref": "Prompting and application patterns (design-assumption grouping)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "expected_seconds": 60,
+   "scoring": "single-key"
+  },
+  {
+   "item_id": "MST-1301-Q0002",
+   "item_version": "0.1.0",
+   "stem": "In a transformer language model, the self-attention mechanism mainly lets the model:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Weigh the relevance of other tokens when representing each token",
+     "correct": true,
+     "rationale": "Correct: self-attention weights how much each token attends to others."
+    },
+    {
+     "key": "B",
+     "text": "Store facts in a lookup database",
+     "correct": false,
+     "rationale": "Transformers do not use an explicit fact database."
+    },
+    {
+     "key": "C",
+     "text": "Compile code to machine instructions",
+     "correct": false,
+     "rationale": "Attention is unrelated to code compilation."
+    },
+    {
+     "key": "D",
+     "text": "Guarantee factual accuracy of outputs",
+     "correct": false,
+     "rationale": "Attention does not guarantee factual correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Self-attention weighs the relevance of other tokens for each token.",
+   "outcome_refs": [
+    "MST-1301-D01.01"
+   ],
+   "domain_ref": "LLM and generative-AI foundations (design-assumption grouping)",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "expected_seconds": 60,
+   "scoring": "single-key"
+  },
+  {
+   "item_id": "MST-1301-Q0003",
+   "item_version": "0.1.0",
+   "stem": "Before deploying an LLM support assistant, select TWO responsible-AI steps that most directly reduce harm.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Test for biased or unsafe outputs across representative inputs",
+     "correct": true,
+     "rationale": "Correct: red-team/bias testing surfaces harmful behaviour before launch."
+    },
+    {
+     "key": "B",
+     "text": "Add guardrails and a human-escalation path for sensitive queries",
+     "correct": true,
+     "rationale": "Correct: guardrails plus escalation limit harm in production."
+    },
+    {
+     "key": "C",
+     "text": "Increase the model size to the largest available",
+     "correct": false,
+     "rationale": "A bigger model is not inherently safer."
+    },
+    {
+     "key": "D",
+     "text": "Remove all logging to protect privacy",
+     "correct": false,
+     "rationale": "Removing all logging harms monitoring and auditability."
+    },
+    {
+     "key": "E",
+     "text": "Raise temperature to make answers more varied",
+     "correct": false,
+     "rationale": "More randomness tends to increase, not reduce, risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Bias/safety testing and guardrails with human escalation most directly reduce deployment harm.",
+   "outcome_refs": [
+    "MST-1301-D03.01"
+   ],
+   "domain_ref": "Evaluation, safety and deployment (design-assumption grouping)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "expected_seconds": 75,
+   "scoring": "all-or-nothing on exact key set"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0352",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 624,
+  "lesson_check_items": 90,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0352-Q0001",
+   "item_version": "0.1.0",
+   "stem": "ICD-10-PCS codes are used to classify:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Inpatient procedures",
+     "correct": true,
+     "rationale": "Correct: ICD-10-PCS classifies inpatient procedures."
+    },
+    {
+     "key": "B",
+     "text": "Outpatient physician professional services",
+     "correct": false,
+     "rationale": "Those use CPT/HCPCS, not ICD-10-PCS."
+    },
+    {
+     "key": "C",
+     "text": "Diagnoses only",
+     "correct": false,
+     "rationale": "Diagnoses use ICD-10-CM, not PCS."
+    },
+    {
+     "key": "D",
+     "text": "Drug formularies",
+     "correct": false,
+     "rationale": "PCS does not classify drug formularies."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "ICD-10-PCS classifies inpatient procedures.",
+   "outcome_refs": [
+    "MST-0352-D01.01"
+   ],
+   "domain_ref": "Clinical classification systems (design-assumption grouping)",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "expected_seconds": 60,
+   "scoring": "single-key"
+  },
+  {
+   "item_id": "MST-0352-Q0002",
+   "item_version": "0.1.0",
+   "stem": "When the index and the tabular list appear to conflict, a coder should:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Follow the tabular list and its instructional notes",
+     "correct": true,
+     "rationale": "Correct: the tabular list and its instructions govern final code selection."
+    },
+    {
+     "key": "B",
+     "text": "Always use the first index entry",
+     "correct": false,
+     "rationale": "The index only points to candidates; it does not override the tabular list."
+    },
+    {
+     "key": "C",
+     "text": "Choose the higher-paying code",
+     "correct": false,
+     "rationale": "Reimbursement cannot drive code selection."
+    },
+    {
+     "key": "D",
+     "text": "Skip both and query billing",
+     "correct": false,
+     "rationale": "Billing does not resolve a classification convention."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "The tabular list and its instructional notes govern final code selection.",
+   "outcome_refs": [
+    "MST-0352-D02.01"
+   ],
+   "domain_ref": "Coding guidelines and reimbursement (design-assumption grouping)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "expected_seconds": 60,
+   "scoring": "single-key"
+  },
+  {
+   "item_id": "MST-0352-Q0003",
+   "item_version": "0.1.0",
+   "stem": "Documentation does not clearly support a diagnosis the physician listed. Select TWO compliant coder actions.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Issue a compliant physician query for clarification",
+     "correct": true,
+     "rationale": "Correct: a non-leading query is the compliant way to resolve ambiguity."
+    },
+    {
+     "key": "B",
+     "text": "Code only what the documentation supports until clarified",
+     "correct": true,
+     "rationale": "Correct: coders may only assign codes the record supports."
+    },
+    {
+     "key": "C",
+     "text": "Assign the higher-severity code to be safe",
+     "correct": false,
+     "rationale": "Assigning unsupported codes is upcoding."
+    },
+    {
+     "key": "D",
+     "text": "Delete the physician's diagnosis from the record",
+     "correct": false,
+     "rationale": "Coders must not alter the clinical record."
+    },
+    {
+     "key": "E",
+     "text": "Bill the claim and fix it later if denied",
+     "correct": false,
+     "rationale": "Submitting unsupported codes is non-compliant."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "A compliant query and coding only what is supported are the compliant actions.",
+   "outcome_refs": [
+    "MST-0352-D03.01"
+   ],
+   "domain_ref": "Health records, data and compliance (design-assumption grouping)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "expected_seconds": 75,
+   "scoring": "all-or-nothing on exact key set"
+  }
+ ]
+}

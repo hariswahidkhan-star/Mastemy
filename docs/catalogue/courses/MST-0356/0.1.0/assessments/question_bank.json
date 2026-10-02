@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0356",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1248,
+  "lesson_check_items": 180,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 96,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0356-Q0001",
+   "item_version": "0.1.0",
+   "stem": "CPT codes primarily describe:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Physician and outpatient procedures and services",
+     "correct": true,
+     "rationale": "Correct: CPT describes procedures and services, chiefly for professional and outpatient billing."
+    },
+    {
+     "key": "B",
+     "text": "Inpatient-only procedures",
+     "correct": false,
+     "rationale": "Inpatient procedures use ICD-10-PCS."
+    },
+    {
+     "key": "C",
+     "text": "Diagnoses",
+     "correct": false,
+     "rationale": "Diagnoses use ICD-10-CM."
+    },
+    {
+     "key": "D",
+     "text": "Durable medical equipment supply codes only",
+     "correct": false,
+     "rationale": "Those are mostly HCPCS Level II."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "CPT describes procedures and services.",
+   "outcome_refs": [
+    "MST-0356-D01.01"
+   ],
+   "domain_ref": "CPT and E/M coding (design-assumption grouping)",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "expected_seconds": 60,
+   "scoring": "single-key"
+  },
+  {
+   "item_id": "MST-0356-Q0002",
+   "item_version": "0.1.0",
+   "stem": "An NCCI edit bundles two codes. A modifier to unbundle them may be used only when:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The documentation supports that the services were distinct and separately identifiable",
+     "correct": true,
+     "rationale": "Correct: an unbundling modifier requires documentation of distinct, separately identifiable services."
+    },
+    {
+     "key": "B",
+     "text": "The payer reimburses more for two codes",
+     "correct": false,
+     "rationale": "Reimbursement cannot justify unbundling."
+    },
+    {
+     "key": "C",
+     "text": "The coder is short on time",
+     "correct": false,
+     "rationale": "Convenience never justifies a modifier."
+    },
+    {
+     "key": "D",
+     "text": "The patient requests it",
+     "correct": false,
+     "rationale": "Patient request is not a coding justification."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "An unbundling modifier requires documentation of distinct services.",
+   "outcome_refs": [
+    "MST-0356-D03.01"
+   ],
+   "domain_ref": "Compliance, reimbursement and practice (design-assumption grouping)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "expected_seconds": 60,
+   "scoring": "single-key"
+  },
+  {
+   "item_id": "MST-0356-Q0003",
+   "item_version": "0.1.0",
+   "stem": "A claim is denied for medical necessity. Select TWO coder actions that correctly address it.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the diagnosis code supports the service per payer policy",
+     "correct": true,
+     "rationale": "Correct: linking a supporting diagnosis is central to medical necessity."
+    },
+    {
+     "key": "B",
+     "text": "Check the record for documentation that justifies the service",
+     "correct": true,
+     "rationale": "Correct: documentation must support the billed service."
+    },
+    {
+     "key": "C",
+     "text": "Change the diagnosis to one that pays regardless of the record",
+     "correct": false,
+     "rationale": "Altering codes to secure payment is fraud."
+    },
+    {
+     "key": "D",
+     "text": "Resubmit the identical claim unchanged",
+     "correct": false,
+     "rationale": "Resubmitting without change will deny again."
+    },
+    {
+     "key": "E",
+     "text": "Add random modifiers until it pays",
+     "correct": false,
+     "rationale": "Guessing modifiers is non-compliant."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Verifying diagnosis support and checking documentation address a medical-necessity denial.",
+   "outcome_refs": [
+    "MST-0356-D02.01"
+   ],
+   "domain_ref": "ICD-10-CM and HCPCS (design-assumption grouping)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "expected_seconds": 75,
+   "scoring": "all-or-nothing on exact key set"
+  }
+ ]
+}

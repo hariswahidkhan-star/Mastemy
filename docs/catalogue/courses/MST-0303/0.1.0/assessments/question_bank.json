@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0303",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 936,
+  "lesson_check_items": 135,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0303-Q0001",
+   "item_version": "0.1.0",
+   "stem": "An item has a gross requirement of 100, on-hand 30 and no scheduled receipts. What is the net requirement before lot sizing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "70",
+     "correct": true,
+     "rationale": "Correct: net requirement = gross (100) - on-hand (30) - scheduled receipts (0) = 70."
+    },
+    {
+     "key": "B",
+     "text": "100",
+     "correct": false,
+     "rationale": "That ignores the 30 on-hand units."
+    },
+    {
+     "key": "C",
+     "text": "130",
+     "correct": false,
+     "rationale": "On-hand is subtracted, not added."
+    },
+    {
+     "key": "D",
+     "text": "30",
+     "correct": false,
+     "rationale": "30 is the on-hand balance, not the net requirement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Net requirement = 100 - 30 - 0 = 70.",
+   "outcome_refs": [
+    "MST-0303-D02.01"
+   ],
+   "domain_ref": "Planning and inventory (design-assumption grouping)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "expected_seconds": 60,
+   "scoring": "single-key"
+  },
+  {
+   "item_id": "MST-0303-Q0002",
+   "item_version": "0.1.0",
+   "stem": "The primary purpose of sales and operations planning (S&OP) is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Align demand and supply plans across functions at an aggregate level",
+     "correct": true,
+     "rationale": "Correct: S&OP aligns demand and supply across functions at an aggregate, medium-term level."
+    },
+    {
+     "key": "B",
+     "text": "Schedule individual machines by the hour",
+     "correct": false,
+     "rationale": "That is detailed scheduling, below the S&OP horizon."
+    },
+    {
+     "key": "C",
+     "text": "Set the general-ledger budget",
+     "correct": false,
+     "rationale": "S&OP informs but is not the accounting budget process."
+    },
+    {
+     "key": "D",
+     "text": "Pick carton sizes for shipping",
+     "correct": false,
+     "rationale": "Packaging is an execution detail, not S&OP's purpose."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "S&OP aligns demand and supply across functions at an aggregate level.",
+   "outcome_refs": [
+    "MST-0303-D01.01"
+   ],
+   "domain_ref": "Supply chain and demand strategy (design-assumption grouping)",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "expected_seconds": 60,
+   "scoring": "single-key"
+  },
+  {
+   "item_id": "MST-0303-Q0003",
+   "item_version": "0.1.0",
+   "stem": "A plant wants to reduce finished-goods inventory without hurting service. Select TWO actions consistent with lean inventory practice.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reduce replenishment lot sizes and setup times",
+     "correct": true,
+     "rationale": "Correct: smaller lots with faster setups cut average inventory while protecting flow."
+    },
+    {
+     "key": "B",
+     "text": "Improve forecast accuracy to lower required safety stock",
+     "correct": true,
+     "rationale": "Correct: better forecasts reduce the safety stock needed for a given service level."
+    },
+    {
+     "key": "C",
+     "text": "Increase batch sizes to gain economies of scale",
+     "correct": false,
+     "rationale": "Larger batches raise average inventory, the opposite of the goal."
+    },
+    {
+     "key": "D",
+     "text": "Add a second safety-stock buffer at every node",
+     "correct": false,
+     "rationale": "Extra buffers everywhere increase inventory."
+    },
+    {
+     "key": "E",
+     "text": "Lengthen supplier lead times to smooth ordering",
+     "correct": false,
+     "rationale": "Longer lead times require more, not less, inventory."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Smaller lots/faster setups and better forecasts both cut inventory without hurting service.",
+   "outcome_refs": [
+    "MST-0303-D03.01"
+   ],
+   "domain_ref": "Execution and continuous improvement (design-assumption grouping)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "expected_seconds": 75,
+   "scoring": "all-or-nothing on exact key set"
+  }
+ ]
+}
