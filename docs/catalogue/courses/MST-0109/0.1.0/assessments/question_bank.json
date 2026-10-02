@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0109",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0109-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team removes direct identifiers (name, email) from an analytics dataset but keeps precise timestamps, device model and ZIP code. Why is this still a privacy risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The remaining quasi-identifiers can be combined to re-identify individuals",
+     "correct": true,
+     "rationale": "Correct: combinations of quasi-identifiers often enable re-identification even without direct identifiers."
+    },
+    {
+     "key": "B",
+     "text": "Removing direct identifiers always guarantees anonymity",
+     "correct": false,
+     "rationale": "That is the misconception; quasi-identifiers remain a risk."
+    },
+    {
+     "key": "C",
+     "text": "Timestamps and device model are never personal data",
+     "correct": false,
+     "rationale": "These can be personal data, especially combined."
+    },
+    {
+     "key": "D",
+     "text": "Encryption at rest makes re-identification impossible",
+     "correct": false,
+     "rationale": "Encryption protects stored data but does not address re-identification of released data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: combinations of quasi-identifiers often enable re-identification even without direct identifiers.",
+   "outcome_refs": [
+    "MST-0109-D03.01"
+   ],
+   "domain_ref": "PETs and emerging-technology risk",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0109-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Applying data minimisation to a new feature, which approach best reflects the principle?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Collect only the fields the feature actually needs and justify each",
+     "correct": true,
+     "rationale": "Correct: data minimisation means collecting only what is necessary for the stated purpose."
+    },
+    {
+     "key": "B",
+     "text": "Collect everything now in case it is useful later",
+     "correct": false,
+     "rationale": "Collecting for undefined future use violates minimisation."
+    },
+    {
+     "key": "C",
+     "text": "Collect extra data but promise to delete it eventually",
+     "correct": false,
+     "rationale": "Deferred deletion does not justify unnecessary collection."
+    },
+    {
+     "key": "D",
+     "text": "Collect sensitive data to improve personalisation by default",
+     "correct": false,
+     "rationale": "Default sensitive-data collection is contrary to minimisation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: data minimisation means collecting only what is necessary for the stated purpose.",
+   "outcome_refs": [
+    "MST-0109-D02.01"
+   ],
+   "domain_ref": "Privacy by design and engineering",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0109-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A product embeds privacy by design. Which TWO practices are genuine privacy-by-design controls rather than security-only measures? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Defaulting new accounts to the most privacy-protective settings",
+     "correct": true,
+     "rationale": "Correct: privacy-protective defaults are a core privacy-by-design practice."
+    },
+    {
+     "key": "B",
+     "text": "Limiting collection and retention to the purpose at design time",
+     "correct": true,
+     "rationale": "Correct: purpose-bound collection and retention is privacy by design."
+    },
+    {
+     "key": "C",
+     "text": "Adding a firewall at the network perimeter",
+     "correct": false,
+     "rationale": "A firewall is a security control, not specifically privacy by design."
+    },
+    {
+     "key": "D",
+     "text": "Encrypting backups only",
+     "correct": false,
+     "rationale": "Backup encryption is a security control and does not address collection or purpose."
+    },
+    {
+     "key": "E",
+     "text": "Enabling verbose logging of all user activity",
+     "correct": false,
+     "rationale": "Expansive logging increases privacy risk, not protection."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: privacy-protective defaults are a core privacy-by-design practice. Correct: purpose-bound collection and retention is privacy by design.",
+   "outcome_refs": [
+    "MST-0109-D02.01"
+   ],
+   "domain_ref": "Privacy by design and engineering",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

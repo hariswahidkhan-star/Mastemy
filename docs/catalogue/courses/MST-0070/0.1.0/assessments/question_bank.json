@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0070",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0070-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A trader holds a customer limit order to buy 500 shares at $20.00 while the firm displays a bid of $19.98. The market is quiet and the order is marketable against the firm's quote. What does the limit-order display obligation generally require?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Display the customer's better-priced limit order (or route it) so it is reflected in the quote",
+     "correct": true,
+     "rationale": "Correct: a customer limit order priced better than the firm's quote must generally be displayed or routed promptly."
+    },
+    {
+     "key": "B",
+     "text": "Hold the order hidden until the firm can trade ahead of it",
+     "correct": false,
+     "rationale": "Trading ahead of a displayable customer limit order is prohibited."
+    },
+    {
+     "key": "C",
+     "text": "Cancel the order because it improves the firm's quote",
+     "correct": false,
+     "rationale": "Improving the quote is not a basis to cancel a customer order."
+    },
+    {
+     "key": "D",
+     "text": "Delay display until end of day",
+     "correct": false,
+     "rationale": "Display must be prompt, not deferred to end of day."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a customer limit order priced better than the firm's quote must generally be displayed or routed promptly.",
+   "outcome_refs": [
+    "MST-0070-D02.01"
+   ],
+   "domain_ref": "Order handling and execution duties",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0070-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During a single-stock trading pause under limit-up/limit-down, a trader wants to keep sending marketable orders. What is the correct understanding of the pause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Trading in that security is halted for the pause period; orders cannot execute until trading resumes",
+     "correct": true,
+     "rationale": "Correct: an LULD pause halts trading in the security until the re-opening process completes."
+    },
+    {
+     "key": "B",
+     "text": "Only customer orders are paused; proprietary orders execute normally",
+     "correct": false,
+     "rationale": "The pause applies to the security, not to a class of orders."
+    },
+    {
+     "key": "C",
+     "text": "Orders execute but at the prior day's close",
+     "correct": false,
+     "rationale": "Executions do not occur at a stale close during the pause."
+    },
+    {
+     "key": "D",
+     "text": "The pause only affects options on the stock",
+     "correct": false,
+     "rationale": "The pause affects trading in the underlying security."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an LULD pause halts trading in the security until the re-opening process completes.",
+   "outcome_refs": [
+    "MST-0070-D02.01"
+   ],
+   "domain_ref": "Order handling and execution duties",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0070-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A compliance review flags a trader's activity near the close. Which TWO patterns are most consistent with prohibited manipulation rather than legitimate trading? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Entering a series of small aggressive buy orders in the final seconds solely to set a higher closing print",
+     "correct": true,
+     "rationale": "Correct: trading designed to set an artificial closing price is marking-the-close manipulation."
+    },
+    {
+     "key": "B",
+     "text": "Executing a large customer sell order worked throughout the day to minimise impact",
+     "correct": false,
+     "rationale": "Working an order to reduce impact is legitimate execution practice."
+    },
+    {
+     "key": "C",
+     "text": "Buying ahead of a known large customer order to profit from its expected impact",
+     "correct": true,
+     "rationale": "Correct: front-running a customer order is prohibited."
+    },
+    {
+     "key": "D",
+     "text": "Posting a displayed limit order that improves the NBBO",
+     "correct": false,
+     "rationale": "Improving the quote with a genuine order is ordinary market-making."
+    },
+    {
+     "key": "E",
+     "text": "Reporting an executed trade within the required time window",
+     "correct": false,
+     "rationale": "Timely trade reporting is a compliance obligation, not manipulation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: trading designed to set an artificial closing price is marking-the-close manipulation. Correct: front-running a customer order is prohibited.",
+   "outcome_refs": [
+    "MST-0070-D03.01"
+   ],
+   "domain_ref": "Prohibited practices and post-trade duties",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

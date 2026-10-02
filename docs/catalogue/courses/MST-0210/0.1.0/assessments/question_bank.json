@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0210",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1044,
+  "lesson_check_items": 54,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0210-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Under the AWS shared responsibility model, which task is the CUSTOMER's responsibility?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Configuring access controls and encryption for their data and resources",
+     "correct": true,
+     "rationale": "Correct: customers are responsible for security in the cloud, including their access configuration and data protection."
+    },
+    {
+     "key": "B",
+     "text": "Physically securing the AWS data centres",
+     "correct": false,
+     "rationale": "Physical security of the infrastructure is AWS's responsibility."
+    },
+    {
+     "key": "C",
+     "text": "Patching the hypervisor of managed hardware",
+     "correct": false,
+     "rationale": "The underlying hypervisor is AWS's responsibility."
+    },
+    {
+     "key": "D",
+     "text": "Maintaining the global network backbone",
+     "correct": false,
+     "rationale": "The backbone is AWS's responsibility."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: customers are responsible for security in the cloud, including their access configuration and data protection.",
+   "outcome_refs": [
+    "MST-0210-D01.01"
+   ],
+   "domain_ref": "Identity, access and the responsibility model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0210-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An engineer wants to grant a workload only the permissions it needs. Which principle and practice should guide the policy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Least privilege: grant only the specific actions and resources required",
+     "correct": true,
+     "rationale": "Correct: least privilege grants only necessary actions on specific resources."
+    },
+    {
+     "key": "B",
+     "text": "Grant full administrator access to avoid future tickets",
+     "correct": false,
+     "rationale": "Broad access violates least privilege and increases risk."
+    },
+    {
+     "key": "C",
+     "text": "Use a shared root credential for all workloads",
+     "correct": false,
+     "rationale": "Shared root use is a serious security anti-pattern."
+    },
+    {
+     "key": "D",
+     "text": "Allow all actions but log them",
+     "correct": false,
+     "rationale": "Logging does not substitute for restricting permissions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: least privilege grants only necessary actions on specific resources.",
+   "outcome_refs": [
+    "MST-0210-D02.01"
+   ],
+   "domain_ref": "Network and data protection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0210-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Suspicious API calls suggest possible credential compromise. Which TWO immediate response actions are appropriate? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Revoke or rotate the potentially compromised credentials",
+     "correct": true,
+     "rationale": "Correct: revoking/rotating compromised credentials contains the incident."
+    },
+    {
+     "key": "B",
+     "text": "Preserve logs and investigate the scope of access used",
+     "correct": true,
+     "rationale": "Correct: preserving logs and scoping access supports a sound investigation."
+    },
+    {
+     "key": "C",
+     "text": "Delete all logs to reduce noise",
+     "correct": false,
+     "rationale": "Destroying logs cripples investigation and may violate policy."
+    },
+    {
+     "key": "D",
+     "text": "Ignore it unless a customer complains",
+     "correct": false,
+     "rationale": "Ignoring a suspected compromise is unsafe."
+    },
+    {
+     "key": "E",
+     "text": "Widen the credential's permissions to keep services running",
+     "correct": false,
+     "rationale": "Expanding a suspect credential's access worsens exposure."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: revoking/rotating compromised credentials contains the incident. Correct: preserving logs and scoping access supports a sound investigation.",
+   "outcome_refs": [
+    "MST-0210-D03.01"
+   ],
+   "domain_ref": "Detection, response and governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

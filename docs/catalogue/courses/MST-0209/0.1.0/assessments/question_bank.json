@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0209",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1044,
+  "lesson_check_items": 54,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0209-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants to release a new version with the ability to shift a small percentage of traffic first and roll back instantly if error rates rise. Which deployment strategy fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Canary deployment with automated rollback on alarms",
+     "correct": true,
+     "rationale": "Correct: canary shifts a small traffic share first and can roll back automatically on metric alarms."
+    },
+    {
+     "key": "B",
+     "text": "In-place deployment replacing all instances at once",
+     "correct": false,
+     "rationale": "All-at-once in-place deployment cannot limit blast radius or roll back gradually."
+    },
+    {
+     "key": "C",
+     "text": "Manual FTP upload to each server",
+     "correct": false,
+     "rationale": "Manual uploads provide no controlled rollout or rollback."
+    },
+    {
+     "key": "D",
+     "text": "Deploying only during a full maintenance outage",
+     "correct": false,
+     "rationale": "A full outage does not provide incremental traffic shifting."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: canary shifts a small traffic share first and can roll back automatically on metric alarms.",
+   "outcome_refs": [
+    "MST-0209-D01.01"
+   ],
+   "domain_ref": "CI/CD and software delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0209-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Infrastructure is managed as code, but an engineer makes a manual change in the console to fix an incident. What is the main ongoing risk if this is left unreconciled?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Configuration drift, so the code no longer reflects reality and future deploys may revert or conflict",
+     "correct": true,
+     "rationale": "Correct: unreconciled manual changes cause drift between code and actual state."
+    },
+    {
+     "key": "B",
+     "text": "No risk, because the console is authoritative",
+     "correct": false,
+     "rationale": "With IaC, the code is intended source of truth; drift is a real risk."
+    },
+    {
+     "key": "C",
+     "text": "The template is automatically updated to match",
+     "correct": false,
+     "rationale": "Manual console changes do not auto-update the template."
+    },
+    {
+     "key": "D",
+     "text": "It permanently disables the pipeline",
+     "correct": false,
+     "rationale": "Drift does not disable pipelines; it causes inconsistency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unreconciled manual changes cause drift between code and actual state.",
+   "outcome_refs": [
+    "MST-0209-D02.01"
+   ],
+   "domain_ref": "Infrastructure and configuration as code",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0209-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "To automate security and compliance across many AWS accounts, which TWO practices are most effective? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Applying preventive guardrails and policies centrally across accounts",
+     "correct": true,
+     "rationale": "Correct: centralized preventive guardrails enforce compliance across accounts."
+    },
+    {
+     "key": "B",
+     "text": "Automatically detecting non-compliant resources and triggering remediation",
+     "correct": true,
+     "rationale": "Correct: automated detection and remediation scales compliance."
+    },
+    {
+     "key": "C",
+     "text": "Emailing each team a PDF policy once a year",
+     "correct": false,
+     "rationale": "A yearly PDF is not automated enforcement."
+    },
+    {
+     "key": "D",
+     "text": "Giving every developer full administrator access for speed",
+     "correct": false,
+     "rationale": "Broad admin access weakens, not strengthens, security."
+    },
+    {
+     "key": "E",
+     "text": "Disabling logging to reduce noise",
+     "correct": false,
+     "rationale": "Disabling logging undermines compliance and detection."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: centralized preventive guardrails enforce compliance across accounts. Correct: automated detection and remediation scales compliance.",
+   "outcome_refs": [
+    "MST-0209-D03.01"
+   ],
+   "domain_ref": "Monitoring, resilience and security automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

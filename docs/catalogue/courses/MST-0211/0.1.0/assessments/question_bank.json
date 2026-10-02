@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0211",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1044,
+  "lesson_check_items": 54,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0211-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A company needs consistent, private, high-bandwidth connectivity between its data centre and AWS, independent of the public internet. Which option best meets this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A dedicated private network connection (Direct Connect-style)",
+     "correct": true,
+     "rationale": "Correct: a dedicated private connection provides consistent, private, high-bandwidth connectivity independent of the internet."
+    },
+    {
+     "key": "B",
+     "text": "A site-to-site VPN over the public internet only",
+     "correct": false,
+     "rationale": "A VPN over the internet cannot guarantee consistent bandwidth or avoid the public path."
+    },
+    {
+     "key": "C",
+     "text": "Public S3 access over HTTPS",
+     "correct": false,
+     "rationale": "This is object access, not private network connectivity."
+    },
+    {
+     "key": "D",
+     "text": "Emailing data between sites",
+     "correct": false,
+     "rationale": "Not a network connectivity solution."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a dedicated private connection provides consistent, private, high-bandwidth connectivity independent of the internet.",
+   "outcome_refs": [
+    "MST-0211-D01.01"
+   ],
+   "domain_ref": "VPC design and hybrid connectivity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0211-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two VPCs that must be connected were created with identical, overlapping CIDR ranges. What is the core problem for simple VPC peering?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Overlapping CIDRs create ambiguous routing, so standard peering cannot route between them",
+     "correct": true,
+     "rationale": "Correct: overlapping address ranges make routing ambiguous and break simple peering."
+    },
+    {
+     "key": "B",
+     "text": "Peering automatically renumbers one VPC",
+     "correct": false,
+     "rationale": "Peering does not renumber addresses."
+    },
+    {
+     "key": "C",
+     "text": "Overlap improves routing efficiency",
+     "correct": false,
+     "rationale": "Overlap breaks, not improves, routing."
+    },
+    {
+     "key": "D",
+     "text": "CIDR ranges are irrelevant to peering",
+     "correct": false,
+     "rationale": "Addressing is central to peering feasibility."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: overlapping address ranges make routing ambiguous and break simple peering.",
+   "outcome_refs": [
+    "MST-0211-D02.01"
+   ],
+   "domain_ref": "Routing, DNS and delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0211-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about AWS security groups versus network ACLs are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Security groups are stateful; return traffic is automatically allowed",
+     "correct": true,
+     "rationale": "Correct: security groups are stateful."
+    },
+    {
+     "key": "B",
+     "text": "Network ACLs are stateless and evaluate rules in order with explicit allow/deny",
+     "correct": true,
+     "rationale": "Correct: NACLs are stateless and process numbered rules."
+    },
+    {
+     "key": "C",
+     "text": "Security groups can explicitly deny specific traffic",
+     "correct": false,
+     "rationale": "Security groups only allow; they cannot explicitly deny."
+    },
+    {
+     "key": "D",
+     "text": "Network ACLs are stateful like security groups",
+     "correct": false,
+     "rationale": "NACLs are stateless, unlike security groups."
+    },
+    {
+     "key": "E",
+     "text": "Both operate only at the DNS layer",
+     "correct": false,
+     "rationale": "Neither operates at the DNS layer."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: security groups are stateful. Correct: NACLs are stateless and process numbered rules.",
+   "outcome_refs": [
+    "MST-0211-D03.01"
+   ],
+   "domain_ref": "Security, monitoring and troubleshooting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0113",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0113-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A claims audit shows visits billed at a higher-complexity code than the documentation supports. What is the primary compliance concern?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Upcoding: billing a level not supported by documentation",
+     "correct": true,
+     "rationale": "Correct: billing a higher level than documentation supports is upcoding, a core billing-integrity violation."
+    },
+    {
+     "key": "B",
+     "text": "Nothing, as long as the service was clinically appropriate",
+     "correct": false,
+     "rationale": "Clinical appropriateness does not justify billing an unsupported level."
+    },
+    {
+     "key": "C",
+     "text": "Undercoding that benefits the payer",
+     "correct": false,
+     "rationale": "The scenario is higher-than-supported coding, i.e., upcoding."
+    },
+    {
+     "key": "D",
+     "text": "A privacy violation",
+     "correct": false,
+     "rationale": "This is a billing-integrity issue, not primarily privacy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: billing a higher level than documentation supports is upcoding, a core billing-integrity violation.",
+   "outcome_refs": [
+    "MST-0113-D02.01"
+   ],
+   "domain_ref": "Fraud, waste, abuse and billing integrity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0113-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A laptop containing protected health information is lost. Before deciding whether to report, what should the compliance team do first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Perform a breach-risk assessment to determine the probability that PHI was compromised",
+     "correct": true,
+     "rationale": "Correct: a risk assessment determines whether the incident is a reportable breach."
+    },
+    {
+     "key": "B",
+     "text": "Immediately conclude it is not a breach because it was accidental",
+     "correct": false,
+     "rationale": "Intent does not resolve breach status; assessment is required."
+    },
+    {
+     "key": "C",
+     "text": "Report to every patient without any assessment",
+     "correct": false,
+     "rationale": "Notification follows the assessment and its conclusions."
+    },
+    {
+     "key": "D",
+     "text": "Delete the device remotely and record nothing",
+     "correct": false,
+     "rationale": "Failing to document and assess is itself non-compliant."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a risk assessment determines whether the incident is a reportable breach.",
+   "outcome_refs": [
+    "MST-0113-D03.01"
+   ],
+   "domain_ref": "Privacy, auditing and corrective action",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0113-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A referral arrangement pays a physician above fair market value for patients sent to the hospital's imaging centre. Which TWO legal concepts are most directly implicated? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Anti-kickback concerns over remuneration for referrals",
+     "correct": true,
+     "rationale": "Correct: paying for referrals implicates anti-kickback principles."
+    },
+    {
+     "key": "B",
+     "text": "Physician self-referral (Stark-type) restrictions on financial relationships",
+     "correct": true,
+     "rationale": "Correct: a financial relationship affecting referrals implicates self-referral rules."
+    },
+    {
+     "key": "C",
+     "text": "Trademark infringement",
+     "correct": false,
+     "rationale": "Trademark law is unrelated to the arrangement."
+    },
+    {
+     "key": "D",
+     "text": "Securities registration",
+     "correct": false,
+     "rationale": "No securities offering is involved."
+    },
+    {
+     "key": "E",
+     "text": "Export control",
+     "correct": false,
+     "rationale": "Export control is irrelevant to physician referrals."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: paying for referrals implicates anti-kickback principles. Correct: a financial relationship affecting referrals implicates self-referral rules.",
+   "outcome_refs": [
+    "MST-0113-D02.01"
+   ],
+   "domain_ref": "Fraud, waste, abuse and billing integrity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
