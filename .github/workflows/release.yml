@@ -1,6 +1,7 @@
 name: Release
 # On a version tag (v*): build and push the API and web images to GHCR, generate SBOMs, scan the images with Trivy
-# (fails on CRITICAL), and publish a GitHub release with the SBOMs and an example production compose file.
+# (fails on CRITICAL), sign the pushed images keylessly with cosign (Sigstore, GitHub OIDC) and attest their SBOMs,
+# and publish a GitHub release with the SBOMs and an example production compose file.
 # Deployment is a separate, manual job gated by the "production" environment (required reviewers are configured
 # on the environment in the repository settings). No secret values live in this file.
 on:
@@ -24,6 +25,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write # keyless cosign signing (Fulcio certificate from the GitHub OIDC token)
     strategy:
       fail-fast: true
       matrix:
@@ -83,6 +85,7 @@ jobs:
           name: sbom-${{ matrix.image }}
           path: sbom-${{ matrix.image }}.spdx.json
       - name: Push
+        id: push
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -91,6 +94,18 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha,scope=${{ matrix.image }}
+      - uses: sigstore/cosign-installer@v3
+      # Sign and attest by digest (never by a mutable tag). Keyless: the certificate identity is this workflow on this tag.
+      - name: Sign image and attest SBOM (cosign, keyless)
+        env:
+          IMAGE: ${{ steps.name.outputs.ref }}@${{ steps.push.outputs.digest }}
+          SBOM: sbom-${{ matrix.image }}.spdx.json
+        run: |
+          cosign sign --yes "$IMAGE"
+          cosign attest --yes --type spdxjson --predicate "$SBOM" "$IMAGE"
+          cosign verify "$IMAGE" \
+            --certificate-identity "https://github.com/${GITHUB_REPOSITORY}/.github/workflows/release.yml@${GITHUB_REF}" \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com > /dev/null
 
   release:
     name: GitHub release

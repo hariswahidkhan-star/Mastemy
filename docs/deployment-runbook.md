@@ -87,6 +87,25 @@ Probes: `/health/live` (liveness) and `/health/ready` (dependencies; 503 when Un
 
 `docs/openapi.json` is generated from the running API: run `scripts/export-openapi.sh` after any endpoint change and commit the result. CI runs `scripts/export-openapi.sh --check`.
 
+## Verifying release images (cosign)
+
+Release images are signed keylessly by `.github/workflows/release.yml` (Sigstore; the identity is the release workflow on
+the tag) and carry an SPDX SBOM attestation. Verify before deploying, by digest:
+
+```bash
+IMAGE=ghcr.io/<owner>/<repo>/api@sha256:<digest>   # also .../web; `docker buildx imagetools inspect <ref>:<tag>` shows the digest
+TAG=v1.2.3
+cosign verify "$IMAGE" \
+  --certificate-identity "https://github.com/<owner>/<repo>/.github/workflows/release.yml@refs/tags/$TAG" \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+cosign verify-attestation "$IMAGE" --type spdxjson \
+  --certificate-identity "https://github.com/<owner>/<repo>/.github/workflows/release.yml@refs/tags/$TAG" \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com | jq -r .payload | base64 -d | jq '.predicate.name'
+```
+
+Both commands must succeed; never deploy an image whose signature does not verify. Security alert rules for the running
+system are in [operations/alerts.md](operations/alerts.md).
+
 ## Rollback
 
 1. Stop traffic (or put the app in maintenance).
