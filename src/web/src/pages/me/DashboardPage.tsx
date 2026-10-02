@@ -15,6 +15,7 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
 import { CertificatesSection, MyOrganizationsSection } from './MeWave2';
+import { CertificateRequestsSection } from '../exams/CertificateRequests';
 
 interface OrderDto {
   id: string;
@@ -255,6 +256,7 @@ export function DashboardPage() {
                 </p>
               </section>
               <CertificatesSection />
+              <CertificateRequestsSection />
             </div>
             <OrdersSection />
             <section className="card">

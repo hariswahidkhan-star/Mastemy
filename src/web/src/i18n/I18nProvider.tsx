@@ -2,11 +2,17 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import type { ReactNode } from 'react';
 import en from './en.json';
 import ar from './ar.json';
+import examsEn from './exams.en.json';
+import examsAr from './exams.ar.json';
 
 export type Lang = 'en' | 'ar';
 type Dict = { [key: string]: string | Dict };
 
-const DICTS: Record<Lang, Dict> = { en: en as Dict, ar: ar as Dict };
+// Area dictionaries hold their own top-level namespace (e.g. "exams"), so a shallow merge is enough.
+const DICTS: Record<Lang, Dict> = {
+  en: { ...(en as Dict), ...(examsEn as Dict) },
+  ar: { ...(ar as Dict), ...(examsAr as Dict) },
+};
 const STORAGE_KEY = 'mastemy.lang';
 
 function lookup(dict: Dict, key: string): string | undefined {
