@@ -683,8 +683,24 @@ namespace Mastemy.Api.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<string>("CategoryIds")
+                        .IsRequired()
+                        .HasMaxLength(1024)
+                        .HasColumnType("varchar(1024)");
+
                     b.Property<Guid>("CourseId")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<int>("LessonCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
 
                     b.Property<string>("PayloadJson")
                         .IsRequired()
@@ -696,6 +712,24 @@ namespace Mastemy.Api.Data.Migrations
 
                     b.Property<Guid>("PublishedBy")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("SearchText")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Subtitle")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<int>("TotalDurationSeconds")
+                        .HasColumnType("int");
 
                     b.Property<int>("Version")
                         .HasColumnType("int");
@@ -783,6 +817,50 @@ namespace Mastemy.Api.Data.Migrations
                     b.HasIndex("CourseId", "CreatedAt");
 
                     b.ToTable("DiscussionThreads");
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Domain.EmailOutboxMessage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("Attempts")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("LastError")
+                        .HasMaxLength(512)
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("NextAttemptAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("SentAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<string>("ToAddress")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SentAt", "NextAttemptAt");
+
+                    b.ToTable("EmailOutbox");
                 });
 
             modelBuilder.Entity("Mastemy.Api.Domain.Enrollment", b =>
@@ -1349,6 +1427,63 @@ namespace Mastemy.Api.Data.Migrations
                     b.ToTable("OrganizationAssignments");
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Domain.OrganizationInvitation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("AcceptedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Department")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("InvitedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("NormalizedEmail")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("RevokedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TokenHash")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TokenHash")
+                        .IsUnique();
+
+                    b.HasIndex("OrganizationId", "NormalizedEmail");
+
+                    b.ToTable("OrganizationInvitations");
+                });
+
             modelBuilder.Entity("Mastemy.Api.Domain.OrganizationMember", b =>
                 {
                     b.Property<Guid>("OrganizationId")
@@ -1803,6 +1938,9 @@ namespace Mastemy.Api.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("FileName")
                         .IsRequired()
                         .HasMaxLength(512)
@@ -1848,6 +1986,29 @@ namespace Mastemy.Api.Data.Migrations
                     b.HasIndex("CourseId", "LessonId");
 
                     b.ToTable("ResourceFiles");
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Domain.SnapshotLesson", b =>
+                {
+                    b.Property<Guid>("LessonId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("SnapshotId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.HasKey("LessonId", "SnapshotId");
+
+                    b.HasIndex("SnapshotId");
+
+                    b.HasIndex("LessonId", "CourseId", "Version");
+
+                    b.ToTable("SnapshotLessons");
                 });
 
             modelBuilder.Entity("Mastemy.Api.Domain.User", b =>
@@ -2373,6 +2534,15 @@ namespace Mastemy.Api.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Domain.OrganizationInvitation", b =>
+                {
+                    b.HasOne("Mastemy.Api.Domain.Organization", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Mastemy.Api.Domain.OrganizationMember", b =>
                 {
                     b.HasOne("Mastemy.Api.Domain.Organization", null)
@@ -2456,6 +2626,15 @@ namespace Mastemy.Api.Data.Migrations
                     b.HasOne("Mastemy.Api.Domain.Course", null)
                         .WithMany()
                         .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Domain.SnapshotLesson", b =>
+                {
+                    b.HasOne("Mastemy.Api.Domain.CourseSnapshot", null)
+                        .WithMany()
+                        .HasForeignKey("SnapshotId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

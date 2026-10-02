@@ -584,8 +584,55 @@ public class CourseSnapshot
     public Guid CourseId { get; set; }
     public int Version { get; set; }
     public string PayloadJson { get; set; } = "";
+    // Denormalized card/search fields frozen at publish so public lists page in SQL without deserializing payloads.
+    public string Title { get; set; } = "";
+    public string Subtitle { get; set; } = "";
+    public CourseLevel Level { get; set; }
+    public string Language { get; set; } = "en";
+    public string CategoryIds { get; set; } = ""; // ",1,5," for LIKE matching
+    public int LessonCount { get; set; }
+    public int TotalDurationSeconds { get; set; }
+    public string SearchText { get; set; } = ""; // title + subtitle + description (FULLTEXT)
     public Guid PublishedBy { get; set; }
     public DateTime PublishedAt { get; set; } = DateTime.UtcNow;
+}
+
+/// <summary>Index of lesson ids per snapshot (fast lookup of the live snapshot that contains a lesson).</summary>
+public class SnapshotLesson
+{
+    public Guid LessonId { get; set; }
+    public Guid SnapshotId { get; set; }
+    public Guid CourseId { get; set; }
+    public int Version { get; set; }
+}
+
+public class EmailOutboxMessage
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public string ToAddress { get; set; } = "";
+    public string Subject { get; set; } = "";
+    public string Body { get; set; } = "";
+    public int Attempts { get; set; }
+    public string? LastError { get; set; }
+    public DateTime NextAttemptAt { get; set; } = DateTime.UtcNow;
+    public DateTime? SentAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class OrganizationInvitation
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid OrganizationId { get; set; }
+    public string Email { get; set; } = "";
+    public string NormalizedEmail { get; set; } = "";
+    public OrgRole Role { get; set; }
+    public string Department { get; set; } = "";
+    public string TokenHash { get; set; } = "";
+    public Guid InvitedBy { get; set; }
+    public DateTime ExpiresAt { get; set; }
+    public DateTime? AcceptedAt { get; set; }
+    public DateTime? RevokedAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
 
 public class WishlistItem
@@ -671,6 +718,7 @@ public class ResourceFile
     public string StorageKey { get; set; } = "";
     public bool IsPremium { get; set; }
     public int Version { get; set; } = 1;
+    public DateTime? DeletedAt { get; set; } // soft delete; purged after no published snapshot references it
     public Guid UploadedBy { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }

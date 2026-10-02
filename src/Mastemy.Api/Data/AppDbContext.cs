@@ -45,6 +45,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<PayoutBatch> PayoutBatches => Set<PayoutBatch>();
     public DbSet<CourseReview> CourseReviews => Set<CourseReview>();
     public DbSet<CourseSnapshot> CourseSnapshots => Set<CourseSnapshot>();
+    public DbSet<SnapshotLesson> SnapshotLessons => Set<SnapshotLesson>();
+    public DbSet<EmailOutboxMessage> EmailOutbox => Set<EmailOutboxMessage>();
+    public DbSet<OrganizationInvitation> OrganizationInvitations => Set<OrganizationInvitation>();
     public DbSet<WishlistItem> Wishlist => Set<WishlistItem>();
     public DbSet<RecentlyViewed> RecentlyViewed => Set<RecentlyViewed>();
     public DbSet<DiscussionThread> DiscussionThreads => Set<DiscussionThread>();
@@ -168,7 +171,16 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
         m.Entity<CourseSnapshot>().HasIndex(x => new { x.CourseId, x.Version }).IsUnique();
         m.Entity<CourseSnapshot>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);
-        Text<CourseSnapshot>(x => x.PayloadJson);
+        Text<CourseSnapshot>(x => x.PayloadJson, x => x.SearchText);
+        m.Entity<CourseSnapshot>().Property(x => x.CategoryIds).HasMaxLength(1024);
+        m.Entity<SnapshotLesson>().HasKey(x => new { x.LessonId, x.SnapshotId });
+        m.Entity<SnapshotLesson>().HasIndex(x => new { x.LessonId, x.CourseId, x.Version });
+        m.Entity<SnapshotLesson>().HasOne<CourseSnapshot>().WithMany().HasForeignKey(x => x.SnapshotId);
+        Text<EmailOutboxMessage>(x => x.Body, x => x.LastError);
+        m.Entity<EmailOutboxMessage>().HasIndex(x => new { x.SentAt, x.NextAttemptAt });
+        m.Entity<OrganizationInvitation>().HasIndex(x => x.TokenHash).IsUnique();
+        m.Entity<OrganizationInvitation>().HasIndex(x => new { x.OrganizationId, x.NormalizedEmail });
+        m.Entity<OrganizationInvitation>().HasOne<Organization>().WithMany().HasForeignKey(x => x.OrganizationId);
         m.Entity<WishlistItem>().HasKey(x => new { x.UserId, x.CourseId });
         m.Entity<WishlistItem>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);
         m.Entity<RecentlyViewed>().HasKey(x => new { x.UserId, x.CourseId });
