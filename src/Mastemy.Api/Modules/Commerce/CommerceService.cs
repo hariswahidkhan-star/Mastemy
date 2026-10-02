@@ -12,8 +12,12 @@ public record PackageInput(string Title, string Contents, decimal Price, string 
 public record PackageDto(Guid Id, Guid CourseId, string Title, string Contents, decimal Price, string Currency, int AccessDays,
     bool IsActive, string ApprovalStatus, DateTime CreatedAt, string? CourseTitle = null);
 public record DecisionInput(string Decision, string? Notes);
-public record CheckoutInput(Guid PackageId, string IdempotencyKey);
-public record CheckoutResponse(Guid OrderId, string CheckoutUrl);
+public record GiftInput(string? RecipientEmail, string? Message);
+public record CheckoutInput(Guid? PackageId, string IdempotencyKey, Guid? BundleId = null, string? CouponCode = null, string? ReferralCode = null,
+    Guid? AffiliateClickId = null, string? Currency = null, string? Country = null, string? BillingName = null, GiftInput? Gift = null);
+/// <summary>CheckoutUrl is null when the order needed no payment (100% scholarship) and was fulfilled immediately (Status "Paid").</summary>
+public record CheckoutResponse(Guid OrderId, string? CheckoutUrl, string Status = "Pending", decimal Amount = 0, string Currency = "",
+    decimal ListAmount = 0, decimal Discount = 0, string PriceSource = "Base", decimal? CompareAtAmount = null, DateTime? OfferEndsAt = null);
 public record OrderItemDto(Guid PackageId, Guid CourseId, string PackageTitle, string CourseTitle, decimal UnitPrice);
 public record OrderDto(Guid Id, string Status, decimal Total, string Currency, DateTime CreatedAt, DateTime? PaidAt,
     List<OrderItemDto> Items, string? RefundStatus, bool RefundEligible);
@@ -31,7 +35,8 @@ public record PayoutBatchDto(Guid Id, string Status, Guid CreatedBy, Guid? Appro
 public record WebhookResult(string Status, string? Detail = null);
 
 public class CommerceService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit,
-    IPaymentProvider provider, IConfiguration cfg, ILogger<CommerceService> log)
+    IPaymentProvider provider, ILogger<CommerceService> log, PricingService pricing, FulfillmentService fulfillment,
+    FinanceService finance, SubscriptionService subscriptions, Mastemy.Api.Modules.Authoring.CourseScopeService scope)
 {
     // ===================== Packages =====================
 
@@ -52,7 +57,7 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
     public async Task<PackageDto> ProposePackage(Guid courseId, PackageInput input)
     {
         if (!await db.Courses.AnyAsync(c => c.Id == courseId)) throw AppException.NotFound("Course");
-        await access.RequireCourseEditor(courseId);
+        await scope.RequireCourseManager(courseId); // Editors cannot set prices
         var title = (input.Title ?? "").Trim();
         var contents = (input.Contents ?? "").Trim();
         var currency = (input.Currency ?? "").Trim();
@@ -103,10 +108,13 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
             case "Approve":
                 if (MentionsVideoAccess(p.Title) || MentionsVideoAccess(p.Contents))
                     throw AppException.Bad("Package advertises video access and cannot be approved.", "package_sells_video_access");
-                p.ApprovalStatus = "Approved"; p.IsActive = true; break;
+                p.ApprovalStatus = "Approved"; p.IsActive = true;
+                await pricing.RecordBasePriceApproved(p); break;
             case "Reject":
+                if (p.IsActive) await pricing.RecordBasePriceWithdrawn(p);
                 p.ApprovalStatus = "Rejected"; p.IsActive = false; break;
             case "Deactivate":
+                if (p.IsActive) await pricing.RecordBasePriceWithdrawn(p);
                 p.IsActive = false; break;
             default: throw AppException.Bad("Decision must be Approve, Reject or Deactivate.");
         }
@@ -122,28 +130,44 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         var uid = me.RequireId();
         var key = (input.IdempotencyKey ?? "").Trim();
         if (key.Length is < 8 or > 128) throw AppException.Bad("idempotencyKey must be 8-128 characters.");
-        if (!provider.IsConfigured) throw new AppException(503, "Payments are not configured on this server.", "payments_not_configured");
 
         var existing = await db.Orders.Include(o => o.Items).FirstOrDefaultAsync(o => o.UserId == uid && o.IdempotencyKey == key);
-        if (existing is not null)
-        {
-            if (existing.Items.All(i => i.PackageId != input.PackageId))
-                throw AppException.Conflict("This idempotency key was already used for a different package.", "idempotency_key_reused");
-            if (existing.Status != OrderStatus.Pending) throw AppException.Conflict($"Order is already {existing.Status}.", "order_not_pending");
-            return await EnsureSession(existing);
-        }
+        if (existing is not null) return await Resume(existing, input);
 
-        var pkg = await db.Packages.AsNoTracking().FirstOrDefaultAsync(p => p.Id == input.PackageId) ?? throw AppException.NotFound("Package");
-        if (!pkg.IsActive || pkg.ApprovalStatus != "Approved") throw AppException.Bad("Package is not available for purchase.", "package_unavailable");
-        var course = await db.Courses.AsNoTracking().FirstOrDefaultAsync(c => c.Id == pkg.CourseId) ?? throw AppException.NotFound("Course");
-        if (!AccessService.IsLive(course)) throw AppException.Bad("Course is not available.", "course_unavailable");
+        var gift = input.Gift is not null;
+        string? recipient = null, message = null;
+        if (gift)
+        {
+            recipient = string.IsNullOrWhiteSpace(input.Gift!.RecipientEmail) ? null : input.Gift.RecipientEmail.Trim();
+            if (recipient is not null && (recipient.Length > 255 || !Regex.IsMatch(recipient, @"^[^@\s]+@[^@\s]+\.[^@\s]+$")))
+                throw AppException.Bad("Gift recipient email is not valid.");
+            message = input.Gift.Message?.Trim();
+            if (message is { Length: > 500 }) throw AppException.Bad("Gift message must be at most 500 characters.");
+        }
+        var billingName = input.BillingName?.Trim();
+        if (billingName is { Length: > 200 }) throw AppException.Bad("Billing name must be at most 200 characters.");
+
+        var q = await pricing.BuildQuote(uid, new QuoteInput(input.PackageId, input.BundleId, input.CouponCode, input.ReferralCode, input.AffiliateClickId,
+            input.Currency, input.Country, gift), null);
+        if (q.Amount > 0 && !provider.IsConfigured) throw new AppException(503, "Payments are not configured on this server.", "payments_not_configured");
+        if (q.Amount > 0) Money.ToMinor(q.Amount, q.Currency);
 
         var order = new Order
         {
-            UserId = uid, Status = OrderStatus.Pending, Total = pkg.Price, Currency = pkg.Currency, IdempotencyKey = key,
-            Items = [new OrderItem { PackageId = pkg.Id, CourseId = pkg.CourseId, UnitPrice = pkg.Price }],
+            UserId = uid, Status = OrderStatus.Pending, Total = q.Amount, Currency = q.Currency, IdempotencyKey = key,
+            Items = q.Items.Select(i => new OrderItem { PackageId = i.PackageId, CourseId = i.CourseId, UnitPrice = i.UnitPrice }).ToList(),
         };
+        var detail = new OrderDetail
+        {
+            OrderId = order.Id, Kind = q.Kind, Fingerprint = q.Fingerprint + (gift ? "|gift:" + (recipient ?? "").ToUpperInvariant() : ""),
+            ListAmount = q.ListAmount, DiscountAmount = q.Discount, PriceSource = q.PriceSource, CouponId = q.CouponId, PromotionId = q.PromotionId,
+            BundleId = q.BundleId, ReferralCodeId = q.ReferralCodeId, ReferrerInstructorId = q.ReferrerInstructorId, AffiliateId = q.AffiliateId,
+            Country = q.Country, BillingName = string.IsNullOrEmpty(billingName) ? null : billingName, GiftRecipientEmail = recipient, GiftMessage = message,
+        };
+        if (detail.Fingerprint.Length > 255) detail.Fingerprint = detail.Fingerprint[..255];
         db.Orders.Add(order);
+        db.Set<OrderDetail>().Add(detail);
+        audit.Record("order.created", nameof(Order), order.Id, new { q.Kind, q.Amount, q.Currency, q.ListAmount, q.PriceSource, q.CouponId, q.PromotionId, q.BundleId, q.ReferralCodeId, q.AffiliateId });
         try { await db.SaveChangesAsync(); }
         catch (DbUpdateException ex)
         {
@@ -151,11 +175,45 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
             db.ChangeTracker.Clear();
             var winner = await db.Orders.Include(o => o.Items).FirstOrDefaultAsync(o => o.UserId == uid && o.IdempotencyKey == key);
             if (winner is null) throw new InvalidOperationException("Order could not be created.", ex);
-            if (winner.Items.All(i => i.PackageId != input.PackageId))
-                throw AppException.Conflict("This idempotency key was already used for a different package.", "idempotency_key_reused");
-            return await EnsureSession(winner);
+            return await Resume(winner, input);
         }
-        return await EnsureSession(order);
+        if (q.Amount == 0) return await FulfillFree(order, detail, q);
+        var res = await EnsureSession(order);
+        return res with { Amount = q.Amount, Currency = q.Currency, ListAmount = q.ListAmount, Discount = q.Discount, PriceSource = q.PriceSource,
+            CompareAtAmount = q.CompareAtAmount, OfferEndsAt = q.OfferEndsAt };
+    }
+
+    private async Task<CheckoutResponse> Resume(Order existing, CheckoutInput input)
+    {
+        var detail = await db.Set<OrderDetail>().AsNoTracking().FirstOrDefaultAsync(d => d.OrderId == existing.Id);
+        var sameTarget = detail is null
+            ? existing.Items.Any(i => i.PackageId == input.PackageId)
+            : (detail.BundleId is not null ? detail.BundleId == input.BundleId : input.BundleId is null && existing.Items.Any(i => i.PackageId == input.PackageId))
+              && (detail.Kind == "Gift") == (input.Gift is not null);
+        if (!sameTarget) throw AppException.Conflict("This idempotency key was already used for a different purchase.", "idempotency_key_reused");
+        if (existing.Status == OrderStatus.Paid && existing.Total == 0) return new CheckoutResponse(existing.Id, null, "Paid", 0, existing.Currency);
+        if (existing.Status != OrderStatus.Pending) throw AppException.Conflict($"Order is already {existing.Status}.", "order_not_pending");
+        if (!provider.IsConfigured) throw new AppException(503, "Payments are not configured on this server.", "payments_not_configured");
+        var res = await EnsureSession(existing);
+        return res with { Amount = existing.Total, Currency = existing.Currency, ListAmount = detail?.ListAmount ?? existing.Total,
+            Discount = detail?.DiscountAmount ?? 0, PriceSource = detail?.PriceSource ?? "Base" };
+    }
+
+    /// <summary>Zero-amount orders (100% scholarship codes) need no payment provider: fulfilled immediately and audited.</summary>
+    private async Task<CheckoutResponse> FulfillFree(Order order, OrderDetail detail, Quote q)
+    {
+        await using var tx = await db.Database.BeginTransactionAsync();
+        var now = DateTime.UtcNow;
+        var claimed = await db.Orders.Where(o => o.Id == order.Id && o.Status == OrderStatus.Pending)
+            .ExecuteUpdateAsync(s => s.SetProperty(o => o.Status, OrderStatus.Paid).SetProperty(o => o.PaidAt, (DateTime?)now));
+        if (claimed != 1) throw AppException.Conflict("Order is no longer pending.", "order_not_pending");
+        order.Status = OrderStatus.Paid; order.PaidAt = now;
+        db.Entry(order).State = EntityState.Unchanged;
+        await fulfillment.FulfillPaidOrder(order, detail, now);
+        audit.Record("order.paid", nameof(Order), order.Id, new { free = true, q.CouponId });
+        await db.SaveChangesAsync();
+        await tx.CommitAsync();
+        return new CheckoutResponse(order.Id, null, "Paid", 0, q.Currency, q.ListAmount, q.Discount, q.PriceSource);
     }
 
     private async Task<CheckoutResponse> EnsureSession(Order order)
@@ -167,10 +225,18 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
                 throw AppException.Conflict("The checkout session has expired. Start a new checkout with a new idempotency key.", "checkout_session_expired");
             return new CheckoutResponse(order.Id, s.Url);
         }
-        var item = order.Items.First();
-        var pkgTitle = await db.Packages.Where(p => p.Id == item.PackageId).Select(p => p.Title).FirstAsync();
+        var detail = await db.Set<OrderDetail>().AsNoTracking().FirstOrDefaultAsync(d => d.OrderId == order.Id);
+        string productName;
+        if (detail?.BundleId is { } bundleId)
+            productName = "Bundle: " + await db.Set<Bundle>().Where(b => b.Id == bundleId).Select(b => b.Title).FirstAsync();
+        else
+        {
+            var item = order.Items.First();
+            productName = await db.Packages.Where(p => p.Id == item.PackageId).Select(p => p.Title).FirstAsync();
+            if (detail?.Kind == "Gift") productName = "Gift: " + productName;
+        }
         var email = await db.Users.Where(u => u.Id == order.UserId).Select(u => u.Email).FirstOrDefaultAsync();
-        var session = await provider.CreateCheckoutSession(new CheckoutSessionRequest(order.Id, order.UserId, pkgTitle,
+        var session = await provider.CreateCheckoutSession(new CheckoutSessionRequest(order.Id, order.UserId, productName,
             Money.ToMinor(order.Total, order.Currency), order.Currency, email));
         if (string.IsNullOrEmpty(session.Url)) throw new AppException(502, "Payment provider returned no checkout URL.", "payment_provider_error");
         order.ProviderSessionId = session.SessionId;
@@ -200,9 +266,19 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         WebhookResult result;
         try
         {
+            var obj = root.TryGetProperty("data", out var data) && data.TryGetProperty("object", out var o) ? o : default;
+            var isSubscriptionCheckout = obj.ValueKind == JsonValueKind.Object && (Str(obj, "mode") == "subscription"
+                || (obj.TryGetProperty("metadata", out var md0) && Str(md0, "subscription_id") is not null));
             result = type switch
             {
+                "checkout.session.completed" or "checkout.session.async_payment_succeeded" when isSubscriptionCheckout => await subscriptions.OnCheckoutCompleted(obj, eventId),
                 "checkout.session.completed" or "checkout.session.async_payment_succeeded" => await OnCheckoutCompleted(root, eventId),
+                "customer.subscription.created" or "customer.subscription.updated" or "customer.subscription.deleted" => await subscriptions.OnSubscriptionChanged(RequireObject(obj), type, eventId),
+                "invoice.paid" => await subscriptions.OnInvoicePaid(RequireObject(obj), eventId),
+                "invoice.payment_failed" => await subscriptions.OnInvoicePaymentFailed(RequireObject(obj), eventId),
+                "charge.dispute.created" => await finance.OnDisputeCreated(RequireObject(obj), eventId),
+                "charge.dispute.closed" => await finance.OnDisputeClosed(RequireObject(obj), eventId),
+                "charge.dispute.updated" => Audited(eventId, type, "dispute_event_recorded"),
                 // Refunds are initiated through the Finance approval flow; provider-side refund events are recorded only.
                 "charge.refunded" or "refund.created" or "refund.updated" => Audited(eventId, type, "refund_event_recorded"),
                 _ => new WebhookResult("ignored", type),
@@ -221,6 +297,9 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         }
         return result;
     }
+
+    private static JsonElement RequireObject(JsonElement obj) =>
+        obj.ValueKind == JsonValueKind.Object ? obj : throw AppException.Bad("Webhook payload has no data.object.");
 
     private WebhookResult Audited(string eventId, string type, string status)
     {
@@ -262,20 +341,8 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         order.ProviderSessionId ??= sessionId;
         db.Payments.Add(new Payment { OrderId = order.Id, Provider = provider.Name, ProviderPaymentId = paymentIntent, Amount = order.Total, Currency = order.Currency });
 
-        var poolPercent = Math.Clamp(cfg.GetValue("Commission:InstructorSharePercent", 70m), 0m, 100m);
-        foreach (var item in order.Items)
-        {
-            var pkg = await db.Packages.AsNoTracking().FirstAsync(p => p.Id == item.PackageId);
-            db.Entitlements.Add(new Entitlement
-            {
-                UserId = order.UserId, CourseId = item.CourseId, PackageId = item.PackageId, OrderId = order.Id,
-                Source = EntitlementSource.Purchase, StartsAt = now, EndsAt = now.AddDays(pkg.AccessDays),
-            });
-            var instructors = await db.CourseInstructors.AsNoTracking().Where(ci => ci.CourseId == item.CourseId)
-                .OrderBy(ci => ci.Role).ThenBy(ci => ci.UserId).ToListAsync();
-            foreach (var e in CommissionSplit.Compute(order.Id, item.CourseId, item.UnitPrice, order.Currency, poolPercent, instructors))
-                db.CommissionLedger.Add(e);
-        }
+        var detail = await db.Set<OrderDetail>().FirstOrDefaultAsync(d => d.OrderId == order.Id);
+        await fulfillment.FulfillPaidOrder(order, detail, now);
         audit.Record("order.paid", nameof(Order), order.Id, new { eventId, paymentIntent, order.Total, order.Currency });
         return new WebhookResult("paid");
     }
@@ -289,7 +356,7 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
 
     // ===================== Orders & refunds =====================
 
-    private int RefundWindowDays => Math.Max(0, cfg.GetValue("Commerce:RefundWindowDays", 30));
+    private int RefundWindowDays => finance.RefundWindowDays;
 
     public async Task<List<OrderDto>> MyOrders()
     {
@@ -316,12 +383,18 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         var reason = (input.Reason ?? "").Trim();
         if (reason.Length is < 3 or > 500) throw AppException.Bad("Reason must be 3-500 characters.");
         var order = await db.Orders.FirstOrDefaultAsync(o => o.Id == orderId && o.UserId == uid) ?? throw AppException.NotFound("Order");
-        if (order.Status != OrderStatus.Paid || order.PaidAt is null) throw AppException.Bad("Only paid orders can be refunded.", "order_not_paid");
+        if (order.Status is not (OrderStatus.Paid or OrderStatus.PartiallyRefunded) || order.PaidAt is null) throw AppException.Bad("Only paid orders can be refunded.", "order_not_paid");
+        var detail = await db.Set<OrderDetail>().AsNoTracking().FirstOrDefaultAsync(d => d.OrderId == orderId);
+        if (detail?.Kind == "SubscriptionInvoice") throw AppException.Bad("Subscription payments are not refundable through this form; cancel the subscription instead.", "subscription_refund_not_supported");
+        var remaining = order.Total - (detail?.RefundedAmount ?? 0);
+        if (remaining <= 0) throw AppException.Bad("Nothing left to refund on this order.", "nothing_to_refund");
+        if (await db.Set<GiftCode>().AnyAsync(g => g.OrderId == orderId && g.Status == "Redeemed"))
+            throw AppException.Conflict("The gift has already been redeemed and can no longer be refunded.", "gift_already_redeemed");
         if (order.PaidAt.Value.AddDays(RefundWindowDays) < DateTime.UtcNow)
             throw AppException.Bad($"The refund window of {RefundWindowDays} days has passed.", "refund_window_expired");
         if (await db.Refunds.AnyAsync(r => r.OrderId == orderId && (r.Status == "Requested" || r.Status == "Processing" || r.Status == "Completed")))
             throw AppException.Conflict("A refund request already exists for this order.", "refund_already_requested");
-        var r = new Refund { OrderId = orderId, Amount = order.Total, Reason = reason, Status = "Requested", RequestedBy = uid };
+        var r = new Refund { OrderId = orderId, Amount = remaining, Reason = reason, Status = "Requested", RequestedBy = uid };
         db.Refunds.Add(r);
         audit.Record("refund.requested", nameof(Refund), r.Id, new { orderId, reason });
         await db.SaveChangesAsync();
@@ -364,76 +437,23 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
             return ToRefundDto(r, order);
         }
 
-        ProviderRefundResult pr;
         try
         {
-            if (order.Status != OrderStatus.Paid) throw AppException.Conflict("Order is not in a refundable state.", "order_not_paid");
-            var payment = await db.Payments.AsNoTracking().Where(p => p.OrderId == order.Id).OrderBy(p => p.CreatedAt).FirstOrDefaultAsync()
-                          ?? throw AppException.Conflict("No captured payment found for this order.", "payment_missing");
-            // Provider first: never mark a refund complete unless the provider accepted it (provider call is idempotent per order).
-            pr = await provider.RefundPayment(payment.ProviderPaymentId, Money.ToMinor(r.Amount, order.Currency), order.Id);
+            await finance.ExecuteRefund(r, order, true, input.Notes);
         }
         catch
         {
             // Release the claim so the refund can be decided again.
+            db.ChangeTracker.Clear();
             await db.Refunds.Where(x => x.Id == refundId && x.Status == "Processing")
                 .ExecuteUpdateAsync(s => s.SetProperty(x => x.Status, "Requested").SetProperty(x => x.DecidedBy, (Guid?)null).SetProperty(x => x.DecidedAt, (DateTime?)null));
             throw;
         }
-
-        await using var tx = await db.Database.BeginTransactionAsync();
-        r.Status = "Completed";
-        r.ProviderRefundId = pr.RefundId;
-        order.Status = OrderStatus.Refunded;
-        // Revoke ONLY entitlements created by this order; Organization/Grant/other-order entitlements are untouched.
-        var ents = await db.Entitlements.Where(e => e.OrderId == order.Id && e.RevokedAt == null).ToListAsync();
-        foreach (var e in ents) e.RevokedAt = now;
-        var sales = await db.CommissionLedger.AsNoTracking().Where(c => c.OrderId == order.Id && c.Kind == "Sale").ToListAsync();
-        var reversed = await db.CommissionLedger.AsNoTracking().Where(c => c.OrderId == order.Id && c.Kind == "RefundReversal").Select(c => c.InstructorId).ToListAsync();
-        foreach (var s in sales.Where(s => !reversed.Contains(s.InstructorId)).GroupBy(s => s.InstructorId).Select(g => g.First()))
-            db.CommissionLedger.Add(new CommissionLedgerEntry
-            {
-                InstructorId = s.InstructorId, OrderId = s.OrderId, CourseId = s.CourseId, Kind = "RefundReversal",
-                GrossAmount = -s.GrossAmount, InstructorAmount = -s.InstructorAmount, PlatformAmount = -s.PlatformAmount, Currency = s.Currency,
-            });
-        var revokedCerts = await RevokePremiumCertificates(order, now);
-        audit.Record("refund.approved", nameof(Refund), r.Id, new { r.OrderId, pr.RefundId, revokedEntitlements = ents.Select(e => e.Id), revokedCertificates = revokedCerts, input.Notes });
-        await db.SaveChangesAsync();
-        await tx.CommitAsync();
         return ToRefundDto(r, order);
     }
 
     private static RefundDto ToRefundDto(Refund r, Order order) =>
         new(r.Id, r.OrderId, order.UserId, r.Amount, order.Currency, r.Reason, r.Status, r.ProviderRefundId, r.CreatedAt);
-
-    /// <summary>
-    /// A certificate earned through a premium (paid) assessment depends on the refunded purchase: revoke it unless the user
-    /// still holds another active entitlement for the course (e.g. organization grant or another order).
-    /// </summary>
-    private async Task<List<Guid>> RevokePremiumCertificates(Order order, DateTime now)
-    {
-        var courseIds = await db.OrderItems.AsNoTracking().Where(i => i.OrderId == order.Id).Select(i => i.CourseId).Distinct().ToListAsync();
-        var revoked = new List<Guid>();
-        foreach (var courseId in courseIds)
-        {
-            var stillEntitled = await db.Entitlements.AnyAsync(e => e.UserId == order.UserId && e.CourseId == courseId && e.OrderId != order.Id
-                && e.RevokedAt == null && e.StartsAt <= now && (e.EndsAt == null || e.EndsAt > now));
-            if (stillEntitled) continue;
-            var certs = await (from c in db.Certificates
-                               join at in db.Attempts on c.AttemptId equals at.Id
-                               join a in db.Assessments on at.AssessmentId equals a.Id
-                               where c.UserId == order.UserId && c.CourseId == courseId && c.Status == CertificateStatus.Valid && a.IsPremium
-                               select c).ToListAsync();
-            foreach (var c in certs)
-            {
-                c.Status = CertificateStatus.Revoked;
-                c.RevocationReason = "Refunded purchase: certificate was earned through premium assessment access.";
-                audit.Record("certificate.revoked", nameof(Certificate), c.Id, new { reason = "refund", order.Id, courseId });
-                revoked.Add(c.Id);
-            }
-        }
-        return revoked;
-    }
 
     // ===================== Earnings & payouts =====================
 
@@ -467,7 +487,7 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         db.PayoutBatches.Add(batch);
         await db.SaveChangesAsync();
         // Atomic claim: only entries not already in a batch are moved (safe under concurrent batch creation).
-        var claimed = await db.CommissionLedger.Where(e => e.PayoutBatchId == null).ExecuteUpdateAsync(s => s.SetProperty(e => e.PayoutBatchId, batch.Id));
+        var claimed = await db.CommissionLedger.Where(e => e.PayoutBatchId == null && !db.Set<PayoutRequestEntry>().Any(r => r.LedgerEntryId == e.Id)).ExecuteUpdateAsync(s => s.SetProperty(e => e.PayoutBatchId, batch.Id));
         if (claimed == 0)
         {
             await tx.RollbackAsync();

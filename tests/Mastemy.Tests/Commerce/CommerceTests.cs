@@ -98,7 +98,7 @@ public class CommerceTests(CommerceFixture fx) : IClassFixture<CommerceFixture>
         Assert.InRange((ent.EndsAt!.Value - ent.StartsAt).TotalDays, 89.99, 90.01);
         Assert.True(await fx.Db(d => d.Payments.AnyAsync(p => p.OrderId == orderId && p.ProviderPaymentId == "pi_" + orderId.ToString("N"))));
 
-        var ledger = await fx.Db(d => d.CommissionLedger.Where(c => c.OrderId == orderId).ToListAsync());
+        var ledger = await fx.LedgerForOrder(orderId);
         Assert.Equal(2, ledger.Count);
         // pool = 49.99 * 70% = 34.993 -> owner 60% = 20.9958 -> 20.99 ; co 40% = 13.9972 -> 13.99
         Assert.Equal(20.99m, ledger.Single(l => l.InstructorId == seed.Owner.Id).InstructorAmount);
@@ -167,7 +167,7 @@ public class CommerceTests(CommerceFixture fx) : IClassFixture<CommerceFixture>
         Assert.Equal(OrderStatus.Refunded, await fx.Db(d => d.Orders.Where(o => o.Id == orderId).Select(o => o.Status).FirstAsync()));
         Assert.NotNull(await fx.Db(d => d.Entitlements.Where(e => e.OrderId == orderId).Select(e => e.RevokedAt).FirstAsync()));
         Assert.Null(await fx.Db(d => d.Entitlements.Where(e => e.Id == orgEnt.Id).Select(e => e.RevokedAt).FirstAsync()));
-        var ledger = await fx.Db(d => d.CommissionLedger.Where(c => c.OrderId == orderId).ToListAsync());
+        var ledger = await fx.LedgerForOrder(orderId);
         Assert.Equal(2, ledger.Count(l => l.Kind == "RefundReversal"));
         Assert.Equal(0m, ledger.Sum(l => l.InstructorAmount));
         Assert.Equal(0m, ledger.Sum(l => l.PlatformAmount));

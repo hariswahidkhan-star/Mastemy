@@ -7,7 +7,14 @@ using Mastemy.Api.Infrastructure;
 
 namespace Mastemy.Api.Modules.Commerce;
 
-public record CheckoutSessionRequest(Guid OrderId, Guid UserId, string ProductName, long UnitAmountMinor, string Currency, string? CustomerEmail);
+public record CheckoutSessionRequest(Guid OrderId, Guid UserId, string ProductName, long UnitAmountMinor, string Currency, string? CustomerEmail)
+{
+    /// <summary>"payment" (one-off order) or "subscription" (OrderId is then the local Subscription id).</summary>
+    public string Mode { get; init; } = "payment";
+    /// <summary>month or year, required for subscription mode.</summary>
+    public string? RecurringInterval { get; init; }
+}
+public record ProviderSubscriptionResult(string SubscriptionId, bool CancelAtPeriodEnd, string Status);
 public record CheckoutSessionResult(string SessionId, string? Url);
 public record ProviderRefundResult(string RefundId, string Status);
 
@@ -19,7 +26,10 @@ public interface IPaymentProvider
     bool IsWebhookConfigured { get; }
     Task<CheckoutSessionResult> CreateCheckoutSession(CheckoutSessionRequest req, CancellationToken ct = default);
     Task<CheckoutSessionResult> GetCheckoutSession(string sessionId, CancellationToken ct = default);
-    Task<ProviderRefundResult> RefundPayment(string providerPaymentId, long amountMinor, Guid orderId, CancellationToken ct = default);
+    /// <summary>Refunds (part of) a captured payment. The idempotency key must be unique per local refund record.</summary>
+    Task<ProviderRefundResult> RefundPayment(string providerPaymentId, long amountMinor, Guid orderId, string idempotencyKey, CancellationToken ct = default);
+    /// <summary>Sets cancel_at_period_end on a provider subscription.</summary>
+    Task<ProviderSubscriptionResult> SetCancelAtPeriodEnd(string providerSubscriptionId, bool cancel, CancellationToken ct = default);
     /// <summary>Verifies a webhook signature over the exact raw request body.</summary>
     bool VerifyWebhookSignature(byte[] rawBody, string? signatureHeader, DateTimeOffset now);
 }
@@ -40,6 +50,16 @@ public static class Money
     }
 
     public static decimal FromMinor(long minor, string currency) => IsZeroDecimal(currency) ? minor : minor / 100m;
+
+    public static int Decimals(string currency) => IsZeroDecimal(currency) ? 0 : 2;
+
+    /// <summary>Rounds half away from zero to the currency's minor unit.</summary>
+    public static decimal Round(decimal amount, string currency) => Math.Round(amount, Decimals(currency), MidpointRounding.AwayFromZero);
+
+    /// <summary>Truncates toward zero to the currency's minor unit (used for payee shares; remainders go to the platform).</summary>
+    public static decimal Floor(decimal amount, string currency) => Math.Round(amount, Decimals(currency), MidpointRounding.ToZero);
+
+    public static bool IsValidAmount(decimal amount, string currency) => Round(amount, currency) == amount;
 }
 
 /// <summary>
@@ -95,21 +115,32 @@ public class StripePaymentProvider(IHttpClientFactory httpFactory, IConfiguratio
     {
         EnsureConfigured();
         var oid = r.OrderId.ToString();
+        var subscription = r.Mode == "subscription";
+        if (subscription && r.RecurringInterval is not ("month" or "year")) throw new ArgumentException("Recurring interval must be month or year.");
         var form = new List<KeyValuePair<string, string>>
         {
-            new("mode", "payment"),
+            new("mode", subscription ? "subscription" : "payment"),
             new("success_url", cfg["Stripe:SuccessUrl"] is { Length: > 0 } s ? s : "http://localhost:5173/me?checkout=success"),
             new("cancel_url", cfg["Stripe:CancelUrl"] is { Length: > 0 } c ? c : "http://localhost:5173/me?checkout=cancel"),
             new("client_reference_id", oid),
-            new("metadata[order_id]", oid),
-            new("payment_intent_data[metadata][order_id]", oid),
             new("line_items[0][quantity]", "1"),
             new("line_items[0][price_data][currency]", r.Currency.ToLowerInvariant()),
             new("line_items[0][price_data][unit_amount]", r.UnitAmountMinor.ToString(CultureInfo.InvariantCulture)),
             new("line_items[0][price_data][product_data][name]", r.ProductName),
         };
+        if (subscription)
+        {
+            form.Add(new("metadata[subscription_id]", oid));
+            form.Add(new("subscription_data[metadata][subscription_id]", oid));
+            form.Add(new("line_items[0][price_data][recurring][interval]", r.RecurringInterval!));
+        }
+        else
+        {
+            form.Add(new("metadata[order_id]", oid));
+            form.Add(new("payment_intent_data[metadata][order_id]", oid));
+        }
         if (!string.IsNullOrWhiteSpace(r.CustomerEmail)) form.Add(new("customer_email", r.CustomerEmail));
-        return Parse(await Send(Req(HttpMethod.Post, "/v1/checkout/sessions", form, "checkout-" + oid), ct));
+        return Parse(await Send(Req(HttpMethod.Post, "/v1/checkout/sessions", form, (subscription ? "sub-checkout-" : "checkout-") + oid), ct));
     }
 
     public async Task<CheckoutSessionResult> GetCheckoutSession(string sessionId, CancellationToken ct = default)
@@ -126,7 +157,7 @@ public class StripePaymentProvider(IHttpClientFactory httpFactory, IConfiguratio
         return new CheckoutSessionResult(id, url);
     }
 
-    public async Task<ProviderRefundResult> RefundPayment(string providerPaymentId, long amountMinor, Guid orderId, CancellationToken ct = default)
+    public async Task<ProviderRefundResult> RefundPayment(string providerPaymentId, long amountMinor, Guid orderId, string idempotencyKey, CancellationToken ct = default)
     {
         EnsureConfigured();
         var form = new List<KeyValuePair<string, string>>
@@ -135,12 +166,25 @@ public class StripePaymentProvider(IHttpClientFactory httpFactory, IConfiguratio
             new("amount", amountMinor.ToString(CultureInfo.InvariantCulture)),
             new("metadata[order_id]", orderId.ToString()),
         };
-        var json = await Send(Req(HttpMethod.Post, "/v1/refunds", form, "refund-" + orderId), ct);
+        var json = await Send(Req(HttpMethod.Post, "/v1/refunds", form, idempotencyKey), ct);
         var id = json.TryGetProperty("id", out var i) && i.ValueKind == JsonValueKind.String ? i.GetString() : null;
         var status = json.TryGetProperty("status", out var s) && s.ValueKind == JsonValueKind.String ? s.GetString() : null;
         if (string.IsNullOrEmpty(id)) throw new AppException(502, "Payment provider returned no refund id.", "payment_provider_error");
         if (status is "failed" or "canceled") throw new AppException(502, $"Provider refund {status}.", "payment_provider_error");
         return new ProviderRefundResult(id, status ?? "unknown");
+    }
+
+    public async Task<ProviderSubscriptionResult> SetCancelAtPeriodEnd(string providerSubscriptionId, bool cancel, CancellationToken ct = default)
+    {
+        EnsureConfigured();
+        var form = new List<KeyValuePair<string, string>> { new("cancel_at_period_end", cancel ? "true" : "false") };
+        var json = await Send(Req(HttpMethod.Post, "/v1/subscriptions/" + Uri.EscapeDataString(providerSubscriptionId), form), ct);
+        var id = json.TryGetProperty("id", out var i) && i.ValueKind == JsonValueKind.String ? i.GetString() : null;
+        if (string.IsNullOrEmpty(id)) throw new AppException(502, "Payment provider returned no subscription id.", "payment_provider_error");
+        var flag = json.TryGetProperty("cancel_at_period_end", out var f) && f.ValueKind == JsonValueKind.True;
+        if (flag != cancel) throw new AppException(502, "Payment provider did not apply the cancellation setting.", "payment_provider_error");
+        var status = json.TryGetProperty("status", out var s) && s.ValueKind == JsonValueKind.String ? s.GetString() ?? "" : "";
+        return new ProviderSubscriptionResult(id, flag, status);
     }
 
     public bool VerifyWebhookSignature(byte[] rawBody, string? header, DateTimeOffset now)

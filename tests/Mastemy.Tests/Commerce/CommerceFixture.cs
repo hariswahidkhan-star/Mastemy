@@ -19,6 +19,7 @@ public class FakeStripeHandler : HttpMessageHandler
     public ConcurrentQueue<(string Method, string Path, string Body)> Requests { get; } = new();
     private int _n;
     public volatile bool FailRefunds;
+    public volatile bool FailSubscriptions;
     public TimeSpan RefundDelay = TimeSpan.Zero;
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
@@ -39,6 +40,13 @@ public class FakeStripeHandler : HttpMessageHandler
             var id = path["/v1/checkout/sessions/".Length..];
             return Json(HttpStatusCode.OK, $$"""{"id":"{{id}}","url":"https://checkout.stripe.test/{{id}}"}""");
         }
+        if (request.Method == HttpMethod.Post && path.StartsWith("/v1/subscriptions/"))
+        {
+            if (FailSubscriptions) return Json(HttpStatusCode.InternalServerError, """{"error":{"message":"provider down"}}""");
+            var id = path["/v1/subscriptions/".Length..];
+            var form = System.Web.HttpUtility.ParseQueryString(body);
+            return Json(HttpStatusCode.OK, $$"""{"id":"{{id}}","status":"active","cancel_at_period_end":{{form["cancel_at_period_end"]}}}""");
+        }
         if (request.Method == HttpMethod.Post && path == "/v1/refunds" && FailRefunds)
             return Json(HttpStatusCode.InternalServerError, """{"error":{"message":"provider down"}}""");
         if (request.Method == HttpMethod.Post && path == "/v1/refunds" && RefundDelay > TimeSpan.Zero)
@@ -58,6 +66,12 @@ public class CommerceFixture : IAsyncLifetime
     public const string WebhookSecret = "whsec_test_fake_456";
     public string DbName { get; } = "mastemy_t_" + Guid.NewGuid().ToString("N");
     public FakeStripeHandler Stripe { get; } = new();
+    /// <summary>Additional configuration applied to every factory built by this fixture (set before InitializeAsync).</summary>
+    protected virtual Dictionary<string, string> ExtraSettings => new();
+
+    /// <summary>All ledger entries attributed to an order (via provenance rows, plus legacy entries keyed by the order id).</summary>
+    public Task<List<CommissionLedgerEntry>> LedgerForOrder(Guid orderId) => Db(d =>
+        d.CommissionLedger.Where(e => e.OrderId == orderId || d.Set<LedgerSource>().Any(s => s.LedgerEntryId == e.Id && s.OrderId == orderId)).ToListAsync());
     public WebApplicationFactory<Program> Factory { get; private set; } = null!;
     public string ConnectionString => $"Server=localhost;Port=3306;Database={DbName};User=mastemy;Password=mastemy_dev_pw;";
 
@@ -74,6 +88,8 @@ public class CommerceFixture : IAsyncLifetime
             b.UseSetting("Stripe:ApiBaseUrl", "https://stripe.fake.local");
             b.UseSetting("Commission:InstructorSharePercent", "70");
             b.UseSetting("Commerce:RefundWindowDays", "30");
+            b.UseSetting("Commerce:BackgroundJobsEnabled", "false");
+            foreach (var (k, v) in ExtraSettings) b.UseSetting(k, v);
             b.ConfigureServices(s => s.AddHttpClient(StripePaymentProvider.HttpClientName).ConfigurePrimaryHttpMessageHandler(() => Stripe));
         });
 
