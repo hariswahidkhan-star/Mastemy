@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0869",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0869-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the correct way to update state in a React function component?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Call the setter returned by useState",
+     "correct": true,
+     "rationale": "Correct: useState returns a setter that triggers a re-render."
+    },
+    {
+     "key": "B",
+     "text": "Reassign the state variable directly",
+     "correct": false,
+     "rationale": "Direct reassignment does not trigger a re-render."
+    },
+    {
+     "key": "C",
+     "text": "Mutate props passed from the parent",
+     "correct": false,
+     "rationale": "Props are read-only in the child."
+    },
+    {
+     "key": "D",
+     "text": "Edit the DOM node by hand",
+     "correct": false,
+     "rationale": "React manages the DOM from state; manual edits are lost on render."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: useState returns a setter that triggers a re-render.",
+   "outcome_refs": [
+    "MST-0869-D02.01"
+   ],
+   "domain_ref": "State and hooks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0869-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about the useEffect dependency array? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "An empty array runs the effect once after the initial render",
+     "correct": true,
+     "rationale": "Correct: [] runs the effect only on mount."
+    },
+    {
+     "key": "B",
+     "text": "Listing a value makes the effect re-run when that value changes",
+     "correct": true,
+     "rationale": "Correct: dependencies control when the effect re-runs."
+    },
+    {
+     "key": "C",
+     "text": "Omitting the array guarantees the effect runs only once",
+     "correct": false,
+     "rationale": "Omitting it runs the effect after every render."
+    },
+    {
+     "key": "D",
+     "text": "The array controls the component's return value",
+     "correct": false,
+     "rationale": "The array controls effect timing, not render output."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: [] runs the effect only on mount.",
+   "outcome_refs": [
+    "MST-0869-D02.02"
+   ],
+   "domain_ref": "State and hooks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0869-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A controlled form input in React derives its value from what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Component state, updated via an onChange handler",
+     "correct": true,
+     "rationale": "Correct: controlled inputs bind value to state and update on change."
+    },
+    {
+     "key": "B",
+     "text": "The DOM node's internal value only",
+     "correct": false,
+     "rationale": "That describes an uncontrolled input."
+    },
+    {
+     "key": "C",
+     "text": "A global variable mutated directly",
+     "correct": false,
+     "rationale": "Globals bypass React's data flow."
+    },
+    {
+     "key": "D",
+     "text": "The server response alone",
+     "correct": false,
+     "rationale": "Server data may seed state but does not make an input controlled."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: controlled inputs bind value to state and update on change.",
+   "outcome_refs": [
+    "MST-0869-D03.02"
+   ],
+   "domain_ref": "Events and forms",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0759",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0759-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What permissions does a Lambda function use to call other AWS services?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its execution role",
+     "correct": true,
+     "rationale": "Correct: the execution role grants the function its AWS permissions."
+    },
+    {
+     "key": "B",
+     "text": "The caller's browser cookies",
+     "correct": false,
+     "rationale": "Browser cookies are unrelated to Lambda permissions."
+    },
+    {
+     "key": "C",
+     "text": "The root account by default",
+     "correct": false,
+     "rationale": "Functions use their execution role, not root."
+    },
+    {
+     "key": "D",
+     "text": "No permissions are ever needed",
+     "correct": false,
+     "rationale": "Calling other services requires granted permissions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the execution role grants the function its AWS permissions.",
+   "outcome_refs": [
+    "MST-0759-D03.01"
+   ],
+   "domain_ref": "Permissions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0759-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices for reliable event-driven Lambda functions? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Make handlers idempotent so retries do not duplicate effects",
+     "correct": true,
+     "rationale": "Correct: idempotency protects against at-least-once delivery and retries."
+    },
+    {
+     "key": "B",
+     "text": "Configure a dead-letter queue for failed asynchronous events",
+     "correct": true,
+     "rationale": "Correct: a DLQ captures events that exhaust retries for later inspection."
+    },
+    {
+     "key": "C",
+     "text": "Store request state in a module-level variable expecting it to persist",
+     "correct": false,
+     "rationale": "Execution environments are not guaranteed to persist state."
+    },
+    {
+     "key": "D",
+     "text": "Set an extremely long timeout to avoid handling errors",
+     "correct": false,
+     "rationale": "Long timeouts hide problems and raise cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: idempotency protects against at-least-once delivery and retries.",
+   "outcome_refs": [
+    "MST-0759-D04.01"
+   ],
+   "domain_ref": "Reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0759-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A function must poll messages from a queue. What should you configure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An event source mapping",
+     "correct": true,
+     "rationale": "Correct: event source mappings let Lambda poll sources like SQS and invoke the function."
+    },
+    {
+     "key": "B",
+     "text": "A synchronous API invocation only",
+     "correct": false,
+     "rationale": "Synchronous invoke does not poll a queue."
+    },
+    {
+     "key": "C",
+     "text": "A static website trigger",
+     "correct": false,
+     "rationale": "Static websites do not deliver queue messages."
+    },
+    {
+     "key": "D",
+     "text": "A longer memory setting",
+     "correct": false,
+     "rationale": "Memory does not establish queue polling."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: event source mappings let Lambda poll sources like SQS and invoke the function.",
+   "outcome_refs": [
+    "MST-0759-D02.02"
+   ],
+   "domain_ref": "Triggers and events",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0884",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0884-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Express, what must middleware typically call to pass control to the next handler?",
+   "options": [
+    {
+     "key": "A",
+     "text": "next()",
+     "correct": true,
+     "rationale": "Correct: calling next() advances the middleware pipeline."
+    },
+    {
+     "key": "B",
+     "text": "return true",
+     "correct": false,
+     "rationale": "Returning a value does not advance the pipeline."
+    },
+    {
+     "key": "C",
+     "text": "res.end() always",
+     "correct": false,
+     "rationale": "res.end() ends the response; it does not pass control onward."
+    },
+    {
+     "key": "D",
+     "text": "throw an error always",
+     "correct": false,
+     "rationale": "Throwing is for errors, not normal flow control."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: calling next() advances the middleware pipeline.",
+   "outcome_refs": [
+    "MST-0884-D01.02"
+   ],
+   "domain_ref": "Routing and middleware",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0884-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve Express API security? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate and reject malformed request input",
+     "correct": true,
+     "rationale": "Correct: input validation prevents malformed or malicious data."
+    },
+    {
+     "key": "B",
+     "text": "Protect sensitive routes with authentication middleware",
+     "correct": true,
+     "rationale": "Correct: auth middleware enforces access control."
+    },
+    {
+     "key": "C",
+     "text": "Pass access tokens in the URL query string",
+     "correct": false,
+     "rationale": "Tokens in URLs leak via logs and history."
+    },
+    {
+     "key": "D",
+     "text": "Return 200 for every error so clients are not alarmed",
+     "correct": false,
+     "rationale": "Misleading status codes break clients and hide failures."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: input validation prevents malformed or malicious data.",
+   "outcome_refs": [
+    "MST-0884-D04.01"
+   ],
+   "domain_ref": "Security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0884-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which HTTP status code best indicates a client sent invalid input?",
+   "options": [
+    {
+     "key": "A",
+     "text": "400 Bad Request",
+     "correct": true,
+     "rationale": "Correct: 400 signals the request was malformed or failed validation."
+    },
+    {
+     "key": "B",
+     "text": "200 OK",
+     "correct": false,
+     "rationale": "200 indicates success, not a validation failure."
+    },
+    {
+     "key": "C",
+     "text": "500 Internal Server Error",
+     "correct": false,
+     "rationale": "500 indicates a server fault, not bad client input."
+    },
+    {
+     "key": "D",
+     "text": "301 Moved Permanently",
+     "correct": false,
+     "rationale": "301 is a redirect, unrelated to invalid input."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 400 signals the request was malformed or failed validation.",
+   "outcome_refs": [
+    "MST-0884-D02.02"
+   ],
+   "domain_ref": "REST design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

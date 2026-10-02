@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0742",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0742-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "BigQuery on-demand queries are primarily billed based on what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The volume of bytes the query scans",
+     "correct": true,
+     "rationale": "Correct: on-demand pricing is based on bytes processed/scanned by the query."
+    },
+    {
+     "key": "B",
+     "text": "The number of rows returned",
+     "correct": false,
+     "rationale": "Rows returned do not determine on-demand cost."
+    },
+    {
+     "key": "C",
+     "text": "The number of tables in the dataset",
+     "correct": false,
+     "rationale": "Table count does not drive query cost."
+    },
+    {
+     "key": "D",
+     "text": "Wall-clock time regardless of data read",
+     "correct": false,
+     "rationale": "On-demand cost tracks bytes scanned, not elapsed time."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: on-demand pricing is based on bytes processed/scanned by the query.",
+   "outcome_refs": [
+    "MST-0742-D05.01"
+   ],
+   "domain_ref": "Cost and governance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0742-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques reduce the bytes a BigQuery query scans? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Partitioning a table and filtering on the partition column",
+     "correct": true,
+     "rationale": "Correct: partition pruning limits the data scanned."
+    },
+    {
+     "key": "B",
+     "text": "Selecting only the columns needed instead of SELECT *",
+     "correct": true,
+     "rationale": "Correct: columnar storage means fewer columns scanned means fewer bytes."
+    },
+    {
+     "key": "C",
+     "text": "Adding more JOINs to the query",
+     "correct": false,
+     "rationale": "Extra joins generally increase, not reduce, work."
+    },
+    {
+     "key": "D",
+     "text": "Returning more rows in the result",
+     "correct": false,
+     "rationale": "Result size does not reduce bytes scanned."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: partition pruning limits the data scanned.",
+   "outcome_refs": [
+    "MST-0742-D03.01"
+   ],
+   "domain_ref": "Data pipelines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0742-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does clustering a BigQuery table do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sorts stored data by the clustering columns to speed selective queries",
+     "correct": true,
+     "rationale": "Correct: clustering co-locates rows by the clustering columns, improving filter/aggregate performance."
+    },
+    {
+     "key": "B",
+     "text": "Replicates the table across regions",
+     "correct": false,
+     "rationale": "Clustering is not cross-region replication."
+    },
+    {
+     "key": "C",
+     "text": "Encrypts the table at rest",
+     "correct": false,
+     "rationale": "Encryption at rest is automatic and unrelated to clustering."
+    },
+    {
+     "key": "D",
+     "text": "Caps the table's row count",
+     "correct": false,
+     "rationale": "Clustering does not limit row counts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: clustering co-locates rows by the clustering columns, improving filter/aggregate performance.",
+   "outcome_refs": [
+    "MST-0742-D03.02"
+   ],
+   "domain_ref": "Table design",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

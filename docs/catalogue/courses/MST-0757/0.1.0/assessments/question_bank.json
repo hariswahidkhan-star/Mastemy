@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0757",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0757-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary purpose of an RDS Multi-AZ deployment?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automatic failover for high availability",
+     "correct": true,
+     "rationale": "Correct: Multi-AZ maintains a standby for automatic failover."
+    },
+    {
+     "key": "B",
+     "text": "Scaling read traffic across regions",
+     "correct": false,
+     "rationale": "Scaling reads is the job of read replicas, not Multi-AZ standby."
+    },
+    {
+     "key": "C",
+     "text": "Reducing storage cost",
+     "correct": false,
+     "rationale": "Multi-AZ adds a standby and does not reduce cost."
+    },
+    {
+     "key": "D",
+     "text": "Replacing the need for backups",
+     "correct": false,
+     "rationale": "Multi-AZ does not replace backups."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Multi-AZ maintains a standby for automatic failover.",
+   "outcome_refs": [
+    "MST-0757-D03.01"
+   ],
+   "domain_ref": "High availability",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0757-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about RDS backups are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automated backups enable point-in-time recovery within the retention window",
+     "correct": true,
+     "rationale": "Correct: automated backups plus transaction logs allow PITR."
+    },
+    {
+     "key": "B",
+     "text": "Manual snapshots persist until you delete them",
+     "correct": true,
+     "rationale": "Correct: manual snapshots are retained until explicitly removed."
+    },
+    {
+     "key": "C",
+     "text": "Backups make a read replica unnecessary",
+     "correct": false,
+     "rationale": "Backups and read replicas serve different purposes."
+    },
+    {
+     "key": "D",
+     "text": "Backups automatically make the database Multi-AZ",
+     "correct": false,
+     "rationale": "Backups do not change deployment topology."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: automated backups plus transaction logs allow PITR.",
+   "outcome_refs": [
+    "MST-0757-D04.01"
+   ],
+   "domain_ref": "Backup and recovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0757-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should you change an engine configuration setting in RDS?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Modify a parameter group associated with the instance",
+     "correct": true,
+     "rationale": "Correct: parameter groups manage engine settings in RDS."
+    },
+    {
+     "key": "B",
+     "text": "SSH into the host and edit the config file",
+     "correct": false,
+     "rationale": "RDS is managed; host SSH access to edit configs is not available."
+    },
+    {
+     "key": "C",
+     "text": "Recreate the instance from scratch each time",
+     "correct": false,
+     "rationale": "Parameter groups avoid recreation."
+    },
+    {
+     "key": "D",
+     "text": "Edit the automated backup",
+     "correct": false,
+     "rationale": "Backups do not hold live engine configuration."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: parameter groups manage engine settings in RDS.",
+   "outcome_refs": [
+    "MST-0757-D02.02"
+   ],
+   "domain_ref": "Provisioning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

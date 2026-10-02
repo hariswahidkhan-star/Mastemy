@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0794",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0794-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should you establish before writing a fix for a reported defect?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A reliable reproduction of the bug",
+     "correct": true,
+     "rationale": "Correct: a reproducible case anchors the fix and the regression test."
+    },
+    {
+     "key": "B",
+     "text": "A merged pull request",
+     "correct": false,
+     "rationale": "Merging comes after the verified fix, not before."
+    },
+    {
+     "key": "C",
+     "text": "A production deployment",
+     "correct": false,
+     "rationale": "Deploying before a fix exists is premature."
+    },
+    {
+     "key": "D",
+     "text": "A new feature branch with no changes",
+     "correct": false,
+     "rationale": "An empty branch does not establish reproduction."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a reproducible case anchors the fix and the regression test.",
+   "outcome_refs": [
+    "MST-0794-D01.01"
+   ],
+   "domain_ref": "Triage",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0794-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep an AI-assisted fix safe to merge? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Review and understand the AI-proposed change before accepting it",
+     "correct": true,
+     "rationale": "Correct: human review prevents merging code you cannot explain."
+    },
+    {
+     "key": "B",
+     "text": "Add a Playwright test that fails before the fix and passes after",
+     "correct": true,
+     "rationale": "Correct: a regression test proves the fix and guards against recurrence."
+    },
+    {
+     "key": "C",
+     "text": "Push the AI change straight to the main branch",
+     "correct": false,
+     "rationale": "Bypassing PR review removes a safety gate."
+    },
+    {
+     "key": "D",
+     "text": "Skip CI to merge faster",
+     "correct": false,
+     "rationale": "Skipping checks defeats verification."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: human review prevents merging code you cannot explain.",
+   "outcome_refs": [
+    "MST-0794-D02.02"
+   ],
+   "domain_ref": "AI-assisted fix",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0794-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A good regression test for a fixed bug should do what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fail on the buggy code and pass once the fix is applied",
+     "correct": true,
+     "rationale": "Correct: a red-then-green test proves it actually guards the bug."
+    },
+    {
+     "key": "B",
+     "text": "Pass whether or not the bug is fixed",
+     "correct": false,
+     "rationale": "Such a test does not guard anything."
+    },
+    {
+     "key": "C",
+     "text": "Only run in production",
+     "correct": false,
+     "rationale": "Regression tests belong in CI, run before merge."
+    },
+    {
+     "key": "D",
+     "text": "Delete the failing code path",
+     "correct": false,
+     "rationale": "Removing code is not the same as testing the fix."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a red-then-green test proves it actually guards the bug.",
+   "outcome_refs": [
+    "MST-0794-D04.01"
+   ],
+   "domain_ref": "Playwright test",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

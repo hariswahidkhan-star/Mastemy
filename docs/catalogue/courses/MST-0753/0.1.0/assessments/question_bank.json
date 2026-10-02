@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0753",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0753-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In AWS IAM policy evaluation, what is the effect of an explicit deny?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It overrides any allow",
+     "correct": true,
+     "rationale": "Correct: an explicit deny always wins over allows in IAM evaluation."
+    },
+    {
+     "key": "B",
+     "text": "It is ignored if an allow exists",
+     "correct": false,
+     "rationale": "Explicit deny takes precedence over allow."
+    },
+    {
+     "key": "C",
+     "text": "It applies only to the root user",
+     "correct": false,
+     "rationale": "Explicit deny applies to all principals it targets."
+    },
+    {
+     "key": "D",
+     "text": "It only works in resource policies",
+     "correct": false,
+     "rationale": "Explicit deny works in both identity and resource policies."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an explicit deny always wins over allows in IAM evaluation.",
+   "outcome_refs": [
+    "MST-0753-D02.01"
+   ],
+   "domain_ref": "Policy documents",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0753-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO approaches follow AWS least-privilege guidance? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant only the specific actions and resources a task needs",
+     "correct": true,
+     "rationale": "Correct: scoping actions and resources is the core of least privilege."
+    },
+    {
+     "key": "B",
+     "text": "Attach a permission boundary to cap a role's maximum permissions",
+     "correct": true,
+     "rationale": "Correct: permission boundaries limit the effective permissions."
+    },
+    {
+     "key": "C",
+     "text": "Use Action:* Resource:* to avoid future changes",
+     "correct": false,
+     "rationale": "Wildcards grant far more than needed."
+    },
+    {
+     "key": "D",
+     "text": "Share one set of access keys across the whole team",
+     "correct": false,
+     "rationale": "Shared static keys break accountability and least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: scoping actions and resources is the core of least privilege.",
+   "outcome_refs": [
+    "MST-0753-D03.01"
+   ],
+   "domain_ref": "Least privilege",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0753-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should an application on an EC2 instance obtain AWS permissions?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Via an IAM role attached to the instance",
+     "correct": true,
+     "rationale": "Correct: instance roles supply temporary credentials without stored keys."
+    },
+    {
+     "key": "B",
+     "text": "By hardcoding access keys in the code",
+     "correct": false,
+     "rationale": "Hardcoded keys are a major security risk."
+    },
+    {
+     "key": "C",
+     "text": "Using the root account credentials",
+     "correct": false,
+     "rationale": "Root credentials must never be used by applications."
+    },
+    {
+     "key": "D",
+     "text": "By disabling IAM for the instance",
+     "correct": false,
+     "rationale": "IAM cannot be disabled; roles are the intended mechanism."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: instance roles supply temporary credentials without stored keys.",
+   "outcome_refs": [
+    "MST-0753-D04.02"
+   ],
+   "domain_ref": "Roles and federation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0829",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0829-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which EF Core method marks related data to be loaded together with the primary entity in a single query?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Include",
+     "correct": true,
+     "rationale": "Correct: Include (with ThenInclude for nesting) performs eager loading of related data."
+    },
+    {
+     "key": "B",
+     "text": "AsNoTracking",
+     "correct": false,
+     "rationale": "AsNoTracking disables change tracking; it does not load related data."
+    },
+    {
+     "key": "C",
+     "text": "SaveChanges",
+     "correct": false,
+     "rationale": "SaveChanges persists tracked changes; it is not a loading method."
+    },
+    {
+     "key": "D",
+     "text": "FromSqlRaw",
+     "correct": false,
+     "rationale": "FromSqlRaw runs raw SQL; it does not by itself eager-load navigations."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Include (with ThenInclude for nesting) performs eager loading of related data.",
+   "outcome_refs": [
+    "MST-0829-D02.01"
+   ],
+   "domain_ref": "Querying with LINQ",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0829-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about EF Core change tracking are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Entities returned from a tracking query are monitored for changes until the DbContext is disposed",
+     "correct": true,
+     "rationale": "Correct: tracked entities drive updates and remain tracked until the context is disposed or cleared."
+    },
+    {
+     "key": "B",
+     "text": "AsNoTracking queries skip snapshot tracking and are suited to read-only results",
+     "correct": true,
+     "rationale": "Correct: no-tracking queries are faster for read-only data because no snapshot is taken."
+    },
+    {
+     "key": "C",
+     "text": "SaveChanges tracks entities even after the DbContext is disposed",
+     "correct": false,
+     "rationale": "A disposed context no longer tracks anything."
+    },
+    {
+     "key": "D",
+     "text": "Change tracking requires calling DetectChanges manually before every query",
+     "correct": false,
+     "rationale": "EF Core detects changes automatically at SaveChanges; manual DetectChanges is rarely needed."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tracked entities drive updates and remain tracked until the context is disposed or cleared.",
+   "outcome_refs": [
+    "MST-0829-D03.01"
+   ],
+   "domain_ref": "Saving and change tracking",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0829-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the correct way to evolve the database schema in an EF Core project?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Create a migration from the updated model and apply it",
+     "correct": true,
+     "rationale": "Correct: migrations capture model changes as versioned, repeatable schema updates."
+    },
+    {
+     "key": "B",
+     "text": "Manually alter the database and ignore the model",
+     "correct": false,
+     "rationale": "Hand edits drift from the model and break future migrations."
+    },
+    {
+     "key": "C",
+     "text": "Delete and recreate the production database on each deploy",
+     "correct": false,
+     "rationale": "That destroys data and is not a migration strategy."
+    },
+    {
+     "key": "D",
+     "text": "Edit the migration history table directly",
+     "correct": false,
+     "rationale": "Editing the history table by hand corrupts migration state."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: migrations capture model changes as versioned, repeatable schema updates.",
+   "outcome_refs": [
+    "MST-0829-D04.01"
+   ],
+   "domain_ref": "Performance and diagnostics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

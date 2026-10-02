@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0741",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0741-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Google Cloud IAM, how do policies set at a parent node affect child resources?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Children inherit the parent's allow bindings",
+     "correct": true,
+     "rationale": "Correct: IAM allow policies are inherited down the resource hierarchy."
+    },
+    {
+     "key": "B",
+     "text": "Children ignore all parent bindings",
+     "correct": false,
+     "rationale": "Inheritance is the default behaviour."
+    },
+    {
+     "key": "C",
+     "text": "Only billing roles inherit",
+     "correct": false,
+     "rationale": "Inheritance applies to IAM roles generally, not just billing."
+    },
+    {
+     "key": "D",
+     "text": "Inheritance requires a custom role",
+     "correct": false,
+     "rationale": "Inheritance is built in and not tied to custom roles."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: IAM allow policies are inherited down the resource hierarchy.",
+   "outcome_refs": [
+    "MST-0741-D01.02"
+   ],
+   "domain_ref": "IAM model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0741-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce service account credential risk? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use workload identity or impersonation instead of downloaded keys",
+     "correct": true,
+     "rationale": "Correct: short-lived, managed credentials avoid long-lived key exposure."
+    },
+    {
+     "key": "B",
+     "text": "Disable service account key creation with an organization policy",
+     "correct": true,
+     "rationale": "Correct: an org policy guardrail prevents risky key creation."
+    },
+    {
+     "key": "C",
+     "text": "Email the JSON key to teammates who need access",
+     "correct": false,
+     "rationale": "Sharing long-lived keys is a serious risk."
+    },
+    {
+     "key": "D",
+     "text": "Grant the Owner role to every service account",
+     "correct": false,
+     "rationale": "Owner is far broader than least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: short-lived, managed credentials avoid long-lived key exposure.",
+   "outcome_refs": [
+    "MST-0741-D03.02"
+   ],
+   "domain_ref": "Service accounts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0741-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which log type must often be explicitly enabled to see who read data in a service?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data Access audit logs",
+     "correct": true,
+     "rationale": "Correct: Data Access logs are frequently disabled by default and must be enabled."
+    },
+    {
+     "key": "B",
+     "text": "Admin Activity audit logs",
+     "correct": false,
+     "rationale": "Admin Activity logs are on by default and cover config changes, not data reads."
+    },
+    {
+     "key": "C",
+     "text": "Billing export logs",
+     "correct": false,
+     "rationale": "Billing export is for cost data, not access events."
+    },
+    {
+     "key": "D",
+     "text": "Serial console logs",
+     "correct": false,
+     "rationale": "Serial console logs relate to VM boot output, not data access."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Data Access logs are frequently disabled by default and must be enabled.",
+   "outcome_refs": [
+    "MST-0741-D05.01"
+   ],
+   "domain_ref": "Audit and investigation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

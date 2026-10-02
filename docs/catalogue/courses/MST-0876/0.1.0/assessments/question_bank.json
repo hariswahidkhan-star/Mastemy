@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0876",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0876-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the Next.js App Router, components are by default rendered where?",
+   "options": [
+    {
+     "key": "A",
+     "text": "On the server (server components)",
+     "correct": true,
+     "rationale": "Correct: App Router components are server components unless opted into the client."
+    },
+    {
+     "key": "B",
+     "text": "Only in the browser",
+     "correct": false,
+     "rationale": "Client-only is opt-in, not the default."
+    },
+    {
+     "key": "C",
+     "text": "Never rendered until a user clicks",
+     "correct": false,
+     "rationale": "Components render as part of the route."
+    },
+    {
+     "key": "D",
+     "text": "Only at build time with no server",
+     "correct": false,
+     "rationale": "Server rendering is the default behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: App Router components are server components unless opted into the client.",
+   "outcome_refs": [
+    "MST-0876-D02.01"
+   ],
+   "domain_ref": "Server vs client components",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0876-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good reasons to mark a component as a client component? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It uses state or effects for interactivity",
+     "correct": true,
+     "rationale": "Correct: hooks like useState/useEffect require a client component."
+    },
+    {
+     "key": "B",
+     "text": "It attaches browser event handlers",
+     "correct": true,
+     "rationale": "Correct: interactive event handling needs the client."
+    },
+    {
+     "key": "C",
+     "text": "It only reads data and renders static markup",
+     "correct": false,
+     "rationale": "Static server rendering suits this; no client needed."
+    },
+    {
+     "key": "D",
+     "text": "It needs to hide server secrets",
+     "correct": false,
+     "rationale": "Secrets belong on the server, not the client."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: hooks like useState/useEffect require a client component.",
+   "outcome_refs": [
+    "MST-0876-D02.02"
+   ],
+   "domain_ref": "Server vs client components",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0876-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How do you keep cached server data fresh in Next.js?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Configure revalidation for the fetch or route",
+     "correct": true,
+     "rationale": "Correct: revalidation refreshes cached data on a schedule or on demand."
+    },
+    {
+     "key": "B",
+     "text": "Disable the server entirely",
+     "correct": false,
+     "rationale": "Disabling the server does not manage caching."
+    },
+    {
+     "key": "C",
+     "text": "Move every fetch to the client",
+     "correct": false,
+     "rationale": "Client fetching bypasses but does not solve server caching strategy."
+    },
+    {
+     "key": "D",
+     "text": "Hardcode the data in the bundle",
+     "correct": false,
+     "rationale": "Hardcoding prevents updates altogether."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: revalidation refreshes cached data on a schedule or on demand.",
+   "outcome_refs": [
+    "MST-0876-D03.02"
+   ],
+   "domain_ref": "Data fetching and caching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

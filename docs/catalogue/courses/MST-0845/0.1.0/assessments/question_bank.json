@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0845",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0845-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a Blazor Web App, how do you make a specific page interactive on the server?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply @rendermode InteractiveServer to the component",
+     "correct": true,
+     "rationale": "Correct: the @rendermode directive assigns interactive server-side rendering to the component."
+    },
+    {
+     "key": "B",
+     "text": "Set the App root component to interactive",
+     "correct": false,
+     "rationale": "Making the root App component interactive is not supported."
+    },
+    {
+     "key": "C",
+     "text": "Add a <script> tag that calls Blazor.start()",
+     "correct": false,
+     "rationale": "Render mode is declared with @rendermode, not ad-hoc scripts."
+    },
+    {
+     "key": "D",
+     "text": "Rename the file to .cshtml",
+     "correct": false,
+     "rationale": "Blazor components are .razor files; the extension does not set interactivity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the @rendermode directive assigns interactive server-side rendering to the component.",
+   "outcome_refs": [
+    "MST-0845-D02.01"
+   ],
+   "domain_ref": "Render modes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0845-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid Blazor render modes for a component? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Interactive Server",
+     "correct": true,
+     "rationale": "Correct: Interactive Server renders interactively over a SignalR connection."
+    },
+    {
+     "key": "B",
+     "text": "Interactive WebAssembly",
+     "correct": true,
+     "rationale": "Correct: Interactive WebAssembly runs the component client-side on the .NET WebAssembly runtime."
+    },
+    {
+     "key": "C",
+     "text": "Interactive Database",
+     "correct": false,
+     "rationale": "There is no 'Interactive Database' render mode."
+    },
+    {
+     "key": "D",
+     "text": "Static Client",
+     "correct": false,
+     "rationale": "Static rendering is server-side (Static SSR); there is no 'Static Client' mode."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Interactive Server renders interactively over a SignalR connection.",
+   "outcome_refs": [
+    "MST-0845-D02.01"
+   ],
+   "domain_ref": "Render modes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0845-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should a Blazor component typically load its initial data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In OnInitializedAsync",
+     "correct": true,
+     "rationale": "Correct: OnInitializedAsync is the lifecycle method for initial async data loading."
+    },
+    {
+     "key": "B",
+     "text": "In the component constructor with a blocking call",
+     "correct": false,
+     "rationale": "Blocking work in the constructor harms responsiveness and testability."
+    },
+    {
+     "key": "C",
+     "text": "In the Razor markup directly",
+     "correct": false,
+     "rationale": "Markup renders output; it is not where async loading belongs."
+    },
+    {
+     "key": "D",
+     "text": "In the _Imports.razor file",
+     "correct": false,
+     "rationale": "_Imports.razor declares usings, not data loading."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: OnInitializedAsync is the lifecycle method for initial async data loading.",
+   "outcome_refs": [
+    "MST-0845-D05.01"
+   ],
+   "domain_ref": "Services and DI",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

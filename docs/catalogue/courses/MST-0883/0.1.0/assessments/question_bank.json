@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0883",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0883-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The Node.js event loop enables what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Handling many concurrent operations with non-blocking I/O on a single thread",
+     "correct": true,
+     "rationale": "Correct: the event loop schedules non-blocking I/O without one thread per request."
+    },
+    {
+     "key": "B",
+     "text": "Running all JavaScript in parallel OS threads automatically",
+     "correct": false,
+     "rationale": "Node.js JS runs on a single main thread by default."
+    },
+    {
+     "key": "C",
+     "text": "Blocking until each request fully completes",
+     "correct": false,
+     "rationale": "Blocking defeats the non-blocking model."
+    },
+    {
+     "key": "D",
+     "text": "Replacing the need for asynchronous code",
+     "correct": false,
+     "rationale": "Async patterns are how you use the event loop effectively."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the event loop schedules non-blocking I/O without one thread per request.",
+   "outcome_refs": [
+    "MST-0883-D01.02"
+   ],
+   "domain_ref": "Runtime and event loop",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0883-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good Node.js dependency practices? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Commit the lockfile to pin dependency versions",
+     "correct": true,
+     "rationale": "Correct: a lockfile makes installs reproducible."
+    },
+    {
+     "key": "B",
+     "text": "Load secrets from environment variables, not source code",
+     "correct": true,
+     "rationale": "Correct: secrets belong in the environment, not the repo."
+    },
+    {
+     "key": "C",
+     "text": "Commit the node_modules folder to the repository",
+     "correct": false,
+     "rationale": "node_modules is regenerated from the lockfile and should be ignored."
+    },
+    {
+     "key": "D",
+     "text": "Hardcode API keys in a committed file",
+     "correct": false,
+     "rationale": "Committing secrets is a security risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a lockfile makes installs reproducible.",
+   "outcome_refs": [
+    "MST-0883-D02.02"
+   ],
+   "domain_ref": "Modules and packages",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0883-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What happens if you forget to await a promise in an async handler?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The code may continue before the work finishes and errors can be missed",
+     "correct": true,
+     "rationale": "Correct: an un-awaited promise runs detached and its rejection can be lost."
+    },
+    {
+     "key": "B",
+     "text": "Node.js automatically awaits it for you",
+     "correct": false,
+     "rationale": "Node does not auto-await promises."
+    },
+    {
+     "key": "C",
+     "text": "The server always crashes immediately",
+     "correct": false,
+     "rationale": "It often fails silently rather than crashing."
+    },
+    {
+     "key": "D",
+     "text": "The promise never executes",
+     "correct": false,
+     "rationale": "It executes, just not awaited."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an un-awaited promise runs detached and its rejection can be lost.",
+   "outcome_refs": [
+    "MST-0883-D03.02"
+   ],
+   "domain_ref": "Async patterns",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
