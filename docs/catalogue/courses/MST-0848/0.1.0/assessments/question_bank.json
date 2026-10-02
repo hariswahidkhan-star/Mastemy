@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0848",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0848-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can comparing two String objects with == give a surprising result in Java?",
+   "options": [
+    {
+     "key": "A",
+     "text": "== compares object references, so two Strings with equal content may still be different objects",
+     "correct": true,
+     "rationale": "Correct: == checks reference identity for objects; equals() compares content."
+    },
+    {
+     "key": "B",
+     "text": "== always compares String content",
+     "correct": false,
+     "rationale": "== compares references for objects, not content."
+    },
+    {
+     "key": "C",
+     "text": "Strings cannot be compared at all",
+     "correct": false,
+     "rationale": "Strings can be compared with equals() (and compareTo())."
+    },
+    {
+     "key": "D",
+     "text": "== converts both Strings to numbers first",
+     "correct": false,
+     "rationale": "No numeric conversion happens when comparing Strings."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: == checks reference identity for objects; equals() compares content.",
+   "outcome_refs": [
+    "MST-0848-D01.01"
+   ],
+   "domain_ref": "Syntax and types",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0848-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that correctly distinguish method overriding from overloading in Java.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Overriding redefines an inherited method with the same signature in a subclass",
+     "correct": true,
+     "rationale": "Correct: overriding keeps the signature and changes behavior in a subclass."
+    },
+    {
+     "key": "B",
+     "text": "Overloading declares multiple methods with the same name but different parameter lists",
+     "correct": true,
+     "rationale": "Correct: overloading varies the parameter list within the same scope."
+    },
+    {
+     "key": "C",
+     "text": "Overloading requires an inheritance relationship",
+     "correct": false,
+     "rationale": "Overloading does not require inheritance."
+    },
+    {
+     "key": "D",
+     "text": "Overriding must change the method name",
+     "correct": false,
+     "rationale": "Overriding keeps the same name and signature."
+    },
+    {
+     "key": "E",
+     "text": "Overloading and overriding are the same thing",
+     "correct": false,
+     "rationale": "They are distinct mechanisms."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: overriding keeps the signature and changes behavior in a subclass.",
+   "outcome_refs": [
+    "MST-0848-D02.01"
+   ],
+   "domain_ref": "Object-oriented Java",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0848-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need a collection that stores unique elements with no duplicates. Which Java collection type fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set",
+     "correct": true,
+     "rationale": "Correct: a Set stores unique elements and rejects duplicates."
+    },
+    {
+     "key": "B",
+     "text": "List",
+     "correct": false,
+     "rationale": "A List allows duplicates and preserves insertion order."
+    },
+    {
+     "key": "C",
+     "text": "Map",
+     "correct": false,
+     "rationale": "A Map stores key-value pairs, not a plain set of unique values."
+    },
+    {
+     "key": "D",
+     "text": "Array of fixed size with manual checks",
+     "correct": false,
+     "rationale": "A raw array does not enforce uniqueness without extra manual code; Set does it directly."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Set stores unique elements and rejects duplicates.",
+   "outcome_refs": [
+    "MST-0848-D03.01"
+   ],
+   "domain_ref": "Collections, generics and I/O",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

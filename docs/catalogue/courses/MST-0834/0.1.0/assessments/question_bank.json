@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0834",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0834-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What best distinguishes a modular monolith from a layered (N-tier) application?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Modules are vertical slices of business capability with enforced boundaries, deployed as one unit",
+     "correct": true,
+     "rationale": "Correct: a modular monolith partitions by capability with enforced boundaries while still deploying as a single unit."
+    },
+    {
+     "key": "B",
+     "text": "Each module is deployed as a separate process behind a load balancer",
+     "correct": false,
+     "rationale": "That describes microservices, not a modular monolith, which deploys as one unit."
+    },
+    {
+     "key": "C",
+     "text": "Layers (UI, business, data) are the modules",
+     "correct": false,
+     "rationale": "Horizontal technical layers are not capability modules; that is the N-tier style being contrasted."
+    },
+    {
+     "key": "D",
+     "text": "It forbids any shared code between modules",
+     "correct": false,
+     "rationale": "A shared kernel of common code is allowed; the rule is no reaching into another module internals."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a modular monolith partitions by capability with enforced boundaries while still deploying as a single unit.",
+   "outcome_refs": [
+    "MST-0834-D01.01"
+   ],
+   "domain_ref": "Module boundaries and feature slices",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0834-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "You must keep modules decoupled in a .NET modular monolith. Select TWO practices that preserve module boundaries.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Expose a public contract (interface + DTO) and keep entities module-private",
+     "correct": true,
+     "rationale": "Correct: a narrow public contract hides internals and keeps modules decoupled."
+    },
+    {
+     "key": "B",
+     "text": "Communicate between modules through an in-process mediator message",
+     "correct": true,
+     "rationale": "Correct: in-process messaging avoids direct dependencies on another module internal types."
+    },
+    {
+     "key": "C",
+     "text": "Share one EF Core DbContext across all modules for convenience",
+     "correct": false,
+     "rationale": "A shared DbContext couples modules at the data layer and breaks boundaries."
+    },
+    {
+     "key": "D",
+     "text": "Let the Billing module call Ordering internal repository classes directly",
+     "correct": false,
+     "rationale": "Calling internal classes across modules is exactly the coupling boundaries are meant to prevent."
+    },
+    {
+     "key": "E",
+     "text": "Reference another module concrete entity types from controllers",
+     "correct": false,
+     "rationale": "Depending on another module concrete types leaks internals and couples the modules."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a narrow public contract hides internals and keeps modules decoupled.",
+   "outcome_refs": [
+    "MST-0834-D02.01"
+   ],
+   "domain_ref": "Inter-module communication and contracts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0834-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team is under no scaling or organizational pressure but wants to \"future-proof\" by splitting the monolith into microservices now. What is the most appropriate guidance?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Stay a modular monolith and extract a service only when a concrete driver appears",
+     "correct": true,
+     "rationale": "Correct: premature extraction adds distributed-systems complexity with little benefit until a real driver exists."
+    },
+    {
+     "key": "B",
+     "text": "Split immediately so the architecture is never a bottleneck",
+     "correct": false,
+     "rationale": "Early splitting adds network, consistency and operational cost without a justifying need."
+    },
+    {
+     "key": "C",
+     "text": "Convert every module into its own database first",
+     "correct": false,
+     "rationale": "Separate databases add distributed-data complexity and are not required for a modular monolith."
+    },
+    {
+     "key": "D",
+     "text": "Remove module boundaries to simplify the future split",
+     "correct": false,
+     "rationale": "Removing boundaries makes a future split harder, not easier."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: premature extraction adds distributed-systems complexity with little benefit until a real driver exists.",
+   "outcome_refs": [
+    "MST-0834-D03.01"
+   ],
+   "domain_ref": "Deployment, testing and evolution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

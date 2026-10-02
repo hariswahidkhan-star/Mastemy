@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0888",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0888-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does a typical GraphQL API differ from a typical REST API in how clients fetch data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Clients query a single endpoint and ask for exactly the fields they need",
+     "correct": true,
+     "rationale": "Correct: GraphQL exposes one endpoint and lets clients shape the response."
+    },
+    {
+     "key": "B",
+     "text": "Each resource must have its own URL and fixed response shape",
+     "correct": false,
+     "rationale": "That is the REST style GraphQL is being contrasted with."
+    },
+    {
+     "key": "C",
+     "text": "GraphQL cannot express relationships between types",
+     "correct": false,
+     "rationale": "GraphQL is built around typed relationships between objects."
+    },
+    {
+     "key": "D",
+     "text": "GraphQL responses are always larger than REST responses",
+     "correct": false,
+     "rationale": "GraphQL often reduces over-fetching by returning only requested fields."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GraphQL exposes one endpoint and lets clients shape the response.",
+   "outcome_refs": [
+    "MST-0888-D01.01"
+   ],
+   "domain_ref": "Schema and type design",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0888-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO effective ways to address the N+1 query problem in a GraphQL resolver layer.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Batch related lookups within a tick using a dataloader",
+     "correct": true,
+     "rationale": "Correct: dataloaders batch many lookups into fewer queries."
+    },
+    {
+     "key": "B",
+     "text": "Cache repeated lookups for the duration of a request",
+     "correct": true,
+     "rationale": "Correct: per-request caching avoids repeating identical lookups."
+    },
+    {
+     "key": "C",
+     "text": "Issue one database query per item in a list",
+     "correct": false,
+     "rationale": "That is exactly the N+1 pattern being avoided."
+    },
+    {
+     "key": "D",
+     "text": "Remove all relationships from the schema",
+     "correct": false,
+     "rationale": "Stripping relationships breaks the API rather than fixing performance."
+    },
+    {
+     "key": "E",
+     "text": "Disable the resolver and return null",
+     "correct": false,
+     "rationale": "Returning null removes functionality, not the performance root cause."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: dataloaders batch many lookups into fewer queries.",
+   "outcome_refs": [
+    "MST-0888-D02.01"
+   ],
+   "domain_ref": "Resolvers and data loading",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0888-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why add query depth or complexity limits to a public GraphQL API?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To prevent abusive, arbitrarily deep or expensive queries from overloading the server",
+     "correct": true,
+     "rationale": "Correct: cost/depth limits protect the server from expensive or malicious queries."
+    },
+    {
+     "key": "B",
+     "text": "To force every client to use REST instead",
+     "correct": false,
+     "rationale": "Limits constrain queries; they do not switch the protocol."
+    },
+    {
+     "key": "C",
+     "text": "To make the schema untyped",
+     "correct": false,
+     "rationale": "Limits do not change the type system."
+    },
+    {
+     "key": "D",
+     "text": "To remove the need for authentication",
+     "correct": false,
+     "rationale": "Query limits do not replace authentication or authorization."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: cost/depth limits protect the server from expensive or malicious queries.",
+   "outcome_refs": [
+    "MST-0888-D03.01"
+   ],
+   "domain_ref": "Security and performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

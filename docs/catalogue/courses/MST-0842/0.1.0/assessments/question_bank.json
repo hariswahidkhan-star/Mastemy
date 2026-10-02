@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0842",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0842-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why use a multi-stage Dockerfile that builds with the SDK image but ships the runtime (or chiseled) image?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The final image is smaller and has a reduced attack surface, without build-time tooling",
+     "correct": true,
+     "rationale": "Correct: multi-stage builds keep SDK tooling out of the final image, shrinking size and attack surface."
+    },
+    {
+     "key": "B",
+     "text": "The SDK image is always smaller than the runtime image",
+     "correct": false,
+     "rationale": "The SDK image is larger; that is why it is not shipped."
+    },
+    {
+     "key": "C",
+     "text": "Runtime images cannot run .NET apps",
+     "correct": false,
+     "rationale": "Runtime images are precisely for running .NET apps."
+    },
+    {
+     "key": "D",
+     "text": "It is required to compile C#",
+     "correct": false,
+     "rationale": "Compilation needs the SDK, but shipping it is unnecessary; multi-stage separates the two."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: multi-stage builds keep SDK tooling out of the final image, shrinking size and attack surface.",
+   "outcome_refs": [
+    "MST-0842-D01.01"
+   ],
+   "domain_ref": "Containerizing .NET",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0842-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO operational settings that improve a .NET workload running on Kubernetes.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Liveness and readiness probes so Kubernetes can restart or withhold traffic appropriately",
+     "correct": true,
+     "rationale": "Correct: probes let the platform self-heal and route traffic only to healthy pods."
+    },
+    {
+     "key": "B",
+     "text": "CPU and memory requests/limits to guide scheduling and prevent noisy-neighbor issues",
+     "correct": true,
+     "rationale": "Correct: requests/limits inform scheduling and bound resource use."
+    },
+    {
+     "key": "C",
+     "text": "Shipping the SDK image to production for flexibility",
+     "correct": false,
+     "rationale": "The SDK image is larger and widens the attack surface; use a runtime image."
+    },
+    {
+     "key": "D",
+     "text": "Removing all health checks to reduce overhead",
+     "correct": false,
+     "rationale": "Removing probes prevents self-healing and safe rollouts."
+    },
+    {
+     "key": "E",
+     "text": "Hard-coding a single replica with no scaling",
+     "correct": false,
+     "rationale": "A single fixed replica prevents scaling and resilience."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: probes let the platform self-heal and route traffic only to healthy pods.",
+   "outcome_refs": [
+    "MST-0842-D03.01"
+   ],
+   "domain_ref": "Operating on Kubernetes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0842-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Kubernetes, what is the relationship between a Deployment and the pods it manages?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Deployment declares the desired state and manages ReplicaSets that keep the right number of pods running",
+     "correct": true,
+     "rationale": "Correct: a Deployment manages ReplicaSets to maintain the desired pod count and handle rollouts."
+    },
+    {
+     "key": "B",
+     "text": "A Deployment is a single pod with another name",
+     "correct": false,
+     "rationale": "A Deployment manages many pods via ReplicaSets; it is not one pod."
+    },
+    {
+     "key": "C",
+     "text": "Pods manage Deployments",
+     "correct": false,
+     "rationale": "The relationship is the reverse: Deployments manage pods."
+    },
+    {
+     "key": "D",
+     "text": "A Deployment is only a network load balancer",
+     "correct": false,
+     "rationale": "That role belongs to a Service, not a Deployment."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Deployment manages ReplicaSets to maintain the desired pod count and handle rollouts.",
+   "outcome_refs": [
+    "MST-0842-D02.01"
+   ],
+   "domain_ref": "Kubernetes fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

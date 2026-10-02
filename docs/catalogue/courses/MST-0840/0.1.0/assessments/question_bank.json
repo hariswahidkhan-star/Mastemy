@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0840",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0840-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement correctly separates authentication from authorization?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Authentication establishes who the user is; authorization decides what they may do",
+     "correct": true,
+     "rationale": "Correct: authN proves identity; authZ governs permitted actions."
+    },
+    {
+     "key": "B",
+     "text": "Authentication decides permissions; authorization verifies identity",
+     "correct": false,
+     "rationale": "This reverses the two concepts."
+    },
+    {
+     "key": "C",
+     "text": "They are two names for the same check",
+     "correct": false,
+     "rationale": "They are distinct stages: identity first, then permission."
+    },
+    {
+     "key": "D",
+     "text": "Authorization always happens before authentication",
+     "correct": false,
+     "rationale": "You generally establish identity before deciding permissions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: authN proves identity; authZ governs permitted actions.",
+   "outcome_refs": [
+    "MST-0840-D01.01"
+   ],
+   "domain_ref": "Authentication and authorization",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0840-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO correct mitigations for common ASP.NET Core web vulnerabilities.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use antiforgery tokens to defend state-changing form posts against CSRF",
+     "correct": true,
+     "rationale": "Correct: antiforgery tokens are the standard CSRF defense for form posts."
+    },
+    {
+     "key": "B",
+     "text": "Use parameterized queries to prevent SQL injection",
+     "correct": true,
+     "rationale": "Correct: parameterization stops user input from altering query structure."
+    },
+    {
+     "key": "C",
+     "text": "Disable output encoding to render user input faster",
+     "correct": false,
+     "rationale": "Disabling encoding invites XSS; encoding should stay on."
+    },
+    {
+     "key": "D",
+     "text": "Store bearer tokens in a globally readable variable",
+     "correct": false,
+     "rationale": "Exposing tokens broadly increases theft risk, especially under XSS."
+    },
+    {
+     "key": "E",
+     "text": "Redirect to any URL supplied in a query string",
+     "correct": false,
+     "rationale": "Unvalidated redirects enable open-redirect attacks."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: antiforgery tokens are the standard CSRF defense for form posts.",
+   "outcome_refs": [
+    "MST-0840-D02.01"
+   ],
+   "domain_ref": "Common web vulnerabilities",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0840-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should application secrets such as connection strings NOT be placed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Inside client-side Blazor WebAssembly code shipped to the browser",
+     "correct": true,
+     "rationale": "Correct: WebAssembly code reaches the client and can be inspected, so secrets must not live there."
+    },
+    {
+     "key": "B",
+     "text": "In user-secrets during local development",
+     "correct": false,
+     "rationale": "User-secrets is an appropriate development-time store."
+    },
+    {
+     "key": "C",
+     "text": "In Azure Key Vault for staging and production",
+     "correct": false,
+     "rationale": "Key Vault is a recommended secret store."
+    },
+    {
+     "key": "D",
+     "text": "In environment-specific configuration kept off the client",
+     "correct": false,
+     "rationale": "Server-side configuration kept off the client is acceptable."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: WebAssembly code reaches the client and can be inspected, so secrets must not live there.",
+   "outcome_refs": [
+    "MST-0840-D03.01"
+   ],
+   "domain_ref": "Data protection and secrets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

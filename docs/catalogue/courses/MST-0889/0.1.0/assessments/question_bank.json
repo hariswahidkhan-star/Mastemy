@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0889",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0889-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How is a WebSocket connection initially established?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Through an HTTP request that upgrades the connection to the WebSocket protocol",
+     "correct": true,
+     "rationale": "Correct: WebSockets begin with an HTTP upgrade handshake, then switch protocols."
+    },
+    {
+     "key": "B",
+     "text": "By opening a raw TCP socket with no HTTP involvement",
+     "correct": false,
+     "rationale": "The standard handshake uses HTTP upgrade, not a bare socket."
+    },
+    {
+     "key": "C",
+     "text": "By polling an endpoint every second",
+     "correct": false,
+     "rationale": "Polling is an alternative technique, not how a WebSocket is established."
+    },
+    {
+     "key": "D",
+     "text": "By sending an email verification",
+     "correct": false,
+     "rationale": "Email has no role in establishing a WebSocket."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: WebSockets begin with an HTTP upgrade handshake, then switch protocols.",
+   "outcome_refs": [
+    "MST-0889-D01.01"
+   ],
+   "domain_ref": "WebSocket fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0889-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices that make a real-time WebSocket application reliable and scalable.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reconnect with exponential backoff and resubscribe to prior topics",
+     "correct": true,
+     "rationale": "Correct: backoff reconnection plus resubscription restores state after drops."
+    },
+    {
+     "key": "B",
+     "text": "Use a shared backplane so multiple server instances can deliver to all clients",
+     "correct": true,
+     "rationale": "Correct: a backplane lets horizontally scaled servers broadcast consistently."
+    },
+    {
+     "key": "C",
+     "text": "Broadcast every message to every connected client",
+     "correct": false,
+     "rationale": "Untargeted broadcasting wastes bandwidth and does not scale."
+    },
+    {
+     "key": "D",
+     "text": "Assume one process can hold all connections indefinitely",
+     "correct": false,
+     "rationale": "A single process is a scaling and availability bottleneck."
+    },
+    {
+     "key": "E",
+     "text": "Ignore backpressure and buffer without limit",
+     "correct": false,
+     "rationale": "Unbounded buffering under backpressure leads to memory exhaustion."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: backoff reconnection plus resubscription restores state after drops.",
+   "outcome_refs": [
+    "MST-0889-D03.01"
+   ],
+   "domain_ref": "Reliability and scale",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0889-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a chat application, what is the purpose of the rooms/channels pattern?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To deliver messages only to clients subscribed to a given room rather than everyone",
+     "correct": true,
+     "rationale": "Correct: rooms scope delivery to interested subscribers."
+    },
+    {
+     "key": "B",
+     "text": "To encrypt all messages end to end automatically",
+     "correct": false,
+     "rationale": "Rooms scope delivery; they do not themselves provide encryption."
+    },
+    {
+     "key": "C",
+     "text": "To replace the need for a server",
+     "correct": false,
+     "rationale": "Rooms are a server-side delivery concept, not a way to remove the server."
+    },
+    {
+     "key": "D",
+     "text": "To guarantee exactly-once delivery with no extra work",
+     "correct": false,
+     "rationale": "Rooms scope recipients but do not by themselves guarantee exactly-once delivery."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: rooms scope delivery to interested subscribers.",
+   "outcome_refs": [
+    "MST-0889-D02.01"
+   ],
+   "domain_ref": "Real-time patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

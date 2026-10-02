@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0847",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0847-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the role of Microsoft.Extensions.AI (MEAI) in a .NET application?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A unified set of C# abstractions (e.g. IChatClient) for interacting with AI services across providers",
+     "correct": true,
+     "rationale": "Correct: MEAI is a provider-neutral abstraction layer for model interaction in .NET."
+    },
+    {
+     "key": "B",
+     "text": "A complete multi-step agent orchestration framework",
+     "correct": false,
+     "rationale": "MEAI alone is not an agent framework; agentic orchestration needs more."
+    },
+    {
+     "key": "C",
+     "text": "A replacement for dependency injection in .NET",
+     "correct": false,
+     "rationale": "MEAI fits into DI rather than replacing it."
+    },
+    {
+     "key": "D",
+     "text": "A proprietary API tied to a single model vendor",
+     "correct": false,
+     "rationale": "MEAI is deliberately a unifying layer, not vendor-specific."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MEAI is a provider-neutral abstraction layer for model interaction in .NET.",
+   "outcome_refs": [
+    "MST-0847-D01.01"
+   ],
+   "domain_ref": "Microsoft.Extensions.AI abstractions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0847-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO situations where a full agent framework (rather than a plain MEAI call) is justified.",
+   "options": [
+    {
+     "key": "A",
+     "text": "The task requires goal-directed, multi-step orchestration",
+     "correct": true,
+     "rationale": "Correct: multi-step, goal-directed work is where an agent framework earns its complexity."
+    },
+    {
+     "key": "B",
+     "text": "The feature must call several tools and decide the sequence dynamically",
+     "correct": true,
+     "rationale": "Correct: dynamic tool selection and sequencing is agentic behavior."
+    },
+    {
+     "key": "C",
+     "text": "A single one-shot summarization of a block of text",
+     "correct": false,
+     "rationale": "A one-shot summary is served fine by a plain MEAI call."
+    },
+    {
+     "key": "D",
+     "text": "Returning a fixed templated string with no model call",
+     "correct": false,
+     "rationale": "No model call means neither MEAI nor an agent is needed."
+    },
+    {
+     "key": "E",
+     "text": "A stateless classification with one prompt",
+     "correct": false,
+     "rationale": "A single-prompt classification does not need agent orchestration."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: multi-step, goal-directed work is where an agent framework earns its complexity.",
+   "outcome_refs": [
+    "MST-0847-D02.01"
+   ],
+   "domain_ref": "From calls to agents",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0847-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before shipping an AI feature, which practice best guards against silent quality regressions as prompts and models change?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Define evaluations that compare outputs and catch regressions",
+     "correct": true,
+     "rationale": "Correct: an evaluation/regression layer catches quality drops as prompts, models and tools evolve."
+    },
+    {
+     "key": "B",
+     "text": "Remove all logging to protect privacy",
+     "correct": false,
+     "rationale": "Removing observability makes regressions harder to detect, not easier."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code one model version forever and never test",
+     "correct": false,
+     "rationale": "Pinning without testing still misses regressions from prompt or data changes."
+    },
+    {
+     "key": "D",
+     "text": "Rely only on the model provider marketing claims",
+     "correct": false,
+     "rationale": "Vendor claims are not a substitute for your own evaluations."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an evaluation/regression layer catches quality drops as prompts, models and tools evolve.",
+   "outcome_refs": [
+    "MST-0847-D03.01"
+   ],
+   "domain_ref": "Tools, orchestration and responsibility",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

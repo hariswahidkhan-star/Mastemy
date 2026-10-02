@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0846",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0846-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the core idea of the strangler fig pattern for modernization?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Incrementally route functionality to a new system while the old one keeps running, retiring it gradually",
+     "correct": true,
+     "rationale": "Correct: the strangler fig replaces the legacy system piece by piece, reducing risk."
+    },
+    {
+     "key": "B",
+     "text": "Rewrite the whole application at once and switch over in a single release",
+     "correct": false,
+     "rationale": "That is a big-bang migration, the opposite of the strangler fig."
+    },
+    {
+     "key": "C",
+     "text": "Freeze the legacy app and never change it again",
+     "correct": false,
+     "rationale": "Freezing is not migration; the pattern is about gradual replacement."
+    },
+    {
+     "key": "D",
+     "text": "Duplicate the database and hope both stay in sync forever",
+     "correct": false,
+     "rationale": "The pattern is about routing functionality, not indefinite data duplication."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the strangler fig replaces the legacy system piece by piece, reducing risk.",
+   "outcome_refs": [
+    "MST-0846-D03.01"
+   ],
+   "domain_ref": "Incremental migration",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0846-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO factors that should drive the choice between rehost, refactor and re-architect.",
+   "options": [
+    {
+     "key": "A",
+     "text": "The business driver and acceptable risk/effort for each application",
+     "correct": true,
+     "rationale": "Correct: strategy follows business drivers and the risk/effort a team can accept."
+    },
+    {
+     "key": "B",
+     "text": "Which legacy dependencies have modern equivalents or blockers",
+     "correct": true,
+     "rationale": "Correct: compatibility blockers strongly influence a feasible strategy."
+    },
+    {
+     "key": "C",
+     "text": "The color scheme of the admin UI",
+     "correct": false,
+     "rationale": "Cosmetic UI details do not determine a modernization strategy."
+    },
+    {
+     "key": "D",
+     "text": "Whichever option a vendor markets most aggressively",
+     "correct": false,
+     "rationale": "Vendor marketing is not a sound basis for the decision."
+    },
+    {
+     "key": "E",
+     "text": "Choosing re-architect always, regardless of context",
+     "correct": false,
+     "rationale": "A blanket choice ignores the trade-offs the decision is meant to weigh."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: strategy follows business drivers and the risk/effort a team can accept.",
+   "outcome_refs": [
+    "MST-0846-D02.01"
+   ],
+   "domain_ref": "Choosing a strategy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0846-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is \"lift and shift\" (rehost) not automatically the same as modernizing the codebase?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It moves the app to new infrastructure but leaves the application code and its debt largely unchanged",
+     "correct": true,
+     "rationale": "Correct: rehosting changes hosting, not the code; modernization of the code is a separate effort."
+    },
+    {
+     "key": "B",
+     "text": "It always rewrites the code to the latest framework",
+     "correct": false,
+     "rationale": "Rehost deliberately avoids code rewrites."
+    },
+    {
+     "key": "C",
+     "text": "It deletes the legacy code entirely",
+     "correct": false,
+     "rationale": "Rehost preserves the code; it does not delete it."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees the app becomes cloud-native",
+     "correct": false,
+     "rationale": "Rehosting alone does not make an app cloud-native."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: rehosting changes hosting, not the code; modernization of the code is a separate effort.",
+   "outcome_refs": [
+    "MST-0846-D01.01"
+   ],
+   "domain_ref": "Assessing the legacy app",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

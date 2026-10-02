@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0898",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0898-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the arrange-act-assert structure give a unit test?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A clear separation of setup, the single action under test, and the verification",
+     "correct": true,
+     "rationale": "Correct: AAA keeps tests readable by separating setup, action and assertion."
+    },
+    {
+     "key": "B",
+     "text": "A guarantee the code has no bugs",
+     "correct": false,
+     "rationale": "Structure improves clarity but cannot guarantee bug-free code."
+    },
+    {
+     "key": "C",
+     "text": "Automatic parallel execution across machines",
+     "correct": false,
+     "rationale": "AAA is about structure, not execution topology."
+    },
+    {
+     "key": "D",
+     "text": "A replacement for the production code",
+     "correct": false,
+     "rationale": "Tests verify code; they do not replace it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AAA keeps tests readable by separating setup, action and assertion.",
+   "outcome_refs": [
+    "MST-0898-D01.01"
+   ],
+   "domain_ref": "Test fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0898-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO techniques for making asynchronous and timer-based JavaScript tests reliable.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Await the promise and assert both resolve and reject paths",
+     "correct": true,
+     "rationale": "Correct: awaiting and covering both outcomes makes async tests deterministic."
+    },
+    {
+     "key": "B",
+     "text": "Use fake timers to advance time instead of real waiting",
+     "correct": true,
+     "rationale": "Correct: fake timers remove real delays and flakiness from timer tests."
+    },
+    {
+     "key": "C",
+     "text": "Add fixed real sleeps and hope the operation finished",
+     "correct": false,
+     "rationale": "Real sleeps are slow and flaky."
+    },
+    {
+     "key": "D",
+     "text": "Hit the live network so the test is realistic",
+     "correct": false,
+     "rationale": "Live network calls make unit tests slow and non-deterministic."
+    },
+    {
+     "key": "E",
+     "text": "Ignore the reject path because it rarely happens",
+     "correct": false,
+     "rationale": "Untested error paths are a common source of real bugs."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: awaiting and covering both outcomes makes async tests deterministic.",
+   "outcome_refs": [
+    "MST-0898-D03.01"
+   ],
+   "domain_ref": "Async, coverage and CI",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0898-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is 100% line coverage not proof that code is correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Executing a line is not the same as asserting its behavior is right",
+     "correct": true,
+     "rationale": "Correct: coverage shows lines ran, not that outcomes were meaningfully asserted."
+    },
+    {
+     "key": "B",
+     "text": "Coverage tools always report the wrong number",
+     "correct": false,
+     "rationale": "Coverage numbers are generally accurate; the issue is what they mean."
+    },
+    {
+     "key": "C",
+     "text": "100% coverage is impossible to reach",
+     "correct": false,
+     "rationale": "It is reachable; the point is it still does not prove correctness."
+    },
+    {
+     "key": "D",
+     "text": "Coverage measures performance, not tests",
+     "correct": false,
+     "rationale": "Coverage measures executed code, not performance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: coverage shows lines ran, not that outcomes were meaningfully asserted.",
+   "outcome_refs": [
+    "MST-0898-D03.01"
+   ],
+   "domain_ref": "Async, coverage and CI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0851",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0851-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does Spring Boot auto-configuration actually do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It configures beans automatically based on the classpath and properties, which you can override",
+     "correct": true,
+     "rationale": "Correct: auto-configuration wires sensible defaults from the classpath/properties and is overridable."
+    },
+    {
+     "key": "B",
+     "text": "It writes your business logic for you",
+     "correct": false,
+     "rationale": "Auto-configuration wires infrastructure, not business logic."
+    },
+    {
+     "key": "C",
+     "text": "It prevents you from defining your own beans",
+     "correct": false,
+     "rationale": "Your explicit beans override auto-configured ones."
+    },
+    {
+     "key": "D",
+     "text": "It only works without any dependencies on the classpath",
+     "correct": false,
+     "rationale": "It reacts to what is on the classpath; dependencies are what trigger it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: auto-configuration wires sensible defaults from the classpath/properties and is overridable.",
+   "outcome_refs": [
+    "MST-0851-D01.01"
+   ],
+   "domain_ref": "Spring Boot fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0851-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices for a well-behaved Spring Boot REST endpoint.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate the request body and return 400 for invalid input",
+     "correct": true,
+     "rationale": "Correct: validating input and returning 400 communicates client errors clearly."
+    },
+    {
+     "key": "B",
+     "text": "Return status codes that reflect the outcome (e.g. 201 on create, 404 when missing)",
+     "correct": true,
+     "rationale": "Correct: meaningful status codes are part of a correct REST API."
+    },
+    {
+     "key": "C",
+     "text": "Return 200 OK for every response including errors",
+     "correct": false,
+     "rationale": "Masking errors as 200 misleads clients."
+    },
+    {
+     "key": "D",
+     "text": "Put database credentials directly in the controller code",
+     "correct": false,
+     "rationale": "Secrets belong in externalized configuration, not source."
+    },
+    {
+     "key": "E",
+     "text": "Swallow all exceptions and return an empty body",
+     "correct": false,
+     "rationale": "Silently swallowing errors hides failures from clients."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: validating input and returning 400 communicates client errors clearly.",
+   "outcome_refs": [
+    "MST-0851-D02.01"
+   ],
+   "domain_ref": "Building the REST API",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0851-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should environment-specific settings (like a database URL) be handled in Spring Boot?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Externalize them via configuration and profiles per environment",
+     "correct": true,
+     "rationale": "Correct: externalized config with profiles keeps environment values out of code."
+    },
+    {
+     "key": "B",
+     "text": "Hard-code them in the Java source",
+     "correct": false,
+     "rationale": "Hard-coding couples the build to one environment and leaks values."
+    },
+    {
+     "key": "C",
+     "text": "Store them in the compiled class names",
+     "correct": false,
+     "rationale": "Class names are not a configuration mechanism."
+    },
+    {
+     "key": "D",
+     "text": "Ask the user to type them on every request",
+     "correct": false,
+     "rationale": "Infrastructure settings are not per-request user input."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: externalized config with profiles keeps environment values out of code.",
+   "outcome_refs": [
+    "MST-0851-D03.01"
+   ],
+   "domain_ref": "Data, config and production",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

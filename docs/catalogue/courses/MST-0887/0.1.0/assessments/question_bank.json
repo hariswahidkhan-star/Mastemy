@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0887",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0887-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement about session cookies versus JWT bearer tokens is accurate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Neither is universally more secure; each has different trade-offs and threat exposure",
+     "correct": true,
+     "rationale": "Correct: security depends on how each is stored, transmitted and validated, not the format alone."
+    },
+    {
+     "key": "B",
+     "text": "JWTs are always more secure than session cookies",
+     "correct": false,
+     "rationale": "A token in localStorage can be stolen via XSS; format alone does not guarantee security."
+    },
+    {
+     "key": "C",
+     "text": "Session cookies cannot be protected against CSRF at all",
+     "correct": false,
+     "rationale": "SameSite and antiforgery tokens mitigate CSRF for cookies."
+    },
+    {
+     "key": "D",
+     "text": "Bearer tokens are immune to theft",
+     "correct": false,
+     "rationale": "Bearer tokens can be stolen and replayed if exposed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: security depends on how each is stored, transmitted and validated, not the format alone.",
+   "outcome_refs": [
+    "MST-0887-D01.01"
+   ],
+   "domain_ref": "Authentication models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0887-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO measures that reduce the risk of session/token theft in a browser app.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store the session token in an httpOnly, Secure cookie",
+     "correct": true,
+     "rationale": "Correct: httpOnly keeps the token out of reach of injected scripts, and Secure limits it to HTTPS."
+    },
+    {
+     "key": "B",
+     "text": "Set SameSite on cookies and add antiforgery tokens for state-changing requests",
+     "correct": true,
+     "rationale": "Correct: SameSite plus antiforgery tokens mitigate CSRF."
+    },
+    {
+     "key": "C",
+     "text": "Keep a long-lived token in localStorage for convenience",
+     "correct": false,
+     "rationale": "localStorage is readable by any injected script, so XSS can steal the token."
+    },
+    {
+     "key": "D",
+     "text": "Disable HTTPS to simplify local testing in production",
+     "correct": false,
+     "rationale": "Disabling HTTPS exposes tokens in transit."
+    },
+    {
+     "key": "E",
+     "text": "Embed the token in every URL query string",
+     "correct": false,
+     "rationale": "Tokens in URLs leak via logs, history and referrers."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: httpOnly keeps the token out of reach of injected scripts, and Secure limits it to HTTPS.",
+   "outcome_refs": [
+    "MST-0887-D03.01"
+   ],
+   "domain_ref": "Securing sessions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0887-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which OAuth 2.0 flow is recommended for a browser-based SPA today?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Authorization-code flow with PKCE",
+     "correct": true,
+     "rationale": "Correct: auth-code with PKCE is the recommended flow for public SPA clients."
+    },
+    {
+     "key": "B",
+     "text": "Implicit flow",
+     "correct": false,
+     "rationale": "The implicit flow is discouraged for new SPAs because it exposes tokens in the URL fragment."
+    },
+    {
+     "key": "C",
+     "text": "Resource-owner password credentials",
+     "correct": false,
+     "rationale": "ROPC requires handling raw credentials and is discouraged."
+    },
+    {
+     "key": "D",
+     "text": "Client-credentials flow for the end user",
+     "correct": false,
+     "rationale": "Client-credentials is for machine-to-machine, not an end-user SPA login."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: auth-code with PKCE is the recommended flow for public SPA clients.",
+   "outcome_refs": [
+    "MST-0887-D02.01"
+   ],
+   "domain_ref": "OAuth 2.0 and OIDC",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

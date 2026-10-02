@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0839",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0839-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does WebApplicationFactory<TEntryPoint> provide for ASP.NET Core integration tests?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An in-memory TestServer and an HttpClient that exercises the real request pipeline",
+     "correct": true,
+     "rationale": "Correct: it bootstraps the app in-memory and hands you an HttpClient against the real pipeline."
+    },
+    {
+     "key": "B",
+     "text": "A mocking library that replaces all classes automatically",
+     "correct": false,
+     "rationale": "It does not auto-mock classes; it hosts the app for testing."
+    },
+    {
+     "key": "C",
+     "text": "A production load balancer",
+     "correct": false,
+     "rationale": "It is a test host, not production infrastructure."
+    },
+    {
+     "key": "D",
+     "text": "A replacement for the application Program entry point",
+     "correct": false,
+     "rationale": "TEntryPoint usually IS Program; the factory uses it rather than replacing it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it bootstraps the app in-memory and hands you an HttpClient against the real pipeline.",
+   "outcome_refs": [
+    "MST-0839-D01.01"
+   ],
+   "domain_ref": "WebApplicationFactory and TestServer",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0839-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "You are writing integration tests that must not call a real external payment provider. Select TWO sound practices.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Register a test double for the provider via ConfigureTestServices",
+     "correct": true,
+     "rationale": "Correct: replacing the service with a test double isolates the test from the external call."
+    },
+    {
+     "key": "B",
+     "text": "Seed and reset test data so tests do not depend on each other order",
+     "correct": true,
+     "rationale": "Correct: independent, seeded data keeps tests deterministic."
+    },
+    {
+     "key": "C",
+     "text": "Call the live payment API with production credentials",
+     "correct": false,
+     "rationale": "Hitting the live provider makes tests slow, flaky and unsafe."
+    },
+    {
+     "key": "D",
+     "text": "Share one mutable static record across all tests",
+     "correct": false,
+     "rationale": "Shared mutable state causes order-dependent, brittle tests."
+    },
+    {
+     "key": "E",
+     "text": "Hard-code a sleep to wait for the external system",
+     "correct": false,
+     "rationale": "Arbitrary sleeps are flaky and still depend on the external system."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: replacing the service with a test double isolates the test from the external call.",
+   "outcome_refs": [
+    "MST-0839-D02.01"
+   ],
+   "domain_ref": "Test data, dependencies and auth",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0839-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does consumer-driven contract testing primarily address?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Detecting when a producer change would break an existing consumer expectation",
+     "correct": true,
+     "rationale": "Correct: contracts capture consumer expectations so producer changes that break them fail early."
+    },
+    {
+     "key": "B",
+     "text": "Measuring the CPU performance of a service",
+     "correct": false,
+     "rationale": "Contract testing is about compatibility, not performance measurement."
+    },
+    {
+     "key": "C",
+     "text": "Replacing the need for any unit tests",
+     "correct": false,
+     "rationale": "Contracts complement rather than replace unit tests."
+    },
+    {
+     "key": "D",
+     "text": "Encrypting traffic between services",
+     "correct": false,
+     "rationale": "Contracts verify shape and expectations, not transport encryption."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: contracts capture consumer expectations so producer changes that break them fail early.",
+   "outcome_refs": [
+    "MST-0839-D03.01"
+   ],
+   "domain_ref": "Contract testing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

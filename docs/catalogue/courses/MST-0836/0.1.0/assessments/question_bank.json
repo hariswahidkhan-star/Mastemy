@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0836",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0836-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is implementing IHostedService / BackgroundService preferred over starting a bare background thread?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its lifetime is coordinated with the host so it can run graceful shutdown and cleanup",
+     "correct": true,
+     "rationale": "Correct: hosted services get start/stop hooks tied to the host lifetime for graceful shutdown."
+    },
+    {
+     "key": "B",
+     "text": "It makes the work run on the UI thread",
+     "correct": false,
+     "rationale": "Background services are not about UI threads; .NET workers are typically headless."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the work never fails",
+     "correct": false,
+     "rationale": "Nothing guarantees failure-free execution; resilience must be designed in."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for dependency injection",
+     "correct": false,
+     "rationale": "Hosted services integrate with DI rather than removing it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: hosted services get start/stop hooks tied to the host lifetime for graceful shutdown.",
+   "outcome_refs": [
+    "MST-0836-D01.01"
+   ],
+   "domain_ref": "Hosted services and the worker",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0836-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Queues used by your background tasks guarantee at-least-once delivery. Select TWO measures that keep processing correct under duplicates and restarts.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Make message handlers idempotent",
+     "correct": true,
+     "rationale": "Correct: idempotent handlers tolerate the same message being processed more than once."
+    },
+    {
+     "key": "B",
+     "text": "Use checkpoints so a restarted task resumes from its last known point",
+     "correct": true,
+     "rationale": "Correct: checkpoints let long tasks resume instead of restarting from the beginning."
+    },
+    {
+     "key": "C",
+     "text": "Assume each message is delivered exactly once",
+     "correct": false,
+     "rationale": "At-least-once delivery means duplicates are possible; assuming exactly-once is unsafe."
+    },
+    {
+     "key": "D",
+     "text": "Delete the message before processing completes",
+     "correct": false,
+     "rationale": "Deleting before completion can lose work if processing then fails."
+    },
+    {
+     "key": "E",
+     "text": "Store large sensitive payloads inside each message",
+     "correct": false,
+     "rationale": "Sensitive data in payloads risks exposure via logs or dead-letters; pass a reference instead."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: idempotent handlers tolerate the same message being processed more than once.",
+   "outcome_refs": [
+    "MST-0836-D03.01"
+   ],
+   "domain_ref": "Idempotency and poison messages",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0836-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A message fails on every attempt because its referenced record no longer exists. What should the processor do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Treat it as a permanent failure and move it to a dead-letter queue",
+     "correct": true,
+     "rationale": "Correct: permanent failures should be dead-lettered rather than retried forever."
+    },
+    {
+     "key": "B",
+     "text": "Retry it indefinitely until it succeeds",
+     "correct": false,
+     "rationale": "Endless retries of a permanent failure block the queue and waste attempts."
+    },
+    {
+     "key": "C",
+     "text": "Silently drop it with no record",
+     "correct": false,
+     "rationale": "Silently dropping loses the ability to investigate; dead-lettering preserves it."
+    },
+    {
+     "key": "D",
+     "text": "Pause all other processing until it succeeds",
+     "correct": false,
+     "rationale": "A single poison message should not halt the whole pipeline."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: permanent failures should be dead-lettered rather than retried forever.",
+   "outcome_refs": [
+    "MST-0836-D03.01"
+   ],
+   "domain_ref": "Idempotency and poison messages",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

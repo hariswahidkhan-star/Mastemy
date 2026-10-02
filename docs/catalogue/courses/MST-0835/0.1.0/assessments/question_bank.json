@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0835",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0835-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In DDD, what is the primary responsibility of an aggregate root?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To enforce the invariants of the whole aggregate and be the only entry point for changes",
+     "correct": true,
+     "rationale": "Correct: the aggregate root guards consistency and is the single channel for modifying the aggregate."
+    },
+    {
+     "key": "B",
+     "text": "To map directly to a single database table",
+     "correct": false,
+     "rationale": "An aggregate may span several tables; persistence shape is not its defining role."
+    },
+    {
+     "key": "C",
+     "text": "To expose all child entities for direct external modification",
+     "correct": false,
+     "rationale": "Direct external modification of children bypasses invariant protection and is discouraged."
+    },
+    {
+     "key": "D",
+     "text": "To hold only query logic for reporting",
+     "correct": false,
+     "rationale": "Reporting/query concerns belong to the read side in CQRS, not the aggregate root."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the aggregate root guards consistency and is the single channel for modifying the aggregate.",
+   "outcome_refs": [
+    "MST-0835-D01.01"
+   ],
+   "domain_ref": "Domain modeling with aggregates",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0835-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that correctly describe a simplified CQRS approach as used in the .NET microservices guidance.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Queries are side-effect free and can use a simpler read model",
+     "correct": true,
+     "rationale": "Correct: queries are idempotent and may use a dedicated read model."
+    },
+    {
+     "key": "B",
+     "text": "Commands change state and are a good place to apply DDD patterns",
+     "correct": true,
+     "rationale": "Correct: the transactional write side benefits from DDD modeling."
+    },
+    {
+     "key": "C",
+     "text": "CQRS always mandates separate read and write databases",
+     "correct": false,
+     "rationale": "A simplified CQRS can use the same database for both sides."
+    },
+    {
+     "key": "D",
+     "text": "Queries should mutate aggregates to stay consistent",
+     "correct": false,
+     "rationale": "Queries must not change state; that would violate CQRS."
+    },
+    {
+     "key": "E",
+     "text": "Commands and queries must share one identical model",
+     "correct": false,
+     "rationale": "CQRS deliberately allows different models for reads and writes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: queries are idempotent and may use a dedicated read model.",
+   "outcome_refs": [
+    "MST-0835-D02.01"
+   ],
+   "domain_ref": "CQRS and the command pipeline",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0835-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You must propagate a side effect across two aggregates after an order starts, favoring scalability and fewer database locks. What approach fits the DDD guidance best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Raise a domain event and use eventual consistency between the aggregates",
+     "correct": true,
+     "rationale": "Correct: domain events with eventual consistency reduce lock contention across aggregates."
+    },
+    {
+     "key": "B",
+     "text": "Update both aggregates inside one large transaction by default",
+     "correct": false,
+     "rationale": "A single transaction across aggregates increases locking and is discouraged as a default."
+    },
+    {
+     "key": "C",
+     "text": "Let one aggregate directly navigate and mutate the other",
+     "correct": false,
+     "rationale": "Direct navigation and mutation across aggregates breaks boundaries and invariants."
+    },
+    {
+     "key": "D",
+     "text": "Perform the side effect in a read query handler",
+     "correct": false,
+     "rationale": "Query handlers must remain side-effect free."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: domain events with eventual consistency reduce lock contention across aggregates.",
+   "outcome_refs": [
+    "MST-0835-D03.01"
+   ],
+   "domain_ref": "Domain events and consistency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

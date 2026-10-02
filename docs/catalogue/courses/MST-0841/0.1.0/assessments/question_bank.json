@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0841",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0841-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which best describes distributed tracing among the three pillars of observability?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It tracks a request and its activities across components so you can see where time is spent",
+     "correct": true,
+     "rationale": "Correct: tracing follows a request across components to localize latency and failures."
+    },
+    {
+     "key": "B",
+     "text": "It records only counters and gauges such as active request count",
+     "correct": false,
+     "rationale": "Those are metrics, not traces."
+    },
+    {
+     "key": "C",
+     "text": "It stores individual event records like a single failed operation",
+     "correct": false,
+     "rationale": "That describes logs rather than distributed tracing."
+    },
+    {
+     "key": "D",
+     "text": "It is the same as attaching a debugger to production",
+     "correct": false,
+     "rationale": "Tracing is designed to be low-overhead and transparent, unlike invasive debugging."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: tracing follows a request across components to localize latency and failures.",
+   "outcome_refs": [
+    "MST-0841-D01.01"
+   ],
+   "domain_ref": "Pillars of observability",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0841-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO .NET framework APIs that the .NET OpenTelemetry implementation builds on for instrumentation.",
+   "options": [
+    {
+     "key": "A",
+     "text": "System.Diagnostics.Metrics.Meter for metrics",
+     "correct": true,
+     "rationale": "Correct: OTel collects metrics emitted via Meter."
+    },
+    {
+     "key": "B",
+     "text": "System.Diagnostics.ActivitySource for distributed tracing",
+     "correct": true,
+     "rationale": "Correct: OTel collects spans produced via ActivitySource/Activity."
+    },
+    {
+     "key": "C",
+     "text": "System.Console.WriteLine as the primary telemetry API",
+     "correct": false,
+     "rationale": "Console output is not the structured instrumentation API OTel consumes."
+    },
+    {
+     "key": "D",
+     "text": "A custom APM-specific proprietary API required by OTel",
+     "correct": false,
+     "rationale": "OTel avoids APM-specific APIs; it uses the standard .NET APIs."
+    },
+    {
+     "key": "E",
+     "text": "System.Threading.Thread for metrics collection",
+     "correct": false,
+     "rationale": "Thread is not a telemetry API."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: OTel collects metrics emitted via Meter.",
+   "outcome_refs": [
+    "MST-0841-D02.01"
+   ],
+   "domain_ref": "Instrumenting .NET",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0841-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want to send .NET traces and metrics to any OpenTelemetry-compatible backend without coupling to one vendor. What should you configure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An OTLP exporter",
+     "correct": true,
+     "rationale": "Correct: OTLP is the vendor-neutral wire protocol for exporting telemetry to compatible backends."
+    },
+    {
+     "key": "B",
+     "text": "A vendor-specific SDK in place of OpenTelemetry",
+     "correct": false,
+     "rationale": "A vendor SDK couples you to that vendor, the opposite of the goal."
+    },
+    {
+     "key": "C",
+     "text": "Only Console logging",
+     "correct": false,
+     "rationale": "Console logging does not export telemetry to a backend."
+    },
+    {
+     "key": "D",
+     "text": "A debugger attached to production",
+     "correct": false,
+     "rationale": "A debugger does not export telemetry and is invasive."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: OTLP is the vendor-neutral wire protocol for exporting telemetry to compatible backends.",
+   "outcome_refs": [
+    "MST-0841-D03.01"
+   ],
+   "domain_ref": "Exporting and analyzing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
