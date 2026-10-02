@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1814",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1814-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which best describes a well-formed user story?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As a [role], I want [capability], so that [benefit] - with clear acceptance criteria",
+     "correct": true,
+     "rationale": "Correct: a user story states role, need and benefit and is testable via acceptance criteria."
+    },
+    {
+     "key": "B",
+     "text": "A detailed technical design document",
+     "correct": false,
+     "rationale": "That is a design artefact, not a user story."
+    },
+    {
+     "key": "C",
+     "text": "A list of database tables",
+     "correct": false,
+     "rationale": "A user story captures a need from the user's perspective, not schema."
+    },
+    {
+     "key": "D",
+     "text": "A signed contract",
+     "correct": false,
+     "rationale": "A contract is a commercial document, not a user story."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a user story states role, need and benefit and is testable via acceptance criteria.",
+   "outcome_refs": [
+    "MST-1814-D01.01"
+   ],
+   "domain_ref": "The Salesforce BA Role and Discovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1814-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A stakeholder says 'add a button that creates a renewal record.' What should the BA do first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Explore the underlying business need and problem being solved",
+     "correct": true,
+     "rationale": "Correct: the BA frames the problem before accepting a prescribed solution, ensuring the real need is met."
+    },
+    {
+     "key": "B",
+     "text": "Immediately build the button",
+     "correct": false,
+     "rationale": "Jumping to a solution risks solving the wrong problem."
+    },
+    {
+     "key": "C",
+     "text": "Reject the request outright",
+     "correct": false,
+     "rationale": "The request is input; the BA should understand the need, not dismiss it."
+    },
+    {
+     "key": "D",
+     "text": "Escalate to legal",
+     "correct": false,
+     "rationale": "There is no legal issue indicated; discovery of the need comes first."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the BA frames the problem before accepting a prescribed solution, ensuring the real need is met.",
+   "outcome_refs": [
+    "MST-1814-D01.02"
+   ],
+   "domain_ref": "The Salesforce BA Role and Discovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1814-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good uses of acceptance criteria?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They define when a story is done and testable",
+     "correct": true,
+     "rationale": "Correct: acceptance criteria set the conditions of satisfaction for a story."
+    },
+    {
+     "key": "B",
+     "text": "They give UAT testers the basis for test cases",
+     "correct": true,
+     "rationale": "Correct: UAT test cases are derived from acceptance criteria."
+    },
+    {
+     "key": "C",
+     "text": "They replace the need for any stakeholder involvement",
+     "correct": false,
+     "rationale": "Stakeholder involvement remains essential throughout."
+    },
+    {
+     "key": "D",
+     "text": "They specify the server hardware",
+     "correct": false,
+     "rationale": "Acceptance criteria describe behaviour, not infrastructure."
+    },
+    {
+     "key": "E",
+     "text": "They are written only after go-live",
+     "correct": false,
+     "rationale": "They are defined before development, not after go-live."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: acceptance criteria set the conditions of satisfaction for a story.",
+   "outcome_refs": [
+    "MST-1814-D01.03"
+   ],
+   "domain_ref": "The Salesforce BA Role and Discovery",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

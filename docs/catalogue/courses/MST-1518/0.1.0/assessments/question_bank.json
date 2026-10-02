@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1518",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1518-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a developer avoid placing a SOQL query inside a for loop that iterates over many records?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can exceed the governor limit on the number of SOQL queries per transaction",
+     "correct": true,
+     "rationale": "Correct: Salesforce enforces a per-transaction SOQL limit; querying in a loop quickly exhausts it. Query once and use collections."
+    },
+    {
+     "key": "B",
+     "text": "SOQL cannot be written inside Apex at all",
+     "correct": false,
+     "rationale": "SOQL is fully supported in Apex; the issue is querying inside loops."
+    },
+    {
+     "key": "C",
+     "text": "Loops are not allowed in Apex",
+     "correct": false,
+     "rationale": "Loops are allowed; the problem is the query placement."
+    },
+    {
+     "key": "D",
+     "text": "It improves performance and is recommended",
+     "correct": false,
+     "rationale": "It harms performance and risks limit exceptions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Salesforce enforces a per-transaction SOQL limit; querying in a loop quickly exhausts it. Query once and use collections.",
+   "outcome_refs": [
+    "MST-1518-D01.01"
+   ],
+   "domain_ref": "Salesforce Fundamentals, Data Modelling and Logic Declaratively",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1518-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which relationship type should you use so that deleting a parent record automatically deletes its child records and the child inherits the parent's sharing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Master-detail relationship",
+     "correct": true,
+     "rationale": "Correct: master-detail cascades deletes and the detail inherits sharing/ownership from the master."
+    },
+    {
+     "key": "B",
+     "text": "Lookup relationship",
+     "correct": false,
+     "rationale": "Lookup does not cascade delete by default and children keep their own sharing."
+    },
+    {
+     "key": "C",
+     "text": "External lookup relationship",
+     "correct": false,
+     "rationale": "External lookups point to external objects, not for cascade-delete here."
+    },
+    {
+     "key": "D",
+     "text": "Hierarchical relationship",
+     "correct": false,
+     "rationale": "Hierarchical relationships are a special self-lookup on the User object."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: master-detail cascades deletes and the detail inherits sharing/ownership from the master.",
+   "outcome_refs": [
+    "MST-1518-D01.02"
+   ],
+   "domain_ref": "Salesforce Fundamentals, Data Modelling and Logic Declaratively",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1518-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about Apex unit tests on the Salesforce platform?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Test methods do not commit data to the database",
+     "correct": true,
+     "rationale": "Correct: test data is rolled back after the test runs."
+    },
+    {
+     "key": "B",
+     "text": "A minimum of 75% code coverage is required to deploy Apex to production",
+     "correct": true,
+     "rationale": "Correct: production deployment requires at least 75% org-wide Apex coverage."
+    },
+    {
+     "key": "C",
+     "text": "Tests can see existing org data by default without (SeeAllData=true)",
+     "correct": false,
+     "rationale": "By default tests are isolated and cannot see org data unless SeeAllData=true is set."
+    },
+    {
+     "key": "D",
+     "text": "Assertions are optional and coverage alone proves correctness",
+     "correct": false,
+     "rationale": "Coverage without assertions does not verify behaviour; assertions are essential."
+    },
+    {
+     "key": "E",
+     "text": "Tests run only in production",
+     "correct": false,
+     "rationale": "Tests run in sandboxes and scratch orgs as well."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: test data is rolled back after the test runs.",
+   "outcome_refs": [
+    "MST-1518-D01.03"
+   ],
+   "domain_ref": "Salesforce Fundamentals, Data Modelling and Logic Declaratively",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

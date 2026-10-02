@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1510",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1510-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement about a Python generator function (one that uses yield) is correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It produces values lazily, one at a time, and keeps its state between calls",
+     "correct": true,
+     "rationale": "Correct: a generator suspends at each yield and resumes on the next request, producing values on demand."
+    },
+    {
+     "key": "B",
+     "text": "It returns a list of all values immediately",
+     "correct": false,
+     "rationale": "That describes a function returning a list; a generator yields values lazily, not all at once."
+    },
+    {
+     "key": "C",
+     "text": "It can be re-iterated any number of times after exhaustion",
+     "correct": false,
+     "rationale": "A generator is exhausted after one pass and must be recreated to iterate again."
+    },
+    {
+     "key": "D",
+     "text": "It cannot be used in a for loop",
+     "correct": false,
+     "rationale": "Generators are iterable and are commonly consumed by for loops."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a generator suspends at each yield and resumes on the next request, producing values on demand.",
+   "outcome_refs": [
+    "MST-1510-D01.01"
+   ],
+   "domain_ref": "Modules, Packages and String Processing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1510-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a class, what does the first parameter conventionally named self refer to?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The particular instance the method was called on",
+     "correct": true,
+     "rationale": "Correct: self is the instance, giving the method access to that object's attributes."
+    },
+    {
+     "key": "B",
+     "text": "The class object itself",
+     "correct": false,
+     "rationale": "The class object is referenced by cls in classmethods, not by self."
+    },
+    {
+     "key": "C",
+     "text": "The parent (base) class",
+     "correct": false,
+     "rationale": "The base class is reached via super(), not self."
+    },
+    {
+     "key": "D",
+     "text": "A required keyword of the language",
+     "correct": false,
+     "rationale": "self is a convention, not a keyword; any valid name would work but self is standard."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: self is the instance, giving the method access to that object's attributes.",
+   "outcome_refs": [
+    "MST-1510-D01.02"
+   ],
+   "domain_ref": "Modules, Packages and String Processing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1510-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about the try/except/finally construct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Code in a finally block runs whether or not an exception was raised",
+     "correct": true,
+     "rationale": "Correct: finally always executes, making it ideal for cleanup such as closing files."
+    },
+    {
+     "key": "B",
+     "text": "A single try can have several except branches for different exception types",
+     "correct": true,
+     "rationale": "Correct: you can match distinct exception classes with separate except clauses."
+    },
+    {
+     "key": "C",
+     "text": "The else block of a try runs only when an exception was raised",
+     "correct": false,
+     "rationale": "The else block runs only when NO exception was raised in the try."
+    },
+    {
+     "key": "D",
+     "text": "Raising an exception in except is forbidden",
+     "correct": false,
+     "rationale": "You may raise (or re-raise) inside an except block."
+    },
+    {
+     "key": "E",
+     "text": "finally can only appear without any except",
+     "correct": false,
+     "rationale": "finally may accompany except clauses in the same statement."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: finally always executes, making it ideal for cleanup such as closing files.",
+   "outcome_refs": [
+    "MST-1510-D01.03"
+   ],
+   "domain_ref": "Modules, Packages and String Processing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

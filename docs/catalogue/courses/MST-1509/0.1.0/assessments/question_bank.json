@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1509",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1509-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What value is printed by: print(2 ** 3 ** 2) ?",
+   "options": [
+    {
+     "key": "A",
+     "text": "512",
+     "correct": true,
+     "rationale": "Correct: ** is right-associative, so 3 ** 2 = 9 is evaluated first, then 2 ** 9 = 512."
+    },
+    {
+     "key": "B",
+     "text": "64",
+     "correct": false,
+     "rationale": "This is (2 ** 3) ** 2; exponentiation is right-associative, not left, so this is wrong."
+    },
+    {
+     "key": "C",
+     "text": "36",
+     "correct": false,
+     "rationale": "This would be (2 * 3) ** 2; the operator is exponentiation, not multiplication."
+    },
+    {
+     "key": "D",
+     "text": "18",
+     "correct": false,
+     "rationale": "This treats the expression as 2 * 3 * 3, which ignores how ** works."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ** is right-associative, so 3 ** 2 = 9 is evaluated first, then 2 ** 9 = 512.",
+   "outcome_refs": [
+    "MST-1509-D01.01"
+   ],
+   "domain_ref": "Computer Programming and Python Fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1509-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A beginner writes x = input('n: ') then total = x + 1 and gets a TypeError. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "input() returns a string, so x + 1 mixes str and int",
+     "correct": true,
+     "rationale": "Correct: input() always returns a str; adding an int to a str raises TypeError. Wrap x in int() first."
+    },
+    {
+     "key": "B",
+     "text": "input() returns None",
+     "correct": false,
+     "rationale": "input() returns the typed text as a string, not None."
+    },
+    {
+     "key": "C",
+     "text": "The variable name x is reserved",
+     "correct": false,
+     "rationale": "x is a valid identifier; it is not a Python keyword."
+    },
+    {
+     "key": "D",
+     "text": "+ cannot be used with integers",
+     "correct": false,
+     "rationale": "+ works fine with integers; the error comes from the str operand."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: input() always returns a str; adding an int to a str raises TypeError. Wrap x in int() first.",
+   "outcome_refs": [
+    "MST-1509-D01.02"
+   ],
+   "domain_ref": "Computer Programming and Python Fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1509-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Python lists are true?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A list is mutable, so its contents can change in place",
+     "correct": true,
+     "rationale": "Correct: lists support in-place changes such as append() and item assignment."
+    },
+    {
+     "key": "B",
+     "text": "Negative indexes count from the end of the list",
+     "correct": true,
+     "rationale": "Correct: index -1 is the last element, -2 the second-to-last, and so on."
+    },
+    {
+     "key": "C",
+     "text": "Lists can only hold items of a single data type",
+     "correct": false,
+     "rationale": "A Python list may mix types, e.g. [1, 'a', True]."
+    },
+    {
+     "key": "D",
+     "text": "Slicing a list modifies the original list in place",
+     "correct": false,
+     "rationale": "Slicing returns a new list; the original is unchanged."
+    },
+    {
+     "key": "E",
+     "text": "len() cannot be used on a list",
+     "correct": false,
+     "rationale": "len() returns the number of items in a list."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: lists support in-place changes such as append() and item assignment.",
+   "outcome_refs": [
+    "MST-1509-D01.03"
+   ],
+   "domain_ref": "Computer Programming and Python Fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

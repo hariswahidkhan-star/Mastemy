@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1812",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1812-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A business wants records of one object shared more openly than the org-wide default allows, but only for a specific group. What should an app builder use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A sharing rule",
+     "correct": true,
+     "rationale": "Correct: sharing rules open up access beyond the org-wide default for defined groups or criteria."
+    },
+    {
+     "key": "B",
+     "text": "A validation rule",
+     "correct": false,
+     "rationale": "Validation rules enforce data quality; they do not control sharing."
+    },
+    {
+     "key": "C",
+     "text": "A page layout",
+     "correct": false,
+     "rationale": "Page layouts control UI arrangement, not record access."
+    },
+    {
+     "key": "D",
+     "text": "A formula field",
+     "correct": false,
+     "rationale": "Formula fields compute values; they do not grant record access."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sharing rules open up access beyond the org-wide default for defined groups or criteria.",
+   "outcome_refs": [
+    "MST-1812-D01.01"
+   ],
+   "domain_ref": "Data Modelling and the Declarative Platform",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1812-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which automation tool is the recommended declarative choice for complex record-triggered business logic in Salesforce today?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Flow",
+     "correct": true,
+     "rationale": "Correct: Flow is Salesforce's primary declarative automation tool and the recommended path over retired tools."
+    },
+    {
+     "key": "B",
+     "text": "Workflow Rules",
+     "correct": false,
+     "rationale": "Workflow Rules are being retired in favour of Flow."
+    },
+    {
+     "key": "C",
+     "text": "Process Builder",
+     "correct": false,
+     "rationale": "Process Builder is being retired in favour of Flow."
+    },
+    {
+     "key": "D",
+     "text": "Apex trigger (always)",
+     "correct": false,
+     "rationale": "Code is only needed when declarative tools cannot meet the requirement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Flow is Salesforce's primary declarative automation tool and the recommended path over retired tools.",
+   "outcome_refs": [
+    "MST-1812-D01.02"
+   ],
+   "domain_ref": "Data Modelling and the Declarative Platform",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1812-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are ways to grant a user additional permissions beyond their profile?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assign a permission set",
+     "correct": true,
+     "rationale": "Correct: permission sets add permissions on top of a profile."
+    },
+    {
+     "key": "B",
+     "text": "Assign a permission set group",
+     "correct": true,
+     "rationale": "Correct: a permission set group bundles permission sets for assignment."
+    },
+    {
+     "key": "C",
+     "text": "Change the record's page layout",
+     "correct": false,
+     "rationale": "Page layouts affect UI, not permissions."
+    },
+    {
+     "key": "D",
+     "text": "Add a validation rule",
+     "correct": false,
+     "rationale": "Validation rules restrict data entry; they do not grant permissions."
+    },
+    {
+     "key": "E",
+     "text": "Create a report folder",
+     "correct": false,
+     "rationale": "Report folders organise reports; they do not grant object permissions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: permission sets add permissions on top of a profile.",
+   "outcome_refs": [
+    "MST-1812-D01.03"
+   ],
+   "domain_ref": "Data Modelling and the Declarative Platform",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
