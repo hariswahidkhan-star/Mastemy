@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0986",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 570,
+  "lesson_check_items": 108,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0986-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Kubernetes object provides a stable address and load-balances traffic to a changing set of Pods?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Service",
+     "correct": true,
+     "rationale": "Correct: a Service gives a stable virtual IP and DNS name in front of Pods matched by a selector."
+    },
+    {
+     "key": "B",
+     "text": "Pod",
+     "correct": false,
+     "rationale": "A Pod's IP is ephemeral and changes on restart."
+    },
+    {
+     "key": "C",
+     "text": "ConfigMap",
+     "correct": false,
+     "rationale": "A ConfigMap stores configuration, not networking."
+    },
+    {
+     "key": "D",
+     "text": "Namespace",
+     "correct": false,
+     "rationale": "A Namespace is an isolation boundary, not a load balancer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Service gives a stable virtual IP and DNS name in front of Pods matched by a selector.",
+   "outcome_refs": [
+    "MST-0986-D01.01"
+   ],
+   "domain_ref": "Kubernetes architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0986-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of a readiness probe?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To tell Kubernetes when a Pod is ready to receive traffic",
+     "correct": true,
+     "rationale": "Correct: readiness probes gate traffic until the container reports ready."
+    },
+    {
+     "key": "B",
+     "text": "To restart a container that has crashed",
+     "correct": false,
+     "rationale": "That is the liveness probe's role."
+    },
+    {
+     "key": "C",
+     "text": "To set CPU and memory limits",
+     "correct": false,
+     "rationale": "Limits are set in the resources field, not by probes."
+    },
+    {
+     "key": "D",
+     "text": "To scale the Deployment up and down",
+     "correct": false,
+     "rationale": "Scaling is handled by replicas or an autoscaler."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: readiness probes gate traffic until the container reports ready.",
+   "outcome_refs": [
+    "MST-0986-D02.01"
+   ],
+   "domain_ref": "Pods and workloads",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0986-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Kubernetes Deployments are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Deployment manages ReplicaSets to keep a desired number of Pods running",
+     "correct": true,
+     "rationale": "Correct: Deployments reconcile the actual Pod count toward the declared replicas."
+    },
+    {
+     "key": "B",
+     "text": "A rolling update can be rolled back to a previous revision",
+     "correct": true,
+     "rationale": "Correct: Deployment revisions support rollback."
+    },
+    {
+     "key": "C",
+     "text": "Deleting a Pod managed by a Deployment permanently reduces capacity",
+     "correct": false,
+     "rationale": "The controller recreates the Pod to match the desired count."
+    },
+    {
+     "key": "D",
+     "text": "A Deployment stores persistent application data by itself",
+     "correct": false,
+     "rationale": "Persistent data needs volumes and PersistentVolumeClaims."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Deployments reconcile the actual Pod count toward the declared replicas.; Correct: Deployment revisions support rollback.",
+   "outcome_refs": [
+    "MST-0986-D03.01"
+   ],
+   "domain_ref": "Networking and services",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

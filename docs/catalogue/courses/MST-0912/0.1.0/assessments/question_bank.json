@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0912",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 570,
+  "lesson_check_items": 108,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0912-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A variable may hold a value or be nil, and you want to run code only when it has a value. Which Swift construct is designed for this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Optional binding with if let",
+     "correct": true,
+     "rationale": "Correct: if let (or guard let) safely unwraps an optional and binds the value when present."
+    },
+    {
+     "key": "B",
+     "text": "A force unwrap with !",
+     "correct": false,
+     "rationale": "Force unwrapping crashes if the value is nil, so it is not the safe choice."
+    },
+    {
+     "key": "C",
+     "text": "A global variable",
+     "correct": false,
+     "rationale": "Scope of storage has nothing to do with safely handling nil."
+    },
+    {
+     "key": "D",
+     "text": "A for-in loop",
+     "correct": false,
+     "rationale": "Loops iterate sequences; they do not unwrap a single optional."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: if let (or guard let) safely unwraps an optional and binds the value when present.",
+   "outcome_refs": [
+    "MST-0912-D01.01"
+   ],
+   "domain_ref": "Swift language foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0912-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You assign one struct value to a new variable and change the new one. What happens to the original struct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is unchanged because structs are value types and are copied",
+     "correct": true,
+     "rationale": "Correct: structs have value semantics, so the copy is independent."
+    },
+    {
+     "key": "B",
+     "text": "It also changes because both share one instance",
+     "correct": false,
+     "rationale": "That describes reference types such as classes, not structs."
+    },
+    {
+     "key": "C",
+     "text": "It becomes nil",
+     "correct": false,
+     "rationale": "Assignment does not nil out the source value."
+    },
+    {
+     "key": "D",
+     "text": "It throws a runtime error",
+     "correct": false,
+     "rationale": "Copying a struct is safe and does not throw."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: structs have value semantics, so the copy is independent.",
+   "outcome_refs": [
+    "MST-0912-D02.01"
+   ],
+   "domain_ref": "Value and reference types",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0912-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Swift protocols are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A protocol can declare required methods and properties without implementing them",
+     "correct": true,
+     "rationale": "Correct: a protocol specifies requirements that conforming types must satisfy."
+    },
+    {
+     "key": "B",
+     "text": "A protocol extension can provide default method implementations",
+     "correct": true,
+     "rationale": "Correct: protocol extensions supply shared default behaviour."
+    },
+    {
+     "key": "C",
+     "text": "A type may conform to only one protocol at a time",
+     "correct": false,
+     "rationale": "A type can conform to many protocols."
+    },
+    {
+     "key": "D",
+     "text": "Protocols can only be adopted by classes",
+     "correct": false,
+     "rationale": "Structs and enums can also conform to protocols."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a protocol specifies requirements that conforming types must satisfy.; Correct: protocol extensions supply shared default behaviour.",
+   "outcome_refs": [
+    "MST-0912-D03.01"
+   ],
+   "domain_ref": "Collections and iteration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

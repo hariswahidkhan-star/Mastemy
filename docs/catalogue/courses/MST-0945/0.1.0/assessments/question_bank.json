@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0945",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 570,
+  "lesson_check_items": 108,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0945-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You join orders to customers but want every order kept even when no matching customer row exists. Which join do you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "LEFT JOIN with orders on the left",
+     "correct": true,
+     "rationale": "Correct: a LEFT JOIN keeps all rows from the left table regardless of matches."
+    },
+    {
+     "key": "B",
+     "text": "INNER JOIN",
+     "correct": false,
+     "rationale": "An INNER JOIN drops rows that have no match."
+    },
+    {
+     "key": "C",
+     "text": "CROSS JOIN",
+     "correct": false,
+     "rationale": "A CROSS JOIN produces every combination, not matched rows."
+    },
+    {
+     "key": "D",
+     "text": "SELF JOIN",
+     "correct": false,
+     "rationale": "A self join relates a table to itself; it does not preserve unmatched rows by itself."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a LEFT JOIN keeps all rows from the left table regardless of matches.",
+   "outcome_refs": [
+    "MST-0945-D01.01"
+   ],
+   "domain_ref": "Relational foundations and SQL",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0945-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which clause filters rows after aggregation, for example to keep only groups with SUM over a threshold?",
+   "options": [
+    {
+     "key": "A",
+     "text": "HAVING",
+     "correct": true,
+     "rationale": "Correct: HAVING filters grouped results after aggregation."
+    },
+    {
+     "key": "B",
+     "text": "WHERE",
+     "correct": false,
+     "rationale": "WHERE filters individual rows before grouping."
+    },
+    {
+     "key": "C",
+     "text": "LIMIT",
+     "correct": false,
+     "rationale": "LIMIT caps the number of returned rows, it does not filter by aggregate."
+    },
+    {
+     "key": "D",
+     "text": "ORDER BY",
+     "correct": false,
+     "rationale": "ORDER BY sorts; it does not filter."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: HAVING filters grouped results after aggregation.",
+   "outcome_refs": [
+    "MST-0945-D02.01"
+   ],
+   "domain_ref": "Querying in depth",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0945-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about PostgreSQL indexes are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A B-tree index can speed up equality and range lookups on a column",
+     "correct": true,
+     "rationale": "Correct: B-tree indexes support equality and ordered range scans."
+    },
+    {
+     "key": "B",
+     "text": "Indexes add overhead to inserts and updates",
+     "correct": true,
+     "rationale": "Correct: each index must be maintained on write, adding cost."
+    },
+    {
+     "key": "C",
+     "text": "Adding more indexes always improves overall performance",
+     "correct": false,
+     "rationale": "Excess indexes slow writes and may never be used."
+    },
+    {
+     "key": "D",
+     "text": "An index guarantees a query will never do a sequential scan",
+     "correct": false,
+     "rationale": "The planner may still choose a sequential scan when it is cheaper."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: B-tree indexes support equality and ordered range scans.; Correct: each index must be maintained on write, adding cost.",
+   "outcome_refs": [
+    "MST-0945-D03.01"
+   ],
+   "domain_ref": "Schema and integrity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

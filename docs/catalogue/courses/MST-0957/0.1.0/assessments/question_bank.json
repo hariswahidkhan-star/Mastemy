@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0957",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 570,
+  "lesson_check_items": 108,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0957-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Spark, which of these is an action that triggers execution of the built-up plan?",
+   "options": [
+    {
+     "key": "A",
+     "text": "count()",
+     "correct": true,
+     "rationale": "Correct: count() is an action that forces the DAG to execute."
+    },
+    {
+     "key": "B",
+     "text": "filter()",
+     "correct": false,
+     "rationale": "filter() is a lazy transformation; it adds to the plan."
+    },
+    {
+     "key": "C",
+     "text": "select()",
+     "correct": false,
+     "rationale": "select() is a transformation and does not trigger execution."
+    },
+    {
+     "key": "D",
+     "text": "withColumn()",
+     "correct": false,
+     "rationale": "withColumn() is a transformation, evaluated lazily."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: count() is an action that forces the DAG to execute.",
+   "outcome_refs": [
+    "MST-0957-D01.01"
+   ],
+   "domain_ref": "Spark fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0957-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You join a very large fact table to a small lookup table. Which strategy usually avoids an expensive shuffle?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Broadcast the small table to every executor",
+     "correct": true,
+     "rationale": "Correct: broadcasting the small side lets each executor join locally without shuffling the large table."
+    },
+    {
+     "key": "B",
+     "text": "Repartition the large table by a random key",
+     "correct": false,
+     "rationale": "A random repartition adds a shuffle rather than avoiding one."
+    },
+    {
+     "key": "C",
+     "text": "Collect both tables to the driver",
+     "correct": false,
+     "rationale": "Collecting large data to the driver risks running out of memory."
+    },
+    {
+     "key": "D",
+     "text": "Cache the large table first",
+     "correct": false,
+     "rationale": "Caching does not remove the shuffle a hash join needs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: broadcasting the small side lets each executor join locally without shuffling the large table.",
+   "outcome_refs": [
+    "MST-0957-D02.01"
+   ],
+   "domain_ref": "DataFrames and transformations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0957-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Spark DataFrame operations are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Transformations are lazy and build a plan until an action runs",
+     "correct": true,
+     "rationale": "Correct: Spark defers transformations until an action forces execution."
+    },
+    {
+     "key": "B",
+     "text": "Built-in functions generally outperform equivalent Python UDFs",
+     "correct": true,
+     "rationale": "Correct: built-ins run in the JVM and avoid per-row Python serialization."
+    },
+    {
+     "key": "C",
+     "text": "Every transformation immediately reads all data from disk",
+     "correct": false,
+     "rationale": "Transformations are lazy, not eager."
+    },
+    {
+     "key": "D",
+     "text": "Caching always speeds up a job regardless of reuse",
+     "correct": false,
+     "rationale": "Caching helps only when data is reused; otherwise it wastes memory."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Spark defers transformations until an action forces execution.; Correct: built-ins run in the JVM and avoid per-row Python serialization.",
+   "outcome_refs": [
+    "MST-0957-D03.01"
+   ],
+   "domain_ref": "Aggregation and SQL",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

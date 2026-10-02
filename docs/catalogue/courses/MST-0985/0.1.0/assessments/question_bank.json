@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0985",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0985-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You removed a running container that had written files to its writable layer. What happens to those files?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They are lost unless they were stored in a volume or bind mount",
+     "correct": true,
+     "rationale": "Correct: the container writable layer is discarded on removal; durable data needs a volume."
+    },
+    {
+     "key": "B",
+     "text": "They are automatically committed to the base image",
+     "correct": false,
+     "rationale": "Removing a container does not alter the image."
+    },
+    {
+     "key": "C",
+     "text": "They move to the host home directory",
+     "correct": false,
+     "rationale": "Nothing is relocated to the host unless a mount was used."
+    },
+    {
+     "key": "D",
+     "text": "They are pushed to the registry",
+     "correct": false,
+     "rationale": "Removal does not push anything to a registry."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the container writable layer is discarded on removal; durable data needs a volume.",
+   "outcome_refs": [
+    "MST-0985-D01.01"
+   ],
+   "domain_ref": "Containers and images",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0985-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main benefit of a multi-stage Docker build?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Build artifacts are produced in one stage and only the needed output is copied into a small final image",
+     "correct": true,
+     "rationale": "Correct: multi-stage builds keep build tooling out of the final image, shrinking it."
+    },
+    {
+     "key": "B",
+     "text": "It lets a container run as root more safely",
+     "correct": false,
+     "rationale": "Multi-stage builds are about image contents, not privilege."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for a registry",
+     "correct": false,
+     "rationale": "Registries are still used to store and share images."
+    },
+    {
+     "key": "D",
+     "text": "It disables layer caching",
+     "correct": false,
+     "rationale": "Multi-stage builds still use layer caching."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: multi-stage builds keep build tooling out of the final image, shrinking it.",
+   "outcome_refs": [
+    "MST-0985-D02.01"
+   ],
+   "domain_ref": "Building images",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0985-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve Docker image security or size? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Running the container process as a non-root user",
+     "correct": true,
+     "rationale": "Correct: dropping root limits the blast radius of a compromise."
+    },
+    {
+     "key": "B",
+     "text": "Using a minimal base image and multi-stage builds",
+     "correct": true,
+     "rationale": "Correct: smaller images reduce attack surface and size."
+    },
+    {
+     "key": "C",
+     "text": "Embedding long-lived secrets directly in image layers",
+     "correct": false,
+     "rationale": "Secrets in layers persist and leak with the image."
+    },
+    {
+     "key": "D",
+     "text": "Always running the latest tag without pinning",
+     "correct": false,
+     "rationale": "Unpinned tags make builds unpredictable and can pull vulnerable images."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: dropping root limits the blast radius of a compromise.; Correct: smaller images reduce attack surface and size.",
+   "outcome_refs": [
+    "MST-0985-D03.01"
+   ],
+   "domain_ref": "Data and configuration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

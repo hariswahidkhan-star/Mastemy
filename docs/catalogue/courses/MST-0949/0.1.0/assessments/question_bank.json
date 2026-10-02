@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0949",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0949-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You frequently read a product together with its handful of reviews and the reviews are not queried alone. Which modeling choice fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Embed the reviews inside the product document",
+     "correct": true,
+     "rationale": "Correct: data read together and bounded in size is a good fit for embedding."
+    },
+    {
+     "key": "B",
+     "text": "Store each review in a separate database",
+     "correct": false,
+     "rationale": "Separate databases add complexity with no benefit here."
+    },
+    {
+     "key": "C",
+     "text": "Reference reviews from a huge unbounded collection",
+     "correct": false,
+     "rationale": "Referencing suits large or independently queried data, not this case."
+    },
+    {
+     "key": "D",
+     "text": "Duplicate the whole product into each review",
+     "correct": false,
+     "rationale": "That inverts the relationship and bloats storage."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: data read together and bounded in size is a good fit for embedding.",
+   "outcome_refs": [
+    "MST-0949-D01.01"
+   ],
+   "domain_ref": "Document data model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0949-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which MongoDB aggregation stage groups documents and computes accumulated values such as averages?",
+   "options": [
+    {
+     "key": "A",
+     "text": "$group",
+     "correct": true,
+     "rationale": "Correct: $group buckets documents by a key and applies accumulators like $avg."
+    },
+    {
+     "key": "B",
+     "text": "$match",
+     "correct": false,
+     "rationale": "$match filters documents; it does not aggregate."
+    },
+    {
+     "key": "C",
+     "text": "$project",
+     "correct": false,
+     "rationale": "$project reshapes fields; it does not group."
+    },
+    {
+     "key": "D",
+     "text": "$sort",
+     "correct": false,
+     "rationale": "$sort orders documents; it does not accumulate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: $group buckets documents by a key and applies accumulators like $avg.",
+   "outcome_refs": [
+    "MST-0949-D02.01"
+   ],
+   "domain_ref": "CRUD operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0949-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about MongoDB indexes are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A compound index can support a query that filters and then sorts on its fields in order",
+     "correct": true,
+     "rationale": "Correct: compound indexes serve ordered prefixes of their fields."
+    },
+    {
+     "key": "B",
+     "text": "Indexes consume storage and add write overhead",
+     "correct": true,
+     "rationale": "Correct: every index must be maintained on writes."
+    },
+    {
+     "key": "C",
+     "text": "find() cannot use an index on an embedded field",
+     "correct": false,
+     "rationale": "Indexes can target embedded document fields with dot notation."
+    },
+    {
+     "key": "D",
+     "text": "An index removes the need for a query filter",
+     "correct": false,
+     "rationale": "An index speeds a filter; it does not replace it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: compound indexes serve ordered prefixes of their fields.; Correct: every index must be maintained on writes.",
+   "outcome_refs": [
+    "MST-0949-D03.01"
+   ],
+   "domain_ref": "Aggregation framework",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0918",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0918-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Ruby, calling map on an array returns what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A new array of the transformed elements",
+     "correct": true,
+     "rationale": "Correct: map returns a new array and leaves the original unchanged."
+    },
+    {
+     "key": "B",
+     "text": "The original array mutated in place",
+     "correct": false,
+     "rationale": "map! mutates; map returns a new array."
+    },
+    {
+     "key": "C",
+     "text": "nil",
+     "correct": false,
+     "rationale": "map returns the transformed collection, not nil."
+    },
+    {
+     "key": "D",
+     "text": "The number of elements",
+     "correct": false,
+     "rationale": "That would be size or length, not map."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: map returns a new array and leaves the original unchanged.",
+   "outcome_refs": [
+    "MST-0918-D01.01"
+   ],
+   "domain_ref": "Ruby basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0918-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Ruby construct is best for sharing a set of methods across several unrelated classes?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A module mixed in with include",
+     "correct": true,
+     "rationale": "Correct: a module mixin injects shared behaviour into any class that includes it."
+    },
+    {
+     "key": "B",
+     "text": "A deep inheritance chain",
+     "correct": false,
+     "rationale": "Inheritance ties classes into one hierarchy, unsuitable for unrelated classes."
+    },
+    {
+     "key": "C",
+     "text": "A global variable",
+     "correct": false,
+     "rationale": "Globals share data, not methods, and are discouraged."
+    },
+    {
+     "key": "D",
+     "text": "A separate script file with no module",
+     "correct": false,
+     "rationale": "Loading a file alone does not share methods onto classes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a module mixin injects shared behaviour into any class that includes it.",
+   "outcome_refs": [
+    "MST-0918-D02.01"
+   ],
+   "domain_ref": "Collections and blocks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0918-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Ruby exception handling are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "rescue can catch a specific error class such as Errno::ENOENT",
+     "correct": true,
+     "rationale": "Correct: you can rescue specific classes to handle known failures."
+    },
+    {
+     "key": "B",
+     "text": "An ensure block runs whether or not an exception was raised",
+     "correct": true,
+     "rationale": "Correct: ensure always runs, which suits cleanup."
+    },
+    {
+     "key": "C",
+     "text": "rescue without a class should be used to swallow all errors silently",
+     "correct": false,
+     "rationale": "Swallowing every error hides real bugs and is discouraged."
+    },
+    {
+     "key": "D",
+     "text": "raise can only be called by the Ruby runtime, not your code",
+     "correct": false,
+     "rationale": "You can raise exceptions explicitly in your own code."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: you can rescue specific classes to handle known failures.; Correct: ensure always runs, which suits cleanup.",
+   "outcome_refs": [
+    "MST-0918-D03.01"
+   ],
+   "domain_ref": "Classes and objects",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

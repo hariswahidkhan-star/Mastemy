@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0988",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0988-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does Terraform keep a state file?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To map real infrastructure to your configuration and detect changes",
+     "correct": true,
+     "rationale": "Correct: state records what Terraform manages so it can compute diffs."
+    },
+    {
+     "key": "B",
+     "text": "To store your cloud provider password",
+     "correct": false,
+     "rationale": "State is not a credential store; credentials come from provider configuration."
+    },
+    {
+     "key": "C",
+     "text": "To compile the configuration into a binary",
+     "correct": false,
+     "rationale": "Terraform does not compile config to a binary."
+    },
+    {
+     "key": "D",
+     "text": "To cache documentation locally",
+     "correct": false,
+     "rationale": "State has nothing to do with documentation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: state records what Terraform manages so it can compute diffs.",
+   "outcome_refs": [
+    "MST-0988-D01.01"
+   ],
+   "domain_ref": "Infrastructure as code foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0988-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which command shows the changes Terraform would make without actually making them?",
+   "options": [
+    {
+     "key": "A",
+     "text": "terraform plan",
+     "correct": true,
+     "rationale": "Correct: plan computes and displays the proposed changes without applying."
+    },
+    {
+     "key": "B",
+     "text": "terraform apply",
+     "correct": false,
+     "rationale": "apply executes the changes."
+    },
+    {
+     "key": "C",
+     "text": "terraform destroy",
+     "correct": false,
+     "rationale": "destroy tears down managed infrastructure."
+    },
+    {
+     "key": "D",
+     "text": "terraform init",
+     "correct": false,
+     "rationale": "init prepares the working directory and downloads providers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: plan computes and displays the proposed changes without applying.",
+   "outcome_refs": [
+    "MST-0988-D02.01"
+   ],
+   "domain_ref": "Configuration language (HCL)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0988-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices are recommended for Terraform state in a team? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store state in a remote backend with locking",
+     "correct": true,
+     "rationale": "Correct: remote state with locking prevents concurrent conflicting applies."
+    },
+    {
+     "key": "B",
+     "text": "Avoid committing state files containing secrets to version control",
+     "correct": true,
+     "rationale": "Correct: state can hold sensitive values and should not be in a public repo."
+    },
+    {
+     "key": "C",
+     "text": "Let every engineer keep their own local state copy of shared infra",
+     "correct": false,
+     "rationale": "Divergent local states cause conflicts and drift."
+    },
+    {
+     "key": "D",
+     "text": "Edit the state file by hand to fix most problems",
+     "correct": false,
+     "rationale": "Manual edits are error-prone; use state commands instead."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: remote state with locking prevents concurrent conflicting applies.; Correct: state can hold sensitive values and should not be in a public repo.",
+   "outcome_refs": [
+    "MST-0988-D03.01"
+   ],
+   "domain_ref": "State management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
