@@ -73,7 +73,7 @@ public class RefundAndPayoutTests(CommerceFixture fx) : IClassFixture<CommerceFi
         Assert.Equal("Completed", stored.Status);
         Assert.Contains(stored.DecidedBy!.Value, new[] { f1.Id, f2.Id });
         Assert.NotNull(stored.DecidedAt);
-        Assert.Equal(2, await fx.Db(d => d.CommissionLedger.CountAsync(c => c.OrderId == orderId && c.Kind == "RefundReversal")));
+        Assert.Equal(2, (await fx.LedgerForOrder(orderId)).Count(c => c.Kind == "RefundReversal"));
     }
 
     [Fact]
