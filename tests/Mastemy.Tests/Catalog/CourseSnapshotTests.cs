@@ -116,10 +116,11 @@ public class CourseSnapshotTests(CatalogFixture f) : IClassFixture<CatalogFixtur
         var view = await f.Read<LessonViewDto>(await student.GetAsync($"/api/learn/lessons/{gone.Id}"));
         Assert.Equal("Lesson 3", view.Lesson.Title);
         Assert.Equal("vid00000002", view.YoutubeVideoId);
-        // Progress on surviving lessons is unaffected; the retired lesson cannot record new progress (FK to working copy).
+        // Progress on surviving lessons is unaffected, and the lesson removed from the draft still records progress until re-publish.
         var prog = await f.Read<LessonProgressDto>(await student.PutJ($"/api/learn/lessons/{c.Modules[0].Lessons[0].Id}/progress", new ProgressInput(50, true)));
         Assert.True(prog.Completed);
-        Assert.Equal(HttpStatusCode.Conflict, (await student.PutJ($"/api/learn/lessons/{gone.Id}/progress", new ProgressInput(50, true))).StatusCode);
+        var goneProg = await f.Read<LessonProgressDto>(await student.PutJ($"/api/learn/lessons/{gone.Id}/progress", new ProgressInput(50, true)));
+        Assert.True(goneProg.Completed);
         Assert.Equal(3, (await f.Read<CourseDetailDto>(await f.Client().GetAsync($"/api/courses/{c.Slug}"))).Modules[0].Lessons.Count);
 
         var diff = await f.Read<CourseDiffDto>(await f.Client(f.Reviewer).GetAsync($"/api/review/courses/{c.Id}/diff"));

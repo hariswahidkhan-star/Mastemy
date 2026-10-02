@@ -109,10 +109,8 @@ public class LearningService(AppDbContext db, ICurrentUser me, AccessService acc
         var c = pc.Course;
         var pos = Math.Max(0, input.PositionSeconds);
         var duration = l.DurationSeconds;
-        // LessonProgress has a FK to the working-copy lesson row; a lesson deleted after the snapshot is still viewable,
-        // but progress cannot be stored for it. (Deleting lessons is blocked once a published course has enrollments.)
-        if (!await db.Lessons.AnyAsync(x => x.Id == lessonId))
-            throw AppException.Conflict("This lesson is being retired and no longer records progress.", "lesson_retired");
+        // Progress is keyed by the snapshot lesson id (no FK to the working-copy row), so a lesson removed from the draft
+        // keeps recording progress until the next publish retires it from the snapshot.
         if (duration > 0) pos = Math.Min(pos, duration);
         await EnsureEnrollment(uid, c.Id);
         var p = await db.LessonProgress.FirstOrDefaultAsync(x => x.UserId == uid && x.LessonId == lessonId);

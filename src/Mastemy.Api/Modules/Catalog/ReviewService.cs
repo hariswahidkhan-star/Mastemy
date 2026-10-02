@@ -7,7 +7,7 @@ namespace Mastemy.Api.Modules.Catalog;
 
 /// <summary>Course review decisions, review comments, and staff publish/archive.</summary>
 public class ReviewService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit,
-    CourseSnapshotService snapshots)
+    CourseSnapshotService snapshots, Mastemy.Api.Modules.Engagement.INotificationService notifications)
 {
     public async Task<List<ReviewQueueItemDto>> Queue(CourseStatus? status)
     {
@@ -142,6 +142,12 @@ public class ReviewService(AppDbContext db, ICurrentUser me, AccessService acces
         catch (DbUpdateException)
         {
             throw AppException.Conflict("The course was published concurrently; reload and try again.", "concurrent_publish");
+        }
+        if (snap.Version > 1)
+        {
+            // Content-update notice to enrolled learners (spec §9), respecting their "course_updated" preference.
+            var learners = await db.Enrollments.Where(e => e.CourseId == c.Id).Select(e => e.UserId).ToListAsync();
+            await notifications.Publish(learners, "course_updated", $"\"{c.Title}\" has been updated", $"/courses/{c.Slug}");
         }
         return new CourseStatusDto(c.Id, c.Status, c.ReviewedAt, c.PublishedAt);
     }

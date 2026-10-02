@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mastemy.Api.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261001235446_InitialCreate")]
+    [Migration("20261002001019_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -2350,15 +2350,6 @@ namespace Mastemy.Api.Data.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("VideoAsset");
-                });
-
-            modelBuilder.Entity("Mastemy.Api.Domain.LessonProgress", b =>
-                {
-                    b.HasOne("Mastemy.Api.Domain.Lesson", null)
-                        .WithMany()
-                        .HasForeignKey("LessonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Mastemy.Api.Domain.OrderItem", b =>

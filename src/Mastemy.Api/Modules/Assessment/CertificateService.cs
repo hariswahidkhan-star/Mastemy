@@ -11,7 +11,8 @@ namespace Mastemy.Api.Modules.Assessment;
 /// Course certificates are issued only on assessed evidence (a passed, server-scored MCQ assessment that counts toward
 /// the certificate) — never for watching videos. Issuance is idempotent per (user, course).
 /// </summary>
-public class CertificateService(AppDbContext db, ICurrentUser me, AuditService audit, IConfiguration cfg)
+public class CertificateService(AppDbContext db, ICurrentUser me, AuditService audit, IConfiguration cfg,
+    Mastemy.Api.Modules.Engagement.INotificationService notifications)
 {
     /// <summary>Unambiguous alphabet: no 0/O, 1/I/L.</summary>
     public const string Alphabet = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
@@ -51,6 +52,7 @@ public class CertificateService(AppDbContext db, ICurrentUser me, AuditService a
             try
             {
                 await db.SaveChangesAsync();
+                await notifications.Publish([cert.UserId], "certificate", $"Certificate issued: {cert.CourseTitle}", $"/verify/{cert.Code}");
                 return cert.Code;
             }
             catch (DbUpdateException)

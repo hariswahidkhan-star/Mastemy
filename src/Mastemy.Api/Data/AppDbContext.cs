@@ -122,7 +122,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         m.Entity<Enrollment>().HasIndex(x => new { x.UserId, x.CourseId }).IsUnique();
         m.Entity<Enrollment>().HasOne<Course>().WithMany().HasForeignKey(x => x.CourseId);
         m.Entity<LessonProgress>().HasKey(x => new { x.UserId, x.LessonId });
-        m.Entity<LessonProgress>().HasOne<Lesson>().WithMany().HasForeignKey(x => x.LessonId);
+        // No FK to Lessons: progress belongs to the published snapshot's lesson ids and must survive draft edits.
+        m.Entity<LessonProgress>().HasIndex(x => x.LessonId);
         Text<LearnerNote>(x => x.Body);
         m.Entity<LearnerNote>().HasIndex(x => new { x.UserId, x.LessonId });
         m.Entity<LearnerNote>().HasOne<Lesson>().WithMany().HasForeignKey(x => x.LessonId).OnDelete(DeleteBehavior.SetNull);

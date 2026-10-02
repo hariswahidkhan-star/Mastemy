@@ -2349,15 +2349,6 @@ namespace Mastemy.Api.Data.Migrations
                     b.Navigation("VideoAsset");
                 });
 
-            modelBuilder.Entity("Mastemy.Api.Domain.LessonProgress", b =>
-                {
-                    b.HasOne("Mastemy.Api.Domain.Lesson", null)
-                        .WithMany()
-                        .HasForeignKey("LessonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Mastemy.Api.Domain.OrderItem", b =>
                 {
                     b.HasOne("Mastemy.Api.Domain.Order", null)

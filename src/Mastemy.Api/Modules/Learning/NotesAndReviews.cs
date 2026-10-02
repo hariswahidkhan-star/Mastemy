@@ -122,7 +122,8 @@ public class NotesService(AppDbContext db, ICurrentUser me)
     private static string OneLine(string s) => s.Replace('\r', ' ').Replace('\n', ' ');
 }
 
-public class ReviewsService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit)
+public class ReviewsService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit,
+    Mastemy.Api.Modules.Engagement.INotificationService notifications)
 {
     public const int MaxBody = 4000;
 
@@ -178,6 +179,8 @@ public class ReviewsService(AppDbContext db, ICurrentUser me, AccessService acce
         r.InstructorReply = reply; r.UpdatedAt = DateTime.UtcNow;
         audit.Record("review.replied", nameof(CourseReview), r.Id);
         await db.SaveChangesAsync();
+        var slug = await db.Courses.Where(c => c.Id == r.CourseId).Select(c => c.Slug).FirstAsync();
+        await notifications.Publish([r.UserId], "review_reply", "An instructor replied to your review", $"/courses/{slug}");
         return await ToDto(r);
     }
 }

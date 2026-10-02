@@ -185,6 +185,22 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "LessonProgress",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    LessonId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    PositionSeconds = table.Column<int>(type: "int", nullable: false),
+                    Completed = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LessonProgress", x => new { x.UserId, x.LessonId });
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "NotificationPreferences",
                 columns: table => new
                 {
@@ -1210,28 +1226,6 @@ namespace Mastemy.Api.Data.Migrations
                         principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
-                })
-                .Annotation("MySQL:Charset", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "LessonProgress",
-                columns: table => new
-                {
-                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
-                    LessonId = table.Column<Guid>(type: "char(36)", nullable: false),
-                    PositionSeconds = table.Column<int>(type: "int", nullable: false),
-                    Completed = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LessonProgress", x => new { x.UserId, x.LessonId });
-                    table.ForeignKey(
-                        name: "FK_LessonProgress_Lessons_LessonId",
-                        column: x => x.LessonId,
-                        principalTable: "Lessons",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
