@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1619",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1619-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Dash, what does a callback's Output specify?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Which component property is updated when the callback runs",
+     "correct": true,
+     "rationale": "Correct: an Output names the component and property the return value updates."
+    },
+    {
+     "key": "B",
+     "text": "The initial layout of the application",
+     "correct": false,
+     "rationale": "Layout is defined separately, not by the callback Output."
+    },
+    {
+     "key": "C",
+     "text": "The server port the app runs on",
+     "correct": false,
+     "rationale": "That is a run configuration, not a callback Output."
+    },
+    {
+     "key": "D",
+     "text": "The CSS theme of the page",
+     "correct": false,
+     "rationale": "Styling is unrelated to the callback Output declaration."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an Output names the component and property the return value updates.",
+   "outcome_refs": [
+    "MST-1619-D04.01"
+   ],
+   "domain_ref": "Callbacks and state",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1619-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep a data-heavy Dash app responsive? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Aggregate or sample data server-side before sending it to the browser",
+     "correct": true,
+     "rationale": "Correct: smaller payloads render faster and use less memory."
+    },
+    {
+     "key": "B",
+     "text": "Cache the results of expensive, repeated queries",
+     "correct": true,
+     "rationale": "Correct: caching avoids recomputing the same expensive result."
+    },
+    {
+     "key": "C",
+     "text": "Send the full raw dataset to every client on load",
+     "correct": false,
+     "rationale": "Large payloads slow the browser and the network."
+    },
+    {
+     "key": "D",
+     "text": "Trigger a callback on every keystroke in a text box without debouncing",
+     "correct": false,
+     "rationale": "Unthrottled callbacks overload the server."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: smaller payloads render faster and use less memory.",
+   "outcome_refs": [
+    "MST-1619-D05.01"
+   ],
+   "domain_ref": "Sharing and performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1619-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When should you reach for Plotly graph objects instead of Plotly Express?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When you need fine-grained control over individual traces and layout that Express does not expose directly",
+     "correct": true,
+     "rationale": "Correct: graph objects give lower-level control for complex figures."
+    },
+    {
+     "key": "B",
+     "text": "Only when the dataset is small",
+     "correct": false,
+     "rationale": "Dataset size is not the deciding factor."
+    },
+    {
+     "key": "C",
+     "text": "Never; Express can do everything graph objects can with less effort",
+     "correct": false,
+     "rationale": "Express is convenient but does not expose every low-level option."
+    },
+    {
+     "key": "D",
+     "text": "Whenever you want a static image only",
+     "correct": false,
+     "rationale": "Static export works from either interface."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: graph objects give lower-level control for complex figures.",
+   "outcome_refs": [
+    "MST-1619-D01.01"
+   ],
+   "domain_ref": "Plotly charting basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

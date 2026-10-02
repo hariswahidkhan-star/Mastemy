@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1640",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1640-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before using a BY statement in a procedure, what must usually be true of the data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The data must be sorted by the BY variable(s)",
+     "correct": true,
+     "rationale": "Correct: BY-group processing generally requires sorted data."
+    },
+    {
+     "key": "B",
+     "text": "The data must have no numeric variables",
+     "correct": false,
+     "rationale": "Numeric variables are fine with a BY statement."
+    },
+    {
+     "key": "C",
+     "text": "The data must be fewer than 100 rows",
+     "correct": false,
+     "rationale": "Row count is irrelevant to the BY requirement."
+    },
+    {
+     "key": "D",
+     "text": "The log must be turned off",
+     "correct": false,
+     "rationale": "The log should stay on to catch errors."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: BY-group processing generally requires sorted data.",
+   "outcome_refs": [
+    "MST-1640-D04.01"
+   ],
+   "domain_ref": "Summarising and reporting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1640-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about the SAS DATA step are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It iterates automatically over observations in the input",
+     "correct": true,
+     "rationale": "Correct: the implicit loop processes each observation."
+    },
+    {
+     "key": "B",
+     "text": "It can create new variables with assignment statements",
+     "correct": true,
+     "rationale": "Correct: assignment statements compute new variables."
+    },
+    {
+     "key": "C",
+     "text": "It cannot contain conditional logic",
+     "correct": false,
+     "rationale": "IF/THEN logic is a core DATA step feature."
+    },
+    {
+     "key": "D",
+     "text": "It only reads data and never writes it",
+     "correct": false,
+     "rationale": "The DATA step both reads and writes data sets."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the implicit loop processes each observation.",
+   "outcome_refs": [
+    "MST-1640-D03.02"
+   ],
+   "domain_ref": "DATA step transformation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1640-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A MERGE produced fewer matched rows than expected. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The data sets were not sorted by the BY variables before merging",
+     "correct": true,
+     "rationale": "Correct: unsorted input causes incorrect or dropped matches in a BY merge."
+    },
+    {
+     "key": "B",
+     "text": "The log was left on",
+     "correct": false,
+     "rationale": "The log does not affect merge results."
+    },
+    {
+     "key": "C",
+     "text": "PROC PRINT was used",
+     "correct": false,
+     "rationale": "PRINT only displays data; it does not merge."
+    },
+    {
+     "key": "D",
+     "text": "There were too few variables",
+     "correct": false,
+     "rationale": "Variable count does not cause match loss."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unsorted input causes incorrect or dropped matches in a BY merge.",
+   "outcome_refs": [
+    "MST-1640-D05.01"
+   ],
+   "domain_ref": "Combining and debugging",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

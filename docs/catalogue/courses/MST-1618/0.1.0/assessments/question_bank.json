@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1618",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1618-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need precise control over two subplots that share an x-axis. Which approach fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Create a Figure and Axes with plt.subplots(2, 1, sharex=True) and call methods on each Axes",
+     "correct": true,
+     "rationale": "Correct: the object-oriented API gives explicit per-Axes control and shared axes."
+    },
+    {
+     "key": "B",
+     "text": "Call plt.plot() repeatedly and hope the state machine targets the right subplot",
+     "correct": false,
+     "rationale": "The implicit state machine makes targeting the intended subplot error-prone."
+    },
+    {
+     "key": "C",
+     "text": "Make two separate figures and paste them together in an image editor",
+     "correct": false,
+     "rationale": "That loses shared axes and reproducibility."
+    },
+    {
+     "key": "D",
+     "text": "Use a single Axes and overplot both series regardless of scale",
+     "correct": false,
+     "rationale": "Overplotting different scales on one Axes misleads the reader."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the object-oriented API gives explicit per-Axes control and shared axes.",
+   "outcome_refs": [
+    "MST-1618-D01.01"
+   ],
+   "domain_ref": "Matplotlib figure anatomy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1618-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO choices improve the accessibility of a chart? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a colour-blind-safe qualitative palette",
+     "correct": true,
+     "rationale": "Correct: colour-blind-safe palettes keep categories distinguishable."
+    },
+    {
+     "key": "B",
+     "text": "Add direct labels or patterns so meaning does not rely on colour alone",
+     "correct": true,
+     "rationale": "Correct: redundant encoding supports readers who cannot distinguish colours."
+    },
+    {
+     "key": "C",
+     "text": "Encode five categories with closely spaced rainbow hues",
+     "correct": false,
+     "rationale": "Rainbow hues are hard to distinguish and not perceptually uniform."
+    },
+    {
+     "key": "D",
+     "text": "Remove the legend and axis titles to reduce clutter",
+     "correct": false,
+     "rationale": "Removing labels harms comprehension, not accessibility."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: colour-blind-safe palettes keep categories distinguishable.",
+   "outcome_refs": [
+    "MST-1618-D04.02"
+   ],
+   "domain_ref": "Styling and colour",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1618-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Seaborn figure-level function (e.g. relplot) returns which object that controls the whole figure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A FacetGrid-style object managing the figure and its facets",
+     "correct": true,
+     "rationale": "Correct: figure-level functions return a grid object that owns the figure."
+    },
+    {
+     "key": "B",
+     "text": "A single Matplotlib Axes",
+     "correct": false,
+     "rationale": "That is what axes-level functions target, not figure-level ones."
+    },
+    {
+     "key": "C",
+     "text": "A pandas DataFrame",
+     "correct": false,
+     "rationale": "The input may be a DataFrame; the return is not."
+    },
+    {
+     "key": "D",
+     "text": "Nothing; it only draws to the current Axes",
+     "correct": false,
+     "rationale": "Figure-level functions create and return their own figure object."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: figure-level functions return a grid object that owns the figure.",
+   "outcome_refs": [
+    "MST-1618-D03.02"
+   ],
+   "domain_ref": "Seaborn for statistical graphics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1639",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1639-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does aggregating on processing time instead of event time cause errors with late data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A late event is counted in the window it arrived, not the window it actually happened in",
+     "correct": true,
+     "rationale": "Correct: processing-time windows misplace delayed events."
+    },
+    {
+     "key": "B",
+     "text": "Processing time is always identical to event time",
+     "correct": false,
+     "rationale": "They differ exactly when events are delayed."
+    },
+    {
+     "key": "C",
+     "text": "Event time cannot be recorded",
+     "correct": false,
+     "rationale": "Event time is typically carried in the event."
+    },
+    {
+     "key": "D",
+     "text": "Windows are irrelevant to time",
+     "correct": false,
+     "rationale": "Windows are defined over a chosen time domain."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: processing-time windows misplace delayed events.",
+   "outcome_refs": [
+    "MST-1639-D02.02"
+   ],
+   "domain_ref": "Time and windows",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1639-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO help a streaming pipeline stay correct and reliable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use watermarks to bound how long to wait for late events",
+     "correct": true,
+     "rationale": "Correct: watermarks balance completeness against latency."
+    },
+    {
+     "key": "B",
+     "text": "Checkpoint state so the job can recover after a failure",
+     "correct": true,
+     "rationale": "Correct: checkpointing enables fault-tolerant recovery."
+    },
+    {
+     "key": "C",
+     "text": "Assume events always arrive in order",
+     "correct": false,
+     "rationale": "Out-of-order arrival is common and must be handled."
+    },
+    {
+     "key": "D",
+     "text": "Ignore consumer lag entirely",
+     "correct": false,
+     "rationale": "Lag is a key reliability signal to monitor."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: watermarks balance completeness against latency.",
+   "outcome_refs": [
+    "MST-1639-D04.01"
+   ],
+   "domain_ref": "Correctness challenges",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1639-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A use case needs a report once per day from complete data with no latency pressure. What fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A batch job, which is simpler and cheaper than streaming here",
+     "correct": true,
+     "rationale": "Correct: without latency needs, batch is the simpler choice."
+    },
+    {
+     "key": "B",
+     "text": "A complex streaming pipeline with exactly-once state",
+     "correct": false,
+     "rationale": "Streaming adds cost and complexity the use case does not need."
+    },
+    {
+     "key": "C",
+     "text": "A per-event watermarked stream",
+     "correct": false,
+     "rationale": "Watermarking solves a problem this use case does not have."
+    },
+    {
+     "key": "D",
+     "text": "Both batch and streaming running in parallel always",
+     "correct": false,
+     "rationale": "Running both needlessly is wasteful here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without latency needs, batch is the simpler choice.",
+   "outcome_refs": [
+    "MST-1639-D01.01"
+   ],
+   "domain_ref": "Streaming foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

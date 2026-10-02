@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1633",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1633-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is data leakage in a modelling project?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Information unavailable at prediction time leaking into training features, inflating performance",
+     "correct": true,
+     "rationale": "Correct: leakage uses future or target-derived information, overstating results."
+    },
+    {
+     "key": "B",
+     "text": "A network security breach of the dataset",
+     "correct": false,
+     "rationale": "That is a different meaning of leak, not the modelling concept."
+    },
+    {
+     "key": "C",
+     "text": "Losing rows during a join",
+     "correct": false,
+     "rationale": "That is data loss, not leakage."
+    },
+    {
+     "key": "D",
+     "text": "Using too many features",
+     "correct": false,
+     "rationale": "Feature count alone is not leakage."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: leakage uses future or target-derived information, overstating results.",
+   "outcome_refs": [
+    "MST-1633-D02.02"
+   ],
+   "domain_ref": "Data understanding and prep",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1633-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO should be done before declaring a model ready for deployment? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Evaluate on a held-out test set not used for tuning",
+     "correct": true,
+     "rationale": "Correct: an untouched test set gives an unbiased estimate."
+    },
+    {
+     "key": "B",
+     "text": "Plan what to monitor for drift after launch",
+     "correct": true,
+     "rationale": "Correct: monitoring is needed because performance degrades over time."
+    },
+    {
+     "key": "C",
+     "text": "Tune hyperparameters on the test set and report that score",
+     "correct": false,
+     "rationale": "Tuning on the test set biases the reported performance."
+    },
+    {
+     "key": "D",
+     "text": "Assume performance will stay constant indefinitely",
+     "correct": false,
+     "rationale": "Models degrade; this assumption is unsafe."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an untouched test set gives an unbiased estimate.",
+   "outcome_refs": [
+    "MST-1633-D03.02"
+   ],
+   "domain_ref": "Modelling and evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1633-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A stakeholder says 'use ML to improve the business'. What is the first lifecycle step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Frame a specific, measurable problem and success metric tied to a decision",
+     "correct": true,
+     "rationale": "Correct: problem framing precedes data and modelling work."
+    },
+    {
+     "key": "B",
+     "text": "Immediately train several models and compare them",
+     "correct": false,
+     "rationale": "Modelling before framing wastes effort on the wrong target."
+    },
+    {
+     "key": "C",
+     "text": "Buy the largest dataset available",
+     "correct": false,
+     "rationale": "Data acquisition follows a framed problem."
+    },
+    {
+     "key": "D",
+     "text": "Deploy a model and see what happens",
+     "correct": false,
+     "rationale": "Deployment is the last stage, not the first."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: problem framing precedes data and modelling work.",
+   "outcome_refs": [
+    "MST-1633-D01.01"
+   ],
+   "domain_ref": "Problem framing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

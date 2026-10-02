@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1628",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1628-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can web analytics undercount visitors?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ad blockers, consent refusals and tracking-prevention stop some events from being recorded",
+     "correct": true,
+     "rationale": "Correct: blocked or unconsented tracking leads to under-counting."
+    },
+    {
+     "key": "B",
+     "text": "Browsers double every event",
+     "correct": false,
+     "rationale": "That would overcount, and is not the typical issue."
+    },
+    {
+     "key": "C",
+     "text": "Analytics tools record a perfect census",
+     "correct": false,
+     "rationale": "They sample and miss blocked events."
+    },
+    {
+     "key": "D",
+     "text": "Servers refuse all client events",
+     "correct": false,
+     "rationale": "Many events are recorded; only some are missed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: blocked or unconsented tracking leads to under-counting.",
+   "outcome_refs": [
+    "MST-1628-D01.02"
+   ],
+   "domain_ref": "How web data is collected",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1628-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices when running a web A/B test? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Decide the sample size and run time before starting",
+     "correct": true,
+     "rationale": "Correct: pre-committing avoids peeking bias."
+    },
+    {
+     "key": "B",
+     "text": "Wait for the planned sample before declaring a winner",
+     "correct": true,
+     "rationale": "Correct: stopping early inflates false positives."
+    },
+    {
+     "key": "C",
+     "text": "Stop the test as soon as one variant is briefly ahead",
+     "correct": false,
+     "rationale": "Early stopping on noise produces false winners."
+    },
+    {
+     "key": "D",
+     "text": "Change the variant mid-test whenever it looks weak",
+     "correct": false,
+     "rationale": "Mid-test changes invalidate the comparison."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pre-committing avoids peeking bias.",
+   "outcome_refs": [
+    "MST-1628-D04.02"
+   ],
+   "domain_ref": "Goals, segments and tests",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1628-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A report shows 1,000 users and 1,600 sessions. What does this most likely mean?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Some users visited more than once, creating multiple sessions",
+     "correct": true,
+     "rationale": "Correct: sessions exceed users when people return."
+    },
+    {
+     "key": "B",
+     "text": "The data must be wrong because sessions cannot exceed users",
+     "correct": false,
+     "rationale": "Sessions routinely exceed users through repeat visits."
+    },
+    {
+     "key": "C",
+     "text": "Every user had exactly one session",
+     "correct": false,
+     "rationale": "That would make the two counts equal."
+    },
+    {
+     "key": "D",
+     "text": "Users and sessions mean the same thing",
+     "correct": false,
+     "rationale": "They are distinct entities."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sessions exceed users when people return.",
+   "outcome_refs": [
+    "MST-1628-D02.01"
+   ],
+   "domain_ref": "Core metrics and entities",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

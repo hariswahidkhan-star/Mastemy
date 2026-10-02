@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1627",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1627-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is safety stock set from demand variability, not average demand alone?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Safety stock buffers against variability in demand and lead time, which the average hides",
+     "correct": true,
+     "rationale": "Correct: variability, not the mean, drives stockout risk."
+    },
+    {
+     "key": "B",
+     "text": "Average demand already includes all variability",
+     "correct": false,
+     "rationale": "The average by definition removes variability."
+    },
+    {
+     "key": "C",
+     "text": "Safety stock is unrelated to service level",
+     "correct": false,
+     "rationale": "Safety stock is set to hit a target service level."
+    },
+    {
+     "key": "D",
+     "text": "Variability never affects stockouts",
+     "correct": false,
+     "rationale": "Variability is the main driver of stockout risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: variability, not the mean, drives stockout risk.",
+   "outcome_refs": [
+    "MST-1627-D03.01"
+   ],
+   "domain_ref": "Inventory management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1627-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO measures help dampen the bullwhip effect? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Share real downstream demand data across the chain",
+     "correct": true,
+     "rationale": "Correct: visibility reduces over-reaction to local signals."
+    },
+    {
+     "key": "B",
+     "text": "Reduce order batching and smooth ordering",
+     "correct": true,
+     "rationale": "Correct: smaller, steadier orders cut amplification."
+    },
+    {
+     "key": "C",
+     "text": "Have each stage guess demand independently in isolation",
+     "correct": false,
+     "rationale": "Isolation amplifies, not dampens, the bullwhip effect."
+    },
+    {
+     "key": "D",
+     "text": "React to every short-term demand spike with a large reorder",
+     "correct": false,
+     "rationale": "Over-reaction is a primary cause of the bullwhip effect."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: visibility reduces over-reaction to local signals.",
+   "outcome_refs": [
+    "MST-1627-D05.02"
+   ],
+   "domain_ref": "Systemic effects",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1627-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A forecast has low average absolute error but consistently under-predicts. What does this indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A systematic forecast bias that should be corrected",
+     "correct": true,
+     "rationale": "Correct: consistent under-prediction is bias, distinct from error magnitude."
+    },
+    {
+     "key": "B",
+     "text": "The forecast is perfect",
+     "correct": false,
+     "rationale": "Persistent under-prediction means it is not unbiased."
+    },
+    {
+     "key": "C",
+     "text": "Bias is irrelevant if MAPE is low",
+     "correct": false,
+     "rationale": "Bias matters independently of average error."
+    },
+    {
+     "key": "D",
+     "text": "Nothing can be improved",
+     "correct": false,
+     "rationale": "Correcting the bias is a clear improvement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: consistent under-prediction is bias, distinct from error magnitude.",
+   "outcome_refs": [
+    "MST-1627-D02.02"
+   ],
+   "domain_ref": "Demand forecasting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

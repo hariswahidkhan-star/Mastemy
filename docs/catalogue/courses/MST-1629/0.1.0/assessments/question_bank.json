@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1629",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1629-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a choropleth usually map a rate rather than a raw count?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Raw counts largely track population size and can mislead; rates normalise for it",
+     "correct": true,
+     "rationale": "Correct: normalising to a rate removes the population-size artefact."
+    },
+    {
+     "key": "B",
+     "text": "Rates are always smaller numbers",
+     "correct": false,
+     "rationale": "Magnitude is not the reason; comparability is."
+    },
+    {
+     "key": "C",
+     "text": "Counts cannot be mapped at all",
+     "correct": false,
+     "rationale": "Counts can be mapped but often mislead on a choropleth."
+    },
+    {
+     "key": "D",
+     "text": "Colour only works with rates",
+     "correct": false,
+     "rationale": "Colour works for either; the issue is interpretation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: normalising to a rate removes the population-size artefact.",
+   "outcome_refs": [
+    "MST-1629-D04.01"
+   ],
+   "domain_ref": "Thematic mapping",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1629-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about coordinate reference systems are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Layers must share a coordinate system to align correctly",
+     "correct": true,
+     "rationale": "Correct: mismatched systems misregister the layers."
+    },
+    {
+     "key": "B",
+     "text": "Distances should be measured in a projected metric system, not raw degrees",
+     "correct": true,
+     "rationale": "Correct: degrees are not a constant distance unit."
+    },
+    {
+     "key": "C",
+     "text": "All projections preserve area, shape and distance at once",
+     "correct": false,
+     "rationale": "No single projection preserves all properties simultaneously."
+    },
+    {
+     "key": "D",
+     "text": "Projection choice never affects analysis",
+     "correct": false,
+     "rationale": "Projection affects measurement and appearance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: mismatched systems misregister the layers.",
+   "outcome_refs": [
+    "MST-1629-D01.02"
+   ],
+   "domain_ref": "Geospatial foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1629-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A report concludes individuals in high-income regions all buy a product, from region-level averages. What error is this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The ecological fallacy: inferring individual behaviour from area averages",
+     "correct": true,
+     "rationale": "Correct: area-level patterns need not hold for individuals."
+    },
+    {
+     "key": "B",
+     "text": "Spatial autocorrelation",
+     "correct": false,
+     "rationale": "Autocorrelation describes similarity of nearby values, not this inference error."
+    },
+    {
+     "key": "C",
+     "text": "A projection error",
+     "correct": false,
+     "rationale": "The error is about aggregation, not projection."
+    },
+    {
+     "key": "D",
+     "text": "A valid individual-level conclusion",
+     "correct": false,
+     "rationale": "It is not valid; it commits the ecological fallacy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: area-level patterns need not hold for individuals.",
+   "outcome_refs": [
+    "MST-1629-D05.02"
+   ],
+   "domain_ref": "Pitfalls",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

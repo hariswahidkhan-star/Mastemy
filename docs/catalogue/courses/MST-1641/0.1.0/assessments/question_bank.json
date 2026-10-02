@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1641",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1641-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does Snowflake's separation of storage and compute allow?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Scaling compute (warehouses) independently of stored data",
+     "correct": true,
+     "rationale": "Correct: compute can scale up or down without changing storage."
+    },
+    {
+     "key": "B",
+     "text": "Deleting data whenever a warehouse is resized",
+     "correct": false,
+     "rationale": "Resizing compute does not touch stored data."
+    },
+    {
+     "key": "C",
+     "text": "Running queries with no compute at all",
+     "correct": false,
+     "rationale": "Queries still require a running warehouse."
+    },
+    {
+     "key": "D",
+     "text": "Storing data only inside the warehouse",
+     "correct": false,
+     "rationale": "Storage is separate from the compute warehouses."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: compute can scale up or down without changing storage.",
+   "outcome_refs": [
+    "MST-1641-D01.01"
+   ],
+   "domain_ref": "Snowflake architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1641-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO habits help an analyst control Snowflake compute cost? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Enable auto-suspend so idle warehouses stop consuming credits",
+     "correct": true,
+     "rationale": "Correct: auto-suspend stops paying for idle compute."
+    },
+    {
+     "key": "B",
+     "text": "Use an appropriately sized warehouse for the workload",
+     "correct": true,
+     "rationale": "Correct: right-sizing avoids paying for unused capacity."
+    },
+    {
+     "key": "C",
+     "text": "Leave a large warehouse running continuously just in case",
+     "correct": false,
+     "rationale": "Idle large warehouses waste credits."
+    },
+    {
+     "key": "D",
+     "text": "Re-run identical queries to avoid the result cache",
+     "correct": false,
+     "rationale": "Avoiding the cache wastes compute unnecessarily."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: auto-suspend stops paying for idle compute.",
+   "outcome_refs": [
+    "MST-1641-D05.02"
+   ],
+   "domain_ref": "Access and cost awareness",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1641-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two accounts need access to the same live dataset without duplicating it. What fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Snowflake secure data sharing",
+     "correct": true,
+     "rationale": "Correct: secure sharing gives live access without copying data."
+    },
+    {
+     "key": "B",
+     "text": "Exporting and emailing CSV files daily",
+     "correct": false,
+     "rationale": "That duplicates data and goes stale immediately."
+    },
+    {
+     "key": "C",
+     "text": "Copying the whole database to each account",
+     "correct": false,
+     "rationale": "Copying duplicates storage and causes drift."
+    },
+    {
+     "key": "D",
+     "text": "Giving everyone the ACCOUNTADMIN role",
+     "correct": false,
+     "rationale": "That violates least privilege and does not address sharing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: secure sharing gives live access without copying data.",
+   "outcome_refs": [
+    "MST-1641-D04.02"
+   ],
+   "domain_ref": "Loading and sharing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1620",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1620-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A FIXED level-of-detail expression computes a value at which granularity?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The dimensions named in the expression, regardless of the view's level of detail",
+     "correct": true,
+     "rationale": "Correct: FIXED pins the computation to the stated dimensions, ignoring the view."
+    },
+    {
+     "key": "B",
+     "text": "Always the most granular row in the data source",
+     "correct": false,
+     "rationale": "FIXED uses the stated dimensions, not necessarily row level."
+    },
+    {
+     "key": "C",
+     "text": "Whatever dimensions are on the Rows shelf only",
+     "correct": false,
+     "rationale": "That describes the view's detail, which FIXED overrides."
+    },
+    {
+     "key": "D",
+     "text": "The dashboard filter selection only",
+     "correct": false,
+     "rationale": "FIXED is computed before dimension filters, not from the selection alone."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: FIXED pins the computation to the stated dimensions, ignoring the view.",
+   "outcome_refs": [
+    "MST-1620-D03.02"
+   ],
+   "domain_ref": "Calculations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1620-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about joins versus data blending in Tableau? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A join combines tables at the row level before aggregation",
+     "correct": true,
+     "rationale": "Correct: joins merge rows prior to aggregation."
+    },
+    {
+     "key": "B",
+     "text": "Blending aggregates each source separately and combines the results on a linking field",
+     "correct": true,
+     "rationale": "Correct: blending joins aggregated results on a common field."
+    },
+    {
+     "key": "C",
+     "text": "Blending always produces the same granularity as an inner join",
+     "correct": false,
+     "rationale": "Blending works on aggregates, so granularity differs from a row-level join."
+    },
+    {
+     "key": "D",
+     "text": "Joins can only be used across different database servers",
+     "correct": false,
+     "rationale": "Joins are typically within one source; cross-source needs relationships or blending."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: joins merge rows prior to aggregation.",
+   "outcome_refs": [
+    "MST-1620-D01.01"
+   ],
+   "domain_ref": "Connecting and preparing data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1620-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want clicking a bar in one chart to filter a second chart on the same dashboard. What do you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A filter action configured on the dashboard",
+     "correct": true,
+     "rationale": "Correct: a filter action passes the selection as a filter to the target."
+    },
+    {
+     "key": "B",
+     "text": "A calculated field on each worksheet",
+     "correct": false,
+     "rationale": "Calculated fields do not create cross-chart interaction."
+    },
+    {
+     "key": "C",
+     "text": "A separate data source for each chart",
+     "correct": false,
+     "rationale": "That does not create the interaction either."
+    },
+    {
+     "key": "D",
+     "text": "Changing the mark type to a map",
+     "correct": false,
+     "rationale": "Mark type is unrelated to cross-chart filtering."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a filter action passes the selection as a filter to the target.",
+   "outcome_refs": [
+    "MST-1620-D04.01"
+   ],
+   "domain_ref": "Interactive dashboards",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

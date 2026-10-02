@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1626",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1626-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is risk adjustment applied before comparing hospital outcome rates?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Hospitals treat different patient mixes, so raw rates are not comparable",
+     "correct": true,
+     "rationale": "Correct: risk adjustment accounts for differing patient severity."
+    },
+    {
+     "key": "B",
+     "text": "It makes all hospitals look the same",
+     "correct": false,
+     "rationale": "It controls for case mix, not to equalise results artificially."
+    },
+    {
+     "key": "C",
+     "text": "It is only a billing requirement",
+     "correct": false,
+     "rationale": "It is an analytic necessity for fair comparison."
+    },
+    {
+     "key": "D",
+     "text": "Raw rates are always comparable",
+     "correct": false,
+     "rationale": "Raw rates ignore patient-mix differences."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: risk adjustment accounts for differing patient severity.",
+   "outcome_refs": [
+    "MST-1626-D03.02"
+   ],
+   "domain_ref": "Quality and outcome measures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1626-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are required to responsibly de-identify a patient dataset? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Remove or generalise identifiers beyond just the name, including dates and small geographies",
+     "correct": true,
+     "rationale": "Correct: many quasi-identifiers can re-identify a person."
+    },
+    {
+     "key": "B",
+     "text": "Limit the data to the minimum necessary for the purpose",
+     "correct": true,
+     "rationale": "Correct: minimum-necessary reduces exposure risk."
+    },
+    {
+     "key": "C",
+     "text": "Keep full dates of birth because they are not names",
+     "correct": false,
+     "rationale": "Full dates are strong quasi-identifiers and must be handled."
+    },
+    {
+     "key": "D",
+     "text": "Share the raw record widely to speed analysis",
+     "correct": false,
+     "rationale": "Wide sharing of raw records violates privacy principles."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: many quasi-identifiers can re-identify a person.",
+   "outcome_refs": [
+    "MST-1626-D04.02"
+   ],
+   "domain_ref": "Privacy and ethics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1626-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An observational analysis shows patients on a drug had better outcomes. What is the safest interpretation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The association may be confounded; it does not prove the drug caused the outcome",
+     "correct": true,
+     "rationale": "Correct: observational associations can be driven by confounders."
+    },
+    {
+     "key": "B",
+     "text": "The drug definitely caused the better outcomes",
+     "correct": false,
+     "rationale": "Observational data cannot establish causation on its own."
+    },
+    {
+     "key": "C",
+     "text": "The drug is harmful",
+     "correct": false,
+     "rationale": "That contradicts the observed association and is unsupported."
+    },
+    {
+     "key": "D",
+     "text": "No further analysis is ever needed",
+     "correct": false,
+     "rationale": "Confounding must be investigated before any causal claim."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: observational associations can be driven by confounders.",
+   "outcome_refs": [
+    "MST-1626-D05.01"
+   ],
+   "domain_ref": "Interpreting with caution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1634",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1634-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does partitioning data enable a distributed engine to run faster?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Partitions can be processed in parallel across many nodes",
+     "correct": true,
+     "rationale": "Correct: independent partitions allow parallel computation."
+    },
+    {
+     "key": "B",
+     "text": "Partitioning compresses the data to zero",
+     "correct": false,
+     "rationale": "Partitioning splits data; it does not eliminate it."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any computation",
+     "correct": false,
+     "rationale": "Computation still happens, just in parallel."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees perfect data quality",
+     "correct": false,
+     "rationale": "Partitioning is unrelated to data quality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: independent partitions allow parallel computation.",
+   "outcome_refs": [
+    "MST-1634-D02.01"
+   ],
+   "domain_ref": "Distributed storage and compute",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1634-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about a lakehouse compared with a raw data lake? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It adds schema, transactions and governance on top of lake storage",
+     "correct": true,
+     "rationale": "Correct: open table formats bring warehouse-like features to the lake."
+    },
+    {
+     "key": "B",
+     "text": "It can support both BI queries and large-scale processing",
+     "correct": true,
+     "rationale": "Correct: a lakehouse aims to serve both workloads."
+    },
+    {
+     "key": "C",
+     "text": "It removes the ability to store raw files",
+     "correct": false,
+     "rationale": "A lakehouse still stores files; it adds structure over them."
+    },
+    {
+     "key": "D",
+     "text": "It requires abandoning all open formats",
+     "correct": false,
+     "rationale": "Lakehouses are built on open table formats."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: open table formats bring warehouse-like features to the lake.",
+   "outcome_refs": [
+    "MST-1634-D04.02"
+   ],
+   "domain_ref": "Storage architectures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1634-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A requirement needs results within seconds of each event arriving. Which approach fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Stream processing",
+     "correct": true,
+     "rationale": "Correct: low-latency per-event results call for streaming."
+    },
+    {
+     "key": "B",
+     "text": "A nightly batch job",
+     "correct": false,
+     "rationale": "Nightly batch cannot deliver second-level latency."
+    },
+    {
+     "key": "C",
+     "text": "A one-off manual export",
+     "correct": false,
+     "rationale": "Manual exports are not continuous or timely."
+    },
+    {
+     "key": "D",
+     "text": "A spreadsheet refresh",
+     "correct": false,
+     "rationale": "That cannot meet a seconds-latency requirement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: low-latency per-event results call for streaming.",
+   "outcome_refs": [
+    "MST-1634-D03.01"
+   ],
+   "domain_ref": "Batch vs streaming",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

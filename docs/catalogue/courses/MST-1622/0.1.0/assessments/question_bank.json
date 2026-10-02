@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1622",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1622-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A manager asks 'why did margin fall last quarter?'. Which analytics type does this request call for?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Diagnostic analytics",
+     "correct": true,
+     "rationale": "Correct: explaining why something happened is diagnostic."
+    },
+    {
+     "key": "B",
+     "text": "Descriptive analytics",
+     "correct": false,
+     "rationale": "Descriptive reports what happened, not why."
+    },
+    {
+     "key": "C",
+     "text": "Predictive analytics",
+     "correct": false,
+     "rationale": "Predictive forecasts the future, not past causes."
+    },
+    {
+     "key": "D",
+     "text": "Prescriptive analytics",
+     "correct": false,
+     "rationale": "Prescriptive recommends actions, not root causes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: explaining why something happened is diagnostic.",
+   "outcome_refs": [
+    "MST-1622-D01.02"
+   ],
+   "domain_ref": "What BI is",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1622-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help ensure a trusted single source of truth for metrics? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Define each metric once in a shared semantic layer",
+     "correct": true,
+     "rationale": "Correct: a central definition prevents divergent calculations."
+    },
+    {
+     "key": "B",
+     "text": "Assign each KPI a named business owner",
+     "correct": true,
+     "rationale": "Correct: clear ownership keeps definitions maintained and accountable."
+    },
+    {
+     "key": "C",
+     "text": "Let each report author define revenue their own way",
+     "correct": false,
+     "rationale": "Divergent definitions break trust in the numbers."
+    },
+    {
+     "key": "D",
+     "text": "Avoid documenting metric formulas so they stay flexible",
+     "correct": false,
+     "rationale": "Undocumented formulas cause inconsistency and disputes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a central definition prevents divergent calculations.",
+   "outcome_refs": [
+    "MST-1622-D03.02"
+   ],
+   "domain_ref": "Metrics and models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1622-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is querying production transactional systems directly for reports usually discouraged?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can degrade operational performance and lacks a modelled, consistent reporting structure",
+     "correct": true,
+     "rationale": "Correct: reporting load and unmodelled schemas make direct queries risky."
+    },
+    {
+     "key": "B",
+     "text": "Transactional systems contain no useful data",
+     "correct": false,
+     "rationale": "They contain the source data; the issue is how it is accessed."
+    },
+    {
+     "key": "C",
+     "text": "Reports can only read from spreadsheets",
+     "correct": false,
+     "rationale": "Reports can read from many modelled sources."
+    },
+    {
+     "key": "D",
+     "text": "It is always faster than a warehouse",
+     "correct": false,
+     "rationale": "Direct queries are typically slower and riskier for reporting."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reporting load and unmodelled schemas make direct queries risky.",
+   "outcome_refs": [
+    "MST-1622-D02.01"
+   ],
+   "domain_ref": "The BI stack",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
