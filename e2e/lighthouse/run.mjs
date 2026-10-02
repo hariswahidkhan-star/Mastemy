@@ -45,7 +45,8 @@ function lighthouse(url, formFactor, file) {
     '--chrome-flags=--headless=new --no-sandbox --disable-dev-shm-usage',
   ];
   if (formFactor === 'desktop') args.push('--preset=desktop');
-  // Lighthouse occasionally fails to record a trace (NO_NAVSTART etc.); retry before giving up.
+  // Lighthouse occasionally fails to record a trace (NO_NAVSTART etc.), sometimes several times in a row on
+  // GitHub runners; retry (each attempt launches a fresh Chrome) before giving up. Scores are still enforced.
   for (let attempt = 1; ; attempt++) {
     try {
       execFileSync('npx', args, { stdio: ['ignore', 'ignore', 'inherit'], env: process.env });
@@ -53,7 +54,7 @@ function lighthouse(url, formFactor, file) {
       if (report.runtimeError) throw new Error(report.runtimeError.code);
       return report;
     } catch (e) {
-      if (attempt >= 3) throw e;
+      if (attempt >= 6) throw e;
       console.error(`lighthouse ${url} (${formFactor}) failed (${e.message.split('\n')[0]}); retrying`);
     }
   }
