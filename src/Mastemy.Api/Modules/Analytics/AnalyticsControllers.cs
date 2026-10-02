@@ -25,7 +25,7 @@ public class AnalyticsController(AnalyticsIngestService svc) : ControllerBase
     public Task<ConsentDto> Consent() => svc.Consent(Cookie);
 
     /// <summary>Records the choice (on the account when signed in) and sets the first-party consent cookie.</summary>
-    [HttpPut("consent")]
+    [HttpPut("consent"), Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("public-write")]
     public async Task<ConsentDto> SetConsent(ConsentRequest req)
     {
         var dto = await svc.SetConsent(req.Analytics);

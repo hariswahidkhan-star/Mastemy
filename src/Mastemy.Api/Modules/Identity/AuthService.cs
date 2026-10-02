@@ -7,7 +7,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Mastemy.Api.Modules.Identity;
 
 public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt, AuditService audit, LoginEmailRateLimiter emailLimiter,
-    IHttpContextAccessor http, IConfiguration cfg, EmailVerificationService verification, TokenSessionValidator tokenValidator)
+    IHttpContextAccessor http, IConfiguration cfg, EmailVerificationService verification, TokenSessionValidator tokenValidator,
+    SecurityEvents secLog)
 {
     /// <summary>Failures tolerated before per-account exponential backoff starts.</summary>
     public const int BackoffThreshold = 5;
@@ -71,12 +72,16 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
         {
             // Burn comparable CPU time to reduce user enumeration via timing.
             PasswordHasher.Verify(req.Password, DummyHash);
+            secLog.Warn("login_failed_unknown_user", email: normalized);
             throw Unauthorized(InvalidCredentials);
         }
         // Inside the backoff window every attempt is rejected without verifying or counting, so an attacker
         // cannot extend the delay faster than it elapses and the delay never exceeds MaxBackoff.
         if (user.LockoutUntil is { } until && until > now)
+        {
+            secLog.Warn("login_rejected_backoff", user.Id, user.Email);
             throw Unauthorized(InvalidCredentials);
+        }
 
         if (!PasswordHasher.Verify(req.Password, user.PasswordHash))
         {
@@ -88,6 +93,7 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
                 if (user.FailedLoginCount == BackoffThreshold) audit.Record("user.login_backoff_started", "User", user.Id);
             }
             await db.SaveChangesAsync();
+            secLog.Warn("login_failed_bad_password", user.Id, user.Email, $"failures={user.FailedLoginCount}");
             throw Unauthorized(InvalidCredentials);
         }
         if (user.IsSuspended) throw Unauthorized(InvalidCredentials);
@@ -137,6 +143,7 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
                 .ExecuteUpdateAsync(s => s.SetProperty(t => t.RevokedAt, now));
             tokenValidator.Invalidate(token.UserId);
             audit.Record("auth.refresh_token_reuse", "User", token.UserId, new { familyId = token.FamilyId });
+            secLog.Warn("refresh_token_reuse", token.UserId, detail: $"family={token.FamilyId}");
             await db.SaveChangesAsync();
             throw Unauthorized(InvalidRefresh, "invalid_refresh_token");
         }

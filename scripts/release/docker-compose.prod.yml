@@ -23,6 +23,8 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       Seo__PublicBaseUrl: ${PUBLIC_BASE_URL:?set PUBLIC_BASE_URL in .env}
+      # nginx (web container) terminates TLS; trust its forwarded headers only from the compose network.
+      Network__TrustedProxies__0: ${NETWORK_TRUSTED_PROXY_CIDR:-172.16.0.0/12}
       ConnectionStrings__Default: "Server=db;Port=3306;Database=mastemy;User=mastemy;Password=${MYSQL_PASSWORD};"
       # Applies pending EF Core migrations when the new API container starts (take a backup first: scripts/backup.sh).
       Database__MigrateOnStartup: ${DATABASE_MIGRATE_ON_STARTUP:-true}

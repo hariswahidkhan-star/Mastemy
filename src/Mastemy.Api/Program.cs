@@ -13,6 +13,15 @@ using Microsoft.IdentityModel.Tokens;
 var builder = WebApplication.CreateBuilder(args);
 var cfg = builder.Configuration;
 
+// A05: no Server banner; a conservative default body limit (upload endpoints raise it per-endpoint).
+builder.WebHost.ConfigureKestrel(k =>
+{
+    k.AddServerHeader = false;
+    k.Limits.MaxRequestBodySize = cfg.GetValue<long>("Limits:MaxRequestBodyBytes", 8 * 1024 * 1024);
+});
+builder.Services.Configure<Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>(o => SecurityHeaders.ConfigureForwardedHeaders(o, cfg));
+builder.Services.AddSingleton<SecurityEvents>();
+
 var jwt = cfg.GetSection("Jwt").Get<JwtOptions>() ?? new JwtOptions();
 if (string.IsNullOrWhiteSpace(jwt.Key) || jwt.Key.Length < 32)
     throw new InvalidOperationException("Jwt:Key must be configured with at least 32 characters (set Jwt__Key).");
@@ -58,12 +67,25 @@ builder.Services.AddAuthorization(o =>
 builder.Services.AddRateLimiter(o =>
 {
     o.RejectionStatusCode = 429;
+    o.OnRejected = (ctx, _) =>
+    {
+        ctx.HttpContext.RequestServices.GetRequiredService<SecurityEvents>()
+            .Warn("rate_limited", detail: ctx.HttpContext.Request.Path.Value);
+        return ValueTask.CompletedTask;
+    };
     o.AddPolicy("auth", ctx => RateLimitPartition.GetFixedWindowLimiter(
         ctx.Connection.RemoteIpAddress?.ToString() ?? "unknown",
         _ => new FixedWindowRateLimiterOptions { PermitLimit = cfg.GetValue("RateLimits:AuthPerMinute", 20), Window = TimeSpan.FromMinutes(1) }));
+    // Anonymous write endpoints without a dedicated limiter (affiliate clicks, consent, complaints).
+    o.AddPolicy("public-write", ctx => RateLimitPartition.GetFixedWindowLimiter(
+        ctx.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+        _ => new FixedWindowRateLimiterOptions { PermitLimit = cfg.GetValue("RateLimits:PublicWritePerMinute", 60), Window = TimeSpan.FromMinutes(1) }));
 });
 
 var origins = cfg.GetSection("Cors:Origins").Get<string[]>() ?? [];
+if (origins.Any(o => o.Contains('*')))
+    throw new InvalidOperationException("Cors:Origins must list explicit origins; wildcards are not allowed.");
+// No AllowCredentials: the SPA is served same-origin behind the edge proxy, so cross-origin callers never get cookies.
 builder.Services.AddCors(o => o.AddDefaultPolicy(p => p.WithOrigins(origins).AllowAnyHeader().AllowAnyMethod()));
 builder.Services.AddControllers().AddJsonOptions(o =>
     o.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter()));
@@ -82,19 +104,19 @@ app.UseExceptionHandler(e => e.Run(async ctx =>
         _ => new ProblemDetails { Status = 500, Title = "An unexpected error occurred." },
     };
     if (pd.Status == 500) app.Logger.LogError(ex, "Unhandled exception for {Path}", ctx.Request.Path);
+    else if (ex is AppException { Status: 401 or 403 or 429 } sec)
+        ctx.RequestServices.GetRequiredService<SecurityEvents>().Warn(sec.Code ?? "denied", detail: $"{sec.Status} {ctx.Request.Method} {ctx.Request.Path}");
     ctx.Response.StatusCode = pd.Status!.Value;
     await ctx.Response.WriteAsJsonAsync(pd, (System.Text.Json.JsonSerializerOptions?)null, "application/problem+json");
 }));
 
-app.Use(async (ctx, next) =>
-{
-    ctx.Response.Headers["X-Content-Type-Options"] = "nosniff";
-    ctx.Response.Headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
-    ctx.Response.Headers["X-Frame-Options"] = "DENY";
-    await next();
-});
+app.UseForwardedHeaders();
+app.UseMastemySecurityHeaders(cfg);
+// TLS normally terminates at the edge proxy; enable when Kestrel itself serves HTTPS.
+if (cfg.GetValue("Security:HttpsRedirection", false)) app.UseHttpsRedirection();
 
-app.MapOpenApi();
+// A05: the API description is only published in Development or when OpenApi:Enabled is set explicitly.
+if (app.Environment.IsDevelopment() || cfg.GetValue("OpenApi:Enabled", false)) app.MapOpenApi();
 app.UseCors();
 app.UseRateLimiter();
 app.UseAuthentication();
@@ -107,7 +129,8 @@ if (cfg.GetValue("Database:MigrateOnStartup", false))
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     await db.Database.MigrateAsync();
-    await Seeder.SeedAsync(db, cfg, app.Logger);
+    await Seeder.SeedAsync(db, cfg, app.Logger,
+        allowAccountSeed: app.Environment.IsDevelopment() || cfg.GetValue("Seed:AllowSuperAdminBootstrap", false));
 }
 
 app.Run();

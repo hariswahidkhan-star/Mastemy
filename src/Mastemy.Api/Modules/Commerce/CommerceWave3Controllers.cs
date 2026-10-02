@@ -20,7 +20,7 @@ public class CommercePublicController(PricingService pricing, SubscriptionServic
     [HttpGet("api/plans")]
     public Task<List<PlanDto>> Plans() => subs.Plans(false);
 
-    [HttpPost("api/affiliates/clicks")]
+    [HttpPost("api/affiliates/clicks"), Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("public-write")]
     public Task<AffiliateClickDto> Click(AffiliateClickInput input) => pricing.RecordClick(input);
 }
 

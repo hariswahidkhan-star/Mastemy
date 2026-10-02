@@ -72,8 +72,8 @@ public class AdminEnterpriseController(EnterprisePhase2Service svc, SsoDomainSer
     [HttpPost("sso-domains/{id:guid}/reject")] public Task<StaffSsoDomainDto> RejectDomain(Guid id, SsoDomainDecisionInput input) => domains.Decide(id, false, input);
 }
 
+// No class-level [AllowAnonymous]: it would override [Authorize] on LinkStart (A01). Anonymous actions opt in individually.
 [ApiController]
-[AllowAnonymous]
 [Route("api/sso")]
 public class SsoController(SsoLoginService svc, Identity.RefreshCookies cookies, Infrastructure.ICurrentUser me) : ControllerBase
 {
@@ -91,7 +91,7 @@ public class SsoController(SsoLoginService svc, Identity.RefreshCookies cookies,
     private string? Binder => Request.Cookies.TryGetValue(BinderCookie, out var v) ? v : null;
 
     /// <summary>Redirects the browser to the organization's identity provider.</summary>
-    [HttpGet("{orgSlug}/start")]
+    [HttpGet("{orgSlug}/start"), AllowAnonymous]
     [Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("auth")]
     public async Task<IActionResult> Start(string orgSlug, [FromQuery] string? returnTo, CancellationToken ct)
     {
@@ -114,7 +114,8 @@ public class SsoController(SsoLoginService svc, Identity.RefreshCookies cookies,
     }
 
     /// <summary>IdP redirect target. Always redirects to Sso:CompletionUrl with ?handoff=, ?linked= or ?error=.</summary>
-    [HttpGet("callback")]
+    [HttpGet("callback"), AllowAnonymous]
+    [Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("auth")]
     public async Task<IActionResult> Callback([FromQuery] string? code, [FromQuery] string? state, [FromQuery] string? error, CancellationToken ct)
     {
         Response.Headers[HeaderNames.CacheControl] = "no-store";
@@ -124,7 +125,7 @@ public class SsoController(SsoLoginService svc, Identity.RefreshCookies cookies,
         return Redirect(r.RedirectUrl);
     }
 
-    [HttpPost("exchange")]
+    [HttpPost("exchange"), AllowAnonymous]
     [Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("auth")]
     // Browser sessions use the HttpOnly refresh cookie, same as password login.
     public async Task<AuthResponse> Exchange(SsoExchangeInput input, CancellationToken ct)
