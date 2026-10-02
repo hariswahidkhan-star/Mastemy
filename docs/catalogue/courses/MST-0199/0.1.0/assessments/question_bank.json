@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0199",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1164,
+  "lesson_check_items": 150,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 90,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0199-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which GitHub Advanced Security capability blocks a secret from entering the repository at commit time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Push protection in Secret Protection",
+     "correct": true,
+     "rationale": "Correct: push protection prevents secrets from being pushed at the source."
+    },
+    {
+     "key": "B",
+     "text": "Dependabot version updates",
+     "correct": false,
+     "rationale": "Dependabot updates dependencies; it does not block secret pushes."
+    },
+    {
+     "key": "C",
+     "text": "A SARIF upload",
+     "correct": false,
+     "rationale": "A SARIF upload imports scan results; it does not block pushes."
+    },
+    {
+     "key": "D",
+     "text": "A branch ruleset naming policy",
+     "correct": false,
+     "rationale": "A branch naming ruleset does not scan for secrets."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: push protection prevents secrets from being pushed at the source.",
+   "outcome_refs": [
+    "MST-0199-D02.01"
+   ],
+   "domain_ref": "Configure and use Secret Protection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0199-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which score helps prioritize supply chain alerts by likelihood of exploitation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "EPSS (Exploit Prediction Scoring System)",
+     "correct": true,
+     "rationale": "Correct: EPSS estimates exploitation likelihood to help prioritize alerts."
+    },
+    {
+     "key": "B",
+     "text": "The repository star count",
+     "correct": false,
+     "rationale": "Star count reflects popularity, not exploitability."
+    },
+    {
+     "key": "C",
+     "text": "The number of forks",
+     "correct": false,
+     "rationale": "Fork count reflects reuse, not exploitability."
+    },
+    {
+     "key": "D",
+     "text": "The commit frequency",
+     "correct": false,
+     "rationale": "Commit frequency reflects activity, not exploit risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: EPSS estimates exploitation likelihood to help prioritize alerts.",
+   "outcome_refs": [
+    "MST-0199-D03.01"
+   ],
+   "domain_ref": "Configure and use supply chain security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0199-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO GitHub Advanced Security suites an administrator enables for a repository.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Code Security (CodeQL)",
+     "correct": true,
+     "rationale": "Correct: Code Security (CodeQL) is a GHAS suite."
+    },
+    {
+     "key": "B",
+     "text": "Secret Protection",
+     "correct": true,
+     "rationale": "Correct: Secret Protection is a GHAS suite."
+    },
+    {
+     "key": "C",
+     "text": "GitHub Pages",
+     "correct": false,
+     "rationale": "GitHub Pages is a hosting feature, not a security suite."
+    },
+    {
+     "key": "D",
+     "text": "A protected wiki",
+     "correct": false,
+     "rationale": "A wiki is a documentation feature, not a security suite."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B. Correct: Code Security (CodeQL) is a GHAS suite.",
+   "outcome_refs": [
+    "MST-0199-D06.01"
+   ],
+   "domain_ref": "GitHub Security suites administration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

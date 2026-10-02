@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0167",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 984,
+  "lesson_check_items": 60,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 90,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0167-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When selecting an Azure VM for an SAP production workload, what must you confirm first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "That the VM type is SAP-certified for the workload",
+     "correct": true,
+     "rationale": "Correct: only SAP-certified VM types are supported for SAP production workloads."
+    },
+    {
+     "key": "B",
+     "text": "That the VM is the cheapest in the region",
+     "correct": false,
+     "rationale": "Lowest price does not guarantee SAP support or performance."
+    },
+    {
+     "key": "C",
+     "text": "That the VM uses an ephemeral OS disk",
+     "correct": false,
+     "rationale": "Ephemeral OS disks are unsuitable for persistent SAP systems."
+    },
+    {
+     "key": "D",
+     "text": "That the VM is in an availability set only",
+     "correct": false,
+     "rationale": "Availability-set placement alone does not make a VM SAP-certified."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: only SAP-certified VM types are supported for SAP production workloads.",
+   "outcome_refs": [
+    "MST-0167-D02.01"
+   ],
+   "domain_ref": "Design and implement an infrastructure to support SAP workloads on Azure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0167-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which component provides automatic failover fencing in an SAP HANA high-availability cluster on Azure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Pacemaker with an Azure fence agent or SBD",
+     "correct": true,
+     "rationale": "Correct: Pacemaker with an Azure fence agent or STONITH Block Device provides fencing for HA."
+    },
+    {
+     "key": "B",
+     "text": "Azure Site Recovery replication",
+     "correct": false,
+     "rationale": "Site Recovery is a DR tool, not an HA fencing mechanism."
+    },
+    {
+     "key": "C",
+     "text": "A single availability zone",
+     "correct": false,
+     "rationale": "A single availability zone provides no automatic failover on its own."
+    },
+    {
+     "key": "D",
+     "text": "Azure Backup vault",
+     "correct": false,
+     "rationale": "Azure Backup protects data but does not fence cluster nodes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Pacemaker with an Azure fence agent or STONITH Block Device provides fencing for HA.",
+   "outcome_refs": [
+    "MST-0167-D03.01"
+   ],
+   "domain_ref": "Design and implement high availability and disaster recovery (HADR)",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0167-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO techniques to optimize cost for SAP VMs on Azure.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply reserved instances or savings plans",
+     "correct": true,
+     "rationale": "Correct: reservations and savings plans reduce steady-state VM cost."
+    },
+    {
+     "key": "B",
+     "text": "Right-size VMs based on Azure Advisor",
+     "correct": true,
+     "rationale": "Correct: right-sizing from Advisor recommendations removes over-provisioning."
+    },
+    {
+     "key": "C",
+     "text": "Disable all monitoring",
+     "correct": false,
+     "rationale": "Disabling monitoring harms operations and does not reduce VM cost materially."
+    },
+    {
+     "key": "D",
+     "text": "Delete the production backup vault",
+     "correct": false,
+     "rationale": "Deleting the backup vault removes protection and is not a cost strategy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B. Correct: reservations and savings plans reduce steady-state VM cost.",
+   "outcome_refs": [
+    "MST-0167-D04.01"
+   ],
+   "domain_ref": "Maintain SAP workloads on Azure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

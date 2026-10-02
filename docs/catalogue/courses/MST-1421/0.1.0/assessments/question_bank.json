@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1421",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 876,
+  "lesson_check_items": 126,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1421-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which X++ mechanism extends a standard method without overlayering it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Chain of Command (CoC)",
+     "correct": true,
+     "rationale": "Correct: Chain of Command wraps standard methods in an extension without overlayering."
+    },
+    {
+     "key": "B",
+     "text": "Direct edit of the base method",
+     "correct": false,
+     "rationale": "Editing the base method is overlayering, which is not allowed in extension models."
+    },
+    {
+     "key": "C",
+     "text": "A SQL trigger",
+     "correct": false,
+     "rationale": "SQL triggers are not the X++ extension mechanism."
+    },
+    {
+     "key": "D",
+     "text": "A report data provider",
+     "correct": false,
+     "rationale": "A report data provider supplies report data, not method extension."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Chain of Command wraps standard methods in an extension without overlayering.",
+   "outcome_refs": [
+    "MST-1421-D04.01"
+   ],
+   "domain_ref": "Develop and test code",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1421-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which integration pattern keeps Dataverse and finance and operations data synchronized in near real time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Dual-write",
+     "correct": true,
+     "rationale": "Correct: dual-write provides near real-time synchronization between Dataverse and finance and operations apps."
+    },
+    {
+     "key": "B",
+     "text": "A one-time data entity export",
+     "correct": false,
+     "rationale": "A one-time export is not continuous synchronization."
+    },
+    {
+     "key": "C",
+     "text": "Batch OData only",
+     "correct": false,
+     "rationale": "Batch OData is asynchronous bulk movement, not real-time sync."
+    },
+    {
+     "key": "D",
+     "text": "Manual Excel import",
+     "correct": false,
+     "rationale": "Manual Excel import is not an automated sync pattern."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: dual-write provides near real-time synchronization between Dataverse and finance and operations apps.",
+   "outcome_refs": [
+    "MST-1421-D06.01"
+   ],
+   "domain_ref": "Integrate and manage data solutions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1421-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO performance techniques for finance and operations app code.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use set-based queries where appropriate",
+     "correct": true,
+     "rationale": "Correct: set-based queries reduce round-trips on bulk operations."
+    },
+    {
+     "key": "B",
+     "text": "Apply table and form caching",
+     "correct": true,
+     "rationale": "Correct: table and form caching reduces repeated reads."
+    },
+    {
+     "key": "C",
+     "text": "Loop row-by-row over large tables",
+     "correct": false,
+     "rationale": "Row-by-row loops over large tables scale poorly."
+    },
+    {
+     "key": "D",
+     "text": "Disable the database index tuning",
+     "correct": false,
+     "rationale": "Disabling index tuning harms query performance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B. Correct: set-based queries reduce round-trips on bulk operations.",
+   "outcome_refs": [
+    "MST-1421-D07.01"
+   ],
+   "domain_ref": "Implement security and optimize performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

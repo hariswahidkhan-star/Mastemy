@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0184",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 696,
+  "lesson_check_items": 114,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 54,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0184-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which PSTN connectivity option lets an operator manage carrier service directly in the Teams admin center without an SBC?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Operator Connect",
+     "correct": true,
+     "rationale": "Correct: Operator Connect lets a participating carrier provide PSTN through the Teams admin center without customer-managed SBCs."
+    },
+    {
+     "key": "B",
+     "text": "Direct Routing",
+     "correct": false,
+     "rationale": "Direct Routing requires a customer- or partner-managed Session Border Controller."
+    },
+    {
+     "key": "C",
+     "text": "On-premises Skype for Business",
+     "correct": false,
+     "rationale": "Skype for Business on-premises is not a Teams PSTN option."
+    },
+    {
+     "key": "D",
+     "text": "A third-party fax gateway",
+     "correct": false,
+     "rationale": "A fax gateway does not provide PSTN calling for users."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Operator Connect lets a participating carrier provide PSTN through the Teams admin center without customer-managed SBCs.",
+   "outcome_refs": [
+    "MST-0184-D01.01"
+   ],
+   "domain_ref": "Plan and design collaboration communications systems",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0184-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What must you assign to an auto attendant or call queue so it can receive external calls?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A resource account with a license and phone number",
+     "correct": true,
+     "rationale": "Correct: auto attendants and call queues need a resource account with the appropriate license and phone number."
+    },
+    {
+     "key": "B",
+     "text": "A standard user mailbox",
+     "correct": false,
+     "rationale": "A user mailbox does not back a voice application."
+    },
+    {
+     "key": "C",
+     "text": "A shared channel",
+     "correct": false,
+     "rationale": "A shared channel is a collaboration feature, not a voice endpoint."
+    },
+    {
+     "key": "D",
+     "text": "A meeting policy",
+     "correct": false,
+     "rationale": "A meeting policy governs meetings, not call routing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: auto attendants and call queues need a resource account with the appropriate license and phone number.",
+   "outcome_refs": [
+    "MST-0184-D03.01"
+   ],
+   "domain_ref": "Configure and manage Teams Phone",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0184-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO elements required to configure dynamic emergency calling in Teams.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Emergency calling locations",
+     "correct": true,
+     "rationale": "Correct: emergency calling locations are required for dynamic emergency calling."
+    },
+    {
+     "key": "B",
+     "text": "Networks and locations defined in the Location Information Service (LIS)",
+     "correct": true,
+     "rationale": "Correct: LIS network/location mapping is required so a client's location resolves automatically."
+    },
+    {
+     "key": "C",
+     "text": "A town hall event policy",
+     "correct": false,
+     "rationale": "A town hall policy is unrelated to emergency calling."
+    },
+    {
+     "key": "D",
+     "text": "A SharePoint site",
+     "correct": false,
+     "rationale": "A SharePoint site is unrelated to emergency calling."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B. Correct: emergency calling locations are required for dynamic emergency calling.",
+   "outcome_refs": [
+    "MST-0184-D03.01"
+   ],
+   "domain_ref": "Configure and manage Teams Phone",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

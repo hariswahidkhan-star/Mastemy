@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0198",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 846,
+  "lesson_check_items": 72,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0198-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which GitHub Enterprise deployment uses managed user accounts provisioned from an identity provider?",
+   "options": [
+    {
+     "key": "A",
+     "text": "GitHub Enterprise Cloud with Enterprise Managed Users (EMU)",
+     "correct": true,
+     "rationale": "Correct: GHEC with EMU provisions managed users from the configured IdP."
+    },
+    {
+     "key": "B",
+     "text": "GitHub Enterprise Cloud with personal accounts",
+     "correct": false,
+     "rationale": "GHEC with personal accounts uses members' own personal accounts."
+    },
+    {
+     "key": "C",
+     "text": "A single free organization",
+     "correct": false,
+     "rationale": "A free organization does not provide EMU."
+    },
+    {
+     "key": "D",
+     "text": "GitHub Pages",
+     "correct": false,
+     "rationale": "GitHub Pages is a hosting feature, not a deployment identity model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GHEC with EMU provisions managed users from the configured IdP.",
+   "outcome_refs": [
+    "MST-0198-D01.01"
+   ],
+   "domain_ref": "Manage GitHub identities and access",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0198-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should an organization store Actions credentials so they are not exposed in workflow files?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In encrypted secrets scoped to the organization or repository",
+     "correct": true,
+     "rationale": "Correct: encrypted secrets keep credentials out of workflow files."
+    },
+    {
+     "key": "B",
+     "text": "In plain text in the workflow YAML",
+     "correct": false,
+     "rationale": "Plain text in YAML exposes the credential."
+    },
+    {
+     "key": "C",
+     "text": "In a public repository README",
+     "correct": false,
+     "rationale": "A public README exposes the credential to everyone."
+    },
+    {
+     "key": "D",
+     "text": "In a commit message",
+     "correct": false,
+     "rationale": "A commit message is public history, not a secret store."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: encrypted secrets keep credentials out of workflow files.",
+   "outcome_refs": [
+    "MST-0198-D04.01"
+   ],
+   "domain_ref": "Manage GitHub Actions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0198-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO repository security features an administrator can enable for secure development.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Secret scanning",
+     "correct": true,
+     "rationale": "Correct: secret scanning detects committed secrets."
+    },
+    {
+     "key": "B",
+     "text": "CodeQL code scanning",
+     "correct": true,
+     "rationale": "Correct: CodeQL code scanning detects code vulnerabilities."
+    },
+    {
+     "key": "C",
+     "text": "Branch name randomization",
+     "correct": false,
+     "rationale": "Branch name randomization is not a GitHub security feature."
+    },
+    {
+     "key": "D",
+     "text": "Disabling all pull requests",
+     "correct": false,
+     "rationale": "Disabling all pull requests is not a security feature and blocks collaboration."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B. Correct: secret scanning detects committed secrets.",
+   "outcome_refs": [
+    "MST-0198-D03.01"
+   ],
+   "domain_ref": "Implement secure software development and compliance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

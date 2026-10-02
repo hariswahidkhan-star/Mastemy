@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0166",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1008,
+  "lesson_check_items": 72,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 90,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0166-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Azure Virtual Desktop object delivers a single published application rather than a full desktop?",
+   "options": [
+    {
+     "key": "A",
+     "text": "RemoteApp published through a RemoteApp application group",
+     "correct": true,
+     "rationale": "Correct: a RemoteApp published in a RemoteApp application group delivers one app, not a full desktop."
+    },
+    {
+     "key": "B",
+     "text": "A personal desktop assignment",
+     "correct": false,
+     "rationale": "A personal desktop assignment gives a full dedicated desktop."
+    },
+    {
+     "key": "C",
+     "text": "A Windows 365 Cloud PC",
+     "correct": false,
+     "rationale": "Windows 365 Cloud PC is a separate product, not an AVD RemoteApp."
+    },
+    {
+     "key": "D",
+     "text": "An Azure Bastion host",
+     "correct": false,
+     "rationale": "Azure Bastion provides secure admin access to VMs, not app delivery."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a RemoteApp published in a RemoteApp application group delivers one app, not a full desktop.",
+   "outcome_refs": [
+    "MST-0166-D03.01"
+   ],
+   "domain_ref": "Plan and implement user environments and apps",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0166-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For session hosts joined only to Microsoft Entra ID, what enables single sign-on to Azure Virtual Desktop?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Configuring Microsoft Entra single sign-on with the required Kerberos and Conditional Access settings",
+     "correct": true,
+     "rationale": "Correct: Entra-joined hosts require the Entra SSO configuration plus supporting settings for single sign-on."
+    },
+    {
+     "key": "B",
+     "text": "Joining the hosts to AD DS only",
+     "correct": false,
+     "rationale": "AD DS-only join does not provide Entra SSO for Entra-joined hosts."
+    },
+    {
+     "key": "C",
+     "text": "Using local accounts on each session host",
+     "correct": false,
+     "rationale": "Local accounts do not support single sign-on."
+    },
+    {
+     "key": "D",
+     "text": "Disabling multifactor authentication",
+     "correct": false,
+     "rationale": "Disabling MFA weakens security and does not enable SSO."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Entra-joined hosts require the Entra SSO configuration plus supporting settings for single sign-on.",
+   "outcome_refs": [
+    "MST-0166-D02.01"
+   ],
+   "domain_ref": "Plan and implement identity and security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0166-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO storage services supported for FSLogix profile containers in Azure Virtual Desktop.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure Files",
+     "correct": true,
+     "rationale": "Correct: Azure Files is a supported FSLogix profile container location."
+    },
+    {
+     "key": "B",
+     "text": "Azure NetApp Files",
+     "correct": true,
+     "rationale": "Correct: Azure NetApp Files is a supported FSLogix profile container location."
+    },
+    {
+     "key": "C",
+     "text": "Azure Table storage",
+     "correct": false,
+     "rationale": "Azure Table storage is a NoSQL store, not a file share for profiles."
+    },
+    {
+     "key": "D",
+     "text": "An ephemeral OS disk",
+     "correct": false,
+     "rationale": "An ephemeral OS disk is wiped on deallocation and cannot hold profiles."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B. Correct: Azure Files is a supported FSLogix profile container location.",
+   "outcome_refs": [
+    "MST-0166-D01.01"
+   ],
+   "domain_ref": "Plan and implement an Azure Virtual Desktop infrastructure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

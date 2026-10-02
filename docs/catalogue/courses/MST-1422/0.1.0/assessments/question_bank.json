@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1422",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 750,
+  "lesson_check_items": 102,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 63,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1422-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Business Central AL, which object type is best when you must join and aggregate data efficiently?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A query object",
+     "correct": true,
+     "rationale": "Correct: query objects join and aggregate data efficiently in AL."
+    },
+    {
+     "key": "B",
+     "text": "A record variable loop",
+     "correct": false,
+     "rationale": "A record variable loop is slower for joined aggregation."
+    },
+    {
+     "key": "C",
+     "text": "An XMLport",
+     "correct": false,
+     "rationale": "An XMLport handles import/export of structured data, not aggregation."
+    },
+    {
+     "key": "D",
+     "text": "A permission set",
+     "correct": false,
+     "rationale": "A permission set controls access, not data retrieval."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: query objects join and aggregate data efficiently in AL.",
+   "outcome_refs": [
+    "MST-1422-D03.01"
+   ],
+   "domain_ref": "Develop by using AL objects",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1422-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the recommended way to add functionality to Business Central online?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Build an extension (app) using AL",
+     "correct": true,
+     "rationale": "Correct: Business Central online is customized only through AL extensions."
+    },
+    {
+     "key": "B",
+     "text": "Modify the base application directly",
+     "correct": false,
+     "rationale": "The base application cannot be modified directly online."
+    },
+    {
+     "key": "C",
+     "text": "Edit the system app source",
+     "correct": false,
+     "rationale": "The system app source is not editable by partners."
+    },
+    {
+     "key": "D",
+     "text": "Run a SQL script against the tenant",
+     "correct": false,
+     "rationale": "Direct SQL against the tenant is not supported."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Business Central online is customized only through AL extensions.",
+   "outcome_refs": [
+    "MST-1422-D01.01"
+   ],
+   "domain_ref": "Describe Business Central",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1422-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO tasks involved in integrating Business Central with external applications.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Call a REST service using HttpClient and JSON",
+     "correct": true,
+     "rationale": "Correct: HttpClient with JSON consumes external REST services."
+    },
+    {
+     "key": "B",
+     "text": "Create an API page with OData bound actions",
+     "correct": true,
+     "rationale": "Correct: API pages with bound actions expose Business Central data."
+    },
+    {
+     "key": "C",
+     "text": "Edit the base app objects",
+     "correct": false,
+     "rationale": "Editing base app objects is not an integration task and is not supported online."
+    },
+    {
+     "key": "D",
+     "text": "Disable permission sets",
+     "correct": false,
+     "rationale": "Disabling permission sets weakens security and is unrelated to integration."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B. Correct: HttpClient with JSON consumes external REST services.",
+   "outcome_refs": [
+    "MST-1422-D06.01"
+   ],
+   "domain_ref": "Integrate Business Central with other applications",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

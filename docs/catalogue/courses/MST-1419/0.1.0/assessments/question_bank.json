@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1419",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 660,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 54,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1419-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Customer Insights - Journeys, what must be configured so outbound email passes authentication at recipients?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Domain authentication (DKIM/SPF) for the sending domain",
+     "correct": true,
+     "rationale": "Correct: domain authentication configures DKIM/SPF so email authenticates at recipients."
+    },
+    {
+     "key": "B",
+     "text": "A Power BI workspace",
+     "correct": false,
+     "rationale": "A Power BI workspace is unrelated to email sending."
+    },
+    {
+     "key": "C",
+     "text": "An Azure fence agent",
+     "correct": false,
+     "rationale": "An Azure fence agent is an HA component."
+    },
+    {
+     "key": "D",
+     "text": "A sales territory",
+     "correct": false,
+     "rationale": "A sales territory is a Sales concept, not marketing email."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: domain authentication configures DKIM/SPF so email authenticates at recipients.",
+   "outcome_refs": [
+    "MST-1419-D01.01"
+   ],
+   "domain_ref": "Configure Dynamics 365 Customer Insights - Journeys",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1419-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which construct starts a real-time journey when a customer action occurs?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A trigger",
+     "correct": true,
+     "rationale": "Correct: triggers start real-time journeys based on events or record changes."
+    },
+    {
+     "key": "B",
+     "text": "A static marketing list",
+     "correct": false,
+     "rationale": "A static list is a fixed audience, not an event starter."
+    },
+    {
+     "key": "C",
+     "text": "A price list",
+     "correct": false,
+     "rationale": "A price list is a Sales concept."
+    },
+    {
+     "key": "D",
+     "text": "A duplicate detection rule",
+     "correct": false,
+     "rationale": "Duplicate detection prevents duplicate records."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: triggers start real-time journeys based on events or record changes.",
+   "outcome_refs": [
+    "MST-1419-D05.01"
+   ],
+   "domain_ref": "Manage journeys",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1419-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO tasks that belong to managing marketing channels.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Author a marketing email with dynamic content",
+     "correct": true,
+     "rationale": "Correct: authoring marketing email is a marketing-channels task."
+    },
+    {
+     "key": "B",
+     "text": "Create and manage forms",
+     "correct": true,
+     "rationale": "Correct: creating and managing forms is a marketing-channels task."
+    },
+    {
+     "key": "C",
+     "text": "Configure Pacemaker fencing",
+     "correct": false,
+     "rationale": "Pacemaker fencing is an Azure SAP HA task."
+    },
+    {
+     "key": "D",
+     "text": "Enable CodeQL scanning",
+     "correct": false,
+     "rationale": "CodeQL scanning is a GitHub security task."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct keys: A, B. Correct: authoring marketing email is a marketing-channels task.",
+   "outcome_refs": [
+    "MST-1419-D04.01"
+   ],
+   "domain_ref": "Manage marketing channels",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 90,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
