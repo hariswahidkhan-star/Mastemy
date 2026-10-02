@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1378",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 238,
+  "lesson_check_items": 60,
+  "module_check_items": 34,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1378-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A PM is pushed to 'add AI' to boost marketing appeal. What should drive the decision instead?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Whether AI meaningfully solves a real user problem better than alternatives",
+     "correct": true,
+     "rationale": "Correct: user value and fit should drive the decision, not hype."
+    },
+    {
+     "key": "B",
+     "text": "Whether competitors mention AI in their ads",
+     "correct": false,
+     "rationale": "Competitor marketing is not a sound basis for a feature."
+    },
+    {
+     "key": "C",
+     "text": "Whether the word 'AI' will impress investors",
+     "correct": false,
+     "rationale": "Impression is not user value."
+    },
+    {
+     "key": "D",
+     "text": "Whether it is the newest technology available",
+     "correct": false,
+     "rationale": "Novelty does not establish usefulness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: user value and fit should drive the decision, not hype.",
+   "outcome_refs": [
+    "MST-1378-D01.01"
+   ],
+   "domain_ref": "AI product value and fit",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1378-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO design choices handle AI uncertainty responsibly in a product? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Provide a clear fallback when the AI response is low-confidence or fails",
+     "correct": true,
+     "rationale": "Correct: fallbacks protect the user experience when AI errs."
+    },
+    {
+     "key": "B",
+     "text": "Let users review or correct AI output before it acts",
+     "correct": true,
+     "rationale": "Correct: human review limits the impact of AI errors."
+    },
+    {
+     "key": "C",
+     "text": "Hide all errors and present output as always correct",
+     "correct": false,
+     "rationale": "Hiding errors misleads users and erodes trust."
+    },
+    {
+     "key": "D",
+     "text": "Assume the model is always right at launch",
+     "correct": false,
+     "rationale": "Assuming perfection ignores real failure modes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fallbacks protect the user experience when AI errs.",
+   "outcome_refs": [
+    "MST-1378-D03.01"
+   ],
+   "domain_ref": "Scoping AI features",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1378-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must a PM consider inference cost early when scoping an AI feature?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Per-request costs can make a feature unviable at scale",
+     "correct": true,
+     "rationale": "Correct: cost and latency at scale can break the business case."
+    },
+    {
+     "key": "B",
+     "text": "Inference is always free",
+     "correct": false,
+     "rationale": "Running models typically has a real per-use cost."
+    },
+    {
+     "key": "C",
+     "text": "Cost only matters after launch",
+     "correct": false,
+     "rationale": "Unplanned costs can sink a feature after launch."
+    },
+    {
+     "key": "D",
+     "text": "Latency never affects user experience",
+     "correct": false,
+     "rationale": "Latency often directly affects usability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: cost and latency at scale can break the business case.",
+   "outcome_refs": [
+    "MST-1378-D04.01"
+   ],
+   "domain_ref": "Metrics, cost and feasibility",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

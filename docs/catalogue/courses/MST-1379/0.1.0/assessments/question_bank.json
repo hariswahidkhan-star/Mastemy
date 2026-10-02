@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1379",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 238,
+  "lesson_check_items": 60,
+  "module_check_items": 34,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1379-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI tool generates 200 passing tests for a feature. Why is this not proof the feature is well tested?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The tests may miss important edge cases and critical paths",
+     "correct": true,
+     "rationale": "Correct: volume of passing tests does not equal meaningful coverage."
+    },
+    {
+     "key": "B",
+     "text": "More tests always mean better coverage",
+     "correct": false,
+     "rationale": "Quantity does not guarantee the right coverage."
+    },
+    {
+     "key": "C",
+     "text": "Passing tests prove there are no bugs",
+     "correct": false,
+     "rationale": "Passing tests only cover what they check."
+    },
+    {
+     "key": "D",
+     "text": "AI tests never need review",
+     "correct": false,
+     "rationale": "AI-generated tests require coverage review."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: volume of passing tests does not equal meaningful coverage.",
+   "outcome_refs": [
+    "MST-1379-D02.01"
+   ],
+   "domain_ref": "Generating and reviewing test cases",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1379-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep AI-assisted testing trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Have a human review coverage of critical paths",
+     "correct": true,
+     "rationale": "Correct: human review ensures important paths are tested."
+    },
+    {
+     "key": "B",
+     "text": "Verify AI-suggested root causes against evidence",
+     "correct": true,
+     "rationale": "Correct: verification prevents acting on wrong diagnoses."
+    },
+    {
+     "key": "C",
+     "text": "Accept all AI tests without reading them",
+     "correct": false,
+     "rationale": "Blind acceptance risks weak or wrong tests."
+    },
+    {
+     "key": "D",
+     "text": "Treat a green run as a guarantee of quality",
+     "correct": false,
+     "rationale": "A green run only reflects the tests that exist."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: human review ensures important paths are tested.",
+   "outcome_refs": [
+    "MST-1379-D05.01"
+   ],
+   "domain_ref": "Risk, limits and accountability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1379-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a key risk when using AI to generate test data from production examples?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Real personal or sensitive data could leak into test environments",
+     "correct": true,
+     "rationale": "Correct: using production-derived data can expose sensitive information."
+    },
+    {
+     "key": "B",
+     "text": "Test data is never sensitive",
+     "correct": false,
+     "rationale": "Test data can contain or mirror sensitive information."
+    },
+    {
+     "key": "C",
+     "text": "AI data is always perfectly representative",
+     "correct": false,
+     "rationale": "AI-generated data may be unrealistic or skewed."
+    },
+    {
+     "key": "D",
+     "text": "Privacy rules never apply to testing",
+     "correct": false,
+     "rationale": "Privacy obligations extend to test data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: using production-derived data can expose sensitive information.",
+   "outcome_refs": [
+    "MST-1379-D03.01"
+   ],
+   "domain_ref": "Test data and exploration",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

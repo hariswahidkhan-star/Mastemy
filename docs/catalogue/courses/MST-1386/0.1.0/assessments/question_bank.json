@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1386",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 238,
+  "lesson_check_items": 60,
+  "module_check_items": 34,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1386-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does AI change the phishing threat landscape for defenders?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Attackers can generate more convincing, tailored lures at scale",
+     "correct": true,
+     "rationale": "Correct: generative AI lowers the cost of high-quality, targeted phishing."
+    },
+    {
+     "key": "B",
+     "text": "Phishing is no longer possible with AI around",
+     "correct": false,
+     "rationale": "AI does not eliminate phishing; it can amplify it."
+    },
+    {
+     "key": "C",
+     "text": "AI only ever helps defenders",
+     "correct": false,
+     "rationale": "Attackers also use AI."
+    },
+    {
+     "key": "D",
+     "text": "AI makes all emails automatically safe",
+     "correct": false,
+     "rationale": "AI does not make emails safe."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: generative AI lowers the cost of high-quality, targeted phishing.",
+   "outcome_refs": [
+    "MST-1386-D03.01"
+   ],
+   "domain_ref": "Adversarial use of AI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1386-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep AI-assisted security operations safe? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Require human approval before high-impact automated response actions",
+     "correct": true,
+     "rationale": "Correct: human approval prevents damaging automated mistakes."
+    },
+    {
+     "key": "B",
+     "text": "Verify AI alert rankings before acting on them",
+     "correct": true,
+     "rationale": "Correct: verification guards against false confidence."
+    },
+    {
+     "key": "C",
+     "text": "Auto-block based on raw AI output with no review",
+     "correct": false,
+     "rationale": "Unreviewed automated blocking can cause outages or miss threats."
+    },
+    {
+     "key": "D",
+     "text": "Feed sensitive logs into any public AI tool",
+     "correct": false,
+     "rationale": "Sending sensitive logs to uncontrolled tools risks leakage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: human approval prevents damaging automated mistakes.",
+   "outcome_refs": [
+    "MST-1386-D05.01"
+   ],
+   "domain_ref": "Human oversight and accountability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1386-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI tool ranks an alert as low priority. What is the appropriate analyst response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Treat the ranking as a hint and verify before dismissing a potential threat",
+     "correct": true,
+     "rationale": "Correct: AI rankings can be wrong, so verification protects against missed incidents."
+    },
+    {
+     "key": "B",
+     "text": "Dismiss the alert immediately without checking",
+     "correct": false,
+     "rationale": "Blindly trusting the ranking can let real threats through."
+    },
+    {
+     "key": "C",
+     "text": "Assume the AI considered every context perfectly",
+     "correct": false,
+     "rationale": "AI may lack full context."
+    },
+    {
+     "key": "D",
+     "text": "Escalate everything regardless of evidence",
+     "correct": false,
+     "rationale": "Ignoring the triage signal entirely wastes capacity; verify instead."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI rankings can be wrong, so verification protects against missed incidents.",
+   "outcome_refs": [
+    "MST-1386-D02.01"
+   ],
+   "domain_ref": "Detection, triage and investigation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

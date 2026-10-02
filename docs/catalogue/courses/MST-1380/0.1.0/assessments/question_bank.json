@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1380",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 238,
+  "lesson_check_items": 60,
+  "module_check_items": 34,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1380-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI writes a SQL query that returns a plausible number. Before reporting it, the analyst should mainly:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read the query logic and validate it against known results",
+     "correct": true,
+     "rationale": "Correct: AI queries can contain subtle logic errors producing plausible but wrong numbers."
+    },
+    {
+     "key": "B",
+     "text": "Report the number because it looks reasonable",
+     "correct": false,
+     "rationale": "Plausibility is not verification."
+    },
+    {
+     "key": "C",
+     "text": "Assume the AI understood the schema perfectly",
+     "correct": false,
+     "rationale": "AI can misread or assume schema details."
+    },
+    {
+     "key": "D",
+     "text": "Trust it since it ran without error",
+     "correct": false,
+     "rationale": "Running without error does not mean the logic is correct."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI queries can contain subtle logic errors producing plausible but wrong numbers.",
+   "outcome_refs": [
+    "MST-1380-D02.01"
+   ],
+   "domain_ref": "Querying, cleaning and code",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1380-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support honest communication of AI-assisted analysis? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "State the key data limitations and uncertainty",
+     "correct": true,
+     "rationale": "Correct: caveats keep the audience from over-trusting results."
+    },
+    {
+     "key": "B",
+     "text": "Distinguish correlation from proven causation",
+     "correct": true,
+     "rationale": "Correct: avoiding false causal claims keeps findings defensible."
+    },
+    {
+     "key": "C",
+     "text": "Present every AI-surfaced pattern as a firm conclusion",
+     "correct": false,
+     "rationale": "Patterns can be spurious; overstating them misleads."
+    },
+    {
+     "key": "D",
+     "text": "Hide the data quality issues from stakeholders",
+     "correct": false,
+     "rationale": "Concealing limitations misleads decision-makers."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: caveats keep the audience from over-trusting results.",
+   "outcome_refs": [
+    "MST-1380-D04.01"
+   ],
+   "domain_ref": "Communicating results",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1380-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI summary reports that two metrics 'move together'. What is the safest interpretation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They are correlated, which does not by itself prove one causes the other",
+     "correct": true,
+     "rationale": "Correct: correlation is not causation."
+    },
+    {
+     "key": "B",
+     "text": "One definitely causes the other",
+     "correct": false,
+     "rationale": "Correlation alone does not establish causation."
+    },
+    {
+     "key": "C",
+     "text": "The relationship must be meaningful",
+     "correct": false,
+     "rationale": "Correlations can be coincidental or confounded."
+    },
+    {
+     "key": "D",
+     "text": "Causation is proven by the AI",
+     "correct": false,
+     "rationale": "AI noting a correlation does not prove causation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: correlation is not causation.",
+   "outcome_refs": [
+    "MST-1380-D03.01"
+   ],
+   "domain_ref": "Exploration and insight",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
