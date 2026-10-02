@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0527",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0527-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A connector returns a customer record that a workflow will use to send an email. What is the safe design?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A human confirms the record is correct before the consequential action runs",
+     "correct": true,
+     "rationale": "Correct: consequential actions should have a human-in-the-loop check."
+    },
+    {
+     "key": "B",
+     "text": "Send the email automatically with no check",
+     "correct": false,
+     "rationale": "Acting on unverified tool output is risky."
+    },
+    {
+     "key": "C",
+     "text": "Assume the connector is always right",
+     "correct": false,
+     "rationale": "Tool outputs can be wrong or stale and must be verified."
+    },
+    {
+     "key": "D",
+     "text": "Disable all logging",
+     "correct": false,
+     "rationale": "Logging aids auditability and should be kept."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: consequential actions should have a human-in-the-loop check.",
+   "outcome_refs": [
+    "MST-0527-D03.01"
+   ],
+   "domain_ref": "Verified tool workflows",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0527-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO reflect least-privilege connector permissions? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Granting only the access a task actually requires",
+     "correct": true,
+     "rationale": "Correct: least privilege limits exposure."
+    },
+    {
+     "key": "B",
+     "text": "Reviewing and revoking access that is no longer needed",
+     "correct": true,
+     "rationale": "Correct: stale permissions should be removed."
+    },
+    {
+     "key": "C",
+     "text": "Granting broad access because it is convenient",
+     "correct": false,
+     "rationale": "Convenience is not a security rationale."
+    },
+    {
+     "key": "D",
+     "text": "Never reviewing permissions once granted",
+     "correct": false,
+     "rationale": "Permissions need periodic review."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: least privilege limits exposure.",
+   "outcome_refs": [
+    "MST-0527-D02.01"
+   ],
+   "domain_ref": "Permissions and least privilege",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0527-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before connecting a data source, what should you understand first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "What data the connector can access and expose",
+     "correct": true,
+     "rationale": "Correct: understand exposure before connecting."
+    },
+    {
+     "key": "B",
+     "text": "The connector's icon colour",
+     "correct": false,
+     "rationale": "Appearance is irrelevant to safety."
+    },
+    {
+     "key": "C",
+     "text": "How many users like it",
+     "correct": false,
+     "rationale": "Popularity is not an access assessment."
+    },
+    {
+     "key": "D",
+     "text": "Nothing; connect first and check later",
+     "correct": false,
+     "rationale": "Connecting first can expose data unintentionally."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: understand exposure before connecting.",
+   "outcome_refs": [
+    "MST-0527-D01.01"
+   ],
+   "domain_ref": "What connectors are",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

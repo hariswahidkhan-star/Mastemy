@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0515",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0515-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You ask Claude to summarise research and it returns a tidy summary with reference-style citations. What must you do before relying on them?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Check that each cited source exists and actually supports the claim",
+     "correct": true,
+     "rationale": "Correct: citations can be fabricated or mis-attributed and must be verified."
+    },
+    {
+     "key": "B",
+     "text": "Assume they are correct because they are formatted like citations",
+     "correct": false,
+     "rationale": "Citation-like formatting is not evidence of a real source."
+    },
+    {
+     "key": "C",
+     "text": "Delete the citations to keep the brief short",
+     "correct": false,
+     "rationale": "Removing attribution weakens the brief; verify instead."
+    },
+    {
+     "key": "D",
+     "text": "Ask Claude whether it is confident",
+     "correct": false,
+     "rationale": "Stated confidence is not verification."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: citations can be fabricated or mis-attributed and must be verified.",
+   "outcome_refs": [
+    "MST-0515-D03.01"
+   ],
+   "domain_ref": "Synthesis with Claude",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0515-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps belong in a verification routine for a research brief? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Trace each figure back to its original source",
+     "correct": true,
+     "rationale": "Correct: tracing figures to their origin is core verification."
+    },
+    {
+     "key": "B",
+     "text": "Label any claim that could not be confirmed",
+     "correct": true,
+     "rationale": "Correct: honest labelling of unconfirmed claims is part of verification."
+    },
+    {
+     "key": "C",
+     "text": "Increase the length of the brief",
+     "correct": false,
+     "rationale": "Length does not establish accuracy."
+    },
+    {
+     "key": "D",
+     "text": "Remove all caveats so the brief reads confidently",
+     "correct": false,
+     "rationale": "Stripping caveats hides genuine uncertainty."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tracing figures to their origin is core verification.",
+   "outcome_refs": [
+    "MST-0515-D04.01"
+   ],
+   "domain_ref": "Verification and uncertainty",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0515-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two credible sources give conflicting figures. What is the best way to handle this in the synthesis?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Present both figures, attribute each, and note the disagreement",
+     "correct": true,
+     "rationale": "Correct: honest synthesis surfaces conflict rather than hiding it."
+    },
+    {
+     "key": "B",
+     "text": "Average them silently",
+     "correct": false,
+     "rationale": "Silent averaging misrepresents the evidence."
+    },
+    {
+     "key": "C",
+     "text": "Pick the one Claude wrote first",
+     "correct": false,
+     "rationale": "Order of generation is not a basis for selection."
+    },
+    {
+     "key": "D",
+     "text": "Omit both to avoid complexity",
+     "correct": false,
+     "rationale": "Dropping relevant evidence weakens the brief."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: honest synthesis surfaces conflict rather than hiding it.",
+   "outcome_refs": [
+    "MST-0515-D03.02"
+   ],
+   "domain_ref": "Synthesis with Claude",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0516",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0516-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Claude drafts a revenue formula that returns a plausible total. Before using it in the model, what is the essential step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Trace the formula's inputs and reconcile the output to the source data",
+     "correct": true,
+     "rationale": "Correct: plausible totals can still be wrong; tracing and reconciling is essential."
+    },
+    {
+     "key": "B",
+     "text": "Accept it because the number looks reasonable",
+     "correct": false,
+     "rationale": "A reasonable-looking number is not a verified one."
+    },
+    {
+     "key": "C",
+     "text": "Lock the cell so no one can review it",
+     "correct": false,
+     "rationale": "Hiding the formula prevents the review it needs."
+    },
+    {
+     "key": "D",
+     "text": "Convert it to text",
+     "correct": false,
+     "rationale": "That would break the calculation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: plausible totals can still be wrong; tracing and reconciling is essential.",
+   "outcome_refs": [
+    "MST-0516-D03.01"
+   ],
+   "domain_ref": "Formulas and spreadsheet logic",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0516-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make a Claude-assisted financial model easier to review? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keeping assumptions on a separate, sourced inputs sheet",
+     "correct": true,
+     "rationale": "Correct: explicit assumptions support transparent review."
+    },
+    {
+     "key": "B",
+     "text": "Building independent checks that flag broken links",
+     "correct": true,
+     "rationale": "Correct: sanity checks catch errors before they mislead."
+    },
+    {
+     "key": "C",
+     "text": "Hard-coding numbers inside formulas",
+     "correct": false,
+     "rationale": "Hidden constants are hard to review and audit."
+    },
+    {
+     "key": "D",
+     "text": "Removing all labels to save space",
+     "correct": false,
+     "rationale": "Unlabelled models are harder, not easier, to review."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: explicit assumptions support transparent review.",
+   "outcome_refs": [
+    "MST-0516-D02.01"
+   ],
+   "domain_ref": "Assumptions and structure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0516-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should model outputs be described to a decision-maker?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As conditional estimates that depend on stated assumptions",
+     "correct": true,
+     "rationale": "Correct: outputs are only as good as their assumptions and should be framed that way."
+    },
+    {
+     "key": "B",
+     "text": "As precise facts that cannot change",
+     "correct": false,
+     "rationale": "Model outputs are conditional, not fixed facts."
+    },
+    {
+     "key": "C",
+     "text": "Without mentioning assumptions",
+     "correct": false,
+     "rationale": "Omitting assumptions misleads the reader."
+    },
+    {
+     "key": "D",
+     "text": "As Claude's independent opinion",
+     "correct": false,
+     "rationale": "The model reflects the author's assumptions, not an independent opinion."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: outputs are only as good as their assumptions and should be framed that way.",
+   "outcome_refs": [
+    "MST-0516-D05.01"
+   ],
+   "domain_ref": "Communicating a model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

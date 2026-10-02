@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0528",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0528-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A skill works on the one example used to write it but fails on the next real case. What most likely went wrong?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The instructions hard-coded that example's details instead of generalising",
+     "correct": true,
+     "rationale": "Correct: reusable skills must generalise, not encode one case."
+    },
+    {
+     "key": "B",
+     "text": "The skill was too short",
+     "correct": false,
+     "rationale": "Length is not the core issue."
+    },
+    {
+     "key": "C",
+     "text": "Claude cannot follow instructions",
+     "correct": false,
+     "rationale": "The issue is the instruction design, not capability."
+    },
+    {
+     "key": "D",
+     "text": "Skills can only run once",
+     "correct": false,
+     "rationale": "Skills are reusable by design."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reusable skills must generalise, not encode one case.",
+   "outcome_refs": [
+    "MST-0528-D02.01"
+   ],
+   "domain_ref": "Writing reusable instructions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0528-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in responsible skill testing? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Testing against several realistic inputs",
+     "correct": true,
+     "rationale": "Correct: multiple cases reveal failures a single test hides."
+    },
+    {
+     "key": "B",
+     "text": "Finding and fixing failure cases before shipping",
+     "correct": true,
+     "rationale": "Correct: failures should be fixed, not ignored."
+    },
+    {
+     "key": "C",
+     "text": "Shipping after one happy-path test",
+     "correct": false,
+     "rationale": "A single success does not establish reliability."
+    },
+    {
+     "key": "D",
+     "text": "Never re-testing after a fix",
+     "correct": false,
+     "rationale": "Fixes must be re-tested to confirm they work."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: multiple cases reveal failures a single test hides.",
+   "outcome_refs": [
+    "MST-0528-D03.01"
+   ],
+   "domain_ref": "Testing a skill",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0528-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why review a skill before sharing it with a team?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To check what it instructs Claude to do and that it is safe",
+     "correct": true,
+     "rationale": "Correct: a shared skill runs for everyone, so its instructions must be reviewed."
+    },
+    {
+     "key": "B",
+     "text": "To make it longer",
+     "correct": false,
+     "rationale": "Length is not the purpose of review."
+    },
+    {
+     "key": "C",
+     "text": "To hide it from the team",
+     "correct": false,
+     "rationale": "The point is to share it safely, not hide it."
+    },
+    {
+     "key": "D",
+     "text": "Because unreviewed skills run faster",
+     "correct": false,
+     "rationale": "Review is about safety and quality, not speed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a shared skill runs for everyone, so its instructions must be reviewed.",
+   "outcome_refs": [
+    "MST-0528-D05.01"
+   ],
+   "domain_ref": "Sharing and governance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

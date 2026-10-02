@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0519",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0519-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When comparing long documents, Claude reports that two reports 'disagree'. What should you check before accepting that?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Whether the difference is substantive or only a wording variation",
+     "correct": true,
+     "rationale": "Correct: apparent conflicts are often wording differences, not real disagreement."
+    },
+    {
+     "key": "B",
+     "text": "Which report is longer",
+     "correct": false,
+     "rationale": "Length does not determine substantive conflict."
+    },
+    {
+     "key": "C",
+     "text": "Which report Claude read first",
+     "correct": false,
+     "rationale": "Reading order is irrelevant."
+    },
+    {
+     "key": "D",
+     "text": "Nothing; Claude's judgement is final",
+     "correct": false,
+     "rationale": "Claimed conflicts must be verified against the sources."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: apparent conflicts are often wording differences, not real disagreement.",
+   "outcome_refs": [
+    "MST-0519-D03.01"
+   ],
+   "domain_ref": "Cross-document comparison",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0519-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep a long-document extraction trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Attaching a pointer to the source passage for each extracted claim",
+     "correct": true,
+     "rationale": "Correct: source pointers let you verify each claim."
+    },
+    {
+     "key": "B",
+     "text": "Distinguishing the document's claims from Claude's inferences",
+     "correct": true,
+     "rationale": "Correct: inferences must not be presented as stated facts."
+    },
+    {
+     "key": "C",
+     "text": "Accepting inferences as if the document stated them",
+     "correct": false,
+     "rationale": "That blurs claim and inference and is unsafe."
+    },
+    {
+     "key": "D",
+     "text": "Dropping citations to shorten the output",
+     "correct": false,
+     "rationale": "Removing citations removes traceability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: source pointers let you verify each claim.",
+   "outcome_refs": [
+    "MST-0519-D02.01"
+   ],
+   "domain_ref": "Extraction and grounding",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0519-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Claude presents a quotation drawn from one of the source reports. What is the safe next step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Open the original and confirm the quote and its context",
+     "correct": true,
+     "rationale": "Correct: quotations can be inaccurate or out of context and must be checked."
+    },
+    {
+     "key": "B",
+     "text": "Paste it into the summary unchecked",
+     "correct": false,
+     "rationale": "Unverified quotations can mislead."
+    },
+    {
+     "key": "C",
+     "text": "Assume the quote is verbatim",
+     "correct": false,
+     "rationale": "Models can paraphrase or misattribute quotes."
+    },
+    {
+     "key": "D",
+     "text": "Shorten the quote to fit",
+     "correct": false,
+     "rationale": "Editing before verifying risks distorting it further."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: quotations can be inaccurate or out of context and must be checked.",
+   "outcome_refs": [
+    "MST-0519-D04.01"
+   ],
+   "domain_ref": "Verification across sources",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
