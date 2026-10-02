@@ -48,6 +48,14 @@ tar czf resources-$(date +%F).tar.gz --exclude='*.mp4' --exclude='*.mov' --exclu
 
 Store copies off-host, encrypted. Test a restore at least monthly.
 
+### Resource files backup
+
+- The resources directory is `Resources:RootPath` (default `data/resources` under the API content root). It is part of every backup, together with the MySQL dump, and must be on a persistent volume.
+- Blobs are content-addressed: `<root>/<sha[0..2]>/<sha[2..4]>/<sha256>`; the `ResourceFiles` table maps them to courses, lessons and display names. Back up the database and the directory from the same point in time; a blob without a row is harmless, a row without a blob returns 404 on download.
+- `<root>/.staging/` holds in-flight uploads only and need not be backed up.
+- Video and audio are never present: uploads are refused by extension and by magic bytes (`video_not_allowed`); lesson videos live on YouTube. The `--exclude` patterns above are a second line of defence; any video file found in this directory is an incident.
+- Size is bounded by `Resources:PerCourseQuotaBytes` per course and `Resources:MaxFileBytes` per file.
+
 ## Restore
 
 ```bash
