@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1662",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1662-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is accurate, synchronised time across log sources important for a SIEM?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Correlating events in the right order depends on consistent timestamps",
+     "correct": true,
+     "rationale": "Correct: skewed clocks break the sequencing that correlation relies on."
+    },
+    {
+     "key": "B",
+     "text": "It makes log files smaller",
+     "correct": false,
+     "rationale": "Time synchronisation does not reduce file size."
+    },
+    {
+     "key": "C",
+     "text": "It encrypts the logs",
+     "correct": false,
+     "rationale": "Clock sync is unrelated to encryption."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for parsing",
+     "correct": false,
+     "rationale": "Parsing is still required regardless of time sync."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: consistent timestamps let the SIEM order and correlate events.",
+   "outcome_refs": [
+    "MST-1662-D02.02"
+   ],
+   "domain_ref": "Log collection and normalisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1662-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good ways to reduce false positives without hiding real threats? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Refine the rule logic to match the true attack pattern more precisely",
+     "correct": true,
+     "rationale": "Correct: tighter logic cuts noise while keeping real detections."
+    },
+    {
+     "key": "B",
+     "text": "Exclude a specific, verified benign source with documentation",
+     "correct": true,
+     "rationale": "Correct: a documented, scoped exclusion reduces noise safely."
+    },
+    {
+     "key": "C",
+     "text": "Disable the rule entirely",
+     "correct": false,
+     "rationale": "Disabling removes detection along with the noise."
+    },
+    {
+     "key": "D",
+     "text": "Raise the threshold so high nothing ever alerts",
+     "correct": false,
+     "rationale": "An unreachable threshold hides genuine attacks."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: precise logic and a documented, scoped exclusion both cut noise safely.",
+   "outcome_refs": [
+    "MST-1662-D05.01"
+   ],
+   "domain_ref": "Tuning and maintenance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1662-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A correlation rule fires on many failed logins followed by a success from the same source. What does this most likely indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A possible successful brute-force or password-guessing attack",
+     "correct": true,
+     "rationale": "Correct: repeated failures then success is a classic brute-force signature."
+    },
+    {
+     "key": "B",
+     "text": "A printer running out of toner",
+     "correct": false,
+     "rationale": "Printing status is unrelated to login patterns."
+    },
+    {
+     "key": "C",
+     "text": "A normal, expected login with no concern",
+     "correct": false,
+     "rationale": "The burst of failures makes this worth investigating."
+    },
+    {
+     "key": "D",
+     "text": "A software update completing",
+     "correct": false,
+     "rationale": "Updates do not produce failed-then-successful logins."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: failures followed by success suggests a brute-force that may have succeeded.",
+   "outcome_refs": [
+    "MST-1662-D03.01"
+   ],
+   "domain_ref": "Correlation and alerting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

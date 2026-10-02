@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1682",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1682-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the role of DMARC in email security?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It tells receivers how to handle mail that fails SPF and DKIM alignment",
+     "correct": true,
+     "rationale": "Correct: DMARC sets policy and reporting on authentication failures."
+    },
+    {
+     "key": "B",
+     "text": "It encrypts every email in transit",
+     "correct": false,
+     "rationale": "DMARC governs authentication policy, not encryption."
+    },
+    {
+     "key": "C",
+     "text": "It replaces the need for spam filtering",
+     "correct": false,
+     "rationale": "Filtering is still needed alongside authentication."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees no phishing will ever arrive",
+     "correct": false,
+     "rationale": "DMARC reduces spoofing but does not stop all phishing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: DMARC sets how receivers handle SPF/DKIM failures and adds reporting.",
+   "outcome_refs": [
+    "MST-1682-D02.02"
+   ],
+   "domain_ref": "Email authentication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1682-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls reduce the impact of malicious email? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sandboxing attachments before delivery",
+     "correct": true,
+     "rationale": "Correct: sandboxing detonates attachments safely before users open them."
+    },
+    {
+     "key": "B",
+     "text": "Rewriting and checking URLs at click time",
+     "correct": true,
+     "rationale": "Correct: time-of-click checks catch links that turn malicious later."
+    },
+    {
+     "key": "C",
+     "text": "Disabling the spam filter to speed delivery",
+     "correct": false,
+     "rationale": "Disabling filtering increases malicious delivery."
+    },
+    {
+     "key": "D",
+     "text": "Publishing all staff passwords in the signature",
+     "correct": false,
+     "rationale": "This is an obvious and severe exposure, not a control."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: attachment sandboxing and click-time URL checks both reduce impact.",
+   "outcome_refs": [
+    "MST-1682-D03.01"
+   ],
+   "domain_ref": "Filtering and defence",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1682-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A phishing email is reported by a user. What should happen before deleting it everywhere?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Investigate it to find who else received it and what it does",
+     "correct": true,
+     "rationale": "Correct: analysis guides containment and scoping before removal."
+    },
+    {
+     "key": "B",
+     "text": "Delete it instantly from all mailboxes with no analysis",
+     "correct": false,
+     "rationale": "Immediate deletion destroys evidence needed to scope the campaign."
+    },
+    {
+     "key": "C",
+     "text": "Reply to the sender to complain",
+     "correct": false,
+     "rationale": "Replying may confirm the address is live to the attacker."
+    },
+    {
+     "key": "D",
+     "text": "Forward it to everyone as a warning example",
+     "correct": false,
+     "rationale": "Forwarding the live email spreads the threat."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: investigate scope and behaviour before removing it everywhere.",
+   "outcome_refs": [
+    "MST-1682-D05.01"
+   ],
+   "domain_ref": "Email incident response",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

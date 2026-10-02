@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1666",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1666-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What most clearly distinguishes threat hunting from standard alert monitoring?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Hunting proactively searches for threats that no alert has flagged",
+     "correct": true,
+     "rationale": "Correct: hunting is hypothesis-driven and proactive, not alert-driven."
+    },
+    {
+     "key": "B",
+     "text": "Hunting only reviews alerts the SIEM already produced",
+     "correct": false,
+     "rationale": "Reviewing existing alerts is monitoring, not hunting."
+    },
+    {
+     "key": "C",
+     "text": "Hunting requires no data at all",
+     "correct": false,
+     "rationale": "Hunting is data-intensive by nature."
+    },
+    {
+     "key": "D",
+     "text": "Hunting can only be done by automated tools",
+     "correct": false,
+     "rationale": "Hunting is analyst-led, though tools assist."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: hunting proactively seeks un-alerted threats via hypotheses.",
+   "outcome_refs": [
+    "MST-1666-D01.01"
+   ],
+   "domain_ref": "Threat hunting foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1666-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO make a threat-hunting hypothesis effective? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is grounded in a specific adversary technique",
+     "correct": true,
+     "rationale": "Correct: a technique-based hypothesis is concrete and testable."
+    },
+    {
+     "key": "B",
+     "text": "It is scoped to data you can actually query",
+     "correct": true,
+     "rationale": "Correct: a testable scope keeps the hunt achievable."
+    },
+    {
+     "key": "C",
+     "text": "It is as broad as 'find all bad things'",
+     "correct": false,
+     "rationale": "An unbounded hypothesis cannot be tested or concluded."
+    },
+    {
+     "key": "D",
+     "text": "It avoids referencing any data source",
+     "correct": false,
+     "rationale": "A hypothesis you cannot query against cannot be tested."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a technique-grounded, queryable scope makes a hypothesis effective.",
+   "outcome_refs": [
+    "MST-1666-D02.01"
+   ],
+   "domain_ref": "Hypotheses",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1666-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A hunt confirms malicious use of an admin tool. What is the most valuable next step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Create a detection so the behaviour is caught automatically in future",
+     "correct": true,
+     "rationale": "Correct: operationalising the finding gives lasting value."
+    },
+    {
+     "key": "B",
+     "text": "Delete the logs that revealed it",
+     "correct": false,
+     "rationale": "Deleting evidence undermines response and future detection."
+    },
+    {
+     "key": "C",
+     "text": "Stop hunting because the job is done",
+     "correct": false,
+     "rationale": "Hunts should feed continuous improvement, not end coverage."
+    },
+    {
+     "key": "D",
+     "text": "Keep the finding secret from responders",
+     "correct": false,
+     "rationale": "Responders need the finding to act."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: turning the finding into a detection makes it catch the behaviour next time.",
+   "outcome_refs": [
+    "MST-1666-D05.02"
+   ],
+   "domain_ref": "Findings to detections",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

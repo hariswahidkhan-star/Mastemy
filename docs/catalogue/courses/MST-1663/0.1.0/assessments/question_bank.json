@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1663",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1663-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Ransomware is actively spreading to a file share. What is the most appropriate immediate action?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Isolate affected systems from the network to contain the spread",
+     "correct": true,
+     "rationale": "Correct: containment limits damage while deeper response proceeds."
+    },
+    {
+     "key": "B",
+     "text": "Pay the ransom immediately",
+     "correct": false,
+     "rationale": "Paying is not an immediate technical containment and is discouraged."
+    },
+    {
+     "key": "C",
+     "text": "Wipe every machine at once",
+     "correct": false,
+     "rationale": "Mass wiping destroys evidence and may be unnecessary."
+    },
+    {
+     "key": "D",
+     "text": "Wait to see how far it spreads",
+     "correct": false,
+     "rationale": "Waiting allows avoidable damage."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: isolating affected systems contains the spread first.",
+   "outcome_refs": [
+    "MST-1663-D03.01"
+   ],
+   "domain_ref": "Containment and eradication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1663-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps protect evidence during an incident? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Capturing volatile data before powering a system off",
+     "correct": true,
+     "rationale": "Correct: volatile memory is lost on shutdown, so capture it first."
+    },
+    {
+     "key": "B",
+     "text": "Recording who handled evidence and when",
+     "correct": true,
+     "rationale": "Correct: a chain of custody keeps evidence defensible."
+    },
+    {
+     "key": "C",
+     "text": "Rebooting the system to clear the infection",
+     "correct": false,
+     "rationale": "Rebooting can destroy volatile evidence."
+    },
+    {
+     "key": "D",
+     "text": "Editing logs to remove confusing entries",
+     "correct": false,
+     "rationale": "Altering logs destroys evidence integrity."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: capturing volatile data first and keeping a chain of custody both preserve evidence.",
+   "outcome_refs": [
+    "MST-1663-D04.01"
+   ],
+   "domain_ref": "Evidence and recovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1663-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why run a post-incident review after recovery is complete?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To identify improvements that reduce the chance or impact of a repeat",
+     "correct": true,
+     "rationale": "Correct: lessons learned drive concrete preventive changes."
+    },
+    {
+     "key": "B",
+     "text": "To assign personal blame to a staff member",
+     "correct": false,
+     "rationale": "Blame is not the purpose of a constructive review."
+    },
+    {
+     "key": "C",
+     "text": "Because the incident is not really over otherwise",
+     "correct": false,
+     "rationale": "Recovery ends the incident; the review improves the future."
+    },
+    {
+     "key": "D",
+     "text": "To delete all records of the incident",
+     "correct": false,
+     "rationale": "Records should be kept, not deleted."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the review turns the incident into concrete improvements.",
+   "outcome_refs": [
+    "MST-1663-D05.01"
+   ],
+   "domain_ref": "Post-incident",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1659",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1659-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main security benefit of network segmentation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It limits how far an attacker can move after gaining a foothold",
+     "correct": true,
+     "rationale": "Correct: segmentation contains lateral movement between zones."
+    },
+    {
+     "key": "B",
+     "text": "It makes encryption unnecessary",
+     "correct": false,
+     "rationale": "Segmentation and encryption address different risks."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees no attacker can enter",
+     "correct": false,
+     "rationale": "No control guarantees prevention; segmentation limits impact."
+    },
+    {
+     "key": "D",
+     "text": "It increases the attack surface",
+     "correct": false,
+     "rationale": "Segmentation reduces, not increases, exposure between zones."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: segmentation contains an attacker's lateral movement.",
+   "outcome_refs": [
+    "MST-1659-D03.01"
+   ],
+   "domain_ref": "Segmentation and access control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1659-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO protocols provide encryption in transit? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "SSH",
+     "correct": true,
+     "rationale": "Correct: SSH encrypts remote administration sessions."
+    },
+    {
+     "key": "B",
+     "text": "TLS",
+     "correct": true,
+     "rationale": "Correct: TLS encrypts data in transit for many services."
+    },
+    {
+     "key": "C",
+     "text": "Telnet",
+     "correct": false,
+     "rationale": "Telnet sends data, including credentials, in clear text."
+    },
+    {
+     "key": "D",
+     "text": "HTTP",
+     "correct": false,
+     "rationale": "Plain HTTP is unencrypted; HTTPS adds TLS."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: SSH and TLS both encrypt traffic in transit.",
+   "outcome_refs": [
+    "MST-1659-D04.01"
+   ],
+   "domain_ref": "Secure protocols",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1659-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Logs are being collected but no one reviews them. What is the primary weakness?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Detection fails because collected logs are never analysed",
+     "correct": true,
+     "rationale": "Correct: logging without review provides no timely detection."
+    },
+    {
+     "key": "B",
+     "text": "The logs encrypt themselves automatically",
+     "correct": false,
+     "rationale": "Log review has nothing to do with automatic encryption."
+    },
+    {
+     "key": "C",
+     "text": "Collecting logs prevents all attacks",
+     "correct": false,
+     "rationale": "Collection alone does not prevent attacks."
+    },
+    {
+     "key": "D",
+     "text": "Logs make the network faster",
+     "correct": false,
+     "rationale": "Logging does not improve performance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unreviewed logs mean intrusions can go unnoticed.",
+   "outcome_refs": [
+    "MST-1659-D05.01"
+   ],
+   "domain_ref": "Monitoring and response",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

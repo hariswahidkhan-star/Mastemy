@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1678",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1678-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An urgent email from a 'manager' asks you to change a supplier's bank details immediately. What is the safest action?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the request out of band using a known contact method before acting",
+     "correct": true,
+     "rationale": "Correct: out-of-band verification defeats business email compromise."
+    },
+    {
+     "key": "B",
+     "text": "Change the details right away to avoid delay",
+     "correct": false,
+     "rationale": "Acting on urgency without verification is the attacker's goal."
+    },
+    {
+     "key": "C",
+     "text": "Reply to the email to confirm",
+     "correct": false,
+     "rationale": "Replying may just reach the attacker who controls the thread."
+    },
+    {
+     "key": "D",
+     "text": "Ignore it entirely and tell no one",
+     "correct": false,
+     "rationale": "Ignoring without reporting leaves others exposed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: verify out of band through a known channel before acting.",
+   "outcome_refs": [
+    "MST-1678-D04.01"
+   ],
+   "domain_ref": "Resisting manipulation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1678-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are common psychological triggers used in social engineering? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A false sense of urgency",
+     "correct": true,
+     "rationale": "Correct: urgency pushes targets to act without thinking."
+    },
+    {
+     "key": "B",
+     "text": "Apparent authority, such as posing as a manager",
+     "correct": true,
+     "rationale": "Correct: authority discourages questioning the request."
+    },
+    {
+     "key": "C",
+     "text": "Offering to slow the process down for careful review",
+     "correct": false,
+     "rationale": "Attackers avoid giving time for scrutiny."
+    },
+    {
+     "key": "D",
+     "text": "Encouraging the target to verify independently",
+     "correct": false,
+     "rationale": "Attackers discourage independent verification."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: urgency and apparent authority are classic triggers.",
+   "outcome_refs": [
+    "MST-1678-D01.02"
+   ],
+   "domain_ref": "Social engineering foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1678-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is caller ID not sufficient proof of a caller's identity?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Caller ID can be spoofed to display any number",
+     "correct": true,
+     "rationale": "Correct: displayed numbers can be forged, so they do not prove identity."
+    },
+    {
+     "key": "B",
+     "text": "Caller ID is always blank",
+     "correct": false,
+     "rationale": "Caller ID often shows a number; the issue is it can be faked."
+    },
+    {
+     "key": "C",
+     "text": "Phones cannot display numbers",
+     "correct": false,
+     "rationale": "Phones do display numbers; they simply can be spoofed."
+    },
+    {
+     "key": "D",
+     "text": "Only mobiles can be spoofed",
+     "correct": false,
+     "rationale": "Spoofing is not limited to mobile phones."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: caller ID can be spoofed and does not prove identity.",
+   "outcome_refs": [
+    "MST-1678-D03.01"
+   ],
+   "domain_ref": "Beyond email",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1655",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1655-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user reports their computer is 'slow'. What is the best first troubleshooting step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Gather specific details about when and how the slowness occurs",
+     "correct": true,
+     "rationale": "Correct: defining the problem precisely guides every later step."
+    },
+    {
+     "key": "B",
+     "text": "Immediately reinstall the operating system",
+     "correct": false,
+     "rationale": "A full reinstall is drastic and premature before the cause is known."
+    },
+    {
+     "key": "C",
+     "text": "Replace the hard drive",
+     "correct": false,
+     "rationale": "Replacing hardware before diagnosis risks wasted cost and effort."
+    },
+    {
+     "key": "D",
+     "text": "Tell the user to buy a new computer",
+     "correct": false,
+     "rationale": "This skips diagnosis entirely and does not resolve the ticket."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: establishing the exact problem is the first step of a structured method.",
+   "outcome_refs": [
+    "MST-1655-D02.01"
+   ],
+   "domain_ref": "Structured troubleshooting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1655-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions belong in a good ticket resolution note? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The root cause that was identified",
+     "correct": true,
+     "rationale": "Correct: the cause lets the next technician recognise a repeat."
+    },
+    {
+     "key": "B",
+     "text": "The exact steps taken to fix it",
+     "correct": true,
+     "rationale": "Correct: reproducible steps make the fix reusable."
+    },
+    {
+     "key": "C",
+     "text": "A guess about what might be wrong next time",
+     "correct": false,
+     "rationale": "Speculation without evidence is not a resolution record."
+    },
+    {
+     "key": "D",
+     "text": "The user's personal opinion of the IT team",
+     "correct": false,
+     "rationale": "Irrelevant to resolving or documenting the incident."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a resolution note records the cause and the steps taken.",
+   "outcome_refs": [
+    "MST-1655-D05.02"
+   ],
+   "domain_ref": "Communication and documentation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1655-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "ping to the default gateway succeeds but a website will not load. What does this most likely indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Local link to the gateway is fine; the issue is likely DNS or beyond the gateway",
+     "correct": true,
+     "rationale": "Correct: reaching the gateway isolates the fault to name resolution or upstream."
+    },
+    {
+     "key": "B",
+     "text": "The network cable is unplugged",
+     "correct": false,
+     "rationale": "An unplugged cable would normally stop the gateway ping too."
+    },
+    {
+     "key": "C",
+     "text": "The monitor has failed",
+     "correct": false,
+     "rationale": "Display hardware is unrelated to network reachability."
+    },
+    {
+     "key": "D",
+     "text": "The keyboard driver is missing",
+     "correct": false,
+     "rationale": "Input drivers do not affect gateway reachability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a successful gateway ping points to DNS or upstream rather than the local link.",
+   "outcome_refs": [
+    "MST-1655-D04.02"
+   ],
+   "domain_ref": "Basic networking for support",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1667",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1667-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should vulnerability findings be prioritised using more than the raw CVSS score?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Exposure, exploitability and business context change the real risk",
+     "correct": true,
+     "rationale": "Correct: context determines which high-severity items matter most."
+    },
+    {
+     "key": "B",
+     "text": "CVSS scores are always wrong",
+     "correct": false,
+     "rationale": "CVSS is useful; it is simply not the whole picture."
+    },
+    {
+     "key": "C",
+     "text": "Prioritisation is unnecessary if you have a scanner",
+     "correct": false,
+     "rationale": "A scanner finds issues; prioritisation decides what to fix first."
+    },
+    {
+     "key": "D",
+     "text": "Only the newest findings ever matter",
+     "correct": false,
+     "rationale": "Age alone does not determine priority."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: exposure, exploitability and business context refine raw severity.",
+   "outcome_refs": [
+    "MST-1667-D03.01"
+   ],
+   "domain_ref": "Prioritisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1667-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices strengthen a remediation workflow? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assigning each finding an owner and a deadline",
+     "correct": true,
+     "rationale": "Correct: clear ownership and deadlines drive timely fixes."
+    },
+    {
+     "key": "B",
+     "text": "Verifying fixes with a targeted rescan",
+     "correct": true,
+     "rationale": "Correct: rescanning confirms the vulnerability is actually resolved."
+    },
+    {
+     "key": "C",
+     "text": "Closing findings as fixed without checking",
+     "correct": false,
+     "rationale": "Unverified closure leaves real risk open."
+    },
+    {
+     "key": "D",
+     "text": "Ignoring findings with no available patch",
+     "correct": false,
+     "rationale": "Mitigations or compensating controls should be applied meanwhile."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: clear ownership/deadlines and verification by rescan both strengthen remediation.",
+   "outcome_refs": [
+    "MST-1667-D04.01"
+   ],
+   "domain_ref": "Remediation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1667-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main advantage of an authenticated vulnerability scan?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can assess configuration and missing patches from the inside, finding more issues",
+     "correct": true,
+     "rationale": "Correct: credentials let the scanner inspect the host in depth."
+    },
+    {
+     "key": "B",
+     "text": "It guarantees zero false positives",
+     "correct": false,
+     "rationale": "No scan type guarantees zero false positives."
+    },
+    {
+     "key": "C",
+     "text": "It never needs an asset inventory",
+     "correct": false,
+     "rationale": "An inventory is still essential for coverage."
+    },
+    {
+     "key": "D",
+     "text": "It replaces the need for remediation",
+     "correct": false,
+     "rationale": "Scanning finds issues; remediation still fixes them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: authenticated scans inspect the host from the inside and find more.",
+   "outcome_refs": [
+    "MST-1667-D02.01"
+   ],
+   "domain_ref": "Scanning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

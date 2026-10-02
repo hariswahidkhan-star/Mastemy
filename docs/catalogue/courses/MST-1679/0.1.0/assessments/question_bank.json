@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1679",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1679-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does availability often take priority over confidentiality in OT environments?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Interrupting physical processes can cause safety and production harm",
+     "correct": true,
+     "rationale": "Correct: OT controls physical processes where downtime can be dangerous."
+    },
+    {
+     "key": "B",
+     "text": "Because OT data is never sensitive",
+     "correct": false,
+     "rationale": "OT can hold sensitive data; the priority reflects physical risk."
+    },
+    {
+     "key": "C",
+     "text": "Because confidentiality is impossible in OT",
+     "correct": false,
+     "rationale": "Confidentiality still matters; it is simply often outranked by availability."
+    },
+    {
+     "key": "D",
+     "text": "Because OT systems have no users",
+     "correct": false,
+     "rationale": "OT systems have operators; the point is physical-process risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: OT runs physical processes where loss of availability can harm safety.",
+   "outcome_refs": [
+    "MST-1679-D01.02"
+   ],
+   "domain_ref": "OT vs IT",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1679-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices suit OT security? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Segmenting the plant network from the corporate network",
+     "correct": true,
+     "rationale": "Correct: segmentation limits exposure to the control environment."
+    },
+    {
+     "key": "B",
+     "text": "Using passive monitoring that does not disrupt controllers",
+     "correct": true,
+     "rationale": "Correct: passive monitoring avoids destabilising sensitive devices."
+    },
+    {
+     "key": "C",
+     "text": "Running aggressive active scans on live controllers",
+     "correct": false,
+     "rationale": "Active scans can crash fragile OT devices."
+    },
+    {
+     "key": "D",
+     "text": "Giving vendors permanent unmonitored access",
+     "correct": false,
+     "rationale": "Unmonitored standing access is a major OT risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: segmentation and passive monitoring both suit OT constraints.",
+   "outcome_refs": [
+    "MST-1679-D04.01"
+   ],
+   "domain_ref": "Segmentation and monitoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1679-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is unauthenticated industrial protocol traffic a concern?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Commands can be forged or altered because the protocol does not verify the sender",
+     "correct": true,
+     "rationale": "Correct: lack of authentication lets attackers issue or tamper with commands."
+    },
+    {
+     "key": "B",
+     "text": "Because the protocol encrypts everything by default",
+     "correct": false,
+     "rationale": "Many industrial protocols lack both authentication and encryption."
+    },
+    {
+     "key": "C",
+     "text": "Because it makes devices run faster",
+     "correct": false,
+     "rationale": "Speed is unrelated to the authentication concern."
+    },
+    {
+     "key": "D",
+     "text": "Because it only affects office email",
+     "correct": false,
+     "rationale": "The concern is control commands, not email."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without authentication, control commands can be forged or altered.",
+   "outcome_refs": [
+    "MST-1679-D02.02"
+   ],
+   "domain_ref": "Architecture and protocols",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

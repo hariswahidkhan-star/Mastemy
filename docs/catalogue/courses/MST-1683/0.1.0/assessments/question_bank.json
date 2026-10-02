@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1683",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1683-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does DNSSEC primarily provide?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Integrity and authenticity of DNS responses through signatures",
+     "correct": true,
+     "rationale": "Correct: DNSSEC lets resolvers verify answers are authentic and unaltered."
+    },
+    {
+     "key": "B",
+     "text": "Encryption of DNS queries for privacy",
+     "correct": false,
+     "rationale": "DNSSEC adds integrity, not confidentiality; that is DoH/DoT."
+    },
+    {
+     "key": "C",
+     "text": "Faster DNS resolution",
+     "correct": false,
+     "rationale": "DNSSEC is about trust, not speed."
+    },
+    {
+     "key": "D",
+     "text": "A guarantee that websites are safe",
+     "correct": false,
+     "rationale": "It validates records, not website safety."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: DNSSEC provides integrity and authenticity of DNS responses.",
+   "outcome_refs": [
+    "MST-1683-D02.01"
+   ],
+   "domain_ref": "DNS security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1683-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep certificates trustworthy over time? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automating renewal before expiry",
+     "correct": true,
+     "rationale": "Correct: automation prevents accidental expiry outages."
+    },
+    {
+     "key": "B",
+     "text": "Revoking a certificate if its private key is compromised",
+     "correct": true,
+     "rationale": "Correct: revocation invalidates a compromised certificate."
+    },
+    {
+     "key": "C",
+     "text": "Clicking through browser certificate warnings",
+     "correct": false,
+     "rationale": "Ignoring warnings hides real trust problems."
+    },
+    {
+     "key": "D",
+     "text": "Sharing the private key widely for convenience",
+     "correct": false,
+     "rationale": "Exposing the private key destroys the certificate's trust."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: automated renewal and revoking compromised keys keep certificates trustworthy.",
+   "outcome_refs": [
+    "MST-1683-D04.01"
+   ],
+   "domain_ref": "Certificate lifecycle",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1683-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A browser shows a certificate warning for an internal site using a self-signed certificate. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The certificate is not signed by a CA the browser already trusts",
+     "correct": true,
+     "rationale": "Correct: trust requires a chain to a recognised authority."
+    },
+    {
+     "key": "B",
+     "text": "Self-signed certificates cannot encrypt anything",
+     "correct": false,
+     "rationale": "They can encrypt; the issue is trust, not encryption."
+    },
+    {
+     "key": "C",
+     "text": "The site must be offline",
+     "correct": false,
+     "rationale": "A warning does not mean the site is offline."
+    },
+    {
+     "key": "D",
+     "text": "DNS has failed completely",
+     "correct": false,
+     "rationale": "A certificate warning is distinct from DNS failure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a self-signed certificate is not chained to a trusted authority, so the browser warns.",
+   "outcome_refs": [
+    "MST-1683-D03.01"
+   ],
+   "domain_ref": "PKI and trust",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

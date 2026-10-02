@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1661",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1661-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which wireless security standard should a business prefer today where devices support it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "WPA3",
+     "correct": true,
+     "rationale": "Correct: WPA3 offers the strongest current protections for Wi-Fi."
+    },
+    {
+     "key": "B",
+     "text": "WEP",
+     "correct": false,
+     "rationale": "WEP is broken and must not be used."
+    },
+    {
+     "key": "C",
+     "text": "Open with a hidden SSID",
+     "correct": false,
+     "rationale": "An open network is unencrypted; hiding the SSID is not security."
+    },
+    {
+     "key": "D",
+     "text": "WPA with TKIP only",
+     "correct": false,
+     "rationale": "WPA with TKIP is outdated and weaker than WPA2/WPA3."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: WPA3 is the strongest widely available Wi-Fi standard.",
+   "outcome_refs": [
+    "MST-1661-D02.01"
+   ],
+   "domain_ref": "Authentication and encryption",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1661-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO signs suggest a rogue or evil-twin access point? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A familiar SSID appearing with a different or stronger signal unexpectedly",
+     "correct": true,
+     "rationale": "Correct: a duplicated SSID with odd signal is a classic evil-twin sign."
+    },
+    {
+     "key": "B",
+     "text": "An access point with an unknown MAC on the corporate channel",
+     "correct": true,
+     "rationale": "Correct: unknown hardware broadcasting your network is suspicious."
+    },
+    {
+     "key": "C",
+     "text": "A client device asking to join the network",
+     "correct": false,
+     "rationale": "Join requests are normal client behaviour."
+    },
+    {
+     "key": "D",
+     "text": "The scheduled nightly backup running",
+     "correct": false,
+     "rationale": "A backup job is unrelated to rogue access points."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a duplicated SSID and an unknown broadcasting MAC both indicate a rogue AP.",
+   "outcome_refs": [
+    "MST-1661-D05.01"
+   ],
+   "domain_ref": "Monitoring wireless",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1661-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should guest Wi-Fi be separated from business systems?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So a compromised guest device cannot reach sensitive internal systems",
+     "correct": true,
+     "rationale": "Correct: separation contains guest-side risk away from critical assets."
+    },
+    {
+     "key": "B",
+     "text": "Because guests need faster speeds than staff",
+     "correct": false,
+     "rationale": "Speed is not the security rationale for separation."
+    },
+    {
+     "key": "C",
+     "text": "To avoid using any encryption",
+     "correct": false,
+     "rationale": "Separation does not remove the need for encryption."
+    },
+    {
+     "key": "D",
+     "text": "Because guests cannot use Wi-Fi otherwise",
+     "correct": false,
+     "rationale": "Guests can use shared networks; separation is about risk, not capability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: segmentation keeps guest-device compromise away from business systems.",
+   "outcome_refs": [
+    "MST-1661-D04.01"
+   ],
+   "domain_ref": "Secure wireless design",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

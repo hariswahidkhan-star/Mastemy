@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1660",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1660-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two firewall rules conflict: a broad 'allow any' is placed above a specific 'deny'. What happens to the targeted traffic?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is allowed, because rules are evaluated top-down and the first match wins",
+     "correct": true,
+     "rationale": "Correct: the first matching rule applies, so the broad allow overrides the later deny."
+    },
+    {
+     "key": "B",
+     "text": "It is denied, because deny always wins",
+     "correct": false,
+     "rationale": "Order, not rule type, determines the outcome here."
+    },
+    {
+     "key": "C",
+     "text": "Both rules are ignored",
+     "correct": false,
+     "rationale": "Rules are still evaluated; the first match applies."
+    },
+    {
+     "key": "D",
+     "text": "The firewall crashes on the conflict",
+     "correct": false,
+     "rationale": "A rule-order conflict does not crash the firewall."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: top-down first-match evaluation lets the broad allow win.",
+   "outcome_refs": [
+    "MST-1660-D02.01"
+   ],
+   "domain_ref": "Rules and least privilege",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1660-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support safe firewall management? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Periodically reviewing and removing stale rules",
+     "correct": true,
+     "rationale": "Correct: rule review prevents accumulation of unneeded openings."
+    },
+    {
+     "key": "B",
+     "text": "Recording every change with a reason",
+     "correct": true,
+     "rationale": "Correct: change records give an audit trail and aid rollback."
+    },
+    {
+     "key": "C",
+     "text": "Keeping an 'allow any any' rule for convenience",
+     "correct": false,
+     "rationale": "A permit-all rule defeats the firewall's purpose."
+    },
+    {
+     "key": "D",
+     "text": "Disabling logging to save space",
+     "correct": false,
+     "rationale": "Disabling logging removes visibility needed to investigate issues."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: rule review and change records both keep a firewall trustworthy.",
+   "outcome_refs": [
+    "MST-1660-D05.02"
+   ],
+   "domain_ref": "Management and change control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1660-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does stateful inspection add compared with simple packet filtering?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It tracks connection state so reply traffic is allowed without a separate rule",
+     "correct": true,
+     "rationale": "Correct: stateful firewalls remember established connections."
+    },
+    {
+     "key": "B",
+     "text": "It encrypts all traffic by default",
+     "correct": false,
+     "rationale": "Stateful inspection does not provide encryption."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any rules",
+     "correct": false,
+     "rationale": "Rules are still required to define allowed connections."
+    },
+    {
+     "key": "D",
+     "text": "It only works on wireless networks",
+     "correct": false,
+     "rationale": "Stateful inspection is not limited to wireless."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: stateful inspection tracks connection state to permit return traffic.",
+   "outcome_refs": [
+    "MST-1660-D01.01"
+   ],
+   "domain_ref": "Firewall fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1684",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1684-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the key architectural difference between a container and a virtual machine?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A container shares the host kernel, while a VM runs its own full operating system",
+     "correct": true,
+     "rationale": "Correct: containers share the kernel; VMs virtualise the whole machine."
+    },
+    {
+     "key": "B",
+     "text": "A container includes a full separate operating system kernel",
+     "correct": false,
+     "rationale": "That describes a VM, not a container."
+    },
+    {
+     "key": "C",
+     "text": "A VM shares the host kernel with other VMs",
+     "correct": false,
+     "rationale": "VMs run their own OS, not a shared kernel."
+    },
+    {
+     "key": "D",
+     "text": "There is no difference between them",
+     "correct": false,
+     "rationale": "They differ significantly in isolation and overhead."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: containers share the host kernel while VMs run a full OS each.",
+   "outcome_refs": [
+    "MST-1684-D02.01"
+   ],
+   "domain_ref": "VMs vs containers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1684-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support safe multi-workload virtualisation? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Setting resource limits so one VM cannot starve others",
+     "correct": true,
+     "rationale": "Correct: limits prevent a noisy workload from degrading the rest."
+    },
+    {
+     "key": "B",
+     "text": "Hardening and patching the hypervisor",
+     "correct": true,
+     "rationale": "Correct: the hypervisor is a critical boundary to secure."
+    },
+    {
+     "key": "C",
+     "text": "Using snapshots as the only long-term backup",
+     "correct": false,
+     "rationale": "Snapshots are not a substitute for proper backups."
+    },
+    {
+     "key": "D",
+     "text": "Running every workload with no isolation",
+     "correct": false,
+     "rationale": "Removing isolation defeats a key benefit of virtualisation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: resource limits and a hardened hypervisor both support safe multi-workload use.",
+   "outcome_refs": [
+    "MST-1684-D05.01"
+   ],
+   "domain_ref": "Security and resources",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1684-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why are VM snapshots a poor substitute for backups over the long term?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Snapshots grow, can harm performance and depend on the same storage and host",
+     "correct": true,
+     "rationale": "Correct: snapshots are short-term and not independent copies."
+    },
+    {
+     "key": "B",
+     "text": "Snapshots are encrypted and cannot be restored",
+     "correct": false,
+     "rationale": "Snapshots can be restored; the issue is they are not true backups."
+    },
+    {
+     "key": "C",
+     "text": "Backups and snapshots are identical",
+     "correct": false,
+     "rationale": "They differ in independence and durability."
+    },
+    {
+     "key": "D",
+     "text": "Snapshots store data off-site automatically",
+     "correct": false,
+     "rationale": "Snapshots typically stay on the same storage, not off-site."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: snapshots are short-term, dependent on the same host/storage, and not real backups.",
+   "outcome_refs": [
+    "MST-1684-D03.01"
+   ],
+   "domain_ref": "Managing VMs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

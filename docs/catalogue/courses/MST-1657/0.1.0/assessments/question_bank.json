@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1657",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1657-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user needs read-only access to a shared folder. Share permission is Full Control but NTFS is Read. What is the effective access?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read, because the most restrictive of the combined permissions applies",
+     "correct": true,
+     "rationale": "Correct: NTFS and share permissions combine to the most restrictive result."
+    },
+    {
+     "key": "B",
+     "text": "Full Control, because the share permission wins",
+     "correct": false,
+     "rationale": "Share permissions do not override more restrictive NTFS permissions."
+    },
+    {
+     "key": "C",
+     "text": "No access at all",
+     "correct": false,
+     "rationale": "Read is granted by both layers at minimum, so access is not denied."
+    },
+    {
+     "key": "D",
+     "text": "Modify, as a compromise between the two",
+     "correct": false,
+     "rationale": "Effective access is the most restrictive, not an average."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the effective permission is the most restrictive of NTFS and share.",
+   "outcome_refs": [
+    "MST-1657-D02.02"
+   ],
+   "domain_ref": "Users, groups and permissions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1657-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good reasons to use PowerShell over manual clicking for administration? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tasks can be scripted and repeated consistently",
+     "correct": true,
+     "rationale": "Correct: scripting gives repeatable, auditable results."
+    },
+    {
+     "key": "B",
+     "text": "Changes can be applied to many machines at once",
+     "correct": true,
+     "rationale": "Correct: PowerShell scales a task across many hosts."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need to understand permissions",
+     "correct": false,
+     "rationale": "Permissions still apply regardless of the tool used."
+    },
+    {
+     "key": "D",
+     "text": "It bypasses all security controls",
+     "correct": false,
+     "rationale": "PowerShell runs under the same security model, not around it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: PowerShell gives repeatable scripting and scale across machines.",
+   "outcome_refs": [
+    "MST-1657-D03.02"
+   ],
+   "domain_ref": "Command line and PowerShell",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1657-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Windows machine fails to boot normally after a driver update. Which recovery step is most appropriate first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Boot into Safe Mode and roll back the driver",
+     "correct": true,
+     "rationale": "Correct: Safe Mode loads minimal drivers so the bad driver can be removed."
+    },
+    {
+     "key": "B",
+     "text": "Immediately reinstall Windows",
+     "correct": false,
+     "rationale": "Reinstalling is excessive before trying targeted recovery."
+    },
+    {
+     "key": "C",
+     "text": "Replace the motherboard",
+     "correct": false,
+     "rationale": "A software driver fault does not require hardware replacement."
+    },
+    {
+     "key": "D",
+     "text": "Delete the user's documents",
+     "correct": false,
+     "rationale": "This does not address a driver fault and risks data loss."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Safe Mode lets you roll back the offending driver.",
+   "outcome_refs": [
+    "MST-1657-D05.02"
+   ],
+   "domain_ref": "Diagnostics and recovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

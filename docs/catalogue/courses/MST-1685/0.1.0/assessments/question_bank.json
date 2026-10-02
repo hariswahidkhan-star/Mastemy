@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1685",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1685-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is RAID not a substitute for backups?",
+   "options": [
+    {
+     "key": "A",
+     "text": "RAID protects against drive failure but not deletion, corruption or ransomware",
+     "correct": true,
+     "rationale": "Correct: RAID adds availability, not recovery from logical data loss."
+    },
+    {
+     "key": "B",
+     "text": "RAID copies data to an off-site location automatically",
+     "correct": false,
+     "rationale": "RAID is local redundancy, not an off-site copy."
+    },
+    {
+     "key": "C",
+     "text": "RAID encrypts all data by default",
+     "correct": false,
+     "rationale": "RAID does not provide encryption."
+    },
+    {
+     "key": "D",
+     "text": "RAID keeps historical versions of files",
+     "correct": false,
+     "rationale": "RAID does not retain previous versions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RAID guards against drive failure but not deletion, corruption or ransomware.",
+   "outcome_refs": [
+    "MST-1685-D02.02"
+   ],
+   "domain_ref": "Redundancy and RAID",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1685-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements describe the 3-2-1 backup principle? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keep at least three copies of the data",
+     "correct": true,
+     "rationale": "Correct: three copies is the first part of 3-2-1."
+    },
+    {
+     "key": "B",
+     "text": "Keep at least one copy off-site",
+     "correct": true,
+     "rationale": "Correct: an off-site copy survives a local disaster."
+    },
+    {
+     "key": "C",
+     "text": "Keep every copy on the same server",
+     "correct": false,
+     "rationale": "Co-locating all copies defeats the purpose of 3-2-1."
+    },
+    {
+     "key": "D",
+     "text": "Never test any of the copies",
+     "correct": false,
+     "rationale": "Testing restores is essential, not excluded."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: 3-2-1 means three copies, on two media, with one off-site.",
+   "outcome_refs": [
+    "MST-1685-D03.01"
+   ],
+   "domain_ref": "Backup strategy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1685-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should some backup copies be kept offline or immutable?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So ransomware that reaches the live data cannot also encrypt the backups",
+     "correct": true,
+     "rationale": "Correct: offline or immutable copies survive a ransomware attack."
+    },
+    {
+     "key": "B",
+     "text": "Because offline copies restore faster than any other",
+     "correct": false,
+     "rationale": "Speed is not the reason; resilience is."
+    },
+    {
+     "key": "C",
+     "text": "Because immutable backups need no retention policy",
+     "correct": false,
+     "rationale": "Retention is still required for immutable backups."
+    },
+    {
+     "key": "D",
+     "text": "Because online backups cannot be encrypted at all",
+     "correct": false,
+     "rationale": "Online, writable backups can be encrypted by ransomware."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: offline or immutable copies survive ransomware that hits live data.",
+   "outcome_refs": [
+    "MST-1685-D05.01"
+   ],
+   "domain_ref": "Storage and backup security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

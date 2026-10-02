@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1676",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1676-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the most effective way to reduce PCI DSS scope?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Segment and avoid storing cardholder data wherever possible",
+     "correct": true,
+     "rationale": "Correct: fewer systems touching card data means less scope."
+    },
+    {
+     "key": "B",
+     "text": "Store all card data in one big database",
+     "correct": false,
+     "rationale": "Centralising storage increases, not reduces, scope and risk."
+    },
+    {
+     "key": "C",
+     "text": "Use default device passwords for consistency",
+     "correct": false,
+     "rationale": "Default passwords are a classic weakness, not a scope reducer."
+    },
+    {
+     "key": "D",
+     "text": "Turn off all logging",
+     "correct": false,
+     "rationale": "Logging is required; disabling it is non-compliant."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: segmentation and not storing card data reduce scope.",
+   "outcome_refs": [
+    "MST-1676-D03.01"
+   ],
+   "domain_ref": "Scope reduction",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1676-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are common PCI DSS compliance pitfalls? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Leaving vendor default passwords in place",
+     "correct": true,
+     "rationale": "Correct: default credentials are a frequent and serious gap."
+    },
+    {
+     "key": "B",
+     "text": "Inconsistent patching and logging",
+     "correct": true,
+     "rationale": "Correct: gaps in patching and logging are common failures."
+    },
+    {
+     "key": "C",
+     "text": "Segmenting the cardholder data environment",
+     "correct": false,
+     "rationale": "Segmentation is good practice, not a pitfall."
+    },
+    {
+     "key": "D",
+     "text": "Minimising stored cardholder data",
+     "correct": false,
+     "rationale": "Minimising stored data reduces risk; it is not a pitfall."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: default passwords and inconsistent patching/logging are common pitfalls.",
+   "outcome_refs": [
+    "MST-1676-D04.01"
+   ],
+   "domain_ref": "Common pitfalls",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1676-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is storing sensitive authentication data after authorisation discouraged?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is high-value to attackers and generally must not be retained",
+     "correct": true,
+     "rationale": "Correct: such data should not be stored after authorisation."
+    },
+    {
+     "key": "B",
+     "text": "It makes transactions faster",
+     "correct": false,
+     "rationale": "Storing it does not speed transactions and adds risk."
+    },
+    {
+     "key": "C",
+     "text": "It is required for every refund",
+     "correct": false,
+     "rationale": "Refunds do not require retaining prohibited authentication data."
+    },
+    {
+     "key": "D",
+     "text": "It reduces the systems in scope",
+     "correct": false,
+     "rationale": "Storing more sensitive data increases scope and risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sensitive authentication data should not be retained after authorisation.",
+   "outcome_refs": [
+    "MST-1676-D02.01"
+   ],
+   "domain_ref": "Control goals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

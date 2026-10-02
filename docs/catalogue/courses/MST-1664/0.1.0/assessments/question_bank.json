@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1664",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1664-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should malware be analysed in an isolated environment with snapshots?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To contain the sample and quickly revert to a clean state",
+     "correct": true,
+     "rationale": "Correct: isolation prevents spread and snapshots enable safe reset."
+    },
+    {
+     "key": "B",
+     "text": "Because malware runs faster in a virtual machine",
+     "correct": false,
+     "rationale": "Speed is not the reason; containment is."
+    },
+    {
+     "key": "C",
+     "text": "To make the malware harmless automatically",
+     "correct": false,
+     "rationale": "Isolation contains it; it does not neutralise the code."
+    },
+    {
+     "key": "D",
+     "text": "So the analysis needs no documentation",
+     "correct": false,
+     "rationale": "Documentation is still required regardless of environment."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: isolation contains the sample and snapshots allow a clean revert.",
+   "outcome_refs": [
+    "MST-1664-D02.01"
+   ],
+   "domain_ref": "Safe analysis setup",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1664-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are examples of static analysis? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Calculating the file's hash and comparing to known-bad lists",
+     "correct": true,
+     "rationale": "Correct: hashing without running the file is static analysis."
+    },
+    {
+     "key": "B",
+     "text": "Examining readable strings and imported functions",
+     "correct": true,
+     "rationale": "Correct: inspecting strings and imports is static analysis."
+    },
+    {
+     "key": "C",
+     "text": "Running the sample and watching network traffic",
+     "correct": false,
+     "rationale": "Executing to observe behaviour is dynamic analysis."
+    },
+    {
+     "key": "D",
+     "text": "Observing registry changes during execution",
+     "correct": false,
+     "rationale": "Runtime observation is dynamic, not static, analysis."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: hashing and inspecting strings/imports are both static techniques.",
+   "outcome_refs": [
+    "MST-1664-D03.01"
+   ],
+   "domain_ref": "Static analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1664-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During dynamic analysis a sample opens no window but makes an outbound connection to an unknown host. What is the best interpretation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The sample may be malicious and contacting a command-and-control server",
+     "correct": true,
+     "rationale": "Correct: silent outbound connections are a common malware behaviour."
+    },
+    {
+     "key": "B",
+     "text": "Nothing happened because there was no window",
+     "correct": false,
+     "rationale": "Lack of a UI does not mean lack of activity."
+    },
+    {
+     "key": "C",
+     "text": "The sample is certainly safe",
+     "correct": false,
+     "rationale": "Unexpected outbound traffic is a red flag, not a safety sign."
+    },
+    {
+     "key": "D",
+     "text": "The lab network must be broken",
+     "correct": false,
+     "rationale": "The connection attempt indicates sample behaviour, not a lab fault."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a silent outbound connection suggests possible command-and-control activity.",
+   "outcome_refs": [
+    "MST-1664-D04.02"
+   ],
+   "domain_ref": "Dynamic analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

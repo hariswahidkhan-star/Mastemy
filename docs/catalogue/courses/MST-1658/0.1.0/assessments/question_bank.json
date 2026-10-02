@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1658",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1658-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is it recommended to assign permissions to groups rather than individual users in Active Directory?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It simplifies management and keeps access consistent as people change roles",
+     "correct": true,
+     "rationale": "Correct: group-based access scales and is easier to audit."
+    },
+    {
+     "key": "B",
+     "text": "Individual users cannot be given any permissions",
+     "correct": false,
+     "rationale": "Users can be assigned permissions; groups are simply better practice."
+    },
+    {
+     "key": "C",
+     "text": "Groups disable auditing",
+     "correct": false,
+     "rationale": "Groups do not disable auditing; they aid it."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for a domain controller",
+     "correct": false,
+     "rationale": "Domain controllers are still required regardless of group use."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: group-based permissions scale and stay consistent through role changes.",
+   "outcome_refs": [
+    "MST-1658-D02.02"
+   ],
+   "domain_ref": "Users, groups and OUs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1658-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO services must be healthy for domain logons to work reliably? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "DNS",
+     "correct": true,
+     "rationale": "Correct: clients use DNS to locate domain controllers."
+    },
+    {
+     "key": "B",
+     "text": "A reachable domain controller",
+     "correct": true,
+     "rationale": "Correct: authentication requires a contactable domain controller."
+    },
+    {
+     "key": "C",
+     "text": "A public web server",
+     "correct": false,
+     "rationale": "A public web server is unrelated to domain authentication."
+    },
+    {
+     "key": "D",
+     "text": "A printer spooler",
+     "correct": false,
+     "rationale": "Printing services are not required for logon."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: DNS and a reachable domain controller are both essential for logons.",
+   "outcome_refs": [
+    "MST-1658-D04.02"
+   ],
+   "domain_ref": "Authentication and replication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1658-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Group Policy Object is linked at both the domain and an OU with conflicting settings. By default, which applies to objects in that OU?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The OU-linked GPO, because the closest link in the processing order wins",
+     "correct": true,
+     "rationale": "Correct: GPOs apply site, domain, then OU, with the last applied normally winning."
+    },
+    {
+     "key": "B",
+     "text": "The domain-linked GPO always overrides the OU",
+     "correct": false,
+     "rationale": "Unless enforced, the OU link applies later and normally wins."
+    },
+    {
+     "key": "C",
+     "text": "Neither GPO applies",
+     "correct": false,
+     "rationale": "Both are processed; the conflict is resolved by order."
+    },
+    {
+     "key": "D",
+     "text": "The user must choose which applies",
+     "correct": false,
+     "rationale": "Policy application is automatic, not user-selected."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: in default processing the OU-linked GPO applies last and wins.",
+   "outcome_refs": [
+    "MST-1658-D03.01"
+   ],
+   "domain_ref": "Group Policy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

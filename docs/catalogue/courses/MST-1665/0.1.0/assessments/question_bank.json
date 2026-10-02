@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1665",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1665-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which best distinguishes threat intelligence from raw threat data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Intelligence is analysed and contextualised to support a decision",
+     "correct": true,
+     "rationale": "Correct: analysis and context turn data into intelligence."
+    },
+    {
+     "key": "B",
+     "text": "Intelligence is simply a larger list of indicators",
+     "correct": false,
+     "rationale": "Volume alone does not make data into intelligence."
+    },
+    {
+     "key": "C",
+     "text": "Intelligence never uses external sources",
+     "correct": false,
+     "rationale": "Intelligence commonly draws on many sources."
+    },
+    {
+     "key": "D",
+     "text": "Intelligence must be fully automated",
+     "correct": false,
+     "rationale": "Automation aids but does not define intelligence."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: analysis and context for a decision distinguish intelligence from data.",
+   "outcome_refs": [
+    "MST-1665-D01.01"
+   ],
+   "domain_ref": "Threat intelligence foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1665-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are higher-value than a single IP address when tracking an adversary? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The group's techniques and procedures (TTPs)",
+     "correct": true,
+     "rationale": "Correct: behaviours are harder for an adversary to change than an IP."
+    },
+    {
+     "key": "B",
+     "text": "A documented attack pattern mapped to a framework",
+     "correct": true,
+     "rationale": "Correct: mapped patterns persist across infrastructure changes."
+    },
+    {
+     "key": "C",
+     "text": "A one-off IP that may rotate hourly",
+     "correct": false,
+     "rationale": "Single IPs are easily changed and low-value alone."
+    },
+    {
+     "key": "D",
+     "text": "The colour of the attacker's website",
+     "correct": false,
+     "rationale": "Cosmetic details carry no defensive value."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: TTPs and mapped attack patterns outlast easily changed indicators.",
+   "outcome_refs": [
+    "MST-1665-D03.02"
+   ],
+   "domain_ref": "Indicators and TTPs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1665-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A single vendor blog claims a new campaign but no other source corroborates it. How should it be treated?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As an uncorroborated lead with lower confidence pending verification",
+     "correct": true,
+     "rationale": "Correct: single-source, uncorroborated reporting warrants lower confidence."
+    },
+    {
+     "key": "B",
+     "text": "As confirmed fact to act on immediately",
+     "correct": false,
+     "rationale": "A single uncorroborated source does not justify high confidence."
+    },
+    {
+     "key": "C",
+     "text": "As certainly false and ignored",
+     "correct": false,
+     "rationale": "It is a lead worth verifying, not dismissing outright."
+    },
+    {
+     "key": "D",
+     "text": "As more reliable than government reporting",
+     "correct": false,
+     "rationale": "Reliability depends on corroboration, not on being a blog."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: uncorroborated single-source reporting should carry lower confidence.",
+   "outcome_refs": [
+    "MST-1665-D04.01"
+   ],
+   "domain_ref": "Evaluating sources",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

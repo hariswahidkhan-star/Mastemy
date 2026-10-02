@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1681",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1681-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What capability does EDR add beyond traditional signature antivirus?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Behavioural detection, investigation and response across endpoints",
+     "correct": true,
+     "rationale": "Correct: EDR detects behaviours and supports investigation/response."
+    },
+    {
+     "key": "B",
+     "text": "It only scans files against a signature list",
+     "correct": false,
+     "rationale": "That describes traditional antivirus, not EDR's added value."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any patching",
+     "correct": false,
+     "rationale": "Patching is still essential."
+    },
+    {
+     "key": "D",
+     "text": "It makes endpoints immune to all attacks",
+     "correct": false,
+     "rationale": "No control provides immunity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: EDR adds behavioural detection, investigation and response.",
+   "outcome_refs": [
+    "MST-1681-D03.01"
+   ],
+   "domain_ref": "Protection technologies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1681-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO hardening measures reduce endpoint risk? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Removing local administrator rights from standard users",
+     "correct": true,
+     "rationale": "Correct: least privilege limits what malware can do."
+    },
+    {
+     "key": "B",
+     "text": "Keeping the operating system and applications patched",
+     "correct": true,
+     "rationale": "Correct: patching closes known vulnerabilities."
+    },
+    {
+     "key": "C",
+     "text": "Disabling all logging on the endpoint",
+     "correct": false,
+     "rationale": "Disabling logging removes detection and investigation data."
+    },
+    {
+     "key": "D",
+     "text": "Giving every user full admin to avoid prompts",
+     "correct": false,
+     "rationale": "Universal admin greatly increases risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: removing admin rights and patching both reduce endpoint risk.",
+   "outcome_refs": [
+    "MST-1681-D02.01"
+   ],
+   "domain_ref": "Hardening and patching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1681-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A laptop shows signs of active compromise. What is the most appropriate first response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Isolate it from the network while preserving it for investigation",
+     "correct": true,
+     "rationale": "Correct: isolation contains spread while keeping evidence."
+    },
+    {
+     "key": "B",
+     "text": "Immediately reformat it to be safe",
+     "correct": false,
+     "rationale": "Reformatting destroys evidence needed to understand the incident."
+    },
+    {
+     "key": "C",
+     "text": "Leave it connected to watch what happens",
+     "correct": false,
+     "rationale": "Leaving it connected risks spread and data loss."
+    },
+    {
+     "key": "D",
+     "text": "Unplug the power without any process",
+     "correct": false,
+     "rationale": "Abruptly powering off can destroy volatile evidence."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: isolate the endpoint while preserving it for investigation.",
+   "outcome_refs": [
+    "MST-1681-D04.02"
+   ],
+   "domain_ref": "Detection and response",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

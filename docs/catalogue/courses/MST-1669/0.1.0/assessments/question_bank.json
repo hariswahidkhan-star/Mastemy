@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1669",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1669-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user can change the id in a URL to view another user's record. Which flaw is this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Broken access control (insecure direct object reference)",
+     "correct": true,
+     "rationale": "Correct: this is an IDOR, a form of broken access control."
+    },
+    {
+     "key": "B",
+     "text": "SQL injection",
+     "correct": false,
+     "rationale": "No database query is being manipulated here."
+    },
+    {
+     "key": "C",
+     "text": "Cross-site scripting",
+     "correct": false,
+     "rationale": "No script is being injected into a page."
+    },
+    {
+     "key": "D",
+     "text": "A denial-of-service attack",
+     "correct": false,
+     "rationale": "Viewing another record does not deny service."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: changing an id to reach another's record is an IDOR / broken access control.",
+   "outcome_refs": [
+    "MST-1669-D04.01"
+   ],
+   "domain_ref": "Access control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1669-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO must be confirmed before testing a web application? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Written authorisation from the owner",
+     "correct": true,
+     "rationale": "Correct: authorisation keeps testing lawful."
+    },
+    {
+     "key": "B",
+     "text": "An agreed scope of what may be tested",
+     "correct": true,
+     "rationale": "Correct: a defined scope prevents out-of-bounds testing."
+    },
+    {
+     "key": "C",
+     "text": "The attacker's personal preferences",
+     "correct": false,
+     "rationale": "Tester preference does not define legality or scope."
+    },
+    {
+     "key": "D",
+     "text": "A promise that no bugs will be found",
+     "correct": false,
+     "rationale": "No such promise is possible or relevant."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: written authorisation and an agreed scope must both be confirmed first.",
+   "outcome_refs": [
+    "MST-1669-D01.02"
+   ],
+   "domain_ref": "Web app fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1669-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is client-side input validation insufficient on its own to prevent SQL injection?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An attacker can bypass the client and send crafted requests directly to the server",
+     "correct": true,
+     "rationale": "Correct: server-side validation is required because clients can be bypassed."
+    },
+    {
+     "key": "B",
+     "text": "Client-side validation encrypts the database",
+     "correct": false,
+     "rationale": "Validation does not encrypt anything."
+    },
+    {
+     "key": "C",
+     "text": "SQL injection only affects the browser",
+     "correct": false,
+     "rationale": "SQL injection targets the server-side database."
+    },
+    {
+     "key": "D",
+     "text": "Servers never receive user input",
+     "correct": false,
+     "rationale": "Servers do receive and must validate input."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: clients can be bypassed, so server-side validation is essential.",
+   "outcome_refs": [
+    "MST-1669-D02.01"
+   ],
+   "domain_ref": "Injection flaws",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

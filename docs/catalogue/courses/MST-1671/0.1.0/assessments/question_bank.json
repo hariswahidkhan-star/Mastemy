@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1671",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1671-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should user passwords be stored?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Hashed with a slow, salted password-hashing function",
+     "correct": true,
+     "rationale": "Correct: salted, slow hashing resists cracking and precomputation."
+    },
+    {
+     "key": "B",
+     "text": "Encrypted and decrypted on every login",
+     "correct": false,
+     "rationale": "Reversible encryption keeps plaintext recoverable if keys leak."
+    },
+    {
+     "key": "C",
+     "text": "In plain text for easy support",
+     "correct": false,
+     "rationale": "Plain text exposes all passwords on any breach."
+    },
+    {
+     "key": "D",
+     "text": "With a single fast unsalted hash",
+     "correct": false,
+     "rationale": "Fast unsalted hashes are quickly cracked and allow precomputed attacks."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a salted, deliberately slow password hash is the right choice.",
+   "outcome_refs": [
+    "MST-1671-D03.01"
+   ],
+   "domain_ref": "Hashing and MACs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1671-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about symmetric and asymmetric cryptography are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Symmetric encryption is efficient for bulk data",
+     "correct": true,
+     "rationale": "Correct: symmetric ciphers are fast for large volumes."
+    },
+    {
+     "key": "B",
+     "text": "Asymmetric cryptography eases key distribution",
+     "correct": true,
+     "rationale": "Correct: public keys can be shared openly, easing distribution."
+    },
+    {
+     "key": "C",
+     "text": "Asymmetric encryption is ideal for encrypting huge files directly",
+     "correct": false,
+     "rationale": "Asymmetric is slow; it typically protects a symmetric key instead."
+    },
+    {
+     "key": "D",
+     "text": "Symmetric keys can be published safely",
+     "correct": false,
+     "rationale": "A shared secret key must stay confidential."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: symmetric is efficient for bulk data and asymmetric eases key distribution.",
+   "outcome_refs": [
+    "MST-1671-D02.01"
+   ],
+   "domain_ref": "Symmetric and asymmetric",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1671-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does encryption alone not guarantee that a message was not altered?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Encryption protects confidentiality; integrity needs a MAC or signature",
+     "correct": true,
+     "rationale": "Correct: a separate mechanism is required to detect tampering."
+    },
+    {
+     "key": "B",
+     "text": "Encrypted data cannot be changed at all",
+     "correct": false,
+     "rationale": "Ciphertext can still be modified; detection requires integrity checks."
+    },
+    {
+     "key": "C",
+     "text": "Encryption automatically signs the message",
+     "correct": false,
+     "rationale": "Encryption and signing are distinct operations."
+    },
+    {
+     "key": "D",
+     "text": "Integrity is only a concern for plaintext",
+     "correct": false,
+     "rationale": "Integrity matters regardless of encryption."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: integrity requires a MAC or signature in addition to encryption.",
+   "outcome_refs": [
+    "MST-1671-D01.01"
+   ],
+   "domain_ref": "Cryptography foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}
