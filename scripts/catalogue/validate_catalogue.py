@@ -200,7 +200,7 @@ def main():
     for r in cat:
         T, I, A = int(r["planned_total_minutes"]), int(r["instruction_minutes"]), int(r["assessment_minutes"])
         parts = int(r["lesson_check_minutes"]) + int(r["module_assessment_minutes"]) + int(r["cumulative_assessment_minutes"])
-        if T != int(r["planned_hours"]) * 60 or I + A != T or I != int(0.8 * T + 0.5) or parts != A:
+        if T != int(round(float(r["planned_hours"]) * 60)) or I + A != T or I != int(0.8 * T + 0.5) or parts != A:
             bad80.append(r["course_id"])
     check("80/20 rule: I = round-half-up(0.8T), A = T - I, split parts sum to A", not bad80, f"{len(bad80)} violations")
     badq = [r["course_id"] for r in cat if r["question_formats"] != "single-answer-mcq|multiple-answer-selection" or r["multiple_answer_scoring"] != "all-or-nothing"]

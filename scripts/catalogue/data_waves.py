@@ -82,6 +82,54 @@ def _package_metadata(mid):
         return json.load(fh)
 
 
+def _split_minutes(hours):
+    """Mirror of master_catalogue.split_minutes (T=hours*60; I=round-half-up(0.8T); A=T-I)."""
+    T = int(round(hours * 60))
+    I = int(0.8 * T + 0.5)
+    return T, I, T - I
+
+
+def _content_hours(mid, meta_hours):
+    """Planned hours implied by the hand-authored package content.
+
+    Some packages declare a rounded ``planned_hours`` that does not match the
+    minutes actually laid out in ``syllabus.csv`` (instruction) and
+    ``assessments/forms.json`` (assessment). The package content is the source
+    of truth for its own time budget, so derive the planned hours from it when
+    it is a self-consistent 80/20 split that differs from the declared value.
+    Returns ``(hours, note)`` where ``note`` is empty unless a reconciliation
+    was applied. Falls back to the declared integer hours on any mismatch so
+    wave packages that are already consistent are untouched.
+    """
+    base = os.path.join(OUT, "courses", mid, VERSION)
+    syl_p = os.path.join(base, "syllabus.csv")
+    forms_p = os.path.join(base, "assessments", "forms.json")
+    if not (os.path.exists(syl_p) and os.path.exists(forms_p)):
+        return meta_hours, ""
+    try:
+        with open(syl_p, newline="", encoding="utf-8") as fh:
+            lesson_sum = sum(int(x["instruction_minutes"]) for x in csv.DictReader(fh))
+        with open(forms_p, encoding="utf-8") as fh:
+            forms_total = int(json.load(fh)["time_budget_minutes"]["total"])
+    except (KeyError, ValueError, TypeError):
+        return meta_hours, ""
+    content_T = lesson_sum + forms_total
+    if content_T <= 0 or content_T % 30 != 0:
+        return meta_hours, ""
+    hours = content_T / 60.0
+    T, I, A = _split_minutes(hours)
+    # Only trust the content-derived value when the package is a clean 80/20
+    # split (so the default catalogue arithmetic reproduces it exactly).
+    if (T, I, A) != (content_T, lesson_sum, forms_total):
+        return meta_hours, ""
+    if abs(hours - meta_hours) < 1e-9:
+        return meta_hours, ""
+    hours = int(hours) if float(hours).is_integer() else hours
+    note = (f"planned_hours {meta_hours} (metadata) reconciled to {hours} from package "
+            f"content (instruction {lesson_sum} min + assessment {forms_total} min = {content_T} min)")
+    return hours, note
+
+
 def _source_refs():
     """Collect the agents' ``source_reference`` objects by SRC id."""
     refs = {}
@@ -213,11 +261,15 @@ def load_waves():
         if vs not in ("verified-official-source", "vendor-docs-partial"):
             von = ""  # unverified/n-a rows carry no verified_on date
 
+        planned_hours, hours_note = _content_hours(mid, int(meta["planned_hours"]))
+        if hours_note:
+            notes.append(hours_note)
+
         out[mid] = dict(
             verification_status=vs,
             verified_on=von,
             source_ids=src_ids,
-            planned_hours=int(meta["planned_hours"]),
+            planned_hours=planned_hours,
             course_class=meta["course_class"],
             priority_batch=int(meta.get("priority_batch") or 3),
             manifest_verification=man_vs,

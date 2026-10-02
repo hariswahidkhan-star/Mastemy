@@ -270,5 +270,5 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 |---|---|---|---|
 | 1 | `MST-1834` | CRM Fundamentals | 10 |
 | 2 | `MST-0239` | Salesforce Certified Platform Administrator | 45 |
-| 3 | `MST-1812` | Salesforce Certified Platform App Builder Exam Prep | 40 |
+| 3 | `MST-1812` | Salesforce Certified Platform App Builder Exam Prep | 22.5 |
 | 4 | `MST-1811` | Salesforce Certified Platform Administrator II (Advanced) Exam Prep | 40 |
