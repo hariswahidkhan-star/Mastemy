@@ -65,14 +65,26 @@ test.describe('cross-browser smoke (public, anonymous, read-only)', () => {
     expect(await axeSeriousCritical(page), 'axe courses').toEqual([]);
   });
 
-  test('Explore mega-menu: keyboard open, traverse and close with Escape (focus returns)', async ({
+  test('primary nav: Explore mega-menu opens/closes by keyboard (mobile opens the menu first)', async ({
     page,
   }) => {
     await page.goto('/');
     await usePrefs(page, 'en', 'light');
     await page.goto('/');
     await settle(page, 'en', 'light');
+    // Below the responsive breakpoint the nav collapses behind a menu toggle (the Explore mega-menu lives
+    // inside it); on wider viewports the toggle is hidden and Explore shows directly. Open the toggle first
+    // when it is the visible control so the test exercises the real nav on every viewport.
+    const toggle = page.getByRole('button', { name: 'Menu' });
+    if (await toggle.isVisible()) {
+      await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+      await toggle.focus();
+      await page.keyboard.press('Enter');
+      await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+      await expect(page.locator('#primary-nav')).toBeVisible();
+    }
     const button = page.getByRole('button', { name: /^Explore/ });
+    await expect(button).toBeVisible();
     await expect(button).toHaveAttribute('aria-expanded', 'false');
     await button.focus();
     await expect(button).toBeFocused();

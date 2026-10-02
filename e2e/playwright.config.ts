@@ -54,7 +54,13 @@ export default defineConfig({
       ? [
           { name: 'firefox', testMatch: SMOKE, use: { ...devices['Desktop Firefox'] } },
           { name: 'webkit', testMatch: SMOKE, use: { ...devices['Desktop Safari'] } },
-          { name: 'mobile-chrome', testMatch: SMOKE, use: { ...devices['Pixel 5'] } },
+          {
+            name: 'mobile-chrome',
+            testMatch: SMOKE,
+            // Pixel 5 runs on the Chromium engine, so the preinstalled local binary serves it too
+            // (CI installs its own and localChromium() returns undefined there).
+            use: { ...devices['Pixel 5'], launchOptions: { executablePath: localChromium() } },
+          },
         ]
       : []),
   ],
