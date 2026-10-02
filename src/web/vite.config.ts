@@ -15,13 +15,16 @@ export default defineConfig(({ isSsrBuild }) => ({
   ssr: isSsrBuild ? { noExternal: true, target: 'node' as const } : undefined,
   build: isSsrBuild
     ? {
+        // Server bundle only — never sent to browsers (dist-server is not served statically); the map keeps
+        // SSR stack traces readable in logs.
         sourcemap: true,
         target: 'node22',
         outDir: 'dist-server',
         emptyOutDir: true,
         copyPublicDir: false,
       }
-    : { sourcemap: true, manifest: true },
+    : // Client build ships to browsers: emit no source maps so original sources are not exposed in production.
+      { sourcemap: false, manifest: true },
   test: {
     environment: 'jsdom',
     globals: true,

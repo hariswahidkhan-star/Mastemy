@@ -115,8 +115,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('e2e/package-lock.json') }}
-      - run: npx playwright install --with-deps chromium
+          key: playwright-xbrowser-${{ runner.os }}-${{ hashFiles('e2e/package-lock.json') }}
+      # Chromium runs the full suite; Firefox + WebKit run the cross-browser smoke spec (see playwright.config.ts).
+      - run: npx playwright install --with-deps chromium firefox webkit
         working-directory: e2e
       - name: Full stack + every spec (flows and a11y)
         run: scripts/e2e-all.sh

@@ -16,6 +16,17 @@ function localChromium(): string | undefined {
   return exe && existsSync(exe) ? exe : undefined;
 }
 
+/**
+ * Chromium runs the full suite (it owns all the stateful full-stack journeys, which register users and
+ * write to the shared database and are not safe to replay on a second engine in the same run). Firefox,
+ * WebKit and a mobile viewport run only the read-only, anonymous cross-browser smoke spec
+ * (tests/xbrowser.spec.ts) so the public site, keyboard focus, RTL and axe are verified on every engine
+ * without 4x the full suite or cross-engine state collisions. The extra engines run in CI (and locally with
+ * E2E_CROSS_BROWSER=1, once their browsers are installed); the default local run stays Chromium-only.
+ */
+const CROSS_BROWSER = process.env.CI === 'true' || process.env.E2E_CROSS_BROWSER === '1';
+const SMOKE = /xbrowser\.spec\.ts$/;
+
 export default defineConfig({
   testDir: './tests',
   timeout: 120_000,
@@ -30,7 +41,21 @@ export default defineConfig({
     actionTimeout: 15_000,
     navigationTimeout: 20_000,
     screenshot: 'only-on-failure',
-    ...devices['Desktop Chrome'],
-    launchOptions: { executablePath: localChromium() },
   },
+  projects: [
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        launchOptions: { executablePath: localChromium() },
+      },
+    },
+    ...(CROSS_BROWSER
+      ? [
+          { name: 'firefox', testMatch: SMOKE, use: { ...devices['Desktop Firefox'] } },
+          { name: 'webkit', testMatch: SMOKE, use: { ...devices['Desktop Safari'] } },
+          { name: 'mobile-chrome', testMatch: SMOKE, use: { ...devices['Pixel 5'] } },
+        ]
+      : []),
+  ],
 });
