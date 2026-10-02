@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0458",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0458-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does 'open-weight' most directly mean for a language model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The trained model weights are available to download and run yourself",
+     "correct": true,
+     "rationale": "Correct: open-weight means the weights can be obtained and run."
+    },
+    {
+     "key": "B",
+     "text": "The model is guaranteed free for any commercial use",
+     "correct": false,
+     "rationale": "Licenses vary; open weights are not automatically unrestricted."
+    },
+    {
+     "key": "C",
+     "text": "The training data is always fully public",
+     "correct": false,
+     "rationale": "Open weights do not imply open data."
+    },
+    {
+     "key": "D",
+     "text": "The model can only be used via an API",
+     "correct": false,
+     "rationale": "Open weights specifically enable self-hosting."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: open-weight means the weights can be obtained and run.",
+   "outcome_refs": [
+    "MST-0458-D01.01"
+   ],
+   "domain_ref": "Open-weight landscape",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0458-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors should drive open-weight model selection for a task? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fit between model capability and the actual task",
+     "correct": true,
+     "rationale": "Correct: capability-task fit is primary."
+    },
+    {
+     "key": "B",
+     "text": "Model size versus available hardware and budget",
+     "correct": true,
+     "rationale": "Correct: size must fit the hardware and cost limits."
+    },
+    {
+     "key": "C",
+     "text": "Only the top position on a single leaderboard",
+     "correct": false,
+     "rationale": "Leaderboard rank alone is a poor sole criterion."
+    },
+    {
+     "key": "D",
+     "text": "The length of the model's name",
+     "correct": false,
+     "rationale": "Irrelevant to selection."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: capability-task fit is primary.",
+   "outcome_refs": [
+    "MST-0458-D02.01"
+   ],
+   "domain_ref": "Selecting a model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0458-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a rollback and versioning plan important when self-hosting a model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A new version can regress behaviour, so you need to revert quickly",
+     "correct": true,
+     "rationale": "Correct: versioning lets you recover from a bad update."
+    },
+    {
+     "key": "B",
+     "text": "Models never change behaviour between versions",
+     "correct": false,
+     "rationale": "Behaviour can change across versions."
+    },
+    {
+     "key": "C",
+     "text": "Versioning increases model accuracy directly",
+     "correct": false,
+     "rationale": "Versioning is about operations, not accuracy."
+    },
+    {
+     "key": "D",
+     "text": "Rollback removes the need for monitoring",
+     "correct": false,
+     "rationale": "Monitoring is still needed to detect issues."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: versioning lets you recover from a bad update.",
+   "outcome_refs": [
+    "MST-0458-D04.01"
+   ],
+   "domain_ref": "Operating responsibly",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

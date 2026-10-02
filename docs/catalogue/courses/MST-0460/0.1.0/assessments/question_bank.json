@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0460",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0460-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What primarily distinguishes a production ML system from a one-off notebook?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is reproducible, versioned, deployable and monitored over time",
+     "correct": true,
+     "rationale": "Correct: production systems add reproducibility, versioning and monitoring."
+    },
+    {
+     "key": "B",
+     "text": "It uses a larger font in the code",
+     "correct": false,
+     "rationale": "Presentation is irrelevant."
+    },
+    {
+     "key": "C",
+     "text": "It never needs evaluation",
+     "correct": false,
+     "rationale": "Production systems need ongoing evaluation."
+    },
+    {
+     "key": "D",
+     "text": "It must avoid version control",
+     "correct": false,
+     "rationale": "Version control is essential in production."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: production systems add reproducibility, versioning and monitoring.",
+   "outcome_refs": [
+    "MST-0460-D01.01"
+   ],
+   "domain_ref": "MLOps foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0460-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO signals should production model monitoring track beyond uptime? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Input data drift versus the training distribution",
+     "correct": true,
+     "rationale": "Correct: data drift warns that inputs have changed."
+    },
+    {
+     "key": "B",
+     "text": "Model prediction quality or a proxy for it over time",
+     "correct": true,
+     "rationale": "Correct: degrading quality is a key signal."
+    },
+    {
+     "key": "C",
+     "text": "The developer's typing speed",
+     "correct": false,
+     "rationale": "Irrelevant to model reliability."
+    },
+    {
+     "key": "D",
+     "text": "The number of comments in the code",
+     "correct": false,
+     "rationale": "Not a monitoring signal."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: data drift warns that inputs have changed.",
+   "outcome_refs": [
+    "MST-0460-D05.01"
+   ],
+   "domain_ref": "Monitoring and reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0460-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a model registry with versioning valuable in an MLOps pipeline?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It tracks which model version is deployed and enables controlled rollback",
+     "correct": true,
+     "rationale": "Correct: a registry records versions and supports safe promotion/rollback."
+    },
+    {
+     "key": "B",
+     "text": "It trains the model automatically",
+     "correct": false,
+     "rationale": "A registry stores and tracks models; it does not train them."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for monitoring",
+     "correct": false,
+     "rationale": "Monitoring is still required."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees zero drift",
+     "correct": false,
+     "rationale": "Drift can still occur; the registry does not prevent it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a registry records versions and supports safe promotion/rollback.",
+   "outcome_refs": [
+    "MST-0460-D03.01"
+   ],
+   "domain_ref": "Model packaging and registry",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0447",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0447-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is random k-fold cross-validation usually inappropriate for time-series forecasting?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It lets the model train on future data and test on the past, leaking information",
+     "correct": true,
+     "rationale": "Correct: shuffling breaks temporal order and leaks future into training."
+    },
+    {
+     "key": "B",
+     "text": "It cannot compute any error metric",
+     "correct": false,
+     "rationale": "It can compute metrics; the problem is leakage."
+    },
+    {
+     "key": "C",
+     "text": "It always underfits",
+     "correct": false,
+     "rationale": "Fit quality is unrelated to the ordering issue."
+    },
+    {
+     "key": "D",
+     "text": "It requires stationarity",
+     "correct": false,
+     "rationale": "The issue is temporal leakage, not stationarity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: shuffling breaks temporal order and leaks future into training.",
+   "outcome_refs": [
+    "MST-0447-D04.01"
+   ],
+   "domain_ref": "Validation and evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0447-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO signs suggest a series is non-stationary and may need differencing? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A visible upward trend over time",
+     "correct": true,
+     "rationale": "Correct: a trend means the mean changes over time."
+    },
+    {
+     "key": "B",
+     "text": "Strong, slowly decaying autocorrelation",
+     "correct": true,
+     "rationale": "Correct: slow ACF decay is typical of non-stationary series."
+    },
+    {
+     "key": "C",
+     "text": "Constant mean and variance over time",
+     "correct": false,
+     "rationale": "That describes stationarity, not non-stationarity."
+    },
+    {
+     "key": "D",
+     "text": "White-noise residuals",
+     "correct": false,
+     "rationale": "White noise is stationary."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a trend means the mean changes over time.",
+   "outcome_refs": [
+    "MST-0447-D01.01"
+   ],
+   "domain_ref": "Time-series fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0447-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a demand series that contains many zero-sales weeks, why can MAPE be a poor metric?",
+   "options": [
+    {
+     "key": "A",
+     "text": "MAPE divides by the actual value, which is undefined or explodes at zero",
+     "correct": true,
+     "rationale": "Correct: zero actuals make percentage error undefined or huge."
+    },
+    {
+     "key": "B",
+     "text": "MAPE ignores the forecast entirely",
+     "correct": false,
+     "rationale": "MAPE uses the forecast."
+    },
+    {
+     "key": "C",
+     "text": "MAPE only works for classification",
+     "correct": false,
+     "rationale": "MAPE is a regression metric."
+    },
+    {
+     "key": "D",
+     "text": "MAPE requires stationarity",
+     "correct": false,
+     "rationale": "It does not require stationarity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: zero actuals make percentage error undefined or huge.",
+   "outcome_refs": [
+    "MST-0447-D04.01"
+   ],
+   "domain_ref": "Validation and evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

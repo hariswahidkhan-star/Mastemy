@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0456",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0456-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which is a primary legitimate motivation for using synthetic data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sharing data-like examples without exposing real personal records",
+     "correct": true,
+     "rationale": "Correct: privacy preservation is a core synthetic-data use case."
+    },
+    {
+     "key": "B",
+     "text": "Guaranteeing the model will never be wrong",
+     "correct": false,
+     "rationale": "Synthetic data does not guarantee correctness."
+    },
+    {
+     "key": "C",
+     "text": "Removing the need to evaluate the model",
+     "correct": false,
+     "rationale": "Evaluation is still required."
+    },
+    {
+     "key": "D",
+     "text": "Eliminating all bias automatically",
+     "correct": false,
+     "rationale": "Synthetic data can amplify bias, not remove it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: privacy preservation is a core synthetic-data use case.",
+   "outcome_refs": [
+    "MST-0456-D01.01"
+   ],
+   "domain_ref": "Why synthetic data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0456-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO checks belong in synthetic-data quality assurance? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Comparing real and synthetic distributions for fidelity",
+     "correct": true,
+     "rationale": "Correct: fidelity checks that synthetic data resembles real patterns."
+    },
+    {
+     "key": "B",
+     "text": "Testing whether real records were memorized and reproduced",
+     "correct": true,
+     "rationale": "Correct: leakage/memorization testing protects privacy."
+    },
+    {
+     "key": "C",
+     "text": "Confirming the data file is larger than the original",
+     "correct": false,
+     "rationale": "File size is not a quality measure."
+    },
+    {
+     "key": "D",
+     "text": "Checking that it looks realistic and ignoring utility",
+     "correct": false,
+     "rationale": "Utility for the downstream task also matters."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fidelity checks that synthetic data resembles real patterns.",
+   "outcome_refs": [
+    "MST-0456-D03.01"
+   ],
+   "domain_ref": "Quality assurance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0456-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can synthetic data amplify bias present in the source data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Generators learn and can exaggerate patterns, including biased ones, in the source",
+     "correct": true,
+     "rationale": "Correct: models reproduce and may intensify source biases."
+    },
+    {
+     "key": "B",
+     "text": "Synthetic data is always unbiased",
+     "correct": false,
+     "rationale": "It can carry and amplify bias."
+    },
+    {
+     "key": "C",
+     "text": "Bias only exists in images",
+     "correct": false,
+     "rationale": "Bias affects many data types."
+    },
+    {
+     "key": "D",
+     "text": "Documentation causes bias",
+     "correct": false,
+     "rationale": "Documentation records provenance; it does not cause bias."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: models reproduce and may intensify source biases.",
+   "outcome_refs": [
+    "MST-0456-D04.01"
+   ],
+   "domain_ref": "Governance and use",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

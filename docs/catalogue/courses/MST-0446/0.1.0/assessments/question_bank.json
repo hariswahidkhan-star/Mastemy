@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0446",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0446-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which feature is most commonly used to compactly represent the short-term spectral envelope of speech for ASR?",
+   "options": [
+    {
+     "key": "A",
+     "text": "MFCCs",
+     "correct": true,
+     "rationale": "Correct: MFCCs compress the spectral envelope into a few perceptually weighted coefficients."
+    },
+    {
+     "key": "B",
+     "text": "Raw 16-bit PCM samples",
+     "correct": false,
+     "rationale": "Raw samples are high-dimensional and not a compact spectral feature."
+    },
+    {
+     "key": "C",
+     "text": "The file bitrate",
+     "correct": false,
+     "rationale": "Bitrate is an encoding property, not an acoustic feature."
+    },
+    {
+     "key": "D",
+     "text": "One-hot character labels",
+     "correct": false,
+     "rationale": "Those are targets, not input features."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MFCCs compress the spectral envelope into a few perceptually weighted coefficients.",
+   "outcome_refs": [
+    "MST-0446-D01.01"
+   ],
+   "domain_ref": "Audio signals and features",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0446-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A streaming ASR system must emit words with low latency. Which TWO choices support that goal? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a streaming/online decoder with limited look-ahead",
+     "correct": true,
+     "rationale": "Correct: limited look-ahead lets the decoder commit words early."
+    },
+    {
+     "key": "B",
+     "text": "Keep the beam width modest",
+     "correct": true,
+     "rationale": "Correct: a smaller beam reduces per-step compute and latency."
+    },
+    {
+     "key": "C",
+     "text": "Wait for the full utterance before decoding",
+     "correct": false,
+     "rationale": "Full-utterance decoding adds latency and is not streaming."
+    },
+    {
+     "key": "D",
+     "text": "Use the largest possible rescoring LM on every frame",
+     "correct": false,
+     "rationale": "Heavy per-frame rescoring increases latency."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: limited look-ahead lets the decoder commit words early.",
+   "outcome_refs": [
+    "MST-0446-D03.01"
+   ],
+   "domain_ref": "ASR systems and language models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0446-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which metric is the standard way to evaluate transcription quality?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Word error rate (WER)",
+     "correct": true,
+     "rationale": "Correct: WER counts substitutions, insertions and deletions against a reference."
+    },
+    {
+     "key": "B",
+     "text": "Top-1 image accuracy",
+     "correct": false,
+     "rationale": "That is an image-classification metric."
+    },
+    {
+     "key": "C",
+     "text": "Mean average precision",
+     "correct": false,
+     "rationale": "mAP is a detection/ranking metric."
+    },
+    {
+     "key": "D",
+     "text": "Bitrate",
+     "correct": false,
+     "rationale": "Bitrate measures encoding, not accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: WER counts substitutions, insertions and deletions against a reference.",
+   "outcome_refs": [
+    "MST-0446-D04.01"
+   ],
+   "domain_ref": "Evaluation and audio tasks beyond ASR",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

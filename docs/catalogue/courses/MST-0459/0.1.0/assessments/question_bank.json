@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0459",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0459-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must the tokenizer match the specific model you load?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each model expects the vocabulary and tokenization it was trained with",
+     "correct": true,
+     "rationale": "Correct: a mismatched tokenizer produces inputs the model never learned."
+    },
+    {
+     "key": "B",
+     "text": "Tokenizers are interchangeable across all models",
+     "correct": false,
+     "rationale": "They are not; they are tied to the model."
+    },
+    {
+     "key": "C",
+     "text": "The tokenizer sets the learning rate",
+     "correct": false,
+     "rationale": "It does not control training hyperparameters."
+    },
+    {
+     "key": "D",
+     "text": "A tokenizer is only needed for images",
+     "correct": false,
+     "rationale": "Tokenizers handle text inputs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a mismatched tokenizer produces inputs the model never learned.",
+   "outcome_refs": [
+    "MST-0459-D01.01"
+   ],
+   "domain_ref": "Transformers library basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0459-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps are part of preparing a dataset for fine-tuning with the library? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tokenizing the text with truncation and padding",
+     "correct": true,
+     "rationale": "Correct: inputs must be tokenized and shaped for batching."
+    },
+    {
+     "key": "B",
+     "text": "Creating train and validation splits",
+     "correct": true,
+     "rationale": "Correct: a held-out split is needed to evaluate."
+    },
+    {
+     "key": "C",
+     "text": "Deleting the tokenizer before training",
+     "correct": false,
+     "rationale": "The tokenizer is required to process inputs."
+    },
+    {
+     "key": "D",
+     "text": "Training without any evaluation data",
+     "correct": false,
+     "rationale": "Evaluation data is needed to measure progress."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: inputs must be tokenized and shaped for batching.",
+   "outcome_refs": [
+    "MST-0459-D02.01"
+   ],
+   "domain_ref": "Working with datasets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0459-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does setting evaluation during training with the Trainer let you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Track validation metrics and catch overfitting across epochs",
+     "correct": true,
+     "rationale": "Correct: periodic evaluation reveals overfitting and progress."
+    },
+    {
+     "key": "B",
+     "text": "Skip the need for a validation set",
+     "correct": false,
+     "rationale": "Evaluation needs a validation set."
+    },
+    {
+     "key": "C",
+     "text": "Guarantee the best possible accuracy",
+     "correct": false,
+     "rationale": "It monitors, it does not guarantee results."
+    },
+    {
+     "key": "D",
+     "text": "Change the tokenizer automatically",
+     "correct": false,
+     "rationale": "It does not alter the tokenizer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: periodic evaluation reveals overfitting and progress.",
+   "outcome_refs": [
+    "MST-0459-D03.01"
+   ],
+   "domain_ref": "Training and fine-tuning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

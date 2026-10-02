@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0453",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0453-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does LoRA change during fine-tuning to save memory and compute?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It trains small low-rank update matrices while freezing the base weights",
+     "correct": true,
+     "rationale": "Correct: LoRA learns low-rank deltas and keeps base weights frozen."
+    },
+    {
+     "key": "B",
+     "text": "It retrains all base weights at higher precision",
+     "correct": false,
+     "rationale": "That is full fine-tuning, the opposite of LoRA."
+    },
+    {
+     "key": "C",
+     "text": "It deletes layers from the model",
+     "correct": false,
+     "rationale": "LoRA does not remove layers."
+    },
+    {
+     "key": "D",
+     "text": "It changes the tokenizer only",
+     "correct": false,
+     "rationale": "LoRA adapts weights, not the tokenizer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: LoRA learns low-rank deltas and keeps base weights frozen.",
+   "outcome_refs": [
+    "MST-0453-D02.01"
+   ],
+   "domain_ref": "Adapter and LoRA methods",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0453-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are advantages of parameter-efficient fine-tuning over full fine-tuning? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Much lower memory and storage per task",
+     "correct": true,
+     "rationale": "Correct: only small adapter weights are trained and stored."
+    },
+    {
+     "key": "B",
+     "text": "Easier to serve many task-specific adapters from one base",
+     "correct": true,
+     "rationale": "Correct: adapters can be swapped on a shared base."
+    },
+    {
+     "key": "C",
+     "text": "It always reaches higher accuracy than full tuning",
+     "correct": false,
+     "rationale": "PEFT may trail full tuning on some tasks."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for any training data",
+     "correct": false,
+     "rationale": "Training data is still required."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: only small adapter weights are trained and stored.",
+   "outcome_refs": [
+    "MST-0453-D01.01"
+   ],
+   "domain_ref": "Why parameter-efficient tuning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0453-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can setting the LoRA rank much higher than necessary be wasteful?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It adds trainable parameters and cost with little accuracy gain",
+     "correct": true,
+     "rationale": "Correct: beyond a point extra rank gives diminishing returns."
+    },
+    {
+     "key": "B",
+     "text": "It freezes the base model",
+     "correct": false,
+     "rationale": "Rank does not control base-weight freezing."
+    },
+    {
+     "key": "C",
+     "text": "It changes the vocabulary",
+     "correct": false,
+     "rationale": "Rank is unrelated to vocabulary."
+    },
+    {
+     "key": "D",
+     "text": "It makes the model untrainable",
+     "correct": false,
+     "rationale": "A higher rank is still trainable, just costlier."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: beyond a point extra rank gives diminishing returns.",
+   "outcome_refs": [
+    "MST-0453-D02.01"
+   ],
+   "domain_ref": "Adapter and LoRA methods",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

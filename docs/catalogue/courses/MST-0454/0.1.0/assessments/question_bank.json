@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0454",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0454-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During autoregressive LLM inference, which factor often dominates memory use for long contexts?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The KV cache that stores keys and values for all previous tokens",
+     "correct": true,
+     "rationale": "Correct: the KV cache grows with sequence length and dominates memory."
+    },
+    {
+     "key": "B",
+     "text": "The tokenizer vocabulary file",
+     "correct": false,
+     "rationale": "The vocabulary is small and fixed."
+    },
+    {
+     "key": "C",
+     "text": "The learning-rate schedule",
+     "correct": false,
+     "rationale": "Learning rate is a training concept, not inference memory."
+    },
+    {
+     "key": "D",
+     "text": "The random seed",
+     "correct": false,
+     "rationale": "The seed does not consume meaningful memory."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the KV cache grows with sequence length and dominates memory.",
+   "outcome_refs": [
+    "MST-0454-D01.01"
+   ],
+   "domain_ref": "Why efficient inference",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0454-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about quantization are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lower precision reduces memory and can speed up inference",
+     "correct": true,
+     "rationale": "Correct: smaller numeric types cut memory and bandwidth."
+    },
+    {
+     "key": "B",
+     "text": "Aggressive quantization can degrade accuracy if sensitive layers are not handled",
+     "correct": true,
+     "rationale": "Correct: some layers need higher precision to preserve accuracy."
+    },
+    {
+     "key": "C",
+     "text": "Quantization always improves accuracy",
+     "correct": false,
+     "rationale": "It typically trades some accuracy for efficiency."
+    },
+    {
+     "key": "D",
+     "text": "Quantization requires retraining from scratch",
+     "correct": false,
+     "rationale": "Post-training quantization needs no full retraining."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: smaller numeric types cut memory and bandwidth.",
+   "outcome_refs": [
+    "MST-0454-D02.01"
+   ],
+   "domain_ref": "Quantization fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0454-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is single-request latency an incomplete way to judge a serving setup?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It ignores throughput under concurrent load from batching",
+     "correct": true,
+     "rationale": "Correct: real systems serve many requests; throughput matters too."
+    },
+    {
+     "key": "B",
+     "text": "Latency cannot be measured",
+     "correct": false,
+     "rationale": "Latency is measurable."
+    },
+    {
+     "key": "C",
+     "text": "Throughput is irrelevant to servers",
+     "correct": false,
+     "rationale": "Throughput is central to serving."
+    },
+    {
+     "key": "D",
+     "text": "Batching never affects performance",
+     "correct": false,
+     "rationale": "Batching strongly affects throughput and latency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: real systems serve many requests; throughput matters too.",
+   "outcome_refs": [
+    "MST-0454-D04.01"
+   ],
+   "domain_ref": "Serving optimizations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

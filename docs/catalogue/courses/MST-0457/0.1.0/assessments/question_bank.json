@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0457",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0457-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a core reason to choose a small language model for an edge device?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It fits limited memory and runs within latency and power budgets",
+     "correct": true,
+     "rationale": "Correct: small models suit constrained hardware."
+    },
+    {
+     "key": "B",
+     "text": "It always matches the accuracy of the largest models",
+     "correct": false,
+     "rationale": "Small models usually trade some accuracy."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any evaluation",
+     "correct": false,
+     "rationale": "Evaluation is still needed."
+    },
+    {
+     "key": "D",
+     "text": "It requires a datacenter GPU to run",
+     "correct": false,
+     "rationale": "The point is to avoid heavy hardware."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: small models suit constrained hardware.",
+   "outcome_refs": [
+    "MST-0457-D01.01"
+   ],
+   "domain_ref": "Small models and edge AI",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0457-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques help shrink a model for edge deployment? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Knowledge distillation into a smaller student",
+     "correct": true,
+     "rationale": "Correct: distillation transfers capability to a smaller model."
+    },
+    {
+     "key": "B",
+     "text": "Quantization to lower-precision weights",
+     "correct": true,
+     "rationale": "Correct: quantization reduces size and compute."
+    },
+    {
+     "key": "C",
+     "text": "Increasing the parameter count",
+     "correct": false,
+     "rationale": "That makes the model larger, not smaller."
+    },
+    {
+     "key": "D",
+     "text": "Adding more layers at full precision",
+     "correct": false,
+     "rationale": "That increases size and cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: distillation transfers capability to a smaller model.",
+   "outcome_refs": [
+    "MST-0457-D02.01"
+   ],
+   "domain_ref": "Making models small",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0457-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should edge models be benchmarked on the target device, not only a server?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Device latency, memory and energy differ sharply from server conditions",
+     "correct": true,
+     "rationale": "Correct: on-device resources determine real performance."
+    },
+    {
+     "key": "B",
+     "text": "Servers cannot run models",
+     "correct": false,
+     "rationale": "Servers can run models; they just differ from devices."
+    },
+    {
+     "key": "C",
+     "text": "Accuracy depends only on the server",
+     "correct": false,
+     "rationale": "Accuracy is not server-specific here."
+    },
+    {
+     "key": "D",
+     "text": "Edge devices never have constraints",
+     "correct": false,
+     "rationale": "Edge devices are tightly constrained."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: on-device resources determine real performance.",
+   "outcome_refs": [
+    "MST-0457-D04.01"
+   ],
+   "domain_ref": "Evaluation on device",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0449",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0449-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a Markov decision process, the Markov property means that the next state depends on:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The current state and action only",
+     "correct": true,
+     "rationale": "Correct: the future is conditionally independent of the past given the current state."
+    },
+    {
+     "key": "B",
+     "text": "The entire history of states and actions",
+     "correct": false,
+     "rationale": "That would violate the Markov property."
+    },
+    {
+     "key": "C",
+     "text": "Only the reward received",
+     "correct": false,
+     "rationale": "Transitions depend on state and action, not reward alone."
+    },
+    {
+     "key": "D",
+     "text": "The discount factor",
+     "correct": false,
+     "rationale": "The discount factor weights future rewards; it is not the transition rule."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the future is conditionally independent of the past given the current state.",
+   "outcome_refs": [
+    "MST-0449-D01.01"
+   ],
+   "domain_ref": "RL foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0449-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about exploration vs exploitation are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Epsilon-greedy explores with probability epsilon and exploits otherwise",
+     "correct": true,
+     "rationale": "Correct: that is the definition of epsilon-greedy."
+    },
+    {
+     "key": "B",
+     "text": "Too little exploration can trap the agent in a suboptimal policy",
+     "correct": true,
+     "rationale": "Correct: without exploration the agent may never find better actions."
+    },
+    {
+     "key": "C",
+     "text": "Exploitation means choosing random actions",
+     "correct": false,
+     "rationale": "Exploitation chooses the current best action, not random ones."
+    },
+    {
+     "key": "D",
+     "text": "Exploration should always be set to its maximum permanently",
+     "correct": false,
+     "rationale": "Permanent maximal exploration prevents converging to a good policy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: that is the definition of epsilon-greedy.",
+   "outcome_refs": [
+    "MST-0449-D04.01"
+   ],
+   "domain_ref": "Exploration and practice",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0449-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a standard deep Q-network not directly suitable for continuous action spaces?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It selects actions by maximising Q over a discrete action set",
+     "correct": true,
+     "rationale": "Correct: the argmax over actions assumes a finite, discrete set."
+    },
+    {
+     "key": "B",
+     "text": "It cannot use a neural network",
+     "correct": false,
+     "rationale": "DQN uses a neural network by definition."
+    },
+    {
+     "key": "C",
+     "text": "It requires a known reward model",
+     "correct": false,
+     "rationale": "DQN is model-free."
+    },
+    {
+     "key": "D",
+     "text": "It ignores the state entirely",
+     "correct": false,
+     "rationale": "DQN conditions on the state."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the argmax over actions assumes a finite, discrete set.",
+   "outcome_refs": [
+    "MST-0449-D03.01"
+   ],
+   "domain_ref": "Policy and deep RL",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

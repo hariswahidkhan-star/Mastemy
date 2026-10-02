@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0455",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0455-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the key idea behind a contrastive image-text model used for retrieval?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It maps images and text into a shared space where matching pairs are close",
+     "correct": true,
+     "rationale": "Correct: contrastive training aligns matched image-text pairs."
+    },
+    {
+     "key": "B",
+     "text": "It converts all images to text before training",
+     "correct": false,
+     "rationale": "It aligns embeddings, it does not transcribe images to text."
+    },
+    {
+     "key": "C",
+     "text": "It only works on audio",
+     "correct": false,
+     "rationale": "It is an image-text method."
+    },
+    {
+     "key": "D",
+     "text": "It requires no training data",
+     "correct": false,
+     "rationale": "Contrastive training needs paired data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: contrastive training aligns matched image-text pairs.",
+   "outcome_refs": [
+    "MST-0455-D02.01"
+   ],
+   "domain_ref": "Vision-language models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0455-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are genuine challenges specific to video understanding? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Modelling temporal order across frames",
+     "correct": true,
+     "rationale": "Correct: video has a time dimension that must be modelled."
+    },
+    {
+     "key": "B",
+     "text": "High compute and memory from many frames",
+     "correct": true,
+     "rationale": "Correct: video multiplies per-frame cost."
+    },
+    {
+     "key": "C",
+     "text": "Video has no visual content",
+     "correct": false,
+     "rationale": "Video is inherently visual."
+    },
+    {
+     "key": "D",
+     "text": "Frames can be shuffled with no effect",
+     "correct": false,
+     "rationale": "Shuffling destroys temporal meaning."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: video has a time dimension that must be modelled.",
+   "outcome_refs": [
+    "MST-0455-D03.01"
+   ],
+   "domain_ref": "Audio and video",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0455-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a single accuracy number usually inadequate for a multimodal captioning system?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Captioning quality involves relevance, fluency and grounding, not one label",
+     "correct": true,
+     "rationale": "Correct: captioning needs several complementary measures."
+    },
+    {
+     "key": "B",
+     "text": "Accuracy cannot be computed for text",
+     "correct": false,
+     "rationale": "Text metrics exist; accuracy alone is just insufficient."
+    },
+    {
+     "key": "C",
+     "text": "Captioning has a single correct output always",
+     "correct": false,
+     "rationale": "Many valid captions can exist."
+    },
+    {
+     "key": "D",
+     "text": "Multimodal systems cannot be evaluated",
+     "correct": false,
+     "rationale": "They can be evaluated with suitable metrics."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: captioning needs several complementary measures.",
+   "outcome_refs": [
+    "MST-0455-D04.01"
+   ],
+   "domain_ref": "Generation and evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

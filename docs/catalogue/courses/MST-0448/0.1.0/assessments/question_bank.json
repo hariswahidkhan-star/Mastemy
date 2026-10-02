@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0448",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0448-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which problem does a pure collaborative-filtering recommender struggle with most?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cold start for a brand-new item with no interactions",
+     "correct": true,
+     "rationale": "Correct: with no interactions, CF has no signal for the item."
+    },
+    {
+     "key": "B",
+     "text": "Recommending very popular items",
+     "correct": false,
+     "rationale": "Popular items are easy for CF."
+    },
+    {
+     "key": "C",
+     "text": "Computing item similarity for established items",
+     "correct": false,
+     "rationale": "That is CF's strength."
+    },
+    {
+     "key": "D",
+     "text": "Storing a user-item matrix",
+     "correct": false,
+     "rationale": "Storage is an engineering concern, not a CF weakness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with no interactions, CF has no signal for the item.",
+   "outcome_refs": [
+    "MST-0448-D02.01"
+   ],
+   "domain_ref": "Collaborative filtering",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0448-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO metrics are appropriate for evaluating a ranked recommendation list? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "NDCG@k",
+     "correct": true,
+     "rationale": "Correct: NDCG rewards relevant items ranked higher."
+    },
+    {
+     "key": "B",
+     "text": "Precision@k",
+     "correct": true,
+     "rationale": "Correct: precision@k measures relevant items in the top k."
+    },
+    {
+     "key": "C",
+     "text": "Mean squared error of pixel values",
+     "correct": false,
+     "rationale": "That is an image metric, unrelated to ranking."
+    },
+    {
+     "key": "D",
+     "text": "Word error rate",
+     "correct": false,
+     "rationale": "WER is a speech-transcription metric."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: NDCG rewards relevant items ranked higher.",
+   "outcome_refs": [
+    "MST-0448-D04.01"
+   ],
+   "domain_ref": "Evaluation and serving",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0448-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should implicit feedback such as clicks not be treated identically to explicit star ratings?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A click signals interest but not necessarily satisfaction or a strong preference",
+     "correct": true,
+     "rationale": "Correct: implicit signals are noisier and lack a clear negative."
+    },
+    {
+     "key": "B",
+     "text": "Clicks cannot be logged",
+     "correct": false,
+     "rationale": "Clicks are routinely logged."
+    },
+    {
+     "key": "C",
+     "text": "Explicit ratings are always unavailable",
+     "correct": false,
+     "rationale": "They are sometimes available; that is not the point."
+    },
+    {
+     "key": "D",
+     "text": "Implicit feedback is always more accurate",
+     "correct": false,
+     "rationale": "It is noisier, not more accurate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: implicit signals are noisier and lack a clear negative.",
+   "outcome_refs": [
+    "MST-0448-D01.01"
+   ],
+   "domain_ref": "Recommendation foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

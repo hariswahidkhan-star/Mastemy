@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0450",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0450-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the core operation that defines most graph neural networks?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Message passing: aggregating information from neighbouring nodes",
+     "correct": true,
+     "rationale": "Correct: GNNs update each node from its neighbours' messages."
+    },
+    {
+     "key": "B",
+     "text": "Sorting nodes by degree",
+     "correct": false,
+     "rationale": "Sorting is not the defining operation."
+    },
+    {
+     "key": "C",
+     "text": "Flattening the graph into a single vector first",
+     "correct": false,
+     "rationale": "That discards the structure GNNs exploit."
+    },
+    {
+     "key": "D",
+     "text": "Running a convolution over raw pixels",
+     "correct": false,
+     "rationale": "That describes image CNNs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GNNs update each node from its neighbours' messages.",
+   "outcome_refs": [
+    "MST-0450-D02.01"
+   ],
+   "domain_ref": "Graph neural network basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0450-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO problems arise from stacking too many GNN layers? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Over-smoothing, where node representations become indistinguishable",
+     "correct": true,
+     "rationale": "Correct: repeated aggregation makes embeddings converge."
+    },
+    {
+     "key": "B",
+     "text": "Higher computational and memory cost",
+     "correct": true,
+     "rationale": "Correct: more layers expand the receptive field and cost more."
+    },
+    {
+     "key": "C",
+     "text": "Guaranteed higher accuracy",
+     "correct": false,
+     "rationale": "Deeper GNNs often lose accuracy, not gain it."
+    },
+    {
+     "key": "D",
+     "text": "Loss of the ability to use node features",
+     "correct": false,
+     "rationale": "Node features are still used."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: repeated aggregation makes embeddings converge.",
+   "outcome_refs": [
+    "MST-0450-D03.01"
+   ],
+   "domain_ref": "Advanced GNN architectures",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0450-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must link-prediction splits avoid placing an edge's endpoints' shared neighbours across train and test carelessly?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Information can leak so the model sees test-edge structure during training",
+     "correct": true,
+     "rationale": "Correct: careless splits leak neighbourhood information about test edges."
+    },
+    {
+     "key": "B",
+     "text": "Links cannot be predicted at all",
+     "correct": false,
+     "rationale": "They can; the issue is leakage."
+    },
+    {
+     "key": "C",
+     "text": "Node features must be removed",
+     "correct": false,
+     "rationale": "Removing features is unrelated."
+    },
+    {
+     "key": "D",
+     "text": "Graphs cannot be split",
+     "correct": false,
+     "rationale": "Graphs can be split with care."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: careless splits leak neighbourhood information about test edges.",
+   "outcome_refs": [
+    "MST-0450-D04.01"
+   ],
+   "domain_ref": "Tasks and evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

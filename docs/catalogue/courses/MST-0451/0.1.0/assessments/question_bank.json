@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0451",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0451-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a transformer, what does the self-attention mechanism primarily allow each token to do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Weight and combine information from other tokens in the sequence",
+     "correct": true,
+     "rationale": "Correct: attention lets each token attend to relevant others."
+    },
+    {
+     "key": "B",
+     "text": "Increase the vocabulary size",
+     "correct": false,
+     "rationale": "Attention does not change the vocabulary."
+    },
+    {
+     "key": "C",
+     "text": "Remove the need for any training data",
+     "correct": false,
+     "rationale": "Transformers still require training."
+    },
+    {
+     "key": "D",
+     "text": "Guarantee factual accuracy",
+     "correct": false,
+     "rationale": "Attention does not ensure factual correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: attention lets each token attend to relevant others.",
+   "outcome_refs": [
+    "MST-0451-D02.01"
+   ],
+   "domain_ref": "Transformer architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0451-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate reasons to use retrieval-augmented generation instead of a very long prompt? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The knowledge base is large and changes over time",
+     "correct": true,
+     "rationale": "Correct: retrieval scales and stays current without re-stuffing prompts."
+    },
+    {
+     "key": "B",
+     "text": "You want to cite the source passages used",
+     "correct": true,
+     "rationale": "Correct: retrieval provides traceable provenance."
+    },
+    {
+     "key": "C",
+     "text": "You want the model to hallucinate more freely",
+     "correct": false,
+     "rationale": "RAG aims to reduce, not increase, hallucination."
+    },
+    {
+     "key": "D",
+     "text": "You want to avoid storing any documents",
+     "correct": false,
+     "rationale": "RAG requires storing/indexing documents."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: retrieval scales and stays current without re-stuffing prompts.",
+   "outcome_refs": [
+    "MST-0451-D05.01"
+   ],
+   "domain_ref": "Prompting and adaptation patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0451-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can a fluent, confident model answer still be wrong?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Generative models optimise plausible continuations, not verified facts",
+     "correct": true,
+     "rationale": "Correct: fluency reflects likelihood, not truth."
+    },
+    {
+     "key": "B",
+     "text": "Fluent answers are always correct",
+     "correct": false,
+     "rationale": "Fluency does not guarantee correctness."
+    },
+    {
+     "key": "C",
+     "text": "The model cannot produce grammatical text",
+     "correct": false,
+     "rationale": "It can; the issue is factual grounding."
+    },
+    {
+     "key": "D",
+     "text": "Confidence scores are a guaranteed accuracy measure",
+     "correct": false,
+     "rationale": "Confidence does not guarantee accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fluency reflects likelihood, not truth.",
+   "outcome_refs": [
+    "MST-0451-D04.01"
+   ],
+   "domain_ref": "Capabilities and limits",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
