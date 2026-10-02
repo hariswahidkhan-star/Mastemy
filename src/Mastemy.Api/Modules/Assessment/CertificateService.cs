@@ -11,7 +11,7 @@ namespace Mastemy.Api.Modules.Assessment;
 /// Course certificates are issued only on assessed evidence (a passed, server-scored MCQ assessment that counts toward
 /// the certificate) — never for watching videos. Issuance is idempotent per (user, course).
 /// </summary>
-public class CertificateService(AppDbContext db, ICurrentUser me, AuditService audit)
+public class CertificateService(AppDbContext db, ICurrentUser me, AuditService audit, IConfiguration cfg)
 {
     /// <summary>Unambiguous alphabet: no 0/O, 1/I/L.</summary>
     public const string Alphabet = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
@@ -67,10 +67,53 @@ public class CertificateService(AppDbContext db, ICurrentUser me, AuditService a
     private Task<string?> ExistingCode(Guid userId, Guid courseId) =>
         db.Certificates.AsNoTracking().Where(c => c.UserId == userId && c.CourseId == courseId).Select(c => c.Code).FirstOrDefaultAsync();
 
-    public async Task<CertificateVerification> Verify(string code)
+    private static string NormalizeCode(string? code)
     {
         var normalized = (code ?? "").Trim().ToUpperInvariant();
         if (normalized.Length != CodeLength || normalized.Any(ch => !Alphabet.Contains(ch))) throw AppException.NotFound("Certificate");
+        return normalized;
+    }
+
+    /// <summary>Public verification link for a code (Certificates:VerifyBaseUrl, e.g. https://mastemy.example/verify).</summary>
+    public string VerificationUrl(string code)
+    {
+        var baseUrl = cfg["Certificates:VerifyBaseUrl"];
+        if (string.IsNullOrWhiteSpace(baseUrl)) baseUrl = "/verify";
+        return baseUrl.TrimEnd('/') + "/" + Uri.EscapeDataString(code);
+    }
+
+    /// <summary>
+    /// PDF of a certificate: available to its owner, or to anyone while publicly visible. Revoked certificates are gone (410);
+    /// hidden ones are indistinguishable from unknown codes (404) for non-owners.
+    /// </summary>
+    public async Task<(byte[] Pdf, string Code)> Pdf(string code)
+    {
+        var normalized = NormalizeCode(code);
+        var c = await db.Certificates.AsNoTracking().FirstOrDefaultAsync(x => x.Code == normalized) ?? throw AppException.NotFound("Certificate");
+        var isOwner = me.Id is { } uid && uid == c.UserId;
+        if (!isOwner && !c.PubliclyVisible) throw AppException.NotFound("Certificate");
+        if (c.Status == CertificateStatus.Revoked) throw new AppException(410, "This certificate has been revoked.", "certificate_revoked");
+        return (CertificatePdf.Render(c, VerificationUrl(c.Code)), c.Code);
+    }
+
+    /// <summary>Learner controls whether their certificate is publicly verifiable/downloadable.</summary>
+    public async Task<MyCertificateDto> SetVisibility(Guid id, bool publiclyVisible)
+    {
+        var uid = me.RequireId();
+        var c = await db.Certificates.FirstOrDefaultAsync(x => x.Id == id && x.UserId == uid) ?? throw AppException.NotFound("Certificate");
+        if (c.PubliclyVisible != publiclyVisible)
+        {
+            c.PubliclyVisible = publiclyVisible;
+            audit.Record("certificate.visibility_changed", "Certificate", c.Id, new { c.Code, publiclyVisible });
+            await db.SaveChangesAsync();
+        }
+        return new MyCertificateDto(c.Id, c.Code, c.CourseId, c.CourseTitle, c.RecipientName, c.IssuedAt, c.Status, c.ScorePercent,
+            c.AssessmentCriteria, c.PubliclyVisible);
+    }
+
+    public async Task<CertificateVerification> Verify(string code)
+    {
+        var normalized = NormalizeCode(code);
         var c = await db.Certificates.AsNoTracking().FirstOrDefaultAsync(x => x.Code == normalized);
         if (c is null || !c.PubliclyVisible) throw AppException.NotFound("Certificate");
         return new CertificateVerification(c.Code, c.RecipientName, c.CourseTitle, c.IssuedAt, c.Status, c.AssessmentCriteria);
