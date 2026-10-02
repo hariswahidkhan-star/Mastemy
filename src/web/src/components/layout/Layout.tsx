@@ -6,6 +6,7 @@ import { useTheme } from '../../theme/ThemeProvider';
 import { Button } from '../ui/Button';
 import { CompareTray } from '../Discovery';
 import { NotificationBell } from '../NotificationBell';
+import { MegaMenu } from '../discover/MegaMenu';
 
 function Logo() {
   return (
@@ -71,6 +72,7 @@ export function Layout() {
             className={menuOpen ? 'primary-nav primary-nav--open' : 'primary-nav'}
             aria-label={t('nav.primary')}
           >
+            <MegaMenu />
             <ul>
               {navItems
                 .filter((i) => i.show)

@@ -1,95 +1,112 @@
-import { useState } from 'react';
-import type { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { useCategories, useCourses } from '../../api/hooks';
-import type { CourseQuery } from '../../api/hooks';
+import { loc, useHome } from '../../api/discover';
+import type { HomeDto } from '../../api/discover';
 import { CourseCard } from '../../components/CourseCard';
-import { Button, ButtonLink } from '../../components/ui/Button';
+import { SearchCombobox } from '../../components/discover/SearchCombobox';
+import { CourseRow, PathwayCard, Toggletip } from '../../components/discover/Shared';
+import { ButtonLink } from '../../components/ui/Button';
 import { EmptyState } from '../../components/ui/EmptyState';
-import { Input } from '../../components/ui/Field';
-import { QueryState } from '../../components/ui/misc';
+import { Badge, QueryState } from '../../components/ui/misc';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { RecentlyViewedRail } from './ComparePage';
 
-function Collection({
-  title,
-  query,
-  moreTo,
-}: {
-  title: string;
-  query: CourseQuery;
-  moreTo: string;
-}) {
-  const { t } = useI18n();
-  const courses = useCourses({ ...query, page: 1 });
-  return (
-    <section className="section" aria-labelledby={`col-${title}`}>
-      <div className="section__head">
-        <h2 className="section__title" id={`col-${title}`}>
-          {title}
-        </h2>
-        <Link to={moreTo}>{t('home.seeAll')}</Link>
-      </div>
-      <QueryState query={courses}>
-        {(data) =>
-          data.items.length === 0 ? (
-            <EmptyState
-              title={t('home.emptyCollection')}
-              description={t('home.emptyCollectionBody')}
-            />
-          ) : (
-            <div className="grid">
-              {data.items.slice(0, 6).map((c) => (
-                <CourseCard key={c.id} course={c} />
-              ))}
-            </div>
-          )
-        }
-      </QueryState>
-    </section>
-  );
-}
-
-function AcademyCollection() {
-  const { t } = useI18n();
-  const categories = useCategories();
-  const academy =
-    categories.data?.find((c) => c.isAcademy && c.parentId === null) ??
-    categories.data?.find((c) => c.isAcademy);
-  if (categories.isPending || categories.isError || !academy) {
+function HomeRows({ home }: { home: HomeDto }) {
+  const { t, lang, fmtNumber } = useI18n();
+  const nothing =
+    home.featured.length +
+      home.new.length +
+      home.recentlyUpdated.length +
+      home.aiSkills.length +
+      home.certificationPreparation.length +
+      home.beginnerPathways.length ===
+    0;
+  if (nothing)
     return (
-      <section className="section">
-        <div className="section__head">
-          <h2 className="section__title">{t('home.academy')}</h2>
-        </div>
-        <QueryState query={categories}>
-          {() => (
-            <EmptyState title={t('home.emptyCollection')} description={t('home.academyEmpty')} />
-          )}
-        </QueryState>
-      </section>
+      <EmptyState title={t('home.emptyCollection')} description={t('discover.home.emptyAll')} />
     );
-  }
   return (
-    <Collection
-      title={t('home.academy')}
-      query={{ category: academy.slug, sort: 'updated' }}
-      moreTo={`/categories/${academy.slug}`}
-    />
+    <>
+      {home.featured.map((c) => (
+        <CourseRow
+          key={c.id}
+          id={`featured-${c.slug}`}
+          title={loc(lang, c.titleEn, c.titleAr)}
+          courses={c.courses.slice(0, 6)}
+          more={{ to: `/collections/${c.slug}`, label: t('home.seeAll') }}
+        />
+      ))}
+      <CourseRow
+        id="home-new"
+        title={t('home.new')}
+        courses={home.new}
+        more={{ to: '/courses?sort=newest', label: t('home.seeAll') }}
+      />
+      <CourseRow
+        id="home-updated"
+        title={t('home.updated')}
+        courses={home.recentlyUpdated}
+        more={{ to: '/courses?sort=updated', label: t('home.seeAll') }}
+        extra={<p className="small muted">{t('discover.home.updatedRule')}</p>}
+      />
+      <CourseRow id="home-ai" title={t('discover.home.aiSkills')} courses={home.aiSkills} />
+      <CourseRow
+        id="home-cert"
+        title={t('discover.home.certPrep')}
+        courses={home.certificationPreparation}
+        more={{ to: '/certifications', label: t('discover.home.certDirectory') }}
+        extra={<p className="small muted">{t('discover.cert.noPartnership')}</p>}
+      />
+      {home.beginnerPathways.length > 0 ? (
+        <section className="section" aria-labelledby="home-paths">
+          <div className="section__head">
+            <h2 className="section__title" id="home-paths">
+              {t('discover.home.beginnerPathways')}
+            </h2>
+            <Link to="/pathways?level=Beginner">{t('home.seeAll')}</Link>
+          </div>
+          <ul className="dlist grid">
+            {home.beginnerPathways.map((p) => (
+              <PathwayCard key={p.id} p={p} />
+            ))}
+          </ul>
+        </section>
+      ) : null}
+      {home.bestselling.length > 0 ? (
+        <section className="section" aria-labelledby="home-best">
+          <div className="section__head">
+            <h2 className="section__title" id="home-best">
+              {t('discover.home.bestselling')}
+            </h2>
+            <Link to="/bestseller-rule">{t('discover.best.howDecided')}</Link>
+          </div>
+          <div className="grid">
+            {home.bestselling.map((b) => (
+              <div key={b.course.id}>
+                {b.bestsellerLabel ? (
+                  <p className="small" style={{ margin: '0 0 var(--space-1)' }}>
+                    <Badge tone="accent">{t('discover.best.label')}</Badge>{' '}
+                    <Toggletip label={t('discover.best.why')}>
+                      {home.bestsellerRule}{' '}
+                      {t('discover.best.buyers', { n: fmtNumber(b.distinctBuyers) })}
+                    </Toggletip>
+                  </p>
+                ) : null}
+                <CourseCard course={b.course} />
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+    </>
   );
 }
 
 export function HomePage() {
   const { t } = useI18n();
   const navigate = useNavigate();
-  const [q, setQ] = useState('');
+  const home = useHome();
   usePageMeta(t('home.metaTitle'), t('home.metaDescription'));
-
-  const onSearch = (e: FormEvent) => {
-    e.preventDefault();
-    navigate(`/courses${q.trim() ? `?q=${encodeURIComponent(q.trim())}` : ''}`);
-  };
 
   return (
     <>
@@ -97,22 +114,20 @@ export function HomePage() {
         <div className="container">
           <h1>{t('home.heroTitle')}</h1>
           <p>{t('home.heroBody')}</p>
-          <form className="hero-search" role="search" onSubmit={onSearch}>
-            <label htmlFor="hero-q" className="visually-hidden">
-              {t('courses.search')}
-            </label>
-            <Input
+          <div className="hero-search">
+            <SearchCombobox
               id="hero-q"
-              type="search"
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
+              label={t('courses.search')}
               placeholder={t('home.searchPlaceholder')}
+              onSubmit={(q) => navigate(`/courses${q ? `?q=${encodeURIComponent(q)}` : ''}`)}
             />
-            <Button type="submit">{t('courses.searchButton')}</Button>
-          </form>
+          </div>
           <div className="row" style={{ marginBlockStart: 'var(--space-5)' }}>
             <ButtonLink to="/free-lessons" variant="secondary">
               {t('home.ctaFree')}
+            </ButtonLink>
+            <ButtonLink to="/certifications" variant="secondary">
+              {t('discover.home.ctaCert')}
             </ButtonLink>
           </div>
         </div>
@@ -132,17 +147,7 @@ export function HomePage() {
           </div>
         </section>
         <RecentlyViewedRail />
-        <Collection
-          title={t('home.new')}
-          query={{ sort: 'newest' }}
-          moreTo="/courses?sort=newest"
-        />
-        <Collection
-          title={t('home.updated')}
-          query={{ sort: 'updated' }}
-          moreTo="/courses?sort=updated"
-        />
-        <AcademyCollection />
+        <QueryState query={home}>{(h) => <HomeRows home={h} />}</QueryState>
       </div>
     </>
   );

@@ -3,8 +3,9 @@ import { ReviewQueuePage } from './ReviewQueuePage';
 import type { Role } from '../../api/types';
 import { useAuth } from '../../auth/AuthProvider';
 import { useI18n } from '../../i18n/I18nProvider';
+import { DISCOVER_ADMIN_SECTIONS } from '../../routes/discoverNav';
 
-export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[] }[] = [
+export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[]; label?: string }[] = [
   { to: '/admin', key: 'review', roles: ['Reviewer', 'Admin', 'SuperAdmin'] },
   { to: '/admin/applications', key: 'applications', roles: ['Reviewer', 'Admin', 'SuperAdmin'] },
   { to: '/admin/videos', key: 'videos', roles: ['Reviewer', 'Admin', 'SuperAdmin'] },
@@ -14,6 +15,7 @@ export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[] }[] = [
   { to: '/admin/orgs', key: 'orgs', roles: ['Admin', 'SuperAdmin'] },
   { to: '/admin/settings', key: 'settings', roles: ['Admin', 'SuperAdmin'] },
   { to: '/admin/audit', key: 'audit', roles: ['Finance', 'Admin', 'SuperAdmin'] },
+  ...DISCOVER_ADMIN_SECTIONS,
 ];
 
 export function AdminLayout() {
@@ -26,7 +28,7 @@ export function AdminLayout() {
           {ADMIN_SECTIONS.filter((s) => hasRole(...s.roles)).map((s) => (
             <li key={s.to}>
               <NavLink to={s.to} end>
-                {t(`admin.section.${s.key}`)}
+                {t(s.label ?? `admin.section.${s.key}`)}
               </NavLink>
             </li>
           ))}
