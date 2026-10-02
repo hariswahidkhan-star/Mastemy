@@ -1,44 +1,69 @@
 # Progress Ledger
 
-Last generated: 2026-10-02, by the catalogue generator.
+Last generated: 2026-10-02, by the catalogue generator. Stages are counted separately; 'complete' is used only for the stage actually reached.
 
-| Batch | Scope | Status |
-|---|---|---|
-| 0 | Architecture, full inventory (1076 courses), pathways, source register, policies, QA | Done |
-| 1 | Full curriculum blueprints for 10 courses | Done (specs only; no lesson scripts, videos or item banks yet) |
-| 2 | Blueprints for wave-2 cert-prep courses after official syllabus verification | Not started |
-| 3+ | Item-bank authoring, video production, SME review, approval | Not started |
+## Handover counts (master prompt section 18)
 
-## What exists at each depth
+| Field | Count |
+|---|---|
+| Candidate courses (rows) | 1878 |
+| Distinct courses after dedup - strict | 1737 |
+| Distinct courses after dedup - inclusive | 1869 |
+| Courses verified against an official issuer source this session | 12 |
+| Courses with partial vendor-documentation evidence | 3 |
+| Full curriculum specifications | 20 |
+| Full curricula completed as teaching content | 0 |
+| Lesson scripts completed | 0 |
+| Draft sample items (unreviewed) | 60 |
+| Reviewed items | 0 |
+| Videos generated | 0 |
+| Videos uploaded | 0 |
+| Courses approved | 0 |
+| Courses published | 0 |
+| Blocked courses | 1 |
 
-- **full-curriculum** (10): curriculum spec in `curricula/` (outcomes, modules/lessons, traceability, assessment blueprint, production notes, 3 sample MCQs). No lesson content, videos or full item bank yet.
-- **blueprint** (0): none in this batch.
-- **inventory** (1066): catalogue row only (metadata, hours, pathway, wave).
+## Depth of work
 
-## Batch 1 courses
+- **inventory** (1858): catalogue row with derived identity fields, 80/20 time plan, class, evidence status and dedup status.
+- **blueprint** (0): no separate blueprint stage was produced this run.
+- **full-curriculum-spec** (20): course package in `courses/<id>/0.1.0/` - outcomes, modules and lessons with minutes, worked-application titles, misconceptions, integrative case, coverage matrix (mapped, not taught), assessment forms and bank plan, 3 draft sample items, YouTube manifest with no videos.
+- **produced** (0): no lesson scripts, notes, captions, item banks or videos exist.
 
-| Course ID | Title | Evidence | Min. item bank |
-|---|---|---|---|
-| `MST-MIC-MS-AZ900-001` | Microsoft Azure Fundamentals (AZ-900) Exam Prep | verified-official-source | 290 |
-| `MST-MIC-MS-AI901-001` | Microsoft Azure AI Fundamentals (AI-901) Exam Prep | verified-official-source | 298 |
-| `MST-MIC-MS-SC900-001` | Microsoft Security, Compliance, and Identity Fundamentals (SC-900) Exam Prep | verified-official-source | 293 |
-| `MST-MIC-MS-AZ104-001` | Microsoft Azure Administrator (AZ-104) Exam Prep | verified-official-source | 450 |
-| `MST-MIC-MS-DP900-001` | Microsoft Azure Data Fundamentals (DP-900) Exam Prep | verified-official-source | 294 |
-| `MST-MIC-MS-PL900-001` | Microsoft Power Platform Fundamentals (PL-900) Exam Prep | verified-official-source | 300 |
-| `MST-AWS-AWS-CLFC02-001` | AWS Certified Cloud Practitioner (CLF-C02) Exam Prep | secondary-only-needs-official-check | 388 |
-| `MST-CYB-CMPT-SY0701-001` | CompTIA Security+ (SY0-701) Exam Prep | secondary-only-needs-official-check | 513 |
-| `MST-PMB-PMI-PMP-001` | PMI Project Management Professional (PMP) Exam Prep | secondary-only-needs-official-check | 809 |
-| `MST-FIN-CFA-L1-001` | CFA Program Level I Exam Prep | secondary-only-needs-official-check | 3330 |
+## Batches
+
+| Batch | Course | Title | Evidence | Planned bank |
+|---|---|---|---|---|
+| 1 | `MST-0051` | CFA Level I: Complete Curriculum Preparation | unverified-needs-official-check | 5040 |
+| 1 | `MST-0121` | PMI PMP: Project Management Professional — Current Exam Blueprint | unverified-needs-official-check | 1680 |
+| 1 | `MST-0161` | Microsoft AZ-900: Azure Fundamentals | verified-official-source | 522 |
+| 1 | `MST-0162` | Microsoft AZ-104: Azure Administrator Associate | verified-official-source | 920 |
+| 1 | `MST-0168` | Microsoft DP-900: Azure Data Fundamentals | verified-official-source | 520 |
+| 1 | `MST-0173` | Microsoft PL-900: Power Platform Fundamentals | verified-official-source | 534 |
+| 1 | `MST-0176` | Microsoft SC-900: Security, Compliance, and Identity Fundamentals | verified-official-source | 528 |
+| 1 | `MST-0201` | AWS Certified Cloud Practitioner | unverified-needs-official-check | 824 |
+| 1 | `MST-0250` | CompTIA Security+ | unverified-needs-official-check | 954 |
+| 1 | `MST-1413` | Microsoft Azure AI Fundamentals (AI-901) Exam Prep | verified-official-source | 528 |
+| 2 | `MST-0171` | Microsoft DP-600: Fabric Analytics Engineer Associate | verified-official-source | 732 |
+| 2 | `MST-0174` | Microsoft PL-300: Power BI Data Analyst Associate | verified-official-source | 734 |
+| 2 | `MST-0188` | Microsoft AB-730: AI Business Professional | verified-official-source | 460 |
+| 2 | `MST-0189` | Microsoft AB-731: AI Transformation Leader | verified-official-source | 456 |
+| 2 | `MST-0200` | GitHub Copilot Certification Preparation | verified-official-source | 476 |
+| 2 | `MST-0531` | Claude Code Foundations: Terminal and Repository Workflows | vendor-docs-partial | 330 |
+| 2 | `MST-0589` | Retrieval-Augmented Generation: Complete System Foundations | n/a-no-official-syllabus | 640 |
+| 2 | `MST-0649` | Copilot in Excel: Analysis, Formulas, and Verification | vendor-docs-partial | 340 |
+| 2 | `MST-0830` | .NET and MySQL: Production Data-Access Engineering | vendor-docs-partial | 500 |
+| 2 | `MST-1415` | Azure AI App & Agent Developer (AI-103) Exam Prep | verified-official-source | 822 |
 
 ## Verification position
 
-- verified-official-source: 6 courses (Microsoft study guides read through the Microsoft Learn MCP).
-- unverified-needs-official-check: 332 cert-prep courses. Several have secondary (search-snippet) evidence only; see source-register.csv.
-- n/a-no-official-syllabus: 738 skills/foundation courses.
+- n/a-no-official-syllabus: 1289
+- unverified-needs-official-check: 574
+- vendor-docs-partial: 3
+- verified-official-source: 12
 
-## Known gaps
+## Next batch
 
-- Official sites for AWS, CompTIA, PMI, ACCA, Google Cloud, CFA and IELTS were blocked by the session egress proxy, so 4 of the 10 Batch 1 specs (CLF-C02, SY0-701, PMP, CFA L-I) rest on secondary evidence and must be re-verified before production.
-- Most exam codes (for example SAP, Salesforce, Databricks and some AWS/Google codes) are left blank instead of guessed.
-- MCQ-only delivery cannot assess writing/speaking, task-based simulations or performance-based labs. These are flagged per course in `assessment_note`.
-- No partnerships or endorsements exist. The certificate policy forbids implying any.
+- Needs issuer syllabi (blocked this run): MST-0001, MST-0002, MST-0003, MST-0016, MST-0017, MST-0091, MST-0094, MST-0022, MST-0341, MST-0391
+- Verifiable now via Microsoft Learn: AB-900, AI-200, AI-300, SC-200, AZ-305
+
+See `operations/unresolved_issues.csv` and `coverage-gaps.md` for blocking items.

@@ -1,17 +1,19 @@
 # Production Roadmap (static)
 
-| Wave | Contents (see `priority_wave`) | Gate to start |
-|---|---|---|
-| 1 | The 10 Batch 1 courses (6 Microsoft verified, 4 secondary-evidence) | The 4 secondary-evidence specs must be re-verified on the official pages first |
-| 2 | Foundation and intermediate certification prep (high demand: cloud fundamentals, CompTIA, CAPM, ACCA Applied Knowledge, NCLEX, IELTS) | Official syllabus verified, so the row moves to `verified-official-source` and `blueprint` |
-| 3 | Advanced certification prep (CISSP, CPA, CFA L2/L3, professional cloud) | Same gate as wave 2, plus an SME with the relevant credential |
-| 4 | Foundation skills courses (feeding the pathways) | Curriculum spec approved |
-| 5 | Intermediate and advanced skills courses | Curriculum spec approved |
+Follows master prompt section 18. Row-level priority is `priority_batch`; stage is `workflow_state`.
 
-## Prioritisation rules
-1. Courses that are entry points of pathways go first, because they unlock whole pathways.
-2. Exams with a published retirement date (for example SY0-701) are deprioritised in favour of their successor once its objectives are final.
-3. Courses whose official exam relies mainly on non-MCQ components (language productive skills, CPA simulations, performance-based labs) come after MCQ-heavy exams.
+| Batch | Contents | Status / gate |
+|---|---|---|
+| 1 | 10 v1 specs re-keyed to MST IDs and upgraded to the package format | Specs exist. Four (MST-0051, MST-0121, MST-0201, MST-0250) rest on secondary evidence and must be re-verified |
+| 2 | 10 new specs: AB-730, AB-731, AI-103, Copilot in Excel, Claude Code Foundations, RAG, .NET + MySQL, GH-300, PL-300, DP-600 | Specs exist; verified from Microsoft Learn / code.claude.com where stated |
+| 3 | Section 18 priority families: ACCA papers, US CPA sections, CIA parts, CISA, PMP, CFA levels, US CMA parts, NCLEX-RN/PN, IELTS, AI in Excel, Microsoft platform AI, ChatGPT, Claude, Cursor, RAG, .NET, JavaScript/TypeScript | Blocked on issuer syllabus access for the exam families (proxy-blocked this run); skills courses can proceed |
+| 4 | Other exam preparation | Exact exam/version resolution, then source verification |
+| 5 | Other skills courses | Blueprint review |
 
 ## Per-course pipeline
-inventory, then verify the official syllabus (source register), then blueprint (domain-to-module map), then full curriculum, then item bank (at least the minimum stated in the curriculum, rationales on every option), then scripts, then recording and captions, then SME review, then approval and publishing (fill `youtube_playlist_id`, bump `content_version`).
+Candidate -> Source verification (exact syllabus fetched, exam-version record complete) -> Blueprint review (full curriculum spec) -> Authoring (scripts, storyboards, notes, captions) -> Assessment review (full bank, SME-reviewed) -> Video production (YouTube upload, IDs recorded) -> Quality approval (`quality-gates.md`) -> Published. Each run ends by regenerating `operations/production_manifest.json`; the next run starts from it.
+
+## Rules
+1. Exams with a scheduled retirement before realistic release (MS-102, 2026-11-30) are blocked; successors are preferred.
+2. Courses whose official exam relies mainly on non-MCQ components are scheduled after MCQ-heavy exams and always carry their limitation note.
+3. Translations (Arabic, Spanish, French, Chinese, Russian, Korean) start only after the English master passes subject review; they are versions, not new courses.

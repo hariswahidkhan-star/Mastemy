@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0200",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 476,
+  "lesson_check_items": 42,
+  "module_check_items": 96,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 50,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0200-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A developer must stop Copilot from using files in a folder that contains customer data. What should be configured?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Content exclusions for that path",
+     "correct": true,
+     "rationale": "Correct: content exclusions are the documented control for keeping specific files or repositories out of Copilot context."
+    },
+    {
+     "key": "B",
+     "text": "A higher model temperature",
+     "correct": false,
+     "rationale": "Temperature does not control data access."
+    },
+    {
+     "key": "C",
+     "text": "Public-code matching filter",
+     "correct": false,
+     "rationale": "That filter blocks suggestions matching public code; it does not exclude private files."
+    },
+    {
+     "key": "D",
+     "text": "Rename the folder",
+     "correct": false,
+     "rationale": "Renaming does not change Copilot's access."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: content exclusions are the documented control for keeping specific files or repositories out of Copilot context.",
+   "outcome_refs": [
+    "MST-0200-D01.01"
+   ],
+   "domain_ref": "Use GitHub Copilot responsibly",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0200-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reflect responsible use of Copilot suggestions? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Review and test generated code before merging",
+     "correct": true,
+     "rationale": "Correct: the outline stresses validating AI output."
+    },
+    {
+     "key": "B",
+     "text": "Accept suggestions that compile without reading them",
+     "correct": false,
+     "rationale": "Compiling does not prove correctness or security."
+    },
+    {
+     "key": "C",
+     "text": "Check suggestions for security issues such as injection",
+     "correct": true,
+     "rationale": "Correct: suggesting and checking security improvements is in scope."
+    },
+    {
+     "key": "D",
+     "text": "Disable code review because Copilot wrote the code",
+     "correct": false,
+     "rationale": "AI-generated code still needs human review."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: the outline stresses validating AI output.",
+   "outcome_refs": [
+    "MST-0200-D02.01"
+   ],
+   "domain_ref": "Use GitHub Copilot features",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0200-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want consistent Copilot Chat answers that follow your team's API conventions across sessions. What helps most?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A reusable prompt file or instructions file with the conventions",
+     "correct": true,
+     "rationale": "Correct: prompt-file reuse and instruction files are named for consistent responses."
+    },
+    {
+     "key": "B",
+     "text": "Clearing chat history each time",
+     "correct": false,
+     "rationale": "That removes context rather than adding conventions."
+    },
+    {
+     "key": "C",
+     "text": "Switching IDEs",
+     "correct": false,
+     "rationale": "The IDE choice does not encode conventions."
+    },
+    {
+     "key": "D",
+     "text": "Using zero-shot prompts only",
+     "correct": false,
+     "rationale": "Zero-shot prompts provide no convention examples."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: prompt-file reuse and instruction files are named for consistent responses.",
+   "outcome_refs": [
+    "MST-0200-D03.01"
+   ],
+   "domain_ref": "Understand GitHub Copilot data and architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

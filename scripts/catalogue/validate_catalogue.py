@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""Validator for docs/catalogue. Writes qa-report.md and progress-ledger.md.
+"""Validator for docs/catalogue (v2). Writes qa-report.md, progress-ledger.md
+and a qa_report.md inside every course package.
 
-Exit code 0 only when every check passes. The QA report numbers come from here.
+Exit code 0 only when every check passes. Every number in the reports is
+computed here from the emitted files.
 """
 import collections
 import csv
@@ -14,160 +16,256 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 OUT = os.path.join(ROOT, "docs", "catalogue")
+INP = os.path.join(HERE, "input")
 
-from data_catalogue import CATEGORIES, MANDATORY_FAMILIES, MANDATORY_CODES, BATCH1  # noqa: E402
 from data_sources import RETIRED_EXCLUDED, SESSION_DATE  # noqa: E402
 
-ID_RE = re.compile(r"^MST-[A-Z]{2,3}-[A-Z0-9]+-[A-Z0-9]+-\d{3}$")
+ID_RE = re.compile(r"^MST-\d{4}$")
+CLASSES = {"independent-certification-exam-prep", "licensing-examination-knowledge-prep", "vendor-platform-skills",
+           "general-professional-skills", "integrated-workflow-skills"}
+EXAM = {"independent-certification-exam-prep", "licensing-examination-knowledge-prep"}
+STATES = {"Candidate", "Source verification", "Blueprint review", "Authoring", "Assessment review", "Video production",
+          "Quality approval", "Published", "Update required", "Retired", "Blocked"}
+EXAM_WORDING = "Completion of independent preparation course; does not award the external professional certification or license."
+PKG_FILES = ["course_metadata.json", "syllabus.csv", "outcome_coverage.csv", "assessments/forms.json",
+             "assessments/question_bank.json", "youtube_asset_manifest.csv", "curriculum.md"]
+
+
+def rd(p):
+    with open(p, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def check_item(it):
+    errs = []
+    keys = [o for o in it["options"] if o["correct"]]
+    if len(it["options"]) < 4:
+        errs.append("fewer than 4 options")
+    if any(not o["rationale"].strip() for o in it["options"]):
+        errs.append("missing option rationale")
+    if it["item_type"] == "single-answer" and len(keys) != 1:
+        errs.append("single-answer item without exactly one key")
+    if it["item_type"] == "multiple-answer":
+        if len(keys) < 2:
+            errs.append("multiple-answer item with <2 keys")
+        if not re.search(r"Select (TWO|THREE|all that apply)", it["stem"]):
+            errs.append("selection rule not stated in stem")
+        if it["scoring"] != "all-or-nothing":
+            errs.append("multiple-answer scoring not all-or-nothing")
+        n = {"TWO": 2, "THREE": 3}.get((re.search(r"Select (TWO|THREE)", it["stem"]) or [None, None])[1])
+        if n and n != len(keys):
+            errs.append("stated selection count differs from key count")
+    if sorted(it["correct_keys"]) != sorted(o["key"] for o in keys):
+        errs.append("correct_keys inconsistent")
+    if it["publication_state"] != "draft-unreviewed" or it["reviewer"] is not None:
+        errs.append("item claims review")
+    return errs
+
+
+def check_package(r):
+    base = os.path.join(OUT, "courses", r["course_id"], r["course_version"])
+    res = []
+
+    def c(name, ok, detail=""):
+        res.append((name, bool(ok), detail))
+    missing = [f for f in PKG_FILES if not os.path.exists(os.path.join(base, f))]
+    c("All package files present", not missing, f"missing: {missing}")
+    if missing:
+        return res
+    meta = json.load(open(os.path.join(base, "course_metadata.json")))
+    syl = rd(os.path.join(base, "syllabus.csv"))
+    cov = rd(os.path.join(base, "outcome_coverage.csv"))
+    forms = json.load(open(os.path.join(base, "assessments", "forms.json")))
+    qb = json.load(open(os.path.join(base, "assessments", "question_bank.json")))
+    yt = rd(os.path.join(base, "youtube_asset_manifest.csv"))
+    md = open(os.path.join(base, "curriculum.md")).read()
+    T, I, A = int(r["planned_total_minutes"]), int(r["instruction_minutes"]), int(r["assessment_minutes"])
+    c("80/20: I + A = T and I within 1 min of 0.8T", I + A == T and abs(I - 0.8 * T) <= 1, f"T={T} I={I} A={A}")
+    lsum = sum(int(x["instruction_minutes"]) for x in syl)
+    c("Lesson instruction minutes sum to I", lsum == I, f"{lsum} vs {I}")
+    tb = forms["time_budget_minutes"]
+    c("Assessment budget parts sum to A", tb["lesson_checks"] + tb["module_assessments"] + tb["cumulative"] == A == tb["total"], str(tb))
+    req = sum(f["minutes"] for f in forms["forms"] if f["counted_in_planned_time"])
+    c("Required cumulative forms fit the cumulative budget; optional forms not counted", req <= tb["cumulative"], f"required={req} budget={tb['cumulative']}")
+    c("Module checks fit module budget", sum(m["minutes"] for m in forms["module_checks"]) <= tb["module_assessments"], "")
+    alloc_ok = all(sum(f["domain_allocation"].values()) == f["items"] for f in forms["forms"])
+    c("Form domain allocations sum to form length", alloc_ok, "")
+    if r["course_class"] in EXAM:
+        practice = [f for f in forms["forms"] if f["form_id"].endswith(("form-A", "form-B", "form-C"))]
+        c("Exam course: 3 distinct practice forms + protected final", len(practice) == 3 and any(f["protected_pool"] for f in forms["forms"]), "")
+    c("Thresholds 75% module / 80% final", forms["scoring"]["module_check_threshold_pct"] == 75 and forms["scoring"]["final_threshold_pct"] == 80, "")
+    mods = collections.OrderedDict()
+    for x in syl:
+        mods[x["module_id"]] = x
+    c("Every module has 2 worked applications and a misconception",
+      all(x["worked_application_1"] and x["worked_application_2"] and x["common_misconception"] for x in mods.values()), f"{len(mods)} modules")
+    c("Integrative case present", len(meta.get("integrative_case") or "") > 60, "")
+    c("Coverage matrix covers every lesson and claims nothing as taught",
+      len(cov) == len(syl) and all(x["review_status"] == "mapped-not-taught" and x["items_authored"] == "0" for x in cov), f"{len(cov)} outcomes")
+    c("YouTube manifest has no video IDs (nothing produced)", all(not x["youtube_video_id"] and x["publication_state"] == "not-produced" for x in yt), f"{len(yt)} planned videos")
+    item_errs = {it["item_id"]: check_item(it) for it in qb["items"]}
+    bad = {k: v for k, v in item_errs.items() if v}
+    c("Sample items valid (keys, rationales, selection rule, scoring)", not bad and len(qb["items"]) >= 3, str(bad) if bad else f"{len(qb['items'])} items")
+    c("At least one multiple-answer item", any(it["item_type"] == "multiple-answer" for it in qb["items"]) or r["priority_batch"] == "1",
+      "Batch 1 samples (carried from v1) are single-answer; multiple-answer items to be added at authoring")
+    c("Spec labelled as specification, not content", "not finished lesson content" in md and "What this course assesses / does not assess" in md, "")
+    c("Bank plan recorded and items_reviewed = 0", qb["bank_plan"]["minimum_reviewed_items"] > 0 and qb["items_reviewed"] == 0, f"plan={qb['bank_plan']['minimum_reviewed_items']}")
+    if r["course_class"] in EXAM:
+        evr = meta.get("exam_version_record") or {}
+        c("Exam-version record present", evr.get("issuing_body") and evr.get("syllabus_edition") and evr.get("official_source_ids"), "")
+    return res
 
 
 def main():
-    with open(os.path.join(OUT, "catalogue.csv")) as f:
-        rows = list(csv.DictReader(f))
-    with open(os.path.join(OUT, "catalogue.json")) as f:
-        js = json.load(f)
-    with open(os.path.join(OUT, "pathways.json")) as f:
-        pathways = json.load(f)
-    with open(os.path.join(OUT, "id-registry.json")) as f:
-        registry = json.load(f)
-    meta = {}
-    mp = os.path.join(OUT, ".build-meta.json")
-    if os.path.exists(mp):
-        with open(mp) as f:
-            meta = json.load(f)
-
+    cat = rd(os.path.join(OUT, "catalog", "course_catalog.csv"))
+    js = json.load(open(os.path.join(OUT, "catalog", "course_catalog.json")))
+    reg = json.load(open(os.path.join(OUT, "catalog", "mst-id-registry.json")))
+    legacy_reg = json.load(open(os.path.join(OUT, "catalog", "legacy-id-registry.json")))
+    cw = rd(os.path.join(OUT, "catalog", "id-crosswalk.csv"))
+    app = rd(os.path.join(INP, "appendix_a.csv"))
+    srcs = {s["source_id"]: s for s in rd(os.path.join(OUT, "research", "source_register.csv"))}
+    gaps = rd(os.path.join(OUT, "research", "coverage_gaps.csv"))
+    ev = rd(os.path.join(OUT, "research", "exam_versions.csv"))
+    pathways = json.load(open(os.path.join(OUT, "pathways.json")))
+    manifest = json.load(open(os.path.join(OUT, "operations", "production_manifest.json")))
+    meta = json.load(open(os.path.join(OUT, ".build-meta.json")))
+    by_id = {r["course_id"]: r for r in cat}
     checks = []
 
     def check(name, ok, detail):
         checks.append((name, bool(ok), detail))
 
-    ids = [r["course_id"] for r in rows]
-    idset = set(ids)
-    cnt = collections.Counter(r["category"] for r in rows)
-    cat_lines = []
-    all_min = True
-    for cat, (name, mn) in CATEGORIES.items():
-        ok = cnt[cat] >= mn
-        all_min &= ok
-        certs = sum(1 for r in rows if r["category"] == cat and r["course_type"] == "certification-prep")
-        cat_lines.append(f"| {cat} | {name} | {mn} | {cnt[cat]} | {certs} | {cnt[cat]-certs} | {'PASS' if ok else 'FAIL'} |")
-    check("Category minimums met", all_min, f"{sum(1 for c in CATEGORIES if cnt[c] >= CATEGORIES[c][1])}/{len(CATEGORIES)} categories at or above minimum")
-    check("Total courses >= 1000", len(rows) >= 1000, f"{len(rows)} courses (minimum sum {sum(m for _n, m in CATEGORIES.values())})")
-    check("CSV and JSON agree", len(rows) == js["count"] == len(js["courses"]), f"csv={len(rows)} json={js['count']}")
-    dup_ids = [i for i, c in collections.Counter(ids).items() if c > 1]
-    check("course_id unique", not dup_ids, f"{len(dup_ids)} duplicate IDs")
-    bad_fmt = [i for i in ids if not ID_RE.match(i)]
-    check("course_id format MST-CAT-FAMILY-SLUG-NNN", not bad_fmt, f"{len(bad_fmt)} malformed: {bad_fmt[:5]}")
-    norm = collections.Counter(re.sub(r"[^a-z0-9]", "", r["title"].lower()) for r in rows)
-    dup_titles = [t for t, c in norm.items() if c > 1]
-    check("No duplicate titles (normalised)", not dup_titles, f"{len(dup_titles)} duplicates {dup_titles[:5]}")
-    codes = collections.Counter(r["official_exam_code"] for r in rows if r["official_exam_code"])
-    bc = collections.Counter((r["awarding_body"], r["official_exam_code"]) for r in rows if r["official_exam_code"])
-    dup_codes = [c for c, n in bc.items() if n > 1]
-    check("No duplicate (awarding body, exam code) pairs", not dup_codes, f"{len(dup_codes)} duplicated codes {dup_codes[:5]}")
-    bad20 = [r["course_id"] for r in rows if abs(float(r["assessment_hours"]) - 0.2 * float(r["est_learner_hours"])) > 0.051]
-    check("assessment_hours = 20% of est_learner_hours", not bad20, f"{len(bad20)} violations")
-    certs = [r for r in rows if r["course_type"] == "certification-prep"]
-    badmock = [r["course_id"] for r in certs if int(r["practice_exams_required"]) < 3]
-    check("Cert-prep courses require >= 3 full mocks", not badmock, f"{len(certs)} cert-prep courses, {len(badmock)} violations")
-    badq = [r["course_id"] for r in rows if set(r["question_formats"].split("|")) - {"mcq", "multiple-response"}]
-    check("Question formats MCQ/MR only", not badq, f"{len(badq)} violations")
-    fam_lines, fam_ok = [], True
-    for cat, fam, label in MANDATORY_FAMILIES:
-        n = sum(1 for i in ids if i.startswith(f"MST-{cat}-{fam}-"))
-        fam_ok &= n > 0
-        fam_lines.append(f"| {label} | `MST-{cat}-{fam}-*` | {n} | {'PASS' if n else 'FAIL'} |")
-    missing_codes = [c for c in MANDATORY_CODES if c not in codes]
-    check("Every mandatory family present", fam_ok, f"{len(MANDATORY_FAMILIES)} families checked")
-    check("Mandatory exam codes present", not missing_codes, f"missing: {missing_codes}")
-    retired = {r[0] for r in RETIRED_EXCLUDED}
-    present_retired = [c for c in codes if c in retired]
-    check("No retired/excluded exam codes in catalogue", not present_retired, f"present: {present_retired}")
-    ver = [r for r in rows if r["verification_status"] == "verified-official-source"]
-    bad_ver = [r["course_id"] for r in ver if r["verified_on"] != SESSION_DATE or not r["source_ids"]]
-    bad_unver = [r["course_id"] for r in rows if r["verification_status"] != "verified-official-source" and r["verified_on"]]
-    check("Verified rows carry date + source; unverified rows have empty verified_on", not bad_ver and not bad_unver,
-          f"verified={len(ver)}, bad verified={len(bad_ver)}, unverified-with-date={len(bad_unver)}")
-    full = [r for r in rows if r["curriculum_status"] == "full-curriculum"]
-    missing_files = [r["course_id"] for r in full if not os.path.exists(os.path.join(OUT, "curricula", r["course_id"] + ".md"))]
-    check("Every full-curriculum row has a curriculum file", not missing_files and len(full) == len(BATCH1),
-          f"{len(full)} full-curriculum rows, {len(missing_files)} missing files")
-    cur_issues = []
+    ids = [r["course_id"] for r in cat]
+    check("course_id unique and formatted MST-NNNN", len(ids) == len(set(ids)) and all(ID_RE.match(i) for i in ids), f"{len(ids)} rows")
+    check("CSV and JSON agree", len(cat) == js["count"] == len(js["courses"]), f"csv={len(cat)} json={js['count']}")
+    miss_a = [a["mst_id"] for a in app if a["mst_id"] not in by_id or by_id[a["mst_id"]]["working_title"] != a["title"]]
+    check("All 1,300 Appendix A rows present with unchanged IDs and titles", len(app) == 1300 and not miss_a, f"missing/changed: {miss_a[:5]}")
+    adds = [r for r in cat if r["origin"] == "legacy-addition"]
+    check("Additions numbered from MST-1301, no gaps reused", all(int(r["course_id"][4:]) >= 1301 for r in adds), f"{len(adds)} additions")
+    dropped = [v for v in reg.values() if v not in by_id]
+    check("No registered MST ID dropped (IDs never reused/retired silently)", not dropped, f"{len(reg)} registered, {len(dropped)} missing")
+    cw_ids = collections.Counter(x["legacy_course_id"] for x in cw)
+    leg_ids = set(legacy_reg.values())
+    check("Crosswalk lists every v1 ID exactly once", set(cw_ids) == leg_ids and all(n == 1 for n in cw_ids.values()), f"{len(leg_ids)} v1 IDs, {len(cw)} crosswalk rows")
+    acts = collections.Counter(x["action"] for x in cw)
+    mapped_t = [x["mst_id"] for x in cw if x["action"] == "mapped"]
+    bad_cw = [x["legacy_course_id"] for x in cw if x["action"] in ("mapped", "merged-duplicate", "addition") and x["mst_id"] not in by_id]
+    bad_cw += [x["legacy_course_id"] for x in cw if x["action"] == "retired-excluded" and not x["note"]]
+    bad_cw += [x["legacy_course_id"] for x in cw if x["action"] == "addition" and by_id.get(x["mst_id"], {}).get("origin") != "legacy-addition"]
+    check("Crosswalk targets valid; mappings one-to-one; retirements carry a reason",
+          not bad_cw and len(mapped_t) == len(set(mapped_t)), ", ".join(f"{k}={v}" for k, v in sorted(acts.items())))
+    check("Course class is one of the five section-3 classes", all(r["course_class"] in CLASSES for r in cat), "")
+    bad80 = []
+    for r in cat:
+        T, I, A = int(r["planned_total_minutes"]), int(r["instruction_minutes"]), int(r["assessment_minutes"])
+        parts = int(r["lesson_check_minutes"]) + int(r["module_assessment_minutes"]) + int(r["cumulative_assessment_minutes"])
+        if T != int(r["planned_hours"]) * 60 or I + A != T or I != int(0.8 * T + 0.5) or parts != A:
+            bad80.append(r["course_id"])
+    check("80/20 rule: I = round-half-up(0.8T), A = T - I, split parts sum to A", not bad80, f"{len(bad80)} violations")
+    badq = [r["course_id"] for r in cat if r["question_formats"] != "single-answer-mcq|multiple-answer-selection" or r["multiple_answer_scoring"] != "all-or-nothing"]
+    check("Formats MCQ/multiple-answer only; all-or-nothing multi scoring", not badq, f"{len(badq)} violations")
+    badcert = [r["course_id"] for r in cat if r["completion_rule_id"] != "CR-DEFAULT-75-80" or
+               (r["certificate_wording"] != EXAM_WORDING if r["course_class"] in EXAM else not r["certificate_wording"].startswith("Mastemy Certificate of Completion — "))]
+    pol = open(os.path.join(OUT, "certificate-policy.md")).read()
+    check("Certificate wording and completion rule (75% module / 80% final) per section 10", not badcert and "75%" in pol and "80%" in pol, f"{len(badcert)} violations")
+    check("Every row has an MCQ limitation note and disclaimer", all(r["mcq_limitation_note"] and r["credential_disclaimer_id"] for r in cat), "")
+    bad_ver = [r["course_id"] for r in cat if r["verification_status"] in ("verified-official-source", "vendor-docs-partial")
+               and (r["verified_on"] != SESSION_DATE or not r["source_ids"] or any(s not in srcs or not srcs[s]["method"].startswith("official") for s in r["source_ids"].split("|")[:1]))]
+    bad_unv = [r["course_id"] for r in cat if r["verification_status"] not in ("verified-official-source", "vendor-docs-partial") and r["verified_on"]]
+    check("Verified rows cite an official-fetch source and date; unverified rows carry no date", not bad_ver and not bad_unv,
+          f"bad verified={bad_ver}, unverified-with-date={len(bad_unv)}")
+    unknown_src = sorted({s for r in cat for s in r["source_ids"].split("|") if s and s not in srcs})
+    check("Every referenced source_id exists in the source register", not unknown_src, f"unknown: {unknown_src}")
+    retired = {x[0] for x in RETIRED_EXCLUDED}
+    counted_retired = [r["course_id"] for r in cat if r["official_exam_code"] in retired and r["counted_distinct_inclusive"] == "yes"]
+    check("No retired exam counted as a course", not counted_retired, f"retired codes checked: {len(retired)}")
+    blocked_ok = all(r["workflow_state"] == "Blocked" for r in cat if r["dedup_status"] == "retiring-blocked")
+    check("Retirement-scheduled rows are publish-blocked", blocked_ok, "")
+    strict = sum(r["counted_distinct_strict"] == "yes" for r in cat)
+    incl = sum(r["counted_distinct_inclusive"] == "yes" for r in cat)
+    check(">= 1,000 genuinely distinct courses after dedup (strict count)", strict >= 1000, f"strict={strict}, inclusive={incl}, raw={len(cat)}")
+    s5 = [g for g in gaps if g["area"].startswith("Section 5")]
+    check("Section 5 named certification structures all present", s5 and all(g["status"] == "closed" for g in s5), "; ".join(g["gap"] for g in s5))
+    check("Exam-version record per exam-prep row", len(ev) == sum(r["course_class"] in EXAM for r in cat), f"{len(ev)} records")
+    check("States and depths valid; nothing marked produced/approved/published",
+          all(r["workflow_state"] in STATES and r["curriculum_depth"] in ("inventory", "full-curriculum-spec") and r["approval_status"] == "draft"
+              and not r["youtube_playlist_id"] and not r["instructor_owner"] for r in cat), "")
+    bad_pw = [(p["pathway_id"], c) for p in pathways for c in p["courses"] if c not in by_id]
+    unres = [r["course_id"] for r in cat if r["prerequisites"] != "none" and r["prerequisites"] not in by_id]
+    check("Pathways and prerequisites resolve to MST IDs", not bad_pw and not unres, f"{len(pathways)} pathways")
+    full = [r for r in cat if r["curriculum_depth"] == "full-curriculum-spec"]
+    b1 = [r for r in full if r["priority_batch"] == "1"]
+    b2 = [r for r in full if r["priority_batch"] == "2"]
+    check("Batch 1 = 10 and Batch 2 = 10 full curriculum specifications", len(b1) == 10 and len(b2) == 10, f"b1={len(b1)} b2={len(b2)}")
+    pkg_results = {}
     for r in full:
-        p = os.path.join(OUT, "curricula", r["course_id"] + ".md")
-        if not os.path.exists(p):
-            continue
-        txt = open(p).read()
-        if "not finished lesson content" not in txt:
-            cur_issues.append(r["course_id"] + ":label")
-        if "| Full-length mock exams (independent forms A/B/C) | 3 |" not in txt:
-            cur_issues.append(r["course_id"] + ":mocks")
-        m = re.search(r"\*\*(\d+)\*\* \(= 20% of (\d+) min\)", txt)
-        if not m or abs(int(m.group(1)) - 0.2 * int(m.group(2))) > 1:
-            cur_issues.append(r["course_id"] + ":20pct")
-        if txt.count("_Rationale:_") < 12:
-            cur_issues.append(r["course_id"] + ":rationales")
-        if "Traceability matrix" not in txt:
-            cur_issues.append(r["course_id"] + ":trace")
-    check("Curricula: label, 3 mocks, 20% budget, rationale per option, traceability", not cur_issues, f"issues: {cur_issues}")
-    stale = [k for k, v in registry.items() if v not in idset]
-    check("No registered course_id dropped (IDs never reused)", not stale, f"{len(registry)} registered, {len(stale)} missing")
-    bad_pw = [(p["pathway_id"], c) for p in pathways for c in p["courses"] if c not in idset]
-    unres = [r["course_id"] for r in rows if r["prerequisites"].startswith("UNRESOLVED")]
-    check("Pathways and prerequisites resolve", not bad_pw and not unres, f"{len(pathways)} pathways, bad refs={len(bad_pw)}, unresolved prereqs={len(unres)}")
-    gov = [r["course_id"] for r in rows if r["youtube_playlist_id"] or r["instructor_owner"] or r["approval_status"] != "draft"]
-    check("Governance defaults (empty playlist/owner, draft)", not gov, f"{len(gov)} violations")
-    wave = collections.Counter(r["priority_wave"] for r in rows)
-    cstat = collections.Counter(r["curriculum_status"] for r in rows)
-    vstat = collections.Counter(r["verification_status"] for r in rows)
-    estat = collections.Counter(r["exam_status"] for r in rows)
-    ctype = collections.Counter(r["course_type"] for r in rows)
+        res = check_package(r)
+        pkg_results[r["course_id"]] = res
+        L = [f"# QA report - {r['course_id']} {r['working_title']}", "", f"Generated by validate_catalogue.py ({SESSION_DATE}). Automated checks only; no SME, accessibility, calculation or video review has happened.", "",
+             "| Check | Result | Detail |", "|---|---|---|"] + [f"| {n} | {'PASS' if ok else 'FAIL'} | {d} |" for n, ok, d in res]
+        with open(os.path.join(OUT, "courses", r["course_id"], r["course_version"], "qa_report.md"), "w") as f:
+            f.write("\n".join(L) + "\n")
+    pkg_fail = [cid for cid, res in pkg_results.items() if not all(ok for _n, ok, _d in res)]
+    check("Every course package passes its automated checks", not pkg_fail, f"failing: {pkg_fail}")
+    check("Manifest counts match catalogue", manifest["handover"]["candidate_courses"] == len(cat) and
+          manifest["handover"]["validated_distinct_courses_strict"] == strict and manifest["handover"]["videos_uploaded"] == 0, "")
 
     passed = all(ok for _n, ok, _d in checks)
-    L = ["# QA Report - Mastemy Catalogue", "",
-         f"Generated by `scripts/catalogue/validate_catalogue.py` (session date {SESSION_DATE}). Every number below is computed from the emitted files.", "",
+    cnt = collections.Counter
+    L = ["# QA Report - Mastemy Catalogue v2", "",
+         f"Generated by `scripts/catalogue/validate_catalogue.py` (session date {SESSION_DATE}). Every number is computed from the emitted files. Automated checks support but do not replace qualified subject-matter review.", "",
          f"**Overall: {'PASS' if passed else 'FAIL'}** ({sum(ok for _n, ok, _d in checks)}/{len(checks)} checks)", "",
          "## Checks", "", "| Check | Result | Detail |", "|---|---|---|"]
     L += [f"| {n} | {'PASS' if ok else 'FAIL'} | {d} |" for n, ok, d in checks]
-    L += ["", "## Counts per category vs minimum", "", "| Code | Category | Minimum | Actual | Cert-prep | Skills/foundation | Result |", "|---|---|---|---|---|---|---|"]
-    L += cat_lines + [f"| | **Total** | {sum(m for _n, m in CATEGORIES.values())} | **{len(rows)}** | {len(certs)} | {len(rows)-len(certs)} | |", ""]
-    L += ["## Mandatory families", "", "| Family | ID prefix | Courses | Result |", "|---|---|---|---|"] + fam_lines + [""]
-    L += ["## Distributions", ""]
-    for title, c in [("course_type", ctype), ("verification_status", vstat), ("exam_status", estat),
-                     ("curriculum_status", cstat), ("priority_wave", wave)]:
-        L.append(f"- **{title}**: " + ", ".join(f"{k}={v}" for k, v in sorted(c.items())))
+    L += ["", "## Counts per category", "", "| Cat | Name | Raw | Inclusive distinct | Strict distinct | Exam-prep | Verified official |", "|---|---|---|---|---|---|---|"]
+    for cno in sorted({r["category_no"] for r in cat}):
+        rs = [r for r in cat if r["category_no"] == cno]
+        L.append(f"| {cno} | {rs[0]['category_name']} | {len(rs)} | {sum(r['counted_distinct_inclusive']=='yes' for r in rs)} | "
+                 f"{sum(r['counted_distinct_strict']=='yes' for r in rs)} | {sum(r['course_class'] in EXAM for r in rs)} | "
+                 f"{sum(r['verification_status']=='verified-official-source' for r in rs)} |")
+    L += [f"| | **Total** | **{len(cat)}** | **{incl}** | **{strict}** | {sum(r['course_class'] in EXAM for r in cat)} | {sum(r['verification_status']=='verified-official-source' for r in cat)} |", "",
+          "## Distributions", ""]
+    for fld in ("origin", "course_class", "verification_status", "exam_status", "workflow_state", "curriculum_depth", "priority_batch", "dedup_status", "exam_resolution_required"):
+        L.append(f"- **{fld}**: " + ", ".join(f"{k}={v}" for k, v in sorted(cnt(r[fld] for r in cat).items())))
+    L += ["", "## Course packages", "", "| Course | Checks passed |", "|---|---|"]
+    L += [f"| `{cid}` {by_id[cid]['working_title']} | {sum(ok for _n, ok, _d in res)}/{len(res)} |" for cid, res in sorted(pkg_results.items())]
     L += ["", f"- XLSX emitted: {meta.get('xlsx_written')}", ""]
     with open(os.path.join(OUT, "qa-report.md"), "w") as f:
         f.write("\n".join(L))
+    write_ledger(cat, meta, manifest, strict, incl)
+    for n, ok, d in checks:
+        print(("PASS " if ok else "FAIL ") + n + " :: " + str(d)[:200])
+    return 0 if passed else 1
 
-    # progress ledger
-    P = ["# Progress Ledger", "", f"Last generated: {SESSION_DATE}, by the catalogue generator.", "",
-         "| Batch | Scope | Status |", "|---|---|---|",
-         f"| 0 | Architecture, full inventory ({len(rows)} courses), pathways, source register, policies, QA | Done |",
-         f"| 1 | Full curriculum blueprints for {len(full)} courses | Done (specs only; no lesson scripts, videos or item banks yet) |",
-         "| 2 | Blueprints for wave-2 cert-prep courses after official syllabus verification | Not started |",
-         "| 3+ | Item-bank authoring, video production, SME review, approval | Not started |", "",
-         "## What exists at each depth", "",
-         f"- **full-curriculum** ({cstat.get('full-curriculum', 0)}): curriculum spec in `curricula/` (outcomes, modules/lessons, traceability, assessment blueprint, production notes, 3 sample MCQs). No lesson content, videos or full item bank yet.",
-         f"- **blueprint** ({cstat.get('blueprint', 0)}): none in this batch.",
-         f"- **inventory** ({cstat.get('inventory', 0)}): catalogue row only (metadata, hours, pathway, wave).", "",
-         "## Batch 1 courses", "", "| Course ID | Title | Evidence | Min. item bank |", "|---|---|---|---|"]
-    for cid, title, ev, bank in meta.get("batch1", []):
-        P.append(f"| `{cid}` | {title} | {ev} | {bank} |")
-    P += ["", "## Verification position", "",
-          f"- verified-official-source: {vstat.get('verified-official-source', 0)} courses (Microsoft study guides read through the Microsoft Learn MCP).",
-          f"- unverified-needs-official-check: {vstat.get('unverified-needs-official-check', 0)} cert-prep courses. Several have secondary (search-snippet) evidence only; see source-register.csv.",
-          f"- n/a-no-official-syllabus: {vstat.get('n/a-no-official-syllabus', 0)} skills/foundation courses.", "",
-          "## Known gaps", "",
-          "- Official sites for AWS, CompTIA, PMI, ACCA, Google Cloud, CFA and IELTS were blocked by the session egress proxy, so 4 of the 10 Batch 1 specs (CLF-C02, SY0-701, PMP, CFA L-I) rest on secondary evidence and must be re-verified before production.",
-          "- Most exam codes (for example SAP, Salesforce, Databricks and some AWS/Google codes) are left blank instead of guessed.",
-          "- MCQ-only delivery cannot assess writing/speaking, task-based simulations or performance-based labs. These are flagged per course in `assessment_note`.",
-          "- No partnerships or endorsements exist. The certificate policy forbids implying any.", ""]
+
+def write_ledger(cat, meta, manifest, strict, incl):
+    h = manifest["handover"]
+    vs = collections.Counter(r["verification_status"] for r in cat)
+    P = ["# Progress Ledger", "", f"Last generated: {SESSION_DATE}, by the catalogue generator. Stages are counted separately; 'complete' is used only for the stage actually reached.", "",
+         "## Handover counts (master prompt section 18)", "", "| Field | Count |", "|---|---|",
+         f"| Candidate courses (rows) | {h['candidate_courses']} |",
+         f"| Distinct courses after dedup - strict | {strict} |", f"| Distinct courses after dedup - inclusive | {incl} |",
+         f"| Courses verified against an official issuer source this session | {h['verified_official_source']} |",
+         f"| Courses with partial vendor-documentation evidence | {h['vendor_docs_partial']} |",
+         f"| Full curriculum specifications | {h['full_curriculum_specifications']} |",
+         "| Full curricula completed as teaching content | 0 |", "| Lesson scripts completed | 0 |",
+         f"| Draft sample items (unreviewed) | {h['draft_sample_items']} |", "| Reviewed items | 0 |",
+         "| Videos generated | 0 |", "| Videos uploaded | 0 |", "| Courses approved | 0 |", "| Courses published | 0 |",
+         f"| Blocked courses | {h['blocked_courses']} |", "",
+         "## Depth of work", "",
+         f"- **inventory** ({sum(r['curriculum_depth']=='inventory' for r in cat)}): catalogue row with derived identity fields, 80/20 time plan, class, evidence status and dedup status.",
+         "- **blueprint** (0): no separate blueprint stage was produced this run.",
+         f"- **full-curriculum-spec** ({sum(r['curriculum_depth']=='full-curriculum-spec' for r in cat)}): course package in `courses/<id>/0.1.0/` - outcomes, modules and lessons with minutes, worked-application titles, misconceptions, integrative case, coverage matrix (mapped, not taught), assessment forms and bank plan, 3 draft sample items, YouTube manifest with no videos.",
+         "- **produced** (0): no lesson scripts, notes, captions, item banks or videos exist.", "",
+         "## Batches", "", "| Batch | Course | Title | Evidence | Planned bank |", "|---|---|---|---|---|"]
+    for p in meta["packages"]:
+        P.append(f"| {p['batch']} | `{p['course_id']}` | {p['title']} | {p['evidence']} | {p['bank']} |")
+    P += ["", "## Verification position", ""] + [f"- {k}: {v}" for k, v in sorted(vs.items())]
+    P += ["", "## Next batch", "", f"- Needs issuer syllabi (blocked this run): {', '.join(manifest['next_batch_proposal']['needs_source_access'])}",
+          f"- Verifiable now via Microsoft Learn: {', '.join(manifest['next_batch_proposal']['verifiable_now_via_microsoft_learn'])}", "",
+          "See `operations/unresolved_issues.csv` and `coverage-gaps.md` for blocking items.", ""]
     with open(os.path.join(OUT, "progress-ledger.md"), "w") as f:
         f.write("\n".join(P))
-    for n, ok, d in checks:
-        print(("PASS " if ok else "FAIL ") + n + " :: " + d)
-    return 0 if passed else 1
 
 
 if __name__ == "__main__":

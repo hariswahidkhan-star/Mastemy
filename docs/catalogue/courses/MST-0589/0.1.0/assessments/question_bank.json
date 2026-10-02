@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0589",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 640,
+  "lesson_check_items": 112,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0589-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Retrieved chunks are filtered for tenant permissions only after the model writes its answer. What is wrong?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Unauthorised content may already have influenced or appeared in the answer; filtering must happen before generation",
+     "correct": true,
+     "rationale": "Correct: permission-aware retrieval filters candidates before they enter the context."
+    },
+    {
+     "key": "B",
+     "text": "Nothing; post-filtering is standard",
+     "correct": false,
+     "rationale": "Post-filtering leaks information into generation."
+    },
+    {
+     "key": "C",
+     "text": "It only affects latency",
+     "correct": false,
+     "rationale": "It is a security failure, not a performance issue."
+    },
+    {
+     "key": "D",
+     "text": "It only matters for images",
+     "correct": false,
+     "rationale": "It applies to all content."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: permission-aware retrieval filters candidates before they enter the context.",
+   "outcome_refs": [
+    "MST-0589-D01.01"
+   ],
+   "domain_ref": "RAG and its alternatives",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0589-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO measures help defend against prompt injection in retrieved content? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Treat retrieved text as data and never as instructions in the prompt structure",
+     "correct": true,
+     "rationale": "Correct: separating untrusted content from instructions is the core defence."
+    },
+    {
+     "key": "B",
+     "text": "Restrict tools and require approval for consequential actions",
+     "correct": true,
+     "rationale": "Correct: least privilege limits what an injected instruction can do."
+    },
+    {
+     "key": "C",
+     "text": "Increase chunk size so instructions are diluted",
+     "correct": false,
+     "rationale": "Chunk size is not a security control."
+    },
+    {
+     "key": "D",
+     "text": "Remove citations from answers",
+     "correct": false,
+     "rationale": "Citations help users verify; removing them does not reduce injection."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: separating untrusted content from instructions is the core defence.",
+   "outcome_refs": [
+    "MST-0589-D02.01"
+   ],
+   "domain_ref": "Ingestion and parsing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0589-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Users search for exact product codes like 'XR-4471' and vector search returns similar but wrong items. What is the best improvement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add keyword (lexical) retrieval in a hybrid search",
+     "correct": true,
+     "rationale": "Correct: lexical matching handles exact identifiers that embeddings blur."
+    },
+    {
+     "key": "B",
+     "text": "Lower the temperature",
+     "correct": false,
+     "rationale": "Temperature affects generation, not retrieval."
+    },
+    {
+     "key": "C",
+     "text": "Use larger chunks",
+     "correct": false,
+     "rationale": "Chunk size does not fix exact-match recall."
+    },
+    {
+     "key": "D",
+     "text": "Remove metadata",
+     "correct": false,
+     "rationale": "Metadata helps filtering."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: lexical matching handles exact identifiers that embeddings blur.",
+   "outcome_refs": [
+    "MST-0589-D03.01"
+   ],
+   "domain_ref": "Chunking, embeddings and metadata",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

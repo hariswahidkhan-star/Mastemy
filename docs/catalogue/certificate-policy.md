@@ -1,19 +1,32 @@
-# Certificate & Disclaimer Policy (static)
+# Certificate and Disclaimer Policy (static)
+
+Implements master prompt sections 3 and 10. Enforced per row by `validate_catalogue.py` (`certificate_type`, `certificate_wording`, `completion_rule_id`, `credential_disclaimer_id`).
 
 ## What Mastemy issues
-- **Completion certificates only** (`mastemy-completion-certificate`). A certificate records that the learner completed the course's lessons and reached the course's assessment threshold on Mastemy.
-- A Mastemy certificate is **not** an official credential, licence, exam result or CPD/CPE award from any awarding body. It does not exempt anyone from any exam.
+- **Mastemy Certificate of Completion** only (`certificate_type = mastemy-certificate-of-completion`), for every skills course and, labelled as such, for preparation courses.
+- Skills wording: `Mastemy Certificate of Completion — <exact course title>` (for example "Mastemy Certificate of Completion — AI in Excel for Financial Analysis").
+- Preparation-course wording (exact): "Completion of independent preparation course; does not award the external professional certification or license."
+- Mastemy never issues a Microsoft Certified, CFA, CPA, ACCA, NCLEX, IELTS or any other third-party credential, licence, CPE/CPD/PDU, contact hours or academic credit. No partnership, accreditation or authorised-training relationship exists; none may be implied.
 
-## DISC-CERTPREP-01 (certification-prep courses)
-"This is an independent exam-preparation course created by Mastemy. Mastemy is not affiliated with, endorsed by, sponsored by or approved by [awarding body]. Passing Mastemy assessments does not guarantee passing the official exam. Exam details change; always check the awarding body's official website."
+## Completion rule `CR-DEFAULT-75-80` (configurable by administrators)
+1. Complete every required module and required assessment.
+2. Score at least **75%** on each module check.
+3. Score at least **80%** on the final assessment (protected item pool).
+4. Targeted review is assigned when a threshold is missed; retakes draw alternate items.
+5. Opening a video or playing a playlist does not count as completion.
 
-## DISC-GENERAL-01 (skills/foundation courses)
-"This Mastemy course certificate confirms course completion on Mastemy. It is not a professional qualification or licence."
+These are Mastemy learning thresholds, not the pass mark of any external examination, and platform scores do not predict scaled external scores.
+
+## Certificate content
+Learner name; exact course title; Mastemy as issuer; completion date; course version; planned learning hours with their definition ("planned required minutes, 80% instruction and 20% assessment and answer review; not issuer-eligible training hours"); unique certificate ID; verification route. A QR code may point only to a real, configured Mastemy verification endpoint. Issuance and revocation are stored as auditable records. Learners control whether their full name and results are publicly visible; scores are not shown on public verification by default.
+
+## Disclaimers
+- **DISC-CERTPREP-02** (independent certification-exam preparation): "Independent preparation course created by Mastemy. Mastemy is not affiliated with, endorsed by, sponsored by or approved by [issuer]. Completing it does not award the external certification and does not guarantee an exam pass. Exam details change; check the issuer's official site."
+- **DISC-REGULATED-02** (licensing, healthcare, legal, tax and other regulated examinations): DISC-CERTPREP-02 plus "This course is knowledge preparation only. It is not clinical, legal or professional training, does not satisfy any education, supervision or experience requirement, and does not replace licensed professional judgement."
+- **DISC-SKILLS-02** (skills courses): "This Mastemy certificate confirms completion of a Mastemy course. It is not a professional qualification, licence or vendor certification."
 
 ## Trademark notice
-All exam names, certification names and logos are trademarks of their respective owners (for example Microsoft, Amazon Web Services, Google, ACCA, AICPA & CIMA, CFA Institute, PMI, ISACA, ISC2, CompTIA, Cisco, NCSBN, IELTS partners, ETS, Pearson). They are used only to identify the exam a course prepares for. Mastemy does not use vendor logos, badges or trade dress on certificates, thumbnails or videos.
+Exam, product and certification names belong to their owners and identify the exam or product taught. No vendor logos, badges or trade dress on certificates, thumbnails or videos.
 
-## Prohibited
-- Wording such as "official", "authorised training partner", "accredited by" or "endorsed by", unless a written agreement exists and is recorded in the source register. **No such agreements exist today.**
-- Claims of guaranteed pass rates.
-- Healthcare and licensure courses (NCLEX, USMLE and similar) must not be presented as clinical training or as meeting any regulatory education requirement.
+## Prohibited claims
+"Official", "authorised training partner", "accredited", "endorsed"; guaranteed pass rates; salary or employment outcomes; fabricated reviews, enrolment counts or instructor credentials.

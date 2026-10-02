@@ -1,0 +1,165 @@
+{
+ "course_id": "MST-0201",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 824,
+  "lesson_check_items": 114,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 65,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0201-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Under the shared responsibility model, which task belongs to AWS for Amazon EC2?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Patching the guest operating system",
+     "correct": false,
+     "rationale": "On EC2 (IaaS) the customer patches the guest OS."
+    },
+    {
+     "key": "B",
+     "text": "Configuring security groups",
+     "correct": false,
+     "rationale": "Security group rules are set by the customer."
+    },
+    {
+     "key": "C",
+     "text": "Securing the physical hosts and the virtualisation layer",
+     "correct": true,
+     "rationale": "Correct: AWS is responsible for security OF the cloud: hardware, facilities and the hypervisor."
+    },
+    {
+     "key": "D",
+     "text": "Encrypting application data",
+     "correct": false,
+     "rationale": "The customer chooses and manages data encryption."
+    }
+   ],
+   "correct_keys": [
+    "C"
+   ],
+   "explanation": "Correct: AWS is responsible for security OF the cloud: hardware, facilities and the hypervisor.",
+   "outcome_refs": [
+    "MST-0201-D01.01"
+   ],
+   "domain_ref": "Cloud Concepts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0201-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which pricing model gives the biggest discount for steady, predictable usage in return for a 1- or 3-year commitment?",
+   "options": [
+    {
+     "key": "A",
+     "text": "On-Demand",
+     "correct": false,
+     "rationale": "On-Demand has no commitment and no discount."
+    },
+    {
+     "key": "B",
+     "text": "Savings Plans / Reserved Instances",
+     "correct": true,
+     "rationale": "Correct: commitment-based models trade a term commitment for lower rates."
+    },
+    {
+     "key": "C",
+     "text": "Spot Instances",
+     "correct": false,
+     "rationale": "Spot gives deep discounts but can be interrupted, so it does not suit steady predictable load."
+    },
+    {
+     "key": "D",
+     "text": "Dedicated Hosts on-demand",
+     "correct": false,
+     "rationale": "Dedicated Hosts cost more and are used for licensing or compliance reasons."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: commitment-based models trade a term commitment for lower rates.",
+   "outcome_refs": [
+    "MST-0201-D02.01"
+   ],
+   "domain_ref": "Security and Compliance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0201-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which AWS service records API calls made in an account, for auditing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Amazon CloudWatch",
+     "correct": false,
+     "rationale": "CloudWatch handles metrics, logs and alarms. API audit trails come from CloudTrail."
+    },
+    {
+     "key": "B",
+     "text": "AWS CloudTrail",
+     "correct": true,
+     "rationale": "Correct: CloudTrail records API activity for governance and audit."
+    },
+    {
+     "key": "C",
+     "text": "AWS Config",
+     "correct": false,
+     "rationale": "Config records resource configuration state, not API calls."
+    },
+    {
+     "key": "D",
+     "text": "Amazon Inspector",
+     "correct": false,
+     "rationale": "Inspector scans for vulnerabilities."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: CloudTrail records API activity for governance and audit.",
+   "outcome_refs": [
+    "MST-0201-D03.01"
+   ],
+   "domain_ref": "Cloud Technology and Services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

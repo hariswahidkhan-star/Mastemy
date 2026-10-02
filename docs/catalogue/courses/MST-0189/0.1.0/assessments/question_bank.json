@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0189",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 456,
+  "lesson_check_items": 54,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0189-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A finance team wants answers grounded in its own policy documents without retraining a model. Which approach fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieval-augmented generation over the policy documents",
+     "correct": true,
+     "rationale": "Correct: RAG grounds responses in retrieved organisational content without changing model weights."
+    },
+    {
+     "key": "B",
+     "text": "Fine-tune a model every time a policy changes",
+     "correct": false,
+     "rationale": "Fine-tuning is costly and slow for frequently changing documents and does not provide citations by itself."
+    },
+    {
+     "key": "C",
+     "text": "Raise the model temperature",
+     "correct": false,
+     "rationale": "Temperature affects randomness, not grounding."
+    },
+    {
+     "key": "D",
+     "text": "Use a larger context window and paste nothing",
+     "correct": false,
+     "rationale": "Context size without the documents provides no grounding."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RAG grounds responses in retrieved organisational content without changing model weights.",
+   "outcome_refs": [
+    "MST-0189-D01.01"
+   ],
+   "domain_ref": "Identify the business value of generative AI solutions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0189-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are cost drivers you should include when estimating generative AI usage costs? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Number of input and output tokens processed",
+     "correct": true,
+     "rationale": "Correct: the outline names tokens as a cost driver."
+    },
+    {
+     "key": "B",
+     "text": "Volume of requests and chosen model",
+     "correct": true,
+     "rationale": "Correct: request volume multiplied by per-model token pricing drives spend."
+    },
+    {
+     "key": "C",
+     "text": "The number of slides in the business case",
+     "correct": false,
+     "rationale": "Presentation length does not affect AI usage cost."
+    },
+    {
+     "key": "D",
+     "text": "The colour theme of the Copilot interface",
+     "correct": false,
+     "rationale": "UI settings have no cost effect."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the outline names tokens as a cost driver.",
+   "outcome_refs": [
+    "MST-0189-D02.01"
+   ],
+   "domain_ref": "Identify benefits, capabilities, and opportunities for Microsoft's AI apps and services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0189-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A leader wants a body that sets AI priorities, oversight and cross-functional alignment. What should be established?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An AI council",
+     "correct": true,
+     "rationale": "Correct: establishing an AI council is an explicit objective in the adoption domain."
+    },
+    {
+     "key": "B",
+     "text": "A single power user",
+     "correct": false,
+     "rationale": "One person cannot provide cross-functional oversight."
+    },
+    {
+     "key": "C",
+     "text": "A DLP policy only",
+     "correct": false,
+     "rationale": "DLP is a control, not a governance body."
+    },
+    {
+     "key": "D",
+     "text": "A larger Copilot licence pool",
+     "correct": false,
+     "rationale": "Licences do not create governance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: establishing an AI council is an explicit objective in the adoption domain.",
+   "outcome_refs": [
+    "MST-0189-D03.01"
+   ],
+   "domain_ref": "Identify an implementation and adoption strategy for Microsoft's AI apps and services",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

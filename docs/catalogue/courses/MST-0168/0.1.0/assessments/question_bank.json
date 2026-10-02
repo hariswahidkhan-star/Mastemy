@@ -1,0 +1,165 @@
+{
+ "course_id": "MST-0168",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 520,
+  "lesson_check_items": 66,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0168-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A JSON document with nested, optional fields is an example of which kind of data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Structured",
+     "correct": false,
+     "rationale": "Structured data follows a fixed tabular schema."
+    },
+    {
+     "key": "B",
+     "text": "Semi-structured",
+     "correct": true,
+     "rationale": "Correct: JSON carries its own flexible structure through keys and nesting."
+    },
+    {
+     "key": "C",
+     "text": "Unstructured",
+     "correct": false,
+     "rationale": "Unstructured data, such as images or free text, has no organising tags."
+    },
+    {
+     "key": "D",
+     "text": "Normalised",
+     "correct": false,
+     "rationale": "Normalisation is a relational design process, not a type of data."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: JSON carries its own flexible structure through keys and nesting.",
+   "outcome_refs": [
+    "MST-0168-D01.01"
+   ],
+   "domain_ref": "Describe core data concepts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0168-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do we normalise a relational database?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To reduce data duplication and update anomalies",
+     "correct": true,
+     "rationale": "Correct: normalisation splits data into related tables so each fact is stored once."
+    },
+    {
+     "key": "B",
+     "text": "To make all queries faster",
+     "correct": false,
+     "rationale": "Normalisation can slow reads by adding joins."
+    },
+    {
+     "key": "C",
+     "text": "To store images efficiently",
+     "correct": false,
+     "rationale": "Normalisation has nothing to do with binary storage."
+    },
+    {
+     "key": "D",
+     "text": "To allow schema-less writes",
+     "correct": false,
+     "rationale": "Schema-less writes are a feature of NoSQL stores."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: normalisation splits data into related tables so each fact is stored once.",
+   "outcome_refs": [
+    "MST-0168-D02.01"
+   ],
+   "domain_ref": "Identify considerations for relational data on Azure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0168-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which service is a globally distributed, multi-model NoSQL database with several APIs?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure SQL Managed Instance",
+     "correct": false,
+     "rationale": "This is a relational SQL Server-compatible service."
+    },
+    {
+     "key": "B",
+     "text": "Azure Table storage",
+     "correct": false,
+     "rationale": "Table storage is a simple key/attribute store without the multiple APIs."
+    },
+    {
+     "key": "C",
+     "text": "Azure Cosmos DB",
+     "correct": true,
+     "rationale": "Correct: Cosmos DB offers several APIs and global distribution."
+    },
+    {
+     "key": "D",
+     "text": "Azure Files",
+     "correct": false,
+     "rationale": "Azure Files provides SMB/NFS file shares."
+    }
+   ],
+   "correct_keys": [
+    "C"
+   ],
+   "explanation": "Correct: Cosmos DB offers several APIs and global distribution.",
+   "outcome_refs": [
+    "MST-0168-D03.01"
+   ],
+   "domain_ref": "Describe considerations for working with non-relational data on Azure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

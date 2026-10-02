@@ -1,0 +1,165 @@
+{
+ "course_id": "MST-1413",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 70,
+  "module_check_items": 104,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1413-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI loan-approval system gives very different approval rates to applicants with otherwise similar profiles but different genders. Which responsible AI principle is most directly affected?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fairness",
+     "correct": true,
+     "rationale": "Correct: fairness means AI systems treat similar people in similar ways."
+    },
+    {
+     "key": "B",
+     "text": "Transparency",
+     "correct": false,
+     "rationale": "Transparency is about explaining how the system works. The problem here is unequal outcomes."
+    },
+    {
+     "key": "C",
+     "text": "Reliability and safety",
+     "correct": false,
+     "rationale": "Reliability is about performing consistently under expected conditions, not about bias between groups."
+    },
+    {
+     "key": "D",
+     "text": "Inclusiveness",
+     "correct": false,
+     "rationale": "Inclusiveness is about designing for people of every ability. Fairness is the closer match."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fairness means AI systems treat similar people in similar ways.",
+   "outcome_refs": [
+    "MST-1413-D01.01"
+   ],
+   "domain_ref": "Identify AI concepts and capabilities",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1413-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to pull fields from scanned invoices, and also from recorded call audio, using one Foundry Tools capability. Which should you choose?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure Speech in Foundry Tools",
+     "correct": false,
+     "rationale": "Speech covers recognition and synthesis. It does not extract structured fields from documents."
+    },
+    {
+     "key": "B",
+     "text": "Azure Content Understanding in Foundry Tools",
+     "correct": true,
+     "rationale": "Correct: the skills outline lists Content Understanding for extraction from documents, images, audio and video."
+    },
+    {
+     "key": "C",
+     "text": "An image-generation model",
+     "correct": false,
+     "rationale": "Image-generation models create images. They do not extract fields."
+    },
+    {
+     "key": "D",
+     "text": "A text analysis sentiment feature",
+     "correct": false,
+     "rationale": "Sentiment analysis scores opinion. It does not extract invoice fields or handle audio."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: the skills outline lists Content Understanding for extraction from documents, images, audio and video.",
+   "outcome_refs": [
+    "MST-1413-D02.01"
+   ],
+   "domain_ref": "Implement AI solutions by using Microsoft Foundry",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1413-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which change is MOST likely to make a deployed generative model's answers more deterministic?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Increasing temperature",
+     "correct": false,
+     "rationale": "A higher temperature increases randomness."
+    },
+    {
+     "key": "B",
+     "text": "Lowering temperature",
+     "correct": true,
+     "rationale": "Correct: a lower temperature concentrates sampling on the most likely tokens, so output is more consistent."
+    },
+    {
+     "key": "C",
+     "text": "Adding more sample images to the prompt",
+     "correct": false,
+     "rationale": "Image inputs do not control sampling randomness."
+    },
+    {
+     "key": "D",
+     "text": "Switching to a speech model",
+     "correct": false,
+     "rationale": "Changing the modality does not address determinism."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: a lower temperature concentrates sampling on the most likely tokens, so output is more consistent.",
+   "outcome_refs": [
+    "MST-1413-D02.01"
+   ],
+   "domain_ref": "Implement AI solutions by using Microsoft Foundry",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

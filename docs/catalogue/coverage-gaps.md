@@ -1,0 +1,33 @@
+# Coverage-Gap Register
+
+Generated. Machine-readable copy: `research/coverage_gaps.csv`. This finite catalogue does not include every credential in the world; this register lists known gaps and unverified areas.
+
+| ID | Area | Gap | Evidence | Proposed action | Status | Release-blocking |
+|---|---|---|---|---|---|---|
+| GAP-001 | Section 5 named structure | ACCA papers BT..AAA: 15/15 separate courses present | automated title check | none | closed | no |
+| GAP-002 | Section 5 named structure | US CPA AUD/FAR/REG/BAR/ISC/TCP: 6/6 separate courses present | automated title check | none | closed | no |
+| GAP-003 | Section 5 named structure | CIA Parts 1-3: 3/3 separate courses present | automated title check | none | closed | no |
+| GAP-004 | Section 5 named structure | CFA Levels I-III: 3/3 separate courses present | automated title check | none | closed | no |
+| GAP-005 | Section 5 named structure | US CMA Parts 1-2: 2/2 separate courses present | automated title check | none | closed | no |
+| GAP-006 | Section 5 named structure | CISA: 1/1 separate courses present | automated title check | none | closed | no |
+| GAP-007 | Section 5 named structure | PMP: 1/1 separate courses present | automated title check | none | closed | no |
+| GAP-008 | Section 5 named structure | NCLEX-RN and NCLEX-PN: 2/2 separate courses present | automated title check | none | closed | no |
+| GAP-009 | Section 5 named structure | IELTS Academic and General Training (four-skill): 2/2 separate courses present | automated title check | none | closed | no |
+| GAP-010 | Section 12 programming languages | missing: none | automated title check | none | closed | no |
+| GAP-011 | ACCA | Redesigned ACCA qualification from 2027 has no separate version mapping; current papers must not be relabelled | accaglobal.com blocked (EGRESS_BLOCKED) this run | create future-version exam records once the official timeline and syllabi are readable | open | yes |
+| GAP-012 | US CPA | Forthcoming blueprint versions not recorded; examination-year routing not configured | aicpa-cima.com blocked | record blueprint per examination year | open | yes |
+| GAP-013 | CFA Level III | Single course row MST-0053 must carry the common core plus three selectable pathways (Portfolio Management, Private Markets, Private Wealth) as separate pathway modules | pathway names from master prompt; cfainstitute.org blocked | model pathways as selectable module sets in the course version | open | no |
+| GAP-014 | CIA | Current syllabus and language-transition rules not verified | theiia.org blocked | verify before blueprint | open | yes |
+| GAP-015 | PMP | July 2026 exam content outline only known from secondary snippets | pmi.org blocked | re-verify MST-0121 spec | open | yes |
+| GAP-016 | NCLEX | 2026 RN/PN test plans not read | nclex.com blocked | verify before blueprint | open | yes |
+| GAP-017 | ISACA | Credential registry not re-checked; newer AI credentials may be missing or renamed | isaca.org blocked | check registry | open | no |
+| GAP-018 | Microsoft | AI-200, AI-300 and AB-900 courses (v1 additions) rely on secondary successor reports; study guides not fetched this run | SRC-MS-RETIRE-2026 (secondary) | fetch study guides via Microsoft Learn | open | no |
+| GAP-019 | Microsoft | Microsoft Applied Skills credentials are not represented as courses (design decision: they are lab-assessed and several retired in 2026) | SRC-MS-RETIRE-OFFICIAL lists Applied Skills retirements | decide whether to add knowledge-prep modules | open | no |
+| GAP-020 | AWS | AI Business Strategist (beta) and Advanced Networking retirement status unverified | aws.amazon.com/docs.aws.amazon.com blocked | verify before blueprint | open | no |
+| GAP-021 | Google Cloud | Professional Agentic Architect transition status unverified | services.google.com blocked | verify | open | no |
+| GAP-022 | CompTIA | Security+ SY0-701 retirement reported 2027-06-11 (secondary); successor SY0-801 not in catalogue | SRC-COMPTIA-SECPLUS (secondary) | add successor row once objectives are published | open | no |
+| GAP-023 | ITIL | v1 ITIL 4 specialist modules kept as additions flagged needs-version-check against ITIL Version 5 | peoplecert.org not checked | verify and retire or merge | open | no |
+| GAP-024 | Localisation | Arabic, Spanish, French, Chinese, Russian and Korean language versions not started; translations are versions, not new courses | master prompt section 14 | plan after English masters pass review | open | no |
+| GAP-025 | Categories | v1 health-science skills courses (medical terminology etc.) placed in category 32 for want of a skills category | category mapping rule | confirm category fit | open | no |
+| GAP-026 | Dedup method | Semantic deduplication is title-based (IDF-weighted token similarity plus manual decisions); outline-level overlap can only be confirmed once blueprints exist | dedup-report.md | repeat dedup at blueprint stage | open | no |
+| GAP-027 | Sources | 153 Appendix B anchors are recorded as user-supplied and not re-verified | research/source_register.csv | verify each anchor when its course reaches source verification | open | no |

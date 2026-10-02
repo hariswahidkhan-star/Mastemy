@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0171",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 732,
+  "lesson_check_items": 98,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 50,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0171-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A semantic model over a large lakehouse must avoid importing data while giving near-import performance. Which storage mode is designed for this in Fabric?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Direct Lake",
+     "correct": true,
+     "rationale": "Correct: Direct Lake reads Delta tables in OneLake without a full import; its fallback behaviour must be configured."
+    },
+    {
+     "key": "B",
+     "text": "Import with daily refresh",
+     "correct": false,
+     "rationale": "Import copies data into the model."
+    },
+    {
+     "key": "C",
+     "text": "Live connection to Excel",
+     "correct": false,
+     "rationale": "Not a Fabric lakehouse storage mode."
+    },
+    {
+     "key": "D",
+     "text": "Dual mode for every table",
+     "correct": false,
+     "rationale": "Dual is for composite models and does not avoid import."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Direct Lake reads Delta tables in OneLake without a full import; its fallback behaviour must be configured.",
+   "outcome_refs": [
+    "MST-0171-D01.01"
+   ],
+   "domain_ref": "Maintain a data analytics solution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0171-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO features support the analytics development lifecycle in Fabric? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Version control for a workspace",
+     "correct": true,
+     "rationale": "Correct: listed under maintaining the development lifecycle."
+    },
+    {
+     "key": "B",
+     "text": "Deployment pipelines",
+     "correct": true,
+     "rationale": "Correct: listed under maintaining the development lifecycle."
+    },
+    {
+     "key": "C",
+     "text": "Sensitivity labels",
+     "correct": false,
+     "rationale": "Labels are under security and governance, not lifecycle."
+    },
+    {
+     "key": "D",
+     "text": "Row-level security",
+     "correct": false,
+     "rationale": "RLS is a security control."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: listed under maintaining the development lifecycle.",
+   "outcome_refs": [
+    "MST-0171-D02.01"
+   ],
+   "domain_ref": "Prepare data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0171-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Analysts query streaming telemetry stored in an Eventhouse. Which language is native to that store?",
+   "options": [
+    {
+     "key": "A",
+     "text": "KQL",
+     "correct": true,
+     "rationale": "Correct: the outline lists KQL for querying, used with Eventhouse/KQL databases."
+    },
+    {
+     "key": "B",
+     "text": "DAX only",
+     "correct": false,
+     "rationale": "DAX queries semantic models."
+    },
+    {
+     "key": "C",
+     "text": "MDX",
+     "correct": false,
+     "rationale": "Not listed in the outline."
+    },
+    {
+     "key": "D",
+     "text": "Python only",
+     "correct": false,
+     "rationale": "Notebooks can use Python, but KQL is the native query language there."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the outline lists KQL for querying, used with Eventhouse/KQL databases.",
+   "outcome_refs": [
+    "MST-0171-D03.01"
+   ],
+   "domain_ref": "Implement and manage semantic models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

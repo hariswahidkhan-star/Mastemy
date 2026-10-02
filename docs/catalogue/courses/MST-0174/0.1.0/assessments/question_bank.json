@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0174",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 734,
+  "lesson_check_items": 99,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 50,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0174-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need a measure returning sales for the same period last year. Which DAX approach is appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "CALCULATE([Sales], SAMEPERIODLASTYEAR('Date'[Date])) with a marked date table",
+     "correct": true,
+     "rationale": "Correct: time-intelligence functions shift the date filter context and need a proper date table."
+    },
+    {
+     "key": "B",
+     "text": "A calculated column that subtracts 365 from each date",
+     "correct": false,
+     "rationale": "A column does not respond to report filter context and mishandles leap years."
+    },
+    {
+     "key": "C",
+     "text": "SUM([Sales]) * 0.9",
+     "correct": false,
+     "rationale": "That is an arbitrary adjustment, not last year's value."
+    },
+    {
+     "key": "D",
+     "text": "FILTER the fact table to remove this year",
+     "correct": false,
+     "rationale": "Removing rows does not shift the period to last year."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: time-intelligence functions shift the date filter context and need a proper date table.",
+   "outcome_refs": [
+    "MST-0174-D01.01"
+   ],
+   "domain_ref": "Prepare the data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0174-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions improve the performance of a slow report? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Remove unused columns and rows from the model",
+     "correct": true,
+     "rationale": "Correct: reducing model size is named under optimising model performance."
+    },
+    {
+     "key": "B",
+     "text": "Use Performance Analyzer to find slow visuals and measures",
+     "correct": true,
+     "rationale": "Correct: Performance Analyzer is the listed diagnostic tool."
+    },
+    {
+     "key": "C",
+     "text": "Add more visuals to each page",
+     "correct": false,
+     "rationale": "More visuals usually add more queries."
+    },
+    {
+     "key": "D",
+     "text": "Convert every measure to a calculated column",
+     "correct": false,
+     "rationale": "Columns increase model size and do not respond to filters."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reducing model size is named under optimising model performance.",
+   "outcome_refs": [
+    "MST-0174-D02.01"
+   ],
+   "domain_ref": "Model the data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0174-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Regional managers must see only their own region's rows in a published report. What do you implement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Row-level security roles with group membership",
+     "correct": true,
+     "rationale": "Correct: RLS restricts rows per role; group membership assigns users."
+    },
+    {
+     "key": "B",
+     "text": "A separate workspace per manager with copies of the report",
+     "correct": false,
+     "rationale": "Copies multiply maintenance and are not a security model."
+    },
+    {
+     "key": "C",
+     "text": "A slicer set to their region",
+     "correct": false,
+     "rationale": "Users can change slicers; it is not security."
+    },
+    {
+     "key": "D",
+     "text": "Sensitivity labels",
+     "correct": false,
+     "rationale": "Labels classify and protect content but do not filter rows."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RLS restricts rows per role; group membership assigns users.",
+   "outcome_refs": [
+    "MST-0174-D03.01"
+   ],
+   "domain_ref": "Visualize and analyze the data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

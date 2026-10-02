@@ -65,6 +65,41 @@ SOURCES = [
      "Snippets: L 30 min/40 q, R 60 min/40 q, W 60 min/2 tasks, S 11-14 min; total ~2h45. NOT verified. Writing/Speaking are not MCQ-assessable."),
     ("SRC-EGRESS", "Session", "n/a", "Mastemy", "process note", "n/a", SESSION_DATE,
      "WebFetch to docs.aws.amazon.com, comptia.org, accaglobal.com, pmi.org, services.google.com, techcommunity.microsoft.com and learn.microsoft.com (WebFetch) returned EGRESS_BLOCKED. Only the Microsoft Learn MCP returned official pages."),
+    ("SRC-MS-RETIRE-OFFICIAL", "Microsoft", "https://learn.microsoft.com/en-us/credentials/support/retired-certification-exams",
+     "Microsoft", "official", "official-fetch", SESSION_DATE,
+     "Official retirement page: MS-102 scheduled to retire 2026-11-30. Recently retired: MB-910/MB-920 2025-12-31; MS-900 2026-03-31; DP-100 2026-06-01; AI-102, AI-900, MB-240, MB-335, MB-700, PL-500, PL-600 2026-06-30; AZ-204, MB-280 2026-07-31; AZ-500, PL-200 2026-08-31; AZ-800/AZ-801 2026-09-30."),
+    ("SRC-MS-AB730", "Microsoft", "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ab-730",
+     "Microsoft", "official", "official-fetch", SESSION_DATE,
+     "AB-730 skills measured as of 2026-10-20: GenAI fundamentals 25-30%; prompts and chats 20-25%; business content and collaboration 20-25%; agents (prebuilt agents, Copilot Cowork) 20-25%. Pass 700. Prior outline not captured."),
+    ("SRC-MS-AB731", "Microsoft", "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ab-731",
+     "Microsoft", "official", "official-fetch", SESSION_DATE,
+     "AB-731 skills measured as of 2026-07-22: business value of GenAI 35-40%; Microsoft AI apps and services 35-40%; implementation and adoption strategy 20-25%."),
+    ("SRC-MS-GH300", "Microsoft", "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-300",
+     "Microsoft", "official", "official-fetch", SESSION_DATE,
+     "GH-300 skills measured as of 2026-08-07: responsible use 15-20%; features 25-30%; data and architecture 10-15%; prompt engineering 10-15%; productivity 10-15%; privacy/exclusions 10-15%. ANOMALY: 'skills at a glance' lists an extra 'GitHub Copilot features (25-30%)' line with no detail section."),
+    ("SRC-MS-PL300", "Microsoft", "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-300",
+     "Microsoft", "official", "official-fetch", SESSION_DATE,
+     "PL-300 skills measured as of 2026-04-20: prepare 25-30%; model 25-30%; visualize and analyze 25-30%; manage and secure 15-20%. Pass 700."),
+    ("SRC-MS-DP600", "Microsoft", "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/dp-600",
+     "Microsoft", "official", "official-fetch", SESSION_DATE,
+     "DP-600 skills measured as of 2026-10-19: maintain 25-30%; prepare data 45-50%; semantic models 25-30%."),
+    ("SRC-MS-AI103", "Microsoft", "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103",
+     "Microsoft", "official", "official-fetch", SESSION_DATE,
+     "AI-103 (Developing AI Apps and Agents on Azure) skills measured as of 2026-04-16: plan/manage 25-30%; GenAI and agentic 30-35%; vision 10-15%; text 10-15%; information extraction 10-15%."),
+    ("SRC-MS-COPILOT-OVERVIEW", "Microsoft", "https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-overview",
+     "Microsoft", "official", "official-search-excerpt", SESSION_DATE,
+     "Copilot (Basic) without add-on licence has limited in-app capability; Excel in-app: analyze data, generate insights, create formulas and visuals. Licensing page lists Copilot in Excel for E3/E5 + add-on and E7. Excerpts via Microsoft Learn MCP search, not full-page fetch."),
+    ("SRC-MS-EFCORE-PROVIDERS", "Microsoft", "https://learn.microsoft.com/ef/core/providers/",
+     "Microsoft", "official", "official-search-excerpt", SESSION_DATE,
+     "EF Core providers table: Pomelo.EntityFrameworkCore.MySql (MySQL, MariaDB; Pomelo Foundation) and MySql.EntityFrameworkCore (Oracle) listed for EF Core 8, 9. In-memory provider not designed for production use or necessarily for testing."),
+    ("SRC-CLAUDE-CODE-FEATURES", "Anthropic", "https://code.claude.com/docs/en/features-overview",
+     "Anthropic", "official", "official-fetch", SESSION_DATE,
+     "'Extend Claude Code': CLAUDE.md, output styles, skills, code intelligence, MCP, subagents, dynamic workflows, hooks, plugins; hooks enforce while CLAUDE.md/skills are requests; keep CLAUDE.md under 200 lines."),
+    ("SRC-MASTER-PROMPT-S11", "Mastemy", "user-supplied master prompt section 11",
+     "Mastemy", "internal requirement", "n/a", SESSION_DATE,
+     "RAG scope list used as Mastemy internal outcome basis (no issuer syllabus exists)."),
+    ("SRC-EGRESS-2", "Session", "n/a", "Mastemy", "process note", "n/a", SESSION_DATE,
+     "This run: WebFetch to www.isaca.org, www.accaglobal.com, www.nclex.com, www.theiia.org, cursor.com, www.pmi.org, www.aicpa-cima.com and www.cfainstitute.org returned EGRESS_BLOCKED. code.claude.com and the Microsoft Learn MCP worked."),
 ]
 
 # Families whose syllabus was read from an official page this session.
@@ -75,6 +110,12 @@ OFFICIALLY_VERIFIED_CODES = {
     "AZ-104": "SRC-MS-AZ104",
     "DP-900": "SRC-MS-DP900",
     "PL-900": "SRC-MS-PL900",
+    "AB-730": "SRC-MS-AB730",
+    "AB-731": "SRC-MS-AB731",
+    "GH-300": "SRC-MS-GH300",
+    "PL-300": "SRC-MS-PL300",
+    "DP-600": "SRC-MS-DP600",
+    "AI-103": "SRC-MS-AI103",
 }
 
 # Codes with only secondary evidence this session (status stays unverified).
@@ -91,18 +132,34 @@ SECONDARY_CODES = {
     "BAR": "SRC-AICPA-CPA", "ISC": "SRC-AICPA-CPA", "TCP": "SRC-AICPA-CPA",
     "FR": "SRC-ACCA-FR",
     "IELTS-AC": "SRC-IELTS", "IELTS-GT": "SRC-IELTS",
-    "AB-900": "SRC-MS-RETIRE-2026", "AI-103": "SRC-MS-RETIRE-2026",
+    "AB-900": "SRC-MS-RETIRE-2026",
     "AI-200": "SRC-MS-RETIRE-2026", "AI-300": "SRC-MS-RETIRE-2026",
 }
 
 # Retired / reported-retiring exams deliberately NOT given courses.
 RETIRED_EXCLUDED = [
-    ("AI-900", "Microsoft", "retired 2026-06-30 (official study guide banner)", "SRC-MS-AI900", "AI-901"),
-    ("MS-900", "Microsoft", "reported retired 2026-03-31 (secondary)", "SRC-MS-RETIRE-2026", "AB-900"),
-    ("AI-102", "Microsoft", "reported retired 2026-06-30 (secondary)", "SRC-MS-RETIRE-2026", "AI-103"),
-    ("AZ-204", "Microsoft", "reported retired 2026-07-31 (secondary)", "SRC-MS-RETIRE-2026", "AI-200"),
-    ("DP-100", "Microsoft", "reported retired 2026-06-01 (secondary)", "SRC-MS-RETIRE-2026", "AI-300"),
-    ("AZ-500", "Microsoft", "reported retiring in 2026 (secondary)", "SRC-MS-RETIRE-2026", "unknown"),
-    ("AZ-800", "Microsoft", "reported retiring in 2026 (secondary)", "SRC-MS-RETIRE-2026", "unknown"),
-    ("AZ-801", "Microsoft", "reported retiring in 2026 (secondary)", "SRC-MS-RETIRE-2026", "unknown"),
+    # (exam_code, vendor, status, source_id, successor)
+    ("AI-900", "Microsoft", "retired 2026-06-30 (official)", "SRC-MS-RETIRE-OFFICIAL", "AI-901"),
+    ("MS-900", "Microsoft", "retired 2026-03-31 (official)", "SRC-MS-RETIRE-OFFICIAL", "AB-900 (successor reported by secondary source only)"),
+    ("AI-102", "Microsoft", "retired 2026-06-30 (official)", "SRC-MS-RETIRE-OFFICIAL", "AI-103 (successor reported by secondary source only)"),
+    ("AZ-204", "Microsoft", "retired 2026-07-31 (official)", "SRC-MS-RETIRE-OFFICIAL", "AI-200 (successor reported by secondary source only)"),
+    ("DP-100", "Microsoft", "retired 2026-06-01 (official)", "SRC-MS-RETIRE-OFFICIAL", "AI-300 (successor reported by secondary source only)"),
+    ("AZ-500", "Microsoft", "retired 2026-08-31 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("AZ-800", "Microsoft", "retired 2026-09-30 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("AZ-801", "Microsoft", "retired 2026-09-30 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("PL-200", "Microsoft", "retired 2026-08-31 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("PL-500", "Microsoft", "retired 2026-06-30 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("PL-600", "Microsoft", "retired 2026-06-30 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("MB-240", "Microsoft", "retired 2026-06-30 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("MB-280", "Microsoft", "retired 2026-07-31 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("MB-335", "Microsoft", "retired 2026-06-30 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("MB-700", "Microsoft", "retired 2026-06-30 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("MB-910", "Microsoft", "retired 2025-12-31 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
+    ("MB-920", "Microsoft", "retired 2025-12-31 (official)", "SRC-MS-RETIRE-OFFICIAL", "unknown"),
 ]
+
+# Scheduled retirements: rows stay in the backlog but are publish-blocked.
+RETIRING = {
+    "MS-102": ("retiring 2026-11-30 (official)", "SRC-MS-RETIRE-OFFICIAL"),
+    "SY0-701": ("English retirement reported 2027-06-11 (secondary only)", "SRC-COMPTIA-SECPLUS"),
+}

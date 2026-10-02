@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0649",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0649-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Copilot adds a 'Days overdue' column. What is the best first check?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recalculate a sample of rows by hand, including blank and future dates",
+     "correct": true,
+     "rationale": "Correct: independent recalculation and edge cases are the core verification method."
+    },
+    {
+     "key": "B",
+     "text": "Check the column has no #VALUE! errors",
+     "correct": false,
+     "rationale": "No errors does not mean correct results."
+    },
+    {
+     "key": "C",
+     "text": "Ask Copilot to confirm the column is right",
+     "correct": false,
+     "rationale": "Self-confirmation is not independent verification."
+    },
+    {
+     "key": "D",
+     "text": "Format the column as a number",
+     "correct": false,
+     "rationale": "Formatting does not validate logic."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: independent recalculation and edge cases are the core verification method.",
+   "outcome_refs": [
+    "MST-0649-D01.01"
+   ],
+   "domain_ref": "Access, licensing and data preparation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0649-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO data-preparation steps make Copilot analysis more reliable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Format the data as a table with one header row",
+     "correct": true,
+     "rationale": "Correct: Copilot works best on well-structured tables."
+    },
+    {
+     "key": "B",
+     "text": "Remove merged cells and blank header names",
+     "correct": true,
+     "rationale": "Correct: merged cells and unnamed columns create ambiguity."
+    },
+    {
+     "key": "C",
+     "text": "Add decorative colours to every other row",
+     "correct": false,
+     "rationale": "Formatting colour does not help analysis."
+    },
+    {
+     "key": "D",
+     "text": "Split the data across many small sheets",
+     "correct": false,
+     "rationale": "Fragmenting data makes analysis harder."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Copilot works best on well-structured tables.",
+   "outcome_refs": [
+    "MST-0649-D02.01"
+   ],
+   "domain_ref": "Analysis and insights",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0649-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user with Microsoft 365 but no Copilot add-on licence cannot see full Copilot chat in Excel. Based on Microsoft's licensing documentation, what is the likely reason?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Without the add-on, users get a more limited Copilot experience; full features require an eligible licence",
+     "correct": true,
+     "rationale": "Correct: Microsoft Learn describes a basic (standard-access) experience without the add-on and fuller features with it."
+    },
+    {
+     "key": "B",
+     "text": "Copilot must be installed as a COM add-in",
+     "correct": false,
+     "rationale": "Microsoft Q&A guidance notes Copilot cannot be manually added as an add-in."
+    },
+    {
+     "key": "C",
+     "text": "Copilot only works in CSV files",
+     "correct": false,
+     "rationale": "There is no such restriction."
+    },
+    {
+     "key": "D",
+     "text": "Copilot requires macros to be enabled",
+     "correct": false,
+     "rationale": "Macros are unrelated."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Microsoft Learn describes a basic (standard-access) experience without the add-on and fuller features with it.",
+   "outcome_refs": [
+    "MST-0649-D03.01"
+   ],
+   "domain_ref": "Formulas with Copilot",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

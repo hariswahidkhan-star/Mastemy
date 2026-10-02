@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0531",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0531-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A rule says 'never edit .env files' and it must hold every time. Where should it be enforced?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A hook that blocks the edit",
+     "correct": true,
+     "rationale": "Correct: the documentation says an instruction in CLAUDE.md or a skill is a request, while a PreToolUse hook is enforcement."
+    },
+    {
+     "key": "B",
+     "text": "A line in CLAUDE.md",
+     "correct": false,
+     "rationale": "CLAUDE.md instructions are followed by judgement, not guaranteed."
+    },
+    {
+     "key": "C",
+     "text": "An output style",
+     "correct": false,
+     "rationale": "Output styles set tone and format."
+    },
+    {
+     "key": "D",
+     "text": "A subagent",
+     "correct": false,
+     "rationale": "Subagents isolate context; they do not enforce rules."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the documentation says an instruction in CLAUDE.md or a skill is a request, while a PreToolUse hook is enforcement.",
+   "outcome_refs": [
+    "MST-0531-D01.01"
+   ],
+   "domain_ref": "How Claude Code works",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0531-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in CLAUDE.md according to the documentation's guidance? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Build and test commands",
+     "correct": true,
+     "rationale": "Correct: core conventions and build commands belong in CLAUDE.md."
+    },
+    {
+     "key": "B",
+     "text": "A full API reference manual",
+     "correct": false,
+     "rationale": "Reference material should move to skills, which load on demand."
+    },
+    {
+     "key": "C",
+     "text": "Project 'always do X' conventions",
+     "correct": true,
+     "rationale": "Correct: 'always do X' rules are the stated use."
+    },
+    {
+     "key": "D",
+     "text": "A one-off debugging transcript",
+     "correct": false,
+     "rationale": "Transient content does not belong in persistent context."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: core conventions and build commands belong in CLAUDE.md.",
+   "outcome_refs": [
+    "MST-0531-D02.01"
+   ],
+   "domain_ref": "Project context",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0531-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A research task will read dozens of files, but you only need the findings in the main conversation. What should you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A subagent",
+     "correct": true,
+     "rationale": "Correct: subagents run in isolated context and return a summary."
+    },
+    {
+     "key": "B",
+     "text": "A hook",
+     "correct": false,
+     "rationale": "Hooks run on lifecycle events, not research tasks."
+    },
+    {
+     "key": "C",
+     "text": "CLAUDE.md",
+     "correct": false,
+     "rationale": "CLAUDE.md is persistent context, not a worker."
+    },
+    {
+     "key": "D",
+     "text": "An output style",
+     "correct": false,
+     "rationale": "Output styles do not isolate context."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: subagents run in isolated context and return a summary.",
+   "outcome_refs": [
+    "MST-0531-D03.01"
+   ],
+   "domain_ref": "Extending Claude Code",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
