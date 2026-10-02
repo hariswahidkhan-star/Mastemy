@@ -42,28 +42,50 @@ Back up the database before applying any migration.
 Backups contain MySQL and the non-video resources directory only. There are no video files to back up; if any appear in the resources directory, treat it as an incident.
 
 ```bash
-docker compose exec db sh -c 'mysqldump --single-transaction --routines --triggers -u root -p"$MYSQL_ROOT_PASSWORD" mastemy' | gzip > mastemy-$(date +%F).sql.gz
-tar czf resources-$(date +%F).tar.gz --exclude='*.mp4' --exclude='*.mov' --exclude='*.mkv' --exclude='*.webm' <resources-dir>
+MYSQL_HOST=127.0.0.1 MYSQL_PASSWORD=... MYSQL_DATABASE=mastemy \
+RESOURCES_DIR=/path/to/appdata/resources BACKUP_DIR=/srv/backups RETENTION_DAYS=14 scripts/backup.sh
 ```
 
-Store copies off-host, encrypted. Test a restore at least monthly.
+`scripts/backup.sh` writes `mastemy-<UTC>/{db.sql.gz, resources.tar.gz, manifest.json, SHA256SUMS}`. It uses `mysqldump --single-transaction` (a consistent snapshot without locking InnoDB tables) and fails if the dump is incomplete. It excludes `.staging/` and any video/audio file by extension (the manifest counts exclusions and the script warns) and deletes sets older than `RETENTION_DAYS`. The password is passed via `MYSQL_PWD`, never argv. Copy each set off-host, encrypted, together with the DataProtection key directory (`/app/data/keys`). Run `scripts/restore-test.sh` at least monthly and after every migration (see `operations/runbook.md` §6 and `operations/restore-test-evidence.md`).
 
 ### Resource files backup
 
 - The resources directory is `Resources:RootPath` (default `data/resources` under the API content root). It is part of every backup, together with the MySQL dump, and must be on a persistent volume.
-- Blobs are content-addressed: `<root>/<sha[0..2]>/<sha[2..4]>/<sha256>`; the `ResourceFiles` table maps them to courses, lessons and display names. Back up the database and the directory from the same point in time; a blob without a row is harmless, a row without a blob returns 404 on download.
+- Blobs are content-addressed: `<root>/<course-id>/<sha[0..2]>/<sha[2..4]>/<sha256>` (legacy: `<root>/<sha[0..2]>/<sha[2..4]>/<sha256>`); the `ResourceFiles` table maps them to courses, lessons and display names. Back up the database and the directory from the same point in time; a blob without a row is harmless, a row without a blob returns 404 on download.
 - `<root>/.staging/` holds in-flight uploads only and need not be backed up.
-- Video and audio are never present: uploads are refused by extension and by magic bytes (`video_not_allowed`); lesson videos live on YouTube. The `--exclude` patterns above are a second line of defence; any video file found in this directory is an incident.
+- Video and audio are never present: uploads are refused by extension and by magic bytes (`video_not_allowed`); lesson videos live on YouTube. The extension guard in `scripts/backup.sh` is a second line of defence; any video file found in this directory is an incident.
 - Size is bounded by `Resources:PerCourseQuotaBytes` per course and `Resources:MaxFileBytes` per file.
 
 ## Restore
 
 ```bash
-gunzip -c mastemy-YYYY-MM-DD.sql.gz | docker compose exec -T db sh -c 'mysql -u root -p"$MYSQL_ROOT_PASSWORD" mastemy'
-tar xzf resources-YYYY-MM-DD.tar.gz -C <resources-dir>
+docker compose stop api
+MYSQL_PASSWORD=... RESTORE_DATABASE=mastemy RESTORE_RESOURCES_DIR=/path/to/appdata/resources FORCE=1 \
+  scripts/restore.sh /srv/backups/mastemy-YYYYMMDDTHHMMSSZ
+docker compose start api
 ```
 
-Then start the API and verify: login, a course page, a lesson player, a certificate verification lookup.
+`restore.sh` verifies `SHA256SUMS` before touching anything and refuses to overwrite a non-empty database or directory without `FORCE=1`. It swaps the resources directory atomically.
+
+Then verify `/health/ready` and smoke-test: login, a course page, a lesson player, a resource download and a certificate verification lookup.
+
+## Health, observability and scanning
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `Logging__Json` | false | JSON console logs with scopes (CorrelationId) |
+| `Otel__Endpoint` | unset (off) | OTLP collector URL; enables tracing + metrics export |
+| `Otel__Protocol` / `Otel__Headers` / `Otel__ServiceName` / `Otel__TraceSampleRatio` | grpc / – / mastemy-api / 1.0 | exporter options |
+| `Scanning__ClamAvHost` / `Scanning__ClamAvPort` | unset / 3310 | clamd for resource uploads (`docker compose --profile scanning up -d`, host `clamav`) |
+| `Scanning__Mode` | Required if host set, else Optional | Required: uploads fail 503 when the scanner is down |
+| `Operations__OutboxDegradedMinutes` / `Operations__OverdueContentMonths` | 15 / 12 | readiness threshold / overdue-content queue |
+| `Trust__ComplaintsPerHourPerIp` / `Trust__HeldEarningsSweepMinutes` | 10 / 10 | complaint rate limit / held-earnings sweep |
+
+Probes: `/health/live` (liveness) and `/health/ready` (dependencies; 503 when Unhealthy; details only for Staff). Every response carries `X-Correlation-Id`.
+
+## OpenAPI
+
+`docs/openapi.json` is generated from the running API: run `scripts/export-openapi.sh` after any endpoint change and commit the result. CI runs `scripts/export-openapi.sh --check`.
 
 ## Rollback
 

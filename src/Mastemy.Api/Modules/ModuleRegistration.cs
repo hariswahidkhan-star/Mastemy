@@ -14,6 +14,8 @@ public static class ModuleRegistration
         Engagement.EngagementModule.Add(s, cfg);
         Enterprise.EnterpriseModule.Add(s, cfg);
         Resources.ResourcesModule.Add(s, cfg);
+        Trust.TrustModule.Add(s, cfg);
+        Operations.OperationsModule.Add(s, cfg);
         return s;
     }
 }
