@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0158",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1128,
+  "lesson_check_items": 72,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 120,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0158-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a CPM network, what defines the critical path?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The longest path of activities with the least total float, determining project duration",
+     "correct": true,
+     "rationale": "Correct: the critical path is the longest path with minimum float and sets the project's finish date."
+    },
+    {
+     "key": "B",
+     "text": "The path with the most activities regardless of duration",
+     "correct": false,
+     "rationale": "Activity count does not define criticality; duration and float do."
+    },
+    {
+     "key": "C",
+     "text": "The path with the highest cost",
+     "correct": false,
+     "rationale": "Cost does not define the critical path."
+    },
+    {
+     "key": "D",
+     "text": "Any path chosen by the scheduler",
+     "correct": false,
+     "rationale": "The critical path is derived from the network logic, not chosen arbitrarily."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the critical path is the longest path with minimum float and sets the project's finish date.",
+   "outcome_refs": [
+    "MST-0158-D02.01"
+   ],
+   "domain_ref": "Scheduling development and maintenance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0158-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An activity has total float of 5 days. What does this mean?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can be delayed up to 5 days without delaying project completion",
+     "correct": true,
+     "rationale": "Correct: total float is the time an activity can slip without delaying the project finish."
+    },
+    {
+     "key": "B",
+     "text": "It must start 5 days early",
+     "correct": false,
+     "rationale": "Float measures allowable delay, not a required early start."
+    },
+    {
+     "key": "C",
+     "text": "It will always finish 5 days late",
+     "correct": false,
+     "rationale": "Float is available slack, not a guaranteed delay."
+    },
+    {
+     "key": "D",
+     "text": "It has no effect on the schedule ever",
+     "correct": false,
+     "rationale": "If delayed beyond its float, it would affect the schedule."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: total float is the time an activity can slip without delaying the project finish.",
+   "outcome_refs": [
+    "MST-0158-D01.01"
+   ],
+   "domain_ref": "Planning development",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0158-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate techniques to shorten a schedule's duration? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fast-tracking by overlapping sequential activities",
+     "correct": true,
+     "rationale": "Correct: fast-tracking overlaps activities to compress duration, accepting some risk."
+    },
+    {
+     "key": "B",
+     "text": "Crashing by adding resources to critical activities",
+     "correct": true,
+     "rationale": "Correct: crashing adds resources to reduce critical-path durations, usually at added cost."
+    },
+    {
+     "key": "C",
+     "text": "Extending every activity's duration",
+     "correct": false,
+     "rationale": "Extending durations lengthens, not shortens, the schedule."
+    },
+    {
+     "key": "D",
+     "text": "Removing the baseline to hide slippage",
+     "correct": false,
+     "rationale": "Deleting the baseline does not shorten the schedule and undermines control."
+    },
+    {
+     "key": "E",
+     "text": "Increasing total float on non-critical paths",
+     "correct": false,
+     "rationale": "Changing non-critical float does not shorten overall project duration."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fast-tracking overlaps activities to compress duration, accepting some risk.",
+   "outcome_refs": [
+    "MST-0158-D03.01"
+   ],
+   "domain_ref": "Schedule analysis, forecasting and communications",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

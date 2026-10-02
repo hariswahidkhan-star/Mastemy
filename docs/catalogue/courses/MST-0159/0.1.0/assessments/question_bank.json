@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0159",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1128,
+  "lesson_check_items": 72,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 120,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0159-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A task has PV = 100, EV = 80, AC = 90. What is the schedule variance (SV)?",
+   "options": [
+    {
+     "key": "A",
+     "text": "-20 (behind schedule)",
+     "correct": true,
+     "rationale": "Correct: SV = EV - PV = 80 - 100 = -20, indicating the work is behind schedule."
+    },
+    {
+     "key": "B",
+     "text": "+10 (ahead of schedule)",
+     "correct": false,
+     "rationale": "SV uses EV - PV, not EV - AC; the result is -20, not +10."
+    },
+    {
+     "key": "C",
+     "text": "-10",
+     "correct": false,
+     "rationale": "-10 would be the cost variance (EV - AC), not the schedule variance."
+    },
+    {
+     "key": "D",
+     "text": "0 (on schedule)",
+     "correct": false,
+     "rationale": "EV and PV differ, so SV is not zero."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SV = EV - PV = 80 - 100 = -20, indicating the work is behind schedule.",
+   "outcome_refs": [
+    "MST-0159-D03.01"
+   ],
+   "domain_ref": "Analysis, forecasting and reporting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0159-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which earned value method is most appropriate for a long task with no tangible interim deliverables, measured by proportion of time elapsed only as a last resort?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Level of effort (LOE)",
+     "correct": true,
+     "rationale": "Correct: LOE is used for support-type work without discrete deliverables; its EV tracks the time-phased plan."
+    },
+    {
+     "key": "B",
+     "text": "0/100 milestone",
+     "correct": false,
+     "rationale": "0/100 suits short tasks credited only at completion, not ongoing support work."
+    },
+    {
+     "key": "C",
+     "text": "Units complete",
+     "correct": false,
+     "rationale": "Units complete needs countable discrete outputs, which this task lacks."
+    },
+    {
+     "key": "D",
+     "text": "Apportioned effort",
+     "correct": false,
+     "rationale": "Apportioned effort ties to a discrete base measure, which is not described here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: LOE is used for support-type work without discrete deliverables; its EV tracks the time-phased plan.",
+   "outcome_refs": [
+    "MST-0159-D01.01"
+   ],
+   "domain_ref": "EVM fundamentals and planning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0159-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions protect the integrity of an EVM performance measurement baseline? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Controlling baseline changes through formal change control",
+     "correct": true,
+     "rationale": "Correct: formal change control preserves baseline integrity."
+    },
+    {
+     "key": "B",
+     "text": "Preventing retroactive changes to closed reporting periods",
+     "correct": true,
+     "rationale": "Correct: locking prior periods prevents manipulation and preserves integrity."
+    },
+    {
+     "key": "C",
+     "text": "Adjusting EV upward to meet targets",
+     "correct": false,
+     "rationale": "Altering EV to hit targets is data manipulation and destroys integrity."
+    },
+    {
+     "key": "D",
+     "text": "Deleting unfavourable variances before reporting",
+     "correct": false,
+     "rationale": "Hiding variances falsifies the data."
+    },
+    {
+     "key": "E",
+     "text": "Re-baselining informally whenever convenient",
+     "correct": false,
+     "rationale": "Informal re-baselining bypasses control and corrupts the PMB."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: formal change control preserves baseline integrity.",
+   "outcome_refs": [
+    "MST-0159-D02.01"
+   ],
+   "domain_ref": "Measurement and data collection",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
