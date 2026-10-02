@@ -1,0 +1,174 @@
+{
+ "course_id": "MST-0220",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1128,
+  "lesson_check_items": 96,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_required_form_A": 108,
+  "items_final_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + (3 practice forms + protected final) item counts; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0220-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team is deciding how to approach work in the 'Designing cloud-native applications' area for Google Cloud. Which choice best reflects sound practice taught in this module?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Match the approach to the stated requirement and constraints before choosing a tool",
+     "correct": true,
+     "rationale": "Correct: the module teaches requirement-driven selection rather than defaulting to a favourite tool."
+    },
+    {
+     "key": "B",
+     "text": "Always pick the largest or most powerful option available",
+     "correct": false,
+     "rationale": "Over-provisioning raises cost and complexity without addressing the actual requirement."
+    },
+    {
+     "key": "C",
+     "text": "Copy a previous project's design without reviewing the new context",
+     "correct": false,
+     "rationale": "Reusing a design blindly ignores differing constraints and is a common error the module warns against."
+    },
+    {
+     "key": "D",
+     "text": "Defer the decision until after implementation",
+     "correct": false,
+     "rationale": "Deferring the design decision leads to rework; the module teaches deciding against explicit criteria up front."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: requirement- and constraint-driven selection is the core practice this module establishes.",
+   "outcome_refs": [
+    "MST-0220-D01.01"
+   ],
+   "domain_ref": "Designing cloud-native applications",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0220-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Within 'Building and testing', which statement describes the most reliable way to validate the result of the work?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Confirm the outcome against the defined success criteria and independent checks",
+     "correct": true,
+     "rationale": "Correct: validation against explicit criteria and independent checks is what the module teaches."
+    },
+    {
+     "key": "B",
+     "text": "Trust the first output because the tool reported success",
+     "correct": false,
+     "rationale": "A success status does not confirm the result is correct for the requirement."
+    },
+    {
+     "key": "C",
+     "text": "Validate only on the data used to build the solution",
+     "correct": false,
+     "rationale": "Checking only on build-time data hides problems that appear on new inputs."
+    },
+    {
+     "key": "D",
+     "text": "Skip validation to save time",
+     "correct": false,
+     "rationale": "Skipping validation is the failure mode this module is designed to prevent."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: validate against defined criteria with independent checks.",
+   "outcome_refs": [
+    "MST-0220-D02.01"
+   ],
+   "domain_ref": "Building and testing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0220-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices are emphasised in the 'Designing cloud-native applications' module of this course? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Design to the requirement and documented constraints",
+     "correct": true,
+     "rationale": "Correct: requirement- and constraint-driven design is a core practice in this module."
+    },
+    {
+     "key": "B",
+     "text": "Build in validation or review of the outcome",
+     "correct": true,
+     "rationale": "Correct: validating the outcome against criteria is emphasised throughout the module."
+    },
+    {
+     "key": "C",
+     "text": "Prefer the most expensive option by default",
+     "correct": false,
+     "rationale": "Defaulting to the costliest option ignores requirements and raises cost needlessly."
+    },
+    {
+     "key": "D",
+     "text": "Avoid documenting decisions",
+     "correct": false,
+     "rationale": "Undocumented decisions undermine review and reproducibility, which the module stresses."
+    },
+    {
+     "key": "E",
+     "text": "Treat tool success messages as proof of correctness",
+     "correct": false,
+     "rationale": "A success message is not evidence the result meets the requirement."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the module emphasises requirement-driven design and built-in validation of the outcome.",
+   "outcome_refs": [
+    "MST-0220-D01.01",
+    "MST-0220-D01.02"
+   ],
+   "domain_ref": "Designing cloud-native applications",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
