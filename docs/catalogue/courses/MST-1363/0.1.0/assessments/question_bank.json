@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1363",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1363-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a topic model actually output for each topic?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A distribution over words that a human must interpret and name",
+     "correct": true,
+     "rationale": "Correct: topics are word distributions, not pre-named categories."
+    },
+    {
+     "key": "B",
+     "text": "A single exact label like 'healthcare'",
+     "correct": false,
+     "rationale": "Models do not assign human names automatically."
+    },
+    {
+     "key": "C",
+     "text": "A sentiment score",
+     "correct": false,
+     "rationale": "That is sentiment analysis, not topic modelling."
+    },
+    {
+     "key": "D",
+     "text": "A translation of the document",
+     "correct": false,
+     "rationale": "Unrelated to topic modelling."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: topics are word distributions, not pre-named categories.",
+   "outcome_refs": [
+    "MST-1363-D01.01"
+   ],
+   "domain_ref": "Topic modelling foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1363-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help choose and trust the number of topics? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Compare coherence scores across candidate topic counts",
+     "correct": true,
+     "rationale": "Correct: coherence guides selection quantitatively."
+    },
+    {
+     "key": "B",
+     "text": "Have domain experts review topic interpretability",
+     "correct": true,
+     "rationale": "Correct: human judgement validates usefulness."
+    },
+    {
+     "key": "C",
+     "text": "Always set the number of topics to 2",
+     "correct": false,
+     "rationale": "Arbitrary and usually too coarse."
+    },
+    {
+     "key": "D",
+     "text": "Pick the count that trains fastest",
+     "correct": false,
+     "rationale": "Training speed is not a quality signal."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: coherence guides selection quantitatively.",
+   "outcome_refs": [
+    "MST-1363-D02.02"
+   ],
+   "domain_ref": "Classic methods",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1363-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When might classic LDA be preferable to an embedding-based model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "On a large, simple corpus where interpretability and low cost matter",
+     "correct": true,
+     "rationale": "Correct: LDA is cheap and interpretable; neither method is universally best."
+    },
+    {
+     "key": "B",
+     "text": "Always, because LDA is newer",
+     "correct": false,
+     "rationale": "LDA is older, not newer."
+    },
+    {
+     "key": "C",
+     "text": "Never, since embeddings always win",
+     "correct": false,
+     "rationale": "No method wins on every corpus."
+    },
+    {
+     "key": "D",
+     "text": "Only for image data",
+     "correct": false,
+     "rationale": "Topic modelling is for text."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: LDA is cheap and interpretable; neither method is universally best.",
+   "outcome_refs": [
+    "MST-1363-D03.02"
+   ],
+   "domain_ref": "Modern approaches",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

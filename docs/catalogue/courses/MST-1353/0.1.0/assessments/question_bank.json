@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1353",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1353-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What makes ML CI/CD different from traditional software CI/CD?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data and models are versioned and tested, not just code",
+     "correct": true,
+     "rationale": "Correct: ML pipelines must validate data and model quality too."
+    },
+    {
+     "key": "B",
+     "text": "ML needs no automated tests",
+     "correct": false,
+     "rationale": "ML needs more test types, not fewer."
+    },
+    {
+     "key": "C",
+     "text": "Code never changes in ML systems",
+     "correct": false,
+     "rationale": "Code still changes and is still tested."
+    },
+    {
+     "key": "D",
+     "text": "Deployments are always manual in ML",
+     "correct": false,
+     "rationale": "ML aims to automate deployment like software."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ML pipelines must validate data and model quality too.",
+   "outcome_refs": [
+    "MST-1353-D01.01"
+   ],
+   "domain_ref": "CI/CD foundations for ML",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1353-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO quality gates belong in an ML CI pipeline beyond ordinary unit tests? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data schema/distribution validation",
+     "correct": true,
+     "rationale": "Correct: bad input data must fail the pipeline early."
+    },
+    {
+     "key": "B",
+     "text": "A minimum model-performance threshold on a holdout set",
+     "correct": true,
+     "rationale": "Correct: models below the bar should block the merge/deploy."
+    },
+    {
+     "key": "C",
+     "text": "Checking only code formatting",
+     "correct": false,
+     "rationale": "Linting alone does not catch data or model regressions."
+    },
+    {
+     "key": "D",
+     "text": "Counting lines of code changed",
+     "correct": false,
+     "rationale": "Not a quality signal for ML."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: bad input data must fail the pipeline early.",
+   "outcome_refs": [
+    "MST-1353-D02.02"
+   ],
+   "domain_ref": "Automated testing for ML",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1353-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why deploy a new model as a canary first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It limits blast radius and lets you compare metrics before full rollout",
+     "correct": true,
+     "rationale": "Correct: canaries expose a small slice so regressions are caught early."
+    },
+    {
+     "key": "B",
+     "text": "It guarantees the model is more accurate",
+     "correct": false,
+     "rationale": "Canarying measures impact; it does not improve accuracy."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for monitoring",
+     "correct": false,
+     "rationale": "Canarying depends on monitoring."
+    },
+    {
+     "key": "D",
+     "text": "It trains the model faster",
+     "correct": false,
+     "rationale": "Canarying is a release strategy, not training."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: canaries expose a small slice so regressions are caught early.",
+   "outcome_refs": [
+    "MST-1353-D04.01"
+   ],
+   "domain_ref": "Release safety and rollback",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

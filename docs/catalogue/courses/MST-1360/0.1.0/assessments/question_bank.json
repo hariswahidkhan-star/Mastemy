@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1360",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1360-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A sentiment model labels 'not good at all' as positive. The most likely cause is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The model mishandles negation and keys on the word 'good'",
+     "correct": true,
+     "rationale": "Correct: negation flips polarity and must be modelled."
+    },
+    {
+     "key": "B",
+     "text": "The dataset is too large",
+     "correct": false,
+     "rationale": "Size is unrelated to negation handling."
+    },
+    {
+     "key": "C",
+     "text": "The GPU is too slow",
+     "correct": false,
+     "rationale": "Hardware does not cause this error."
+    },
+    {
+     "key": "D",
+     "text": "The text was lower-cased",
+     "correct": false,
+     "rationale": "Casing does not explain inverted polarity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: negation flips polarity and must be modelled.",
+   "outcome_refs": [
+    "MST-1360-D03.02"
+   ],
+   "domain_ref": "Sentiment and nuance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1360-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "For a dataset that is 95% 'not angry' and 5% 'angry', which TWO metrics are more informative than raw accuracy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recall on the 'angry' class",
+     "correct": true,
+     "rationale": "Correct: recall shows how many angry tickets are caught."
+    },
+    {
+     "key": "B",
+     "text": "F1 for the minority class",
+     "correct": true,
+     "rationale": "Correct: F1 balances precision and recall on the rare class."
+    },
+    {
+     "key": "C",
+     "text": "Overall accuracy",
+     "correct": false,
+     "rationale": "Accuracy is misleading when classes are imbalanced."
+    },
+    {
+     "key": "D",
+     "text": "Training wall-clock time",
+     "correct": false,
+     "rationale": "Not a predictive-quality metric."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: recall shows how many angry tickets are caught.",
+   "outcome_refs": [
+    "MST-1360-D04.01"
+   ],
+   "domain_ref": "Evaluation and deployment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1360-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why try a TF-IDF linear baseline before fine-tuning a transformer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is cheap, fast and often strong enough, setting a bar to beat",
+     "correct": true,
+     "rationale": "Correct: baselines quantify whether the transformer's cost is justified."
+    },
+    {
+     "key": "B",
+     "text": "It always beats transformers",
+     "correct": false,
+     "rationale": "Not always; it is a baseline, not a guarantee."
+    },
+    {
+     "key": "C",
+     "text": "Transformers cannot classify text",
+     "correct": false,
+     "rationale": "They can and often do best."
+    },
+    {
+     "key": "D",
+     "text": "TF-IDF requires a GPU",
+     "correct": false,
+     "rationale": "TF-IDF runs on CPU cheaply."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: baselines quantify whether the transformer's cost is justified.",
+   "outcome_refs": [
+    "MST-1360-D02.01"
+   ],
+   "domain_ref": "Classification models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

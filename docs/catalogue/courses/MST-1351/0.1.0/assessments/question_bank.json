@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1351",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1351-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Training/serving skew most often arises when:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Features are computed differently or at different times for training vs serving",
+     "correct": true,
+     "rationale": "Correct: inconsistent feature computation between the two paths causes skew."
+    },
+    {
+     "key": "B",
+     "text": "The model has too few parameters",
+     "correct": false,
+     "rationale": "That is capacity, not skew."
+    },
+    {
+     "key": "C",
+     "text": "The GPU is too slow",
+     "correct": false,
+     "rationale": "Hardware speed does not cause skew."
+    },
+    {
+     "key": "D",
+     "text": "The learning rate is too high",
+     "correct": false,
+     "rationale": "An optimisation setting, unrelated to feature consistency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: inconsistent feature computation between the two paths causes skew.",
+   "outcome_refs": [
+    "MST-1351-D02.01"
+   ],
+   "domain_ref": "Training/serving consistency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1351-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO properties make a point-in-time correct training set? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each row uses only feature values known at that row's timestamp",
+     "correct": true,
+     "rationale": "Correct: this prevents using future information."
+    },
+    {
+     "key": "B",
+     "text": "Joins respect event-time, not current-time, lookups",
+     "correct": true,
+     "rationale": "Correct: event-time joins avoid leakage."
+    },
+    {
+     "key": "C",
+     "text": "Every row uses the most recent feature value available today",
+     "correct": false,
+     "rationale": "That leaks future values into past rows."
+    },
+    {
+     "key": "D",
+     "text": "Labels are copied into the feature columns",
+     "correct": false,
+     "rationale": "That is direct label leakage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: this prevents using future information.",
+   "outcome_refs": [
+    "MST-1351-D02.01"
+   ],
+   "domain_ref": "Training/serving consistency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1351-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A real-time pricing model must read a feature within 10 ms per request. Which store serves it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The online store, optimised for low-latency key lookups",
+     "correct": true,
+     "rationale": "Correct: online stores exist for request-path serving."
+    },
+    {
+     "key": "B",
+     "text": "The offline store used for batch training",
+     "correct": false,
+     "rationale": "Offline stores are for large historical reads, not low latency."
+    },
+    {
+     "key": "C",
+     "text": "A nightly CSV export",
+     "correct": false,
+     "rationale": "Not a low-latency serving path."
+    },
+    {
+     "key": "D",
+     "text": "The model registry",
+     "correct": false,
+     "rationale": "The registry stores models, not served feature values."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: online stores exist for request-path serving.",
+   "outcome_refs": [
+    "MST-1351-D03.01"
+   ],
+   "domain_ref": "Serving and freshness",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

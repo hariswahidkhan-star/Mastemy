@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1354",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1354-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants the chatbot to answer from the latest internal docs that change weekly. The most appropriate first approach is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieval-augmented generation (RAG) over the current docs",
+     "correct": true,
+     "rationale": "Correct: RAG injects fresh, changing knowledge without retraining."
+    },
+    {
+     "key": "B",
+     "text": "Fine-tune the base model nightly on all docs",
+     "correct": false,
+     "rationale": "Costly and slow for weekly-changing content; RAG is the standard choice."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code answers in the prompt",
+     "correct": false,
+     "rationale": "Does not scale and goes stale immediately."
+    },
+    {
+     "key": "D",
+     "text": "Increase the temperature setting",
+     "correct": false,
+     "rationale": "Temperature controls randomness, not knowledge freshness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RAG injects fresh, changing knowledge without retraining.",
+   "outcome_refs": [
+    "MST-1354-D01.02"
+   ],
+   "domain_ref": "LLM application lifecycle",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1354-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help control the cost of an LLM feature? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cache responses for repeated or similar requests",
+     "correct": true,
+     "rationale": "Correct: caching avoids paying for identical generations."
+    },
+    {
+     "key": "B",
+     "text": "Route easy requests to a smaller/cheaper model",
+     "correct": true,
+     "rationale": "Correct: model routing matches cost to difficulty."
+    },
+    {
+     "key": "C",
+     "text": "Always send the full conversation history every call",
+     "correct": false,
+     "rationale": "That inflates tokens and cost."
+    },
+    {
+     "key": "D",
+     "text": "Disable all evaluation",
+     "correct": false,
+     "rationale": "Removing evals does not reduce inference cost and harms quality."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: caching avoids paying for identical generations.",
+   "outcome_refs": [
+    "MST-1354-D03.01"
+   ],
+   "domain_ref": "Serving, cost and latency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1354-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is 'LLM-as-judge' evaluation used with caution?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The judge model can be biased or inconsistent, so it needs calibration and human spot-checks",
+     "correct": true,
+     "rationale": "Correct: automated judges are useful but must be validated against human labels."
+    },
+    {
+     "key": "B",
+     "text": "It is always perfectly accurate",
+     "correct": false,
+     "rationale": "It is not; it can share the generator's blind spots."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any eval set",
+     "correct": false,
+     "rationale": "You still need curated eval data."
+    },
+    {
+     "key": "D",
+     "text": "It only works for image models",
+     "correct": false,
+     "rationale": "It is used for text generation evaluation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: automated judges are useful but must be validated against human labels.",
+   "outcome_refs": [
+    "MST-1354-D02.01"
+   ],
+   "domain_ref": "Evaluation of LLM systems",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

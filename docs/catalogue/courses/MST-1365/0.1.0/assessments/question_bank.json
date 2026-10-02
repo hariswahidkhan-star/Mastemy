@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1365",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 232,
+  "lesson_check_items": 48,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1365-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can simply deleting the protected attribute (e.g. race) fail to remove bias?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Other features can act as proxies that still encode the protected trait",
+     "correct": true,
+     "rationale": "Correct: correlated proxies reintroduce the bias."
+    },
+    {
+     "key": "B",
+     "text": "Deleting a column always removes all bias",
+     "correct": false,
+     "rationale": "It does not, because of proxies."
+    },
+    {
+     "key": "C",
+     "text": "The model cannot train without it",
+     "correct": false,
+     "rationale": "Models can train without it; that is not the issue."
+    },
+    {
+     "key": "D",
+     "text": "It violates the licence of the dataset",
+     "correct": false,
+     "rationale": "Not the reason bias persists."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: correlated proxies reintroduce the bias.",
+   "outcome_refs": [
+    "MST-1365-D03.02"
+   ],
+   "domain_ref": "Sources of unfairness",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1365-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about fairness metrics are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Demographic parity and equalised odds can be mathematically incompatible",
+     "correct": true,
+     "rationale": "Correct: you often cannot satisfy both at once."
+    },
+    {
+     "key": "B",
+     "text": "Choosing a fairness definition is a context-dependent value judgement",
+     "correct": true,
+     "rationale": "Correct: the right metric depends on the harm and stakeholders."
+    },
+    {
+     "key": "C",
+     "text": "One metric is objectively correct for all situations",
+     "correct": false,
+     "rationale": "No single metric fits every case."
+    },
+    {
+     "key": "D",
+     "text": "Fairness metrics eliminate the need for human judgement",
+     "correct": false,
+     "rationale": "Human judgement remains essential."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: you often cannot satisfy both at once.",
+   "outcome_refs": [
+    "MST-1365-D02.02"
+   ],
+   "domain_ref": "Fairness definitions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1365-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What keeps a system fair after launch?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ongoing monitoring and periodic review for drift and new harms",
+     "correct": true,
+     "rationale": "Correct: fairness can degrade as data and usage change."
+    },
+    {
+     "key": "B",
+     "text": "A single pre-launch audit forever",
+     "correct": false,
+     "rationale": "One audit cannot cover future drift."
+    },
+    {
+     "key": "C",
+     "text": "Higher model accuracy alone",
+     "correct": false,
+     "rationale": "Accuracy does not guarantee fairness."
+    },
+    {
+     "key": "D",
+     "text": "Removing all documentation",
+     "correct": false,
+     "rationale": "Documentation supports, not harms, accountability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fairness can degrade as data and usage change.",
+   "outcome_refs": [
+    "MST-1365-D04.02"
+   ],
+   "domain_ref": "Responsible practice",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

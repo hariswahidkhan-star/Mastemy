@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1358",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1358-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A scanner produces skewed, noisy images and OCR accuracy is poor. The best first fix is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Preprocess: deskew, denoise and binarise before OCR",
+     "correct": true,
+     "rationale": "Correct: input quality dominates OCR accuracy."
+    },
+    {
+     "key": "B",
+     "text": "Switch business domains",
+     "correct": false,
+     "rationale": "Irrelevant to image quality."
+    },
+    {
+     "key": "C",
+     "text": "Lower the output font size",
+     "correct": false,
+     "rationale": "Output font is not an OCR input factor."
+    },
+    {
+     "key": "D",
+     "text": "Report results without checking accuracy",
+     "correct": false,
+     "rationale": "That hides the problem instead of fixing it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: input quality dominates OCR accuracy.",
+   "outcome_refs": [
+    "MST-1358-D01.02"
+   ],
+   "domain_ref": "OCR fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1358-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO capabilities distinguish document AI from plain OCR? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Understanding layout such as tables and forms",
+     "correct": true,
+     "rationale": "Correct: document AI models use spatial layout."
+    },
+    {
+     "key": "B",
+     "text": "Extracting structured key-value fields",
+     "correct": true,
+     "rationale": "Correct: it returns semantic fields, not just raw text."
+    },
+    {
+     "key": "C",
+     "text": "Rendering fonts more smoothly",
+     "correct": false,
+     "rationale": "Not a document-AI capability."
+    },
+    {
+     "key": "D",
+     "text": "Compressing the image file",
+     "correct": false,
+     "rationale": "Compression is unrelated to understanding."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: document AI models use spatial layout.",
+   "outcome_refs": [
+    "MST-1358-D03.01"
+   ],
+   "domain_ref": "Document understanding",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1358-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The business needs correct invoice totals. Which metric matters most?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Field-level extraction accuracy for the total field",
+     "correct": true,
+     "rationale": "Correct: business value depends on correct fields, not raw characters."
+    },
+    {
+     "key": "B",
+     "text": "Overall character accuracy across the page",
+     "correct": false,
+     "rationale": "High character accuracy can still get the total wrong."
+    },
+    {
+     "key": "C",
+     "text": "Image file size",
+     "correct": false,
+     "rationale": "Unrelated to extraction correctness."
+    },
+    {
+     "key": "D",
+     "text": "Number of pages processed per hour alone",
+     "correct": false,
+     "rationale": "Throughput does not measure correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: business value depends on correct fields, not raw characters.",
+   "outcome_refs": [
+    "MST-1358-D04.01"
+   ],
+   "domain_ref": "Evaluation and pipelines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

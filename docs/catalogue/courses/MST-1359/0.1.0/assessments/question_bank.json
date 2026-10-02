@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1359",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1359-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is per-frame object detection alone insufficient for counting unique people over time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Without tracking, the same person is recounted on each frame",
+     "correct": true,
+     "rationale": "Correct: tracking associates detections into consistent identities."
+    },
+    {
+     "key": "B",
+     "text": "Detection models cannot find people",
+     "correct": false,
+     "rationale": "They can; the gap is identity across frames."
+    },
+    {
+     "key": "C",
+     "text": "Frames contain no spatial information",
+     "correct": false,
+     "rationale": "Frames are spatial; the missing piece is temporal association."
+    },
+    {
+     "key": "D",
+     "text": "Counting requires audio",
+     "correct": false,
+     "rationale": "Audio is not needed for visual counting."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: tracking associates detections into consistent identities.",
+   "outcome_refs": [
+    "MST-1359-D02.02"
+   ],
+   "domain_ref": "Detection and tracking",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1359-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO tasks genuinely require temporal (multi-frame) modelling? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recognising an action like 'person falling'",
+     "correct": true,
+     "rationale": "Correct: actions unfold over time and need motion context."
+    },
+    {
+     "key": "B",
+     "text": "Tracking an object through occlusion",
+     "correct": true,
+     "rationale": "Correct: tracking uses motion across frames."
+    },
+    {
+     "key": "C",
+     "text": "Classifying the dominant colour of one still frame",
+     "correct": false,
+     "rationale": "That is a single-frame task."
+    },
+    {
+     "key": "D",
+     "text": "Reading the resolution of the video file",
+     "correct": false,
+     "rationale": "A static file property, not temporal."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: actions unfold over time and need motion context.",
+   "outcome_refs": [
+    "MST-1359-D03.01"
+   ],
+   "domain_ref": "Action and event recognition",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1359-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To cut compute on a 30 fps feed where events last seconds, a sensible optimisation is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sample frames (e.g. a few per second) instead of processing all 30",
+     "correct": true,
+     "rationale": "Correct: sampling preserves second-scale events at far lower cost."
+    },
+    {
+     "key": "B",
+     "text": "Process every frame twice for safety",
+     "correct": false,
+     "rationale": "That doubles cost with no benefit."
+    },
+    {
+     "key": "C",
+     "text": "Increase resolution on every frame",
+     "correct": false,
+     "rationale": "That raises cost, not lowers it."
+    },
+    {
+     "key": "D",
+     "text": "Disable tracking entirely",
+     "correct": false,
+     "rationale": "Dropping tracking breaks identity, not a pure optimisation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sampling preserves second-scale events at far lower cost.",
+   "outcome_refs": [
+    "MST-1359-D04.01"
+   ],
+   "domain_ref": "Scale, performance and privacy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

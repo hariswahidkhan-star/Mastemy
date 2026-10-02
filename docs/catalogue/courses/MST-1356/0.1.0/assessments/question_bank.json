@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1356",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1356-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why are GPUs well suited to deep-learning matrix multiplications?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They execute many identical operations in parallel across thousands of cores",
+     "correct": true,
+     "rationale": "Correct: the SIMT model excels at massively parallel, regular math."
+    },
+    {
+     "key": "B",
+     "text": "They run a single thread much faster than any CPU",
+     "correct": false,
+     "rationale": "GPUs favour throughput over single-thread speed."
+    },
+    {
+     "key": "C",
+     "text": "They have no memory limits",
+     "correct": false,
+     "rationale": "GPU memory is limited and often the constraint."
+    },
+    {
+     "key": "D",
+     "text": "They only help with serial branch-heavy code",
+     "correct": false,
+     "rationale": "GPUs are poor at serial, branch-heavy code."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the SIMT model excels at massively parallel, regular math.",
+   "outcome_refs": [
+    "MST-1356-D01.01"
+   ],
+   "domain_ref": "GPU architecture basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1356-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are real risks of lowering precision to FP16 during training? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Numerical underflow/overflow without loss scaling",
+     "correct": true,
+     "rationale": "Correct: FP16 has limited range, needing loss scaling."
+    },
+    {
+     "key": "B",
+     "text": "Reduced accuracy if sensitive ops stay in low precision",
+     "correct": true,
+     "rationale": "Correct: some ops must remain in higher precision."
+    },
+    {
+     "key": "C",
+     "text": "The GPU physically overheats and melts",
+     "correct": false,
+     "rationale": "Precision choice is not a thermal failure mode."
+    },
+    {
+     "key": "D",
+     "text": "Training can no longer use any tensor cores",
+     "correct": false,
+     "rationale": "Tensor cores are designed for lower precision."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: FP16 has limited range, needing loss scaling.",
+   "outcome_refs": [
+    "MST-1356-D03.02"
+   ],
+   "domain_ref": "Precision and throughput",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1356-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "GPUs are at 30% utilisation and the CPU data loader is maxed out. Adding more GPUs will:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Not help, because the bottleneck is data loading, not GPU compute",
+     "correct": true,
+     "rationale": "Correct: you must fix the input pipeline first."
+    },
+    {
+     "key": "B",
+     "text": "Linearly speed up training",
+     "correct": false,
+     "rationale": "No; idle GPUs cannot be fed faster."
+    },
+    {
+     "key": "C",
+     "text": "Reduce the data-loading time",
+     "correct": false,
+     "rationale": "More GPUs do not speed the CPU loader."
+    },
+    {
+     "key": "D",
+     "text": "Automatically balance the pipeline",
+     "correct": false,
+     "rationale": "Rebalancing requires fixing the loader, not adding GPUs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: you must fix the input pipeline first.",
+   "outcome_refs": [
+    "MST-1356-D04.02"
+   ],
+   "domain_ref": "Scaling and utilisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

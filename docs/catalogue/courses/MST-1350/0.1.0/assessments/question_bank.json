@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1350",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1350-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the minimum you should log to make a training run reproducible?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Parameters, code/data versions, environment and the resulting metrics",
+     "correct": true,
+     "rationale": "Correct: reproducibility needs the full context, not just the score."
+    },
+    {
+     "key": "B",
+     "text": "Only the final accuracy number",
+     "correct": false,
+     "rationale": "A number alone cannot reproduce the run."
+    },
+    {
+     "key": "C",
+     "text": "Only the trained model file",
+     "correct": false,
+     "rationale": "The artifact without params/versions cannot be reproduced."
+    },
+    {
+     "key": "D",
+     "text": "Only the dataset name",
+     "correct": false,
+     "rationale": "Insufficient; versions and params are also required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reproducibility needs the full context, not just the score.",
+   "outcome_refs": [
+    "MST-1350-D01.02"
+   ],
+   "domain_ref": "Experiment tracking fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1350-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A model has been logged dozens of times. Which TWO things does a model registry add beyond a pile of logged artifacts? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Named stages/aliases such as staging and production",
+     "correct": true,
+     "rationale": "Correct: a registry governs which version is in which stage."
+    },
+    {
+     "key": "B",
+     "text": "An auditable promotion and approval workflow",
+     "correct": true,
+     "rationale": "Correct: registries record who promoted what and when."
+    },
+    {
+     "key": "C",
+     "text": "Faster GPU training of the model",
+     "correct": false,
+     "rationale": "Registries do not change training speed."
+    },
+    {
+     "key": "D",
+     "text": "Automatic relabelling of the training data",
+     "correct": false,
+     "rationale": "Registries do not alter datasets."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a registry governs which version is in which stage.",
+   "outcome_refs": [
+    "MST-1350-D03.02"
+   ],
+   "domain_ref": "Model registry and lifecycle",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1350-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A new model version scores slightly higher offline. Why is promoting it to production automatically risky?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Offline gains may not hold online and there is no approval or rollback plan",
+     "correct": true,
+     "rationale": "Correct: promotion should pass a gate with online checks and a rollback path."
+    },
+    {
+     "key": "B",
+     "text": "Higher offline scores always transfer to production",
+     "correct": false,
+     "rationale": "They often do not, due to distribution shift and metric mismatch."
+    },
+    {
+     "key": "C",
+     "text": "Registries forbid having more than one version",
+     "correct": false,
+     "rationale": "Registries are designed to hold many versions."
+    },
+    {
+     "key": "D",
+     "text": "The older version cannot be kept",
+     "correct": false,
+     "rationale": "Keeping prior versions enables rollback."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: promotion should pass a gate with online checks and a rollback path.",
+   "outcome_refs": [
+    "MST-1350-D04.02"
+   ],
+   "domain_ref": "Governance, lineage and handoff",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

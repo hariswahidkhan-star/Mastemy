@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1372",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 232,
+  "lesson_check_items": 48,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1372-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why are clear rules of engagement essential before red teaming?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They define authorised scope and limits, keeping testing legal and safe",
+     "correct": true,
+     "rationale": "Correct: ROE prevent harm and unauthorised actions."
+    },
+    {
+     "key": "B",
+     "text": "They guarantee no vulnerabilities will be found",
+     "correct": false,
+     "rationale": "ROE govern conduct, not findings."
+    },
+    {
+     "key": "C",
+     "text": "They make the system faster",
+     "correct": false,
+     "rationale": "Unrelated to performance."
+    },
+    {
+     "key": "D",
+     "text": "They replace the need for any report",
+     "correct": false,
+     "rationale": "Reporting is still required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ROE prevent harm and unauthorised actions.",
+   "outcome_refs": [
+    "MST-1372-D01.01"
+   ],
+   "domain_ref": "Red teaming foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1372-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are genuine LLM-application attack classes a red team probes? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Prompt injection via untrusted content",
+     "correct": true,
+     "rationale": "Correct: injected instructions can hijack the model."
+    },
+    {
+     "key": "B",
+     "text": "Data exfiltration through tool or retrieval misuse",
+     "correct": true,
+     "rationale": "Correct: attackers can coax out sensitive data."
+    },
+    {
+     "key": "C",
+     "text": "Running out of disk space on the laptop",
+     "correct": false,
+     "rationale": "Not an AI attack class."
+    },
+    {
+     "key": "D",
+     "text": "Choosing a slower font",
+     "correct": false,
+     "rationale": "Irrelevant to security."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: injected instructions can hijack the model.",
+   "outcome_refs": [
+    "MST-1372-D02.01"
+   ],
+   "domain_ref": "Attacking LLMs and apps",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1372-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A single jailbreak phrase is blocked. Why is that insufficient as a fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The underlying weakness remains and countless rephrasings can bypass one string",
+     "correct": true,
+     "rationale": "Correct: defence must address the root cause, not one string."
+    },
+    {
+     "key": "B",
+     "text": "Blocking one string fixes all jailbreaks",
+     "correct": false,
+     "rationale": "It does not; variations remain."
+    },
+    {
+     "key": "C",
+     "text": "Red teaming forbids any fixes",
+     "correct": false,
+     "rationale": "Fixes are the goal."
+    },
+    {
+     "key": "D",
+     "text": "Guardrails are unnecessary after one block",
+     "correct": false,
+     "rationale": "Layered guardrails are still needed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: defence must address the root cause, not one string.",
+   "outcome_refs": [
+    "MST-1372-D04.01"
+   ],
+   "domain_ref": "From findings to defence",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

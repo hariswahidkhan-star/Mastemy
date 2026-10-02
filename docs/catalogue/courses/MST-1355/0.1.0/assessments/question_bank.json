@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1355",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1355-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A device has 256 KB of RAM and no network. Which approach fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A heavily quantised/distilled model running fully on-device",
+     "correct": true,
+     "rationale": "Correct: tight memory and no network demand a small on-device model."
+    },
+    {
+     "key": "B",
+     "text": "Streaming every frame to a cloud GPU",
+     "correct": false,
+     "rationale": "Impossible without a reliable network."
+    },
+    {
+     "key": "C",
+     "text": "A full-precision large model on the device",
+     "correct": false,
+     "rationale": "It will not fit in 256 KB."
+    },
+    {
+     "key": "D",
+     "text": "Running inference only when Wi-Fi is available",
+     "correct": false,
+     "rationale": "Contradicts the offline requirement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: tight memory and no network demand a small on-device model.",
+   "outcome_refs": [
+    "MST-1355-D01.01"
+   ],
+   "domain_ref": "Edge AI fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1355-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors most constrain which model you can deploy to an edge device? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Available memory/storage on the device",
+     "correct": true,
+     "rationale": "Correct: model size must fit the device."
+    },
+    {
+     "key": "B",
+     "text": "Operators supported by the device's runtime/accelerator",
+     "correct": true,
+     "rationale": "Correct: unsupported ops force fallback or failure."
+    },
+    {
+     "key": "C",
+     "text": "The colour of the device case",
+     "correct": false,
+     "rationale": "Irrelevant to inference."
+    },
+    {
+     "key": "D",
+     "text": "The cloud region of your training cluster",
+     "correct": false,
+     "rationale": "Training location does not constrain on-device inference."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: model size must fit the device.",
+   "outcome_refs": [
+    "MST-1355-D03.02"
+   ],
+   "domain_ref": "Runtimes and hardware",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1355-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why plan over-the-air (OTA) model updates for edge deployments?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Models need fixes and retraining over time; devices must be updatable safely",
+     "correct": true,
+     "rationale": "Correct: an update path is essential for the model lifecycle at the edge."
+    },
+    {
+     "key": "B",
+     "text": "Models on the edge never need changing",
+     "correct": false,
+     "rationale": "They do, as data and requirements change."
+    },
+    {
+     "key": "C",
+     "text": "OTA updates improve the camera lens",
+     "correct": false,
+     "rationale": "OTA updates software/models, not hardware optics."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for compression",
+     "correct": false,
+     "rationale": "Compression is still needed to fit the device."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an update path is essential for the model lifecycle at the edge.",
+   "outcome_refs": [
+    "MST-1355-D04.01"
+   ],
+   "domain_ref": "Deployment and lifecycle on the edge",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

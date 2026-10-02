@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1364",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1364-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why separate the retrieval stage from the ranking stage in search?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieval cheaply narrows millions of items; ranking carefully orders the few that remain",
+     "correct": true,
+     "rationale": "Correct: the two stages have different cost/quality roles."
+    },
+    {
+     "key": "B",
+     "text": "Because ranking must process every document in the index",
+     "correct": false,
+     "rationale": "Ranking operates on the retrieved subset, not the whole index."
+    },
+    {
+     "key": "C",
+     "text": "Because retrieval requires no relevance at all",
+     "correct": false,
+     "rationale": "Retrieval still needs reasonable recall."
+    },
+    {
+     "key": "D",
+     "text": "Because they are the same operation",
+     "correct": false,
+     "rationale": "They are distinct stages."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the two stages have different cost/quality roles.",
+   "outcome_refs": [
+    "MST-1364-D01.01"
+   ],
+   "domain_ref": "Search and ranking foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1364-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about dense vs lexical retrieval are accurate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Dense retrieval can match semantically related terms that share no words",
+     "correct": true,
+     "rationale": "Correct: embeddings capture semantic similarity."
+    },
+    {
+     "key": "B",
+     "text": "Lexical BM25 remains a strong, cheap baseline, especially for exact terms",
+     "correct": true,
+     "rationale": "Correct: BM25 is hard to beat on keyword/exact matches."
+    },
+    {
+     "key": "C",
+     "text": "Dense retrieval always outperforms BM25 on every query",
+     "correct": false,
+     "rationale": "It does not; hybrid often wins."
+    },
+    {
+     "key": "D",
+     "text": "Lexical retrieval understands paraphrases better than embeddings",
+     "correct": false,
+     "rationale": "Embeddings handle paraphrase better."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: embeddings capture semantic similarity.",
+   "outcome_refs": [
+    "MST-1364-D02.01"
+   ],
+   "domain_ref": "Retrieval methods",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1364-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Training a ranker purely on clicks risks reinforcing which bias?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Position bias: items shown higher get more clicks regardless of true relevance",
+     "correct": true,
+     "rationale": "Correct: position bias must be modelled or corrected."
+    },
+    {
+     "key": "B",
+     "text": "Alphabetical bias toward item names",
+     "correct": false,
+     "rationale": "Not the dominant click bias in ranking."
+    },
+    {
+     "key": "C",
+     "text": "Colour bias in thumbnails only",
+     "correct": false,
+     "rationale": "Not the structural bias meant here."
+    },
+    {
+     "key": "D",
+     "text": "Timezone bias in logs",
+     "correct": false,
+     "rationale": "Not the ranking bias at issue."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: position bias must be modelled or corrected.",
+   "outcome_refs": [
+    "MST-1364-D03.02"
+   ],
+   "domain_ref": "Learning to rank",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

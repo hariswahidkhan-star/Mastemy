@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1349",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1349-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A training step sometimes reruns after a transient worker crash. Why should it be written to be idempotent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Re-running it produces the same result and no duplicate side effects",
+     "correct": true,
+     "rationale": "Correct: idempotent steps can be safely retried, which is the whole point of orchestrated retries."
+    },
+    {
+     "key": "B",
+     "text": "It makes the step run faster on the second attempt",
+     "correct": false,
+     "rationale": "Idempotency is about correctness under retries, not speed."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the upstream data is fresh",
+     "correct": false,
+     "rationale": "Freshness is handled by sensors/scheduling, not idempotency."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for any monitoring",
+     "correct": false,
+     "rationale": "Monitoring is still required regardless of idempotency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: idempotent steps can be safely retried, which is the whole point of orchestrated retries.",
+   "outcome_refs": [
+    "MST-1349-D01.02"
+   ],
+   "domain_ref": "Pipeline fundamentals and DAGs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1349-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A daily job depends on a partner file that arrives at an unpredictable time. Which TWO choices make the pipeline react to the data rather than the clock? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a sensor/trigger that waits for the file to land",
+     "correct": true,
+     "rationale": "Correct: a sensor blocks until the dependency exists, making the run data-aware."
+    },
+    {
+     "key": "B",
+     "text": "Emit an event when the file lands and start the DAG from it",
+     "correct": true,
+     "rationale": "Correct: event-driven triggering starts work exactly when data is ready."
+    },
+    {
+     "key": "C",
+     "text": "Schedule the job 6 hours after midnight and hope the file arrived",
+     "correct": false,
+     "rationale": "A fixed offset is still clock-based and fails when the file is late."
+    },
+    {
+     "key": "D",
+     "text": "Increase the number of retries on the first step",
+     "correct": false,
+     "rationale": "Retries do not make the job aware of data readiness."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a sensor blocks until the dependency exists, making the run data-aware.",
+   "outcome_refs": [
+    "MST-1349-D02.02"
+   ],
+   "domain_ref": "Orchestration tools and scheduling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1349-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A step needs to hand a 5 GB dataset to the next step. What is the recommended pattern?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Write the data to shared object storage and pass only a reference/URI",
+     "correct": true,
+     "rationale": "Correct: pass a pointer; keep bulk data out of the orchestrator's metadata channel."
+    },
+    {
+     "key": "B",
+     "text": "Serialize the whole dataset through the orchestrator's XCom/metadata channel",
+     "correct": false,
+     "rationale": "Metadata channels are for small values and will choke or fail on large data."
+    },
+    {
+     "key": "C",
+     "text": "Recompute the dataset in the next step from scratch",
+     "correct": false,
+     "rationale": "Wasteful and breaks lineage; the data already exists."
+    },
+    {
+     "key": "D",
+     "text": "Email the dataset to the next task",
+     "correct": false,
+     "rationale": "Not a real data-passing mechanism."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: pass a pointer; keep bulk data out of the orchestrator's metadata channel.",
+   "outcome_refs": [
+    "MST-1349-D03.01"
+   ],
+   "domain_ref": "Data and artifact passing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

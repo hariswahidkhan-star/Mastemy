@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1361",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1361-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why use a tagging scheme like BIO for NER rather than a single label per token?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It marks entity boundaries, distinguishing the start and continuation of multi-token entities",
+     "correct": true,
+     "rationale": "Correct: BIO encodes spans so adjacent entities are separable."
+    },
+    {
+     "key": "B",
+     "text": "It makes training faster",
+     "correct": false,
+     "rationale": "Speed is not the purpose of BIO."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for a model",
+     "correct": false,
+     "rationale": "A model still predicts the tags."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees perfect accuracy",
+     "correct": false,
+     "rationale": "It is a labelling scheme, not an accuracy guarantee."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: BIO encodes spans so adjacent entities are separable.",
+   "outcome_refs": [
+    "MST-1361-D01.02"
+   ],
+   "domain_ref": "NER fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1361-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps turn raw entity spans into structured, usable knowledge? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Relation extraction between entities",
+     "correct": true,
+     "rationale": "Correct: relations connect entities meaningfully."
+    },
+    {
+     "key": "B",
+     "text": "Entity linking to canonical IDs in a knowledge base",
+     "correct": true,
+     "rationale": "Correct: linking resolves mentions to real-world records."
+    },
+    {
+     "key": "C",
+     "text": "Lower-casing the document",
+     "correct": false,
+     "rationale": "A preprocessing step, not structuring."
+    },
+    {
+     "key": "D",
+     "text": "Counting total tokens",
+     "correct": false,
+     "rationale": "Not a structuring step."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: relations connect entities meaningfully.",
+   "outcome_refs": [
+    "MST-1361-D03.01"
+   ],
+   "domain_ref": "Relations and structure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1361-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model tags 'New York Times' as [New York][Times]. A correct evaluation should:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use exact-span matching so the wrong boundary counts as an error",
+     "correct": true,
+     "rationale": "Correct: span-level scoring reflects real extraction quality."
+    },
+    {
+     "key": "B",
+     "text": "Give full credit because the tokens overlap",
+     "correct": false,
+     "rationale": "Token overlap hides boundary errors."
+    },
+    {
+     "key": "C",
+     "text": "Ignore the error since both words appear",
+     "correct": false,
+     "rationale": "The entity is still wrong."
+    },
+    {
+     "key": "D",
+     "text": "Score only on document length",
+     "correct": false,
+     "rationale": "Length is irrelevant to correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: span-level scoring reflects real extraction quality.",
+   "outcome_refs": [
+    "MST-1361-D04.01"
+   ],
+   "domain_ref": "Evaluation and pipelines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

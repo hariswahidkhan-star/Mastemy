@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1371",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 232,
+  "lesson_check_items": 48,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1371-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can an AI incident be harder to detect than a classic IT outage?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The system keeps running while silently producing wrong or harmful outputs",
+     "correct": true,
+     "rationale": "Correct: AI failures are often silent, not crashes."
+    },
+    {
+     "key": "B",
+     "text": "AI systems always throw clear error codes",
+     "correct": false,
+     "rationale": "They often fail silently without errors."
+    },
+    {
+     "key": "C",
+     "text": "AI never fails in production",
+     "correct": false,
+     "rationale": "It can and does fail."
+    },
+    {
+     "key": "D",
+     "text": "Outages and AI incidents are identical",
+     "correct": false,
+     "rationale": "They differ precisely in detectability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI failures are often silent, not crashes.",
+   "outcome_refs": [
+    "MST-1371-D01.02"
+   ],
+   "domain_ref": "AI incidents defined",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1371-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO containment capabilities should exist before an AI incident occurs? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A kill-switch to disable the model quickly",
+     "correct": true,
+     "rationale": "Correct: fast disablement limits harm."
+    },
+    {
+     "key": "B",
+     "text": "A tested rollback to a known-good version",
+     "correct": true,
+     "rationale": "Correct: rollback restores safe behaviour."
+    },
+    {
+     "key": "C",
+     "text": "A policy of waiting for the next release cycle",
+     "correct": false,
+     "rationale": "Too slow for an active incident."
+    },
+    {
+     "key": "D",
+     "text": "Deleting all logs to reduce noise",
+     "correct": false,
+     "rationale": "Logs are needed for diagnosis."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fast disablement limits harm.",
+   "outcome_refs": [
+    "MST-1371-D03.01"
+   ],
+   "domain_ref": "Response and containment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1371-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main purpose of a blameless post-incident review?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To find root causes and preventive controls without punishing individuals",
+     "correct": true,
+     "rationale": "Correct: blameless reviews surface systemic fixes and honest reporting."
+    },
+    {
+     "key": "B",
+     "text": "To identify who to fire",
+     "correct": false,
+     "rationale": "Blame discourages honest disclosure."
+    },
+    {
+     "key": "C",
+     "text": "To close the incident with no follow-up",
+     "correct": false,
+     "rationale": "The point is follow-up actions."
+    },
+    {
+     "key": "D",
+     "text": "To avoid changing anything",
+     "correct": false,
+     "rationale": "Reviews drive preventive change."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: blameless reviews surface systemic fixes and honest reporting.",
+   "outcome_refs": [
+    "MST-1371-D04.01"
+   ],
+   "domain_ref": "Learning and prevention",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

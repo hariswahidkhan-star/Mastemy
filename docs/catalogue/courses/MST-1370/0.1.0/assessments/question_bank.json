@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1370",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 232,
+  "lesson_check_items": 48,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1370-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model has 92% overall accuracy but 70% recall for one subgroup. What does this show?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Aggregate accuracy can mask serious subgroup harm",
+     "correct": true,
+     "rationale": "Correct: disaggregated evaluation reveals hidden disparities."
+    },
+    {
+     "key": "B",
+     "text": "The model is fair because overall accuracy is high",
+     "correct": false,
+     "rationale": "High aggregate accuracy does not imply subgroup fairness."
+    },
+    {
+     "key": "C",
+     "text": "Recall is irrelevant to fairness",
+     "correct": false,
+     "rationale": "Subgroup recall is central here."
+    },
+    {
+     "key": "D",
+     "text": "The dataset must be too small",
+     "correct": false,
+     "rationale": "Size is not what this result indicates."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: disaggregated evaluation reveals hidden disparities.",
+   "outcome_refs": [
+    "MST-1370-D02.01"
+   ],
+   "domain_ref": "Detecting bias",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1370-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are honest statements about bias mitigation? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Mitigations often trade some accuracy for improved fairness",
+     "correct": true,
+     "rationale": "Correct: trade-offs are common and should be stated."
+    },
+    {
+     "key": "B",
+     "text": "A mitigation must be validated on held-out subgroups to confirm it helped",
+     "correct": true,
+     "rationale": "Correct: you must verify the fix, not assume it."
+    },
+    {
+     "key": "C",
+     "text": "Mitigation permanently fixes bias with no monitoring needed",
+     "correct": false,
+     "rationale": "Drift can reintroduce bias."
+    },
+    {
+     "key": "D",
+     "text": "Removing the protected attribute always removes bias",
+     "correct": false,
+     "rationale": "Proxies can preserve bias."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: trade-offs are common and should be stated.",
+   "outcome_refs": [
+    "MST-1370-D03.02"
+   ],
+   "domain_ref": "Mitigation techniques",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1370-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why monitor for bias after deploying a mitigation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data and behaviour drift, so a fix can degrade over time",
+     "correct": true,
+     "rationale": "Correct: fairness is not static and must be watched."
+    },
+    {
+     "key": "B",
+     "text": "Monitoring makes the model more accurate",
+     "correct": false,
+     "rationale": "Monitoring detects; it does not improve accuracy."
+    },
+    {
+     "key": "C",
+     "text": "Because mitigations never work",
+     "correct": false,
+     "rationale": "They can work; monitoring confirms they keep working."
+    },
+    {
+     "key": "D",
+     "text": "To avoid writing any documentation",
+     "correct": false,
+     "rationale": "Monitoring and documentation are both good practice."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fairness is not static and must be watched.",
+   "outcome_refs": [
+    "MST-1370-D04.02"
+   ],
+   "domain_ref": "Validation and monitoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

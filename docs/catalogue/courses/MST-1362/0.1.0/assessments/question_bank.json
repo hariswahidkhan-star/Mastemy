@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1362",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 64,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1362-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do neural MT systems use subword (e.g. BPE) tokenisation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It represents rare and unseen words as known subword units",
+     "correct": true,
+     "rationale": "Correct: subwords avoid a fixed vocabulary's out-of-vocabulary problem."
+    },
+    {
+     "key": "B",
+     "text": "It translates faster than words",
+     "correct": false,
+     "rationale": "Speed is not the main reason."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for parallel data",
+     "correct": false,
+     "rationale": "Parallel data is still required."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees fluent output",
+     "correct": false,
+     "rationale": "Fluency is not guaranteed by tokenisation alone."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: subwords avoid a fixed vocabulary's out-of-vocabulary problem.",
+   "outcome_refs": [
+    "MST-1362-D02.02"
+   ],
+   "domain_ref": "Data and training",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1362-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A translation is fluent but invents facts not in the source. Which TWO are sound responses? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reduce over-generation, e.g. via coverage/length controls or decoding tweaks",
+     "correct": true,
+     "rationale": "Correct: these curb hallucinated content."
+    },
+    {
+     "key": "B",
+     "text": "Add human post-editing for high-stakes text",
+     "correct": true,
+     "rationale": "Correct: review catches fluent-but-wrong output."
+    },
+    {
+     "key": "C",
+     "text": "Increase the beam width without limit",
+     "correct": false,
+     "rationale": "Larger beams can worsen or not fix hallucination."
+    },
+    {
+     "key": "D",
+     "text": "Ignore it because the output reads well",
+     "correct": false,
+     "rationale": "Fluency does not mean adequacy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: these curb hallucinated content.",
+   "outcome_refs": [
+    "MST-1362-D03.02"
+   ],
+   "domain_ref": "Quality and decoding",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1362-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should BLEU not be the only measure of translation quality?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It captures n-gram overlap, not adequacy or meaning, so it can miss real errors",
+     "correct": true,
+     "rationale": "Correct: automatic metrics need human evaluation alongside."
+    },
+    {
+     "key": "B",
+     "text": "It is always lower than human scores",
+     "correct": false,
+     "rationale": "That is not the reason it is limited."
+    },
+    {
+     "key": "C",
+     "text": "It only works for images",
+     "correct": false,
+     "rationale": "BLEU is a text metric."
+    },
+    {
+     "key": "D",
+     "text": "It measures translation speed",
+     "correct": false,
+     "rationale": "BLEU measures overlap, not speed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: automatic metrics need human evaluation alongside.",
+   "outcome_refs": [
+    "MST-1362-D04.01"
+   ],
+   "domain_ref": "Evaluation and deployment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
