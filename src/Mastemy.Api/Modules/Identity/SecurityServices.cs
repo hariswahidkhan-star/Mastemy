@@ -99,7 +99,8 @@ public class EmailVerificationService(AppDbContext db, EmailOutbox outbox, IOpti
 }
 
 /// <summary>Password reset (single-use hashed token, 1h expiry, uniform response) and password change.</summary>
-public class PasswordService(AppDbContext db, EmailOutbox outbox, IOptions<EmailOptions> emailOpt, AuditService audit, AuthService auth, ICurrentUser me)
+public class PasswordService(AppDbContext db, EmailOutbox outbox, IOptions<EmailOptions> emailOpt, AuditService audit, AuthService auth, ICurrentUser me,
+    BreachedPasswordChecker breached)
 {
     public static readonly TimeSpan ResetLifetime = TimeSpan.FromHours(1);
     public const string UniformMessage = "If an account exists for that email address, a password reset link has been sent.";
@@ -135,6 +136,7 @@ public class PasswordService(AppDbContext db, EmailOutbox outbox, IOptions<Email
         static AppException Invalid() => AppException.Bad("Invalid or expired reset link.", "invalid_token");
         if (string.IsNullOrWhiteSpace(req.Token)) throw Invalid();
         IdentityValidation.RequirePassword(req.NewPassword);
+        await breached.EnsureNotBreached(req.NewPassword!);
         var hash = Tokens.Sha256(req.Token.Trim());
         var now = DateTime.UtcNow;
         var t = await db.Set<OneTimeToken>().AsNoTracking()
@@ -164,6 +166,7 @@ public class PasswordService(AppDbContext db, EmailOutbox outbox, IOptions<Email
             throw AppException.Bad("The current password is incorrect.", "invalid_current_password");
         IdentityValidation.RequirePassword(req.NewPassword);
         if (req.NewPassword == req.CurrentPassword) throw AppException.Bad("The new password must differ from the current one.", "password_unchanged");
+        await breached.EnsureNotBreached(req.NewPassword!);
         user.PasswordHash = PasswordHasher.Hash(req.NewPassword!);
         var sec = await SecurityRows.GetOrCreate(db, user.Id);
         sec.PasswordChangedAt = DateTime.UtcNow;

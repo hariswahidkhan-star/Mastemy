@@ -8,7 +8,7 @@ namespace Mastemy.Api.Modules.Identity;
 
 public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt, AuditService audit, LoginEmailRateLimiter emailLimiter,
     IHttpContextAccessor http, IConfiguration cfg, EmailVerificationService verification, TokenSessionValidator tokenValidator,
-    SecurityEvents secLog)
+    SecurityEvents secLog, BreachedPasswordChecker breached)
 {
     /// <summary>Failures tolerated before per-account exponential backoff starts.</summary>
     public const int BackoffThreshold = 5;
@@ -32,6 +32,7 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
     {
         var email = IdentityValidation.RequireEmail(req.Email);
         IdentityValidation.RequirePassword(req.Password);
+        await breached.EnsureNotBreached(req.Password!);
         var name = IdentityValidation.RequireText(req.DisplayName, "DisplayName", 1, 100);
         var lang = string.IsNullOrWhiteSpace(req.PreferredLanguage) ? "en" : req.PreferredLanguage.Trim().ToLowerInvariant();
         if (!IdentityValidation.Languages.Contains(lang)) throw AppException.Bad("Unsupported preferred language.", "invalid_language");

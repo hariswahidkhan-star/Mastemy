@@ -110,7 +110,7 @@ public class SecurityStaticTests
     /// </summary>
     private static readonly Dictionary<string, int> ReviewedRawSql = new()
     {
-        ["src/Mastemy.Api/Modules/Analytics/AnalyticsReports.cs"] = 3,
+        ["src/Mastemy.Api/Modules/Analytics/AnalyticsReports.cs"] = 2, // Buckets + CurrencyBuckets helpers; values always bound as parameters
         ["src/Mastemy.Api/Modules/Operations/Health.cs"] = 1,
         ["src/Mastemy.Api/Modules/Engagement/NotificationService.cs"] = 1,
     };

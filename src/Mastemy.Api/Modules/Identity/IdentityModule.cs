@@ -6,6 +6,12 @@ public static class IdentityModule
     {
         s.AddSingleton(new LoginEmailRateLimiter(cfg.GetValue("RateLimits:LoginPerEmailPerMinute", 10)));
         s.AddScoped<AuthService>();
+        s.AddSingleton<BreachedPasswordChecker>();
+        s.AddHttpClient(BreachedPasswordOptions.HttpClientName, c =>
+        {
+            c.Timeout = TimeSpan.FromSeconds(Math.Max(1, cfg.GetValue("Security:BreachedPasswordCheck:TimeoutSeconds", 3)));
+            c.DefaultRequestHeaders.UserAgent.ParseAdd("Mastemy-PasswordCheck/1.0");
+        });
         s.AddScoped<AdminService>();
         s.AddScoped<OnboardingService>();
         s.AddSingleton<AccessTokenFactory>();

@@ -228,6 +228,9 @@ The feature flags `ExternalInstructorRegistrationEnabled`, `InstructorApplicatio
 | `Otel:Endpoint` | — (off) | OTLP collector |
 | `Otel:Protocol` | `grpc` | `grpc` or `http` |
 | `Otel:Headers` | — | e.g. `authorization=Bearer …` |
+| `Security:BreachedPasswordCheck:Enabled` | `true` in Production, else `false` | Reject passwords found in Have I Been Pwned (k-anonymity range API, padded; fail-open with a warning, 3 s timeout) on register/reset/change |
+| `Security:Alerts:Enabled` | `true` | In-app `trust_safety` alerts to Admins (login-failure flood per IP, refresh-token reuse); thresholds in docs/operations/alerts.md |
+| `BackgroundJobs:Enabled` | `true` | `false` removes Mastemy's hosted workers (used by scripts/export-openapi.sh) |
 | `Otel:ServiceName` | `mastemy-api` | |
 | `Otel:TraceSampleRatio` | 1.0 | |
 
