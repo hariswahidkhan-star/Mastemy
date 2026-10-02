@@ -91,18 +91,20 @@ async function focusAudit(page: Page, stops = 30): Promise<string[]> {
         [rect.left + 2, rect.top + 2],
         [rect.right - 2, rect.bottom - 2],
       ];
+      let coveredBy = '';
       const reachable = pts.some(([x, y]) => {
         const hit = document.elementFromPoint(x, y);
+        if (hit && !coveredBy) coveredBy = `${hit.tagName.toLowerCase()}.${String(hit.className).split(' ')[0]}`;
         return !!hit && (hit === el || el.contains(hit) || hit.contains(el));
       });
       const name = `${el.tagName.toLowerCase()} "${(el.getAttribute('aria-label') ?? el.textContent ?? '').trim().slice(0, 40)}"`;
-      return { name, indicator, reachable, inView: rect.bottom > 0 && rect.top < innerHeight };
+      return { name, indicator, reachable, coveredBy, inView: rect.bottom > 0 && rect.top < innerHeight };
     });
     if (!r) continue;
     if (seen.has(r.name)) continue;
     seen.add(r.name);
     if (!r.indicator) problems.push(`no visible focus indicator: ${r.name}`);
-    if (r.inView && !r.reachable) problems.push(`focus obscured: ${r.name}`);
+    if (r.inView && !r.reachable) problems.push(`focus obscured: ${r.name} (covered by ${r.coveredBy})`);
   }
   return problems;
 }

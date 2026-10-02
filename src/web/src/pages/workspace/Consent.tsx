@@ -33,12 +33,23 @@ export function ConsentBanner() {
     ro?.observe(el);
     // Keep keyboard focus clear of the docked banner (WCAG 2.4.11): scroll a control it would cover.
     const clear = (target: HTMLElement | null) => {
-      if (!target?.getBoundingClientRect || el.contains(target)) return;
+      if (!target?.getBoundingClientRect) return;
+      if (el.contains(target)) {
+        el.classList.remove('ws-consent--yield'); // focus is in the banner: it must be fully visible
+        return;
+      }
       // Keyboard focus only: scrolling under a pointer press would move the target away from the click.
       if (!target.matches(':focus-visible')) return;
+      el.classList.remove('ws-consent--yield');
       const limit = window.innerHeight - el.offsetHeight;
-      const r = target.getBoundingClientRect();
-      if (r.bottom > limit) window.scrollBy({ top: r.bottom - limit + 8, behavior: 'instant' });
+      let r = target.getBoundingClientRect();
+      if (r.bottom > limit) {
+        window.scrollBy({ top: r.bottom - limit + 8, behavior: 'instant' });
+        r = target.getBoundingClientRect();
+      }
+      // Controls inside sticky/fixed containers (course sidebar, mobile menu) cannot be scrolled clear: the
+      // banner slides out of the way until focus returns to it, so focus is never obscured (WCAG 2.4.11).
+      if (r.bottom > limit && r.top < window.innerHeight) el.classList.add('ws-consent--yield');
     };
     const onFocus = (e: FocusEvent) => clear(e.target as HTMLElement | null);
     // The banner may arrive after the visitor has started tabbing.

@@ -131,6 +131,10 @@ table {
 }
 
 /* ---------- header / footer ---------- */
+html {
+  /* Focus/anchor scrolling stops below the sticky header (height published by Layout as --header-h). */
+  scroll-padding-block-start: calc(var(--header-h, 64px) + 8px);
+}
 .site-header {
   background: var(--c-surface);
   border-block-end: 1px solid var(--c-border);
@@ -930,7 +934,7 @@ table {
 }
 .sticky-aside {
   position: sticky;
-  inset-block-start: 84px;
+  inset-block-start: calc(var(--header-h, 64px) + 20px);
 }
 
 /* ---------- learning workspace ---------- */
@@ -953,10 +957,10 @@ table {
   border: 1px solid var(--c-border);
   border-radius: var(--radius-lg);
   padding: var(--space-3);
-  max-block-size: calc(100vh - 100px);
+  max-block-size: calc(100vh - var(--header-h, 64px) - 36px);
   overflow: auto;
   position: sticky;
-  inset-block-start: 80px;
+  inset-block-start: calc(var(--header-h, 64px) + 16px);
   align-self: start;
 }
 .workspace__sidebar h2 {

@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router';
 import { useAuth, AUTHOR_ROLES, STAFF_ROLES } from '../../auth/AuthProvider';
 import { ensureLang, useI18n } from '../../i18n/I18nProvider';
@@ -51,6 +51,20 @@ export function Layout() {
     setMenuOpen(false);
   }, [location.pathname]);
 
+  // The sticky header grows when the nav wraps (many role links): publish its real height so sticky panels and
+  // keyboard-focus scrolling keep content clear of it (WCAG 2.4.11 focus not obscured).
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const root = document.documentElement;
+    const update = () => root.style.setProperty('--header-h', `${el.offsetHeight}px`);
+    update();
+    const ro = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(update);
+    ro?.observe(el);
+    return () => ro?.disconnect();
+  }, []);
+
   const navItems: { to: string; label: string; show: boolean }[] = [
     { to: '/courses', label: t('nav.courses'), show: true },
     { to: '/free-lessons', label: t('nav.freeLessons'), show: true },
@@ -80,7 +94,7 @@ export function Layout() {
       <a href="#main" className="skip-link">
         {t('nav.skip')}
       </a>
-      <header className="site-header">
+      <header className="site-header" ref={headerRef}>
         <div className="container site-header__inner">
           <Logo />
           <button

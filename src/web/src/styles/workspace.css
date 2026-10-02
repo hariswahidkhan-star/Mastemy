@@ -119,6 +119,10 @@
   box-shadow: 0 -4px 16px rgb(0 0 0 / 0.08);
   padding: var(--space-3) max(var(--space-4), calc((100% - var(--container)) / 2));
 }
+.ws-consent--yield {
+  /* Still in the tab order and announced; only moved off-screen while a covered control has keyboard focus. */
+  transform: translateY(calc(100% + 8px));
+}
 html:has(.ws-consent) {
   scroll-padding-block-end: var(--consent-h, 0px);
 }
