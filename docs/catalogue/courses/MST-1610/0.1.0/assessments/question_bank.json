@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1610",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1610-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Redis data type is the natural fit for a ranked leaderboard ordered by score?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sorted set",
+     "correct": true,
+     "rationale": "Correct: a sorted set keeps members ordered by an associated score."
+    },
+    {
+     "key": "B",
+     "text": "List",
+     "correct": false,
+     "rationale": "A list preserves insertion order, not ranking by score."
+    },
+    {
+     "key": "C",
+     "text": "String",
+     "correct": false,
+     "rationale": "A string stores a single value, not a ranked set."
+    },
+    {
+     "key": "D",
+     "text": "Hash",
+     "correct": false,
+     "rationale": "A hash stores field-value pairs, not an ordered ranking."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a sorted set keeps members ordered by an associated score.",
+   "outcome_refs": [
+    "MST-1610-D02.01"
+   ],
+   "domain_ref": "Core data types",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1610-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the cache-aside pattern, what happens on a cache miss?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The application reads from the database, then stores the result in the cache",
+     "correct": true,
+     "rationale": "Correct: on a miss the app loads from the source and populates the cache for next time."
+    },
+    {
+     "key": "B",
+     "text": "Redis automatically queries the database",
+     "correct": false,
+     "rationale": "Redis does not query the database itself in cache-aside."
+    },
+    {
+     "key": "C",
+     "text": "The request fails",
+     "correct": false,
+     "rationale": "A miss is handled by falling back to the source, not failing."
+    },
+    {
+     "key": "D",
+     "text": "The cache is cleared entirely",
+     "correct": false,
+     "rationale": "A single miss does not clear the whole cache."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: on a miss the app loads from the source and populates the cache for next time.",
+   "outcome_refs": [
+    "MST-1610-D03.01"
+   ],
+   "domain_ref": "Expiry and caching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1610-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about Redis persistence? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "RDB takes point-in-time snapshots of the dataset",
+     "correct": true,
+     "rationale": "Correct: RDB produces compact point-in-time snapshots."
+    },
+    {
+     "key": "B",
+     "text": "AOF logs write operations for replay on restart",
+     "correct": true,
+     "rationale": "Correct: AOF records write commands and replays them to rebuild state."
+    },
+    {
+     "key": "C",
+     "text": "Persistence is impossible in Redis",
+     "correct": false,
+     "rationale": "Redis supports persistence via RDB and AOF."
+    },
+    {
+     "key": "D",
+     "text": "Enabling AOF guarantees zero data in memory",
+     "correct": false,
+     "rationale": "AOF concerns durability to disk; data still lives in memory."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: RDB produces compact point-in-time snapshots.; Correct: AOF records write commands and replays them to rebuild state.",
+   "outcome_refs": [
+    "MST-1610-D05.01"
+   ],
+   "domain_ref": "Persistence and reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

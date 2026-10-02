@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1615",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1615-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the Delta transaction log primarily provide over a plain folder of Parquet files?",
+   "options": [
+    {
+     "key": "A",
+     "text": "ACID guarantees, versioning and time travel",
+     "correct": true,
+     "rationale": "Correct: the transaction log gives atomic commits, versioning and time travel."
+    },
+    {
+     "key": "B",
+     "text": "Faster single-row key lookups like a cache",
+     "correct": false,
+     "rationale": "It is not a key-value cache for single-row lookups."
+    },
+    {
+     "key": "C",
+     "text": "Automatic chart generation",
+     "correct": false,
+     "rationale": "It does not generate charts."
+    },
+    {
+     "key": "D",
+     "text": "Removal of the need for any storage",
+     "correct": false,
+     "rationale": "Data still must be stored; the log tracks it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the transaction log gives atomic commits, versioning and time travel.",
+   "outcome_refs": [
+    "MST-1615-D02.01"
+   ],
+   "domain_ref": "Delta Lake essentials",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1615-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Apache Iceberg's hidden partitioning lets you do what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Query by a column without manually managing partition path values",
+     "correct": true,
+     "rationale": "Correct: Iceberg tracks partition values in metadata so queries need not reference partition columns explicitly."
+    },
+    {
+     "key": "B",
+     "text": "Store data without any files",
+     "correct": false,
+     "rationale": "Iceberg still stores data in files."
+    },
+    {
+     "key": "C",
+     "text": "Disable ACID transactions",
+     "correct": false,
+     "rationale": "Hidden partitioning does not disable ACID."
+    },
+    {
+     "key": "D",
+     "text": "Avoid defining a schema",
+     "correct": false,
+     "rationale": "A schema is still defined."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Iceberg tracks partition values in metadata so queries need not reference partition columns explicitly.",
+   "outcome_refs": [
+    "MST-1615-D03.01"
+   ],
+   "domain_ref": "Iceberg essentials",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1615-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are routine maintenance tasks for open table formats? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Compacting many small files into fewer larger ones",
+     "correct": true,
+     "rationale": "Correct: compaction improves read performance by reducing small files."
+    },
+    {
+     "key": "B",
+     "text": "Expiring old snapshots to reclaim storage",
+     "correct": true,
+     "rationale": "Correct: expiring stale snapshots frees storage safely."
+    },
+    {
+     "key": "C",
+     "text": "Deleting the transaction log to save space",
+     "correct": false,
+     "rationale": "Deleting the transaction log would corrupt the table's history."
+    },
+    {
+     "key": "D",
+     "text": "Disabling schema enforcement permanently",
+     "correct": false,
+     "rationale": "Disabling schema enforcement removes protection against bad data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: compaction improves read performance by reducing small files.; Correct: expiring stale snapshots frees storage safely.",
+   "outcome_refs": [
+    "MST-1615-D04.01"
+   ],
+   "domain_ref": "Table maintenance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

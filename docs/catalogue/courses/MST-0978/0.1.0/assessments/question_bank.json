@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0978",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0978-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A policy was introduced in some regions but not others at the same time. Comparing before-and-after changes across the two groups uses which design?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Difference-in-differences",
+     "correct": true,
+     "rationale": "Correct: difference-in-differences compares the change over time between treated and untreated groups."
+    },
+    {
+     "key": "B",
+     "text": "A simple correlation",
+     "correct": false,
+     "rationale": "A simple correlation does not isolate the policy's effect."
+    },
+    {
+     "key": "C",
+     "text": "Random sampling",
+     "correct": false,
+     "rationale": "Random sampling concerns who is surveyed, not identification."
+    },
+    {
+     "key": "D",
+     "text": "A single pre/post comparison in one group",
+     "correct": false,
+     "rationale": "A single-group pre/post comparison cannot separate the policy from other time trends."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: difference-in-differences compares the change over time between treated and untreated groups.",
+   "outcome_refs": [
+    "MST-0978-D04.01"
+   ],
+   "domain_ref": "Quasi-experimental designs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0978-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can regression adjustment still give a biased causal estimate even with many controls?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It cannot adjust for confounders that were not measured",
+     "correct": true,
+     "rationale": "Correct: regression can only adjust for observed covariates, leaving unmeasured confounding."
+    },
+    {
+     "key": "B",
+     "text": "It always overfits",
+     "correct": false,
+     "rationale": "Overfitting is a separate concern and not the core issue here."
+    },
+    {
+     "key": "C",
+     "text": "It requires randomization to run",
+     "correct": false,
+     "rationale": "Regression does not require randomization to run."
+    },
+    {
+     "key": "D",
+     "text": "It only works on time series",
+     "correct": false,
+     "rationale": "Regression is not limited to time series."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: regression can only adjust for observed covariates, leaving unmeasured confounding.",
+   "outcome_refs": [
+    "MST-0978-D03.01"
+   ],
+   "domain_ref": "Regression and matching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0978-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are conditions for a valid instrumental variable? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is associated with the treatment (relevance)",
+     "correct": true,
+     "rationale": "Correct: relevance requires the instrument to influence the treatment."
+    },
+    {
+     "key": "B",
+     "text": "It affects the outcome only through the treatment (exclusion)",
+     "correct": true,
+     "rationale": "Correct: the exclusion restriction requires the instrument to affect the outcome only via the treatment."
+    },
+    {
+     "key": "C",
+     "text": "It must be the outcome itself",
+     "correct": false,
+     "rationale": "An instrument is distinct from the outcome."
+    },
+    {
+     "key": "D",
+     "text": "It must be randomly measured error",
+     "correct": false,
+     "rationale": "An instrument is a variable with specific properties, not measurement error."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: relevance requires the instrument to influence the treatment.; Correct: the exclusion restriction requires the instrument to affect the outcome only via the treatment.",
+   "outcome_refs": [
+    "MST-0978-D04.01"
+   ],
+   "domain_ref": "Quasi-experimental designs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

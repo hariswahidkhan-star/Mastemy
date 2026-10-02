@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1614",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1614-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A PySpark job defines several filters and selects but nothing runs until a count() is called. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Transformations are lazy and execute only when an action is triggered",
+     "correct": true,
+     "rationale": "Correct: Spark builds a plan from lazy transformations and runs it when an action like count() is called."
+    },
+    {
+     "key": "B",
+     "text": "PySpark has crashed silently",
+     "correct": false,
+     "rationale": "Lazy evaluation is expected behavior, not a crash."
+    },
+    {
+     "key": "C",
+     "text": "count() is a transformation",
+     "correct": false,
+     "rationale": "count() is an action, which is exactly what triggers execution."
+    },
+    {
+     "key": "D",
+     "text": "The DataFrame is empty",
+     "correct": false,
+     "rationale": "Laziness, not emptiness, explains why nothing ran earlier."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Spark builds a plan from lazy transformations and runs it when an action like count() is called.",
+   "outcome_refs": [
+    "MST-1614-D03.01"
+   ],
+   "domain_ref": "Transformations and actions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1614-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Joining a very large DataFrame to a small lookup table is most efficient with which technique?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A broadcast join",
+     "correct": true,
+     "rationale": "Correct: broadcasting the small table to every executor avoids a large shuffle."
+    },
+    {
+     "key": "B",
+     "text": "Collecting both to the driver",
+     "correct": false,
+     "rationale": "Collecting a large DataFrame to the driver risks out-of-memory failures."
+    },
+    {
+     "key": "C",
+     "text": "A cross join",
+     "correct": false,
+     "rationale": "A cross join produces every combination and is far more expensive."
+    },
+    {
+     "key": "D",
+     "text": "Converting to RDDs first",
+     "correct": false,
+     "rationale": "Converting to RDDs does not improve this join."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: broadcasting the small table to every executor avoids a large shuffle.",
+   "outcome_refs": [
+    "MST-1614-D05.01"
+   ],
+   "domain_ref": "Performance tuning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1614-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good PySpark performance practices? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Prefer built-in functions over Python UDFs where possible",
+     "correct": true,
+     "rationale": "Correct: built-in functions run in the JVM and avoid UDF serialization overhead."
+    },
+    {
+     "key": "B",
+     "text": "Cache a DataFrame that is reused many times",
+     "correct": true,
+     "rationale": "Correct: caching avoids recomputing a reused DataFrame."
+    },
+    {
+     "key": "C",
+     "text": "Always collect() large DataFrames to the driver",
+     "correct": false,
+     "rationale": "Collecting large data to the driver is a common cause of failures."
+    },
+    {
+     "key": "D",
+     "text": "Create thousands of tiny output partitions",
+     "correct": false,
+     "rationale": "Too many tiny partitions create overhead and small-file problems."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: built-in functions run in the JVM and avoid UDF serialization overhead.; Correct: caching avoids recomputing a reused DataFrame.",
+   "outcome_refs": [
+    "MST-1614-D05.01"
+   ],
+   "domain_ref": "Performance tuning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

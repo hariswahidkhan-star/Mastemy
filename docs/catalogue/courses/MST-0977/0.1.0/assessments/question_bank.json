@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0977",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0977-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is random k-fold cross-validation inappropriate for evaluating a forecasting model on time-ordered data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It lets future observations leak into training, inflating apparent accuracy",
+     "correct": true,
+     "rationale": "Correct: shuffling allows future points into training, which leaks information and overstates accuracy."
+    },
+    {
+     "key": "B",
+     "text": "It is always slower than other methods",
+     "correct": false,
+     "rationale": "Speed is not the core issue; validity is."
+    },
+    {
+     "key": "C",
+     "text": "It cannot compute any error metric",
+     "correct": false,
+     "rationale": "Error metrics can still be computed; the problem is leakage."
+    },
+    {
+     "key": "D",
+     "text": "It requires the data to be stationary first",
+     "correct": false,
+     "rationale": "Stationarity is a modeling concern, not the reason k-fold leaks."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: shuffling allows future points into training, which leaks information and overstates accuracy.",
+   "outcome_refs": [
+    "MST-0977-D05.01"
+   ],
+   "domain_ref": "Evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0977-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which method is well suited to a series with both trend and strong seasonality?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Holt-Winters (triple) exponential smoothing",
+     "correct": true,
+     "rationale": "Correct: Holt-Winters models level, trend and seasonality together."
+    },
+    {
+     "key": "B",
+     "text": "A single global mean",
+     "correct": false,
+     "rationale": "A global mean ignores both trend and seasonality."
+    },
+    {
+     "key": "C",
+     "text": "Simple random sampling",
+     "correct": false,
+     "rationale": "Random sampling does not forecast a time series."
+    },
+    {
+     "key": "D",
+     "text": "Dropping all seasonal periods",
+     "correct": false,
+     "rationale": "Dropping seasonality discards the structure you need to model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Holt-Winters models level, trend and seasonality together.",
+   "outcome_refs": [
+    "MST-0977-D03.01"
+   ],
+   "domain_ref": "Classical forecasting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0977-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices when reporting a business forecast? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Include prediction intervals, not just a point estimate",
+     "correct": true,
+     "rationale": "Correct: intervals communicate the uncertainty around the estimate."
+    },
+    {
+     "key": "B",
+     "text": "State the assumptions and the forecast horizon",
+     "correct": true,
+     "rationale": "Correct: assumptions and horizon let the audience judge the forecast."
+    },
+    {
+     "key": "C",
+     "text": "Present the forecast as a certainty",
+     "correct": false,
+     "rationale": "Forecasts are uncertain; presenting certainty misleads."
+    },
+    {
+     "key": "D",
+     "text": "Hide the historical error from the audience",
+     "correct": false,
+     "rationale": "Hiding historical error prevents honest assessment of reliability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: intervals communicate the uncertainty around the estimate.; Correct: assumptions and horizon let the audience judge the forecast.",
+   "outcome_refs": [
+    "MST-0977-D06.01"
+   ],
+   "domain_ref": "Applied forecasting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

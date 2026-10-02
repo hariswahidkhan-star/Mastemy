@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1611",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1611-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should tables be designed in Cassandra?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Around the queries the application will run",
+     "correct": true,
+     "rationale": "Correct: Cassandra uses query-driven modeling, shaping tables to serve specific queries."
+    },
+    {
+     "key": "B",
+     "text": "Fully normalized like a relational schema",
+     "correct": false,
+     "rationale": "Full normalization forces joins that Cassandra does not do efficiently."
+    },
+    {
+     "key": "C",
+     "text": "To support arbitrary ad-hoc joins",
+     "correct": false,
+     "rationale": "Cassandra does not support arbitrary joins."
+    },
+    {
+     "key": "D",
+     "text": "With one table for the entire database",
+     "correct": false,
+     "rationale": "A single table cannot serve diverse query patterns well."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Cassandra uses query-driven modeling, shaping tables to serve specific queries.",
+   "outcome_refs": [
+    "MST-1611-D03.01"
+   ],
+   "domain_ref": "Data modeling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1611-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What determines which node is responsible for a given row in Cassandra?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The token derived from the partition key",
+     "correct": true,
+     "rationale": "Correct: the partition key is hashed to a token that maps to a node on the ring."
+    },
+    {
+     "key": "B",
+     "text": "The clustering column order",
+     "correct": false,
+     "rationale": "Clustering columns order rows within a partition, not node placement."
+    },
+    {
+     "key": "C",
+     "text": "The order rows were inserted",
+     "correct": false,
+     "rationale": "Insertion order does not decide node ownership."
+    },
+    {
+     "key": "D",
+     "text": "The secondary index",
+     "correct": false,
+     "rationale": "A secondary index does not determine partition placement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the partition key is hashed to a token that maps to a node on the ring.",
+   "outcome_refs": [
+    "MST-1611-D02.01"
+   ],
+   "domain_ref": "Data distribution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1611-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about consistency in Cassandra are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read and write consistency levels together affect whether reads see the latest write",
+     "correct": true,
+     "rationale": "Correct: tuning both read and write levels (e.g. so they overlap) governs read-your-write behavior."
+    },
+    {
+     "key": "B",
+     "text": "QUORUM requires a majority of replicas to respond",
+     "correct": true,
+     "rationale": "Correct: QUORUM needs a majority of replicas to acknowledge."
+    },
+    {
+     "key": "C",
+     "text": "Cassandra offers only a single fixed consistency level",
+     "correct": false,
+     "rationale": "Cassandra offers tunable consistency per operation, not one fixed level."
+    },
+    {
+     "key": "D",
+     "text": "Consistency level has no effect on availability trade-offs",
+     "correct": false,
+     "rationale": "Higher consistency reduces availability under failures; it is a trade-off."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tuning both read and write levels (e.g. so they overlap) governs read-your-write behavior.; Correct: QUORUM needs a majority of replicas to acknowledge.",
+   "outcome_refs": [
+    "MST-1611-D02.01"
+   ],
+   "domain_ref": "Data distribution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1616",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1616-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You take a slice of a NumPy array and modify it; the original array also changes. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Basic slicing returns a view that shares memory with the original",
+     "correct": true,
+     "rationale": "Correct: basic slicing yields a view onto the same underlying data, so edits propagate."
+    },
+    {
+     "key": "B",
+     "text": "NumPy copies arrays on every slice",
+     "correct": false,
+     "rationale": "Basic slicing returns a view, not a copy."
+    },
+    {
+     "key": "C",
+     "text": "The array was corrupted",
+     "correct": false,
+     "rationale": "This is expected view behavior, not corruption."
+    },
+    {
+     "key": "D",
+     "text": "Slicing is not allowed on arrays",
+     "correct": false,
+     "rationale": "Slicing is fully supported on arrays."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: basic slicing yields a view onto the same underlying data, so edits propagate.",
+   "outcome_refs": [
+    "MST-1616-D02.01"
+   ],
+   "domain_ref": "Indexing and slicing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1616-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Adding a shape (3,) vector to a shape (4,3) matrix works because of which NumPy feature?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Broadcasting",
+     "correct": true,
+     "rationale": "Correct: broadcasting stretches the vector across the matrix's rows."
+    },
+    {
+     "key": "B",
+     "text": "Transposition",
+     "correct": false,
+     "rationale": "Transposition changes axes order; it is not why the add works."
+    },
+    {
+     "key": "C",
+     "text": "Sorting",
+     "correct": false,
+     "rationale": "Sorting is unrelated to element-wise addition."
+    },
+    {
+     "key": "D",
+     "text": "Concatenation",
+     "correct": false,
+     "rationale": "Concatenation joins arrays; it does not add them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: broadcasting stretches the vector across the matrix's rows.",
+   "outcome_refs": [
+    "MST-1616-D03.01"
+   ],
+   "domain_ref": "Operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1616-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about NumPy aggregation are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "axis=0 reduces along rows, collapsing each column",
+     "correct": true,
+     "rationale": "Correct: axis=0 collapses the row dimension, giving a per-column result."
+    },
+    {
+     "key": "B",
+     "text": "Omitting axis aggregates over the entire array",
+     "correct": true,
+     "rationale": "Correct: with no axis, the reduction spans all elements to one value."
+    },
+    {
+     "key": "C",
+     "text": "axis=0 always returns a scalar",
+     "correct": false,
+     "rationale": "axis=0 returns an array per column, not a single scalar in general."
+    },
+    {
+     "key": "D",
+     "text": "Reductions cannot be applied to 2D arrays",
+     "correct": false,
+     "rationale": "Reductions apply to arrays of any dimensionality."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: axis=0 collapses the row dimension, giving a per-column result.; Correct: with no axis, the reduction spans all elements to one value.",
+   "outcome_refs": [
+    "MST-1616-D04.01"
+   ],
+   "domain_ref": "Aggregation and axes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

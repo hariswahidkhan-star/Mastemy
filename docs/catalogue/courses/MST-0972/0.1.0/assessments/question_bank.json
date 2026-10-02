@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0972",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0972-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need the total sales per customer repeated on every row regardless of other dimensions in the view. Which calculation type fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A FIXED level-of-detail expression",
+     "correct": true,
+     "rationale": "Correct: a FIXED LOD computes at a defined granularity independent of the view's dimensions."
+    },
+    {
+     "key": "B",
+     "text": "A quick table calculation",
+     "correct": false,
+     "rationale": "A table calculation depends on the layout of the view, not a fixed granularity."
+    },
+    {
+     "key": "C",
+     "text": "A row-level string calculation",
+     "correct": false,
+     "rationale": "A row-level calculation evaluates per data row, not aggregated per customer."
+    },
+    {
+     "key": "D",
+     "text": "A parameter",
+     "correct": false,
+     "rationale": "A parameter is a single user-controlled value, not a per-customer aggregate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a FIXED LOD computes at a defined granularity independent of the view's dimensions.",
+   "outcome_refs": [
+    "MST-0972-D03.01"
+   ],
+   "domain_ref": "Calculations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0972-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Tableau feature lets a selection in one chart filter another chart on the same dashboard?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A filter action",
+     "correct": true,
+     "rationale": "Correct: a filter action passes a selection from one sheet to filter others."
+    },
+    {
+     "key": "B",
+     "text": "A calculated field",
+     "correct": false,
+     "rationale": "A calculated field creates new values, not interactivity between charts."
+    },
+    {
+     "key": "C",
+     "text": "A data blend",
+     "correct": false,
+     "rationale": "A data blend combines data sources; it does not drive dashboard interactivity."
+    },
+    {
+     "key": "D",
+     "text": "A trend line",
+     "correct": false,
+     "rationale": "A trend line is an analytic overlay, not an interaction."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a filter action passes a selection from one sheet to filter others.",
+   "outcome_refs": [
+    "MST-0972-D04.01"
+   ],
+   "domain_ref": "Dashboards and interactivity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0972-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help a published Tableau dashboard perform well on a large data source? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use an extract instead of a live connection where freshness allows",
+     "correct": true,
+     "rationale": "Correct: extracts are optimized columnar snapshots that usually query faster than live connections."
+    },
+    {
+     "key": "B",
+     "text": "Reduce the number of marks and high-cardinality quick filters",
+     "correct": true,
+     "rationale": "Correct: fewer marks and filters reduce rendering and query load."
+    },
+    {
+     "key": "C",
+     "text": "Add as many worksheets as possible to one dashboard",
+     "correct": false,
+     "rationale": "More worksheets increase queries and rendering cost, hurting performance."
+    },
+    {
+     "key": "D",
+     "text": "Replace all aggregates with row-level detail",
+     "correct": false,
+     "rationale": "Row-level detail returns far more data and typically slows the dashboard."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: extracts are optimized columnar snapshots that usually query faster than live connections.; Correct: fewer marks and filters reduce rendering and query load.",
+   "outcome_refs": [
+    "MST-0972-D06.01"
+   ],
+   "domain_ref": "Publishing and governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

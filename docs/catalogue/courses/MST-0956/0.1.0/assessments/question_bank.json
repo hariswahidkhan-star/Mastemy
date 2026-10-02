@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0956",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0956-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A table must support row-level updates, deletes and querying of previous versions on a data lake. Which format fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Delta Lake table",
+     "correct": true,
+     "rationale": "Correct: Delta Lake adds a transaction log giving ACID updates, deletes and time travel."
+    },
+    {
+     "key": "B",
+     "text": "A folder of raw CSV files",
+     "correct": false,
+     "rationale": "Raw CSV has no transaction log or update support."
+    },
+    {
+     "key": "C",
+     "text": "A single uncompressed JSON file",
+     "correct": false,
+     "rationale": "A single JSON file offers no ACID or versioning."
+    },
+    {
+     "key": "D",
+     "text": "A view over plain Parquet",
+     "correct": false,
+     "rationale": "A view over plain Parquet cannot provide row-level ACID updates or time travel."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Delta Lake adds a transaction log giving ACID updates, deletes and time travel.",
+   "outcome_refs": [
+    "MST-0956-D01.01"
+   ],
+   "domain_ref": "Lakehouse architecture and workspace",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0956-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the medallion architecture, which layer typically holds cleaned, conformed, deduplicated data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Silver",
+     "correct": true,
+     "rationale": "Correct: the silver layer holds cleaned and conformed data refined from bronze."
+    },
+    {
+     "key": "B",
+     "text": "Bronze",
+     "correct": false,
+     "rationale": "Bronze holds raw ingested data as landed."
+    },
+    {
+     "key": "C",
+     "text": "Landing",
+     "correct": false,
+     "rationale": "Landing is the raw drop zone, not cleaned."
+    },
+    {
+     "key": "D",
+     "text": "Gold",
+     "correct": false,
+     "rationale": "Gold holds curated business-level aggregates, built from silver."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the silver layer holds cleaned and conformed data refined from bronze.",
+   "outcome_refs": [
+    "MST-0956-D01.01"
+   ],
+   "domain_ref": "Lakehouse architecture and workspace",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0956-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are benefits of running OPTIMIZE with Z-ordering on a large Delta table? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It compacts many small files into larger ones",
+     "correct": true,
+     "rationale": "Correct: OPTIMIZE compacts small files into larger, more efficient ones."
+    },
+    {
+     "key": "B",
+     "text": "It co-locates related data to speed up filtered queries",
+     "correct": true,
+     "rationale": "Correct: Z-ordering co-locates related values so filters scan fewer files."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need to define any schema",
+     "correct": false,
+     "rationale": "A schema is still required; OPTIMIZE does not remove it."
+    },
+    {
+     "key": "D",
+     "text": "It makes the table non-transactional for speed",
+     "correct": false,
+     "rationale": "Delta tables remain transactional; OPTIMIZE does not disable ACID."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: OPTIMIZE compacts small files into larger, more efficient ones.; Correct: Z-ordering co-locates related values so filters scan fewer files.",
+   "outcome_refs": [
+    "MST-0956-D06.01"
+   ],
+   "domain_ref": "Governance and performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

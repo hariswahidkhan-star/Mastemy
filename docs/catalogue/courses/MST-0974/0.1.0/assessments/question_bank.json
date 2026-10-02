@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0974",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0974-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to combine a customer table and an orders table on a shared CustomerID, keeping only matching rows. Which tool fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Join tool",
+     "correct": true,
+     "rationale": "Correct: the Join tool matches rows on a key and outputs matched records from its J anchor."
+    },
+    {
+     "key": "B",
+     "text": "The Formula tool",
+     "correct": false,
+     "rationale": "The Formula tool creates or edits columns; it does not join tables."
+    },
+    {
+     "key": "C",
+     "text": "The Summarize tool",
+     "correct": false,
+     "rationale": "Summarize aggregates; it does not join on a key."
+    },
+    {
+     "key": "D",
+     "text": "The Sample tool",
+     "correct": false,
+     "rationale": "Sample returns a subset of rows; it does not combine tables."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the Join tool matches rows on a key and outputs matched records from its J anchor.",
+   "outcome_refs": [
+    "MST-0974-D03.01"
+   ],
+   "domain_ref": "Join and blend",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0974-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which tool reshapes data from a wide layout into a tall key-value layout?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Transpose",
+     "correct": true,
+     "rationale": "Correct: Transpose pivots columns into rows (wide to tall)."
+    },
+    {
+     "key": "B",
+     "text": "Cross Tab",
+     "correct": false,
+     "rationale": "Cross Tab does the reverse, turning rows into columns."
+    },
+    {
+     "key": "C",
+     "text": "Select",
+     "correct": false,
+     "rationale": "Select renames or reorders fields; it does not reshape."
+    },
+    {
+     "key": "D",
+     "text": "Browse",
+     "correct": false,
+     "rationale": "Browse only displays data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Transpose pivots columns into rows (wide to tall).",
+   "outcome_refs": [
+    "MST-0974-D04.01"
+   ],
+   "domain_ref": "Transform tools",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0974-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO help an Alteryx workflow run reliably when scheduled on Server? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use relative or configurable paths rather than hard-coded local paths",
+     "correct": true,
+     "rationale": "Correct: configurable paths keep the workflow working after deployment."
+    },
+    {
+     "key": "B",
+     "text": "Parameterize inputs with interface tools where needed",
+     "correct": true,
+     "rationale": "Correct: interface tools let inputs be supplied at run time."
+    },
+    {
+     "key": "C",
+     "text": "Delete all output tools",
+     "correct": false,
+     "rationale": "Removing output tools means the workflow produces nothing."
+    },
+    {
+     "key": "D",
+     "text": "Rely on files that exist only on the developer's laptop",
+     "correct": false,
+     "rationale": "Local-only files are unavailable to the Server and will fail."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: configurable paths keep the workflow working after deployment.; Correct: interface tools let inputs be supplied at run time.",
+   "outcome_refs": [
+    "MST-0974-D06.01"
+   ],
+   "domain_ref": "Automation and sharing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

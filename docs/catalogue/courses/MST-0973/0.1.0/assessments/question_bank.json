@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0973",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 528,
+  "lesson_check_items": 108,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0973-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Qlik Sense, two tables share two common field names, producing an unwanted synthetic key. What is the cleanest fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rename or remove one of the shared fields so a single key links the tables",
+     "correct": true,
+     "rationale": "Correct: reducing the shared fields to a single intended key removes the synthetic key."
+    },
+    {
+     "key": "B",
+     "text": "Delete both tables",
+     "correct": false,
+     "rationale": "Deleting the tables loses the data entirely."
+    },
+    {
+     "key": "C",
+     "text": "Add a third copy of each field",
+     "correct": false,
+     "rationale": "Adding more shared fields worsens the synthetic key."
+    },
+    {
+     "key": "D",
+     "text": "Join everything into one giant table always",
+     "correct": false,
+     "rationale": "Forcing a single flat table is not generally appropriate and may duplicate rows."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reducing the shared fields to a single intended key removes the synthetic key.",
+   "outcome_refs": [
+    "MST-0973-D02.01"
+   ],
+   "domain_ref": "The associative data model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0973-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which expression sums Sales only for the year 2025 regardless of current selections?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sum({<Year={2025}>} Sales)",
+     "correct": true,
+     "rationale": "Correct: the set-analysis modifier {<Year={2025}>} restricts the aggregation to 2025."
+    },
+    {
+     "key": "B",
+     "text": "Sum(Sales)",
+     "correct": false,
+     "rationale": "Sum(Sales) follows current selections, not a fixed year."
+    },
+    {
+     "key": "C",
+     "text": "Only(Year)",
+     "correct": false,
+     "rationale": "Only(Year) returns a year value, not a sales sum."
+    },
+    {
+     "key": "D",
+     "text": "Count(Sales)",
+     "correct": false,
+     "rationale": "Count(Sales) counts rows rather than summing values."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the set-analysis modifier {<Year={2025}>} restricts the aggregation to 2025.",
+   "outcome_refs": [
+    "MST-0973-D04.01"
+   ],
+   "domain_ref": "Expressions and set analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0973-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are advantages of using master items in a Qlik Sense app? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Definitions are reused consistently across sheets",
+     "correct": true,
+     "rationale": "Correct: master items give consistent, reusable definitions across the app."
+    },
+    {
+     "key": "B",
+     "text": "A measure's logic is maintained in one place",
+     "correct": true,
+     "rationale": "Correct: centralizing a measure means one edit updates every use."
+    },
+    {
+     "key": "C",
+     "text": "They remove the need for a data model",
+     "correct": false,
+     "rationale": "A data model is still required; master items build on it."
+    },
+    {
+     "key": "D",
+     "text": "They disable user selections",
+     "correct": false,
+     "rationale": "Master items do not disable selections; association still applies."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: master items give consistent, reusable definitions across the app.; Correct: centralizing a measure means one edit updates every use.",
+   "outcome_refs": [
+    "MST-0973-D03.01"
+   ],
+   "domain_ref": "Building analytic apps",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
