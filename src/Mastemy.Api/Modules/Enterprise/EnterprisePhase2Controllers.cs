@@ -66,7 +66,7 @@ public class AdminEnterpriseController(EnterprisePhase2Service svc) : Controller
 [ApiController]
 [AllowAnonymous]
 [Route("api/sso")]
-public class SsoController(SsoLoginService svc) : ControllerBase
+public class SsoController(SsoLoginService svc, Identity.RefreshCookies cookies) : ControllerBase
 {
     /// <summary>Redirects the browser to the organization's identity provider.</summary>
     [HttpGet("{orgSlug}/start")]
@@ -83,5 +83,6 @@ public class SsoController(SsoLoginService svc) : ControllerBase
 
     [HttpPost("exchange")]
     [Microsoft.AspNetCore.RateLimiting.EnableRateLimiting("auth")]
-    public Task<AuthResponse> Exchange(SsoExchangeInput input, CancellationToken ct) => svc.Exchange(input, ct);
+    // Browser sessions use the HttpOnly refresh cookie, same as password login.
+    public async Task<AuthResponse> Exchange(SsoExchangeInput input, CancellationToken ct) => cookies.Issue(Response, await svc.Exchange(input, ct));
 }

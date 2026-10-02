@@ -12,7 +12,7 @@ import {
 } from '../api/finalb';
 import type { CategoryAdminDto, CurrencyOptionDto } from '../api/finalb';
 import type { StudioCourseDto } from '../api/types';
-import { getRefreshToken, setSession } from '../api/client';
+import { getAccessToken, setSession } from '../api/client';
 import { translate } from '../i18n/I18nProvider';
 import finalbEn from '../i18n/finalb.en.json';
 import finalbAr from '../i18n/finalb.ar.json';
@@ -331,7 +331,9 @@ describe('SSO completion page', () => {
     );
     await waitFor(() => expect(screen.getByTestId('where')).toHaveTextContent('/me/orders'));
     expect(fetchMock.mock.calls.filter((c) => c[0] === '/api/sso/exchange')).toHaveLength(1);
-    expect(getRefreshToken()).toBe('rt');
+    // The refresh token travels only in the HttpOnly cookie; nothing secret is persisted client-side.
+    expect(getAccessToken()).toBeTruthy();
+    expect(window.localStorage.getItem('mastemy.refreshToken')).toBeNull();
     await act(async () => {});
   });
 
