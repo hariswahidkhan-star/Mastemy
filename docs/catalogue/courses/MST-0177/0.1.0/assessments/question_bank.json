@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0177",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1116,
+  "lesson_check_items": 90,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0177-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An architect designs a detection-and-response capability that unifies endpoint, identity, email and cloud-app signals with a SIEM for long-term correlation. Which combination best fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Microsoft Defender XDR with Microsoft Sentinel",
+     "correct": true,
+     "rationale": "Correct: Defender XDR unifies endpoint, identity, email and cloud-app signals, and Sentinel adds cloud-native SIEM correlation and SOAR."
+    },
+    {
+     "key": "B",
+     "text": "Only Microsoft Defender for Endpoint",
+     "correct": false,
+     "rationale": "Defender for Endpoint covers endpoints alone and is not a full XDR-plus-SIEM solution."
+    },
+    {
+     "key": "C",
+     "text": "Azure Policy with resource locks",
+     "correct": false,
+     "rationale": "These are governance controls, not a detection-and-response capability."
+    },
+    {
+     "key": "D",
+     "text": "Microsoft Entra ID P1 licensing alone",
+     "correct": false,
+     "rationale": "Licensing enables identity features but is not a detection-and-response design."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Defender XDR unifies endpoint, identity, email and cloud-app signals, and Sentinel adds cloud-native SIEM correlation and SOAR.",
+   "outcome_refs": [
+    "MST-0177-D02.01"
+   ],
+   "domain_ref": "Design security operations, identity, and compliance capabilities",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0177-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To translate regulatory requirements into enforced controls and demonstrate compliance, which Microsoft solution should the design centre on?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Microsoft Purview with Azure Policy and Defender for Cloud regulatory compliance",
+     "correct": true,
+     "rationale": "Correct: Purview, Azure Policy and Defender for Cloud together translate, enforce and evidence regulatory controls."
+    },
+    {
+     "key": "B",
+     "text": "Microsoft Entra Internet Access only",
+     "correct": false,
+     "rationale": "Entra Internet Access is a secure web gateway, not a compliance-control framework."
+    },
+    {
+     "key": "C",
+     "text": "Azure Load Balancer",
+     "correct": false,
+     "rationale": "A load balancer distributes traffic and has no compliance role."
+    },
+    {
+     "key": "D",
+     "text": "Windows LAPS",
+     "correct": false,
+     "rationale": "LAPS manages local administrator passwords; it does not translate regulatory requirements into controls."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Purview, Azure Policy and Defender for Cloud together translate, enforce and evidence regulatory controls.",
+   "outcome_refs": [
+    "MST-0177-D02.01"
+   ],
+   "domain_ref": "Design security operations, identity, and compliance capabilities",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0177-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO frameworks that the SC-100 design guidance expects an architect to align security solutions with. (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Microsoft Cloud Adoption Framework for Azure (CAF)",
+     "correct": true,
+     "rationale": "Correct: the study guide requires designs to align with the Cloud Adoption Framework."
+    },
+    {
+     "key": "B",
+     "text": "Azure Well-Architected Framework (WAF)",
+     "correct": true,
+     "rationale": "Correct: the study guide requires designs to align with the Well-Architected Framework."
+    },
+    {
+     "key": "C",
+     "text": "ITIL v2 service desk model",
+     "correct": false,
+     "rationale": "ITIL v2 is a legacy service-management framework and is not part of the SC-100 objectives."
+    },
+    {
+     "key": "D",
+     "text": "COBIT maturity scale only",
+     "correct": false,
+     "rationale": "COBIT is not the framework the SC-100 guidance centres design alignment on."
+    },
+    {
+     "key": "E",
+     "text": "The OSI seven-layer model",
+     "correct": false,
+     "rationale": "The OSI model is a networking reference model, not a security-design framework in this guidance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the study guide requires designs to align with the Cloud Adoption Framework.",
+   "outcome_refs": [
+    "MST-0177-D01.01"
+   ],
+   "domain_ref": "Design solutions that align with security best practices and priorities",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

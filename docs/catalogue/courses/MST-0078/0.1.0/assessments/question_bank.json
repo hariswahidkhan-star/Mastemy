@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0078",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 3192,
+  "lesson_check_items": 36,
+  "module_check_items": 840,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 360,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0078-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two events A and B are independent with P(A)=0.3 and P(B)=0.5. What is P(A and B)?",
+   "options": [
+    {
+     "key": "A",
+     "text": "0.15",
+     "correct": true,
+     "rationale": "Correct: for independent events P(A and B)=P(A)P(B)=0.3x0.5=0.15."
+    },
+    {
+     "key": "B",
+     "text": "0.80",
+     "correct": false,
+     "rationale": "0.80 is P(A)+P(B)-P(A and B) only under a different setup; it is the union-style sum, not the intersection."
+    },
+    {
+     "key": "C",
+     "text": "0.50",
+     "correct": false,
+     "rationale": "0.50 is P(B) alone and ignores independence multiplication."
+    },
+    {
+     "key": "D",
+     "text": "0.00",
+     "correct": false,
+     "rationale": "Independent events with positive probabilities have a positive joint probability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: for independent events P(A and B)=P(A)P(B)=0.3x0.5=0.15.",
+   "outcome_refs": [
+    "MST-0078-D01.01"
+   ],
+   "domain_ref": "General probability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0078-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a continuous random variable, the expected value E[X] is best described as which of the following?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The integral of x times the probability density function over its support",
+     "correct": true,
+     "rationale": "Correct: E[X]=integral of x f(x) dx over the support for a continuous variable."
+    },
+    {
+     "key": "B",
+     "text": "The most likely single value (the mode)",
+     "correct": false,
+     "rationale": "The mode is the density's peak, not the mean."
+    },
+    {
+     "key": "C",
+     "text": "The middle value (the median) in all cases",
+     "correct": false,
+     "rationale": "The median equals the mean only for symmetric distributions, not in general."
+    },
+    {
+     "key": "D",
+     "text": "The range of the variable",
+     "correct": false,
+     "rationale": "The range is max minus min, unrelated to expectation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: E[X]=integral of x f(x) dx over the support for a continuous variable.",
+   "outcome_refs": [
+    "MST-0078-D02.01"
+   ],
+   "domain_ref": "Univariate random variables",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0078-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO quantities that require the joint distribution of two random variables to compute. (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The covariance of X and Y",
+     "correct": true,
+     "rationale": "Correct: covariance depends on the joint distribution of X and Y."
+    },
+    {
+     "key": "B",
+     "text": "The correlation of X and Y",
+     "correct": true,
+     "rationale": "Correct: correlation is derived from covariance and thus the joint distribution."
+    },
+    {
+     "key": "C",
+     "text": "The mean of X alone",
+     "correct": false,
+     "rationale": "The marginal mean of X needs only X's distribution."
+    },
+    {
+     "key": "D",
+     "text": "The variance of Y alone",
+     "correct": false,
+     "rationale": "The marginal variance of Y needs only Y's distribution."
+    },
+    {
+     "key": "E",
+     "text": "The median of X alone",
+     "correct": false,
+     "rationale": "The marginal median of X needs only X's distribution."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: covariance depends on the joint distribution of X and Y.",
+   "outcome_refs": [
+    "MST-0078-D03.01"
+   ],
+   "domain_ref": "Multivariate random variables",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

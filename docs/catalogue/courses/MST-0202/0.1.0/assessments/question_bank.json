@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0202",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 588,
+  "lesson_check_items": 60,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 54,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0202-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants a foundation-model chatbot to answer using a company's internal policy documents without retraining the model. Which approach fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieval-augmented generation (RAG) that supplies relevant documents at inference time",
+     "correct": true,
+     "rationale": "Correct: RAG injects relevant retrieved content at inference so the model can answer from company data without retraining."
+    },
+    {
+     "key": "B",
+     "text": "Deleting the model and writing rules by hand",
+     "correct": false,
+     "rationale": "Hand-written rules forgo the model's capabilities and are not the described approach."
+    },
+    {
+     "key": "C",
+     "text": "Training a model from scratch on the entire internet",
+     "correct": false,
+     "rationale": "Training from scratch is unnecessary and far beyond the need."
+    },
+    {
+     "key": "D",
+     "text": "Disabling all prompts",
+     "correct": false,
+     "rationale": "A chatbot needs prompts to function."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RAG injects relevant retrieved content at inference so the model can answer from company data without retraining.",
+   "outcome_refs": [
+    "MST-0202-D03.01"
+   ],
+   "domain_ref": "Applications of foundation models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0202-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which term describes the smaller units of text that a large language model processes?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tokens",
+     "correct": true,
+     "rationale": "Correct: LLMs process text as tokens."
+    },
+    {
+     "key": "B",
+     "text": "Pixels",
+     "correct": false,
+     "rationale": "Pixels are image units, not text units."
+    },
+    {
+     "key": "C",
+     "text": "Packets",
+     "correct": false,
+     "rationale": "Packets are networking units, not model text units."
+    },
+    {
+     "key": "D",
+     "text": "Sectors",
+     "correct": false,
+     "rationale": "Sectors are storage units, unrelated to model text."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: LLMs process text as tokens.",
+   "outcome_refs": [
+    "MST-0202-D02.01"
+   ],
+   "domain_ref": "Fundamentals of generative AI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0202-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO responsible-AI considerations relevant to deploying a generative-AI application. (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assessing and mitigating bias in outputs",
+     "correct": true,
+     "rationale": "Correct: bias assessment is a core responsible-AI consideration."
+    },
+    {
+     "key": "B",
+     "text": "Providing transparency about AI use and limitations",
+     "correct": true,
+     "rationale": "Correct: transparency about AI use and limitations is a responsible-AI consideration."
+    },
+    {
+     "key": "C",
+     "text": "Maximizing token count for its own sake",
+     "correct": false,
+     "rationale": "Inflating tokens is not a responsible-AI goal."
+    },
+    {
+     "key": "D",
+     "text": "Hiding that AI generated the content from all users",
+     "correct": false,
+     "rationale": "Concealment undermines transparency."
+    },
+    {
+     "key": "E",
+     "text": "Removing all logging and oversight",
+     "correct": false,
+     "rationale": "Removing oversight is contrary to responsible AI."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: bias assessment is a core responsible-AI consideration.",
+   "outcome_refs": [
+    "MST-0202-D04.01"
+   ],
+   "domain_ref": "Guidelines for responsible AI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

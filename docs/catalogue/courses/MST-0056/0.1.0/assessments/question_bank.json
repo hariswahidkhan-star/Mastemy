@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0056",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 3216,
+  "lesson_check_items": 48,
+  "module_check_items": 840,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 360,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0056-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A portfolio's one-day 99% Value at Risk is reported as $2 million. What does this figure most directly describe?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A loss level the portfolio is not expected to exceed on 99% of days, over a one-day horizon",
+     "correct": true,
+     "rationale": "Correct: VaR at 99%/one-day is a loss threshold expected to be exceeded on about 1% of days."
+    },
+    {
+     "key": "B",
+     "text": "The maximum possible loss the portfolio can ever suffer",
+     "correct": false,
+     "rationale": "VaR is not a maximum loss; losses beyond VaR can and do occur in the tail."
+    },
+    {
+     "key": "C",
+     "text": "The expected profit over the next day",
+     "correct": false,
+     "rationale": "VaR measures downside risk, not expected profit."
+    },
+    {
+     "key": "D",
+     "text": "The guaranteed loss every day",
+     "correct": false,
+     "rationale": "VaR is a probabilistic threshold, not a guaranteed daily loss."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: VaR at 99%/one-day is a loss threshold expected to be exceeded on about 1% of days.",
+   "outcome_refs": [
+    "MST-0056-D02.01"
+   ],
+   "domain_ref": "Quantitative analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0056-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which measure addresses a key weakness of Value at Risk by describing the average loss in the tail beyond the VaR threshold?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Expected shortfall (conditional VaR)",
+     "correct": true,
+     "rationale": "Correct: expected shortfall averages losses beyond the VaR cutoff, capturing tail severity."
+    },
+    {
+     "key": "B",
+     "text": "Standard deviation",
+     "correct": false,
+     "rationale": "Standard deviation measures dispersion, not tail-conditional loss."
+    },
+    {
+     "key": "C",
+     "text": "Duration",
+     "correct": false,
+     "rationale": "Duration measures interest-rate sensitivity of bonds, not tail loss."
+    },
+    {
+     "key": "D",
+     "text": "Beta",
+     "correct": false,
+     "rationale": "Beta measures systematic market sensitivity, not tail loss."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: expected shortfall averages losses beyond the VaR cutoff, capturing tail severity.",
+   "outcome_refs": [
+    "MST-0056-D04.01"
+   ],
+   "domain_ref": "Valuation and risk models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0056-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO instruments generally classified as derivatives. (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A futures contract",
+     "correct": true,
+     "rationale": "Correct: a futures contract derives its value from an underlying asset."
+    },
+    {
+     "key": "B",
+     "text": "An equity call option",
+     "correct": true,
+     "rationale": "Correct: an option is a derivative whose value depends on an underlying asset."
+    },
+    {
+     "key": "C",
+     "text": "A common share of stock",
+     "correct": false,
+     "rationale": "A common share is a direct equity claim, not a derivative."
+    },
+    {
+     "key": "D",
+     "text": "A physical gold bar",
+     "correct": false,
+     "rationale": "A physical commodity is an underlying asset, not a derivative."
+    },
+    {
+     "key": "E",
+     "text": "A savings-account balance",
+     "correct": false,
+     "rationale": "A bank deposit is not a derivative instrument."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a futures contract derives its value from an underlying asset.",
+   "outcome_refs": [
+    "MST-0056-D03.01"
+   ],
+   "domain_ref": "Financial markets and products",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

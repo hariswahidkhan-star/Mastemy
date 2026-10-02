@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0203",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 564,
+  "lesson_check_items": 48,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 54,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0203-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A web tier must handle sudden, unpredictable spikes in traffic while keeping costs aligned to demand. Which approach best fits a resilient, cost-aware AWS design?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Auto-scaling compute behind a load balancer across multiple Availability Zones",
+     "correct": true,
+     "rationale": "Correct: auto scaling across AZs behind a load balancer gives elasticity, resilience and demand-aligned cost."
+    },
+    {
+     "key": "B",
+     "text": "A single large server running continuously at peak size",
+     "correct": false,
+     "rationale": "A single fixed server is neither resilient nor cost-aligned to variable demand."
+    },
+    {
+     "key": "C",
+     "text": "Manually launching servers when users complain",
+     "correct": false,
+     "rationale": "Manual, reactive scaling is slow and unreliable."
+    },
+    {
+     "key": "D",
+     "text": "Disabling health checks to save effort",
+     "correct": false,
+     "rationale": "Removing health checks harms resilience."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: auto scaling across AZs behind a load balancer gives elasticity, resilience and demand-aligned cost.",
+   "outcome_refs": [
+    "MST-0203-D02.01"
+   ],
+   "domain_ref": "Design resilient architectures",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0203-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which practice best protects sensitive data at rest in an AWS storage service?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Enabling encryption at rest using managed keys",
+     "correct": true,
+     "rationale": "Correct: encryption at rest with managed keys protects stored data."
+    },
+    {
+     "key": "B",
+     "text": "Making the storage bucket public",
+     "correct": false,
+     "rationale": "Public access exposes data and is the opposite of protection."
+    },
+    {
+     "key": "C",
+     "text": "Removing all access logging",
+     "correct": false,
+     "rationale": "Removing logging reduces visibility and does not protect data."
+    },
+    {
+     "key": "D",
+     "text": "Storing credentials in plaintext in the app",
+     "correct": false,
+     "rationale": "Plaintext credentials are a serious security risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: encryption at rest with managed keys protects stored data.",
+   "outcome_refs": [
+    "MST-0203-D01.01"
+   ],
+   "domain_ref": "Design secure architectures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0203-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO design choices that improve the resilience of an AWS architecture. (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Deploying across multiple Availability Zones",
+     "correct": true,
+     "rationale": "Correct: multi-AZ deployment increases fault tolerance."
+    },
+    {
+     "key": "B",
+     "text": "Decoupling components with a managed queue",
+     "correct": true,
+     "rationale": "Correct: decoupling with a queue isolates failures and improves resilience."
+    },
+    {
+     "key": "C",
+     "text": "Hardcoding a single server's IP everywhere",
+     "correct": false,
+     "rationale": "Hardcoding one server is a single point of failure."
+    },
+    {
+     "key": "D",
+     "text": "Turning off backups",
+     "correct": false,
+     "rationale": "Disabling backups reduces resilience."
+    },
+    {
+     "key": "E",
+     "text": "Running everything in one subnet with no redundancy",
+     "correct": false,
+     "rationale": "No redundancy undermines resilience."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: multi-AZ deployment increases fault tolerance.",
+   "outcome_refs": [
+    "MST-0203-D02.01"
+   ],
+   "domain_ref": "Design resilient architectures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

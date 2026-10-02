@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0233",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 846,
+  "lesson_check_items": 72,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0233-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A nightly batch load runs slowly on a small virtual warehouse. Which Snowflake action most directly improves the load's compute throughput?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Resizing the virtual warehouse to a larger size for the load",
+     "correct": true,
+     "rationale": "Correct: a larger virtual warehouse provides more compute for a heavy load, improving throughput."
+    },
+    {
+     "key": "B",
+     "text": "Dropping all roles in the account",
+     "correct": false,
+     "rationale": "Removing roles harms security and does not improve load performance."
+    },
+    {
+     "key": "C",
+     "text": "Disabling result caching permanently",
+     "correct": false,
+     "rationale": "Caching mainly affects repeated query reads, not batch-load compute."
+    },
+    {
+     "key": "D",
+     "text": "Deleting the target table",
+     "correct": false,
+     "rationale": "Deleting the target defeats the purpose of loading data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a larger virtual warehouse provides more compute for a heavy load, improving throughput.",
+   "outcome_refs": [
+    "MST-0233-D03.01"
+   ],
+   "domain_ref": "Performance and cost-optimization concepts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0233-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Snowflake, which feature lets you query or restore data as it existed at an earlier point within a retention window?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Time Travel",
+     "correct": true,
+     "rationale": "Correct: Time Travel lets you access or restore historical data within the retention window."
+    },
+    {
+     "key": "B",
+     "text": "Virtual warehouse auto-suspend",
+     "correct": false,
+     "rationale": "Auto-suspend pauses idle compute; it does not restore historical data."
+    },
+    {
+     "key": "C",
+     "text": "External stages",
+     "correct": false,
+     "rationale": "Stages reference files for load/unload, not historical restore."
+    },
+    {
+     "key": "D",
+     "text": "Clustering keys",
+     "correct": false,
+     "rationale": "Clustering keys organize data for pruning, not point-in-time restore."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Time Travel lets you access or restore historical data within the retention window.",
+   "outcome_refs": [
+    "MST-0233-D06.01"
+   ],
+   "domain_ref": "Data protection and data sharing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0233-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO layers of Snowflake's architecture. (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Storage layer",
+     "correct": true,
+     "rationale": "Correct: storage is one of Snowflake's architectural layers."
+    },
+    {
+     "key": "B",
+     "text": "Compute layer (virtual warehouses)",
+     "correct": true,
+     "rationale": "Correct: compute via virtual warehouses is an architectural layer."
+    },
+    {
+     "key": "C",
+     "text": "The on-premises tape-backup layer",
+     "correct": false,
+     "rationale": "Snowflake is cloud-native and has no such tape layer."
+    },
+    {
+     "key": "D",
+     "text": "A mandatory desktop-client layer",
+     "correct": false,
+     "rationale": "No mandatory desktop-client layer exists in the architecture."
+    },
+    {
+     "key": "E",
+     "text": "A per-row licensing layer",
+     "correct": false,
+     "rationale": "This is not a Snowflake architectural layer."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: storage is one of Snowflake's architectural layers.",
+   "outcome_refs": [
+    "MST-0233-D01.01"
+   ],
+   "domain_ref": "Snowflake AI Data Cloud features and architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

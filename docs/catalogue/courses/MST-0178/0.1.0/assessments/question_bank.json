@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0178",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 576,
+  "lesson_check_items": 54,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 54,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0178-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An analyst needs to automatically run a containment workflow whenever a high-severity incident is created in Microsoft Sentinel. Which Sentinel capability should be configured?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An automation rule that triggers a playbook",
+     "correct": true,
+     "rationale": "Correct: a Sentinel automation rule can trigger a playbook (Logic App) to run a containment workflow on incident creation."
+    },
+    {
+     "key": "B",
+     "text": "A workbook",
+     "correct": false,
+     "rationale": "Workbooks visualise data; they do not run response actions."
+    },
+    {
+     "key": "C",
+     "text": "A data connector",
+     "correct": false,
+     "rationale": "Data connectors ingest data; they do not orchestrate a response."
+    },
+    {
+     "key": "D",
+     "text": "A retention policy",
+     "correct": false,
+     "rationale": "Retention policies govern how long data is kept, not automated response."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Sentinel automation rule can trigger a playbook (Logic App) to run a containment workflow on incident creation.",
+   "outcome_refs": [
+    "MST-0178-D01.01"
+   ],
+   "domain_ref": "Manage a security operations environment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0178-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During threat hunting, which language does the analyst use to write advanced hunting and detection queries across Defender XDR and Sentinel?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Kusto Query Language (KQL)",
+     "correct": true,
+     "rationale": "Correct: KQL is the query language for advanced hunting and analytics across Defender XDR and Sentinel."
+    },
+    {
+     "key": "B",
+     "text": "T-SQL",
+     "correct": false,
+     "rationale": "T-SQL queries relational SQL Server databases, not the Defender/Sentinel data platform."
+    },
+    {
+     "key": "C",
+     "text": "PromQL",
+     "correct": false,
+     "rationale": "PromQL queries Prometheus metrics, not Microsoft security telemetry."
+    },
+    {
+     "key": "D",
+     "text": "GraphQL",
+     "correct": false,
+     "rationale": "GraphQL is an API query language, not the hunting language for these products."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: KQL is the query language for advanced hunting and analytics across Defender XDR and Sentinel.",
+   "outcome_refs": [
+    "MST-0178-D03.01"
+   ],
+   "domain_ref": "Perform threat hunting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0178-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO Microsoft products whose alerts and incidents an SC-200 analyst is expected to investigate and remediate. (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Microsoft Defender for Endpoint",
+     "correct": true,
+     "rationale": "Correct: investigating and remediating Defender for Endpoint incidents is an explicit objective."
+    },
+    {
+     "key": "B",
+     "text": "Microsoft Sentinel",
+     "correct": true,
+     "rationale": "Correct: investigating and remediating Sentinel incidents is an explicit objective."
+    },
+    {
+     "key": "C",
+     "text": "Microsoft Excel",
+     "correct": false,
+     "rationale": "Excel is a spreadsheet application, not a security-operations product in scope."
+    },
+    {
+     "key": "D",
+     "text": "Microsoft Bookings",
+     "correct": false,
+     "rationale": "Bookings is a scheduling app and is out of scope for security operations."
+    },
+    {
+     "key": "E",
+     "text": "Windows Movie Maker",
+     "correct": false,
+     "rationale": "This is a consumer media tool and is not relevant to the exam."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: investigating and remediating Defender for Endpoint incidents is an explicit objective.",
+   "outcome_refs": [
+    "MST-0178-D02.01"
+   ],
+   "domain_ref": "Respond to security incidents",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0163",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1080,
+  "lesson_check_items": 72,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0163-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A solutions architect must recommend a governance structure that applies Azure Policy and role assignments consistently across several subscriptions for three departments. Which construct should sit above the subscriptions?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Management groups",
+     "correct": true,
+     "rationale": "Correct: management groups sit above subscriptions and let policy and RBAC assignments cascade to every subscription beneath them."
+    },
+    {
+     "key": "B",
+     "text": "Resource groups",
+     "correct": false,
+     "rationale": "A resource group is a container inside a single subscription and cannot span several subscriptions."
+    },
+    {
+     "key": "C",
+     "text": "Availability zones",
+     "correct": false,
+     "rationale": "Availability zones provide datacentre-level resiliency within a region; they are not a governance scope."
+    },
+    {
+     "key": "D",
+     "text": "Azure Blueprints artifacts alone",
+     "correct": false,
+     "rationale": "Blueprints package artifacts for deployment but still need a management-group scope to apply consistently across subscriptions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: management groups sit above subscriptions and let policy and RBAC assignments cascade to every subscription beneath them.",
+   "outcome_refs": [
+    "MST-0163-D01.01"
+   ],
+   "domain_ref": "Design identity, governance, and monitoring solutions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0163-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload needs a recovery solution for Azure VMs that meets a stated recovery point objective with minimal operational overhead. Which service should the design recommend?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure Backup with the Azure VM extension",
+     "correct": true,
+     "rationale": "Correct: Azure Backup provides policy-driven, application-consistent recovery points for Azure VMs with low operational overhead."
+    },
+    {
+     "key": "B",
+     "text": "Manual VHD copies to a storage account",
+     "correct": false,
+     "rationale": "Manual copies are error-prone, lack scheduling and do not guarantee application consistency."
+    },
+    {
+     "key": "C",
+     "text": "Availability sets",
+     "correct": false,
+     "rationale": "Availability sets improve uptime against hardware faults; they do not provide point-in-time recovery."
+    },
+    {
+     "key": "D",
+     "text": "Azure Front Door",
+     "correct": false,
+     "rationale": "Front Door is a global HTTP load balancer and CDN, not a backup or recovery service."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Azure Backup provides policy-driven, application-consistent recovery points for Azure VMs with low operational overhead.",
+   "outcome_refs": [
+    "MST-0163-D03.01"
+   ],
+   "domain_ref": "Design business continuity solutions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0163-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO storage options that are appropriate for storing large volumes of unstructured object data accessed over HTTP. (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure Blob Storage",
+     "correct": true,
+     "rationale": "Correct: Blob Storage is purpose-built for massive unstructured object data accessed over HTTP/HTTPS."
+    },
+    {
+     "key": "B",
+     "text": "Azure Data Lake Storage Gen2",
+     "correct": true,
+     "rationale": "Correct: Data Lake Storage Gen2 builds on Blob Storage with a hierarchical namespace for large-scale unstructured and analytics data."
+    },
+    {
+     "key": "C",
+     "text": "Azure SQL Database",
+     "correct": false,
+     "rationale": "Azure SQL Database is a relational engine for structured data, not large unstructured objects."
+    },
+    {
+     "key": "D",
+     "text": "Azure Cache for Redis",
+     "correct": false,
+     "rationale": "Redis is an in-memory key-value cache, unsuitable as durable object storage."
+    },
+    {
+     "key": "E",
+     "text": "Azure Table partition key",
+     "correct": false,
+     "rationale": "A partition key is a design element of Table storage for key-value data, not an object-storage service."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Blob Storage is purpose-built for massive unstructured object data accessed over HTTP/HTTPS.",
+   "outcome_refs": [
+    "MST-0163-D02.01"
+   ],
+   "domain_ref": "Design data storage solutions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
