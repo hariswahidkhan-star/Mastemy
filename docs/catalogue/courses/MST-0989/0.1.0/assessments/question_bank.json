@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0989",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0989-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does it mean for an Ansible task to be idempotent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Running it repeatedly leaves the system in the same final state without needless changes",
+     "correct": true,
+     "rationale": "Correct: idempotent tasks only change what is not already in the desired state."
+    },
+    {
+     "key": "B",
+     "text": "It can only ever be run once",
+     "correct": false,
+     "rationale": "Idempotency is about safe repetition, not one-time use."
+    },
+    {
+     "key": "C",
+     "text": "It always reports changed on every run",
+     "correct": false,
+     "rationale": "A truly idempotent task reports ok when nothing needs changing."
+    },
+    {
+     "key": "D",
+     "text": "It requires an agent on each node",
+     "correct": false,
+     "rationale": "Ansible is agentless; idempotency is unrelated to agents."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: idempotent tasks only change what is not already in the desired state.",
+   "outcome_refs": [
+    "MST-0989-D02.01"
+   ],
+   "domain_ref": "Playbooks and tasks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0989-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO correctly describe Ansible handlers? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A handler runs only when notified by a task that reported changed",
+     "correct": true,
+     "rationale": "Correct: handlers fire on notification from a changed task."
+    },
+    {
+     "key": "B",
+     "text": "Handlers typically run once at the end of a play",
+     "correct": true,
+     "rationale": "Correct: notified handlers run after tasks, usually at the play's end."
+    },
+    {
+     "key": "C",
+     "text": "Handlers run on every task regardless of changes",
+     "correct": false,
+     "rationale": "They run only when notified."
+    },
+    {
+     "key": "D",
+     "text": "Handlers cannot restart services",
+     "correct": false,
+     "rationale": "Restarting a service is a classic handler use."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: handlers fire on notification from a changed task.",
+   "outcome_refs": [
+    "MST-0989-D05.01"
+   ],
+   "domain_ref": "Control flow and handlers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0989-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is Ansible described as agentless?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It connects to managed nodes over SSH and does not require installed daemons",
+     "correct": true,
+     "rationale": "Correct: Ansible pushes over SSH (or WinRM) without a persistent agent on nodes."
+    },
+    {
+     "key": "B",
+     "text": "It never connects to any remote host",
+     "correct": false,
+     "rationale": "It does connect, just without an agent."
+    },
+    {
+     "key": "C",
+     "text": "It only configures the control node",
+     "correct": false,
+     "rationale": "It configures managed nodes too."
+    },
+    {
+     "key": "D",
+     "text": "It requires a kernel module on each host",
+     "correct": false,
+     "rationale": "No special module is required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Ansible pushes over SSH (or WinRM) without a persistent agent on nodes.",
+   "outcome_refs": [
+    "MST-0989-D01.01"
+   ],
+   "domain_ref": "Ansible foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

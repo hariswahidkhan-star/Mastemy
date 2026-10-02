@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0915",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0915-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Flutter's layout model, how is a widget's size ultimately determined?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Constraints flow down from the parent and the child sizes itself within them",
+     "correct": true,
+     "rationale": "Correct: parents pass constraints down, children choose a size within them, and size flows back up."
+    },
+    {
+     "key": "B",
+     "text": "Each widget picks its size independently of its parent",
+     "correct": false,
+     "rationale": "A child must size within the constraints its parent gives."
+    },
+    {
+     "key": "C",
+     "text": "Sizes are fixed at compile time",
+     "correct": false,
+     "rationale": "Layout is resolved at runtime based on constraints."
+    },
+    {
+     "key": "D",
+     "text": "The root widget sets every child's exact pixels",
+     "correct": false,
+     "rationale": "The root passes constraints; children still choose within them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: parents pass constraints down, children choose a size within them, and size flows back up.",
+   "outcome_refs": [
+    "MST-0915-D02.01"
+   ],
+   "domain_ref": "Flutter widgets and layout",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0915-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about Dart's sound null safety? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A variable must be declared with ? to hold null",
+     "correct": true,
+     "rationale": "Correct: non-nullable is the default; ? opts a type into null."
+    },
+    {
+     "key": "B",
+     "text": "The compiler can guarantee a non-nullable variable is never null",
+     "correct": true,
+     "rationale": "Correct: sound null safety lets the compiler rule out null for non-nullable types."
+    },
+    {
+     "key": "C",
+     "text": "Adding ! removes the possibility of a runtime null error",
+     "correct": false,
+     "rationale": "! asserts non-null and throws if the value is actually null."
+    },
+    {
+     "key": "D",
+     "text": "Null safety only applies to local variables",
+     "correct": false,
+     "rationale": "It applies across fields, parameters and return types too."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: non-nullable is the default; ? opts a type into null.",
+   "outcome_refs": [
+    "MST-0915-D01.01"
+   ],
+   "domain_ref": "Dart language foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0915-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a Future passed to FutureBuilder usually be created outside the build method?",
+   "options": [
+    {
+     "key": "A",
+     "text": "build can run many times, recreating the Future and refetching on each rebuild",
+     "correct": true,
+     "rationale": "Correct: creating it in build triggers a new request on every rebuild; create it once and store it."
+    },
+    {
+     "key": "B",
+     "text": "FutureBuilder cannot accept a Future created in build",
+     "correct": false,
+     "rationale": "It can; the problem is repeated recreation."
+    },
+    {
+     "key": "C",
+     "text": "Futures created in build never complete",
+     "correct": false,
+     "rationale": "They complete, but a new one starts each rebuild."
+    },
+    {
+     "key": "D",
+     "text": "It makes the request synchronous",
+     "correct": false,
+     "rationale": "The request stays asynchronous regardless of where the Future is made."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: creating it in build triggers a new request on every rebuild; create it once and store it.",
+   "outcome_refs": [
+    "MST-0915-D05.01"
+   ],
+   "domain_ref": "Data and networking",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0913",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0913-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A child view must read and change a value owned by its parent. Which property wrapper should the child use for that value?",
+   "options": [
+    {
+     "key": "A",
+     "text": "@Binding",
+     "correct": true,
+     "rationale": "Correct: @Binding gives the child read-write access to state owned elsewhere without duplicating it."
+    },
+    {
+     "key": "B",
+     "text": "@State",
+     "correct": false,
+     "rationale": "@State declares new state owned by this view, not a reference to the parent's value."
+    },
+    {
+     "key": "C",
+     "text": "let",
+     "correct": false,
+     "rationale": "A plain let is read-only and cannot write back to the parent."
+    },
+    {
+     "key": "D",
+     "text": "@Environment",
+     "correct": false,
+     "rationale": "@Environment reads shared context, not a specific parent-owned value passed down explicitly."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: @Binding gives the child read-write access to state owned elsewhere without duplicating it.",
+   "outcome_refs": [
+    "MST-0913-D03.01"
+   ],
+   "domain_ref": "State and data flow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0913-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about SwiftUI view modifiers are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Modifier order can change the final layout and appearance",
+     "correct": true,
+     "rationale": "Correct: each modifier wraps the previous result, so order matters."
+    },
+    {
+     "key": "B",
+     "text": "A modifier returns a new view rather than mutating the original",
+     "correct": true,
+     "rationale": "Correct: modifiers are value-returning; SwiftUI views are value types."
+    },
+    {
+     "key": "C",
+     "text": "Modifiers can only be applied once per view",
+     "correct": false,
+     "rationale": "The same modifier can be applied multiple times with different effects."
+    },
+    {
+     "key": "D",
+     "text": "Modifiers execute imperatively at call time like UIKit setters",
+     "correct": false,
+     "rationale": "They describe a declarative view tree, not immediate imperative mutations."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: each modifier wraps the previous result, so order matters.",
+   "outcome_refs": [
+    "MST-0913-D02.01"
+   ],
+   "domain_ref": "SwiftUI views and layout",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0913-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should a SwiftUI view start an asynchronous fetch tied to its lifecycle?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In a .task modifier",
+     "correct": true,
+     "rationale": "Correct: .task starts work when the view appears and cancels it when the view disappears."
+    },
+    {
+     "key": "B",
+     "text": "Directly in the view's body",
+     "correct": false,
+     "rationale": "body can run many times; side effects there cause repeated, uncontrolled work."
+    },
+    {
+     "key": "C",
+     "text": "In the struct's initializer",
+     "correct": false,
+     "rationale": "init runs during view construction and has no lifecycle or cancellation."
+    },
+    {
+     "key": "D",
+     "text": "In a global function called at launch",
+     "correct": false,
+     "rationale": "That is not tied to the view and cannot be cancelled with it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: .task starts work when the view appears and cancels it when the view disappears.",
+   "outcome_refs": [
+    "MST-0913-D05.01"
+   ],
+   "domain_ref": "Asynchronous data and networking",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

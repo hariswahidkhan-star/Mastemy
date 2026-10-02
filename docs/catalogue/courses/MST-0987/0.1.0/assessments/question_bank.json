@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0987",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0987-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After a bad helm upgrade, how do you return the release to its previous working state?",
+   "options": [
+    {
+     "key": "A",
+     "text": "helm rollback to the prior revision",
+     "correct": true,
+     "rationale": "Correct: Helm keeps revision history and helm rollback restores a previous revision."
+    },
+    {
+     "key": "B",
+     "text": "Delete the cluster and recreate it",
+     "correct": false,
+     "rationale": "That is unnecessary and destructive; rollback exists for this."
+    },
+    {
+     "key": "C",
+     "text": "Manually edit live objects with kubectl only",
+     "correct": false,
+     "rationale": "That bypasses Helm's release tracking and risks drift."
+    },
+    {
+     "key": "D",
+     "text": "Reinstall from scratch losing all history",
+     "correct": false,
+     "rationale": "Rollback preserves history and is the intended path."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Helm keeps revision history and helm rollback restores a previous revision.",
+   "outcome_refs": [
+    "MST-0987-D05.01"
+   ],
+   "domain_ref": "Releases, upgrades and rollbacks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0987-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid ways to override chart values at install or upgrade time? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Pass a custom values file with -f",
+     "correct": true,
+     "rationale": "Correct: -f/--values supplies an override file."
+    },
+    {
+     "key": "B",
+     "text": "Set individual values with --set",
+     "correct": true,
+     "rationale": "Correct: --set overrides specific keys inline."
+    },
+    {
+     "key": "C",
+     "text": "Edit the rendered manifest in the cluster by hand",
+     "correct": false,
+     "rationale": "That causes drift and is not a Helm override mechanism."
+    },
+    {
+     "key": "D",
+     "text": "Rename Chart.yaml to values.yaml",
+     "correct": false,
+     "rationale": "That breaks the chart; files have distinct roles."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: -f/--values supplies an override file.",
+   "outcome_refs": [
+    "MST-0987-D04.01"
+   ],
+   "domain_ref": "Values, overrides and environments",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0987-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does Helm primarily solve for Kubernetes users?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Templating and versioned release management of Kubernetes manifests",
+     "correct": true,
+     "rationale": "Correct: Helm packages, templates and versions manifests as releases you can upgrade and roll back."
+    },
+    {
+     "key": "B",
+     "text": "Replacing the Kubernetes API server",
+     "correct": false,
+     "rationale": "Helm uses the API server; it does not replace it."
+    },
+    {
+     "key": "C",
+     "text": "Running containers without a cluster",
+     "correct": false,
+     "rationale": "Helm still requires a Kubernetes cluster."
+    },
+    {
+     "key": "D",
+     "text": "Compiling application source code",
+     "correct": false,
+     "rationale": "Helm does not build application code."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Helm packages, templates and versions manifests as releases you can upgrade and roll back.",
+   "outcome_refs": [
+    "MST-0987-D01.01"
+   ],
+   "domain_ref": "Kubernetes and Helm basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0943",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0943-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which MySQL storage engine is required to enforce foreign key constraints and transactions?",
+   "options": [
+    {
+     "key": "A",
+     "text": "InnoDB",
+     "correct": true,
+     "rationale": "Correct: InnoDB supports transactions and foreign keys; MyISAM does not."
+    },
+    {
+     "key": "B",
+     "text": "MyISAM",
+     "correct": false,
+     "rationale": "MyISAM ignores foreign keys and has no transactions."
+    },
+    {
+     "key": "C",
+     "text": "MEMORY",
+     "correct": false,
+     "rationale": "The MEMORY engine does not support foreign keys."
+    },
+    {
+     "key": "D",
+     "text": "CSV",
+     "correct": false,
+     "rationale": "The CSV engine supports neither constraints nor transactions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: InnoDB supports transactions and foreign keys; MyISAM does not.",
+   "outcome_refs": [
+    "MST-0943-D03.01"
+   ],
+   "domain_ref": "Constraints and relationships",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0943-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are guaranteed by wrapping statements in a committed transaction? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Atomicity: all statements apply or none do",
+     "correct": true,
+     "rationale": "Correct: a transaction either commits fully or rolls back."
+    },
+    {
+     "key": "B",
+     "text": "Durability: once committed, changes survive a crash",
+     "correct": true,
+     "rationale": "Correct: committed changes are persisted and survive restart."
+    },
+    {
+     "key": "C",
+     "text": "The query runs faster than outside a transaction",
+     "correct": false,
+     "rationale": "Transactions are about correctness, not raw speed."
+    },
+    {
+     "key": "D",
+     "text": "Indexes are created automatically",
+     "correct": false,
+     "rationale": "Transactions do not create indexes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a transaction either commits fully or rolls back.",
+   "outcome_refs": [
+    "MST-0943-D05.01"
+   ],
+   "domain_ref": "Transactions and concurrency",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0943-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is DECIMAL preferred over FLOAT for storing monetary amounts?",
+   "options": [
+    {
+     "key": "A",
+     "text": "DECIMAL stores exact fixed-point values, avoiding binary rounding errors",
+     "correct": true,
+     "rationale": "Correct: DECIMAL is exact; FLOAT is approximate and can misrepresent money."
+    },
+    {
+     "key": "B",
+     "text": "FLOAT cannot store numbers above 1000",
+     "correct": false,
+     "rationale": "FLOAT handles large numbers; the issue is precision, not range."
+    },
+    {
+     "key": "C",
+     "text": "DECIMAL uses less storage than FLOAT",
+     "correct": false,
+     "rationale": "Storage is not the reason; exactness is."
+    },
+    {
+     "key": "D",
+     "text": "FLOAT is not supported in MySQL",
+     "correct": false,
+     "rationale": "FLOAT is supported but unsuitable for exact money."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: DECIMAL is exact; FLOAT is approximate and can misrepresent money.",
+   "outcome_refs": [
+    "MST-0943-D02.01"
+   ],
+   "domain_ref": "Schema and data types",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

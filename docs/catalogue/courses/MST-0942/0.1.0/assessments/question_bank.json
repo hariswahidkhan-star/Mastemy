@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0942",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0942-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does a window function differ from a GROUP BY aggregate on the same column?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A window function returns a value for every row without collapsing rows",
+     "correct": true,
+     "rationale": "Correct: windowing adds a computed column per row; GROUP BY reduces each group to one row."
+    },
+    {
+     "key": "B",
+     "text": "A window function always returns fewer rows",
+     "correct": false,
+     "rationale": "It preserves row count; GROUP BY reduces rows."
+    },
+    {
+     "key": "C",
+     "text": "GROUP BY can use OVER but window functions cannot",
+     "correct": false,
+     "rationale": "OVER belongs to window functions, not GROUP BY."
+    },
+    {
+     "key": "D",
+     "text": "They always produce identical result sets",
+     "correct": false,
+     "rationale": "They differ in row count and shape."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: windowing adds a computed column per row; GROUP BY reduces each group to one row.",
+   "outcome_refs": [
+    "MST-0942-D01.01"
+   ],
+   "domain_ref": "Window function fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0942-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about RANK and DENSE_RANK are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "RANK leaves gaps in the sequence after ties",
+     "correct": true,
+     "rationale": "Correct: after a tie, RANK skips the next value(s)."
+    },
+    {
+     "key": "B",
+     "text": "DENSE_RANK assigns consecutive numbers with no gaps after ties",
+     "correct": true,
+     "rationale": "Correct: DENSE_RANK does not skip values after ties."
+    },
+    {
+     "key": "C",
+     "text": "Both require a PARTITION BY clause",
+     "correct": false,
+     "rationale": "PARTITION BY is optional; ORDER BY in OVER is what they need."
+    },
+    {
+     "key": "D",
+     "text": "ROW_NUMBER and RANK always return identical results",
+     "correct": false,
+     "rationale": "They differ whenever ties exist in the ordering."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: after a tie, RANK skips the next value(s).",
+   "outcome_refs": [
+    "MST-0942-D02.01"
+   ],
+   "domain_ref": "Ranking and row numbering",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0942-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can LAST_VALUE() OVER (ORDER BY ...) return the current row instead of the group's final row?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The default frame ends at the current row, so you must widen it to UNBOUNDED FOLLOWING",
+     "correct": true,
+     "rationale": "Correct: the default RANGE frame stops at the current row; an explicit frame to UNBOUNDED FOLLOWING fixes it."
+    },
+    {
+     "key": "B",
+     "text": "LAST_VALUE ignores ORDER BY entirely",
+     "correct": false,
+     "rationale": "It respects ORDER BY; the frame is the issue."
+    },
+    {
+     "key": "C",
+     "text": "LAST_VALUE is not a valid SQL function",
+     "correct": false,
+     "rationale": "It is a standard window value function."
+    },
+    {
+     "key": "D",
+     "text": "It only works without a PARTITION BY",
+     "correct": false,
+     "rationale": "It works with or without partitioning."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the default RANGE frame stops at the current row; an explicit frame to UNBOUNDED FOLLOWING fixes it.",
+   "outcome_refs": [
+    "MST-0942-D04.01"
+   ],
+   "domain_ref": "Window frames",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

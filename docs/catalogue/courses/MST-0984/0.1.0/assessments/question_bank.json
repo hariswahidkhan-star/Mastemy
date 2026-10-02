@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0984",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0984-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a branch protection rule requiring pull request reviews primarily prevent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Unreviewed changes being merged directly into a protected branch",
+     "correct": true,
+     "rationale": "Correct: it forces changes through review before they reach the protected branch."
+    },
+    {
+     "key": "B",
+     "text": "All commits to any branch in the repository",
+     "correct": false,
+     "rationale": "It targets the protected branch, not every branch."
+    },
+    {
+     "key": "C",
+     "text": "Cloning the repository",
+     "correct": false,
+     "rationale": "Protection rules govern merges, not cloning."
+    },
+    {
+     "key": "D",
+     "text": "GitHub Actions from running",
+     "correct": false,
+     "rationale": "Protection rules do not disable Actions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it forces changes through review before they reach the protected branch.",
+   "outcome_refs": [
+    "MST-0984-D03.01"
+   ],
+   "domain_ref": "Branch protection and governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0984-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices for secrets in GitHub Actions? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store tokens as encrypted repository or environment secrets",
+     "correct": true,
+     "rationale": "Correct: secrets are encrypted and injected at runtime, not stored in source."
+    },
+    {
+     "key": "B",
+     "text": "Reference secrets via the secrets context in the workflow",
+     "correct": true,
+     "rationale": "Correct: workflows read them through the secrets context rather than literals."
+    },
+    {
+     "key": "C",
+     "text": "Commit the token directly in the workflow YAML for convenience",
+     "correct": false,
+     "rationale": "Hardcoding secrets exposes them in history."
+    },
+    {
+     "key": "D",
+     "text": "Print the secret to the log to confirm it loaded",
+     "correct": false,
+     "rationale": "Logging secrets leaks them; Actions masks but you must not print them."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: secrets are encrypted and injected at runtime, not stored in source.",
+   "outcome_refs": [
+    "MST-0984-D05.01"
+   ],
+   "domain_ref": "Automation with GitHub Actions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0984-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement best distinguishes Git from GitHub?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Git is the version-control tool; GitHub is a hosting and collaboration platform built around it",
+     "correct": true,
+     "rationale": "Correct: Git tracks versions locally; GitHub hosts repositories and adds collaboration features."
+    },
+    {
+     "key": "B",
+     "text": "GitHub is the version-control tool and Git is the website",
+     "correct": false,
+     "rationale": "It is the reverse."
+    },
+    {
+     "key": "C",
+     "text": "They are two names for the same program",
+     "correct": false,
+     "rationale": "They are distinct: a tool and a platform."
+    },
+    {
+     "key": "D",
+     "text": "Git only works if GitHub is online",
+     "correct": false,
+     "rationale": "Git works fully offline without GitHub."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Git tracks versions locally; GitHub hosts repositories and adds collaboration features.",
+   "outcome_refs": [
+    "MST-0984-D01.01"
+   ],
+   "domain_ref": "Git and GitHub foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

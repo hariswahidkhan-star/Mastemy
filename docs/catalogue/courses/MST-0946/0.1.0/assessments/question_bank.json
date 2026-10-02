@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0946",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0946-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In an execution plan, what does an index seek usually indicate compared with an index or table scan?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The engine navigated directly to the matching rows using the index",
+     "correct": true,
+     "rationale": "Correct: a seek uses the index B-tree to jump to qualifying rows rather than reading everything."
+    },
+    {
+     "key": "B",
+     "text": "The engine read every row in the table",
+     "correct": false,
+     "rationale": "That describes a scan, not a seek."
+    },
+    {
+     "key": "C",
+     "text": "No index exists on the table",
+     "correct": false,
+     "rationale": "A seek requires a usable index."
+    },
+    {
+     "key": "D",
+     "text": "The query failed to compile",
+     "correct": false,
+     "rationale": "A seek is a normal, usually efficient operator."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a seek uses the index B-tree to jump to qualifying rows rather than reading everything.",
+   "outcome_refs": [
+    "MST-0946-D04.01"
+   ],
+   "domain_ref": "Indexing and performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0946-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about SQL Server recovery models and backups? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The full recovery model supports point-in-time restore via log backups",
+     "correct": true,
+     "rationale": "Correct: full recovery with log backups enables restoring to a point in time."
+    },
+    {
+     "key": "B",
+     "text": "The simple recovery model does not allow log backups for point-in-time restore",
+     "correct": true,
+     "rationale": "Correct: simple recovery truncates the log and has no log-backup chain."
+    },
+    {
+     "key": "C",
+     "text": "Differential backups replace the need for a full backup",
+     "correct": false,
+     "rationale": "A differential is restored on top of a full backup; it does not replace it."
+    },
+    {
+     "key": "D",
+     "text": "Backups can only be taken while the database is offline",
+     "correct": false,
+     "rationale": "SQL Server supports online backups."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: full recovery with log backups enables restoring to a point in time.",
+   "outcome_refs": [
+    "MST-0946-D06.01"
+   ],
+   "domain_ref": "Operations and recovery",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0946-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "T-SQL is a set-based language. What does that imply for how you should write most queries?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Operate on whole sets with joins and set operations rather than row-by-row loops",
+     "correct": true,
+     "rationale": "Correct: set-based queries let the optimizer work efficiently; cursors/loops are usually slower."
+    },
+    {
+     "key": "B",
+     "text": "Always use a WHILE loop to process one row at a time",
+     "correct": false,
+     "rationale": "Row-by-row processing is typically the slow anti-pattern."
+    },
+    {
+     "key": "C",
+     "text": "Joins should be avoided in favour of cursors",
+     "correct": false,
+     "rationale": "Joins are the set-based tool to prefer."
+    },
+    {
+     "key": "D",
+     "text": "Set logic only works on temporary tables",
+     "correct": false,
+     "rationale": "Set logic applies to any tables."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: set-based queries let the optimizer work efficiently; cursors/loops are usually slower.",
+   "outcome_refs": [
+    "MST-0946-D02.01"
+   ],
+   "domain_ref": "T-SQL development",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

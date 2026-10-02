@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0914",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0914-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must a network call in Android use a coroutine or background dispatcher rather than running directly on the main thread?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The main thread handles UI; blocking it freezes the app and can trigger an ANR",
+     "correct": true,
+     "rationale": "Correct: long work on the main thread blocks rendering and input, causing Application Not Responding."
+    },
+    {
+     "key": "B",
+     "text": "The main thread cannot execute Kotlin functions",
+     "correct": false,
+     "rationale": "It runs Kotlin code; the issue is blocking it, not capability."
+    },
+    {
+     "key": "C",
+     "text": "Coroutines make HTTP requests faster",
+     "correct": false,
+     "rationale": "They provide concurrency and cancellation, not raw speed."
+    },
+    {
+     "key": "D",
+     "text": "Android forbids all I/O in Kotlin",
+     "correct": false,
+     "rationale": "I/O is allowed; it must just happen off the main thread."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: long work on the main thread blocks rendering and input, causing Application Not Responding.",
+   "outcome_refs": [
+    "MST-0914-D05.01"
+   ],
+   "domain_ref": "Data, networking and persistence",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0914-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about Kotlin null safety? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A type must be declared nullable with ? to hold null",
+     "correct": true,
+     "rationale": "Correct: non-null types cannot hold null unless marked with ?."
+    },
+    {
+     "key": "B",
+     "text": "The safe-call operator ?. returns null instead of throwing when the receiver is null",
+     "correct": true,
+     "rationale": "Correct: ?. short-circuits to null on a null receiver."
+    },
+    {
+     "key": "C",
+     "text": "The !! operator makes a value safe to use",
+     "correct": false,
+     "rationale": "!! asserts non-null and throws if the value is null; it is not safe."
+    },
+    {
+     "key": "D",
+     "text": "All Kotlin types are nullable by default",
+     "correct": false,
+     "rationale": "Types are non-null by default; nullability is opt-in."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: non-null types cannot hold null unless marked with ?.",
+   "outcome_refs": [
+    "MST-0914-D01.01"
+   ],
+   "domain_ref": "Kotlin language for Android",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0914-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main reason to keep screen state in a ViewModel rather than in a composable?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The ViewModel survives configuration changes like rotation",
+     "correct": true,
+     "rationale": "Correct: a ViewModel outlives recomposition and recreation, so state is not lost on rotation."
+    },
+    {
+     "key": "B",
+     "text": "Composables cannot hold any state",
+     "correct": false,
+     "rationale": "They can via remember, but that state is tied to composition lifetime."
+    },
+    {
+     "key": "C",
+     "text": "ViewModels render UI faster",
+     "correct": false,
+     "rationale": "ViewModels do not render UI at all."
+    },
+    {
+     "key": "D",
+     "text": "It avoids writing Kotlin code",
+     "correct": false,
+     "rationale": "Both require Kotlin; this is about state lifetime."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a ViewModel outlives recomposition and recreation, so state is not lost on rotation.",
+   "outcome_refs": [
+    "MST-0914-D04.01"
+   ],
+   "domain_ref": "Architecture and state",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
