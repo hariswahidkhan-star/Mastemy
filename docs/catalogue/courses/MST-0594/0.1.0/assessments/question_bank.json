@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0594",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0594-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Users search both for exact error codes and for paraphrased questions. What retrieval design fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Hybrid search combining keyword (for exact terms) and vector (for paraphrases)",
+     "correct": true,
+     "rationale": "Correct: hybrid covers both exact-match and semantic queries."
+    },
+    {
+     "key": "B",
+     "text": "Vector search only",
+     "correct": false,
+     "rationale": "Pure vector search can miss exact identifiers like error codes."
+    },
+    {
+     "key": "C",
+     "text": "Keyword search only",
+     "correct": false,
+     "rationale": "Pure keyword search handles paraphrases poorly."
+    },
+    {
+     "key": "D",
+     "text": "Random ordering of all documents",
+     "correct": false,
+     "rationale": "Random ordering is not retrieval."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: hybrid covers both exact-match and semantic queries.",
+   "outcome_refs": [
+    "MST-0594-D01.03"
+   ],
+   "domain_ref": "Keyword and vector retrieval",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0594-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make combining two retrievers sound? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a rank-fusion method such as reciprocal rank fusion",
+     "correct": true,
+     "rationale": "Correct: RRF combines rankings without needing comparable raw scores."
+    },
+    {
+     "key": "B",
+     "text": "Normalise scores before weighting if you combine raw scores",
+     "correct": true,
+     "rationale": "Correct: normalisation makes scores from different retrievers comparable."
+    },
+    {
+     "key": "C",
+     "text": "Add raw scores from both retrievers directly",
+     "correct": false,
+     "rationale": "Unnormalised scores are not comparable and distort the mix."
+    },
+    {
+     "key": "D",
+     "text": "Use only the first retriever's results and discard the other",
+     "correct": false,
+     "rationale": "Discarding a signal defeats the purpose of hybrid search."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: RRF combines rankings without needing comparable raw scores.",
+   "outcome_refs": [
+    "MST-0594-D02.02"
+   ],
+   "domain_ref": "Combining signals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0594-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A cross-encoder reranker improves relevance but you must rerank quickly. What is the usual approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rerank only a small candidate set from the first-stage retrievers",
+     "correct": true,
+     "rationale": "Correct: reranking a bounded candidate set controls latency while improving ordering."
+    },
+    {
+     "key": "B",
+     "text": "Rerank the entire corpus on every query",
+     "correct": false,
+     "rationale": "Reranking everything is far too slow."
+    },
+    {
+     "key": "C",
+     "text": "Skip the first-stage retrieval entirely",
+     "correct": false,
+     "rationale": "First-stage retrieval is what makes reranking tractable."
+    },
+    {
+     "key": "D",
+     "text": "Rerank with a keyword matcher instead of the cross-encoder",
+     "correct": false,
+     "rationale": "That abandons the quality gain the cross-encoder provides."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reranking a bounded candidate set controls latency while improving ordering.",
+   "outcome_refs": [
+    "MST-0594-D03.03"
+   ],
+   "domain_ref": "Reranking",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

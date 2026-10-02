@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0582",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0582-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want more reliable reasoning on a multi-step task. Which approach is most defensible?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Decompose the task into steps and add a verification step, then still validate against examples",
+     "correct": true,
+     "rationale": "Correct: decomposition plus verification helps, but must be validated empirically."
+    },
+    {
+     "key": "B",
+     "text": "Add the phrase 'be 100% accurate' to the prompt",
+     "correct": false,
+     "rationale": "Assertions of accuracy do not change model behaviour."
+    },
+    {
+     "key": "C",
+     "text": "Raise the temperature to encourage creativity",
+     "correct": false,
+     "rationale": "Higher temperature usually harms reasoning reliability."
+    },
+    {
+     "key": "D",
+     "text": "Trust the longest answer the model gives",
+     "correct": false,
+     "rationale": "Answer length does not indicate correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: decomposition plus verification helps, but must be validated empirically.",
+   "outcome_refs": [
+    "MST-0582-D01.02"
+   ],
+   "domain_ref": "Structured reasoning prompts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0582-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce overconfident, unsupported recommendations? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Require the model to state the evidence and criteria behind each recommendation",
+     "correct": true,
+     "rationale": "Correct: surfacing the basis makes unsupported claims visible."
+    },
+    {
+     "key": "B",
+     "text": "Evaluate recommendations against a labelled set before trusting them",
+     "correct": true,
+     "rationale": "Correct: empirical evaluation grounds confidence in real performance."
+    },
+    {
+     "key": "C",
+     "text": "Instruct the model to always sound certain",
+     "correct": false,
+     "rationale": "Forcing certainty hides uncertainty and increases risk."
+    },
+    {
+     "key": "D",
+     "text": "Hide the decision criteria from the prompt",
+     "correct": false,
+     "rationale": "Omitting criteria makes recommendations harder to verify."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: surfacing the basis makes unsupported claims visible.",
+   "outcome_refs": [
+    "MST-0582-D02.03"
+   ],
+   "domain_ref": "Decision and planning prompts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0582-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model gives a fluent, confident explanation for its answer. What does this tell you about correctness?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Little on its own; fluent explanations can accompany wrong answers and must be verified",
+     "correct": true,
+     "rationale": "Correct: fluency and confidence are not evidence of correctness."
+    },
+    {
+     "key": "B",
+     "text": "The answer is certainly correct because the explanation is detailed",
+     "correct": false,
+     "rationale": "Detail does not establish correctness."
+    },
+    {
+     "key": "C",
+     "text": "The answer needs no checking",
+     "correct": false,
+     "rationale": "All reasoning outputs should be verified."
+    },
+    {
+     "key": "D",
+     "text": "Confidence language guarantees accuracy",
+     "correct": false,
+     "rationale": "Confident phrasing is unrelated to accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fluency and confidence are not evidence of correctness.",
+   "outcome_refs": [
+    "MST-0582-D03.01"
+   ],
+   "domain_ref": "Reliability of reasoning outputs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

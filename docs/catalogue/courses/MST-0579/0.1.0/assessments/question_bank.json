@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0579",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0579-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You are assigning work to three coding agents. What most reduces the risk of conflicting changes?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Decompose the work into scoped tasks that touch mostly disjoint files",
+     "correct": true,
+     "rationale": "Correct: disjoint, well-scoped tasks minimise overlapping edits and conflicts."
+    },
+    {
+     "key": "B",
+     "text": "Give all three the same broad task and merge whoever finishes first",
+     "correct": false,
+     "rationale": "Duplicated broad tasks create conflicting edits and wasted work."
+    },
+    {
+     "key": "C",
+     "text": "Let each agent edit any file it wants",
+     "correct": false,
+     "rationale": "Unbounded edits maximise conflict risk."
+    },
+    {
+     "key": "D",
+     "text": "Skip branches and have them all commit to main",
+     "correct": false,
+     "rationale": "Committing to main removes isolation and protection."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: disjoint, well-scoped tasks minimise overlapping edits and conflicts.",
+   "outcome_refs": [
+    "MST-0579-D01.02"
+   ],
+   "domain_ref": "Coordinating multiple agents",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0579-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls keep multi-agent branches safe to integrate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Branch protection requiring passing checks before any agent branch merges",
+     "correct": true,
+     "rationale": "Correct: required checks gate every branch before it enters the shared line."
+    },
+    {
+     "key": "B",
+     "text": "Human review of agent pull requests before merge",
+     "correct": true,
+     "rationale": "Correct: human review catches issues automated checks miss."
+    },
+    {
+     "key": "C",
+     "text": "Allowing agents to adjust their own required checks",
+     "correct": false,
+     "rationale": "That removes the guardrail entirely."
+    },
+    {
+     "key": "D",
+     "text": "Merging all branches simultaneously without review",
+     "correct": false,
+     "rationale": "Simultaneous unreviewed merges invite conflicts and defects."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: required checks gate every branch before it enters the shared line.",
+   "outcome_refs": [
+    "MST-0579-D02.03"
+   ],
+   "domain_ref": "Branch and merge strategy",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0579-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Each agent's branch passes its own tests. Why run integration tests before combining them?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Independently passing branches can still conflict or break shared behaviour once combined",
+     "correct": true,
+     "rationale": "Correct: integration tests catch interactions that per-branch tests cannot."
+    },
+    {
+     "key": "B",
+     "text": "Integration tests are only for single-developer projects",
+     "correct": false,
+     "rationale": "They are especially important when multiple agents change the system."
+    },
+    {
+     "key": "C",
+     "text": "Passing branches never interact",
+     "correct": false,
+     "rationale": "Combined changes frequently interact in unexpected ways."
+    },
+    {
+     "key": "D",
+     "text": "Integration testing replaces the need for human review",
+     "correct": false,
+     "rationale": "Tests and review are complementary, not substitutes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: integration tests catch interactions that per-branch tests cannot.",
+   "outcome_refs": [
+    "MST-0579-D03.02"
+   ],
+   "domain_ref": "Review and integration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

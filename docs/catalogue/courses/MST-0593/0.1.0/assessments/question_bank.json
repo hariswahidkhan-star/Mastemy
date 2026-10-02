@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0593",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0593-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to pick a vector store. What should drive the choice?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Documented requirements: scale, latency, filtering, operations and cost",
+     "correct": true,
+     "rationale": "Correct: requirements-driven selection fits the store to the workload."
+    },
+    {
+     "key": "B",
+     "text": "Whichever store is most talked about online",
+     "correct": false,
+     "rationale": "Popularity is not a requirement."
+    },
+    {
+     "key": "C",
+     "text": "The one with the most features regardless of need",
+     "correct": false,
+     "rationale": "Unneeded features add cost and complexity."
+    },
+    {
+     "key": "D",
+     "text": "Whatever the AI tool suggests first",
+     "correct": false,
+     "rationale": "An unexamined suggestion is not a basis for selection."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: requirements-driven selection fits the store to the workload.",
+   "outcome_refs": [
+    "MST-0593-D01.01"
+   ],
+   "domain_ref": "Choosing a vector store",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0593-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about approximate nearest-neighbour (ANN) indexes are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "ANN trades some recall for much lower latency and can be tuned",
+     "correct": true,
+     "rationale": "Correct: ANN parameters control the recall/latency trade-off."
+    },
+    {
+     "key": "B",
+     "text": "Metadata filters can scope ANN searches to a subset",
+     "correct": true,
+     "rationale": "Correct: filtering restricts results to matching metadata."
+    },
+    {
+     "key": "C",
+     "text": "ANN always returns the exact true nearest neighbours",
+     "correct": false,
+     "rationale": "ANN is approximate by design."
+    },
+    {
+     "key": "D",
+     "text": "Tuning ANN parameters has no effect on recall",
+     "correct": false,
+     "rationale": "Parameters directly affect recall and latency."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: ANN parameters control the recall/latency trade-off.",
+   "outcome_refs": [
+    "MST-0593-D02.02"
+   ],
+   "domain_ref": "Index engineering",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0593-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After deleting many documents, stale results still appear. What is the likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The index needs reindexing or compaction for deletes to fully take effect",
+     "correct": true,
+     "rationale": "Correct: deletes often require reindexing/compaction to be reflected."
+    },
+    {
+     "key": "B",
+     "text": "Vector stores cannot delete data",
+     "correct": false,
+     "rationale": "Vector stores support deletes."
+    },
+    {
+     "key": "C",
+     "text": "The embedding model changed on its own",
+     "correct": false,
+     "rationale": "Models do not change by themselves."
+    },
+    {
+     "key": "D",
+     "text": "Deletes always apply instantly with no maintenance",
+     "correct": false,
+     "rationale": "That assumption is what causes the stale results."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: deletes often require reindexing/compaction to be reflected.",
+   "outcome_refs": [
+    "MST-0593-D03.01"
+   ],
+   "domain_ref": "Operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

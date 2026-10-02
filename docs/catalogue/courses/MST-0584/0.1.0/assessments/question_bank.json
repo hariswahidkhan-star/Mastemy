@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0584",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0584-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want answers about a scanned form to stay faithful to the document. What should the prompt require?",
+   "options": [
+    {
+     "key": "A",
+     "text": "That answers come only from the provided media and say so when the information is not present",
+     "correct": true,
+     "rationale": "Correct: grounding to the source prevents answers drawn from general knowledge."
+    },
+    {
+     "key": "B",
+     "text": "That the model fill any gaps with its best general guess",
+     "correct": false,
+     "rationale": "Guessing undermines grounding and invites errors."
+    },
+    {
+     "key": "C",
+     "text": "That the model ignore the document and use its training data",
+     "correct": false,
+     "rationale": "Ignoring the source defeats the task."
+    },
+    {
+     "key": "D",
+     "text": "That the answer always be a single word",
+     "correct": false,
+     "rationale": "Answer length is unrelated to grounding faithfulness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: grounding to the source prevents answers drawn from general knowledge.",
+   "outcome_refs": [
+    "MST-0584-D01.03"
+   ],
+   "domain_ref": "Working with image and document inputs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0584-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A scan is low quality and OCR is uncertain. Which TWO responses are appropriate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Return an explicit 'cannot determine' for fields that are unreadable",
+     "correct": true,
+     "rationale": "Correct: flagging unreadable fields is safer than guessing."
+    },
+    {
+     "key": "B",
+     "text": "Flag low confidence so a human can review the uncertain fields",
+     "correct": true,
+     "rationale": "Correct: surfacing uncertainty routes hard cases to review."
+    },
+    {
+     "key": "C",
+     "text": "Invent the most likely value and present it as certain",
+     "correct": false,
+     "rationale": "Presenting guesses as certain is unsafe."
+    },
+    {
+     "key": "D",
+     "text": "Silently drop the document from the results",
+     "correct": false,
+     "rationale": "Silently dropping data hides the problem."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: flagging unreadable fields is safer than guessing.",
+   "outcome_refs": [
+    "MST-0584-D02.03"
+   ],
+   "domain_ref": "Mixed-modality tasks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0584-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The model gives a confident answer about a blurry chart. What is the correct stance?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the answer against the media; confidence on degraded input is not reliable",
+     "correct": true,
+     "rationale": "Correct: confidence does not compensate for poor-quality input."
+    },
+    {
+     "key": "B",
+     "text": "Accept it because the model sounded sure",
+     "correct": false,
+     "rationale": "Confidence is not evidence on degraded media."
+    },
+    {
+     "key": "C",
+     "text": "Assume blurry images are always read correctly",
+     "correct": false,
+     "rationale": "Degraded media raises error risk."
+    },
+    {
+     "key": "D",
+     "text": "Skip verification for image tasks",
+     "correct": false,
+     "rationale": "Multimodal answers still need verification."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: confidence does not compensate for poor-quality input.",
+   "outcome_refs": [
+    "MST-0584-D03.01"
+   ],
+   "domain_ref": "Reliability across modalities",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

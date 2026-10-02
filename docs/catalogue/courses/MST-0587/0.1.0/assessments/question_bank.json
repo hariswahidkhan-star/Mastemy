@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0587",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0587-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Your context window is fixed and the knowledge base is large. What is the best general strategy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieve and include only the most relevant context, budgeting the window across its parts",
+     "correct": true,
+     "rationale": "Correct: relevance-driven, budgeted assembly uses the window effectively."
+    },
+    {
+     "key": "B",
+     "text": "Always fill the window with as much text as possible",
+     "correct": false,
+     "rationale": "Stuffing irrelevant text wastes the budget and can dilute relevance."
+    },
+    {
+     "key": "C",
+     "text": "Include the entire knowledge base every call",
+     "correct": false,
+     "rationale": "That is impossible under a fixed window and wasteful."
+    },
+    {
+     "key": "D",
+     "text": "Send only the user's last message with no retrieval",
+     "correct": false,
+     "rationale": "Dropping relevant context harms answer quality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: relevance-driven, budgeted assembly uses the window effectively.",
+   "outcome_refs": [
+    "MST-0587-D01.02"
+   ],
+   "domain_ref": "Designing context",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0587-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce cost and latency without losing needed context? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cache stable context so it is not re-sent unchanged every turn",
+     "correct": true,
+     "rationale": "Correct: caching avoids repeated cost for unchanged context."
+    },
+    {
+     "key": "B",
+     "text": "Summarise or compress long history while keeping key facts",
+     "correct": true,
+     "rationale": "Correct: compression preserves signal while shrinking tokens."
+    },
+    {
+     "key": "C",
+     "text": "Re-fetch and re-send all context on every request",
+     "correct": false,
+     "rationale": "Re-sending unchanged context wastes cost and time."
+    },
+    {
+     "key": "D",
+     "text": "Always use the maximum context window regardless of need",
+     "correct": false,
+     "rationale": "Maximal context raises cost and latency needlessly."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: caching avoids repeated cost for unchanged context.",
+   "outcome_refs": [
+    "MST-0587-D02.03"
+   ],
+   "domain_ref": "Assembling context at runtime",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0587-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Retrieved documents sometimes contain text like 'ignore previous instructions'. How should the system treat retrieved content?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As untrusted data that must not be executed as instructions",
+     "correct": true,
+     "rationale": "Correct: treating retrieved text as data defends against prompt injection."
+    },
+    {
+     "key": "B",
+     "text": "As trusted system instructions to follow",
+     "correct": false,
+     "rationale": "Following injected instructions is the vulnerability itself."
+    },
+    {
+     "key": "C",
+     "text": "As higher priority than the system prompt",
+     "correct": false,
+     "rationale": "Retrieved data must never override the system prompt."
+    },
+    {
+     "key": "D",
+     "text": "As safe because it came from the knowledge base",
+     "correct": false,
+     "rationale": "Source does not make embedded instructions safe."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: treating retrieved text as data defends against prompt injection.",
+   "outcome_refs": [
+    "MST-0587-D03.02"
+   ],
+   "domain_ref": "Reliability and cost",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

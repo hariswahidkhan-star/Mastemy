@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0592",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0592-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You switch to a new embedding model for an existing index. What must you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Re-embed the whole corpus with the new model; vectors from different models are not comparable",
+     "correct": true,
+     "rationale": "Correct: embeddings from different models live in different spaces and cannot be mixed."
+    },
+    {
+     "key": "B",
+     "text": "Keep the old vectors and add new ones alongside",
+     "correct": false,
+     "rationale": "Mixing vectors from different models produces meaningless comparisons."
+    },
+    {
+     "key": "C",
+     "text": "Only re-embed the queries, not the documents",
+     "correct": false,
+     "rationale": "Queries and documents must share the same embedding space."
+    },
+    {
+     "key": "D",
+     "text": "Do nothing, since embeddings are universal",
+     "correct": false,
+     "rationale": "Embeddings are model-specific, not universal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: embeddings from different models live in different spaces and cannot be mixed.",
+   "outcome_refs": [
+    "MST-0592-D01.02"
+   ],
+   "domain_ref": "Embeddings fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0592-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps improve the reliability of a similarity threshold? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Calibrate the threshold against labelled relevant/irrelevant pairs",
+     "correct": true,
+     "rationale": "Correct: calibration on real data sets a defensible cut-off."
+    },
+    {
+     "key": "B",
+     "text": "Normalise vectors so the chosen metric behaves consistently",
+     "correct": true,
+     "rationale": "Correct: normalisation makes cosine similarity comparisons meaningful."
+    },
+    {
+     "key": "C",
+     "text": "Pick a round number and never revisit it",
+     "correct": false,
+     "rationale": "An uncalibrated fixed threshold is unreliable."
+    },
+    {
+     "key": "D",
+     "text": "Use a different metric for queries than for documents",
+     "correct": false,
+     "rationale": "Mismatched metrics make comparisons invalid."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: calibration on real data sets a defensible cut-off.",
+   "outcome_refs": [
+    "MST-0592-D02.03"
+   ],
+   "domain_ref": "Semantic similarity",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0592-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Retrieval quality is poor even though the model is strong. What is a likely first thing to inspect?",
+   "options": [
+    {
+     "key": "A",
+     "text": "How documents are chunked and preprocessed before embedding",
+     "correct": true,
+     "rationale": "Correct: poor chunking commonly degrades retrieval regardless of model quality."
+    },
+    {
+     "key": "B",
+     "text": "Whether the corpus has enough total pages",
+     "correct": false,
+     "rationale": "Raw size is not the usual cause of poor relevance."
+    },
+    {
+     "key": "C",
+     "text": "Whether the vectors are stored as integers",
+     "correct": false,
+     "rationale": "Storage type is not the typical cause here."
+    },
+    {
+     "key": "D",
+     "text": "Whether the model name is capitalised correctly",
+     "correct": false,
+     "rationale": "Naming is irrelevant to retrieval quality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: poor chunking commonly degrades retrieval regardless of model quality.",
+   "outcome_refs": [
+    "MST-0592-D03.01"
+   ],
+   "domain_ref": "Using embeddings in practice",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

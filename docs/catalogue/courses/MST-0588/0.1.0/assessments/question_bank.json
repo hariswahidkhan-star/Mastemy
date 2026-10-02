@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0588",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0588-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Several teams keep rewriting near-identical prompts. What is the most durable fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Create parameterised templates in a shared, tagged library for reuse",
+     "correct": true,
+     "rationale": "Correct: templating with variables removes duplication and aids reuse."
+    },
+    {
+     "key": "B",
+     "text": "Ask each team to keep their own private copies",
+     "correct": false,
+     "rationale": "Private copies perpetuate drift and duplication."
+    },
+    {
+     "key": "C",
+     "text": "Paste the current prompt into a chat whenever needed",
+     "correct": false,
+     "rationale": "Ad-hoc pasting is not durable or discoverable."
+    },
+    {
+     "key": "D",
+     "text": "Use the longest prompt any team has written",
+     "correct": false,
+     "rationale": "Length is not a reuse strategy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: templating with variables removes duplication and aids reuse.",
+   "outcome_refs": [
+    "MST-0588-D01.01"
+   ],
+   "domain_ref": "Building prompt libraries",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0588-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO governance controls belong on a production prompt library? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "An approval workflow before a prompt reaches production",
+     "correct": true,
+     "rationale": "Correct: review before production is a core governance control."
+    },
+    {
+     "key": "B",
+     "text": "A named owner and access controls for each shared prompt",
+     "correct": true,
+     "rationale": "Correct: ownership and access control establish accountability."
+    },
+    {
+     "key": "C",
+     "text": "Unrestricted edit access for everyone",
+     "correct": false,
+     "rationale": "Open editing removes accountability and review."
+    },
+    {
+     "key": "D",
+     "text": "No record of who changed what",
+     "correct": false,
+     "rationale": "Missing audit trails defeat governance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: review before production is a core governance control.",
+   "outcome_refs": [
+    "MST-0588-D02.02"
+   ],
+   "domain_ref": "Governance and review",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0588-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You are retiring an old prompt version. What should always accompany the change?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An audit trail recording what changed, why, and the replacement",
+     "correct": true,
+     "rationale": "Correct: a deprecation record preserves traceability and supports rollback."
+    },
+    {
+     "key": "B",
+     "text": "Silent deletion with no record",
+     "correct": false,
+     "rationale": "Silent deletion loses history and accountability."
+    },
+    {
+     "key": "C",
+     "text": "Removing all older versions immediately",
+     "correct": false,
+     "rationale": "Abrupt removal can break dependents and erase history."
+    },
+    {
+     "key": "D",
+     "text": "Only a note in a private chat",
+     "correct": false,
+     "rationale": "A private note is not an auditable record."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a deprecation record preserves traceability and supports rollback.",
+   "outcome_refs": [
+    "MST-0588-D03.01"
+   ],
+   "domain_ref": "Lifecycle management",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

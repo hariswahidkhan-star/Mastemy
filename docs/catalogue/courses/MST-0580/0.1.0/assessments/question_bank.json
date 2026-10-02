@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0580",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0580-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During a readiness review of an AI-generated service, the tests are green. What is the right conclusion?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Green tests are necessary but not sufficient; confirm the tests meaningfully exercise the behaviour",
+     "correct": true,
+     "rationale": "Correct: AI-generated tests can be shallow or tautological, so their coverage must be reviewed."
+    },
+    {
+     "key": "B",
+     "text": "Green tests prove the service is production-ready",
+     "correct": false,
+     "rationale": "Passing tests alone do not establish readiness."
+    },
+    {
+     "key": "C",
+     "text": "Green tests mean security review can be skipped",
+     "correct": false,
+     "rationale": "Security review is independent of unit-test status."
+    },
+    {
+     "key": "D",
+     "text": "Green tests remove the need for a rollback plan",
+     "correct": false,
+     "rationale": "Rollback planning is always required for production."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI-generated tests can be shallow or tautological, so their coverage must be reviewed.",
+   "outcome_refs": [
+    "MST-0580-D02.01"
+   ],
+   "domain_ref": "Reviewing AI-generated code",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0580-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO issues are especially important to check in AI-generated code? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Calls to hallucinated or non-existent APIs and libraries",
+     "correct": true,
+     "rationale": "Correct: models can invent plausible-looking but non-existent APIs."
+    },
+    {
+     "key": "B",
+     "text": "Licences of any introduced dependencies",
+     "correct": true,
+     "rationale": "Correct: generated code may pull in dependencies with incompatible licences."
+    },
+    {
+     "key": "C",
+     "text": "Whether the code uses the newest syntax available",
+     "correct": false,
+     "rationale": "Syntax novelty is not a readiness criterion."
+    },
+    {
+     "key": "D",
+     "text": "Whether the prompt that produced it was long",
+     "correct": false,
+     "rationale": "Prompt length says nothing about code safety or correctness."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: models can invent plausible-looking but non-existent APIs.",
+   "outcome_refs": [
+    "MST-0580-D02.02"
+   ],
+   "domain_ref": "Reviewing AI-generated code",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0580-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What must a production-readiness sign-off include for an AI-generated application?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A named human owner accountable for the service and a tested rollback plan",
+     "correct": true,
+     "rationale": "Correct: clear accountability and a rollback path are essential for sign-off."
+    },
+    {
+     "key": "B",
+     "text": "A statement that the AI tool is responsible for the code",
+     "correct": false,
+     "rationale": "Accountability cannot be assigned to a tool."
+    },
+    {
+     "key": "C",
+     "text": "Only a screenshot of the app running",
+     "correct": false,
+     "rationale": "A screenshot is not evidence of readiness."
+    },
+    {
+     "key": "D",
+     "text": "A promise to add tests later",
+     "correct": false,
+     "rationale": "Deferring tests undermines the readiness review."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: clear accountability and a rollback path are essential for sign-off.",
+   "outcome_refs": [
+    "MST-0580-D03.03"
+   ],
+   "domain_ref": "Sign-off and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

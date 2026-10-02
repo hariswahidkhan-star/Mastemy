@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0577",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0577-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You are implementing a Figma screen that uses the team's design system. What is the most durable way to apply colour and spacing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Map the design's tokens to the design-system token variables and use those",
+     "correct": true,
+     "rationale": "Correct: using shared tokens keeps the UI consistent and maintainable."
+    },
+    {
+     "key": "B",
+     "text": "Copy the raw hex and pixel values from the mock into each component",
+     "correct": false,
+     "rationale": "Hard-coded values drift from the system and are hard to maintain."
+    },
+    {
+     "key": "C",
+     "text": "Eyeball the colours from a screenshot",
+     "correct": false,
+     "rationale": "Eyeballing is inaccurate and ignores the token source of truth."
+    },
+    {
+     "key": "D",
+     "text": "Let the AI tool invent its own palette",
+     "correct": false,
+     "rationale": "Inventing values breaks design-system consistency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: using shared tokens keeps the UI consistent and maintainable.",
+   "outcome_refs": [
+    "MST-0577-D01.02"
+   ],
+   "domain_ref": "Design handoff and tokens",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0577-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "An AI tool generated a UI from a Figma frame. Which TWO checks should you always run before accepting it? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the markup is semantic and accessible (landmarks, labels, contrast)",
+     "correct": true,
+     "rationale": "Correct: generated markup is often not accessible by default and must be checked."
+    },
+    {
+     "key": "B",
+     "text": "Confirm it uses design-system components and tokens rather than ad-hoc styles",
+     "correct": true,
+     "rationale": "Correct: consistency with the system is a core acceptance criterion."
+    },
+    {
+     "key": "C",
+     "text": "Check that the file has a high number of code comments",
+     "correct": false,
+     "rationale": "Comment count is not an acceptance criterion for UI fidelity or accessibility."
+    },
+    {
+     "key": "D",
+     "text": "Confirm the tool used the largest available model",
+     "correct": false,
+     "rationale": "Model size does not determine whether the output meets the design and accessibility bar."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: generated markup is often not accessible by default and must be checked.",
+   "outcome_refs": [
+    "MST-0577-D02.02"
+   ],
+   "domain_ref": "Generating UI from designs with AI tools",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0577-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A generated screen looks right on desktop but the designer reports issues. What should you check first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Responsive behaviour and component states at the other breakpoints and states",
+     "correct": true,
+     "rationale": "Correct: fidelity gaps often appear in untested breakpoints and states."
+    },
+    {
+     "key": "B",
+     "text": "Whether the Figma file has enough viewers",
+     "correct": false,
+     "rationale": "File popularity is irrelevant to implementation fidelity."
+    },
+    {
+     "key": "C",
+     "text": "Whether to switch to a different programming language",
+     "correct": false,
+     "rationale": "Language choice does not address responsive fidelity."
+    },
+    {
+     "key": "D",
+     "text": "Whether to delete the design tokens",
+     "correct": false,
+     "rationale": "Removing tokens would worsen consistency, not fix the gap."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fidelity gaps often appear in untested breakpoints and states.",
+   "outcome_refs": [
+    "MST-0577-D03.02"
+   ],
+   "domain_ref": "Review, iteration and fidelity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

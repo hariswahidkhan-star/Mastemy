@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0583",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0583-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A field is sometimes absent from the source document. How should the schema and prompt handle it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Mark it optional/nullable and instruct the model to return null when absent",
+     "correct": true,
+     "rationale": "Correct: an explicit null contract prevents invented values and stays schema-valid."
+    },
+    {
+     "key": "B",
+     "text": "Require the field and let the model guess a value",
+     "correct": false,
+     "rationale": "Requiring a guess invites fabricated data."
+    },
+    {
+     "key": "C",
+     "text": "Omit the field from the schema entirely",
+     "correct": false,
+     "rationale": "Omitting it loses the ability to represent the real, sometimes-present value."
+    },
+    {
+     "key": "D",
+     "text": "Ask the model to leave the JSON malformed when unsure",
+     "correct": false,
+     "rationale": "Malformed output defeats downstream validation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an explicit null contract prevents invented values and stays schema-valid.",
+   "outcome_refs": [
+    "MST-0583-D01.03"
+   ],
+   "domain_ref": "Defining the output schema",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0583-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO measures most reduce fabricated values in extraction? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Instruct the model to return null for anything not present in the source",
+     "correct": true,
+     "rationale": "Correct: an explicit null-on-absence rule discourages invention."
+    },
+    {
+     "key": "B",
+     "text": "Provide few-shot examples that include absent fields returned as null",
+     "correct": true,
+     "rationale": "Correct: examples teach the desired behaviour for missing data."
+    },
+    {
+     "key": "C",
+     "text": "Tell the model to always produce a value for every field",
+     "correct": false,
+     "rationale": "Forcing a value for every field causes fabrication."
+    },
+    {
+     "key": "D",
+     "text": "Raise the temperature to improve creativity",
+     "correct": false,
+     "rationale": "Higher temperature increases the chance of invented values."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an explicit null-on-absence rule discourages invention.",
+   "outcome_refs": [
+    "MST-0583-D02.03"
+   ],
+   "domain_ref": "Extraction prompting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0583-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Model output passes JSON-schema validation. What can you conclude?",
+   "options": [
+    {
+     "key": "A",
+     "text": "That it is well-formed and typed correctly, but not that the extracted values are factually correct",
+     "correct": true,
+     "rationale": "Correct: schema validity is structural, not a guarantee of factual accuracy."
+    },
+    {
+     "key": "B",
+     "text": "That the extraction is definitely accurate",
+     "correct": false,
+     "rationale": "Validation checks structure, not truth."
+    },
+    {
+     "key": "C",
+     "text": "That no evaluation against labelled data is needed",
+     "correct": false,
+     "rationale": "Accuracy still requires evaluation against labels."
+    },
+    {
+     "key": "D",
+     "text": "That the source document was read in full",
+     "correct": false,
+     "rationale": "Schema validity does not prove full or faithful reading."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: schema validity is structural, not a guarantee of factual accuracy.",
+   "outcome_refs": [
+    "MST-0583-D03.01"
+   ],
+   "domain_ref": "Validation and robustness",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

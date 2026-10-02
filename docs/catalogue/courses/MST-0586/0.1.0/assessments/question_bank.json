@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0586",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0586-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You changed a production prompt. What is the most reliable way to judge whether it improved?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Compare old and new versions on a labelled evaluation set with defined criteria",
+     "correct": true,
+     "rationale": "Correct: a labelled set with criteria gives a comparable, repeatable measure."
+    },
+    {
+     "key": "B",
+     "text": "Try a couple of examples by hand and trust your impression",
+     "correct": false,
+     "rationale": "Anecdotal spot checks are not reliable evidence."
+    },
+    {
+     "key": "C",
+     "text": "Ship it and wait for complaints",
+     "correct": false,
+     "rationale": "Shipping untested risks silent regressions."
+    },
+    {
+     "key": "D",
+     "text": "Pick whichever version has the longer prompt",
+     "correct": false,
+     "rationale": "Prompt length is not a quality measure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a labelled set with criteria gives a comparable, repeatable measure.",
+   "outcome_refs": [
+    "MST-0586-D01.01"
+   ],
+   "domain_ref": "Evaluating prompts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0586-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support safe prompt changes over time? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Version each prompt with its rationale and evaluation scores",
+     "correct": true,
+     "rationale": "Correct: versioning with evidence makes changes auditable and reversible."
+    },
+    {
+     "key": "B",
+     "text": "Run a regression set before each change ships",
+     "correct": true,
+     "rationale": "Correct: regression tests catch drift from an edit."
+    },
+    {
+     "key": "C",
+     "text": "Edit the live prompt directly with no record",
+     "correct": false,
+     "rationale": "In-place edits lose history and auditability."
+    },
+    {
+     "key": "D",
+     "text": "Optimise only a single metric and ignore the rest",
+     "correct": false,
+     "rationale": "A single-metric focus can hide regressions elsewhere."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: versioning with evidence makes changes auditable and reversible.",
+   "outcome_refs": [
+    "MST-0586-D02.02"
+   ],
+   "domain_ref": "Versioning prompts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0586-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A prompt edit improves accuracy on one metric. Why is that not enough to ship it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It may have regressed other behaviours; a regression set across metrics is needed",
+     "correct": true,
+     "rationale": "Correct: gains on one metric can mask losses on others."
+    },
+    {
+     "key": "B",
+     "text": "One improved metric proves the change is strictly better",
+     "correct": false,
+     "rationale": "A single metric does not capture all behaviours."
+    },
+    {
+     "key": "C",
+     "text": "Regression testing is unnecessary once accuracy rises",
+     "correct": false,
+     "rationale": "Regression testing guards exactly against such trade-offs."
+    },
+    {
+     "key": "D",
+     "text": "Other metrics never change when one improves",
+     "correct": false,
+     "rationale": "Metrics frequently trade off against each other."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: gains on one metric can mask losses on others.",
+   "outcome_refs": [
+    "MST-0586-D03.03"
+   ],
+   "domain_ref": "Regression testing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0585",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0585-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You prompt a model to document an API from its signatures and notes. What most protects accuracy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ground the draft in the provided signatures and notes and verify claims against the code",
+     "correct": true,
+     "rationale": "Correct: grounding plus verification keeps the docs faithful to real behaviour."
+    },
+    {
+     "key": "B",
+     "text": "Let the model describe how the API probably behaves",
+     "correct": false,
+     "rationale": "'Probably' invites invented behaviour."
+    },
+    {
+     "key": "C",
+     "text": "Ask only for a longer document",
+     "correct": false,
+     "rationale": "Length does not improve accuracy."
+    },
+    {
+     "key": "D",
+     "text": "Skip the notes and rely on the model's training data",
+     "correct": false,
+     "rationale": "Ignoring the source causes drift from reality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: grounding plus verification keeps the docs faithful to real behaviour.",
+   "outcome_refs": [
+    "MST-0585-D01.03"
+   ],
+   "domain_ref": "Prompting for technical writing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0585-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make AI code refactoring safer? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Require that the refactor preserve existing behaviour and back it with tests",
+     "correct": true,
+     "rationale": "Correct: behaviour-preserving refactors verified by tests are safer."
+    },
+    {
+     "key": "B",
+     "text": "Review the generated diff before merging",
+     "correct": true,
+     "rationale": "Correct: human review catches issues the model introduces."
+    },
+    {
+     "key": "C",
+     "text": "Merge immediately if the code looks plausible",
+     "correct": false,
+     "rationale": "Plausibility is not correctness."
+    },
+    {
+     "key": "D",
+     "text": "Delete the existing tests to avoid conflicts",
+     "correct": false,
+     "rationale": "Removing tests hides regressions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: behaviour-preserving refactors verified by tests are safer.",
+   "outcome_refs": [
+    "MST-0585-D02.02"
+   ],
+   "domain_ref": "Prompting for code tasks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0585-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A generated explanation of a function reads clearly and fluently. What should you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Check it against the function's actual behaviour before trusting it",
+     "correct": true,
+     "rationale": "Correct: fluent prose can still misdescribe what the code does."
+    },
+    {
+     "key": "B",
+     "text": "Publish it because it reads well",
+     "correct": false,
+     "rationale": "Readability is not accuracy."
+    },
+    {
+     "key": "C",
+     "text": "Assume fluent means correct",
+     "correct": false,
+     "rationale": "Fluency and correctness are independent."
+    },
+    {
+     "key": "D",
+     "text": "Skip verification for documentation",
+     "correct": false,
+     "rationale": "Technical docs require accuracy checks."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fluent prose can still misdescribe what the code does.",
+   "outcome_refs": [
+    "MST-0585-D03.02"
+   ],
+   "domain_ref": "Quality and consistency",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
