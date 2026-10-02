@@ -1,0 +1,115 @@
+using System.Globalization;
+using System.Text;
+using System.Xml;
+using Mastemy.Api.Data;
+using Mastemy.Api.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace Mastemy.Api.Modules.Seo;
+
+/// <summary>
+/// Search-engine endpoints (spec §21). Only public, live catalogue pages are listed; learning workspaces,
+/// attempts, private notes, studio and admin are disallowed in robots.txt and never appear in the sitemap.
+/// Locale scheme: the web app has no locale path prefix, so English is the bare URL and Arabic is the same
+/// URL with <c>?lang=ar</c>; both are emitted as hreflang alternates (x-default = English).
+/// </summary>
+[ApiController]
+[AllowAnonymous]
+public class SeoController(AppDbContext db, IConfiguration cfg) : ControllerBase
+{
+    public static readonly string[] StaticPaths = ["/", "/courses", "/free-lessons", "/verify", "/teach", "/about", "/help", "/contact"];
+    public static readonly string[] DisallowedPaths = ["/me", "/studio", "/admin", "/attempts", "/learn/", "/api/", "/login", "/register"];
+
+    private string? BaseUrl
+    {
+        get
+        {
+            var raw = cfg["Seo:PublicBaseUrl"];
+            if (string.IsNullOrWhiteSpace(raw) || !Uri.TryCreate(raw.Trim(), UriKind.Absolute, out var u)
+                || (u.Scheme != Uri.UriSchemeHttps && u.Scheme != Uri.UriSchemeHttp)) return null;
+            return u.GetLeftPart(UriPartial.Authority) + u.AbsolutePath.TrimEnd('/');
+        }
+    }
+
+    private ObjectResult NotConfigured() => Problem(statusCode: 503, title: "seo_not_configured",
+        detail: "Seo:PublicBaseUrl is not configured (absolute http(s) URL of the public site required).");
+
+    [HttpGet("/sitemap.xml")]
+    [HttpGet("api/seo/sitemap.xml")]
+    public async Task<IActionResult> Sitemap(CancellationToken ct)
+    {
+        var baseUrl = BaseUrl;
+        if (baseUrl is null) return NotConfigured();
+
+        var courses = await db.Courses.AsNoTracking().Where(AccessService.IsLiveExpr)
+            .OrderBy(c => c.Slug)
+            .Select(c => new { c.Id, c.Slug, c.UpdatedAt, c.PublishedAt })
+            .ToListAsync(ct);
+        var liveIds = courses.Select(c => c.Id).ToList();
+        var catRows = await db.CourseCategories.AsNoTracking()
+            .Where(cc => liveIds.Contains(cc.CourseId))
+            .Join(db.Categories, cc => cc.CategoryId, c => c.Id, (cc, c) => new { c.Slug, cc.CourseId })
+            .ToListAsync(ct);
+        var courseLastMod = courses.ToDictionary(c => c.Id, c => Max(c.UpdatedAt, c.PublishedAt));
+        // Categories without a live course are thin pages; they are reachable but not advertised.
+        var categories = catRows.GroupBy(r => r.Slug).OrderBy(g => g.Key, StringComparer.Ordinal)
+            .Select(g => (Slug: g.Key, LastMod: g.Max(r => courseLastMod[r.CourseId]))).ToList();
+        DateTime? siteLastMod = courses.Count == 0 ? null : courseLastMod.Values.Max();
+
+        var ms = new MemoryStream();
+        using (var w = XmlWriter.Create(ms, new XmlWriterSettings { Indent = true, Encoding = new UTF8Encoding(false) }))
+        {
+            const string ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
+            const string xhtml = "http://www.w3.org/1999/xhtml";
+            w.WriteStartDocument();
+            w.WriteStartElement("urlset", ns);
+            w.WriteAttributeString("xmlns", "xhtml", null, xhtml);
+            void Entry(string path, DateTime? lastMod)
+            {
+                var en = baseUrl + path;
+                var ar = en + "?lang=ar";
+                foreach (var loc in new[] { en, ar })
+                {
+                    w.WriteStartElement("url", ns);
+                    w.WriteElementString("loc", ns, loc);
+                    if (lastMod is not null)
+                        w.WriteElementString("lastmod", ns, DateTime.SpecifyKind(lastMod.Value, DateTimeKind.Utc)
+                            .ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture));
+                    foreach (var (lang, href) in new[] { ("en", en), ("ar", ar), ("x-default", en) })
+                    {
+                        w.WriteStartElement("xhtml", "link", xhtml);
+                        w.WriteAttributeString("rel", "alternate");
+                        w.WriteAttributeString("hreflang", lang);
+                        w.WriteAttributeString("href", href);
+                        w.WriteEndElement();
+                    }
+                    w.WriteEndElement();
+                }
+            }
+            foreach (var p in StaticPaths) Entry(p, p is "/" or "/courses" ? siteLastMod : null);
+            foreach (var c in categories) Entry("/categories/" + Uri.EscapeDataString(c.Slug), c.LastMod);
+            foreach (var c in courses) Entry("/courses/" + Uri.EscapeDataString(c.Slug), courseLastMod[c.Id]);
+            w.WriteEndElement();
+            w.WriteEndDocument();
+        }
+        Response.Headers.CacheControl = "public, max-age=3600";
+        return File(ms.ToArray(), "application/xml; charset=utf-8");
+    }
+
+    [HttpGet("/robots.txt")]
+    [HttpGet("api/seo/robots.txt")]
+    public IActionResult Robots()
+    {
+        var baseUrl = BaseUrl;
+        if (baseUrl is null) return NotConfigured();
+        var sb = new StringBuilder("User-agent: *\n");
+        foreach (var p in DisallowedPaths) sb.Append("Disallow: ").Append(p).Append('\n');
+        sb.Append("Allow: /\n\nSitemap: ").Append(baseUrl).Append("/sitemap.xml\n");
+        Response.Headers.CacheControl = "public, max-age=3600";
+        return Content(sb.ToString(), "text/plain; charset=utf-8");
+    }
+
+    private static DateTime Max(DateTime a, DateTime? b) => b is { } v && v > a ? v : a;
+}

@@ -32,7 +32,19 @@ export function dirFor(lang: Lang): 'rtl' | 'ltr' {
   return lang === 'ar' ? 'rtl' : 'ltr';
 }
 
-function readStoredLang(): Lang {
+/** `?lang=ar|en` (the hreflang alternate URLs) wins over the stored preference. */
+export function readUrlLang(): Lang | null {
+  try {
+    const v = new URLSearchParams(window.location.search).get('lang');
+    return v === 'ar' || v === 'en' ? v : null;
+  } catch {
+    return null;
+  }
+}
+
+export function readStoredLang(): Lang {
+  const fromUrl = readUrlLang();
+  if (fromUrl) return fromUrl;
   try {
     const v = localStorage.getItem(STORAGE_KEY);
     if (v === 'ar' || v === 'en') return v;

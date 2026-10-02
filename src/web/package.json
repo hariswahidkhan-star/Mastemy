@@ -8,11 +8,13 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm run build:ssr",
+    "build:ssr": "vite build --ssr server/main.ts",
+    "start": "node dist-server/main.js",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
-    "lint": "eslint . --max-warnings=0 && prettier --check \"src/**/*.{ts,tsx,css,json}\"",
-    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
+    "lint": "eslint . --max-warnings=0 && prettier --check \"src/**/*.{ts,tsx,css,json}\" \"server/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\" \"server/**/*.ts\"",
     "test": "vitest run"
   },
   "dependencies": {
