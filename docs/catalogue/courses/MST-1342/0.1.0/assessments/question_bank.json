@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1342",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1342-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which change most directly reduces the per-request cost of an LLM call?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reducing the number of input and output tokens",
+     "correct": true,
+     "rationale": "Correct: cost scales with tokens, so fewer tokens means lower cost."
+    },
+    {
+     "key": "B",
+     "text": "Increasing the temperature",
+     "correct": false,
+     "rationale": "Temperature affects randomness, not token-based cost."
+    },
+    {
+     "key": "C",
+     "text": "Adding more retrieved context",
+     "correct": false,
+     "rationale": "More context adds tokens and raises cost."
+    },
+    {
+     "key": "D",
+     "text": "Renaming the API endpoint",
+     "correct": false,
+     "rationale": "That has no effect on cost."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: cost scales with tokens, so fewer tokens means lower cost.",
+   "outcome_refs": [
+    "MST-1342-D01.01"
+   ],
+   "domain_ref": "What drives cost and latency",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1342-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques can cut cost while keeping quality acceptable for many requests? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Caching responses to repeated or identical queries",
+     "correct": true,
+     "rationale": "Correct: caching avoids paying for the same answer twice."
+    },
+    {
+     "key": "B",
+     "text": "Routing easy requests to a smaller, cheaper model",
+     "correct": true,
+     "rationale": "Correct: a cascade sends simple cases to a cheaper model."
+    },
+    {
+     "key": "C",
+     "text": "Always using the largest available model",
+     "correct": false,
+     "rationale": "That maximises cost rather than reducing it."
+    },
+    {
+     "key": "D",
+     "text": "Doubling the retrieved context on every call",
+     "correct": false,
+     "rationale": "That increases tokens and cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: caching avoids paying for the same answer twice.",
+   "outcome_refs": [
+    "MST-1342-D03.01"
+   ],
+   "domain_ref": "Caching and batching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1342-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before aggressively cutting cost, what should a team define to avoid silent quality loss?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A measurable quality floor the optimised system must stay above",
+     "correct": true,
+     "rationale": "Correct: a quality floor ensures cost cuts do not degrade answers unnoticed."
+    },
+    {
+     "key": "B",
+     "text": "A larger marketing budget",
+     "correct": false,
+     "rationale": "Irrelevant to quality control."
+    },
+    {
+     "key": "C",
+     "text": "A higher temperature setting",
+     "correct": false,
+     "rationale": "Temperature is not a quality guarantee."
+    },
+    {
+     "key": "D",
+     "text": "A longer context window",
+     "correct": false,
+     "rationale": "Context length is not a quality floor."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a quality floor ensures cost cuts do not degrade answers unnoticed.",
+   "outcome_refs": [
+    "MST-1342-D05.01"
+   ],
+   "domain_ref": "Measuring the trade-off",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

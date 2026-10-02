@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1337",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1337-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is exact string match a poor metric for an open-ended question-answering assistant?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Many different wordings can be equally correct, so exact match penalises valid answers",
+     "correct": true,
+     "rationale": "Correct: open-ended outputs have many valid forms that exact match misses."
+    },
+    {
+     "key": "B",
+     "text": "Exact match is too slow to compute at scale",
+     "correct": false,
+     "rationale": "It is cheap to compute; the problem is validity, not speed."
+    },
+    {
+     "key": "C",
+     "text": "Exact match requires a GPU",
+     "correct": false,
+     "rationale": "It is a simple string comparison needing no GPU."
+    },
+    {
+     "key": "D",
+     "text": "Exact match only works for images",
+     "correct": false,
+     "rationale": "It applies to text; the issue is its strictness for open text."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: open-ended outputs have many valid forms that exact match misses.",
+   "outcome_refs": [
+    "MST-1337-D03.01"
+   ],
+   "domain_ref": "Automated metrics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1337-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound practices when using an LLM as an automated judge? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Give the judge a clear rubric and reference answer where possible",
+     "correct": true,
+     "rationale": "Correct: an explicit rubric improves consistency and reduces drift."
+    },
+    {
+     "key": "B",
+     "text": "Validate the judge against a sample of human-labelled cases",
+     "correct": true,
+     "rationale": "Correct: calibrating against human labels checks the judge's reliability."
+    },
+    {
+     "key": "C",
+     "text": "Assume the judge is unbiased and never audit it",
+     "correct": false,
+     "rationale": "LLM judges have known biases and must be audited."
+    },
+    {
+     "key": "D",
+     "text": "Let the judge grade its own model's outputs with no oversight",
+     "correct": false,
+     "rationale": "Self-grading without oversight risks inflated, unreliable scores."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an explicit rubric improves consistency and reduces drift.",
+   "outcome_refs": [
+    "MST-1337-D04.01"
+   ],
+   "domain_ref": "LLM-as-judge and human review",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1337-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model scores well offline but users report worse answers after a prompt change. What practice would have caught this before release?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A regression test comparing outputs on a fixed evaluation set across versions",
+     "correct": true,
+     "rationale": "Correct: regression testing flags quality drops before shipping."
+    },
+    {
+     "key": "B",
+     "text": "Increasing the model temperature",
+     "correct": false,
+     "rationale": "Temperature changes randomness, not evaluation coverage."
+    },
+    {
+     "key": "C",
+     "text": "Removing the evaluation set",
+     "correct": false,
+     "rationale": "Removing tests hides regressions rather than catching them."
+    },
+    {
+     "key": "D",
+     "text": "Only testing on the easiest cases",
+     "correct": false,
+     "rationale": "Easy-only testing hides exactly these regressions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: regression testing flags quality drops before shipping.",
+   "outcome_refs": [
+    "MST-1337-D05.02"
+   ],
+   "domain_ref": "Online evaluation and monitoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

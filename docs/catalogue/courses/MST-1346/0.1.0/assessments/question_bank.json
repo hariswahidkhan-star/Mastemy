@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1346",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1346-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does simply using a very large context window not fully solve long-document tasks?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Attention cost grows with context and models may weight middle content poorly",
+     "correct": true,
+     "rationale": "Correct: long context raises cost and can suffer the lost-in-the-middle effect."
+    },
+    {
+     "key": "B",
+     "text": "Large windows make the model smaller",
+     "correct": false,
+     "rationale": "Window size does not shrink the model."
+    },
+    {
+     "key": "C",
+     "text": "Long context removes the need for a prompt",
+     "correct": false,
+     "rationale": "A prompt is still required regardless of window size."
+    },
+    {
+     "key": "D",
+     "text": "Large windows guarantee perfect recall of every token",
+     "correct": false,
+     "rationale": "Models often under-use mid-context information."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: long context raises cost and can suffer the lost-in-the-middle effect.",
+   "outcome_refs": [
+    "MST-1346-D01.02"
+   ],
+   "domain_ref": "The long-context problem",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1346-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO strategies help an assistant answer over documents larger than a comfortable prompt? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Chunk the documents and retrieve only the relevant pieces",
+     "correct": true,
+     "rationale": "Correct: retrieval keeps the prompt focused and affordable."
+    },
+    {
+     "key": "B",
+     "text": "Summarise sections hierarchically before answering",
+     "correct": true,
+     "rationale": "Correct: hierarchical summarisation compresses long input while keeping key facts."
+    },
+    {
+     "key": "C",
+     "text": "Paste the entire corpus into every request regardless of cost",
+     "correct": false,
+     "rationale": "That is expensive and can trigger lost-in-the-middle issues."
+    },
+    {
+     "key": "D",
+     "text": "Discard the user's question",
+     "correct": false,
+     "rationale": "The question is needed to retrieve and answer."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: retrieval keeps the prompt focused and affordable.",
+   "outcome_refs": [
+    "MST-1346-D02.02"
+   ],
+   "domain_ref": "Chunking and retrieval",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1346-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Key information sits in the middle of a long prompt and the model ignores it. What mitigation is most appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reorder or rerank so the most relevant context is prominently placed",
+     "correct": true,
+     "rationale": "Correct: placing key content where the model attends well counters lost-in-the-middle."
+    },
+    {
+     "key": "B",
+     "text": "Increase the temperature",
+     "correct": false,
+     "rationale": "Temperature does not fix positional attention weaknesses."
+    },
+    {
+     "key": "C",
+     "text": "Remove all context",
+     "correct": false,
+     "rationale": "Removing context loses the needed information."
+    },
+    {
+     "key": "D",
+     "text": "Switch to an image model",
+     "correct": false,
+     "rationale": "Modality change is irrelevant to text positioning."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: placing key content where the model attends well counters lost-in-the-middle.",
+   "outcome_refs": [
+    "MST-1346-D04.01"
+   ],
+   "domain_ref": "Attention and positioning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

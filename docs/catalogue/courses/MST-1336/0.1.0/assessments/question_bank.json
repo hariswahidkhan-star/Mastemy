@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1336",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1336-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does LoRA change during fine-tuning?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It trains small low-rank adapter matrices while the base weights stay frozen",
+     "correct": true,
+     "rationale": "Correct: LoRA learns low-rank updates and leaves the base weights unchanged."
+    },
+    {
+     "key": "B",
+     "text": "It retrains every weight in the base model",
+     "correct": false,
+     "rationale": "That is full fine-tuning; LoRA freezes the base."
+    },
+    {
+     "key": "C",
+     "text": "It edits the tokenizer vocabulary",
+     "correct": false,
+     "rationale": "LoRA adds adapters to layers, not vocabulary entries."
+    },
+    {
+     "key": "D",
+     "text": "It increases the model's context window",
+     "correct": false,
+     "rationale": "Context length is unrelated to LoRA adapters."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: LoRA learns low-rank updates and leaves the base weights unchanged.",
+   "outcome_refs": [
+    "MST-1336-D02.01"
+   ],
+   "domain_ref": "LoRA and low-rank adapters",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1336-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are advantages of parameter-efficient fine-tuning over full fine-tuning? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Much lower GPU memory and storage requirements",
+     "correct": true,
+     "rationale": "Correct: only small adapters are trained and stored."
+    },
+    {
+     "key": "B",
+     "text": "Easy swapping of task-specific adapters on one base model",
+     "correct": true,
+     "rationale": "Correct: adapters can be attached or detached per task."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any training data",
+     "correct": false,
+     "rationale": "PEFT still requires task data."
+    },
+    {
+     "key": "D",
+     "text": "It always reaches higher accuracy than full fine-tuning",
+     "correct": false,
+     "rationale": "Full fine-tuning can match or exceed PEFT; PEFT trades a little quality for efficiency."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: only small adapters are trained and stored.",
+   "outcome_refs": [
+    "MST-1336-D01.02"
+   ],
+   "domain_ref": "When and why to fine-tune",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1336-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After fine-tuning, the model follows the new style but now fails tasks it used to handle. What is this called?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Catastrophic forgetting",
+     "correct": true,
+     "rationale": "Correct: the model has lost prior general ability while adapting to new data."
+    },
+    {
+     "key": "B",
+     "text": "Quantisation error",
+     "correct": false,
+     "rationale": "That arises from low-precision numerics, not fine-tuning drift."
+    },
+    {
+     "key": "C",
+     "text": "Tokenisation mismatch",
+     "correct": false,
+     "rationale": "That is a vocabulary issue, not loss of general ability."
+    },
+    {
+     "key": "D",
+     "text": "Data leakage",
+     "correct": false,
+     "rationale": "Leakage inflates evaluation scores; it is not loss of prior ability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the model has lost prior general ability while adapting to new data.",
+   "outcome_refs": [
+    "MST-1336-D05.02"
+   ],
+   "domain_ref": "Evaluation and failure modes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

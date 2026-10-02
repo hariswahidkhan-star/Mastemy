@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1334",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1334-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In standard synchronous data-parallel training, what does the all-reduce step accomplish each iteration?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It averages the gradients computed on every worker so all replicas apply the same update",
+     "correct": true,
+     "rationale": "Correct: all-reduce sums/averages per-worker gradients so model replicas stay identical."
+    },
+    {
+     "key": "B",
+     "text": "It copies the full dataset to every worker before the forward pass",
+     "correct": false,
+     "rationale": "Data sharding, not all-reduce, distributes data; all-reduce exchanges gradients."
+    },
+    {
+     "key": "C",
+     "text": "It splits the model layers across workers",
+     "correct": false,
+     "rationale": "That is model/pipeline parallelism, not the all-reduce of data parallelism."
+    },
+    {
+     "key": "D",
+     "text": "It compresses the model weights for storage",
+     "correct": false,
+     "rationale": "All-reduce synchronises gradients; it is not a storage-compression step."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: all-reduce sums/averages per-worker gradients so model replicas stay identical.",
+   "outcome_refs": [
+    "MST-1334-D02.01"
+   ],
+   "domain_ref": "Why single-device training stops scaling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1334-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO conditions most strongly favour tensor/sharded parallelism (e.g. FSDP/ZeRO) over plain data parallelism? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The model's parameters and optimiser state exceed a single device's memory",
+     "correct": true,
+     "rationale": "Correct: sharding the state across devices is the main reason to use FSDP/ZeRO."
+    },
+    {
+     "key": "B",
+     "text": "A high-bandwidth interconnect is available between devices",
+     "correct": true,
+     "rationale": "Correct: sharded parallelism exchanges more data, so it relies on fast interconnect."
+    },
+    {
+     "key": "C",
+     "text": "The model is tiny and fits easily on one GPU",
+     "correct": false,
+     "rationale": "A small model needs no sharding; data parallelism suffices."
+    },
+    {
+     "key": "D",
+     "text": "There is no network between the workers",
+     "correct": false,
+     "rationale": "Sharded parallelism requires frequent communication; no network makes it unworkable."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: sharding the state across devices is the main reason to use FSDP/ZeRO.",
+   "outcome_refs": [
+    "MST-1334-D03.02"
+   ],
+   "domain_ref": "Model, pipeline and tensor parallelism",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1334-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A multi-day run uses preemptible nodes that can disappear at any time. What is the most important mitigation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Checkpoint model and optimiser state frequently so training can resume",
+     "correct": true,
+     "rationale": "Correct: frequent checkpointing bounds the work lost when a node is preempted."
+    },
+    {
+     "key": "B",
+     "text": "Disable logging to save disk space",
+     "correct": false,
+     "rationale": "Logging is unrelated to surviving preemption and aids diagnosis."
+    },
+    {
+     "key": "C",
+     "text": "Use a larger learning rate",
+     "correct": false,
+     "rationale": "Learning rate does not address node loss."
+    },
+    {
+     "key": "D",
+     "text": "Train on a single node only",
+     "correct": false,
+     "rationale": "That may avoid preemption but defeats the need to train at scale."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: frequent checkpointing bounds the work lost when a node is preempted.",
+   "outcome_refs": [
+    "MST-1334-D05.01"
+   ],
+   "domain_ref": "Fault tolerance at scale",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

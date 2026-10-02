@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1347",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1347-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "At a high level, how does a diffusion model generate an image?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It starts from noise and iteratively denoises it toward an image matching the prompt",
+     "correct": true,
+     "rationale": "Correct: diffusion models learn to reverse a noising process, guided by the prompt."
+    },
+    {
+     "key": "B",
+     "text": "It searches a database and returns the closest stored photo",
+     "correct": false,
+     "rationale": "It generates rather than retrieving existing images."
+    },
+    {
+     "key": "C",
+     "text": "It renders a 3D model from CAD files",
+     "correct": false,
+     "rationale": "That is unrelated to diffusion image generation."
+    },
+    {
+     "key": "D",
+     "text": "It copies pixels directly from the training set",
+     "correct": false,
+     "rationale": "It synthesises new images, not pixel copies."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: diffusion models learn to reverse a noising process, guided by the prompt.",
+   "outcome_refs": [
+    "MST-1347-D01.01"
+   ],
+   "domain_ref": "How image generation works",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1347-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO concerns should a team document before using generated images commercially? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Copyright and likeness rights of depicted content",
+     "correct": true,
+     "rationale": "Correct: generated content can raise copyright and likeness issues."
+    },
+    {
+     "key": "B",
+     "text": "Potential biased or stereotyped depictions",
+     "correct": true,
+     "rationale": "Correct: image models can reproduce harmful stereotypes."
+    },
+    {
+     "key": "C",
+     "text": "The exact random seed is legally required on every asset",
+     "correct": false,
+     "rationale": "Seeds are a technical detail, not a legal requirement."
+    },
+    {
+     "key": "D",
+     "text": "Images need no review if they look good",
+     "correct": false,
+     "rationale": "Appearance does not clear rights or bias concerns."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: generated content can raise copyright and likeness issues.",
+   "outcome_refs": [
+    "MST-1347-D05.01"
+   ],
+   "domain_ref": "Rights, bias and safety",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1347-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A designer wants to change only the background of an otherwise good image. Which technique fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Inpainting the selected region while keeping the rest",
+     "correct": true,
+     "rationale": "Correct: inpainting edits a masked region and preserves the rest."
+    },
+    {
+     "key": "B",
+     "text": "Regenerating the whole image from scratch",
+     "correct": false,
+     "rationale": "Full regeneration risks losing the good parts."
+    },
+    {
+     "key": "C",
+     "text": "Quantising the model",
+     "correct": false,
+     "rationale": "Quantisation is a compression step, not an editing tool."
+    },
+    {
+     "key": "D",
+     "text": "Increasing the context window",
+     "correct": false,
+     "rationale": "Context window is irrelevant to image editing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: inpainting edits a masked region and preserves the rest.",
+   "outcome_refs": [
+    "MST-1347-D03.01"
+   ],
+   "domain_ref": "Editing techniques",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

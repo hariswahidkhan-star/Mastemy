@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1339",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1339-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What most clearly distinguishes an agent from a single LLM prompt?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It iterates through a loop of reasoning, taking actions with tools, and observing results",
+     "correct": true,
+     "rationale": "Correct: an agent acts in a loop with tools and observations, not one static response."
+    },
+    {
+     "key": "B",
+     "text": "It uses a larger model",
+     "correct": false,
+     "rationale": "Model size does not define agency."
+    },
+    {
+     "key": "C",
+     "text": "It always responds faster",
+     "correct": false,
+     "rationale": "Agents often take longer due to multiple steps."
+    },
+    {
+     "key": "D",
+     "text": "It never uses external tools",
+     "correct": false,
+     "rationale": "Tool use is central to most agents, not absent."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an agent acts in a loop with tools and observations, not one static response.",
+   "outcome_refs": [
+    "MST-1339-D01.01"
+   ],
+   "domain_ref": "From LLM call to agent",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1339-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve the reliability of a tool-using agent? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Give tools precise schemas and clear descriptions",
+     "correct": true,
+     "rationale": "Correct: clear schemas help the model call tools correctly."
+    },
+    {
+     "key": "B",
+     "text": "Set step or budget limits to stop runaway loops",
+     "correct": true,
+     "rationale": "Correct: limits prevent the agent from looping indefinitely or overspending."
+    },
+    {
+     "key": "C",
+     "text": "Remove all error handling to simplify the code",
+     "correct": false,
+     "rationale": "Removing error handling makes failures worse, not better."
+    },
+    {
+     "key": "D",
+     "text": "Hide tool errors from the agent entirely",
+     "correct": false,
+     "rationale": "The agent needs observations, including errors, to recover."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: clear schemas help the model call tools correctly.",
+   "outcome_refs": [
+    "MST-1339-D03.02"
+   ],
+   "domain_ref": "Tools and function calling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1339-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An agent keeps appending the full conversation to every prompt until it exceeds the context window. What is the best fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Summarise or prune older state so the working context stays within limits",
+     "correct": true,
+     "rationale": "Correct: context management via summarisation/pruning keeps prompts in budget."
+    },
+    {
+     "key": "B",
+     "text": "Switch to a single LLM call with no memory",
+     "correct": false,
+     "rationale": "That removes needed state rather than managing it."
+    },
+    {
+     "key": "C",
+     "text": "Increase the temperature",
+     "correct": false,
+     "rationale": "Temperature does not affect context length."
+    },
+    {
+     "key": "D",
+     "text": "Call more tools per step",
+     "correct": false,
+     "rationale": "More tool calls do not solve context overflow."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: context management via summarisation/pruning keeps prompts in budget.",
+   "outcome_refs": [
+    "MST-1339-D04.02"
+   ],
+   "domain_ref": "Memory and state",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

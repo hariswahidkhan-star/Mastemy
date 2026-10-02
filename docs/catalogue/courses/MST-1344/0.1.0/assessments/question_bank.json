@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1344",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1344-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which metric is standard for measuring automatic speech recognition accuracy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Word error rate (WER)",
+     "correct": true,
+     "rationale": "Correct: WER measures substitutions, insertions and deletions against a reference transcript."
+    },
+    {
+     "key": "B",
+     "text": "Frames per second",
+     "correct": false,
+     "rationale": "FPS measures video rendering, not transcription accuracy."
+    },
+    {
+     "key": "C",
+     "text": "Peak signal-to-noise ratio of weights",
+     "correct": false,
+     "rationale": "That is not an ASR accuracy metric."
+    },
+    {
+     "key": "D",
+     "text": "Context window length",
+     "correct": false,
+     "rationale": "Context length does not measure transcription accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: WER measures substitutions, insertions and deletions against a reference transcript.",
+   "outcome_refs": [
+    "MST-1344-D05.01"
+   ],
+   "domain_ref": "Evaluation and responsible use",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1344-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors most commonly increase ASR word error rate in production? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Background noise in the audio",
+     "correct": true,
+     "rationale": "Correct: noise degrades the acoustic signal and raises errors."
+    },
+    {
+     "key": "B",
+     "text": "Accents or dialects underrepresented in training data",
+     "correct": true,
+     "rationale": "Correct: unseen accents are recognised less accurately."
+    },
+    {
+     "key": "C",
+     "text": "Using a reference transcript for scoring",
+     "correct": false,
+     "rationale": "A reference is needed to score; it does not cause errors."
+    },
+    {
+     "key": "D",
+     "text": "Recording in a quiet studio",
+     "correct": false,
+     "rationale": "Clean audio lowers, not raises, error rate."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: noise degrades the acoustic signal and raises errors.",
+   "outcome_refs": [
+    "MST-1344-D02.02"
+   ],
+   "domain_ref": "Automatic speech recognition",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1344-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before cloning a person's voice for a TTS feature, what is the key responsible-use requirement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Obtaining the person's informed consent to use their voice",
+     "correct": true,
+     "rationale": "Correct: voice cloning requires consent to avoid misuse and harm."
+    },
+    {
+     "key": "B",
+     "text": "Maximising the sampling rate",
+     "correct": false,
+     "rationale": "Audio quality is unrelated to the consent requirement."
+    },
+    {
+     "key": "C",
+     "text": "Reducing the model's parameter count",
+     "correct": false,
+     "rationale": "Model size is not a consent matter."
+    },
+    {
+     "key": "D",
+     "text": "Increasing WER",
+     "correct": false,
+     "rationale": "Raising error rate is neither desirable nor a consent control."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: voice cloning requires consent to avoid misuse and harm.",
+   "outcome_refs": [
+    "MST-1344-D05.02"
+   ],
+   "domain_ref": "Evaluation and responsible use",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

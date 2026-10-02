@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1340",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1340-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a planner-worker-reviewer design, what is the reviewer agent's main purpose?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To check and critique the workers' outputs before they are accepted",
+     "correct": true,
+     "rationale": "Correct: the reviewer/critic validates results, improving reliability."
+    },
+    {
+     "key": "B",
+     "text": "To generate the original task plan",
+     "correct": false,
+     "rationale": "That is the planner's role, not the reviewer's."
+    },
+    {
+     "key": "C",
+     "text": "To execute all the tool calls",
+     "correct": false,
+     "rationale": "Workers carry out the work; the reviewer evaluates it."
+    },
+    {
+     "key": "D",
+     "text": "To store the model weights",
+     "correct": false,
+     "rationale": "That is unrelated to the reviewer role."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the reviewer/critic validates results, improving reliability.",
+   "outcome_refs": [
+    "MST-1340-D02.02"
+   ],
+   "domain_ref": "Topologies and roles",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1340-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are genuine risks of adding more agents to a system? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Higher token cost and latency from extra communication",
+     "correct": true,
+     "rationale": "Correct: each agent interaction adds calls, cost and delay."
+    },
+    {
+     "key": "B",
+     "text": "Agents can loop or amplify each other's errors",
+     "correct": true,
+     "rationale": "Correct: poorly bounded agent dialogue can loop or compound mistakes."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees higher accuracy on every task",
+     "correct": false,
+     "rationale": "Multi-agent designs do not guarantee better accuracy."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need to evaluate the system",
+     "correct": false,
+     "rationale": "Evaluation is still required, arguably more so."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: each agent interaction adds calls, cost and delay.",
+   "outcome_refs": [
+    "MST-1340-D01.02"
+   ],
+   "domain_ref": "Why multiple agents",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1340-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two worker agents return contradictory answers. Which mechanism most directly resolves this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A defined conflict-resolution step such as a reviewer or majority vote",
+     "correct": true,
+     "rationale": "Correct: an explicit resolution/voting step decides between conflicting outputs."
+    },
+    {
+     "key": "B",
+     "text": "Increasing each agent's temperature",
+     "correct": false,
+     "rationale": "That increases randomness, not agreement."
+    },
+    {
+     "key": "C",
+     "text": "Deleting the shared state",
+     "correct": false,
+     "rationale": "Removing state loses information needed to resolve the conflict."
+    },
+    {
+     "key": "D",
+     "text": "Letting both answers pass through unresolved",
+     "correct": false,
+     "rationale": "Passing contradictions downstream propagates the conflict."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an explicit resolution/voting step decides between conflicting outputs.",
+   "outcome_refs": [
+    "MST-1340-D04.01"
+   ],
+   "domain_ref": "Shared state and conflict",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

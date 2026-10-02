@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1345",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1345-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a safety system moderate model outputs and not only user inputs?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A safe-looking prompt can still produce unsafe output, so outputs must be checked too",
+     "correct": true,
+     "rationale": "Correct: harm can appear in the generation even when the input seems benign."
+    },
+    {
+     "key": "B",
+     "text": "Inputs are never a source of risk",
+     "correct": false,
+     "rationale": "Inputs are also risky; both sides need controls."
+    },
+    {
+     "key": "C",
+     "text": "Output moderation makes the model faster",
+     "correct": false,
+     "rationale": "It adds a check; it is about safety, not speed."
+    },
+    {
+     "key": "D",
+     "text": "Outputs are always safe by default",
+     "correct": false,
+     "rationale": "Outputs can be unsafe, which is why they are moderated."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: harm can appear in the generation even when the input seems benign.",
+   "outcome_refs": [
+    "MST-1345-D03.01"
+   ],
+   "domain_ref": "Output-side controls",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1345-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are real trade-offs when tightening content guardrails? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "More aggressive blocking increases false-positive refusals of safe requests",
+     "correct": true,
+     "rationale": "Correct: stricter rules refuse more legitimate requests."
+    },
+    {
+     "key": "B",
+     "text": "Overly strict guardrails can reduce the assistant's usefulness",
+     "correct": true,
+     "rationale": "Correct: safety and usefulness must be balanced."
+    },
+    {
+     "key": "C",
+     "text": "Tighter guardrails always eliminate every bypass",
+     "correct": false,
+     "rationale": "No guardrail is perfect; bypasses still occur."
+    },
+    {
+     "key": "D",
+     "text": "Blocking more content lowers the token cost of answers",
+     "correct": false,
+     "rationale": "Blocking is a safety measure, not a cost optimisation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: stricter rules refuse more legitimate requests.",
+   "outcome_refs": [
+    "MST-1345-D04.01"
+   ],
+   "domain_ref": "Balancing safety and usefulness",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1345-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What practice best keeps guardrails effective as new bypass attempts appear?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ongoing red-teaming and monitoring to find and fix gaps",
+     "correct": true,
+     "rationale": "Correct: continuous testing and monitoring catch new bypasses."
+    },
+    {
+     "key": "B",
+     "text": "Freezing the guardrails permanently after launch",
+     "correct": false,
+     "rationale": "Static guardrails fall behind new attacks."
+    },
+    {
+     "key": "C",
+     "text": "Removing output moderation to save compute",
+     "correct": false,
+     "rationale": "That weakens safety rather than maintaining it."
+    },
+    {
+     "key": "D",
+     "text": "Trusting that attackers will stop trying",
+     "correct": false,
+     "rationale": "Adversaries keep adapting; guardrails must too."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: continuous testing and monitoring catch new bypasses.",
+   "outcome_refs": [
+    "MST-1345-D05.02"
+   ],
+   "domain_ref": "Testing and monitoring guardrails",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

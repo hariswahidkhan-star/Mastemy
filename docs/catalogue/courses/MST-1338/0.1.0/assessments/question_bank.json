@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1338",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1338-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What characterises an indirect prompt-injection attack?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Malicious instructions are hidden in content the model later retrieves or reads",
+     "correct": true,
+     "rationale": "Correct: indirect injection plants instructions in data the model ingests, not the user's direct message."
+    },
+    {
+     "key": "B",
+     "text": "The attacker guesses the model's weights",
+     "correct": false,
+     "rationale": "Weight guessing is not prompt injection."
+    },
+    {
+     "key": "C",
+     "text": "The model runs out of memory",
+     "correct": false,
+     "rationale": "Resource exhaustion is a different class of issue."
+    },
+    {
+     "key": "D",
+     "text": "The user asks a factual question",
+     "correct": false,
+     "rationale": "A normal question is not an injection attack."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: indirect injection plants instructions in data the model ingests, not the user's direct message.",
+   "outcome_refs": [
+    "MST-1338-D02.01"
+   ],
+   "domain_ref": "Prompt injection and jailbreaks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1338-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls best reduce the impact of a successful prompt injection in a tool-using agent? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant each tool only the least privilege it needs",
+     "correct": true,
+     "rationale": "Correct: least privilege limits what a hijacked agent can do."
+    },
+    {
+     "key": "B",
+     "text": "Require confirmation or filtering before high-impact actions",
+     "correct": true,
+     "rationale": "Correct: gating risky actions blocks injected commands from executing freely."
+    },
+    {
+     "key": "C",
+     "text": "Place all secrets directly in the system prompt",
+     "correct": false,
+     "rationale": "That increases leakage risk rather than reducing injection impact."
+    },
+    {
+     "key": "D",
+     "text": "Trust any instruction found in retrieved documents",
+     "correct": false,
+     "rationale": "Trusting untrusted data is the root of indirect injection."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: least privilege limits what a hijacked agent can do.",
+   "outcome_refs": [
+    "MST-1338-D04.02"
+   ],
+   "domain_ref": "Controls and least privilege",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1338-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a well-written system prompt insufficient on its own to stop jailbreaks?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Models can be steered by adversarial inputs that override prompt instructions",
+     "correct": true,
+     "rationale": "Correct: prompt-level defences are probabilistic and can be bypassed, so layered controls are needed."
+    },
+    {
+     "key": "B",
+     "text": "System prompts are never sent to the model",
+     "correct": false,
+     "rationale": "They are sent; the issue is they are not a hard guarantee."
+    },
+    {
+     "key": "C",
+     "text": "Jailbreaks only affect image models",
+     "correct": false,
+     "rationale": "Jailbreaks affect text LLMs directly."
+    },
+    {
+     "key": "D",
+     "text": "A system prompt makes the model deterministic",
+     "correct": false,
+     "rationale": "It does not guarantee determinism or safety."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: prompt-level defences are probabilistic and can be bypassed, so layered controls are needed.",
+   "outcome_refs": [
+    "MST-1338-D02.02"
+   ],
+   "domain_ref": "Prompt injection and jailbreaks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

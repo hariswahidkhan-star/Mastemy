@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1341",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1341-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is tracing individual spans (prompt build, model call, tool calls) valuable in an LLM app?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It localises where latency or errors occur within a single request",
+     "correct": true,
+     "rationale": "Correct: span-level traces show which step is slow or failing."
+    },
+    {
+     "key": "B",
+     "text": "It reduces the model's parameter count",
+     "correct": false,
+     "rationale": "Tracing is observability, not compression."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the answer is correct",
+     "correct": false,
+     "rationale": "Tracing measures behaviour; it does not ensure correctness."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for any metrics",
+     "correct": false,
+     "rationale": "Traces complement, not replace, metrics."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: span-level traces show which step is slow or failing.",
+   "outcome_refs": [
+    "MST-1341-D02.01"
+   ],
+   "domain_ref": "Tracing LLM calls",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1341-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO signals should an LLM observability setup capture beyond standard app metrics? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Token usage and cost per request",
+     "correct": true,
+     "rationale": "Correct: tokens drive cost and are LLM-specific."
+    },
+    {
+     "key": "B",
+     "text": "Output quality signals such as user feedback or judge scores",
+     "correct": true,
+     "rationale": "Correct: quality is a first-class LLM signal, not captured by uptime alone."
+    },
+    {
+     "key": "C",
+     "text": "Only CPU temperature of the client device",
+     "correct": false,
+     "rationale": "That is unrelated to LLM behaviour."
+    },
+    {
+     "key": "D",
+     "text": "Nothing beyond HTTP status codes",
+     "correct": false,
+     "rationale": "Status codes miss quality, cost and drift."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tokens drive cost and are LLM-specific.",
+   "outcome_refs": [
+    "MST-1341-D03.01"
+   ],
+   "domain_ref": "Quality and cost metrics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1341-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Users' questions have gradually changed topic since launch and answers are worse. Which concept names this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Input drift",
+     "correct": true,
+     "rationale": "Correct: the input distribution has shifted away from what the system was tuned for."
+    },
+    {
+     "key": "B",
+     "text": "Overfitting",
+     "correct": false,
+     "rationale": "Overfitting is a training issue, not a production input shift."
+    },
+    {
+     "key": "C",
+     "text": "Quantisation",
+     "correct": false,
+     "rationale": "Quantisation is a compression technique, unrelated here."
+    },
+    {
+     "key": "D",
+     "text": "Rate limiting",
+     "correct": false,
+     "rationale": "Rate limiting controls request volume, not topic shift."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the input distribution has shifted away from what the system was tuned for.",
+   "outcome_refs": [
+    "MST-1341-D04.01"
+   ],
+   "domain_ref": "Drift detection",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

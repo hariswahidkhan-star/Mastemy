@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1343",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 336,
+  "lesson_check_items": 80,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1343-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the core idea behind contrastive image-text training such as CLIP?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Learn a shared space where matching image and text pairs are close together",
+     "correct": true,
+     "rationale": "Correct: contrastive training aligns image and text embeddings for matching pairs."
+    },
+    {
+     "key": "B",
+     "text": "Convert every image into English sentences before training",
+     "correct": false,
+     "rationale": "It aligns embeddings; it does not pre-translate images to text."
+    },
+    {
+     "key": "C",
+     "text": "Train the vision and language parts to never interact",
+     "correct": false,
+     "rationale": "The point is to relate the two modalities, not isolate them."
+    },
+    {
+     "key": "D",
+     "text": "Remove all text from the training data",
+     "correct": false,
+     "rationale": "Text is essential to the image-text pairing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: contrastive training aligns image and text embeddings for matching pairs.",
+   "outcome_refs": [
+    "MST-1343-D02.02"
+   ],
+   "domain_ref": "Image-text representation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1343-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate tasks for a vision-language model? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Answering questions about the contents of an image",
+     "correct": true,
+     "rationale": "Correct: visual question answering is a core VLM task."
+    },
+    {
+     "key": "B",
+     "text": "Generating a caption describing an image",
+     "correct": true,
+     "rationale": "Correct: captioning is a standard VLM task."
+    },
+    {
+     "key": "C",
+     "text": "Sorting a numeric database with no images or text",
+     "correct": false,
+     "rationale": "That is a plain data task, not multimodal."
+    },
+    {
+     "key": "D",
+     "text": "Compiling source code",
+     "correct": false,
+     "rationale": "Code compilation is unrelated to vision-language models."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: visual question answering is a core VLM task.",
+   "outcome_refs": [
+    "MST-1343-D03.01"
+   ],
+   "domain_ref": "Vision-language tasks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1343-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A vision-language model confidently reports an object that is not actually in the image. What is this failure called?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Hallucination",
+     "correct": true,
+     "rationale": "Correct: the model fabricates content not supported by the input."
+    },
+    {
+     "key": "B",
+     "text": "Quantisation error",
+     "correct": false,
+     "rationale": "That stems from low-precision numerics, not fabricated content."
+    },
+    {
+     "key": "C",
+     "text": "Overfitting",
+     "correct": false,
+     "rationale": "Overfitting is a training issue, not a per-image fabrication."
+    },
+    {
+     "key": "D",
+     "text": "Latency",
+     "correct": false,
+     "rationale": "Latency is a speed measure, not an incorrect-content issue."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the model fabricates content not supported by the input.",
+   "outcome_refs": [
+    "MST-1343-D05.01"
+   ],
+   "domain_ref": "Limitations and safety",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

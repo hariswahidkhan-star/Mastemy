@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1335",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1335-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Converting a model's weights from FP32 to INT8 most directly achieves which outcome?",
+   "options": [
+    {
+     "key": "A",
+     "text": "About a 4x reduction in weight memory footprint",
+     "correct": true,
+     "rationale": "Correct: INT8 uses 8 bits vs 32, roughly quartering weight storage."
+    },
+    {
+     "key": "B",
+     "text": "A guaranteed increase in model accuracy",
+     "correct": false,
+     "rationale": "Quantisation typically reduces or holds accuracy; it does not raise it."
+    },
+    {
+     "key": "C",
+     "text": "Automatic removal of redundant layers",
+     "correct": false,
+     "rationale": "That is pruning, not quantisation."
+    },
+    {
+     "key": "D",
+     "text": "Elimination of the need for calibration data",
+     "correct": false,
+     "rationale": "Static PTQ still needs calibration data to set scales."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: INT8 uses 8 bits vs 32, roughly quartering weight storage.",
+   "outcome_refs": [
+    "MST-1335-D01.01"
+   ],
+   "domain_ref": "Numerical precision and quantisation basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1335-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about quantisation-aware training (QAT) are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "QAT simulates quantisation during training so the model adapts to it",
+     "correct": true,
+     "rationale": "Correct: QAT inserts fake-quant ops so weights learn to tolerate low precision."
+    },
+    {
+     "key": "B",
+     "text": "QAT generally recovers more accuracy than post-training quantisation at very low precision",
+     "correct": true,
+     "rationale": "Correct: by training under quantisation, QAT usually beats PTQ at aggressive bit-widths."
+    },
+    {
+     "key": "C",
+     "text": "QAT requires no access to training data or pipeline",
+     "correct": false,
+     "rationale": "QAT needs the training loop and data; PTQ is the data-light option."
+    },
+    {
+     "key": "D",
+     "text": "QAT is always cheaper than PTQ",
+     "correct": false,
+     "rationale": "QAT adds training cost, so it is more expensive, not cheaper."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: QAT inserts fake-quant ops so weights learn to tolerate low precision.",
+   "outcome_refs": [
+    "MST-1335-D03.01"
+   ],
+   "domain_ref": "Quantisation-aware training",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1335-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Unstructured magnitude pruning yields a sparse model but no speed-up on the target device. What is the most likely reason?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The hardware and runtime do not exploit unstructured sparsity",
+     "correct": true,
+     "rationale": "Correct: without sparse kernel support, zeros are still computed, so no speed-up."
+    },
+    {
+     "key": "B",
+     "text": "Pruning never reduces the number of parameters",
+     "correct": false,
+     "rationale": "Pruning does zero out parameters; the issue is hardware exploitation."
+    },
+    {
+     "key": "C",
+     "text": "The model was quantised instead of pruned",
+     "correct": false,
+     "rationale": "The scenario states pruning was applied."
+    },
+    {
+     "key": "D",
+     "text": "Sparsity always slows inference",
+     "correct": false,
+     "rationale": "Sparsity can speed inference where supported; here support is absent."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without sparse kernel support, zeros are still computed, so no speed-up.",
+   "outcome_refs": [
+    "MST-1335-D04.02"
+   ],
+   "domain_ref": "Pruning and sparsity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
