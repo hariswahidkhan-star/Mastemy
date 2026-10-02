@@ -1,21 +1,26 @@
-"""Registry of externally authored full-curriculum-spec course packages (Wave 1).
+"""Registry of externally authored full-curriculum-spec course packages (all waves).
 
-Six parallel agents hand-wrote 90 course packages into
-``docs/catalogue/courses/<MST-ID>/0.1.0/`` and listed them in the wave
-manifests under ``docs/catalogue/wave-manifests/wave1-cat*.csv``. The central
-generator (``master_catalogue.py``) does not otherwise know about them, so this
-module is the single source of truth that lets the generator:
+Across successive integration waves, parallel agents hand-wrote course packages
+into ``docs/catalogue/courses/<MST-ID>/0.1.0/`` and listed them in the wave
+manifests under ``docs/catalogue/wave-manifests/wave<N>-cat*.csv`` (wave 1,
+wave 2, and any future wave). The central generator (``master_catalogue.py``)
+does not otherwise know about them, so this module is the single source of truth
+that lets the generator:
 
-* mark those 90 rows as ``full-curriculum-spec`` (without re-writing the
+* mark those rows as ``full-curriculum-spec`` (without re-writing the
   hand-authored package files), and
 * register every ``SRC-*`` source id the agents referenced so references
   resolve in the source register.
 
 Everything here is derived from files on disk (the manifests and each package's
-``course_metadata.json``); nothing is hard-coded per course. The manifests are
-the authoritative list of the 90 MST-IDs and their verification tokens; each
-package's own ``course_metadata.json`` value wins when it differs (and the
-difference is reported by ``reconciliation_notes``).
+``course_metadata.json``); nothing is hard-coded per course. The module globs
+*every* ``wave<N>-cat*.csv`` manifest, so new waves are picked up automatically.
+Manifests use differing header schemas (the course id is in ``mst_id`` or
+``course_id``; some carry ``source_url``/``note`` columns) — the id and the
+verification token are read schema-tolerantly, and each package's own
+``course_metadata.json`` value wins when it differs (the difference is reported
+by ``reconciliation_notes``). The "promote without regenerate" behaviour is
+identical for every wave: these IDs are never added to the write_package set.
 """
 import csv
 import glob
@@ -60,9 +65,10 @@ def normalise_verification(token):
 def _manifest_rows():
     """Yield (mst_id, verification_status) from every wave manifest.
 
+    Globs every ``wave<N>-cat*.csv`` (wave1, wave2, and any future waveN).
     Manifests have differing columns; the id is in ``mst_id`` or ``course_id``.
     """
-    for f in sorted(glob.glob(os.path.join(MANIFEST_DIR, "wave1-cat*.csv"))):
+    for f in sorted(glob.glob(os.path.join(MANIFEST_DIR, "wave*-cat*.csv"))):
         with open(f, newline="", encoding="utf-8") as fh:
             for row in csv.DictReader(fh):
                 mid = (row.get("mst_id") or row.get("course_id") or "").strip()
@@ -97,7 +103,7 @@ def _source_refs():
 
 
 def manifest_ids():
-    """Ordered, de-duplicated list of the 90 Wave 1 MST-IDs."""
+    """Ordered, de-duplicated list of every wave's MST-IDs (all manifests)."""
     seen = []
     for mid, _vs in _manifest_rows():
         if mid not in seen:
@@ -122,7 +128,7 @@ def _is_official_source(sid, ref, existing_ids, existing_official):
     return vs in ("verified-official-source", "vendor-docs-partial")
 
 
-def wave1_sources(existing_ids, existing_official):
+def wave_sources(existing_ids, existing_official):
     """Source-register rows for every new SRC id the agents referenced.
 
     ``existing_ids`` / ``existing_official`` describe the sources already in the
@@ -160,8 +166,8 @@ def wave1_sources(existing_ids, existing_official):
     return rows, proxy_blocked
 
 
-def load_wave1():
-    """Per-course overrides for the 90 externally authored specs.
+def load_waves():
+    """Per-course overrides for every externally authored spec (all waves).
 
     Each value carries the reconciled verification fields (package value wins),
     planned hours, course class, priority batch, and a reconciliation note when

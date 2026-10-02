@@ -12,7 +12,7 @@ import re
 
 from reconcile import crosswalk, Sim, toks, BRANDS, CERT_CATEGORIES
 from data_sources import SOURCES, RETIRED_EXCLUDED, RETIRING, SESSION_DATE, OFFICIALLY_VERIFIED_CODES, SECONDARY_CODES
-from data_wave1 import load_wave1, wave1_sources
+from data_waves import load_waves, wave_sources
 from data_curricula import CURRICULA
 from data_packages import B1_EXTRAS, BATCH2, BATCH2_ORDER, OFFICIAL, PARTIAL, NOSYL
 from data_catalogue import BATCH1, PATHWAYS
@@ -331,12 +331,13 @@ def build(legacy_rows):
             lid = next(l["course_id"] for l in legacy_rows if l["_key"] == key)
             batch2[xw[lid]["mst_id"]] = key
 
-    # Wave 1: 90 externally authored full-curriculum-spec packages. Their files
-    # already exist on disk and must NOT be re-written (so they are never added
-    # to batch1/batch2, which are the only rows write_package runs for). We only
-    # promote their catalogue rows to full-curriculum-spec and pull verification
-    # and hours from the hand-authored package metadata.
-    wave1 = load_wave1()
+    # All waves: externally authored full-curriculum-spec packages (wave 1 + 2 +
+    # any future wave). Their files already exist on disk and must NOT be
+    # re-written (so they are never added to batch1/batch2, which are the only
+    # rows write_package runs for). We only promote their catalogue rows to
+    # full-curriculum-spec and pull verification and hours from the hand-authored
+    # package metadata.
+    waves = load_waves()
 
     rows = []
     src = [(a["mst_id"], "appendix-a", a["title"], a["category_no"], None) for a in appendix]
@@ -349,9 +350,9 @@ def build(legacy_rows):
         lrow = leg or (by_lid[lids[0]] if lids else None)
         issuer = issuer_of(title) or (lrow["awarding_body"] if lrow and lrow["course_type"] == "certification-prep" else "")
         cls = classify(title, cat_no, issuer, lrow if origin == "legacy-addition" else (lrow if lrow and lrow["course_type"] == "certification-prep" else None))
-        if mid in wave1:
+        if mid in waves:
             # The hand-authored package metadata is authoritative for its class.
-            cls = wave1[mid]["course_class"]
+            cls = waves[mid]["course_class"]
         if cls in ("independent-certification-exam-prep", "licensing-examination-knowledge-prep") and not issuer:
             issuer = (lrow or {}).get("awarding_body", "") or "unresolved"
         if cls not in ("independent-certification-exam-prep", "licensing-examination-knowledge-prep"):
@@ -366,8 +367,8 @@ def build(legacy_rows):
             spec_hours = int(next(l for l in legacy_rows if l["_key"] == batch1[mid])["est_learner_hours"])
         elif mid in batch2:
             spec_hours = BATCH2[batch2[mid]]["hours"]
-        elif mid in wave1:
-            spec_hours = wave1[mid]["planned_hours"]
+        elif mid in waves:
+            spec_hours = waves[mid]["planned_hours"]
         if spec_hours:
             hours, basis = spec_hours, "curriculum specification (design assumption, see course package)"
         else:
@@ -383,12 +384,12 @@ def build(legacy_rows):
             vstat, von, sids = "unverified-needs-official-check", "", SECONDARY_CODES.get(code, "")
         else:
             vstat, von, sids = "n/a-no-official-syllabus", "", (BATCH2[batch2[mid]]["source"] if mid in batch2 else "")
-        if mid in wave1:
+        if mid in waves:
             # Verification comes from the hand-authored package metadata
-            # (already normalised and reconciled in data_wave1.load_wave1).
-            vstat = wave1[mid]["verification_status"]
-            von = wave1[mid]["verified_on"]
-            sids = wave1[mid]["source_ids"]
+            # (already normalised and reconciled in data_waves.load_waves).
+            vstat = waves[mid]["verification_status"]
+            von = waves[mid]["verified_on"]
+            sids = waves[mid]["source_ids"]
         # exam status
         if cls not in ("independent-certification-exam-prep", "licensing-examination-knowledge-prep"):
             estat = "n/a"
@@ -411,7 +412,7 @@ def build(legacy_rows):
         elif cls not in ("independent-certification-exam-prep", "licensing-examination-knowledge-prep"):
             exam_version = "n/a"
         # depth / workflow
-        if mid in batch1 or mid in batch2 or mid in wave1:
+        if mid in batch1 or mid in batch2 or mid in waves:
             depth, wf = "full-curriculum-spec", "Blueprint review"
         else:
             depth, wf = "inventory", ("Source verification" if vstat == "verified-official-source" else "Candidate")
@@ -426,8 +427,8 @@ def build(legacy_rows):
             pb = 1
         elif mid in batch2:
             pb = 2
-        elif mid in wave1:
-            pb = wave1[mid]["priority_batch"]
+        elif mid in waves:
+            pb = waves[mid]["priority_batch"]
         elif re.search(r"^ACCA|^US CPA|^CIA Part|CISA|PMI PMP|^CFA Level|^US CMA|NCLEX|IELTS|Excel|Copilot|ChatGPT|OpenAI|Claude|Anthropic|Cursor|RAG|Retrieval|\.NET|C#|ASP\.NET|JavaScript|TypeScript|Microsoft (AB|AI)-", title):
             pb = 3
         elif is_exam:
@@ -757,13 +758,13 @@ def source_register():
                          source_type="discovery anchor", method="not re-checked this run (user-supplied register)",
                          accessed_on="", finding=f"Prompt status: {b['prompt_status']}; prompt checked: {b['prompt_checked']}; purpose: {b['purpose']}",
                          origin="master-prompt-appendix-b"))
-    # Source ids referenced by the 90 externally authored Wave 1 packages.
+    # Source ids referenced by every externally authored wave package (all waves).
     existing_ids = {r["source_id"] for r in rows}
     existing_official = {r["source_id"] for r in rows if (r["method"] or "").startswith("official")}
-    w_rows, _proxy = wave1_sources(existing_ids, existing_official)
+    w_rows, _proxy = wave_sources(existing_ids, existing_official)
     for s in w_rows:
         rows.append(dict(source_id=s[0], family=s[1], url=s[2], publisher=s[3], source_type=s[4], method=s[5],
-                         accessed_on=s[6], finding=s[7], origin="wave1-external-package"))
+                         accessed_on=s[6], finding=s[7], origin="wave-external-package"))
     return rows
 
 
