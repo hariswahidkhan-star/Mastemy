@@ -44,7 +44,7 @@ public sealed record ResourceDownload(Stream Content, string ContentType, string
 /// </summary>
 public class ResourceService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit,
     IResourceStorage storage, ResourceOptions opt, CourseSnapshotService snapshots, ResourceBlobJanitor janitor, CaptionCueCache cueCache,
-    Trust.MalwareScanPolicy scanPolicy)
+    Trust.MalwareScanPolicy scanPolicy, Commerce.ConsumptionRecorder consumption)
 {
     public ResourceOptions Options => opt;
 
@@ -289,6 +289,8 @@ public class ResourceService(AppDbContext db, ICurrentUser me, AccessService acc
                 throw new AppException(403, "This resource is part of the course's premium services.", "premium_required");
         }
         if (!storage.Exists(f.StorageKey)) throw AppException.NotFound("Resource file");
+        // Subscription revenue pool counts premium consumption per course (Commerce §18 allocation formula).
+        if (f.IsPremium && !privileged && me.Id is { } uid) await consumption.RecordPremiumDownload(uid, courseId, f.Id);
         return new ResourceDownload(storage.OpenRead(f.StorageKey), f.ContentType, f.FileName, f.IsPremium);
     }
 
