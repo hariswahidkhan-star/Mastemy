@@ -3,7 +3,7 @@ import type { APIRequestContext } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import type { Actor } from './helpers';
-import { ADMIN, API, PASSWORD, email, label, login, newActor, run } from './helpers';
+import { ADMIN, API, PASSWORD, apiLogin, email, label, login, newActor, run } from './helpers';
 
 /**
  * Wave 3 workspace: authoring concurrency and revisions, consent-gated analytics, study plan + ICS, trust & safety
@@ -63,14 +63,10 @@ class Api {
   }
 }
 
+/** Signs in over the API; privileged users answer the TOTP challenge (or enroll) inside apiLogin. */
 async function signIn(request: APIRequestContext, mail: string, password = PASSWORD) {
-  const api = new Api(request);
-  const res = await api.post<{ accessToken: string; user: { id: string } }>('/api/auth/login', {
-    email: mail,
-    password,
-  });
-  api.token = res.accessToken;
-  return { api, userId: res.user.id };
+  const res = await apiLogin(request, mail, password);
+  return { api: new Api(request, res.accessToken), userId: res.user.id };
 }
 
 async function registerApi(request: APIRequestContext, name: string, mail: string) {
@@ -475,8 +471,8 @@ test.describe
     const db = process.env.E2E_DB ?? 'mastemy_e2e';
     execFileSync('mysql', [
       `-h${process.env.MYSQL_HOST ?? '127.0.0.1'}`,
-      '-umastemy',
-      '-pmastemy_dev_pw',
+      `-u${process.env.MYSQL_USER ?? 'mastemy'}`,
+      `-p${process.env.MYSQL_PASSWORD ?? 'mastemy_dev_pw'}`,
       db,
       '-e',
       `UPDATE VideoAssets SET Status = 7, StatusReason = 'Video made private on YouTube (e2e).' WHERE Id = '${course.video1}';`,

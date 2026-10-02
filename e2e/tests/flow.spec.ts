@@ -212,7 +212,7 @@ test.describe.serial('author → publish → learn → assess → refund → sta
   test('a reviewer confirms the manually linked video (no API key available)', async () => {
     const r = reviewer1.page;
     await r.goto('/admin/videos');
-    await r.getByLabel('Status').selectOption({ label: 'In content review' });
+    await r.getByLabel('Status', { exact: true }).selectOption({ label: 'In content review' });
     const row = r.getByRole('row').filter({ hasText: `Chatbot data rules ${run}` });
     await row.getByRole('button', { name: /^Confirm .* is public or unlisted/ }).click();
     await expect(r.getByText('Video linked. Status: Ready.')).toBeVisible();
@@ -249,7 +249,7 @@ test.describe.serial('author → publish → learn → assess → refund → sta
   test('two different reviewers promote every question to Active', async () => {
     const openCourse = async (p: typeof reviewer1.page) => {
       await p.goto('/admin');
-      await p.getByLabel('Status').selectOption({ label: 'Draft' });
+      await p.getByLabel('Status', { exact: true }).selectOption({ label: 'Draft' });
       await p
         .getByRole('row')
         .filter({ hasText: courseTitle })
@@ -329,7 +329,7 @@ test.describe.serial('author → publish → learn → assess → refund → sta
 
     const a = admin.page;
     await a.goto('/admin');
-    await a.getByLabel('Status').selectOption({ label: 'Approved' });
+    await a.getByLabel('Status', { exact: true }).selectOption({ label: 'Approved' });
     await a
       .getByRole('row')
       .filter({ hasText: courseTitle })

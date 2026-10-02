@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import type { APIRequestContext, Page } from '@playwright/test';
+import { execFileSync } from 'node:child_process';
 import { createHmac } from 'node:crypto';
 import type { Actor } from './helpers';
 import {
@@ -8,6 +9,7 @@ import {
   FAKE_STRIPE,
   PASSWORD,
   WEBHOOK_SECRET,
+  apiLogin,
   email,
   label,
   login,
@@ -19,22 +21,11 @@ import {
  * Commerce (wave 3) through the real UI against the real API + MySQL, with Stripe replaced by
  * e2e/fake-stripe.mjs and every payment/subscription/dispute outcome delivered as a correctly signed webhook.
  *
- * This spec needs its own API instance with commerce settings that make the flows observable in one run
- * (cleared balances without waiting 30 days, a 1-unit payout minimum, PDF invoices) and privileged logins
- * without TOTP. Start it like this (distinct ports so it can run beside the default stack):
- *
- *   E2E_DB=mastemy_e2e_commerce API_PORT=5383 WEB_PORT=5283 FAKE_STRIPE_PORT=12383 \
- *   Security__RequireMfaForPrivileged=false Commerce__RefundWindowDays=0 Payouts__MinimumAmount=1 \
- *   Invoice__SellerName="Mastemy E2E" Invoice__SellerAddress="1 Test Street" Invoice__SellerTaxId=DE000000000 \
- *     e2e/start-api.sh
- *   FAKE_STRIPE_PORT=12383 node e2e/fake-stripe.mjs
- *   (cd src/web && API_PROXY_TARGET=http://localhost:5383 npx vite --port 5283 --strictPort)
- *   cd e2e && E2E_COMMERCE_STACK=1 E2E_BASE_URL=http://localhost:5283 E2E_API_URL=http://localhost:5383 \
- *     E2E_FAKE_STRIPE_URL=http://localhost:12383 npx playwright test commerce.spec.ts
- *
- * Without E2E_COMMERCE_STACK=1 the spec is skipped (the default stack keeps the production-like defaults).
+ * Runs on the shared production-like stack started by scripts/e2e-all.sh, whose single configuration makes the
+ * flows observable in one run (Payouts__MinimumAmount=1, Invoice__Seller* for PDF invoices); the refund window keeps
+ * its 30-day default, so the payout test ages this instructor's ledger entries in MySQL (E2E_DB) to clear them.
+ * Privileged sign-ins answer TOTP through the shared helpers.
  */
-test.skip(!process.env.E2E_COMMERCE_STACK, 'needs the commerce API instance (see header comment)');
 
 interface Json {
   [k: string]: unknown;
@@ -64,14 +55,10 @@ class Api {
   put = <T = Json>(p: string, b?: unknown) => this.call<T>('PUT', p, b ?? {});
 }
 
+/** Signs in over the API; privileged users answer the TOTP challenge (or enroll) inside apiLogin. */
 async function signIn(request: APIRequestContext, mail: string, password = PASSWORD) {
-  const api = new Api(request);
-  const res = await api.post<{ accessToken: string; user: { id: string } }>('/api/auth/login', {
-    email: mail,
-    password,
-  });
-  api.token = res.accessToken;
-  return { api, userId: res.user.id };
+  const res = await apiLogin(request, mail, password);
+  return { api: new Api(request, res.accessToken), userId: res.user.id };
 }
 
 async function registerApi(request: APIRequestContext, name: string, mail: string) {
@@ -156,6 +143,7 @@ test.describe.serial('commerce: coupons, scholarships, gifts, subscriptions, ref
   let packageId = '';
   let orgId = '';
   let couponOrderId = '';
+  let instructorUserId = '';
   const coupon = `SAVE20${run}`.toUpperCase();
   const scholarship = `SCHOLAR${run}`.toUpperCase();
 
@@ -170,6 +158,7 @@ test.describe.serial('commerce: coupons, scholarships, gifts, subscriptions, ref
   }) => {
     const { api: adminApi } = await signIn(request, ADMIN.email, ADMIN.password);
     const instructorId = await registerApi(request, 'Iman Instructor', people.instructor);
+    instructorUserId = instructorId;
     for (const who of ['buyer', 'scholar', 'giftee', 'subscriber', 'disputer'] as const)
       await registerApi(request, `E2E ${who}`, people[who]);
     await adminApi.put(`/api/admin/users/${instructorId}/roles`, { roles: ['Student', 'Instructor'] });
@@ -538,6 +527,16 @@ test.describe.serial('commerce: coupons, scholarships, gifts, subscriptions, ref
 
   test('payouts: masked IBAN profile, verified tax form, payout request, then a finance batch', async () => {
     const page = instructor.page;
+    // Earnings clear only after the refund window (production default: 30 days). Age this instructor's ledger
+    // entries in the database instead of shortening the window for the whole stack.
+    execFileSync('mysql', [
+      `-h${process.env.MYSQL_HOST ?? '127.0.0.1'}`,
+      `-u${process.env.MYSQL_USER ?? 'mastemy'}`,
+      `-p${process.env.MYSQL_PASSWORD ?? 'mastemy_dev_pw'}`,
+      process.env.E2E_DB ?? 'mastemy_e2e',
+      '-e',
+      `UPDATE CommissionLedger SET CreatedAt = CreatedAt - INTERVAL 31 DAY WHERE InstructorId = '${instructorUserId}';`,
+    ]);
     await page.goto('/studio/payouts');
     await expect(page.getByText('You have not set up a payout profile.')).toBeVisible();
     await page.getByLabel(label('Legal name')).fill(legalName);

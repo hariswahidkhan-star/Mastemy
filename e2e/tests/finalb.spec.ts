@@ -20,20 +20,10 @@ import {
  * org-private materials, assigned pathways and OIDC single sign-on through a local fake identity provider,
  * all through the real UI against the real API + MySQL. Scaffolding (users, course, pathway, org) uses the API.
  *
- * Needs its own stack (privileged logins keep MFA; the TOTP helpers answer it):
- *
- *   FAKE_OIDC_PORT=12592 node e2e/fake-oidc.mjs
- *   FAKE_STRIPE_PORT=12492 node e2e/fake-stripe.mjs
- *   E2E_DB=mastemy_e2e_finalb API_PORT=5492 WEB_PORT=5392 FAKE_STRIPE_PORT=12492 \
- *   SMTP_SINK_PORT=2592 SMTP_SINK_HTTP_PORT=2692 \
- *   Sso__RedirectUri=http://localhost:5492/api/sso/callback Sso__CompletionUrl=http://localhost:5392/sso/complete \
- *   Sso__AllowInsecureHttp=true e2e/start-api.sh
- *   (cd src/web && API_PROXY_TARGET=http://localhost:5492 npx vite --port 5392 --strictPort)
- *   cd e2e && E2E_FINALB_STACK=1 E2E_BASE_URL=http://localhost:5392 E2E_API_URL=http://localhost:5492 \
- *     E2E_FAKE_STRIPE_URL=http://localhost:12492 E2E_SMTP_SINK_URL=http://localhost:2692 \
- *     E2E_FAKE_OIDC_URL=http://localhost:12592 npx playwright test finalb.spec.ts
+ * Runs on the shared production-like stack started by scripts/e2e-all.sh (fake OIDC provider, Sso__RedirectUri,
+ * Sso__CompletionUrl and Sso__AllowInsecureHttp=true are part of its single configuration); privileged logins keep
+ * MFA and the TOTP helpers answer it.
  */
-test.skip(!process.env.E2E_FINALB_STACK, 'needs the finalb API instance with Sso__* (see header comment)');
 
 const OIDC = process.env.E2E_FAKE_OIDC_URL ?? 'http://localhost:12592';
 const OIDC_CLIENT = 'mastemy-e2e';

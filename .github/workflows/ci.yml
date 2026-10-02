@@ -1,7 +1,25 @@
 name: CI
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOTNET_NOLOGO: "true"
+  DOTNET_CLI_TELEMETRY_OPTOUT: "true"
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+
 jobs:
   api:
+    name: API (dotnet test + MySQL)
     runs-on: ubuntu-latest
     services:
       mysql:
@@ -12,37 +30,57 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
-        with: { dotnet-version: "10.0.x" }
+        with:
+          dotnet-version: "10.0.x"
+          cache: true
+          cache-dependency-path: "**/*.csproj"
       - run: mysql -h127.0.0.1 -uroot -proot -e "GRANT ALL ON *.* TO 'mastemy'@'%'; FLUSH PRIVILEGES;"
       - run: dotnet build Mastemy.slnx -c Release
       - run: dotnet test Mastemy.slnx -c Release --no-build
         env: { MASTEMY_TEST_MYSQL: "Server=127.0.0.1;Port=3306;User=mastemy;Password=mastemy_dev_pw;" }
+
   openapi:
+    name: OpenAPI drift
     # docs/openapi.json must match what the API serves; regenerate with scripts/export-openapi.sh.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
-        with: { dotnet-version: "10.0.x" }
+        with:
+          dotnet-version: "10.0.x"
+          cache: true
+          cache-dependency-path: "**/*.csproj"
       - run: bash -n scripts/*.sh
       - run: scripts/export-openapi.sh --check
+
   web:
+    name: Web (lint, typecheck, unit tests, client + SSR build)
     runs-on: ubuntu-latest
     defaults: { run: { working-directory: src/web } }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 22 }
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: src/web/package-lock.json
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
+      # `build` = tsc + client bundle (dist/) + SSR server bundle (dist-server/).
       - run: npm run build
+      - name: SSR bundle present
+        run: test -f dist-server/main.js && test -f dist/index.html
+
   e2e:
-    # Real browser against the real API + MySQL. Stripe calls go to e2e/fake-stripe.mjs and payment is
-    # completed by a correctly signed webhook posted by the test; no YouTube or Stripe keys are used.
+    name: E2E + accessibility (Playwright, full stack)
+    # Real browser against the real API + MySQL with production-like security defaults (MFA for privileged roles,
+    # refresh token only in the HttpOnly cookie). Stripe, Anthropic, OIDC and SMTP are local fakes (e2e/*.mjs);
+    # no third-party keys are used. scripts/e2e-all.sh starts everything and runs every spec, a11y included.
     runs-on: ubuntu-latest
     needs: [api, web]
+    timeout-minutes: 90
     services:
       mysql:
         image: mysql:8.4
@@ -51,43 +89,45 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-retries=10
     env:
       MYSQL_HOST: 127.0.0.1
-      API_CONFIGURATION: Release
+      E2E_DB: mastemy_e2e
+      E2E_LOG_DIR: ${{ github.workspace }}/e2e/stack-logs
+      CI: "true"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
-        with: { dotnet-version: "10.0.x" }
+        with:
+          dotnet-version: "10.0.x"
+          cache: true
+          cache-dependency-path: "**/*.csproj"
       - uses: actions/setup-node@v4
-        with: { node-version: 22 }
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            src/web/package-lock.json
+            e2e/package-lock.json
       - run: mysql -h127.0.0.1 -uroot -proot -e "GRANT ALL ON *.* TO 'mastemy'@'%'; FLUSH PRIVILEGES;"
-      - run: dotnet build src/Mastemy.Api -c Release
       - run: npm ci
         working-directory: src/web
       - run: npm ci
         working-directory: e2e
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('e2e/package-lock.json') }}
       - run: npx playwright install --with-deps chromium
         working-directory: e2e
-      - name: Start fake Stripe, API and Vite
-        run: |
-          nohup node e2e/fake-stripe.mjs > fake-stripe.log 2>&1 &
-          nohup e2e/start-api.sh > api.log 2>&1 &
-          (cd src/web && nohup npx vite --port 5173 --strictPort > ../../vite.log 2>&1 &)
-          for i in $(seq 1 90); do
-            curl -sf http://localhost:5080/api/categories > /dev/null && curl -sf http://localhost:5173/ > /dev/null && exit 0
-            sleep 2
-          done
-          echo "stack did not start"; tail -50 api.log vite.log; exit 1
-      - run: npx playwright test
-        working-directory: e2e
-        env: { CI: "true" }
+      - name: Full stack + every spec (flows and a11y)
+        run: scripts/e2e-all.sh
       - name: Backup/restore drill against the e2e database and resources
         run: scripts/restore-test.sh
         env:
-          MYSQL_HOST: 127.0.0.1
           MYSQL_PASSWORD: mastemy_dev_pw
           MYSQL_DATABASE: mastemy_e2e
-          RESOURCES_DIR: src/Mastemy.Api/data/resources # e2e/start-api.sh uses the default Resources:RootPath
+          RESOURCES_DIR: /tmp/mastemy-e2e-resources-mastemy_e2e
       - if: failure()
-        run: tail -200 api.log vite.log fake-stripe.log
+        run: tail -n 200 e2e/stack-logs/*.log
       - if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -95,4 +135,5 @@ jobs:
           path: |
             e2e/playwright-report
             e2e/test-results
+            e2e/stack-logs
           retention-days: 7

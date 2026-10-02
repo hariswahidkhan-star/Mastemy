@@ -1,0 +1,165 @@
+name: Release
+# On a version tag (v*): build and push the API and web images to GHCR, generate SBOMs, scan the images with Trivy
+# (fails on CRITICAL), and publish a GitHub release with the SBOMs and an example production compose file.
+# Deployment is a separate, manual job gated by the "production" environment (required reviewers are configured
+# on the environment in the repository settings). No secret values live in this file.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      deploy_tag:
+        description: "Release tag to deploy to production (e.g. v1.2.3)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  images:
+    name: Build, SBOM, scan and push (${{ matrix.image }})
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - image: api
+            dockerfile: src/Mastemy.Api/Dockerfile
+          - image: web
+            dockerfile: deploy/web.Dockerfile
+    steps:
+      - uses: actions/checkout@v4
+      - name: Image name (GHCR needs lower case)
+        id: name
+        run: echo "ref=ghcr.io/${GITHUB_REPOSITORY,,}/${{ matrix.image }}" >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ steps.name.outputs.ref }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=ref,event=tag
+            type=sha
+      # Build into the local daemon first so the image is scanned before anything is pushed.
+      - name: Build (local)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          load: true
+          tags: ${{ steps.name.outputs.ref }}:scan
+          cache-from: type=gha,scope=${{ matrix.image }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.image }}
+      - name: Trivy scan (fail on CRITICAL)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ${{ steps.name.outputs.ref }}:scan
+          severity: CRITICAL
+          ignore-unfixed: true
+          exit-code: "1"
+          format: table
+      - name: SBOM (SPDX)
+        uses: anchore/sbom-action@v0
+        with:
+          image: ${{ steps.name.outputs.ref }}:scan
+          format: spdx-json
+          output-file: sbom-${{ matrix.image }}.spdx.json
+          upload-artifact: false
+          upload-release-assets: false
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sbom-${{ matrix.image }}
+          path: sbom-${{ matrix.image }}.spdx.json
+      - name: Push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha,scope=${{ matrix.image }}
+
+  release:
+    name: GitHub release
+    needs: images
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sbom-*
+          merge-multiple: true
+      - name: Create release with SBOMs and the compose example
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          cp scripts/release/docker-compose.prod.yml docker-compose.prod.yml
+          gh release create "$TAG" --verify-tag --generate-notes \
+            docker-compose.prod.yml sbom-api.spdx.json sbom-web.spdx.json
+
+  deploy:
+    # Manual only: Actions → Release → Run workflow with the tag. The "production" environment holds the secrets
+    # DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY, DEPLOY_KNOWN_HOSTS and DEPLOY_PATH (directory on the server with
+    # docker-compose.prod.yml and .env), and should require a reviewer.
+    name: Deploy to production
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    steps:
+      - name: Validate tag
+        env:
+          TAG: ${{ inputs.deploy_tag }}
+        run: '[[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z.]+)?$ ]] || { echo "invalid tag: $TAG"; exit 1; }'
+      - name: SSH key
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+      - name: Backup, pull and restart (migrations run on API start via Database__MigrateOnStartup=true)
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
+          DIR: ${{ secrets.DEPLOY_PATH }}
+          TAG: ${{ inputs.deploy_tag }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes "$USER@$HOST" bash -s -- "$DIR" "$TAG" <<'REMOTE'
+          set -euo pipefail
+          cd "$1"
+          # Pin the release in .env so a later `up` keeps the same images.
+          if grep -q '^MASTEMY_TAG=' .env; then sed -i "s/^MASTEMY_TAG=.*/MASTEMY_TAG=$2/" .env; else echo "MASTEMY_TAG=$2" >> .env; fi
+          grep -q '^DATABASE_MIGRATE_ON_STARTUP=' .env || echo "DATABASE_MIGRATE_ON_STARTUP=true" >> .env
+          [ -x ./backup.sh ] && ./backup.sh || echo "no backup.sh next to the compose file; skipping pre-deploy backup"
+          docker compose -f docker-compose.prod.yml pull
+          docker compose -f docker-compose.prod.yml up -d
+          # Wait for the API health check (it applies migrations before it reports healthy).
+          for _ in $(seq 1 60); do
+            state=$(docker inspect -f '{{.State.Health.Status}}' "$(docker compose -f docker-compose.prod.yml ps -q api)")
+            [ "$state" = healthy ] && exit 0
+            sleep 5
+          done
+          docker compose -f docker-compose.prod.yml logs --tail 200 api
+          exit 1
+          REMOTE

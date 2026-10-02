@@ -288,11 +288,14 @@ export async function grantRoles(admin: Page, mail: string, roles: string[]) {
   await admin.getByLabel('Search by name or email').fill(mail);
   await admin.getByRole('button', { name: 'Search' }).click();
   const row = admin.getByRole('row').filter({ hasText: mail });
-  // Privileged roles need a verified email address; staff can confirm it from the same row.
+  // Privileged roles need a verified email address; staff can confirm it from the same row. Wait for the
+  // search result to render first (a non-waiting visibility check would race the request and skip it).
   const markVerified = row.getByRole('button', { name: 'Mark verified' });
+  const verified = row.getByText('Email verified');
+  await expect(markVerified.or(verified).first()).toBeVisible();
   if (await markVerified.isVisible()) {
     await markVerified.click();
-    await expect(row.getByText('Email verified')).toBeVisible();
+    await expect(verified).toBeVisible();
   }
   await row.getByRole('button', { name: 'Edit roles' }).click();
   const dialog = admin.getByRole('dialog');

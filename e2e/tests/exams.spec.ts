@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import type { APIRequestContext } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
 import type { Actor } from './helpers';
-import { ADMIN, API, PASSWORD, email, label, login, newActor, run } from './helpers';
+import { ADMIN, API, PASSWORD, apiLogin, email, label, login, newActor, run } from './helpers';
 
 /**
  * Wave 3 "exams" area (spec §13–§15, §17) through the real UI against the real API + MySQL:
@@ -11,8 +11,8 @@ import { ADMIN, API, PASSWORD, email, label, login, newActor, run } from './help
  * staff-approved regrading and a certificate name correction. Scaffolding already covered by
  * earlier waves (users, course, video, publication) is done over the API.
  *
- * The API must run with Security__RequireMfaForPrivileged=false (staff MFA enrolment is covered by the
- * account suite), and the spec needs mysql access to E2E_DB to simulate elapsed time and email verification.
+ * Runs on the shared production-like stack (scripts/e2e-all.sh): privileged sign-ins answer TOTP through the
+ * helpers. The spec needs mysql access to E2E_DB only to simulate elapsed time for spaced-review cards.
  */
 
 interface Json {
@@ -43,14 +43,10 @@ class Api {
   put = <T = Json>(p: string, b?: unknown) => this.call<T>('PUT', p, b ?? {});
 }
 
+/** Signs in over the API; privileged users answer the TOTP challenge (or enroll) inside apiLogin. */
 async function signIn(request: APIRequestContext, mail: string, password = PASSWORD) {
-  const api = new Api(request);
-  const res = await api.post<{ accessToken: string; user: { id: string } }>('/api/auth/login', {
-    email: mail,
-    password,
-  });
-  api.token = res.accessToken;
-  return { api, userId: res.user.id };
+  const res = await apiLogin(request, mail, password);
+  return { api: new Api(request, res.accessToken), userId: res.user.id };
 }
 
 async function registerApi(request: APIRequestContext, name: string, mail: string) {
@@ -162,8 +158,8 @@ const ytId = (suffix: string) =>
 function sql(statement: string) {
   execFileSync('mysql', [
     `-h${process.env.MYSQL_HOST ?? '127.0.0.1'}`,
-    '-umastemy',
-    '-pmastemy_dev_pw',
+    `-u${process.env.MYSQL_USER ?? 'mastemy'}`,
+    `-p${process.env.MYSQL_PASSWORD ?? 'mastemy_dev_pw'}`,
     process.env.E2E_DB ?? 'mastemy_e2e',
     '-e',
     statement,
@@ -174,12 +170,6 @@ function sql(statement: string) {
 const makeCardsDue = (userId: string) =>
   sql(
     `UPDATE Assessment_ReviewCards SET DueAt = UTC_TIMESTAMP() - INTERVAL 1 MINUTE WHERE UserId = '${userId}';`,
-  );
-
-/** Privileged roles need a verified email; no mail is delivered in e2e, so mark it verified directly. */
-const markEmailVerified = (userId: string) =>
-  sql(
-    `INSERT INTO Identity_UserSecurity (UserId, EmailVerifiedAt, VerifiedEmail) SELECT Id, UTC_TIMESTAMP(), NormalizedEmail FROM Users WHERE Id = '${userId}' ON DUPLICATE KEY UPDATE EmailVerifiedAt = VALUES(EmailVerifiedAt), VerifiedEmail = VALUES(VerifiedEmail);`,
   );
 
 test.describe.serial('wave 3 exams: question bank, delivery, practice, regrading, certificates', () => {
@@ -215,8 +205,9 @@ test.describe.serial('wave 3 exams: question bank, delivery, practice, regrading
     const instructorId = await registerApi(request, 'Ines Instructor', people.instructor);
     const reviewerId = await registerApi(request, 'Rafi Reviewer', people.reviewer);
     studentId = await registerApi(request, 'Sami Student', people.student);
-    markEmailVerified(instructorId);
-    markEmailVerified(reviewerId);
+    // Privileged roles need a verified email; staff confirm it the same way the admin UI does.
+    for (const id of [instructorId, reviewerId])
+      await adminApi.post(`/api/admin/users/${id}/email-verification/mark-verified`);
     await adminApi.put(`/api/admin/users/${instructorId}/roles`, { roles: ['Student', 'Instructor'] });
     await adminApi.put(`/api/admin/users/${reviewerId}/roles`, { roles: ['Student', 'Reviewer'] });
     const channel = await adminApi.post<{ id: string }>('/api/admin/youtube/channels', {

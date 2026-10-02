@@ -159,7 +159,7 @@ export const YouTubePlayer = forwardRef<PlayerHandle, Props>(function YouTubePla
 
   return (
     <div className="player-frame">
-      <div ref={mountRef} title={title} aria-label={t('player.label', { title })} />
+      <div ref={mountRef} role="group" aria-label={t('player.label', { title })} />
     </div>
   );
 });
