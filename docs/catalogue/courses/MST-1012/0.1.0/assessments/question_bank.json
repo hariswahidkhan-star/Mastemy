@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1012",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1012-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the difference between authentication and authorization?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Authentication proves who you are; authorization decides what you may do",
+     "correct": true,
+     "rationale": "Correct: authentication establishes identity, authorization grants permissions."
+    },
+    {
+     "key": "B",
+     "text": "They are two names for the same check",
+     "correct": false,
+     "rationale": "They are distinct steps with different purposes."
+    },
+    {
+     "key": "C",
+     "text": "Authorization happens before authentication",
+     "correct": false,
+     "rationale": "You must establish identity before deciding permissions."
+    },
+    {
+     "key": "D",
+     "text": "Authentication only applies to machines",
+     "correct": false,
+     "rationale": "Authentication applies to users and machines alike."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: authentication establishes identity, authorization grants permissions.",
+   "outcome_refs": [
+    "MST-1012-D01.01"
+   ],
+   "domain_ref": "Identity and access management foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1012-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which are core Zero Trust principles? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Never trust, always verify every request",
+     "correct": true,
+     "rationale": "Correct: Zero Trust verifies each request regardless of origin."
+    },
+    {
+     "key": "B",
+     "text": "Enforce least privilege and assume breach",
+     "correct": true,
+     "rationale": "Correct: minimal access and an assume-breach posture are central to Zero Trust."
+    },
+    {
+     "key": "C",
+     "text": "Trust any device once it is inside the network perimeter",
+     "correct": false,
+     "rationale": "Implicit perimeter trust is exactly what Zero Trust rejects."
+    },
+    {
+     "key": "D",
+     "text": "Grant permanent administrator rights to reduce friction",
+     "correct": false,
+     "rationale": "Standing broad privilege violates least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Zero Trust verifies each request regardless of origin.; Correct: minimal access and an assume-breach posture are central to Zero Trust.",
+   "outcome_refs": [
+    "MST-1012-D05.01"
+   ],
+   "domain_ref": "Zero Trust principles and architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1012-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which combination counts as genuine multi-factor authentication?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A password plus a one-time code from a hardware or app authenticator",
+     "correct": true,
+     "rationale": "Correct: this combines something you know with something you have."
+    },
+    {
+     "key": "B",
+     "text": "Two different passwords",
+     "correct": false,
+     "rationale": "Both are the same factor type (something you know)."
+    },
+    {
+     "key": "C",
+     "text": "A username and a password",
+     "correct": false,
+     "rationale": "A username is an identifier, not a factor."
+    },
+    {
+     "key": "D",
+     "text": "Answering two security questions",
+     "correct": false,
+     "rationale": "Both are knowledge factors, so this is single-factor."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: this combines something you know with something you have.",
+   "outcome_refs": [
+    "MST-1012-D02.01"
+   ],
+   "domain_ref": "Authentication factors and MFA",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0993",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0993-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should builds run on Jenkins agents rather than on the controller?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To isolate workloads and keep the controller responsive and stable",
+     "correct": true,
+     "rationale": "Correct: agents isolate build work, protecting the controller's stability."
+    },
+    {
+     "key": "B",
+     "text": "Because the controller cannot run any steps",
+     "correct": false,
+     "rationale": "It technically can, but doing so is discouraged."
+    },
+    {
+     "key": "C",
+     "text": "Because agents store the credentials",
+     "correct": false,
+     "rationale": "Credentials live in the credentials store, not on agents by design."
+    },
+    {
+     "key": "D",
+     "text": "Because declarative pipelines require it syntactically",
+     "correct": false,
+     "rationale": "Declarative syntax does not mandate the controller/agent choice."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: agents isolate build work, protecting the controller's stability.",
+   "outcome_refs": [
+    "MST-0993-D01.01"
+   ],
+   "domain_ref": "Jenkins architecture and jobs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0993-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which practices improve Jenkins pipeline reliability? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Adding timeouts to stages that could hang",
+     "correct": true,
+     "rationale": "Correct: timeouts stop a hung stage from blocking executors indefinitely."
+    },
+    {
+     "key": "B",
+     "text": "Using a post block to clean up regardless of outcome",
+     "correct": true,
+     "rationale": "Correct: post{always} ensures cleanup even when a stage fails."
+    },
+    {
+     "key": "C",
+     "text": "Echoing credentials into the build log for debugging",
+     "correct": false,
+     "rationale": "That leaks secrets into logs."
+    },
+    {
+     "key": "D",
+     "text": "Marking the build successful even when tests fail",
+     "correct": false,
+     "rationale": "Hiding failures defeats the purpose of CI."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: timeouts stop a hung stage from blocking executors indefinitely.; Correct: post{always} ensures cleanup even when a stage fails.",
+   "outcome_refs": [
+    "MST-0993-D06.01"
+   ],
+   "domain_ref": "Pipeline reliability and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0993-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the correct way to use a stored secret inside a Jenkins pipeline step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Bind it with withCredentials so it is masked and scoped to the block",
+     "correct": true,
+     "rationale": "Correct: withCredentials injects the secret into a limited scope and masks it in logs."
+    },
+    {
+     "key": "B",
+     "text": "Print it with echo to confirm the value",
+     "correct": false,
+     "rationale": "Printing a secret exposes it in the log."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code it in the Jenkinsfile",
+     "correct": false,
+     "rationale": "Hard-coding secrets puts them in version control."
+    },
+    {
+     "key": "D",
+     "text": "Store it as a plain environment variable in the repo",
+     "correct": false,
+     "rationale": "Plain repo variables are not a secure secret store."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: withCredentials injects the secret into a limited scope and masks it in logs.",
+   "outcome_refs": [
+    "MST-0993-D04.01"
+   ],
+   "domain_ref": "Credentials, parameters and shared libraries",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

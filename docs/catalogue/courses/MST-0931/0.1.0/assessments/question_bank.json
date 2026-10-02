@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0931",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0931-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In MATLAB, what does the operator `.*` do between two equally sized matrices?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Element-wise multiplication of corresponding entries",
+     "correct": true,
+     "rationale": "Correct: .* multiplies entries element by element."
+    },
+    {
+     "key": "B",
+     "text": "Matrix (linear-algebra) multiplication",
+     "correct": false,
+     "rationale": "That is the * operator, not .*."
+    },
+    {
+     "key": "C",
+     "text": "Solves a linear system",
+     "correct": false,
+     "rationale": "Solving a system uses the backslash operator \\."
+    },
+    {
+     "key": "D",
+     "text": "Concatenates the matrices",
+     "correct": false,
+     "rationale": "Concatenation uses square brackets, not .*."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: .* multiplies entries element by element.",
+   "outcome_refs": [
+    "MST-0931-D01.01"
+   ],
+   "domain_ref": "MATLAB environment and matrix basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0931-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about vectorisation in MATLAB are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Logical indexing can select elements that satisfy a condition without a loop",
+     "correct": true,
+     "rationale": "Correct: a logical mask indexes the array directly."
+    },
+    {
+     "key": "B",
+     "text": "Vectorised array operations are typically faster than equivalent explicit loops",
+     "correct": true,
+     "rationale": "Correct: built-in array operations run in optimised native code."
+    },
+    {
+     "key": "C",
+     "text": "Vectorisation requires the Parallel Computing Toolbox",
+     "correct": false,
+     "rationale": "Vectorisation is core MATLAB and needs no extra toolbox."
+    },
+    {
+     "key": "D",
+     "text": "Element-wise operators require matrices of incompatible sizes",
+     "correct": false,
+     "rationale": "They require compatible sizes (or broadcastable ones)."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a logical mask indexes the array directly.; Correct: built-in array operations run in optimised native code.",
+   "outcome_refs": [
+    "MST-0931-D02.01"
+   ],
+   "domain_ref": "Vectorisation and array operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0931-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is `A\\b` generally preferred over `inv(A)*b` to solve `Ax=b`?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is more numerically stable and usually faster",
+     "correct": true,
+     "rationale": "Correct: the backslash solver avoids forming the inverse, improving stability and speed."
+    },
+    {
+     "key": "B",
+     "text": "It computes a different solution than the linear system",
+     "correct": false,
+     "rationale": "It solves the same system, just more reliably."
+    },
+    {
+     "key": "C",
+     "text": "inv(A) does not exist in MATLAB",
+     "correct": false,
+     "rationale": "inv exists; it is simply the less stable choice here."
+    },
+    {
+     "key": "D",
+     "text": "Backslash only works for diagonal matrices",
+     "correct": false,
+     "rationale": "Backslash handles general systems, not only diagonal ones."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the backslash solver avoids forming the inverse, improving stability and speed.",
+   "outcome_refs": [
+    "MST-0931-D06.01"
+   ],
+   "domain_ref": "Linear algebra and least-squares fitting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0959",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0959-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Airflow, what does a DAG file primarily do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Defines the structure, schedule and dependencies of tasks; the work runs in task execution",
+     "correct": true,
+     "rationale": "Correct: the DAG file is a definition parsed by the scheduler, not where the work executes."
+    },
+    {
+     "key": "B",
+     "text": "Executes all the data processing at parse time",
+     "correct": false,
+     "rationale": "Heavy work belongs in task execution, not DAG parsing."
+    },
+    {
+     "key": "C",
+     "text": "Stores the pipeline's output data",
+     "correct": false,
+     "rationale": "Output goes to external systems, not the DAG file."
+    },
+    {
+     "key": "D",
+     "text": "Replaces the metadata database",
+     "correct": false,
+     "rationale": "The metadata database is separate from DAG definitions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the DAG file is a definition parsed by the scheduler, not where the work executes.",
+   "outcome_refs": [
+    "MST-0959-D01.01"
+   ],
+   "domain_ref": "Airflow concepts and architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0959-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which practices improve Airflow pipeline reliability? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Making tasks idempotent so re-runs produce the same result",
+     "correct": true,
+     "rationale": "Correct: idempotency makes retries and backfills safe."
+    },
+    {
+     "key": "B",
+     "text": "Using deferrable sensors to wait without occupying a worker slot",
+     "correct": true,
+     "rationale": "Correct: deferrable sensors free worker capacity while waiting."
+    },
+    {
+     "key": "C",
+     "text": "Pushing large datasets through XCom between tasks",
+     "correct": false,
+     "rationale": "XCom is for small values; large data belongs in external storage."
+    },
+    {
+     "key": "D",
+     "text": "Setting unlimited retries on every task",
+     "correct": false,
+     "rationale": "Unlimited retries mask genuine failures and waste resources."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: idempotency makes retries and backfills safe.; Correct: deferrable sensors free worker capacity while waiting.",
+   "outcome_refs": [
+    "MST-0959-D06.01"
+   ],
+   "domain_ref": "Reliability, retries and monitoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0959-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a task's data interval (logical date) represent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The period of data the run is responsible for processing",
+     "correct": true,
+     "rationale": "Correct: the data interval identifies which slice of data the run covers."
+    },
+    {
+     "key": "B",
+     "text": "The exact wall-clock time the task started",
+     "correct": false,
+     "rationale": "That is the real start time, not the data interval."
+    },
+    {
+     "key": "C",
+     "text": "The time the DAG file was last edited",
+     "correct": false,
+     "rationale": "Editing time is unrelated to the data interval."
+    },
+    {
+     "key": "D",
+     "text": "The number of retries remaining",
+     "correct": false,
+     "rationale": "Retry count is separate from the data interval."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the data interval identifies which slice of data the run covers.",
+   "outcome_refs": [
+    "MST-0959-D04.01"
+   ],
+   "domain_ref": "Scheduling, execution dates and backfills",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

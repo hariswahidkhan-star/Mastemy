@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1524",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 486,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1524-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can a Java generic type parameter not be used with `instanceof List<String>` at runtime?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Generic type information is erased by the compiler, so the runtime has no String parameter to check",
+     "correct": true,
+     "rationale": "Correct: type erasure removes the parameter, leaving only the raw type at runtime."
+    },
+    {
+     "key": "B",
+     "text": "Generics are only allowed on interfaces",
+     "correct": false,
+     "rationale": "Generics apply to classes and methods too; this is unrelated."
+    },
+    {
+     "key": "C",
+     "text": "instanceof is not a valid Java operator",
+     "correct": false,
+     "rationale": "instanceof is valid; the issue is erasure of the type argument."
+    },
+    {
+     "key": "D",
+     "text": "List does not implement Collection",
+     "correct": false,
+     "rationale": "List does extend Collection; this is irrelevant to the question."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: type erasure removes the parameter, leaving only the raw type at runtime.",
+   "outcome_refs": [
+    "MST-1524-D01.01"
+   ],
+   "domain_ref": "Generics and type bounds",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1524-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about the Java Streams API are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A stream can be consumed by only one terminal operation",
+     "correct": true,
+     "rationale": "Correct: a stream is single-use; reusing it after a terminal op throws IllegalStateException."
+    },
+    {
+     "key": "B",
+     "text": "Intermediate operations such as map are lazy until a terminal operation runs",
+     "correct": true,
+     "rationale": "Correct: intermediate ops build a pipeline that executes only when a terminal op is applied."
+    },
+    {
+     "key": "C",
+     "text": "Streams always mutate the source collection in place",
+     "correct": false,
+     "rationale": "Streams do not mutate the source; they produce new results."
+    },
+    {
+     "key": "D",
+     "text": "forEach guarantees encounter order on a parallel stream",
+     "correct": false,
+     "rationale": "Use forEachOrdered for order; forEach does not guarantee it in parallel."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a stream is single-use; reusing it after a terminal op throws IllegalStateException.; Correct: intermediate ops build a pipeline that executes only when a terminal op is applied.",
+   "outcome_refs": [
+    "MST-1524-D02.01"
+   ],
+   "domain_ref": "Collections and the Streams API",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1524-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the recommended use of java.util.Optional?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As a return type to signal a possibly-absent result",
+     "correct": true,
+     "rationale": "Correct: Optional is designed for return values that may be empty."
+    },
+    {
+     "key": "B",
+     "text": "As a field type to save memory",
+     "correct": false,
+     "rationale": "Optional is not intended for fields and adds overhead."
+    },
+    {
+     "key": "C",
+     "text": "As a method parameter to make arguments optional",
+     "correct": false,
+     "rationale": "Using Optional parameters is discouraged; overloads are preferred."
+    },
+    {
+     "key": "D",
+     "text": "As a replacement for all null checks everywhere",
+     "correct": false,
+     "rationale": "Optional targets return values, not a blanket null replacement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Optional is designed for return values that may be empty.",
+   "outcome_refs": [
+    "MST-1524-D04.01"
+   ],
+   "domain_ref": "Functional Java: lambdas and method references",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0928",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0928-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does `use strict;` enforce in a Perl program?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It requires variables to be declared and forbids risky constructs like symbolic references",
+     "correct": true,
+     "rationale": "Correct: strict catches undeclared variables and unsafe references at compile time."
+    },
+    {
+     "key": "B",
+     "text": "It makes the program run faster",
+     "correct": false,
+     "rationale": "strict is about correctness, not speed."
+    },
+    {
+     "key": "C",
+     "text": "It disables regular expressions",
+     "correct": false,
+     "rationale": "strict has no effect on regex availability."
+    },
+    {
+     "key": "D",
+     "text": "It forces all variables to be global",
+     "correct": false,
+     "rationale": "strict encourages lexical (my) variables, the opposite of globals."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: strict catches undeclared variables and unsafe references at compile time.",
+   "outcome_refs": [
+    "MST-0928-D01.01"
+   ],
+   "domain_ref": "Perl basics and scalar data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0928-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Perl context are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "An array evaluated in scalar context yields its element count",
+     "correct": true,
+     "rationale": "Correct: scalar context on an array gives its length."
+    },
+    {
+     "key": "B",
+     "text": "The same expression can behave differently in list vs scalar context",
+     "correct": true,
+     "rationale": "Correct: context determines what many Perl operations return."
+    },
+    {
+     "key": "C",
+     "text": "A hash in list context returns only its keys",
+     "correct": false,
+     "rationale": "In list context a hash returns key/value pairs, not keys alone."
+    },
+    {
+     "key": "D",
+     "text": "Context never affects the return value of a function",
+     "correct": false,
+     "rationale": "Many functions explicitly change behaviour based on context (e.g. wantarray)."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: scalar context on an array gives its length.; Correct: context determines what many Perl operations return.",
+   "outcome_refs": [
+    "MST-0928-D02.01"
+   ],
+   "domain_ref": "Arrays, hashes and context",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0928-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a Perl regex, how do you make the quantifier in `.*` match as little as possible?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Append a `?` to make it non-greedy: `.*?`",
+     "correct": true,
+     "rationale": "Correct: ? after a quantifier switches it to lazy/non-greedy matching."
+    },
+    {
+     "key": "B",
+     "text": "Use `.*!`",
+     "correct": false,
+     "rationale": "! has no special quantifier meaning here."
+    },
+    {
+     "key": "C",
+     "text": "Anchor it with `^` only",
+     "correct": false,
+     "rationale": "Anchors constrain position, not greediness."
+    },
+    {
+     "key": "D",
+     "text": "Wrap it in parentheses",
+     "correct": false,
+     "rationale": "Parentheses capture; they do not change greediness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ? after a quantifier switches it to lazy/non-greedy matching.",
+   "outcome_refs": [
+    "MST-0928-D03.01"
+   ],
+   "domain_ref": "Regular expressions and text processing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

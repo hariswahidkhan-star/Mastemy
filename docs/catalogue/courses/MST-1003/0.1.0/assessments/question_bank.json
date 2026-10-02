@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1003",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1003-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a bounded context in Domain-Driven Design?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An explicit boundary within which a particular domain model and its language apply consistently",
+     "correct": true,
+     "rationale": "Correct: a bounded context defines where a model and its terms hold a single, consistent meaning."
+    },
+    {
+     "key": "B",
+     "text": "A database table that stores the whole domain",
+     "correct": false,
+     "rationale": "A bounded context is a modeling boundary, not a table."
+    },
+    {
+     "key": "C",
+     "text": "A single class that represents the business",
+     "correct": false,
+     "rationale": "It is a boundary around a model, not one class."
+    },
+    {
+     "key": "D",
+     "text": "The user interface layer of an application",
+     "correct": false,
+     "rationale": "It is about the model boundary, not the UI."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a bounded context defines where a model and its terms hold a single, consistent meaning.",
+   "outcome_refs": [
+    "MST-1003-D02.01"
+   ],
+   "domain_ref": "Strategic design and bounded contexts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1003-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements distinguish entities from value objects? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "An entity has a distinct identity that persists over time",
+     "correct": true,
+     "rationale": "Correct: identity is what defines an entity across state changes."
+    },
+    {
+     "key": "B",
+     "text": "A value object is defined only by its attributes and is interchangeable when equal",
+     "correct": true,
+     "rationale": "Correct: value objects have no identity and are compared by value."
+    },
+    {
+     "key": "C",
+     "text": "Value objects always have a unique database ID",
+     "correct": false,
+     "rationale": "That describes entities, not value objects."
+    },
+    {
+     "key": "D",
+     "text": "Entities are always immutable and have no identity",
+     "correct": false,
+     "rationale": "Entities have identity and may change state over time."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: identity is what defines an entity across state changes.; Correct: value objects have no identity and are compared by value.",
+   "outcome_refs": [
+    "MST-1003-D04.01"
+   ],
+   "domain_ref": "Tactical patterns: entities, value objects, aggregates",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1003-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does an anti-corruption layer solve?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It stops an external or legacy model's concepts from leaking into and corrupting your context's model",
+     "correct": true,
+     "rationale": "Correct: the ACL translates between models so the downstream context stays clean."
+    },
+    {
+     "key": "B",
+     "text": "It encrypts data between services",
+     "correct": false,
+     "rationale": "It is a modeling translation layer, not encryption."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for bounded contexts",
+     "correct": false,
+     "rationale": "It supports contexts; it does not replace them."
+    },
+    {
+     "key": "D",
+     "text": "It merges two models into one shared model",
+     "correct": false,
+     "rationale": "That is the opposite of what an ACL protects against."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the ACL translates between models so the downstream context stays clean.",
+   "outcome_refs": [
+    "MST-1003-D03.01"
+   ],
+   "domain_ref": "Context mapping and integration patterns",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

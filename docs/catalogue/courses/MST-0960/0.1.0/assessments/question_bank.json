@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0960",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0960-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a dbt model reference upstream models with `ref()` instead of a hard-coded table name?",
+   "options": [
+    {
+     "key": "A",
+     "text": "ref() builds the dependency DAG and resolves the correct schema per environment",
+     "correct": true,
+     "rationale": "Correct: ref() lets dbt order builds and target the right environment schema."
+    },
+    {
+     "key": "B",
+     "text": "ref() runs faster SQL at query time",
+     "correct": false,
+     "rationale": "ref() is about dependency resolution, not query speed."
+    },
+    {
+     "key": "C",
+     "text": "ref() loads raw data into the warehouse",
+     "correct": false,
+     "rationale": "dbt transforms in-warehouse; ref() does not load data."
+    },
+    {
+     "key": "D",
+     "text": "ref() encrypts the table name",
+     "correct": false,
+     "rationale": "ref() does not encrypt anything."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ref() lets dbt order builds and target the right environment schema.",
+   "outcome_refs": [
+    "MST-0960-D03.01"
+   ],
+   "domain_ref": "ref, sources and project structure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0960-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which are built-in generic dbt tests? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "not_null",
+     "correct": true,
+     "rationale": "Correct: not_null is a built-in generic test."
+    },
+    {
+     "key": "B",
+     "text": "unique",
+     "correct": true,
+     "rationale": "Correct: unique is a built-in generic test."
+    },
+    {
+     "key": "C",
+     "text": "faster_than",
+     "correct": false,
+     "rationale": "There is no faster_than generic test in dbt."
+    },
+    {
+     "key": "D",
+     "text": "auto_fix",
+     "correct": false,
+     "rationale": "dbt does not provide an auto_fix test."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: not_null is a built-in generic test.; Correct: unique is a built-in generic test.",
+   "outcome_refs": [
+    "MST-0960-D04.01"
+   ],
+   "domain_ref": "Testing data quality",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0960-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the risk of an incremental dbt model without a correct `unique_key`?",
+   "options": [
+    {
+     "key": "A",
+     "text": "New runs can insert duplicate rows instead of updating existing ones",
+     "correct": true,
+     "rationale": "Correct: without a unique_key dbt cannot match and update rows, causing duplicates."
+    },
+    {
+     "key": "B",
+     "text": "The model will refuse to compile",
+     "correct": false,
+     "rationale": "It compiles; the problem is runtime duplication."
+    },
+    {
+     "key": "C",
+     "text": "The warehouse connection will fail",
+     "correct": false,
+     "rationale": "Connection is unrelated to unique_key."
+    },
+    {
+     "key": "D",
+     "text": "Documentation will not generate",
+     "correct": false,
+     "rationale": "Docs generation is independent of unique_key."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without a unique_key dbt cannot match and update rows, causing duplicates.",
+   "outcome_refs": [
+    "MST-0960-D06.01"
+   ],
+   "domain_ref": "Incremental models, snapshots and deployment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

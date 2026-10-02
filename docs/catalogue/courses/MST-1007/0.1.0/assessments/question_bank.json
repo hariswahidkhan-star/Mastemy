@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1007",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1007-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is checking only the HTTP status code insufficient when testing an API response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A correct status can still accompany a wrong or malformed response body",
+     "correct": true,
+     "rationale": "Correct: status and payload are independent; both must be validated."
+    },
+    {
+     "key": "B",
+     "text": "Status codes are always 200 regardless of outcome",
+     "correct": false,
+     "rationale": "Status codes vary and carry real meaning."
+    },
+    {
+     "key": "C",
+     "text": "The body is never part of an API response",
+     "correct": false,
+     "rationale": "Most responses include a body that must be checked."
+    },
+    {
+     "key": "D",
+     "text": "Schema validation replaces the need for any assertions",
+     "correct": false,
+     "rationale": "Schema validation complements, not replaces, other assertions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: status and payload are independent; both must be validated.",
+   "outcome_refs": [
+    "MST-1007-D03.01"
+   ],
+   "domain_ref": "Status codes, schemas and response validation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1007-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which responses should an authorization test assert? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "401 Unauthorized when no valid credentials are supplied",
+     "correct": true,
+     "rationale": "Correct: 401 signals missing or invalid authentication."
+    },
+    {
+     "key": "B",
+     "text": "403 Forbidden when the caller is authenticated but lacks the required scope",
+     "correct": true,
+     "rationale": "Correct: 403 signals authenticated-but-not-permitted."
+    },
+    {
+     "key": "C",
+     "text": "200 OK for every request regardless of credentials",
+     "correct": false,
+     "rationale": "Returning 200 for unauthorised calls is a security defect."
+    },
+    {
+     "key": "D",
+     "text": "500 Internal Server Error for a missing token",
+     "correct": false,
+     "rationale": "A missing token should yield 401, not a server error."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: 401 signals missing or invalid authentication.; Correct: 403 signals authenticated-but-not-permitted.",
+   "outcome_refs": [
+    "MST-1007-D04.01"
+   ],
+   "domain_ref": "Authentication, authorization and negative testing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1007-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a consumer-driven contract test verify?",
+   "options": [
+    {
+     "key": "A",
+     "text": "That the provider meets the expectations the consumer actually depends on",
+     "correct": true,
+     "rationale": "Correct: the consumer's needs define the contract the provider must satisfy."
+    },
+    {
+     "key": "B",
+     "text": "That the entire system passes an end-to-end scenario",
+     "correct": false,
+     "rationale": "That is end-to-end testing, broader than a contract test."
+    },
+    {
+     "key": "C",
+     "text": "That the database schema is normalised",
+     "correct": false,
+     "rationale": "Contract tests are about API expectations, not DB normalisation."
+    },
+    {
+     "key": "D",
+     "text": "That the UI renders correctly",
+     "correct": false,
+     "rationale": "UI rendering is outside an API contract test."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the consumer's needs define the contract the provider must satisfy.",
+   "outcome_refs": [
+    "MST-1007-D05.01"
+   ],
+   "domain_ref": "Contract testing and consumer-driven contracts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0935",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0935-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where is a contract's persistent state stored on Ethereum?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In contract storage on-chain, visible to anyone reading the blockchain",
+     "correct": true,
+     "rationale": "Correct: storage is public on-chain even if no UI displays it."
+    },
+    {
+     "key": "B",
+     "text": "In the user's browser local storage",
+     "correct": false,
+     "rationale": "Contract state lives on-chain, not in a browser."
+    },
+    {
+     "key": "C",
+     "text": "Only in event logs",
+     "correct": false,
+     "rationale": "Logs are not readable by contract code and are not the state store."
+    },
+    {
+     "key": "D",
+     "text": "In a private database off-chain",
+     "correct": false,
+     "rationale": "Persistent contract state is on-chain, not off-chain."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: storage is public on-chain even if no UI displays it.",
+   "outcome_refs": [
+    "MST-0935-D01.01"
+   ],
+   "domain_ref": "Ethereum, the EVM and Solidity basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0935-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which practices help prevent reentrancy attacks? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Update state before making external calls (checks-effects-interactions)",
+     "correct": true,
+     "rationale": "Correct: changing state first means a reentrant call sees the updated state."
+    },
+    {
+     "key": "B",
+     "text": "Use a reentrancy guard / mutex on sensitive functions",
+     "correct": true,
+     "rationale": "Correct: a guard blocks nested calls into the protected function."
+    },
+    {
+     "key": "C",
+     "text": "Send Ether before decrementing the user's balance",
+     "correct": false,
+     "rationale": "That is the vulnerable order that enables reentrancy."
+    },
+    {
+     "key": "D",
+     "text": "Make every function external and payable",
+     "correct": false,
+     "rationale": "That widens the attack surface and does nothing against reentrancy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: changing state first means a reentrant call sees the updated state.; Correct: a guard blocks nested calls into the protected function.",
+   "outcome_refs": [
+    "MST-0935-D05.01"
+   ],
+   "domain_ref": "Common vulnerabilities and secure patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0935-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does marking a Solidity function `view` indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It reads state but does not modify it",
+     "correct": true,
+     "rationale": "Correct: view functions may read storage but must not change it."
+    },
+    {
+     "key": "B",
+     "text": "It can send Ether",
+     "correct": false,
+     "rationale": "Sending Ether requires payable, not view."
+    },
+    {
+     "key": "C",
+     "text": "It deletes the contract",
+     "correct": false,
+     "rationale": "Self-destruct is unrelated to view."
+    },
+    {
+     "key": "D",
+     "text": "It makes the function private",
+     "correct": false,
+     "rationale": "Visibility (public/private) is separate from state mutability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: view functions may read storage but must not change it.",
+   "outcome_refs": [
+    "MST-0935-D02.01"
+   ],
+   "domain_ref": "Types, state variables and functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

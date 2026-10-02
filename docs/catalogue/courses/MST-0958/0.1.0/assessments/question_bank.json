@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0958",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0958-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Within which scope does Kafka guarantee message ordering?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Within a single partition",
+     "correct": true,
+     "rationale": "Correct: ordering is guaranteed per partition, not across a whole topic."
+    },
+    {
+     "key": "B",
+     "text": "Across all partitions of a topic",
+     "correct": false,
+     "rationale": "There is no global cross-partition ordering guarantee."
+    },
+    {
+     "key": "C",
+     "text": "Across all topics in a cluster",
+     "correct": false,
+     "rationale": "Ordering is never guaranteed cluster-wide."
+    },
+    {
+     "key": "D",
+     "text": "Only when there is exactly one consumer",
+     "correct": false,
+     "rationale": "Consumer count does not change the per-partition ordering guarantee."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ordering is guaranteed per partition, not across a whole topic.",
+   "outcome_refs": [
+    "MST-0958-D02.01"
+   ],
+   "domain_ref": "Topics, partitions and offsets",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0958-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which settings help a Kafka producer avoid data loss and duplicates? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "acks=all so the leader waits for in-sync replicas",
+     "correct": true,
+     "rationale": "Correct: acks=all maximises durability against broker failure."
+    },
+    {
+     "key": "B",
+     "text": "Enabling the idempotent producer",
+     "correct": true,
+     "rationale": "Correct: idempotence prevents duplicate records from retries."
+    },
+    {
+     "key": "C",
+     "text": "acks=0 for maximum durability",
+     "correct": false,
+     "rationale": "acks=0 gives no delivery guarantee and risks loss."
+    },
+    {
+     "key": "D",
+     "text": "Disabling replication to speed up writes",
+     "correct": false,
+     "rationale": "Removing replication reduces durability, increasing loss risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: acks=all maximises durability against broker failure.; Correct: idempotence prevents duplicate records from retries.",
+   "outcome_refs": [
+    "MST-0958-D03.01"
+   ],
+   "domain_ref": "Producers and delivery semantics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0958-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What happens if a consumer group has more consumers than a topic has partitions?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Some consumers sit idle because each partition is assigned to at most one consumer in the group",
+     "correct": true,
+     "rationale": "Correct: parallelism is capped by partition count within a group."
+    },
+    {
+     "key": "B",
+     "text": "Every consumer reads every partition in parallel",
+     "correct": false,
+     "rationale": "A partition is assigned to only one consumer per group."
+    },
+    {
+     "key": "C",
+     "text": "The extra consumers increase per-partition throughput",
+     "correct": false,
+     "rationale": "They cannot; partition count is the ceiling."
+    },
+    {
+     "key": "D",
+     "text": "Kafka automatically splits partitions to match",
+     "correct": false,
+     "rationale": "Partitions are not auto-split to add consumers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: parallelism is capped by partition count within a group.",
+   "outcome_refs": [
+    "MST-0958-D04.01"
+   ],
+   "domain_ref": "Consumers and consumer groups",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

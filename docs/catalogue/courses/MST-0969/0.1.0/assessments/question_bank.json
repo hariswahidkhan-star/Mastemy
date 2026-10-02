@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0969",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0969-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is the Polars expression API preferred over row-by-row Python loops?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Expressions run in parallel, vectorised native code and enable query optimisation",
+     "correct": true,
+     "rationale": "Correct: column expressions let Polars optimise and parallelise work."
+    },
+    {
+     "key": "B",
+     "text": "Loops are not supported in Python",
+     "correct": false,
+     "rationale": "Loops exist; they are just slower here."
+    },
+    {
+     "key": "C",
+     "text": "Expressions change the data types automatically to strings",
+     "correct": false,
+     "rationale": "Expressions do not force string types."
+    },
+    {
+     "key": "D",
+     "text": "Expressions require a GPU",
+     "correct": false,
+     "rationale": "Polars runs on CPU; no GPU is required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: column expressions let Polars optimise and parallelise work.",
+   "outcome_refs": [
+    "MST-0969-D02.01"
+   ],
+   "domain_ref": "Expressions and the selection API",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0969-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Polars lazy evaluation are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A lazy query is only executed when collect() is called",
+     "correct": true,
+     "rationale": "Correct: lazy frames defer computation until collect()."
+    },
+    {
+     "key": "B",
+     "text": "The optimiser can push filters down to reduce scanned data",
+     "correct": true,
+     "rationale": "Correct: predicate pushdown reads less data."
+    },
+    {
+     "key": "C",
+     "text": "Lazy frames execute each operation immediately",
+     "correct": false,
+     "rationale": "That describes eager mode, not lazy."
+    },
+    {
+     "key": "D",
+     "text": "Lazy evaluation disables all joins",
+     "correct": false,
+     "rationale": "Joins work in lazy mode too."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: lazy frames defer computation until collect().; Correct: predicate pushdown reads less data.",
+   "outcome_refs": [
+    "MST-0969-D05.01"
+   ],
+   "domain_ref": "Lazy evaluation and query optimisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0969-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When would you choose a left join over an inner join?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When you must keep all rows from the left frame even if there is no match on the right",
+     "correct": true,
+     "rationale": "Correct: a left join preserves unmatched left rows with nulls on the right."
+    },
+    {
+     "key": "B",
+     "text": "When you want only rows present in both frames",
+     "correct": false,
+     "rationale": "That is an inner join."
+    },
+    {
+     "key": "C",
+     "text": "When you want to remove duplicate keys",
+     "correct": false,
+     "rationale": "Deduplication is a separate operation from join type."
+    },
+    {
+     "key": "D",
+     "text": "When the frames have no common key",
+     "correct": false,
+     "rationale": "A join still requires a key; this does not describe left vs inner."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a left join preserves unmatched left rows with nulls on the right.",
+   "outcome_refs": [
+    "MST-0969-D04.01"
+   ],
+   "domain_ref": "Joins and combining frames",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1527",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 486,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1527-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does `cargo run` do in a Cargo project?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Compiles the crate if needed and then executes the resulting binary",
+     "correct": true,
+     "rationale": "Correct: cargo run builds (when sources changed) and runs the binary in one step."
+    },
+    {
+     "key": "B",
+     "text": "Only downloads dependencies without building",
+     "correct": false,
+     "rationale": "That is closer to cargo fetch; it does not run anything."
+    },
+    {
+     "key": "C",
+     "text": "Publishes the crate to crates.io",
+     "correct": false,
+     "rationale": "Publishing is cargo publish, not cargo run."
+    },
+    {
+     "key": "D",
+     "text": "Formats the source code",
+     "correct": false,
+     "rationale": "Formatting is cargo fmt."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: cargo run builds (when sources changed) and runs the binary in one step.",
+   "outcome_refs": [
+    "MST-1527-D01.01"
+   ],
+   "domain_ref": "Getting started with Rust and Cargo",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1527-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Rust ownership are true? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each value has exactly one owner at a time",
+     "correct": true,
+     "rationale": "Correct: single ownership is the core rule that enables deterministic cleanup."
+    },
+    {
+     "key": "B",
+     "text": "A value is dropped when its owner goes out of scope",
+     "correct": true,
+     "rationale": "Correct: drop runs deterministically at the end of the owner's scope."
+    },
+    {
+     "key": "C",
+     "text": "Values are deep-copied on every assignment by default",
+     "correct": false,
+     "rationale": "Non-Copy values are moved, not copied, on assignment."
+    },
+    {
+     "key": "D",
+     "text": "A garbage collector frees values at runtime",
+     "correct": false,
+     "rationale": "Rust has no garbage collector; cleanup is scope-based."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: single ownership is the core rule that enables deterministic cleanup.; Correct: drop runs deterministically at the end of the owner's scope.",
+   "outcome_refs": [
+    "MST-1527-D03.01"
+   ],
+   "domain_ref": "Ownership and borrowing basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1527-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a function returning `Result<T, E>`, what does the `?` operator do on an `Err`?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Returns early, propagating the error to the caller",
+     "correct": true,
+     "rationale": "Correct: ? short-circuits and returns the Err from the enclosing function."
+    },
+    {
+     "key": "B",
+     "text": "Panics and aborts the program",
+     "correct": false,
+     "rationale": "That is unwrap/expect; ? propagates instead."
+    },
+    {
+     "key": "C",
+     "text": "Converts the error to a String and prints it",
+     "correct": false,
+     "rationale": "? does not print; it returns the error value."
+    },
+    {
+     "key": "D",
+     "text": "Silently discards the error",
+     "correct": false,
+     "rationale": "? never discards errors; it returns them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ? short-circuits and returns the Err from the enclosing function.",
+   "outcome_refs": [
+    "MST-1527-D05.01"
+   ],
+   "domain_ref": "Error handling with Result and Option",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

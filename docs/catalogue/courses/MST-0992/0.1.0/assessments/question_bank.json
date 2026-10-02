@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0992",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0992-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How do jobs within the same stage of a GitLab CI pipeline run by default?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In parallel (subject to available runners)",
+     "correct": true,
+     "rationale": "Correct: same-stage jobs run in parallel; stages run in sequence."
+    },
+    {
+     "key": "B",
+     "text": "Strictly one after another in file order",
+     "correct": false,
+     "rationale": "Same-stage jobs are parallel, not sequential."
+    },
+    {
+     "key": "C",
+     "text": "Only the first job runs",
+     "correct": false,
+     "rationale": "All jobs in the stage run."
+    },
+    {
+     "key": "D",
+     "text": "They never run until the pipeline is approved",
+     "correct": false,
+     "rationale": "No approval is required for normal jobs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: same-stage jobs run in parallel; stages run in sequence.",
+   "outcome_refs": [
+    "MST-0992-D01.01"
+   ],
+   "domain_ref": "GitLab CI concepts and the pipeline",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0992-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which practices keep a GitLab CI pipeline secure and efficient? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store secrets as masked, protected CI/CD variables",
+     "correct": true,
+     "rationale": "Correct: masked protected variables keep secrets out of the repo and logs."
+    },
+    {
+     "key": "B",
+     "text": "Use rules to run deploy jobs only on the intended branch",
+     "correct": true,
+     "rationale": "Correct: conditional rules avoid running jobs where they do not belong."
+    },
+    {
+     "key": "C",
+     "text": "Commit API tokens directly into .gitlab-ci.yml",
+     "correct": false,
+     "rationale": "Hard-coding secrets exposes them in version control."
+    },
+    {
+     "key": "D",
+     "text": "Deploy straight to production on every commit with no gate",
+     "correct": false,
+     "rationale": "Unreviewed automatic production deploys are risky."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: masked protected variables keep secrets out of the repo and logs.; Correct: conditional rules avoid running jobs where they do not belong.",
+   "outcome_refs": [
+    "MST-0992-D06.01"
+   ],
+   "domain_ref": "Security, rules and pipeline efficiency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0992-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When should you use artifacts rather than cache to move a build output to a later job?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When a later job depends on that output as a required input",
+     "correct": true,
+     "rationale": "Correct: artifacts reliably pass required outputs between jobs; cache is a best-effort speed-up."
+    },
+    {
+     "key": "B",
+     "text": "Whenever you want to reduce dependency download time",
+     "correct": false,
+     "rationale": "That is the role of cache, not artifacts."
+    },
+    {
+     "key": "C",
+     "text": "Only for secrets",
+     "correct": false,
+     "rationale": "Secrets belong in variables, not artifacts."
+    },
+    {
+     "key": "D",
+     "text": "Never; cache and artifacts are identical",
+     "correct": false,
+     "rationale": "They serve different purposes and guarantees."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: artifacts reliably pass required outputs between jobs; cache is a best-effort speed-up.",
+   "outcome_refs": [
+    "MST-0992-D03.01"
+   ],
+   "domain_ref": "Runners, executors and caching",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
