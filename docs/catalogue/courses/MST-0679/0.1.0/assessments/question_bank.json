@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-0679",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0679-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Power Automate action lets a flow pause until an approver responds before continuing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Start and wait for an approval",
+     "correct": true,
+     "rationale": "Correct: this action pauses the flow until the approval is resolved."
+    },
+    {
+     "key": "B",
+     "text": "Send an email (V2)",
+     "correct": false,
+     "rationale": "Sending email notifies someone but does not wait for an approval decision."
+    },
+    {
+     "key": "C",
+     "text": "Get manager (V2)",
+     "correct": false,
+     "rationale": "This retrieves a manager but does not wait for approval."
+    },
+    {
+     "key": "D",
+     "text": "Compose",
+     "correct": false,
+     "rationale": "Compose stores a value and does not handle approvals."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 'Start and wait for an approval' pauses the flow until the approval is resolved.",
+   "outcome_refs": [
+    "MST-0679-D01.01"
+   ],
+   "domain_ref": "Flows and the approvals action",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0679-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about sending an approval to a Microsoft 365 group with 'First to respond' are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Only one member of the group needs to respond",
+     "correct": true,
+     "rationale": "Correct: with first-to-respond, a single member's response represents the group."
+    },
+    {
+     "key": "B",
+     "text": "The group must be mail-enabled to receive email notifications",
+     "correct": true,
+     "rationale": "Correct: only mail-enabled groups receive the email notification."
+    },
+    {
+     "key": "C",
+     "text": "Every member of the group must approve",
+     "correct": false,
+     "rationale": "Incorrect: that would be an 'Everyone must respond' pattern, not first-to-respond."
+    },
+    {
+     "key": "D",
+     "text": "Teams notifications are sent to the whole group",
+     "correct": false,
+     "rationale": "Incorrect: Teams notifications are not sent for group approvals."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: one member can respond for the group, and the group must be mail-enabled for email notifications.",
+   "outcome_refs": [
+    "MST-0679-D03.01"
+   ],
+   "domain_ref": "Advanced approval patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0679-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After an approval resolves, what is the purpose of adding a Condition action on the approver response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To run different actions depending on whether the request was approved or rejected",
+     "correct": true,
+     "rationale": "Correct: a condition branches the flow based on the response."
+    },
+    {
+     "key": "B",
+     "text": "To pause the flow a second time",
+     "correct": false,
+     "rationale": "A condition does not wait; it branches."
+    },
+    {
+     "key": "C",
+     "text": "To create the approval request",
+     "correct": false,
+     "rationale": "The approval action, not a condition, creates the request."
+    },
+    {
+     "key": "D",
+     "text": "To connect to SharePoint",
+     "correct": false,
+     "rationale": "Connection is handled by the connector, not a condition."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a condition branches the flow based on whether the request was approved or rejected.",
+   "outcome_refs": [
+    "MST-0679-D02.01"
+   ],
+   "domain_ref": "Conditions and notifications",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

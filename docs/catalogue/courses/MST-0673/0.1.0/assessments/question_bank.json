@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-0673",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0673-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In modern SharePoint, what is the recommended way to connect a family of related sites?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Associate them with a hub site",
+     "correct": true,
+     "rationale": "Correct: hub sites connect related sites while keeping a flat architecture."
+    },
+    {
+     "key": "B",
+     "text": "Create nested subsites under one site collection",
+     "correct": false,
+     "rationale": "Subsites are not recommended in the modern flat architecture."
+    },
+    {
+     "key": "C",
+     "text": "Put all content in one giant document library",
+     "correct": false,
+     "rationale": "A single library does not connect sites and harms findability."
+    },
+    {
+     "key": "D",
+     "text": "Give every user Full Control",
+     "correct": false,
+     "rationale": "Permissions do not connect sites and this violates least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: hub sites connect related sites while keeping a flat architecture.",
+   "outcome_refs": [
+    "MST-0673-D01.01"
+   ],
+   "domain_ref": "Modern information architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0673-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices follow Microsoft's SharePoint permissions guidance? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Follow the principle of least privilege",
+     "correct": true,
+     "rationale": "Correct: least privilege is a core SharePoint permissions guideline."
+    },
+    {
+     "key": "B",
+     "text": "Use the default Members, Visitors and Owners groups",
+     "correct": true,
+     "rationale": "Correct: using standard groups and controlling at site level is recommended."
+    },
+    {
+     "key": "C",
+     "text": "Assign permissions to individual users wherever possible",
+     "correct": false,
+     "rationale": "Incorrect: Microsoft recommends groups over individual users."
+    },
+    {
+     "key": "D",
+     "text": "Break inheritance on every list and item by default",
+     "correct": false,
+     "rationale": "Incorrect: extensive fine-grained permissions increase management burden and are discouraged."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: least privilege and standard groups are the recommended practices.",
+   "outcome_refs": [
+    "MST-0673-D03.01"
+   ],
+   "domain_ref": "Permissions and governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0673-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What happens when you stop inheriting permissions on a document library?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It copies the parent's groups and permissions, then breaks the link so later parent changes do not flow down",
+     "correct": true,
+     "rationale": "Correct: breaking inheritance copies current permissions and then decouples the child."
+    },
+    {
+     "key": "B",
+     "text": "It immediately removes all existing permissions from the library",
+     "correct": false,
+     "rationale": "Existing permissions are copied, not removed."
+    },
+    {
+     "key": "C",
+     "text": "It deletes the library",
+     "correct": false,
+     "rationale": "Breaking inheritance does not delete content."
+    },
+    {
+     "key": "D",
+     "text": "It grants every user Full Control",
+     "correct": false,
+     "rationale": "It does not change permission levels to Full Control."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: breaking inheritance copies current permissions and then decouples the child from the parent.",
+   "outcome_refs": [
+    "MST-0673-D03.01"
+   ],
+   "domain_ref": "Permissions and governance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

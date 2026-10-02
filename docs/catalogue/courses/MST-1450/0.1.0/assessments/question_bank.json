@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1450",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1450-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload is a small development web server with a balanced CPU-to-memory need. Which VM size type is most appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "General purpose",
+     "correct": true,
+     "rationale": "Correct: general-purpose sizes provide a balanced CPU-to-memory ratio ideal for dev/test and small web servers."
+    },
+    {
+     "key": "B",
+     "text": "GPU accelerated",
+     "correct": false,
+     "rationale": "GPU sizes are for graphics or AI workloads, overkill here."
+    },
+    {
+     "key": "C",
+     "text": "High-performance compute",
+     "correct": false,
+     "rationale": "HPC sizes target memory- and CPU-intensive scientific workloads."
+    },
+    {
+     "key": "D",
+     "text": "Storage optimised",
+     "correct": false,
+     "rationale": "Storage-optimised sizes target big-data and large database I/O."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: general-purpose sizes give a balanced CPU-to-memory ratio for dev/test and small web servers.",
+   "outcome_refs": [
+    "MST-1450-D02.01"
+   ],
+   "domain_ref": "Sizing and storage",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1450-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Azure Virtual Machine cost and scaling are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure charges an hourly price based on size and OS, billing per minute for partial hours",
+     "correct": true,
+     "rationale": "Correct: VMs are billed by the minute for partial hours based on size and OS."
+    },
+    {
+     "key": "B",
+     "text": "You can scale out by adding more VM instances to meet demand",
+     "correct": true,
+     "rationale": "Correct: scaling out adds instances to handle more load."
+    },
+    {
+     "key": "C",
+     "text": "Storage for a VM is always free",
+     "correct": false,
+     "rationale": "Incorrect: storage is priced and charged separately."
+    },
+    {
+     "key": "D",
+     "text": "A VM cannot be resized after creation",
+     "correct": false,
+     "rationale": "Incorrect: VM size can be changed after creation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: VMs bill per minute for partial hours and can scale out with more instances.",
+   "outcome_refs": [
+    "MST-1450-D03.01"
+   ],
+   "domain_ref": "Scaling, availability and cost",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1450-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the 'size' of an Azure Virtual Machine primarily determine?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Processing power, memory, storage capacity and network bandwidth",
+     "correct": true,
+     "rationale": "Correct: the size determines CPU, memory, storage and network characteristics."
+    },
+    {
+     "key": "B",
+     "text": "The physical colour of the datacenter rack",
+     "correct": false,
+     "rationale": "Size is a logical specification, not a physical attribute of hardware appearance."
+    },
+    {
+     "key": "C",
+     "text": "The Azure region the VM must run in",
+     "correct": false,
+     "rationale": "Region is chosen separately from size."
+    },
+    {
+     "key": "D",
+     "text": "The subscription's billing currency",
+     "correct": false,
+     "rationale": "Currency is a billing account setting, not a VM size property."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the VM size determines processing power, memory, storage capacity and network bandwidth.",
+   "outcome_refs": [
+    "MST-1450-D01.01"
+   ],
+   "domain_ref": "Azure VM fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

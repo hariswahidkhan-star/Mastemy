@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1451",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1451-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which on-premises Microsoft application connects an on-premises Active Directory to Microsoft Entra ID for hybrid identity?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Microsoft Entra Connect",
+     "correct": true,
+     "rationale": "Correct: Entra Connect synchronises on-premises AD to Microsoft Entra ID."
+    },
+    {
+     "key": "B",
+     "text": "Microsoft Excel",
+     "correct": false,
+     "rationale": "Excel is a spreadsheet app, not an identity sync tool."
+    },
+    {
+     "key": "C",
+     "text": "Azure Blob Storage",
+     "correct": false,
+     "rationale": "Blob Storage is object storage, unrelated to identity sync."
+    },
+    {
+     "key": "D",
+     "text": "SharePoint Online",
+     "correct": false,
+     "rationale": "SharePoint is a collaboration service, not an identity sync tool."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Microsoft Entra Connect synchronises on-premises AD to Microsoft Entra ID.",
+   "outcome_refs": [
+    "MST-1451-D02.01"
+   ],
+   "domain_ref": "Entra Connect and Cloud Sync",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1451-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are recommended security practices for a hybrid identity deployment? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Treat the Entra Connect server as a Tier 0 component",
+     "correct": true,
+     "rationale": "Correct: the sync server holds critical identity data and is Tier 0."
+    },
+    {
+     "key": "B",
+     "text": "Apply multi-factor authentication for synced accounts",
+     "correct": true,
+     "rationale": "Correct: MFA strengthens access security for hybrid accounts."
+    },
+    {
+     "key": "C",
+     "text": "Store on-premises passwords in clear text in Entra ID",
+     "correct": false,
+     "rationale": "Incorrect: Entra ID never stores clear-text passwords."
+    },
+    {
+     "key": "D",
+     "text": "Continue using the retired Azure AD Connect v1",
+     "correct": false,
+     "rationale": "Incorrect: Azure AD Connect v1 is retired and should be upgraded."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: treat the sync server as Tier 0 and apply MFA for synced accounts.",
+   "outcome_refs": [
+    "MST-1451-D03.01"
+   ],
+   "domain_ref": "Sign-in methods and security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1451-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "With password hash synchronisation (PHS), what does Microsoft Entra Connect send to the cloud?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A hash of a hash of the user's password",
+     "correct": true,
+     "rationale": "Correct: PHS synchronises a hash of the password hash, not the plaintext password."
+    },
+    {
+     "key": "B",
+     "text": "The user's plaintext password",
+     "correct": false,
+     "rationale": "Incorrect: the plaintext password is never synchronised."
+    },
+    {
+     "key": "C",
+     "text": "Nothing related to the password",
+     "correct": false,
+     "rationale": "PHS specifically synchronises password hash data."
+    },
+    {
+     "key": "D",
+     "text": "The user's Kerberos ticket",
+     "correct": false,
+     "rationale": "PHS synchronises a password hash, not Kerberos tickets."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: PHS synchronises a hash of the password hash, never the plaintext password.",
+   "outcome_refs": [
+    "MST-1451-D03.01"
+   ],
+   "domain_ref": "Sign-in methods and security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

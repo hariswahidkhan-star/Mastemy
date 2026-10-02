@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1447",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1447-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which cmdlet changes a property, such as the send-size limit, on an existing Exchange Online mailbox?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set-Mailbox",
+     "correct": true,
+     "rationale": "Correct: Set-Mailbox changes properties on an existing mailbox."
+    },
+    {
+     "key": "B",
+     "text": "Get-Mailbox",
+     "correct": false,
+     "rationale": "Get-Mailbox reads properties but does not change them."
+    },
+    {
+     "key": "C",
+     "text": "New-Mailbox",
+     "correct": false,
+     "rationale": "New-Mailbox creates a mailbox rather than changing an existing one."
+    },
+    {
+     "key": "D",
+     "text": "Remove-Mailbox",
+     "correct": false,
+     "rationale": "Remove-Mailbox deletes a mailbox."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Set-Mailbox changes properties on an existing mailbox.",
+   "outcome_refs": [
+    "MST-1447-D02.01"
+   ],
+   "domain_ref": "Managing mailboxes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1447-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about managing Exchange Online are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "You connect to Exchange Online PowerShell using the ExchangeOnlineManagement module",
+     "correct": true,
+     "rationale": "Correct: that module provides Connect-ExchangeOnline."
+    },
+    {
+     "key": "B",
+     "text": "Get-Mailbox can return many properties with Format-List",
+     "correct": true,
+     "rationale": "Correct: piping to Format-List shows the mailbox's properties."
+    },
+    {
+     "key": "C",
+     "text": "PowerShell cannot be used for Exchange Online administration",
+     "correct": false,
+     "rationale": "Incorrect: PowerShell is a primary administration interface for Exchange Online."
+    },
+    {
+     "key": "D",
+     "text": "Set-Mailbox is used only to read mailbox size",
+     "correct": false,
+     "rationale": "Incorrect: Set-Mailbox changes properties; reading is done with Get-Mailbox."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the ExchangeOnlineManagement module connects PowerShell, and Get-Mailbox with Format-List lists properties.",
+   "outcome_refs": [
+    "MST-1447-D01.01"
+   ],
+   "domain_ref": "Recipients and the admin center",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1447-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To give an administrator the ability to open and read all user mailboxes, which permission is granted?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Full Access via Add-MailboxPermission",
+     "correct": true,
+     "rationale": "Correct: Full Access lets the grantee open the mailbox and its contents."
+    },
+    {
+     "key": "B",
+     "text": "Send As only",
+     "correct": false,
+     "rationale": "Send As lets a user send as the mailbox but not read its contents."
+    },
+    {
+     "key": "C",
+     "text": "A mail flow rule",
+     "correct": false,
+     "rationale": "Mail flow rules govern message routing, not mailbox access."
+    },
+    {
+     "key": "D",
+     "text": "A distribution group membership",
+     "correct": false,
+     "rationale": "Group membership does not grant mailbox access rights."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Full Access, granted with Add-MailboxPermission, lets the grantee open the mailbox.",
+   "outcome_refs": [
+    "MST-1447-D02.01"
+   ],
+   "domain_ref": "Managing mailboxes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

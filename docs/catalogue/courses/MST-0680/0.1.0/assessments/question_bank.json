@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-0680",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0680-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A document passes the built-in Office Accessibility Checker. What is the most accurate conclusion?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is a useful first pass, but some issues (e.g. colour contrast on complex backgrounds) may still need manual review",
+     "correct": true,
+     "rationale": "Correct: the built-in checker is a first-pass tool and can miss issues external WCAG checkers catch."
+    },
+    {
+     "key": "B",
+     "text": "The document is guaranteed to meet all WCAG AA criteria",
+     "correct": false,
+     "rationale": "Incorrect: a clean pass does not guarantee full WCAG conformance."
+    },
+    {
+     "key": "C",
+     "text": "No images in the document need alt text",
+     "correct": false,
+     "rationale": "A pass does not mean alt text is unnecessary; it may have been supplied or missed."
+    },
+    {
+     "key": "D",
+     "text": "The document cannot be improved further",
+     "correct": false,
+     "rationale": "Manual review can still improve accessibility."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the built-in checker is a first-pass tool and may miss issues such as contrast on complex backgrounds.",
+   "outcome_refs": [
+    "MST-0680-D03.01"
+   ],
+   "domain_ref": "Checking and remediation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0680-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques improve the accessibility of a Word document? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Using built-in heading styles for structure",
+     "correct": true,
+     "rationale": "Correct: heading styles give screen readers a navigable structure."
+    },
+    {
+     "key": "B",
+     "text": "Writing descriptive, meaningful link text",
+     "correct": true,
+     "rationale": "Correct: meaningful link text helps users who navigate by links."
+    },
+    {
+     "key": "C",
+     "text": "Conveying required information with colour only",
+     "correct": false,
+     "rationale": "Incorrect: colour alone excludes users who cannot distinguish it."
+    },
+    {
+     "key": "D",
+     "text": "Using blank lines to create visual headings",
+     "correct": false,
+     "rationale": "Incorrect: blank lines are not real structure for assistive technology."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: heading styles and meaningful link text both improve accessibility.",
+   "outcome_refs": [
+    "MST-0680-D01.01"
+   ],
+   "domain_ref": "Accessibility principles",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0680-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main purpose of alt text on an informative image?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To describe the image's meaning for people using screen readers",
+     "correct": true,
+     "rationale": "Correct: alt text conveys the image's content and function to assistive technology."
+    },
+    {
+     "key": "B",
+     "text": "To increase the image's resolution",
+     "correct": false,
+     "rationale": "Alt text does not affect image quality."
+    },
+    {
+     "key": "C",
+     "text": "To change the image's colour contrast",
+     "correct": false,
+     "rationale": "Alt text is textual and does not alter colours."
+    },
+    {
+     "key": "D",
+     "text": "To compress the file size",
+     "correct": false,
+     "rationale": "Alt text does not compress files."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: alt text conveys the image's content and function to assistive technology.",
+   "outcome_refs": [
+    "MST-0680-D02.01"
+   ],
+   "domain_ref": "Accessible content features",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}
