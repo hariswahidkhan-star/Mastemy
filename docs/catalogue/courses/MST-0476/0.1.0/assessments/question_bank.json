@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0476",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 456,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0476-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After ChatGPT reports a total from an uploaded sheet, what is the best verification step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recompute a sample independently and compare",
+     "correct": true,
+     "rationale": "Correct: an independent spot check confirms the figure was computed from the full, correct data."
+    },
+    {
+     "key": "B",
+     "text": "Accept it because the tool computed it",
+     "correct": false,
+     "rationale": "Automated computation can still use mis-read or partial data; a check is needed."
+    },
+    {
+     "key": "C",
+     "text": "Ask the model to say it again",
+     "correct": false,
+     "rationale": "Repetition does not verify correctness."
+    },
+    {
+     "key": "D",
+     "text": "Make a prettier chart",
+     "correct": false,
+     "rationale": "Presentation does not confirm the underlying number."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an independent spot check confirms the figure was computed from the full, correct data.",
+   "outcome_refs": [
+    "MST-0476-01.01"
+   ],
+   "domain_ref": "Loading and cleaning data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0476-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which chart best shows a single metric changing over 12 months?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A line chart",
+     "correct": true,
+     "rationale": "Correct: a line chart is designed to show a continuous value changing over ordered time."
+    },
+    {
+     "key": "B",
+     "text": "A pie chart",
+     "correct": false,
+     "rationale": "Pie charts show parts of a whole at one point, not change over time."
+    },
+    {
+     "key": "C",
+     "text": "A single large number",
+     "correct": false,
+     "rationale": "A single number cannot show the trend across months."
+    },
+    {
+     "key": "D",
+     "text": "A word cloud",
+     "correct": false,
+     "rationale": "A word cloud visualises text frequency, not a numeric time series."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a line chart is designed to show a continuous value changing over ordered time.",
+   "outcome_refs": [
+    "MST-0476-02.01"
+   ],
+   "domain_ref": "Analysis and calculation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0476-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices before trusting an AI analysis of an upload? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Confirm the row/record count matches the source",
+     "correct": true,
+     "rationale": "Correct: verifying the record count ensures the whole dataset was used."
+    },
+    {
+     "key": "B",
+     "text": "Spot-check at least one calculation by hand",
+     "correct": true,
+     "rationale": "Correct: a manual recomputation catches calculation or data-reading errors."
+    },
+    {
+     "key": "C",
+     "text": "Assume all columns were interpreted correctly",
+     "correct": false,
+     "rationale": "Column meanings can be misread; this should be checked, not assumed."
+    },
+    {
+     "key": "D",
+     "text": "Pick the chart that looks most dramatic",
+     "correct": false,
+     "rationale": "Choosing for drama can misrepresent the data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: verifying the record count ensures the whole dataset was used.",
+   "outcome_refs": [
+    "MST-0476-03.01"
+   ],
+   "domain_ref": "Visualisation and reporting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

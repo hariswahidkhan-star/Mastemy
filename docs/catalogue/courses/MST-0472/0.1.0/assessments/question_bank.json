@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0472",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 612,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0472-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A prompt gives a good answer once but inconsistent answers on later runs. What is the best first fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add explicit constraints and few-shot examples",
+     "correct": true,
+     "rationale": "Correct: constraints and examples anchor the model, reducing run-to-run variance."
+    },
+    {
+     "key": "B",
+     "text": "Delete all instructions and keep it short",
+     "correct": false,
+     "rationale": "Removing structure usually increases variability, not consistency."
+    },
+    {
+     "key": "C",
+     "text": "Switch to voice mode",
+     "correct": false,
+     "rationale": "The input channel does not address output consistency."
+    },
+    {
+     "key": "D",
+     "text": "Ask the same prompt louder in capitals",
+     "correct": false,
+     "rationale": "Formatting emphasis does not stabilise sampling variability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: constraints and examples anchor the model, reducing run-to-run variance.",
+   "outcome_refs": [
+    "MST-0472-01.01"
+   ],
+   "domain_ref": "Prompt engineering foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0472-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a very long conversation the model starts ignoring an early requirement. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Key context has fallen outside the effective context window",
+     "correct": true,
+     "rationale": "Correct: as a conversation grows, earlier content can be truncated or deprioritised, so the requirement must be restated or summarised."
+    },
+    {
+     "key": "B",
+     "text": "The model has permanently forgotten how to follow rules",
+     "correct": false,
+     "rationale": "The model has not lost capability; the specific context is just no longer salient."
+    },
+    {
+     "key": "C",
+     "text": "The account tier changed automatically",
+     "correct": false,
+     "rationale": "Tier does not change mid-conversation and is unrelated to this behaviour."
+    },
+    {
+     "key": "D",
+     "text": "Few-shot examples always cause this",
+     "correct": false,
+     "rationale": "Examples help steer output and are not the cause of context loss."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: as a conversation grows, earlier content can be truncated or deprioritised, so the requirement must be restated or summarised.",
+   "outcome_refs": [
+    "MST-0472-02.01"
+   ],
+   "domain_ref": "Managing context and memory",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0472-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques help keep an important fact in play during a long task? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Periodically summarise and restate the key fact",
+     "correct": true,
+     "rationale": "Correct: a running summary keeps essential context salient."
+    },
+    {
+     "key": "B",
+     "text": "Store it in persistent instructions or memory",
+     "correct": true,
+     "rationale": "Correct: persistent instructions reintroduce the fact on every turn."
+    },
+    {
+     "key": "C",
+     "text": "Hope the model keeps it in mind",
+     "correct": false,
+     "rationale": "Relying on chance is not a control."
+    },
+    {
+     "key": "D",
+     "text": "Make the conversation as long as possible",
+     "correct": false,
+     "rationale": "Longer conversations increase the chance the fact is pushed out of context."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a running summary keeps essential context salient.",
+   "outcome_refs": [
+    "MST-0472-03.01"
+   ],
+   "domain_ref": "Evaluating and stabilising output",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

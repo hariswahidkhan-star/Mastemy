@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0473",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 456,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0473-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why put a company style guide into Project files rather than pasting it into each chat?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is reused automatically across the project's chats",
+     "correct": true,
+     "rationale": "Correct: project knowledge is available to every chat in the project, giving consistent grounding without re-pasting."
+    },
+    {
+     "key": "B",
+     "text": "It permanently trains the base model",
+     "correct": false,
+     "rationale": "Uploading a file does not retrain the underlying model."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees zero errors",
+     "correct": false,
+     "rationale": "Grounding improves consistency but does not guarantee the output is error-free."
+    },
+    {
+     "key": "D",
+     "text": "It hides the content from the user",
+     "correct": false,
+     "rationale": "Project files are used to inform answers, not to hide content from members."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: project knowledge is available to every chat in the project, giving consistent grounding without re-pasting.",
+   "outcome_refs": [
+    "MST-0473-01.01"
+   ],
+   "domain_ref": "Projects and custom instructions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0473-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two teammates get different tones from the same project. What most likely fixes it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Setting tone in shared project custom instructions",
+     "correct": true,
+     "rationale": "Correct: shared instructions standardise tone for everyone using the project."
+    },
+    {
+     "key": "B",
+     "text": "Each person switching models randomly",
+     "correct": false,
+     "rationale": "Random model changes increase variation rather than standardising it."
+    },
+    {
+     "key": "C",
+     "text": "Deleting the project files",
+     "correct": false,
+     "rationale": "Removing grounding does not standardise tone and loses reference material."
+    },
+    {
+     "key": "D",
+     "text": "Making prompts shorter",
+     "correct": false,
+     "rationale": "Shorter prompts do not by themselves enforce a consistent tone."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: shared instructions standardise tone for everyone using the project.",
+   "outcome_refs": [
+    "MST-0473-02.01"
+   ],
+   "domain_ref": "Project knowledge and files",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0473-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in a Project rather than a one-off chat? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A reference policy reused across many questions",
+     "correct": true,
+     "rationale": "Correct: durable, reused reference material is exactly what project knowledge is for."
+    },
+    {
+     "key": "B",
+     "text": "Shared custom instructions for the whole team",
+     "correct": true,
+     "rationale": "Correct: team-wide instructions belong at project level so all chats inherit them."
+    },
+    {
+     "key": "C",
+     "text": "A single throwaway rewrite request",
+     "correct": false,
+     "rationale": "A one-off task does not need to be stored as reusable project knowledge."
+    },
+    {
+     "key": "D",
+     "text": "A private unrelated personal note",
+     "correct": false,
+     "rationale": "Unrelated personal content does not belong in a shared team project."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: durable, reused reference material is exactly what project knowledge is for.",
+   "outcome_refs": [
+    "MST-0473-03.01"
+   ],
+   "domain_ref": "Reuse and consistency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

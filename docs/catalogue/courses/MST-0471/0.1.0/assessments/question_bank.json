@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0471",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 816,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 144,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0471-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user needs ChatGPT to work through a multi-step logic problem and show careful reasoning. Which choice best fits the task?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A reasoning-optimised model",
+     "correct": true,
+     "rationale": "Correct: reasoning-optimised models are designed for multi-step problems where accuracy matters more than speed."
+    },
+    {
+     "key": "B",
+     "text": "The fastest general chat model",
+     "correct": false,
+     "rationale": "Speed-optimised models trade depth of reasoning for latency and are weaker on multi-step logic."
+    },
+    {
+     "key": "C",
+     "text": "Voice mode",
+     "correct": false,
+     "rationale": "Voice changes the input/output channel, not the model's reasoning depth."
+    },
+    {
+     "key": "D",
+     "text": "A larger context window alone",
+     "correct": false,
+     "rationale": "A bigger context window holds more text but does not by itself improve step-by-step reasoning."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reasoning-optimised models are designed for multi-step problems where accuracy matters more than speed.",
+   "outcome_refs": [
+    "MST-0471-01.01"
+   ],
+   "domain_ref": "Orient to the ChatGPT workspace and models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0471-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before emailing an AI-drafted proposal to a client, what is the most important final step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A human review for accuracy and confidentiality",
+     "correct": true,
+     "rationale": "Correct: a human-in-the-loop review catches factual errors, tone issues and any leaked confidential data before it leaves the organisation."
+    },
+    {
+     "key": "B",
+     "text": "Regenerating the draft three more times",
+     "correct": false,
+     "rationale": "Regeneration may change wording but does not guarantee accuracy or confidentiality."
+    },
+    {
+     "key": "C",
+     "text": "Switching to a newer model",
+     "correct": false,
+     "rationale": "Changing models does not substitute for verifying the specific draft being sent."
+    },
+    {
+     "key": "D",
+     "text": "Increasing the response length",
+     "correct": false,
+     "rationale": "Length is unrelated to whether the content is correct and safe to send."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a human-in-the-loop review catches factual errors, tone issues and any leaked confidential data before it leaves the organisation.",
+   "outcome_refs": [
+    "MST-0471-02.01"
+   ],
+   "domain_ref": "Build reliable task prompts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0471-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce the risk of acting on a hallucinated ChatGPT answer? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ask the model to cite sources and then check them",
+     "correct": true,
+     "rationale": "Correct: requesting and verifying sources lets a human confirm claims independently."
+    },
+    {
+     "key": "B",
+     "text": "Verify key facts against an authoritative source",
+     "correct": true,
+     "rationale": "Correct: independent verification is the direct control against fabricated details."
+    },
+    {
+     "key": "C",
+     "text": "Trust answers that sound confident",
+     "correct": false,
+     "rationale": "Confidence of tone is not evidence of accuracy; hallucinations are often stated confidently."
+    },
+    {
+     "key": "D",
+     "text": "Use a longer prompt",
+     "correct": false,
+     "rationale": "Prompt length does not prevent fabrication of facts."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: requesting and verifying sources lets a human confirm claims independently.",
+   "outcome_refs": [
+    "MST-0471-03.01"
+   ],
+   "domain_ref": "Work with files, data and the web",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

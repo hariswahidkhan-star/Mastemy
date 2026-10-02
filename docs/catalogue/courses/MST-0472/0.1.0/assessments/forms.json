@@ -1,0 +1,79 @@
+{
+ "course_id": "MST-0472",
+ "version": "0.1.0",
+ "length_basis": "DESIGN ASSUMPTION - Mastemy-designed skills course; form length set from the assessment time budget, not an external exam.",
+ "scoring": {
+  "single_answer": "1 point for the single key",
+  "multiple_answer": "all-or-nothing on the exact key set; no partial credit configured",
+  "module_check_threshold_pct": 75,
+  "final_threshold_pct": 80,
+  "note": "Mastemy learning thresholds; not an external pass mark. Skills course with no vendor exam."
+ },
+ "time_budget_minutes": {
+  "lesson_checks": 90,
+  "module_assessments": 126,
+  "cumulative": 144,
+  "cumulative_breakdown": {
+   "required_forms": 108,
+   "answer_review": 36
+  },
+  "total": 360,
+  "deviation_from_default_split": "none"
+ },
+ "module_checks": [
+  {
+   "module_id": "M01",
+   "minutes": 32,
+   "items": 32
+  },
+  {
+   "module_id": "M02",
+   "minutes": 32,
+   "items": 32
+  },
+  {
+   "module_id": "M03",
+   "minutes": 31,
+   "items": 31
+  },
+  {
+   "module_id": "M04",
+   "minutes": 31,
+   "items": 31
+  }
+ ],
+ "forms": [
+  {
+   "form_id": "MST-0472-final-protected",
+   "items": 108,
+   "minutes": 108,
+   "required": true,
+   "counted_in_planned_time": true,
+   "protected_pool": true,
+   "shares_items_with_other_forms": false,
+   "domain_allocation": {
+    "Prompt engineering foundations": 27,
+    "Managing context and memory": 27,
+    "Evaluating and stabilising output": 27,
+    "Govern and review AI output": 27
+   },
+   "label": "protected final (skills course; MCQ/MR only)"
+  },
+  {
+   "form_id": "MST-0472-final-alternate",
+   "items": 108,
+   "minutes": 108,
+   "required": false,
+   "counted_in_planned_time": false,
+   "protected_pool": true,
+   "shares_items_with_other_forms": false,
+   "domain_allocation": {
+    "Prompt engineering foundations": 27,
+    "Managing context and memory": 27,
+    "Evaluating and stabilising output": 27,
+    "Govern and review AI output": 27
+   },
+   "label": "optional alternate final for retakes (draws alternate items; not counted in planned time)"
+  }
+ ]
+}
