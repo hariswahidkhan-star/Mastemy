@@ -229,11 +229,11 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 
 | Step | Course ID | Title | Hours |
 |---|---|---|---|
-| 1 | `MST-0865` | HTML and CSS: Accessible Responsive Web Development | 20 |
+| 1 | `MST-0865` | HTML and CSS: Accessible Responsive Web Development | 25 |
 | 2 | `MST-0861` | JavaScript: Complete Language Foundations | 30 |
-| 3 | `MST-0869` | React: Complete Application Development | 40 |
-| 4 | `MST-0883` | Node.js: Backend Application Foundations | 20 |
-| 5 | `MST-0998` | API Design, Versioning, and Developer Experience | 20 |
+| 3 | `MST-0869` | React: Complete Application Development | 25 |
+| 4 | `MST-0883` | Node.js: Backend Application Foundations | 25 |
+| 5 | `MST-0998` | API Design, Versioning, and Developer Experience | 40 |
 
 ## PW-K8S - Kubernetes Engineer
 
@@ -271,4 +271,4 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 | 1 | `MST-1834` | CRM Fundamentals | 10 |
 | 2 | `MST-0239` | Salesforce Certified Platform Administrator | 45 |
 | 3 | `MST-1812` | Salesforce Certified Platform App Builder Exam Prep | 22.5 |
-| 4 | `MST-1811` | Salesforce Certified Platform Administrator II (Advanced) Exam Prep | 40 |
+| 4 | `MST-1811` | Salesforce Certified Platform Administrator II (Advanced) Exam Prep | 22.5 |

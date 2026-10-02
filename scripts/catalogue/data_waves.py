@@ -142,10 +142,18 @@ def _source_refs():
         sr = meta.get("source_reference")
         if isinstance(sr, dict):
             cands.append(sr)
+        # Bare URL-string lists (e.g. ``verification_sources: ["https://..."]``)
+        # carry no source_id of their own, so associate them with the package's
+        # single declared source id when there is exactly one.
+        url_only = []
         for key in ("verification_sources", "sources"):
             v = meta.get(key)
             if isinstance(v, list):
                 cands += [x for x in v if isinstance(x, dict)]
+                url_only += [x for x in v if isinstance(x, str) and x.strip()]
+        sid_list = [s.strip() for s in (meta.get("source_ids") or "").split("|") if s.strip()]
+        if url_only and len(sid_list) == 1:
+            cands.append({"source_id": sid_list[0], "source_urls": url_only})
         for c in cands:
             sid = c.get("source_id")
             if sid and sid not in refs:
@@ -173,7 +181,11 @@ def _is_official_source(sid, ref, existing_ids, existing_official):
     """
     if sid in existing_ids:
         return sid in existing_official
-    if sid.startswith("SRC-MS-"):
+    # Microsoft Learn docs are fetchable this session via the Microsoft Learn
+    # MCP: both the legacy ``SRC-MS-*`` exam/docs ids and the ``SRC-MSLEARN-*``
+    # vendor-docs ids point at learn.microsoft.com pages read this session, so
+    # both count as official-method (official-fetch).
+    if sid.startswith("SRC-MS-") or sid.startswith("SRC-MSLEARN-"):
         return True
     vs = normalise_verification((ref or {}).get("verification_status", ""))
     return vs in ("verified-official-source", "vendor-docs-partial")
