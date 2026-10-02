@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1772",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1772-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A prescription is for 500 mg. The stock is 250 mg tablets. How many tablets are needed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "2 tablets",
+     "correct": true,
+     "rationale": "Correct: 500 mg divided by 250 mg per tablet equals 2 tablets."
+    },
+    {
+     "key": "B",
+     "text": "1 tablet",
+     "correct": false,
+     "rationale": "One 250 mg tablet gives only half the prescribed 500 mg."
+    },
+    {
+     "key": "C",
+     "text": "0.5 tablet",
+     "correct": false,
+     "rationale": "That would give 125 mg, a quarter of the prescribed dose."
+    },
+    {
+     "key": "D",
+     "text": "5 tablets",
+     "correct": false,
+     "rationale": "Five tablets would give 1250 mg, far above the prescription."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 500 mg divided by 250 mg per tablet equals 2 tablets.",
+   "outcome_refs": [
+    "MST-1772-02.01"
+   ],
+   "domain_ref": "Oral and injectable doses",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1772-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "500 mL of fluid is to be infused over 4 hours on a volumetric pump. What rate in mL/hour should be set?",
+   "options": [
+    {
+     "key": "A",
+     "text": "125 mL/hour",
+     "correct": true,
+     "rationale": "Correct: 500 mL divided by 4 hours equals 125 mL/hour."
+    },
+    {
+     "key": "B",
+     "text": "200 mL/hour",
+     "correct": false,
+     "rationale": "200 mL/hour would deliver the 500 mL in 2.5 hours, too fast."
+    },
+    {
+     "key": "C",
+     "text": "2000 mL/hour",
+     "correct": false,
+     "rationale": "That multiplies instead of divides; it would empty the bag in 15 minutes."
+    },
+    {
+     "key": "D",
+     "text": "100 mL/hour",
+     "correct": false,
+     "rationale": "100 mL/hour would take 5 hours, not the prescribed 4."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 500 mL divided by 4 hours equals 125 mL/hour.",
+   "outcome_refs": [
+    "MST-1772-03.01"
+   ],
+   "domain_ref": "Intravenous rates",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1772-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound safety practices when performing a high-risk dose calculation? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Check that units match before applying the dose formula",
+     "correct": true,
+     "rationale": "Correct: mismatched units are a common source of large errors; matching them first is essential."
+    },
+    {
+     "key": "B",
+     "text": "Have a second competent person independently recalculate the dose",
+     "correct": true,
+     "rationale": "Correct: an independent double-check catches calculation and decimal errors."
+    },
+    {
+     "key": "C",
+     "text": "Round to whatever makes the number look neat",
+     "correct": false,
+     "rationale": "Rounding must be clinically appropriate and to a measurable amount, not cosmetic."
+    },
+    {
+     "key": "D",
+     "text": "Trust the first answer without an estimate or sense-check",
+     "correct": false,
+     "rationale": "A rough estimate and sense-check guard against order-of-magnitude errors."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: mismatched units are a common source of large errors; matching them first is essential.",
+   "outcome_refs": [
+    "MST-1772-04.01"
+   ],
+   "domain_ref": "Weight-based and safety",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

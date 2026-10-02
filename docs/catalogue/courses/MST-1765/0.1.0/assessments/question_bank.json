@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1765",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1765-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A drug has a half-life of 6 hours. Approximately how long until it reaches steady state on regular dosing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "About 24-30 hours (4-5 half-lives)",
+     "correct": true,
+     "rationale": "Correct: steady state is reached after roughly four to five half-lives, so about 24-30 hours."
+    },
+    {
+     "key": "B",
+     "text": "About 6 hours (one half-life)",
+     "correct": false,
+     "rationale": "One half-life removes only about half the drug; steady state needs several half-lives."
+    },
+    {
+     "key": "C",
+     "text": "About 72 hours regardless of half-life",
+     "correct": false,
+     "rationale": "Time to steady state depends on half-life, not a fixed 72 hours."
+    },
+    {
+     "key": "D",
+     "text": "Immediately after the first dose",
+     "correct": false,
+     "rationale": "A single dose cannot establish steady state during repeated dosing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: steady state is reached after roughly four to five half-lives, so about 24-30 hours.",
+   "outcome_refs": [
+    "MST-1765-01.01"
+   ],
+   "domain_ref": "Pharmacokinetics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1765-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A competitive antagonist is given with an agonist. What is the characteristic effect on the agonist dose-response curve?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It shifts the curve to the right, and can be overcome by more agonist",
+     "correct": true,
+     "rationale": "Correct: competitive antagonism is surmountable, shifting the curve rightward without lowering the maximum."
+    },
+    {
+     "key": "B",
+     "text": "It lowers the maximum response and cannot be overcome",
+     "correct": false,
+     "rationale": "That describes a non-competitive (irreversible) antagonist, not a competitive one."
+    },
+    {
+     "key": "C",
+     "text": "It increases the agonist's potency",
+     "correct": false,
+     "rationale": "An antagonist reduces apparent potency; it does not increase it."
+    },
+    {
+     "key": "D",
+     "text": "It has no effect on the agonist",
+     "correct": false,
+     "rationale": "A competitive antagonist clearly reduces the agonist effect at a given dose."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: competitive antagonism is surmountable, shifting the curve rightward without lowering the maximum.",
+   "outcome_refs": [
+    "MST-1765-02.01"
+   ],
+   "domain_ref": "Pharmacodynamics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1765-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors would be expected to raise the plasma concentration of a renally cleared drug? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reduced kidney function",
+     "correct": true,
+     "rationale": "Correct: impaired renal clearance reduces elimination and raises plasma levels."
+    },
+    {
+     "key": "B",
+     "text": "Displacement from plasma protein binding",
+     "correct": true,
+     "rationale": "Correct: displacement increases free drug in plasma."
+    },
+    {
+     "key": "C",
+     "text": "Induction of metabolising enzymes",
+     "correct": false,
+     "rationale": "Enzyme induction speeds metabolism and lowers concentration."
+    },
+    {
+     "key": "D",
+     "text": "Increased volume of distribution",
+     "correct": false,
+     "rationale": "A larger volume of distribution tends to lower plasma concentration."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: impaired renal clearance reduces elimination and raises plasma levels.",
+   "outcome_refs": [
+    "MST-1765-01.01"
+   ],
+   "domain_ref": "Pharmacokinetics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

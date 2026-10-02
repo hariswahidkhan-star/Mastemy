@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1780",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1780-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A payer's remittance shows a charge of $200, an allowed amount of $120, insurance paying $96 and a $24 patient responsibility. The $80 difference between charge and allowed amount is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A contractual adjustment the provider writes off",
+     "correct": true,
+     "rationale": "Correct: the difference between billed and allowed amounts is a contractual write-off, not billable to the patient."
+    },
+    {
+     "key": "B",
+     "text": "An additional amount the patient must pay",
+     "correct": false,
+     "rationale": "The patient owes only the patient-responsibility portion, not the contractual adjustment."
+    },
+    {
+     "key": "C",
+     "text": "A bonus paid to the provider",
+     "correct": false,
+     "rationale": "The amount above the allowed is written off, not paid as a bonus."
+    },
+    {
+     "key": "D",
+     "text": "The deductible for next year",
+     "correct": false,
+     "rationale": "The contractual adjustment is not a deductible; it is a write-off against the billed charge."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the difference between billed and allowed amounts is a contractual write-off, not billable to the patient.",
+   "outcome_refs": [
+    "MST-1780-03.01"
+   ],
+   "domain_ref": "Claims and adjudication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1780-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a claim to support medical necessity, the procedure code must be:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Linked to a diagnosis code that justifies the service",
+     "correct": true,
+     "rationale": "Correct: medical necessity requires the procedure to be supported by an appropriate linked diagnosis."
+    },
+    {
+     "key": "B",
+     "text": "Submitted without any diagnosis",
+     "correct": false,
+     "rationale": "A procedure without a supporting diagnosis will typically be denied for lack of medical necessity."
+    },
+    {
+     "key": "C",
+     "text": "Always the highest-paying code available",
+     "correct": false,
+     "rationale": "Choosing the highest-paying code regardless of documentation is upcoding and is non-compliant."
+    },
+    {
+     "key": "D",
+     "text": "Replaced by a modifier",
+     "correct": false,
+     "rationale": "A modifier adjusts a procedure code; it does not replace the diagnosis link."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: medical necessity requires the procedure to be supported by an appropriate linked diagnosis.",
+   "outcome_refs": [
+    "MST-1780-02.01"
+   ],
+   "domain_ref": "Medical coding for billing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1780-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices are compliance risks (fraud or abuse) in medical billing? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Upcoding to a higher-paying code than documented",
+     "correct": true,
+     "rationale": "Correct: billing a higher-level code than the documentation supports is upcoding, a compliance risk."
+    },
+    {
+     "key": "B",
+     "text": "Billing for services that were not provided",
+     "correct": true,
+     "rationale": "Correct: billing for services not rendered is fraud."
+    },
+    {
+     "key": "C",
+     "text": "Verifying patient eligibility before a visit",
+     "correct": false,
+     "rationale": "Checking eligibility is good practice, not a compliance risk."
+    },
+    {
+     "key": "D",
+     "text": "Appealing a denied claim with supporting documentation",
+     "correct": false,
+     "rationale": "Appealing with proper documentation is legitimate, not a compliance risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: billing a higher-level code than the documentation supports is upcoding, a compliance risk.",
+   "outcome_refs": [
+    "MST-1780-04.01"
+   ],
+   "domain_ref": "Payment, denials and compliance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
