@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1107",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 486,
+  "lesson_check_items": 108,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1107-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The data layer in GTM is best described as:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A visual report of tag performance",
+     "correct": false,
+     "rationale": "That is not what the data layer is; it is a data structure, not a report."
+    },
+    {
+     "key": "B",
+     "text": "A structured object holding information for tags, triggers and variables to use",
+     "correct": true,
+     "rationale": "Correct: the data layer is a structured store of values GTM reads from."
+    },
+    {
+     "key": "C",
+     "text": "The container snippet itself",
+     "correct": false,
+     "rationale": "The snippet loads GTM; the data layer is the structured data it reads."
+    },
+    {
+     "key": "D",
+     "text": "A Google Analytics property",
+     "correct": false,
+     "rationale": "The data layer is part of the page/GTM, not a GA property."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: the data layer is a structured store of values GTM reads from.",
+   "outcome_refs": [
+    "MST-1107-D02.01"
+   ],
+   "domain_ref": "The data layer",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1107-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before publishing a new tag to production, the recommended step is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Publish immediately and watch live reports",
+     "correct": false,
+     "rationale": "Publishing untested tags risks broken or duplicated tracking in production."
+    },
+    {
+     "key": "B",
+     "text": "Use Preview and debug mode to confirm the tag fires correctly",
+     "correct": true,
+     "rationale": "Correct: Preview mode verifies firing and data before going live."
+    },
+    {
+     "key": "C",
+     "text": "Delete the old container first",
+     "correct": false,
+     "rationale": "Deleting the container is unnecessary and harmful."
+    },
+    {
+     "key": "D",
+     "text": "Disable the data layer",
+     "correct": false,
+     "rationale": "Disabling the data layer would break tracking, not test it."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: Preview mode verifies firing and data before going live.",
+   "outcome_refs": [
+    "MST-1107-D05.01"
+   ],
+   "domain_ref": "Testing, debugging and publishing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1107-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good GTM governance and consent practices? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Hold non-essential marketing tags until the user grants consent",
+     "correct": true,
+     "rationale": "Correct: consent-aware firing is required for privacy compliance."
+    },
+    {
+     "key": "B",
+     "text": "Use clear naming conventions and document tags for maintainability",
+     "correct": true,
+     "rationale": "Correct: naming and documentation keep a container auditable."
+    },
+    {
+     "key": "C",
+     "text": "Give every team member full publish access by default",
+     "correct": false,
+     "rationale": "Unrestricted publish access undermines governance and control."
+    },
+    {
+     "key": "D",
+     "text": "Fire all tags on page load regardless of consent",
+     "correct": false,
+     "rationale": "Ignoring consent is a privacy and compliance failure."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: consent-aware firing is required for privacy compliance.; Correct: naming and documentation keep a container auditable.",
+   "outcome_refs": [
+    "MST-1107-D06.01"
+   ],
+   "domain_ref": "Governance, consent and quality",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1110",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 486,
+  "lesson_check_items": 108,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1110-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Meta's campaign hierarchy, audience targeting and budget are set primarily at which level?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The individual ad level",
+     "correct": false,
+     "rationale": "The ad level holds creative, not core targeting and budget."
+    },
+    {
+     "key": "B",
+     "text": "The ad set level",
+     "correct": true,
+     "rationale": "Correct: the ad set controls audience, placement and (in ABO) budget."
+    },
+    {
+     "key": "C",
+     "text": "The account level",
+     "correct": false,
+     "rationale": "The account holds settings and billing, not per-audience targeting."
+    },
+    {
+     "key": "D",
+     "text": "The pixel level",
+     "correct": false,
+     "rationale": "The pixel is a measurement tool, not a campaign hierarchy level."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: the ad set controls audience, placement and (in ABO) budget.",
+   "outcome_refs": [
+    "MST-1110-D01.02"
+   ],
+   "domain_ref": "Meta ads platform foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1110-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should you avoid judging an ad set's performance during the learning phase?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Results are hidden until learning ends",
+     "correct": false,
+     "rationale": "Data is visible; it is just not yet stable."
+    },
+    {
+     "key": "B",
+     "text": "Delivery is still stabilising, so early metrics are unreliable",
+     "correct": true,
+     "rationale": "Correct: performance is volatile during learning and should not drive premature decisions."
+    },
+    {
+     "key": "C",
+     "text": "The learning phase disables the pixel",
+     "correct": false,
+     "rationale": "The pixel keeps working during learning."
+    },
+    {
+     "key": "D",
+     "text": "Budgets cannot be changed during learning",
+     "correct": false,
+     "rationale": "Budgets can change; doing so can actually reset learning."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: performance is volatile during learning and should not drive premature decisions.",
+   "outcome_refs": [
+    "MST-1110-D04.03"
+   ],
+   "domain_ref": "Budgets, bidding and delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1110-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about the Meta pixel and Conversions API are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Conversions API can send events server-side to complement the browser pixel",
+     "correct": true,
+     "rationale": "Correct: CAPI sends server-side events, improving resilience to browser limits."
+    },
+    {
+     "key": "B",
+     "text": "Privacy and browser changes have reduced the reliability of pixel-only tracking",
+     "correct": true,
+     "rationale": "Correct: signal loss from privacy changes is a key reason to add CAPI."
+    },
+    {
+     "key": "C",
+     "text": "The pixel measures only offline, in-store sales",
+     "correct": false,
+     "rationale": "The pixel measures on-site web events, not only offline sales."
+    },
+    {
+     "key": "D",
+     "text": "Conversions API makes attribution perfectly exact",
+     "correct": false,
+     "rationale": "CAPI improves but does not make attribution perfectly exact."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: CAPI sends server-side events, improving resilience to browser limits.; Correct: signal loss from privacy changes is a key reason to add CAPI.",
+   "outcome_refs": [
+    "MST-1110-D05.01"
+   ],
+   "domain_ref": "Measurement and the pixel",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
