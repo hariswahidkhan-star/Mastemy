@@ -17,6 +17,15 @@ jobs:
       - run: dotnet build Mastemy.slnx -c Release
       - run: dotnet test Mastemy.slnx -c Release --no-build
         env: { MASTEMY_TEST_MYSQL: "Server=127.0.0.1;Port=3306;User=mastemy;Password=mastemy_dev_pw;" }
+  openapi:
+    # docs/openapi.json must match what the API serves; regenerate with scripts/export-openapi.sh.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: "10.0.x" }
+      - run: bash -n scripts/*.sh
+      - run: scripts/export-openapi.sh --check
   web:
     runs-on: ubuntu-latest
     defaults: { run: { working-directory: src/web } }
@@ -70,6 +79,13 @@ jobs:
       - run: npx playwright test
         working-directory: e2e
         env: { CI: "true" }
+      - name: Backup/restore drill against the e2e database and resources
+        run: scripts/restore-test.sh
+        env:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_PASSWORD: mastemy_dev_pw
+          MYSQL_DATABASE: mastemy_e2e
+          RESOURCES_DIR: src/Mastemy.Api/data/resources # e2e/start-api.sh uses the default Resources:RootPath
       - if: failure()
         run: tail -200 api.log vite.log fake-stripe.log
       - if: always()

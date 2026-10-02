@@ -21,7 +21,8 @@ public static class ResourceKinds
 }
 
 public record ResourceDto(Guid Id, Guid CourseId, Guid? LessonId, string Kind, string Language, string FileName, string ContentType,
-    long SizeBytes, string Sha256, bool IsPremium, int Version, DateTime CreatedAt);
+    long SizeBytes, string Sha256, bool IsPremium, int Version, DateTime CreatedAt,
+    string ScanStatus = "NotScanned", DateTime? ScannedAt = null);
 
 public record LearnerResourceDto(Guid Id, Guid? LessonId, string Kind, string Language, string FileName, string ContentType, long SizeBytes,
     bool IsPremium, bool Locked, int Version, string? DownloadUrl);
@@ -42,7 +43,8 @@ public sealed record ResourceDownload(Stream Content, string ContentType, string
 /// files are listed to everyone but downloadable only with a premium entitlement; free files are open to all on live courses.
 /// </summary>
 public class ResourceService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit,
-    IResourceStorage storage, ResourceOptions opt, CourseSnapshotService snapshots, ResourceBlobJanitor janitor, CaptionCueCache cueCache)
+    IResourceStorage storage, ResourceOptions opt, CourseSnapshotService snapshots, ResourceBlobJanitor janitor, CaptionCueCache cueCache,
+    Trust.MalwareScanPolicy scanPolicy)
 {
     public ResourceOptions Options => opt;
 
@@ -60,9 +62,12 @@ public class ResourceService(AppDbContext db, ICurrentUser me, AccessService acc
     {
         await access.RequireCourseAuthorOrStaff(courseId);
         if (!await db.Courses.AnyAsync(c => c.Id == courseId)) throw AppException.NotFound("Course");
-        return await db.ResourceFiles.AsNoTracking().Where(r => r.CourseId == courseId && r.DeletedAt == null)
-            .OrderBy(r => r.LessonId).ThenBy(r => r.Kind).ThenBy(r => r.FileName)
-            .Select(r => ToDto(r)).ToListAsync();
+        var rows = await db.ResourceFiles.AsNoTracking().Where(r => r.CourseId == courseId && r.DeletedAt == null)
+            .OrderBy(r => r.LessonId).ThenBy(r => r.Kind).ThenBy(r => r.FileName).ToListAsync();
+        var ids = rows.Select(r => r.Id).ToList();
+        var scans = await db.Set<ResourceScanRecord>().AsNoTracking().Where(x => ids.Contains(x.ResourceFileId))
+            .ToDictionaryAsync(x => x.ResourceFileId);
+        return rows.Select(r => ToDto(r, scans.GetValueOrDefault(r.Id))).ToList();
     }
 
     public async Task<ResourceUsageDto> Usage(Guid courseId)
@@ -93,6 +98,7 @@ public class ResourceService(AppDbContext db, ICurrentUser me, AccessService acc
 
         await using var staged = await storage.StageAsync(body, opt.MaxFileBytes, ct);
         await Validate(ext, kind, staged, ct);
+        var scan = await scanPolicy.EnforceAsync(staged.TempPath, ct); // infected → 422; the staged file is discarded on dispose
 
         var entity = new ResourceFile
         {
@@ -106,11 +112,13 @@ public class ResourceService(AppDbContext db, ICurrentUser me, AccessService acc
         await EnsureUniqueAndWithinQuota(courseId, null, staged, ct);
         await storage.CommitAsync(staged, entity.StorageKey, ct);
         db.ResourceFiles.Add(entity);
+        var record = new ResourceScanRecord { ResourceFileId = entity.Id, Sha256 = entity.Sha256, Verdict = scan.Verdict, Engine = scan.Engine, ScannedAt = DateTime.UtcNow };
+        db.Set<ResourceScanRecord>().Add(record);
         audit.Record("resource.uploaded", "ResourceFile", entity.Id,
-            new { entity.CourseId, entity.LessonId, entity.Kind, entity.FileName, entity.SizeBytes, entity.Sha256, entity.IsPremium });
+            new { entity.CourseId, entity.LessonId, entity.Kind, entity.FileName, entity.SizeBytes, entity.Sha256, entity.IsPremium, scan = scan.Verdict.ToString() });
         await db.SaveChangesAsync(ct);
         await tx.CommitAsync(ct);
-        return ToDto(entity);
+        return ToDto(entity, record);
     }
 
     /// <summary>
@@ -129,6 +137,7 @@ public class ResourceService(AppDbContext db, ICurrentUser me, AccessService acc
 
         await using var staged = await storage.StageAsync(body, opt.MaxFileBytes, ct);
         await Validate(ext, r.Kind, staged, ct);
+        var scan = await scanPolicy.EnforceAsync(staged.TempPath, ct);
 
         await using var tx = await db.Database.BeginTransactionAsync(ct);
         await LockCourse(r.CourseId, ct);
@@ -145,11 +154,14 @@ public class ResourceService(AppDbContext db, ICurrentUser me, AccessService acc
         if (isPremium is { } p) r.IsPremium = p;
         r.Version = oldVersion + 1;
         r.UploadedBy = me.RequireId();
-        audit.Record("resource.replaced", "ResourceFile", r.Id, new { r.CourseId, fromVersion = oldVersion, toVersion = r.Version, r.FileName, r.Sha256, r.IsPremium });
+        var record = await db.Set<ResourceScanRecord>().FirstOrDefaultAsync(x => x.ResourceFileId == r.Id, ct);
+        if (record is null) { record = new ResourceScanRecord { ResourceFileId = r.Id }; db.Set<ResourceScanRecord>().Add(record); }
+        record.Sha256 = r.Sha256; record.Verdict = scan.Verdict; record.Engine = scan.Engine; record.ScannedAt = DateTime.UtcNow;
+        audit.Record("resource.replaced", "ResourceFile", r.Id, new { r.CourseId, fromVersion = oldVersion, toVersion = r.Version, r.FileName, r.Sha256, r.IsPremium, scan = scan.Verdict.ToString() });
         await db.SaveChangesAsync(ct);
         await tx.CommitAsync(ct);
         if (oldKey != newKey) await janitor.ReleaseIfUnreferenced(r.CourseId, oldKey, ct);
-        return ToDto(r);
+        return ToDto(r, record);
     }
 
     public async Task<ResourceDto> Update(Guid id, UpdateResourceInput input)
@@ -163,7 +175,7 @@ public class ResourceService(AppDbContext db, ICurrentUser me, AccessService acc
             audit.Record("resource.premium_changed", "ResourceFile", r.Id, new { r.CourseId, r.IsPremium });
             await db.SaveChangesAsync();
         }
-        return ToDto(r);
+        return ToDto(r, await db.Set<ResourceScanRecord>().AsNoTracking().FirstOrDefaultAsync(x => x.ResourceFileId == r.Id));
     }
 
     /// <summary>
@@ -208,8 +220,10 @@ public class ResourceService(AppDbContext db, ICurrentUser me, AccessService acc
     private Task<bool> LessonInCourse(Guid lessonId, Guid courseId) =>
         db.Lessons.AnyAsync(l => l.Id == lessonId && db.Modules.Any(m => m.Id == l.ModuleId && m.CourseId == courseId));
 
-    private static ResourceDto ToDto(ResourceFile r) => new(r.Id, r.CourseId, r.LessonId, r.Kind, r.Language, r.FileName, r.ContentType,
-        r.SizeBytes, r.Sha256, r.IsPremium, r.Version, r.CreatedAt);
+    private static ResourceDto ToDto(ResourceFile r, ResourceScanRecord? scan = null) => new(r.Id, r.CourseId, r.LessonId, r.Kind, r.Language,
+        r.FileName, r.ContentType, r.SizeBytes, r.Sha256, r.IsPremium, r.Version, r.CreatedAt,
+        scan is not null && scan.Sha256 == r.Sha256 ? scan.Verdict.ToString() : nameof(Trust.ScanVerdict.NotScanned),
+        scan is not null && scan.Sha256 == r.Sha256 ? scan.ScannedAt : null);
 
     // ---------- learners ----------
     // Learners are served the files frozen in the course's current published snapshot (file version, storage key and

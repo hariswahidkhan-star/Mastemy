@@ -17,6 +17,8 @@ public static class ModuleRegistration
         Ai.AiModule.Add(s, cfg);
         Account.AccountModule.Add(s, cfg);
         Taxonomy.TaxonomyModule.Add(s, cfg);
+        Trust.TrustModule.Add(s, cfg);
+        Operations.OperationsModule.Add(s, cfg);
         return s;
     }
 }

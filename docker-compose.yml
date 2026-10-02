@@ -17,6 +17,27 @@ services:
       ConnectionStrings__Default: "Server=db;Port=3306;Database=mastemy;User=mastemy;Password=${MYSQL_PASSWORD};"
     depends_on: { db: { condition: service_healthy } }
     volumes: [appdata:/app/data]
+    # Liveness only (no curl in the aspnet image; bash /dev/tcp instead). Readiness detail: GET /health/ready as Staff.
+    healthcheck:
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/8080 && printf 'GET /health/live HTTP/1.0\\r\\nHost: localhost\\r\\n\\r\\n' >&3 && head -1 <&3 | grep -q ' 200 '"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+  # Optional malware scanner for resource uploads: `docker compose --profile scanning up -d`, then set
+  # Scanning__ClamAvHost=clamav in .env (Scanning:Mode defaults to Required once a host is set).
+  clamav:
+    image: clamav/clamav:1.4
+    profiles: [scanning]
+    environment:
+      CLAMAV_NO_MILTERD: "true"
+    volumes: [clamdb:/var/lib/clamav]
+    healthcheck:
+      test: ["CMD", "clamdcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 300s # first start downloads signatures
   web:
     build: { context: ., dockerfile: deploy/web.Dockerfile }
     environment:
@@ -24,4 +45,9 @@ services:
       API_INTERNAL_URL: http://api:8080
     ports: ["8080:80"]
     depends_on: [api]
-volumes: { dbdata: {}, appdata: {} }
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes: { dbdata: {}, appdata: {}, clamdb: {} }
