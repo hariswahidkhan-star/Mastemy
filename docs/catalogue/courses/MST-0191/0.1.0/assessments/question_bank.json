@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0191",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 600,
+  "lesson_check_items": 78,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0191-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A sales sheet has a column of order totals in B2:B40. You need the total only of orders above 500. Which function fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "SUMIF(B2:B40,\">500\")",
+     "correct": true,
+     "rationale": "Correct: SUMIF sums only the cells meeting the criterion \">500\"."
+    },
+    {
+     "key": "B",
+     "text": "SUM(B2:B40)",
+     "correct": false,
+     "rationale": "SUM adds every value, ignoring the condition."
+    },
+    {
+     "key": "C",
+     "text": "COUNTIF(B2:B40,\">500\")",
+     "correct": false,
+     "rationale": "COUNTIF returns how many cells qualify, not their sum."
+    },
+    {
+     "key": "D",
+     "text": "AVERAGEIF(B2:B40,\">500\")",
+     "correct": false,
+     "rationale": "AVERAGEIF returns the mean of qualifying cells, not the total."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SUMIF sums only the cells meeting the criterion \">500\".",
+   "outcome_refs": [
+    "MST-0191-D04.01"
+   ],
+   "domain_ref": "Perform operations by using formulas and functions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0191-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want a printout to repeat the header row at the top of every page. Which Excel feature do you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Freeze Panes",
+     "correct": false,
+     "rationale": "Freeze Panes keeps rows visible on screen, not on printed pages."
+    },
+    {
+     "key": "B",
+     "text": "Print Titles (rows to repeat at top)",
+     "correct": true,
+     "rationale": "Correct: Print Titles repeats chosen rows on every printed page."
+    },
+    {
+     "key": "C",
+     "text": "Split",
+     "correct": false,
+     "rationale": "Split divides the window into panes on screen only."
+    },
+    {
+     "key": "D",
+     "text": "Group",
+     "correct": false,
+     "rationale": "Group creates a collapsible outline, not repeated print headers."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: Print Titles repeats chosen rows on every printed page.",
+   "outcome_refs": [
+    "MST-0191-D01.01"
+   ],
+   "domain_ref": "Manage worksheets and workbooks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0191-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions apply formatting that changes how a value is displayed without changing the stored number? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply a currency number format",
+     "correct": true,
+     "rationale": "Correct: a number format changes the display only; the stored value is unchanged."
+    },
+    {
+     "key": "B",
+     "text": "Apply conditional formatting to highlight high values",
+     "correct": true,
+     "rationale": "Correct: conditional formatting changes appearance, not the underlying value."
+    },
+    {
+     "key": "C",
+     "text": "Use ROUND() in a formula",
+     "correct": false,
+     "rationale": "ROUND changes the computed/stored value, not just the display."
+    },
+    {
+     "key": "D",
+     "text": "Delete the cell contents",
+     "correct": false,
+     "rationale": "Deleting removes the value entirely rather than formatting it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a number format changes the display only; the stored value is unchanged.",
+   "outcome_refs": [
+    "MST-0191-D02.01"
+   ],
+   "domain_ref": "Manage data cells and ranges",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

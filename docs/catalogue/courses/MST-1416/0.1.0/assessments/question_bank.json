@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1416",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 766,
+  "lesson_check_items": 54,
+  "module_check_items": 185,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1416-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to store document embeddings and run semantic similarity search inside a NoSQL store you already use for app data. Which Azure option fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure Cosmos DB for NoSQL vector search",
+     "correct": true,
+     "rationale": "Correct: Cosmos DB for NoSQL supports storing embeddings and vector similarity search."
+    },
+    {
+     "key": "B",
+     "text": "Azure Blob Storage static website",
+     "correct": false,
+     "rationale": "Blob static hosting serves files; it has no vector query capability."
+    },
+    {
+     "key": "C",
+     "text": "Azure Key Vault",
+     "correct": false,
+     "rationale": "Key Vault stores secrets, not embeddings."
+    },
+    {
+     "key": "D",
+     "text": "Azure Service Bus",
+     "correct": false,
+     "rationale": "Service Bus is messaging middleware, not a vector store."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Cosmos DB for NoSQL supports storing embeddings and vector similarity search.",
+   "outcome_refs": [
+    "MST-1416-D02.01"
+   ],
+   "domain_ref": "Develop AI solutions by using Azure data management services",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1416-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which service builds and runs container images with managed tasks on Azure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure Container Registry (with ACR Tasks)",
+     "correct": true,
+     "rationale": "Correct: ACR stores images and ACR Tasks build/run them."
+    },
+    {
+     "key": "B",
+     "text": "Azure Functions",
+     "correct": false,
+     "rationale": "Functions runs serverless code, not image builds as its purpose."
+    },
+    {
+     "key": "C",
+     "text": "Azure Monitor",
+     "correct": false,
+     "rationale": "Azure Monitor observes resources; it does not build images."
+    },
+    {
+     "key": "D",
+     "text": "Azure App Configuration",
+     "correct": false,
+     "rationale": "App Configuration stores settings, not container images."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ACR stores images and ACR Tasks build/run them.",
+   "outcome_refs": [
+    "MST-1416-D01.01"
+   ],
+   "domain_ref": "Develop containerized solutions on Azure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1416-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices secure and observe an Azure solution per the AI-200 objectives? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store and rotate secrets in Azure Key Vault",
+     "correct": true,
+     "rationale": "Correct: Key Vault centralizes and rotates secrets securely."
+    },
+    {
+     "key": "B",
+     "text": "Instrument distributed tracing with OpenTelemetry",
+     "correct": true,
+     "rationale": "Correct: OpenTelemetry tracing supports monitoring distributed systems."
+    },
+    {
+     "key": "C",
+     "text": "Embed connection strings directly in source code",
+     "correct": false,
+     "rationale": "Hard-coding secrets is an anti-pattern the objectives warn against."
+    },
+    {
+     "key": "D",
+     "text": "Disable logging to reduce cost",
+     "correct": false,
+     "rationale": "Disabling logging removes the telemetry needed to troubleshoot."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Key Vault centralizes and rotates secrets securely.",
+   "outcome_refs": [
+    "MST-1416-D04.01"
+   ],
+   "domain_ref": "Secure, monitor, and troubleshoot Azure solutions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

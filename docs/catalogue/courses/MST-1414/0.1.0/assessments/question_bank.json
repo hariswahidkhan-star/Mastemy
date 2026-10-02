@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1414",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 54,
+  "module_check_items": 76,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1414-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before enabling Microsoft 365 Copilot broadly, an admin worries Copilot could surface over-shared SharePoint files. Which Purview-aligned step most directly reduces this risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply sensitivity labels and run a SharePoint data access governance report",
+     "correct": true,
+     "rationale": "Correct: labeling and the governance report address oversharing that Copilot would otherwise ground on."
+    },
+    {
+     "key": "B",
+     "text": "Assign more Copilot licences",
+     "correct": false,
+     "rationale": "Licensing enables Copilot; it does nothing about oversharing."
+    },
+    {
+     "key": "C",
+     "text": "Disable Microsoft Graph",
+     "correct": false,
+     "rationale": "Graph grounding is core to Copilot; disabling it is neither possible nor a governance control."
+    },
+    {
+     "key": "D",
+     "text": "Turn off audit logging",
+     "correct": false,
+     "rationale": "Removing audit logging reduces visibility and worsens governance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: labeling and the governance report address oversharing that Copilot would otherwise ground on.",
+   "outcome_refs": [
+    "MST-1414-D02.01"
+   ],
+   "domain_ref": "Understand data protection and governance tasks for Microsoft 365 and Copilot",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1414-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which admin center is the correct place to manage mailboxes and distribution groups?",
+   "options": [
+    {
+     "key": "A",
+     "text": "SharePoint admin center",
+     "correct": false,
+     "rationale": "SharePoint admin manages sites and libraries, not mailboxes."
+    },
+    {
+     "key": "B",
+     "text": "Exchange admin center",
+     "correct": true,
+     "rationale": "Correct: Exchange admin center manages mailboxes and distribution groups."
+    },
+    {
+     "key": "C",
+     "text": "Teams admin center",
+     "correct": false,
+     "rationale": "Teams admin manages teams, channels and policies."
+    },
+    {
+     "key": "D",
+     "text": "Microsoft Entra admin center",
+     "correct": false,
+     "rationale": "Entra manages identity objects, not mailbox configuration."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: Exchange admin center manages mailboxes and distribution groups.",
+   "outcome_refs": [
+    "MST-1414-D01.01"
+   ],
+   "domain_ref": "Identify the core features and objects of Microsoft 365 services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1414-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid basic administrative tasks for Copilot and agents? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assign Copilot licences to users",
+     "correct": true,
+     "rationale": "Correct: licence assignment is a core Copilot admin task."
+    },
+    {
+     "key": "B",
+     "text": "Monitor agent usage via the Microsoft 365 and Power Platform admin centers",
+     "correct": true,
+     "rationale": "Correct: agent monitoring spans both admin centers."
+    },
+    {
+     "key": "C",
+     "text": "Write the model weights used by Copilot",
+     "correct": false,
+     "rationale": "Admins do not author the underlying model weights."
+    },
+    {
+     "key": "D",
+     "text": "Disable Zero Trust for faster sign-in",
+     "correct": false,
+     "rationale": "Weakening Zero Trust is not a sanctioned administrative task."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: licence assignment is a core Copilot admin task.",
+   "outcome_refs": [
+    "MST-1414-D03.01"
+   ],
+   "domain_ref": "Perform basic administrative tasks for Copilot and agents",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

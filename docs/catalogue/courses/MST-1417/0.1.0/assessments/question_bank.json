@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1417",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 774,
+  "lesson_check_items": 60,
+  "module_check_items": 183,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1417-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A deployed model's inputs have shifted from its training distribution and accuracy is dropping. Which Azure ML capability detects this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data drift monitoring",
+     "correct": true,
+     "rationale": "Correct: data drift monitoring detects divergence between serving and training data."
+    },
+    {
+     "key": "B",
+     "text": "Hyperparameter sweep",
+     "correct": false,
+     "rationale": "A sweep tunes training; it does not monitor production inputs."
+    },
+    {
+     "key": "C",
+     "text": "Managed online endpoint autoscale",
+     "correct": false,
+     "rationale": "Autoscale adjusts capacity, not data-distribution changes."
+    },
+    {
+     "key": "D",
+     "text": "Model registry archiving",
+     "correct": false,
+     "rationale": "Archiving manages model versions, not drift."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: data drift monitoring detects divergence between serving and training data.",
+   "outcome_refs": [
+    "MST-1417-D02.01"
+   ],
+   "domain_ref": "Implement machine learning model lifecycle and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1417-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which pairing best reflects infrastructure-as-code for an Azure ML workspace?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Bicep templates deployed via GitHub Actions",
+     "correct": true,
+     "rationale": "Correct: Bicep plus GitHub Actions is the IaC/automation approach in the objectives."
+    },
+    {
+     "key": "B",
+     "text": "Manually clicking through the portal each time",
+     "correct": false,
+     "rationale": "Manual portal setup is the opposite of IaC."
+    },
+    {
+     "key": "C",
+     "text": "Emailing config files to teammates",
+     "correct": false,
+     "rationale": "That is neither declarative nor automated provisioning."
+    },
+    {
+     "key": "D",
+     "text": "Storing secrets in a notebook cell",
+     "correct": false,
+     "rationale": "Embedding secrets in notebooks is insecure and not IaC."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Bicep plus GitHub Actions is the IaC/automation approach in the objectives.",
+   "outcome_refs": [
+    "MST-1417-D01.01"
+   ],
+   "domain_ref": "Design and implement an MLOps infrastructure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1417-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO tactics are valid ways to optimize RAG accuracy per the AI-300 objectives? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tune chunk size and similarity thresholds",
+     "correct": true,
+     "rationale": "Correct: retrieval tuning (chunking, thresholds) improves RAG accuracy."
+    },
+    {
+     "key": "B",
+     "text": "Combine semantic and keyword (hybrid) search",
+     "correct": true,
+     "rationale": "Correct: hybrid retrieval is an endorsed optimization."
+    },
+    {
+     "key": "C",
+     "text": "Always increase top-k to the maximum",
+     "correct": false,
+     "rationale": "Unbounded top-k adds noise and cost without guaranteed gains."
+    },
+    {
+     "key": "D",
+     "text": "Remove all evaluation metrics to speed up",
+     "correct": false,
+     "rationale": "Removing evaluation hides regressions rather than optimizing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: retrieval tuning (chunking, thresholds) improves RAG accuracy.",
+   "outcome_refs": [
+    "MST-1417-D05.01"
+   ],
+   "domain_ref": "Optimize generative AI systems and model performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
