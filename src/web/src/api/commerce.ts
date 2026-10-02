@@ -139,6 +139,10 @@ export interface OrderDto {
   items: OrderItemDto[];
   refundStatus: string | null;
   refundEligible: boolean;
+  isGift: boolean;
+  /** `Pending` before payment, then the gift code status (`Active`/`Redeemed`/`Void`); null for non-gifts. */
+  giftStatus: string | null;
+  giftCodeRevealed: boolean;
 }
 export interface RefundDto {
   id: Guid;
@@ -338,6 +342,9 @@ export interface ReconciliationRow {
   refundDifference: number;
   chargebacks: number;
   status: string;
+  /** Package/bundle/gift revenue whose course has no instructor with a revenue share (never in the ledger). */
+  platformOnlyPayments: number;
+  platformOnlyRefunds: number;
 }
 export interface ReconciliationDto {
   from: string;
@@ -429,6 +436,3 @@ export function problemCode(e: unknown): string {
   const i = t.lastIndexOf('/');
   return i >= 0 ? t.slice(i + 1) : t;
 }
-
-/** Currencies the checkout probes for approved regional prices (the server is the authority). */
-export const PROBE_CURRENCIES = ['USD', 'EUR', 'GBP', 'SAR', 'AED', 'EGP', 'QAR', 'INR', 'JPY'];

@@ -274,6 +274,8 @@ export interface AcademyDto {
 }
 export interface BestsellerStat {
   courseId: Guid;
+  courseTitle: string;
+  courseSlug: string;
   distinctBuyers: number;
   netRevenue: number;
   eligible: boolean;

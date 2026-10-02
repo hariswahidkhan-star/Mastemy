@@ -302,9 +302,11 @@ function ReconciliationTab() {
                       <th scope="col">{t('commerce.prices.currency')}</th>
                       <th scope="col">{t('commerce.finance.payments')}</th>
                       <th scope="col">{t('commerce.finance.subscriptionPayments')}</th>
+                      <th scope="col">{t('finalb.recon.platformOnlyPayments')}</th>
                       <th scope="col">{t('commerce.finance.ledgerSales')}</th>
                       <th scope="col">{t('commerce.finance.salesDiff')}</th>
                       <th scope="col">{t('commerce.finance.refunds')}</th>
+                      <th scope="col">{t('finalb.recon.platformOnlyRefunds')}</th>
                       <th scope="col">{t('commerce.finance.reversals')}</th>
                       <th scope="col">{t('commerce.finance.refundDiff')}</th>
                       <th scope="col">{t('commerce.finance.chargebacks')}</th>
@@ -318,9 +320,11 @@ function ReconciliationTab() {
                         <td>{row.currency}</td>
                         <td>{fmtMoney(row.payments, row.currency)}</td>
                         <td>{fmtMoney(row.subscriptionPayments, row.currency)}</td>
+                        <td>{fmtMoney(row.platformOnlyPayments, row.currency)}</td>
                         <td>{fmtMoney(row.ledgerSales, row.currency)}</td>
                         <td>{fmtMoney(row.salesDifference, row.currency)}</td>
                         <td>{fmtMoney(row.refunds, row.currency)}</td>
+                        <td>{fmtMoney(row.platformOnlyRefunds, row.currency)}</td>
                         <td>{fmtMoney(row.ledgerRefundReversals, row.currency)}</td>
                         <td>{fmtMoney(row.refundDifference, row.currency)}</td>
                         <td>{fmtMoney(row.chargebacks, row.currency)}</td>
@@ -331,6 +335,7 @@ function ReconciliationTab() {
                     ))}
                   </tbody>
                 </table>
+                <p className="small muted">{t('finalb.recon.platformOnlyNote')}</p>
               </div>
             )}
           </>

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
-import { useQueries, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { api } from '../../api/client';
 import type {
   CheckoutInput,
@@ -9,7 +9,8 @@ import type {
   QuoteDto,
   QuoteInput,
 } from '../../api/commerce';
-import { PROBE_CURRENCIES, problemCode, useBundles } from '../../api/commerce';
+import { problemCode, useBundles } from '../../api/commerce';
+import { currencyChoices, useCurrencyOptions } from '../../api/finalb';
 import { Button } from '../../components/ui/Button';
 import { Checkbox, Field, Input, Select, Textarea } from '../../components/ui/Field';
 import { Notice, PageHeader, QueryState } from '../../components/ui/misc';
@@ -22,30 +23,21 @@ import { commerceError, OfferBadge, PriceLine, StudyServicesNotice } from './sha
 
 const COUNTRY = /^[A-Za-z]{2}$/;
 
-/** Currencies with an approved price for this package (probed; the server stays the authority). */
+/** Base price view (title, services) plus the sellable currencies listed by the server. */
 function useAvailableCurrencies(packageId: string | undefined, country: string) {
-  const probes = useQueries({
-    queries: (packageId ? ['', ...PROBE_CURRENCIES] : []).map((cur) => ({
-      queryKey: ['commerce', 'price', packageId, cur, country],
-      queryFn: () =>
-        api<PriceView>(
-          `/api/packages/${packageId}/price?${new URLSearchParams({
-            ...(cur ? { currency: cur } : {}),
-            ...(country ? { country } : {}),
-          }).toString()}`,
-        ),
-      retry: false,
-      staleTime: 60_000,
-    })),
+  const base = useQuery({
+    queryKey: ['commerce', 'price', packageId, '', ''],
+    queryFn: () => api<PriceView>(`/api/packages/${packageId}/price`),
+    enabled: !!packageId,
+    retry: false,
+    staleTime: 60_000,
   });
-  const base = probes[0];
-  const currencies = Array.from(
-    new Set(probes.filter((p) => p.isSuccess && p.data).map((p) => p.data!.currency)),
-  );
+  const options = useCurrencyOptions(packageId);
   return {
-    base,
-    currencies,
-    pending: probes.some((p) => p.isPending),
+    base: packageId ? base : undefined,
+    currencies: currencyChoices(options.data ?? [], country),
+    pending: options.isPending && !!packageId,
+    error: options.isError ? options.error : null,
   };
 }
 
@@ -238,14 +230,27 @@ export function CheckoutPage({ kind }: { kind: 'package' | 'bundle' }) {
                       }),
                     },
                     ...avail.currencies
-                      .filter((c) => c !== base?.currency)
-                      .map((c) => ({ value: c, label: c })),
+                      .filter((c) => c.currency !== base?.currency)
+                      .map((c) => ({
+                        value: c.value,
+                        label: c.countries.length
+                          ? t('finalb.checkout.regionalOption', {
+                              currency: c.currency,
+                              amount: fmtMoney(c.amount, c.currency),
+                              countries: c.countries.join(', '),
+                            })
+                          : `${c.currency} · ${fmtMoney(c.amount, c.currency)}`,
+                      })),
                   ]}
                 />
               </Field>
             </div>
             <p className="small muted">
-              {avail.pending ? t('common.loading') : t('commerce.checkout.currencyNote')}
+              {avail.pending
+                ? t('common.loading')
+                : avail.error
+                  ? commerceError(avail.error, t)
+                  : t('commerce.checkout.currencyNote')}
             </p>
           </section>
         ) : null}

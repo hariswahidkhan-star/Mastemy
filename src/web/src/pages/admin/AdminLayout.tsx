@@ -4,6 +4,7 @@ import type { Role } from '../../api/types';
 import { useAuth } from '../../auth/AuthProvider';
 import { useI18n } from '../../i18n/I18nProvider';
 import { DISCOVER_ADMIN_SECTIONS } from '../../routes/discoverNav';
+import { FINALB_ADMIN_SECTIONS } from '../../routes/finalbRoutes';
 
 export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[]; label?: string }[] = [
   { to: '/admin', key: 'review', roles: ['Reviewer', 'Admin', 'SuperAdmin'] },
@@ -18,6 +19,7 @@ export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[]; label?: s
   { to: '/admin/settings', key: 'settings', roles: ['Admin', 'SuperAdmin'] },
   { to: '/admin/audit', key: 'audit', roles: ['Finance', 'Admin', 'SuperAdmin'] },
   ...DISCOVER_ADMIN_SECTIONS,
+  ...FINALB_ADMIN_SECTIONS,
   {
     to: '/admin/analytics',
     key: 'wsAnalytics',

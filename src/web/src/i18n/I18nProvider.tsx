@@ -10,10 +10,12 @@ import discoverEn from './discover.en.json';
 import discoverAr from './discover.ar.json';
 import examsEn from './exams.en.json';
 import examsAr from './exams.ar.json';
-import workspaceEn from './workspace.en.json';
-import workspaceAr from './workspace.ar.json';
 import finalaEn from './finala.en.json';
 import finalaAr from './finala.ar.json';
+import finalbEn from './finalb.en.json';
+import finalbAr from './finalb.ar.json';
+import workspaceEn from './workspace.en.json';
+import workspaceAr from './workspace.ar.json';
 
 export type Lang = 'en' | 'ar';
 type Dict = { [key: string]: string | Dict };
@@ -25,16 +27,18 @@ const EXTRA: Record<Lang, Dict[]> = {
     commerceEn as Dict,
     discoverEn as Dict,
     examsEn as Dict,
-    workspaceEn as Dict,
     finalaEn as Dict,
+    finalbEn as Dict,
+    workspaceEn as Dict,
   ],
   ar: [
     accountAr as Dict,
     commerceAr as Dict,
     discoverAr as Dict,
     examsAr as Dict,
-    workspaceAr as Dict,
     finalaAr as Dict,
+    finalbAr as Dict,
+    workspaceAr as Dict,
   ],
 };
 const DICTS: Record<Lang, Dict> = {

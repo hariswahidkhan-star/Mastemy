@@ -16,6 +16,7 @@ import {
   discoverJsonLd,
   discoverNotFound,
 } from './discoverHead';
+import { FINALB_PUBLIC_ROUTES, finalbJsonLd, finalbNotFound } from './finalbHead';
 
 /** Public, indexable routes rendered on the server. Everything else gets the noindex SPA shell. */
 export const PUBLIC_ROUTES = [
@@ -31,6 +32,7 @@ export const PUBLIC_ROUTES = [
   '/help',
   '/contact',
   ...DISCOVER_PUBLIC_ROUTES,
+  ...FINALB_PUBLIC_ROUTES,
 ] as const;
 
 /** Certificate verification results are public but per-person: rendered, never indexed. */
@@ -169,7 +171,11 @@ export async function renderPage(url: string, opts: RenderOptions): Promise<Rend
     !!categoryMatch &&
     !!categories &&
     !categories.some((c) => c.slug === categoryMatch.params.slug);
-  const notFound = notFoundQuery(qc) || unknownCategory || discoverNotFound(qc, pathname);
+  const notFound =
+    notFoundQuery(qc) ||
+    unknownCategory ||
+    discoverNotFound(qc, pathname) ||
+    finalbNotFound(qc, pathname);
   const jsonLd: unknown[] = [];
   const courseMatch = matchPath('/courses/:slug', pathname);
   if (courseMatch?.params.slug) {
@@ -178,6 +184,7 @@ export async function renderPage(url: string, opts: RenderOptions): Promise<Rend
       jsonLd.push(courseJsonLd(course, localizedUrl(opts.baseUrl, pathname, lang), opts.baseUrl));
   }
   jsonLd.push(...discoverJsonLd(qc, pathname, opts.baseUrl, lang));
+  jsonLd.push(...finalbJsonLd(qc, pathname, opts.baseUrl, lang));
   if (pathname === '/') {
     jsonLd.push({
       '@context': 'https://schema.org',

@@ -9,7 +9,7 @@ import type {
   PromotionDto,
   StudioPackageDto,
 } from '../../api/commerce';
-import { commerceKeys, useBundles } from '../../api/commerce';
+import { commerceKeys } from '../../api/commerce';
 import { useApiMutation, useCategories } from '../../api/hooks';
 import { useAuth } from '../../auth/AuthProvider';
 import { Button } from '../../components/ui/Button';
@@ -255,7 +255,10 @@ function BundlesTab() {
   const { t, fmtMoney } = useI18n();
   const toast = useToast();
   const packages = useApprovedPackages();
-  const bundles = useBundles();
+  const bundles = useQuery({
+    queryKey: [...commerceKeys.bundles, 'admin', 'all'],
+    queryFn: () => api<BundleDto[]>('/api/admin/bundles?includeInactive=true'),
+  });
   const cats = useCategories();
   const [f, setF] = useState({
     title: '',
@@ -402,7 +405,7 @@ function BundlesTab() {
       </form>
       <section className="card" aria-labelledby="bundle-active">
         <h3 id="bundle-active">{t('commerce.staff.activeBundles')}</h3>
-        <p className="small muted">{t('commerce.staff.activeBundlesNote')}</p>
+        <p className="small muted">{t('finalb.bundles.allNote')}</p>
         {status.isError ? <Notice tone="danger">{commerceError(status.error, t)}</Notice> : null}
         <QueryState query={bundles}>
           {(list) =>
@@ -413,15 +416,17 @@ function BundlesTab() {
                 {list.map((b) => (
                   <li key={b.id} className="row row--between">
                     <span>
-                      {b.title} · {fmtMoney(b.price, b.currency)}
+                      {b.title} · {fmtMoney(b.price, b.currency)} <CStatus status={b.status} />
                     </span>
                     <Button
                       size="sm"
                       variant="secondary"
                       loading={status.isPending && status.variables?.id === b.id}
-                      onClick={() => status.mutate({ id: b.id, active: false })}
+                      onClick={() => status.mutate({ id: b.id, active: b.status !== 'Active' })}
                     >
-                      {t('commerce.common.deactivate')}
+                      {b.status === 'Active'
+                        ? t('commerce.common.deactivate')
+                        : t('finalb.bundles.activate')}
                     </Button>
                   </li>
                 ))}

@@ -22,6 +22,7 @@ import { examsRoutes } from './routes/examsRoutes';
 import { workspaceRoutes } from './routes/workspaceRoutes';
 import { finalaRoutes } from './routes/finalaRoutes';
 import { commerceAdminRoutes, commerceRoutes, commerceStudioRoutes } from './routes/commerceRoutes';
+import { finalbAdminRoutes, finalbRoutes } from './routes/finalbRoutes';
 
 const LearnPage = lazy(() =>
   import('./pages/learn/LearnPage').then((m) => ({ default: m.LearnPage })),
@@ -369,6 +370,7 @@ export function App() {
             }
           />
           {commerceAdminRoutes}
+          {finalbAdminRoutes}
           <Route
             path="audit"
             element={
@@ -386,6 +388,7 @@ export function App() {
         {workspaceRoutes}
         {commerceRoutes}
         {finalaRoutes}
+        {finalbRoutes}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

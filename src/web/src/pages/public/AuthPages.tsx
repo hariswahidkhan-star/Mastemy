@@ -11,6 +11,7 @@ import { Field, Input, Select } from '../../components/ui/Field';
 import { Notice } from '../../components/ui/misc';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
+import { OrgSignIn } from '../finalb/Sso';
 import type { AuthResponse } from '../../api/types';
 import { MfaChallenge, MfaEnrollmentWizard } from '../account/Mfa';
 
@@ -110,6 +111,7 @@ export function LoginPage() {
           {t('auth.noAccount')} <Link to="/register">{t('nav.register')}</Link>
         </p>
       </form>
+      <OrgSignIn />
     </div>
   );
 }

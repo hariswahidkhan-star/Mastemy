@@ -26,6 +26,7 @@ import {
 } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
+import { OrgMaterialsList } from '../finalb/Enterprise';
 import { usePageMeta } from '../../lib/seo';
 import {
   CredentialKindBadge,
@@ -384,6 +385,7 @@ export function MyOrganizationsSection() {
               {t('orgs.manage')}
             </Link>
           ) : null}
+          <OrgMaterialsList orgId={o.id} />
           {o.assignments.length === 0 ? (
             <p className="muted small">{t('orgs.noAssignments')}</p>
           ) : (
