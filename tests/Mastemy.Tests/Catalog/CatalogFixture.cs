@@ -99,4 +99,14 @@ public static class HttpJson
 {
     public static Task<HttpResponseMessage> PostJ<T>(this HttpClient c, string url, T body) => c.PostAsJsonAsync(url, body, CatalogFixture.Json);
     public static Task<HttpResponseMessage> PutJ<T>(this HttpClient c, string url, T body) => c.PutAsJsonAsync(url, body, CatalogFixture.Json);
+
+    /// <summary>Notes saves require If-Match with the current notes ETag (wave 3 autosave concurrency).</summary>
+    public static async Task<HttpResponseMessage> PutNotes<T>(this HttpClient c, Guid lessonId, T body)
+    {
+        var get = await c.GetAsync($"/api/studio/lessons/{lessonId}/notes");
+        get.EnsureSuccessStatusCode();
+        var req = new HttpRequestMessage(HttpMethod.Put, $"/api/studio/lessons/{lessonId}/notes") { Content = JsonContent.Create(body, options: CatalogFixture.Json) };
+        req.Headers.TryAddWithoutValidation("If-Match", get.Headers.ETag?.ToString());
+        return await c.SendAsync(req);
+    }
 }

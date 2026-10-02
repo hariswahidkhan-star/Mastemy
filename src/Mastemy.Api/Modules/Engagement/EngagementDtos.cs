@@ -48,8 +48,10 @@ public record IssueDto(long Id, Guid CourseId, Guid? LessonId, string Category, 
 public static class NotificationKinds
 {
     public const string Announcement = "announcement", Reply = "reply", ReviewReply = "review_reply",
-        CourseUpdated = "course_updated", Certificate = "certificate", IssueReported = "issue_reported";
-    public static readonly string[] All = [Announcement, Reply, ReviewReply, CourseUpdated, Certificate, IssueReported];
+        CourseUpdated = "course_updated", Certificate = "certificate", IssueReported = "issue_reported",
+        StudyReminder = "study_reminder", TrustSafety = "trust_safety", BrokenVideo = "broken_video";
+    public static readonly string[] All = [Announcement, Reply, ReviewReply, CourseUpdated, Certificate, IssueReported,
+        StudyReminder, TrustSafety, BrokenVideo];
 }
 
 public static partial class TextRules

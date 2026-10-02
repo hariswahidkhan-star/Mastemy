@@ -40,8 +40,22 @@ public class StudioCoursesController(StudioService svc) : ControllerBase
 {
     [HttpGet("courses")] public Task<List<StudioCourseSummaryDto>> Mine() => svc.MyCourses();
     [HttpPost("courses")] public Task<StudioCourseDto> Create(CreateCourseRequest req) => svc.Create(req);
-    [HttpGet("courses/{id:guid}")] public Task<StudioCourseDto> Get(Guid id) => svc.Get(id);
-    [HttpPut("courses/{id:guid}")] public Task<StudioCourseDto> Update(Guid id, UpdateCourseRequest req) => svc.Update(id, req);
+    [HttpGet("courses/{id:guid}")]
+    public async Task<StudioCourseDto> Get(Guid id)
+    {
+        var dto = await svc.Get(id);
+        Response.Headers.ETag = StudioService.CourseETag(dto.UpdatedAt);
+        return dto;
+    }
+
+    /// <summary>Optional If-Match (course ETag from GET) → 412 when another save happened meanwhile.</summary>
+    [HttpPut("courses/{id:guid}")]
+    public async Task<StudioCourseDto> Update(Guid id, UpdateCourseRequest req)
+    {
+        var dto = await svc.Update(id, req, Request.Headers.IfMatch.ToString());
+        Response.Headers.ETag = StudioService.CourseETag(dto.UpdatedAt);
+        return dto;
+    }
 
     [HttpPost("courses/{id:guid}/modules")] public Task<StudioModuleDto> AddModule(Guid id, TitleRequest req) => svc.AddModule(id, req);
     [HttpPost("courses/{id:guid}/modules/reorder")]
@@ -57,7 +71,14 @@ public class StudioCoursesController(StudioService svc) : ControllerBase
     [HttpPut("lessons/{id:guid}")] public Task<StudioLessonDto> UpdateLesson(Guid id, LessonUpdateRequest req) => svc.UpdateLesson(id, req);
     [HttpDelete("lessons/{id:guid}")]
     public async Task<IActionResult> DeleteLesson(Guid id) { await svc.DeleteLesson(id); return NoContent(); }
-    [HttpPut("lessons/{id:guid}/notes")] public Task<StudioLessonDto> Notes(Guid id, LessonNotesRequest req) => svc.UpdateNotes(id, req);
+    /// <summary>Requires If-Match: "n{notesVersion}" (428 when missing, 412 when stale). Returns the new ETag.</summary>
+    [HttpPut("lessons/{id:guid}/notes")]
+    public async Task<StudioLessonDto> Notes(Guid id, LessonNotesRequest req)
+    {
+        var dto = await svc.UpdateNotes(id, req, Request.Headers.IfMatch.ToString());
+        Response.Headers.ETag = StudioService.NotesETag(dto.NotesVersion);
+        return dto;
+    }
 
     [HttpGet("courses/{id:guid}/validation")] public Task<ValidationResultDto> Validation(Guid id) => svc.Validate(id);
     [HttpPost("courses/{id:guid}/submit")] public Task<CourseStatusDto> Submit(Guid id) => svc.Submit(id);

@@ -19,6 +19,7 @@ public static class ModuleRegistration
         Taxonomy.TaxonomyModule.Add(s, cfg);
         Trust.TrustModule.Add(s, cfg);
         Operations.OperationsModule.Add(s, cfg);
+        Authoring.AuthoringModule.Add(s, cfg); Analytics.AnalyticsModule.Add(s, cfg); StudyTools.StudyToolsModule.Add(s, cfg);
         return s;
     }
 }
