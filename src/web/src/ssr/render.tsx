@@ -10,6 +10,12 @@ import type { PageMeta } from '../lib/seo';
 import { AppTree, createQueryClient, SSR_GLOBAL } from './AppTree';
 import type { SsrPayload } from './AppTree';
 import { buildHead, courseJsonLd, localizedUrl, scriptJson } from './head';
+import {
+  DISCOVER_CACHE_PARAMS,
+  DISCOVER_PUBLIC_ROUTES,
+  discoverJsonLd,
+  discoverNotFound,
+} from './discoverHead';
 
 /** Public, indexable routes rendered on the server. Everything else gets the noindex SPA shell. */
 export const PUBLIC_ROUTES = [
@@ -24,6 +30,7 @@ export const PUBLIC_ROUTES = [
   '/about',
   '/help',
   '/contact',
+  ...DISCOVER_PUBLIC_ROUTES,
 ] as const;
 
 /** Certificate verification results are public but per-person: rendered, never indexed. */
@@ -68,7 +75,10 @@ function inject(template: string, opts: { lang: Lang; head: string; body: string
 }
 
 /** Query parameters that change what a public page renders; everything else is ignored for caching. */
-export const CACHE_PARAMS = ['lang', 'q', 'page', 'sort', 'category', 'level', 'language'] as const;
+export const CACHE_PARAMS = [
+  ...['lang', 'q', 'page', 'sort', 'category', 'level', 'language'],
+  ...DISCOVER_CACHE_PARAMS,
+] as const;
 
 /**
  * SSR cache key: pathname plus the whitelisted parameters in a fixed order, so junk or reordered query
@@ -159,7 +169,7 @@ export async function renderPage(url: string, opts: RenderOptions): Promise<Rend
     !!categoryMatch &&
     !!categories &&
     !categories.some((c) => c.slug === categoryMatch.params.slug);
-  const notFound = notFoundQuery(qc) || unknownCategory;
+  const notFound = notFoundQuery(qc) || unknownCategory || discoverNotFound(qc, pathname);
   const jsonLd: unknown[] = [];
   const courseMatch = matchPath('/courses/:slug', pathname);
   if (courseMatch?.params.slug) {
@@ -167,6 +177,7 @@ export async function renderPage(url: string, opts: RenderOptions): Promise<Rend
     if (course)
       jsonLd.push(courseJsonLd(course, localizedUrl(opts.baseUrl, pathname, lang), opts.baseUrl));
   }
+  jsonLd.push(...discoverJsonLd(qc, pathname, opts.baseUrl, lang));
   if (pathname === '/') {
     jsonLd.push({
       '@context': 'https://schema.org',

@@ -13,6 +13,7 @@ import { errorMessage } from '../../components/ui/ErrorState';
 import { Field, Input, Select, Textarea } from '../../components/ui/Field';
 import { Notice, PageHeader, QueryState, StatusBadge } from '../../components/ui/misc';
 import { Tabs } from '../../components/ui/Tabs';
+import { StudioTaxonomyPanel } from '../discover/StudioTaxonomyPanel';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
@@ -312,6 +313,11 @@ export function CourseEditorPage() {
                 content: <PublicationPanel course={c} />,
               },
               { id: 'review', label: t('studio.tab.review'), content: <ReviewPanel course={c} /> },
+              {
+                id: 'taxonomy',
+                label: t('discover.studio.tab'),
+                content: <StudioTaxonomyPanel course={c} />,
+              },
             ]}
           />
         </>

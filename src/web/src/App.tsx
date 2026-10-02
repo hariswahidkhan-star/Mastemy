@@ -16,6 +16,7 @@ import { TeachPage } from './pages/public/TeachPage';
 import { VerifyPage } from './pages/public/VerifyPage';
 import { ComparePage } from './pages/public/ComparePage';
 import { ThreadPage } from './pages/engagement/Discussions';
+import { discoverRoutes } from './routes/discoverRoutes';
 
 const LearnPage = lazy(() =>
   import('./pages/learn/LearnPage').then((m) => ({ default: m.LearnPage })),
@@ -372,6 +373,7 @@ export function App() {
             }
           />
         </Route>
+        {discoverRoutes}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
