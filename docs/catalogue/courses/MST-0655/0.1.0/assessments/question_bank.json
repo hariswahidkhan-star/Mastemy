@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0655",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0655-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Excel reports a circular reference when you open a workbook. Which built-in tool lists the cells involved?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Formulas > Formula Auditing > Error Checking > Circular References",
+     "correct": true,
+     "rationale": "Correct: this lists every cell in the circular chain so you can jump to each."
+    },
+    {
+     "key": "B",
+     "text": "Insert > Slicer",
+     "correct": false,
+     "rationale": "Slicers filter data; they do not find circular references."
+    },
+    {
+     "key": "C",
+     "text": "Data > Remove Duplicates",
+     "correct": false,
+     "rationale": "That de-duplicates rows; it is unrelated."
+    },
+    {
+     "key": "D",
+     "text": "Review > Spelling",
+     "correct": false,
+     "rationale": "Spelling check does not detect formula loops."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: this lists every cell in the circular chain so you can jump to each.",
+   "outcome_refs": [
+    "MST-0655-D03.01"
+   ],
+   "domain_ref": "Error and circular-reference checking",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0655-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Trace Precedents and Trace Dependents are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Precedents are the cells a formula reads from",
+     "correct": true,
+     "rationale": "Correct: precedents feed into the selected formula."
+    },
+    {
+     "key": "B",
+     "text": "Dependents are the cells that depend on the selected cell",
+     "correct": true,
+     "rationale": "Correct: dependents are formulas that point at the selected cell."
+    },
+    {
+     "key": "C",
+     "text": "Tracing follows references across separate workbooks",
+     "correct": false,
+     "rationale": "The trace tools and the related APIs do not cross workbook boundaries."
+    },
+    {
+     "key": "D",
+     "text": "Precedents and dependents mean the same thing",
+     "correct": false,
+     "rationale": "They are opposite directions of the dependency chain."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: precedents feed into the selected formula.",
+   "outcome_refs": [
+    "MST-0655-D02.01"
+   ],
+   "domain_ref": "Tracing logic",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0655-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A reviewer cannot tell which cells in a model are assumptions and which are calculations. What model-standard practice prevents this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Separate inputs, workings and outputs and mark inputs with a consistent convention",
+     "correct": true,
+     "rationale": "Correct: a visible inputs/workings/outputs standard makes assumptions traceable."
+    },
+    {
+     "key": "B",
+     "text": "Hide all formulas from the reviewer",
+     "correct": false,
+     "rationale": "Hiding logic makes review harder, not easier."
+    },
+    {
+     "key": "C",
+     "text": "Store every number as text",
+     "correct": false,
+     "rationale": "Text storage breaks calculations and does not clarify roles."
+    },
+    {
+     "key": "D",
+     "text": "Delete the assumptions once the model is built",
+     "correct": false,
+     "rationale": "Removing assumptions destroys traceability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a visible inputs/workings/outputs standard makes assumptions traceable.",
+   "outcome_refs": [
+    "MST-0655-D01.01"
+   ],
+   "domain_ref": "Model standards",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

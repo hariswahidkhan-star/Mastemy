@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0555",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0555-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI suggestion fixes a type error by changing a prop type to 'any'. Why is accepting this risky?",
+   "options": [
+    {
+     "key": "A",
+     "text": "'any' disables type checking for that value, hiding real errors",
+     "correct": true,
+     "rationale": "Correct: using 'any' removes the safety the type system provides."
+    },
+    {
+     "key": "B",
+     "text": "'any' is not valid TypeScript",
+     "correct": false,
+     "rationale": "'any' is valid; the problem is that it removes checking."
+    },
+    {
+     "key": "C",
+     "text": "Changing a prop type is impossible",
+     "correct": false,
+     "rationale": "It is possible; the concern is losing type safety."
+    },
+    {
+     "key": "D",
+     "text": "Type errors never matter in React",
+     "correct": false,
+     "rationale": "Type errors can cause real runtime defects."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: using 'any' removes the safety the type system provides.",
+   "outcome_refs": [
+    "MST-0555-D03.01"
+   ],
+   "domain_ref": "Type safety",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0555-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep AI-assisted frontend work trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Run the tests before accepting a multi-file AI edit",
+     "correct": true,
+     "rationale": "Correct: tests guard against regressions the edit introduces."
+    },
+    {
+     "key": "B",
+     "text": "Give the model the relevant files and project patterns as context",
+     "correct": true,
+     "rationale": "Correct: good context yields output that fits the codebase."
+    },
+    {
+     "key": "C",
+     "text": "Merge generated code without any human reading it",
+     "correct": false,
+     "rationale": "A human must remain accountable for merged code."
+    },
+    {
+     "key": "D",
+     "text": "Silence type errors to move faster",
+     "correct": false,
+     "rationale": "Silencing errors hides defects."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tests guard against regressions the edit introduces.",
+   "outcome_refs": [
+    "MST-0555-D02.01"
+   ],
+   "domain_ref": "Editing and refactoring",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0555-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Who is accountable for a defect in AI-generated code that was merged?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The human who reviewed and merged it",
+     "correct": true,
+     "rationale": "Correct: accountability stays with the person who approves and merges the code."
+    },
+    {
+     "key": "B",
+     "text": "The AI tool",
+     "correct": false,
+     "rationale": "The tool assists; it does not take responsibility for merged code."
+    },
+    {
+     "key": "C",
+     "text": "No one, because AI wrote it",
+     "correct": false,
+     "rationale": "Human accountability does not disappear when AI assists."
+    },
+    {
+     "key": "D",
+     "text": "The end user who hit the bug",
+     "correct": false,
+     "rationale": "Users are not accountable for the code that ships."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: accountability stays with the person who approves and merges the code.",
+   "outcome_refs": [
+    "MST-0555-D05.01"
+   ],
+   "domain_ref": "Accountability",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

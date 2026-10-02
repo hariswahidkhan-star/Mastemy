@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0556",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0556-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Cursor suggests data-access code that concatenates user input straight into a SQL string. What is the main risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "SQL injection, because untrusted input is placed directly into the query",
+     "correct": true,
+     "rationale": "Correct: concatenating user input enables SQL injection; use parameterised queries."
+    },
+    {
+     "key": "B",
+     "text": "The code will not compile",
+     "correct": false,
+     "rationale": "It may compile fine; the issue is security, not compilation."
+    },
+    {
+     "key": "C",
+     "text": "SQL cannot be used from C#",
+     "correct": false,
+     "rationale": "C# routinely queries SQL; the issue is how input is handled."
+    },
+    {
+     "key": "D",
+     "text": "Parameterised queries are slower, so this is better",
+     "correct": false,
+     "rationale": "Security and correctness outweigh a negligible perf concern, and the premise is wrong."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: concatenating user input enables SQL injection; use parameterised queries.",
+   "outcome_refs": [
+    "MST-0556-D03.02"
+   ],
+   "domain_ref": "Correctness and security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0556-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO tools help validate an AI change in a .NET project? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The compiler and code analyzers",
+     "correct": true,
+     "rationale": "Correct: build errors and analyzer warnings catch many issues."
+    },
+    {
+     "key": "B",
+     "text": "Unit tests pinning intended behaviour",
+     "correct": true,
+     "rationale": "Correct: tests guard against regressions."
+    },
+    {
+     "key": "C",
+     "text": "Suppressing all analyzer warnings",
+     "correct": false,
+     "rationale": "Suppression hides problems rather than validating."
+    },
+    {
+     "key": "D",
+     "text": "Deleting the tests to speed up the build",
+     "correct": false,
+     "rationale": "Removing tests removes a key safeguard."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: build errors and analyzer warnings catch many issues.",
+   "outcome_refs": [
+    "MST-0556-D04.01"
+   ],
+   "domain_ref": "Validating with tooling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0556-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why attach existing project files as context before asking Cursor to add a feature?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So suggestions follow the project's conventions and existing patterns",
+     "correct": true,
+     "rationale": "Correct: relevant context yields output that fits the codebase."
+    },
+    {
+     "key": "B",
+     "text": "Because Cursor cannot generate C# otherwise",
+     "correct": false,
+     "rationale": "It can; context simply improves fit."
+    },
+    {
+     "key": "C",
+     "text": "To slow the model down deliberately",
+     "correct": false,
+     "rationale": "That is not a reason to add context."
+    },
+    {
+     "key": "D",
+     "text": "Context has no effect on output quality",
+     "correct": false,
+     "rationale": "Context materially affects how well output fits."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: relevant context yields output that fits the codebase.",
+   "outcome_refs": [
+    "MST-0556-D01.02"
+   ],
+   "domain_ref": "Cursor for .NET backends",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

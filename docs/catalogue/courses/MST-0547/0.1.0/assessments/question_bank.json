@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0547",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0547-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A prompt places a long, unchanging instruction block AFTER the user's changing question. Why does this undermine prompt caching?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Caching reuses a stable prefix; putting changing content first prevents the stable block from being cached",
+     "correct": true,
+     "rationale": "Correct: a reusable prefix must come before variable content."
+    },
+    {
+     "key": "B",
+     "text": "Caching only works on output tokens",
+     "correct": false,
+     "rationale": "Caching concerns the input prefix, not output."
+    },
+    {
+     "key": "C",
+     "text": "Instruction blocks can never be cached",
+     "correct": false,
+     "rationale": "Stable instruction blocks are exactly what caching targets."
+    },
+    {
+     "key": "D",
+     "text": "User questions cannot follow instructions",
+     "correct": false,
+     "rationale": "Ordering is a design choice, not a restriction."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a reusable prefix must come before variable content.",
+   "outcome_refs": [
+    "MST-0547-D02.01"
+   ],
+   "domain_ref": "Structuring cacheable prompts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0547-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions genuinely reduce token cost? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Trim irrelevant context that the task does not need",
+     "correct": true,
+     "rationale": "Correct: fewer input tokens cost less."
+    },
+    {
+     "key": "B",
+     "text": "Constrain the output length when a short answer suffices",
+     "correct": true,
+     "rationale": "Correct: shorter outputs reduce output-token cost."
+    },
+    {
+     "key": "C",
+     "text": "Add filler context to 'help' the model",
+     "correct": false,
+     "rationale": "Filler inflates token count and cost."
+    },
+    {
+     "key": "D",
+     "text": "Always select the largest model",
+     "correct": false,
+     "rationale": "Larger models can cost more without improving a simple task."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fewer input tokens cost less.",
+   "outcome_refs": [
+    "MST-0547-D03.01"
+   ],
+   "domain_ref": "Token optimisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0547-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before claiming a caching change saved money, what should you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Measure actual cache hits and cost in usage metrics",
+     "correct": true,
+     "rationale": "Correct: verify real behaviour rather than trusting a projection."
+    },
+    {
+     "key": "B",
+     "text": "Assume the saving because the prompt looks shorter",
+     "correct": false,
+     "rationale": "Appearance is not measurement."
+    },
+    {
+     "key": "C",
+     "text": "Switch off monitoring to reduce overhead",
+     "correct": false,
+     "rationale": "Monitoring is how you verify the saving."
+    },
+    {
+     "key": "D",
+     "text": "Delete the usage logs",
+     "correct": false,
+     "rationale": "Logs are needed to confirm the effect."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: verify real behaviour rather than trusting a projection.",
+   "outcome_refs": [
+    "MST-0547-D05.02"
+   ],
+   "domain_ref": "Monitoring cost",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

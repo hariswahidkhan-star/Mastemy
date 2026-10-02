@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0640",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0640-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A project costs 100,000 today and returns cash in later years. You list the 100,000 as the first value inside the NPV values argument at the current discount rate. Why is the result wrong?",
+   "options": [
+    {
+     "key": "A",
+     "text": "NPV assumes the first value occurs one period in; a period-zero outlay must be added outside NPV",
+     "correct": true,
+     "rationale": "Correct: the NPV investment begins one period before the first listed value, so a today outlay is added to the NPV result, not included in it."
+    },
+    {
+     "key": "B",
+     "text": "NPV cannot accept negative numbers",
+     "correct": false,
+     "rationale": "NPV accepts negative values (payments); that is not the problem."
+    },
+    {
+     "key": "C",
+     "text": "NPV requires exactly 30 cash flows",
+     "correct": false,
+     "rationale": "The 30-argument form is a limit, not a requirement."
+    },
+    {
+     "key": "D",
+     "text": "NPV and IRR cannot be used together",
+     "correct": false,
+     "rationale": "They are directly related; IRR is the rate where NPV equals zero."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the NPV investment begins one period before the first listed value, so a today outlay is added to the NPV result, not included in it.",
+   "outcome_refs": [
+    "MST-0640-D02.01"
+   ],
+   "domain_ref": "Discounting and return metrics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0640-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Excel's IRR are correct per the documentation? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "IRR is the discount rate at which NPV equals zero",
+     "correct": true,
+     "rationale": "Correct: IRR corresponds to a zero net present value."
+    },
+    {
+     "key": "B",
+     "text": "The cash flows must contain at least one negative and one positive value",
+     "correct": true,
+     "rationale": "Correct: IRR needs both a payment and a receipt to converge."
+    },
+    {
+     "key": "C",
+     "text": "IRR guarantees a unique answer for any cash-flow pattern",
+     "correct": false,
+     "rationale": "Sign changes can yield multiple or no solutions; IRR may return #NUM!."
+    },
+    {
+     "key": "D",
+     "text": "IRR ignores the order of the cash flows",
+     "correct": false,
+     "rationale": "IRR uses the order of values to interpret the timing of flows."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: IRR corresponds to a zero net present value.",
+   "outcome_refs": [
+    "MST-0640-D02.02"
+   ],
+   "domain_ref": "Discounting and return metrics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0640-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model treats every sale as cash received in the same month. For a business that collects after 45 days, what is the main consequence?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The cash-flow forecast overstates early cash and hides a funding gap",
+     "correct": true,
+     "rationale": "Correct: ignoring collection lag pulls cash forward and can mask a real shortfall."
+    },
+    {
+     "key": "B",
+     "text": "Reported annual profit becomes negative",
+     "correct": false,
+     "rationale": "Profit recognition is separate from the cash-timing error described."
+    },
+    {
+     "key": "C",
+     "text": "NPV can no longer be calculated",
+     "correct": false,
+     "rationale": "NPV is still computable; it would simply use the wrong timing."
+    },
+    {
+     "key": "D",
+     "text": "Inventory days become irrelevant",
+     "correct": false,
+     "rationale": "Inventory still affects working capital regardless of this error."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ignoring collection lag pulls cash forward and can mask a real shortfall.",
+   "outcome_refs": [
+    "MST-0640-D03.01"
+   ],
+   "domain_ref": "Working capital",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

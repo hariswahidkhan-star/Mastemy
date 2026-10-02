@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1424",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 190,
+  "lesson_check_items": 40,
+  "module_check_items": 40,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 15,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1424-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You use PMT with an annual interest rate of 12% but monthly periods. What correction is needed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Divide the annual rate by 12 so the rate matches the monthly period",
+     "correct": true,
+     "rationale": "Correct: the rate and nper must use the same period length."
+    },
+    {
+     "key": "B",
+     "text": "Multiply the number of periods by the rate",
+     "correct": false,
+     "rationale": "That does not align rate and period units."
+    },
+    {
+     "key": "C",
+     "text": "Convert the payment to text",
+     "correct": false,
+     "rationale": "Formatting is irrelevant to the unit mismatch."
+    },
+    {
+     "key": "D",
+     "text": "Use IRR instead of PMT",
+     "correct": false,
+     "rationale": "IRR solves a different problem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the rate and nper must use the same period length.",
+   "outcome_refs": [
+    "MST-1424-D02.01"
+   ],
+   "domain_ref": "Core financial functions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1424-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices in a basic financial model? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keep assumptions in labelled input cells",
+     "correct": true,
+     "rationale": "Correct: referenced assumptions make the model maintainable."
+    },
+    {
+     "key": "B",
+     "text": "Reference assumptions rather than hard-coding them in formulas",
+     "correct": true,
+     "rationale": "Correct: a single referenced input updates everywhere at once."
+    },
+    {
+     "key": "C",
+     "text": "Sprinkle constants throughout the formulas",
+     "correct": false,
+     "rationale": "Hard-coded constants are hard to change and audit."
+    },
+    {
+     "key": "D",
+     "text": "Avoid ever checking the outputs",
+     "correct": false,
+     "rationale": "Sanity checks are essential before relying on a model."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: referenced assumptions make the model maintainable.",
+   "outcome_refs": [
+    "MST-1424-D01.02"
+   ],
+   "domain_ref": "Model layout basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1424-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You change a growth assumption but outputs do not move. What has most likely gone wrong?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An output formula has a hard-coded value instead of referencing the assumption",
+     "correct": true,
+     "rationale": "Correct: a broken link stops the change flowing through."
+    },
+    {
+     "key": "B",
+     "text": "Excel caps growth assumptions",
+     "correct": false,
+     "rationale": "There is no such cap."
+    },
+    {
+     "key": "C",
+     "text": "PMT disables recalculation",
+     "correct": false,
+     "rationale": "PMT does not affect recalculation of other cells."
+    },
+    {
+     "key": "D",
+     "text": "The model must be saved to apply changes",
+     "correct": false,
+     "rationale": "Recalculation does not require saving."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a broken link stops the change flowing through.",
+   "outcome_refs": [
+    "MST-1424-D03.01"
+   ],
+   "domain_ref": "Linking assumptions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

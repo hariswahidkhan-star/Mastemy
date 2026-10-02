@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0650",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0650-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You run Remove Duplicates on a Name column, but 'ACME' and 'acme' both remain. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Power Query compares text case-sensitively, so the two values are treated as different",
+     "correct": true,
+     "rationale": "Correct: apply an upper/lower-case transform before removing duplicates when case should not matter."
+    },
+    {
+     "key": "B",
+     "text": "Remove Duplicates only works on numbers",
+     "correct": false,
+     "rationale": "It works on text columns too."
+    },
+    {
+     "key": "C",
+     "text": "The column must be sorted first",
+     "correct": false,
+     "rationale": "Sorting is not required for Remove Duplicates."
+    },
+    {
+     "key": "D",
+     "text": "Duplicates can only be removed across all columns",
+     "correct": false,
+     "rationale": "You can remove duplicates on a subset of columns."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: apply an upper/lower-case transform before removing duplicates when case should not matter.",
+   "outcome_refs": [
+    "MST-0650-D03.01"
+   ],
+   "domain_ref": "De-duplication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0650-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about removing duplicates in Power Query? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "There is no guarantee which duplicate row is kept",
+     "correct": true,
+     "rationale": "Correct: folding and optimisation mean the retained instance is not guaranteed; buffer first for predictability."
+    },
+    {
+     "key": "B",
+     "text": "Table.Buffer can make removal behave predictably",
+     "correct": true,
+     "rationale": "Correct: buffering the table first fixes the row order before de-duplication."
+    },
+    {
+     "key": "C",
+     "text": "Removing duplicates always reduces memory use",
+     "correct": false,
+     "rationale": "If the step cannot fold to the source it can significantly increase memory use."
+    },
+    {
+     "key": "D",
+     "text": "Duplicates can only be evaluated on a single column",
+     "correct": false,
+     "rationale": "Duplication can be tested across any chosen subset of columns."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: folding and optimisation mean the retained instance is not guaranteed; buffer first for predictability.",
+   "outcome_refs": [
+    "MST-0650-D03.02"
+   ],
+   "domain_ref": "De-duplication",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0650-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You fix a few bad values directly in the Power Query data preview instead of adding a transform step. What is the main problem?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The change is not recorded as a step, so the query will not reproduce it on refresh",
+     "correct": true,
+     "rationale": "Correct: reproducibility depends on recorded applied steps, not manual edits."
+    },
+    {
+     "key": "B",
+     "text": "Power Query does not allow editing values",
+     "correct": false,
+     "rationale": "It does, but ad-hoc edits still should be steps."
+    },
+    {
+     "key": "C",
+     "text": "It permanently alters the source file",
+     "correct": false,
+     "rationale": "Power Query does not write back to the source."
+    },
+    {
+     "key": "D",
+     "text": "It converts the query to a static table",
+     "correct": false,
+     "rationale": "The query remains refreshable; the manual fix just is not captured."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reproducibility depends on recorded applied steps, not manual edits.",
+   "outcome_refs": [
+    "MST-0650-D02.02"
+   ],
+   "domain_ref": "Core cleaning transforms",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

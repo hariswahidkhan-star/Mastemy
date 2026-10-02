@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0548",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0548-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Claude returns a confident figure from a supplied report but no citation points to it. How should you treat the figure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As unverified until it is traced to a source passage",
+     "correct": true,
+     "rationale": "Correct: an uncited claim must be verified before reuse."
+    },
+    {
+     "key": "B",
+     "text": "As confirmed because the tone is confident",
+     "correct": false,
+     "rationale": "Confidence is not evidence."
+    },
+    {
+     "key": "C",
+     "text": "As automatically correct because a document was attached",
+     "correct": false,
+     "rationale": "Attachment does not guarantee grounding of a specific claim."
+    },
+    {
+     "key": "D",
+     "text": "As irrelevant and discard it without checking",
+     "correct": false,
+     "rationale": "It may be correct; it must be checked, not dropped blindly."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an uncited claim must be verified before reuse.",
+   "outcome_refs": [
+    "MST-0548-D02.02"
+   ],
+   "domain_ref": "Citations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0548-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps verify a cited answer? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Open the cited span and confirm it supports the claim",
+     "correct": true,
+     "rationale": "Correct: tracing to the source is the core verification step."
+    },
+    {
+     "key": "B",
+     "text": "Flag any claim that lacks a citation",
+     "correct": true,
+     "rationale": "Correct: uncited claims must be surfaced for checking."
+    },
+    {
+     "key": "C",
+     "text": "Assume the citation is correct because it looks like a reference",
+     "correct": false,
+     "rationale": "A reference-shaped citation can still be wrong."
+    },
+    {
+     "key": "D",
+     "text": "Delete the document after reading the answer",
+     "correct": false,
+     "rationale": "The source is needed to verify."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tracing to the source is the core verification step.",
+   "outcome_refs": [
+    "MST-0548-D03.01"
+   ],
+   "domain_ref": "Verifying answers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0548-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a single question about one clause in a 200-page contract, what is the better input strategy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Select the relevant sections rather than pasting the whole corpus indiscriminately",
+     "correct": true,
+     "rationale": "Correct: targeted relevant context improves grounding and cost."
+    },
+    {
+     "key": "B",
+     "text": "Always paste every document you have",
+     "correct": false,
+     "rationale": "Irrelevant bulk context hurts grounding and cost."
+    },
+    {
+     "key": "C",
+     "text": "Ask without any document",
+     "correct": false,
+     "rationale": "Then the answer cannot be grounded in the contract."
+    },
+    {
+     "key": "D",
+     "text": "Summarise from memory instead of the source",
+     "correct": false,
+     "rationale": "That defeats document grounding."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: targeted relevant context improves grounding and cost.",
+   "outcome_refs": [
+    "MST-0548-D04.01"
+   ],
+   "domain_ref": "Long and multi-document inputs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

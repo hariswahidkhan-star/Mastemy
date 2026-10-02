@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0652",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0652-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A slicer on a dashboard filters one chart but leaves two others unchanged. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The slicer is not connected to the other charts via Report Connections",
+     "correct": true,
+     "rationale": "Correct: a slicer filters only the PivotTables/charts it is explicitly connected to."
+    },
+    {
+     "key": "B",
+     "text": "Slicers can only ever control one visual",
+     "correct": false,
+     "rationale": "One slicer can control many connected visuals."
+    },
+    {
+     "key": "C",
+     "text": "The workbook must be saved to SharePoint first",
+     "correct": false,
+     "rationale": "Connection is unrelated to where the file is stored."
+    },
+    {
+     "key": "D",
+     "text": "PivotCharts cannot be filtered",
+     "correct": false,
+     "rationale": "PivotCharts are filterable, including by slicers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a slicer filters only the PivotTables/charts it is explicitly connected to.",
+   "outcome_refs": [
+    "MST-0652-D03.02"
+   ],
+   "domain_ref": "Interactivity with slicers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0652-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make an Excel dashboard refresh reliably? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Base the visuals on a flat Excel Table or data model",
+     "correct": true,
+     "rationale": "Correct: a tidy structured source lets PivotTables and charts refresh cleanly."
+    },
+    {
+     "key": "B",
+     "text": "Use PivotCharts linked to the data rather than pasted static values",
+     "correct": true,
+     "rationale": "Correct: linked PivotCharts update automatically when data changes."
+    },
+    {
+     "key": "C",
+     "text": "Type the latest totals into the chart labels each month",
+     "correct": false,
+     "rationale": "Manual labels defeat automatic refresh."
+    },
+    {
+     "key": "D",
+     "text": "Avoid naming the PivotTables",
+     "correct": false,
+     "rationale": "Naming has no bearing on refresh reliability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a tidy structured source lets PivotTables and charts refresh cleanly.",
+   "outcome_refs": [
+    "MST-0652-D02.02"
+   ],
+   "domain_ref": "PivotTables and PivotCharts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0652-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a dashboard be built on a flat table rather than a formatted report layout?",
+   "options": [
+    {
+     "key": "A",
+     "text": "PivotTables and charts need structured, table-based data to analyse",
+     "correct": true,
+     "rationale": "Correct: a flat table is the structured foundation PivotTables require."
+    },
+    {
+     "key": "B",
+     "text": "Formatted reports cannot be printed",
+     "correct": false,
+     "rationale": "Printing is unrelated to the structure requirement."
+    },
+    {
+     "key": "C",
+     "text": "Flat tables disable slicers",
+     "correct": false,
+     "rationale": "Slicers work with tables and PivotTables."
+    },
+    {
+     "key": "D",
+     "text": "Excel forbids colour in dashboards",
+     "correct": false,
+     "rationale": "Formatting choices are not the issue."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a flat table is the structured foundation PivotTables require.",
+   "outcome_refs": [
+    "MST-0652-D01.01"
+   ],
+   "domain_ref": "Data foundation for dashboards",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

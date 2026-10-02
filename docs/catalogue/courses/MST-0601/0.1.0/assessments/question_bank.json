@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0601",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0601-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A single vague query returns weak results for a multi-part question. What does agentic retrieval do differently?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It decomposes the question into focused sub-queries and can use prior results to refine",
+     "correct": true,
+     "rationale": "Correct: planning and sub-query decomposition target each part of the question."
+    },
+    {
+     "key": "B",
+     "text": "It simply returns more chunks for the same query",
+     "correct": false,
+     "rationale": "Returning more chunks is not query planning."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any retrieval",
+     "correct": false,
+     "rationale": "Agentic RAG still retrieves; it plans the retrieval."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees a correct answer",
+     "correct": false,
+     "rationale": "It improves targeting but does not guarantee correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: planning and sub-query decomposition target each part of the question.",
+   "outcome_refs": [
+    "MST-0601-D01.02"
+   ],
+   "domain_ref": "From single-shot to agentic RAG",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0601-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls keep a multi-step research agent safe to run? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A step or depth budget",
+     "correct": true,
+     "rationale": "Correct: a budget bounds cost and prevents runaway execution."
+    },
+    {
+     "key": "B",
+     "text": "A termination condition that stops when the question is answered",
+     "correct": true,
+     "rationale": "Correct: a clear stop condition avoids endless loops."
+    },
+    {
+     "key": "C",
+     "text": "No limit on the number of retrieval steps",
+     "correct": false,
+     "rationale": "Unbounded steps risk infinite loops and cost blowups."
+    },
+    {
+     "key": "D",
+     "text": "Hiding intermediate steps from evaluation",
+     "correct": false,
+     "rationale": "Intermediate steps must be inspectable to debug the workflow."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a budget bounds cost and prevents runaway execution.",
+   "outcome_refs": [
+    "MST-0601-D04.01"
+   ],
+   "domain_ref": "Controlling cost and loops",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0601-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When combining evidence across multiple retrieval steps, why track which step each piece of evidence came from?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So the final answer can be grounded and the trace reviewed for errors",
+     "correct": true,
+     "rationale": "Correct: provenance across steps supports grounding and debugging."
+    },
+    {
+     "key": "B",
+     "text": "Because evidence from later steps is always better",
+     "correct": false,
+     "rationale": "Later steps are not inherently better."
+    },
+    {
+     "key": "C",
+     "text": "To make the workflow run faster",
+     "correct": false,
+     "rationale": "Tracking provenance is about grounding, not speed."
+    },
+    {
+     "key": "D",
+     "text": "It is unnecessary once an answer is produced",
+     "correct": false,
+     "rationale": "Provenance is exactly what lets you verify the answer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: provenance across steps supports grounding and debugging.",
+   "outcome_refs": [
+    "MST-0601-D03.02"
+   ],
+   "domain_ref": "Orchestration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

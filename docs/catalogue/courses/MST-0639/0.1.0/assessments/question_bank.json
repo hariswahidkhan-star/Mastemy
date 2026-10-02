@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0639",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 340,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0639-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You build a budget where each formula contains the growth rate typed directly inside it. A reviewer asks you to change the growth assumption everywhere at once. Why is this hard?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The growth rate is hard-coded into many formulas instead of referenced from one assumptions cell",
+     "correct": true,
+     "rationale": "Correct: a single referenced assumption can be changed once; hard-coded values must each be edited."
+    },
+    {
+     "key": "B",
+     "text": "Excel cannot store percentages",
+     "correct": false,
+     "rationale": "Excel stores percentages natively; that is not the issue."
+    },
+    {
+     "key": "C",
+     "text": "Budgets may not contain growth rates",
+     "correct": false,
+     "rationale": "Growth rates are normal budget inputs; nothing forbids them."
+    },
+    {
+     "key": "D",
+     "text": "Formulas cannot reference other cells",
+     "correct": false,
+     "rationale": "Referencing other cells is a core Excel capability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a single referenced assumption can be changed once; hard-coded values must each be edited.",
+   "outcome_refs": [
+    "MST-0639-D01.02"
+   ],
+   "domain_ref": "Budget structure and drivers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0639-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO conditions must the historical timeline meet for Excel's FORECAST.ETS to work as documented? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The timeline must have a consistent step between points",
+     "correct": true,
+     "rationale": "Correct: FORECAST.ETS requires a constant step and errors if it cannot find one."
+    },
+    {
+     "key": "B",
+     "text": "The timeline must contain duplicate timestamps",
+     "correct": false,
+     "rationale": "Duplicate timeline values cause an error unless aggregation resolves them; duplicates are not required."
+    },
+    {
+     "key": "C",
+     "text": "Missing data must stay under about 30% of points",
+     "correct": true,
+     "rationale": "Correct: FORECAST.ETS tolerates up to roughly 30% missing data and errors beyond that."
+    },
+    {
+     "key": "D",
+     "text": "The target date must fall before the end of history",
+     "correct": false,
+     "rationale": "The target date must be after the historical timeline, not before it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: FORECAST.ETS requires a constant step and errors if it cannot find one.",
+   "outcome_refs": [
+    "MST-0639-D02.02"
+   ],
+   "domain_ref": "Forecasting methods",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0639-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A revenue line shows actual below budget. On a cost line the same month shows actual below budget. How should the two be signed in a variance report?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Revenue below budget is adverse; cost below budget is favourable",
+     "correct": true,
+     "rationale": "Correct: a shortfall in revenue hurts the result, while spending less than budgeted helps it."
+    },
+    {
+     "key": "B",
+     "text": "Both are adverse because both are negative",
+     "correct": false,
+     "rationale": "Signing by raw negativity ignores whether the line is revenue or cost."
+    },
+    {
+     "key": "C",
+     "text": "Both are favourable because actuals are lower",
+     "correct": false,
+     "rationale": "Lower revenue is not favourable."
+    },
+    {
+     "key": "D",
+     "text": "Neither can be classified without a forecast",
+     "correct": false,
+     "rationale": "Budget-vs-actual signing needs only the budget and the actual."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a shortfall in revenue hurts the result, while spending less than budgeted helps it.",
+   "outcome_refs": [
+    "MST-0639-D03.01"
+   ],
+   "domain_ref": "Variance analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
