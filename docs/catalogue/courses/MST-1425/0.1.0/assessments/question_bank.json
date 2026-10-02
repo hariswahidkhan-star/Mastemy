@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1425",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1425-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which element begins a DAX measure formula and indicates it will return a result when calculated?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The equals sign operator (=)",
+     "correct": true,
+     "rationale": "Correct: the equals sign begins the formula and returns a result when calculated."
+    },
+    {
+     "key": "B",
+     "text": "A semicolon (;)",
+     "correct": false,
+     "rationale": "A semicolon does not begin a DAX formula."
+    },
+    {
+     "key": "C",
+     "text": "The @ symbol",
+     "correct": false,
+     "rationale": "The @ symbol is not DAX formula syntax."
+    },
+    {
+     "key": "D",
+     "text": "The # symbol",
+     "correct": false,
+     "rationale": "The # symbol is not used to begin a DAX measure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the equals sign begins the formula and returns a result when calculated.",
+   "outcome_refs": [
+    "MST-1425-D01.01"
+   ],
+   "domain_ref": "DAX syntax and context",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1425-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about DAX functions are true? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A DAX function always references a complete column or table",
+     "correct": true,
+     "rationale": "Correct: DAX functions reference whole columns or tables, with filters as needed."
+    },
+    {
+     "key": "B",
+     "text": "DAX includes time intelligence functions for date-based calculations",
+     "correct": true,
+     "rationale": "Correct: DAX provides time intelligence functions for comparisons across periods."
+    },
+    {
+     "key": "C",
+     "text": "DAX functions operate only on a single selected cell",
+     "correct": false,
+     "rationale": "Incorrect: DAX works over columns and tables, not single cells."
+    },
+    {
+     "key": "D",
+     "text": "DAX cannot aggregate values",
+     "correct": false,
+     "rationale": "Incorrect: DAX includes aggregation functions such as SUM."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: DAX functions reference whole columns or tables, with filters as needed.",
+   "outcome_refs": [
+    "MST-1425-D02.01"
+   ],
+   "domain_ref": "DAX functions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1425-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which DAX function modifies the filter context of a calculation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "CALCULATE",
+     "correct": true,
+     "rationale": "Correct: CALCULATE evaluates an expression in a modified filter context."
+    },
+    {
+     "key": "B",
+     "text": "SUM",
+     "correct": false,
+     "rationale": "SUM aggregates a column but does not modify filter context on its own."
+    },
+    {
+     "key": "C",
+     "text": "LEN",
+     "correct": false,
+     "rationale": "LEN returns string length and is unrelated to filter context."
+    },
+    {
+     "key": "D",
+     "text": "TODAY",
+     "correct": false,
+     "rationale": "TODAY returns the current date and does not modify filter context."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: CALCULATE evaluates an expression in a modified filter context.",
+   "outcome_refs": [
+    "MST-1425-D02.01"
+   ],
+   "domain_ref": "DAX functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

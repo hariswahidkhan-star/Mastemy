@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1439",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1439-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement is a requirement of a primary key in Access?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It must be unique, cannot be null, and there is one per table",
+     "correct": true,
+     "rationale": "Correct: a primary key is unique, non-null, and singular per table."
+    },
+    {
+     "key": "B",
+     "text": "It can contain null values",
+     "correct": false,
+     "rationale": "Incorrect: a primary key cannot be null."
+    },
+    {
+     "key": "C",
+     "text": "There can be many primary keys per table",
+     "correct": false,
+     "rationale": "Incorrect: only one primary key is defined per table."
+    },
+    {
+     "key": "D",
+     "text": "It must always be a text field",
+     "correct": false,
+     "rationale": "Incorrect: a primary key is not required to be text."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a primary key is unique, non-null, and singular per table.",
+   "outcome_refs": [
+    "MST-1439-D01.01"
+   ],
+   "domain_ref": "Tables and database design",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1439-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are Microsoft Access database objects? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tables",
+     "correct": true,
+     "rationale": "Correct: tables store the data in an Access database."
+    },
+    {
+     "key": "B",
+     "text": "Queries",
+     "correct": true,
+     "rationale": "Correct: queries retrieve and combine data."
+    },
+    {
+     "key": "C",
+     "text": "Pivot shaders",
+     "correct": false,
+     "rationale": "\"Pivot shaders\" are not Access objects."
+    },
+    {
+     "key": "D",
+     "text": "Kusto clusters",
+     "correct": false,
+     "rationale": "Kusto clusters belong to Azure Data Explorer, not Access."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tables store the data in an Access database.",
+   "outcome_refs": [
+    "MST-1439-D01.01"
+   ],
+   "domain_ref": "Tables and database design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1439-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A field in one table that references the primary key of another table is called a?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Foreign key",
+     "correct": true,
+     "rationale": "Correct: a foreign key references the primary key of another table."
+    },
+    {
+     "key": "B",
+     "text": "Composite index",
+     "correct": false,
+     "rationale": "A composite index spans multiple columns; it is not this reference."
+    },
+    {
+     "key": "C",
+     "text": "Macro",
+     "correct": false,
+     "rationale": "A macro automates actions; it is not a key."
+    },
+    {
+     "key": "D",
+     "text": "Module",
+     "correct": false,
+     "rationale": "A module holds VBA code; it is not a key."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a foreign key references the primary key of another table.",
+   "outcome_refs": [
+    "MST-1439-D02.01"
+   ],
+   "domain_ref": "Relationships and queries",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

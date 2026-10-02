@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1433",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1433-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After a failure in Windows Setup, which log file should you review first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Setuperr.log",
+     "correct": true,
+     "rationale": "Correct: review Setuperr.log first, then Setupact.log, then others as needed."
+    },
+    {
+     "key": "B",
+     "text": "Setupact.log",
+     "correct": false,
+     "rationale": "Setupact.log is reviewed after Setuperr.log."
+    },
+    {
+     "key": "C",
+     "text": "smsts.log",
+     "correct": false,
+     "rationale": "smsts.log applies to task-sequence deployments, not the first review step here."
+    },
+    {
+     "key": "D",
+     "text": "System event log only",
+     "correct": false,
+     "rationale": "The guidance is to start with the Setup error log."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: review Setuperr.log first, then Setupact.log, then others as needed.",
+   "outcome_refs": [
+    "MST-1433-D01.01"
+   ],
+   "domain_ref": "Windows 11 setup and deployment",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1433-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO tools help diagnose Windows deployment problems? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "SetupDiag",
+     "correct": true,
+     "rationale": "Correct: SetupDiag parses Setup logs to find the root cause of an upgrade failure."
+    },
+    {
+     "key": "B",
+     "text": "Windows Setup log files",
+     "correct": true,
+     "rationale": "Correct: Setup log files are key to identifying the point of failure."
+    },
+    {
+     "key": "C",
+     "text": "Disk Defragmenter",
+     "correct": false,
+     "rationale": "Defragmenting does not diagnose deployment failures."
+    },
+    {
+     "key": "D",
+     "text": "Snipping Tool",
+     "correct": false,
+     "rationale": "The Snipping Tool is for screenshots, not diagnostics."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: SetupDiag parses Setup logs to find the root cause of an upgrade failure.",
+   "outcome_refs": [
+    "MST-1433-D01.01"
+   ],
+   "domain_ref": "Windows 11 setup and deployment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1433-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An app is being blocked from running on Windows 11 SE. Which logs should you check for blocked executables?",
+   "options": [
+    {
+     "key": "A",
+     "text": "AppLocker and CodeIntegrity logs in Event Viewer",
+     "correct": true,
+     "rationale": "Correct: these logs show whether executables related to the app are blocked."
+    },
+    {
+     "key": "B",
+     "text": "DNS server logs",
+     "correct": false,
+     "rationale": "DNS logs are unrelated to blocked executables."
+    },
+    {
+     "key": "C",
+     "text": "IIS access logs",
+     "correct": false,
+     "rationale": "IIS logs track web requests, not app blocking."
+    },
+    {
+     "key": "D",
+     "text": "Firewall rules only",
+     "correct": false,
+     "rationale": "Firewall rules control network traffic, not executable blocking."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: these logs show whether executables related to the app are blocked.",
+   "outcome_refs": [
+    "MST-1433-D03.01"
+   ],
+   "domain_ref": "Support and troubleshooting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

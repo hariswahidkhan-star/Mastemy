@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1429",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1429-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does Intune install on a device during enrollment to enforce organizational policies?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An MDM (Mobile Device Management) certificate",
+     "correct": true,
+     "rationale": "Correct: enrollment installs an MDM certificate that lets Intune enforce policy."
+    },
+    {
+     "key": "B",
+     "text": "A VPN gateway",
+     "correct": false,
+     "rationale": "A VPN gateway is not installed during Intune enrollment."
+    },
+    {
+     "key": "C",
+     "text": "A local administrator account",
+     "correct": false,
+     "rationale": "Enrollment does not create a local admin account."
+    },
+    {
+     "key": "D",
+     "text": "A BitLocker recovery key only",
+     "correct": false,
+     "rationale": "A recovery key is not what enables policy enforcement at enrollment."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: enrollment installs an MDM certificate that lets Intune enforce policy.",
+   "outcome_refs": [
+    "MST-1429-D01.01"
+   ],
+   "domain_ref": "Enrollment and MDM",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1429-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Intune device compliance policies are true? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "They mark a device as compliant or noncompliant",
+     "correct": true,
+     "rationale": "Correct: compliance evaluation marks devices compliant or noncompliant."
+    },
+    {
+     "key": "B",
+     "text": "Conditional Access can use compliance status to allow or block access",
+     "correct": true,
+     "rationale": "Correct: Conditional Access can require a device be marked compliant."
+    },
+    {
+     "key": "C",
+     "text": "They physically prevent an operating system from booting",
+     "correct": false,
+     "rationale": "Incorrect: compliance policies do not block the OS from booting."
+    },
+    {
+     "key": "D",
+     "text": "They remove the need to enroll devices",
+     "correct": false,
+     "rationale": "Incorrect: compliance status requires the device to be enrolled."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: compliance evaluation marks devices compliant or noncompliant.",
+   "outcome_refs": [
+    "MST-1429-D02.01"
+   ],
+   "domain_ref": "Compliance and configuration policies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1429-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In compliance policy settings, which option helps ensure only confirmed-compliant devices access resources?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Mark devices with no compliance policy assigned as Not compliant",
+     "correct": true,
+     "rationale": "Correct: this setting treats unassigned devices as noncompliant for Conditional Access."
+    },
+    {
+     "key": "B",
+     "text": "Set the validity period to 120 days",
+     "correct": false,
+     "rationale": "Validity period alone does not ensure only compliant devices get access."
+    },
+    {
+     "key": "C",
+     "text": "Disable Conditional Access",
+     "correct": false,
+     "rationale": "Disabling Conditional Access would remove the access control."
+    },
+    {
+     "key": "D",
+     "text": "Mark all devices as compliant by default",
+     "correct": false,
+     "rationale": "This weakens security rather than ensuring compliance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: this setting treats unassigned devices as noncompliant for Conditional Access.",
+   "outcome_refs": [
+    "MST-1429-D03.01"
+   ],
+   "domain_ref": "Conditional Access and monitoring",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

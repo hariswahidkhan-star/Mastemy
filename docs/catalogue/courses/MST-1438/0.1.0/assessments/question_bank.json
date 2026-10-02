@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1438",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1438-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement about Kusto Query Language (KQL) is true?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is a read-only language that processes data and returns results",
+     "correct": true,
+     "rationale": "Correct: KQL is a read-only request that returns results."
+    },
+    {
+     "key": "B",
+     "text": "It modifies rows in place in the source table",
+     "correct": false,
+     "rationale": "Incorrect: KQL does not modify the underlying data."
+    },
+    {
+     "key": "C",
+     "text": "It is identical to Transact-SQL",
+     "correct": false,
+     "rationale": "Incorrect: KQL differs from T-SQL."
+    },
+    {
+     "key": "D",
+     "text": "It cannot aggregate data",
+     "correct": false,
+     "rationale": "Incorrect: KQL aggregates with summarize and related operators."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: KQL is a read-only request that returns results.",
+   "outcome_refs": [
+    "MST-1438-D01.01"
+   ],
+   "domain_ref": "KQL basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1438-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are recommended KQL best practices? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Select the table with the fewest rows first in a join",
+     "correct": true,
+     "rationale": "Correct: placing the smaller table first improves join performance."
+    },
+    {
+     "key": "B",
+     "text": "Use limit or count at the end of new queries",
+     "correct": true,
+     "rationale": "Correct: this avoids returning unexpectedly large result sets."
+    },
+    {
+     "key": "C",
+     "text": "Convert billions of records before filtering",
+     "correct": false,
+     "rationale": "Incorrect: reduce data before conversion to avoid heavy processing."
+    },
+    {
+     "key": "D",
+     "text": "Always use tolower() for case-insensitive comparisons",
+     "correct": false,
+     "rationale": "Incorrect: prefer the =~ operator over tolower() for comparisons."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: placing the smaller table first improves join performance.",
+   "outcome_refs": [
+    "MST-1438-D03.01"
+   ],
+   "domain_ref": "Combining and shaping data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1438-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which KQL operator merges the rows of two tables by matching values of specified columns?",
+   "options": [
+    {
+     "key": "A",
+     "text": "join",
+     "correct": true,
+     "rationale": "Correct: join merges rows of two tables on matching column values."
+    },
+    {
+     "key": "B",
+     "text": "summarize",
+     "correct": false,
+     "rationale": "summarize aggregates one table; it does not merge two."
+    },
+    {
+     "key": "C",
+     "text": "project",
+     "correct": false,
+     "rationale": "project selects columns within one table."
+    },
+    {
+     "key": "D",
+     "text": "where",
+     "correct": false,
+     "rationale": "where filters rows within one table."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: join merges rows of two tables on matching column values.",
+   "outcome_refs": [
+    "MST-1438-D03.01"
+   ],
+   "domain_ref": "Combining and shaping data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

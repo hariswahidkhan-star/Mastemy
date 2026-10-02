@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1435",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1435-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Microsoft Defender XDR, what is an incident?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A group of related alerts that form a single attack story",
+     "correct": true,
+     "rationale": "Correct: correlation engines aggregate related alerts into one incident."
+    },
+    {
+     "key": "B",
+     "text": "A single raw log line",
+     "correct": false,
+     "rationale": "A raw event is not an incident on its own."
+    },
+    {
+     "key": "C",
+     "text": "A firewall rule",
+     "correct": false,
+     "rationale": "A firewall rule is unrelated to an incident."
+    },
+    {
+     "key": "D",
+     "text": "A device compliance policy",
+     "correct": false,
+     "rationale": "A compliance policy is not an incident."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: correlation engines aggregate related alerts into one incident.",
+   "outcome_refs": [
+    "MST-1435-D01.01"
+   ],
+   "domain_ref": "Incidents and alerts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1435-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are capabilities of Microsoft Defender XDR? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automated investigation and response (AIR)",
+     "correct": true,
+     "rationale": "Correct: AIR investigates and can remediate threats automatically."
+    },
+    {
+     "key": "B",
+     "text": "Advanced hunting using Kusto Query Language (KQL)",
+     "correct": true,
+     "rationale": "Correct: advanced hunting uses KQL to query collected data."
+    },
+    {
+     "key": "C",
+     "text": "Automatically formatting hard drives on every alert",
+     "correct": false,
+     "rationale": "Incorrect: Defender XDR does not wipe drives on every alert."
+    },
+    {
+     "key": "D",
+     "text": "Issuing TLS certificates",
+     "correct": false,
+     "rationale": "Incorrect: certificate issuance is not a Defender XDR function."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: AIR investigates and can remediate threats automatically.",
+   "outcome_refs": [
+    "MST-1435-D02.01"
+   ],
+   "domain_ref": "Investigation and response",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1435-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which language is used to write advanced hunting queries in Microsoft Defender?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Kusto Query Language (KQL)",
+     "correct": true,
+     "rationale": "Correct: advanced hunting queries are written in KQL."
+    },
+    {
+     "key": "B",
+     "text": "Transact-SQL (T-SQL)",
+     "correct": false,
+     "rationale": "T-SQL is used by SQL Server, not advanced hunting."
+    },
+    {
+     "key": "C",
+     "text": "DAX",
+     "correct": false,
+     "rationale": "DAX is a Power BI formula language, not for hunting."
+    },
+    {
+     "key": "D",
+     "text": "Bicep",
+     "correct": false,
+     "rationale": "Bicep is infrastructure-as-code, not a query language."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: advanced hunting queries are written in KQL.",
+   "outcome_refs": [
+    "MST-1435-D03.01"
+   ],
+   "domain_ref": "Advanced hunting and workloads",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

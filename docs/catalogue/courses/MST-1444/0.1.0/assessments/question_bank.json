@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1444",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1444-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Azure DevOps, which syntax in a commit message links it to an Azure Boards work item?",
+   "options": [
+    {
+     "key": "A",
+     "text": "AB#{work item ID}",
+     "correct": true,
+     "rationale": "Correct: mentioning AB#{id} links the commit to that work item."
+    },
+    {
+     "key": "B",
+     "text": "@{id}",
+     "correct": false,
+     "rationale": "Incorrect: @ is used for mentions, not work-item linking."
+    },
+    {
+     "key": "C",
+     "text": "ref:{id}",
+     "correct": false,
+     "rationale": "Incorrect: ref: is not the Azure Boards linking syntax."
+    },
+    {
+     "key": "D",
+     "text": "//{id}",
+     "correct": false,
+     "rationale": "Incorrect: // is a comment marker, not a linking syntax."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: mentioning AB#{id} links the commit to that work item.",
+   "outcome_refs": [
+    "MST-1444-D02.01"
+   ],
+   "domain_ref": "Azure Repos and Git",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1444-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Azure Boards and Repos integration are true? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "You can create a Git branch directly from a work item",
+     "correct": true,
+     "rationale": "Correct: a branch can be created from the Development control of a work item."
+    },
+    {
+     "key": "B",
+     "text": "A branch policy can require linked work items on a pull request",
+     "correct": true,
+     "rationale": "Correct: the Check for linked work items policy enforces this."
+    },
+    {
+     "key": "C",
+     "text": "Azure Repos cannot use Git",
+     "correct": false,
+     "rationale": "Incorrect: Azure Repos supports Git repositories."
+    },
+    {
+     "key": "D",
+     "text": "Work items cannot be linked to pull requests",
+     "correct": false,
+     "rationale": "Incorrect: work items can link to branches, commits, and pull requests."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a branch can be created from the Development control of a work item.",
+   "outcome_refs": [
+    "MST-1444-D03.01"
+   ],
+   "domain_ref": "Traceability and policies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1444-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a pull request enable in Azure Repos?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Merging changes and starting a code review",
+     "correct": true,
+     "rationale": "Correct: a pull request merges changes and starts a code review."
+    },
+    {
+     "key": "B",
+     "text": "Formatting a disk",
+     "correct": false,
+     "rationale": "Incorrect: that is unrelated to pull requests."
+    },
+    {
+     "key": "C",
+     "text": "Creating a virtual machine",
+     "correct": false,
+     "rationale": "Incorrect: PRs do not create VMs."
+    },
+    {
+     "key": "D",
+     "text": "Issuing certificates",
+     "correct": false,
+     "rationale": "Incorrect: PRs do not issue certificates."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a pull request merges changes and starts a code review.",
+   "outcome_refs": [
+    "MST-1444-D02.01"
+   ],
+   "domain_ref": "Azure Repos and Git",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}

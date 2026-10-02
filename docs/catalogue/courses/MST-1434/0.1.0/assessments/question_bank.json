@@ -1,0 +1,167 @@
+{
+ "course_id": "MST-1434",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1434-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which part of AD DS defines the classes of objects and attributes contained in the directory?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The schema",
+     "correct": true,
+     "rationale": "Correct: the schema defines object classes, attributes, and their constraints."
+    },
+    {
+     "key": "B",
+     "text": "The global catalog",
+     "correct": false,
+     "rationale": "The global catalog holds searchable info about every object, not the definitions."
+    },
+    {
+     "key": "C",
+     "text": "The PDC emulator",
+     "correct": false,
+     "rationale": "The PDC emulator is an FSMO role, not the schema."
+    },
+    {
+     "key": "D",
+     "text": "A Group Policy Object",
+     "correct": false,
+     "rationale": "A GPO applies settings; it does not define the directory schema."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the schema defines object classes, attributes, and their constraints.",
+   "outcome_refs": [
+    "MST-1434-D02.01"
+   ],
+   "domain_ref": "Active Directory Domain Services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1434-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are FSMO roles in Active Directory? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Schema master",
+     "correct": true,
+     "rationale": "Correct: the schema master is one of the five FSMO roles."
+    },
+    {
+     "key": "B",
+     "text": "RID master",
+     "correct": true,
+     "rationale": "Correct: the RID master is one of the five FSMO roles."
+    },
+    {
+     "key": "C",
+     "text": "Backup operator",
+     "correct": false,
+     "rationale": "Backup operator is a built-in group, not an FSMO role."
+    },
+    {
+     "key": "D",
+     "text": "DHCP relay agent",
+     "correct": false,
+     "rationale": "A DHCP relay agent is a networking feature, not an FSMO role."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the schema master is one of the five FSMO roles.",
+   "outcome_refs": [
+    "MST-1434-D03.01"
+   ],
+   "domain_ref": "Administration and management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1434-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which wizard delegates specific administrative tasks over an OU without granting Domain Admins membership?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Delegation of Control Wizard",
+     "correct": true,
+     "rationale": "Correct: this wizard assigns a scoped set of tasks over an OU."
+    },
+    {
+     "key": "B",
+     "text": "The Add Roles and Features Wizard",
+     "correct": false,
+     "rationale": "That wizard installs roles, it does not delegate permissions."
+    },
+    {
+     "key": "C",
+     "text": "ADSI Edit",
+     "correct": false,
+     "rationale": "ADSI Edit is a low-level editor, not the delegation wizard."
+    },
+    {
+     "key": "D",
+     "text": "The Group Policy Modeling Wizard",
+     "correct": false,
+     "rationale": "That wizard models policy results, not delegation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: this wizard assigns a scoped set of tasks over an OU.",
+   "outcome_refs": [
+    "MST-1434-D02.01"
+   ],
+   "domain_ref": "Active Directory Domain Services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ],
+ "documented_topic_weights": []
+}
