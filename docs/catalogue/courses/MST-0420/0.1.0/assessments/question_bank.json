@@ -1,0 +1,177 @@
+{
+ "course_id": "MST-0420",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "formula": "(lesson_check_items + module_check_items) x 2 alternates + forms x form_length",
+  "lesson_check_items": 72,
+  "module_check_items": 504,
+  "alternates_multiplier": 2,
+  "forms_count": 4,
+  "form_length": 216,
+  "minimum_reviewed_items_planned": 2016,
+  "eighty_twenty_note": "80% instruction / 20% assessment honoured at course level (I+A=T); bank serves lesson checks, module checks, 3 practice forms and a protected final.",
+  "items_drafted": 3,
+  "items_reviewed": 0,
+  "size_band_note": "Planning range per assessment standard (200-600 skills; 600-1500+ large certification). This is a planning guide, not proof of quality."
+ },
+ "mcq_limitation_note": "Knowledge-practice forms use MCQ/MR only; official item formats not reproducible in this format are listed in the exam-version record.",
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0420-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer-mcq",
+   "selection_rule": "Select ONE",
+   "stem": "In Java, the expression (5 / 2) using int operands evaluates to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "2",
+     "correct": true,
+     "rationale": "Correct: integer division truncates toward zero, giving 2."
+    },
+    {
+     "key": "B",
+     "text": "2.5",
+     "correct": false,
+     "rationale": "Integer division does not keep the fractional part."
+    },
+    {
+     "key": "C",
+     "text": "3",
+     "correct": false,
+     "rationale": "Integer division truncates rather than rounding up."
+    },
+    {
+     "key": "D",
+     "text": "A compile error",
+     "correct": false,
+     "rationale": "Integer division is legal and compiles."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: integer division truncates toward zero, giving 2.",
+   "outcome_refs": [
+    "MST-0420-LO1"
+   ],
+   "domain_ref": "Primitive Types and Control Flow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "1 point single key",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0420-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer-mcq",
+   "selection_rule": "Select ONE",
+   "stem": "Two object references a and b refer to the same object. After b.setX(9), calling a.getX() returns 9 because:",
+   "options": [
+    {
+     "key": "A",
+     "text": "a and b are aliases to one object",
+     "correct": true,
+     "rationale": "Correct: assigning a reference copies the reference, not the object, so both point to the same instance."
+    },
+    {
+     "key": "B",
+     "text": "a copied the object's fields when assigned",
+     "correct": false,
+     "rationale": "Reference assignment does not copy the object."
+    },
+    {
+     "key": "C",
+     "text": "getX returns a default value",
+     "correct": false,
+     "rationale": "getX returns the current field value, which was changed."
+    },
+    {
+     "key": "D",
+     "text": "Java passes objects by value of the object",
+     "correct": false,
+     "rationale": "Java copies the reference value, so both still share one object."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: assigning a reference copies the reference, not the object, so both point to the same instance.",
+   "outcome_refs": [
+    "MST-0420-LO2"
+   ],
+   "domain_ref": "Objects, Classes and Methods",
+   "cognitive_level": "analyze",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "1 point single key",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0420-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer-selection",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO will cause an ArrayIndexOutOfBoundsException for an int[] arr of length 5?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Accessing arr[5]",
+     "correct": true,
+     "rationale": "Correct: valid indices are 0..4, so 5 is out of bounds."
+    },
+    {
+     "key": "B",
+     "text": "Accessing arr[-1]",
+     "correct": true,
+     "rationale": "Correct: negative indices are out of bounds."
+    },
+    {
+     "key": "C",
+     "text": "Accessing arr[4]",
+     "correct": false,
+     "rationale": "Index 4 is the last valid index for length 5."
+    },
+    {
+     "key": "D",
+     "text": "Accessing arr[0]",
+     "correct": false,
+     "rationale": "Index 0 is valid."
+    },
+    {
+     "key": "E",
+     "text": "Reading arr.length",
+     "correct": false,
+     "rationale": "Reading length is always legal."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: valid indices are 0..4, so 5 is out of bounds.",
+   "outcome_refs": [
+    "MST-0420-LO3"
+   ],
+   "domain_ref": "Arrays, ArrayLists and 2D Arrays",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

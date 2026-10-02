@@ -1,0 +1,177 @@
+{
+ "course_id": "MST-0373",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "formula": "(lesson_check_items + module_check_items) x 2 alternates + forms x form_length",
+  "lesson_check_items": 72,
+  "module_check_items": 630,
+  "alternates_multiplier": 2,
+  "forms_count": 4,
+  "form_length": 270,
+  "minimum_reviewed_items_planned": 2484,
+  "eighty_twenty_note": "80% instruction / 20% assessment honoured at course level (I+A=T); bank serves lesson checks, module checks, 3 practice forms and a protected final.",
+  "items_drafted": 3,
+  "items_reviewed": 0,
+  "size_band_note": "Planning range per assessment standard (200-600 skills; 600-1500+ large certification). This is a planning guide, not proof of quality."
+ },
+ "mcq_limitation_note": "Knowledge-practice forms use MCQ/MR only; official item formats not reproducible in this format are listed in the exam-version record.",
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0373-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer-mcq",
+   "selection_rule": "Select ONE",
+   "stem": "In a sinusoidal AC circuit, the impedance of an ideal inductor:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Increases as frequency increases",
+     "correct": true,
+     "rationale": "Correct: inductive reactance X_L = 2*pi*f*L rises with frequency."
+    },
+    {
+     "key": "B",
+     "text": "Decreases as frequency increases",
+     "correct": false,
+     "rationale": "That describes a capacitor, not an inductor."
+    },
+    {
+     "key": "C",
+     "text": "Is independent of frequency",
+     "correct": false,
+     "rationale": "Inductive reactance is frequency dependent."
+    },
+    {
+     "key": "D",
+     "text": "Is always zero",
+     "correct": false,
+     "rationale": "An ideal inductor has non-zero reactance at non-zero frequency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: inductive reactance X_L = 2*pi*f*L rises with frequency.",
+   "outcome_refs": [
+    "MST-0373-LO2"
+   ],
+   "domain_ref": "Circuits and Electronics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "1 point single key",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0373-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer-mcq",
+   "selection_rule": "Select ONE",
+   "stem": "A system's output at any time depends only on present and past inputs, and a time-shifted input produces the same output shifted in time. The system is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Causal and time-invariant",
+     "correct": true,
+     "rationale": "Correct: dependence on present/past inputs is causality; shift-invariance is time-invariance."
+    },
+    {
+     "key": "B",
+     "text": "Non-causal",
+     "correct": false,
+     "rationale": "It does not depend on future inputs, so it is causal."
+    },
+    {
+     "key": "C",
+     "text": "Time-varying",
+     "correct": false,
+     "rationale": "A shifted input giving a shifted output indicates time-invariance."
+    },
+    {
+     "key": "D",
+     "text": "Necessarily nonlinear",
+     "correct": false,
+     "rationale": "The description says nothing that forces nonlinearity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: dependence on present/past inputs is causality; shift-invariance is time-invariance.",
+   "outcome_refs": [
+    "MST-0373-LO3"
+   ],
+   "domain_ref": "Signals, Systems and Communications",
+   "cognitive_level": "analyze",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "1 point single key",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0373-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer-selection",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid simplifications in Boolean algebra?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A + A = A (idempotent law)",
+     "correct": true,
+     "rationale": "Correct: the idempotent law holds for OR."
+    },
+    {
+     "key": "B",
+     "text": "A * 1 = A (identity law)",
+     "correct": true,
+     "rationale": "Correct: ANDing with 1 leaves A unchanged."
+    },
+    {
+     "key": "C",
+     "text": "A + 1 = A",
+     "correct": false,
+     "rationale": "A + 1 equals 1, not A."
+    },
+    {
+     "key": "D",
+     "text": "A * 0 = A",
+     "correct": false,
+     "rationale": "A AND 0 equals 0, not A."
+    },
+    {
+     "key": "E",
+     "text": "A + A' = 0",
+     "correct": false,
+     "rationale": "A OR NOT-A equals 1, not 0."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the idempotent law holds for OR.",
+   "outcome_refs": [
+    "MST-0373-LO4"
+   ],
+   "domain_ref": "Digital Systems and Computing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
