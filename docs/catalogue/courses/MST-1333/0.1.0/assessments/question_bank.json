@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1333",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1333-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What are the two terms in the VAE training objective (ELBO)?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A reconstruction term and a KL-divergence regularisation term",
+     "correct": true,
+     "rationale": "Correct: the ELBO balances reconstruction against a latent prior."
+    },
+    {
+     "key": "B",
+     "text": "A generator loss and a discriminator loss",
+     "correct": false,
+     "rationale": "That describes a GAN."
+    },
+    {
+     "key": "C",
+     "text": "A noise-adding and a denoising term",
+     "correct": false,
+     "rationale": "That describes diffusion."
+    },
+    {
+     "key": "D",
+     "text": "Only a classification cross-entropy term",
+     "correct": false,
+     "rationale": "A VAE is not a classifier."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the ELBO balances reconstruction against a latent prior.",
+   "outcome_refs": [
+    "MST-1333-D02.01"
+   ],
+   "domain_ref": "The VAE objective",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1333-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about the reparameterisation trick are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It expresses the latent sample as a deterministic function of a noise variable",
+     "correct": true,
+     "rationale": "Correct: this moves randomness outside the gradient path."
+    },
+    {
+     "key": "B",
+     "text": "It allows gradients to flow through the sampling step",
+     "correct": true,
+     "rationale": "Correct: that is its purpose."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for an encoder",
+     "correct": false,
+     "rationale": "The encoder is still needed."
+    },
+    {
+     "key": "D",
+     "text": "It makes the KL term unnecessary",
+     "correct": false,
+     "rationale": "The KL term remains in the objective."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: this moves randomness outside the gradient path.",
+   "outcome_refs": [
+    "MST-1333-D03.01"
+   ],
+   "domain_ref": "Making it trainable",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1333-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is posterior collapse in a VAE?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The latent code is ignored and the decoder relies on little or no latent information",
+     "correct": true,
+     "rationale": "Correct: the KL term can drive the posterior toward the prior, ignoring z."
+    },
+    {
+     "key": "B",
+     "text": "The encoder deletes the dataset",
+     "correct": false,
+     "rationale": "No data is deleted."
+    },
+    {
+     "key": "C",
+     "text": "The decoder outputs only noise forever",
+     "correct": false,
+     "rationale": "That is not posterior collapse."
+    },
+    {
+     "key": "D",
+     "text": "The learning rate collapses to zero",
+     "correct": false,
+     "rationale": "That is unrelated."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the KL term can drive the posterior toward the prior, ignoring z.",
+   "outcome_refs": [
+    "MST-1333-D04.01"
+   ],
+   "domain_ref": "Behaviour and issues",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

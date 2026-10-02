@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1325",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1325-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do plain RNNs struggle with long-range dependencies?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Gradients can vanish across many time steps, weakening early-signal learning",
+     "correct": true,
+     "rationale": "Correct: vanishing gradients limit long-range memory."
+    },
+    {
+     "key": "B",
+     "text": "They have too many gates",
+     "correct": false,
+     "rationale": "Plain RNNs have no gates."
+    },
+    {
+     "key": "C",
+     "text": "They cannot share weights",
+     "correct": false,
+     "rationale": "They do share weights across time."
+    },
+    {
+     "key": "D",
+     "text": "They require images as input",
+     "correct": false,
+     "rationale": "They operate on sequences."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: vanishing gradients limit long-range memory.",
+   "outcome_refs": [
+    "MST-1325-D02.01"
+   ],
+   "domain_ref": "Training challenges",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1325-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are gated recurrent architectures? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "LSTM",
+     "correct": true,
+     "rationale": "Correct: uses input, forget and output gates."
+    },
+    {
+     "key": "B",
+     "text": "GRU",
+     "correct": true,
+     "rationale": "Correct: uses update and reset gates."
+    },
+    {
+     "key": "C",
+     "text": "Plain Elman RNN",
+     "correct": false,
+     "rationale": "It has no gates."
+    },
+    {
+     "key": "D",
+     "text": "k-means",
+     "correct": false,
+     "rationale": "It is a clustering algorithm."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: uses input, forget and output gates.",
+   "outcome_refs": [
+    "MST-1325-D03.01"
+   ],
+   "domain_ref": "Gated units",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1325-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is a bidirectional RNN inappropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Real-time streaming, because future context is not yet available",
+     "correct": true,
+     "rationale": "Correct: bidirectionality needs the full sequence."
+    },
+    {
+     "key": "B",
+     "text": "Offline text classification",
+     "correct": false,
+     "rationale": "Full text is available, so it is fine."
+    },
+    {
+     "key": "C",
+     "text": "Batch translation of complete sentences",
+     "correct": false,
+     "rationale": "Full input is available."
+    },
+    {
+     "key": "D",
+     "text": "Any task with labelled data",
+     "correct": false,
+     "rationale": "Labels are unrelated to directionality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: bidirectionality needs the full sequence.",
+   "outcome_refs": [
+    "MST-1325-D04.01"
+   ],
+   "domain_ref": "Sequence architectures",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

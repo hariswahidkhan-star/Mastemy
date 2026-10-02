@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1327",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1327-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is standard self-attention costly for long sequences?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its cost grows quadratically with sequence length",
+     "correct": true,
+     "rationale": "Correct: pairwise attention scales with length squared."
+    },
+    {
+     "key": "B",
+     "text": "It cannot be parallelised",
+     "correct": false,
+     "rationale": "It parallelises well; cost is the issue."
+    },
+    {
+     "key": "C",
+     "text": "It requires recurrence",
+     "correct": false,
+     "rationale": "Attention is not recurrent."
+    },
+    {
+     "key": "D",
+     "text": "It only works on images",
+     "correct": false,
+     "rationale": "It works on many modalities."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: pairwise attention scales with length squared.",
+   "outcome_refs": [
+    "MST-1327-D04.01"
+   ],
+   "domain_ref": "Efficiency",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1327-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about multi-head attention are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Different heads can attend to different relationships",
+     "correct": true,
+     "rationale": "Correct: heads learn complementary patterns."
+    },
+    {
+     "key": "B",
+     "text": "Attention maps are not guaranteed faithful explanations",
+     "correct": true,
+     "rationale": "Correct: high weights do not prove causal use."
+    },
+    {
+     "key": "C",
+     "text": "All heads are forced to be identical",
+     "correct": false,
+     "rationale": "Heads are distinct projections."
+    },
+    {
+     "key": "D",
+     "text": "More heads always raise accuracy",
+     "correct": false,
+     "rationale": "There is a diminishing, task-dependent trade-off."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: heads learn complementary patterns.",
+   "outcome_refs": [
+    "MST-1327-D03.01"
+   ],
+   "domain_ref": "Multi-head attention",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1327-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does cross-attention differ from self-attention?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cross-attention attends from one sequence to a different sequence",
+     "correct": true,
+     "rationale": "Correct: queries and keys come from different sources."
+    },
+    {
+     "key": "B",
+     "text": "Cross-attention uses no values",
+     "correct": false,
+     "rationale": "It still uses values."
+    },
+    {
+     "key": "C",
+     "text": "Self-attention needs two sequences",
+     "correct": false,
+     "rationale": "Self-attention uses one sequence."
+    },
+    {
+     "key": "D",
+     "text": "They are identical operations",
+     "correct": false,
+     "rationale": "They differ in their sources."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: queries and keys come from different sources.",
+   "outcome_refs": [
+    "MST-1327-D02.01"
+   ],
+   "domain_ref": "Self vs cross attention",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

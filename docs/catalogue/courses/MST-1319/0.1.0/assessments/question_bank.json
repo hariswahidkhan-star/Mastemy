@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1319",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1319-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is plain accuracy a poor metric for rare-anomaly detection?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A model predicting 'normal' for everything scores high accuracy while missing all anomalies",
+     "correct": true,
+     "rationale": "Correct: with a tiny base rate, accuracy is dominated by the majority class."
+    },
+    {
+     "key": "B",
+     "text": "Accuracy cannot be computed on imbalanced data",
+     "correct": false,
+     "rationale": "It can be computed; it is just misleading."
+    },
+    {
+     "key": "C",
+     "text": "Accuracy measures only training time",
+     "correct": false,
+     "rationale": "Accuracy measures correct classifications, not time."
+    },
+    {
+     "key": "D",
+     "text": "Accuracy always equals recall",
+     "correct": false,
+     "rationale": "They are different metrics."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with a tiny base rate, accuracy is dominated by the majority class.",
+   "outcome_refs": [
+    "MST-1319-D05.01"
+   ],
+   "domain_ref": "Evaluation and operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1319-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are genuine anomaly-detection methods? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Isolation Forest",
+     "correct": true,
+     "rationale": "Correct: it isolates anomalies via random partitioning."
+    },
+    {
+     "key": "B",
+     "text": "Autoencoder reconstruction error",
+     "correct": true,
+     "rationale": "Correct: high reconstruction error flags anomalies."
+    },
+    {
+     "key": "C",
+     "text": "Sorting rows alphabetically",
+     "correct": false,
+     "rationale": "Sorting is not a detection method."
+    },
+    {
+     "key": "D",
+     "text": "Renaming columns",
+     "correct": false,
+     "rationale": "Renaming does not detect anomalies."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: it isolates anomalies via random partitioning.",
+   "outcome_refs": [
+    "MST-1319-D04.01"
+   ],
+   "domain_ref": "Model-based methods",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1319-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a contextual anomaly depend on that a point anomaly does not?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Context such as time or location, so a value is anomalous only in that setting",
+     "correct": true,
+     "rationale": "Correct: context defines a contextual anomaly."
+    },
+    {
+     "key": "B",
+     "text": "The alphabetical order of labels",
+     "correct": false,
+     "rationale": "Ordering of labels is irrelevant."
+    },
+    {
+     "key": "C",
+     "text": "The file format of the data",
+     "correct": false,
+     "rationale": "File format does not define anomaly type."
+    },
+    {
+     "key": "D",
+     "text": "Nothing; it is identical to a point anomaly",
+     "correct": false,
+     "rationale": "It specifically depends on context."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: context defines a contextual anomaly.",
+   "outcome_refs": [
+    "MST-1319-D01.01"
+   ],
+   "domain_ref": "Framing anomalies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

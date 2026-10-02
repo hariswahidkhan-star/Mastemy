@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1320",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1320-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a scaler be fit inside a pipeline after the train/test split?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fitting it on all data leaks test statistics into training and inflates estimates",
+     "correct": true,
+     "rationale": "Correct: this is a classic data-leakage mistake."
+    },
+    {
+     "key": "B",
+     "text": "Scalers cannot be saved otherwise",
+     "correct": false,
+     "rationale": "Persistence is unrelated."
+    },
+    {
+     "key": "C",
+     "text": "It makes training run faster",
+     "correct": false,
+     "rationale": "Speed is not the reason."
+    },
+    {
+     "key": "D",
+     "text": "Pipelines forbid scalers",
+     "correct": false,
+     "rationale": "Pipelines are designed to include scalers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: this is a classic data-leakage mistake.",
+   "outcome_refs": [
+    "MST-1320-D02.01"
+   ],
+   "domain_ref": "Preprocessing and pipelines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1320-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid scikit-learn tools for model selection? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "GridSearchCV",
+     "correct": true,
+     "rationale": "Correct: exhaustive hyperparameter search with CV."
+    },
+    {
+     "key": "B",
+     "text": "cross_val_score",
+     "correct": true,
+     "rationale": "Correct: estimates performance via cross-validation."
+    },
+    {
+     "key": "C",
+     "text": "predict_proba as a tuner",
+     "correct": false,
+     "rationale": "It returns probabilities, it does not tune."
+    },
+    {
+     "key": "D",
+     "text": "StandardScaler as a selector",
+     "correct": false,
+     "rationale": "It scales features, it does not select models."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: exhaustive hyperparameter search with CV.",
+   "outcome_refs": [
+    "MST-1320-D03.01"
+   ],
+   "domain_ref": "Model selection",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1320-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does calling fit on a scikit-learn estimator do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Learns parameters from the training data",
+     "correct": true,
+     "rationale": "Correct: fit estimates parameters from data."
+    },
+    {
+     "key": "B",
+     "text": "Immediately returns test predictions",
+     "correct": false,
+     "rationale": "predict returns predictions, not fit."
+    },
+    {
+     "key": "C",
+     "text": "Deletes the training data",
+     "correct": false,
+     "rationale": "fit does not delete data."
+    },
+    {
+     "key": "D",
+     "text": "Downloads a pretrained model",
+     "correct": false,
+     "rationale": "fit trains on the provided data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fit estimates parameters from data.",
+   "outcome_refs": [
+    "MST-1320-D01.01"
+   ],
+   "domain_ref": "Estimator API",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

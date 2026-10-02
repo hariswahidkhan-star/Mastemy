@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1321",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1321-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must SMOTE be applied only to the training folds?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Synthesising on all data leaks information into validation and inflates scores",
+     "correct": true,
+     "rationale": "Correct: resampling before splitting causes leakage."
+    },
+    {
+     "key": "B",
+     "text": "SMOTE only works on test data",
+     "correct": false,
+     "rationale": "It is applied to training data."
+    },
+    {
+     "key": "C",
+     "text": "It changes the number of features",
+     "correct": false,
+     "rationale": "It adds samples, not features."
+    },
+    {
+     "key": "D",
+     "text": "It is required by the ROC curve",
+     "correct": false,
+     "rationale": "ROC does not require SMOTE."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: resampling before splitting causes leakage.",
+   "outcome_refs": [
+    "MST-1321-D05.01"
+   ],
+   "domain_ref": "Pitfalls and practice",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1321-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO handle imbalance without creating synthetic rows? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Class weights in the loss function",
+     "correct": true,
+     "rationale": "Correct: weights penalise minority errors more."
+    },
+    {
+     "key": "B",
+     "text": "Moving the decision threshold",
+     "correct": true,
+     "rationale": "Correct: shifts the precision/recall balance."
+    },
+    {
+     "key": "C",
+     "text": "SMOTE oversampling",
+     "correct": false,
+     "rationale": "SMOTE creates synthetic rows."
+    },
+    {
+     "key": "D",
+     "text": "Random oversampling",
+     "correct": false,
+     "rationale": "It duplicates minority rows."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: weights penalise minority errors more.",
+   "outcome_refs": [
+    "MST-1321-D03.01"
+   ],
+   "domain_ref": "Algorithmic approaches",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1321-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a precision-recall curve often preferred over ROC for a rare positive class?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It focuses on the positive class and is less flattered by many true negatives",
+     "correct": true,
+     "rationale": "Correct: PR curves are more informative under heavy imbalance."
+    },
+    {
+     "key": "B",
+     "text": "ROC cannot be plotted for imbalanced data",
+     "correct": false,
+     "rationale": "It can be plotted; it is just less informative."
+    },
+    {
+     "key": "C",
+     "text": "PR curves need no predictions",
+     "correct": false,
+     "rationale": "They require predicted scores."
+    },
+    {
+     "key": "D",
+     "text": "They always report the same number",
+     "correct": false,
+     "rationale": "They capture different trade-offs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: PR curves are more informative under heavy imbalance.",
+   "outcome_refs": [
+    "MST-1321-D04.01"
+   ],
+   "domain_ref": "Evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

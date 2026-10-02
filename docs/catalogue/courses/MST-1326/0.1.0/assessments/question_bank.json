@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1326",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1326-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why are positional encodings needed in a Transformer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Self-attention is permutation-invariant, so order must be injected explicitly",
+     "correct": true,
+     "rationale": "Correct: without position, token order is lost."
+    },
+    {
+     "key": "B",
+     "text": "They replace the feed-forward layers",
+     "correct": false,
+     "rationale": "They do not replace feed-forward layers."
+    },
+    {
+     "key": "C",
+     "text": "They reduce the number of heads",
+     "correct": false,
+     "rationale": "They are unrelated to head count."
+    },
+    {
+     "key": "D",
+     "text": "They make training unnecessary",
+     "correct": false,
+     "rationale": "Training is still required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without position, token order is lost.",
+   "outcome_refs": [
+    "MST-1326-D03.01"
+   ],
+   "domain_ref": "Multi-head and position",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1326-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are components of scaled dot-product self-attention? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Queries, keys and values derived from the inputs",
+     "correct": true,
+     "rationale": "Correct: attention is computed from Q, K, V."
+    },
+    {
+     "key": "B",
+     "text": "A scaling factor applied before the softmax",
+     "correct": true,
+     "rationale": "Correct: scaling stabilises gradients."
+    },
+    {
+     "key": "C",
+     "text": "A convolution kernel",
+     "correct": false,
+     "rationale": "Attention uses no convolution kernel."
+    },
+    {
+     "key": "D",
+     "text": "A recurrent hidden state carried over time",
+     "correct": false,
+     "rationale": "Attention is not recurrent."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: attention is computed from Q, K, V.",
+   "outcome_refs": [
+    "MST-1326-D02.01"
+   ],
+   "domain_ref": "Self-attention",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1326-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does causal masking matter in a decoder during training?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It prevents each position from attending to future tokens, matching inference",
+     "correct": true,
+     "rationale": "Correct: masking enforces left-to-right prediction."
+    },
+    {
+     "key": "B",
+     "text": "It speeds up the softmax only",
+     "correct": false,
+     "rationale": "Its purpose is correctness, not speed."
+    },
+    {
+     "key": "C",
+     "text": "It removes positional encodings",
+     "correct": false,
+     "rationale": "Masking does not remove position."
+    },
+    {
+     "key": "D",
+     "text": "It lets the model copy the answer",
+     "correct": false,
+     "rationale": "Masking prevents seeing the answer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: masking enforces left-to-right prediction.",
+   "outcome_refs": [
+    "MST-1326-D04.01"
+   ],
+   "domain_ref": "Block structure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

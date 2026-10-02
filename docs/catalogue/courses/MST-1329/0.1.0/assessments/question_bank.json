@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1329",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1329-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "With very little target data, which strategy is usually safest?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Freeze most layers and train only a small head (feature extraction)",
+     "correct": true,
+     "rationale": "Correct: limited data favours fewer trainable parameters."
+    },
+    {
+     "key": "B",
+     "text": "Fine-tune all layers at a high learning rate",
+     "correct": false,
+     "rationale": "That risks overfitting and forgetting."
+    },
+    {
+     "key": "C",
+     "text": "Train from scratch",
+     "correct": false,
+     "rationale": "Little data makes from-scratch training weak."
+    },
+    {
+     "key": "D",
+     "text": "Use no pretrained model at all",
+     "correct": false,
+     "rationale": "That discards useful transfer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: limited data favours fewer trainable parameters.",
+   "outcome_refs": [
+    "MST-1329-D02.01"
+   ],
+   "domain_ref": "Feature extraction vs fine-tuning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1329-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are real risks in transfer learning? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Inheriting bias from the source model",
+     "correct": true,
+     "rationale": "Correct: biases can carry over to the target."
+    },
+    {
+     "key": "B",
+     "text": "Negative transfer when source and target differ too much",
+     "correct": true,
+     "rationale": "Correct: mismatched domains can hurt performance."
+    },
+    {
+     "key": "C",
+     "text": "Reusing representations is impossible",
+     "correct": false,
+     "rationale": "Reuse is the whole point."
+    },
+    {
+     "key": "D",
+     "text": "Pretraining always guarantees success",
+     "correct": false,
+     "rationale": "It does not guarantee target success."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: biases can carry over to the target.",
+   "outcome_refs": [
+    "MST-1329-D05.01"
+   ],
+   "domain_ref": "Evaluation and ethics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1329-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is catastrophic forgetting during fine-tuning?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The model loses previously learned knowledge while adapting to the new task",
+     "correct": true,
+     "rationale": "Correct: aggressive updates overwrite prior representations."
+    },
+    {
+     "key": "B",
+     "text": "The optimiser forgets its learning rate",
+     "correct": false,
+     "rationale": "That is not the concept."
+    },
+    {
+     "key": "C",
+     "text": "Data is deleted from disk",
+     "correct": false,
+     "rationale": "No data is deleted."
+    },
+    {
+     "key": "D",
+     "text": "The model memorises the test set",
+     "correct": false,
+     "rationale": "That is a different problem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: aggressive updates overwrite prior representations.",
+   "outcome_refs": [
+    "MST-1329-D04.01"
+   ],
+   "domain_ref": "Practical fine-tuning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1323",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1323-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which claim about AutoML is accurate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It automates parts of model building but still needs sound problem framing and data understanding",
+     "correct": true,
+     "rationale": "Correct: AutoML automates search, not judgement."
+    },
+    {
+     "key": "B",
+     "text": "It removes any need to understand the data",
+     "correct": false,
+     "rationale": "Domain understanding is still essential."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the best possible model",
+     "correct": false,
+     "rationale": "No method guarantees optimality."
+    },
+    {
+     "key": "D",
+     "text": "It never incurs compute cost",
+     "correct": false,
+     "rationale": "Search consumes compute."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AutoML automates search, not judgement.",
+   "outcome_refs": [
+    "MST-1323-D01.01"
+   ],
+   "domain_ref": "What AutoML is",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1323-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps do AutoML systems commonly automate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Trying multiple algorithms and pipelines",
+     "correct": true,
+     "rationale": "Correct: pipeline and model search is core to AutoML."
+    },
+    {
+     "key": "B",
+     "text": "Hyperparameter search",
+     "correct": true,
+     "rationale": "Correct: AutoML automates tuning."
+    },
+    {
+     "key": "C",
+     "text": "Defining the business objective",
+     "correct": false,
+     "rationale": "Humans must define the objective."
+    },
+    {
+     "key": "D",
+     "text": "Deciding whether the problem is worth solving",
+     "correct": false,
+     "rationale": "That is a human judgement call."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pipeline and model search is core to AutoML.",
+   "outcome_refs": [
+    "MST-1323-D02.01"
+   ],
+   "domain_ref": "Automated pipelines",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1323-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why interpret an AutoML leaderboard's top score cautiously?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Many trials can overfit the validation data, overstating the best score",
+     "correct": true,
+     "rationale": "Correct: selection over many trials inflates the apparent winner."
+    },
+    {
+     "key": "B",
+     "text": "Leaderboards cannot rank models",
+     "correct": false,
+     "rationale": "They do rank models."
+    },
+    {
+     "key": "C",
+     "text": "The top score is always wrong",
+     "correct": false,
+     "rationale": "It is optimistic, not always wrong."
+    },
+    {
+     "key": "D",
+     "text": "Scores are random numbers",
+     "correct": false,
+     "rationale": "They are computed from data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: selection over many trials inflates the apparent winner.",
+   "outcome_refs": [
+    "MST-1323-D04.01"
+   ],
+   "domain_ref": "Evaluation and leakage",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

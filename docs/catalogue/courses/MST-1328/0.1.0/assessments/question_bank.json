@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1328",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1328-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does dropout primarily address?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Overfitting, by discouraging co-adaptation of neurons",
+     "correct": true,
+     "rationale": "Correct: dropout randomly removes units during training."
+    },
+    {
+     "key": "B",
+     "text": "Slow data loading",
+     "correct": false,
+     "rationale": "Dropout is unrelated to I/O."
+    },
+    {
+     "key": "C",
+     "text": "Exploding gradients directly",
+     "correct": false,
+     "rationale": "Clipping addresses exploding gradients."
+    },
+    {
+     "key": "D",
+     "text": "Choosing the learning rate",
+     "correct": false,
+     "rationale": "That is a schedule concern."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: dropout randomly removes units during training.",
+   "outcome_refs": [
+    "MST-1328-D03.01"
+   ],
+   "domain_ref": "Regularisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1328-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are regularisation techniques? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "L2 weight decay",
+     "correct": true,
+     "rationale": "Correct: penalises large weights."
+    },
+    {
+     "key": "B",
+     "text": "Early stopping",
+     "correct": true,
+     "rationale": "Correct: halts before overfitting."
+    },
+    {
+     "key": "C",
+     "text": "Increasing the batch size to all data",
+     "correct": false,
+     "rationale": "That is a batching choice, not regularisation."
+    },
+    {
+     "key": "D",
+     "text": "Adding more epochs indefinitely",
+     "correct": false,
+     "rationale": "That tends to worsen overfitting."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: penalises large weights.",
+   "outcome_refs": [
+    "MST-1328-D03.01"
+   ],
+   "domain_ref": "Regularisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1328-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does batch normalisation behave differently at inference than in training?",
+   "options": [
+    {
+     "key": "A",
+     "text": "At inference it uses running statistics instead of per-batch statistics",
+     "correct": true,
+     "rationale": "Correct: stored running mean/variance are used at inference."
+    },
+    {
+     "key": "B",
+     "text": "It is disabled and does nothing",
+     "correct": false,
+     "rationale": "It still normalises using running stats."
+    },
+    {
+     "key": "C",
+     "text": "It switches to dropout",
+     "correct": false,
+     "rationale": "Dropout and batch norm are different layers."
+    },
+    {
+     "key": "D",
+     "text": "It recomputes gradients",
+     "correct": false,
+     "rationale": "No gradients are computed at inference."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: stored running mean/variance are used at inference.",
+   "outcome_refs": [
+    "MST-1328-D04.01"
+   ],
+   "domain_ref": "Normalisation and schedules",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1324",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1324-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do residual (skip) connections help train very deep networks?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They let gradients flow more directly, easing optimisation of deep stacks",
+     "correct": true,
+     "rationale": "Correct: skip connections mitigate vanishing gradients."
+    },
+    {
+     "key": "B",
+     "text": "They remove the need for any activation function",
+     "correct": false,
+     "rationale": "Activations are still used."
+    },
+    {
+     "key": "C",
+     "text": "They delete half the layers at random",
+     "correct": false,
+     "rationale": "That describes a different technique."
+    },
+    {
+     "key": "D",
+     "text": "They guarantee zero training error",
+     "correct": false,
+     "rationale": "They ease training, not guarantee it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: skip connections mitigate vanishing gradients.",
+   "outcome_refs": [
+    "MST-1324-D03.01"
+   ],
+   "domain_ref": "Architectures",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1324-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are genuine benefits of convolutional layers over fully connected layers for images? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Parameter sharing reduces the number of weights",
+     "correct": true,
+     "rationale": "Correct: a filter is reused across the image."
+    },
+    {
+     "key": "B",
+     "text": "Local receptive fields capture spatial structure",
+     "correct": true,
+     "rationale": "Correct: convolution exploits locality."
+    },
+    {
+     "key": "C",
+     "text": "They always have more parameters",
+     "correct": false,
+     "rationale": "They typically have fewer."
+    },
+    {
+     "key": "D",
+     "text": "They ignore spatial relationships",
+     "correct": false,
+     "rationale": "They explicitly use spatial structure."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a filter is reused across the image.",
+   "outcome_refs": [
+    "MST-1324-D01.01"
+   ],
+   "domain_ref": "Convolution basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1324-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which data augmentation risks corrupting the label in a digit-recognition task?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Flipping digits horizontally, which can turn one digit into another or an invalid shape",
+     "correct": true,
+     "rationale": "Correct: label-changing transforms must be avoided."
+    },
+    {
+     "key": "B",
+     "text": "Small random brightness changes",
+     "correct": false,
+     "rationale": "Brightness jitter preserves the label."
+    },
+    {
+     "key": "C",
+     "text": "Minor translations",
+     "correct": false,
+     "rationale": "Small shifts preserve the label."
+    },
+    {
+     "key": "D",
+     "text": "Slight rotations within a few degrees",
+     "correct": false,
+     "rationale": "Small rotations generally preserve the label."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: label-changing transforms must be avoided.",
+   "outcome_refs": [
+    "MST-1324-D04.01"
+   ],
+   "domain_ref": "Training CNNs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1332",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1332-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is mode collapse in a GAN?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The generator produces limited, repetitive outputs that ignore data diversity",
+     "correct": true,
+     "rationale": "Correct: it collapses to a few modes."
+    },
+    {
+     "key": "B",
+     "text": "The discriminator stops reading data",
+     "correct": false,
+     "rationale": "That is not mode collapse."
+    },
+    {
+     "key": "C",
+     "text": "The learning rate becomes zero",
+     "correct": false,
+     "rationale": "That is unrelated."
+    },
+    {
+     "key": "D",
+     "text": "The dataset is deleted",
+     "correct": false,
+     "rationale": "No data is deleted."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it collapses to a few modes.",
+   "outcome_refs": [
+    "MST-1332-D02.01"
+   ],
+   "domain_ref": "Training dynamics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1332-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO describe a standard GAN? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A generator creates samples to fool a discriminator",
+     "correct": true,
+     "rationale": "Correct: that is the generator's role."
+    },
+    {
+     "key": "B",
+     "text": "A discriminator tries to tell real from generated data",
+     "correct": true,
+     "rationale": "Correct: that is the discriminator's role."
+    },
+    {
+     "key": "C",
+     "text": "A single network trained with labels only",
+     "correct": false,
+     "rationale": "GANs use two networks adversarially."
+    },
+    {
+     "key": "D",
+     "text": "A clustering algorithm with no training",
+     "correct": false,
+     "rationale": "GANs are trained generative models."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: that is the generator's role.",
+   "outcome_refs": [
+    "MST-1332-D01.01"
+   ],
+   "domain_ref": "The adversarial game",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1332-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is FID preferred over discriminator loss for judging sample quality?",
+   "options": [
+    {
+     "key": "A",
+     "text": "FID compares generated and real feature distributions, unlike the moving discriminator loss",
+     "correct": true,
+     "rationale": "Correct: discriminator loss is a shifting adversarial signal, not a quality measure."
+    },
+    {
+     "key": "B",
+     "text": "Discriminator loss cannot be computed",
+     "correct": false,
+     "rationale": "It can be computed; it just is not a quality metric."
+    },
+    {
+     "key": "C",
+     "text": "FID requires no samples",
+     "correct": false,
+     "rationale": "FID needs generated samples."
+    },
+    {
+     "key": "D",
+     "text": "They always agree exactly",
+     "correct": false,
+     "rationale": "They measure different things."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: discriminator loss is a shifting adversarial signal, not a quality measure.",
+   "outcome_refs": [
+    "MST-1332-D05.01"
+   ],
+   "domain_ref": "Evaluation and risks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

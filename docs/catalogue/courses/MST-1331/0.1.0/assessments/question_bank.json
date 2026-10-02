@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1331",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1331-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the reverse process of a diffusion model learn to do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Gradually remove noise to recover data from a noisy sample",
+     "correct": true,
+     "rationale": "Correct: the model learns to denoise step by step."
+    },
+    {
+     "key": "B",
+     "text": "Add more noise to clean data",
+     "correct": false,
+     "rationale": "That is the forward process."
+    },
+    {
+     "key": "C",
+     "text": "Classify images into categories",
+     "correct": false,
+     "rationale": "Diffusion is generative, not a classifier."
+    },
+    {
+     "key": "D",
+     "text": "Compress files losslessly",
+     "correct": false,
+     "rationale": "It generates samples, not compression."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the model learns to denoise step by step.",
+   "outcome_refs": [
+    "MST-1331-D01.01"
+   ],
+   "domain_ref": "Core idea",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1331-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about diffusion sampling are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sampling is typically iterative over many denoising steps",
+     "correct": true,
+     "rationale": "Correct: samples are refined across steps."
+    },
+    {
+     "key": "B",
+     "text": "Fewer steps can speed sampling but may reduce quality",
+     "correct": true,
+     "rationale": "Correct: there is a step/quality trade-off."
+    },
+    {
+     "key": "C",
+     "text": "A single forward pass always produces the final image",
+     "correct": false,
+     "rationale": "Standard sampling is iterative."
+    },
+    {
+     "key": "D",
+     "text": "Sampling requires labelled data at run time",
+     "correct": false,
+     "rationale": "No labels are needed to sample."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: samples are refined across steps.",
+   "outcome_refs": [
+    "MST-1331-D03.01"
+   ],
+   "domain_ref": "Sampling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1331-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is latent diffusion more efficient than pixel-space diffusion?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It runs the diffusion process in a compressed latent space, reducing compute",
+     "correct": true,
+     "rationale": "Correct: operating on latents lowers dimensionality and cost."
+    },
+    {
+     "key": "B",
+     "text": "It skips training entirely",
+     "correct": false,
+     "rationale": "It still requires training."
+    },
+    {
+     "key": "C",
+     "text": "It needs no noise schedule",
+     "correct": false,
+     "rationale": "It still uses a noise schedule."
+    },
+    {
+     "key": "D",
+     "text": "It generates without any model",
+     "correct": false,
+     "rationale": "A model is still required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: operating on latents lowers dimensionality and cost.",
+   "outcome_refs": [
+    "MST-1331-D04.01"
+   ],
+   "domain_ref": "Conditioning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

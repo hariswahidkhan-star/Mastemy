@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1322",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1322-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can random search outperform grid search in high-dimensional spaces?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It samples more distinct values of each important hyperparameter for the same budget",
+     "correct": true,
+     "rationale": "Correct: random search explores influential dimensions more efficiently."
+    },
+    {
+     "key": "B",
+     "text": "It guarantees the global optimum",
+     "correct": false,
+     "rationale": "Neither method guarantees the optimum."
+    },
+    {
+     "key": "C",
+     "text": "It needs no validation data",
+     "correct": false,
+     "rationale": "It still needs validation."
+    },
+    {
+     "key": "D",
+     "text": "It only works with one hyperparameter",
+     "correct": false,
+     "rationale": "It handles many dimensions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: random search explores influential dimensions more efficiently.",
+   "outcome_refs": [
+    "MST-1322-D02.01"
+   ],
+   "domain_ref": "Search strategies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1322-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are hyperparameters rather than learned parameters? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Learning rate",
+     "correct": true,
+     "rationale": "Correct: set before training, not learned."
+    },
+    {
+     "key": "B",
+     "text": "Number of trees in a forest",
+     "correct": true,
+     "rationale": "Correct: a configuration choice, not learned."
+    },
+    {
+     "key": "C",
+     "text": "The fitted regression coefficients",
+     "correct": false,
+     "rationale": "Those are learned from data."
+    },
+    {
+     "key": "D",
+     "text": "The learned neural network weights",
+     "correct": false,
+     "rationale": "Those are learned parameters."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: set before training, not learned.",
+   "outcome_refs": [
+    "MST-1322-D01.01"
+   ],
+   "domain_ref": "Parameters vs hyperparameters",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1322-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should the final test set not be used during hyperparameter search?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Using it to choose settings leaks it and overstates generalisation",
+     "correct": true,
+     "rationale": "Correct: the test set must stay untouched for an honest estimate."
+    },
+    {
+     "key": "B",
+     "text": "Test sets cannot be measured",
+     "correct": false,
+     "rationale": "They can be measured, once."
+    },
+    {
+     "key": "C",
+     "text": "It would slow down training",
+     "correct": false,
+     "rationale": "Speed is not the reason."
+    },
+    {
+     "key": "D",
+     "text": "Search ignores all data",
+     "correct": false,
+     "rationale": "Search uses validation data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the test set must stay untouched for an honest estimate.",
+   "outcome_refs": [
+    "MST-1322-D03.01"
+   ],
+   "domain_ref": "Validation for tuning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

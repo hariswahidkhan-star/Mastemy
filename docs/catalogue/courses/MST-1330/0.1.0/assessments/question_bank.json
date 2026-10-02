@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1330",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 420,
+  "lesson_check_items": 80,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1330-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the core idea of self-supervised learning?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Create supervisory signals from the data itself, without human labels",
+     "correct": true,
+     "rationale": "Correct: pretext tasks generate their own targets."
+    },
+    {
+     "key": "B",
+     "text": "Require a human to label every example",
+     "correct": false,
+     "rationale": "That is supervised learning."
+    },
+    {
+     "key": "C",
+     "text": "Avoid using any data",
+     "correct": false,
+     "rationale": "It relies heavily on data."
+    },
+    {
+     "key": "D",
+     "text": "Only cluster data with no objective",
+     "correct": false,
+     "rationale": "It uses defined pretext objectives."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: pretext tasks generate their own targets.",
+   "outcome_refs": [
+    "MST-1330-D01.01"
+   ],
+   "domain_ref": "Motivation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1330-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are self-supervised pretext strategies? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Masking parts of the input and predicting them",
+     "correct": true,
+     "rationale": "Correct: masked prediction is a key SSL approach."
+    },
+    {
+     "key": "B",
+     "text": "Contrasting augmented views of the same item",
+     "correct": true,
+     "rationale": "Correct: contrastive learning uses augmented pairs."
+    },
+    {
+     "key": "C",
+     "text": "Manually annotating each class",
+     "correct": false,
+     "rationale": "That is supervised labelling."
+    },
+    {
+     "key": "D",
+     "text": "Sorting files by size",
+     "correct": false,
+     "rationale": "That learns no representation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: masked prediction is a key SSL approach.",
+   "outcome_refs": [
+    "MST-1330-D03.01"
+   ],
+   "domain_ref": "Non-contrastive and masked",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1330-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is linear probing used to evaluate self-supervised representations?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It tests how useful the frozen features are via a simple linear classifier",
+     "correct": true,
+     "rationale": "Correct: probing isolates representation quality."
+    },
+    {
+     "key": "B",
+     "text": "It retrains the whole network from scratch",
+     "correct": false,
+     "rationale": "Probing keeps features frozen."
+    },
+    {
+     "key": "C",
+     "text": "It measures disk usage",
+     "correct": false,
+     "rationale": "It measures feature usefulness."
+    },
+    {
+     "key": "D",
+     "text": "It needs no downstream labels",
+     "correct": false,
+     "rationale": "Probing uses labelled downstream data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: probing isolates representation quality.",
+   "outcome_refs": [
+    "MST-1330-D04.01"
+   ],
+   "domain_ref": "Representation quality",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
