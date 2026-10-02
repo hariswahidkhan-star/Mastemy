@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0619",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0619-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why capture a span for each agent step rather than only the final answer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Step-level traces show where behaviour went wrong, which a final answer cannot",
+     "correct": true,
+     "rationale": "Correct: per-step visibility is what makes failures diagnosable."
+    },
+    {
+     "key": "B",
+     "text": "It makes the answer more creative",
+     "correct": false,
+     "rationale": "Tracing does not change answer content."
+    },
+    {
+     "key": "C",
+     "text": "It reduces the model's token cost",
+     "correct": false,
+     "rationale": "Tracing does not lower token usage."
+    },
+    {
+     "key": "D",
+     "text": "It is required to send the first request",
+     "correct": false,
+     "rationale": "An agent can run without tracing; tracing is for observability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: per-step visibility is what makes failures diagnosable.",
+   "outcome_refs": [
+    "MST-0619-D01.01"
+   ],
+   "domain_ref": "Tracing fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0619-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep observability safe and usable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Redact secrets and personal data before writing traces",
+     "correct": true,
+     "rationale": "Correct: redaction keeps sensitive data out of the trace store."
+    },
+    {
+     "key": "B",
+     "text": "Sample traces under heavy load to control volume and cost",
+     "correct": true,
+     "rationale": "Correct: sampling keeps observability affordable at scale."
+    },
+    {
+     "key": "C",
+     "text": "Write API keys verbatim into every span",
+     "correct": false,
+     "rationale": "Logging secrets is a serious leak."
+    },
+    {
+     "key": "D",
+     "text": "Disable all tracing in production",
+     "correct": false,
+     "rationale": "Turning off tracing removes the observability you need most in production."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: redaction keeps sensitive data out of the trace store.",
+   "outcome_refs": [
+    "MST-0619-D03.02"
+   ],
+   "domain_ref": "Metrics and safe logging",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0619-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A rare agent failure is hard to reproduce. What capability helps most?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Replaying the recorded run and diffing it against a successful one",
+     "correct": true,
+     "rationale": "Correct: replay plus diff reproduces the failure and isolates where it diverged."
+    },
+    {
+     "key": "B",
+     "text": "Rewriting the prompt from memory",
+     "correct": false,
+     "rationale": "Guessing the inputs will not faithfully reproduce the failure."
+    },
+    {
+     "key": "C",
+     "text": "Increasing the model size",
+     "correct": false,
+     "rationale": "A bigger model does not reproduce a past run."
+    },
+    {
+     "key": "D",
+     "text": "Deleting the trace store",
+     "correct": false,
+     "rationale": "Removing records destroys the data needed to diagnose."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: replay plus diff reproduces the failure and isolates where it diverged.",
+   "outcome_refs": [
+    "MST-0619-D02.01"
+   ],
+   "domain_ref": "Replay and diagnosis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

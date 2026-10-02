@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0630",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0630-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a primary benefit of routing all AI calls through a gateway?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Central control of routing, budgets, policy and observability across providers",
+     "correct": true,
+     "rationale": "Correct: a gateway centralises cross-cutting controls instead of duplicating them."
+    },
+    {
+     "key": "B",
+     "text": "It makes every model free",
+     "correct": false,
+     "rationale": "A gateway does not remove provider costs."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the model never makes mistakes",
+     "correct": false,
+     "rationale": "A gateway does not change model accuracy."
+    },
+    {
+     "key": "D",
+     "text": "It eliminates the need for any monitoring",
+     "correct": false,
+     "rationale": "A gateway is where monitoring is centralised, not removed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a gateway centralises cross-cutting controls instead of duplicating them.",
+   "outcome_refs": [
+    "MST-0630-D01.01"
+   ],
+   "domain_ref": "Gateway and routing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0630-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO keep one tenant from exhausting shared AI spend? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Per-tenant budgets with cost tracking",
+     "correct": true,
+     "rationale": "Correct: a budget caps how much a tenant can spend."
+    },
+    {
+     "key": "B",
+     "text": "Rate limits and quotas per API key",
+     "correct": true,
+     "rationale": "Correct: rate limits and quotas bound usage over time."
+    },
+    {
+     "key": "C",
+     "text": "A single shared unlimited key for everyone",
+     "correct": false,
+     "rationale": "An unlimited shared key allows runaway spend."
+    },
+    {
+     "key": "D",
+     "text": "Turning off cost tracking",
+     "correct": false,
+     "rationale": "Without tracking you cannot enforce or see spend."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a budget caps how much a tenant can spend.",
+   "outcome_refs": [
+    "MST-0630-D02.01"
+   ],
+   "domain_ref": "Budgets and limits",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0630-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A provider starts returning errors. What should a production AI gateway do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fall back to an alternate provider or model and retry within limits",
+     "correct": true,
+     "rationale": "Correct: routing with fallbacks keeps the service up when one provider fails."
+    },
+    {
+     "key": "B",
+     "text": "Return the error to every user and stop",
+     "correct": false,
+     "rationale": "A single provider outage should not take the whole service down."
+    },
+    {
+     "key": "C",
+     "text": "Retry the failing provider forever with no limit",
+     "correct": false,
+     "rationale": "Unbounded retries amplify the outage and cost."
+    },
+    {
+     "key": "D",
+     "text": "Disable the gateway",
+     "correct": false,
+     "rationale": "Turning off the gateway removes exactly the control that handles this."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: routing with fallbacks keeps the service up when one provider fails.",
+   "outcome_refs": [
+    "MST-0630-D01.03"
+   ],
+   "domain_ref": "Gateway and routing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0618",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0618-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is the model's context window a poor place to keep long-term memory?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is bounded and transient, so information in it is lost and cannot grow indefinitely",
+     "correct": true,
+     "rationale": "Correct: the window has a fixed size and does not persist across sessions."
+    },
+    {
+     "key": "B",
+     "text": "It is encrypted and cannot be read",
+     "correct": false,
+     "rationale": "The context is readable by the model; that is not the issue."
+    },
+    {
+     "key": "C",
+     "text": "It automatically backs up to disk",
+     "correct": false,
+     "rationale": "The window is not a durable store."
+    },
+    {
+     "key": "D",
+     "text": "It grows without limit for free",
+     "correct": false,
+     "rationale": "The window is finite, which is exactly the problem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the window has a fixed size and does not persist across sessions.",
+   "outcome_refs": [
+    "MST-0618-D01.01"
+   ],
+   "domain_ref": "Kinds of memory",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0618-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO let a long-running task survive a crash and resume? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Persist task state to a durable store at checkpoints",
+     "correct": true,
+     "rationale": "Correct: durable checkpoints are what a restart reads to resume."
+    },
+    {
+     "key": "B",
+     "text": "Make each step idempotent so re-running it is safe",
+     "correct": true,
+     "rationale": "Correct: idempotent steps allow safe resumption without double effects."
+    },
+    {
+     "key": "C",
+     "text": "Hold all progress only in local variables",
+     "correct": false,
+     "rationale": "Local state is lost on crash."
+    },
+    {
+     "key": "D",
+     "text": "Increase the model's temperature",
+     "correct": false,
+     "rationale": "Sampling settings do not provide durability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: durable checkpoints are what a restart reads to resume.",
+   "outcome_refs": [
+    "MST-0618-D02.02"
+   ],
+   "domain_ref": "Durable state",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0618-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An agent's prompts keep overflowing the context as memory grows. What is the right fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieve only relevant memory into the prompt and compact or expire the rest",
+     "correct": true,
+     "rationale": "Correct: selective retrieval plus compaction keeps the prompt bounded."
+    },
+    {
+     "key": "B",
+     "text": "Always load the entire memory into every prompt",
+     "correct": false,
+     "rationale": "That is the cause of the overflow, not the fix."
+    },
+    {
+     "key": "C",
+     "text": "Delete the model",
+     "correct": false,
+     "rationale": "Removing the model does not manage memory."
+    },
+    {
+     "key": "D",
+     "text": "Disable the task",
+     "correct": false,
+     "rationale": "Turning off the task avoids rather than solves the problem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: selective retrieval plus compaction keeps the prompt bounded.",
+   "outcome_refs": [
+    "MST-0618-D03.01"
+   ],
+   "domain_ref": "Managing memory",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

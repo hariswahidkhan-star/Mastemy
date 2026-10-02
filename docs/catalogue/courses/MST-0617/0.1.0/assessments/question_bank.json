@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0617",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0617-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which agent action most clearly warrants a human approval gate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An irreversible, high-impact action such as deleting production data",
+     "correct": true,
+     "rationale": "Correct: irreversible high-impact actions are the prime candidates for approval."
+    },
+    {
+     "key": "B",
+     "text": "Reading a public help article",
+     "correct": false,
+     "rationale": "Low-risk reversible reads do not need approval."
+    },
+    {
+     "key": "C",
+     "text": "Formatting its own output as a list",
+     "correct": false,
+     "rationale": "Presentation choices carry no risk."
+    },
+    {
+     "key": "D",
+     "text": "Counting tokens in a prompt",
+     "correct": false,
+     "rationale": "An internal, harmless computation needs no gate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: irreversible high-impact actions are the prime candidates for approval.",
+   "outcome_refs": [
+    "MST-0617-D01.01"
+   ],
+   "domain_ref": "When to require approval",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0617-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO make an approval request easy to review well? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A concise summary of what will happen and why",
+     "correct": true,
+     "rationale": "Correct: the approver needs the intent and impact at a glance."
+    },
+    {
+     "key": "B",
+     "text": "The exact action and its parameters that will execute",
+     "correct": true,
+     "rationale": "Correct: showing the precise action lets the approver verify it."
+    },
+    {
+     "key": "C",
+     "text": "A request with no detail, just an Approve button",
+     "correct": false,
+     "rationale": "Without detail the approval is meaningless."
+    },
+    {
+     "key": "D",
+     "text": "A 50-page raw log dump with no summary",
+     "correct": false,
+     "rationale": "An unstructured dump hides the decision the approver must make."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the approver needs the intent and impact at a glance.",
+   "outcome_refs": [
+    "MST-0617-D03.01"
+   ],
+   "domain_ref": "Review and decisions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0617-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An approval request times out with no response. What is the safe default?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Do not perform the action; hold or cancel and escalate",
+     "correct": true,
+     "rationale": "Correct: a timeout should fail safe to no action, not proceed."
+    },
+    {
+     "key": "B",
+     "text": "Automatically approve and run the action",
+     "correct": false,
+     "rationale": "Auto-approving on timeout defeats the oversight."
+    },
+    {
+     "key": "C",
+     "text": "Retry the action indefinitely",
+     "correct": false,
+     "rationale": "Blind retries can repeatedly attempt a risky action."
+    },
+    {
+     "key": "D",
+     "text": "Delete the pending state and the audit record",
+     "correct": false,
+     "rationale": "Destroying the record removes accountability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a timeout should fail safe to no action, not proceed.",
+   "outcome_refs": [
+    "MST-0617-D03.03"
+   ],
+   "domain_ref": "Review and decisions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

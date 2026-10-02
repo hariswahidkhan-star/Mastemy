@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0620",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0620-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is average accuracy alone a weak measure of agent reliability?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can hide serious tail and failure-case behaviour that matters in production",
+     "correct": true,
+     "rationale": "Correct: a good average can mask rare but severe failures."
+    },
+    {
+     "key": "B",
+     "text": "It is impossible to compute",
+     "correct": false,
+     "rationale": "Averages are easy to compute; that is not the issue."
+    },
+    {
+     "key": "C",
+     "text": "It always equals 100%",
+     "correct": false,
+     "rationale": "Averages are rarely perfect and this is not the point."
+    },
+    {
+     "key": "D",
+     "text": "It measures latency, not quality",
+     "correct": false,
+     "rationale": "Accuracy is a quality measure; the concern is what it hides."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a good average can mask rare but severe failures.",
+   "outcome_refs": [
+    "MST-0620-D01.01"
+   ],
+   "domain_ref": "Evaluation design",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0620-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in adversarial reliability testing? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Prompts crafted to make the agent misbehave or ignore instructions",
+     "correct": true,
+     "rationale": "Correct: adversarial prompts probe the agent's weak points."
+    },
+    {
+     "key": "B",
+     "text": "Injecting tool and dependency failures to test recovery",
+     "correct": true,
+     "rationale": "Correct: failure injection checks how the agent handles broken dependencies."
+    },
+    {
+     "key": "C",
+     "text": "Only testing inputs you already know succeed",
+     "correct": false,
+     "rationale": "Happy-path-only testing misses the failures that matter."
+    },
+    {
+     "key": "D",
+     "text": "Removing the evaluation set entirely",
+     "correct": false,
+     "rationale": "Without an evaluation set there is nothing to measure."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: adversarial prompts probe the agent's weak points.",
+   "outcome_refs": [
+    "MST-0620-D02.01"
+   ],
+   "domain_ref": "Adversarial testing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0620-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A new agent version keeps the same average score but a key safety metric dropped. What should a reliability gate do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Block the release because a tracked metric regressed",
+     "correct": true,
+     "rationale": "Correct: gates must act on per-metric regressions, not just the average."
+    },
+    {
+     "key": "B",
+     "text": "Ship it because the average is unchanged",
+     "correct": false,
+     "rationale": "The average hides the regression the gate exists to catch."
+    },
+    {
+     "key": "C",
+     "text": "Delete the safety metric",
+     "correct": false,
+     "rationale": "Removing the metric hides the problem."
+    },
+    {
+     "key": "D",
+     "text": "Disable the gate",
+     "correct": false,
+     "rationale": "Turning off the gate defeats its purpose."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: gates must act on per-metric regressions, not just the average.",
+   "outcome_refs": [
+    "MST-0620-D03.01"
+   ],
+   "domain_ref": "Gates and regression",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

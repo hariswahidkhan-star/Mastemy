@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0616",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0616-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is a single agent usually preferable to a multi-agent design?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When the task is cohesive and the overhead of coordination outweighs the benefit",
+     "correct": true,
+     "rationale": "Correct: multi-agent coordination adds cost and failure modes that a cohesive task does not need."
+    },
+    {
+     "key": "B",
+     "text": "Always; multiple agents are never useful",
+     "correct": false,
+     "rationale": "Multi-agent designs do help for genuinely separable, parallel work."
+    },
+    {
+     "key": "C",
+     "text": "Never; more agents are always better",
+     "correct": false,
+     "rationale": "More agents add coordination cost and new failure modes."
+    },
+    {
+     "key": "D",
+     "text": "Only when the budget is unlimited",
+     "correct": false,
+     "rationale": "Budget alone does not decide topology."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: multi-agent coordination adds cost and failure modes that a cohesive task does not need.",
+   "outcome_refs": [
+    "MST-0616-D01.01"
+   ],
+   "domain_ref": "Topologies",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0616-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO keep a multi-agent system from looping or overspending? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A global step or token budget shared across agents",
+     "correct": true,
+     "rationale": "Correct: a shared budget caps total work regardless of which agent spends it."
+    },
+    {
+     "key": "B",
+     "text": "An explicit termination condition the supervisor checks",
+     "correct": true,
+     "rationale": "Correct: a clear stop condition lets the system finish instead of looping."
+    },
+    {
+     "key": "C",
+     "text": "Letting each agent decide its own unlimited budget",
+     "correct": false,
+     "rationale": "Unbounded per-agent budgets allow runaway cost."
+    },
+    {
+     "key": "D",
+     "text": "Removing all logging",
+     "correct": false,
+     "rationale": "Logging does not cause loops; removing it only hides them."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a shared budget caps total work regardless of which agent spends it.",
+   "outcome_refs": [
+    "MST-0616-D03.02"
+   ],
+   "domain_ref": "Shared context and control",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0616-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A worker agent keeps failing a delegated sub-task. What is the most likely design fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Give the worker a clearer sub-task contract with the context and success criteria it needs",
+     "correct": true,
+     "rationale": "Correct: vague delegation is a common cause; a precise contract fixes it."
+    },
+    {
+     "key": "B",
+     "text": "Add ten more worker agents on the same vague task",
+     "correct": false,
+     "rationale": "More agents on a vague task reproduce the same failure."
+    },
+    {
+     "key": "C",
+     "text": "Increase the supervisor's temperature",
+     "correct": false,
+     "rationale": "Sampling temperature does not clarify a sub-task."
+    },
+    {
+     "key": "D",
+     "text": "Delete the audit log",
+     "correct": false,
+     "rationale": "Removing logs hides the failure rather than fixing it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: vague delegation is a common cause; a precise contract fixes it.",
+   "outcome_refs": [
+    "MST-0616-D02.01"
+   ],
+   "domain_ref": "Delegation and hand-off",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0621",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0621-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In n8n, how does data generally get from one node to the next?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Through the connection, with fields referenced via expressions/mapping",
+     "correct": true,
+     "rationale": "Correct: nodes pass items along connections and later nodes map fields explicitly."
+    },
+    {
+     "key": "B",
+     "text": "By global variables shared automatically everywhere",
+     "correct": false,
+     "rationale": "n8n passes items along connections, not implicit globals."
+    },
+    {
+     "key": "C",
+     "text": "Only by writing to an external database between every node",
+     "correct": false,
+     "rationale": "A database is not required to pass data between nodes."
+    },
+    {
+     "key": "D",
+     "text": "It does not; each node runs in isolation with no input",
+     "correct": false,
+     "rationale": "Downstream nodes receive the previous node's items."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: nodes pass items along connections and later nodes map fields explicitly.",
+   "outcome_refs": [
+    "MST-0621-D01.02"
+   ],
+   "domain_ref": "Workflow basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0621-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO make an n8n workflow production-ready? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "An error branch that handles a node failure gracefully",
+     "correct": true,
+     "rationale": "Correct: an error path keeps one failure from silently breaking the run."
+    },
+    {
+     "key": "B",
+     "text": "Credentials stored in n8n's credential store, not in node fields",
+     "correct": true,
+     "rationale": "Correct: using the credential store keeps secrets out of plain-text parameters."
+    },
+    {
+     "key": "C",
+     "text": "Hard-coding the API key into every HTTP node",
+     "correct": false,
+     "rationale": "Plain-text secrets in nodes are a leak risk."
+    },
+    {
+     "key": "D",
+     "text": "Removing all error handling to simplify the canvas",
+     "correct": false,
+     "rationale": "Dropping error handling makes the workflow fragile."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an error path keeps one failure from silently breaking the run.",
+   "outcome_refs": [
+    "MST-0621-D03.02"
+   ],
+   "domain_ref": "Reliability and security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0621-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI node in your workflow sometimes returns malformed output. What is the right next step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate and handle the output before the downstream node uses it",
+     "correct": true,
+     "rationale": "Correct: AI output is untrusted and must be validated before use."
+    },
+    {
+     "key": "B",
+     "text": "Feed it straight into the next node and hope it parses",
+     "correct": false,
+     "rationale": "Passing malformed data downstream causes silent failures."
+    },
+    {
+     "key": "C",
+     "text": "Delete the AI node",
+     "correct": false,
+     "rationale": "Removing the node is not handling its output."
+    },
+    {
+     "key": "D",
+     "text": "Disable logging so the error is not visible",
+     "correct": false,
+     "rationale": "Hiding the error does not fix the malformed output."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI output is untrusted and must be validated before use.",
+   "outcome_refs": [
+    "MST-0621-D02.03"
+   ],
+   "domain_ref": "AI and integrations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

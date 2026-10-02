@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0625",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0625-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which is a common and avoidable data-leakage surface in AI systems?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Logging full prompts and responses containing sensitive data",
+     "correct": true,
+     "rationale": "Correct: unredacted prompt/response logs are a frequent leak source."
+    },
+    {
+     "key": "B",
+     "text": "Using a model at all",
+     "correct": false,
+     "rationale": "Using a model is not itself a leak; how data is handled is."
+    },
+    {
+     "key": "C",
+     "text": "Writing clear documentation",
+     "correct": false,
+     "rationale": "Documentation is not a leakage surface."
+    },
+    {
+     "key": "D",
+     "text": "Naming variables descriptively",
+     "correct": false,
+     "rationale": "Variable naming does not leak data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unredacted prompt/response logs are a frequent leak source.",
+   "outcome_refs": [
+    "MST-0625-D01.02"
+   ],
+   "domain_ref": "Leakage surfaces",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0625-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO reduce the risk of secret leakage? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store secrets in a vault and issue short-lived credentials",
+     "correct": true,
+     "rationale": "Correct: a vault with short-lived tokens limits exposure if one leaks."
+    },
+    {
+     "key": "B",
+     "text": "Redact sensitive fields before they reach prompts and logs",
+     "correct": true,
+     "rationale": "Correct: redaction keeps sensitive data out of places it can leak."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code API keys directly in the prompt template",
+     "correct": false,
+     "rationale": "Secrets in prompts are easily exposed."
+    },
+    {
+     "key": "D",
+     "text": "Email the production keys to the whole team",
+     "correct": false,
+     "rationale": "Broad distribution of secrets maximises leak risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a vault with short-lived tokens limits exposure if one leaks.",
+   "outcome_refs": [
+    "MST-0625-D03.01"
+   ],
+   "domain_ref": "Secrets and response",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0625-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the principle of least privilege applied to an AI component's data access?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Give each component access only to the data it genuinely needs",
+     "correct": true,
+     "rationale": "Correct: least privilege minimises what can leak from any one component."
+    },
+    {
+     "key": "B",
+     "text": "Give every component full access for convenience",
+     "correct": false,
+     "rationale": "Broad access is the opposite of least privilege."
+    },
+    {
+     "key": "C",
+     "text": "Remove all access so nothing works",
+     "correct": false,
+     "rationale": "Least privilege is minimal necessary access, not zero access."
+    },
+    {
+     "key": "D",
+     "text": "Grant access based on seniority only",
+     "correct": false,
+     "rationale": "Access should follow need, not title."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: least privilege minimises what can leak from any one component.",
+   "outcome_refs": [
+    "MST-0625-D02.02"
+   ],
+   "domain_ref": "Protecting data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

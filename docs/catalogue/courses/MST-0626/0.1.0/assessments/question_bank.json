@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0626",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0626-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a trust boundary in an LLM application threat model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A point where data or control passes between components with different trust levels",
+     "correct": true,
+     "rationale": "Correct: trust boundaries are where untrusted input meets trusted processing."
+    },
+    {
+     "key": "B",
+     "text": "The maximum context window size",
+     "correct": false,
+     "rationale": "Context size is a limit, not a trust boundary."
+    },
+    {
+     "key": "C",
+     "text": "The model's temperature setting",
+     "correct": false,
+     "rationale": "Temperature is a sampling parameter, not a boundary."
+    },
+    {
+     "key": "D",
+     "text": "The number of users",
+     "correct": false,
+     "rationale": "User count is not a trust boundary."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: trust boundaries are where untrusted input meets trusted processing.",
+   "outcome_refs": [
+    "MST-0626-D01.02"
+   ],
+   "domain_ref": "Scoping the system",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0626-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are LLM-specific threats worth modeling? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Indirect prompt injection via retrieved content",
+     "correct": true,
+     "rationale": "Correct: injection through untrusted content is an LLM-specific threat."
+    },
+    {
+     "key": "B",
+     "text": "Tool misuse where the model is steered to call tools harmfully",
+     "correct": true,
+     "rationale": "Correct: tool misuse is a key LLM-application threat."
+    },
+    {
+     "key": "C",
+     "text": "Gravity affecting the datacenter",
+     "correct": false,
+     "rationale": "Not a meaningful software threat."
+    },
+    {
+     "key": "D",
+     "text": "The office running out of coffee",
+     "correct": false,
+     "rationale": "Not a security threat to the application."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: injection through untrusted content is an LLM-specific threat.",
+   "outcome_refs": [
+    "MST-0626-D02.01"
+   ],
+   "domain_ref": "Enumerating threats",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0626-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After enumerating many threats, what is the next essential step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rank them by impact and likelihood and assign proportionate mitigations",
+     "correct": true,
+     "rationale": "Correct: ranking and mitigation turn a threat list into actionable security work."
+    },
+    {
+     "key": "B",
+     "text": "Publish the raw list and do nothing more",
+     "correct": false,
+     "rationale": "An unranked list with no mitigations does not reduce risk."
+    },
+    {
+     "key": "C",
+     "text": "Delete the diagram",
+     "correct": false,
+     "rationale": "Removing the model loses the analysis."
+    },
+    {
+     "key": "D",
+     "text": "Assume all threats are equally urgent",
+     "correct": false,
+     "rationale": "Treating everything as equal wastes effort on low risks."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ranking and mitigation turn a threat list into actionable security work.",
+   "outcome_refs": [
+    "MST-0626-D03.01"
+   ],
+   "domain_ref": "Mitigation and upkeep",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0615",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0615-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must a tool's description be written carefully for an agent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The model reads it to decide when and how to call the tool",
+     "correct": true,
+     "rationale": "Correct: the description is part of the model's decision input, so it must be precise."
+    },
+    {
+     "key": "B",
+     "text": "It is shown on the company home page",
+     "correct": false,
+     "rationale": "Tool descriptions are for the agent, not marketing."
+    },
+    {
+     "key": "C",
+     "text": "It sets the server's memory limit",
+     "correct": false,
+     "rationale": "Descriptions do not configure infrastructure."
+    },
+    {
+     "key": "D",
+     "text": "It determines the user's password policy",
+     "correct": false,
+     "rationale": "Unrelated to tool descriptions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the description is part of the model's decision input, so it must be precise.",
+   "outcome_refs": [
+    "MST-0615-D01.01"
+   ],
+   "domain_ref": "Tool interfaces",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0615-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO make a tool error useful to an agent? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A structured, actionable message the model can reason about",
+     "correct": true,
+     "rationale": "Correct: a clear structured error lets the agent recover or choose another action."
+    },
+    {
+     "key": "B",
+     "text": "A flag indicating whether the call is safe to retry",
+     "correct": true,
+     "rationale": "Correct: retryability tells the agent whether trying again can help."
+    },
+    {
+     "key": "C",
+     "text": "A raw stack trace with internal paths",
+     "correct": false,
+     "rationale": "Stack traces leak internals and are hard for the model to act on."
+    },
+    {
+     "key": "D",
+     "text": "Silently returning an empty success",
+     "correct": false,
+     "rationale": "Hiding the failure makes the agent act on wrong assumptions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a clear structured error lets the agent recover or choose another action.",
+   "outcome_refs": [
+    "MST-0615-D02.02"
+   ],
+   "domain_ref": "Contracts and errors",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0615-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An agent calls a tool with an argument outside the allowed range. What should the tool do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reject the call with a validation error before taking any action",
+     "correct": true,
+     "rationale": "Correct: out-of-contract arguments must be validated and refused before execution."
+    },
+    {
+     "key": "B",
+     "text": "Execute anyway and hope for the best",
+     "correct": false,
+     "rationale": "Acting on invalid input is exactly what validation prevents."
+    },
+    {
+     "key": "C",
+     "text": "Silently clamp the value with no signal to the agent",
+     "correct": false,
+     "rationale": "Silent changes hide the problem and can corrupt results."
+    },
+    {
+     "key": "D",
+     "text": "Crash the whole agent process",
+     "correct": false,
+     "rationale": "A single bad argument should not take down the agent."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: out-of-contract arguments must be validated and refused before execution.",
+   "outcome_refs": [
+    "MST-0615-D03.01"
+   ],
+   "domain_ref": "Validation and lifecycle",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

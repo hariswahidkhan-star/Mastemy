@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0610",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0610-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In LlamaIndex, what does a node parser produce from a loaded document?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Smaller text nodes, each carrying metadata, that can be embedded and retrieved",
+     "correct": true,
+     "rationale": "Correct: node parsers split documents into retrievable nodes with metadata."
+    },
+    {
+     "key": "B",
+     "text": "A single embedding vector for the whole document",
+     "correct": false,
+     "rationale": "Embedding happens later and per node, not as the parser's output."
+    },
+    {
+     "key": "C",
+     "text": "A fine-tuned model",
+     "correct": false,
+     "rationale": "Node parsing does not train or produce a model."
+    },
+    {
+     "key": "D",
+     "text": "A finished natural-language answer",
+     "correct": false,
+     "rationale": "Parsing prepares content; it does not answer queries."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: node parsers split documents into retrievable nodes with metadata.",
+   "outcome_refs": [
+    "MST-0610-D01.02"
+   ],
+   "domain_ref": "Ingestion and nodes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0610-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO components combine inside a LlamaIndex query engine? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A retriever that fetches relevant nodes",
+     "correct": true,
+     "rationale": "Correct: the retriever selects candidate nodes for the query."
+    },
+    {
+     "key": "B",
+     "text": "A response synthesizer that composes the answer from retrieved nodes",
+     "correct": true,
+     "rationale": "Correct: the synthesizer turns retrieved nodes into a response."
+    },
+    {
+     "key": "C",
+     "text": "A payment gateway",
+     "correct": false,
+     "rationale": "Billing is unrelated to a query engine."
+    },
+    {
+     "key": "D",
+     "text": "A CSS stylesheet",
+     "correct": false,
+     "rationale": "Presentation styling is not part of a query engine."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the retriever selects candidate nodes for the query.",
+   "outcome_refs": [
+    "MST-0610-D03.01"
+   ],
+   "domain_ref": "Querying and evaluation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0610-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Answers from a LlamaIndex app are wrong even though the LLM is strong. What should you check first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieval quality: whether the right nodes are being fetched for the query",
+     "correct": true,
+     "rationale": "Correct: if retrieval returns the wrong nodes, even a strong LLM cannot answer correctly."
+    },
+    {
+     "key": "B",
+     "text": "The colour of the UI",
+     "correct": false,
+     "rationale": "Presentation does not affect answer correctness."
+    },
+    {
+     "key": "C",
+     "text": "The LLM vendor's stock price",
+     "correct": false,
+     "rationale": "Irrelevant to retrieval or answers."
+    },
+    {
+     "key": "D",
+     "text": "Whether the document file names are alphabetised",
+     "correct": false,
+     "rationale": "File ordering does not determine retrieval relevance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: if retrieval returns the wrong nodes, even a strong LLM cannot answer correctly.",
+   "outcome_refs": [
+    "MST-0610-D03.03"
+   ],
+   "domain_ref": "Querying and evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

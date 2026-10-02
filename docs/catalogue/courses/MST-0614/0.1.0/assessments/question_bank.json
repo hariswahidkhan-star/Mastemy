@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0614",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0614-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Who should enforce that an MCP client may only call the tools it is permitted to use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The MCP server, on every tool call",
+     "correct": true,
+     "rationale": "Correct: authorization must be enforced server-side on each call, not assumed from the model."
+    },
+    {
+     "key": "B",
+     "text": "The language model, by choosing not to call forbidden tools",
+     "correct": false,
+     "rationale": "Models can be manipulated; authorization cannot depend on model behaviour."
+    },
+    {
+     "key": "C",
+     "text": "The end user, by reading the docs",
+     "correct": false,
+     "rationale": "Documentation is not an enforcement mechanism."
+    },
+    {
+     "key": "D",
+     "text": "Nobody; MCP tools are safe by default",
+     "correct": false,
+     "rationale": "Exposed tools are not safe by default and must be authorized."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: authorization must be enforced server-side on each call, not assumed from the model.",
+   "outcome_refs": [
+    "MST-0614-D02.02"
+   ],
+   "domain_ref": "Authentication and authorization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0614-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce the blast radius of an MCP tool? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate and constrain every tool argument before acting on it",
+     "correct": true,
+     "rationale": "Correct: validated, constrained inputs stop malformed or malicious arguments."
+    },
+    {
+     "key": "B",
+     "text": "Grant each tool only the least privilege it needs",
+     "correct": true,
+     "rationale": "Correct: least privilege limits what damage a misused tool can do."
+    },
+    {
+     "key": "C",
+     "text": "Give every tool full administrative access for convenience",
+     "correct": false,
+     "rationale": "Broad access maximises, not minimises, blast radius."
+    },
+    {
+     "key": "D",
+     "text": "Skip logging to improve performance",
+     "correct": false,
+     "rationale": "Dropping logs removes the audit trail needed to detect misuse."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: validated, constrained inputs stop malformed or malicious arguments.",
+   "outcome_refs": [
+    "MST-0614-D03.01"
+   ],
+   "domain_ref": "Validation, audit and testing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0614-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What belongs in an MCP server's audit log?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Every tool call, including denied and failed ones, with who called it and the outcome",
+     "correct": true,
+     "rationale": "Correct: a complete audit trail records successes, denials and failures with attribution."
+    },
+    {
+     "key": "B",
+     "text": "Only tool calls that succeeded",
+     "correct": false,
+     "rationale": "Omitting denials and failures hides exactly the events security review needs."
+    },
+    {
+     "key": "C",
+     "text": "Nothing, to save disk space",
+     "correct": false,
+     "rationale": "No audit trail means no way to detect or investigate misuse."
+    },
+    {
+     "key": "D",
+     "text": "Only the server's start-up banner",
+     "correct": false,
+     "rationale": "A banner is not an audit record of tool activity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a complete audit trail records successes, denials and failures with attribution.",
+   "outcome_refs": [
+    "MST-0614-D03.02"
+   ],
+   "domain_ref": "Validation, audit and testing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

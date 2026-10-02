@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0629",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0629-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why attach a confidence score to each extracted field?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So low-confidence fields can be routed to review instead of trusted blindly",
+     "correct": true,
+     "rationale": "Correct: per-field confidence drives review routing and reduces silent errors."
+    },
+    {
+     "key": "B",
+     "text": "Because it makes extraction faster",
+     "correct": false,
+     "rationale": "Confidence scoring is about reliability, not speed."
+    },
+    {
+     "key": "C",
+     "text": "To change the document's layout",
+     "correct": false,
+     "rationale": "Confidence does not alter the source document."
+    },
+    {
+     "key": "D",
+     "text": "To avoid defining a schema",
+     "correct": false,
+     "rationale": "Confidence complements a schema; it does not replace it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: per-field confidence drives review routing and reduces silent errors.",
+   "outcome_refs": [
+    "MST-0629-D01.02"
+   ],
+   "domain_ref": "Extraction design",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0629-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO reconciliation checks catch extraction errors on an invoice? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Line items must sum to the stated total",
+     "correct": true,
+     "rationale": "Correct: a sum check catches many extraction mistakes."
+    },
+    {
+     "key": "B",
+     "text": "A key field is cross-checked against a second source",
+     "correct": true,
+     "rationale": "Correct: cross-source agreement flags inconsistent extractions."
+    },
+    {
+     "key": "C",
+     "text": "Trusting the first extracted value with no check",
+     "correct": false,
+     "rationale": "No check means errors pass through silently."
+    },
+    {
+     "key": "D",
+     "text": "Deleting fields that look wrong without review",
+     "correct": false,
+     "rationale": "Silently discarding data loses information and hides errors."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a sum check catches many extraction mistakes.",
+   "outcome_refs": [
+    "MST-0629-D02.01"
+   ],
+   "domain_ref": "Reconciliation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0629-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An extracted field comes back with low confidence and fails a reconciliation check. What should happen?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Route the item to human review rather than accepting it automatically",
+     "correct": true,
+     "rationale": "Correct: low-confidence, failing items should go to review, not straight through."
+    },
+    {
+     "key": "B",
+     "text": "Accept it anyway because the agent produced a value",
+     "correct": false,
+     "rationale": "Producing a value does not make it correct."
+    },
+    {
+     "key": "C",
+     "text": "Drop the whole document silently",
+     "correct": false,
+     "rationale": "Silent dropping loses data and hides the problem."
+    },
+    {
+     "key": "D",
+     "text": "Lower the confidence threshold so it passes",
+     "correct": false,
+     "rationale": "Weakening the threshold hides the error rather than handling it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: low-confidence, failing items should go to review, not straight through.",
+   "outcome_refs": [
+    "MST-0629-D03.01"
+   ],
+   "domain_ref": "Review and accuracy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

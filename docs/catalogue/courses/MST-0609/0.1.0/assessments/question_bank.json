@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0609",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0609-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In LangGraph, how should a node change the shared state?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Return a partial state update that the graph applies through the state reducers",
+     "correct": true,
+     "rationale": "Correct: nodes return updates and the graph merges them via the state schema's reducers."
+    },
+    {
+     "key": "B",
+     "text": "Mutate a module-level global variable directly",
+     "correct": false,
+     "rationale": "Globals are not the graph's state and are not checkpointed."
+    },
+    {
+     "key": "C",
+     "text": "Write the new value to a file and re-read it next node",
+     "correct": false,
+     "rationale": "Files are not how graph state is propagated between nodes."
+    },
+    {
+     "key": "D",
+     "text": "Raise an exception carrying the new value",
+     "correct": false,
+     "rationale": "Exceptions signal failure; they are not a state-update mechanism."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: nodes return updates and the graph merges them via the state schema's reducers.",
+   "outcome_refs": [
+    "MST-0609-D01.01"
+   ],
+   "domain_ref": "Graphs, state and nodes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0609-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO measures keep a looping LangGraph agent from running forever? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set a recursion/step limit on the graph",
+     "correct": true,
+     "rationale": "Correct: a recursion limit caps how many steps a run may take."
+    },
+    {
+     "key": "B",
+     "text": "Add a conditional edge that routes to the end when a done condition is met",
+     "correct": true,
+     "rationale": "Correct: an explicit termination condition lets the loop exit."
+    },
+    {
+     "key": "C",
+     "text": "Make the loop node slower so fewer iterations run per second",
+     "correct": false,
+     "rationale": "Slower iterations still loop forever; this changes rate, not termination."
+    },
+    {
+     "key": "D",
+     "text": "Increase the model's temperature",
+     "correct": false,
+     "rationale": "Temperature affects sampling, not loop termination."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a recursion limit caps how many steps a run may take.",
+   "outcome_refs": [
+    "MST-0609-D02.02"
+   ],
+   "domain_ref": "Control flow",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0609-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A graph run must be able to pause for human approval and resume later after a restart. What is required?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A configured checkpointer that persists state, plus an interrupt point",
+     "correct": true,
+     "rationale": "Correct: persistence plus an interrupt lets the run pause and resume across restarts."
+    },
+    {
+     "key": "B",
+     "text": "A longer system prompt",
+     "correct": false,
+     "rationale": "Prompt length does not provide persistence or resumption."
+    },
+    {
+     "key": "C",
+     "text": "Disabling all conditional edges",
+     "correct": false,
+     "rationale": "Routing is unrelated to pausing and resuming."
+    },
+    {
+     "key": "D",
+     "text": "Running the graph with a larger model",
+     "correct": false,
+     "rationale": "Model size does not persist or resume state."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: persistence plus an interrupt lets the run pause and resume across restarts.",
+   "outcome_refs": [
+    "MST-0609-D03.02"
+   ],
+   "domain_ref": "Persistence and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

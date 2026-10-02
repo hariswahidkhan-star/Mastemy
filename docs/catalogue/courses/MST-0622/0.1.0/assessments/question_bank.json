@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0622",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0622-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Make, what does mapping do between two modules?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It routes specific fields from one module's output bundle into another module's input",
+     "correct": true,
+     "rationale": "Correct: mapping explicitly connects output fields to the next module's inputs."
+    },
+    {
+     "key": "B",
+     "text": "It encrypts the whole scenario",
+     "correct": false,
+     "rationale": "Mapping is about data flow, not encryption."
+    },
+    {
+     "key": "C",
+     "text": "It schedules the scenario",
+     "correct": false,
+     "rationale": "Scheduling is separate from field mapping."
+    },
+    {
+     "key": "D",
+     "text": "It deletes unused modules",
+     "correct": false,
+     "rationale": "Mapping does not remove modules."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: mapping explicitly connects output fields to the next module's inputs.",
+   "outcome_refs": [
+    "MST-0622-D01.02"
+   ],
+   "domain_ref": "Scenario basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0622-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO improve a Make scenario's reliability? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Error handlers with retries on modules that can fail",
+     "correct": true,
+     "rationale": "Correct: error handling keeps one failure from silently breaking the scenario."
+    },
+    {
+     "key": "B",
+     "text": "Validating AI output before downstream modules consume it",
+     "correct": true,
+     "rationale": "Correct: AI output is untrusted and should be checked first."
+    },
+    {
+     "key": "C",
+     "text": "Storing secrets in a text field inside a module",
+     "correct": false,
+     "rationale": "Secrets belong in secured connections, not plain fields."
+    },
+    {
+     "key": "D",
+     "text": "Removing all filters so everything always runs",
+     "correct": false,
+     "rationale": "Dropping filters runs modules on data they should skip."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: error handling keeps one failure from silently breaking the scenario.",
+   "outcome_refs": [
+    "MST-0622-D03.01"
+   ],
+   "domain_ref": "Errors and operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0622-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need a scenario to take different paths depending on an AI classification result. Which module fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A router that branches on the condition",
+     "correct": true,
+     "rationale": "Correct: a router sends the flow down different paths based on a condition."
+    },
+    {
+     "key": "B",
+     "text": "An aggregator that merges bundles",
+     "correct": false,
+     "rationale": "An aggregator combines data; it does not branch."
+    },
+    {
+     "key": "C",
+     "text": "A scheduler",
+     "correct": false,
+     "rationale": "Scheduling controls when it runs, not conditional paths."
+    },
+    {
+     "key": "D",
+     "text": "A connection",
+     "correct": false,
+     "rationale": "A connection stores credentials, not branching logic."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a router sends the flow down different paths based on a condition.",
+   "outcome_refs": [
+    "MST-0622-D02.02"
+   ],
+   "domain_ref": "AI and routing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

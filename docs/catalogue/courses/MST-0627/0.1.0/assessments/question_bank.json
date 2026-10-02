@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0627",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0627-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is 'the output should look good' a poor quality criterion for an automated gate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is not measurable, so a machine cannot verify it",
+     "correct": true,
+     "rationale": "Correct: gates need verifiable criteria a check can evaluate."
+    },
+    {
+     "key": "B",
+     "text": "It is too strict for any model",
+     "correct": false,
+     "rationale": "The problem is vagueness, not strictness."
+    },
+    {
+     "key": "C",
+     "text": "It uses too many tokens",
+     "correct": false,
+     "rationale": "Token usage is unrelated to the criterion's measurability."
+    },
+    {
+     "key": "D",
+     "text": "Looking good is never important",
+     "correct": false,
+     "rationale": "It can matter, but it must be made measurable to gate on."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: gates need verifiable criteria a check can evaluate.",
+   "outcome_refs": [
+    "MST-0627-D01.01"
+   ],
+   "domain_ref": "Defining quality",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0627-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in a robust AI output quality gate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Schema validation that rejects malformed structure",
+     "correct": true,
+     "rationale": "Correct: schema checks catch structurally invalid output."
+    },
+    {
+     "key": "B",
+     "text": "A correctness or grounding check beyond format",
+     "correct": true,
+     "rationale": "Correct: format alone does not confirm the content is right."
+    },
+    {
+     "key": "C",
+     "text": "Only a check that the response is non-empty",
+     "correct": false,
+     "rationale": "Non-empty is far too weak to be the only check."
+    },
+    {
+     "key": "D",
+     "text": "No checks, trusting the model fully",
+     "correct": false,
+     "rationale": "Trusting output ungated defeats the purpose of a gate."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: schema checks catch structurally invalid output.",
+   "outcome_refs": [
+    "MST-0627-D02.02"
+   ],
+   "domain_ref": "Automated checks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0627-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Output fails a required check in the gate. What should a well-designed gate do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Block the output and route it to a fallback, bounded retry or human review",
+     "correct": true,
+     "rationale": "Correct: a gate must stop failing output and route it, not merely warn."
+    },
+    {
+     "key": "B",
+     "text": "Pass it through with a warning in the logs",
+     "correct": false,
+     "rationale": "A warning-only gate still ships bad output."
+    },
+    {
+     "key": "C",
+     "text": "Retry forever until it passes",
+     "correct": false,
+     "rationale": "Unbounded retries can loop and overspend."
+    },
+    {
+     "key": "D",
+     "text": "Delete the check so it passes",
+     "correct": false,
+     "rationale": "Removing the check defeats the gate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a gate must stop failing output and route it, not merely warn.",
+   "outcome_refs": [
+    "MST-0627-D03.01"
+   ],
+   "domain_ref": "Gates and recovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

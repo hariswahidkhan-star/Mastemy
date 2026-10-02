@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0623",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 45,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0623-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Zapier, how does a later action step get data from the trigger?",
+   "options": [
+    {
+     "key": "A",
+     "text": "By mapping the trigger's output fields into the action's input fields",
+     "correct": true,
+     "rationale": "Correct: you explicitly map trigger fields into later steps."
+    },
+    {
+     "key": "B",
+     "text": "Every step automatically shares all variables globally",
+     "correct": false,
+     "rationale": "Zapier passes mapped fields, not implicit globals."
+    },
+    {
+     "key": "C",
+     "text": "Only by exporting to a spreadsheet first",
+     "correct": false,
+     "rationale": "A spreadsheet is not required to pass data between steps."
+    },
+    {
+     "key": "D",
+     "text": "It cannot; steps are fully isolated",
+     "correct": false,
+     "rationale": "Later steps can use earlier steps' output via mapping."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: you explicitly map trigger fields into later steps.",
+   "outcome_refs": [
+    "MST-0623-D01.02"
+   ],
+   "domain_ref": "Zap basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0623-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practice before turning a Zap on? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Test each step with real sample data",
+     "correct": true,
+     "rationale": "Correct: testing each step catches mapping and format errors early."
+    },
+    {
+     "key": "B",
+     "text": "Store credentials in Zapier connections, not pasted into fields",
+     "correct": true,
+     "rationale": "Correct: managed connections keep secrets out of plain-text fields."
+    },
+    {
+     "key": "C",
+     "text": "Skip testing to launch faster",
+     "correct": false,
+     "rationale": "Untested Zaps commonly fail on real data."
+    },
+    {
+     "key": "D",
+     "text": "Disable error handling for simplicity",
+     "correct": false,
+     "rationale": "Dropping error handling makes failures silent."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: testing each step catches mapping and format errors early.",
+   "outcome_refs": [
+    "MST-0623-D03.02"
+   ],
+   "domain_ref": "Operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0623-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want a Zap to take different actions based on an AI step's result. Which feature fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Paths, which branch the Zap on a condition",
+     "correct": true,
+     "rationale": "Correct: paths run different actions depending on a condition."
+    },
+    {
+     "key": "B",
+     "text": "A Formatter, which only transforms data",
+     "correct": false,
+     "rationale": "A Formatter reshapes data but does not branch."
+    },
+    {
+     "key": "C",
+     "text": "A connection, which only stores credentials",
+     "correct": false,
+     "rationale": "Connections hold credentials, not branching logic."
+    },
+    {
+     "key": "D",
+     "text": "A trigger, which only starts the Zap",
+     "correct": false,
+     "rationale": "Triggers start the Zap; they do not branch mid-flow."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: paths run different actions depending on a condition.",
+   "outcome_refs": [
+    "MST-0623-D02.02"
+   ],
+   "domain_ref": "AI and paths",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
