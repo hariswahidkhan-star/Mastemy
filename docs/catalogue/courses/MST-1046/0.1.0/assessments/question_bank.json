@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1046",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1046-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A supplier offers 2/10 net 30. What is the approximate annualised cost of NOT taking the discount?",
+   "options": [
+    {
+     "key": "A",
+     "text": "About 37% - the 2% saved over the 20 extra days annualises to a high implied rate",
+     "correct": true,
+     "rationale": "Correct: 2/98 over 20 days annualised is roughly 37%, usually worth taking if cash allows."
+    },
+    {
+     "key": "B",
+     "text": "About 2% - the discount is only 2% so the cost is 2%",
+     "correct": false,
+     "rationale": "This ignores that the 2% is earned over only 20 days, not a full year."
+    },
+    {
+     "key": "C",
+     "text": "About 24% - a flat month-based estimate",
+     "correct": false,
+     "rationale": "This understates the annualised rate; the correct basis uses 2/98 over 20 days."
+    },
+    {
+     "key": "D",
+     "text": "Zero - there is never a cost to paying later",
+     "correct": false,
+     "rationale": "Forgoing the discount has a real implied financing cost."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 2/98 over 20 days annualised is roughly 37%, usually worth taking if cash allows.",
+   "outcome_refs": [
+    "MST-1046-D01.01"
+   ],
+   "domain_ref": "Procurement and the finance function",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1046-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls most directly reduce the risk of duplicate supplier payments? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "System blocking of invoices with a matching supplier, amount and invoice number",
+     "correct": true,
+     "rationale": "Correct: duplicate detection on key fields stops repeat payments."
+    },
+    {
+     "key": "B",
+     "text": "Three-way match of PO, goods receipt and invoice before payment",
+     "correct": true,
+     "rationale": "Correct: matching prevents paying for goods not ordered or received, including re-keyed duplicates."
+    },
+    {
+     "key": "C",
+     "text": "Paying every invoice immediately on receipt",
+     "correct": false,
+     "rationale": "Speed without matching increases duplicate and fraud risk."
+    },
+    {
+     "key": "D",
+     "text": "Letting one person raise, approve and pay invoices",
+     "correct": false,
+     "rationale": "Lack of segregation enables both error and fraud."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: duplicate detection on key fields stops repeat payments.",
+   "outcome_refs": [
+    "MST-1046-D02.01"
+   ],
+   "domain_ref": "Supplier payment terms and working capital",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1046-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Extending supplier payment terms from 30 to 60 days will, all else equal, most directly:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Increase days payable outstanding and free up working capital short term",
+     "correct": true,
+     "rationale": "Correct: paying later raises DPO and retains cash, though it may strain suppliers."
+    },
+    {
+     "key": "B",
+     "text": "Reduce the company's revenue",
+     "correct": false,
+     "rationale": "Payment terms affect payables and cash, not revenue directly."
+    },
+    {
+     "key": "C",
+     "text": "Immediately improve gross margin",
+     "correct": false,
+     "rationale": "Timing of payment does not change the cost of goods purchased."
+    },
+    {
+     "key": "D",
+     "text": "Eliminate the need for cash-flow forecasting",
+     "correct": false,
+     "rationale": "Forecasting remains essential regardless of terms."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: paying later raises DPO and retains cash, though it may strain suppliers.",
+   "outcome_refs": [
+    "MST-1046-D03.01"
+   ],
+   "domain_ref": "Purchase-to-pay controls",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
