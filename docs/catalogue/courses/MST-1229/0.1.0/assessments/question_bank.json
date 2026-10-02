@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1229",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1229-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which scripting object should be used to query records on the server in ServiceNow?",
+   "options": [
+    {
+     "key": "A",
+     "text": "GlideRecord",
+     "correct": true,
+     "rationale": "Correct: GlideRecord is the standard server-side API for querying and manipulating records."
+    },
+    {
+     "key": "B",
+     "text": "GlideForm (g_form)",
+     "correct": false,
+     "rationale": "g_form manipulates the form in the browser, it does not query the database."
+    },
+    {
+     "key": "C",
+     "text": "GlideUser (g_user)",
+     "correct": false,
+     "rationale": "g_user exposes client-side user info, not record querying."
+    },
+    {
+     "key": "D",
+     "text": "GlideModal",
+     "correct": false,
+     "rationale": "GlideModal creates dialog windows, not database queries."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GlideRecord is the standard server-side API for querying and manipulating records.",
+   "outcome_refs": [
+    "MST-1229-D01.01"
+   ],
+   "domain_ref": "Application Development Fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1229-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should reusable server-side functions be stored so multiple scripts can call them?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Script include",
+     "correct": true,
+     "rationale": "Correct: script includes hold reusable server-side classes/functions callable from other server scripts."
+    },
+    {
+     "key": "B",
+     "text": "Client script",
+     "correct": false,
+     "rationale": "Client scripts run in the browser and are not reusable server logic."
+    },
+    {
+     "key": "C",
+     "text": "UI policy",
+     "correct": false,
+     "rationale": "UI policies declaratively control form fields, not reusable code."
+    },
+    {
+     "key": "D",
+     "text": "Dictionary entry",
+     "correct": false,
+     "rationale": "Dictionary entries define fields, not functions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: script includes hold reusable server-side classes/functions callable from other server scripts.",
+   "outcome_refs": [
+    "MST-1229-D02.01"
+   ],
+   "domain_ref": "Server-Side and Client-Side Scripting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1229-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid ways to control row-level security for a table?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Create an ACL on the table with a condition and/or script",
+     "correct": true,
+     "rationale": "Correct: ACLs evaluate conditions, roles and scripts to grant record access."
+    },
+    {
+     "key": "B",
+     "text": "Use a 'before query' business rule to add query conditions",
+     "correct": true,
+     "rationale": "Correct: a before-query business rule can restrict which rows a user sees."
+    },
+    {
+     "key": "C",
+     "text": "Add a client script that hides rows",
+     "correct": false,
+     "rationale": "Client scripts affect forms, not server-side row security."
+    },
+    {
+     "key": "D",
+     "text": "Change the table label",
+     "correct": false,
+     "rationale": "Labels are cosmetic and do not affect security."
+    },
+    {
+     "key": "E",
+     "text": "Disable the list view",
+     "correct": false,
+     "rationale": "Hiding a view does not enforce record-level security."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: ACLs evaluate conditions, roles and scripts to grant record access.",
+   "outcome_refs": [
+    "MST-1229-D03.01"
+   ],
+   "domain_ref": "Building, Extending and Deploying Apps",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1231",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1231-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does HR Service Delivery use a separate, scoped data model rather than the standard ITSM tables?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To keep sensitive employee data isolated and access-controlled",
+     "correct": true,
+     "rationale": "Correct: HR data is confidential, so it uses scoped tables with dedicated security."
+    },
+    {
+     "key": "B",
+     "text": "Because ITSM tables cannot store text",
+     "correct": false,
+     "rationale": "ITSM tables can store text; isolation is for confidentiality, not capability."
+    },
+    {
+     "key": "C",
+     "text": "To avoid using the CMDB entirely",
+     "correct": false,
+     "rationale": "CMDB relevance is unrelated to the reason for a scoped HR model."
+    },
+    {
+     "key": "D",
+     "text": "Because HR cannot use workflows",
+     "correct": false,
+     "rationale": "HR uses workflows/flows like other applications."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: HR data is confidential, so it uses scoped tables with dedicated security.",
+   "outcome_refs": [
+    "MST-1231-D01.01"
+   ],
+   "domain_ref": "HR Service Delivery Foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1231-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which component gives employees a single place to request HR services and search HR knowledge?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Employee Service Center / Employee Center",
+     "correct": true,
+     "rationale": "Correct: the Employee Center is the self-service portal for HR services and knowledge."
+    },
+    {
+     "key": "B",
+     "text": "CMDB",
+     "correct": false,
+     "rationale": "The CMDB stores configuration items, not an employee portal."
+    },
+    {
+     "key": "C",
+     "text": "MID Server",
+     "correct": false,
+     "rationale": "A MID Server handles integrations/discovery, not self-service."
+    },
+    {
+     "key": "D",
+     "text": "Update set",
+     "correct": false,
+     "rationale": "Update sets capture configuration changes, not a portal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the Employee Center is the self-service portal for HR services and knowledge.",
+   "outcome_refs": [
+    "MST-1231-D02.01"
+   ],
+   "domain_ref": "Configuration and Content",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1231-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices for protecting sensitive HR records?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply ACLs that restrict access by HR role and COE",
+     "correct": true,
+     "rationale": "Correct: role- and COE-based ACLs enforce least-privilege on HR data."
+    },
+    {
+     "key": "B",
+     "text": "Separate confidential cases from the general knowledge base",
+     "correct": true,
+     "rationale": "Correct: keeping confidential content out of public KBs prevents exposure."
+    },
+    {
+     "key": "C",
+     "text": "Grant all agents the admin role for convenience",
+     "correct": false,
+     "rationale": "Over-provisioning admin violates least privilege."
+    },
+    {
+     "key": "D",
+     "text": "Store documents on a public portal page",
+     "correct": false,
+     "rationale": "Public storage exposes sensitive documents."
+    },
+    {
+     "key": "E",
+     "text": "Disable auditing to improve performance",
+     "correct": false,
+     "rationale": "Disabling auditing removes accountability and is unsafe for HR data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: role- and COE-based ACLs enforce least-privilege on HR data.",
+   "outcome_refs": [
+    "MST-1231-D03.01"
+   ],
+   "domain_ref": "Security, Operations and Reporting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

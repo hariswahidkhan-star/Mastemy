@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1241",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1241-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the universal journal (ACDOCA) provide in SAP S/4HANA finance?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A single source of truth unifying FI and CO line items",
+     "correct": true,
+     "rationale": "Correct: the universal journal stores FI and CO in one table, removing reconciliation steps."
+    },
+    {
+     "key": "B",
+     "text": "A separate ledger only for asset accounting",
+     "correct": false,
+     "rationale": "It is not limited to assets; it unifies finance."
+    },
+    {
+     "key": "C",
+     "text": "A replacement for the chart of accounts",
+     "correct": false,
+     "rationale": "The chart of accounts still exists; ACDOCA stores postings."
+    },
+    {
+     "key": "D",
+     "text": "A tool only for external reporting",
+     "correct": false,
+     "rationale": "It serves both management and financial accounting."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the universal journal stores FI and CO in one table, removing reconciliation steps.",
+   "outcome_refs": [
+    "MST-1241-D01.01"
+   ],
+   "domain_ref": "S/4HANA and Finance Foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1241-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which account links a subledger (e.g. Accounts Payable) to the General Ledger?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reconciliation account",
+     "correct": true,
+     "rationale": "Correct: reconciliation accounts connect subledgers to the GL automatically."
+    },
+    {
+     "key": "B",
+     "text": "Clearing account",
+     "correct": false,
+     "rationale": "Clearing accounts offset open items; they are not the subledger link."
+    },
+    {
+     "key": "C",
+     "text": "Cost element",
+     "correct": false,
+     "rationale": "Cost elements are a CO concept, not the subledger-GL link."
+    },
+    {
+     "key": "D",
+     "text": "Chart of depreciation",
+     "correct": false,
+     "rationale": "That is an asset-accounting structure, not the GL link."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reconciliation accounts connect subledgers to the GL automatically.",
+   "outcome_refs": [
+    "MST-1241-D02.01"
+   ],
+   "domain_ref": "Subledger Accounting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1241-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are organisational elements in SAP Financial Accounting?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Company code",
+     "correct": true,
+     "rationale": "Correct: the company code is the legal entity for external reporting."
+    },
+    {
+     "key": "B",
+     "text": "Chart of accounts",
+     "correct": true,
+     "rationale": "Correct: the chart of accounts defines the GL account structure used by company codes."
+    },
+    {
+     "key": "C",
+     "text": "MID Server",
+     "correct": false,
+     "rationale": "A MID Server is a ServiceNow concept, not SAP."
+    },
+    {
+     "key": "D",
+     "text": "Virtual Cloud Network",
+     "correct": false,
+     "rationale": "A VCN is an OCI networking concept, not SAP FI."
+    },
+    {
+     "key": "E",
+     "text": "Transform map",
+     "correct": false,
+     "rationale": "A transform map is a ServiceNow import concept."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the company code is the legal entity for external reporting.",
+   "outcome_refs": [
+    "MST-1241-D03.01"
+   ],
+   "domain_ref": "Closing, Reporting and Integration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

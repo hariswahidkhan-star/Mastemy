@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1232",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1232-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What component executes Discovery probes and patterns on behalf of the ServiceNow instance?",
+   "options": [
+    {
+     "key": "A",
+     "text": "MID Server",
+     "correct": true,
+     "rationale": "Correct: the MID Server runs probes/patterns inside the customer network and returns results."
+    },
+    {
+     "key": "B",
+     "text": "Transform map",
+     "correct": false,
+     "rationale": "Transform maps map import data; they do not execute Discovery."
+    },
+    {
+     "key": "C",
+     "text": "Flow Designer",
+     "correct": false,
+     "rationale": "Flow Designer automates process logic, not Discovery execution."
+    },
+    {
+     "key": "D",
+     "text": "UI policy",
+     "correct": false,
+     "rationale": "UI policies control form behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the MID Server runs probes/patterns inside the customer network and returns results.",
+   "outcome_refs": [
+    "MST-1232-D01.01"
+   ],
+   "domain_ref": "Discovery Foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1232-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which mechanism prevents duplicate configuration items when Discovery runs repeatedly?",
+   "options": [
+    {
+     "key": "A",
+     "text": "CMDB identification and reconciliation rules",
+     "correct": true,
+     "rationale": "Correct: identification/reconciliation rules match incoming data to existing CIs."
+    },
+    {
+     "key": "B",
+     "text": "Access control lists",
+     "correct": false,
+     "rationale": "ACLs enforce security, not CI deduplication."
+    },
+    {
+     "key": "C",
+     "text": "Notification rules",
+     "correct": false,
+     "rationale": "Notifications send messages; they do not reconcile CIs."
+    },
+    {
+     "key": "D",
+     "text": "Report schedules",
+     "correct": false,
+     "rationale": "Report schedules deliver reports, not CI identification."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: identification/reconciliation rules match incoming data to existing CIs.",
+   "outcome_refs": [
+    "MST-1232-D02.01"
+   ],
+   "domain_ref": "The Discovery Process",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1232-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are required for the MID Server to discover a Linux host via SSH?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Valid SSH credentials stored in ServiceNow",
+     "correct": true,
+     "rationale": "Correct: Discovery needs credentials to authenticate to the target."
+    },
+    {
+     "key": "B",
+     "text": "Network reachability from the MID Server to the host",
+     "correct": true,
+     "rationale": "Correct: the MID Server must be able to reach the host on the needed ports."
+    },
+    {
+     "key": "C",
+     "text": "A Performance Analytics license",
+     "correct": false,
+     "rationale": "Performance Analytics is unrelated to SSH discovery."
+    },
+    {
+     "key": "D",
+     "text": "A published knowledge article",
+     "correct": false,
+     "rationale": "Knowledge articles are irrelevant to discovery."
+    },
+    {
+     "key": "E",
+     "text": "A service catalog item",
+     "correct": false,
+     "rationale": "Catalog items are requestable services, not a discovery prerequisite."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Discovery needs credentials to authenticate to the target.",
+   "outcome_refs": [
+    "MST-1232-D03.01"
+   ],
+   "domain_ref": "CMDB Population and Troubleshooting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1235",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 576,
+  "lesson_check_items": 54,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 54,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1235-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of a fault domain within an OCI availability domain?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To group hardware so a failure affects only one group",
+     "correct": true,
+     "rationale": "Correct: fault domains isolate hardware failures within a single availability domain."
+    },
+    {
+     "key": "B",
+     "text": "To replicate data to another region automatically",
+     "correct": false,
+     "rationale": "Cross-region replication is a separate capability, not a fault domain."
+    },
+    {
+     "key": "C",
+     "text": "To provide a public DNS name",
+     "correct": false,
+     "rationale": "DNS is unrelated to fault domains."
+    },
+    {
+     "key": "D",
+     "text": "To store object storage buckets",
+     "correct": false,
+     "rationale": "Object storage is not what fault domains define."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fault domains isolate hardware failures within a single availability domain.",
+   "outcome_refs": [
+    "MST-1235-D01.01"
+   ],
+   "domain_ref": "OCI Core Infrastructure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1235-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which OCI construct is the primary virtual network boundary for your resources?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Virtual Cloud Network (VCN)",
+     "correct": true,
+     "rationale": "Correct: a VCN is the software-defined private network in a region."
+    },
+    {
+     "key": "B",
+     "text": "Compartment",
+     "correct": false,
+     "rationale": "Compartments organise resources for access/billing, not networking boundaries."
+    },
+    {
+     "key": "C",
+     "text": "Bucket",
+     "correct": false,
+     "rationale": "A bucket is object storage, not a network."
+    },
+    {
+     "key": "D",
+     "text": "Tenancy",
+     "correct": false,
+     "rationale": "A tenancy is the root account container, not a network."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a VCN is the software-defined private network in a region.",
+   "outcome_refs": [
+    "MST-1235-D02.01"
+   ],
+   "domain_ref": "Networking and Security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1235-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are required for an instance in a public subnet to reach the internet?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An internet gateway attached to the VCN",
+     "correct": true,
+     "rationale": "Correct: an internet gateway provides the path to/from the internet."
+    },
+    {
+     "key": "B",
+     "text": "A route rule directing 0.0.0.0/0 to the internet gateway",
+     "correct": true,
+     "rationale": "Correct: the route table must send default traffic to the gateway."
+    },
+    {
+     "key": "C",
+     "text": "A block volume backup policy",
+     "correct": false,
+     "rationale": "Backup policies are unrelated to internet reachability."
+    },
+    {
+     "key": "D",
+     "text": "An autonomous database",
+     "correct": false,
+     "rationale": "A database is unrelated to internet reachability."
+    },
+    {
+     "key": "E",
+     "text": "A budget alert",
+     "correct": false,
+     "rationale": "Budget alerts are a cost feature, not networking."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an internet gateway provides the path to/from the internet.",
+   "outcome_refs": [
+    "MST-1235-D03.01"
+   ],
+   "domain_ref": "Databases, Observability and Governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

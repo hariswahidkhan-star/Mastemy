@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1240",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1080,
+  "lesson_check_items": 72,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1240-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should two String objects' contents be compared for equality in Java?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Using the equals() method",
+     "correct": true,
+     "rationale": "Correct: equals() compares contents; == compares references."
+    },
+    {
+     "key": "B",
+     "text": "Using ==",
+     "correct": false,
+     "rationale": "== compares references, not content, and can give wrong results."
+    },
+    {
+     "key": "C",
+     "text": "Using the > operator",
+     "correct": false,
+     "rationale": "> is not valid for comparing String contents for equality."
+    },
+    {
+     "key": "D",
+     "text": "Using assignment =",
+     "correct": false,
+     "rationale": "= assigns; it does not compare."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: equals() compares contents; == compares references.",
+   "outcome_refs": [
+    "MST-1240-D01.01"
+   ],
+   "domain_ref": "Java Language Core",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1240-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What characterises a Java record?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An immutable data carrier with auto-generated accessors, equals, hashCode and toString",
+     "correct": true,
+     "rationale": "Correct: records are concise immutable carriers with generated members."
+    },
+    {
+     "key": "B",
+     "text": "A mutable class whose fields change freely",
+     "correct": false,
+     "rationale": "Record components are final/immutable."
+    },
+    {
+     "key": "C",
+     "text": "An interface with default methods only",
+     "correct": false,
+     "rationale": "A record is a class, not an interface."
+    },
+    {
+     "key": "D",
+     "text": "A thread-synchronisation primitive",
+     "correct": false,
+     "rationale": "Records are data carriers, not concurrency tools."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: records are concise immutable carriers with generated members.",
+   "outcome_refs": [
+    "MST-1240-D02.01"
+   ],
+   "domain_ref": "Object-Oriented Java",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1240-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true of the Java Streams API?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A stream pipeline is not executed until a terminal operation runs",
+     "correct": true,
+     "rationale": "Correct: intermediate operations are lazy; terminal operations trigger execution."
+    },
+    {
+     "key": "B",
+     "text": "A stream cannot be reused after a terminal operation",
+     "correct": true,
+     "rationale": "Correct: streams are single-use; a new stream is needed to re-process."
+    },
+    {
+     "key": "C",
+     "text": "Streams always mutate the source collection",
+     "correct": false,
+     "rationale": "Streams generally do not mutate the source."
+    },
+    {
+     "key": "D",
+     "text": "filter() is a terminal operation",
+     "correct": false,
+     "rationale": "filter() is intermediate, not terminal."
+    },
+    {
+     "key": "E",
+     "text": "Streams guarantee multithreading automatically",
+     "correct": false,
+     "rationale": "Parallelism is opt-in via parallelStream(), not automatic."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: intermediate operations are lazy; terminal operations trigger execution.",
+   "outcome_refs": [
+    "MST-1240-D03.01"
+   ],
+   "domain_ref": "Core APIs, Generics and Functional Style",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

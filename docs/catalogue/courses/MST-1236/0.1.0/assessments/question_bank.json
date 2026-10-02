@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1236",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1080,
+  "lesson_check_items": 72,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1236-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which approach best achieves high availability for a stateless web tier in OCI?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Distribute instances across multiple availability/fault domains behind a load balancer",
+     "correct": true,
+     "rationale": "Correct: spreading instances and load-balancing removes single points of failure."
+    },
+    {
+     "key": "B",
+     "text": "Run a single large instance",
+     "correct": false,
+     "rationale": "A single instance is a single point of failure."
+    },
+    {
+     "key": "C",
+     "text": "Store everything on one block volume",
+     "correct": false,
+     "rationale": "One volume is a single point of failure, not HA."
+    },
+    {
+     "key": "D",
+     "text": "Disable health checks",
+     "correct": false,
+     "rationale": "Health checks are needed to route around failures."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: spreading instances and load-balancing removes single points of failure.",
+   "outcome_refs": [
+    "MST-1236-D01.01"
+   ],
+   "domain_ref": "Advanced Networking",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1236-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What must be true of CIDR blocks when peering two VCNs?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They must not overlap",
+     "correct": true,
+     "rationale": "Correct: peered VCNs require non-overlapping CIDR ranges for routing to work."
+    },
+    {
+     "key": "B",
+     "text": "They must be identical",
+     "correct": false,
+     "rationale": "Identical ranges overlap and cannot be routed."
+    },
+    {
+     "key": "C",
+     "text": "They must both be public",
+     "correct": false,
+     "rationale": "Peering works with private ranges; public is not required."
+    },
+    {
+     "key": "D",
+     "text": "They must be in the same subnet",
+     "correct": false,
+     "rationale": "Peered VCNs are separate networks, not one subnet."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: peered VCNs require non-overlapping CIDR ranges for routing to work.",
+   "outcome_refs": [
+    "MST-1236-D02.01"
+   ],
+   "domain_ref": "Compute and Storage at Scale",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1236-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO improve disaster recovery for a critical OCI database?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cross-region replication or standby",
+     "correct": true,
+     "rationale": "Correct: a standby in another region protects against regional failure."
+    },
+    {
+     "key": "B",
+     "text": "Defined and tested RTO/RPO with automated failover",
+     "correct": true,
+     "rationale": "Correct: documented, tested recovery objectives make DR reliable."
+    },
+    {
+     "key": "C",
+     "text": "Keeping only a single backup in the same AD",
+     "correct": false,
+     "rationale": "A single co-located backup does not protect against AD/region loss."
+    },
+    {
+     "key": "D",
+     "text": "Disabling monitoring",
+     "correct": false,
+     "rationale": "Monitoring is needed to detect failures."
+    },
+    {
+     "key": "E",
+     "text": "Hard-coding a single public IP",
+     "correct": false,
+     "rationale": "Hard-coded IPs hinder failover."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a standby in another region protects against regional failure.",
+   "outcome_refs": [
+    "MST-1236-D03.01"
+   ],
+   "domain_ref": "Security and Identity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1239",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1239-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Oracle, what is the difference between an instance and a database?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The instance is memory and processes; the database is the files on disk",
+     "correct": true,
+     "rationale": "Correct: the instance (SGA + background processes) accesses the database's physical files."
+    },
+    {
+     "key": "B",
+     "text": "They are the same thing",
+     "correct": false,
+     "rationale": "They are distinct concepts."
+    },
+    {
+     "key": "C",
+     "text": "The database is memory; the instance is the files",
+     "correct": false,
+     "rationale": "This reverses the definitions."
+    },
+    {
+     "key": "D",
+     "text": "The instance stores all table data permanently",
+     "correct": false,
+     "rationale": "Persistent data lives in the database files, not the instance memory."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the instance (SGA + background processes) accesses the database's physical files.",
+   "outcome_refs": [
+    "MST-1239-D01.01"
+   ],
+   "domain_ref": "Database Architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1239-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which principle should guide granting database privileges?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Least privilege — grant only what is needed",
+     "correct": true,
+     "rationale": "Correct: least privilege limits risk from misuse or compromise."
+    },
+    {
+     "key": "B",
+     "text": "Grant DBA to all developers for convenience",
+     "correct": false,
+     "rationale": "Over-granting violates least privilege."
+    },
+    {
+     "key": "C",
+     "text": "Avoid roles entirely",
+     "correct": false,
+     "rationale": "Roles help manage privileges efficiently."
+    },
+    {
+     "key": "D",
+     "text": "Grant privileges only to PUBLIC",
+     "correct": false,
+     "rationale": "Granting to PUBLIC exposes privileges to everyone."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: least privilege limits risk from misuse or compromise.",
+   "outcome_refs": [
+    "MST-1239-D02.01"
+   ],
+   "domain_ref": "Storage and Security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1239-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO make a backup strategy trustworthy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Regularly testing a restore from the backups",
+     "correct": true,
+     "rationale": "Correct: an untested backup may not be recoverable."
+    },
+    {
+     "key": "B",
+     "text": "Storing a copy in a separate location",
+     "correct": true,
+     "rationale": "Correct: off-site/separate copies survive local failures."
+    },
+    {
+     "key": "C",
+     "text": "Never checking the backups again",
+     "correct": false,
+     "rationale": "Unverified backups can fail silently."
+    },
+    {
+     "key": "D",
+     "text": "Keeping backups only on the same disk as the database",
+     "correct": false,
+     "rationale": "Co-located backups are lost with the disk."
+    },
+    {
+     "key": "E",
+     "text": "Disabling archive logging on a production OLTP database",
+     "correct": false,
+     "rationale": "That prevents point-in-time recovery."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an untested backup may not be recoverable.",
+   "outcome_refs": [
+    "MST-1239-D03.01"
+   ],
+   "domain_ref": "Maintenance and Recovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

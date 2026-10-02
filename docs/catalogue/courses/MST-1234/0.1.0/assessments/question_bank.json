@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1234",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1234-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In ServiceNow GRC, what does a control do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Implements a safeguard that mitigates a risk and can be tested",
+     "correct": true,
+     "rationale": "Correct: controls are safeguards mapped to risks/policies and are tested for effectiveness."
+    },
+    {
+     "key": "B",
+     "text": "States a high-level organisational rule",
+     "correct": false,
+     "rationale": "That describes a policy, not a control."
+    },
+    {
+     "key": "C",
+     "text": "Records an audit finding",
+     "correct": false,
+     "rationale": "That is an issue/finding, not a control."
+    },
+    {
+     "key": "D",
+     "text": "Stores a configuration item",
+     "correct": false,
+     "rationale": "That is the CMDB's role."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: controls are safeguards mapped to risks/policies and are tested for effectiveness.",
+   "outcome_refs": [
+    "MST-1234-D01.01"
+   ],
+   "domain_ref": "GRC Foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1234-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which object tracks a deficiency that needs remediation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Issue",
+     "correct": true,
+     "rationale": "Correct: issues capture deficiencies/findings and drive remediation tasks."
+    },
+    {
+     "key": "B",
+     "text": "Catalog item",
+     "correct": false,
+     "rationale": "Catalog items are requestable services."
+    },
+    {
+     "key": "C",
+     "text": "MID Server",
+     "correct": false,
+     "rationale": "A MID Server handles integrations/discovery."
+    },
+    {
+     "key": "D",
+     "text": "Notification",
+     "correct": false,
+     "rationale": "Notifications send messages, they do not track deficiencies."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: issues capture deficiencies/findings and drive remediation tasks.",
+   "outcome_refs": [
+    "MST-1234-D02.01"
+   ],
+   "domain_ref": "GRC Operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1234-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO support continuous control monitoring?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Indicators that automatically test control criteria on a schedule",
+     "correct": true,
+     "rationale": "Correct: automated indicators evaluate controls continuously."
+    },
+    {
+     "key": "B",
+     "text": "Integrations that pull evidence from source systems",
+     "correct": true,
+     "rationale": "Correct: integrations supply current evidence for monitoring."
+    },
+    {
+     "key": "C",
+     "text": "Manually re-typing results once a year only",
+     "correct": false,
+     "rationale": "Annual manual entry is not continuous monitoring."
+    },
+    {
+     "key": "D",
+     "text": "Disabling the audit module",
+     "correct": false,
+     "rationale": "Disabling audit removes oversight."
+    },
+    {
+     "key": "E",
+     "text": "Deleting historical risk records",
+     "correct": false,
+     "rationale": "Deleting history undermines monitoring and traceability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: automated indicators evaluate controls continuously.",
+   "outcome_refs": [
+    "MST-1234-D03.01"
+   ],
+   "domain_ref": "Assessment, Reporting and Integration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

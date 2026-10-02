@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1228",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 822,
+  "lesson_check_items": 60,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1228-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In ServiceNow, what is the recommended way to grant a set of users the same access?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assign roles to a group and add the users to the group",
+     "correct": true,
+     "rationale": "Correct: roles are assigned to groups and inherited by members, which scales and is easier to maintain."
+    },
+    {
+     "key": "B",
+     "text": "Assign each role to each user individually",
+     "correct": false,
+     "rationale": "Direct per-user role assignment is hard to maintain and error-prone."
+    },
+    {
+     "key": "C",
+     "text": "Give every user the admin role",
+     "correct": false,
+     "rationale": "Over-provisioning admin violates least privilege."
+    },
+    {
+     "key": "D",
+     "text": "Add users to the sys_user table manually",
+     "correct": false,
+     "rationale": "Being a user record does not itself grant application access."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: roles are assigned to groups and inherited by members, which scales and is easier to maintain.",
+   "outcome_refs": [
+    "MST-1228-D01.01"
+   ],
+   "domain_ref": "Platform Fundamentals and Navigation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1228-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which ServiceNow feature transforms imported data before it is written to a target table?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Transform map",
+     "correct": true,
+     "rationale": "Correct: a transform map maps and transforms staged import-set rows into the target table."
+    },
+    {
+     "key": "B",
+     "text": "Business rule",
+     "correct": false,
+     "rationale": "Business rules run on database operations but are not the import mapping mechanism."
+    },
+    {
+     "key": "C",
+     "text": "UI policy",
+     "correct": false,
+     "rationale": "UI policies control form behaviour, not data import mapping."
+    },
+    {
+     "key": "D",
+     "text": "Access control rule",
+     "correct": false,
+     "rationale": "ACLs enforce security, not import transformation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a transform map maps and transforms staged import-set rows into the target table.",
+   "outcome_refs": [
+    "MST-1228-D02.01"
+   ],
+   "domain_ref": "Data Administration and Configuration",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1228-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO objects can a notification be triggered by in ServiceNow?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A record being inserted or updated",
+     "correct": true,
+     "rationale": "Correct: notifications can be triggered by record insert/update conditions."
+    },
+    {
+     "key": "B",
+     "text": "An event being generated",
+     "correct": true,
+     "rationale": "Correct: notifications can be triggered by events in the event queue."
+    },
+    {
+     "key": "C",
+     "text": "A report being exported to PDF",
+     "correct": false,
+     "rationale": "Exporting a report does not trigger notifications."
+    },
+    {
+     "key": "D",
+     "text": "A user logging out",
+     "correct": false,
+     "rationale": "Logout is not a standard notification trigger."
+    },
+    {
+     "key": "E",
+     "text": "A dashboard being viewed",
+     "correct": false,
+     "rationale": "Viewing a dashboard does not trigger notifications."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: notifications can be triggered by record insert/update conditions.",
+   "outcome_refs": [
+    "MST-1228-D03.01"
+   ],
+   "domain_ref": "Self-Service, Automation and Reporting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

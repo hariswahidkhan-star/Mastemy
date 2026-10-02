@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1230",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1230-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In ITIL/ITSM terms, what is the primary goal of incident management?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Restore normal service operation as quickly as possible",
+     "correct": true,
+     "rationale": "Correct: incident management focuses on rapid restoration of service, not root cause."
+    },
+    {
+     "key": "B",
+     "text": "Find and remove the root cause of recurring issues",
+     "correct": false,
+     "rationale": "That is the goal of problem management, not incident management."
+    },
+    {
+     "key": "C",
+     "text": "Approve and schedule infrastructure changes",
+     "correct": false,
+     "rationale": "That is change management."
+    },
+    {
+     "key": "D",
+     "text": "Maintain accurate configuration records",
+     "correct": false,
+     "rationale": "That is configuration management."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: incident management focuses on rapid restoration of service, not root cause.",
+   "outcome_refs": [
+    "MST-1230-D01.01"
+   ],
+   "domain_ref": "ITSM Foundations on ServiceNow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1230-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which ServiceNow capability defines and tracks the time targets for resolving a record?",
+   "options": [
+    {
+     "key": "A",
+     "text": "SLA definition",
+     "correct": true,
+     "rationale": "Correct: SLA definitions set and measure time targets against schedules and conditions."
+    },
+    {
+     "key": "B",
+     "text": "Business rule",
+     "correct": false,
+     "rationale": "Business rules run logic on database operations, not SLA tracking specifically."
+    },
+    {
+     "key": "C",
+     "text": "Catalog item",
+     "correct": false,
+     "rationale": "Catalog items are requestable services, not time targets."
+    },
+    {
+     "key": "D",
+     "text": "Assignment rule",
+     "correct": false,
+     "rationale": "Assignment rules route records; they do not track time targets."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SLA definitions set and measure time targets against schedules and conditions.",
+   "outcome_refs": [
+    "MST-1230-D02.01"
+   ],
+   "domain_ref": "Change, Request and Knowledge",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1230-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are typically pre-approved and low-risk in change management?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Standard changes",
+     "correct": true,
+     "rationale": "Correct: standard changes are pre-authorised, low-risk and repeatable."
+    },
+    {
+     "key": "B",
+     "text": "Routine password-reset-type changes following an approved model",
+     "correct": true,
+     "rationale": "Correct: changes following an approved standard model skip full CAB review."
+    },
+    {
+     "key": "C",
+     "text": "Emergency changes to fix a major outage",
+     "correct": false,
+     "rationale": "Emergency changes are high-urgency and need expedited (not pre-) approval."
+    },
+    {
+     "key": "D",
+     "text": "A major datacenter migration",
+     "correct": false,
+     "rationale": "Large, high-risk changes require full assessment and CAB."
+    },
+    {
+     "key": "E",
+     "text": "An untested production configuration change",
+     "correct": false,
+     "rationale": "Untested changes carry risk and are not pre-approved."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: standard changes are pre-authorised, low-risk and repeatable.",
+   "outcome_refs": [
+    "MST-1230-D03.01"
+   ],
+   "domain_ref": "Configuration, SLAs and Analytics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

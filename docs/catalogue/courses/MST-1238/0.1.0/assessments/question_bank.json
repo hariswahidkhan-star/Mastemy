@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1238",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1238-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which clause filters rows AFTER aggregation with GROUP BY?",
+   "options": [
+    {
+     "key": "A",
+     "text": "HAVING",
+     "correct": true,
+     "rationale": "Correct: HAVING filters groups after aggregation; WHERE filters before."
+    },
+    {
+     "key": "B",
+     "text": "WHERE",
+     "correct": false,
+     "rationale": "WHERE filters individual rows before grouping, not aggregated groups."
+    },
+    {
+     "key": "C",
+     "text": "ORDER BY",
+     "correct": false,
+     "rationale": "ORDER BY sorts results; it does not filter."
+    },
+    {
+     "key": "D",
+     "text": "FETCH FIRST",
+     "correct": false,
+     "rationale": "FETCH FIRST limits row count; it does not filter groups."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: HAVING filters groups after aggregation; WHERE filters before.",
+   "outcome_refs": [
+    "MST-1238-D01.01"
+   ],
+   "domain_ref": "SQL Foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1238-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does comparing a column to NULL with = return?",
+   "options": [
+    {
+     "key": "A",
+     "text": "UNKNOWN (so the row is not returned)",
+     "correct": true,
+     "rationale": "Correct: NULL comparisons with = yield UNKNOWN; use IS NULL instead."
+    },
+    {
+     "key": "B",
+     "text": "TRUE when the value is NULL",
+     "correct": false,
+     "rationale": "= NULL does not evaluate to TRUE; IS NULL is required."
+    },
+    {
+     "key": "C",
+     "text": "An error that stops the query",
+     "correct": false,
+     "rationale": "It does not error; it yields UNKNOWN."
+    },
+    {
+     "key": "D",
+     "text": "Zero",
+     "correct": false,
+     "rationale": "It does not return zero."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: NULL comparisons with = yield UNKNOWN; use IS NULL instead.",
+   "outcome_refs": [
+    "MST-1238-D02.01"
+   ],
+   "domain_ref": "Functions, Grouping and Joins",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1238-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about an inner join are correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rows are returned only where the join condition matches in both tables",
+     "correct": true,
+     "rationale": "Correct: an inner join returns only matching rows."
+    },
+    {
+     "key": "B",
+     "text": "The join condition is usually on related key columns",
+     "correct": true,
+     "rationale": "Correct: joins typically match foreign/primary key columns."
+    },
+    {
+     "key": "C",
+     "text": "It returns all rows from the left table regardless of match",
+     "correct": false,
+     "rationale": "That describes a left outer join."
+    },
+    {
+     "key": "D",
+     "text": "It always produces a Cartesian product",
+     "correct": false,
+     "rationale": "A missing join condition produces a cross join, not an inner join by design."
+    },
+    {
+     "key": "E",
+     "text": "It can only join two tables ever",
+     "correct": false,
+     "rationale": "Multiple tables can be joined in one statement."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an inner join returns only matching rows.",
+   "outcome_refs": [
+    "MST-1238-D03.01"
+   ],
+   "domain_ref": "DDL, DML and Objects",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

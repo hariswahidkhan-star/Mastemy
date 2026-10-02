@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1233",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 810,
+  "lesson_check_items": 54,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; 80/20 time split with I+A=T; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1233-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In ServiceNow CSM, which record type represents an organisation you provide service to?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Account",
+     "correct": true,
+     "rationale": "Correct: an account represents a customer organisation in the B2B model."
+    },
+    {
+     "key": "B",
+     "text": "Incident",
+     "correct": false,
+     "rationale": "Incident is an ITSM record, not a CSM customer organisation."
+    },
+    {
+     "key": "C",
+     "text": "Configuration item",
+     "correct": false,
+     "rationale": "A CI represents infrastructure, not a customer organisation."
+    },
+    {
+     "key": "D",
+     "text": "Knowledge article",
+     "correct": false,
+     "rationale": "A KB article is content, not a customer organisation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an account represents a customer organisation in the B2B model.",
+   "outcome_refs": [
+    "MST-1233-D01.01"
+   ],
+   "domain_ref": "CSM Foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1233-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What determines whether a contact is eligible to receive a given level of support?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Entitlement",
+     "correct": true,
+     "rationale": "Correct: entitlements define the support a contact/account is eligible for."
+    },
+    {
+     "key": "B",
+     "text": "Business rule",
+     "correct": false,
+     "rationale": "Business rules run logic; they are not the eligibility definition."
+    },
+    {
+     "key": "C",
+     "text": "UI action",
+     "correct": false,
+     "rationale": "UI actions add buttons/links, not eligibility."
+    },
+    {
+     "key": "D",
+     "text": "Dashboard",
+     "correct": false,
+     "rationale": "Dashboards visualise data, not entitlement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: entitlements define the support a contact/account is eligible for.",
+   "outcome_refs": [
+    "MST-1233-D02.01"
+   ],
+   "domain_ref": "Self-Service and Operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1233-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO reduce agent workload in a CSM deployment?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A self-service portal with knowledge and community",
+     "correct": true,
+     "rationale": "Correct: self-service deflects cases from agents."
+    },
+    {
+     "key": "B",
+     "text": "Automated case routing and assignment",
+     "correct": true,
+     "rationale": "Correct: automation reduces manual triage effort."
+    },
+    {
+     "key": "C",
+     "text": "Removing all SLAs",
+     "correct": false,
+     "rationale": "Removing SLAs harms service quality, it does not reduce workload responsibly."
+    },
+    {
+     "key": "D",
+     "text": "Giving every customer the admin role",
+     "correct": false,
+     "rationale": "That is a security risk, not a workload reduction."
+    },
+    {
+     "key": "E",
+     "text": "Disabling notifications",
+     "correct": false,
+     "rationale": "Disabling notifications hurts communication, not workload meaningfully."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: self-service deflects cases from agents.",
+   "outcome_refs": [
+    "MST-1233-D03.01"
+   ],
+   "domain_ref": "Configuration, Products and Reporting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-multi",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
