@@ -1,2 +1,0 @@
-import { a as MessageInstructorButton, c as StudioMessagingPanel, i as MessageComposer, n as CourseLearnerActions, o as MessageLearnerButton, r as InboxPage, s as ModerationMessagesPage, t as ConversationPage } from "./Messaging-BSdbeK_Z.js";
-export { ConversationPage, CourseLearnerActions, InboxPage, MessageComposer, MessageInstructorButton, MessageLearnerButton, ModerationMessagesPage, StudioMessagingPanel };
