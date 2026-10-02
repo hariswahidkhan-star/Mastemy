@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1129",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1252,
+  "lesson_check_items": 96,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 139,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1129-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You drop a 24fps clip into a 29.97fps sequence and playback stutters. What is the MOST appropriate first action?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Match the sequence settings (or interpret) to the dominant footage, then re-add clips",
+     "correct": true,
+     "rationale": "Correct: aligning sequence framerate to the footage avoids conform/stutter issues."
+    },
+    {
+     "key": "B",
+     "text": "Lower the playback resolution permanently",
+     "correct": false,
+     "rationale": "Playback resolution is a preview aid; it does not fix a framerate conform mismatch."
+    },
+    {
+     "key": "C",
+     "text": "Delete and re-import the clip",
+     "correct": false,
+     "rationale": "Re-importing does not change how the clip conforms to the sequence framerate."
+    },
+    {
+     "key": "D",
+     "text": "Convert the project to a new colour space",
+     "correct": false,
+     "rationale": "Colour space is unrelated to framerate stutter."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: aligning sequence framerate to the footage avoids conform/stutter issues.",
+   "outcome_refs": [
+    "MST-1129-D01.01"
+   ],
+   "domain_ref": "Project Setup and Media Management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1129-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which edit type pushes all downstream clips later on the timeline to make room for the new clip?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Insert edit",
+     "correct": true,
+     "rationale": "Correct: an insert edit ripples downstream clips to accommodate the inserted clip."
+    },
+    {
+     "key": "B",
+     "text": "Overwrite edit",
+     "correct": false,
+     "rationale": "Overwrite replaces existing frames and does not shift downstream clips."
+    },
+    {
+     "key": "C",
+     "text": "Lift edit",
+     "correct": false,
+     "rationale": "Lift removes a clip leaving a gap; it does not add a clip."
+    },
+    {
+     "key": "D",
+     "text": "Extract edit",
+     "correct": false,
+     "rationale": "Extract removes a clip and ripples the gap closed; it does not insert."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an insert edit ripples downstream clips to accommodate the inserted clip.",
+   "outcome_refs": [
+    "MST-1129-D02.01"
+   ],
+   "domain_ref": "Editing and Timeline Craft",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1129-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate when preparing a final export for web delivery?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Choose a delivery preset matching the target platform's codec and resolution",
+     "correct": true,
+     "rationale": "Correct: platform-matched presets ensure compatible codec/resolution."
+    },
+    {
+     "key": "B",
+     "text": "Set a reasonable bitrate for the target file-size and quality",
+     "correct": true,
+     "rationale": "Correct: bitrate drives the quality/size trade-off for web."
+    },
+    {
+     "key": "C",
+     "text": "Always export uncompressed to guarantee quality",
+     "correct": false,
+     "rationale": "Uncompressed files are impractically large and unnecessary for web delivery."
+    },
+    {
+     "key": "D",
+     "text": "Disable audio to reduce file size",
+     "correct": false,
+     "rationale": "Dropping audio changes the deliverable and is not a standard web optimisation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: platform-matched presets ensure compatible codec/resolution.",
+   "outcome_refs": [
+    "MST-1129-D03.01"
+   ],
+   "domain_ref": "Effects, Audio and Delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-key-set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1131",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1252,
+  "lesson_check_items": 96,
+  "module_check_items": 252,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 139,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1131-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to hide part of a layer but keep the option to bring it back later. Which is the MOST non-destructive approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add a layer mask and paint the area black",
+     "correct": true,
+     "rationale": "Correct: a layer mask hides pixels reversibly without deleting them."
+    },
+    {
+     "key": "B",
+     "text": "Select the area and press Delete",
+     "correct": false,
+     "rationale": "Deleting removes pixels destructively."
+    },
+    {
+     "key": "C",
+     "text": "Flatten the image first",
+     "correct": false,
+     "rationale": "Flattening is destructive and removes layer flexibility."
+    },
+    {
+     "key": "D",
+     "text": "Lower the document resolution",
+     "correct": false,
+     "rationale": "Resolution changes do not hide a region of a layer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a layer mask hides pixels reversibly without deleting them.",
+   "outcome_refs": [
+    "MST-1131-D01.01"
+   ],
+   "domain_ref": "Documents, Layers and Selections",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1131-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which colour mode is generally correct when preparing an image for commercial print?",
+   "options": [
+    {
+     "key": "A",
+     "text": "CMYK",
+     "correct": true,
+     "rationale": "Correct: commercial print presses use CMYK inks."
+    },
+    {
+     "key": "B",
+     "text": "sRGB",
+     "correct": false,
+     "rationale": "sRGB is a web/screen colour space, not for press output."
+    },
+    {
+     "key": "C",
+     "text": "Grayscale",
+     "correct": false,
+     "rationale": "Grayscale discards colour and is only for monochrome output."
+    },
+    {
+     "key": "D",
+     "text": "Indexed colour",
+     "correct": false,
+     "rationale": "Indexed colour limits the palette and is used for some web GIFs, not print."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: commercial print presses use CMYK inks.",
+   "outcome_refs": [
+    "MST-1131-D03.01"
+   ],
+   "domain_ref": "Compositing and Output",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1131-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep a retouching workflow non-destructive?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use adjustment layers instead of direct image adjustments",
+     "correct": true,
+     "rationale": "Correct: adjustment layers can be edited or removed at any time."
+    },
+    {
+     "key": "B",
+     "text": "Convert layers to smart objects before filtering",
+     "correct": true,
+     "rationale": "Correct: smart objects preserve the original and allow re-editable smart filters."
+    },
+    {
+     "key": "C",
+     "text": "Apply filters directly to the flattened base layer",
+     "correct": false,
+     "rationale": "That bakes in the effect destructively."
+    },
+    {
+     "key": "D",
+     "text": "Save only as a flattened JPEG",
+     "correct": false,
+     "rationale": "A flattened JPEG discards layers and masks."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: adjustment layers can be edited or removed at any time.",
+   "outcome_refs": [
+    "MST-1131-D02.01"
+   ],
+   "domain_ref": "Retouching, Tone and Colour",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-key-set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

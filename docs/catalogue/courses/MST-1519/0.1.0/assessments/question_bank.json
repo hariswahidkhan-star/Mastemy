@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1519",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 802,
+  "lesson_check_items": 96,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 79,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1519-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does `typeof null` evaluate to in JavaScript?",
+   "options": [
+    {
+     "key": "A",
+     "text": "\"object\"",
+     "correct": true,
+     "rationale": "Correct: a long-standing language quirk - typeof null returns \"object\"."
+    },
+    {
+     "key": "B",
+     "text": "\"null\"",
+     "correct": false,
+     "rationale": "There is no \"null\" string result from typeof; null is not its own typeof tag."
+    },
+    {
+     "key": "C",
+     "text": "\"undefined\"",
+     "correct": false,
+     "rationale": "typeof undefined is \"undefined\"; null is a distinct value."
+    },
+    {
+     "key": "D",
+     "text": "\"boolean\"",
+     "correct": false,
+     "rationale": "null is not a boolean; it is the intentional absence of an object value."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a long-standing language quirk - typeof null returns \"object\".",
+   "outcome_refs": [
+    "MST-1519-D01.01"
+   ],
+   "domain_ref": "Variables, Types and Collections",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1519-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Promises are correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A promise can settle (resolve or reject) only once",
+     "correct": true,
+     "rationale": "Correct: once settled a promise's state is immutable."
+    },
+    {
+     "key": "B",
+     "text": "async/await is built on top of promises",
+     "correct": true,
+     "rationale": "Correct: await pauses on a promise and resumes with its settled value."
+    },
+    {
+     "key": "C",
+     "text": "A rejected promise without a handler is always caught by a surrounding try/catch",
+     "correct": false,
+     "rationale": "Only an awaited (or .catch-chained) promise is caught; a bare rejected promise is not."
+    },
+    {
+     "key": "D",
+     "text": "Promise.all resolves as soon as the first input promise resolves",
+     "correct": false,
+     "rationale": "That describes Promise.race; Promise.all waits for all to resolve (or any to reject)."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: once settled a promise's state is immutable.",
+   "outcome_refs": [
+    "MST-1519-D03.01"
+   ],
+   "domain_ref": "Asynchronous, Errors, Testing and Debugging",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-key-set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1519-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A loop uses `var i` and registers a callback referencing `i`. All callbacks log the same final value. What is the BEST fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Declare the loop counter with let instead of var",
+     "correct": true,
+     "rationale": "Correct: let creates a fresh binding per iteration, so each callback captures its own value."
+    },
+    {
+     "key": "B",
+     "text": "Move the callback outside the loop",
+     "correct": false,
+     "rationale": "That changes behaviour and does not give per-iteration values."
+    },
+    {
+     "key": "C",
+     "text": "Use == instead of === in the comparison",
+     "correct": false,
+     "rationale": "Equality operators are unrelated to closure binding."
+    },
+    {
+     "key": "D",
+     "text": "Add 'use strict' at the top of the file",
+     "correct": false,
+     "rationale": "Strict mode does not change var's function-level scoping here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: let creates a fresh binding per iteration, so each callback captures its own value.",
+   "outcome_refs": [
+    "MST-1519-D01.01"
+   ],
+   "domain_ref": "Variables, Types and Collections",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
