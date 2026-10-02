@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1643",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1643-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An architect must let a partner organization's staff sign in with their own corporate identities, without creating local accounts. Which design best fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Identity federation with a trusted external identity provider",
+     "correct": true,
+     "rationale": "Correct: federation lets the partner authenticate users at their own IdP and assert identity to your systems."
+    },
+    {
+     "key": "B",
+     "text": "Creating shared local accounts for the partner team",
+     "correct": false,
+     "rationale": "Shared accounts break accountability and are explicitly discouraged."
+    },
+    {
+     "key": "C",
+     "text": "Disabling authentication for partner traffic",
+     "correct": false,
+     "rationale": "Removing authentication eliminates the control entirely."
+    },
+    {
+     "key": "D",
+     "text": "Emailing a single password to all partner staff",
+     "correct": false,
+     "rationale": "A shared emailed password is neither auditable nor revocable per user."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: federation lets the partner authenticate users at their own IdP and assert identity to your systems.",
+   "outcome_refs": [
+    "MST-1643-D02.01"
+   ],
+   "domain_ref": "Identity and access management architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1643-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which control model grants access based on evaluated attributes such as department, location and time rather than fixed role names?",
+   "options": [
+    {
+     "key": "A",
+     "text": "ABAC (attribute-based access control)",
+     "correct": true,
+     "rationale": "Correct: ABAC evaluates attributes/policies at access time."
+    },
+    {
+     "key": "B",
+     "text": "RBAC (role-based access control)",
+     "correct": false,
+     "rationale": "RBAC assigns permissions to named roles, not evaluated attributes."
+    },
+    {
+     "key": "C",
+     "text": "MAC enforced solely by file owners",
+     "correct": false,
+     "rationale": "Owner-set permissions describe discretionary control, not attribute policy."
+    },
+    {
+     "key": "D",
+     "text": "No access control",
+     "correct": false,
+     "rationale": "This describes an absence of control, not a model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ABAC evaluates attributes/policies at access time.",
+   "outcome_refs": [
+    "MST-1643-D02.01"
+   ],
+   "domain_ref": "Identity and access management architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1643-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO responsibilities that belong to a sound cryptographic key-management architecture.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Defining key rotation and expiry schedules",
+     "correct": true,
+     "rationale": "Correct: rotation limits exposure if a key is compromised."
+    },
+    {
+     "key": "B",
+     "text": "Restricting and auditing access to key material",
+     "correct": true,
+     "rationale": "Correct: controlling who can use keys is central to key management."
+    },
+    {
+     "key": "C",
+     "text": "Hard-coding keys into application source code",
+     "correct": false,
+     "rationale": "Embedding keys in source exposes them in repositories and builds."
+    },
+    {
+     "key": "D",
+     "text": "Reusing one key for every system indefinitely",
+     "correct": false,
+     "rationale": "A single never-rotated key maximizes blast radius on compromise."
+    },
+    {
+     "key": "E",
+     "text": "Publishing private keys to simplify integration",
+     "correct": false,
+     "rationale": "Private keys must never be published; doing so defeats the control."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: rotation limits exposure if a key is compromised. Correct: controlling who can use keys is central to key management.",
+   "outcome_refs": [
+    "MST-1643-D03.01"
+   ],
+   "domain_ref": "Infrastructure, cryptography and operations architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

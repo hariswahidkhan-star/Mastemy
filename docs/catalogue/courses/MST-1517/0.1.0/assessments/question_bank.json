@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1517",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1517-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does a container typically start faster and use fewer resources than a full virtual machine?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It shares the host kernel instead of booting its own",
+     "correct": true,
+     "rationale": "Correct: containers run as isolated processes sharing the host kernel, avoiding a full OS boot."
+    },
+    {
+     "key": "B",
+     "text": "It compresses the application into a single CPU instruction",
+     "correct": false,
+     "rationale": "Containers do not reduce an app to one instruction; that is not how they work."
+    },
+    {
+     "key": "C",
+     "text": "It runs only on read-only hardware",
+     "correct": false,
+     "rationale": "Hardware mode is unrelated to container startup speed."
+    },
+    {
+     "key": "D",
+     "text": "It never uses any memory",
+     "correct": false,
+     "rationale": "Containers use memory; they simply avoid a separate guest OS."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: containers run as isolated processes sharing the host kernel, avoiding a full OS boot.",
+   "outcome_refs": [
+    "MST-1517-D01.01"
+   ],
+   "domain_ref": "Container foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1517-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A database container loses all its records every time it is recreated. Which change fixes this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Attach a persistent volume for the database data directory",
+     "correct": true,
+     "rationale": "Correct: a volume stores data outside the container's writable layer so it survives recreation."
+    },
+    {
+     "key": "B",
+     "text": "Add more CPU to the container",
+     "correct": false,
+     "rationale": "CPU allocation does not affect data persistence."
+    },
+    {
+     "key": "C",
+     "text": "Rename the container on each run",
+     "correct": false,
+     "rationale": "The name does not preserve the writable layer's data."
+    },
+    {
+     "key": "D",
+     "text": "Expose an additional port",
+     "correct": false,
+     "rationale": "Ports affect network access, not data durability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a volume stores data outside the container's writable layer so it survives recreation.",
+   "outcome_refs": [
+    "MST-1517-D03.01"
+   ],
+   "domain_ref": "Storage, networking and registries",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1517-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices that reduce the final size of a container image.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Using a minimal base image",
+     "correct": true,
+     "rationale": "Correct: a smaller base image means fewer bytes in every build."
+    },
+    {
+     "key": "B",
+     "text": "Combining and cleaning up package installs in fewer layers",
+     "correct": true,
+     "rationale": "Correct: removing caches within the same layer keeps them out of the final image."
+    },
+    {
+     "key": "C",
+     "text": "Copying the entire project including build artifacts and caches",
+     "correct": false,
+     "rationale": "Copying unneeded files inflates the image."
+    },
+    {
+     "key": "D",
+     "text": "Adding every optional tool 'just in case'",
+     "correct": false,
+     "rationale": "Unused tools only increase size and attack surface."
+    },
+    {
+     "key": "E",
+     "text": "Never tagging images",
+     "correct": false,
+     "rationale": "Tagging affects identification, not size."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a smaller base image means fewer bytes in every build. Correct: removing caches within the same layer keeps them out of the final image.",
+   "outcome_refs": [
+    "MST-1517-D02.01"
+   ],
+   "domain_ref": "Building images",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

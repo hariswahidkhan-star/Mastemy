@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0357",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 540,
+  "lesson_check_items": 72,
+  "module_check_items": 108,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0357-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the outpatient setting, a note states 'rule out pneumonia' with no confirmed diagnosis. How should this be coded?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Code the presenting signs or symptoms, not the unconfirmed condition",
+     "correct": true,
+     "rationale": "Correct: outpatient rules prohibit coding 'rule out' conditions as confirmed; code the symptoms."
+    },
+    {
+     "key": "B",
+     "text": "Code pneumonia as a confirmed diagnosis",
+     "correct": false,
+     "rationale": "Unconfirmed conditions must not be coded as definitive in the outpatient setting."
+    },
+    {
+     "key": "C",
+     "text": "Assign no codes at all",
+     "correct": false,
+     "rationale": "The documented signs and symptoms are still codeable."
+    },
+    {
+     "key": "D",
+     "text": "Code whichever diagnosis pays the most",
+     "correct": false,
+     "rationale": "Code selection must follow documentation and guidelines, not reimbursement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: outpatient rules prohibit coding 'rule out' conditions as confirmed; code the symptoms.",
+   "outcome_refs": [
+    "MST-0357-D02.01"
+   ],
+   "domain_ref": "Diagnosis coding (ICD-10-CM) in the outpatient setting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0357-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A coder is unsure which of two documented conditions is the reason for the visit, and the note is ambiguous. What is the appropriate action?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Submit a compliant query to the provider for clarification",
+     "correct": true,
+     "rationale": "Correct: an ambiguous record should be clarified through a non-leading provider query."
+    },
+    {
+     "key": "B",
+     "text": "Choose the higher-paying code",
+     "correct": false,
+     "rationale": "Reimbursement must not drive code selection."
+    },
+    {
+     "key": "C",
+     "text": "Guess based on the coder's clinical opinion",
+     "correct": false,
+     "rationale": "Coders assign codes from documentation, not personal diagnosis."
+    },
+    {
+     "key": "D",
+     "text": "Leave the encounter uncoded indefinitely",
+     "correct": false,
+     "rationale": "The correct path is to query and resolve, not abandon the encounter."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an ambiguous record should be clarified through a non-leading provider query.",
+   "outcome_refs": [
+    "MST-0357-D01.01"
+   ],
+   "domain_ref": "Outpatient coding foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0357-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices that are compliance risks in outpatient coding.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Unbundling services that should be reported with a single comprehensive code",
+     "correct": true,
+     "rationale": "Correct: unbundling to increase payment is a recognized compliance risk."
+    },
+    {
+     "key": "B",
+     "text": "Appending modifiers unsupported by documentation",
+     "correct": true,
+     "rationale": "Correct: using modifiers without supporting documentation is improper."
+    },
+    {
+     "key": "C",
+     "text": "Assigning codes that match the documented record",
+     "correct": false,
+     "rationale": "Accurate, documentation-based coding is correct, not a risk."
+    },
+    {
+     "key": "D",
+     "text": "Querying the provider when documentation is ambiguous",
+     "correct": false,
+     "rationale": "A compliant query is good practice, not a risk."
+    },
+    {
+     "key": "E",
+     "text": "Following official coding guidelines",
+     "correct": false,
+     "rationale": "Following guidelines is exactly what compliance requires."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: unbundling to increase payment is a recognized compliance risk. Correct: using modifiers without supporting documentation is improper.",
+   "outcome_refs": [
+    "MST-0357-D03.01"
+   ],
+   "domain_ref": "Procedure coding and reimbursement",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
