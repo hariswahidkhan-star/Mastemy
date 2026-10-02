@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Mastemy.Api.Modules.Identity;
 
 public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt, AuditService audit, LoginEmailRateLimiter emailLimiter,
-    IHttpContextAccessor http, IConfiguration cfg, EmailVerificationService verification)
+    IHttpContextAccessor http, IConfiguration cfg, EmailVerificationService verification, TokenSessionValidator tokenValidator)
 {
     /// <summary>Failures tolerated before per-account exponential backoff starts.</summary>
     public const int BackoffThreshold = 5;
@@ -132,6 +132,7 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
         {
             await db.RefreshTokens.Where(t => t.FamilyId == token.FamilyId && t.RevokedAt == null)
                 .ExecuteUpdateAsync(s => s.SetProperty(t => t.RevokedAt, now));
+            tokenValidator.Invalidate(token.UserId);
             audit.Record("auth.refresh_token_reuse", "User", token.UserId, new { familyId = token.FamilyId });
             await db.SaveChangesAsync();
             throw Unauthorized(InvalidRefresh, "invalid_refresh_token");
@@ -159,6 +160,7 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
         // Logging out ends the whole session (all rotated descendants of this login).
         await db.RefreshTokens.Where(t => t.FamilyId == token.FamilyId && t.RevokedAt == null)
             .ExecuteUpdateAsync(s => s.SetProperty(t => t.RevokedAt, DateTime.UtcNow));
+        tokenValidator.Invalidate(token.UserId);
     }
 
     public async Task<UserDto> Me(Guid userId)
@@ -169,9 +171,12 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
         return UserDto.From(user, sec);
     }
 
-    public Task RevokeAllForUser(Guid userId) =>
-        db.RefreshTokens.Where(t => t.UserId == userId && t.RevokedAt == null)
+    public async Task RevokeAllForUser(Guid userId)
+    {
+        await db.RefreshTokens.Where(t => t.UserId == userId && t.RevokedAt == null)
             .ExecuteUpdateAsync(s => s.SetProperty(t => t.RevokedAt, DateTime.UtcNow));
+        tokenValidator.Invalidate(userId);
+    }
 
     public static readonly TimeSpan MfaChallengeLifetime = TimeSpan.FromMinutes(5);
 

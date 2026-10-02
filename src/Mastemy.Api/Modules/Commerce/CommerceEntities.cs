@@ -688,3 +688,21 @@ public class PayoutRequestEntryConfig : IEntityTypeConfiguration<PayoutRequestEn
         b.HasOne<PayoutRequest>().WithMany().HasForeignKey(x => x.PayoutRequestId);
     }
 }
+
+/// <summary>1:1 gift policy for a coupon. Absent row = 100% and staff Percent coupons cannot be used on gift purchases.</summary>
+public class CouponGiftPolicy
+{
+    public Guid CouponId { get; set; }
+    public bool AllowsGifts { get; set; }
+    public Guid SetBy { get; set; }
+    public DateTime SetAt { get; set; } = DateTime.UtcNow;
+}
+
+public class CouponGiftPolicyConfig : IEntityTypeConfiguration<CouponGiftPolicy>
+{
+    public void Configure(EntityTypeBuilder<CouponGiftPolicy> b)
+    {
+        b.ToTable("Commerce_CouponGiftPolicies"); b.HasKey(x => x.CouponId);
+        b.HasOne<Coupon>().WithMany().HasForeignKey(x => x.CouponId);
+    }
+}

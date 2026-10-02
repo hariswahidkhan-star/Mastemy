@@ -31,7 +31,7 @@ public class OperationsTests(OperationsFixture fx) : IClassFixture<OperationsFix
         Assert.DoesNotContain("mysql", anonBody);
         Assert.DoesNotContain("freeBytes", anonBody);
         using (var d = JsonDocument.Parse(anonBody))
-            Assert.True(d.RootElement.GetProperty("checks").ValueKind == JsonValueKind.Null);
+            Assert.Equal(["status"], d.RootElement.EnumerateObject().Select(p => p.Name).ToList()); // only {status}
 
         var (_, learner) = await fx.User(Roles.Student);
         Assert.DoesNotContain("mysql", await (await learner.GetAsync("/health/ready")).Content.ReadAsStringAsync());
@@ -45,6 +45,29 @@ public class OperationsTests(OperationsFixture fx) : IClassFixture<OperationsFix
         Assert.Contains("malware_scanner", names);
         Assert.Equal("Healthy", report.Checks!.Single(c => c.Name == "mysql").Status);
         Assert.Equal("Healthy", report.Checks!.Single(c => c.Name == "resource_storage").Status);
+    }
+
+    [Fact]
+    public async Task Anonymous_ready_is_served_from_a_cached_report_while_staff_get_fresh_details()
+    {
+        var anon = fx.Factory.CreateClient();
+        Assert.Equal(HttpStatusCode.OK, (await anon.GetAsync("/health/ready")).StatusCode); // primes the public cache
+        var msg = new EmailOutboxMessage { ToAddress = "y@test.local", Subject = "s", Body = "b", CreatedAt = DateTime.UtcNow.AddHours(-2) };
+        await fx.WithDb(async db => { db.EmailOutbox.Add(msg); await db.SaveChangesAsync(); });
+        try
+        {
+            // Within 10s anonymous callers get the cached status: no new probes are triggered by anonymous traffic.
+            using (var d = JsonDocument.Parse(await (await anon.GetAsync("/health/ready")).Content.ReadAsStringAsync()))
+                Assert.Equal("Healthy", d.RootElement.GetProperty("status").GetString());
+            var (_, staff) = await fx.User(Roles.Admin);
+            await Task.Delay(HealthController.StaffCacheTtl + TimeSpan.FromMilliseconds(200));
+            var report = await Read<HealthReportDto>(await staff.GetAsync("/health/ready"));
+            Assert.Equal("Degraded", report.Status);
+        }
+        finally
+        {
+            await fx.WithDb(db => db.EmailOutbox.Where(m => m.Id == msg.Id).ExecuteDeleteAsync());
+        }
     }
 
     [Fact]
@@ -66,6 +89,7 @@ public class OperationsTests(OperationsFixture fx) : IClassFixture<OperationsFix
         try
         {
             var (_, staff) = await fx.User(Roles.SuperAdmin);
+            await Task.Delay(HealthController.StaffCacheTtl + TimeSpan.FromMilliseconds(200)); // let a cached staff report from another test expire
             var r = await staff.GetAsync("/health/ready");
             Assert.Equal(HttpStatusCode.OK, r.StatusCode);
             var report = await Read<HealthReportDto>(r);

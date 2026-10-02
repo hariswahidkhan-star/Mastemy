@@ -184,11 +184,11 @@ public class SubscriptionTests(CommerceFixture fx) : IClassFixture<CommerceFixtu
             var asB = new Mastemy.Api.Domain.Assessment { CourseId = b.Course.Id, Title = "Premium mock B", IsPremium = true };
             var freeA = new Mastemy.Api.Domain.Assessment { CourseId = a.Course.Id, Title = "Free practice", IsPremium = false };
             d.Assessments.AddRange(asA, asB, freeA);
-            for (var i = 0; i < 3; i++) d.Attempts.Add(new Attempt { AssessmentId = asA.Id, UserId = sub.User.Id, Status = AttemptStatus.Submitted, StartedAt = mid, SubmittedAt = mid.AddHours(i) });
+            for (var i = 0; i < 3; i++) d.Attempts.Add(new Attempt { AssessmentId = asA.Id, UserId = sub.User.Id, Status = AttemptStatus.Submitted, StartedAt = mid, SubmittedAt = mid.AddDays(i) }); // distinct UTC days = distinct units
             d.Attempts.Add(new Attempt { AssessmentId = asB.Id, UserId = sub.User.Id, Status = AttemptStatus.Submitted, StartedAt = mid, SubmittedAt = mid });
             d.Attempts.Add(new Attempt { AssessmentId = freeA.Id, UserId = sub.User.Id, Status = AttemptStatus.Submitted, StartedAt = mid, SubmittedAt = mid }); // not premium
             d.Attempts.Add(new Attempt { AssessmentId = asA.Id, UserId = a.Owner.Id, Status = AttemptStatus.Submitted, StartedAt = mid, SubmittedAt = mid }); // not a subscriber
-            d.Set<ConsumptionEvent>().Add(new ConsumptionEvent { UserId = sub.User.Id, CourseId = b.Course.Id, Kind = "PremiumDownload", OccurredAt = mid });
+            d.Set<ConsumptionEvent>().Add(new ConsumptionEvent { UserId = sub.User.Id, CourseId = b.Course.Id, Kind = "PremiumDownload", RefId = Guid.NewGuid(), OccurredAt = mid });
             await d.SaveChangesAsync();
         });
 

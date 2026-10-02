@@ -340,7 +340,7 @@ public class MfaService(AppDbContext db, SecretProtector protector, AuditService
 }
 
 /// <summary>Active sessions (refresh-token families) of the current user.</summary>
-public class SessionService(AppDbContext db, ICurrentUser me, AuditService audit, IHttpContextAccessor http)
+public class SessionService(AppDbContext db, ICurrentUser me, AuditService audit, IHttpContextAccessor http, TokenSessionValidator tokens)
 {
     private Guid? CurrentSid =>
         Guid.TryParse(http.HttpContext?.User.FindFirst(SecurityClaims.SessionId)?.Value, out var g) ? g : null;
@@ -370,6 +370,7 @@ public class SessionService(AppDbContext db, ICurrentUser me, AuditService audit
         var uid = me.RequireId();
         var n = await db.RefreshTokens.Where(t => t.UserId == uid && t.FamilyId == familyId && t.RevokedAt == null)
             .ExecuteUpdateAsync(s => s.SetProperty(t => t.RevokedAt, DateTime.UtcNow));
+        tokens.Invalidate(uid);
         if (n == 0) throw AppException.NotFound("Session");
         audit.Record("user.session_revoked", "User", uid, new { sessionId = familyId });
         await db.SaveChangesAsync();
@@ -380,6 +381,7 @@ public class SessionService(AppDbContext db, ICurrentUser me, AuditService audit
         var uid = me.RequireId();
         var n = await db.RefreshTokens.Where(t => t.UserId == uid && t.RevokedAt == null)
             .ExecuteUpdateAsync(s => s.SetProperty(t => t.RevokedAt, DateTime.UtcNow));
+        tokens.Invalidate(uid);
         audit.Record("user.sessions_revoked_all", "User", uid, new { tokens = n });
         await db.SaveChangesAsync();
         return n;

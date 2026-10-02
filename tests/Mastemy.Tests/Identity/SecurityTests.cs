@@ -321,7 +321,9 @@ public class AccountRecoveryTests(SecurityFixture f) : IClassFixture<SecurityFix
         Assert.NotNull(refreshed.RefreshToken);
         Assert.Equal(HttpStatusCode.NoContent, (await a.DeleteAsync("/api/auth/sessions")).StatusCode);
         Assert.Equal(HttpStatusCode.Unauthorized, (await f.Anon().PostAsJsonAsync("/api/auth/refresh", new { refreshToken = refreshed.RefreshToken })).StatusCode);
-        Assert.Empty((await a.GetFromJsonAsync<List<SessionDto>>("/api/auth/sessions", IdentityFixture.Json))!);
+        // Revoke-all also ends the caller's own session: its access token is rejected on the next request.
+        Assert.Equal(HttpStatusCode.Unauthorized, (await a.GetAsync("/api/auth/sessions")).StatusCode);
+        await using (var db = f.NewDb()) Assert.False(await db.RefreshTokens.AnyAsync(t => t.UserId == u.Id && t.RevokedAt == null));
         Assert.Equal(HttpStatusCode.Unauthorized, (await f.Anon().GetAsync("/api/auth/sessions")).StatusCode);
     }
 }

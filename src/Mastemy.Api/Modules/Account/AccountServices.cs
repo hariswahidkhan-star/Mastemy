@@ -239,7 +239,7 @@ public class SkillProfileService(AppDbContext db, ICurrentUser me)
 
 /// <summary>Data-subject rights: export of the user's own data and account deletion by anonymization.</summary>
 public class DataRightsService(AppDbContext db, ICurrentUser me, AuditService audit, MfaService mfa, SkillProfileService skills,
-    ProfileService profiles)
+    ProfileService profiles, Identity.TokenSessionValidator tokenValidator)
 {
     public const string DeleteConfirmation = "DELETE";
 
@@ -355,5 +355,6 @@ public class DataRightsService(AppDbContext db, ICurrentUser me, AuditService au
         });
         await db.SaveChangesAsync();
         await tx.CommitAsync();
+        tokenValidator.Invalidate(uid); // outstanding access tokens stop working immediately in this process
     }
 }

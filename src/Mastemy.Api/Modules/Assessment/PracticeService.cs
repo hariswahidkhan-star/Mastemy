@@ -275,16 +275,28 @@ public class PracticeService(AppDbContext db, ICurrentUser me, AccessService acc
         });
         var vs = await Versions(session!);
         var review = new List<ReviewItemDto>();
+        // Answer keys of premium items are only revealed while premium access is still active (refund/expiry hides them;
+        // the score is still returned).
+        var premiumOk = new Dictionary<Guid, bool>();
+        foreach (var cid in session!.Items.Where(i => i.RequiresPremium).Select(i => i.CourseId).Distinct())
+            premiumOk[cid] = await access.HasPremiumAccess(cid);
         foreach (var item in session!.Items.OrderBy(i => i.SortOrder))
         {
             var v = vs[item.QuestionVersionId];
             var selected = Ids(item.SelectedOptionIds);
             var opts = Ids(item.OptionOrder).Select(oid => v.Options.First(o => o.Id == oid)).ToList();
+            if (item.RequiresPremium && !premiumOk[item.CourseId])
+            {
+                // Per-item points/correctness would reveal the key too; only the aggregate score is returned.
+                review.Add(new ReviewItemDto(item.Id, item.SortOrder, v.Type, v.Stem, "", 0, false, selected, [],
+                    opts.Select(o => new ReviewOptionDto(o.Id, o.Text, false, selected.Contains(o.Id), "")).ToList()));
+                continue;
+            }
             review.Add(new ReviewItemDto(item.Id, item.SortOrder, v.Type, v.Stem, v.Explanation, item.Points ?? 0, item.Points == 1m, selected,
                 opts.Where(o => o.IsCorrect).Select(o => o.Id).ToList(),
                 opts.Select(o => new ReviewOptionDto(o.Id, o.Text, o.IsCorrect, selected.Contains(o.Id), o.Rationale)).ToList()));
         }
-        return new PracticeResult(session.Id, session.Items.Count, session.Items.Count(i => i.SelectedOptionIds != ""), review.Count(r => r.Correct),
+        return new PracticeResult(session.Id, session.Items.Count, session.Items.Count(i => i.SelectedOptionIds != ""), session.Items.Count(i => i.Points == 1m),
             session.Items.Sum(i => i.Points ?? 0), review, true, Scoring.ReadinessDisclaimer);
     }
 
