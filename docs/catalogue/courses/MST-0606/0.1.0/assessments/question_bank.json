@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0606",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 440,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0606-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A pipeline only ingests newly added files, so edited and deleted documents stay in the index. What is the consequence?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Answers reflect outdated or removed content, producing stale and wrong results",
+     "correct": true,
+     "rationale": "Correct: missing edits and deletions leaves stale, incorrect content in the index."
+    },
+    {
+     "key": "B",
+     "text": "The index becomes smaller",
+     "correct": false,
+     "rationale": "It does not shrink; stale content remains."
+    },
+    {
+     "key": "C",
+     "text": "Embeddings improve automatically",
+     "correct": false,
+     "rationale": "Change detection gaps do not improve embeddings."
+    },
+    {
+     "key": "D",
+     "text": "Nothing changes",
+     "correct": false,
+     "rationale": "Stale content directly harms answer correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: missing edits and deletions leaves stale, incorrect content in the index.",
+   "outcome_refs": [
+    "MST-0606-D02.01"
+   ],
+   "domain_ref": "Detecting source changes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0606-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO approaches make reindexing efficient without serving inconsistent results? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reindex only changed chunks instead of rebuilding everything",
+     "correct": true,
+     "rationale": "Correct: incremental reindexing is efficient."
+    },
+    {
+     "key": "B",
+     "text": "Invalidate caches and swap updates atomically to avoid mixed old/new results",
+     "correct": true,
+     "rationale": "Correct: controlled invalidation keeps answers consistent."
+    },
+    {
+     "key": "C",
+     "text": "Rebuild the full index on every single edit",
+     "correct": false,
+     "rationale": "Full rebuilds are wasteful."
+    },
+    {
+     "key": "D",
+     "text": "Ignore deletions to save work",
+     "correct": false,
+     "rationale": "Ignoring deletions leaves stale content."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: incremental reindexing is efficient.",
+   "outcome_refs": [
+    "MST-0606-D03.01"
+   ],
+   "domain_ref": "Incremental reindexing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0606-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "Leadership asks how the team knows content is fresh enough. What is the right answer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A tracked staleness metric with alerts when freshness falls below target",
+     "correct": true,
+     "rationale": "Correct: you must measure and monitor staleness to manage it."
+    },
+    {
+     "key": "B",
+     "text": "Trust that reindexing works",
+     "correct": false,
+     "rationale": "Trust without measurement is not evidence."
+    },
+    {
+     "key": "C",
+     "text": "Count the number of documents",
+     "correct": false,
+     "rationale": "Document count says nothing about freshness."
+    },
+    {
+     "key": "D",
+     "text": "Check the size of the vector store",
+     "correct": false,
+     "rationale": "Size does not indicate staleness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: you must measure and monitor staleness to manage it.",
+   "outcome_refs": [
+    "MST-0606-D06.01"
+   ],
+   "domain_ref": "Measuring and monitoring staleness",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0600",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 440,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0600-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A question requires chaining three related facts across documents. Flat vector RAG returns disconnected chunks. Why does GraphRAG help?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Graph traversal follows relationships between entities to assemble multi-hop context",
+     "correct": true,
+     "rationale": "Correct: traversal connects related facts that flat retrieval leaves disconnected."
+    },
+    {
+     "key": "B",
+     "text": "Graphs make embeddings unnecessary",
+     "correct": false,
+     "rationale": "GraphRAG typically still uses vectors."
+    },
+    {
+     "key": "C",
+     "text": "Graphs guarantee the answer is correct",
+     "correct": false,
+     "rationale": "They improve context, not guarantee correctness."
+    },
+    {
+     "key": "D",
+     "text": "Flat RAG always outperforms graphs",
+     "correct": false,
+     "rationale": "Not for multi-hop relational questions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: traversal connects related facts that flat retrieval leaves disconnected.",
+   "outcome_refs": [
+    "MST-0600-D01.01"
+   ],
+   "domain_ref": "Why graphs for retrieval",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0600-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps improve a knowledge graph built from raw text? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Resolve duplicate entities that refer to the same thing",
+     "correct": true,
+     "rationale": "Correct: entity resolution prevents fragmented, wrong traversals."
+    },
+    {
+     "key": "B",
+     "text": "Design the schema to fit the questions you must answer",
+     "correct": true,
+     "rationale": "Correct: schema fit to queries makes traversal useful."
+    },
+    {
+     "key": "C",
+     "text": "Accept every extracted relation as true",
+     "correct": false,
+     "rationale": "Noisy extractions degrade the graph."
+    },
+    {
+     "key": "D",
+     "text": "Rebuild the entire graph on every tiny change",
+     "correct": false,
+     "rationale": "Full rebuilds are wasteful; prefer incremental updates."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: entity resolution prevents fragmented, wrong traversals.",
+   "outcome_refs": [
+    "MST-0600-D02.01"
+   ],
+   "domain_ref": "Building a knowledge graph from text",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0600-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A GraphRAG answer states a relationship that does not exist in the graph. What is the correct safeguard?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ground answers strictly in traversed facts and flag unsupported claims",
+     "correct": true,
+     "rationale": "Correct: answers must be grounded in the graph, not invented."
+    },
+    {
+     "key": "B",
+     "text": "Allow the model to add plausible relationships",
+     "correct": false,
+     "rationale": "That introduces fabrication."
+    },
+    {
+     "key": "C",
+     "text": "Remove grounding to speed up answers",
+     "correct": false,
+     "rationale": "That worsens the problem."
+    },
+    {
+     "key": "D",
+     "text": "Trust the answer because the graph exists",
+     "correct": false,
+     "rationale": "Existence of a graph does not prevent hallucination."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: answers must be grounded in the graph, not invented.",
+   "outcome_refs": [
+    "MST-0600-D05.01"
+   ],
+   "domain_ref": "Answering and summarising over graphs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

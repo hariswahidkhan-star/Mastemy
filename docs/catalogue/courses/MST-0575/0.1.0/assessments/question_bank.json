@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0575",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 440,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0575-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "AI-generated code is merged and later causes an incident. Who is accountable?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The human who reviewed and merged the change owns it",
+     "correct": true,
+     "rationale": "Correct: accountability stays with the people who approve and merge."
+    },
+    {
+     "key": "B",
+     "text": "The AI model vendor",
+     "correct": false,
+     "rationale": "The vendor is not the author of record for your merge."
+    },
+    {
+     "key": "C",
+     "text": "No one, since AI wrote it",
+     "correct": false,
+     "rationale": "Code in your repo has human owners."
+    },
+    {
+     "key": "D",
+     "text": "The original prompt author only, never the reviewer",
+     "correct": false,
+     "rationale": "The reviewer who approved also shares ownership."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: accountability stays with the people who approve and merge.",
+   "outcome_refs": [
+    "MST-0575-D03.01"
+   ],
+   "domain_ref": "Accountability and ownership",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0575-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep accountability with humans in AI pairing? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Require human review and sign-off before AI changes merge",
+     "correct": true,
+     "rationale": "Correct: review gates keep a human responsible."
+    },
+    {
+     "key": "B",
+     "text": "Record provenance of AI-authored contributions",
+     "correct": true,
+     "rationale": "Correct: provenance supports ownership and auditing."
+    },
+    {
+     "key": "C",
+     "text": "Auto-merge any change the assistant produces",
+     "correct": false,
+     "rationale": "That removes human judgement."
+    },
+    {
+     "key": "D",
+     "text": "Let the assistant approve its own pull requests",
+     "correct": false,
+     "rationale": "Self-approval defeats accountability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: review gates keep a human responsible.",
+   "outcome_refs": [
+    "MST-0575-D05.01"
+   ],
+   "domain_ref": "Review gates and automation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0575-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A reviewer skims a large AI diff because 'it looks right'. What principle is violated?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Review depth should be proportional to the change's risk, not its appearance",
+     "correct": true,
+     "rationale": "Correct: risk, not surface polish, sets review depth."
+    },
+    {
+     "key": "B",
+     "text": "Reviews should always be instant",
+     "correct": false,
+     "rationale": "Speed is not the governing principle."
+    },
+    {
+     "key": "C",
+     "text": "AI diffs never need review",
+     "correct": false,
+     "rationale": "They require review like any change."
+    },
+    {
+     "key": "D",
+     "text": "Only compilation matters",
+     "correct": false,
+     "rationale": "Compilation does not establish correctness or intent."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: risk, not surface polish, sets review depth.",
+   "outcome_refs": [
+    "MST-0575-D02.01"
+   ],
+   "domain_ref": "Human review of AI changes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

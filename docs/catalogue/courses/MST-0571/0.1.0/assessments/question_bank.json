@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0571",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 440,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0571-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A developer wants Copilot to follow the repository's naming and error-handling conventions automatically. What is the most durable approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add repository custom instructions that state the conventions, and still review output",
+     "correct": true,
+     "rationale": "Correct: custom instructions steer generation repo-wide, but review remains required."
+    },
+    {
+     "key": "B",
+     "text": "Paste the conventions into every chat prompt by hand",
+     "correct": false,
+     "rationale": "Manual repetition is error-prone and not durable."
+    },
+    {
+     "key": "C",
+     "text": "Rename files until Copilot infers the style",
+     "correct": false,
+     "rationale": "Inference is unreliable and indirect."
+    },
+    {
+     "key": "D",
+     "text": "Disable Copilot and write all code manually",
+     "correct": false,
+     "rationale": "That abandons the tool rather than configuring it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: custom instructions steer generation repo-wide, but review remains required.",
+   "outcome_refs": [
+    "MST-0571-D02.01"
+   ],
+   "domain_ref": "Repository custom instructions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0571-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple",
+   "selection_rule": "Select TWO",
+   "stem": "A coding agent will open pull requests from issues in a protected repository. Which TWO controls keep this safe? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Require human review and passing checks before any agent PR merges",
+     "correct": true,
+     "rationale": "Correct: human review plus required checks gate AI changes."
+    },
+    {
+     "key": "B",
+     "text": "Scope each issue narrowly so the agent's change surface is bounded",
+     "correct": true,
+     "rationale": "Correct: a bounded, well-specified issue limits risk."
+    },
+    {
+     "key": "C",
+     "text": "Allow the agent to push directly to the default branch",
+     "correct": false,
+     "rationale": "That bypasses protection and review."
+    },
+    {
+     "key": "D",
+     "text": "Give the agent admin rights to adjust its own checks",
+     "correct": false,
+     "rationale": "That removes the guardrail entirely."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: human review plus required checks gate AI changes.",
+   "outcome_refs": [
+    "MST-0571-D05.01"
+   ],
+   "domain_ref": "Branch, PR and review controls",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0571-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "Generations keep ignoring the team's logging convention despite a custom-instructions file. What should you check first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Whether the instruction file is in the expected path and scope, and whether the convention is stated unambiguously",
+     "correct": true,
+     "rationale": "Correct: path, scope and clarity determine whether instructions take effect."
+    },
+    {
+     "key": "B",
+     "text": "Whether the repository has enough stars",
+     "correct": false,
+     "rationale": "Popularity is irrelevant to instruction handling."
+    },
+    {
+     "key": "C",
+     "text": "Whether to raise the model temperature",
+     "correct": false,
+     "rationale": "Temperature does not enforce conventions."
+    },
+    {
+     "key": "D",
+     "text": "Whether to delete the file and rely on chat memory",
+     "correct": false,
+     "rationale": "That removes the durable mechanism."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: path, scope and clarity determine whether instructions take effect.",
+   "outcome_refs": [
+    "MST-0571-D02.01"
+   ],
+   "domain_ref": "Repository custom instructions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

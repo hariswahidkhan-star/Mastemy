@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0604",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 440,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0604-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A code assistant splits a function across two fixed-size chunks, so retrieval returns half a function. What chunking change helps most?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Chunk along syntactic boundaries so functions and classes stay intact",
+     "correct": true,
+     "rationale": "Correct: syntax-aware chunking keeps meaningful units together."
+    },
+    {
+     "key": "B",
+     "text": "Make chunks even smaller",
+     "correct": false,
+     "rationale": "Smaller fixed chunks worsen fragmentation."
+    },
+    {
+     "key": "C",
+     "text": "Remove all comments first",
+     "correct": false,
+     "rationale": "Comments are not the cause of the split."
+    },
+    {
+     "key": "D",
+     "text": "Index only file names",
+     "correct": false,
+     "rationale": "That removes the content entirely."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: syntax-aware chunking keeps meaningful units together.",
+   "outcome_refs": [
+    "MST-0604-D02.01"
+   ],
+   "domain_ref": "Parsing and chunking code",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0604-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep a code assistant's answers trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieve for the correct version or branch the user is on",
+     "correct": true,
+     "rationale": "Correct: version-aware retrieval avoids mixing incompatible APIs."
+    },
+    {
+     "key": "B",
+     "text": "Cite exact file and line and show the real snippet",
+     "correct": true,
+     "rationale": "Correct: precise, openable citations let developers verify."
+    },
+    {
+     "key": "C",
+     "text": "Paraphrase code from memory",
+     "correct": false,
+     "rationale": "Paraphrase invites invented APIs."
+    },
+    {
+     "key": "D",
+     "text": "Serve from a never-updated index",
+     "correct": false,
+     "rationale": "Stale indexes give outdated answers."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: version-aware retrieval avoids mixing incompatible APIs.",
+   "outcome_refs": [
+    "MST-0604-D05.01"
+   ],
+   "domain_ref": "Grounded, located answers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0604-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "After a large refactor, the assistant still returns old function names. What is the fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reindex on relevant commits and detect stale results",
+     "correct": true,
+     "rationale": "Correct: freshness requires reindexing and stale-detection."
+    },
+    {
+     "key": "B",
+     "text": "Increase the context window",
+     "correct": false,
+     "rationale": "A bigger window does not refresh stale content."
+    },
+    {
+     "key": "C",
+     "text": "Lower the temperature",
+     "correct": false,
+     "rationale": "Temperature does not update the index."
+    },
+    {
+     "key": "D",
+     "text": "Ask users to phrase questions differently",
+     "correct": false,
+     "rationale": "The problem is the stale index, not phrasing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: freshness requires reindexing and stale-detection.",
+   "outcome_refs": [
+    "MST-0604-D06.01"
+   ],
+   "domain_ref": "Freshness and maintenance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

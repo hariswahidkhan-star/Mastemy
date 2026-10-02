@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0611",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 440,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0611-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "In Haystack, you need retrieval followed by grounded generation. How is this best expressed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As a pipeline that connects a retriever component to a generator component",
+     "correct": true,
+     "rationale": "Correct: Haystack composes components into a pipeline for this flow."
+    },
+    {
+     "key": "B",
+     "text": "As a single monolithic function with no components",
+     "correct": false,
+     "rationale": "That abandons Haystack's composable model."
+    },
+    {
+     "key": "C",
+     "text": "By calling the generator with no retrieval",
+     "correct": false,
+     "rationale": "That removes grounding."
+    },
+    {
+     "key": "D",
+     "text": "By indexing at query time for every request",
+     "correct": false,
+     "rationale": "Indexing per query is inefficient and wrong here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Haystack composes components into a pipeline for this flow.",
+   "outcome_refs": [
+    "MST-0611-D04.01"
+   ],
+   "domain_ref": "Readers, generators and RAG",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0611-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO choices improve search quality in a Haystack pipeline? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Combining dense and sparse retrievers for better recall",
+     "correct": true,
+     "rationale": "Correct: hybrid retrieval often improves recall over one type."
+    },
+    {
+     "key": "B",
+     "text": "Choosing a document store suited to the workload",
+     "correct": true,
+     "rationale": "Correct: store fit affects relevance and performance."
+    },
+    {
+     "key": "C",
+     "text": "Using one retriever for every query type without testing",
+     "correct": false,
+     "rationale": "One type rarely fits all queries."
+    },
+    {
+     "key": "D",
+     "text": "Skipping evaluation of retrieval quality",
+     "correct": false,
+     "rationale": "Without evaluation you cannot know quality improved."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: hybrid retrieval often improves recall over one type.",
+   "outcome_refs": [
+    "MST-0611-D03.01"
+   ],
+   "domain_ref": "Retrievers and search",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0611-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A Haystack RAG pipeline is about to ship with no evaluation. What is the risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "You cannot tell whether retrieval and answers meet quality targets",
+     "correct": true,
+     "rationale": "Correct: without evaluation, quality is unknown and unmanaged."
+    },
+    {
+     "key": "B",
+     "text": "The pipeline will not compile",
+     "correct": false,
+     "rationale": "Lack of evaluation does not break compilation."
+    },
+    {
+     "key": "C",
+     "text": "Components cannot connect",
+     "correct": false,
+     "rationale": "Evaluation is separate from wiring."
+    },
+    {
+     "key": "D",
+     "text": "It will be too fast",
+     "correct": false,
+     "rationale": "Speed is unrelated to the evaluation gap."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without evaluation, quality is unknown and unmanaged.",
+   "outcome_refs": [
+    "MST-0611-D05.01"
+   ],
+   "domain_ref": "Evaluation and guardrails",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0599",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 440,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0599-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A financial PDF's key numbers live in a table. The pipeline flattens tables into a single text line. What is the likely result?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Row and column relationships are lost, so the model misreads which number belongs where",
+     "correct": true,
+     "rationale": "Correct: destroying table structure corrupts the meaning of cells."
+    },
+    {
+     "key": "B",
+     "text": "Retrieval becomes perfectly accurate",
+     "correct": false,
+     "rationale": "It becomes less accurate, not more."
+    },
+    {
+     "key": "C",
+     "text": "Images are improved",
+     "correct": false,
+     "rationale": "Table flattening does not affect images."
+    },
+    {
+     "key": "D",
+     "text": "The model will reconstruct the table correctly every time",
+     "correct": false,
+     "rationale": "It cannot reliably reconstruct lost structure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: destroying table structure corrupts the meaning of cells.",
+   "outcome_refs": [
+    "MST-0599-D03.01"
+   ],
+   "domain_ref": "Representing tables",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0599-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve retrieval over figures in documents? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Generate descriptive text or embeddings that capture the figure's content",
+     "correct": true,
+     "rationale": "Correct: a usable representation makes figures retrievable."
+    },
+    {
+     "key": "B",
+     "text": "Link each figure to its caption and surrounding context",
+     "correct": true,
+     "rationale": "Correct: captions and context disambiguate figures."
+    },
+    {
+     "key": "C",
+     "text": "Discard all images to save space",
+     "correct": false,
+     "rationale": "That removes the information entirely."
+    },
+    {
+     "key": "D",
+     "text": "Store only the image file name",
+     "correct": false,
+     "rationale": "A file name carries no retrievable content."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a usable representation makes figures retrievable.",
+   "outcome_refs": [
+    "MST-0599-D04.01"
+   ],
+   "domain_ref": "Representing images and figures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0599-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A multimodal answer cites 'page 7' but the fact came from a specific table cell. How should grounding improve?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cite the specific cell or figure, not just the page, so the claim is verifiable",
+     "correct": true,
+     "rationale": "Correct: precise multimodal citations let a reader verify the claim."
+    },
+    {
+     "key": "B",
+     "text": "Remove citations to keep answers short",
+     "correct": false,
+     "rationale": "That reduces verifiability."
+    },
+    {
+     "key": "C",
+     "text": "Cite the whole document",
+     "correct": false,
+     "rationale": "Too coarse to verify a specific number."
+    },
+    {
+     "key": "D",
+     "text": "Only cite text passages, never tables",
+     "correct": false,
+     "rationale": "The source was a table; it must be citable."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: precise multimodal citations let a reader verify the claim.",
+   "outcome_refs": [
+    "MST-0599-D06.01"
+   ],
+   "domain_ref": "Grounding and citing multimodal answers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

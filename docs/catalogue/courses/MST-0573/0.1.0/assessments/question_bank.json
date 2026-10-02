@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0573",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 440,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0573-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "An AI assistant proposes a fix for an intermittent error on the first try. What should you do before applying it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reproduce the failure and confirm the hypothesis explains the intermittency",
+     "correct": true,
+     "rationale": "Correct: a fix is only sound once the cause is confirmed."
+    },
+    {
+     "key": "B",
+     "text": "Apply it immediately since the assistant is usually right",
+     "correct": false,
+     "rationale": "Unverified fixes risk masking the real cause."
+    },
+    {
+     "key": "C",
+     "text": "Delete the failing feature",
+     "correct": false,
+     "rationale": "That avoids rather than diagnoses the bug."
+    },
+    {
+     "key": "D",
+     "text": "Increase server memory and hope",
+     "correct": false,
+     "rationale": "Guessing is not diagnosis."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a fix is only sound once the cause is confirmed.",
+   "outcome_refs": [
+    "MST-0573-D04.01"
+   ],
+   "domain_ref": "API and service-layer faults",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0573-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple",
+   "selection_rule": "Select TWO",
+   "stem": "You hand a stack trace to an assistant. Which TWO additional pieces of context most improve its diagnosis? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Steps to reproduce and the expected vs actual behaviour",
+     "correct": true,
+     "rationale": "Correct: reproduction and expectations anchor the diagnosis."
+    },
+    {
+     "key": "B",
+     "text": "Relevant recent changes or the failing input",
+     "correct": true,
+     "rationale": "Correct: recent diffs and inputs localise the cause."
+    },
+    {
+     "key": "C",
+     "text": "The company's quarterly revenue",
+     "correct": false,
+     "rationale": "Irrelevant to the bug."
+    },
+    {
+     "key": "D",
+     "text": "The developer's years of experience",
+     "correct": false,
+     "rationale": "Not diagnostic context."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reproduction and expectations anchor the diagnosis.",
+   "outcome_refs": [
+    "MST-0573-D02.01"
+   ],
+   "domain_ref": "Reading errors, logs and stack traces",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0573-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A query is blamed for a latency spike. What is the correct first move?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Measure the query and the path to confirm it is the bottleneck",
+     "correct": true,
+     "rationale": "Correct: measure before optimising."
+    },
+    {
+     "key": "B",
+     "text": "Add indexes to every column",
+     "correct": false,
+     "rationale": "Blind indexing can harm writes and may miss the cause."
+    },
+    {
+     "key": "C",
+     "text": "Rewrite the whole data layer",
+     "correct": false,
+     "rationale": "Disproportionate without evidence."
+    },
+    {
+     "key": "D",
+     "text": "Assume the ORM is at fault",
+     "correct": false,
+     "rationale": "Assumption, not measurement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: measure before optimising.",
+   "outcome_refs": [
+    "MST-0573-D05.01"
+   ],
+   "domain_ref": "Data and performance faults",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

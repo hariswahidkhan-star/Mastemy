@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0605",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 440,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0605-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A support assistant describes a feature the customer's plan does not include. What capability is missing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Entitlement/plan-aware filtering of the answer to what the customer can actually use",
+     "correct": true,
+     "rationale": "Correct: answers must respect the customer's plan and entitlement."
+    },
+    {
+     "key": "B",
+     "text": "A larger language model",
+     "correct": false,
+     "rationale": "Model size does not encode entitlement."
+    },
+    {
+     "key": "C",
+     "text": "More help articles",
+     "correct": false,
+     "rationale": "More content without filtering still mispromises."
+    },
+    {
+     "key": "D",
+     "text": "A faster vector store",
+     "correct": false,
+     "rationale": "Speed does not address entitlement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: answers must respect the customer's plan and entitlement.",
+   "outcome_refs": [
+    "MST-0605-D03.01"
+   ],
+   "domain_ref": "Entitlement and plan awareness",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0605-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep support answers trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cite the help article so the customer can verify",
+     "correct": true,
+     "rationale": "Correct: verifiable links build trust and let customers confirm."
+    },
+    {
+     "key": "B",
+     "text": "Escalate or refuse when evidence is insufficient",
+     "correct": true,
+     "rationale": "Correct: safe refusal and escalation prevent harmful guesses."
+    },
+    {
+     "key": "C",
+     "text": "Always answer, even by guessing",
+     "correct": false,
+     "rationale": "Guessing on support questions causes harm."
+    },
+    {
+     "key": "D",
+     "text": "Hide which article the answer came from",
+     "correct": false,
+     "rationale": "Hiding sources reduces verifiability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: verifiable links build trust and let customers confirm.",
+   "outcome_refs": [
+    "MST-0605-D05.01"
+   ],
+   "domain_ref": "Grounding, links and tone",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0605-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single",
+   "selection_rule": "Select ONE",
+   "stem": "A release note changes a workflow, but the assistant still describes the old steps. What is the correct response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reindex on the release note and retire the outdated guidance",
+     "correct": true,
+     "rationale": "Correct: freshness requires reindexing and retiring stale content."
+    },
+    {
+     "key": "B",
+     "text": "Keep both old and new steps with no dates",
+     "correct": false,
+     "rationale": "That confuses customers."
+    },
+    {
+     "key": "C",
+     "text": "Tell customers to ignore release notes",
+     "correct": false,
+     "rationale": "Release notes are the source of truth for changes."
+    },
+    {
+     "key": "D",
+     "text": "Raise the retrieval top-k",
+     "correct": false,
+     "rationale": "More results do not fix staleness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: freshness requires reindexing and retiring stale content.",
+   "outcome_refs": [
+    "MST-0605-D04.01"
+   ],
+   "domain_ref": "Freshness with product change",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
