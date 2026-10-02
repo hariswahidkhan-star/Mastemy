@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1809",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1809-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Inverse kinematics computes:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The joint angles needed to reach a desired end-effector pose",
+     "correct": true,
+     "rationale": "Correct: inverse kinematics solves joints from a target pose."
+    },
+    {
+     "key": "B",
+     "text": "The end-effector pose from known joint angles",
+     "correct": false,
+     "rationale": "That is forward kinematics."
+    },
+    {
+     "key": "C",
+     "text": "The force exerted by the gripper",
+     "correct": false,
+     "rationale": "That is a dynamics or force question, not kinematics."
+    },
+    {
+     "key": "D",
+     "text": "The robot's electrical power draw",
+     "correct": false,
+     "rationale": "Power is unrelated to kinematics."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: inverse kinematics solves joints from a target pose.",
+   "outcome_refs": [
+    "MST-1809-D02.02"
+   ],
+   "domain_ref": "Coordinates and kinematics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1809-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate for safe human-robot collaboration? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A task-based risk assessment before deployment",
+     "correct": true,
+     "rationale": "Correct: collaboration safety depends on assessing the specific task."
+    },
+    {
+     "key": "B",
+     "text": "Speed and force limiting so contact stays within safe limits",
+     "correct": true,
+     "rationale": "Correct: power-and-force limiting is a recognised collaborative method."
+    },
+    {
+     "key": "C",
+     "text": "Removing all guarding because the robot is 'collaborative'",
+     "correct": false,
+     "rationale": "A cobot is not automatically safe for every task or tool."
+    },
+    {
+     "key": "D",
+     "text": "Running at maximum speed to improve cycle time",
+     "correct": false,
+     "rationale": "High speed undermines collaborative safety."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: collaboration safety depends on assessing the specific task.",
+   "outcome_refs": [
+    "MST-1809-D05.02"
+   ],
+   "domain_ref": "Programming and safety",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1809-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A PID controller on a robot joint uses the error between:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The commanded position and the measured position",
+     "correct": true,
+     "rationale": "Correct: PID acts on the difference between target and actual position."
+    },
+    {
+     "key": "B",
+     "text": "Two unrelated joints",
+     "correct": false,
+     "rationale": "PID for one joint uses that joint's own error."
+    },
+    {
+     "key": "C",
+     "text": "The supply voltage and current",
+     "correct": false,
+     "rationale": "Those are electrical quantities, not the control error."
+    },
+    {
+     "key": "D",
+     "text": "The robot's price and budget",
+     "correct": false,
+     "rationale": "Cost is irrelevant to the control loop."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: PID acts on the difference between target and actual position.",
+   "outcome_refs": [
+    "MST-1809-D04.02"
+   ],
+   "domain_ref": "Actuation and control",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

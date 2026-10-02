@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1801",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1801-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Kirchhoff's current law states that:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The sum of currents entering a node equals the sum leaving it",
+     "correct": true,
+     "rationale": "Correct: KCL expresses conservation of charge at a node."
+    },
+    {
+     "key": "B",
+     "text": "The sum of voltages around a loop is non-zero",
+     "correct": false,
+     "rationale": "KVL says loop voltages sum to zero, not KCL."
+    },
+    {
+     "key": "C",
+     "text": "Current always flows from low to high voltage",
+     "correct": false,
+     "rationale": "Conventional current flows high to low potential through a resistor."
+    },
+    {
+     "key": "D",
+     "text": "Resistance equals voltage times current",
+     "correct": false,
+     "rationale": "Resistance is voltage divided by current."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: KCL expresses conservation of charge at a node.",
+   "outcome_refs": [
+    "MST-1801-D02.02"
+   ],
+   "domain_ref": "DC circuit analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1801-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about power factor are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is the cosine of the phase angle between voltage and current",
+     "correct": true,
+     "rationale": "Correct: PF = cos(phi) for sinusoidal AC."
+    },
+    {
+     "key": "B",
+     "text": "A low power factor means more current for the same real power",
+     "correct": true,
+     "rationale": "Correct: poor PF raises current and losses."
+    },
+    {
+     "key": "C",
+     "text": "A power factor greater than 1 is desirable",
+     "correct": false,
+     "rationale": "Power factor cannot exceed 1."
+    },
+    {
+     "key": "D",
+     "text": "Power factor applies only to DC circuits",
+     "correct": false,
+     "rationale": "Power factor is an AC concept."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: PF = cos(phi) for sinusoidal AC.",
+   "outcome_refs": [
+    "MST-1801-D05.02"
+   ],
+   "domain_ref": "AC circuits",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1801-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The time constant of an RC circuit is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The product of resistance and capacitance",
+     "correct": true,
+     "rationale": "Correct: tau = RC sets how quickly the circuit charges or discharges."
+    },
+    {
+     "key": "B",
+     "text": "Resistance divided by capacitance",
+     "correct": false,
+     "rationale": "The time constant is the product RC, not a ratio."
+    },
+    {
+     "key": "C",
+     "text": "The supply voltage times the capacitance",
+     "correct": false,
+     "rationale": "That gives charge, not the time constant."
+    },
+    {
+     "key": "D",
+     "text": "Independent of the resistance",
+     "correct": false,
+     "rationale": "Resistance directly affects the time constant."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: tau = RC sets how quickly the circuit charges or discharges.",
+   "outcome_refs": [
+    "MST-1801-D04.01"
+   ],
+   "domain_ref": "Capacitance, inductance and transients",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1746",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 270,
+  "lesson_check_items": 60,
+  "module_check_items": 50,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1746-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Total float of an activity is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The time an activity can slip without delaying the project finish",
+     "correct": true,
+     "rationale": "Correct: total float is slack against the project end date."
+    },
+    {
+     "key": "B",
+     "text": "The time an activity takes to complete",
+     "correct": false,
+     "rationale": "That is its duration, not float."
+    },
+    {
+     "key": "C",
+     "text": "The cost of delaying the activity",
+     "correct": false,
+     "rationale": "Float is a time concept, not a cost."
+    },
+    {
+     "key": "D",
+     "text": "The number of resources assigned",
+     "correct": false,
+     "rationale": "Resourcing is unrelated to float."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: total float is slack against the project end date.",
+   "outcome_refs": [
+    "MST-1746-D03.02"
+   ],
+   "domain_ref": "The critical path",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1746-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid ways to shorten a schedule? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fast-tracking: running activities in parallel that were sequential",
+     "correct": true,
+     "rationale": "Correct: overlapping work can shorten duration, at added risk."
+    },
+    {
+     "key": "B",
+     "text": "Crashing: adding resources to critical activities",
+     "correct": true,
+     "rationale": "Correct: crashing shortens critical work, usually at added cost."
+    },
+    {
+     "key": "C",
+     "text": "Crashing tasks that are not on the critical path",
+     "correct": false,
+     "rationale": "Only critical-path compression shortens the project."
+    },
+    {
+     "key": "D",
+     "text": "Removing the schedule baseline",
+     "correct": false,
+     "rationale": "Deleting the baseline does not change the work."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: overlapping work can shorten duration, at added risk.",
+   "outcome_refs": [
+    "MST-1746-D04.01"
+   ],
+   "domain_ref": "Schedule compression and resources",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1746-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A finish-to-start dependency means:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The successor cannot start until the predecessor finishes",
+     "correct": true,
+     "rationale": "Correct: FS is the most common dependency type."
+    },
+    {
+     "key": "B",
+     "text": "Both tasks must finish at the same time",
+     "correct": false,
+     "rationale": "That is finish-to-finish."
+    },
+    {
+     "key": "C",
+     "text": "Both tasks must start at the same time",
+     "correct": false,
+     "rationale": "That is start-to-start."
+    },
+    {
+     "key": "D",
+     "text": "The successor must finish before the predecessor starts",
+     "correct": false,
+     "rationale": "That ordering is not a standard dependency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: FS is the most common dependency type.",
+   "outcome_refs": [
+    "MST-1746-D02.01"
+   ],
+   "domain_ref": "Sequencing and dependencies",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

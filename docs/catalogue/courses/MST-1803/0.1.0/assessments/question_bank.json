@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1803",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1803-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During the PLC scan cycle, the controller:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reads inputs, executes the program, then updates outputs, repeatedly",
+     "correct": true,
+     "rationale": "Correct: the scan reads inputs, solves logic, then writes outputs each cycle."
+    },
+    {
+     "key": "B",
+     "text": "Updates outputs continuously in real time",
+     "correct": false,
+     "rationale": "Outputs update once per scan, not continuously."
+    },
+    {
+     "key": "C",
+     "text": "Executes all rungs simultaneously",
+     "correct": false,
+     "rationale": "Rungs execute in order within a scan."
+    },
+    {
+     "key": "D",
+     "text": "Only runs the program once at power-up",
+     "correct": false,
+     "rationale": "The program runs every scan while in RUN mode."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the scan reads inputs, solves logic, then writes outputs each cycle.",
+   "outcome_refs": [
+    "MST-1803-D01.02"
+   ],
+   "domain_ref": "PLC hardware and operation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1803-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about PLC timers and latches are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "An on-delay timer's output turns on after its preset time elapses",
+     "correct": true,
+     "rationale": "Correct: the TON output energises once the accumulated time reaches the preset."
+    },
+    {
+     "key": "B",
+     "text": "A retentive (latched) element holds its state until explicitly reset",
+     "correct": true,
+     "rationale": "Correct: latches retain state until a reset condition acts."
+    },
+    {
+     "key": "C",
+     "text": "A counter decreases every scan automatically",
+     "correct": false,
+     "rationale": "A counter changes only on its count event, not every scan."
+    },
+    {
+     "key": "D",
+     "text": "A non-retentive timer keeps its value through a power loss",
+     "correct": false,
+     "rationale": "Non-retentive timers reset on power loss."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the TON output energises once the accumulated time reaches the preset.",
+   "outcome_refs": [
+    "MST-1803-D03.02"
+   ],
+   "domain_ref": "Timers, counters and latches",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1803-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A rated safety function (e.g. an emergency stop) should be implemented using:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A dedicated safety-rated system or relay, not standard control logic",
+     "correct": true,
+     "rationale": "Correct: safety functions require rated devices to meet safety integrity requirements."
+    },
+    {
+     "key": "B",
+     "text": "A normal coil in the main ladder program",
+     "correct": false,
+     "rationale": "Standard logic does not meet safety integrity requirements."
+    },
+    {
+     "key": "C",
+     "text": "The HMI touchscreen alone",
+     "correct": false,
+     "rationale": "An HMI is not a rated safety stop."
+    },
+    {
+     "key": "D",
+     "text": "A software comment reminding operators to be careful",
+     "correct": false,
+     "rationale": "A comment provides no protective function."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: safety functions require rated devices to meet safety integrity requirements.",
+   "outcome_refs": [
+    "MST-1803-D05.02"
+   ],
+   "domain_ref": "HMI, networking and safety",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

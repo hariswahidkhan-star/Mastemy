@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1179",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1179-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For lightweight publish/subscribe telemetry from many constrained devices, the most suitable protocol is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "MQTT",
+     "correct": true,
+     "rationale": "Correct: MQTT is a lightweight pub/sub protocol designed for constrained devices and intermittent links."
+    },
+    {
+     "key": "B",
+     "text": "HTTP polling every second",
+     "correct": false,
+     "rationale": "High overhead and poor fit for many constrained devices."
+    },
+    {
+     "key": "C",
+     "text": "SMTP",
+     "correct": false,
+     "rationale": "An email protocol, not a telemetry transport."
+    },
+    {
+     "key": "D",
+     "text": "FTP",
+     "correct": false,
+     "rationale": "A file-transfer protocol, not suited to streaming telemetry."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MQTT is a lightweight pub/sub protocol designed for constrained devices and intermittent links.",
+   "outcome_refs": [
+    "MST-1179-D02.01"
+   ],
+   "domain_ref": "Industrial connectivity and protocols",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1179-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound IoT device security practices? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Give each device a unique identity and credential",
+     "correct": true,
+     "rationale": "Correct: per-device identity limits blast radius if one device is compromised."
+    },
+    {
+     "key": "B",
+     "text": "Encrypt data in transit",
+     "correct": true,
+     "rationale": "Correct: encryption protects telemetry over untrusted networks."
+    },
+    {
+     "key": "C",
+     "text": "Keep the manufacturer default password",
+     "correct": false,
+     "rationale": "Default credentials are a common attack vector."
+    },
+    {
+     "key": "D",
+     "text": "Disable all firmware updates",
+     "correct": false,
+     "rationale": "Blocking updates leaves known vulnerabilities unpatched."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: per-device identity limits blast radius if one device is compromised.",
+   "outcome_refs": [
+    "MST-1179-D05.01"
+   ],
+   "domain_ref": "IoT security and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1179-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Predictive maintenance differs from preventive maintenance because it:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Schedules action based on the asset's actual measured condition",
+     "correct": true,
+     "rationale": "Correct: predictive maintenance acts on condition data rather than a fixed calendar."
+    },
+    {
+     "key": "B",
+     "text": "Always runs on a fixed calendar interval",
+     "correct": false,
+     "rationale": "That describes preventive, not predictive, maintenance."
+    },
+    {
+     "key": "C",
+     "text": "Only fixes assets after they fail",
+     "correct": false,
+     "rationale": "That is reactive maintenance."
+    },
+    {
+     "key": "D",
+     "text": "Eliminates the need for any sensors",
+     "correct": false,
+     "rationale": "Predictive maintenance depends on condition sensing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: predictive maintenance acts on condition data rather than a fixed calendar.",
+   "outcome_refs": [
+    "MST-1179-D04.02"
+   ],
+   "domain_ref": "Analytics and asset insight",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

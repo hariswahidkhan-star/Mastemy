@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1802",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1802-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A linear system is unstable if any pole of its transfer function lies:",
+   "options": [
+    {
+     "key": "A",
+     "text": "In the right half of the complex plane",
+     "correct": true,
+     "rationale": "Correct: a right-half-plane pole produces an unbounded response."
+    },
+    {
+     "key": "B",
+     "text": "On the negative real axis",
+     "correct": false,
+     "rationale": "Negative-real poles are stable."
+    },
+    {
+     "key": "C",
+     "text": "Exactly at the origin for a first-order system",
+     "correct": false,
+     "rationale": "Origin poles are marginal, handled case by case, not automatically unstable."
+    },
+    {
+     "key": "D",
+     "text": "Far into the left half-plane",
+     "correct": false,
+     "rationale": "Left-half-plane poles indicate stability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a right-half-plane pole produces an unbounded response.",
+   "outcome_refs": [
+    "MST-1802-D04.02"
+   ],
+   "domain_ref": "Stability analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1802-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO describe the effect of PID terms? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Integral action eliminates steady-state error",
+     "correct": true,
+     "rationale": "Correct: the integral term drives steady-state error to zero."
+    },
+    {
+     "key": "B",
+     "text": "Derivative action can reduce overshoot by anticipating change",
+     "correct": true,
+     "rationale": "Correct: derivative adds damping based on the rate of change."
+    },
+    {
+     "key": "C",
+     "text": "Proportional action alone always removes steady-state error",
+     "correct": false,
+     "rationale": "Proportional-only control usually leaves a steady-state offset."
+    },
+    {
+     "key": "D",
+     "text": "Integral action speeds up the system with no downside",
+     "correct": false,
+     "rationale": "Too much integral action increases overshoot and can destabilise."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the integral term drives steady-state error to zero.",
+   "outcome_refs": [
+    "MST-1802-D05.01"
+   ],
+   "domain_ref": "Controller design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1802-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The key difference between closed-loop and open-loop control is that closed-loop:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Uses measured output as feedback to correct the input",
+     "correct": true,
+     "rationale": "Correct: feedback lets the controller respond to the actual output."
+    },
+    {
+     "key": "B",
+     "text": "Never uses any sensors",
+     "correct": false,
+     "rationale": "Closed-loop control relies on sensing the output."
+    },
+    {
+     "key": "C",
+     "text": "Is always cheaper than open-loop",
+     "correct": false,
+     "rationale": "Feedback often adds cost, not removes it."
+    },
+    {
+     "key": "D",
+     "text": "Cannot become unstable",
+     "correct": false,
+     "rationale": "Feedback can introduce instability if poorly designed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: feedback lets the controller respond to the actual output.",
+   "outcome_refs": [
+    "MST-1802-D01.01"
+   ],
+   "domain_ref": "Control concepts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
