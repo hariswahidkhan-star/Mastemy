@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1158",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1158-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A pump has an MTBF of 950 hours and an MTTR of 50 hours. What is its approximate inherent availability?",
+   "options": [
+    {
+     "key": "A",
+     "text": "0.95",
+     "correct": true,
+     "rationale": "Correct: availability = MTBF / (MTBF + MTTR) = 950 / 1000 = 0.95."
+    },
+    {
+     "key": "B",
+     "text": "0.90",
+     "correct": false,
+     "rationale": "This under-states availability; the correct ratio is 950/1000."
+    },
+    {
+     "key": "C",
+     "text": "0.05",
+     "correct": false,
+     "rationale": "This is the unavailability fraction, not availability."
+    },
+    {
+     "key": "D",
+     "text": "1.00",
+     "correct": false,
+     "rationale": "Availability cannot be 1.0 when repair time is non-zero."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: availability = MTBF / (MTBF + MTTR) = 950 / 1000 = 0.95.",
+   "outcome_refs": [
+    "MST-1158-D01.02"
+   ],
+   "domain_ref": "Reliability fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1158-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "An asset shows a random (constant) failure rate and has a redundant standby. Which TWO maintenance choices are most defensible? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Condition monitoring to detect the onset of failure",
+     "correct": true,
+     "rationale": "Correct: for random failures, condition-based tasks can catch functional failures without assuming wear-out."
+    },
+    {
+     "key": "B",
+     "text": "Run-to-failure given the redundancy and low consequence",
+     "correct": true,
+     "rationale": "Correct: with a standby and low consequence, letting it run to failure can be the lowest-cost valid strategy."
+    },
+    {
+     "key": "C",
+     "text": "Fixed-interval replacement to prevent wear-out",
+     "correct": false,
+     "rationale": "Scheduled replacement does not help a constant failure rate and wastes remaining life."
+    },
+    {
+     "key": "D",
+     "text": "Do nothing and remove it from the asset register",
+     "correct": false,
+     "rationale": "Removing it from the register loses visibility; it still needs a managed strategy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: for random failures, condition-based tasks can catch functional failures without assuming wear-out.",
+   "outcome_refs": [
+    "MST-1158-D03.01"
+   ],
+   "domain_ref": "Reliability-centred maintenance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1158-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A machine's annual maintenance cost has risen each year and now exceeds the annualised cost of a replacement. What does this indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The asset has likely passed its economic replacement point",
+     "correct": true,
+     "rationale": "Correct: when rising upkeep exceeds the annualised cost of a new asset, replacement is economically justified."
+    },
+    {
+     "key": "B",
+     "text": "The asset should always be kept because it still runs",
+     "correct": false,
+     "rationale": "Still running is not the test; total cost over time is."
+    },
+    {
+     "key": "C",
+     "text": "Maintenance budgets should simply be increased",
+     "correct": false,
+     "rationale": "Increasing budget ignores the cheaper replacement option."
+    },
+    {
+     "key": "D",
+     "text": "The MTBF must have improved",
+     "correct": false,
+     "rationale": "Rising maintenance cost typically signals declining, not improving, reliability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: when rising upkeep exceeds the annualised cost of a new asset, replacement is economically justified.",
+   "outcome_refs": [
+    "MST-1158-D04.02"
+   ],
+   "domain_ref": "Asset lifecycle and cost",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1178",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1178-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During a PLC scan cycle, in what order does the controller normally operate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read inputs, execute the program, then update outputs",
+     "correct": true,
+     "rationale": "Correct: the standard scan reads inputs, solves logic, then writes outputs, and repeats."
+    },
+    {
+     "key": "B",
+     "text": "Update outputs, read inputs, then execute the program",
+     "correct": false,
+     "rationale": "Outputs are written after logic runs, not first."
+    },
+    {
+     "key": "C",
+     "text": "Execute the program continuously without reading inputs",
+     "correct": false,
+     "rationale": "Inputs are sampled each scan; logic is not run on stale-only data."
+    },
+    {
+     "key": "D",
+     "text": "Read and write all points at exactly the same instant",
+     "correct": false,
+     "rationale": "The scan is sequential, not simultaneous."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the standard scan reads inputs, solves logic, then writes outputs, and repeats.",
+   "outcome_refs": [
+    "MST-1178-D02.01"
+   ],
+   "domain_ref": "PLC fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1178-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements correctly describe the roles of PLCs and SCADA? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The PLC performs real-time control of the process",
+     "correct": true,
+     "rationale": "Correct: PLCs execute the fast, deterministic control logic at the equipment."
+    },
+    {
+     "key": "B",
+     "text": "SCADA provides supervisory monitoring and operator oversight",
+     "correct": true,
+     "rationale": "Correct: SCADA aggregates data and lets operators supervise and set points."
+    },
+    {
+     "key": "C",
+     "text": "SCADA replaces the PLC for real-time control loops",
+     "correct": false,
+     "rationale": "SCADA supervises; it does not run the fast control loops itself."
+    },
+    {
+     "key": "D",
+     "text": "The PLC is only a display screen for operators",
+     "correct": false,
+     "rationale": "That describes an HMI, not a PLC."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: PLCs execute the fast, deterministic control logic at the equipment.",
+   "outcome_refs": [
+    "MST-1178-D04.01"
+   ],
+   "domain_ref": "SCADA and HMI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1178-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A 4-20 mA transmitter measures 0-100 degC. What temperature does a 12 mA signal represent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "50 degC",
+     "correct": true,
+     "rationale": "Correct: 12 mA is the midpoint of 4-20 mA, so it maps to 50% of the 0-100 range."
+    },
+    {
+     "key": "B",
+     "text": "12 degC",
+     "correct": false,
+     "rationale": "The signal is in mA, not degrees; 12 mA maps to the midpoint of the range."
+    },
+    {
+     "key": "C",
+     "text": "40 degC",
+     "correct": false,
+     "rationale": "This miscalculates the linear scaling; 12 mA is exactly mid-range."
+    },
+    {
+     "key": "D",
+     "text": "60 degC",
+     "correct": false,
+     "rationale": "12 mA is the midpoint, which is 50 degC, not 60."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 12 mA is the midpoint of 4-20 mA, so it maps to 50% of the 0-100 range.",
+   "outcome_refs": [
+    "MST-1178-D03.01"
+   ],
+   "domain_ref": "Sensors and signals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

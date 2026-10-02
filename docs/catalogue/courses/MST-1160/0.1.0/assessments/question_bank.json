@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1160",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1160-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A 5-Whys analysis ends at 'the technician did not grease the bearing'. Why is this usually an inadequate root cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It names a human action but not the system reason that allowed it",
+     "correct": true,
+     "rationale": "Correct: effective RCA continues to the systemic cause, e.g. a missing or unclear PM task, so the fix prevents recurrence."
+    },
+    {
+     "key": "B",
+     "text": "Human error can never be a contributing factor",
+     "correct": false,
+     "rationale": "Human error can contribute, but it is rarely the deepest actionable cause."
+    },
+    {
+     "key": "C",
+     "text": "5-Whys should always stop at exactly five whys",
+     "correct": false,
+     "rationale": "The number is a guide; you continue until a controllable systemic cause is found."
+    },
+    {
+     "key": "D",
+     "text": "Bearings do not fail from lack of grease",
+     "correct": false,
+     "rationale": "Lubrication loss is a valid physical mechanism; the issue is stopping the analysis too early."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: effective RCA continues to the systemic cause, e.g. a missing or unclear PM task, so the fix prevents recurrence.",
+   "outcome_refs": [
+    "MST-1160-D03.01"
+   ],
+   "domain_ref": "Analysis techniques",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1160-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Immediately after a failure, which TWO actions best preserve evidence for RCA? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Photograph and tag the failed parts before cleaning them",
+     "correct": true,
+     "rationale": "Correct: physical evidence must be captured in its as-found state."
+    },
+    {
+     "key": "B",
+     "text": "Record operator accounts and recent operating data",
+     "correct": true,
+     "rationale": "Correct: people and paper/data are part of the evidence and are quickly lost."
+    },
+    {
+     "key": "C",
+     "text": "Clean and reinstall the failed component to restore service fast",
+     "correct": false,
+     "rationale": "Cleaning destroys physical evidence needed to find the mechanism."
+    },
+    {
+     "key": "D",
+     "text": "Decide the likely cause first, then collect only supporting data",
+     "correct": false,
+     "rationale": "That invites confirmation bias and ignores disconfirming evidence."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: physical evidence must be captured in its as-found state.",
+   "outcome_refs": [
+    "MST-1160-D02.01"
+   ],
+   "domain_ref": "Evidence and data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1160-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Using the hierarchy of controls, which corrective action is most likely to prevent recurrence of an over-torqued bolted joint?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Design the joint so the correct torque is built in or hard to get wrong",
+     "correct": true,
+     "rationale": "Correct: elimination/engineering controls outrank reminders and training in reliability."
+    },
+    {
+     "key": "B",
+     "text": "Add a reminder note on the work order",
+     "correct": false,
+     "rationale": "Reminders are weak administrative controls that rely on memory."
+    },
+    {
+     "key": "C",
+     "text": "Retrain the technician who made the error",
+     "correct": false,
+     "rationale": "Training alone is a weak control and fades over time."
+    },
+    {
+     "key": "D",
+     "text": "Ask the team to be more careful",
+     "correct": false,
+     "rationale": "Exhortation is the weakest control and rarely prevents recurrence."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: elimination/engineering controls outrank reminders and training in reliability.",
+   "outcome_refs": [
+    "MST-1160-D05.01"
+   ],
+   "domain_ref": "Corrective action and verification",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

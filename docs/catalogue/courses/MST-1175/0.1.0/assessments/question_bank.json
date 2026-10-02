@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1175",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1175-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the difference between power measured in kW and energy measured in kWh?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Power is the rate of use; energy is power used over time",
+     "correct": true,
+     "rationale": "Correct: kW is instantaneous rate; kWh is kW multiplied by hours of use."
+    },
+    {
+     "key": "B",
+     "text": "They are the same unit",
+     "correct": false,
+     "rationale": "They measure different things: rate versus accumulated quantity."
+    },
+    {
+     "key": "C",
+     "text": "kWh is the rate and kW is the total",
+     "correct": false,
+     "rationale": "This reverses the definitions."
+    },
+    {
+     "key": "D",
+     "text": "kW measures cost and kWh measures carbon",
+     "correct": false,
+     "rationale": "Both are energy/power units, not cost or carbon measures."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: kW is instantaneous rate; kWh is kW multiplied by hours of use.",
+   "outcome_refs": [
+    "MST-1175-D01.01"
+   ],
+   "domain_ref": "Energy management foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1175-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Before comparing two months' energy consumption, which TWO normalisations are usually appropriate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Adjust for production output or occupancy",
+     "correct": true,
+     "rationale": "Correct: energy per unit of output removes volume effects."
+    },
+    {
+     "key": "B",
+     "text": "Adjust for weather (e.g. heating/cooling degree-days)",
+     "correct": true,
+     "rationale": "Correct: weather strongly drives heating and cooling energy."
+    },
+    {
+     "key": "C",
+     "text": "Ignore any differences and compare raw totals",
+     "correct": false,
+     "rationale": "Raw totals confound real efficiency with volume and weather."
+    },
+    {
+     "key": "D",
+     "text": "Convert kWh into kW to compare",
+     "correct": false,
+     "rationale": "That mixes rate and quantity and is not a normalisation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: energy per unit of output removes volume effects.",
+   "outcome_refs": [
+    "MST-1175-D02.01"
+   ],
+   "domain_ref": "Data and baselines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1175-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A measure costs 10,000 and saves 4,000 per year. What is its simple payback period?",
+   "options": [
+    {
+     "key": "A",
+     "text": "2.5 years",
+     "correct": true,
+     "rationale": "Correct: simple payback = cost / annual saving = 10,000 / 4,000 = 2.5 years."
+    },
+    {
+     "key": "B",
+     "text": "4 years",
+     "correct": false,
+     "rationale": "This inverts the ratio; payback is cost divided by annual saving."
+    },
+    {
+     "key": "C",
+     "text": "0.4 years",
+     "correct": false,
+     "rationale": "This divides saving by cost; payback is the reverse."
+    },
+    {
+     "key": "D",
+     "text": "10 years",
+     "correct": false,
+     "rationale": "This ignores the annual saving figure entirely."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: simple payback = cost / annual saving = 10,000 / 4,000 = 2.5 years.",
+   "outcome_refs": [
+    "MST-1175-D04.01"
+   ],
+   "domain_ref": "Evaluating projects",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

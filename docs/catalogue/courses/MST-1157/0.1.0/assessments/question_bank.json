@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1157",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1157-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A drawing's title block shows the first-angle projection symbol. In first-angle projection, where is the right-side view placed relative to the front view?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To the left of the front view",
+     "correct": true,
+     "rationale": "Correct: in first-angle, views project through the object onto the far plane, so the right-side view appears on the left."
+    },
+    {
+     "key": "B",
+     "text": "To the right of the front view",
+     "correct": false,
+     "rationale": "That placement is the third-angle convention, not first-angle."
+    },
+    {
+     "key": "C",
+     "text": "Directly above the front view",
+     "correct": false,
+     "rationale": "Above the front view is where the top view sits, not the side view."
+    },
+    {
+     "key": "D",
+     "text": "Overlaid on the front view",
+     "correct": false,
+     "rationale": "Views are drawn separately in their projected positions, never overlaid."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: in first-angle, views project through the object onto the far plane, so the right-side view appears on the left.",
+   "outcome_refs": [
+    "MST-1157-D01.01"
+   ],
+   "domain_ref": "Reading engineering drawings",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1157-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A hole is dimensioned 20.0 +0.1/-0.0 mm and the mating shaft 20.0 +0.0/-0.1 mm. Which TWO statements are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The maximum clearance is 0.2 mm",
+     "correct": true,
+     "rationale": "Correct: largest hole 20.1 minus smallest shaft 19.9 gives 0.2 mm."
+    },
+    {
+     "key": "B",
+     "text": "The minimum clearance is 0.0 mm",
+     "correct": true,
+     "rationale": "Correct: smallest hole 20.0 minus largest shaft 20.0 gives 0.0 mm, a line-to-line fit."
+    },
+    {
+     "key": "C",
+     "text": "The fit can be an interference fit",
+     "correct": false,
+     "rationale": "The shaft is never larger than the hole, so interference cannot occur."
+    },
+    {
+     "key": "D",
+     "text": "The maximum clearance is 0.1 mm",
+     "correct": false,
+     "rationale": "This ignores that both parts vary; the true maximum clearance is 0.2 mm."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: largest hole 20.1 minus smallest shaft 19.9 gives 0.2 mm.",
+   "outcome_refs": [
+    "MST-1157-D02.02"
+   ],
+   "domain_ref": "Dimensions and tolerances",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1157-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A feature-control frame reads a position tolerance of 0.25 mm at maximum material condition (MMC). What does the MMC modifier allow?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Additional bonus tolerance as the feature departs from MMC",
+     "correct": true,
+     "rationale": "Correct: at MMC the stated zone applies, and bonus tolerance is gained as the feature's size moves toward LMC."
+    },
+    {
+     "key": "B",
+     "text": "A tighter tolerance as the feature departs from MMC",
+     "correct": false,
+     "rationale": "The effect is the opposite: tolerance grows, it does not tighten."
+    },
+    {
+     "key": "C",
+     "text": "That the datum may be ignored",
+     "correct": false,
+     "rationale": "Datums in the frame still apply; MMC does not remove them."
+    },
+    {
+     "key": "D",
+     "text": "That the feature need not be inspected",
+     "correct": false,
+     "rationale": "The feature is still inspected against the position requirement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: at MMC the stated zone applies, and bonus tolerance is gained as the feature's size moves toward LMC.",
+   "outcome_refs": [
+    "MST-1157-D03.01"
+   ],
+   "domain_ref": "Geometric dimensioning and tolerancing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

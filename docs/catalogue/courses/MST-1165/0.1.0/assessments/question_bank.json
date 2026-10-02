@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1165",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1165-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To cut picker travel time in a warehouse, how should fast-moving (A-class) SKUs generally be slotted?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Close to dispatch and in easy-reach 'golden zone' locations",
+     "correct": true,
+     "rationale": "Correct: placing high-velocity items near shipping and at ergonomic heights minimises travel and strain."
+    },
+    {
+     "key": "B",
+     "text": "In the furthest aisles to keep dispatch clear",
+     "correct": false,
+     "rationale": "Distant slotting increases travel for the most-picked items."
+    },
+    {
+     "key": "C",
+     "text": "Spread evenly so no aisle is busy",
+     "correct": false,
+     "rationale": "Even spreading ignores velocity and raises average travel for popular SKUs."
+    },
+    {
+     "key": "D",
+     "text": "On the top racking levels to save floor space",
+     "correct": false,
+     "rationale": "Top levels slow picking and add safety risk for high-velocity items."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: placing high-velocity items near shipping and at ergonomic heights minimises travel and strain.",
+   "outcome_refs": [
+    "MST-1165-D02.02"
+   ],
+   "domain_ref": "Layout and slotting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1165-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are advantages of ABC cycle counting over a single annual physical inventory? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It finds and fixes errors continuously through the year",
+     "correct": true,
+     "rationale": "Correct: frequent counting surfaces process causes early rather than once a year."
+    },
+    {
+     "key": "B",
+     "text": "It counts high-value or fast-moving items more often",
+     "correct": true,
+     "rationale": "Correct: ABC focuses effort where inaccuracy costs the most."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need to investigate discrepancies",
+     "correct": false,
+     "rationale": "Discrepancies still need root-cause investigation; counting only detects them."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees 100% accuracy at all times",
+     "correct": false,
+     "rationale": "No counting method guarantees perfect accuracy; it manages and improves it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: frequent counting surfaces process causes early rather than once a year.",
+   "outcome_refs": [
+    "MST-1165-D03.02"
+   ],
+   "domain_ref": "Inventory accuracy",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1165-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A warehouse has many orders that each contain the same few SKUs during a promotion. Which picking method is usually most efficient?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Batch picking",
+     "correct": true,
+     "rationale": "Correct: batching groups many orders for the same SKUs into one pick trip, cutting travel."
+    },
+    {
+     "key": "B",
+     "text": "Single-order picking",
+     "correct": false,
+     "rationale": "Picking one order at a time repeats travel for the same SKUs."
+    },
+    {
+     "key": "C",
+     "text": "Zone picking with no batching",
+     "correct": false,
+     "rationale": "Zoning alone still walks each order separately within the zone."
+    },
+    {
+     "key": "D",
+     "text": "Random picking",
+     "correct": false,
+     "rationale": "Unstructured picking raises travel and error, especially at volume."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: batching groups many orders for the same SKUs into one pick trip, cutting travel.",
+   "outcome_refs": [
+    "MST-1165-D04.01"
+   ],
+   "domain_ref": "Picking and fulfilment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
