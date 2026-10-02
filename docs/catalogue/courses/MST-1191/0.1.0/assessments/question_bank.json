@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1191",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1191-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI tool reports a favourable cost variance on a work package. The cost engineer notices the actuals were compared to an old baseline. What is the correct action?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Re-run the comparison against the current approved baseline before reporting",
+     "correct": true,
+     "rationale": "Correct: variance is only meaningful against the current approved baseline."
+    },
+    {
+     "key": "B",
+     "text": "Report the favourable variance as-is because it looks good",
+     "correct": false,
+     "rationale": "A variance against the wrong baseline is misleading and must be corrected."
+    },
+    {
+     "key": "C",
+     "text": "Delete the baseline to avoid confusion",
+     "correct": false,
+     "rationale": "The baseline is essential; the fix is using the correct, approved one."
+    },
+    {
+     "key": "D",
+     "text": "Assume the AI chose the right baseline automatically",
+     "correct": false,
+     "rationale": "Baseline selection must be verified, not assumed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: variance is only meaningful against the current approved baseline.",
+   "outcome_refs": [
+    "MST-1191-D03.02"
+   ],
+   "domain_ref": "Verifying against the baseline",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1191-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make an AI-assisted cost forecast trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Stating the assumptions the forecast depends on",
+     "correct": true,
+     "rationale": "Correct: explicit assumptions let others judge and challenge the forecast."
+    },
+    {
+     "key": "B",
+     "text": "Recording who approved the forecast and when",
+     "correct": true,
+     "rationale": "Correct: a sign-off record maintains accountability for the forecast."
+    },
+    {
+     "key": "C",
+     "text": "Presenting the forecast as a guaranteed out-turn",
+     "correct": false,
+     "rationale": "Forecasts are assumption-based estimates, not guarantees."
+    },
+    {
+     "key": "D",
+     "text": "Hiding the input data from reviewers",
+     "correct": false,
+     "rationale": "Reviewers need the inputs to trust and check the forecast."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: explicit assumptions let others judge and challenge the forecast.",
+   "outcome_refs": [
+    "MST-1191-D04.01"
+   ],
+   "domain_ref": "Forecasting and variance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1191-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A controls report drafted by AI reads cleanly, but the underlying progress data was entered inconsistently by site teams. What risk does this create?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A polished report can present unreliable conclusions because the input data was poor",
+     "correct": true,
+     "rationale": "Correct: clean output does not fix dirty input; data quality must be checked first."
+    },
+    {
+     "key": "B",
+     "text": "None, because a clean report guarantees clean data",
+     "correct": false,
+     "rationale": "Presentation quality says nothing about data quality."
+    },
+    {
+     "key": "C",
+     "text": "The AI will automatically correct the bad data",
+     "correct": false,
+     "rationale": "AI does not inherently fix inconsistent source data."
+    },
+    {
+     "key": "D",
+     "text": "The report cannot be wrong if it is well written",
+     "correct": false,
+     "rationale": "Well-written reports can still be wrong if the data is flawed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: clean output does not fix dirty input; data quality must be checked first.",
+   "outcome_refs": [
+    "MST-1191-D05.01"
+   ],
+   "domain_ref": "Data quality and accountability",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

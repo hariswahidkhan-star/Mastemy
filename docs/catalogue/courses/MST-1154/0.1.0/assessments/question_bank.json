@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1154",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1154-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After building an existing-ground surface, a designer notices sharp vertical spikes that do not match the terrain. What is the most likely cause and correct response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Erroneous survey points; identify and exclude or correct the bad data, then rebuild the surface",
+     "correct": true,
+     "rationale": "Correct: spikes usually come from bad survey points, which should be found and cleaned before relying on the surface."
+    },
+    {
+     "key": "B",
+     "text": "The surface is correct; terrain naturally has vertical spikes",
+     "correct": false,
+     "rationale": "Real ground does not produce sharp vertical spikes; these indicate data errors."
+    },
+    {
+     "key": "C",
+     "text": "Delete the whole surface and never use survey data",
+     "correct": false,
+     "rationale": "Survey data is the correct basis; the fix is cleaning errant points, not abandoning it."
+    },
+    {
+     "key": "D",
+     "text": "Increase the drawing scale to hide the spikes",
+     "correct": false,
+     "rationale": "Changing scale hides the symptom but leaves the faulty surface in use."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: spikes usually come from bad survey points, which should be found and cleaned before relying on the surface.",
+   "outcome_refs": [
+    "MST-1154-D02.01"
+   ],
+   "domain_ref": "Surfaces",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1154-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO behaviours follow from Civil 3D's dynamic object model? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Editing an alignment automatically updates the profiles and corridors that reference it",
+     "correct": true,
+     "rationale": "Correct: dependent objects update when the governing object changes."
+    },
+    {
+     "key": "B",
+     "text": "A surface data reference lets several drawings share one surface source",
+     "correct": true,
+     "rationale": "Correct: data references share model objects dynamically across drawings."
+    },
+    {
+     "key": "C",
+     "text": "Design objects are static once drawn and must be redrawn to change",
+     "correct": false,
+     "rationale": "The model is dynamic; objects update rather than being redrawn."
+    },
+    {
+     "key": "D",
+     "text": "Quantities never change when the design changes",
+     "correct": false,
+     "rationale": "Quantities extracted from the model update as the design changes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: dependent objects update when the governing object changes.",
+   "outcome_refs": [
+    "MST-1154-D01.01"
+   ],
+   "domain_ref": "Civil 3D foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1154-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A designer copies alignment geometry as plain lines into a sheet file to speed up drafting. What design risk does this create?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The copied linework no longer updates when the design changes, so sheets can go stale",
+     "correct": true,
+     "rationale": "Correct: static copies break the dynamic link and drift out of sync with the model."
+    },
+    {
+     "key": "B",
+     "text": "Nothing; static copies always stay current",
+     "correct": false,
+     "rationale": "Static copies do not update with the model."
+    },
+    {
+     "key": "C",
+     "text": "The alignment is deleted from the source drawing",
+     "correct": false,
+     "rationale": "Copying does not delete the source alignment."
+    },
+    {
+     "key": "D",
+     "text": "The corridor volumes become more accurate",
+     "correct": false,
+     "rationale": "Static linework has no effect on corridor volume accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: static copies break the dynamic link and drift out of sync with the model.",
+   "outcome_refs": [
+    "MST-1154-D05.02"
+   ],
+   "domain_ref": "Documentation and data references",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

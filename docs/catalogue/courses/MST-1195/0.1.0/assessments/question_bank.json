@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1195",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1195-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI analysis reports a strong correlation between ambient humidity and a surface defect. Before acting, what should the quality engineer do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Check whether a plausible physical mechanism and process evidence support the link before treating it as a cause",
+     "correct": true,
+     "rationale": "Correct: correlation is a lead to investigate, not an established cause; domain evidence is needed."
+    },
+    {
+     "key": "B",
+     "text": "Change the process immediately based on the correlation alone",
+     "correct": false,
+     "rationale": "Acting on correlation without a validated cause risks an ineffective or harmful change."
+    },
+    {
+     "key": "C",
+     "text": "Assume the correlation is definitely the root cause",
+     "correct": false,
+     "rationale": "A found correlation is not proof of causation."
+    },
+    {
+     "key": "D",
+     "text": "Discard the finding because AI cannot find patterns",
+     "correct": false,
+     "rationale": "The pattern is a useful lead; it simply needs verification."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: correlation is a lead to investigate, not an established cause; domain evidence is needed.",
+   "outcome_refs": [
+    "MST-1195-D03.02"
+   ],
+   "domain_ref": "Verifying outputs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1195-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make an AI-supported corrective action sound? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validating the proposed change before rolling it out across the line",
+     "correct": true,
+     "rationale": "Correct: validation confirms the change actually fixes the problem without side effects."
+    },
+    {
+     "key": "B",
+     "text": "Recording the engineer's sign-off on the change",
+     "correct": true,
+     "rationale": "Correct: accountability requires a recorded human sign-off."
+    },
+    {
+     "key": "C",
+     "text": "Implementing the AI's suggestion directly in production with no trial",
+     "correct": false,
+     "rationale": "Unvalidated changes can make quality worse."
+    },
+    {
+     "key": "D",
+     "text": "Ignoring the measurement-data quality behind the analysis",
+     "correct": false,
+     "rationale": "Poor measurement data can invalidate the whole analysis."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: validation confirms the change actually fixes the problem without side effects.",
+   "outcome_refs": [
+    "MST-1195-D04.02"
+   ],
+   "domain_ref": "Root-cause and corrective action",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1195-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A set of control charts drafted with AI looks clean and well-presented, but the gauges used to collect the data were never calibrated. What is the risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The analysis may be based on unreliable measurements despite looking convincing",
+     "correct": true,
+     "rationale": "Correct: uncalibrated measurement undermines the data, regardless of how good the charts look."
+    },
+    {
+     "key": "B",
+     "text": "None, because clean charts prove the data is good",
+     "correct": false,
+     "rationale": "Presentation quality does not validate measurement quality."
+    },
+    {
+     "key": "C",
+     "text": "The AI will detect and fix the calibration problem itself",
+     "correct": false,
+     "rationale": "AI does not inherently detect uncalibrated measurement systems."
+    },
+    {
+     "key": "D",
+     "text": "Calibration has no effect on quality data",
+     "correct": false,
+     "rationale": "Calibration is fundamental to trustworthy measurement data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: uncalibrated measurement undermines the data, regardless of how good the charts look.",
+   "outcome_refs": [
+    "MST-1195-D05.01"
+   ],
+   "domain_ref": "Data quality and accountability",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

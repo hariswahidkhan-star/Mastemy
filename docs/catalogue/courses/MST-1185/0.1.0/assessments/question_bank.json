@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1185",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1185-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI assistant returns a clear tax answer citing a specific code section that looks plausible. What must the associate do before relying on it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the cited section and its current wording against an authoritative source",
+     "correct": true,
+     "rationale": "Correct: AI can cite plausible but wrong or outdated authority, so citations must be checked."
+    },
+    {
+     "key": "B",
+     "text": "File the position immediately because the citation looks real",
+     "correct": false,
+     "rationale": "A plausible-looking citation can be fabricated or outdated; it must be verified."
+    },
+    {
+     "key": "C",
+     "text": "Assume the answer is correct if it is confidently worded",
+     "correct": false,
+     "rationale": "Confidence of tone is not evidence of accuracy."
+    },
+    {
+     "key": "D",
+     "text": "Delete the research memo to avoid liability",
+     "correct": false,
+     "rationale": "The memo is useful once verified; the fix is verification, not deletion."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI can cite plausible but wrong or outdated authority, so citations must be checked.",
+   "outcome_refs": [
+    "MST-1185-D03.01"
+   ],
+   "domain_ref": "Verifying AI outputs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1185-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices protect client confidentiality when using an AI tool for tax work? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Confirm the tool's data handling meets firm policy before entering client data",
+     "correct": true,
+     "rationale": "Correct: data governance must be checked before confidential data is used."
+    },
+    {
+     "key": "B",
+     "text": "Minimise or anonymise client identifiers where the task allows",
+     "correct": true,
+     "rationale": "Correct: limiting identifiable data reduces confidentiality risk."
+    },
+    {
+     "key": "C",
+     "text": "Paste full client records into any free public chatbot",
+     "correct": false,
+     "rationale": "Uncontrolled tools can expose confidential data and breach policy."
+    },
+    {
+     "key": "D",
+     "text": "Assume all AI tools are confidential by default",
+     "correct": false,
+     "rationale": "Confidentiality must be verified, not assumed."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: data governance must be checked before confidential data is used.",
+   "outcome_refs": [
+    "MST-1185-D05.01"
+   ],
+   "domain_ref": "Confidentiality and responsibility",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1185-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A client asks 'How is this income taxed?' and the associate prompts the AI with exactly that wording. Why is the prompt likely to produce a weak answer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It omits jurisdiction, tax year and key facts the answer depends on",
+     "correct": true,
+     "rationale": "Correct: tax treatment depends on jurisdiction, year and facts the prompt must supply."
+    },
+    {
+     "key": "B",
+     "text": "AI cannot answer any tax question at all",
+     "correct": false,
+     "rationale": "AI can assist when the prompt is well framed; the issue is the missing context."
+    },
+    {
+     "key": "C",
+     "text": "The prompt is too long and detailed",
+     "correct": false,
+     "rationale": "The prompt is too sparse, not too detailed."
+    },
+    {
+     "key": "D",
+     "text": "Tax questions should never be researched with AI",
+     "correct": false,
+     "rationale": "AI can support research; the prompt simply needs the right context."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: tax treatment depends on jurisdiction, year and facts the prompt must supply.",
+   "outcome_refs": [
+    "MST-1185-D02.01"
+   ],
+   "domain_ref": "Prompting for tax research",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

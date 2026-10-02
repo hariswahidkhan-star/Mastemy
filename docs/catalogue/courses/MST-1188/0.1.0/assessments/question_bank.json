@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1188",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1188-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI tool outputs a credit score and a recommended decision for a loan applicant. What is the correct role of this output?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is one input that a human credit officer weighs before deciding",
+     "correct": true,
+     "rationale": "Correct: AI output supports, but does not replace, the human lending decision and accountability."
+    },
+    {
+     "key": "B",
+     "text": "It is the final decision and can be sent to the applicant automatically",
+     "correct": false,
+     "rationale": "Automated final decisions raise fairness, regulatory and accountability problems."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any human review",
+     "correct": false,
+     "rationale": "Human review and accountability remain essential."
+    },
+    {
+     "key": "D",
+     "text": "It should be hidden from the credit file",
+     "correct": false,
+     "rationale": "AI-assisted steps should be recorded for an auditable trail."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI output supports, but does not replace, the human lending decision and accountability.",
+   "outcome_refs": [
+    "MST-1188-D04.02"
+   ],
+   "domain_ref": "Supporting credit analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1188-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep an AI-assisted credit review auditable and fair? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recording the inputs, AI outputs and the human reviewer for each step",
+     "correct": true,
+     "rationale": "Correct: an auditable trail is essential for AI-assisted lending decisions."
+    },
+    {
+     "key": "B",
+     "text": "Checking the process for potential unfair impact on protected groups",
+     "correct": true,
+     "rationale": "Correct: checking for unfair impact is essential to fair AI-assisted lending."
+    },
+    {
+     "key": "C",
+     "text": "Discarding all records once the loan is decided",
+     "correct": false,
+     "rationale": "Discarding records destroys the audit trail regulators expect."
+    },
+    {
+     "key": "D",
+     "text": "Assuming the model is fair because it uses data",
+     "correct": false,
+     "rationale": "Data-driven models can still produce unfair outcomes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an auditable trail is essential for AI-assisted lending decisions.",
+   "outcome_refs": [
+    "MST-1188-D05.01"
+   ],
+   "domain_ref": "Fairness and model risk",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1188-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI summary reports an applicant's debt-service ratio. Before using it in the credit note, what should the analyst do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reconcile the ratio against the underlying figures in the financial statements",
+     "correct": true,
+     "rationale": "Correct: extracted figures must be reconciled to the source before they inform a decision."
+    },
+    {
+     "key": "B",
+     "text": "Use it directly because AI calculations are always correct",
+     "correct": false,
+     "rationale": "AI can mis-extract or miscalculate; reconciliation is required."
+    },
+    {
+     "key": "C",
+     "text": "Replace the statements with the AI summary",
+     "correct": false,
+     "rationale": "The source statements remain the authoritative record."
+    },
+    {
+     "key": "D",
+     "text": "Ignore the ratio entirely",
+     "correct": false,
+     "rationale": "The ratio is useful once verified; it should not be ignored."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: extracted figures must be reconciled to the source before they inform a decision.",
+   "outcome_refs": [
+    "MST-1188-D02.02"
+   ],
+   "domain_ref": "Processing documents",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

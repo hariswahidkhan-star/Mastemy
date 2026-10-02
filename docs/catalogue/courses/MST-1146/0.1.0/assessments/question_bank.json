@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1146",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1146-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A simulation shows the project reaches 50% completion-probability on 3 May and 80% on 24 May. The client wants a commitment date with reasonable confidence. Which date best supports that decision?",
+   "options": [
+    {
+     "key": "A",
+     "text": "24 May, the P80 date, giving an 80% chance of finishing on or before it",
+     "correct": true,
+     "rationale": "Correct: the P80 date carries a stated, higher confidence suitable for a committed date."
+    },
+    {
+     "key": "B",
+     "text": "3 May, the P50 date, because it is the most likely outcome",
+     "correct": false,
+     "rationale": "P50 gives only a coin-flip chance of meeting the date; it is not a confident commitment."
+    },
+    {
+     "key": "C",
+     "text": "The earliest date in the distribution, to look competitive",
+     "correct": false,
+     "rationale": "The earliest date has very low probability and would almost certainly be missed."
+    },
+    {
+     "key": "D",
+     "text": "The deterministic finish from the CPM bar chart",
+     "correct": false,
+     "rationale": "The deterministic date ignores duration uncertainty and typically understates risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the P80 date carries a stated, higher confidence suitable for a committed date.",
+   "outcome_refs": [
+    "MST-1146-D04.01"
+   ],
+   "domain_ref": "Monte Carlo simulation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1146-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements correctly describe three-point estimating for schedule risk? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each uncertain activity gets optimistic, most-likely and pessimistic durations",
+     "correct": true,
+     "rationale": "Correct: three points define the spread of each activity's duration distribution."
+    },
+    {
+     "key": "B",
+     "text": "The spread of the three points reflects the activity's uncertainty",
+     "correct": true,
+     "rationale": "Correct: wider gaps between the points model greater duration uncertainty."
+    },
+    {
+     "key": "C",
+     "text": "The most-likely value is always the mean of the distribution",
+     "correct": false,
+     "rationale": "The mean depends on the distribution shape; for a skewed triangular it is not the mode."
+    },
+    {
+     "key": "D",
+     "text": "Three-point estimates remove the need for a risk register",
+     "correct": false,
+     "rationale": "Estimates model duration uncertainty; discrete risk events still belong in the register."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: three points define the spread of each activity's duration distribution.",
+   "outcome_refs": [
+    "MST-1146-D03.01"
+   ],
+   "domain_ref": "Quantitative schedule modelling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1146-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A risk is logged as 'Delay to the project.' Why is this a poor risk statement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It names an effect without the cause or the uncertain event",
+     "correct": true,
+     "rationale": "Correct: a usable risk statement links a cause, the uncertain event and its effect."
+    },
+    {
+     "key": "B",
+     "text": "It is too specific to act on",
+     "correct": false,
+     "rationale": "The problem is the opposite: it is vague, not overly specific."
+    },
+    {
+     "key": "C",
+     "text": "Delays can never be risks",
+     "correct": false,
+     "rationale": "Delays are common effects of risks; the issue is how the statement is written."
+    },
+    {
+     "key": "D",
+     "text": "Risk statements should only describe opportunities",
+     "correct": false,
+     "rationale": "Risk statements cover both threats and opportunities."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a usable risk statement links a cause, the uncertain event and its effect.",
+   "outcome_refs": [
+    "MST-1146-D02.01"
+   ],
+   "domain_ref": "Qualitative risk assessment",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

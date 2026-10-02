@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1156",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1156-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A sketch for a bracket profile is left under-constrained. When a colleague edits a dimension upstream, the profile geometry shifts in an unexpected way. What is the lesson?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fully constraining sketches preserves design intent so edits behave predictably",
+     "correct": true,
+     "rationale": "Correct: a fully constrained sketch locks geometry so parametric edits update as intended."
+    },
+    {
+     "key": "B",
+     "text": "Sketches should always be left under-constrained for flexibility",
+     "correct": false,
+     "rationale": "Under-constrained sketches move unpredictably; that is the problem here."
+    },
+    {
+     "key": "C",
+     "text": "Dimensions should never be edited after sketching",
+     "correct": false,
+     "rationale": "Editing dimensions is normal; the fix is constraining the sketch."
+    },
+    {
+     "key": "D",
+     "text": "The part must be remodelled from scratch each time",
+     "correct": false,
+     "rationale": "Remodelling defeats the purpose of a parametric workflow."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a fully constrained sketch locks geometry so parametric edits update as intended.",
+   "outcome_refs": [
+    "MST-1156-D02.01"
+   ],
+   "domain_ref": "Parametric modelling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1156-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are advantages of driving a model from a parameter table? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Key dimensions can be changed in one place and propagate through the model",
+     "correct": true,
+     "rationale": "Correct: central parameters make coordinated edits fast and consistent."
+    },
+    {
+     "key": "B",
+     "text": "Design intent and relationships between dimensions are captured explicitly",
+     "correct": true,
+     "rationale": "Correct: parameters record the relationships the designer intends."
+    },
+    {
+     "key": "C",
+     "text": "It prevents the model from ever being edited",
+     "correct": false,
+     "rationale": "Parameters make editing easier, not impossible."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for any sketch constraints",
+     "correct": false,
+     "rationale": "Sketch constraints are still needed for robust geometry."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: central parameters make coordinated edits fast and consistent.",
+   "outcome_refs": [
+    "MST-1156-D01.02"
+   ],
+   "domain_ref": "Fusion foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1156-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A manufacturing drawing dimensions a shaft-and-hole mating pair but shows no tolerances. Why is this a problem for manufacture?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Without tolerances the shop cannot know the allowable variation for a proper fit",
+     "correct": true,
+     "rationale": "Correct: tolerances define the permitted variation needed to achieve the intended fit."
+    },
+    {
+     "key": "B",
+     "text": "Tolerances are only decorative and never affect fit",
+     "correct": false,
+     "rationale": "Tolerances directly control whether mating parts fit."
+    },
+    {
+     "key": "C",
+     "text": "A drawing should never include tolerances",
+     "correct": false,
+     "rationale": "Manufacturing drawings require tolerances on controlled dimensions."
+    },
+    {
+     "key": "D",
+     "text": "The part cannot have mating features",
+     "correct": false,
+     "rationale": "Mating features are common; they specifically need tolerances."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: tolerances define the permitted variation needed to achieve the intended fit.",
+   "outcome_refs": [
+    "MST-1156-D04.02"
+   ],
+   "domain_ref": "Manufacturing drawings",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
