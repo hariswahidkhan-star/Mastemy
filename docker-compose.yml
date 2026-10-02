@@ -14,6 +14,8 @@ services:
     env_file: .env
     environment:
       Seo__PublicBaseUrl: ${PUBLIC_BASE_URL:?set PUBLIC_BASE_URL in .env}
+      # Host header filtering: the public host plus the internal names used by the SSR server (api:8080) and health checks.
+      AllowedHosts: "${PUBLIC_HOST:?set PUBLIC_HOST in .env};api;localhost"
       # nginx (web container) terminates TLS; trust its forwarded headers only from the compose network.
       Network__TrustedProxies__0: ${NETWORK_TRUSTED_PROXY_CIDR:-172.16.0.0/12}
       ConnectionStrings__Default: "Server=db;Port=3306;Database=mastemy;User=mastemy;Password=${MYSQL_PASSWORD};"

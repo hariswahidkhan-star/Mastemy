@@ -91,7 +91,7 @@ Sources: `src/Mastemy.Api/appsettings*.json`, `.env.example` and the module cont
 | `Seed:SuperAdminEmail`, `Seed:SuperAdminPassword` | — | First SuperAdmin (created only if the email does not exist) |
 | `Cors:Origins` (array; `Cors__Origins__0`) | `http://localhost:5173` | Allowed browser origins |
 | `DataProtection:KeysPath` | — (in-memory/ephemeral) | Persisted Data Protection keys. They encrypt OAuth tokens, MFA secrets and payout destinations, so set and back up this directory in production |
-| `AllowedHosts` | `*` | ASP.NET host filtering |
+| `AllowedHosts` | `*` (Development); compose sets `${PUBLIC_HOST};api;localhost` | ASP.NET host filtering; Production logs a warning when it is `*` |
 | `RateLimits:AuthPerMinute` | 20 | Auth endpoints per client per minute |
 | `RateLimits:LoginPerEmailPerMinute` | 10 | Login attempts per email per minute |
 

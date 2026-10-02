@@ -103,15 +103,40 @@ public static partial class LogRedaction
     }
 }
 
-/// <summary>Logger category for security events; correlation id comes from the request logging scope.</summary>
-public sealed class SecurityEvents(ILoggerFactory factory)
+/// <summary>Host filtering (AllowedHosts) sanity check: production should list the public host(s), never "*".</summary>
+public static class HostFilteringCheck
+{
+    public static bool IsWildcard(IConfiguration cfg) =>
+        (cfg["AllowedHosts"] ?? "*").Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries) is var hosts
+        && (hosts.Length == 0 || hosts.Contains("*"));
+
+    /// <summary>Logs a warning (does not stop startup) when Production runs with AllowedHosts "*".</summary>
+    public static bool WarnIfUnsafe(IHostEnvironment env, IConfiguration cfg, ILogger log)
+    {
+        if (!env.IsProduction() || !IsWildcard(cfg)) return false;
+        log.LogWarning("AllowedHosts is \"*\" in Production: Host header filtering is off. Set AllowedHosts (e.g. {Example}) to the public host plus internal service names.",
+            "AllowedHosts=${PUBLIC_HOST};api;localhost");
+        return true;
+    }
+}
+
+/// <summary>Logger category for security events; correlation id comes from the request logging scope.
+/// Each event is also counted (<see cref="SecurityMetrics"/>) and fed to the optional <see cref="SecurityAlertNotifier"/>.</summary>
+public sealed class SecurityEvents(ILoggerFactory factory, SecurityMetrics metrics, SecurityAlertNotifier alerts, IHttpContextAccessor http)
 {
     public const string Category = "Mastemy.Security";
     private readonly ILogger log = factory.CreateLogger(Category);
 
-    public void Warn(string evt, Guid? userId = null, string? email = null, string? detail = null) =>
+    public void Warn(string evt, Guid? userId = null, string? email = null, string? detail = null, int? status = null)
+    {
         log.LogWarning("Security event {SecurityEvent} user={UserId} email={MaskedEmail} {Detail}",
             evt, userId?.ToString() ?? "-", LogRedaction.MaskEmail(email), LogRedaction.Clean(detail));
+        var category = SecurityMetrics.Category(evt, status);
+        metrics.Record(evt, category);
+        var ctx = http.HttpContext;
+        if (category == "forbidden" && ctx is not null) ctx.Items[SecurityMetrics.RecordedForbiddenItem] = true;
+        _ = alerts.Observe(category, ctx?.Connection.RemoteIpAddress?.ToString(), userId);
+    }
 }
 
 /// <summary>

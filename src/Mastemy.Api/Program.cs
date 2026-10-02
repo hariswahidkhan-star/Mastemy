@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,9 @@ builder.WebHost.ConfigureKestrel(k =>
     k.Limits.MaxRequestBodySize = cfg.GetValue<long>("Limits:MaxRequestBodyBytes", 8 * 1024 * 1024);
 });
 builder.Services.Configure<Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>(o => SecurityHeaders.ConfigureForwardedHeaders(o, cfg));
+builder.Services.AddSingleton<SecurityMetrics>();
+builder.Services.AddSingleton<SecurityAlertNotifier>();
+builder.Services.TryAddSingleton(TimeProvider.System);
 builder.Services.AddSingleton<SecurityEvents>();
 
 var jwt = cfg.GetSection("Jwt").Get<JwtOptions>() ?? new JwtOptions();
@@ -102,6 +106,7 @@ builder.Services.AddProblemDetails();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+HostFilteringCheck.WarnIfUnsafe(app.Environment, cfg, app.Logger);
 
 app.UseExceptionHandler(e => e.Run(async ctx =>
 {
@@ -114,12 +119,13 @@ app.UseExceptionHandler(e => e.Run(async ctx =>
     };
     if (pd.Status == 500) app.Logger.LogError(ex, "Unhandled exception for {Path}", ctx.Request.Path);
     else if (ex is AppException { Status: 401 or 403 or 429 } sec)
-        ctx.RequestServices.GetRequiredService<SecurityEvents>().Warn(sec.Code ?? "denied", detail: $"{sec.Status} {ctx.Request.Method} {ctx.Request.Path}");
+        ctx.RequestServices.GetRequiredService<SecurityEvents>().Warn(sec.Code ?? "denied", detail: $"{sec.Status} {ctx.Request.Method} {ctx.Request.Path}", status: sec.Status);
     ctx.Response.StatusCode = pd.Status!.Value;
     await ctx.Response.WriteAsJsonAsync(pd, (System.Text.Json.JsonSerializerOptions?)null, "application/problem+json");
 }));
 
 app.UseForwardedHeaders();
+SecurityMetrics.CountForbiddenResponses(app);
 app.UseMastemySecurityHeaders(cfg);
 // TLS normally terminates at the edge proxy; enable when Kestrel itself serves HTTPS.
 if (cfg.GetValue("Security:HttpsRedirection", false)) app.UseHttpsRedirection();

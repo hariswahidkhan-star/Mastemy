@@ -92,7 +92,7 @@ The services also call `me.RequireId()`, so neither endpoint was exploitable. Bo
 | OpenAPI is mapped only in Development or when `OpenApi:Enabled=true`. **Fixed:** it was previously unconditional. | `OpenApi_is_hidden_in_production_unless_enabled` |
 | Seeding: reference categories are always seeded. SuperAdmin bootstrap runs only in Development or with an explicit `Seed:AllowSuperAdminBootstrap=true`. **Fixed:** it used to run in any environment with `MigrateOnStartup`. The seeded email is masked in logs. | `Program.cs`, `Data/Seeder.cs` |
 
-**Remaining risk.** `AllowedHosts: "*"` relies on nginx to validate Host. Set it in production config. The `sandbox` CSP on PDFs makes some browsers refuse to render the PDF inline. Downloads are unaffected, but if inline viewing of certificates matters, consider `Content-Disposition: attachment` or a relaxed CSP for that one route.
+**Host filtering.** docker-compose sets `AllowedHosts=${PUBLIC_HOST};api;localhost`; the API logs a startup warning if Production still runs with `*`. **Remaining risk.** The `sandbox` CSP on PDFs makes some browsers refuse to render the PDF inline. Downloads are unaffected, but if inline viewing of certificates matters, consider `Content-Disposition: attachment` or a relaxed CSP for that one route.
 
 ---
 

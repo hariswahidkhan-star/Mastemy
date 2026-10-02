@@ -83,6 +83,7 @@ public static class Observability
                 .AddHttpClientInstrumentation()
                 .AddRuntimeInstrumentation()
                 .AddMeter("Mastemy")
+                .AddMeter(Mastemy.Api.Infrastructure.SecurityMetrics.MeterName)
                 .AddOtlpExporter(Exporter));
     }
 }
