@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1430",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1430-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which cmdlet connects a session to the Microsoft Graph PowerShell SDK?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Connect-MgGraph",
+     "correct": true,
+     "rationale": "Correct: Connect-MgGraph establishes the Microsoft Graph PowerShell session with chosen scopes."
+    },
+    {
+     "key": "B",
+     "text": "Connect-AzStorage",
+     "correct": false,
+     "rationale": "There is no such cmdlet for Graph; storage uses different modules."
+    },
+    {
+     "key": "C",
+     "text": "New-VNetPeering",
+     "correct": false,
+     "rationale": "That is not a real cmdlet and relates to networking, not Graph."
+    },
+    {
+     "key": "D",
+     "text": "Set-BlobTier",
+     "correct": false,
+     "rationale": "Blob tier operations are storage tasks, not Graph connection."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Connect-MgGraph establishes the Microsoft Graph PowerShell session with chosen scopes.",
+   "outcome_refs": [
+    "MST-1430-D02.01"
+   ],
+   "domain_ref": "Graph and Exchange Online",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1430-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices for Microsoft 365 administration scripts? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use least-privilege scopes when connecting",
+     "correct": true,
+     "rationale": "Correct: requesting only needed scopes limits risk."
+    },
+    {
+     "key": "B",
+     "text": "Use app-only authentication or managed identity for automation",
+     "correct": true,
+     "rationale": "Correct: app-only auth avoids embedding user credentials."
+    },
+    {
+     "key": "C",
+     "text": "Hardcode an admin password in the script",
+     "correct": false,
+     "rationale": "Hardcoded credentials are a serious security risk."
+    },
+    {
+     "key": "D",
+     "text": "Disable all logging",
+     "correct": false,
+     "rationale": "Disabling logging hinders auditing and troubleshooting."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: requesting only needed scopes limits risk.",
+   "outcome_refs": [
+    "MST-1430-D03.01"
+   ],
+   "domain_ref": "Scripting admin tasks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1430-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A legacy script uses Connect-MsolService. What is the recommended modern replacement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Microsoft Graph PowerShell SDK (Connect-MgGraph)",
+     "correct": true,
+     "rationale": "Correct: MSOnline and Azure AD cmdlets map to the Microsoft Graph PowerShell SDK."
+    },
+    {
+     "key": "B",
+     "text": "Azure CLI az login only",
+     "correct": false,
+     "rationale": "Azure CLI manages Azure resources, not the directory cmdlet surface MSOnline covered."
+    },
+    {
+     "key": "C",
+     "text": "Bicep deployment",
+     "correct": false,
+     "rationale": "Bicep is IaC, not a directory administration module."
+    },
+    {
+     "key": "D",
+     "text": "A storage lifecycle rule",
+     "correct": false,
+     "rationale": "Lifecycle rules are storage features, unrelated to directory cmdlets."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MSOnline and Azure AD cmdlets map to the Microsoft Graph PowerShell SDK.",
+   "outcome_refs": [
+    "MST-1430-D02.01"
+   ],
+   "domain_ref": "Graph and Exchange Online",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

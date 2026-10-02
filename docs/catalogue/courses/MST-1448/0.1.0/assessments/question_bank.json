@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1448",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1448-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which access tier is optimized for data accessed infrequently and retained at least 30 days?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cool tier",
+     "correct": true,
+     "rationale": "Correct: the cool tier suits infrequently accessed data with a 30-day minimum retention."
+    },
+    {
+     "key": "B",
+     "text": "Hot tier",
+     "correct": false,
+     "rationale": "Hot is for frequently accessed data with higher storage cost."
+    },
+    {
+     "key": "C",
+     "text": "Archive tier",
+     "correct": false,
+     "rationale": "Archive is offline with a 180-day minimum, for rarely accessed data."
+    },
+    {
+     "key": "D",
+     "text": "Premium tier",
+     "correct": false,
+     "rationale": "Premium is a performance tier, not an access tier for retention."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the cool tier suits infrequently accessed data with a 30-day minimum retention.",
+   "outcome_refs": [
+    "MST-1448-D02.01"
+   ],
+   "domain_ref": "Blob storage and tiers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1448-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid Azure Storage redundancy options? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Locally redundant storage (LRS)",
+     "correct": true,
+     "rationale": "Correct: LRS replicates within a single datacentre."
+    },
+    {
+     "key": "B",
+     "text": "Geo-redundant storage (GRS)",
+     "correct": true,
+     "rationale": "Correct: GRS replicates to a secondary region."
+    },
+    {
+     "key": "C",
+     "text": "Conditional-access redundancy",
+     "correct": false,
+     "rationale": "Conditional Access is an Entra feature, not a redundancy option."
+    },
+    {
+     "key": "D",
+     "text": "Focused-inbox redundancy",
+     "correct": false,
+     "rationale": "Focused Inbox is an Outlook feature, not a storage redundancy option."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: LRS replicates within a single datacentre.",
+   "outcome_refs": [
+    "MST-1448-D03.01"
+   ],
+   "domain_ref": "Redundancy and security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1448-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "On which blob type can you set an access tier?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Block blobs",
+     "correct": true,
+     "rationale": "Correct: setting an access tier is only supported on block blobs."
+    },
+    {
+     "key": "B",
+     "text": "Append blobs",
+     "correct": false,
+     "rationale": "Append blobs do not support access-tier settings."
+    },
+    {
+     "key": "C",
+     "text": "Page blobs",
+     "correct": false,
+     "rationale": "Page blobs do not support access-tier settings."
+    },
+    {
+     "key": "D",
+     "text": "All blob types equally",
+     "correct": false,
+     "rationale": "Only block blobs support access tiers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: setting an access tier is only supported on block blobs.",
+   "outcome_refs": [
+    "MST-1448-D02.01"
+   ],
+   "domain_ref": "Blob storage and tiers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

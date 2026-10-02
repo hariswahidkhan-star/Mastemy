@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0717",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 308,
+  "lesson_check_items": 40,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0717-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Dynamics 365 Finance, what is the role of a financial dimension?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An attribute (such as department or cost centre) added to a posting for analysis and reporting",
+     "correct": true,
+     "rationale": "Correct: financial dimensions tag postings so balances can be analysed by department, cost centre and similar attributes."
+    },
+    {
+     "key": "B",
+     "text": "A separate legal entity with its own ledger",
+     "correct": false,
+     "rationale": "A legal entity is a distinct company, not a financial dimension."
+    },
+    {
+     "key": "C",
+     "text": "A currency exchange rate type",
+     "correct": false,
+     "rationale": "Exchange rate types govern currency conversion, not dimensional analysis."
+    },
+    {
+     "key": "D",
+     "text": "A fixed asset depreciation method",
+     "correct": false,
+     "rationale": "Depreciation methods belong to fixed assets, not to the dimension framework."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: financial dimensions tag postings so balances can be analysed by department, cost centre and similar attributes.",
+   "outcome_refs": [
+    "MST-0717-D01.01"
+   ],
+   "domain_ref": "General ledger and financial dimensions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0717-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about a completed budget register entry are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its status becomes Completed after budget balances are updated",
+     "correct": true,
+     "rationale": "Correct: updating budget balances moves the entry to Completed."
+    },
+    {
+     "key": "B",
+     "text": "It cannot be reopened for edits; a new entry is created to adjust",
+     "correct": true,
+     "rationale": "Correct: a completed entry is locked, so adjustments require a new register entry."
+    },
+    {
+     "key": "C",
+     "text": "It automatically posts actual ledger transactions",
+     "correct": false,
+     "rationale": "Budget entries record budget amounts, not actual ledger postings."
+    },
+    {
+     "key": "D",
+     "text": "It deletes the prior fiscal year's budget",
+     "correct": false,
+     "rationale": "Completing an entry does not delete other budgets."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: updating budget balances moves the entry to Completed.",
+   "outcome_refs": [
+    "MST-0717-D03.01"
+   ],
+   "domain_ref": "Budgeting and budget control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0717-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A purchasing team wants transactions blocked only after a warning when they exceed budget. Which feature supports this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Budget control",
+     "correct": true,
+     "rationale": "Correct: budget control issues warnings or errors on documents configured for it."
+    },
+    {
+     "key": "B",
+     "text": "Fixed asset budgeting",
+     "correct": false,
+     "rationale": "Fixed asset budgeting plans asset costs, not transaction-level budget checks."
+    },
+    {
+     "key": "C",
+     "text": "Collection letters",
+     "correct": false,
+     "rationale": "Collection letters chase overdue customer invoices."
+    },
+    {
+     "key": "D",
+     "text": "Account structures",
+     "correct": false,
+     "rationale": "Account structures validate account/dimension combinations, not budget funds availability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: budget control issues warnings or errors on documents configured for it.",
+   "outcome_refs": [
+    "MST-0717-D03.01"
+   ],
+   "domain_ref": "Budgeting and budget control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

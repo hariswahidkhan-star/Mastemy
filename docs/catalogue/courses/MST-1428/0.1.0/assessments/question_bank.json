@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1428",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1428-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Conditional Access policy is best described as which kind of statement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An if-then statement: if a condition is met, then enforce a control",
+     "correct": true,
+     "rationale": "Correct: Conditional Access policies are if-then statements that enforce controls such as MFA."
+    },
+    {
+     "key": "B",
+     "text": "A storage redundancy setting",
+     "correct": false,
+     "rationale": "Redundancy is an Azure Storage concept, not an access policy."
+    },
+    {
+     "key": "C",
+     "text": "A production BOM",
+     "correct": false,
+     "rationale": "BOMs belong to manufacturing, not identity."
+    },
+    {
+     "key": "D",
+     "text": "A mail rule",
+     "correct": false,
+     "rationale": "Inbox rules handle email, not resource access decisions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Conditional Access policies are if-then statements that enforce controls such as MFA.",
+   "outcome_refs": [
+    "MST-1428-D03.01"
+   ],
+   "domain_ref": "Conditional access basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1428-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are recommended when creating a broad Conditional Access policy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Exclude emergency access (break-glass) accounts",
+     "correct": true,
+     "rationale": "Correct: excluding break-glass accounts prevents admin lockout."
+    },
+    {
+     "key": "B",
+     "text": "Test in report-only mode before enabling",
+     "correct": true,
+     "rationale": "Correct: report-only mode validates impact before enforcement."
+    },
+    {
+     "key": "C",
+     "text": "Delete all guest users first",
+     "correct": false,
+     "rationale": "Deleting guests is not part of policy creation guidance."
+    },
+    {
+     "key": "D",
+     "text": "Disable MFA for everyone",
+     "correct": false,
+     "rationale": "Disabling MFA weakens, not strengthens, security."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: excluding break-glass accounts prevents admin lockout.",
+   "outcome_refs": [
+    "MST-1428-D03.01"
+   ],
+   "domain_ref": "Conditional access basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1428-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the benefit of group-based licensing in Entra ID?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Licenses are assigned to a group and flow to its members",
+     "correct": true,
+     "rationale": "Correct: group-based licensing assigns licenses via group membership rather than per user."
+    },
+    {
+     "key": "B",
+     "text": "It encrypts all mailboxes",
+     "correct": false,
+     "rationale": "Licensing does not perform mailbox encryption."
+    },
+    {
+     "key": "C",
+     "text": "It creates virtual networks",
+     "correct": false,
+     "rationale": "VNets are an Azure networking concept, unrelated to licensing."
+    },
+    {
+     "key": "D",
+     "text": "It sets blob access tiers",
+     "correct": false,
+     "rationale": "Access tiers are an Azure Storage concept."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: group-based licensing assigns licenses via group membership rather than per user.",
+   "outcome_refs": [
+    "MST-1428-D01.01"
+   ],
+   "domain_ref": "Identities",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

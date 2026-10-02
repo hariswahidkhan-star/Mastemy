@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1426",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1426-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What must every cloud flow contain to be saved?",
+   "options": [
+    {
+     "key": "A",
+     "text": "At least a trigger and one action",
+     "correct": true,
+     "rationale": "Correct: a cloud flow needs a trigger and at least one action to be saved."
+    },
+    {
+     "key": "B",
+     "text": "A Bicep file",
+     "correct": false,
+     "rationale": "Bicep is an Azure IaC tool, not required for flows."
+    },
+    {
+     "key": "C",
+     "text": "A storage account",
+     "correct": false,
+     "rationale": "A storage account is not required to save a flow."
+    },
+    {
+     "key": "D",
+     "text": "Three approvals",
+     "correct": false,
+     "rationale": "Approvals are optional actions, not a save requirement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a cloud flow needs a trigger and at least one action to be saved.",
+   "outcome_refs": [
+    "MST-1426-D01.01"
+   ],
+   "domain_ref": "Triggers and flow types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1426-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid Power Automate cloud flow types? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automated",
+     "correct": true,
+     "rationale": "Correct: automated flows run when a trigger event occurs."
+    },
+    {
+     "key": "B",
+     "text": "Scheduled",
+     "correct": true,
+     "rationale": "Correct: scheduled flows run on a defined recurrence."
+    },
+    {
+     "key": "C",
+     "text": "Redundant-geo",
+     "correct": false,
+     "rationale": "GRS is an Azure Storage redundancy option, not a flow type."
+    },
+    {
+     "key": "D",
+     "text": "Conditional-access",
+     "correct": false,
+     "rationale": "Conditional Access is an Entra feature, not a flow type."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: automated flows run when a trigger event occurs.",
+   "outcome_refs": [
+    "MST-1426-D01.01"
+   ],
+   "domain_ref": "Triggers and flow types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1426-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where do you confirm whether a flow succeeded or failed after it ran?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The flow's run history",
+     "correct": true,
+     "rationale": "Correct: run history shows each run's status and lets you inspect failures."
+    },
+    {
+     "key": "B",
+     "text": "The Azure portal cost blade",
+     "correct": false,
+     "rationale": "Cost management does not show flow run status."
+    },
+    {
+     "key": "C",
+     "text": "An NSG rule",
+     "correct": false,
+     "rationale": "NSGs are networking controls, not flow diagnostics."
+    },
+    {
+     "key": "D",
+     "text": "A storage access tier",
+     "correct": false,
+     "rationale": "Access tiers are unrelated to flow run status."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: run history shows each run's status and lets you inspect failures.",
+   "outcome_refs": [
+    "MST-1426-D03.01"
+   ],
+   "domain_ref": "Testing and management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

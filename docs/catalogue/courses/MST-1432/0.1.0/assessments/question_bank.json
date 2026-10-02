@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1432",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1432-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two resources are in separate virtual networks and cannot reach each other. What is needed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An explicit connection such as VNet peering",
+     "correct": true,
+     "rationale": "Correct: resources in different VNets cannot communicate unless you connect them, for example with peering."
+    },
+    {
+     "key": "B",
+     "text": "A blob access tier change",
+     "correct": false,
+     "rationale": "Access tiers are a storage concept, not network connectivity."
+    },
+    {
+     "key": "C",
+     "text": "A Conditional Access policy",
+     "correct": false,
+     "rationale": "Conditional Access governs identity access, not VNet routing."
+    },
+    {
+     "key": "D",
+     "text": "A mailbox rule",
+     "correct": false,
+     "rationale": "Inbox rules handle email, not network connectivity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: resources in different VNets cannot communicate unless you connect them, for example with peering.",
+   "outcome_refs": [
+    "MST-1432-D01.01"
+   ],
+   "domain_ref": "Virtual networks and subnets",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1432-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Azure VNet peering are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Peering is not transitive; each peering is a direct link",
+     "correct": true,
+     "rationale": "Correct: peering connects two VNets directly and is not transitive."
+    },
+    {
+     "key": "B",
+     "text": "Traffic between peered VNets stays on the Microsoft backbone",
+     "correct": true,
+     "rationale": "Correct: peered traffic is routed over the Microsoft backbone, not the public internet."
+    },
+    {
+     "key": "C",
+     "text": "Peering automatically encrypts all mailboxes",
+     "correct": false,
+     "rationale": "Peering is a network link and does not encrypt mailboxes."
+    },
+    {
+     "key": "D",
+     "text": "Peering sets blob redundancy",
+     "correct": false,
+     "rationale": "Redundancy is a storage setting, unrelated to peering."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: peering connects two VNets directly and is not transitive.",
+   "outcome_refs": [
+    "MST-1432-D03.01"
+   ],
+   "domain_ref": "Connectivity and load balancing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1432-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which construct is the scope for associating a network security group?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A subnet (or a network interface)",
+     "correct": true,
+     "rationale": "Correct: NSGs are associated at the subnet or network interface level."
+    },
+    {
+     "key": "B",
+     "text": "A storage container",
+     "correct": false,
+     "rationale": "Containers are a storage concept, not an NSG scope."
+    },
+    {
+     "key": "C",
+     "text": "A directory role",
+     "correct": false,
+     "rationale": "Directory roles are an Entra concept, not an NSG scope."
+    },
+    {
+     "key": "D",
+     "text": "A Bicep module",
+     "correct": false,
+     "rationale": "A module is an authoring construct, not an NSG association scope."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: NSGs are associated at the subnet or network interface level.",
+   "outcome_refs": [
+    "MST-1432-D02.01"
+   ],
+   "domain_ref": "Security and routing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

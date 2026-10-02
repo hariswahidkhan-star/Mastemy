@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0671",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 308,
+  "lesson_check_items": 40,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0671-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user cannot add more columns to a large list around 300 columns. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The 8,000-byte-per-item row size limit has been reached",
+     "correct": true,
+     "rationale": "Correct: column count is bounded by the per-item byte limit, not a fixed column count."
+    },
+    {
+     "key": "B",
+     "text": "Lists only allow four columns",
+     "correct": false,
+     "rationale": "Lists support many columns, subject to the byte limit."
+    },
+    {
+     "key": "C",
+     "text": "The list must be deleted and recreated",
+     "correct": false,
+     "rationale": "Recreating does not raise the byte limit."
+    },
+    {
+     "key": "D",
+     "text": "Teams blocks all new columns",
+     "correct": false,
+     "rationale": "Teams does not impose a separate column block."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: column count is bounded by the per-item byte limit, not a fixed column count.",
+   "outcome_refs": [
+    "MST-0671-D01.01"
+   ],
+   "domain_ref": "Lists and columns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0671-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about Microsoft Lists? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lists can be created from built-in templates",
+     "correct": true,
+     "rationale": "Correct: templates such as Issue tracker speed up list creation."
+    },
+    {
+     "key": "B",
+     "text": "Lists can be surfaced as a tab in a Teams channel",
+     "correct": true,
+     "rationale": "Correct: the Lists app is available as a Teams tab."
+    },
+    {
+     "key": "C",
+     "text": "Lists replace Azure Storage accounts",
+     "correct": false,
+     "rationale": "Lists is a tracking app, not cloud storage infrastructure."
+    },
+    {
+     "key": "D",
+     "text": "Lists require Bicep to create columns",
+     "correct": false,
+     "rationale": "Columns are created in the UI, not with Bicep."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: templates such as Issue tracker speed up list creation.",
+   "outcome_refs": [
+    "MST-0671-D04.01"
+   ],
+   "domain_ref": "Integration",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0671-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What keeps a team in sync when a list item's status changes?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A rule that sends a notification",
+     "correct": true,
+     "rationale": "Correct: rules trigger notifications on changes such as status updates."
+    },
+    {
+     "key": "B",
+     "text": "Deleting the item",
+     "correct": false,
+     "rationale": "Deleting removes the item rather than notifying."
+    },
+    {
+     "key": "C",
+     "text": "A storage redundancy setting",
+     "correct": false,
+     "rationale": "Redundancy is an Azure Storage concept, not a Lists feature."
+    },
+    {
+     "key": "D",
+     "text": "A VNet peering",
+     "correct": false,
+     "rationale": "Peering is an Azure networking concept, unrelated to Lists."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: rules trigger notifications on changes such as status updates.",
+   "outcome_refs": [
+    "MST-0671-D03.01"
+   ],
+   "domain_ref": "Rules and alerts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

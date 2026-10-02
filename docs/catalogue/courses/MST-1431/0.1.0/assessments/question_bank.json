@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1431",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 180,
+  "lesson_check_items": 24,
+  "module_check_items": 42,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 24,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1431-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is Bicep?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A domain-specific language with declarative syntax to deploy Azure resources",
+     "correct": true,
+     "rationale": "Correct: Bicep is a declarative DSL for infrastructure as code on Azure."
+    },
+    {
+     "key": "B",
+     "text": "A mail client",
+     "correct": false,
+     "rationale": "Bicep is an IaC language, not an email application."
+    },
+    {
+     "key": "C",
+     "text": "A storage redundancy tier",
+     "correct": false,
+     "rationale": "Redundancy tiers are storage settings, not a language."
+    },
+    {
+     "key": "D",
+     "text": "A Conditional Access control",
+     "correct": false,
+     "rationale": "Conditional Access is an Entra feature, unrelated to Bicep."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Bicep is a declarative DSL for infrastructure as code on Azure.",
+   "outcome_refs": [
+    "MST-1431-D02.01"
+   ],
+   "domain_ref": "Bicep authoring",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1431-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO Azure CLI steps are typically required before deploying a Bicep file? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sign in with az login",
+     "correct": true,
+     "rationale": "Correct: you must authenticate with az login before deploying."
+    },
+    {
+     "key": "B",
+     "text": "Create or select a resource group",
+     "correct": true,
+     "rationale": "Correct: a group deployment targets a resource group that must exist."
+    },
+    {
+     "key": "C",
+     "text": "Delete all storage accounts",
+     "correct": false,
+     "rationale": "Deleting resources is not a deployment prerequisite."
+    },
+    {
+     "key": "D",
+     "text": "Disable the subscription",
+     "correct": false,
+     "rationale": "Disabling the subscription would prevent deployment."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: you must authenticate with az login before deploying.",
+   "outcome_refs": [
+    "MST-1431-D01.01"
+   ],
+   "domain_ref": "Azure CLI basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1431-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which operation previews what a Bicep deployment would change before applying it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "what-if",
+     "correct": true,
+     "rationale": "Correct: the what-if operation previews changes before deployment."
+    },
+    {
+     "key": "B",
+     "text": "az group delete",
+     "correct": false,
+     "rationale": "That deletes a resource group rather than previewing changes."
+    },
+    {
+     "key": "C",
+     "text": "Set-BlobTier",
+     "correct": false,
+     "rationale": "Blob tiering is a storage operation, not a deployment preview."
+    },
+    {
+     "key": "D",
+     "text": "Connect-MgGraph",
+     "correct": false,
+     "rationale": "That connects to Microsoft Graph, unrelated to Bicep previews."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the what-if operation previews changes before deployment.",
+   "outcome_refs": [
+    "MST-1431-D03.01"
+   ],
+   "domain_ref": "Deployment and validation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
