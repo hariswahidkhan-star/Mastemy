@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0857",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0857-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A good unit test asserts...",
+   "options": [
+    {
+     "key": "A",
+     "text": "observable behaviour and outputs, not internal implementation",
+     "correct": true,
+     "rationale": "Correct: behaviour-focused tests survive refactoring."
+    },
+    {
+     "key": "B",
+     "text": "private field values directly",
+     "correct": false,
+     "rationale": "Asserting private internals makes tests brittle."
+    },
+    {
+     "key": "C",
+     "text": "the line numbers of the code",
+     "correct": false,
+     "rationale": "Line numbers are not behaviour."
+    },
+    {
+     "key": "D",
+     "text": "the running JVM version",
+     "correct": false,
+     "rationale": "The JVM version is not what the test verifies."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: behaviour-focused tests survive refactoring.",
+   "outcome_refs": [
+    "MST-0857-D02.01"
+   ],
+   "domain_ref": "Test design",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0857-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate uses of a mock? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify that a collaborator's method was called",
+     "correct": true,
+     "rationale": "Correct: mocks can verify interactions."
+    },
+    {
+     "key": "B",
+     "text": "Stub a slow external dependency's response",
+     "correct": true,
+     "rationale": "Correct: stubbing isolates the unit from slow dependencies."
+    },
+    {
+     "key": "C",
+     "text": "Replace a simple value object you can just construct",
+     "correct": false,
+     "rationale": "Mocking trivial values adds noise without benefit."
+    },
+    {
+     "key": "D",
+     "text": "Test the mocking library itself",
+     "correct": false,
+     "rationale": "You test your code, not the framework."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: mocks can verify interactions.",
+   "outcome_refs": [
+    "MST-0857-D03.01"
+   ],
+   "domain_ref": "Mocking",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0857-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Does high code coverage guarantee correctness?",
+   "options": [
+    {
+     "key": "A",
+     "text": "No; it shows code ran, not that behaviour was verified",
+     "correct": true,
+     "rationale": "Correct: coverage measures execution, not assertion quality."
+    },
+    {
+     "key": "B",
+     "text": "Yes, always",
+     "correct": false,
+     "rationale": "Code can run without being meaningfully asserted."
+    },
+    {
+     "key": "C",
+     "text": "Only at exactly 100%",
+     "correct": false,
+     "rationale": "Even 100% execution does not verify behaviour."
+    },
+    {
+     "key": "D",
+     "text": "Only when using Mockito",
+     "correct": false,
+     "rationale": "The mocking tool does not change this."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: coverage measures execution, not assertion quality.",
+   "outcome_refs": [
+    "MST-0857-D04.01"
+   ],
+   "domain_ref": "Quality and CI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

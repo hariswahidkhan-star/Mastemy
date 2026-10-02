@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0873",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0873-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Server state differs from client state mainly because it...",
+   "options": [
+    {
+     "key": "A",
+     "text": "is remote, shared and can become stale",
+     "correct": true,
+     "rationale": "Correct: server state is owned elsewhere and can go stale."
+    },
+    {
+     "key": "B",
+     "text": "is always synchronous",
+     "correct": false,
+     "rationale": "Server state is fetched asynchronously."
+    },
+    {
+     "key": "C",
+     "text": "never changes",
+     "correct": false,
+     "rationale": "Server data changes over time."
+    },
+    {
+     "key": "D",
+     "text": "lives only in the URL",
+     "correct": false,
+     "rationale": "Server state is not stored in the URL."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: server state is owned elsewhere and can go stale.",
+   "outcome_refs": [
+    "MST-0873-D01.01"
+   ],
+   "domain_ref": "Server vs client state",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0873-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about React Query are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Query keys identify and cache a query",
+     "correct": true,
+     "rationale": "Correct: the key is how the cache stores and finds data."
+    },
+    {
+     "key": "B",
+     "text": "Invalidating a query triggers a refetch",
+     "correct": true,
+     "rationale": "Correct: invalidation marks data stale and refetches."
+    },
+    {
+     "key": "C",
+     "text": "Mutations can never affect the cache",
+     "correct": false,
+     "rationale": "Mutations commonly update or invalidate the cache."
+    },
+    {
+     "key": "D",
+     "text": "Query keys should change on every render",
+     "correct": false,
+     "rationale": "Unstable keys defeat caching."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the key is how the cache stores and finds data.",
+   "outcome_refs": [
+    "MST-0873-D03.01"
+   ],
+   "domain_ref": "Mutations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0873-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After a successful create mutation, the affected list should usually be...",
+   "options": [
+    {
+     "key": "A",
+     "text": "invalidated so it refetches fresh data",
+     "correct": true,
+     "rationale": "Correct: invalidation keeps the list consistent with the server."
+    },
+    {
+     "key": "B",
+     "text": "left stale indefinitely",
+     "correct": false,
+     "rationale": "A stale list misleads the user."
+    },
+    {
+     "key": "C",
+     "text": "cleared entirely",
+     "correct": false,
+     "rationale": "Clearing loses cached data unnecessarily."
+    },
+    {
+     "key": "D",
+     "text": "ignored",
+     "correct": false,
+     "rationale": "Ignoring the change leaves the UI inconsistent."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: invalidation keeps the list consistent with the server.",
+   "outcome_refs": [
+    "MST-0873-D03.01"
+   ],
+   "domain_ref": "Mutations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

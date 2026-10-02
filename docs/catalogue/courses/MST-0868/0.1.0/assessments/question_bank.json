@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0868",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0868-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Event delegation attaches a listener to...",
+   "options": [
+    {
+     "key": "A",
+     "text": "a common ancestor and relies on event bubbling",
+     "correct": true,
+     "rationale": "Correct: one ancestor listener handles events from many children."
+    },
+    {
+     "key": "B",
+     "text": "each element individually",
+     "correct": false,
+     "rationale": "That is the opposite of delegation."
+    },
+    {
+     "key": "C",
+     "text": "only the window object",
+     "correct": false,
+     "rationale": "Delegation usually targets a closer ancestor, not just window."
+    },
+    {
+     "key": "D",
+     "text": "the document <head>",
+     "correct": false,
+     "rationale": "The head does not contain the interactive elements."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: one ancestor listener handles events from many children.",
+   "outcome_refs": [
+    "MST-0868-D02.01"
+   ],
+   "domain_ref": "Events",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0868-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about client-side storage are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "IndexedDB suits larger, structured client-side data",
+     "correct": true,
+     "rationale": "Correct: IndexedDB is designed for larger structured records."
+    },
+    {
+     "key": "B",
+     "text": "localStorage is best for small key/value preferences",
+     "correct": true,
+     "rationale": "Correct: localStorage holds small string key/value data."
+    },
+    {
+     "key": "C",
+     "text": "Cookies are ideal for storing megabytes of data",
+     "correct": false,
+     "rationale": "Cookies are tiny and sent with every request."
+    },
+    {
+     "key": "D",
+     "text": "The URL hash should hold all application data",
+     "correct": false,
+     "rationale": "The URL is not a general data store."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: IndexedDB is designed for larger structured records.",
+   "outcome_refs": [
+    "MST-0868-D04.01"
+   ],
+   "domain_ref": "Client-side storage",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0868-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why avoid storing authentication tokens in localStorage?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is readable by any script and exposed to XSS",
+     "correct": true,
+     "rationale": "Correct: localStorage is accessible to any script on the page."
+    },
+    {
+     "key": "B",
+     "text": "It is too small to hold a token",
+     "correct": false,
+     "rationale": "Size is not the main concern."
+    },
+    {
+     "key": "C",
+     "text": "It is automatically encrypted",
+     "correct": false,
+     "rationale": "localStorage is not encrypted."
+    },
+    {
+     "key": "D",
+     "text": "Values expire instantly",
+     "correct": false,
+     "rationale": "localStorage values persist until cleared."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: localStorage is accessible to any script on the page.",
+   "outcome_refs": [
+    "MST-0868-D04.01"
+   ],
+   "domain_ref": "Client-side storage",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0850",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0850-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An object becomes eligible for garbage collection when...",
+   "options": [
+    {
+     "key": "A",
+     "text": "it is no longer reachable from any GC root",
+     "correct": true,
+     "rationale": "Correct: reachability from GC roots determines eligibility."
+    },
+    {
+     "key": "B",
+     "text": "its reference is set to null in one place while others remain",
+     "correct": false,
+     "rationale": "Other live references keep it reachable."
+    },
+    {
+     "key": "C",
+     "text": "the heap becomes full",
+     "correct": false,
+     "rationale": "A full heap triggers collection but does not define eligibility."
+    },
+    {
+     "key": "D",
+     "text": "a finalize() method is declared",
+     "correct": false,
+     "rationale": "Declaring finalize() does not make an object collectable."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reachability from GC roots determines eligibility.",
+   "outcome_refs": [
+    "MST-0850-D01.01"
+   ],
+   "domain_ref": "JVM memory model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0850-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO tools help diagnose JVM memory problems? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A heap-dump analyser such as Eclipse MAT",
+     "correct": true,
+     "rationale": "Correct: MAT inspects heap dumps for leak suspects."
+    },
+    {
+     "key": "B",
+     "text": "Java Flight Recorder (JFR)",
+     "correct": true,
+     "rationale": "Correct: JFR records allocation and GC events for analysis."
+    },
+    {
+     "key": "C",
+     "text": "A CSS minifier",
+     "correct": false,
+     "rationale": "A CSS minifier is a front-end build tool, unrelated to the JVM."
+    },
+    {
+     "key": "D",
+     "text": "A DNS resolver",
+     "correct": false,
+     "rationale": "DNS resolution is unrelated to JVM memory."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: MAT inspects heap dumps for leak suspects.",
+   "outcome_refs": [
+    "MST-0850-D03.01"
+   ],
+   "domain_ref": "Profiling and leaks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0850-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Does high steady memory usage alone indicate a memory leak?",
+   "options": [
+    {
+     "key": "A",
+     "text": "No; a leak is continuously growing, unreclaimable memory",
+     "correct": true,
+     "rationale": "Correct: a leak keeps growing and cannot be reclaimed."
+    },
+    {
+     "key": "B",
+     "text": "Yes, always",
+     "correct": false,
+     "rationale": "Steady high usage can be normal working set."
+    },
+    {
+     "key": "C",
+     "text": "Only when using ZGC",
+     "correct": false,
+     "rationale": "The collector does not change this definition."
+    },
+    {
+     "key": "D",
+     "text": "Only on 32-bit JVMs",
+     "correct": false,
+     "rationale": "Leak definition is independent of word size."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a leak keeps growing and cannot be reclaimed.",
+   "outcome_refs": [
+    "MST-0850-D03.01"
+   ],
+   "domain_ref": "Profiling and leaks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0871",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0871-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When a component's state changes, by default React re-renders...",
+   "options": [
+    {
+     "key": "A",
+     "text": "that component and its descendants",
+     "correct": true,
+     "rationale": "Correct: a state update re-renders the component and its subtree."
+    },
+    {
+     "key": "B",
+     "text": "the entire application every time",
+     "correct": false,
+     "rationale": "React does not re-render unrelated trees."
+    },
+    {
+     "key": "C",
+     "text": "only the DOM text nodes",
+     "correct": false,
+     "rationale": "Rendering is about components, not just text."
+    },
+    {
+     "key": "D",
+     "text": "nothing until a full page reload",
+     "correct": false,
+     "rationale": "State changes update without reload."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a state update re-renders the component and its subtree.",
+   "outcome_refs": [
+    "MST-0871-D01.01"
+   ],
+   "domain_ref": "Rendering model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0871-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about memoization in React are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "useCallback stabilises a function's identity across renders",
+     "correct": true,
+     "rationale": "Correct: it preserves the same function reference."
+    },
+    {
+     "key": "B",
+     "text": "React.memo skips re-render when props are shallowly equal",
+     "correct": true,
+     "rationale": "Correct: memo compares props shallowly to skip work."
+    },
+    {
+     "key": "C",
+     "text": "useMemo should wrap every value in a component",
+     "correct": false,
+     "rationale": "Over-memoizing adds overhead without benefit."
+    },
+    {
+     "key": "D",
+     "text": "Memoization is always free",
+     "correct": false,
+     "rationale": "Memoization has its own comparison and memory cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: it preserves the same function reference.",
+   "outcome_refs": [
+    "MST-0871-D02.01"
+   ],
+   "domain_ref": "Memoization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0871-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The right first step when a UI feels slow is to...",
+   "options": [
+    {
+     "key": "A",
+     "text": "profile and measure where time is actually spent",
+     "correct": true,
+     "rationale": "Correct: measurement guides effective optimisation."
+    },
+    {
+     "key": "B",
+     "text": "wrap everything in memo immediately",
+     "correct": false,
+     "rationale": "Blind memoization can hurt and hides the real cause."
+    },
+    {
+     "key": "C",
+     "text": "rewrite the app in another framework",
+     "correct": false,
+     "rationale": "That is disproportionate and unmeasured."
+    },
+    {
+     "key": "D",
+     "text": "add more component state",
+     "correct": false,
+     "rationale": "More state does not address performance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: measurement guides effective optimisation.",
+   "outcome_refs": [
+    "MST-0871-D03.01"
+   ],
+   "domain_ref": "Profiling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

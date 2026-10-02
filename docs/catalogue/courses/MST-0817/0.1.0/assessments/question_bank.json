@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0817",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0817-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Whisper output format is directly accepted as a YouTube caption upload?",
+   "options": [
+    {
+     "key": "A",
+     "text": "SRT or VTT",
+     "correct": true,
+     "rationale": "Correct: YouTube accepts standard subtitle formats such as SRT and WebVTT."
+    },
+    {
+     "key": "B",
+     "text": "MP4",
+     "correct": false,
+     "rationale": "MP4 is a video container, not a caption file."
+    },
+    {
+     "key": "C",
+     "text": "Raw model logits (JSON)",
+     "correct": false,
+     "rationale": "Logits are internal model outputs, not captions."
+    },
+    {
+     "key": "D",
+     "text": "WAV",
+     "correct": false,
+     "rationale": "WAV is audio, not a caption format."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: YouTube accepts standard subtitle formats such as SRT and WebVTT.",
+   "outcome_refs": [
+    "MST-0817-D01.01"
+   ],
+   "domain_ref": "Transcribe with Whisper",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0817-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO FFmpeg approaches keep captions as a selectable track rather than permanently drawn onto the picture? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Mux an SRT/mov_text subtitle stream into the container",
+     "correct": true,
+     "rationale": "Correct: a soft subtitle stream stays selectable and can be toggled."
+    },
+    {
+     "key": "B",
+     "text": "Add a WebVTT subtitle track alongside the video",
+     "correct": true,
+     "rationale": "Correct: a sidecar/soft WebVTT track remains selectable."
+    },
+    {
+     "key": "C",
+     "text": "Use the subtitles filter to burn them into the frames",
+     "correct": false,
+     "rationale": "Burning in draws captions onto the picture permanently."
+    },
+    {
+     "key": "D",
+     "text": "Overlay text with the drawtext filter",
+     "correct": false,
+     "rationale": "drawtext renders text into the video frames."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a soft subtitle stream stays selectable and can be toggled.",
+   "outcome_refs": [
+    "MST-0817-D02.01"
+   ],
+   "domain_ref": "Process media with FFmpeg",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0817-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why review Whisper transcripts before publishing captions?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Models make errors on names, technical terms and timing",
+     "correct": true,
+     "rationale": "Correct: automatic transcripts need correction for accuracy and accessibility."
+    },
+    {
+     "key": "B",
+     "text": "Captions are optional and can be skipped",
+     "correct": false,
+     "rationale": "Accurate captions matter for accessibility and comprehension."
+    },
+    {
+     "key": "C",
+     "text": "Reviewing increases watch time directly",
+     "correct": false,
+     "rationale": "Review is about accuracy, not a watch-time lever."
+    },
+    {
+     "key": "D",
+     "text": "YouTube requires 4K video for captions",
+     "correct": false,
+     "rationale": "Resolution is unrelated to caption review."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: automatic transcripts need correction for accuracy and accessibility.",
+   "outcome_refs": [
+    "MST-0817-D04.01"
+   ],
+   "domain_ref": "Build the pipeline",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

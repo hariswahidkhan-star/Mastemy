@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0854",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0854-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Spring Batch, what records the state that lets a job restart?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The JobRepository",
+     "correct": true,
+     "rationale": "Correct: the JobRepository persists execution state for restart."
+    },
+    {
+     "key": "B",
+     "text": "The ItemReader",
+     "correct": false,
+     "rationale": "The reader supplies items; it does not persist job state."
+    },
+    {
+     "key": "C",
+     "text": "application.properties",
+     "correct": false,
+     "rationale": "Config files are not where execution state is stored."
+    },
+    {
+     "key": "D",
+     "text": "The JVM heap",
+     "correct": false,
+     "rationale": "Heap memory is transient and lost on restart."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the JobRepository persists execution state for restart.",
+   "outcome_refs": [
+    "MST-0854-D01.01"
+   ],
+   "domain_ref": "Batch fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0854-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are components of chunk-oriented processing? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "ItemReader",
+     "correct": true,
+     "rationale": "Correct: the reader provides items for the chunk."
+    },
+    {
+     "key": "B",
+     "text": "ItemWriter",
+     "correct": true,
+     "rationale": "Correct: the writer persists each processed chunk."
+    },
+    {
+     "key": "C",
+     "text": "DispatcherServlet",
+     "correct": false,
+     "rationale": "DispatcherServlet is a Spring MVC web component."
+    },
+    {
+     "key": "D",
+     "text": "BeanPostProcessor",
+     "correct": false,
+     "rationale": "BeanPostProcessor is a container lifecycle hook, not a chunk component."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the reader provides items for the chunk.",
+   "outcome_refs": [
+    "MST-0854-D02.01"
+   ],
+   "domain_ref": "Chunk-oriented processing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0854-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A larger commit interval generally...",
+   "options": [
+    {
+     "key": "A",
+     "text": "reduces commit overhead but risks more rework on failure",
+     "correct": true,
+     "rationale": "Correct: fewer commits are cheaper but more work is lost per failure."
+    },
+    {
+     "key": "B",
+     "text": "always increases reliability",
+     "correct": false,
+     "rationale": "Larger intervals increase, not decrease, work lost on failure."
+    },
+    {
+     "key": "C",
+     "text": "disables restart",
+     "correct": false,
+     "rationale": "Commit interval does not disable restartability."
+    },
+    {
+     "key": "D",
+     "text": "reduces memory use",
+     "correct": false,
+     "rationale": "Larger chunks usually use more memory, not less."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fewer commits are cheaper but more work is lost per failure.",
+   "outcome_refs": [
+    "MST-0854-D02.01"
+   ],
+   "domain_ref": "Chunk-oriented processing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

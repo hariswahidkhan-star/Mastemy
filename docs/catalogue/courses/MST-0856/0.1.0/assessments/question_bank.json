@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0856",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0856-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A key reason to give each microservice its own database is to...",
+   "options": [
+    {
+     "key": "A",
+     "text": "preserve loose coupling and independent evolution",
+     "correct": true,
+     "rationale": "Correct: private data stores let services evolve independently."
+    },
+    {
+     "key": "B",
+     "text": "save storage space",
+     "correct": false,
+     "rationale": "Separate databases do not primarily save storage."
+    },
+    {
+     "key": "C",
+     "text": "speed up joins across services",
+     "correct": false,
+     "rationale": "Cross-service joins become harder, not easier."
+    },
+    {
+     "key": "D",
+     "text": "avoid writing APIs",
+     "correct": false,
+     "rationale": "Services still need APIs to communicate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: private data stores let services evolve independently.",
+   "outcome_refs": [
+    "MST-0856-D01.01"
+   ],
+   "domain_ref": "Microservice boundaries",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0856-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO patterns help maintain consistency across services without a distributed transaction? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Saga with compensating actions",
+     "correct": true,
+     "rationale": "Correct: sagas coordinate steps with compensation on failure."
+    },
+    {
+     "key": "B",
+     "text": "Transactional outbox",
+     "correct": true,
+     "rationale": "Correct: the outbox reliably publishes events with the local commit."
+    },
+    {
+     "key": "C",
+     "text": "A single ACID transaction spanning all services",
+     "correct": false,
+     "rationale": "Distributed ACID transactions are what these patterns avoid."
+    },
+    {
+     "key": "D",
+     "text": "Ignoring failures",
+     "correct": false,
+     "rationale": "Ignoring failures does not provide consistency."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: sagas coordinate steps with compensation on failure.",
+   "outcome_refs": [
+    "MST-0856-D04.01"
+   ],
+   "domain_ref": "Consistency patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0856-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "With at-least-once delivery, consumers must be...",
+   "options": [
+    {
+     "key": "A",
+     "text": "idempotent to tolerate duplicate messages",
+     "correct": true,
+     "rationale": "Correct: duplicates are possible, so processing must be idempotent."
+    },
+    {
+     "key": "B",
+     "text": "always stateful",
+     "correct": false,
+     "rationale": "Statefulness is not required by at-least-once delivery."
+    },
+    {
+     "key": "C",
+     "text": "strictly synchronous",
+     "correct": false,
+     "rationale": "At-least-once applies to asynchronous messaging."
+    },
+    {
+     "key": "D",
+     "text": "single-threaded",
+     "correct": false,
+     "rationale": "Threading is unrelated to delivery semantics."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: duplicates are possible, so processing must be idempotent.",
+   "outcome_refs": [
+    "MST-0856-D03.01"
+   ],
+   "domain_ref": "Events and messaging",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

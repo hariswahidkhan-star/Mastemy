@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0814",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0814-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should you always do with metadata that Gemini drafts before publishing it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Review and edit it for accuracy and policy compliance",
+     "correct": true,
+     "rationale": "Correct: generated metadata can contain errors or policy issues and must be checked by a human."
+    },
+    {
+     "key": "B",
+     "text": "Publish it unchanged to save time",
+     "correct": false,
+     "rationale": "Unreviewed generated text may be inaccurate or violate policy."
+    },
+    {
+     "key": "C",
+     "text": "Delete it and always rewrite everything by hand",
+     "correct": false,
+     "rationale": "The draft is a useful starting point; wholesale rewriting is unnecessary."
+    },
+    {
+     "key": "D",
+     "text": "Translate it to another language first",
+     "correct": false,
+     "rationale": "Translation does not address accuracy or policy review."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: generated metadata can contain errors or policy issues and must be checked by a human.",
+   "outcome_refs": [
+    "MST-0814-D01.01"
+   ],
+   "domain_ref": "Plan content with Gemini",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0814-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO YouTube Studio metrics best help you judge whether a video performed well? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Click-through rate",
+     "correct": true,
+     "rationale": "Correct: CTR reflects how well the title and thumbnail attract clicks."
+    },
+    {
+     "key": "B",
+     "text": "Average view duration",
+     "correct": true,
+     "rationale": "Correct: AVD reflects whether the content kept viewers watching."
+    },
+    {
+     "key": "C",
+     "text": "Total lifetime subscriber count",
+     "correct": false,
+     "rationale": "A channel-wide total does not isolate one video's performance."
+    },
+    {
+     "key": "D",
+     "text": "The file's upload timestamp",
+     "correct": false,
+     "rationale": "The upload time is metadata, not a performance signal."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: CTR reflects how well the title and thumbnail attract clicks.",
+   "outcome_refs": [
+    "MST-0814-D03.01"
+   ],
+   "domain_ref": "Track performance with Sheets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0814-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Sheets, which function best pulls the matching view count for a given video ID from an exported data tab?",
+   "options": [
+    {
+     "key": "A",
+     "text": "XLOOKUP (or VLOOKUP)",
+     "correct": true,
+     "rationale": "Correct: a lookup function matches the video ID and returns its view count."
+    },
+    {
+     "key": "B",
+     "text": "SUM",
+     "correct": false,
+     "rationale": "SUM adds a range; it does not match by key."
+    },
+    {
+     "key": "C",
+     "text": "TODAY",
+     "correct": false,
+     "rationale": "TODAY returns the current date."
+    },
+    {
+     "key": "D",
+     "text": "CONCATENATE",
+     "correct": false,
+     "rationale": "CONCATENATE joins text; it does not look up values."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a lookup function matches the video ID and returns its view count.",
+   "outcome_refs": [
+    "MST-0814-D03.01"
+   ],
+   "domain_ref": "Track performance with Sheets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

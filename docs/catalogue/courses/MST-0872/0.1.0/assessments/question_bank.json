@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0872",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0872-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A controlled input in React derives its value from...",
+   "options": [
+    {
+     "key": "A",
+     "text": "component state",
+     "correct": true,
+     "rationale": "Correct: a controlled input's value comes from state."
+    },
+    {
+     "key": "B",
+     "text": "the DOM node only",
+     "correct": false,
+     "rationale": "That describes an uncontrolled input."
+    },
+    {
+     "key": "C",
+     "text": "a ref in every case",
+     "correct": false,
+     "rationale": "Refs are typical of uncontrolled inputs."
+    },
+    {
+     "key": "D",
+     "text": "localStorage",
+     "correct": false,
+     "rationale": "Storage is not the source of a controlled value."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a controlled input's value comes from state.",
+   "outcome_refs": [
+    "MST-0872-D01.01"
+   ],
+   "domain_ref": "Controlled forms",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0872-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about form validation are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Client-side validation improves UX but is not a security control",
+     "correct": true,
+     "rationale": "Correct: client checks help users but can be bypassed."
+    },
+    {
+     "key": "B",
+     "text": "The server must still validate submitted data",
+     "correct": true,
+     "rationale": "Correct: trustworthy validation happens on the server."
+    },
+    {
+     "key": "C",
+     "text": "Client-side validation alone is sufficient for security",
+     "correct": false,
+     "rationale": "Clients can be bypassed, so this is unsafe."
+    },
+    {
+     "key": "D",
+     "text": "Errors should be hidden from screen readers",
+     "correct": false,
+     "rationale": "Errors must be accessible to assistive technology."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: client checks help users but can be bypassed.",
+   "outcome_refs": [
+    "MST-0872-D02.01"
+   ],
+   "domain_ref": "Validation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0872-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a multi-step wizard, user input should be...",
+   "options": [
+    {
+     "key": "A",
+     "text": "preserved in shared state across steps",
+     "correct": true,
+     "rationale": "Correct: shared state keeps earlier input available."
+    },
+    {
+     "key": "B",
+     "text": "discarded between steps",
+     "correct": false,
+     "rationale": "Discarding input frustrates users."
+    },
+    {
+     "key": "C",
+     "text": "stored only in the URL",
+     "correct": false,
+     "rationale": "The URL is not a general store for all input."
+    },
+    {
+     "key": "D",
+     "text": "re-entered at each step",
+     "correct": false,
+     "rationale": "Re-entry is poor UX and unnecessary."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: shared state keeps earlier input available.",
+   "outcome_refs": [
+    "MST-0872-D04.01"
+   ],
+   "domain_ref": "Complex flows",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
