@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0861",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0861-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does `0 == ''` evaluate to in JavaScript, and why does `0 === ''` differ?",
+   "options": [
+    {
+     "key": "A",
+     "text": "true for ==, false for ===, because == coerces types while === does not",
+     "correct": true,
+     "rationale": "Correct: == performs type coercion; === compares type and value without coercion."
+    },
+    {
+     "key": "B",
+     "text": "Both are true",
+     "correct": false,
+     "rationale": "=== is false because the types differ."
+    },
+    {
+     "key": "C",
+     "text": "Both are false",
+     "correct": false,
+     "rationale": "== coerces '' to 0, giving true."
+    },
+    {
+     "key": "D",
+     "text": "Both throw a TypeError",
+     "correct": false,
+     "rationale": "Neither comparison throws."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: == performs type coercion; === compares type and value without coercion.",
+   "outcome_refs": [
+    "MST-0861-D01.01"
+   ],
+   "domain_ref": "Types and equality",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0861-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about closures are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A closure keeps access to variables from its defining scope",
+     "correct": true,
+     "rationale": "Correct: closures capture their lexical environment."
+    },
+    {
+     "key": "B",
+     "text": "let in a loop creates a fresh binding per iteration",
+     "correct": true,
+     "rationale": "Correct: this fixes the classic var-in-loop capture bug."
+    },
+    {
+     "key": "C",
+     "text": "Closures copy values at definition and never see updates",
+     "correct": false,
+     "rationale": "Closures reference variables, so they see later updates."
+    },
+    {
+     "key": "D",
+     "text": "var is block-scoped",
+     "correct": false,
+     "rationale": "var is function-scoped, not block-scoped."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: closures capture their lexical environment.",
+   "outcome_refs": [
+    "MST-0861-D02.01"
+   ],
+   "domain_ref": "Functions and scope",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0861-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An awaited promise rejects. How do you handle the error idiomatically?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Wrap the await in try/catch",
+     "correct": true,
+     "rationale": "Correct: try/catch around await captures a rejected promise."
+    },
+    {
+     "key": "B",
+     "text": "Ignore it; rejections resolve themselves",
+     "correct": false,
+     "rationale": "Unhandled rejections do not resolve themselves."
+    },
+    {
+     "key": "C",
+     "text": "Use a synchronous try/catch without await",
+     "correct": false,
+     "rationale": "Without await the rejection is not caught synchronously."
+    },
+    {
+     "key": "D",
+     "text": "Call the promise twice",
+     "correct": false,
+     "rationale": "Re-calling does not handle the rejection."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: try/catch around await captures a rejected promise.",
+   "outcome_refs": [
+    "MST-0861-D05.01"
+   ],
+   "domain_ref": "Asynchronous JavaScript",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0863",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0863-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is `unknown` often safer than `any` for an untyped value?",
+   "options": [
+    {
+     "key": "A",
+     "text": "unknown forces you to narrow before use, while any disables type checking",
+     "correct": true,
+     "rationale": "Correct: unknown preserves type safety by requiring a check; any opts out entirely."
+    },
+    {
+     "key": "B",
+     "text": "unknown is faster at run time",
+     "correct": false,
+     "rationale": "Types are erased at run time; there is no speed difference."
+    },
+    {
+     "key": "C",
+     "text": "any cannot be assigned to variables",
+     "correct": false,
+     "rationale": "any can be assigned freely; that is the problem."
+    },
+    {
+     "key": "D",
+     "text": "unknown allows any method call directly",
+     "correct": false,
+     "rationale": "unknown blocks direct member access until narrowed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unknown preserves type safety by requiring a check; any opts out entirely.",
+   "outcome_refs": [
+    "MST-0863-D01.01"
+   ],
+   "domain_ref": "Core types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0863-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good reasons to use a discriminated union? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The compiler can narrow by the discriminant property",
+     "correct": true,
+     "rationale": "Correct: a literal discriminant enables precise narrowing."
+    },
+    {
+     "key": "B",
+     "text": "It enables exhaustiveness checks with never",
+     "correct": true,
+     "rationale": "Correct: an unhandled case surfaces as a never error."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any types",
+     "correct": false,
+     "rationale": "Avoiding any is good practice generally, not the purpose of a discriminated union."
+    },
+    {
+     "key": "D",
+     "text": "It makes casting with as safe",
+     "correct": false,
+     "rationale": "Discriminated unions reduce the need to cast, not make casts safe."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a literal discriminant enables precise narrowing.",
+   "outcome_refs": [
+    "MST-0863-D04.01"
+   ],
+   "domain_ref": "Narrowing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0863-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Enabling strict mode surfaces many 'possibly undefined' errors. What is the appropriate response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fix the code to handle the undefined cases",
+     "correct": true,
+     "rationale": "Correct: strict null checks reveal real gaps that should be handled."
+    },
+    {
+     "key": "B",
+     "text": "Disable strict to remove the errors",
+     "correct": false,
+     "rationale": "Disabling strict hides real bugs rather than fixing them."
+    },
+    {
+     "key": "C",
+     "text": "Cast everything with as any",
+     "correct": false,
+     "rationale": "Casting to any defeats the type system."
+    },
+    {
+     "key": "D",
+     "text": "Add // @ts-ignore everywhere",
+     "correct": false,
+     "rationale": "Blanket ignores suppress genuine type errors."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: strict null checks reveal real gaps that should be handled.",
+   "outcome_refs": [
+    "MST-0863-D05.01"
+   ],
+   "domain_ref": "Compiler and config",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

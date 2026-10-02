@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0821",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0821-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A method is marked async and returns Task<int> but contains no await. What does the compiler do and what happens at run time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It warns, and the method runs synchronously",
+     "correct": true,
+     "rationale": "Correct: per the C# model, an async method with no await runs synchronously and the compiler issues a warning."
+    },
+    {
+     "key": "B",
+     "text": "It errors and will not compile",
+     "correct": false,
+     "rationale": "The absence of await is a warning, not a compile error."
+    },
+    {
+     "key": "C",
+     "text": "It runs on a new thread automatically",
+     "correct": false,
+     "rationale": "async does not by itself move work to another thread."
+    },
+    {
+     "key": "D",
+     "text": "It never returns",
+     "correct": false,
+     "rationale": "The method returns normally; it simply does not suspend."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: per the C# model, an async method with no await runs synchronously and the compiler issues a warning.",
+   "outcome_refs": [
+    "MST-0821-D06.01"
+   ],
+   "domain_ref": "Async foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0821-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about value vs reference types in C# are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assigning a struct copies its value",
+     "correct": true,
+     "rationale": "Correct: structs are value types and are copied on assignment."
+    },
+    {
+     "key": "B",
+     "text": "Assigning a class reference copies the reference, not the object",
+     "correct": true,
+     "rationale": "Correct: two references then point to the same object."
+    },
+    {
+     "key": "C",
+     "text": "Structs are always reference types",
+     "correct": false,
+     "rationale": "Structs are value types."
+    },
+    {
+     "key": "D",
+     "text": "Copying a class instance always deep-copies its fields",
+     "correct": false,
+     "rationale": "Copying a reference does not duplicate the object."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: structs are value types and are copied on assignment.",
+   "outcome_refs": [
+    "MST-0821-D02.01"
+   ],
+   "domain_ref": "Classes, structs and records",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0821-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which numeric type is the appropriate default for storing a currency amount in C#?",
+   "options": [
+    {
+     "key": "A",
+     "text": "decimal",
+     "correct": true,
+     "rationale": "Correct: decimal avoids binary floating-point rounding errors for money."
+    },
+    {
+     "key": "B",
+     "text": "double",
+     "correct": false,
+     "rationale": "double is binary floating-point and introduces rounding errors for currency."
+    },
+    {
+     "key": "C",
+     "text": "float",
+     "correct": false,
+     "rationale": "float has even less precision than double for monetary values."
+    },
+    {
+     "key": "D",
+     "text": "int",
+     "correct": false,
+     "rationale": "int cannot represent fractional currency amounts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: decimal avoids binary floating-point rounding errors for money.",
+   "outcome_refs": [
+    "MST-0821-D01.01"
+   ],
+   "domain_ref": "Types and control flow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

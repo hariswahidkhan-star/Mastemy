@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0862",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0862-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What logs first: a `Promise.resolve().then(...)` callback or a `setTimeout(..., 0)` callback scheduled just before it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The promise callback, because microtasks run before the next macrotask",
+     "correct": true,
+     "rationale": "Correct: the microtask queue drains before the next macrotask (timer) callback."
+    },
+    {
+     "key": "B",
+     "text": "The setTimeout callback, because 0ms means immediate",
+     "correct": false,
+     "rationale": "Timer callbacks are macrotasks and run after microtasks."
+    },
+    {
+     "key": "C",
+     "text": "They always log in source order",
+     "correct": false,
+     "rationale": "Queue type, not source order, decides timing here."
+    },
+    {
+     "key": "D",
+     "text": "Neither logs",
+     "correct": false,
+     "rationale": "Both callbacks run."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the microtask queue drains before the next macrotask (timer) callback.",
+   "outcome_refs": [
+    "MST-0862-D04.01"
+   ],
+   "domain_ref": "Event loop and tasks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0862-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are correct about arrow functions and this? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "An arrow function uses this from its enclosing lexical scope",
+     "correct": true,
+     "rationale": "Correct: arrow functions do not bind their own this."
+    },
+    {
+     "key": "B",
+     "text": "bind has no effect on an arrow function's this",
+     "correct": true,
+     "rationale": "Correct: you cannot rebind an arrow function's this."
+    },
+    {
+     "key": "C",
+     "text": "Arrow functions get a fresh this per call",
+     "correct": false,
+     "rationale": "They do not have their own this."
+    },
+    {
+     "key": "D",
+     "text": "new works on arrow functions",
+     "correct": false,
+     "rationale": "Arrow functions cannot be used as constructors."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: arrow functions do not bind their own this.",
+   "outcome_refs": [
+    "MST-0862-D03.01"
+   ],
+   "domain_ref": "this and call patterns",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0862-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to cancel an in-flight fetch when the user navigates away. Which tool fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An AbortController whose signal is passed to fetch",
+     "correct": true,
+     "rationale": "Correct: AbortController cancels the fetch via its signal."
+    },
+    {
+     "key": "B",
+     "text": "clearTimeout on the fetch",
+     "correct": false,
+     "rationale": "fetch is not a timer; clearTimeout does not cancel it."
+    },
+    {
+     "key": "C",
+     "text": "Setting the promise to null",
+     "correct": false,
+     "rationale": "Nulling the reference does not abort the request."
+    },
+    {
+     "key": "D",
+     "text": "try/catch around fetch",
+     "correct": false,
+     "rationale": "try/catch handles errors but does not cancel the request."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AbortController cancels the fetch via its signal.",
+   "outcome_refs": [
+    "MST-0862-D05.01"
+   ],
+   "domain_ref": "Robust async patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

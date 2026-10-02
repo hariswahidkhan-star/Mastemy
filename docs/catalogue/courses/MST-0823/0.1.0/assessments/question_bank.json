@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0823",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0823-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During an await on an incomplete Task, what happens to the thread that was executing the async method?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Control returns to the caller; the thread is not blocked",
+     "correct": true,
+     "rationale": "Correct: await suspends the method and returns control to the caller without blocking the thread."
+    },
+    {
+     "key": "B",
+     "text": "The thread spins in a busy loop until completion",
+     "correct": false,
+     "rationale": "await does not busy-wait."
+    },
+    {
+     "key": "C",
+     "text": "The thread is terminated",
+     "correct": false,
+     "rationale": "The thread is released, not terminated."
+    },
+    {
+     "key": "D",
+     "text": "A new process is started",
+     "correct": false,
+     "rationale": "No new process is involved."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: await suspends the method and returns control to the caller without blocking the thread.",
+   "outcome_refs": [
+    "MST-0823-D01.01"
+   ],
+   "domain_ref": "The task model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0823-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are correct ways to run independent async calls concurrently and wait for all results? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Start the tasks, then await Task.WhenAll on them",
+     "correct": true,
+     "rationale": "Correct: WhenAll awaits all tasks together."
+    },
+    {
+     "key": "B",
+     "text": "Await each call sequentially in a loop",
+     "correct": false,
+     "rationale": "Sequential awaits do not overlap the work."
+    },
+    {
+     "key": "C",
+     "text": "Collect the tasks and await Task.WhenAll(tasks)",
+     "correct": true,
+     "rationale": "Correct: this is the canonical concurrent-wait pattern."
+    },
+    {
+     "key": "D",
+     "text": "Call .Result on each task in turn",
+     "correct": false,
+     "rationale": ".Result blocks and risks deadlock."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: WhenAll awaits all tasks together.",
+   "outcome_refs": [
+    "MST-0823-D02.01"
+   ],
+   "domain_ref": "Composing concurrency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0823-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A UI handler calls `SomeAsync().Result` and the app hangs. What is the idiomatic fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "await the call in an async handler instead of blocking on .Result",
+     "correct": true,
+     "rationale": "Correct: blocking on .Result on a context thread can deadlock; awaiting avoids it."
+    },
+    {
+     "key": "B",
+     "text": "Call .Result twice",
+     "correct": false,
+     "rationale": "Calling it again does not resolve the deadlock."
+    },
+    {
+     "key": "C",
+     "text": "Wrap it in a tight retry loop",
+     "correct": false,
+     "rationale": "Retrying a blocking call does not fix the deadlock."
+    },
+    {
+     "key": "D",
+     "text": "Increase the thread priority",
+     "correct": false,
+     "rationale": "Priority does not address the context deadlock."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: blocking on .Result on a context thread can deadlock; awaiting avoids it.",
+   "outcome_refs": [
+    "MST-0823-D04.01"
+   ],
+   "domain_ref": "Deadlocks and context",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

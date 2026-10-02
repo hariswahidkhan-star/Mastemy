@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0801",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0801-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Finance documents must stay accessible only to the finance team even when an executive queries the assistant. Which control enforces this in Azure AI Search?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Document-level security trimming / filter-based security at query time",
+     "correct": true,
+     "rationale": "Correct: Azure AI Search supports document-level access control so only authorized content is retrieved."
+    },
+    {
+     "key": "B",
+     "text": "A note in the system prompt asking the model to be careful",
+     "correct": false,
+     "rationale": "A prompt note does not stop unauthorized passages being retrieved."
+    },
+    {
+     "key": "C",
+     "text": "A larger embedding model",
+     "correct": false,
+     "rationale": "Embedding size is unrelated to authorization."
+    },
+    {
+     "key": "D",
+     "text": "Disabling semantic ranking",
+     "correct": false,
+     "rationale": "Ranking configuration does not control who may see a document."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Azure AI Search supports document-level access control so only authorized content is retrieved.",
+   "outcome_refs": [
+    "MST-0801-D04.01"
+   ],
+   "domain_ref": "Security and identity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0801-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Per Azure AI Search guidance, which TWO practices improve relevance for RAG? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use hybrid queries combining keyword and vector search",
+     "correct": true,
+     "rationale": "Correct: hybrid search maximises recall by running keyword and vector queries in parallel."
+    },
+    {
+     "key": "B",
+     "text": "Apply semantic ranking to reorder top results",
+     "correct": true,
+     "rationale": "Correct: semantic ranking identifies the most relevant results."
+    },
+    {
+     "key": "C",
+     "text": "Index whole documents without chunking",
+     "correct": false,
+     "rationale": "Chunking lets portions be matched independently; indexing whole documents hurts relevance."
+    },
+    {
+     "key": "D",
+     "text": "Return every field for every match",
+     "correct": false,
+     "rationale": "Returning everything inflates tokens without improving relevance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: hybrid search maximises recall by running keyword and vector queries in parallel.",
+   "outcome_refs": [
+    "MST-0801-D03.01"
+   ],
+   "domain_ref": "Retrieval and ranking",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0801-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should retrieved passages be treated as untrusted input in an enterprise RAG system?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They can carry prompt-injection content that manipulates the model",
+     "correct": true,
+     "rationale": "Correct: Microsoft guidance says to treat retrieved content as untrusted and reduce prompt-injection risk via the system message and logic."
+    },
+    {
+     "key": "B",
+     "text": "They are always out of date",
+     "correct": false,
+     "rationale": "Freshness is a separate concern from trust."
+    },
+    {
+     "key": "C",
+     "text": "They cannot be cited",
+     "correct": false,
+     "rationale": "Retrieved passages are exactly what citations point to."
+    },
+    {
+     "key": "D",
+     "text": "They increase embedding dimensionality",
+     "correct": false,
+     "rationale": "Passages do not change embedding dimensionality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Microsoft guidance says to treat retrieved content as untrusted and reduce prompt-injection risk via the system message and logic.",
+   "outcome_refs": [
+    "MST-0801-D05.01"
+   ],
+   "domain_ref": "Grounded generation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0826",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0826-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a new ASP.NET Core HTTP API, which approach does Microsoft currently recommend as the default?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Minimal APIs",
+     "correct": true,
+     "rationale": "Correct: the ASP.NET Core APIs overview recommends Minimal APIs for new projects."
+    },
+    {
+     "key": "B",
+     "text": "Web Forms",
+     "correct": false,
+     "rationale": "Web Forms is not part of ASP.NET Core."
+    },
+    {
+     "key": "C",
+     "text": "WCF services",
+     "correct": false,
+     "rationale": "WCF is not the recommended ASP.NET Core API approach."
+    },
+    {
+     "key": "D",
+     "text": "Raw HttpListener",
+     "correct": false,
+     "rationale": "HttpListener is a low-level primitive, not the recommended approach."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the ASP.NET Core APIs overview recommends Minimal APIs for new projects.",
+   "outcome_refs": [
+    "MST-0826-D01.01"
+   ],
+   "domain_ref": "Endpoints and routing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0826-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO responses are appropriate for a request that fails model validation and one that targets a missing resource? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "400 Bad Request with ProblemDetails for invalid input",
+     "correct": true,
+     "rationale": "Correct: invalid input is a 4xx client error."
+    },
+    {
+     "key": "B",
+     "text": "404 Not Found for a missing resource",
+     "correct": true,
+     "rationale": "Correct: a missing resource maps to 404."
+    },
+    {
+     "key": "C",
+     "text": "200 OK for invalid input",
+     "correct": false,
+     "rationale": "200 wrongly signals success."
+    },
+    {
+     "key": "D",
+     "text": "500 for any validation failure",
+     "correct": false,
+     "rationale": "Validation failures are client errors, not server errors."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: invalid input is a 4xx client error.",
+   "outcome_refs": [
+    "MST-0826-D02.01"
+   ],
+   "domain_ref": "Validation and responses",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0826-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the ASP.NET Core pipeline, where must UseAuthentication and UseAuthorization run relative to routing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "After UseRouting, with authentication before authorization",
+     "correct": true,
+     "rationale": "Correct: authentication and authorization run after routing, authentication first."
+    },
+    {
+     "key": "B",
+     "text": "Before UseRouting",
+     "correct": false,
+     "rationale": "Authorization needs routing metadata, so it runs after UseRouting."
+    },
+    {
+     "key": "C",
+     "text": "Authorization before authentication",
+     "correct": false,
+     "rationale": "Authentication must establish identity before authorization decides access."
+    },
+    {
+     "key": "D",
+     "text": "Order does not matter",
+     "correct": false,
+     "rationale": "Middleware order is significant in ASP.NET Core."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: authentication and authorization run after routing, authentication first.",
+   "outcome_refs": [
+    "MST-0826-D03.01"
+   ],
+   "domain_ref": "The middleware pipeline",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

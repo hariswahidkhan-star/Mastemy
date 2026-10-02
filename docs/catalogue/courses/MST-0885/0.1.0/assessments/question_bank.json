@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0885",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0885-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In NestJS, where should request-body validation rules live?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In a DTO class validated by a validation pipe",
+     "correct": true,
+     "rationale": "Correct: NestJS validates DTOs via pipes, keeping validation declarative and reusable."
+    },
+    {
+     "key": "B",
+     "text": "Scattered as if-checks inside each controller method",
+     "correct": false,
+     "rationale": "Ad-hoc checks duplicate logic and are easy to miss."
+    },
+    {
+     "key": "C",
+     "text": "In the database only",
+     "correct": false,
+     "rationale": "Relying solely on the database gives poor error messages and late failure."
+    },
+    {
+     "key": "D",
+     "text": "In the frontend only",
+     "correct": false,
+     "rationale": "Client-side validation can be bypassed; the server must validate too."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: NestJS validates DTOs via pipes, keeping validation declarative and reusable.",
+   "outcome_refs": [
+    "MST-0885-D03.01"
+   ],
+   "domain_ref": "Validation and DTOs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0885-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate uses of NestJS cross-cutting constructs? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A guard to allow or deny a route based on auth",
+     "correct": true,
+     "rationale": "Correct: guards decide access to a route."
+    },
+    {
+     "key": "B",
+     "text": "An exception filter to standardise error responses",
+     "correct": true,
+     "rationale": "Correct: filters shape error output consistently."
+    },
+    {
+     "key": "C",
+     "text": "A controller method to hold the DI container",
+     "correct": false,
+     "rationale": "The framework owns the DI container, not a controller method."
+    },
+    {
+     "key": "D",
+     "text": "A DTO to open a database connection",
+     "correct": false,
+     "rationale": "DTOs describe data shape, not connections."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: guards decide access to a route.",
+   "outcome_refs": [
+    "MST-0885-D04.01"
+   ],
+   "domain_ref": "Cross-cutting concerns",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0885-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should a NestJS service obtain its repository dependency?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Via constructor injection managed by the Nest DI container",
+     "correct": true,
+     "rationale": "Correct: NestJS resolves providers through constructor injection."
+    },
+    {
+     "key": "B",
+     "text": "By calling new Repository() inside each method",
+     "correct": false,
+     "rationale": "Manual instantiation bypasses DI and hurts testability."
+    },
+    {
+     "key": "C",
+     "text": "Through a global mutable variable",
+     "correct": false,
+     "rationale": "Globals undermine isolation and testing."
+    },
+    {
+     "key": "D",
+     "text": "By importing it as a default export and mutating it",
+     "correct": false,
+     "rationale": "That bypasses the DI lifecycle."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: NestJS resolves providers through constructor injection.",
+   "outcome_refs": [
+    "MST-0885-D02.01"
+   ],
+   "domain_ref": "Dependency injection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

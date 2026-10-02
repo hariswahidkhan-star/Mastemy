@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0775",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0775-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A knowledge-base answer invents a refund window that appears in no source document. Which change most directly reduces this failure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Require the generation step to answer only from retrieved passages and cite them",
+     "correct": true,
+     "rationale": "Correct: constraining generation to retrieved, cited context is the primary guardrail against ungrounded claims."
+    },
+    {
+     "key": "B",
+     "text": "Increase the embedding dimension",
+     "correct": false,
+     "rationale": "A larger embedding may help retrieval slightly but does not stop the model inventing unsupported facts."
+    },
+    {
+     "key": "C",
+     "text": "Raise the generation temperature",
+     "correct": false,
+     "rationale": "Higher temperature increases variability and typically makes fabrication more likely, not less."
+    },
+    {
+     "key": "D",
+     "text": "Store more chunks per document",
+     "correct": false,
+     "rationale": "Storing more chunks changes retrieval volume, not whether the model stays within retrieved context."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: constraining generation to retrieved, cited context is the primary guardrail against ungrounded claims.",
+   "outcome_refs": [
+    "MST-0775-D03.01"
+   ],
+   "domain_ref": "Retrieve-and-generate",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0775-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make a RAG evaluation repeatable rather than anecdotal? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Maintain a fixed gold set of questions with expected source passages",
+     "correct": true,
+     "rationale": "Correct: a stable gold set lets you measure change over time."
+    },
+    {
+     "key": "B",
+     "text": "Review only the three answers that looked wrong last week",
+     "correct": false,
+     "rationale": "Cherry-picking failures is not a repeatable measure of overall quality."
+    },
+    {
+     "key": "C",
+     "text": "Record retrieval hit-rate and answer faithfulness on each run",
+     "correct": true,
+     "rationale": "Correct: tracked metrics turn evaluation into a comparable signal."
+    },
+    {
+     "key": "D",
+     "text": "Change the chunking and the model at the same time between runs",
+     "correct": false,
+     "rationale": "Changing two variables at once prevents attributing any change to a cause."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: a stable gold set lets you measure change over time.",
+   "outcome_refs": [
+    "MST-0775-D04.01"
+   ],
+   "domain_ref": "Evaluation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0775-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An executive can retrieve finance documents they should not see. Where is the control best applied?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Document-level access filtering at retrieval time",
+     "correct": true,
+     "rationale": "Correct: filtering retrieval by the caller's permissions stops unauthorized content reaching the model."
+    },
+    {
+     "key": "B",
+     "text": "A disclaimer in the system prompt",
+     "correct": false,
+     "rationale": "A prompt disclaimer does not prevent unauthorized passages being retrieved."
+    },
+    {
+     "key": "C",
+     "text": "A smaller chunk size",
+     "correct": false,
+     "rationale": "Chunk size is unrelated to who may see a document."
+    },
+    {
+     "key": "D",
+     "text": "A higher similarity threshold",
+     "correct": false,
+     "rationale": "Thresholds affect relevance, not authorization."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: filtering retrieval by the caller's permissions stops unauthorized content reaching the model.",
+   "outcome_refs": [
+    "MST-0775-D05.01"
+   ],
+   "domain_ref": "Security, cost and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

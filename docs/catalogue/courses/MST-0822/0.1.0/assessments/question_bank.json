@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0822",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0822-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When does the LINQ query `var q = list.Where(x => x > 0);` actually run its predicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When the query is enumerated, e.g. in a foreach or ToList",
+     "correct": true,
+     "rationale": "Correct: LINQ-to-objects uses deferred execution; the predicate runs on enumeration."
+    },
+    {
+     "key": "B",
+     "text": "On the line where q is declared",
+     "correct": false,
+     "rationale": "Declaration does not execute a deferred query."
+    },
+    {
+     "key": "C",
+     "text": "Never, unless Compile() is called",
+     "correct": false,
+     "rationale": "No compile step is needed for LINQ-to-objects."
+    },
+    {
+     "key": "D",
+     "text": "Only if the list is sorted first",
+     "correct": false,
+     "rationale": "Sorting is unrelated to when the predicate runs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: LINQ-to-objects uses deferred execution; the predicate runs on enumeration.",
+   "outcome_refs": [
+    "MST-0822-D02.01"
+   ],
+   "domain_ref": "LINQ in depth",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0822-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate uses of generic constraints? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Requiring a type parameter to implement an interface so its members can be called",
+     "correct": true,
+     "rationale": "Correct: an interface constraint lets the generic code use those members."
+    },
+    {
+     "key": "B",
+     "text": "Requiring a parameterless constructor with new()",
+     "correct": true,
+     "rationale": "Correct: the new() constraint allows constructing T."
+    },
+    {
+     "key": "C",
+     "text": "Forcing the JIT to generate separate source files",
+     "correct": false,
+     "rationale": "Constraints do not generate source files."
+    },
+    {
+     "key": "D",
+     "text": "Preventing any boxing ever",
+     "correct": false,
+     "rationale": "Constraints do not categorically prevent boxing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an interface constraint lets the generic code use those members.",
+   "outcome_refs": [
+    "MST-0822-D01.01"
+   ],
+   "domain_ref": "Advanced generics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0822-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A design uses reflection to read attributes on every request on a hot code path and it is slow. What is the best first improvement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cache the reflected metadata instead of re-reading it each call",
+     "correct": true,
+     "rationale": "Correct: reflection is costly; caching results removes repeated metadata lookups."
+    },
+    {
+     "key": "B",
+     "text": "Add more reflection calls",
+     "correct": false,
+     "rationale": "More reflection increases cost."
+    },
+    {
+     "key": "C",
+     "text": "Remove all interfaces",
+     "correct": false,
+     "rationale": "Interfaces are unrelated to the reflection cost."
+    },
+    {
+     "key": "D",
+     "text": "Switch every type to dynamic",
+     "correct": false,
+     "rationale": "dynamic adds overhead rather than removing it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reflection is costly; caching results removes repeated metadata lookups.",
+   "outcome_refs": [
+    "MST-0822-D04.01"
+   ],
+   "domain_ref": "Reflection and attributes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0781",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0781-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "ChatGPT suggests an Excel formula that returns a plausible total. What should happen before it is used in the board pack?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate it against a hand-checked sample of known rows",
+     "correct": true,
+     "rationale": "Correct: AI output must be verified against ground truth before it drives a decision artifact."
+    },
+    {
+     "key": "B",
+     "text": "Use it because the total looks reasonable",
+     "correct": false,
+     "rationale": "A reasonable-looking total can still be wrong; plausibility is not verification."
+    },
+    {
+     "key": "C",
+     "text": "Increase the number of decimal places",
+     "correct": false,
+     "rationale": "Formatting does not establish correctness."
+    },
+    {
+     "key": "D",
+     "text": "Ask ChatGPT whether it is sure",
+     "correct": false,
+     "rationale": "The model's self-assurance is not evidence of correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI output must be verified against ground truth before it drives a decision artifact.",
+   "outcome_refs": [
+    "MST-0781-D02.01"
+   ],
+   "domain_ref": "Assisted Excel transformation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0781-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls make a shared board report trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A recorded data-as-of date",
+     "correct": true,
+     "rationale": "Correct: readers need to know the data currency."
+    },
+    {
+     "key": "B",
+     "text": "A human sign-off before distribution",
+     "correct": true,
+     "rationale": "Correct: a review gate catches errors before they reach the board."
+    },
+    {
+     "key": "C",
+     "text": "Hiding the source sheets",
+     "correct": false,
+     "rationale": "Hiding sources reduces auditability, not risk."
+    },
+    {
+     "key": "D",
+     "text": "Auto-sharing on every refresh",
+     "correct": false,
+     "rationale": "Unreviewed auto-sharing spreads errors faster."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: readers need to know the data currency.",
+   "outcome_refs": [
+    "MST-0781-D05.01"
+   ],
+   "domain_ref": "Governance and operation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0781-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Power BI measure disagrees with the Excel reconciliation total. What is the right first step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Investigate the discrepancy before publishing either number",
+     "correct": true,
+     "rationale": "Correct: a mismatch signals a modelling or filter error that must be resolved first."
+    },
+    {
+     "key": "B",
+     "text": "Publish the Power BI number because it is newer",
+     "correct": false,
+     "rationale": "Newer is not the same as correct."
+    },
+    {
+     "key": "C",
+     "text": "Average the two numbers",
+     "correct": false,
+     "rationale": "Averaging two figures hides rather than resolves the error."
+    },
+    {
+     "key": "D",
+     "text": "Delete the Excel reconciliation",
+     "correct": false,
+     "rationale": "Removing the cross-check destroys the signal that found the problem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a mismatch signals a modelling or filter error that must be resolved first.",
+   "outcome_refs": [
+    "MST-0781-D04.01"
+   ],
+   "domain_ref": "Power BI reporting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

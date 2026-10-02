@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0792",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0792-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Cursor suggests a change that makes the feature work but a previously passing test now fails. What is the right response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Investigate why the test fails before accepting the change",
+     "correct": true,
+     "rationale": "Correct: a newly failing test is a signal of a regression that must be understood, not ignored."
+    },
+    {
+     "key": "B",
+     "text": "Delete the failing test so CI is green",
+     "correct": false,
+     "rationale": "Deleting the test hides a regression rather than fixing it."
+    },
+    {
+     "key": "C",
+     "text": "Accept the change and merge; fix later",
+     "correct": false,
+     "rationale": "Merging a known regression pushes risk onto users."
+    },
+    {
+     "key": "D",
+     "text": "Disable CI for this branch",
+     "correct": false,
+     "rationale": "Turning off the safety net defeats the purpose of the pipeline."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a newly failing test is a signal of a regression that must be understood, not ignored.",
+   "outcome_refs": [
+    "MST-0792-D02.01"
+   ],
+   "domain_ref": "Working with Cursor",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0792-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO behaviours should a .NET API show for invalid input? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Return a 4xx status code",
+     "correct": true,
+     "rationale": "Correct: client errors should be signalled with a 4xx status."
+    },
+    {
+     "key": "B",
+     "text": "Return a clear validation message",
+     "correct": true,
+     "rationale": "Correct: the caller needs to know what was wrong."
+    },
+    {
+     "key": "C",
+     "text": "Return 200 with an empty body",
+     "correct": false,
+     "rationale": "A 200 wrongly tells the client the request succeeded."
+    },
+    {
+     "key": "D",
+     "text": "Silently write a partial record",
+     "correct": false,
+     "rationale": "Persisting partial invalid data corrupts the store."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: client errors should be signalled with a 4xx status.",
+   "outcome_refs": [
+    "MST-0792-D04.01"
+   ],
+   "domain_ref": ".NET API and MySQL",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0792-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why add an end-to-end integration test that hits the real MySQL database rather than only unit tests with mocks?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It exercises real SQL translation and constraints that mocks do not reproduce",
+     "correct": true,
+     "rationale": "Correct: integration against the real database catches schema and query behaviour mocks miss."
+    },
+    {
+     "key": "B",
+     "text": "It runs faster than unit tests",
+     "correct": false,
+     "rationale": "Integration tests are generally slower, not faster."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for code review",
+     "correct": false,
+     "rationale": "Testing does not replace human review."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees zero bugs",
+     "correct": false,
+     "rationale": "No test guarantees the absence of all bugs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: integration against the real database catches schema and query behaviour mocks miss.",
+   "outcome_refs": [
+    "MST-0792-D05.01"
+   ],
+   "domain_ref": "End-to-end testing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

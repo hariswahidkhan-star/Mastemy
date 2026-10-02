@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0825",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0825-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A singleton service takes a scoped DbContext in its constructor. Why is this a problem?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The scoped DbContext is captured for the app lifetime, outliving its intended scope",
+     "correct": true,
+     "rationale": "Correct: a singleton capturing a scoped service is a captive dependency and scope validation flags it."
+    },
+    {
+     "key": "B",
+     "text": "Singletons cannot have constructors",
+     "correct": false,
+     "rationale": "Singletons can have constructors."
+    },
+    {
+     "key": "C",
+     "text": "DbContext cannot be injected at all",
+     "correct": false,
+     "rationale": "DbContext can be injected with the right lifetime."
+    },
+    {
+     "key": "D",
+     "text": "Scoped services are slower than singletons",
+     "correct": false,
+     "rationale": "Performance is not the issue here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a singleton capturing a scoped service is a captive dependency and scope validation flags it.",
+   "outcome_refs": [
+    "MST-0825-D02.01"
+   ],
+   "domain_ref": "Service lifetimes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0825-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are benefits of constructor injection over a service locator? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Dependencies are explicit in the constructor signature",
+     "correct": true,
+     "rationale": "Correct: explicit dependencies follow the Explicit Dependencies Principle."
+    },
+    {
+     "key": "B",
+     "text": "The container can validate and supply dependencies",
+     "correct": true,
+     "rationale": "Correct: the DI container resolves declared constructor dependencies."
+    },
+    {
+     "key": "C",
+     "text": "It hides what a class needs",
+     "correct": false,
+     "rationale": "A service locator hides dependencies; constructor injection reveals them."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for interfaces entirely",
+     "correct": false,
+     "rationale": "Interfaces remain useful for abstraction and testing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: explicit dependencies follow the Explicit Dependencies Principle.",
+   "outcome_refs": [
+    "MST-0825-D01.01"
+   ],
+   "domain_ref": "DI fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0825-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should a database connection string that is a secret live for a production ASP.NET Core app?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In a secret store / environment configuration, not committed in appsettings.json",
+     "correct": true,
+     "rationale": "Correct: secrets belong in a secret store or protected configuration, kept out of source."
+    },
+    {
+     "key": "B",
+     "text": "Hard-coded in the C# source",
+     "correct": false,
+     "rationale": "Hard-coding secrets exposes them in source control."
+    },
+    {
+     "key": "C",
+     "text": "In a public README",
+     "correct": false,
+     "rationale": "A README is public and inappropriate for secrets."
+    },
+    {
+     "key": "D",
+     "text": "In client-side JavaScript",
+     "correct": false,
+     "rationale": "Client code is fully visible to users."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: secrets belong in a secret store or protected configuration, kept out of source.",
+   "outcome_refs": [
+    "MST-0825-D04.01"
+   ],
+   "domain_ref": "Configuration and options",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0864",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0864-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A conditional type `T extends (infer U)[] ? U : T` applied to `string[]` yields what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "string",
+     "correct": true,
+     "rationale": "Correct: infer U captures the array element type, so string[] yields string."
+    },
+    {
+     "key": "B",
+     "text": "string[]",
+     "correct": false,
+     "rationale": "The true branch unwraps the array to its element type."
+    },
+    {
+     "key": "C",
+     "text": "never",
+     "correct": false,
+     "rationale": "The condition matches, so it does not resolve to never."
+    },
+    {
+     "key": "D",
+     "text": "any",
+     "correct": false,
+     "rationale": "The element type is string, not any."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: infer U captures the array element type, so string[] yields string.",
+   "outcome_refs": [
+    "MST-0864-D02.01"
+   ],
+   "domain_ref": "Conditional types",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0864-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are correct about mapped types? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "They can add or remove readonly and optional modifiers",
+     "correct": true,
+     "rationale": "Correct: mapped types support + and - modifiers."
+    },
+    {
+     "key": "B",
+     "text": "They iterate over keys with [K in keyof T]",
+     "correct": true,
+     "rationale": "Correct: that is the mapped-type syntax."
+    },
+    {
+     "key": "C",
+     "text": "They run at run time",
+     "correct": false,
+     "rationale": "Types are erased; mapped types are compile-time only."
+    },
+    {
+     "key": "D",
+     "text": "They require a class",
+     "correct": false,
+     "rationale": "Mapped types are independent of classes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: mapped types support + and - modifiers.",
+   "outcome_refs": [
+    "MST-0864-D03.01"
+   ],
+   "domain_ref": "Mapped and template types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0864-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A DTO must always mirror a model's fields. What is the maintainable approach in TypeScript?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Derive the DTO from the model with utility types like Pick/Omit",
+     "correct": true,
+     "rationale": "Correct: deriving keeps the DTO in sync with the model automatically."
+    },
+    {
+     "key": "B",
+     "text": "Hand-copy the fields into a separate interface",
+     "correct": false,
+     "rationale": "A hand copy drifts out of sync when the model changes."
+    },
+    {
+     "key": "C",
+     "text": "Type the DTO as any",
+     "correct": false,
+     "rationale": "any discards all type safety."
+    },
+    {
+     "key": "D",
+     "text": "Use a run-time clone",
+     "correct": false,
+     "rationale": "A run-time clone does not produce a compile-time type."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: deriving keeps the DTO in sync with the model automatically.",
+   "outcome_refs": [
+    "MST-0864-D04.01"
+   ],
+   "domain_ref": "Type-safe APIs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
