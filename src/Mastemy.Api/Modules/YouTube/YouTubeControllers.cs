@@ -114,3 +114,19 @@ public class YouTubeUploadsController(UploadRelayService uploads) : ControllerBa
     [HttpDelete("api/youtube/uploads/{id:guid}"), Authorize]
     public Task<UploadDto> Cancel(Guid id, CancellationToken ct) => uploads.Cancel(id, ct);
 }
+
+/// <summary>Publishing extras via the channel's OAuth authorization (spec §10.5).</summary>
+[ApiController]
+public class YouTubePublishingController(PublishingService publishing) : ControllerBase
+{
+    [HttpPost("api/studio/courses/{id:guid}/youtube/playlist/sync"), Authorize]
+    public Task<PlaylistSyncResult> SyncPlaylist(Guid id, [FromBody(EmptyBodyBehavior = Microsoft.AspNetCore.Mvc.ModelBinding.EmptyBodyBehavior.Allow)] PlaylistSyncRequest? req, CancellationToken ct) => publishing.SyncPlaylist(id, req, ct);
+
+    [HttpPost("api/studio/videos/{id:guid}/thumbnail"), Authorize]
+    [RequestSizeLimit(PublishingService.MaxThumbnailBytes + 64 * 1024)]
+    [RequestFormLimits(MultipartBodyLengthLimit = PublishingService.MaxThumbnailBytes + 64 * 1024)]
+    public Task<ThumbnailResult> Thumbnail(Guid id, IFormFile? file, CancellationToken ct) => publishing.SetThumbnail(id, file, ct);
+
+    [HttpPost("api/studio/videos/{id:guid}/captions"), Authorize]
+    public Task<CaptionPushResult> Captions(Guid id, CaptionPushRequest req, CancellationToken ct) => publishing.PushCaption(id, req, ct);
+}

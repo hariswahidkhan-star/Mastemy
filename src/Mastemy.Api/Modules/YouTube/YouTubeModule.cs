@@ -15,7 +15,9 @@ public static class YouTubeModule
         s.AddScoped<GoogleOAuthClient>();
         s.AddScoped<ChannelPolicy>();
         s.AddScoped<ChannelService>();
-        s.AddSingleton<OAuthNonceStore>();
+        s.AddScoped<OAuthNonceStore>();
+        s.AddHostedService<OAuthNonceCleanupService>();
+        s.AddScoped<PublishingService>();
         s.AddScoped<VideoLinkService>();
         s.AddScoped<PlaylistImportService>();
         s.AddScoped<UploadRelayService>();

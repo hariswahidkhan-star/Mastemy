@@ -33,6 +33,12 @@ public class FakeYouTube : HttpMessageHandler
     public volatile TaskCompletionSource? HoldChunk;
     public string? LastInitiateQuery;
     public string OwnChannelId = "UCownownownownownownownow";
+    /// <summary>Playlists owned by the authorized channel: id -> title.</summary>
+    public readonly ConcurrentDictionary<string, string> OwnPlaylists = new();
+    public readonly ConcurrentBag<string> Thumbnails = [];
+    public readonly ConcurrentBag<string> Captions = [];
+    public volatile bool TokenRevoked;
+    public volatile bool ScopeInsufficient;
 
     public static object Video(string id, string channel, string privacy = "public", bool embeddable = true, string upload = "processed",
         string duration = "PT4M13S", string title = "Lesson video") => new
@@ -59,11 +65,28 @@ public class FakeYouTube : HttpMessageHandler
             var code = OEmbed.GetValueOrDefault(id, HttpStatusCode.NotFound);
             return code == HttpStatusCode.OK ? Json(new { title = "oEmbed title", author_name = "Someone" }) : new HttpResponseMessage(code);
         }
+        if (u.AbsolutePath.EndsWith("/token") && TokenRevoked)
+            return Json(new { error = "invalid_grant" }, HttpStatusCode.BadRequest);
         if (u.AbsolutePath.EndsWith("/token"))
             return Json(new { access_token = "ya29.fake", expires_in = 3600, refresh_token = "1//refresh-fake", scope = GoogleOAuthClient.Scopes });
         if (u.AbsolutePath.EndsWith("/revoke")) return new HttpResponseMessage(HttpStatusCode.OK);
         if (u.Host == UploadHost)
         {
+            if (req.Method == HttpMethod.Post && u.AbsolutePath.EndsWith("/thumbnails/set"))
+            {
+                if (QuotaExceeded) return Quota();
+                var bytes = await req.Content!.ReadAsByteArrayAsync(ct);
+                Thumbnails.Add($"{q["videoId"]}:{req.Content.Headers.ContentType?.MediaType}:{bytes.Length}");
+                return Json(new { items = Array.Empty<object>() });
+            }
+            if (req.Method == HttpMethod.Post && u.AbsolutePath.EndsWith("/captions"))
+            {
+                if (QuotaExceeded) return Quota();
+                if (ScopeInsufficient)
+                    return Json(new { error = new { code = 403, message = "scope", errors = new[] { new { reason = "insufficientPermissions" } } } }, HttpStatusCode.Forbidden);
+                Captions.Add(await req.Content!.ReadAsStringAsync(ct));
+                return Json(new { id = "cap" + Guid.NewGuid().ToString("N")[..8] });
+            }
             if (req.Method == HttpMethod.Post)
             {
                 if (QuotaExceeded) return Quota();
@@ -96,10 +119,44 @@ public class FakeYouTube : HttpMessageHandler
             var ids = q["id"]!.Split(',');
             return Json(new { items = ids.Where(Videos.ContainsKey).Select(i => Videos[i]).ToArray() });
         }
+        if (u.AbsolutePath.EndsWith("/playlists"))
+        {
+            if (req.Method == HttpMethod.Post)
+            {
+                using var doc = JsonDocument.Parse(await req.Content!.ReadAsStringAsync(ct));
+                var id = "PL" + Guid.NewGuid().ToString("N");
+                Playlists[id] = [];
+                OwnPlaylists[id] = doc.RootElement.GetProperty("snippet").GetProperty("title").GetString()!;
+                return Json(new { id });
+            }
+            return Json(new { items = OwnPlaylists.Select(kv => new { id = kv.Key, snippet = new { title = kv.Value } }).ToArray() });
+        }
+        if (u.AbsolutePath.EndsWith("/playlistItems") && req.Method != HttpMethod.Get)
+        {
+            if (req.Method == HttpMethod.Delete)
+            {
+                var parts = q["id"]!.Split('|');
+                lock (Playlists) Playlists[parts[0]].Remove(parts[1]);
+                return new HttpResponseMessage(HttpStatusCode.NoContent);
+            }
+            using var doc = JsonDocument.Parse(await req.Content!.ReadAsStringAsync(ct));
+            var sn = doc.RootElement.GetProperty("snippet");
+            var pl = sn.GetProperty("playlistId").GetString()!;
+            var vid = sn.GetProperty("resourceId").GetProperty("videoId").GetString()!;
+            var pos = sn.GetProperty("position").GetInt32();
+            lock (Playlists)
+            {
+                var list = Playlists[pl];
+                if (req.Method == HttpMethod.Put) list.Remove(vid);
+                list.Insert(Math.Min(pos, list.Count), vid);
+            }
+            return Json(new { id = $"{pl}|{vid}" });
+        }
         if (u.AbsolutePath.EndsWith("/playlistItems"))
         {
-            var ids = Playlists.GetValueOrDefault(q["playlistId"]!) ?? [];
-            return Json(new { items = ids.Select((v, i) => new { snippet = new { title = $"Item {i}", position = i }, contentDetails = new { videoId = v } }).ToArray() });
+            var pid = q["playlistId"]!;
+            var ids = Playlists.GetValueOrDefault(pid) ?? [];
+            return Json(new { items = ids.Select((v, i) => new { id = $"{pid}|{v}", snippet = new { title = $"Item {i}", position = i }, contentDetails = new { videoId = v } }).ToArray() });
         }
         return new HttpResponseMessage(HttpStatusCode.NotFound);
     }
@@ -114,12 +171,16 @@ public class FakeYouTube : HttpMessageHandler
 
 public class YouTubeTestFactory : WebApplicationFactory<Program>
 {
-    public string DbName { get; } = "mastemy_t_" + Guid.NewGuid().ToString("N");
+    public string DbName { get; }
+    /// <summary>False for a second "instance" sharing another factory's database: it must not drop it.</summary>
+    public bool OwnsDatabase { get; }
     public FakeYouTube Fake { get; } = new();
     private readonly Dictionary<string, string?> _settings;
 
-    public YouTubeTestFactory(bool apiKey = true, bool oauth = true, Dictionary<string, string?>? extra = null)
+    public YouTubeTestFactory(bool apiKey = true, bool oauth = true, Dictionary<string, string?>? extra = null, string? sharedDbName = null)
     {
+        DbName = sharedDbName ?? "mastemy_t_" + Guid.NewGuid().ToString("N");
+        OwnsDatabase = sharedDbName is null;
         _settings = new()
         {
             ["ConnectionStrings:Default"] = $"server=localhost;port=3306;database={DbName};user=mastemy;password=mastemy_dev_pw",
@@ -220,7 +281,7 @@ public class YouTubeTestFactory : WebApplicationFactory<Program>
 
     public override async ValueTask DisposeAsync()
     {
-        try
+        if (OwnsDatabase) try
         {
             using var scope = Services.CreateScope();
             await scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.EnsureDeletedAsync();
