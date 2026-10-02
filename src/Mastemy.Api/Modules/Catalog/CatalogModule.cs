@@ -7,5 +7,6 @@ public static class CatalogModule
         s.AddScoped<CatalogQueryService>();
         s.AddScoped<StudioService>();
         s.AddScoped<ReviewService>();
+        s.AddScoped<CourseSnapshotService>();
     }
 }

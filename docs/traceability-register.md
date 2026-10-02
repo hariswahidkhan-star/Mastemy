@@ -38,14 +38,13 @@ Baseline: `mastemy_prd.docx` v1.0 (Oct 2026), not stored in this repository. Ove
 | 21 | Security, a11y, i18n, SEO | Partial | Auth, server authz, RTL; MFA, scanning, WCAG evidence, SEO planned |
 | 22 | Tests and deliverables | Partial | See repository tests; full E2E and acceptance matrix incomplete |
 
-## Known limitation: no content snapshots during course re-review
+## Resolved: published content snapshots during course re-review
 
-A course that has ever been published (`PublishedAt` set on the first publish only; re-publishes bump `UpdatedAt`) stays publicly live while it is `Updating`, `InReview`, `ChangesRequested` or `Approved` (`AccessService.IsLive(status, publishedAt)`; the catalog uses the same rule in SQL). `Archived` is never live.
+Status: **Resolved** (wave 2). A course that has ever been published stays live while `Updating`, `InReview`, `ChangesRequested` or `Approved` (`AccessService.IsLive`); `Archived` is never live. Learners no longer see the working copy:
 
-Because there are no content snapshots yet, learners see the **working copy**: edits an instructor makes while the course is `Updating`/`ChangesRequested`, including deleting lessons/modules that have a Ready video and changing premium notes, become visible before a reviewer approves them. This is the instructor's responsibility. As a minimum safeguard:
-
-- Every studio edit records a course-scoped `course.content_changed` audit entry (operation, entity, entity id, changed field names, whether the course was live during the edit, and for deletions whether a Ready video was attached).
-- Reviewers can call `GET /api/review/courses/{id}/changes` (Reviewer policy) to list the entries made since the last `course.published` event.
-- Deleting lessons or modules is still blocked for a published course that has enrollments (`has_enrollments`).
-
-Planned follow-up: publish an immutable snapshot of the curriculum and notes, and serve learners the snapshot until the re-review is approved.
+- Every staff publish (`POST /api/admin/courses/{id}/publish`) writes an immutable `CourseSnapshot` (`Version = PublishedVersion + 1`, JSON payload: course metadata, categories, modules, lessons incl. video asset/YouTube id/duration, free and premium notes, notes version) and sets `Course.PublishedVersion` in the same transaction (`CourseSnapshotService`).
+- All public/learner reads of a live course come from the latest snapshot: catalog list/search/detail, category counts, `/api/learn/courses/{slug}`, `/api/learn/lessons/{id}`, progress, enrollment and dashboard totals. Edits are invisible until the next publish; lessons deleted after a snapshot keep rendering until re-publish (new progress on them returns 409 `lesson_retired` because `LessonProgress` has an FK to the working-copy lesson; deletion is blocked once a published course has enrollments).
+- Video playback is never gated, except that a snapshot lesson whose `VideoAsset` is no longer `Ready` (restricted, failed, removed) returns no YouTube id and a `videoUnavailableReason`.
+- Search: live courses are prefiltered in SQL with one `LIKE` per term on the latest snapshot's `PayloadJson`, then terms are matched exactly against snapshot title/subtitle/description, and level/language/category filters, sort and paging are applied in memory. Acceptable for v1 (a few thousand live courses). Index plan: add a denormalized `CourseSnapshot.SearchText` column (title/subtitle/description) with a MySQL `FULLTEXT` index plus `(CourseId, Version)` (already unique-indexed), and move level/language/categories into indexed snapshot columns.
+- Courses that went live before snapshots existed (`PublishedVersion = 0`) are served from an in-memory build of their rows until their next publish; a one-off backfill publish is recommended for production data.
+- Reviewers/authors: `GET /api/studio/courses/{id}/published-preview` (current snapshot) and `GET /api/review/courses/{id}/diff` (structured diff of working copy vs. latest snapshot). The audit change log (`GET /api/review/courses/{id}/changes`) remains.
