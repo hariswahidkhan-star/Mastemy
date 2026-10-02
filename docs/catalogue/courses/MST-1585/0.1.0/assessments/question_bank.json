@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1585",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1585-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In GitOps with Argo CD, where is the desired state of the system defined?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In a Git repository, which Argo CD continuously reconciles against the cluster",
+     "correct": true,
+     "rationale": "Correct: Git is the single source of truth and Argo CD pulls and reconciles it."
+    },
+    {
+     "key": "B",
+     "text": "Only in the live cluster, edited directly with kubectl",
+     "correct": false,
+     "rationale": "Direct cluster edits are drift; Git is the source of truth in GitOps."
+    },
+    {
+     "key": "C",
+     "text": "In Argo CD's memory only, never persisted",
+     "correct": false,
+     "rationale": "Desired state is persisted in Git, not just in memory."
+    },
+    {
+     "key": "D",
+     "text": "In a spreadsheet maintained by the operations team",
+     "correct": false,
+     "rationale": "A spreadsheet is not a reconciled source of truth."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Git is the single source of truth and Argo CD pulls and reconciles it.",
+   "outcome_refs": [
+    "MST-1585-D01.01"
+   ],
+   "domain_ref": "GitOps principles",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1585-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two behaviours does Argo CD's self-healing / reconciliation provide? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It detects when the cluster drifts from the desired state in Git",
+     "correct": true,
+     "rationale": "Correct: continuous comparison detects drift."
+    },
+    {
+     "key": "B",
+     "text": "It can automatically revert manual changes back to the Git-defined state",
+     "correct": true,
+     "rationale": "Correct: with self-heal enabled, drift is corrected back to desired state."
+    },
+    {
+     "key": "C",
+     "text": "It deletes the Git repository after each sync",
+     "correct": false,
+     "rationale": "Argo CD relies on the repo; it does not delete it."
+    },
+    {
+     "key": "D",
+     "text": "It randomly changes the desired state on its own",
+     "correct": false,
+     "rationale": "Argo CD applies the declared state, it does not invent changes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: continuous comparison detects drift.; Correct: with self-heal enabled, drift is corrected back to desired state.",
+   "outcome_refs": [
+    "MST-1585-D05.01"
+   ],
+   "domain_ref": "Rollouts, health and drift remediation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1585-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of the app-of-apps pattern in Argo CD?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A parent Application manages a set of child Applications declaratively",
+     "correct": true,
+     "rationale": "Correct: app-of-apps lets one Application bootstrap and manage many others from Git."
+    },
+    {
+     "key": "B",
+     "text": "It merges all microservices into a single container",
+     "correct": false,
+     "rationale": "It manages Applications, not container packaging."
+    },
+    {
+     "key": "C",
+     "text": "It disables GitOps for child applications",
+     "correct": false,
+     "rationale": "Children are still managed via GitOps."
+    },
+    {
+     "key": "D",
+     "text": "It stores secrets in plaintext by default",
+     "correct": false,
+     "rationale": "The pattern is about structure, not secret handling."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: app-of-apps lets one Application bootstrap and manage many others from Git.",
+   "outcome_refs": [
+    "MST-1585-D04.01"
+   ],
+   "domain_ref": "Repository structure and app-of-apps",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

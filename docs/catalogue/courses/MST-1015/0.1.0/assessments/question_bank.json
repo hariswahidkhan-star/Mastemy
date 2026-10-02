@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1015",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1015-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A SOC analyst receives an alert for impossible-travel logins. Which telemetry best confirms whether the account was actually compromised?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Identity provider sign-in logs showing locations, devices and MFA results",
+     "correct": true,
+     "rationale": "Correct: sign-in logs directly show the authentication context needed to judge the alert."
+    },
+    {
+     "key": "B",
+     "text": "The firewall's total bytes-transferred counter",
+     "correct": false,
+     "rationale": "Byte counts do not reveal who signed in or from where."
+    },
+    {
+     "key": "C",
+     "text": "A list of installed applications on the server",
+     "correct": false,
+     "rationale": "Installed apps do not confirm an authentication event."
+    },
+    {
+     "key": "D",
+     "text": "The data-centre temperature logs",
+     "correct": false,
+     "rationale": "Irrelevant to a login investigation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sign-in logs directly show the authentication context needed to judge the alert.",
+   "outcome_refs": [
+    "MST-1015-D02.01"
+   ],
+   "domain_ref": "Log sources and telemetry",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 65,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1015-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two factors should drive the priority of an alert during triage? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The business impact if the alert is a true positive",
+     "correct": true,
+     "rationale": "Correct: impact is a core triage dimension."
+    },
+    {
+     "key": "B",
+     "text": "The confidence that the alert is a true positive",
+     "correct": true,
+     "rationale": "Correct: confidence (fidelity) is a core triage dimension."
+    },
+    {
+     "key": "C",
+     "text": "The alphabetical order of the alert name",
+     "correct": false,
+     "rationale": "Ordering by name is arbitrary and not risk-based."
+    },
+    {
+     "key": "D",
+     "text": "How recently the SIEM licence was renewed",
+     "correct": false,
+     "rationale": "Licensing is unrelated to alert priority."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: impact is a core triage dimension.; Correct: confidence (fidelity) is a core triage dimension.",
+   "outcome_refs": [
+    "MST-1015-D04.01"
+   ],
+   "domain_ref": "Alert triage and prioritisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1015-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does mean time to detect (MTTD) measure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The average time from when an incident begins to when the SOC detects it",
+     "correct": true,
+     "rationale": "Correct: MTTD is the gap between occurrence and detection."
+    },
+    {
+     "key": "B",
+     "text": "The average time to fully recover a system after an incident",
+     "correct": false,
+     "rationale": "That describes recovery time, not detection."
+    },
+    {
+     "key": "C",
+     "text": "The number of alerts generated per day",
+     "correct": false,
+     "rationale": "That is alert volume, not a time metric."
+    },
+    {
+     "key": "D",
+     "text": "The cost of the SIEM per analyst",
+     "correct": false,
+     "rationale": "That is a cost metric, unrelated to detection time."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MTTD is the gap between occurrence and detection.",
+   "outcome_refs": [
+    "MST-1015-D06.01"
+   ],
+   "domain_ref": "Metrics, tuning and shift handover",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

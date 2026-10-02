@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1568",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1568-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a primary reason to prefer a database-per-service in microservices?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So each service owns its data and can evolve its schema independently",
+     "correct": true,
+     "rationale": "Correct: independent data ownership reduces coupling between services."
+    },
+    {
+     "key": "B",
+     "text": "Because sharing one database is impossible",
+     "correct": false,
+     "rationale": "Sharing is possible but discouraged; it is not impossible."
+    },
+    {
+     "key": "C",
+     "text": "Because it guarantees strong consistency across all services",
+     "correct": false,
+     "rationale": "Database-per-service typically embraces eventual consistency, not strong global consistency."
+    },
+    {
+     "key": "D",
+     "text": "Because it removes the need for any API contracts",
+     "correct": false,
+     "rationale": "Services still need contracts to communicate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: independent data ownership reduces coupling between services.",
+   "outcome_refs": [
+    "MST-1568-D04.01"
+   ],
+   "domain_ref": "Data management per service",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1568-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two patterns improve resilience when one service calls another over the network? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Timeouts with bounded retries and backoff",
+     "correct": true,
+     "rationale": "Correct: timeouts and controlled retries prevent waiting forever and limit load."
+    },
+    {
+     "key": "B",
+     "text": "A circuit breaker that stops calling a failing dependency",
+     "correct": true,
+     "rationale": "Correct: a circuit breaker prevents cascading failure."
+    },
+    {
+     "key": "C",
+     "text": "Retrying immediately and indefinitely on every error",
+     "correct": false,
+     "rationale": "Unbounded immediate retries amplify load and can cause a storm."
+    },
+    {
+     "key": "D",
+     "text": "Removing all error handling to simplify the code",
+     "correct": false,
+     "rationale": "Removing error handling reduces resilience."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: timeouts and controlled retries prevent waiting forever and limit load.; Correct: a circuit breaker prevents cascading failure.",
+   "outcome_refs": [
+    "MST-1568-D05.01"
+   ],
+   "domain_ref": "Resilience, observability and deployment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1568-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team splits a system into services but every request still needs all of them to be up together. What problem does this indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A distributed monolith, where services are coupled and cannot deploy or fail independently",
+     "correct": true,
+     "rationale": "Correct: tight runtime coupling defeats the purpose of microservices."
+    },
+    {
+     "key": "B",
+     "text": "A correctly decomposed set of microservices",
+     "correct": false,
+     "rationale": "Independent deploy and failure are missing, so it is not well decomposed."
+    },
+    {
+     "key": "C",
+     "text": "A monolith with no network calls",
+     "correct": false,
+     "rationale": "There are services and network calls; it is distributed."
+    },
+    {
+     "key": "D",
+     "text": "A serverless architecture",
+     "correct": false,
+     "rationale": "The symptom describes coupling, not a serverless model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: tight runtime coupling defeats the purpose of microservices.",
+   "outcome_refs": [
+    "MST-1568-D02.01"
+   ],
+   "domain_ref": "Service decomposition and boundaries",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 65,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

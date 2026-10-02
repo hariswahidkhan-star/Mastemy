@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1019",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1019-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a Software Bill of Materials (SBOM) primarily provide?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An inventory of the components and dependencies that make up the software",
+     "correct": true,
+     "rationale": "Correct: an SBOM lists components so you can answer 'are we affected?' quickly."
+    },
+    {
+     "key": "B",
+     "text": "A guarantee that the software has no vulnerabilities",
+     "correct": false,
+     "rationale": "An SBOM lists components; it does not certify them vulnerability-free."
+    },
+    {
+     "key": "C",
+     "text": "The source code of every dependency",
+     "correct": false,
+     "rationale": "An SBOM is an inventory, not the code itself."
+    },
+    {
+     "key": "D",
+     "text": "A signed legal contract with each vendor",
+     "correct": false,
+     "rationale": "It is a technical inventory, not a contract."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an SBOM lists components so you can answer 'are we affected?' quickly.",
+   "outcome_refs": [
+    "MST-1019-D03.01"
+   ],
+   "domain_ref": "SBOM formats and generation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1019-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two practices reduce the risk of pulling a malicious or unexpected dependency version? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Pinning versions with a lockfile",
+     "correct": true,
+     "rationale": "Correct: pinning prevents unexpected version changes between builds."
+    },
+    {
+     "key": "B",
+     "text": "Verifying artifact signatures before use",
+     "correct": true,
+     "rationale": "Correct: signature verification confirms the artifact's origin and integrity."
+    },
+    {
+     "key": "C",
+     "text": "Always installing the floating 'latest' tag",
+     "correct": false,
+     "rationale": "Floating tags invite unexpected and potentially malicious updates."
+    },
+    {
+     "key": "D",
+     "text": "Disabling all dependency scanning to speed builds",
+     "correct": false,
+     "rationale": "Disabling scanning removes a key safeguard."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pinning prevents unexpected version changes between builds.; Correct: signature verification confirms the artifact's origin and integrity.",
+   "outcome_refs": [
+    "MST-1019-D02.01"
+   ],
+   "domain_ref": "Dependency and artifact management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1019-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A dependency is cryptographically signed and the signature verifies. What does this establish?",
+   "options": [
+    {
+     "key": "A",
+     "text": "That the artifact came from the expected signer and was not altered in transit",
+     "correct": true,
+     "rationale": "Correct: signing proves origin and integrity, not absence of vulnerabilities."
+    },
+    {
+     "key": "B",
+     "text": "That the dependency contains no security vulnerabilities",
+     "correct": false,
+     "rationale": "A valid signature says nothing about vulnerabilities in the code."
+    },
+    {
+     "key": "C",
+     "text": "That the dependency has an open-source license",
+     "correct": false,
+     "rationale": "Signing does not determine licensing."
+    },
+    {
+     "key": "D",
+     "text": "That the dependency will never need updating",
+     "correct": false,
+     "rationale": "Signed code still needs updates and scanning."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: signing proves origin and integrity, not absence of vulnerabilities.",
+   "outcome_refs": [
+    "MST-1019-D04.01"
+   ],
+   "domain_ref": "Provenance, signing and attestation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1544",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 486,
+  "lesson_check_items": 108,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1544-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "On a pipelined processor, what does pipelining primarily improve?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Instruction throughput, by overlapping the execution of multiple instructions",
+     "correct": true,
+     "rationale": "Correct: pipelining raises throughput; the latency of a single instruction does not fall."
+    },
+    {
+     "key": "B",
+     "text": "The latency of a single instruction",
+     "correct": false,
+     "rationale": "A single instruction still takes at least as long; only throughput improves."
+    },
+    {
+     "key": "C",
+     "text": "The total number of transistors required",
+     "correct": false,
+     "rationale": "Pipelining adds registers; it is about throughput, not transistor count."
+    },
+    {
+     "key": "D",
+     "text": "The cache hit rate",
+     "correct": false,
+     "rationale": "Cache behaviour is separate from pipelining."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: pipelining raises throughput; the latency of a single instruction does not fall.",
+   "outcome_refs": [
+    "MST-1544-D04.01"
+   ],
+   "domain_ref": "Pipelining and hazards",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1544-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two situations create a pipeline hazard that may require stalling or forwarding? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "An instruction needs a result that an earlier, not-yet-finished instruction will produce",
+     "correct": true,
+     "rationale": "Correct: that is a data hazard (read-after-write)."
+    },
+    {
+     "key": "B",
+     "text": "A branch's outcome is not yet known when the next instruction must be fetched",
+     "correct": true,
+     "rationale": "Correct: that is a control hazard."
+    },
+    {
+     "key": "C",
+     "text": "Two instructions use different registers with no shared data",
+     "correct": false,
+     "rationale": "Independent instructions do not create a hazard."
+    },
+    {
+     "key": "D",
+     "text": "An instruction is a no-op",
+     "correct": false,
+     "rationale": "A no-op introduces no dependency hazard."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: that is a data hazard (read-after-write).; Correct: that is a control hazard.",
+   "outcome_refs": [
+    "MST-1544-D04.01"
+   ],
+   "domain_ref": "Pipelining and hazards",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1544-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A cache miss that occurs the very first time a block is referenced is best classified as which type?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A compulsory (cold) miss",
+     "correct": true,
+     "rationale": "Correct: the first reference to a block is a compulsory miss regardless of cache size."
+    },
+    {
+     "key": "B",
+     "text": "A conflict miss",
+     "correct": false,
+     "rationale": "Conflict misses arise from mapping collisions, not first reference."
+    },
+    {
+     "key": "C",
+     "text": "A capacity miss",
+     "correct": false,
+     "rationale": "Capacity misses arise when the working set exceeds the cache."
+    },
+    {
+     "key": "D",
+     "text": "A coherence miss",
+     "correct": false,
+     "rationale": "Coherence misses relate to multiprocessor sharing, not first reference."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the first reference to a block is a compulsory miss regardless of cache size.",
+   "outcome_refs": [
+    "MST-1544-D05.01"
+   ],
+   "domain_ref": "Memory hierarchy and caches",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

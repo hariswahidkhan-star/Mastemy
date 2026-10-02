@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1016",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1016-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A laptop is seized powered on and connected to the network. What should the responder capture first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Volatile data such as memory and active network connections",
+     "correct": true,
+     "rationale": "Correct: volatile data is lost on power-off, so it is captured before imaging the disk."
+    },
+    {
+     "key": "B",
+     "text": "A printout of the installed software list",
+     "correct": false,
+     "rationale": "Non-volatile and low priority compared to volatile data."
+    },
+    {
+     "key": "C",
+     "text": "The user's email signature",
+     "correct": false,
+     "rationale": "Not time-sensitive evidence."
+    },
+    {
+     "key": "D",
+     "text": "The disk image, after shutting the machine down",
+     "correct": false,
+     "rationale": "Shutting down first destroys volatile evidence."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: volatile data is lost on power-off, so it is captured before imaging the disk.",
+   "outcome_refs": [
+    "MST-1016-D04.01"
+   ],
+   "domain_ref": "Memory and volatile data analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 65,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1016-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two practices preserve the integrity of acquired disk evidence? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Using a write blocker during acquisition",
+     "correct": true,
+     "rationale": "Correct: a write blocker prevents changes to the source."
+    },
+    {
+     "key": "B",
+     "text": "Recording a cryptographic hash of the image and re-verifying it",
+     "correct": true,
+     "rationale": "Correct: matching hashes prove the image was not altered."
+    },
+    {
+     "key": "C",
+     "text": "Editing the image to remove irrelevant files first",
+     "correct": false,
+     "rationale": "Editing the image destroys its integrity."
+    },
+    {
+     "key": "D",
+     "text": "Storing the only copy on the suspect's own machine",
+     "correct": false,
+     "rationale": "That risks loss and tampering of the evidence."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a write blocker prevents changes to the source.; Correct: matching hashes prove the image was not altered.",
+   "outcome_refs": [
+    "MST-1016-D02.01"
+   ],
+   "domain_ref": "Evidence acquisition and imaging",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1016-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a forensic report distinguish observed facts from the investigator's inferences?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Because conclusions must be supported by evidence and open to challenge",
+     "correct": true,
+     "rationale": "Correct: separating fact from inference keeps the report defensible and honest."
+    },
+    {
+     "key": "B",
+     "text": "Because inferences are always wrong",
+     "correct": false,
+     "rationale": "Inferences can be reasonable; they just must be labelled."
+    },
+    {
+     "key": "C",
+     "text": "Because facts are not allowed in reports",
+     "correct": false,
+     "rationale": "Facts are the core of the report."
+    },
+    {
+     "key": "D",
+     "text": "Because the chain of custody replaces the need for analysis",
+     "correct": false,
+     "rationale": "Chain of custody supports but does not replace analysis."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: separating fact from inference keeps the report defensible and honest.",
+   "outcome_refs": [
+    "MST-1016-D06.01"
+   ],
+   "domain_ref": "Reporting and legal considerations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

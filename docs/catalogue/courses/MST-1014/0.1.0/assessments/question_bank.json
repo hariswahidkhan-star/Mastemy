@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1014",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1014-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Under the shared-responsibility model for an IaaS virtual machine, who is responsible for patching the guest operating system?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The customer, because the OS runs above the provider's responsibility boundary for IaaS",
+     "correct": true,
+     "rationale": "Correct: for IaaS the provider secures the hypervisor and below; the guest OS is the customer's."
+    },
+    {
+     "key": "B",
+     "text": "The cloud provider, because they own all underlying hardware",
+     "correct": false,
+     "rationale": "The provider owns the hardware but not the guest OS in IaaS."
+    },
+    {
+     "key": "C",
+     "text": "Neither party, because the OS patches itself automatically",
+     "correct": false,
+     "rationale": "Patching is not automatic by default and must be owned."
+    },
+    {
+     "key": "D",
+     "text": "A third-party auditor",
+     "correct": false,
+     "rationale": "Auditors assess, they do not operate the control."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: for IaaS the provider secures the hypervisor and below; the guest OS is the customer's.",
+   "outcome_refs": [
+    "MST-1014-D01.01"
+   ],
+   "domain_ref": "Cloud security posture fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1014-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two findings represent an internet-exposed data store that should be prioritised? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A storage bucket with a public-read access policy",
+     "correct": true,
+     "rationale": "Correct: public-read exposes data directly to the internet."
+    },
+    {
+     "key": "B",
+     "text": "A database security group allowing 0.0.0.0/0 on the database port",
+     "correct": true,
+     "rationale": "Correct: an any-source rule on the DB port exposes it to the internet."
+    },
+    {
+     "key": "C",
+     "text": "A database encrypted at rest with a managed key",
+     "correct": false,
+     "rationale": "Encryption at rest is a good control, not an exposure."
+    },
+    {
+     "key": "D",
+     "text": "A VM in a private subnet with no public IP",
+     "correct": false,
+     "rationale": "No public IP and a private subnet is not internet-exposed."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: public-read exposes data directly to the internet.; Correct: an any-source rule on the DB port exposes it to the internet.",
+   "outcome_refs": [
+    "MST-1014-D03.01"
+   ],
+   "domain_ref": "Network and data-protection configuration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1014-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a preventive guardrail generally stronger than a periodic scan for stopping public buckets?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It blocks the misconfiguration at creation time rather than reporting it after the fact",
+     "correct": true,
+     "rationale": "Correct: prevention stops the exposure window that a scan only detects later."
+    },
+    {
+     "key": "B",
+     "text": "It removes the need to ever inventory resources",
+     "correct": false,
+     "rationale": "Inventory is still needed regardless of guardrails."
+    },
+    {
+     "key": "C",
+     "text": "It encrypts the bucket contents automatically",
+     "correct": false,
+     "rationale": "A guardrail controls configuration, it does not perform encryption."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees compliance with every framework",
+     "correct": false,
+     "rationale": "One guardrail does not equal full compliance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: prevention stops the exposure window that a scan only detects later.",
+   "outcome_refs": [
+    "MST-1014-D06.01"
+   ],
+   "domain_ref": "Continuous assurance and guardrails",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

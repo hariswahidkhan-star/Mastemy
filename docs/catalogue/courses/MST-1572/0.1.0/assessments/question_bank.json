@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1572",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1572-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement reflects a core principle of software testing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Testing can show the presence of defects but cannot prove their absence",
+     "correct": true,
+     "rationale": "Correct: testing reduces risk but cannot prove software is defect-free."
+    },
+    {
+     "key": "B",
+     "text": "Exhaustive testing of all inputs is always feasible",
+     "correct": false,
+     "rationale": "Exhaustive testing is impossible for non-trivial software."
+    },
+    {
+     "key": "C",
+     "text": "Finding zero defects means the software has no defects",
+     "correct": false,
+     "rationale": "Zero found defects does not prove none exist."
+    },
+    {
+     "key": "D",
+     "text": "Testing should only start after release",
+     "correct": false,
+     "rationale": "Early testing is a principle; starting after release is too late."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: testing reduces risk but cannot prove software is defect-free.",
+   "outcome_refs": [
+    "MST-1572-D01.01"
+   ],
+   "domain_ref": "Fundamentals of testing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1572-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "For an input field that accepts integers from 1 to 100, which two values are boundary values worth testing? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "0 (just below the lower bound)",
+     "correct": true,
+     "rationale": "Correct: just outside the lower boundary is a classic boundary value."
+    },
+    {
+     "key": "B",
+     "text": "100 (the upper bound)",
+     "correct": true,
+     "rationale": "Correct: the upper boundary itself is a boundary value."
+    },
+    {
+     "key": "C",
+     "text": "The string 'fifty'",
+     "correct": false,
+     "rationale": "That is an invalid type, not a numeric boundary value."
+    },
+    {
+     "key": "D",
+     "text": "Any random number such as 42",
+     "correct": false,
+     "rationale": "A mid-range value is a partition representative, not a boundary."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: just outside the lower boundary is a classic boundary value.; Correct: the upper boundary itself is a boundary value.",
+   "outcome_refs": [
+    "MST-1572-D04.01"
+   ],
+   "domain_ref": "Test design techniques",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1572-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the key distinction between static testing and dynamic testing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Static testing examines artefacts without executing the code; dynamic testing runs it",
+     "correct": true,
+     "rationale": "Correct: static testing (reviews, analysis) finds defects without execution."
+    },
+    {
+     "key": "B",
+     "text": "Static testing always requires running the program",
+     "correct": false,
+     "rationale": "Static testing does not execute the code."
+    },
+    {
+     "key": "C",
+     "text": "Dynamic testing never involves executing software",
+     "correct": false,
+     "rationale": "Dynamic testing is defined by executing the software."
+    },
+    {
+     "key": "D",
+     "text": "They are two names for the same activity",
+     "correct": false,
+     "rationale": "They are distinct approaches with different strengths."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: static testing (reviews, analysis) finds defects without execution.",
+   "outcome_refs": [
+    "MST-1572-D03.01"
+   ],
+   "domain_ref": "Static testing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

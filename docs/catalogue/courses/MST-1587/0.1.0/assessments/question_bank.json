@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1587",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1587-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does 'serverless' actually mean for a function-as-a-service workload?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Servers still exist but the provider manages provisioning and scaling for you",
+     "correct": true,
+     "rationale": "Correct: serverless abstracts server management; it does not eliminate servers."
+    },
+    {
+     "key": "B",
+     "text": "The code runs without any servers anywhere",
+     "correct": false,
+     "rationale": "Servers still run the code; they are just managed by the provider."
+    },
+    {
+     "key": "C",
+     "text": "The function keeps all state in local memory permanently",
+     "correct": false,
+     "rationale": "Functions are ephemeral and should be stateless."
+    },
+    {
+     "key": "D",
+     "text": "There is no cost for any invocations",
+     "correct": false,
+     "rationale": "Invocations and duration are billed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: serverless abstracts server management; it does not eliminate servers.",
+   "outcome_refs": [
+    "MST-1587-D01.01"
+   ],
+   "domain_ref": "Serverless fundamentals and FaaS",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1587-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two design choices suit an event-driven serverless pipeline? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Triggering functions from events such as a file upload or a queue message",
+     "correct": true,
+     "rationale": "Correct: event triggers are the natural fit for serverless."
+    },
+    {
+     "key": "B",
+     "text": "Keeping functions stateless and storing data in an external store",
+     "correct": true,
+     "rationale": "Correct: statelessness lets functions scale and recover independently."
+    },
+    {
+     "key": "C",
+     "text": "Relying on in-memory state persisting across separate invocations",
+     "correct": false,
+     "rationale": "Function instances are ephemeral; local state is not reliable between invocations."
+    },
+    {
+     "key": "D",
+     "text": "Assuming a single function instance handles all traffic sequentially",
+     "correct": false,
+     "rationale": "Serverless scales out concurrently; it is not a single sequential worker."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: event triggers are the natural fit for serverless.; Correct: statelessness lets functions scale and recover independently.",
+   "outcome_refs": [
+    "MST-1587-D02.01"
+   ],
+   "domain_ref": "Event-driven design and triggers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1587-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What causes a 'cold start' for a serverless function?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The platform must initialise a new execution environment before the function can run",
+     "correct": true,
+     "rationale": "Correct: a cold start is the setup time when no warm instance is available."
+    },
+    {
+     "key": "B",
+     "text": "The function's code contains a syntax error",
+     "correct": false,
+     "rationale": "A syntax error is a failure, not a cold start."
+    },
+    {
+     "key": "C",
+     "text": "The user's internet connection is slow",
+     "correct": false,
+     "rationale": "Cold start is about environment initialisation, not the client link."
+    },
+    {
+     "key": "D",
+     "text": "The function has too few lines of code",
+     "correct": false,
+     "rationale": "Code length does not define a cold start."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a cold start is the setup time when no warm instance is available.",
+   "outcome_refs": [
+    "MST-1587-D03.01"
+   ],
+   "domain_ref": "Functions, cold starts and performance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

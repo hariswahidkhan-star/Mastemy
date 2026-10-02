@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1017",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1017-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What must be in place before any vulnerability scan of systems you do not own is started?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Written authorisation defining the scope and timing",
+     "correct": true,
+     "rationale": "Correct: explicit authorisation and scope are required before scanning."
+    },
+    {
+     "key": "B",
+     "text": "A public announcement to all internet users",
+     "correct": false,
+     "rationale": "Public announcement is neither required nor sufficient."
+    },
+    {
+     "key": "C",
+     "text": "Proof that no vulnerabilities exist",
+     "correct": false,
+     "rationale": "The scan is what finds vulnerabilities; this is circular."
+    },
+    {
+     "key": "D",
+     "text": "A signed non-disclosure from the vendor of the scanner",
+     "correct": false,
+     "rationale": "A scanner NDA does not authorise scanning the targets."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: explicit authorisation and scope are required before scanning.",
+   "outcome_refs": [
+    "MST-1017-D01.01"
+   ],
+   "domain_ref": "Fundamentals and authorisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1017-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two factors should raise a finding's real-world priority above its raw CVSS base score? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A working exploit is publicly available",
+     "correct": true,
+     "rationale": "Correct: available exploits increase likelihood of attack."
+    },
+    {
+     "key": "B",
+     "text": "The affected asset is internet-exposed",
+     "correct": true,
+     "rationale": "Correct: exposure increases the attack surface and likelihood."
+    },
+    {
+     "key": "C",
+     "text": "The finding has a memorable CVE identifier",
+     "correct": false,
+     "rationale": "The identifier's memorability has no bearing on risk."
+    },
+    {
+     "key": "D",
+     "text": "The scanner used a blue icon for the result",
+     "correct": false,
+     "rationale": "Icon colour is cosmetic and irrelevant to risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: available exploits increase likelihood of attack.; Correct: exposure increases the attack surface and likelihood.",
+   "outcome_refs": [
+    "MST-1017-D05.01"
+   ],
+   "domain_ref": "Risk scoring and prioritisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1017-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is an authenticated scan usually more accurate for assessing missing patches than an unauthenticated one?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can read installed versions and configuration directly on the host",
+     "correct": true,
+     "rationale": "Correct: credentials let the scanner inspect actual patch levels instead of inferring them."
+    },
+    {
+     "key": "B",
+     "text": "It never produces any false positives",
+     "correct": false,
+     "rationale": "Authenticated scans can still produce false positives."
+    },
+    {
+     "key": "C",
+     "text": "It does not require authorisation",
+     "correct": false,
+     "rationale": "Authorisation is still required regardless of scan type."
+    },
+    {
+     "key": "D",
+     "text": "It automatically fixes the vulnerabilities it finds",
+     "correct": false,
+     "rationale": "Scanning assesses; it does not remediate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: credentials let the scanner inspect actual patch levels instead of inferring them.",
+   "outcome_refs": [
+    "MST-1017-D03.01"
+   ],
+   "domain_ref": "Scanning tools and configuration",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

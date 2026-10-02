@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1654",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 54,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1654-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which protocol resolves a known IPv4 address to the MAC address needed to deliver a frame on the local network?",
+   "options": [
+    {
+     "key": "A",
+     "text": "ARP (Address Resolution Protocol)",
+     "correct": true,
+     "rationale": "Correct: ARP maps an IP address to a MAC address on the local link."
+    },
+    {
+     "key": "B",
+     "text": "DNS",
+     "correct": false,
+     "rationale": "DNS resolves names to IP addresses, not IP to MAC."
+    },
+    {
+     "key": "C",
+     "text": "DHCP",
+     "correct": false,
+     "rationale": "DHCP assigns IP configuration; it does not resolve IP to MAC."
+    },
+    {
+     "key": "D",
+     "text": "HTTP",
+     "correct": false,
+     "rationale": "HTTP is an application protocol, unrelated to IP-to-MAC resolution."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ARP maps an IP address to a MAC address on the local link.",
+   "outcome_refs": [
+    "MST-1654-D01.01"
+   ],
+   "domain_ref": "Network models and the lower layers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1654-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two statements about TCP and UDP are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "TCP establishes a connection with a three-way handshake before data transfer",
+     "correct": true,
+     "rationale": "Correct: TCP uses SYN, SYN-ACK, ACK to set up a connection."
+    },
+    {
+     "key": "B",
+     "text": "UDP is connectionless and does not guarantee delivery or ordering",
+     "correct": true,
+     "rationale": "Correct: UDP sends datagrams without connection setup or delivery guarantees."
+    },
+    {
+     "key": "C",
+     "text": "UDP guarantees in-order, reliable delivery like TCP",
+     "correct": false,
+     "rationale": "UDP provides no delivery or ordering guarantees."
+    },
+    {
+     "key": "D",
+     "text": "TCP sends data without any acknowledgements",
+     "correct": false,
+     "rationale": "TCP uses acknowledgements to provide reliability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: TCP uses SYN, SYN-ACK, ACK to set up a connection.; Correct: UDP sends datagrams without connection setup or delivery guarantees.",
+   "outcome_refs": [
+    "MST-1654-D02.01"
+   ],
+   "domain_ref": "Addressing, routing and transport",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1654-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Using a layered troubleshooting method, what should you generally verify before blaming the web application?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lower-layer connectivity such as link, IP addressing, routing and DNS resolution",
+     "correct": true,
+     "rationale": "Correct: confirming the lower layers first isolates the fault efficiently."
+    },
+    {
+     "key": "B",
+     "text": "The colour scheme of the website",
+     "correct": false,
+     "rationale": "Presentation styling is unrelated to connectivity faults."
+    },
+    {
+     "key": "C",
+     "text": "The number of images on the page",
+     "correct": false,
+     "rationale": "Image count does not explain a failure to connect."
+    },
+    {
+     "key": "D",
+     "text": "The user's choice of browser theme",
+     "correct": false,
+     "rationale": "Browser theme has no bearing on network connectivity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: confirming the lower layers first isolates the fault efficiently.",
+   "outcome_refs": [
+    "MST-1654-D03.01"
+   ],
+   "domain_ref": "Application protocols, DNS and troubleshooting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 65,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

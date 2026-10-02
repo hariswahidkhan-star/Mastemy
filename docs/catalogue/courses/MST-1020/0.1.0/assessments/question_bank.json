@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1020",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1020-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A business can tolerate losing at most 15 minutes of data. Which objective does this define?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Recovery Point Objective (RPO)",
+     "correct": true,
+     "rationale": "Correct: RPO is the maximum acceptable data loss, measured as a point in time."
+    },
+    {
+     "key": "B",
+     "text": "The Recovery Time Objective (RTO)",
+     "correct": false,
+     "rationale": "RTO is how long recovery may take, not how much data may be lost."
+    },
+    {
+     "key": "C",
+     "text": "The mean time between failures",
+     "correct": false,
+     "rationale": "MTBF measures reliability, not acceptable data loss."
+    },
+    {
+     "key": "D",
+     "text": "The backup window size",
+     "correct": false,
+     "rationale": "The backup window is when backups run, not the loss tolerance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RPO is the maximum acceptable data loss, measured as a point in time.",
+   "outcome_refs": [
+    "MST-1020-D01.01"
+   ],
+   "domain_ref": "Resilience and recovery fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1020-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two properties make a backup copy resilient against ransomware that tries to delete or encrypt backups? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Immutability so the copy cannot be modified or deleted for a set period",
+     "correct": true,
+     "rationale": "Correct: immutability blocks tampering and deletion."
+    },
+    {
+     "key": "B",
+     "text": "An air-gapped or offline copy not reachable from the production network",
+     "correct": true,
+     "rationale": "Correct: an unreachable copy cannot be encrypted by network-borne ransomware."
+    },
+    {
+     "key": "C",
+     "text": "Storing the backup on the same server it protects",
+     "correct": false,
+     "rationale": "Co-locating the backup exposes it to the same compromise."
+    },
+    {
+     "key": "D",
+     "text": "Granting all users write access to the backup store",
+     "correct": false,
+     "rationale": "Broad write access makes deletion or encryption easier."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: immutability blocks tampering and deletion.; Correct: an unreachable copy cannot be encrypted by network-borne ransomware.",
+   "outcome_refs": [
+    "MST-1020-D03.01"
+   ],
+   "domain_ref": "Immutable and air-gapped backups",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1020-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a successful backup job not sufficient proof that you can recover?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Only a tested restore confirms the data is complete and usable within the RTO",
+     "correct": true,
+     "rationale": "Correct: backups can succeed yet be unrestorable; restore testing proves recoverability."
+    },
+    {
+     "key": "B",
+     "text": "Backup jobs always silently corrupt data",
+     "correct": false,
+     "rationale": "Jobs do not always corrupt data; the point is recovery must be tested."
+    },
+    {
+     "key": "C",
+     "text": "Restores are illegal without a court order",
+     "correct": false,
+     "rationale": "Restores are a normal operation, not a legal event."
+    },
+    {
+     "key": "D",
+     "text": "A backup job deletes the original data",
+     "correct": false,
+     "rationale": "Backups copy data; they do not delete the source."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: backups can succeed yet be unrestorable; restore testing proves recoverability.",
+   "outcome_refs": [
+    "MST-1020-D04.01"
+   ],
+   "domain_ref": "Recovery testing and runbooks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

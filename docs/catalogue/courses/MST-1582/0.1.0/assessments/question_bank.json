@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1582",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1582-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does a manual, out-of-band change to infrastructure managed by IaC cause problems?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It creates drift, so the real environment no longer matches the code and state",
+     "correct": true,
+     "rationale": "Correct: out-of-band changes cause drift that can break later applies and reproducibility."
+    },
+    {
+     "key": "B",
+     "text": "It permanently deletes the IaC tool",
+     "correct": false,
+     "rationale": "A manual change does not remove the tool."
+    },
+    {
+     "key": "C",
+     "text": "It makes the code run faster",
+     "correct": false,
+     "rationale": "Speed is unrelated; the issue is drift."
+    },
+    {
+     "key": "D",
+     "text": "It has no effect because IaC ignores reality",
+     "correct": false,
+     "rationale": "IaC compares to real state, so the change does matter."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: out-of-band changes cause drift that can break later applies and reproducibility.",
+   "outcome_refs": [
+    "MST-1582-D06.01"
+   ],
+   "domain_ref": "CI/CD for infrastructure and drift",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1582-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which two practices keep secrets safe when using infrastructure as code? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Storing secrets in a dedicated secrets manager referenced at apply time",
+     "correct": true,
+     "rationale": "Correct: a secrets manager keeps secrets out of the repo and controls access."
+    },
+    {
+     "key": "B",
+     "text": "Keeping secrets out of the version-controlled configuration files",
+     "correct": true,
+     "rationale": "Correct: secrets committed to a repo are exposed to everyone with access."
+    },
+    {
+     "key": "C",
+     "text": "Hard-coding the production password in the main config file",
+     "correct": false,
+     "rationale": "Hard-coded secrets in the repo are a serious exposure."
+    },
+    {
+     "key": "D",
+     "text": "Emailing the secret to the whole team for convenience",
+     "correct": false,
+     "rationale": "Broad distribution by email increases exposure."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a secrets manager keeps secrets out of the repo and controls access.; Correct: secrets committed to a repo are exposed to everyone with access.",
+   "outcome_refs": [
+    "MST-1582-D04.01"
+   ],
+   "domain_ref": "Environments, variables and secrets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1582-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main purpose of reviewing the plan (proposed changes) before applying IaC?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To see exactly what will change and catch unintended or destructive actions first",
+     "correct": true,
+     "rationale": "Correct: plan review surfaces unintended changes before they reach the environment."
+    },
+    {
+     "key": "B",
+     "text": "To permanently freeze the infrastructure",
+     "correct": false,
+     "rationale": "A plan does not freeze anything; it previews changes."
+    },
+    {
+     "key": "C",
+     "text": "To generate random configuration values",
+     "correct": false,
+     "rationale": "Plans show intended changes, not random values."
+    },
+    {
+     "key": "D",
+     "text": "To delete the state file safely",
+     "correct": false,
+     "rationale": "Plan review is not about deleting state."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: plan review surfaces unintended changes before they reach the environment.",
+   "outcome_refs": [
+    "MST-1582-D05.01"
+   ],
+   "domain_ref": "Testing, validation and policy as code",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
