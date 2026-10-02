@@ -43,7 +43,6 @@ def rd(p):
 ITEM_TYPE_ALIASES = {"single-answer-mcq": "single-answer", "multiple-answer-selection": "multiple-answer",
                      "single": "single-answer", "multiple": "multiple-answer"}
 SELECTION_RE = re.compile(r"(?:select|choose|identify|which)\s+(TWO|THREE|all that apply)", re.I)
-SELECTION_COUNT_RE = re.compile(r"\b(TWO|THREE)\b", re.I)
 
 
 def _item_type(it):
@@ -83,8 +82,12 @@ def check_item(it):
             errs.append("selection rule not stated in stem")
         if not _scoring_ok(it, item_type):
             errs.append("multiple-answer scoring not all-or-nothing")
-        m = SELECTION_COUNT_RE.search(it["stem"])
-        n = {"two": 2, "three": 3}.get(m.group(1).lower()) if m else None
+        # Derive the stated count from the selection-rule phrase itself
+        # (``which TWO``/``choose THREE``), not a bare word scan: a loose
+        # ``\b(TWO|THREE)\b`` search spuriously matches incidental topic words
+        # such as "three-phase" or "two-tier" elsewhere in the stem.
+        sm = SELECTION_RE.search(it["stem"])
+        n = {"two": 2, "three": 3}.get(sm.group(1).lower()) if sm else None
         if n and n != len(keys):
             errs.append("stated selection count differs from key count")
     if sorted(it["correct_keys"]) != sorted(o["key"] for o in keys):

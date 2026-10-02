@@ -250,7 +250,7 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 | Step | Course ID | Title | Hours |
 |---|---|---|---|
 | 1 | `MST-1607` | SQL Fundamentals | 20 |
-| 2 | `MST-1635` | Data Engineering Fundamentals | 20 |
+| 2 | `MST-1635` | Data Engineering Fundamentals | 35 |
 | 3 | `MST-0957` | Apache Spark and PySpark: Distributed Data Processing | 35 |
 | 4 | `MST-0228` | Databricks Certified Data Engineer Associate | 30 |
 | 5 | `MST-0233` | Snowflake SnowPro Core Certification | 45 |
