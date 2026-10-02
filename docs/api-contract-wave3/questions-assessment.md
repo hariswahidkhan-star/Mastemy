@@ -234,3 +234,35 @@ stored; the sample code never verifies. 404 for unknown templates.
 `GET /api/admin/assessments?q=&limit=20` (Staff) — matches assessment title, course title, course code, or an exact
 assessment/course id. Returns `[{ id, title, courseId, courseCode, courseTitle, kind, mode, timeLimitMinutes,
 countsTowardCertificate }]` (max 50).
+
+## Worked solutions (final wave)
+
+`QuestionInput.workedSolution` (optional rich text, max 8000, validated exactly like explanations/rationales: no HTML/headings,
+images only as course resources). Stored per question version (`Questions_WorkedSolutions`), so staged edits carry their own;
+blank removes it; copied with reused questions. Returned as `version.workedSolution` / `pending.workedSolution` in studio
+DTOs, and to learners only where the explanation is shown: `CheckResult.workedSolution` (practice check) and
+`ReviewItemDto.workedSolution` (practice/exam review once the review policy allows). Not imported via CSV/XLSX.
+
+## Negative marking (final wave)
+
+`PUT /api/studio/assessments/{id}/policy` accepts `negativeMarkingPerWrong` (0–1, max 4 decimals; null/omitted keeps the
+current value; >0 only for Exam mode → 400 otherwise). Frozen into the published snapshot (`SnapshotAssessment.negativeMarkingPerWrong`)
+and onto each attempt at start. Disclosed before an attempt in `GET /api/assessments/{id}`: `negativeMarkingPerWrong`,
+`negativeMarkingRules`. Scoring: wrong = answered item earning 0 points; unanswered items and partially-credited
+MultipleSelect items (PartialCredit) are never penalised; attempt points = max(0, earned − rate × wrong); score % and the pass
+decision use the penalised points; item points in review stay unpenalised. Regrades re-apply the attempt's frozen rate.
+
+## Completion awards and LinkedIn sharing (final wave)
+
+- `GET|PUT /api/studio/courses/{courseId}/completion-award` `{ enabled }` (course author/editor or staff; audited).
+- `POST /api/me/courses/{courseId}/completion-award` — idempotent claim. 409 `completion_awards_disabled` | `not_enrolled` |
+  `course_not_completed` (every lesson of the current published snapshot must be completed). Returns `{ id, code, kind:"Completion",
+  title:"Certificate of Completion — attests lesson completion, not assessed knowledge", lessonCount, snapshotVersion, ... }`.
+  `GET /api/me/certificates` also issues due awards automatically and lists both kinds with `kind` (`AssessedKnowledge`|`Completion`) and `title`.
+- Completion awards are a separate entity (`Assessment_CompletionAwards`), never an assessed `Certificate`; codes are unique
+  across both. `GET /api/certificates/verify/{code}` returns `kind`, `title`, `verificationLabel`; PDFs render "Certificate of
+  Completion / Attests lesson completion, not assessed knowledge" with no score. Visibility and staff revoke endpoints accept either kind.
+- `GET /api/me/certificates/{id}/share` → `{ id, kind, certificationName, linkedInAddToProfileUrl, verificationUrl }` with
+  `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=…&organizationName=Mastemy&issueYear&issueMonth&certUrl&certId`.
+  Names: "Certificate of Assessed Knowledge: {course}" / "Certificate of Completion: {course} (lesson completion, not assessed)".
+  410 revoked, 409 `certificate_not_public`, 503 `verify_url_not_configured` (Certificates:VerifyBaseUrl must be absolute).

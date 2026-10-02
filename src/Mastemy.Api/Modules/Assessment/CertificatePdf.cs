@@ -67,13 +67,25 @@ public static class CertificatePdf
         "This certificate attests knowledge assessed through server-scored multiple-choice questions on Mastemy. " +
         "It is not a professional licence, accreditation or qualification, and it does not certify video viewing or course completion.";
 
-    public static byte[] Render(Certificate c, string verificationUrl, CertificateDesign? design = null)
+    public const string CompletionStatement =
+        "Certificate of Completion — attests lesson completion, not assessed knowledge. No assessment was passed to earn it. " +
+        "It is not a professional licence, accreditation or qualification.";
+
+    /// <summary>Completion award PDF: fixed "Certificate of Completion" title (templates cannot rename it), no score line.</summary>
+    public static byte[] RenderCompletion(CompletionAward a, string verificationUrl, CertificateDesign? design = null) =>
+        Render(new Certificate
+        {
+            Code = a.Code, RecipientName = a.RecipientName, CourseTitle = a.CourseTitle, IssuedAt = a.IssuedAt,
+            AssessmentCriteria = CompletionAwardService.Criteria(a.LessonCount, a.SnapshotVersion),
+        }, verificationUrl, design is null ? null : design with { TitleText = "" }, completion: true);
+
+    public static byte[] Render(Certificate c, string verificationUrl, CertificateDesign? design = null, bool completion = false)
     {
         var ink = Hex(design?.PrimaryColor, Ink);
         var accent = Hex(design?.AccentColor, Accent);
         BundledFontResolver.EnsureInstalled();
         using var doc = new PdfDocument();
-        doc.Info.Title = $"Mastemy certificate {c.Code}";
+        doc.Info.Title = completion ? $"Mastemy completion award {c.Code}" : $"Mastemy certificate {c.Code}";
         doc.Info.Subject = $"Certificate {c.Code} - verify at {verificationUrl}";
         doc.Info.Author = "Mastemy";
         doc.Info.Creator = "Mastemy";
@@ -99,18 +111,23 @@ public static class CertificatePdf
 
             var y = 62.0;
             Centered(g, "MASTEMY", 12, true, accent, w, ref y, 6);
-            Centered(g, string.IsNullOrWhiteSpace(design?.TitleText) ? "Certificate of Assessed Knowledge" : design!.TitleText, 26, true, ink, w, ref y, 14);
+            if (completion)
+            {
+                Centered(g, "Certificate of Completion", 26, true, ink, w, ref y, 4);
+                Centered(g, "Attests lesson completion, not assessed knowledge", 11, true, accent, w, ref y, 10);
+            }
+            else Centered(g, string.IsNullOrWhiteSpace(design?.TitleText) ? "Certificate of Assessed Knowledge" : design!.TitleText, 26, true, ink, w, ref y, 14);
             Centered(g, "This certifies that", 12, false, Muted, w, ref y, 6);
             Centered(g, c.RecipientName, 30, true, ink, w, ref y, 8);
-            Centered(g, "passed the assessment for the course", 12, false, Muted, w, ref y, 6);
+            Centered(g, completion ? "completed every lesson of the course" : "passed the assessment for the course", 12, false, Muted, w, ref y, 6);
             Centered(g, c.CourseTitle, 20, true, ink, w, ref y, 10);
             var issued = c.IssuedAt.ToString("d MMMM yyyy", CultureInfo.InvariantCulture);
-            Centered(g, $"Issued {issued}   |   Score {c.ScorePercent.ToString("0.##", CultureInfo.InvariantCulture)}%", 12, false, ink, w, ref y, 10);
+            Centered(g, completion ? $"Issued {issued}" : $"Issued {issued}   |   Score {c.ScorePercent.ToString("0.##", CultureInfo.InvariantCulture)}%", 12, false, ink, w, ref y, 10);
 
             foreach (var line in Wrap(g, "Criteria: " + c.AssessmentCriteria, 9.5, w - 2 * 90))
                 Centered(g, line, 9.5, false, Muted, w, ref y, 2);
             y += 8;
-            foreach (var line in Wrap(g, Statement, 8.5, w - 2 * 90))
+            foreach (var line in Wrap(g, completion ? CompletionStatement : Statement, 8.5, w - 2 * 90))
                 Centered(g, line, 8.5, false, Muted, w, ref y, 2);
 
             // Footer: issuer + code + verification URL (left), QR code (right).
@@ -130,7 +147,7 @@ public static class CertificatePdf
                 if (!string.IsNullOrWhiteSpace(design.SignatureTitle)) Left(g, design.SignatureTitle, 9, false, Muted, sx, ref ly);
             }
             Left(g, "Issued by Mastemy", 11, true, ink, fx, ref fy);
-            Left(g, $"Certificate code: {c.Code}", 11, false, ink, fx, ref fy);
+            Left(g, completion ? $"Completion award code: {c.Code}" : $"Certificate code: {c.Code}", 11, false, ink, fx, ref fy);
             Left(g, "Verify at:", 9, false, Muted, fx, ref fy);
             foreach (var line in Wrap(g, verificationUrl, 9, qrX - fx - 20)) Left(g, line, 9, false, accent, fx, ref fy);
         }

@@ -190,7 +190,8 @@ public class MfaService(AppDbContext db, SecretProtector protector, AuditService
         var user = await db.Users.AsNoTracking().Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == uid) ?? throw AppException.NotFound("User");
         var sec = await db.Set<UserSecurity>().AsNoTracking().FirstOrDefaultAsync(s => s.UserId == uid);
         var remaining = await db.Set<MfaRecoveryCode>().CountAsync(c => c.UserId == uid && c.UsedAt == null);
-        return new(sec?.MfaEnabledAt is not null, sec?.MfaEnabledAt, sec?.MfaEnabledAt is null ? 0 : remaining, IsRequired(user));
+        return new(sec?.MfaEnabledAt is not null, sec?.MfaEnabledAt, sec?.MfaEnabledAt is null ? 0 : remaining,
+            IsRequired(user) || await MfaResetService.ReenrollmentPending(db, uid));
     }
 
     private bool IsRequired(User user) =>
@@ -227,6 +228,8 @@ public class MfaService(AppDbContext db, SecretProtector protector, AuditService
         sec.MfaEnabledAt = DateTime.UtcNow;
         sec.MfaLastUsedStep = step;
         var codes = ReplaceRecoveryCodes(uid);
+        await db.Set<MfaResetRecord>().Where(r => r.UserId == uid && r.ReenrolledAt == null)
+            .ExecuteUpdateAsync(s => s.SetProperty(r => r.ReenrolledAt, DateTime.UtcNow));
         audit.Record("user.mfa_enabled", "User", uid);
         await db.SaveChangesAsync();
         // Sessions created before MFA were password-only; end them and start a fresh MFA-authenticated one.

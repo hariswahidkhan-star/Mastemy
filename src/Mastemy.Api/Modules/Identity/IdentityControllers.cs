@@ -8,19 +8,36 @@ namespace Mastemy.Api.Modules.Identity;
 [ApiController]
 [Route("api/auth")]
 [AllowWithoutMfa]
-public class AuthController(AuthService auth, ICurrentUser me) : ControllerBase
+public class AuthController(AuthService auth, ICurrentUser me, RefreshCookies cookies) : ControllerBase
 {
     [HttpPost("register"), AllowAnonymous, EnableRateLimiting("auth")]
-    public Task<AuthResponse> Register(RegisterRequest req) => auth.Register(req);
+    public async Task<AuthResponse> Register(RegisterRequest req) => cookies.Issue(Response, await auth.Register(req));
 
     [HttpPost("login"), AllowAnonymous, EnableRateLimiting("auth")]
-    public Task<AuthResponse> Login(LoginRequest req) => auth.Login(req);
+    public async Task<AuthResponse> Login(LoginRequest req) => cookies.Issue(Response, await auth.Login(req));
 
+    /// <summary>Body token (non-browser clients, Auth:AllowBodyRefreshToken) or the HttpOnly cookie + X-Requested-With: mastemy.</summary>
     [HttpPost("refresh"), AllowAnonymous, EnableRateLimiting("auth")]
-    public Task<AuthResponse> Refresh(RefreshRequest req) => auth.Refresh(req);
+    public async Task<AuthResponse> Refresh([FromBody(EmptyBodyBehavior = Microsoft.AspNetCore.Mvc.ModelBinding.EmptyBodyBehavior.Allow)] RefreshRequest? req)
+    {
+        var token = cookies.Resolve(Request, req?.RefreshToken);
+        try { return cookies.Issue(Response, await auth.Refresh(new RefreshRequest(token))); }
+        catch (AppException ex) when (ex.Status == 401)
+        {
+            // The error handler clears the response; clear the dead cookie as the error response starts.
+            Response.OnStarting(() => { cookies.Clear(Response); return Task.CompletedTask; });
+            throw;
+        }
+    }
 
     [HttpPost("logout"), AllowAnonymous]
-    public async Task<IActionResult> Logout(RefreshRequest req) { await auth.Logout(req); return NoContent(); }
+    public async Task<IActionResult> Logout([FromBody(EmptyBodyBehavior = Microsoft.AspNetCore.Mvc.ModelBinding.EmptyBodyBehavior.Allow)] RefreshRequest? req)
+    {
+        var token = cookies.Resolve(Request, req?.RefreshToken);
+        cookies.Clear(Response);
+        await auth.Logout(new RefreshRequest(token));
+        return NoContent();
+    }
 
     [HttpGet("me"), Authorize, AllowMfaEnrollmentToken]
     public Task<UserDto> Me() => auth.Me(me.RequireId(), User);
@@ -28,7 +45,7 @@ public class AuthController(AuthService auth, ICurrentUser me) : ControllerBase
 
 [ApiController]
 [Route("api/auth/mfa")]
-public class MfaController(MfaService mfa) : ControllerBase
+public class MfaController(MfaService mfa, RefreshCookies cookies) : ControllerBase
 {
     [HttpGet("status"), Authorize, AllowMfaEnrollmentToken]
     public Task<MfaStatusDto> Status() => mfa.Status();
@@ -37,10 +54,14 @@ public class MfaController(MfaService mfa) : ControllerBase
     public Task<MfaEnrollmentDto> Enroll() => mfa.BeginEnrollment();
 
     [HttpPost("enroll/confirm"), Authorize, AllowMfaEnrollmentToken, EnableRateLimiting("auth")]
-    public Task<MfaEnrolledDto> Confirm(MfaCodeRequest req) => mfa.ConfirmEnrollment(req);
+    public async Task<MfaEnrolledDto> Confirm(MfaCodeRequest req)
+    {
+        var r = await mfa.ConfirmEnrollment(req);
+        return r with { Session = cookies.Issue(Response, r.Session) };
+    }
 
     [HttpPost("verify"), AllowAnonymous, AllowWithoutMfa, EnableRateLimiting("auth")]
-    public Task<AuthResponse> Verify(MfaVerifyRequest req) => mfa.VerifyChallenge(req);
+    public async Task<AuthResponse> Verify(MfaVerifyRequest req) => cookies.Issue(Response, await mfa.VerifyChallenge(req));
 
     [HttpPost("recovery-codes"), Authorize, EnableRateLimiting("auth")]
     public Task<RecoveryCodesDto> Regenerate(MfaCodeRequest req) => mfa.RegenerateRecoveryCodes(req);

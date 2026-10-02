@@ -106,7 +106,9 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
             await db.SaveChangesAsync();
             return new AuthResponse(null, null, null, UserDto.From(user, sec), LoginStatus.MfaRequired, raw);
         }
-        if (SecurityOptions.RequireMfaForPrivileged(cfg) && SecurityClaims.IsPrivileged(user.Roles.Select(r => r.Role)))
+        // An administrator reset this user's MFA: they must enroll again before the account can be used.
+        if ((SecurityOptions.RequireMfaForPrivileged(cfg) && SecurityClaims.IsPrivileged(user.Roles.Select(r => r.Role)))
+            || await MfaResetService.ReenrollmentPending(db, user.Id))
         {
             await db.SaveChangesAsync();
             return new AuthResponse(jwt.IssueEnrollmentToken(user), null, now.Add(AccessTokenFactory.EnrollmentTokenLifetime),
@@ -148,7 +150,8 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
         var session = await db.Set<AuthSession>().FirstOrDefaultAsync(x => x.FamilyId == token.FamilyId);
         if (session is not null) { session.LastUsedAt = now; session.LastIpAddress = Ip(); }
         // A privileged user may not keep refreshing a session that was not MFA-authenticated once MFA is required.
-        return await IssueTokens(user, token.FamilyId, session?.MfaAuthenticated ?? false, token.Id);
+        // auth_time stays the original sign-in time of the session, so refreshing never makes an MFA sign-in look "fresh".
+        return await IssueTokens(user, token.FamilyId, session?.MfaAuthenticated ?? false, token.Id, session?.CreatedAt);
     }
 
     public async Task Logout(RefreshRequest req)
@@ -199,7 +202,7 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
     private string Ip() => Trunc(http.HttpContext?.Connection.RemoteIpAddress?.ToString() ?? "", 64);
     private static string Trunc(string s, int n) => s.Length > n ? s[..n] : s;
 
-    private async Task<AuthResponse> IssueTokens(User user, Guid familyId, bool mfa, Guid? replacing = null)
+    private async Task<AuthResponse> IssueTokens(User user, Guid familyId, bool mfa, Guid? replacing = null, DateTime? authTime = null)
     {
         if (replacing is null)
         {
@@ -219,7 +222,7 @@ public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt
         await db.SaveChangesAsync();
         if (replacing is { } oldId)
             await db.RefreshTokens.Where(t => t.Id == oldId).ExecuteUpdateAsync(s => s.SetProperty(t => t.ReplacedById, rt.Id));
-        var access = jwt.Issue(user, familyId, mfa);
+        var access = jwt.Issue(user, familyId, mfa, authTime ?? DateTime.UtcNow);
         var sec = await db.Set<UserSecurity>().AsNoTracking().FirstOrDefaultAsync(s => s.UserId == user.Id);
         return new AuthResponse(access, raw, DateTime.UtcNow.AddMinutes(opt.AccessTokenMinutes), UserDto.From(user, sec));
     }

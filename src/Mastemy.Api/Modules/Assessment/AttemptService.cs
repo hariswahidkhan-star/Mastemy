@@ -39,10 +39,11 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
             : "This assessment does not count toward a certificate.";
         var policy = await db.Set<AssessmentPolicy>().AsNoTracking().FirstOrDefaultAsync(p => p.AssessmentId == id);
         var acc = uid is { } u ? await accommodations.ActiveFor(u, id) : null;
+        var neg = await NegativeMarkingFor(a);
         return new AssessmentSummaryDto(a.Id, a.CourseId, a.ModuleId, a.LessonId, a.Title, a.Kind, a.Mode, a.TimeLimitMinutes, a.MaxAttempts,
             a.PassPercent, a.MultiSelectScoring, count, a.IsPremium, locked, a.CountsTowardCertificate, Scoring.Rules, criteria, used, inProgress, a.ReviewPolicy,
             policy?.AllowPause == true && a.TimeLimitMinutes is not null, policy?.AllowPause == true ? policy.MaxPauseMinutes : 0,
-            EffectiveMinutes(a.TimeLimitMinutes, acc), acc is not null);
+            EffectiveMinutes(a.TimeLimitMinutes, acc), acc is not null, neg, neg > 0 ? Scoring.NegativeRules(neg) : null);
     }
 
     // ---------------- Start ----------------
@@ -110,6 +111,7 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
         var drawnIds = FormBuilder.Build(candidates, a.ShuffleQuestions, a.QuestionCount);
         var versions = await db.QuestionVersions.AsNoTracking().Include(v => v.Options).Where(v => drawnIds.Contains(v.QuestionId)).ToListAsync();
 
+        var negRate = await NegativeMarkingFor(a);
         // Accommodations (staff-granted) are applied once, here, at attempt start.
         var acc = await accommodations.ActiveFor(uid, a.Id);
         var now = DateTime.UtcNow;
@@ -141,6 +143,7 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
             AttemptId = attempt.Id, BaseTimeLimitMinutes = a.TimeLimitMinutes, AccommodationId = acc?.Id,
             ExtraTimePercent = acc?.ExtraTimePercent ?? 0, Untimed = acc?.Untimed == true && a.TimeLimitMinutes is not null,
             PauseAllowanceSeconds = policy?.AllowPause == true && attempt.DeadlineAt is not null ? policy.MaxPauseMinutes * 60 : 0,
+            NegativeMarkingPerWrong = negRate,
         };
         var groupIds = drawnIds.Select(id => metas.GetValueOrDefault(id)?.CaseGroupId).Where(g => g is not null).Select(g => g!.Value).Distinct().ToList();
         var groups = await db.Set<CaseGroup>().AsNoTracking().Where(g => groupIds.Contains(g.Id)).ToListAsync();
@@ -236,7 +239,8 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
             var opts = order.Select(id => v.Options.First(o => o.Id == id)).ToList();
             var correctIds = opts.Where(o => o.IsCorrect).Select(o => o.Id).ToList();
             var points = Scoring.Item(v.Type, correctIds, ParseIds(item.SelectedOptionIds), at.ScoringPolicy);
-            result = new CheckResult(item.Id, points == 1m, correctIds, opts.Select(o => new RationaleDto(o.Id, o.Rationale)).ToList(), v.Explanation);
+            result = new CheckResult(item.Id, points == 1m, correctIds, opts.Select(o => new RationaleDto(o.Id, o.Rationale)).ToList(), v.Explanation,
+                (await WorkedSolutions.For(db, [v.Id])).GetValueOrDefault(v.Id));
             if (ParseIds(item.SelectedOptionIds).Count > 0) await ReviewScheduler.Record(db, at.UserId, v.QuestionId, points);
         });
         if (expired)
@@ -383,6 +387,17 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
         return a;
     }
 
+    /// <summary>
+    /// Effective negative-marking rate: Exam mode only; learners get the published (snapshot) rate, authors/staff the live policy.
+    /// </summary>
+    private async Task<decimal> NegativeMarkingFor(AssessmentEntity a)
+    {
+        if (a.Mode != AssessmentMode.Exam) return 0m;
+        if (await IsPrivileged(a.CourseId))
+            return await db.Set<AssessmentPolicy>().AsNoTracking().Where(p => p.AssessmentId == a.Id).Select(p => p.NegativeMarkingPerWrong).FirstOrDefaultAsync();
+        return (await PublishedCopy(a.CourseId, a.Id))?.NegativeMarkingPerWrong ?? 0m;
+    }
+
     private async Task<int> ActivePoolCount(AssessmentEntity a) =>
         await db.AssessmentQuestions.Where(x => x.AssessmentId == a.Id)
             .Join(db.Questions, x => x.QuestionId, q => q.Id, (x, q) => q).CountAsync(q => q.State == QuestionState.Active);
@@ -434,6 +449,10 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
             if (item.CheckedAt is null && ParseIds(item.SelectedOptionIds).Count > 0) await ReviewScheduler.Record(db, at.UserId, v.QuestionId, item.Points.Value);
         }
         var possible = at.Items.Count;
+        var perWrong = (exts.TryGetValue(at.Id, out var ext) ? ext : await db.Set<AttemptExtension>().AsNoTracking().FirstOrDefaultAsync(x => x.AttemptId == at.Id))
+            ?.NegativeMarkingPerWrong ?? 0m;
+        var wrong = at.Items.Count(i => i.Points == 0m && ParseIds(i.SelectedOptionIds).Count > 0);
+        earned = Scoring.ApplyNegativeMarking(earned, wrong, perWrong);
         at.PointsEarned = earned;
         at.PointsPossible = possible;
         at.ScorePercent = Scoring.DisplayPercent(earned, possible);
@@ -490,6 +509,7 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
         int correct = 0, incorrect = 0, unanswered = 0;
         var topics = new Dictionary<string, (int c, int t)>();
         var review = new List<ReviewItemDto>();
+        var worked = await WorkedSolutions.For(db, versions.Keys);
         foreach (var item in at.Items.OrderBy(i => i.SortOrder))
         {
             var v = versions[item.QuestionVersionId];
@@ -503,7 +523,8 @@ public class AttemptService(AppDbContext db, ICurrentUser me, AccessService acce
             var opts = ParseIds(item.OptionOrder).Select(id => v.Options.First(o => o.Id == id)).ToList();
             review.Add(new ReviewItemDto(item.Id, item.SortOrder, v.Type, v.Stem, v.Explanation, points, full, selected,
                 opts.Where(o => o.IsCorrect).Select(o => o.Id).ToList(),
-                opts.Select(o => new ReviewOptionDto(o.Id, o.Text, o.IsCorrect, selected.Contains(o.Id), o.Rationale)).ToList()));
+                opts.Select(o => new ReviewOptionDto(o.Id, o.Text, o.IsCorrect, selected.Contains(o.Id), o.Rationale)).ToList(),
+                worked.GetValueOrDefault(v.Id)));
         }
         // Practice: review always available. Exam: governed by the assessment's answer review policy.
         var reveal = a.Mode == AssessmentMode.Practice;

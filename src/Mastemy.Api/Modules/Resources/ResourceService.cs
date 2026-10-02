@@ -58,11 +58,34 @@ public class ResourceService(AppDbContext db, ICurrentUser me, AccessService acc
         return course;
     }
 
-    public async Task<List<ResourceDto>> StudioList(Guid courseId)
+    /// <summary>Content-type families accepted by the studio list's <c>type</c> filter (matched on the stored content type).</summary>
+    public static readonly IReadOnlyDictionary<string, string> TypeFamilies = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+    {
+        ["image"] = "image/", ["audio"] = "audio/", ["video"] = "video/", ["text"] = "text/", ["application"] = "application/",
+    };
+
+    /// <summary>
+    /// Studio list. Optional filters: <paramref name="kind"/> (Resource | Caption) and <paramref name="type"/> — a content-type
+    /// family (image, audio, video, text, application) or an exact content type such as application/pdf.
+    /// </summary>
+    public async Task<List<ResourceDto>> StudioList(Guid courseId, string? kind = null, string? type = null)
     {
         await access.RequireCourseAuthorOrStaff(courseId);
         if (!await db.Courses.AnyAsync(c => c.Id == courseId)) throw AppException.NotFound("Course");
-        var rows = await db.ResourceFiles.AsNoTracking().Where(r => r.CourseId == courseId && r.DeletedAt == null)
+        var query = db.ResourceFiles.AsNoTracking().Where(r => r.CourseId == courseId && r.DeletedAt == null);
+        if (!string.IsNullOrWhiteSpace(kind))
+        {
+            var k = ResourceKinds.Normalize(kind);
+            query = query.Where(r => r.Kind == k);
+        }
+        if (!string.IsNullOrWhiteSpace(type))
+        {
+            var t = type.Trim().ToLowerInvariant();
+            if (TypeFamilies.TryGetValue(t, out var prefix)) query = query.Where(r => r.ContentType.StartsWith(prefix));
+            else if (t.Length <= 100 && System.Text.RegularExpressions.Regex.IsMatch(t, "^[a-z0-9.+-]+/[a-z0-9.+-]+$")) query = query.Where(r => r.ContentType == t);
+            else throw AppException.Bad("type must be image, audio, video, text, application or an exact content type (e.g. application/pdf).", "invalid_type");
+        }
+        var rows = await query
             .OrderBy(r => r.LessonId).ThenBy(r => r.Kind).ThenBy(r => r.FileName).ToListAsync();
         var ids = rows.Select(r => r.Id).ToList();
         var scans = await db.Set<ResourceScanRecord>().AsNoTracking().Where(x => ids.Contains(x.ResourceFileId))

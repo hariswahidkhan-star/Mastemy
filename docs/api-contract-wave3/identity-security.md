@@ -86,3 +86,46 @@ Revocation stops refresh. An access token that was already issued stays valid un
 `GET /api/admin/users/lookup?q=&limit=10` (Staff) — minimal picker for trust/suspension UIs. `q` (2–200 chars) matches a
 display-name substring, an email prefix, an exact email or an exact user id. Returns
 `[{ id, displayName, maskedEmail, isSuspended }]` (max 25); emails are masked as `j***e@e***.com`.
+
+## Refresh-token cookie (final wave) — default web mechanism
+
+- `POST /api/auth/register`, `/login`, `/mfa/verify`, `/mfa/enroll/confirm` and `/refresh` set the refresh token in cookie
+  `mastemy_rt`: `HttpOnly; Secure; SameSite=Strict; Path=/api/auth`, expiring with the refresh token (Jwt:RefreshTokenDays).
+- `POST /api/auth/refresh` and `POST /api/auth/logout` accept an **empty body**. When the JSON `refreshToken` is absent the
+  cookie is used, and the request **must** carry `X-Requested-With: mastemy` (else `403 csrf_header_required`).
+- Refresh failure (401, incl. reuse detection) clears the cookie; logout always clears it.
+- CSRF reasoning: the cookie is SameSite=Strict (never sent on cross-site requests) and path-scoped to `/api/auth`; the
+  custom header cannot be added by a cross-site form and forces a CORS preflight for cross-origin fetch. Access tokens stay
+  in memory (Authorization header), so no other endpoint relies on cookies.
+- Body-token mode for non-browser clients: config `Auth:AllowBodyRefreshToken` (default `true`, backward compatible).
+  When `false`, `refreshToken` is `null` in every JSON auth response and a body `refreshToken` is rejected with
+  `400 body_refresh_token_disabled`.
+- **Web client must switch**: stop storing `refreshToken` (localStorage), call refresh/logout with `credentials: "include"`,
+  no body and header `X-Requested-With: mastemy`; then deployments can set `Auth:AllowBodyRefreshToken=false`.
+- Access tokens now carry `auth_time` (unix seconds of the sign-in that started the session; unchanged by refresh).
+
+## Admin MFA reset (final wave)
+
+`POST /api/admin/users/{id}/mfa/reset` — SuperAdmin only. Body `{ "reason": "10-500 chars" }`.
+Safeguards: caller token must have `amr=mfa` and `auth_time` within the last 10 minutes (`403 fresh_mfa_required`;
+re-sign-in with MFA, a refreshed token does not count); never for oneself (`400 cannot_reset_own_mfa`); `400 invalid_reason`;
+`409 mfa_not_enabled` when nothing to reset. Effect: TOTP secret, pending enrollment, recovery codes and open challenges are
+removed; every session/refresh token is revoked; audit `user.mfa_reset_by_admin` (actor + reason); in-app
+`account_security` notification and email (when SMTP configured); a reset record (`Identity_MfaResets`) forces
+re-enrollment: until MFA is enrolled again, login returns `mfa_enrollment_required` with the restricted token (for any role)
+and `GET /api/auth/mfa/status` reports `required: true`. Response `{ userId, resetId, resetAt, sessionsRevoked, reenrollmentRequired }`.
+
+## Support role (final wave)
+
+Policy `Support` (roles Support, Admin, SuperAdmin) is registered by the Identity module. Capabilities are read-only plus one
+action:
+
+| Endpoint | Notes |
+|---|---|
+| `GET /api/support/users/lookup?q=&limit=` | same as admin lookup: id, display name, masked email |
+| `GET /api/support/users/{id}` | masked email, verified/suspended/MFA flags, enrollments, order summaries, credential status (assessed + completion) |
+| `POST /api/support/users/{id}/email-verification/resend` | 202; audited `user.email_verification_resent` |
+| `GET /api/support/orders?email=&orderId=` | see commerce.md (masked payment ids) |
+
+Support cannot change roles, suspend, reset MFA, refund or use `/api/admin/*` Staff/Finance endpoints (403). Support is not in
+the MFA-mandatory privileged role list (gap: decide whether to require MFA for Support).

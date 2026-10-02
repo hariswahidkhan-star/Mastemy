@@ -279,7 +279,8 @@ public class PracticeService(AppDbContext db, ICurrentUser me, AccessService acc
                 item.Points = points;
                 if (selected.Count > 0) await ReviewScheduler.Record(db, s.UserId, item.QuestionId, points, item.Id);
             }
-            result = new CheckResult(item.Id, points == 1m, correct, opts.Select(o => new RationaleDto(o.Id, o.Rationale)).ToList(), v.Explanation);
+            result = new CheckResult(item.Id, points == 1m, correct, opts.Select(o => new RationaleDto(o.Id, o.Rationale)).ToList(), v.Explanation,
+                (await WorkedSolutions.For(db, [v.Id])).GetValueOrDefault(v.Id));
         });
         return result!;
     }
@@ -302,6 +303,7 @@ public class PracticeService(AppDbContext db, ICurrentUser me, AccessService acc
             s.FinishedAt = DateTime.UtcNow;
         });
         var vs = await Versions(session!);
+        var worked = await WorkedSolutions.For(db, vs.Keys);
         var review = new List<ReviewItemDto>();
         // Answer keys of premium items are only revealed while premium access is still active (refund/expiry hides them;
         // the score is still returned).
@@ -322,7 +324,8 @@ public class PracticeService(AppDbContext db, ICurrentUser me, AccessService acc
             }
             review.Add(new ReviewItemDto(item.Id, item.SortOrder, v.Type, v.Stem, v.Explanation, item.Points ?? 0, item.Points == 1m, selected,
                 opts.Where(o => o.IsCorrect).Select(o => o.Id).ToList(),
-                opts.Select(o => new ReviewOptionDto(o.Id, o.Text, o.IsCorrect, selected.Contains(o.Id), o.Rationale)).ToList()));
+                opts.Select(o => new ReviewOptionDto(o.Id, o.Text, o.IsCorrect, selected.Contains(o.Id), o.Rationale)).ToList(),
+                worked.GetValueOrDefault(v.Id)));
         }
         return new PracticeResult(session.Id, session.Items.Count, session.Items.Count(i => i.SelectedOptionIds != ""), session.Items.Count(i => i.Points == 1m),
             session.Items.Sum(i => i.Points ?? 0), review, true, Scoring.ReadinessDisclaimer);

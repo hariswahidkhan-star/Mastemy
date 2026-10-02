@@ -12,6 +12,8 @@ public class AssessmentPolicy
     public int MaxPauseMinutes { get; set; }
     /// <summary>Maximum times one learner may be shown the same question across their attempts of this assessment (null = unlimited).</summary>
     public int? MaxExposuresPerQuestion { get; set; }
+    /// <summary>Exam mode only: points deducted per wrong (answered, zero-credit) item; 0..1, default 0. Attempt total floors at 0.</summary>
+    public decimal NegativeMarkingPerWrong { get; set; }
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }
 
@@ -41,6 +43,8 @@ public class AttemptExtension
     public DateTime? PausedAt { get; set; }
     public int PausedSecondsUsed { get; set; }
     public int PauseAllowanceSeconds { get; set; }
+    /// <summary>Negative-marking rate frozen at attempt start (published policy); applied at scoring and regrade.</summary>
+    public decimal NegativeMarkingPerWrong { get; set; }
 }
 
 public class AttemptPause

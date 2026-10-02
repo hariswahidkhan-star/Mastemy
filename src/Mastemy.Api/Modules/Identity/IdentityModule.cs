@@ -13,6 +13,12 @@ public static class IdentityModule
         s.AddScoped<PasswordService>();
         s.AddScoped<MfaService>();
         s.AddScoped<SessionService>();
+        s.AddScoped<RefreshCookies>();
+        s.AddScoped<MfaResetService>();
+        s.AddScoped<SupportService>();
+        // "Support" policy (read-only user/order lookup, resend verification) is owned by this module.
+        s.Configure<Microsoft.AspNetCore.Authorization.AuthorizationOptions>(o =>
+            o.AddPolicy(SupportPolicy.Name, p => p.RequireRole(SupportPolicy.Roles_)));
         // Access tokens are re-checked against the DB (session live, user active, roles current) with a <=5s per-process cache.
         s.AddMemoryCache();
         s.AddSingleton<TokenSessionValidator>();

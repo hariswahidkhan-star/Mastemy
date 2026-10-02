@@ -59,6 +59,7 @@ public class QuestionReuseService(AppDbContext db, ICurrentUser me, AccessServic
         var taken = new HashSet<string>(await db.Questions.AsNoTracking().Where(q => q.CourseId == targetCourseId).Select(q => q.ExternalId).ToListAsync(),
             StringComparer.OrdinalIgnoreCase);
         var created = new List<Question>();
+        var worked = await WorkedSolutions.For(db, versions.Values.Select(x => x.Id));
         await using var tx = await db.Database.BeginTransactionAsync();
         foreach (var s in sources.OrderBy(s => ids.IndexOf(s.Id)))
         {
@@ -70,7 +71,9 @@ public class QuestionReuseService(AppDbContext db, ICurrentUser me, AccessServic
                 QuestionRules.SplitTags(v.Tags), v.SourceReference, v.AllowShuffle, null, null,
                 v.Options.OrderBy(o => o.SortOrder).Select(o => new OptionInput(null, o.Text, o.IsCorrect, o.Rationale)).ToList());
             db.Questions.Add(q);
-            db.QuestionVersions.Add(QuestionService.NewVersion(q.Id, 1, input2, uid));
+            var copy = QuestionService.NewVersion(q.Id, 1, input2, uid);
+            db.QuestionVersions.Add(copy);
+            if (worked.TryGetValue(v.Id, out var ws)) await WorkedSolutions.Stage(db, copy.Id, ws);
             db.Set<QuestionMeta>().Add(new QuestionMeta
             {
                 QuestionId = q.Id, CognitiveLevel = metas.GetValueOrDefault(s.Id)?.CognitiveLevel,
