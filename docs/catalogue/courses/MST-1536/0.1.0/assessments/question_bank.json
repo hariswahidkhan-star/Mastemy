@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1536",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 524,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1536-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What happens when you send a message to nil in Objective-C, for example [nilObject doSomething]?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Nothing happens and the expression returns nil/zero, with no crash",
+     "correct": true,
+     "rationale": "Correct: messaging nil is a no-op that yields nil or zero, a defining Objective-C behaviour."
+    },
+    {
+     "key": "B",
+     "text": "The program always crashes with a null-pointer error",
+     "correct": false,
+     "rationale": "Unlike a C null dereference, messaging nil is safe in Objective-C."
+    },
+    {
+     "key": "C",
+     "text": "The message is queued until the object becomes non-nil",
+     "correct": false,
+     "rationale": "There is no queuing; the message is simply ignored."
+    },
+    {
+     "key": "D",
+     "text": "The compiler rejects it",
+     "correct": false,
+     "rationale": "It compiles and runs; the runtime handles nil."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: messaging nil is a no-op that yields nil or zero, a defining Objective-C behaviour.",
+   "outcome_refs": [
+    "MST-1536-D06.02"
+   ],
+   "domain_ref": "Error handling and nil",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1536-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about memory management under ARC are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A weak reference does not keep its target alive and is set to nil when the target is deallocated",
+     "correct": true,
+     "rationale": "Correct: weak avoids ownership and is zeroed automatically on deallocation."
+    },
+    {
+     "key": "B",
+     "text": "Two objects holding strong references to each other can form a retain cycle",
+     "correct": true,
+     "rationale": "Correct: mutual strong references prevent deallocation, leaking memory."
+    },
+    {
+     "key": "C",
+     "text": "Under ARC you must still call retain and release manually",
+     "correct": false,
+     "rationale": "ARC inserts retain/release automatically; manual calls are disallowed."
+    },
+    {
+     "key": "D",
+     "text": "strong and weak behave identically",
+     "correct": false,
+     "rationale": "strong keeps the target alive; weak does not."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: weak avoids ownership and is zeroed automatically on deallocation.; Correct: mutual strong references prevent deallocation, leaking memory.",
+   "outcome_refs": [
+    "MST-1536-D03.02"
+   ],
+   "domain_ref": "Properties and memory",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1536-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a category add to an existing Objective-C class?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Additional methods to the class without subclassing it",
+     "correct": true,
+     "rationale": "Correct: a category extends an existing class with new methods at runtime."
+    },
+    {
+     "key": "B",
+     "text": "New instance variables guaranteed to be stored",
+     "correct": false,
+     "rationale": "Categories cannot add stored instance variables safely; they add methods."
+    },
+    {
+     "key": "C",
+     "text": "A separate copy of the class hierarchy",
+     "correct": false,
+     "rationale": "A category modifies the existing class, not a copy."
+    },
+    {
+     "key": "D",
+     "text": "Compile-time constants only",
+     "correct": false,
+     "rationale": "Categories add methods, not just constants."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a category extends an existing class with new methods at runtime.",
+   "outcome_refs": [
+    "MST-1536-D05.02"
+   ],
+   "domain_ref": "Protocols, categories and blocks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

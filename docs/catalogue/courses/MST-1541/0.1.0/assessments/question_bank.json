@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1541",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 482,
+  "lesson_check_items": 96,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1541-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement is logically equivalent to the implication p -> q?",
+   "options": [
+    {
+     "key": "A",
+     "text": "not q -> not p (the contrapositive)",
+     "correct": true,
+     "rationale": "Correct: an implication and its contrapositive are logically equivalent."
+    },
+    {
+     "key": "B",
+     "text": "q -> p (the converse)",
+     "correct": false,
+     "rationale": "The converse is not equivalent to the original implication."
+    },
+    {
+     "key": "C",
+     "text": "not p -> not q (the inverse)",
+     "correct": false,
+     "rationale": "The inverse is not equivalent to the original implication."
+    },
+    {
+     "key": "D",
+     "text": "p and q",
+     "correct": false,
+     "rationale": "A conjunction is not equivalent to an implication."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an implication and its contrapositive are logically equivalent.",
+   "outcome_refs": [
+    "MST-1541-D01.01"
+   ],
+   "domain_ref": "Logic and proofs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1541-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which properties must a relation have to be an equivalence relation? (Select TWO) -- choose two of the three required.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reflexivity",
+     "correct": true,
+     "rationale": "Correct: an equivalence relation must be reflexive (and also symmetric and transitive)."
+    },
+    {
+     "key": "B",
+     "text": "Transitivity",
+     "correct": true,
+     "rationale": "Correct: transitivity is one of the three required properties of an equivalence relation."
+    },
+    {
+     "key": "C",
+     "text": "Antisymmetry",
+     "correct": false,
+     "rationale": "Antisymmetry characterises partial orders, not equivalence relations."
+    },
+    {
+     "key": "D",
+     "text": "Totality (every pair comparable)",
+     "correct": false,
+     "rationale": "Totality is a property of total orders, not required for equivalence relations."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an equivalence relation must be reflexive (and also symmetric and transitive).; Correct: transitivity is one of the three required properties of an equivalence relation.",
+   "outcome_refs": [
+    "MST-1541-D02.02"
+   ],
+   "domain_ref": "Sets, relations and functions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1541-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You arrange 4 distinct books on a shelf where order matters and no repetition is allowed. How many arrangements of all 4 are there?",
+   "options": [
+    {
+     "key": "A",
+     "text": "24",
+     "correct": true,
+     "rationale": "Correct: 4! = 4x3x2x1 = 24 permutations of 4 distinct items."
+    },
+    {
+     "key": "B",
+     "text": "16",
+     "correct": false,
+     "rationale": "16 is 4^2, which would allow repetition; here items are distinct and used once."
+    },
+    {
+     "key": "C",
+     "text": "12",
+     "correct": false,
+     "rationale": "12 is 4x3, the number of ordered pairs, not full arrangements of all four."
+    },
+    {
+     "key": "D",
+     "text": "4",
+     "correct": false,
+     "rationale": "4 counts single choices, not full orderings."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 4! = 4x3x2x1 = 24 permutations of 4 distinct items.",
+   "outcome_refs": [
+    "MST-1541-D04.01"
+   ],
+   "domain_ref": "Combinatorics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

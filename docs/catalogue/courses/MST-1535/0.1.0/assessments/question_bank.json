@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1535",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 524,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1535-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Perl, evaluating an array in scalar context (for example my $n = @items) gives what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The number of elements in the array",
+     "correct": true,
+     "rationale": "Correct: an array in scalar context yields its element count."
+    },
+    {
+     "key": "B",
+     "text": "The last element of the array",
+     "correct": false,
+     "rationale": "That would be $items[-1]; scalar context gives the count, not the last element."
+    },
+    {
+     "key": "C",
+     "text": "A reference to the array",
+     "correct": false,
+     "rationale": "A reference requires the backslash operator, not scalar context."
+    },
+    {
+     "key": "D",
+     "text": "The first element",
+     "correct": false,
+     "rationale": "Scalar context gives the count, not the first element."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an array in scalar context yields its element count.",
+   "outcome_refs": [
+    "MST-1535-D02.02"
+   ],
+   "domain_ref": "Scalars, arrays and hashes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1535-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which practices improve the safety of a Perl script? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Adding use strict to require declared variables",
+     "correct": true,
+     "rationale": "Correct: use strict catches undeclared variables and many typos at compile time."
+    },
+    {
+     "key": "B",
+     "text": "Adding use warnings to surface risky constructs",
+     "correct": true,
+     "rationale": "Correct: use warnings reports suspicious operations such as uninitialised values."
+    },
+    {
+     "key": "C",
+     "text": "Using two-argument open for file access",
+     "correct": false,
+     "rationale": "Two-argument open is less safe; three-argument open avoids mode/filename ambiguity."
+    },
+    {
+     "key": "D",
+     "text": "Ignoring the return value of open",
+     "correct": false,
+     "rationale": "Ignoring open's return value hides failures and is unsafe."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: use strict catches undeclared variables and many typos at compile time.; Correct: use warnings reports suspicious operations such as uninitialised values.",
+   "outcome_refs": [
+    "MST-1535-D01.01"
+   ],
+   "domain_ref": "Getting started with Perl",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1535-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which operator should be used to compare two strings for equality in Perl?",
+   "options": [
+    {
+     "key": "A",
+     "text": "eq",
+     "correct": true,
+     "rationale": "Correct: eq compares strings; == is for numeric comparison."
+    },
+    {
+     "key": "B",
+     "text": "==",
+     "correct": false,
+     "rationale": "== compares numbers and would convert strings numerically, often giving wrong results."
+    },
+    {
+     "key": "C",
+     "text": "=",
+     "correct": false,
+     "rationale": "= is assignment, not comparison."
+    },
+    {
+     "key": "D",
+     "text": "===",
+     "correct": false,
+     "rationale": "Perl has no === operator."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: eq compares strings; == is for numeric comparison.",
+   "outcome_refs": [
+    "MST-1535-D03.02"
+   ],
+   "domain_ref": "Control flow and operators",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1546",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 482,
+  "lesson_check_items": 96,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1546-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the difference between concurrency and parallelism?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Concurrency is structuring work as independent tasks; parallelism is executing tasks literally at the same time on multiple cores",
+     "correct": true,
+     "rationale": "Correct: concurrency is about composition/structure, parallelism about simultaneous execution; you can have one without the other."
+    },
+    {
+     "key": "B",
+     "text": "They are the same thing",
+     "correct": false,
+     "rationale": "They are distinct: concurrent code need not run in parallel, and vice versa."
+    },
+    {
+     "key": "C",
+     "text": "Parallelism only works on a single core",
+     "correct": false,
+     "rationale": "Parallelism requires multiple execution units to run simultaneously."
+    },
+    {
+     "key": "D",
+     "text": "Concurrency requires multiple machines",
+     "correct": false,
+     "rationale": "Concurrency is possible on a single core via interleaving."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: concurrency is about composition/structure, parallelism about simultaneous execution; you can have one without the other.",
+   "outcome_refs": [
+    "MST-1546-D01.01"
+   ],
+   "domain_ref": "Concurrency foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1546-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about data races are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "count++ is typically not atomic; it is a read-modify-write that can interleave",
+     "correct": true,
+     "rationale": "Correct: the increment is multiple steps, so concurrent threads can lose updates."
+    },
+    {
+     "key": "B",
+     "text": "A data race can be removed by making the operation atomic or guarding it with a lock",
+     "correct": true,
+     "rationale": "Correct: atomics or mutual exclusion restore correctness for shared mutable state."
+    },
+    {
+     "key": "C",
+     "text": "Reading a shared variable from many threads while one writes it is always safe",
+     "correct": false,
+     "rationale": "An unsynchronised write with concurrent reads is a data race."
+    },
+    {
+     "key": "D",
+     "text": "Data races only occur across separate processes",
+     "correct": false,
+     "rationale": "Data races occur between threads sharing memory within a process."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the increment is multiple steps, so concurrent threads can lose updates.; Correct: atomics or mutual exclusion restore correctness for shared mutable state.",
+   "outcome_refs": [
+    "MST-1546-D02.01"
+   ],
+   "domain_ref": "Threads and race conditions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1546-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A program is 90% parallelisable and 10% strictly serial. By Amdahl's law, what is the maximum speedup with unlimited cores?",
+   "options": [
+    {
+     "key": "A",
+     "text": "10x",
+     "correct": true,
+     "rationale": "Correct: with the serial fraction s = 0.1, maximum speedup is 1/s = 10x regardless of core count."
+    },
+    {
+     "key": "B",
+     "text": "100x",
+     "correct": false,
+     "rationale": "The serial 10% caps speedup at 1/0.1 = 10x, not 100x."
+    },
+    {
+     "key": "C",
+     "text": "Unlimited",
+     "correct": false,
+     "rationale": "The serial fraction bounds speedup; it cannot be unlimited."
+    },
+    {
+     "key": "D",
+     "text": "0.9x",
+     "correct": false,
+     "rationale": "Speedup is greater than 1; 0.9x would be a slowdown."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with the serial fraction s = 0.1, maximum speedup is 1/s = 10x regardless of core count.",
+   "outcome_refs": [
+    "MST-1546-D07.02"
+   ],
+   "domain_ref": "Parallel algorithms",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

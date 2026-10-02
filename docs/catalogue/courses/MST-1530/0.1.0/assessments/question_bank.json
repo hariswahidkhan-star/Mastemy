@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1530",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 524,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1530-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Under Dart sound null safety, what does declaring a variable as String? (with a question mark) mean?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The variable may hold a String or null, and the compiler forces you to handle the null case",
+     "correct": true,
+     "rationale": "Correct: the ? makes the type nullable and the compiler requires null-aware handling before use."
+    },
+    {
+     "key": "B",
+     "text": "The variable can never be null",
+     "correct": false,
+     "rationale": "That describes a non-nullable String, written without the question mark."
+    },
+    {
+     "key": "C",
+     "text": "The variable is automatically initialised to an empty string",
+     "correct": false,
+     "rationale": "Nullable variables default to null, not an empty string."
+    },
+    {
+     "key": "D",
+     "text": "The question mark converts the value to a number if possible",
+     "correct": false,
+     "rationale": "? marks nullability; it performs no conversion."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the ? makes the type nullable and the compiler requires null-aware handling before use.",
+   "outcome_refs": [
+    "MST-1530-D02.01"
+   ],
+   "domain_ref": "Types and null safety",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1530-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about async/await in Dart are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "await suspends the current function until the Future completes, without blocking the event loop",
+     "correct": true,
+     "rationale": "Correct: await yields control back to the event loop and resumes when the Future resolves."
+    },
+    {
+     "key": "B",
+     "text": "A function using await must be marked async",
+     "correct": true,
+     "rationale": "Correct: await is only allowed inside a function declared async."
+    },
+    {
+     "key": "C",
+     "text": "async/await runs the awaited work on a separate OS thread",
+     "correct": false,
+     "rationale": "Dart is single-threaded per isolate; async does not create threads."
+    },
+    {
+     "key": "D",
+     "text": "await turns a synchronous function into a parallel loop",
+     "correct": false,
+     "rationale": "await does not parallelise loops; it sequences asynchronous steps."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: await yields control back to the event loop and resumes when the Future resolves.; Correct: await is only allowed inside a function declared async.",
+   "outcome_refs": [
+    "MST-1530-D06.01"
+   ],
+   "domain_ref": "Asynchronous Dart",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1530-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main purpose of a mixin in Dart?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To reuse a set of methods across classes without forcing a single inheritance chain",
+     "correct": true,
+     "rationale": "Correct: mixins let unrelated classes share behaviour via with, avoiding deep inheritance."
+    },
+    {
+     "key": "B",
+     "text": "To store private database rows",
+     "correct": false,
+     "rationale": "Mixins are a code-reuse mechanism, not storage."
+    },
+    {
+     "key": "C",
+     "text": "To mark a class as unable to be instantiated",
+     "correct": false,
+     "rationale": "That is the role of abstract, not a mixin."
+    },
+    {
+     "key": "D",
+     "text": "To make all fields nullable automatically",
+     "correct": false,
+     "rationale": "Mixins do not change nullability of fields."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: mixins let unrelated classes share behaviour via with, avoiding deep inheritance.",
+   "outcome_refs": [
+    "MST-1530-D05.02"
+   ],
+   "domain_ref": "Object-oriented Dart",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

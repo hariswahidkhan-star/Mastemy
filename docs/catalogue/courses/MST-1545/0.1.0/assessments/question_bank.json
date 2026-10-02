@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1545",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 482,
+  "lesson_check_items": 96,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1545-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does a relational database read and write data in fixed-size pages rather than individual rows from disk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Disk and OS I/O operate efficiently on blocks, so page-level I/O amortises the cost of access",
+     "correct": true,
+     "rationale": "Correct: block-oriented I/O makes per-row disk access wasteful; pages batch many rows per transfer and fit the buffer pool."
+    },
+    {
+     "key": "B",
+     "text": "Rows cannot be addressed individually in any database",
+     "correct": false,
+     "rationale": "Rows are addressable logically; the page is the physical I/O unit for efficiency."
+    },
+    {
+     "key": "C",
+     "text": "Pages encrypt the data automatically",
+     "correct": false,
+     "rationale": "Paging is about I/O efficiency, not encryption."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for indexes",
+     "correct": false,
+     "rationale": "Paging does not replace indexes; both serve different roles."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: block-oriented I/O makes per-row disk access wasteful; pages batch many rows per transfer and fit the buffer pool.",
+   "outcome_refs": [
+    "MST-1545-D01.01"
+   ],
+   "domain_ref": "Storage and the memory hierarchy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1545-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about B+-tree indexes are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "They keep keys sorted, so they support range scans efficiently",
+     "correct": true,
+     "rationale": "Correct: ordered leaves let a B+-tree serve range queries as well as point lookups."
+    },
+    {
+     "key": "B",
+     "text": "Each extra index adds write and storage overhead",
+     "correct": true,
+     "rationale": "Correct: every index must be maintained on insert/update, so indexing everything hurts writes."
+    },
+    {
+     "key": "C",
+     "text": "A B+-tree gives constant-time lookup independent of size",
+     "correct": false,
+     "rationale": "Lookup is logarithmic in the number of keys, not constant."
+    },
+    {
+     "key": "D",
+     "text": "B+-trees cannot be used as a clustered index",
+     "correct": false,
+     "rationale": "Clustered indexes are commonly implemented as B+-trees."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: ordered leaves let a B+-tree serve range queries as well as point lookups.; Correct: every index must be maintained on insert/update, so indexing everything hurts writes.",
+   "outcome_refs": [
+    "MST-1545-D02.01"
+   ],
+   "domain_ref": "Indexing with B-trees",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1545-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which isolation level prevents dirty reads but still allows non-repeatable reads?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read Committed",
+     "correct": true,
+     "rationale": "Correct: Read Committed blocks dirty reads but permits non-repeatable reads and phantoms."
+    },
+    {
+     "key": "B",
+     "text": "Read Uncommitted",
+     "correct": false,
+     "rationale": "Read Uncommitted allows dirty reads, so it does not prevent them."
+    },
+    {
+     "key": "C",
+     "text": "Serializable",
+     "correct": false,
+     "rationale": "Serializable prevents non-repeatable reads and phantoms as well, so it is stricter than asked."
+    },
+    {
+     "key": "D",
+     "text": "No isolation level prevents dirty reads",
+     "correct": false,
+     "rationale": "Read Committed and higher prevent dirty reads."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Read Committed blocks dirty reads but permits non-repeatable reads and phantoms.",
+   "outcome_refs": [
+    "MST-1545-D06.01"
+   ],
+   "domain_ref": "Transactions and ACID",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

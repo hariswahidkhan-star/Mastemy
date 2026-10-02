@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0934",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 440,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0934-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is issuing a SELECT statement inside a LOOP over an internal table usually a performance problem in ABAP?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It sends one database round trip per loop pass instead of a single set-based query",
+     "correct": true,
+     "rationale": "Correct: each pass crosses to the database server, so N passes cost N round trips; a single joined/array SELECT does the work in one."
+    },
+    {
+     "key": "B",
+     "text": "SELECT is not allowed inside a LOOP and raises a syntax error",
+     "correct": false,
+     "rationale": "It is syntactically allowed; the issue is performance, not a syntax error."
+    },
+    {
+     "key": "C",
+     "text": "Internal tables cannot be read while a SELECT is open",
+     "correct": false,
+     "rationale": "Internal tables can be read freely; this is not the reason."
+    },
+    {
+     "key": "D",
+     "text": "The database automatically caches the result so the loop is always fast",
+     "correct": false,
+     "rationale": "No such guarantee exists; repeated round trips dominate the cost."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: each pass crosses to the database server, so N passes cost N round trips; a single joined/array SELECT does the work in one.",
+   "outcome_refs": [
+    "MST-0934-D05.01"
+   ],
+   "domain_ref": "Open SQL and database access",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0934-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about internal table types in ABAP are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A hashed table gives near-constant-time access by its unique key",
+     "correct": true,
+     "rationale": "Correct: hashed tables use a hash of the unique key for fast single-row access."
+    },
+    {
+     "key": "B",
+     "text": "A sorted table keeps its rows ordered by the table key as rows are inserted",
+     "correct": true,
+     "rationale": "Correct: a sorted table maintains key order automatically and supports binary search."
+    },
+    {
+     "key": "C",
+     "text": "A standard table guarantees unique keys automatically",
+     "correct": false,
+     "rationale": "Standard tables allow duplicates; uniqueness is not enforced."
+    },
+    {
+     "key": "D",
+     "text": "A hashed table can be read efficiently by a non-key field",
+     "correct": false,
+     "rationale": "Hashed access is only efficient by the full unique key, not by arbitrary fields."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: hashed tables use a hash of the unique key for fast single-row access.; Correct: a sorted table maintains key order automatically and supports binary search.",
+   "outcome_refs": [
+    "MST-0934-D03.01"
+   ],
+   "domain_ref": "Internal tables and data processing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0934-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the ABAP Dictionary, what is the primary role of a domain?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It defines the technical attributes (type, length, value range) reused by data elements",
+     "correct": true,
+     "rationale": "Correct: a domain holds the technical definition and optional value list that data elements reference."
+    },
+    {
+     "key": "B",
+     "text": "It stores the business table rows at runtime",
+     "correct": false,
+     "rationale": "Rows are stored in transparent tables, not domains."
+    },
+    {
+     "key": "C",
+     "text": "It is the screen layout for a selection screen",
+     "correct": false,
+     "rationale": "Screen layout is unrelated to a Dictionary domain."
+    },
+    {
+     "key": "D",
+     "text": "It is a user authorisation object",
+     "correct": false,
+     "rationale": "Authorisation objects are separate security metadata, not domains."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a domain holds the technical definition and optional value list that data elements reference.",
+   "outcome_refs": [
+    "MST-0934-D04.01"
+   ],
+   "domain_ref": "The ABAP Dictionary",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1531",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 524,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1531-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What fundamentally flows between cmdlets in a PowerShell pipeline?",
+   "options": [
+    {
+     "key": "A",
+     "text": ".NET objects with properties and methods",
+     "correct": true,
+     "rationale": "Correct: PowerShell passes rich objects, so downstream cmdlets can select and filter by property."
+    },
+    {
+     "key": "B",
+     "text": "Only plain lines of text",
+     "correct": false,
+     "rationale": "Traditional shells pass text; PowerShell passes objects."
+    },
+    {
+     "key": "C",
+     "text": "File handles",
+     "correct": false,
+     "rationale": "File handles are not what the pipeline carries."
+    },
+    {
+     "key": "D",
+     "text": "Compiled binaries",
+     "correct": false,
+     "rationale": "The pipeline carries data objects, not executables."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: PowerShell passes rich objects, so downstream cmdlets can select and filter by property.",
+   "outcome_refs": [
+    "MST-1531-D02.01"
+   ],
+   "domain_ref": "The object pipeline",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1531-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about error handling in PowerShell are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "try/catch reliably catches a non-terminating error only if you add -ErrorAction Stop",
+     "correct": true,
+     "rationale": "Correct: non-terminating errors must be escalated to terminating with -ErrorAction Stop (or $ErrorActionPreference) to be caught."
+    },
+    {
+     "key": "B",
+     "text": "A terminating error stops the current pipeline and can be caught by catch",
+     "correct": true,
+     "rationale": "Correct: terminating errors transfer control to the catch block."
+    },
+    {
+     "key": "C",
+     "text": "catch blocks run even when no error occurred",
+     "correct": false,
+     "rationale": "catch runs only when a terminating error is thrown in the try block."
+    },
+    {
+     "key": "D",
+     "text": "Write-Error always stops the script",
+     "correct": false,
+     "rationale": "Write-Error produces a non-terminating error by default and does not stop the script."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: non-terminating errors must be escalated to terminating with -ErrorAction Stop (or $ErrorActionPreference) to be caught.; Correct: terminating errors transfer control to the catch block.",
+   "outcome_refs": [
+    "MST-1531-D07.01"
+   ],
+   "domain_ref": "Errors, scripts and modules",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1531-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "By default, how does the -eq comparison operator treat letter case for strings?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Case-insensitive",
+     "correct": true,
+     "rationale": "Correct: -eq is case-insensitive by default; use -ceq for a case-sensitive comparison."
+    },
+    {
+     "key": "B",
+     "text": "Case-sensitive",
+     "correct": false,
+     "rationale": "That is -ceq; the plain -eq ignores case."
+    },
+    {
+     "key": "C",
+     "text": "It throws an error on strings",
+     "correct": false,
+     "rationale": "-eq compares strings without error."
+    },
+    {
+     "key": "D",
+     "text": "It only compares the first character",
+     "correct": false,
+     "rationale": "-eq compares the whole string value."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: -eq is case-insensitive by default; use -ceq for a case-sensitive comparison.",
+   "outcome_refs": [
+    "MST-1531-D03.02"
+   ],
+   "domain_ref": "Variables, types and operators",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

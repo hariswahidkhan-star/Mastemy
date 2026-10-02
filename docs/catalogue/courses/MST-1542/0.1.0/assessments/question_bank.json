@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1542",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 482,
+  "lesson_check_items": 96,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1542-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What distinguishes kernel mode from user mode?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Kernel mode can execute privileged instructions and access hardware directly; user mode cannot",
+     "correct": true,
+     "rationale": "Correct: the privilege separation protects the system; user code must request services via system calls."
+    },
+    {
+     "key": "B",
+     "text": "User mode is faster because it skips all checks",
+     "correct": false,
+     "rationale": "User mode is restricted, not a performance tier; privilege is the distinction."
+    },
+    {
+     "key": "C",
+     "text": "Kernel mode runs only at boot",
+     "correct": false,
+     "rationale": "The kernel runs throughout operation whenever privileged work is needed."
+    },
+    {
+     "key": "D",
+     "text": "They differ only in which language the code is written in",
+     "correct": false,
+     "rationale": "The distinction is privilege level, not programming language."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the privilege separation protects the system; user code must request services via system calls.",
+   "outcome_refs": [
+    "MST-1542-D01.01"
+   ],
+   "domain_ref": "OS foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1542-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about threads versus processes are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Threads within a process share the same address space",
+     "correct": true,
+     "rationale": "Correct: threads share code, heap and globals, which is why synchronisation matters."
+    },
+    {
+     "key": "B",
+     "text": "Creating a thread is generally cheaper than creating a process",
+     "correct": true,
+     "rationale": "Correct: threads avoid duplicating the full address space, so they are lighter weight."
+    },
+    {
+     "key": "C",
+     "text": "Each thread has its own completely separate address space",
+     "correct": false,
+     "rationale": "Separate address spaces belong to processes, not threads of one process."
+    },
+    {
+     "key": "D",
+     "text": "Processes always share memory by default",
+     "correct": false,
+     "rationale": "Processes are isolated by default; sharing requires explicit mechanisms."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: threads share code, heap and globals, which is why synchronisation matters.; Correct: threads avoid duplicating the full address space, so they are lighter weight.",
+   "outcome_refs": [
+    "MST-1542-D02.02"
+   ],
+   "domain_ref": "Processes and threads",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1542-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which set of conditions must all hold for a deadlock to be possible?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Mutual exclusion, hold-and-wait, no preemption, and circular wait",
+     "correct": true,
+     "rationale": "Correct: these four Coffman conditions must all hold simultaneously for deadlock."
+    },
+    {
+     "key": "B",
+     "text": "Only mutual exclusion",
+     "correct": false,
+     "rationale": "Mutual exclusion alone does not cause deadlock; all four conditions are needed."
+    },
+    {
+     "key": "C",
+     "text": "High CPU utilisation and low memory",
+     "correct": false,
+     "rationale": "Resource pressure is not the formal condition for deadlock."
+    },
+    {
+     "key": "D",
+     "text": "A single process using a single resource",
+     "correct": false,
+     "rationale": "Deadlock requires a circular wait among multiple processes/resources."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: these four Coffman conditions must all hold simultaneously for deadlock.",
+   "outcome_refs": [
+    "MST-1542-D05.01"
+   ],
+   "domain_ref": "Deadlocks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

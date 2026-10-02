@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1534",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 524,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1534-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In MATLAB, what is the difference between A*B and A.*B for matrices of compatible size?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A*B is matrix multiplication; A.*B multiplies corresponding elements",
+     "correct": true,
+     "rationale": "Correct: * is the linear-algebra matrix product, while .* is element-wise."
+    },
+    {
+     "key": "B",
+     "text": "They are identical",
+     "correct": false,
+     "rationale": "They differ: one is a matrix product, the other element-wise."
+    },
+    {
+     "key": "C",
+     "text": "A.*B is matrix multiplication; A*B is element-wise",
+     "correct": false,
+     "rationale": "This reverses the two operators."
+    },
+    {
+     "key": "D",
+     "text": "A*B only works on scalars",
+     "correct": false,
+     "rationale": "A*B is defined for conformable matrices, not only scalars."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: * is the linear-algebra matrix product, while .* is element-wise.",
+   "outcome_refs": [
+    "MST-1534-D03.01"
+   ],
+   "domain_ref": "Operators and vectorisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1534-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about MATLAB arrays are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Array indexing starts at 1, not 0",
+     "correct": true,
+     "rationale": "Correct: the first element of an array is A(1)."
+    },
+    {
+     "key": "B",
+     "text": "The colon operator can select an entire row or column",
+     "correct": true,
+     "rationale": "Correct: A(2,:) selects the whole second row."
+    },
+    {
+     "key": "C",
+     "text": "Negative indices count from the end as in some languages",
+     "correct": false,
+     "rationale": "MATLAB uses the end keyword, not negative indices."
+    },
+    {
+     "key": "D",
+     "text": "Scalars cannot be stored in arrays",
+     "correct": false,
+     "rationale": "A scalar is simply a 1x1 array in MATLAB."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the first element of an array is A(1).; Correct: A(2,:) selects the whole second row.",
+   "outcome_refs": [
+    "MST-1534-D02.01"
+   ],
+   "domain_ref": "Matrices and arrays",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1534-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is vectorising a computation usually preferred over an equivalent element-by-element for loop in MATLAB?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Vectorised operations run in optimised library code over whole arrays, so they are typically much faster",
+     "correct": true,
+     "rationale": "Correct: MATLAB's array operations are implemented in fast compiled routines, avoiding interpreter overhead per element."
+    },
+    {
+     "key": "B",
+     "text": "Loops are not allowed in MATLAB",
+     "correct": false,
+     "rationale": "Loops are allowed; vectorisation is a performance preference."
+    },
+    {
+     "key": "C",
+     "text": "Vectorisation changes the numerical result",
+     "correct": false,
+     "rationale": "It produces the same result, just faster."
+    },
+    {
+     "key": "D",
+     "text": "Vectorised code always uses less memory",
+     "correct": false,
+     "rationale": "Vectorisation can use more memory; the main benefit is speed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: MATLAB's array operations are implemented in fast compiled routines, avoiding interpreter overhead per element.",
+   "outcome_refs": [
+    "MST-1534-D03.02"
+   ],
+   "domain_ref": "Operators and vectorisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

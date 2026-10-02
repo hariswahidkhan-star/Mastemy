@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1532",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 524,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1532-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Elixir, what does the expression {:ok, value} = {:ok, 42} do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It pattern-matches, binding value to 42 because both sides share the {:ok, _} shape",
+     "correct": true,
+     "rationale": "Correct: = is the match operator; the shapes agree so value is bound to 42."
+    },
+    {
+     "key": "B",
+     "text": "It compares the two tuples and returns a boolean",
+     "correct": false,
+     "rationale": "= matches and binds; it does not return a boolean comparison."
+    },
+    {
+     "key": "C",
+     "text": "It mutates the tuple on the right",
+     "correct": false,
+     "rationale": "Elixir data is immutable; nothing is mutated."
+    },
+    {
+     "key": "D",
+     "text": "It raises because :ok is not a variable",
+     "correct": false,
+     "rationale": ":ok is a literal atom that matches the literal on the right, so no error is raised."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: = is the match operator; the shapes agree so value is bound to 42.",
+   "outcome_refs": [
+    "MST-1532-D02.01"
+   ],
+   "domain_ref": "Pattern matching and the match operator",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1532-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about processes on the BEAM are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Processes are lightweight and isolated, communicating only by message passing",
+     "correct": true,
+     "rationale": "Correct: BEAM processes share no memory and coordinate through messages."
+    },
+    {
+     "key": "B",
+     "text": "A crash in one process does not corrupt another's memory",
+     "correct": true,
+     "rationale": "Correct: isolation means one process crashing cannot corrupt another; supervisors handle restart."
+    },
+    {
+     "key": "C",
+     "text": "Processes share mutable global memory for speed",
+     "correct": false,
+     "rationale": "BEAM processes share nothing; there is no shared mutable memory."
+    },
+    {
+     "key": "D",
+     "text": "Each process maps one-to-one to an OS thread",
+     "correct": false,
+     "rationale": "The scheduler multiplexes many lightweight processes onto a few OS threads."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: BEAM processes share no memory and coordinate through messages.; Correct: isolation means one process crashing cannot corrupt another; supervisors handle restart.",
+   "outcome_refs": [
+    "MST-1532-D06.01"
+   ],
+   "domain_ref": "Processes and concurrency",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1532-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the role of a supervisor in OTP?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To monitor child processes and restart them according to a strategy when they crash",
+     "correct": true,
+     "rationale": "Correct: supervisors apply a restart strategy to keep the system healthy under the let-it-crash model."
+    },
+    {
+     "key": "B",
+     "text": "To prevent any child process from ever crashing",
+     "correct": false,
+     "rationale": "Supervisors do not prevent crashes; they react to them."
+    },
+    {
+     "key": "C",
+     "text": "To store the application's user data",
+     "correct": false,
+     "rationale": "Supervisors manage lifecycles, not data storage."
+    },
+    {
+     "key": "D",
+     "text": "To compile the project faster",
+     "correct": false,
+     "rationale": "Supervision is a runtime concern, unrelated to compilation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: supervisors apply a restart strategy to keep the system healthy under the let-it-crash model.",
+   "outcome_refs": [
+    "MST-1532-D07.02"
+   ],
+   "domain_ref": "OTP: GenServer and supervision",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

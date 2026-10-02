@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1538",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 524,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1538-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "By default, how do quantifiers such as + and * behave?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Greedily, matching as much as possible before backtracking",
+     "correct": true,
+     "rationale": "Correct: default quantifiers are greedy; add ? (for example +?) to make them lazy."
+    },
+    {
+     "key": "B",
+     "text": "Lazily, matching as little as possible",
+     "correct": false,
+     "rationale": "Lazy behaviour requires an explicit ?; the default is greedy."
+    },
+    {
+     "key": "C",
+     "text": "They match exactly one character",
+     "correct": false,
+     "rationale": "+ and * allow many repetitions, not exactly one."
+    },
+    {
+     "key": "D",
+     "text": "They are ignored outside character classes",
+     "correct": false,
+     "rationale": "Quantifiers apply to the preceding token in the pattern."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: default quantifiers are greedy; add ? (for example +?) to make them lazy.",
+   "outcome_refs": [
+    "MST-1538-D02.02"
+   ],
+   "domain_ref": "Character classes and quantifiers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1538-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about lookaround assertions are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lookaround is zero-width: it tests a condition without consuming characters",
+     "correct": true,
+     "rationale": "Correct: the matched position does not advance past the lookaround content."
+    },
+    {
+     "key": "B",
+     "text": "A negative lookahead (?!...) succeeds only when the pattern does not follow",
+     "correct": true,
+     "rationale": "Correct: (?!...) asserts that what follows does not match."
+    },
+    {
+     "key": "C",
+     "text": "Lookahead always consumes the characters it inspects",
+     "correct": false,
+     "rationale": "Lookaround is zero-width and consumes nothing."
+    },
+    {
+     "key": "D",
+     "text": "Every regex engine supports variable-length lookbehind",
+     "correct": false,
+     "rationale": "Many engines restrict lookbehind to fixed length; support varies."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the matched position does not advance past the lookaround content.; Correct: (?!...) asserts that what follows does not match.",
+   "outcome_refs": [
+    "MST-1538-D05.01"
+   ],
+   "domain_ref": "Lookaround",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1538-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main risk of a pattern like (a+)+ applied to a long non-matching string?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Catastrophic backtracking, causing runtime to explode toward exponential",
+     "correct": true,
+     "rationale": "Correct: nested quantifiers create many ways to split the input, so backtracking can blow up."
+    },
+    {
+     "key": "B",
+     "text": "It will not compile",
+     "correct": false,
+     "rationale": "The pattern compiles; the problem is runtime behaviour."
+    },
+    {
+     "key": "C",
+     "text": "It silently matches everything",
+     "correct": false,
+     "rationale": "The danger is slow backtracking, not over-matching."
+    },
+    {
+     "key": "D",
+     "text": "It uses too little memory",
+     "correct": false,
+     "rationale": "The issue is CPU time from backtracking, not under-use of memory."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: nested quantifiers create many ways to split the input, so backtracking can blow up.",
+   "outcome_refs": [
+    "MST-1538-D08.01"
+   ],
+   "domain_ref": "Performance and safety",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

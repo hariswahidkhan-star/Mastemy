@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1543",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 482,
+  "lesson_check_items": 96,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1543-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which transport protocol should a developer choose when every byte must arrive, in order, without loss?",
+   "options": [
+    {
+     "key": "A",
+     "text": "TCP, because it provides ordered, reliable, connection-oriented delivery",
+     "correct": true,
+     "rationale": "Correct: TCP handles retransmission, ordering and flow control for reliable streams."
+    },
+    {
+     "key": "B",
+     "text": "UDP, because it guarantees ordering",
+     "correct": false,
+     "rationale": "UDP is connectionless and gives no ordering or delivery guarantee."
+    },
+    {
+     "key": "C",
+     "text": "ARP, because it is faster",
+     "correct": false,
+     "rationale": "ARP is a link-layer address-resolution protocol, not a transport."
+    },
+    {
+     "key": "D",
+     "text": "ICMP, because it is reliable",
+     "correct": false,
+     "rationale": "ICMP is for control/diagnostics, not reliable data transport."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: TCP handles retransmission, ordering and flow control for reliable streams.",
+   "outcome_refs": [
+    "MST-1543-D04.02"
+   ],
+   "domain_ref": "Transport: TCP and UDP",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1543-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about HTTP are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "HTTP is stateless; state is carried via cookies or tokens",
+     "correct": true,
+     "rationale": "Correct: each request is independent, so applications add state with cookies/tokens."
+    },
+    {
+     "key": "B",
+     "text": "A 404 status means the requested resource was not found",
+     "correct": true,
+     "rationale": "Correct: 404 is the standard not-found client-error status."
+    },
+    {
+     "key": "C",
+     "text": "A 200 status indicates a server error",
+     "correct": false,
+     "rationale": "200 means success; 5xx codes indicate server errors."
+    },
+    {
+     "key": "D",
+     "text": "HTTP requires a new TCP connection for every object in HTTP/2",
+     "correct": false,
+     "rationale": "HTTP/2 multiplexes many streams over one connection, reducing connections."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: each request is independent, so applications add state with cookies/tokens.; Correct: 404 is the standard not-found client-error status.",
+   "outcome_refs": [
+    "MST-1543-D06.01"
+   ],
+   "domain_ref": "HTTP and the web",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1543-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does NAT (Network Address Translation) primarily do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Maps private internal addresses to one or more public addresses so hosts can share them",
+     "correct": true,
+     "rationale": "Correct: NAT lets many private hosts reach the internet through shared public addresses."
+    },
+    {
+     "key": "B",
+     "text": "Encrypts all traffic leaving the network",
+     "correct": false,
+     "rationale": "NAT does not encrypt; that is the role of TLS/VPNs."
+    },
+    {
+     "key": "C",
+     "text": "Assigns MAC addresses to devices",
+     "correct": false,
+     "rationale": "MAC addresses are hardware-assigned, not set by NAT."
+    },
+    {
+     "key": "D",
+     "text": "Resolves domain names to IP addresses",
+     "correct": false,
+     "rationale": "Name resolution is DNS, not NAT."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: NAT lets many private hosts reach the internet through shared public addresses.",
+   "outcome_refs": [
+    "MST-1543-D03.02"
+   ],
+   "domain_ref": "The network layer and IP",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

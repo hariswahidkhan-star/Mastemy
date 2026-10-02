@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1539",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 524,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1539-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Zig, what does the try keyword do when applied to an expression that returns an error union?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It unwraps the success value, or returns the error from the current function if one occurred",
+     "correct": true,
+     "rationale": "Correct: try is shorthand for 'catch |e| return e', propagating errors upward."
+    },
+    {
+     "key": "B",
+     "text": "It ignores any error and continues",
+     "correct": false,
+     "rationale": "try does not ignore errors; it propagates them."
+    },
+    {
+     "key": "C",
+     "text": "It retries the expression until it succeeds",
+     "correct": false,
+     "rationale": "There is no retry; try handles the error-union result once."
+    },
+    {
+     "key": "D",
+     "text": "It converts the error into null",
+     "correct": false,
+     "rationale": "That is closer to optionals; try returns the error, it does not nullify it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: try is shorthand for 'catch |e| return e', propagating errors upward.",
+   "outcome_refs": [
+    "MST-1539-D03.02"
+   ],
+   "domain_ref": "Optionals and error unions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1539-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about memory management in Zig are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Heap allocation is explicit and goes through an allocator you pass in",
+     "correct": true,
+     "rationale": "Correct: Zig has no hidden global allocator; callers provide one."
+    },
+    {
+     "key": "B",
+     "text": "defer schedules cleanup (such as freeing) to run when the scope exits",
+     "correct": true,
+     "rationale": "Correct: defer runs its statement on scope exit, pairing allocation with release."
+    },
+    {
+     "key": "C",
+     "text": "Zig uses a garbage collector to reclaim memory automatically",
+     "correct": false,
+     "rationale": "Zig has no garbage collector; memory is managed manually via allocators."
+    },
+    {
+     "key": "D",
+     "text": "Freeing memory is unnecessary because the runtime tracks it",
+     "correct": false,
+     "rationale": "There is no such runtime tracking; unfreed memory leaks."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Zig has no hidden global allocator; callers provide one.; Correct: defer runs its statement on scope exit, pairing allocation with release.",
+   "outcome_refs": [
+    "MST-1539-D05.01"
+   ],
+   "domain_ref": "Memory and allocators",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1539-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a Zig slice?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A pointer together with a length, giving a bounds-checked view of contiguous elements",
+     "correct": true,
+     "rationale": "Correct: a slice carries both a pointer and a len, enabling safe iteration and bounds checks."
+    },
+    {
+     "key": "B",
+     "text": "A single raw pointer with no length information",
+     "correct": false,
+     "rationale": "That is a plain pointer; a slice also carries a length."
+    },
+    {
+     "key": "C",
+     "text": "A garbage-collected dynamic array",
+     "correct": false,
+     "rationale": "Zig has no garbage collection; a slice is just ptr plus len."
+    },
+    {
+     "key": "D",
+     "text": "A compile-time-only type with no runtime representation",
+     "correct": false,
+     "rationale": "Slices exist at runtime as a pointer/length pair."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a slice carries both a pointer and a len, enabling safe iteration and bounds checks.",
+   "outcome_refs": [
+    "MST-1539-D04.01"
+   ],
+   "domain_ref": "Pointers, slices and arrays",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

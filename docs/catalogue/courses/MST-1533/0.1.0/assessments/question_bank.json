@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1533",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 524,
+  "lesson_check_items": 96,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1533-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Lua, which values are considered false in a boolean context?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Only nil and false",
+     "correct": true,
+     "rationale": "Correct: every other value, including 0 and the empty string, is truthy in Lua."
+    },
+    {
+     "key": "B",
+     "text": "nil, false, 0 and the empty string",
+     "correct": false,
+     "rationale": "0 and empty string are truthy in Lua, unlike many other languages."
+    },
+    {
+     "key": "C",
+     "text": "Only nil",
+     "correct": false,
+     "rationale": "false is also falsy, not just nil."
+    },
+    {
+     "key": "D",
+     "text": "Any value equal to 0",
+     "correct": false,
+     "rationale": "0 is truthy; numeric zero does not make a value false."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: every other value, including 0 and the empty string, is truthy in Lua.",
+   "outcome_refs": [
+    "MST-1533-D03.02"
+   ],
+   "domain_ref": "Control flow and operators",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1533-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which statements about Lua tables are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A single table can act as both an array and a dictionary",
+     "correct": true,
+     "rationale": "Correct: tables store integer-keyed and arbitrary-keyed entries together."
+    },
+    {
+     "key": "B",
+     "text": "The # length operator is well-defined for a sequence without nil holes",
+     "correct": true,
+     "rationale": "Correct: # gives a reliable length only for a contiguous sequence with no nil gaps."
+    },
+    {
+     "key": "C",
+     "text": "Tables enforce a fixed schema of field names",
+     "correct": false,
+     "rationale": "Tables are dynamic; any key can be added at any time."
+    },
+    {
+     "key": "D",
+     "text": "Table keys must all be strings",
+     "correct": false,
+     "rationale": "Keys may be numbers, strings, booleans or other values (not nil)."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tables store integer-keyed and arbitrary-keyed entries together.; Correct: # gives a reliable length only for a contiguous sequence with no nil gaps.",
+   "outcome_refs": [
+    "MST-1533-D04.01"
+   ],
+   "domain_ref": "Tables: the core data structure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing-keyset",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1533-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a metatable's __index metamethod let you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Provide a fallback lookup (a default or shared method table) when a key is missing",
+     "correct": true,
+     "rationale": "Correct: __index is consulted when a key is absent, which underpins defaults and prototype-based OOP."
+    },
+    {
+     "key": "B",
+     "text": "Prevent a table from being modified",
+     "correct": false,
+     "rationale": "__index controls missing-key lookup, not immutability."
+    },
+    {
+     "key": "C",
+     "text": "Automatically sort the table's keys",
+     "correct": false,
+     "rationale": "__index does not sort; it handles missing-key access."
+    },
+    {
+     "key": "D",
+     "text": "Convert the table to a string",
+     "correct": false,
+     "rationale": "That is __tostring, a different metamethod."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: __index is consulted when a key is absent, which underpins defaults and prototype-based OOP.",
+   "outcome_refs": [
+    "MST-1533-D06.01"
+   ],
+   "domain_ref": "Metatables and OOP",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
