@@ -207,6 +207,17 @@ function OrdersTable() {
                     <td>{fmtMoney(o.total, o.currency)}</td>
                     <td>
                       <CStatus status={o.status} />{' '}
+                      {o.isGift ? (
+                        <span className="small" data-testid="gift-status">
+                          {t('finalb.orders.gift')}
+                          {o.giftStatus ? (
+                            <>
+                              {' '}
+                              <CStatus status={o.giftStatus} />
+                            </>
+                          ) : null}{' '}
+                        </span>
+                      ) : null}
                       {o.refundStatus ? (
                         <span className="small">
                           {t('commerce.orders.refundStatus')} <CStatus status={o.refundStatus} />
@@ -224,8 +235,14 @@ function OrdersTable() {
                             {t('orders.requestRefund')}
                           </Button>
                         ) : null}
-                        {o.status === 'Paid' && o.items.length === 1 ? (
+                        {o.isGift &&
+                        o.status === 'Paid' &&
+                        o.giftStatus === 'Active' &&
+                        !o.giftCodeRevealed ? (
                           <GiftCodeButton order={o} />
+                        ) : null}
+                        {o.isGift && o.giftCodeRevealed ? (
+                          <span className="small muted">{t('finalb.orders.codeRevealed')}</span>
                         ) : null}
                       </div>
                     </td>

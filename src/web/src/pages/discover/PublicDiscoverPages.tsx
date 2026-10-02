@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import type { MouseEvent } from 'react';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router';
-import { api } from '../../api/client';
-import { useApiMutation, useCategories, useCourses } from '../../api/hooks';
+import { useQuery } from '@tanstack/react-query';
+import { api, qs } from '../../api/client';
+import { fbKeys } from '../../api/finalb';
+import type { NotesLibraryItemDto, PagedResult } from '../../api/finalb';
+import { useApiMutation, useCategories } from '../../api/hooks';
 import {
   CERT_KINDS,
   loc,
@@ -689,9 +692,31 @@ export function PracticePage() {
 
 export function NotesLibraryPage() {
   const { t } = useI18n();
-  const [page, setPage] = useState(1);
-  const courses = useCourses({ sort: 'updated', page });
+  const [params, setParams] = useSearchParams();
+  const q = params.get('q') ?? '';
+  const page = Math.max(1, Number(params.get('page')) || 1);
+  const [draft, setDraft] = useState(q);
+  const notes = useQuery({
+    queryKey: fbKeys.notes(q, page),
+    queryFn: () =>
+      api<PagedResult<NotesLibraryItemDto>>(
+        `/api/notes-library${qs({ q: q || undefined, page: page > 1 ? page : undefined })}`,
+      ),
+  });
   usePageMeta(t('discover.notes.title'), t('discover.notes.subtitle'));
+  const go = (next: { q?: string; page?: number }) => {
+    const sp = new URLSearchParams(params);
+    if (next.q !== undefined) {
+      if (next.q) sp.set('q', next.q);
+      else sp.delete('q');
+      sp.delete('page');
+    }
+    if (next.page !== undefined) {
+      if (next.page > 1) sp.set('page', String(next.page));
+      else sp.delete('page');
+    }
+    setParams(sp);
+  };
   return (
     <div className="container page">
       <PageHeader title={t('discover.notes.title')} subtitle={t('discover.notes.subtitle')} />
@@ -700,30 +725,47 @@ export function NotesLibraryPage() {
         <h2 className="section__title" id="nl-courses">
           {t('discover.notes.liveCourses')}
         </h2>
-        <p className="small muted">{t('discover.notes.liveNote')}</p>
-        <QueryState query={courses}>
+        <p className="small muted">{t('finalb.notes.note')}</p>
+        <form
+          role="search"
+          className="row"
+          onSubmit={(e) => {
+            e.preventDefault();
+            go({ q: draft.trim() });
+          }}
+        >
+          <Field label={t('finalb.notes.search')}>
+            <Input type="search" value={draft} onChange={(e) => setDraft(e.target.value)} />
+          </Field>
+          <Button type="submit" variant="secondary">
+            {t('finalb.notes.searchBtn')}
+          </Button>
+        </form>
+        <QueryState query={notes}>
           {(data) =>
             data.items.length === 0 ? (
-              <EmptyState title={t('free.empty')} />
+              <EmptyState title={t('finalb.notes.empty')} />
             ) : (
               <>
                 <ul className="dlist">
-                  {data.items.map((c) => (
+                  {data.items.map(({ course: c, hasNotes, lessonsWithNotes }) => (
                     <li key={c.id} className="card card--flat row row--between">
                       <span>
                         <Link to={`/courses/${c.slug}`}>
                           <strong>{c.title}</strong>
-                        </Link>
-                        {c.videoCount ? (
-                          <span className="small muted">
-                            {' '}
-                            · {t('course.videoCount', { n: c.videoCount })}
-                          </span>
-                        ) : null}
+                        </Link>{' '}
+                        <span className="small muted">
+                          ·{' '}
+                          {hasNotes
+                            ? t('finalb.notes.lessonsWithNotes', { n: lessonsWithNotes })
+                            : t('finalb.notes.noNotes')}
+                        </span>
                       </span>
-                      <Link className="btn btn--secondary btn--sm" to={`/learn/${c.slug}`}>
-                        {t('discover.notes.openNotes')}
-                      </Link>
+                      {hasNotes ? (
+                        <Link className="btn btn--secondary btn--sm" to={`/learn/${c.slug}`}>
+                          {t('discover.notes.openNotes')}
+                        </Link>
+                      ) : null}
                     </li>
                   ))}
                 </ul>
@@ -731,7 +773,7 @@ export function NotesLibraryPage() {
                   page={data.page}
                   pageSize={data.pageSize}
                   total={data.total}
-                  onPage={setPage}
+                  onPage={(p) => go({ page: p })}
                 />
               </>
             )

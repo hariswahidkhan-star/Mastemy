@@ -27,6 +27,7 @@ import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import type { TFunction } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
+import { finalbOrgTabs } from '../finalb/OrgTabs';
 
 const STAFF = ['Admin', 'SuperAdmin'] as const;
 
@@ -940,6 +941,7 @@ export function OrgPage() {
                   content: <AssignmentsTab org={o} canGrantPremium={isOrgAdmin} />,
                 },
                 { id: 'report', label: t('orgs.report'), content: <ReportTab org={o} /> },
+                ...finalbOrgTabs(o, isOrgAdmin, t),
               ]}
             />
           </>

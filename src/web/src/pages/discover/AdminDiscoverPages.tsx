@@ -4,6 +4,8 @@ import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import { api, qs } from '../../api/client';
 import { useApiMutation, useCategories } from '../../api/hooks';
+import { fbKeys } from '../../api/finalb';
+import type { LinkedCourseDto } from '../../api/finalb';
 import {
   CERT_KINDS,
   CERT_STATES,
@@ -1174,6 +1176,66 @@ function ObjectivesPanel({ cert }: { cert: CertificationAdminDto }) {
   );
 }
 
+function LinkedCourses({
+  certId,
+  onCoverage,
+  onUnlink,
+  busy,
+}: {
+  certId: string;
+  onCoverage: (c: LinkedCourseDto) => void;
+  onUnlink: (c: LinkedCourseDto) => void;
+  busy: boolean;
+}) {
+  const { t, fmtDate } = useI18n();
+  const q = useQuery({
+    queryKey: fbKeys.certCourses(certId),
+    queryFn: () => api<LinkedCourseDto[]>(`/api/admin/certifications/${certId}/courses`),
+  });
+  return (
+    <QueryState query={q}>
+      {(list) =>
+        list.length === 0 ? (
+          <p className="muted">{t('finalb.certCourses.none')}</p>
+        ) : (
+          <ul
+            className="stack"
+            style={{ listStyle: 'none', padding: 0 }}
+            aria-label={t('finalb.certCourses.title')}
+            data-testid="linked-courses"
+          >
+            {list.map((c) => (
+              <li key={c.courseId} className="card card--flat row row--between">
+                <span>
+                  {c.isLive ? (
+                    <Link to={`/courses/${c.slug}`}>{c.title}</Link>
+                  ) : (
+                    <strong>{c.title}</strong>
+                  )}{' '}
+                  <Badge tone={c.isLive ? 'success' : 'neutral'}>
+                    {c.isLive ? t('finalb.certCourses.live') : c.status}
+                  </Badge>{' '}
+                  <span className="small muted">
+                    {t('finalb.certCourses.linkedAt', { date: fmtDate(c.linkedAt) })}
+                  </span>
+                </span>
+                <span className="row">
+                  <Button size="sm" variant="ghost" onClick={() => onCoverage(c)}>
+                    {t('discover.admin.certs.coverageFor')}
+                  </Button>
+                  <Button size="sm" variant="secondary" loading={busy} onClick={() => onUnlink(c)}>
+                    {t('discover.admin.certs.unlink')}
+                  </Button>
+                </span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </QueryState>
+  );
+}
+
 function CourseLinksPanel({ cert }: { cert: CertificationAdminDto }) {
   const { t, fmtNumber } = useI18n();
   const toast = useToast();
@@ -1201,6 +1263,20 @@ function CourseLinksPanel({ cert }: { cert: CertificationAdminDto }) {
         {t('discover.admin.certs.courseLinks')}
       </h2>
       <p className="small muted">{t('discover.admin.certs.linksNote')}</p>
+      <LinkedCourses
+        certId={cert.id}
+        onCoverage={(c) => {
+          setPicked({ id: c.courseId, title: c.title });
+          setCourseId(c.courseId);
+        }}
+        onUnlink={(c) =>
+          link.mutate(
+            { courseId: c.courseId, link: false },
+            { onError: (e) => toast.error(errorMessage(e, t)) },
+          )
+        }
+        busy={link.isPending}
+      />
       <CourseSearch
         label={t('discover.admin.findCourse')}
         onPick={(c) => setPicked({ id: c.id, title: c.title })}
@@ -1993,7 +2069,13 @@ export function AdminBestsellersPage() {
                 <tbody>
                   {rows.map((r) => (
                     <tr key={r.courseId}>
-                      <td className="mono small">{r.courseId}</td>
+                      <td>
+                        {r.courseSlug ? (
+                          <Link to={`/courses/${r.courseSlug}`}>{r.courseTitle}</Link>
+                        ) : (
+                          <span className="mono small">{r.courseId}</span>
+                        )}
+                      </td>
                       <td>{fmtNumber(r.distinctBuyers)}</td>
                       <td>{fmtNumber(r.netRevenue)}</td>
                       <td>

@@ -26,6 +26,7 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { referralLink } from '../../lib/attribution';
 import { usePageMeta } from '../../lib/seo';
 import { commerceError, CStatus } from './shared';
+import { CommercePolicyPanel } from '../finalb/CommerceB';
 
 const num = (v: string): number | null => (v.trim() === '' ? null : Number(v));
 const lines = (v: string) =>
@@ -665,6 +666,7 @@ export function StudioCommercePage() {
   return (
     <div className="page">
       <PageHeader title={t('commerce.studio.title')} subtitle={t('commerce.studio.subtitle')} />
+      <CommercePolicyPanel />
       <Tabs
         label={t('commerce.studio.title')}
         value={tab}

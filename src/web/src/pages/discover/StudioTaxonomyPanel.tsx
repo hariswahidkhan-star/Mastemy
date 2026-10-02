@@ -10,6 +10,8 @@ import type {
   PublicCertificationSummaryDto,
   SkillDto,
 } from '../../api/discover';
+import { fbKeys, mappedIds } from '../../api/finalb';
+import type { CertificationMappingsDto } from '../../api/finalb';
 import { toQuestionList } from '../../api/questions';
 import type { RawQuestionDto } from '../../api/questions';
 import type { StudioCourseDto } from '../../api/types';
@@ -120,12 +122,14 @@ function SkillsEditor({ course }: { course: StudioCourseDto }) {
 
 function MappingDialog({
   course,
+  certId,
   objective,
   kind,
   onClose,
   onSaved,
 }: {
   course: StudioCourseDto;
+  certId: string;
   objective: CoverageObjectiveDto;
   kind: 'lessons' | 'questions';
   onClose: () => void;
@@ -133,6 +137,20 @@ function MappingDialog({
 }) {
   const { t } = useI18n();
   const [ids, setIds] = useState<string[]>([]);
+  // Preload the current mapping so saving edits it instead of silently replacing it.
+  const current = useQuery({
+    queryKey: fbKeys.mappings(course.id, certId),
+    queryFn: () =>
+      api<CertificationMappingsDto>(
+        `/api/studio/courses/${course.id}/certifications/${certId}/mappings`,
+      ),
+  });
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    if (loaded || !current.data) return;
+    setIds(mappedIds(current.data, objective.objectiveId, kind));
+    setLoaded(true);
+  }, [current.data, loaded, objective.objectiveId, kind]);
   const questions = useQuery({
     queryKey: ['studio', 'course', course.id, 'questions', 'mapping'],
     queryFn: () =>
@@ -150,7 +168,7 @@ function MappingDialog({
           body: { ids },
         },
       ),
-    [],
+    [fbKeys.mappings(course.id, certId)],
     onSaved,
   );
   const toggle = (id: string, on: boolean) =>
@@ -172,21 +190,31 @@ function MappingDialog({
           <Button variant="secondary" onClick={onClose}>
             {t('common.cancel')}
           </Button>
-          <Button loading={save.isPending} onClick={() => save.mutate(undefined)}>
+          <Button
+            loading={save.isPending}
+            disabled={!loaded}
+            onClick={() => save.mutate(undefined)}
+          >
             {t('discover.studio.saveMapping', { n: ids.length })}
           </Button>
         </>
       }
     >
       <p>{objective.title}</p>
-      <Notice tone="warning">
-        {t(
-          kind === 'lessons'
-            ? 'discover.studio.replaceLessons'
-            : 'discover.studio.replaceQuestions',
-          { n: currentCount },
-        )}
-      </Notice>
+      {current.isPending ? (
+        <p className="small muted">{t('common.loading')}</p>
+      ) : current.isError ? (
+        <Notice tone="danger">{errorMessage(current.error, t)}</Notice>
+      ) : !current.data.linked ? (
+        <Notice tone="warning">{t('finalb.mapping.notLinked')}</Notice>
+      ) : (
+        <Notice tone="info">
+          {t('finalb.mapping.preloaded', {
+            n: mappedIds(current.data, objective.objectiveId, kind).length,
+            active: currentCount,
+          })}
+        </Notice>
+      )}
       {kind === 'lessons' ? (
         course.modules.length === 0 ? (
           <p className="small muted">{t('discover.studio.noLessons')}</p>
@@ -331,6 +359,7 @@ function CertificationMapping({ course }: { course: StudioCourseDto }) {
       {mapping ? (
         <MappingDialog
           course={course}
+          certId={certId}
           objective={mapping.objective}
           kind={mapping.kind}
           onClose={() => setMapping(null)}
