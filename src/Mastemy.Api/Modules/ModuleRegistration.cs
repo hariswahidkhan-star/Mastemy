@@ -14,6 +14,7 @@ public static class ModuleRegistration
         Engagement.EngagementModule.Add(s, cfg);
         Enterprise.EnterpriseModule.Add(s, cfg);
         Resources.ResourcesModule.Add(s, cfg);
+        Authoring.AuthoringModule.Add(s, cfg); Analytics.AnalyticsModule.Add(s, cfg); StudyTools.StudyToolsModule.Add(s, cfg);
         return s;
     }
 }

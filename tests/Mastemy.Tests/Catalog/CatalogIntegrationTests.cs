@@ -207,7 +207,7 @@ public class CatalogIntegrationTests(CatalogFixture f) : IClassFixture<CatalogFi
         Assert.Contains(comments, x => x.Body == "Fix lesson 1");
         Assert.Equal(HttpStatusCode.Forbidden, (await f.Client(f.InstructorB).GetAsync($"/api/review/courses/{c1.Id}/comments")).StatusCode);
         // editable again after changes requested
-        Assert.Equal(HttpStatusCode.OK, (await a.PutJ($"/api/studio/lessons/{c1.Modules[0].Lessons[0].Id}/notes", new LessonNotesRequest("notes", null))).StatusCode);
+        Assert.Equal(HttpStatusCode.OK, (await a.PutNotes(c1.Modules[0].Lessons[0].Id, new LessonNotesRequest("notes", null))).StatusCode);
     }
 
     // ---------- Live continuity during re-review ----------
@@ -281,7 +281,7 @@ public class CatalogIntegrationTests(CatalogFixture f) : IClassFixture<CatalogFi
         await f.Read<CourseStatusDto>(await a.PostAsync($"/api/studio/courses/{c.Id}/start-update", null));
 
         var lesson0 = c.Modules[0].Lessons[0];
-        await f.Read<StudioLessonDto>(await a.PutJ($"/api/studio/lessons/{lesson0.Id}/notes", new LessonNotesRequest(null, "Premium secret v2")));
+        await f.Read<StudioLessonDto>(await a.PutNotes(lesson0.Id, new LessonNotesRequest(null, "Premium secret v2")));
         var deleted = c.Modules[0].Lessons[2];
         Assert.Equal(HttpStatusCode.NoContent, (await a.DeleteAsync($"/api/studio/lessons/{deleted.Id}")).StatusCode);
 

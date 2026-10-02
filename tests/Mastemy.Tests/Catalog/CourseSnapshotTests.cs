@@ -18,7 +18,7 @@ public class CourseSnapshotTests(CatalogFixture f) : IClassFixture<CatalogFixtur
         for (var i = 0; i < lessons; i++)
         {
             var lesson = await f.Read<StudioLessonDto>(await a.PostJ($"/api/studio/modules/{mod.Id}/lessons", new LessonCreateRequest($"Lesson {i + 1}", "Obj", false)));
-            await f.Read<StudioLessonDto>(await a.PutJ($"/api/studio/lessons/{lesson.Id}/notes", new LessonNotesRequest($"Notes v1 L{i + 1}", null)));
+            await f.Read<StudioLessonDto>(await a.PutNotes(lesson.Id, new LessonNotesRequest($"Notes v1 L{i + 1}", null)));
             await f.WithDb(async db =>
             {
                 var v = new VideoAsset { YouTubeVideoId = "vid" + i.ToString("00000000"), Title = "v", DurationSeconds = 100, Status = VideoStatus.Ready, UploaderId = f.InstructorA.Id };
@@ -76,7 +76,7 @@ public class CourseSnapshotTests(CatalogFixture f) : IClassFixture<CatalogFixtur
         await Publish(c.Id);
         await StartUpdate(c.Id);
 
-        await f.Read<StudioLessonDto>(await a.PutJ($"/api/studio/lessons/{lesson.Id}/notes", new LessonNotesRequest("Notes v2 secret", null)));
+        await f.Read<StudioLessonDto>(await a.PutNotes(lesson.Id, new LessonNotesRequest("Notes v2 secret", null)));
         await f.Read<StudioCourseDto>(await a.PutJ($"/api/studio/courses/{c.Id}", new UpdateCourseRequest("Renamed Unreviewed", "Sub", "About it", "Analysts", "None",
             ["Outcome"], "en", CourseLevel.Beginner, [f.CategoryId], null, null, null)));
         var newLesson = await f.Read<StudioLessonDto>(await a.PostJ($"/api/studio/modules/{c.Modules[0].Id}/lessons", new LessonCreateRequest("Brand new", null, null)));
@@ -168,7 +168,7 @@ public class CourseSnapshotTests(CatalogFixture f) : IClassFixture<CatalogFixtur
 
         await StartUpdate(c.Id);
         var lesson = c.Modules[0].Lessons[1];
-        await f.Read<StudioLessonDto>(await a.PutJ($"/api/studio/lessons/{lesson.Id}/notes", new LessonNotesRequest("New notes", "Premium!")));
+        await f.Read<StudioLessonDto>(await a.PutNotes(lesson.Id, new LessonNotesRequest("New notes", "Premium!")));
         await f.Read<StudioLessonDto>(await a.PutJ($"/api/studio/lessons/{lesson.Id}", new LessonUpdateRequest("Lesson Two Renamed", "Obj", false)));
         await f.Read<StudioCourseDto>(await a.PutJ($"/api/studio/courses/{c.Id}", new UpdateCourseRequest("Diff Course", "New sub", "About Diff Course", "Analysts", "None",
             ["Outcome"], "en", CourseLevel.Beginner, [f.CategoryId], null, null, null)));
