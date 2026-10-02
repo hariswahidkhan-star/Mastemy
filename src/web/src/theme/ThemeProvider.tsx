@@ -30,10 +30,12 @@ const ThemeContext = createContext<ThemeValue | null>(null);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [pref, setPrefState] = useState<ThemePref>(readPref);
-  const [systemDark, setSystemDark] = useState(systemPrefersDark);
+  // Starts as "light" so server-rendered markup hydrates identically; the effect applies the real value.
+  const [systemDark, setSystemDark] = useState(false);
 
   useEffect(() => {
     if (typeof window.matchMedia !== 'function') return;
+    setSystemDark(systemPrefersDark());
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     const handler = (e: MediaQueryListEvent) => setSystemDark(e.matches);
     mq.addEventListener('change', handler);
