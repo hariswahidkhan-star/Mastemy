@@ -8,6 +8,7 @@ export default defineConfig(({ isSsrBuild }) => ({
     port: 5173,
     proxy: {
       '/api': { target: process.env.API_PROXY_TARGET ?? 'http://localhost:5080', changeOrigin: true },
+      '/health': { target: process.env.API_PROXY_TARGET ?? 'http://localhost:5080', changeOrigin: true },
     },
   },
   // The SSR server bundle is self-contained so the runtime image needs no node_modules.

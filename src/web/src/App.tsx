@@ -19,6 +19,7 @@ import { ThreadPage } from './pages/engagement/Discussions';
 import { discoverRoutes } from './routes/discoverRoutes';
 import { accountRoutes } from './routes/accountRoutes';
 import { examsRoutes } from './routes/examsRoutes';
+import { workspaceRoutes } from './routes/workspaceRoutes';
 
 const LearnPage = lazy(() =>
   import('./pages/learn/LearnPage').then((m) => ({ default: m.LearnPage })),
@@ -378,6 +379,7 @@ export function App() {
         {discoverRoutes}
         {accountRoutes}
         {examsRoutes}
+        {workspaceRoutes}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

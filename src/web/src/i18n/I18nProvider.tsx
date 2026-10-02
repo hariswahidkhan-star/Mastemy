@@ -8,14 +8,16 @@ import discoverEn from './discover.en.json';
 import discoverAr from './discover.ar.json';
 import examsEn from './exams.en.json';
 import examsAr from './exams.ar.json';
+import workspaceEn from './workspace.en.json';
+import workspaceAr from './workspace.ar.json';
 
 export type Lang = 'en' | 'ar';
 type Dict = { [key: string]: string | Dict };
 
 /** Area dictionaries (`<area>.en.json` / `<area>.ar.json`) hold one top-level namespace each and are merged in. */
 const EXTRA: Record<Lang, Dict[]> = {
-  en: [accountEn as Dict, discoverEn as Dict, examsEn as Dict],
-  ar: [accountAr as Dict, discoverAr as Dict, examsAr as Dict],
+  en: [accountEn as Dict, discoverEn as Dict, examsEn as Dict, workspaceEn as Dict],
+  ar: [accountAr as Dict, discoverAr as Dict, examsAr as Dict, workspaceAr as Dict],
 };
 const DICTS: Record<Lang, Dict> = {
   en: Object.assign({}, en as Dict, ...EXTRA.en),

@@ -14,6 +14,7 @@ import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { UploadPanel, VideoLinkForm, VideoStatusCard } from './VideoPanels';
+import { NotesEditor } from '../workspace/Authoring';
 
 function MarkdownEditor({
   label,
@@ -71,8 +72,6 @@ function LessonForm({ course, lesson }: { course: StudioCourseDto; lesson: Studi
   const [title, setTitle] = useState(lesson.title);
   const [objective, setObjective] = useState(lesson.objective);
   const [isPreview, setIsPreview] = useState(!!lesson.isPreview);
-  const [notes, setNotes] = useState(lesson.notesMarkdown ?? '');
-  const [premium, setPremium] = useState(lesson.premiumNotesMarkdown ?? '');
   const courseKey = keys.studioCourse(course.id);
   const saveLesson = useApiMutation(
     () =>
@@ -82,15 +81,6 @@ function LessonForm({ course, lesson }: { course: StudioCourseDto; lesson: Studi
       }),
     [courseKey],
     () => toast.success(t('common.saved')),
-  );
-  const saveNotes = useApiMutation(
-    () =>
-      api(`/api/studio/lessons/${lesson.id}/notes`, {
-        method: 'PUT',
-        body: { notesMarkdown: notes, premiumNotesMarkdown: premium },
-      }),
-    [courseKey],
-    () => toast.success(t('editor.notesSaved')),
   );
   const [tab, setTab] = useState('details');
   return (
@@ -141,33 +131,7 @@ function LessonForm({ course, lesson }: { course: StudioCourseDto; lesson: Studi
         {
           id: 'notes',
           label: t('editor.notes'),
-          content: (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                saveNotes.mutate(undefined);
-              }}
-            >
-              <MarkdownEditor
-                label={t('learn.studyNotes')}
-                hint={t('editor.notesHint')}
-                value={notes}
-                onChange={setNotes}
-              />
-              <MarkdownEditor
-                label={t('learn.premiumNotes')}
-                hint={t('editor.premiumHint')}
-                value={premium}
-                onChange={setPremium}
-              />
-              {saveNotes.isError ? (
-                <Notice tone="danger">{errorMessage(saveNotes.error, t)}</Notice>
-              ) : null}
-              <Button type="submit" loading={saveNotes.isPending}>
-                {t('editor.saveNotes')}
-              </Button>
-            </form>
-          ),
+          content: <NotesEditor lesson={lesson} courseId={course.id} Editor={MarkdownEditor} />,
         },
         {
           id: 'video',

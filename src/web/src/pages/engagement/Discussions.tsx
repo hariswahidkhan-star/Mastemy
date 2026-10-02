@@ -16,6 +16,7 @@ import { Badge, Notice, Pagination, QueryState } from '../../components/ui/misc'
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
+import { HiddenContentNotice, ReportContentButton } from '../workspace/Trust';
 
 const EDIT_WINDOW_MS = 24 * 60 * 60 * 1000;
 export const MODERATOR_ROLES = ['Moderator', 'Admin', 'SuperAdmin'] as const;
@@ -384,6 +385,7 @@ function ReplyItem({
               {reply.hidden ? t('qa.unhide') : t('qa.hide')}
             </Button>
           ) : null}
+          {!mine ? <ReportContentButton targetType="DiscussionReply" targetId={reply.id} /> : null}
         </div>
       </div>
       {editing ? (
@@ -521,6 +523,7 @@ export function ThreadView({ threadId }: { threadId: string }) {
                   {th.hidden ? t('qa.unhide') : t('qa.hide')}
                 </Button>
               ) : null}
+              {!mine ? <ReportContentButton targetType="Discussion" targetId={th.id} /> : null}
             </div>
             {resolve.isError ? (
               <Notice tone="danger">{errorMessage(resolve.error, t)}</Notice>
@@ -596,8 +599,19 @@ export function ThreadPage() {
         / {t('qa.title')}
       </nav>
       <ThreadView threadId={threadId} />
+      <ThreadUnavailable threadId={threadId} />
     </div>
   );
+}
+
+/** A hidden thread reads as 404 for its author; offer the appeal route alongside the error. */
+function ThreadUnavailable({ threadId }: { threadId: string }) {
+  const thread = useQuery({
+    queryKey: w2keys.thread(threadId),
+    queryFn: () => api<ThreadDetailDto>(`/api/discussions/${threadId}`),
+  });
+  if (!(thread.error instanceof ApiError) || thread.error.status !== 404) return null;
+  return <HiddenContentNotice targetType="Discussion" targetId={threadId} />;
 }
 
 /** Enrollment prompt for learners who may read but not yet post. */

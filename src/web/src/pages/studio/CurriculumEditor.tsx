@@ -13,6 +13,7 @@ import { Notice, StatusBadge } from '../../components/ui/misc';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { PlaylistImport } from './PlaylistImport';
+import { DuplicateLessonButton, ModuleTools } from '../workspace/Authoring';
 
 export function moveItem<T>(list: T[], from: number, to: number): T[] {
   if (from === to || from < 0 || to < 0 || from >= list.length || to >= list.length) return list;
@@ -274,6 +275,7 @@ export function CurriculumEditor({ course }: { course: StudioCourseDto }) {
               >
                 {t('common.delete')}
               </Button>
+              <DuplicateLessonButton lesson={l} courseId={course.id} />
             </div>
           ))}
           <Button
@@ -283,7 +285,8 @@ export function CurriculumEditor({ course }: { course: StudioCourseDto }) {
             onClick={() => setAddLessonTo(m)}
           >
             {t('curriculum.addLesson')}
-          </Button>
+          </Button>{' '}
+          <ModuleTools module={m} courseId={course.id} />
         </section>
       ))}
       <form

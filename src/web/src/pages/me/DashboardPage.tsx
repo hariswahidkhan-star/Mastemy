@@ -16,6 +16,7 @@ import { formatTimestamp } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
 import { CertificatesSection, MyOrganizationsSection } from './MeWave2';
 import { CertificateRequestsSection } from '../exams/CertificateRequests';
+import { ContinueLearningSection } from '../workspace/Study';
 
 interface OrderDto {
   id: string;
@@ -172,6 +173,7 @@ export function DashboardPage() {
       <QueryState query={dash}>
         {(d) => (
           <div className="stack">
+            <ContinueLearningSection />
             <MyOrganizationsSection />
             <section className="card">
               <h2>{t('dashboard.continue')}</h2>

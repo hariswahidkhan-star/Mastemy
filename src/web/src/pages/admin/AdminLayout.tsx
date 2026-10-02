@@ -16,6 +16,25 @@ export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[]; label?: s
   { to: '/admin/settings', key: 'settings', roles: ['Admin', 'SuperAdmin'] },
   { to: '/admin/audit', key: 'audit', roles: ['Finance', 'Admin', 'SuperAdmin'] },
   ...DISCOVER_ADMIN_SECTIONS,
+  {
+    to: '/admin/analytics',
+    key: 'wsAnalytics',
+    roles: ['Admin', 'SuperAdmin'],
+    label: 'workspace.nav.analytics',
+  },
+  {
+    to: '/admin/trust',
+    key: 'wsTrust',
+    roles: ['Admin', 'SuperAdmin'],
+    label: 'workspace.nav.trust',
+  },
+  {
+    to: '/admin/operations',
+    key: 'wsOps',
+    roles: ['Admin', 'SuperAdmin'],
+    label: 'workspace.nav.operations',
+  },
+  { to: '/admin/ai', key: 'wsAi', roles: ['Admin', 'SuperAdmin'], label: 'workspace.nav.ai' },
 ];
 
 export function AdminLayout() {

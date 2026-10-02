@@ -15,6 +15,7 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { courseSchema, toCourseInput } from './courseSchema';
 import type { CourseFormValues } from './courseSchema';
+import { TemplatePicker } from '../workspace/Authoring';
 
 const STEPS: { key: string; fields: FieldPath<CourseFormValues>[] }[] = [
   { key: 'goals', fields: ['goals', 'audience'] },
@@ -55,9 +56,15 @@ export function CourseWizardPage() {
     formState: { errors },
   } = form;
 
+  const [templateId, setTemplateId] = useState('');
   const create = useApiMutation(
     (v: CourseFormValues) =>
-      api<StudioCourseDto>('/api/studio/courses', { method: 'POST', body: toCourseInput(v) }),
+      templateId
+        ? api<StudioCourseDto>('/api/studio/courses/from-template', {
+            method: 'POST',
+            body: { templateId, course: toCourseInput(v) },
+          })
+        : api<StudioCourseDto>('/api/studio/courses', { method: 'POST', body: toCourseInput(v) }),
     [keys.studioCourses],
     (course) => navigate(`/studio/courses/${course.id}`),
   );
@@ -178,6 +185,7 @@ export function CourseWizardPage() {
               <dt>{t('course.outcomes')}</dt>
               <dd>{values.outcomes.split(/\r?\n/).filter((l) => l.trim()).length}</dd>
             </dl>
+            <TemplatePicker value={templateId} onChange={setTemplateId} />
             <Notice tone="info">{t('wizard.afterCreate')}</Notice>
           </div>
         ) : null}

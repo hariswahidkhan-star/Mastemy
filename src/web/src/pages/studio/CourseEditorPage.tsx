@@ -26,6 +26,8 @@ import { ImportPanel } from './ImportPanel';
 import { PackagesPanel } from './PackagesPanel';
 import { QuestionBank } from './QuestionBank';
 import { EngagementPanel, PublicationPanel, ResourcesManager } from './Wave2Panels';
+import { workspaceCourseTabs } from '../workspace/CourseTabs';
+import { useAgreementGate } from '../workspace/Authoring';
 
 function DetailsForm({ course }: { course: StudioCourseDto }) {
   const { t, lang } = useI18n();
@@ -138,6 +140,7 @@ function ReviewPanel({ course }: { course: StudioCourseDto }) {
     retry: false,
   });
   const [confirm, setConfirm] = useState(false);
+  const agreement = useAgreementGate();
   const submit = useApiMutation(
     () => api(`/api/studio/courses/${course.id}/submit`, { method: 'POST' }),
     [keys.studioCourse(course.id), keys.studioCourses, ['studio', 'validation', course.id]],
@@ -177,7 +180,10 @@ function ReviewPanel({ course }: { course: StudioCourseDto }) {
         </QueryState>
         <p className="small muted">{t('studio.checklistNote')}</p>
         {canSubmit ? (
-          <Button onClick={() => setConfirm(true)} disabled={!validation.data?.ok}>
+          <Button
+            onClick={() => agreement.run(() => setConfirm(true))}
+            disabled={!validation.data?.ok}
+          >
             {t('studio.submitForReview')}
           </Button>
         ) : course.status === 'Published' ? (
@@ -231,8 +237,15 @@ function ReviewPanel({ course }: { course: StudioCourseDto }) {
         confirmLabel={t('studio.submit')}
         loading={submit.isPending}
         onCancel={() => setConfirm(false)}
-        onConfirm={() => submit.mutate(undefined)}
+        onConfirm={() =>
+          submit.mutate(undefined, {
+            onError: (e) => {
+              if (agreement.handleError(e, () => submit.mutate(undefined))) setConfirm(false);
+            },
+          })
+        }
       />
+      {agreement.dialog}
     </div>
   );
 }
@@ -318,6 +331,7 @@ export function CourseEditorPage() {
                 label: t('discover.studio.tab'),
                 content: <StudioTaxonomyPanel course={c} />,
               },
+              ...workspaceCourseTabs(c, t),
             ]}
           />
         </>

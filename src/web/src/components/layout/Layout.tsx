@@ -8,6 +8,7 @@ import { CompareTray } from '../Discovery';
 import { NotificationBell } from '../NotificationBell';
 import { MegaMenu } from '../discover/MegaMenu';
 import { EmailVerificationBanner } from '../../pages/account/EmailPages';
+import { ConsentBanner, ConsentSettingsButton } from '../../pages/workspace/Consent';
 
 function Logo() {
   return (
@@ -146,6 +147,7 @@ export function Layout() {
           </nav>
         </div>
       </header>
+      <ConsentBanner />
       <main id="main" className="site-main" tabIndex={-1}>
         <EmailVerificationBanner />
         <Outlet />
@@ -173,6 +175,9 @@ export function Layout() {
               </li>
               <li>
                 <Link to="/verify">{t('nav.verify')}</Link>
+              </li>
+              <li>
+                <ConsentSettingsButton />
               </li>
             </ul>
           </nav>
