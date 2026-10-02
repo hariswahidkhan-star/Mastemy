@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1516",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 550,
+  "lesson_check_items": 90,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1516-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How does Prometheus normally collect metrics from an instrumented service?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It scrapes an HTTP /metrics endpoint on a schedule (pull model)",
+     "correct": true,
+     "rationale": "Correct: Prometheus pulls by scraping targets' /metrics endpoints."
+    },
+    {
+     "key": "B",
+     "text": "The service pushes metrics directly to Prometheus on every event",
+     "correct": false,
+     "rationale": "Prometheus is pull-based; direct per-event push is not its model."
+    },
+    {
+     "key": "C",
+     "text": "It reads metrics from the kernel audit log",
+     "correct": false,
+     "rationale": "Prometheus does not source metrics from kernel audit logs."
+    },
+    {
+     "key": "D",
+     "text": "It queries a relational database for counters",
+     "correct": false,
+     "rationale": "Prometheus scrapes exporters/endpoints, not a relational database."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Prometheus pulls by scraping targets' /metrics endpoints.",
+   "outcome_refs": [
+    "MST-1516-D01.03"
+   ],
+   "domain_ref": "Observability Concepts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1516-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which PromQL function gives the per-second average rate of increase of a counter over the last 5 minutes?",
+   "options": [
+    {
+     "key": "A",
+     "text": "rate(metric[5m])",
+     "correct": true,
+     "rationale": "Correct: rate() computes the per-second average increase of a counter over the range."
+    },
+    {
+     "key": "B",
+     "text": "avg(metric)",
+     "correct": false,
+     "rationale": "avg() averages instant values across series, not the rate of a counter."
+    },
+    {
+     "key": "C",
+     "text": "delta(metric[5m])",
+     "correct": false,
+     "rationale": "delta() is for gauges and returns the difference, not a per-second rate."
+    },
+    {
+     "key": "D",
+     "text": "count(metric)",
+     "correct": false,
+     "rationale": "count() returns the number of series, not a rate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: rate() computes the per-second average increase of a counter over the range.",
+   "outcome_refs": [
+    "MST-1516-D03.02"
+   ],
+   "domain_ref": "PromQL",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1516-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid Prometheus metric types? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Counter",
+     "correct": true,
+     "rationale": "Correct: a counter is a cumulative, monotonically increasing metric."
+    },
+    {
+     "key": "B",
+     "text": "Histogram",
+     "correct": true,
+     "rationale": "Correct: a histogram samples observations into configurable buckets."
+    },
+    {
+     "key": "C",
+     "text": "Ledger",
+     "correct": false,
+     "rationale": "Ledger is not a Prometheus metric type."
+    },
+    {
+     "key": "D",
+     "text": "Pointer",
+     "correct": false,
+     "rationale": "Pointer is not a Prometheus metric type."
+    },
+    {
+     "key": "E",
+     "text": "Stream",
+     "correct": false,
+     "rationale": "Stream is not a Prometheus metric type."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a counter is a cumulative, monotonically increasing metric.",
+   "outcome_refs": [
+    "MST-1516-D02.03"
+   ],
+   "domain_ref": "Prometheus Fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

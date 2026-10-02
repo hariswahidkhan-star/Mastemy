@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1645",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 808,
+  "lesson_check_items": 108,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 64,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1645-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should enterprise risk best be communicated to a board of directors?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Framed as business impact with likelihood, owners and treatment",
+     "correct": true,
+     "rationale": "Correct: boards need risk in business terms, not raw technical counts."
+    },
+    {
+     "key": "B",
+     "text": "As a raw list of CVE identifiers",
+     "correct": false,
+     "rationale": "CVE lists are technical detail unsuited to a board audience."
+    },
+    {
+     "key": "C",
+     "text": "By withholding residual risk to avoid alarm",
+     "correct": false,
+     "rationale": "Hiding residual risk undermines informed governance."
+    },
+    {
+     "key": "D",
+     "text": "As the number of firewall rules changed",
+     "correct": false,
+     "rationale": "That is an activity metric, not business risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: boards need risk in business terms, not raw technical counts.",
+   "outcome_refs": [
+    "MST-1645-D03.03"
+   ],
+   "domain_ref": "Risk Management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1645-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A service must lose no more than 15 minutes of data in a disaster. Which objective does that define?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recovery point objective (RPO)",
+     "correct": true,
+     "rationale": "Correct: RPO is the maximum tolerable data loss measured in time."
+    },
+    {
+     "key": "B",
+     "text": "Recovery time objective (RTO)",
+     "correct": false,
+     "rationale": "RTO is how fast service is restored, not how much data is lost."
+    },
+    {
+     "key": "C",
+     "text": "Mean time between failures (MTBF)",
+     "correct": false,
+     "rationale": "MTBF measures reliability, not tolerable data loss."
+    },
+    {
+     "key": "D",
+     "text": "Service level agreement (SLA)",
+     "correct": false,
+     "rationale": "An SLA is a broader commitment, not this specific data-loss measure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RPO is the maximum tolerable data loss measured in time.",
+   "outcome_refs": [
+    "MST-1645-D05.03"
+   ],
+   "domain_ref": "Contingency Management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1645-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions belong in the early (preparation and identification) phases of incident management? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Define an incident classification and escalation scheme in advance",
+     "correct": true,
+     "rationale": "Correct: classification/escalation is prepared before incidents occur."
+    },
+    {
+     "key": "B",
+     "text": "Establish and test detection and alerting capability",
+     "correct": true,
+     "rationale": "Correct: detection must be in place to identify incidents."
+    },
+    {
+     "key": "C",
+     "text": "Permanently delete all logs after any alert",
+     "correct": false,
+     "rationale": "Deleting logs destroys evidence and detection history."
+    },
+    {
+     "key": "D",
+     "text": "Pay any ransom immediately without analysis",
+     "correct": false,
+     "rationale": "That is not a sound preparation/identification action."
+    },
+    {
+     "key": "E",
+     "text": "Skip the post-incident review",
+     "correct": false,
+     "rationale": "Reviews belong to the closing phase and must not be skipped."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: classification/escalation is prepared before incidents occur.",
+   "outcome_refs": [
+    "MST-1645-D04.02"
+   ],
+   "domain_ref": "Threat Intelligence and Incident Management",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

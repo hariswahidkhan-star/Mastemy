@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1648",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 550,
+  "lesson_check_items": 90,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1648-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A control ensures that data has not been altered in transit. Which element of the CIA triad does it support?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Integrity",
+     "correct": true,
+     "rationale": "Correct: integrity is about data being accurate and unaltered."
+    },
+    {
+     "key": "B",
+     "text": "Confidentiality",
+     "correct": false,
+     "rationale": "Confidentiality concerns who can read data, not whether it was altered."
+    },
+    {
+     "key": "C",
+     "text": "Availability",
+     "correct": false,
+     "rationale": "Availability concerns access and uptime, not alteration."
+    },
+    {
+     "key": "D",
+     "text": "Accounting",
+     "correct": false,
+     "rationale": "Accounting tracks actions; it is not part of the CIA triad."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: integrity is about data being accurate and unaltered.",
+   "outcome_refs": [
+    "MST-1648-D01.01"
+   ],
+   "domain_ref": "Essential Security Principles",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1648-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does an intrusion detection system (IDS) do when it sees a suspicious packet?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Detects and alerts on it",
+     "correct": true,
+     "rationale": "Correct: an IDS detects and alerts; it does not block by itself (an IPS blocks)."
+    },
+    {
+     "key": "B",
+     "text": "Automatically blocks and drops it",
+     "correct": false,
+     "rationale": "Blocking is the role of an IPS, not a passive IDS."
+    },
+    {
+     "key": "C",
+     "text": "Encrypts the whole network",
+     "correct": false,
+     "rationale": "An IDS does not perform network encryption."
+    },
+    {
+     "key": "D",
+     "text": "Formats the attacker's disk",
+     "correct": false,
+     "rationale": "That is not a function of an IDS."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an IDS detects and alerts; it does not block by itself (an IPS blocks).",
+   "outcome_refs": [
+    "MST-1648-D02.02"
+   ],
+   "domain_ref": "Basic Network Security Concepts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1648-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions should be taken FIRST when handling a potentially compromised host? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Preserve volatile evidence before powering down",
+     "correct": true,
+     "rationale": "Correct: volatile data is lost on shutdown, so preserve it first."
+    },
+    {
+     "key": "B",
+     "text": "Follow the organisation's incident response plan",
+     "correct": true,
+     "rationale": "Correct: acting within the IR plan keeps the response controlled and lawful."
+    },
+    {
+     "key": "C",
+     "text": "Immediately reformat the disk",
+     "correct": false,
+     "rationale": "Reformatting destroys forensic evidence."
+    },
+    {
+     "key": "D",
+     "text": "Post the incident publicly on social media",
+     "correct": false,
+     "rationale": "That is inappropriate disclosure and harms the response."
+    },
+    {
+     "key": "E",
+     "text": "Ignore it until the next maintenance window",
+     "correct": false,
+     "rationale": "Delay lets the compromise spread and evidence decay."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: volatile data is lost on shutdown, so preserve it first.",
+   "outcome_refs": [
+    "MST-1648-D05.02"
+   ],
+   "domain_ref": "Incident Handling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1650",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1030,
+  "lesson_check_items": 108,
+  "module_check_items": 231,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 88,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1650-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which protocol uses YANG data models over SSH to configure network devices with distinct candidate and running datastores?",
+   "options": [
+    {
+     "key": "A",
+     "text": "NETCONF",
+     "correct": true,
+     "rationale": "Correct: NETCONF runs over SSH, uses YANG models, and supports candidate/running datastores."
+    },
+    {
+     "key": "B",
+     "text": "SNMPv2c",
+     "correct": false,
+     "rationale": "SNMPv2c is a monitoring protocol and does not use YANG datastores this way."
+    },
+    {
+     "key": "C",
+     "text": "Syslog",
+     "correct": false,
+     "rationale": "Syslog carries log messages; it does not configure devices."
+    },
+    {
+     "key": "D",
+     "text": "ICMP",
+     "correct": false,
+     "rationale": "ICMP is for diagnostics like ping, not configuration."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: NETCONF runs over SSH, uses YANG models, and supports candidate/running datastores.",
+   "outcome_refs": [
+    "MST-1650-D02.01"
+   ],
+   "domain_ref": "Automation APIs and Protocols",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1650-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants to describe the desired end state of the network and let tooling reconcile it. Which approach is this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Declarative (intent-based)",
+     "correct": true,
+     "rationale": "Correct: declarative automation states the desired end state and lets tooling converge to it."
+    },
+    {
+     "key": "B",
+     "text": "Imperative step-by-step scripting",
+     "correct": false,
+     "rationale": "Imperative specifies each step, not just the end state."
+    },
+    {
+     "key": "C",
+     "text": "Manual CLI configuration",
+     "correct": false,
+     "rationale": "Manual CLI is neither declarative nor automated."
+    },
+    {
+     "key": "D",
+     "text": "Physical cabling changes",
+     "correct": false,
+     "rationale": "That is a hardware task, not an automation approach."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: declarative automation states the desired end state and lets tooling converge to it.",
+   "outcome_refs": [
+    "MST-1650-D01.02"
+   ],
+   "domain_ref": "Network Programmability Foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1650-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are common tools for network automation with Python and configuration management? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "ncclient (NETCONF client library)",
+     "correct": true,
+     "rationale": "Correct: ncclient is a Python NETCONF client used for automation."
+    },
+    {
+     "key": "B",
+     "text": "Ansible",
+     "correct": true,
+     "rationale": "Correct: Ansible is widely used for network configuration management."
+    },
+    {
+     "key": "C",
+     "text": "Photoshop",
+     "correct": false,
+     "rationale": "Photoshop is image editing software, unrelated to network automation."
+    },
+    {
+     "key": "D",
+     "text": "Microsoft Excel macros",
+     "correct": false,
+     "rationale": "Excel macros are not a network automation tool."
+    },
+    {
+     "key": "E",
+     "text": "A soldering iron",
+     "correct": false,
+     "rationale": "A soldering iron is a hardware tool, not automation software."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: ncclient is a Python NETCONF client used for automation.",
+   "outcome_refs": [
+    "MST-1650-D06.01"
+   ],
+   "domain_ref": "Automation Tools",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1647",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 586,
+  "lesson_check_items": 108,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1647-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How many usable host addresses are in a /26 IPv4 subnet?",
+   "options": [
+    {
+     "key": "A",
+     "text": "62",
+     "correct": true,
+     "rationale": "Correct: a /26 has 64 addresses; minus network and broadcast leaves 62 usable hosts."
+    },
+    {
+     "key": "B",
+     "text": "64",
+     "correct": false,
+     "rationale": "64 is the total addresses, before removing network and broadcast."
+    },
+    {
+     "key": "C",
+     "text": "30",
+     "correct": false,
+     "rationale": "30 usable hosts corresponds to a /27, not a /26."
+    },
+    {
+     "key": "D",
+     "text": "126",
+     "correct": false,
+     "rationale": "126 usable hosts corresponds to a /25, not a /26."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a /26 has 64 addresses; minus network and broadcast leaves 62 usable hosts.",
+   "outcome_refs": [
+    "MST-1647-D02.02"
+   ],
+   "domain_ref": "Addressing and Subnet Formats",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1647-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "At which OSI layer does a switch primarily make forwarding decisions using MAC addresses?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Layer 2 (Data Link)",
+     "correct": true,
+     "rationale": "Correct: a traditional switch forwards frames using MAC addresses at Layer 2."
+    },
+    {
+     "key": "B",
+     "text": "Layer 1 (Physical)",
+     "correct": false,
+     "rationale": "Layer 1 moves bits; it does not read MAC addresses."
+    },
+    {
+     "key": "C",
+     "text": "Layer 3 (Network)",
+     "correct": false,
+     "rationale": "Layer 3 uses IP addresses; that is routing, not basic switching."
+    },
+    {
+     "key": "D",
+     "text": "Layer 7 (Application)",
+     "correct": false,
+     "rationale": "Layer 7 is application data, far above switching."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a traditional switch forwards frames using MAC addresses at Layer 2.",
+   "outcome_refs": [
+    "MST-1647-D04.01"
+   ],
+   "domain_ref": "Infrastructure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1647-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO commands help diagnose a reachability problem between two hosts? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "ping",
+     "correct": true,
+     "rationale": "Correct: ping tests basic reachability and round-trip time."
+    },
+    {
+     "key": "B",
+     "text": "traceroute",
+     "correct": true,
+     "rationale": "Correct: traceroute shows the path and where it fails."
+    },
+    {
+     "key": "C",
+     "text": "format",
+     "correct": false,
+     "rationale": "format prepares storage media; it has no network diagnostic role."
+    },
+    {
+     "key": "D",
+     "text": "chmod",
+     "correct": false,
+     "rationale": "chmod changes file permissions, unrelated to reachability."
+    },
+    {
+     "key": "E",
+     "text": "grep",
+     "correct": false,
+     "rationale": "grep searches text; it does not test network reachability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: ping tests basic reachability and round-trip time.",
+   "outcome_refs": [
+    "MST-1647-D05.01"
+   ],
+   "domain_ref": "Diagnosing Problems",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

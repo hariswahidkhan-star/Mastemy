@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1514",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 882,
+  "lesson_check_items": 108,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1514-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Pod must run a short setup task that copies files into a shared volume before the main application container starts. Which construct runs that task to completion first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An init container",
+     "correct": true,
+     "rationale": "Correct: init containers run to completion in order before app containers start, making them ideal for setup tasks."
+    },
+    {
+     "key": "B",
+     "text": "A sidecar container",
+     "correct": false,
+     "rationale": "A sidecar runs alongside the main container for its whole life, not to completion beforehand."
+    },
+    {
+     "key": "C",
+     "text": "A liveness probe",
+     "correct": false,
+     "rationale": "A liveness probe checks health of a running container; it does not run setup work."
+    },
+    {
+     "key": "D",
+     "text": "A CronJob",
+     "correct": false,
+     "rationale": "A CronJob schedules whole Pods on a timetable; it is not an in-Pod setup step."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: init containers run to completion in order before app containers start, making them ideal for setup tasks.",
+   "outcome_refs": [
+    "MST-1514-D01.03"
+   ],
+   "domain_ref": "Application Design and Build",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1514-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A container takes 40 seconds to warm up. Kubernetes keeps killing it during startup. Which probe should be added or tuned to stop the premature restarts?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Startup probe",
+     "correct": true,
+     "rationale": "Correct: a startup probe holds off the liveness probe until the app has finished its slow start."
+    },
+    {
+     "key": "B",
+     "text": "Readiness probe only",
+     "correct": false,
+     "rationale": "A readiness probe removes the Pod from Service endpoints but does not stop liveness restarts."
+    },
+    {
+     "key": "C",
+     "text": "A higher CPU limit",
+     "correct": false,
+     "rationale": "Resource limits do not change probe timing or restart behaviour."
+    },
+    {
+     "key": "D",
+     "text": "A NetworkPolicy",
+     "correct": false,
+     "rationale": "NetworkPolicies govern traffic, not container restart behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a startup probe holds off the liveness probe until the app has finished its slow start.",
+   "outcome_refs": [
+    "MST-1514-D03.01"
+   ],
+   "domain_ref": "Application Observability and Maintenance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1514-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Kubernetes Secrets are correct by default? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Secret values are base64-encoded, not encrypted, unless encryption at rest is configured",
+     "correct": true,
+     "rationale": "Correct: by default Secrets are only base64-encoded in etcd."
+    },
+    {
+     "key": "B",
+     "text": "A Secret can be mounted as a volume or exposed as environment variables",
+     "correct": true,
+     "rationale": "Correct: both consumption methods are supported."
+    },
+    {
+     "key": "C",
+     "text": "Secrets are encrypted at rest automatically on every cluster",
+     "correct": false,
+     "rationale": "Encryption at rest must be explicitly configured; it is not automatic."
+    },
+    {
+     "key": "D",
+     "text": "Secrets cannot be referenced by Pods in the same namespace",
+     "correct": false,
+     "rationale": "Pods reference Secrets in their own namespace routinely."
+    },
+    {
+     "key": "E",
+     "text": "Secrets are stored only in the kubelet, never in etcd",
+     "correct": false,
+     "rationale": "Secrets are persisted in etcd via the API server."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: by default Secrets are only base64-encoded in etcd.",
+   "outcome_refs": [
+    "MST-1514-D04.02"
+   ],
+   "domain_ref": "Application Environment, Configuration and Security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

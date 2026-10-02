@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1515",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 1016,
+  "lesson_check_items": 138,
+  "module_check_items": 210,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 80,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1515-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A CI ServiceAccount only needs to read Pods in one namespace. Which approach follows least privilege?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Role granting get/list on pods, bound with a RoleBinding in that namespace",
+     "correct": true,
+     "rationale": "Correct: a namespaced Role with only the needed verbs, bound via RoleBinding, is least privilege."
+    },
+    {
+     "key": "B",
+     "text": "A ClusterRole granting cluster-admin bound cluster-wide",
+     "correct": false,
+     "rationale": "cluster-admin grossly over-grants and violates least privilege."
+    },
+    {
+     "key": "C",
+     "text": "Mounting the default ServiceAccount token everywhere",
+     "correct": false,
+     "rationale": "That expands exposure rather than restricting it."
+    },
+    {
+     "key": "D",
+     "text": "Disabling RBAC for the namespace",
+     "correct": false,
+     "rationale": "Disabling RBAC removes authorization controls entirely."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a namespaced Role with only the needed verbs, bound via RoleBinding, is least privilege.",
+   "outcome_refs": [
+    "MST-1515-D02.02"
+   ],
+   "domain_ref": "Cluster Hardening",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1515-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which control provides the strongest workload isolation by running containers in a user-space kernel sandbox?",
+   "options": [
+    {
+     "key": "A",
+     "text": "gVisor via a RuntimeClass",
+     "correct": true,
+     "rationale": "Correct: gVisor intercepts syscalls in a user-space kernel, giving stronger isolation than shared-kernel containers."
+    },
+    {
+     "key": "B",
+     "text": "A readiness probe",
+     "correct": false,
+     "rationale": "Probes check health and have no isolation function."
+    },
+    {
+     "key": "C",
+     "text": "A ConfigMap",
+     "correct": false,
+     "rationale": "ConfigMaps hold configuration data, not isolation."
+    },
+    {
+     "key": "D",
+     "text": "A higher replica count",
+     "correct": false,
+     "rationale": "Scaling replicas does not isolate a workload from the host kernel."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: gVisor intercepts syscalls in a user-space kernel, giving stronger isolation than shared-kernel containers.",
+   "outcome_refs": [
+    "MST-1515-D04.03"
+   ],
+   "domain_ref": "Minimize Microservice Vulnerabilities",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1515-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices strengthen the container image supply chain? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Scanning images for known CVEs before deployment",
+     "correct": true,
+     "rationale": "Correct: scanning catches known vulnerabilities before they ship."
+    },
+    {
+     "key": "B",
+     "text": "Restricting clusters to pull only from a signed, trusted registry",
+     "correct": true,
+     "rationale": "Correct: an allowlist of signed registries blocks untrusted images."
+    },
+    {
+     "key": "C",
+     "text": "Granting every ServiceAccount cluster-admin",
+     "correct": false,
+     "rationale": "That weakens security and is unrelated to image supply chain."
+    },
+    {
+     "key": "D",
+     "text": "Disabling audit logging to reduce noise",
+     "correct": false,
+     "rationale": "Disabling audit logging reduces detection, it does not secure the supply chain."
+    },
+    {
+     "key": "E",
+     "text": "Always using the latest tag so images auto-update",
+     "correct": false,
+     "rationale": "The latest tag is non-deterministic and undermines supply-chain integrity."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: scanning catches known vulnerabilities before they ship.",
+   "outcome_refs": [
+    "MST-1515-D05.04"
+   ],
+   "domain_ref": "Supply Chain Security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing multi-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
