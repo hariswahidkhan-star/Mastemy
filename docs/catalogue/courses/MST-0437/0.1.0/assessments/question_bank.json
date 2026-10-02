@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0437",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 462,
+  "lesson_check_items": 80,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0437-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must features usually be scaled before k-means?",
+   "options": [
+    {
+     "key": "A",
+     "text": "k-means uses distances, so a large-magnitude feature would dominate",
+     "correct": true,
+     "rationale": "Correct: unscaled features distort distance-based clustering."
+    },
+    {
+     "key": "B",
+     "text": "k-means cannot run on unscaled data",
+     "correct": false,
+     "rationale": "It runs, but gives distorted clusters."
+    },
+    {
+     "key": "C",
+     "text": "Scaling changes the number of clusters k",
+     "correct": false,
+     "rationale": "Scaling does not set k."
+    },
+    {
+     "key": "D",
+     "text": "Scaling guarantees spherical clusters",
+     "correct": false,
+     "rationale": "It does not change cluster shape assumptions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unscaled features distort distance-based clustering.",
+   "outcome_refs": [
+    "MST-0437-D01.02"
+   ],
+   "domain_ref": "Unsupervised foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0437-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO cautions apply when reading a t-SNE or UMAP 2-D plot? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Distances between far-apart clusters are not meaningful",
+     "correct": true,
+     "rationale": "Correct: these methods preserve local, not global, structure."
+    },
+    {
+     "key": "B",
+     "text": "Cluster sizes and densities in the plot can be distorted",
+     "correct": true,
+     "rationale": "Correct: apparent size does not reflect true density."
+    },
+    {
+     "key": "C",
+     "text": "The axes have fixed, interpretable units",
+     "correct": false,
+     "rationale": "They do not; the axes are not interpretable."
+    },
+    {
+     "key": "D",
+     "text": "The embedding is deterministic regardless of settings",
+     "correct": false,
+     "rationale": "Results depend on parameters and initialisation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: these methods preserve local, not global, structure.",
+   "outcome_refs": [
+    "MST-0437-D04.02"
+   ],
+   "domain_ref": "Dimensionality reduction",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0437-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A dataset has elongated, non-spherical clusters with noise. Which method fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "DBSCAN, which finds arbitrary-shaped dense regions and marks noise",
+     "correct": true,
+     "rationale": "Correct: density-based clustering handles shape and noise."
+    },
+    {
+     "key": "B",
+     "text": "k-means, because it is the default",
+     "correct": false,
+     "rationale": "k-means assumes roughly spherical clusters."
+    },
+    {
+     "key": "C",
+     "text": "PCA, because it clusters data",
+     "correct": false,
+     "rationale": "PCA reduces dimensions; it does not cluster."
+    },
+    {
+     "key": "D",
+     "text": "No method can handle noise",
+     "correct": false,
+     "rationale": "DBSCAN explicitly labels noise points."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: density-based clustering handles shape and noise.",
+   "outcome_refs": [
+    "MST-0437-D03.01"
+   ],
+   "domain_ref": "Density-based clustering",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

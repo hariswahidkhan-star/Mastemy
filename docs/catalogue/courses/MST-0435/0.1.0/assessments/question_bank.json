@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0435",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0435-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why prefer a vectorised NumPy operation over a Python for-loop for element-wise maths?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It runs the computation in optimised compiled code over the whole array",
+     "correct": true,
+     "rationale": "Correct: vectorised ops avoid per-element Python overhead."
+    },
+    {
+     "key": "B",
+     "text": "It always uses less memory than a loop",
+     "correct": false,
+     "rationale": "Vectorised ops can use more memory, not less."
+    },
+    {
+     "key": "C",
+     "text": "It changes the mathematical result",
+     "correct": false,
+     "rationale": "The result is the same; only performance differs."
+    },
+    {
+     "key": "D",
+     "text": "It is required for arrays larger than 100 elements",
+     "correct": false,
+     "rationale": "There is no such requirement; it is a performance choice."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: vectorised ops avoid per-element Python overhead.",
+   "outcome_refs": [
+    "MST-0435-D02.02"
+   ],
+   "domain_ref": "NumPy and vectorisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0435-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices for reproducible ML code? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Pin package versions in an environment file",
+     "correct": true,
+     "rationale": "Correct: pinned versions let others recreate the setup."
+    },
+    {
+     "key": "B",
+     "text": "Wrap steps in tested functions rather than loose notebook cells",
+     "correct": true,
+     "rationale": "Correct: tested functions reduce hidden-state errors."
+    },
+    {
+     "key": "C",
+     "text": "Rely on cells being run in a particular manual order",
+     "correct": false,
+     "rationale": "Hidden execution order causes non-reproducible results."
+    },
+    {
+     "key": "D",
+     "text": "Hard-code absolute paths from your own machine",
+     "correct": false,
+     "rationale": "Absolute paths break on other machines."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pinned versions let others recreate the setup.",
+   "outcome_refs": [
+    "MST-0435-D05.02"
+   ],
+   "domain_ref": "Reproducible ML code",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0435-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In pandas, which risk comes from chained indexing like df[df.a>0]['b'] = 1?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It may assign to a temporary copy and silently not change df",
+     "correct": true,
+     "rationale": "Correct: chained indexing can produce a SettingWithCopy problem."
+    },
+    {
+     "key": "B",
+     "text": "It always raises an error and stops",
+     "correct": false,
+     "rationale": "It often warns rather than stopping, which is the danger."
+    },
+    {
+     "key": "C",
+     "text": "It deletes column b",
+     "correct": false,
+     "rationale": "It does not delete the column."
+    },
+    {
+     "key": "D",
+     "text": "It converts df to a NumPy array",
+     "correct": false,
+     "rationale": "It does not change the DataFrame type."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: chained indexing can produce a SettingWithCopy problem.",
+   "outcome_refs": [
+    "MST-0435-D03.02"
+   ],
+   "domain_ref": "pandas for tabular data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

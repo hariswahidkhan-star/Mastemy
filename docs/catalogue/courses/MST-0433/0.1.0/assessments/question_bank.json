@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0433",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 546,
+  "lesson_check_items": 96,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0433-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For matrices A (2x3) and B (3x4), what is the shape of AB?",
+   "options": [
+    {
+     "key": "A",
+     "text": "2x4",
+     "correct": true,
+     "rationale": "Correct: inner dimensions (3) cancel, leaving outer dimensions 2x4."
+    },
+    {
+     "key": "B",
+     "text": "3x3",
+     "correct": false,
+     "rationale": "That ignores the rule that the product keeps the outer dimensions."
+    },
+    {
+     "key": "C",
+     "text": "4x2",
+     "correct": false,
+     "rationale": "The order matters; AB is 2x4, not 4x2."
+    },
+    {
+     "key": "D",
+     "text": "Undefined",
+     "correct": false,
+     "rationale": "It is defined because A's columns (3) match B's rows (3)."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: inner dimensions (3) cancel, leaving outer dimensions 2x4.",
+   "outcome_refs": [
+    "MST-0433-D01.02"
+   ],
+   "domain_ref": "Vectors and matrices",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0433-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about eigenvectors of a matrix are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "An eigenvector's direction is unchanged by the transformation",
+     "correct": true,
+     "rationale": "Correct: the matrix only scales it by the eigenvalue."
+    },
+    {
+     "key": "B",
+     "text": "The eigenvalue gives the scaling factor along that direction",
+     "correct": true,
+     "rationale": "Correct: Av = lambda v scales v by lambda."
+    },
+    {
+     "key": "C",
+     "text": "Every matrix has only one eigenvector",
+     "correct": false,
+     "rationale": "Matrices generally have several eigenvectors."
+    },
+    {
+     "key": "D",
+     "text": "Eigenvectors must always be unit length",
+     "correct": false,
+     "rationale": "They can be scaled to any non-zero length."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the matrix only scales it by the eigenvalue.",
+   "outcome_refs": [
+    "MST-0433-D03.01"
+   ],
+   "domain_ref": "Eigenvalues and decompositions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0433-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In gradient descent, why is the learning rate important?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It scales each step along the negative gradient, controlling step size",
+     "correct": true,
+     "rationale": "Correct: too large overshoots, too small is slow."
+    },
+    {
+     "key": "B",
+     "text": "It sets the number of parameters in the model",
+     "correct": false,
+     "rationale": "The learning rate does not change model size."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees reaching the global minimum",
+     "correct": false,
+     "rationale": "It does not; descent can reach a local minimum or saddle."
+    },
+    {
+     "key": "D",
+     "text": "It computes the gradient itself",
+     "correct": false,
+     "rationale": "The gradient is computed separately; the rate only scales the step."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: too large overshoots, too small is slow.",
+   "outcome_refs": [
+    "MST-0433-D06.01"
+   ],
+   "domain_ref": "Maths behind training",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

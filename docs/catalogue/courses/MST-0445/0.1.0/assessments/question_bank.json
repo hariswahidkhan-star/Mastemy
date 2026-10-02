@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0445",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0445-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A task needs both the class and the pixel-level outline of each object. Which approach fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Instance segmentation",
+     "correct": true,
+     "rationale": "Correct: it labels and separates each object at pixel level."
+    },
+    {
+     "key": "B",
+     "text": "Image classification",
+     "correct": false,
+     "rationale": "Classification gives one label for the whole image, no location."
+    },
+    {
+     "key": "C",
+     "text": "Image-level regression",
+     "correct": false,
+     "rationale": "That predicts a number, not pixel outlines."
+    },
+    {
+     "key": "D",
+     "text": "Simple thresholding",
+     "correct": false,
+     "rationale": "Thresholding cannot distinguish object instances reliably."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it labels and separates each object at pixel level.",
+   "outcome_refs": [
+    "MST-0445-D05.01"
+   ],
+   "domain_ref": "Segmentation and evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0445-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices suit transfer learning on a small image dataset? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Start from a pretrained backbone",
+     "correct": true,
+     "rationale": "Correct: pretrained features reduce the data needed."
+    },
+    {
+     "key": "B",
+     "text": "Freeze early layers and fine-tune later ones",
+     "correct": true,
+     "rationale": "Correct: this limits overfitting on little data."
+    },
+    {
+     "key": "C",
+     "text": "Train a large network from random weights",
+     "correct": false,
+     "rationale": "That overfits badly on a small dataset."
+    },
+    {
+     "key": "D",
+     "text": "Fine-tune every layer with a high learning rate",
+     "correct": false,
+     "rationale": "That destroys useful pretrained features."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pretrained features reduce the data needed.",
+   "outcome_refs": [
+    "MST-0445-D03.02"
+   ],
+   "domain_ref": "Image classification",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0445-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is pixel accuracy misleading for segmentation with a large background class?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Predicting mostly background scores high while missing small objects",
+     "correct": true,
+     "rationale": "Correct: class imbalance inflates pixel accuracy."
+    },
+    {
+     "key": "B",
+     "text": "Pixel accuracy cannot be computed",
+     "correct": false,
+     "rationale": "It can be computed; it is just misleading."
+    },
+    {
+     "key": "C",
+     "text": "It only applies to detection",
+     "correct": false,
+     "rationale": "It is a segmentation metric."
+    },
+    {
+     "key": "D",
+     "text": "It ignores the background entirely",
+     "correct": false,
+     "rationale": "It counts background, which is exactly the problem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: class imbalance inflates pixel accuracy.",
+   "outcome_refs": [
+    "MST-0445-D05.02"
+   ],
+   "domain_ref": "Segmentation and evaluation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

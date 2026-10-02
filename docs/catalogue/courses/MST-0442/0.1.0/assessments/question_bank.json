@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0442",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 588,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0442-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does tf.GradientTape do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Records operations so gradients can be computed via automatic differentiation",
+     "correct": true,
+     "rationale": "Correct: the tape tracks ops for backprop."
+    },
+    {
+     "key": "B",
+     "text": "Saves the model to disk",
+     "correct": false,
+     "rationale": "Saving uses SavedModel, not the tape."
+    },
+    {
+     "key": "C",
+     "text": "Serves the model for inference",
+     "correct": false,
+     "rationale": "Serving is a separate concern."
+    },
+    {
+     "key": "D",
+     "text": "Loads data from files",
+     "correct": false,
+     "rationale": "Data loading uses tf.data, not the tape."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the tape tracks ops for backprop.",
+   "outcome_refs": [
+    "MST-0442-D01.02"
+   ],
+   "domain_ref": "TensorFlow basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0442-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO tf.data steps improve input-pipeline performance? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "prefetch to overlap preprocessing with training",
+     "correct": true,
+     "rationale": "Correct: prefetching hides input latency."
+    },
+    {
+     "key": "B",
+     "text": "cache to avoid recomputing expensive steps each epoch",
+     "correct": true,
+     "rationale": "Correct: caching reuses processed data."
+    },
+    {
+     "key": "C",
+     "text": "Rebuilding the dataset object every epoch",
+     "correct": false,
+     "rationale": "That adds overhead and defeats caching."
+    },
+    {
+     "key": "D",
+     "text": "Setting batch size to one for large datasets",
+     "correct": false,
+     "rationale": "Tiny batches hurt throughput."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: prefetching hides input latency.",
+   "outcome_refs": [
+    "MST-0442-D03.02"
+   ],
+   "domain_ref": "Input pipelines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0442-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Keras API best fits a model with two separate inputs merged later?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The functional API",
+     "correct": true,
+     "rationale": "Correct: it supports multi-input, branching graphs."
+    },
+    {
+     "key": "B",
+     "text": "The Sequential API",
+     "correct": false,
+     "rationale": "Sequential supports only a single linear stack."
+    },
+    {
+     "key": "C",
+     "text": "The optimizer API",
+     "correct": false,
+     "rationale": "Optimisers do not define model topology."
+    },
+    {
+     "key": "D",
+     "text": "The callbacks API",
+     "correct": false,
+     "rationale": "Callbacks monitor training, not architecture."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it supports multi-input, branching graphs.",
+   "outcome_refs": [
+    "MST-0442-D02.01"
+   ],
+   "domain_ref": "Keras models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

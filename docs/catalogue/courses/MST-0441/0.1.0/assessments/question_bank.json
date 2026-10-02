@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0441",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 588,
+  "lesson_check_items": 96,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0441-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a PyTorch training loop, what does optimizer.zero_grad() prevent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Gradients from accumulating across batches",
+     "correct": true,
+     "rationale": "Correct: PyTorch accumulates gradients, so they must be reset."
+    },
+    {
+     "key": "B",
+     "text": "The model from loading to the GPU",
+     "correct": false,
+     "rationale": "It is unrelated to device placement."
+    },
+    {
+     "key": "C",
+     "text": "The loss from being computed",
+     "correct": false,
+     "rationale": "It does not affect loss computation."
+    },
+    {
+     "key": "D",
+     "text": "Weights from being initialised",
+     "correct": false,
+     "rationale": "Initialisation happens separately."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: PyTorch accumulates gradients, so they must be reset.",
+   "outcome_refs": [
+    "MST-0441-D01.02"
+   ],
+   "domain_ref": "Tensors and autograd",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0441-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are required for a correct validation step? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Call model.eval() to set evaluation behaviour",
+     "correct": true,
+     "rationale": "Correct: it switches dropout and batch norm to inference mode."
+    },
+    {
+     "key": "B",
+     "text": "Wrap the forward pass in torch.no_grad()",
+     "correct": true,
+     "rationale": "Correct: it avoids building the graph and saves memory."
+    },
+    {
+     "key": "C",
+     "text": "Call loss.backward() on the validation batch",
+     "correct": false,
+     "rationale": "Backprop should not run during validation."
+    },
+    {
+     "key": "D",
+     "text": "Leave the model in training mode",
+     "correct": false,
+     "rationale": "Training mode changes dropout/batch-norm behaviour incorrectly."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: it switches dropout and batch norm to inference mode.",
+   "outcome_refs": [
+    "MST-0441-D04.02"
+   ],
+   "domain_ref": "Training loops",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0441-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Training loss is NaN after a few steps. Which cause is most likely?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The learning rate is too high, causing diverging updates",
+     "correct": true,
+     "rationale": "Correct: an excessive learning rate commonly produces NaNs."
+    },
+    {
+     "key": "B",
+     "text": "The dataset has too many samples",
+     "correct": false,
+     "rationale": "Dataset size does not cause NaNs."
+    },
+    {
+     "key": "C",
+     "text": "Dropout is enabled",
+     "correct": false,
+     "rationale": "Dropout alone does not cause NaN loss."
+    },
+    {
+     "key": "D",
+     "text": "The model was moved to the GPU",
+     "correct": false,
+     "rationale": "Device placement does not cause NaNs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an excessive learning rate commonly produces NaNs.",
+   "outcome_refs": [
+    "MST-0441-D05.01"
+   ],
+   "domain_ref": "Optimisation and regularisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

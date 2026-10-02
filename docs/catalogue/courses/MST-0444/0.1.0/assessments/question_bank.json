@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0444",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0444-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do transformers add positional information to token embeddings?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Self-attention alone is order-agnostic, so position must be encoded explicitly",
+     "correct": true,
+     "rationale": "Correct: without it the model cannot tell word order."
+    },
+    {
+     "key": "B",
+     "text": "To reduce the vocabulary size",
+     "correct": false,
+     "rationale": "Positional encoding does not change vocabulary."
+    },
+    {
+     "key": "C",
+     "text": "To convert text to lowercase",
+     "correct": false,
+     "rationale": "That is unrelated to positional encoding."
+    },
+    {
+     "key": "D",
+     "text": "To compress the model",
+     "correct": false,
+     "rationale": "It is about order, not compression."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without it the model cannot tell word order.",
+   "outcome_refs": [
+    "MST-0444-D02.02"
+   ],
+   "domain_ref": "Attention and transformers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0444-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good reasons to fine-tune a smaller model instead of prompting a large one? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lower, more predictable inference cost at scale",
+     "correct": true,
+     "rationale": "Correct: a small fine-tuned model is cheaper to serve."
+    },
+    {
+     "key": "B",
+     "text": "You have enough labelled data for the specific task",
+     "correct": true,
+     "rationale": "Correct: labelled data makes fine-tuning effective."
+    },
+    {
+     "key": "C",
+     "text": "You have no task data at all",
+     "correct": false,
+     "rationale": "Without data, fine-tuning has nothing to learn from."
+    },
+    {
+     "key": "D",
+     "text": "You need the broadest possible general knowledge with zero setup",
+     "correct": false,
+     "rationale": "That favours prompting a large general model."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a small fine-tuned model is cheaper to serve.",
+   "outcome_refs": [
+    "MST-0444-D05.02"
+   ],
+   "domain_ref": "Evaluation and choices",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0444-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can aggressive lowercasing and punctuation stripping hurt an NLP model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can erase meaning, such as distinguishing 'US' from 'us'",
+     "correct": true,
+     "rationale": "Correct: normalisation can destroy signal."
+    },
+    {
+     "key": "B",
+     "text": "It always improves accuracy",
+     "correct": false,
+     "rationale": "It does not always help and can hurt."
+    },
+    {
+     "key": "C",
+     "text": "It increases the vocabulary size",
+     "correct": false,
+     "rationale": "It typically reduces vocabulary."
+    },
+    {
+     "key": "D",
+     "text": "It is required by all tokenisers",
+     "correct": false,
+     "rationale": "Modern subword tokenisers do not require it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: normalisation can destroy signal.",
+   "outcome_refs": [
+    "MST-0444-D01.02"
+   ],
+   "domain_ref": "Text preparation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

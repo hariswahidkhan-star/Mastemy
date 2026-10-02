@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0443",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0443-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do very deep networks with sigmoid activations suffer vanishing gradients?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Repeated multiplication of small derivatives shrinks gradients toward zero in early layers",
+     "correct": true,
+     "rationale": "Correct: gradient magnitude decays through many layers."
+    },
+    {
+     "key": "B",
+     "text": "Sigmoids make the loss undefined",
+     "correct": false,
+     "rationale": "The loss remains defined."
+    },
+    {
+     "key": "C",
+     "text": "Deeper networks have fewer parameters",
+     "correct": false,
+     "rationale": "Depth adds parameters, not fewer."
+    },
+    {
+     "key": "D",
+     "text": "Gradients vanish only on the GPU",
+     "correct": false,
+     "rationale": "It is a mathematical property, not hardware-specific."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: gradient magnitude decays through many layers.",
+   "outcome_refs": [
+    "MST-0443-D02.02"
+   ],
+   "domain_ref": "Backpropagation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0443-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO changes commonly stabilise or speed up deep-network training? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Adding batch or layer normalisation",
+     "correct": true,
+     "rationale": "Correct: normalisation steadies activations and gradients."
+    },
+    {
+     "key": "B",
+     "text": "Using a suitable weight initialisation such as He or Xavier",
+     "correct": true,
+     "rationale": "Correct: good init keeps signal variance controlled."
+    },
+    {
+     "key": "C",
+     "text": "Initialising all weights to the same constant",
+     "correct": false,
+     "rationale": "That breaks symmetry and prevents learning."
+    },
+    {
+     "key": "D",
+     "text": "Removing all activation functions",
+     "correct": false,
+     "rationale": "Without non-linearity the network collapses to linear."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: normalisation steadies activations and gradients.",
+   "outcome_refs": [
+    "MST-0443-D03.02"
+   ],
+   "domain_ref": "Activations, init and normalisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0443-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model fits training data well but generalises poorly. Which change helps most?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add regularisation such as dropout or weight decay",
+     "correct": true,
+     "rationale": "Correct: regularisation reduces overfitting."
+    },
+    {
+     "key": "B",
+     "text": "Increase the number of parameters",
+     "correct": false,
+     "rationale": "More capacity usually worsens overfitting."
+    },
+    {
+     "key": "C",
+     "text": "Remove the validation set",
+     "correct": false,
+     "rationale": "That hides, not fixes, the problem."
+    },
+    {
+     "key": "D",
+     "text": "Train for many more epochs without changes",
+     "correct": false,
+     "rationale": "More epochs can increase overfitting."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: regularisation reduces overfitting.",
+   "outcome_refs": [
+    "MST-0443-D05.02"
+   ],
+   "domain_ref": "Regularisation and diagnosis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

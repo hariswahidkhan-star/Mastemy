@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0434",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 546,
+  "lesson_check_items": 96,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0434-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A test is 99% accurate for a disease affecting 1 in 1000 people. A random positive is most likely to be:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A false positive, because the base rate is very low",
+     "correct": true,
+     "rationale": "Correct: with a rare condition, false positives can outnumber true positives."
+    },
+    {
+     "key": "B",
+     "text": "A true positive, because the test is 99% accurate",
+     "correct": false,
+     "rationale": "Accuracy alone ignores the low base rate."
+    },
+    {
+     "key": "C",
+     "text": "Impossible to reason about without more tests",
+     "correct": false,
+     "rationale": "Bayes' theorem lets us reason with the given numbers."
+    },
+    {
+     "key": "D",
+     "text": "Equally likely true or false",
+     "correct": false,
+     "rationale": "The low prior makes false positives more likely here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with a rare condition, false positives can outnumber true positives.",
+   "outcome_refs": [
+    "MST-0434-D04.01"
+   ],
+   "domain_ref": "Bayesian reasoning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0434-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about a 95% confidence interval are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is built by a procedure that captures the true value 95% of the time over repeated samples",
+     "correct": true,
+     "rationale": "Correct: the guarantee is about the long-run procedure."
+    },
+    {
+     "key": "B",
+     "text": "A wider interval reflects more uncertainty in the estimate",
+     "correct": true,
+     "rationale": "Correct: width grows with variance and shrinks with sample size."
+    },
+    {
+     "key": "C",
+     "text": "There is a 95% probability the true parameter lies in this particular interval",
+     "correct": false,
+     "rationale": "The parameter is fixed; the probability statement is about the procedure."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees the sample mean equals the population mean",
+     "correct": false,
+     "rationale": "It does not; it quantifies uncertainty around the estimate."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the guarantee is about the long-run procedure.",
+   "outcome_refs": [
+    "MST-0434-D05.02"
+   ],
+   "domain_ref": "Estimation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0434-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A study reports p = 0.001. What does this most directly indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The data are unlikely under the null hypothesis; it does not by itself show a large effect",
+     "correct": true,
+     "rationale": "Correct: a small p-value concerns surprise under the null, not effect size."
+    },
+    {
+     "key": "B",
+     "text": "The effect is large and important",
+     "correct": false,
+     "rationale": "p-values do not measure effect size or importance."
+    },
+    {
+     "key": "C",
+     "text": "The result will replicate for certain",
+     "correct": false,
+     "rationale": "A single p-value does not guarantee replication."
+    },
+    {
+     "key": "D",
+     "text": "The null hypothesis is proven false",
+     "correct": false,
+     "rationale": "Hypothesis tests give evidence, not proof."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a small p-value concerns surprise under the null, not effect size.",
+   "outcome_refs": [
+    "MST-0434-D06.01"
+   ],
+   "domain_ref": "Hypothesis testing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

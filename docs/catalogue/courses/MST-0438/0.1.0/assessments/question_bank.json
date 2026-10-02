@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0438",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 462,
+  "lesson_check_items": 80,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0438-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You impute missing values using the column mean computed over the whole dataset before splitting. What is wrong?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Test-set information leaks into training through the shared mean",
+     "correct": true,
+     "rationale": "Correct: statistics must be computed on training data only."
+    },
+    {
+     "key": "B",
+     "text": "Mean imputation is never allowed",
+     "correct": false,
+     "rationale": "Mean imputation is allowed if fit on training data only."
+    },
+    {
+     "key": "C",
+     "text": "Imputation must use the median, not the mean",
+     "correct": false,
+     "rationale": "Either can be valid; the leakage is the real problem."
+    },
+    {
+     "key": "D",
+     "text": "Nothing is wrong",
+     "correct": false,
+     "rationale": "Computing the mean on all data leaks the test set."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: statistics must be computed on training data only.",
+   "outcome_refs": [
+    "MST-0438-D03.01"
+   ],
+   "domain_ref": "Transforming numerics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0438-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good ways to encode a high-cardinality categorical feature? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Target encoding fit within cross-validation folds",
+     "correct": true,
+     "rationale": "Correct: this captures signal while limiting leakage."
+    },
+    {
+     "key": "B",
+     "text": "Grouping rare categories into an 'other' bucket",
+     "correct": true,
+     "rationale": "Correct: this reduces sparsity and overfitting."
+    },
+    {
+     "key": "C",
+     "text": "One-hot encoding thousands of distinct values directly",
+     "correct": false,
+     "rationale": "That explodes dimensionality and overfits."
+    },
+    {
+     "key": "D",
+     "text": "Assigning arbitrary integer codes and treating them as ordered",
+     "correct": false,
+     "rationale": "That invents a false ordering."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: this captures signal while limiting leakage.",
+   "outcome_refs": [
+    "MST-0438-D02.01"
+   ],
+   "domain_ref": "Encoding features",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0438-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which feature is a classic example of target leakage in a loan-default model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A 'collections status' field recorded only after default occurs",
+     "correct": true,
+     "rationale": "Correct: it encodes the outcome itself, leaking the target."
+    },
+    {
+     "key": "B",
+     "text": "The applicant's stated annual income",
+     "correct": false,
+     "rationale": "Income is a legitimate predictor available before the decision."
+    },
+    {
+     "key": "C",
+     "text": "The loan term in months",
+     "correct": false,
+     "rationale": "Term is known at application time, not leakage."
+    },
+    {
+     "key": "D",
+     "text": "The applicant's age",
+     "correct": false,
+     "rationale": "Age is available upfront and is not the outcome."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it encodes the outcome itself, leaking the target.",
+   "outcome_refs": [
+    "MST-0438-D04.02"
+   ],
+   "domain_ref": "Creating and avoiding leakage",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
