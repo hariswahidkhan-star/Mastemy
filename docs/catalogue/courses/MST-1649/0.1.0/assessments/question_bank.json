@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1649",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 846,
+  "lesson_check_items": 72,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1649-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which security principle is violated when an attacker alters records in a database without authorisation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Integrity",
+     "correct": true,
+     "rationale": "Correct: unauthorised alteration of data is a loss of integrity."
+    },
+    {
+     "key": "B",
+     "text": "Availability",
+     "correct": false,
+     "rationale": "Availability concerns whether data/services are accessible, not whether they were altered."
+    },
+    {
+     "key": "C",
+     "text": "Confidentiality",
+     "correct": false,
+     "rationale": "Confidentiality concerns unauthorised disclosure, not alteration."
+    },
+    {
+     "key": "D",
+     "text": "Non-repudiation",
+     "correct": false,
+     "rationale": "Non-repudiation concerns proving who performed an action, not the alteration itself."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unauthorised alteration of data is a loss of integrity.",
+   "outcome_refs": [
+    "MST-1649-DD01.01"
+   ],
+   "domain_ref": "Security concepts and monitoring",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1649-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An analyst needs to know exactly which bytes were sent in a suspicious session. Which data source is most appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Full packet capture",
+     "correct": true,
+     "rationale": "Correct: full packet capture preserves complete payloads, allowing byte-level inspection."
+    },
+    {
+     "key": "B",
+     "text": "NetFlow records",
+     "correct": false,
+     "rationale": "NetFlow summarises conversations (addresses, ports, volume) but not payload contents."
+    },
+    {
+     "key": "C",
+     "text": "Firewall allow/deny counts",
+     "correct": false,
+     "rationale": "Counts show policy hits, not session contents."
+    },
+    {
+     "key": "D",
+     "text": "DNS query logs",
+     "correct": false,
+     "rationale": "DNS logs show name lookups, not the bytes of an arbitrary session."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: full packet capture preserves complete payloads, allowing byte-level inspection.",
+   "outcome_refs": [
+    "MST-1649-DD02.04"
+   ],
+   "domain_ref": "Host and network analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1649-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO items that are classic indicators of compromise (IOCs).",
+   "options": [
+    {
+     "key": "A",
+     "text": "A known-malicious file hash observed on an endpoint",
+     "correct": true,
+     "rationale": "Correct: a malicious file hash is a well-established IOC."
+    },
+    {
+     "key": "B",
+     "text": "Beaconing network traffic to a known command-and-control domain",
+     "correct": true,
+     "rationale": "Correct: periodic callbacks to a known C2 domain are a recognised IOC."
+    },
+    {
+     "key": "C",
+     "text": "A scheduled, approved software update",
+     "correct": false,
+     "rationale": "Approved maintenance activity is expected and is not an IOC."
+    },
+    {
+     "key": "D",
+     "text": "A user logging in during their normal shift from their usual device",
+     "correct": false,
+     "rationale": "Normal, expected behaviour is a baseline, not an indicator of compromise."
+    },
+    {
+     "key": "E",
+     "text": "Successful completion of a routine backup job",
+     "correct": false,
+     "rationale": "A routine backup success is normal operations, not an IOC."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a malicious file hash is a well-established IOC.",
+   "outcome_refs": [
+    "MST-1649-DD02.03"
+   ],
+   "domain_ref": "Host and network analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

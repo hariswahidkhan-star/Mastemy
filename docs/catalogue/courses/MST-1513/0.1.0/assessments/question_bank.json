@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-1513",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 924,
+  "lesson_check_items": 72,
+  "module_check_items": 210,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 90,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1513-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which control-plane component is responsible for assigning newly created Pods to nodes?",
+   "options": [
+    {
+     "key": "A",
+     "text": "kube-scheduler",
+     "correct": true,
+     "rationale": "Correct: the scheduler selects a suitable node for Pods that have no node assigned."
+    },
+    {
+     "key": "B",
+     "text": "kubelet",
+     "correct": false,
+     "rationale": "The kubelet runs on each node and starts containers once a Pod is assigned; it does not choose the node."
+    },
+    {
+     "key": "C",
+     "text": "kube-proxy",
+     "correct": false,
+     "rationale": "kube-proxy maintains network rules for Services; it does not schedule Pods."
+    },
+    {
+     "key": "D",
+     "text": "etcd",
+     "correct": false,
+     "rationale": "etcd stores cluster state; it does not make scheduling decisions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the scheduler selects a suitable node for Pods that have no node assigned.",
+   "outcome_refs": [
+    "MST-1513-DD01.01"
+   ],
+   "domain_ref": "Cluster architecture, installation and configuration",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1513-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Pod remains in Pending state. Events show 'Insufficient cpu'. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "No node has enough allocatable CPU to meet the Pod's requests",
+     "correct": true,
+     "rationale": "Correct: a CPU request larger than any node's remaining allocatable CPU keeps the Pod Pending."
+    },
+    {
+     "key": "B",
+     "text": "The container image cannot be pulled",
+     "correct": false,
+     "rationale": "An image pull problem shows ImagePullBackOff, not 'Insufficient cpu'."
+    },
+    {
+     "key": "C",
+     "text": "The Service selector does not match",
+     "correct": false,
+     "rationale": "Service selectors affect traffic, not whether a Pod can be scheduled."
+    },
+    {
+     "key": "D",
+     "text": "The readiness probe is failing",
+     "correct": false,
+     "rationale": "A failing readiness probe keeps a running Pod out of endpoints; it does not cause Pending."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a CPU request larger than any node's remaining allocatable CPU keeps the Pod Pending.",
+   "outcome_refs": [
+    "MST-1513-DD02.02"
+   ],
+   "domain_ref": "Workloads, scheduling and services",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1513-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that are true about a PersistentVolumeClaim (PVC).",
+   "options": [
+    {
+     "key": "A",
+     "text": "A PVC requests storage with a size and access mode",
+     "correct": true,
+     "rationale": "Correct: a PVC specifies requested capacity and access modes."
+    },
+    {
+     "key": "B",
+     "text": "A PVC can bind to a PersistentVolume that satisfies its request",
+     "correct": true,
+     "rationale": "Correct: a PVC binds to a matching PV that meets its size and access-mode request."
+    },
+    {
+     "key": "C",
+     "text": "A PVC stores data directly without any backing volume",
+     "correct": false,
+     "rationale": "A PVC is only a request/binding; the data lives on the bound PersistentVolume's storage."
+    },
+    {
+     "key": "D",
+     "text": "A PVC is automatically deleted when its Pod restarts",
+     "correct": false,
+     "rationale": "A PVC persists independently of Pod restarts, which is the point of persistent storage."
+    },
+    {
+     "key": "E",
+     "text": "A PVC can only be used by control-plane components",
+     "correct": false,
+     "rationale": "PVCs are used by ordinary workloads to consume storage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a PVC specifies requested capacity and access modes.",
+   "outcome_refs": [
+    "MST-1513-DD03.01"
+   ],
+   "domain_ref": "Storage, troubleshooting and maintenance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

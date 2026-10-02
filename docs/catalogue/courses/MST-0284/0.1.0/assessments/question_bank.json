@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0284",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 846,
+  "lesson_check_items": 72,
+  "module_check_items": 189,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 81,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0284-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the incident handling process, what is the primary goal of the containment phase?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Limit the scope and spread of the incident while preserving evidence",
+     "correct": true,
+     "rationale": "Correct: containment keeps damage from expanding and keeps evidence intact for analysis."
+    },
+    {
+     "key": "B",
+     "text": "Permanently remove the attacker's tools from all systems",
+     "correct": false,
+     "rationale": "That is eradication, which follows containment."
+    },
+    {
+     "key": "C",
+     "text": "Return affected systems to normal operation",
+     "correct": false,
+     "rationale": "That is recovery, a later phase."
+    },
+    {
+     "key": "D",
+     "text": "Identify which systems were affected",
+     "correct": false,
+     "rationale": "Identification/scoping precedes containment."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: containment keeps damage from expanding and keeps evidence intact for analysis.",
+   "outcome_refs": [
+    "MST-0284-DD03.01"
+   ],
+   "domain_ref": "Containment, eradication and recovery",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0284-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Logs show repeated connection attempts to many sequential TCP ports on one host from a single source. Which activity does this most likely indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A port scan during reconnaissance",
+     "correct": true,
+     "rationale": "Correct: sequential probing of many ports from one source is a classic port scan."
+    },
+    {
+     "key": "B",
+     "text": "Data exfiltration",
+     "correct": false,
+     "rationale": "Exfiltration typically involves large outbound transfers to few destinations, not port probing."
+    },
+    {
+     "key": "C",
+     "text": "A successful privilege escalation",
+     "correct": false,
+     "rationale": "Privilege escalation would not appear as sequential port connection attempts."
+    },
+    {
+     "key": "D",
+     "text": "Normal patch management traffic",
+     "correct": false,
+     "rationale": "Patching does not sweep many sequential ports on a host."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sequential probing of many ports from one source is a classic port scan.",
+   "outcome_refs": [
+    "MST-0284-DD02.04"
+   ],
+   "domain_ref": "Attack techniques and detection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0284-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO activities that belong to the post-incident (lessons-learned) phase.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Documenting what happened and the timeline of events",
+     "correct": true,
+     "rationale": "Correct: a factual record and timeline are core lessons-learned outputs."
+    },
+    {
+     "key": "B",
+     "text": "Recommending improvements to prevent recurrence",
+     "correct": true,
+     "rationale": "Correct: identifying and recommending preventive improvements is a key post-incident outcome."
+    },
+    {
+     "key": "C",
+     "text": "Isolating the infected host from the network",
+     "correct": false,
+     "rationale": "That is containment, performed during the incident, not post-incident."
+    },
+    {
+     "key": "D",
+     "text": "Running the initial triage to confirm an incident",
+     "correct": false,
+     "rationale": "That is identification, an early phase."
+    },
+    {
+     "key": "E",
+     "text": "Deploying the attacker's payload in a lab to test it",
+     "correct": false,
+     "rationale": "Analysis may occur, but deploying payloads is not a lessons-learned phase activity."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a factual record and timeline are core lessons-learned outputs.",
+   "outcome_refs": [
+    "MST-0284-DD03.04"
+   ],
+   "domain_ref": "Containment, eradication and recovery",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

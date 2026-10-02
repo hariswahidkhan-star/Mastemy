@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0276",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 612,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 54,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0276-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which command displays the absolute path of the directory you are currently working in?",
+   "options": [
+    {
+     "key": "A",
+     "text": "pwd",
+     "correct": true,
+     "rationale": "Correct: pwd prints the full path of the present working directory."
+    },
+    {
+     "key": "B",
+     "text": "cd",
+     "correct": false,
+     "rationale": "cd changes the working directory; it does not print the current path."
+    },
+    {
+     "key": "C",
+     "text": "ls",
+     "correct": false,
+     "rationale": "ls lists directory contents, not the current path."
+    },
+    {
+     "key": "D",
+     "text": "whoami",
+     "correct": false,
+     "rationale": "whoami prints the current username, not the directory."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: pwd prints the full path of the present working directory.",
+   "outcome_refs": [
+    "MST-0276-DD01.01"
+   ],
+   "domain_ref": "The Linux and open-source community",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0276-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A file listing shows permissions -rwxr-x---. Which statement is true about the 'others' category?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Others have read and execute but not write",
+     "correct": false,
+     "rationale": "Those are the group bits (r-x); the others bits are the final three (---)."
+    },
+    {
+     "key": "B",
+     "text": "Others have no access to the file",
+     "correct": true,
+     "rationale": "Correct: the final three characters --- mean others have no read, write or execute permission."
+    },
+    {
+     "key": "C",
+     "text": "Others have full access",
+     "correct": false,
+     "rationale": "Full access would be rwx in the last triad, not ---."
+    },
+    {
+     "key": "D",
+     "text": "Others can write but not read",
+     "correct": false,
+     "rationale": "Write without read would be -w-, not ---."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Correct: the final three characters --- mean others have no read, write or execute permission.",
+   "outcome_refs": [
+    "MST-0276-DD03.04"
+   ],
+   "domain_ref": "Users, permissions and the shell",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0276-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO characteristics that are true of free and open-source software licences.",
+   "options": [
+    {
+     "key": "A",
+     "text": "The source code is available to study and modify",
+     "correct": true,
+     "rationale": "Correct: access to source for study and modification is a defining trait of open-source licences."
+    },
+    {
+     "key": "B",
+     "text": "Redistribution of the software is permitted under the licence terms",
+     "correct": true,
+     "rationale": "Correct: open-source licences grant the right to redistribute, subject to their conditions."
+    },
+    {
+     "key": "C",
+     "text": "The software may never be used for commercial purposes",
+     "correct": false,
+     "rationale": "Open-source licences generally do not forbid commercial use; that would fail the open-source definition."
+    },
+    {
+     "key": "D",
+     "text": "Only the original author may ever compile the code",
+     "correct": false,
+     "rationale": "Anyone receiving the source may compile it; this is central to open source."
+    },
+    {
+     "key": "E",
+     "text": "The licence always forbids charging any fee",
+     "correct": false,
+     "rationale": "Open-source licences allow charging a fee, for example for distribution or support."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: access to source for study and modification is a defining trait of open-source licences.",
+   "outcome_refs": [
+    "MST-0276-DD01.03"
+   ],
+   "domain_ref": "The Linux and open-source community",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
