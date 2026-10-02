@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0634",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0634-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Source rows were added yesterday, but the PivotTable totals are unchanged. What is the most likely reason?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The PivotTable has not been refreshed since the data changed",
+     "correct": true,
+     "rationale": "Correct: a PivotTable shows a cached snapshot and must be refreshed to reflect new source rows."
+    },
+    {
+     "key": "B",
+     "text": "The workbook has too many sheets",
+     "correct": false,
+     "rationale": "Sheet count does not stop totals updating."
+    },
+    {
+     "key": "C",
+     "text": "The chart colours are wrong",
+     "correct": false,
+     "rationale": "Colours are unrelated to stale totals."
+    },
+    {
+     "key": "D",
+     "text": "The file is saved as PDF",
+     "correct": false,
+     "rationale": "File format does not explain a stale PivotTable in Excel."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a PivotTable shows a cached snapshot and must be refreshed to reflect new source rows.",
+   "outcome_refs": [
+    "MST-0634-D05.01"
+   ],
+   "domain_ref": "Refresh, audit and troubleshoot",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0634-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO field areas determine how a PivotTable groups and aggregates data? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rows",
+     "correct": true,
+     "rationale": "Correct: fields in Rows define the grouping down the left."
+    },
+    {
+     "key": "B",
+     "text": "Values",
+     "correct": true,
+     "rationale": "Correct: fields in Values define what is aggregated and how."
+    },
+    {
+     "key": "C",
+     "text": "The workbook file name",
+     "correct": false,
+     "rationale": "The file name has no effect on the PivotTable."
+    },
+    {
+     "key": "D",
+     "text": "The sheet tab colour",
+     "correct": false,
+     "rationale": "Tab colour is cosmetic and irrelevant to aggregation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fields in Rows define the grouping down the left.",
+   "outcome_refs": [
+    "MST-0634-D02.01"
+   ],
+   "domain_ref": "Building the PivotTable",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0634-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A revenue field in Values is showing a count of transactions instead of their total. The fix is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Change the value field setting from Count to Sum",
+     "correct": true,
+     "rationale": "Correct: the value field's summarise-by setting controls whether it counts or sums."
+    },
+    {
+     "key": "B",
+     "text": "Delete the PivotTable and the source",
+     "correct": false,
+     "rationale": "That is unnecessary; a value setting change suffices."
+    },
+    {
+     "key": "C",
+     "text": "Rename the worksheet",
+     "correct": false,
+     "rationale": "Renaming does not change aggregation."
+    },
+    {
+     "key": "D",
+     "text": "Add more slicers",
+     "correct": false,
+     "rationale": "Slicers filter; they do not change the aggregation type."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the value field's summarise-by setting controls whether it counts or sums.",
+   "outcome_refs": [
+    "MST-0634-D03.01"
+   ],
+   "domain_ref": "Summarising values",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

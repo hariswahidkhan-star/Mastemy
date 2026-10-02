@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0552",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0552-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A frontend formatting rule is being applied to backend files too. What is the most likely fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Scope the rule to the frontend path instead of leaving it global",
+     "correct": true,
+     "rationale": "Correct: path-scoping limits a rule to the intended part of the repo."
+    },
+    {
+     "key": "B",
+     "text": "Delete all rules",
+     "correct": false,
+     "rationale": "Removing every rule discards useful conventions."
+    },
+    {
+     "key": "C",
+     "text": "Make the rule longer",
+     "correct": false,
+     "rationale": "Length does not control which files a rule applies to."
+    },
+    {
+     "key": "D",
+     "text": "Rename the backend files",
+     "correct": false,
+     "rationale": "Renaming source files to satisfy a mis-scoped rule is the wrong lever."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: path-scoping limits a rule to the intended part of the repo.",
+   "outcome_refs": [
+    "MST-0552-D03.01"
+   ],
+   "domain_ref": "Scoping rules",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0552-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO qualities make a repository rule more likely to be followed? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is specific and states the exact convention",
+     "correct": true,
+     "rationale": "Correct: specific, actionable wording is easier for the agent to apply."
+    },
+    {
+     "key": "B",
+     "text": "It is scoped to where it is relevant",
+     "correct": true,
+     "rationale": "Correct: appropriate scope avoids conflicts and noise."
+    },
+    {
+     "key": "C",
+     "text": "It is a long essay covering many topics",
+     "correct": false,
+     "rationale": "Overlong rules are hard to act on."
+    },
+    {
+     "key": "D",
+     "text": "It contradicts another active rule",
+     "correct": false,
+     "rationale": "Conflicting rules cause unpredictable behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: specific, actionable wording is easier for the agent to apply.",
+   "outcome_refs": [
+    "MST-0552-D02.01"
+   ],
+   "domain_ref": "Writing clear rules",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0552-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two active rules give opposite instructions for the same files. What is the first thing to check?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Which rule takes precedence and whether their scopes overlap",
+     "correct": true,
+     "rationale": "Correct: diagnosing scope and precedence resolves the conflict."
+    },
+    {
+     "key": "B",
+     "text": "Whether the repository is too large",
+     "correct": false,
+     "rationale": "Repo size is not the cause of a direct rule conflict."
+    },
+    {
+     "key": "C",
+     "text": "Whether the agent model changed",
+     "correct": false,
+     "rationale": "The conflict exists in the rules regardless of model."
+    },
+    {
+     "key": "D",
+     "text": "Whether tests are enabled",
+     "correct": false,
+     "rationale": "Tests do not govern rule precedence."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: diagnosing scope and precedence resolves the conflict.",
+   "outcome_refs": [
+    "MST-0552-D05.01"
+   ],
+   "domain_ref": "Diagnosing rule problems",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

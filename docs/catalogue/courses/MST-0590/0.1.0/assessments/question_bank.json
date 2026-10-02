@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0590",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0590-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After ingestion, answers about one PDF type are always wrong or empty. The most likely root cause is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Text extraction silently failed for that PDF type, so no content was indexed",
+     "correct": true,
+     "rationale": "Correct: failed extraction leaves empty units, so retrieval has nothing to find."
+    },
+    {
+     "key": "B",
+     "text": "The language model is too small",
+     "correct": false,
+     "rationale": "The content was never indexed; model size is not the cause."
+    },
+    {
+     "key": "C",
+     "text": "The user's question is too polite",
+     "correct": false,
+     "rationale": "Phrasing does not explain systematically empty content."
+    },
+    {
+     "key": "D",
+     "text": "The vector store is too fast",
+     "correct": false,
+     "rationale": "Speed is unrelated to missing extracted text."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: failed extraction leaves empty units, so retrieval has nothing to find.",
+   "outcome_refs": [
+    "MST-0590-D05.01"
+   ],
+   "domain_ref": "Diagnosing ingestion faults",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0590-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO metadata fields best support later citation and traceability? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Source document identifier",
+     "correct": true,
+     "rationale": "Correct: a source identifier lets an answer point back to its origin."
+    },
+    {
+     "key": "B",
+     "text": "Section or page reference",
+     "correct": true,
+     "rationale": "Correct: a section reference supports precise, checkable citation."
+    },
+    {
+     "key": "C",
+     "text": "The server's CPU temperature",
+     "correct": false,
+     "rationale": "Irrelevant to traceability."
+    },
+    {
+     "key": "D",
+     "text": "A random UUID with no mapping to the source",
+     "correct": false,
+     "rationale": "An unmapped id does not aid tracing to the real source."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a source identifier lets an answer point back to its origin.",
+   "outcome_refs": [
+    "MST-0590-D04.01"
+   ],
+   "domain_ref": "Source metadata",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0590-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Aggressive cleaning stripped all headings and lists from documents. What is the likely downstream effect?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Loss of structure that hurts chunking and retrieval relevance",
+     "correct": true,
+     "rationale": "Correct: meaningful structure aids chunking and retrieval; destroying it degrades quality."
+    },
+    {
+     "key": "B",
+     "text": "Faster and strictly better answers",
+     "correct": false,
+     "rationale": "Removing useful structure does not improve answers."
+    },
+    {
+     "key": "C",
+     "text": "No effect at all",
+     "correct": false,
+     "rationale": "Structure loss measurably affects downstream stages."
+    },
+    {
+     "key": "D",
+     "text": "Improved source citation",
+     "correct": false,
+     "rationale": "Citation depends on preserved structure and metadata, not its removal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: meaningful structure aids chunking and retrieval; destroying it degrades quality.",
+   "outcome_refs": [
+    "MST-0590-D03.01"
+   ],
+   "domain_ref": "Normalization and cleaning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

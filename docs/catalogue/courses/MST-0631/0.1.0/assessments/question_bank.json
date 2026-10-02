@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0631",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0631-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A formula =B2*C$1 is filled down a column. Why is the C1 reference written as C$1?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To keep the row fixed on row 1 while the column fills down",
+     "correct": true,
+     "rationale": "Correct: the dollar sign before the row number locks that row so every filled formula still multiplies by C1."
+    },
+    {
+     "key": "B",
+     "text": "To make the value bold",
+     "correct": false,
+     "rationale": "The dollar sign is a reference anchor, not formatting."
+    },
+    {
+     "key": "C",
+     "text": "To convert C1 to text",
+     "correct": false,
+     "rationale": "It does not change the data type of C1."
+    },
+    {
+     "key": "D",
+     "text": "To create a chart",
+     "correct": false,
+     "rationale": "Reference anchoring is unrelated to charting."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the dollar sign before the row number locks that row so every filled formula still multiplies by C1.",
+   "outcome_refs": [
+    "MST-0631-D03.01"
+   ],
+   "domain_ref": "Formulas and references",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0631-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate uses of a PivotTable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Summarising sales totals by region",
+     "correct": true,
+     "rationale": "Correct: PivotTables aggregate and group values, such as totals by category."
+    },
+    {
+     "key": "B",
+     "text": "Counting orders per product category",
+     "correct": true,
+     "rationale": "Correct: grouping and counting by category is a core PivotTable use."
+    },
+    {
+     "key": "C",
+     "text": "Permanently changing the raw source cells",
+     "correct": false,
+     "rationale": "A PivotTable summarises data; it does not edit the source rows."
+    },
+    {
+     "key": "D",
+     "text": "Setting the font of the workbook theme",
+     "correct": false,
+     "rationale": "Theming is unrelated to PivotTable analysis."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: PivotTables aggregate and group values, such as totals by category.",
+   "outcome_refs": [
+    "MST-0631-D05.01"
+   ],
+   "domain_ref": "Charts and PivotTables",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0631-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Numbers imported into a column are left-aligned and will not sum. The most likely cause is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "They are stored as text, not numbers",
+     "correct": true,
+     "rationale": "Correct: text-stored numbers left-align and are excluded from numeric sums until converted."
+    },
+    {
+     "key": "B",
+     "text": "The chart is missing",
+     "correct": false,
+     "rationale": "Charts do not affect whether values sum."
+    },
+    {
+     "key": "C",
+     "text": "The workbook is read-only",
+     "correct": false,
+     "rationale": "Read-only status would block edits, not cause a failed sum."
+    },
+    {
+     "key": "D",
+     "text": "There are too many worksheets",
+     "correct": false,
+     "rationale": "Sheet count does not affect summation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: text-stored numbers left-align and are excluded from numeric sums until converted.",
+   "outcome_refs": [
+    "MST-0631-D02.01"
+   ],
+   "domain_ref": "Entering and formatting data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

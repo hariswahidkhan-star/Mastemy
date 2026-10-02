@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0698",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0698-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An executive asks the assistant a question and it returns finance documents they should not see. What control prevents this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Document-level access control enforced at query time",
+     "correct": true,
+     "rationale": "Correct: document-level access trims results to what the user is authorised to see, even when they ask."
+    },
+    {
+     "key": "B",
+     "text": "A longer system prompt asking the model to be careful",
+     "correct": false,
+     "rationale": "Prompt wording does not reliably enforce authorisation on retrieved documents."
+    },
+    {
+     "key": "C",
+     "text": "A faster pricing tier",
+     "correct": false,
+     "rationale": "Performance tiers do not enforce access."
+    },
+    {
+     "key": "D",
+     "text": "Disabling semantic ranking",
+     "correct": false,
+     "rationale": "Ranking affects ordering, not authorisation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: document-level access trims results to what the user is authorised to see, even when they ask.",
+   "outcome_refs": [
+    "MST-0698-D04.01"
+   ],
+   "domain_ref": "Security and access",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0698-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are reasons to use hybrid search in Azure AI Search? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Exact terms and identifiers must match precisely",
+     "correct": true,
+     "rationale": "Correct: keyword matching captures exact codes that vectors may miss."
+    },
+    {
+     "key": "B",
+     "text": "Semantic paraphrases of a question must also match",
+     "correct": true,
+     "rationale": "Correct: vector search captures meaning beyond exact wording."
+    },
+    {
+     "key": "C",
+     "text": "You want to return every document in full",
+     "correct": false,
+     "rationale": "RAG needs concise, relevant results, not full dumps."
+    },
+    {
+     "key": "D",
+     "text": "You want to remove access controls",
+     "correct": false,
+     "rationale": "Access control is unrelated to the hybrid-search rationale."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: keyword matching captures exact codes that vectors may miss.",
+   "outcome_refs": [
+    "MST-0698-D02.01"
+   ],
+   "domain_ref": "Query types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0698-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Microsoft's guidance for Azure AI Search connecting to an Azure OpenAI embedding model with public access disabled is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use the search service's managed identity as a trusted service",
+     "correct": true,
+     "rationale": "Correct: managed identity plus trusted-service access lets the services connect without public access or shared keys."
+    },
+    {
+     "key": "B",
+     "text": "Re-enable public access permanently",
+     "correct": false,
+     "rationale": "That defeats the network isolation goal."
+    },
+    {
+     "key": "C",
+     "text": "Share an API key in the index definition",
+     "correct": false,
+     "rationale": "Embedding keys in definitions is the pattern managed identity replaces."
+    },
+    {
+     "key": "D",
+     "text": "Return all documents unfiltered",
+     "correct": false,
+     "rationale": "Unrelated to the secure-connection question."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: managed identity plus trusted-service access lets the services connect without public access or shared keys.",
+   "outcome_refs": [
+    "MST-0698-D05.01"
+   ],
+   "domain_ref": "Secure connections",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

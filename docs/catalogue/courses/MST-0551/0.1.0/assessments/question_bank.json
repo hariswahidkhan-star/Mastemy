@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0551",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0551-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The Cursor agent made changes across four files, including one unrelated to the task. What should you do before accepting?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Review the full diff and reject the unrelated change",
+     "correct": true,
+     "rationale": "Correct: reviewing the diff and rejecting out-of-scope edits is the accountable step."
+    },
+    {
+     "key": "B",
+     "text": "Accept everything because the agent is usually right",
+     "correct": false,
+     "rationale": "Accepting unreviewed multi-file edits is exactly the risk to avoid."
+    },
+    {
+     "key": "C",
+     "text": "Delete the repository and start over",
+     "correct": false,
+     "rationale": "That is disproportionate; the diff can simply be reviewed."
+    },
+    {
+     "key": "D",
+     "text": "Disable tests so the change applies faster",
+     "correct": false,
+     "rationale": "Disabling tests removes the check you need."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reviewing the diff and rejecting out-of-scope edits is the accountable step.",
+   "outcome_refs": [
+    "MST-0551-D04.01"
+   ],
+   "domain_ref": "Reviewing agent work",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0551-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions give the Cursor agent better context for a scoped change? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Attach the specific files the change touches",
+     "correct": true,
+     "rationale": "Correct: focused, relevant files improve the agent's results."
+    },
+    {
+     "key": "B",
+     "text": "Reference the exact function or symbol to edit",
+     "correct": true,
+     "rationale": "Correct: precise references reduce the chance of editing the wrong code."
+    },
+    {
+     "key": "C",
+     "text": "Paste the entire repository into the chat",
+     "correct": false,
+     "rationale": "Dumping everything adds noise and wastes context."
+    },
+    {
+     "key": "D",
+     "text": "Give no files and hope it finds them",
+     "correct": false,
+     "rationale": "Leaving context to chance produces unreliable edits."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: focused, relevant files improve the agent's results.",
+   "outcome_refs": [
+    "MST-0551-D03.01"
+   ],
+   "domain_ref": "Giving the agent context",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0551-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which task is the clearest case for a direct manual edit rather than the agent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Renaming one local variable in the file you are looking at",
+     "correct": true,
+     "rationale": "Correct: a trivial local edit is faster to type than to delegate."
+    },
+    {
+     "key": "B",
+     "text": "A coordinated change across many files",
+     "correct": false,
+     "rationale": "That is where the agent helps most."
+    },
+    {
+     "key": "C",
+     "text": "Adding a feature touching several modules",
+     "correct": false,
+     "rationale": "A multi-step task suits the agent."
+    },
+    {
+     "key": "D",
+     "text": "Refactoring with repository-wide impact",
+     "correct": false,
+     "rationale": "Broad changes benefit from agent assistance plus review."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a trivial local edit is faster to type than to delegate.",
+   "outcome_refs": [
+    "MST-0551-D05.01"
+   ],
+   "domain_ref": "Agent versus direct editing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

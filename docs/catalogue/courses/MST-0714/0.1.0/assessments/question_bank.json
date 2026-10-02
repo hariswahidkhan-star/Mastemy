@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0714",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0714-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An internal agent will handle sensitive HR data. Which authentication choice is inappropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "No authentication, which lets anyone with the link chat with it",
+     "correct": true,
+     "rationale": "Correct: Microsoft cautions that No authentication allows anyone with the link to interact, which is unsuitable for sensitive internal data."
+    },
+    {
+     "key": "B",
+     "text": "Authenticate with Microsoft Entra ID",
+     "correct": false,
+     "rationale": "Entra authentication is appropriate for an internal, sensitive agent."
+    },
+    {
+     "key": "C",
+     "text": "Authenticate manually for other channels",
+     "correct": false,
+     "rationale": "Manual authentication is a valid way to keep auth on other channels."
+    },
+    {
+     "key": "D",
+     "text": "Restrict the agent to authenticated users",
+     "correct": false,
+     "rationale": "Restricting to authenticated users is appropriate here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Microsoft cautions that No authentication allows anyone with the link to interact, which is unsuitable for sensitive internal data.",
+   "outcome_refs": [
+    "MST-0714-D04.01"
+   ],
+   "domain_ref": "Publishing and channels",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0714-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are environment-level governance controls in Copilot Studio? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data loss prevention (DLP) policies",
+     "correct": true,
+     "rationale": "Correct: DLP is enforced at the environment level to control connector use."
+    },
+    {
+     "key": "B",
+     "text": "Role-based access and auditing",
+     "correct": true,
+     "rationale": "Correct: role-based access and auditing are applied at the environment level."
+    },
+    {
+     "key": "C",
+     "text": "The colour theme of a single topic",
+     "correct": false,
+     "rationale": "Cosmetic topic styling is not a governance control."
+    },
+    {
+     "key": "D",
+     "text": "The length of a trigger phrase",
+     "correct": false,
+     "rationale": "Trigger-phrase length is an authoring detail, not governance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: DLP is enforced at the environment level to control connector use.",
+   "outcome_refs": [
+    "MST-0714-D05.01"
+   ],
+   "domain_ref": "Governance and lifecycle",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0714-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before customers can interact with an updated agent on any channel, the maker must:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Publish the agent again so changes reach all connected channels",
+     "correct": true,
+     "rationale": "Correct: changes only reach channels after the agent is published again."
+    },
+    {
+     "key": "B",
+     "text": "Rename the environment",
+     "correct": false,
+     "rationale": "Renaming does not deploy changes."
+    },
+    {
+     "key": "C",
+     "text": "Delete all topics",
+     "correct": false,
+     "rationale": "Deleting topics removes functionality rather than deploying it."
+    },
+    {
+     "key": "D",
+     "text": "Disable authentication",
+     "correct": false,
+     "rationale": "Disabling authentication does not publish changes and weakens security."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: changes only reach channels after the agent is published again.",
+   "outcome_refs": [
+    "MST-0714-D01.01"
+   ],
+   "domain_ref": "What Copilot Studio is",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

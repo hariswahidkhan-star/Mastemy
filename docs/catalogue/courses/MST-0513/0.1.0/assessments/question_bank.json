@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0513",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0513-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team's Project returns answers that mix two unrelated engagements. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Unrelated files for both engagements are loaded in the same Project",
+     "correct": true,
+     "rationale": "Correct: mixing unrelated material in one Project degrades retrieval relevance."
+    },
+    {
+     "key": "B",
+     "text": "The team has too few members",
+     "correct": false,
+     "rationale": "Member count does not cause content mixing."
+    },
+    {
+     "key": "C",
+     "text": "Claude cannot read files",
+     "correct": false,
+     "rationale": "The problem is scoping of the knowledge, not file reading."
+    },
+    {
+     "key": "D",
+     "text": "The chat is too short",
+     "correct": false,
+     "rationale": "Chat length does not explain cross-engagement mixing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: mixing unrelated material in one Project degrades retrieval relevance.",
+   "outcome_refs": [
+    "MST-0513-D02.01"
+   ],
+   "domain_ref": "Organising project knowledge",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0513-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in a shared team Project's instructions? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The house style and citation convention",
+     "correct": true,
+     "rationale": "Correct: shared conventions keep every member's chats consistent."
+    },
+    {
+     "key": "B",
+     "text": "A member's one-off debugging transcript",
+     "correct": false,
+     "rationale": "Transient content does not belong in persistent project instructions."
+    },
+    {
+     "key": "C",
+     "text": "The project's purpose and scope",
+     "correct": true,
+     "rationale": "Correct: a clear purpose steers retrieval and keeps the Project focused."
+    },
+    {
+     "key": "D",
+     "text": "Each member's personal password",
+     "correct": false,
+     "rationale": "Credentials must never be placed in shared instructions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: shared conventions keep every member's chats consistent.",
+   "outcome_refs": [
+    "MST-0513-D03.01"
+   ],
+   "domain_ref": "Team conventions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0513-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which task is the clearest fit for a one-off chat rather than a Project?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Quickly rephrasing a single sentence with no reuse or shared context",
+     "correct": true,
+     "rationale": "Correct: a trivial, non-recurring task needs no persistent shared workspace."
+    },
+    {
+     "key": "B",
+     "text": "A six-week research engagement with shared files",
+     "correct": false,
+     "rationale": "That needs the persistence of a Project."
+    },
+    {
+     "key": "C",
+     "text": "A team knowledge base updated weekly",
+     "correct": false,
+     "rationale": "Ongoing shared knowledge belongs in a Project."
+    },
+    {
+     "key": "D",
+     "text": "A confidential multi-member workspace",
+     "correct": false,
+     "rationale": "Shared, controlled access points to a Project."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a trivial, non-recurring task needs no persistent shared workspace.",
+   "outcome_refs": [
+    "MST-0513-D05.01"
+   ],
+   "domain_ref": "Fitting Projects into real work",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

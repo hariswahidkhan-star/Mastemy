@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0632",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0632-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A formula that worked yesterday now shows #SPILL!. The most likely cause is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A cell in the spill output range now contains data blocking the spill",
+     "correct": true,
+     "rationale": "Correct: #SPILL! appears when the cells a dynamic array needs to fill are not empty."
+    },
+    {
+     "key": "B",
+     "text": "The function name was deleted from Excel",
+     "correct": false,
+     "rationale": "Built-in functions are not deleted; #SPILL! is a range-blocking error."
+    },
+    {
+     "key": "C",
+     "text": "The workbook theme changed",
+     "correct": false,
+     "rationale": "Theming does not cause spill errors."
+    },
+    {
+     "key": "D",
+     "text": "The sheet was renamed",
+     "correct": false,
+     "rationale": "A rename does not produce #SPILL!."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: #SPILL! appears when the cells a dynamic array needs to fill are not empty.",
+   "outcome_refs": [
+    "MST-0632-D05.01"
+   ],
+   "domain_ref": "Diagnosing array errors",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0632-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO functions return a dynamic (spilled) array? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "FILTER",
+     "correct": true,
+     "rationale": "Correct: FILTER returns all matching rows as a spilled array."
+    },
+    {
+     "key": "B",
+     "text": "UNIQUE",
+     "correct": true,
+     "rationale": "Correct: UNIQUE returns the distinct values as a spilled array."
+    },
+    {
+     "key": "C",
+     "text": "A plain SUM of one range",
+     "correct": false,
+     "rationale": "SUM returns a single scalar, not a spilled array."
+    },
+    {
+     "key": "D",
+     "text": "A cell's number format",
+     "correct": false,
+     "rationale": "Number formatting is not a function and returns nothing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: FILTER returns all matching rows as a spilled array.",
+   "outcome_refs": [
+    "MST-0632-D02.01"
+   ],
+   "domain_ref": "Core array functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0632-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "XLOOKUP is preferred over VLOOKUP mainly because it:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Can look left or right and takes an explicit not-found argument",
+     "correct": true,
+     "rationale": "Correct: XLOOKUP is direction-independent and lets you set the value returned when nothing matches."
+    },
+    {
+     "key": "B",
+     "text": "Automatically formats the result as currency",
+     "correct": false,
+     "rationale": "XLOOKUP does not change formatting."
+    },
+    {
+     "key": "C",
+     "text": "Creates a chart from the result",
+     "correct": false,
+     "rationale": "It returns a value, not a chart."
+    },
+    {
+     "key": "D",
+     "text": "Requires the lookup column to be sorted",
+     "correct": false,
+     "rationale": "XLOOKUP does not require sorted data for an exact match."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: XLOOKUP is direction-independent and lets you set the value returned when nothing matches.",
+   "outcome_refs": [
+    "MST-0632-D03.01"
+   ],
+   "domain_ref": "Robust lookups with XLOOKUP",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

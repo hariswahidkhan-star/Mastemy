@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0553",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0553-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before letting the agent implement a feature, what single artefact most reduces the risk of building the wrong thing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A plan stating the goal and acceptance criteria",
+     "correct": true,
+     "rationale": "Correct: explicit acceptance criteria define 'done' and guide the agent."
+    },
+    {
+     "key": "B",
+     "text": "A longer prompt with more adjectives",
+     "correct": false,
+     "rationale": "Verbosity does not define correctness."
+    },
+    {
+     "key": "C",
+     "text": "A larger context window",
+     "correct": false,
+     "rationale": "More context does not substitute for a clear goal."
+    },
+    {
+     "key": "D",
+     "text": "Disabling the test suite",
+     "correct": false,
+     "rationale": "Removing checks increases risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: explicit acceptance criteria define 'done' and guide the agent.",
+   "outcome_refs": [
+    "MST-0553-D01.01"
+   ],
+   "domain_ref": "From request to plan",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0553-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep agent-driven feature work reviewable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Splitting the feature into small, testable increments",
+     "correct": true,
+     "rationale": "Correct: small increments are easier to review and verify."
+    },
+    {
+     "key": "B",
+     "text": "Running tests at each checkpoint",
+     "correct": true,
+     "rationale": "Correct: per-increment testing catches regressions early."
+    },
+    {
+     "key": "C",
+     "text": "Making one sweeping change at the end",
+     "correct": false,
+     "rationale": "Large opaque changes are hard to review."
+    },
+    {
+     "key": "D",
+     "text": "Skipping review when the feature appears to work",
+     "correct": false,
+     "rationale": "Appearance of working is not verification."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: small increments are easier to review and verify.",
+   "outcome_refs": [
+    "MST-0553-D02.01"
+   ],
+   "domain_ref": "Planning in increments",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0553-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Mid-task, the agent starts refactoring unrelated modules not in the plan. The best response is to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Stop, roll back the drift, and resume from the last good checkpoint",
+     "correct": true,
+     "rationale": "Correct: halting drift and resuming from a known-good point protects the work."
+    },
+    {
+     "key": "B",
+     "text": "Let it continue since more refactoring is good",
+     "correct": false,
+     "rationale": "Unplanned sweeping changes increase risk and review burden."
+    },
+    {
+     "key": "C",
+     "text": "Accept everything to save time",
+     "correct": false,
+     "rationale": "Accepting unreviewed drift defeats the plan."
+    },
+    {
+     "key": "D",
+     "text": "Delete the branch",
+     "correct": false,
+     "rationale": "A rollback to checkpoint is sufficient and less destructive."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: halting drift and resuming from a known-good point protects the work.",
+   "outcome_refs": [
+    "MST-0553-D05.01"
+   ],
+   "domain_ref": "Recovery and drift",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

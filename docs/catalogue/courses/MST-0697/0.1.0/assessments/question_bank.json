@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0697",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0697-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An enterprise wants to stop managing and rotating API keys for its Azure OpenAI app. What does Microsoft recommend?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Authenticate with a Microsoft Entra managed identity",
+     "correct": true,
+     "rationale": "Correct: Microsoft's guidance is to use managed identity so applications authenticate without stored keys to rotate."
+    },
+    {
+     "key": "B",
+     "text": "Email the keys to each developer",
+     "correct": false,
+     "rationale": "Distributing keys increases exposure and is explicitly discouraged."
+    },
+    {
+     "key": "C",
+     "text": "Hard-code the key in the source",
+     "correct": false,
+     "rationale": "Hard-coding secrets is a well-known anti-pattern."
+    },
+    {
+     "key": "D",
+     "text": "Disable authentication entirely",
+     "correct": false,
+     "rationale": "Removing authentication exposes the service."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Microsoft's guidance is to use managed identity so applications authenticate without stored keys to rotate.",
+   "outcome_refs": [
+    "MST-0697-D02.01"
+   ],
+   "domain_ref": "Identity and secrets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0697-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls help isolate an Azure OpenAI resource at the network level? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Disable public network access",
+     "correct": true,
+     "rationale": "Correct: removing the public endpoint restricts reachability."
+    },
+    {
+     "key": "B",
+     "text": "Create a private endpoint into the virtual network",
+     "correct": true,
+     "rationale": "Correct: a private endpoint confines access to the virtual network."
+    },
+    {
+     "key": "C",
+     "text": "Publish the key in a public repository",
+     "correct": false,
+     "rationale": "That is a severe security mistake, not isolation."
+    },
+    {
+     "key": "D",
+     "text": "Turn off diagnostic logging",
+     "correct": false,
+     "rationale": "Disabling logging reduces visibility and is unrelated to isolation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: removing the public endpoint restricts reachability.",
+   "outcome_refs": [
+    "MST-0697-D04.01"
+   ],
+   "domain_ref": "Network isolation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0697-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A prompt returns a 400 response citing the content management policy. In application code you should:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Catch the error and handle the filtered response gracefully",
+     "correct": true,
+     "rationale": "Correct: a filtered prompt returns a 400, which the app should catch and handle rather than crash."
+    },
+    {
+     "key": "B",
+     "text": "Retry the identical prompt forever",
+     "correct": false,
+     "rationale": "Repeating the same filtered prompt will keep failing."
+    },
+    {
+     "key": "C",
+     "text": "Remove all error handling",
+     "correct": false,
+     "rationale": "That would make the app crash on filtered content."
+    },
+    {
+     "key": "D",
+     "text": "Disable the content filter in code",
+     "correct": false,
+     "rationale": "Client code cannot and should not silently bypass the configured safety filter."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a filtered prompt returns a 400, which the app should catch and handle rather than crash.",
+   "outcome_refs": [
+    "MST-0697-D03.01"
+   ],
+   "domain_ref": "Content safety and filtering",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

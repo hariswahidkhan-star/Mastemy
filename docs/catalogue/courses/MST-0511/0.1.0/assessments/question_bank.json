@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0511",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0511-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A manager asks Claude for a market-size figure and pastes the reply into a board deck unchanged. What is the main professional risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The figure may be fabricated or outdated and was never verified against a source",
+     "correct": true,
+     "rationale": "Correct: Claude can produce plausible but wrong figures, so any externally reported number must be verified before reuse."
+    },
+    {
+     "key": "B",
+     "text": "Claude cannot format numbers",
+     "correct": false,
+     "rationale": "Formatting is not the issue; accuracy and provenance are."
+    },
+    {
+     "key": "C",
+     "text": "The deck will be too long",
+     "correct": false,
+     "rationale": "Length is unrelated to the verification risk described."
+    },
+    {
+     "key": "D",
+     "text": "Claude will remember the figure for other users",
+     "correct": false,
+     "rationale": "Cross-user memory is not how the tool works and is not the risk here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Claude can produce plausible but wrong figures, so any externally reported number must be verified before reuse.",
+   "outcome_refs": [
+    "MST-0511-D01.01"
+   ],
+   "domain_ref": "Claude surfaces and the professional context",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0511-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce the risk of using an unverified Claude claim in a professional deliverable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Check reported figures and quotes against the original source",
+     "correct": true,
+     "rationale": "Correct: tracing claims to a source is the core verification step."
+    },
+    {
+     "key": "B",
+     "text": "Ask Claude to confirm that it is sure",
+     "correct": false,
+     "rationale": "A model stating it is confident is not independent verification."
+    },
+    {
+     "key": "C",
+     "text": "Record which parts were AI-assisted",
+     "correct": true,
+     "rationale": "Correct: documenting AI assistance supports accountability and later review."
+    },
+    {
+     "key": "D",
+     "text": "Increase the response length",
+     "correct": false,
+     "rationale": "Length does not affect correctness."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: tracing claims to a source is the core verification step.",
+   "outcome_refs": [
+    "MST-0511-D03.01"
+   ],
+   "domain_ref": "Verification and accountability",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0511-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team needs a persistent workspace holding a client brief, reference files and an evolving memo that several people revisit over weeks. Which surface fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Claude Project",
+     "correct": true,
+     "rationale": "Correct: Projects persist context and files for ongoing, shared work."
+    },
+    {
+     "key": "B",
+     "text": "A single throwaway chat",
+     "correct": false,
+     "rationale": "A one-off chat loses the shared, persistent context the team needs."
+    },
+    {
+     "key": "C",
+     "text": "An email thread",
+     "correct": false,
+     "rationale": "Email is outside Claude and does not provide the AI workspace described."
+    },
+    {
+     "key": "D",
+     "text": "A verification routine",
+     "correct": false,
+     "rationale": "A routine is a practice, not a workspace surface."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Projects persist context and files for ongoing, shared work.",
+   "outcome_refs": [
+    "MST-0511-D05.01"
+   ],
+   "domain_ref": "Choosing the right deliverable surface",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

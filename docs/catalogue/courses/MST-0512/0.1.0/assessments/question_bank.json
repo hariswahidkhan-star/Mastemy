@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0512",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0512-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A prompt returns a long paragraph, but the next system needs a JSON object with fixed keys. What is the most direct fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "State the exact output format, including the required keys, in the prompt",
+     "correct": true,
+     "rationale": "Correct: specifying the output schema is the direct way to control answer shape."
+    },
+    {
+     "key": "B",
+     "text": "Ask the same question again",
+     "correct": false,
+     "rationale": "Repeating an under-specified prompt tends to repeat the problem."
+    },
+    {
+     "key": "C",
+     "text": "Make the prompt longer with more background",
+     "correct": false,
+     "rationale": "More background does not constrain the output shape."
+    },
+    {
+     "key": "D",
+     "text": "Lower your expectations of the model",
+     "correct": false,
+     "rationale": "The fault is an unstated format requirement, not model capability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: specifying the output schema is the direct way to control answer shape.",
+   "outcome_refs": [
+    "MST-0512-D01.02"
+   ],
+   "domain_ref": "Anatomy of a structured instruction",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0512-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO choices make a prompt more repeatable across different inputs? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Replacing the specific case with named input slots",
+     "correct": true,
+     "rationale": "Correct: parameterising inputs turns a one-off into a template."
+    },
+    {
+     "key": "B",
+     "text": "Defining acceptance criteria for a correct answer",
+     "correct": true,
+     "rationale": "Correct: explicit criteria let you test the prompt on new inputs."
+    },
+    {
+     "key": "C",
+     "text": "Relying on a single successful run as proof",
+     "correct": false,
+     "rationale": "One success does not establish reliability."
+    },
+    {
+     "key": "D",
+     "text": "Removing all constraints so it is flexible",
+     "correct": false,
+     "rationale": "Removing constraints usually makes output less consistent."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: parameterising inputs turns a one-off into a template.",
+   "outcome_refs": [
+    "MST-0512-D04.01"
+   ],
+   "domain_ref": "Repeatable, testable prompts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0512-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A single-shot prompt mislabels ambiguous support tickets. Adding what is most likely to help?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Two worked examples that cover the ambiguous cases",
+     "correct": true,
+     "rationale": "Correct: targeted examples steer the model on exactly the cases it gets wrong."
+    },
+    {
+     "key": "B",
+     "text": "A request to 'be more accurate'",
+     "correct": false,
+     "rationale": "A vague exhortation gives the model no new signal."
+    },
+    {
+     "key": "C",
+     "text": "A higher word count",
+     "correct": false,
+     "rationale": "Length does not address the labelling fault."
+    },
+    {
+     "key": "D",
+     "text": "Removing the output format",
+     "correct": false,
+     "rationale": "Removing structure would make the result harder to use, not more accurate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: targeted examples steer the model on exactly the cases it gets wrong.",
+   "outcome_refs": [
+    "MST-0512-D02.01"
+   ],
+   "domain_ref": "Examples and few-shot steering",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

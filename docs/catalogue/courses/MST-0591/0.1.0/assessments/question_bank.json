@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0591",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0591-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Retrieval often returns half of the relevant passage, cutting off mid-explanation. The most direct chunking fix is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add overlap between chunks so boundary meaning is preserved",
+     "correct": true,
+     "rationale": "Correct: overlap keeps context that spans a boundary from being lost."
+    },
+    {
+     "key": "B",
+     "text": "Remove all metadata",
+     "correct": false,
+     "rationale": "Metadata removal does not address boundary cut-off."
+    },
+    {
+     "key": "C",
+     "text": "Switch to a larger language model",
+     "correct": false,
+     "rationale": "The passage was never retrieved whole; model size is not the fix."
+    },
+    {
+     "key": "D",
+     "text": "Delete the index",
+     "correct": false,
+     "rationale": "Deleting the index does not address chunk boundaries."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: overlap keeps context that spans a boundary from being lost.",
+   "outcome_refs": [
+    "MST-0591-D02.01"
+   ],
+   "domain_ref": "Chunk size and overlap",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0591-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good reasons to choose hybrid (keyword + vector) indexing? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Exact terms and codes matter and must match precisely",
+     "correct": true,
+     "rationale": "Correct: keyword matching captures exact identifiers vectors may miss."
+    },
+    {
+     "key": "B",
+     "text": "Semantic paraphrases must also be retrieved",
+     "correct": true,
+     "rationale": "Correct: vector search captures meaning beyond exact words."
+    },
+    {
+     "key": "C",
+     "text": "You want to remove all metadata",
+     "correct": false,
+     "rationale": "Metadata is unrelated to the hybrid rationale."
+    },
+    {
+     "key": "D",
+     "text": "You want fewer evaluation steps",
+     "correct": false,
+     "rationale": "Hybrid does not reduce the need for evaluation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: keyword matching captures exact identifiers vectors may miss.",
+   "outcome_refs": [
+    "MST-0591-D04.01"
+   ],
+   "domain_ref": "Indexing approaches",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0591-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A new chunking strategy answered one demo question better. What should you conclude?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Nothing yet; evaluate on a representative test set before concluding",
+     "correct": true,
+     "rationale": "Correct: one query is not evidence; honest evaluation needs a test set."
+    },
+    {
+     "key": "B",
+     "text": "The new strategy is definitively better",
+     "correct": false,
+     "rationale": "A single query cannot establish that."
+    },
+    {
+     "key": "C",
+     "text": "Chunking no longer matters",
+     "correct": false,
+     "rationale": "That does not follow from one result."
+    },
+    {
+     "key": "D",
+     "text": "Vector search should be removed",
+     "correct": false,
+     "rationale": "Unrelated to the single-query observation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: one query is not evidence; honest evaluation needs a test set.",
+   "outcome_refs": [
+    "MST-0591-D05.01"
+   ],
+   "domain_ref": "Evaluate and iterate",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

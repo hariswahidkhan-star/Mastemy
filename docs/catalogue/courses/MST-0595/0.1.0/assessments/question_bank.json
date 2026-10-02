@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0595",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0595-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Users ask about 'time off' but the docs say 'leave', and retrieval misses the answer. The most direct fix is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rewrite or expand the query to bridge the vocabulary gap",
+     "correct": true,
+     "rationale": "Correct: query rewriting aligns user wording with document terminology to improve recall."
+    },
+    {
+     "key": "B",
+     "text": "Shorten the documents",
+     "correct": false,
+     "rationale": "Document length is not the mismatch cause."
+    },
+    {
+     "key": "C",
+     "text": "Use a bigger model to guess",
+     "correct": false,
+     "rationale": "The passage was never retrieved; generation cannot fix a retrieval miss."
+    },
+    {
+     "key": "D",
+     "text": "Remove all metadata",
+     "correct": false,
+     "rationale": "Unrelated to the vocabulary mismatch."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: query rewriting aligns user wording with document terminology to improve recall.",
+   "outcome_refs": [
+    "MST-0595-D02.01"
+   ],
+   "domain_ref": "Query rewriting and expansion",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0595-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO describe good retrieval routing? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Directing product-specific questions to that product's index",
+     "correct": true,
+     "rationale": "Correct: routing to the relevant source improves precision and recall."
+    },
+    {
+     "key": "B",
+     "text": "Defining a fallback when no route is confident",
+     "correct": true,
+     "rationale": "Correct: a fallback prevents dropped queries when routing is uncertain."
+    },
+    {
+     "key": "C",
+     "text": "Sending every query to one index regardless of topic",
+     "correct": false,
+     "rationale": "Ignoring topic defeats the purpose of routing."
+    },
+    {
+     "key": "D",
+     "text": "Routing by the length of the question only",
+     "correct": false,
+     "rationale": "Length is not a meaningful routing signal."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: routing to the relevant source improves precision and recall.",
+   "outcome_refs": [
+    "MST-0595-D03.01"
+   ],
+   "domain_ref": "Retrieval routing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0595-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A query rewrite boosted one demo question but you suspect regressions. The honest next step is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Evaluate the rewrite across a labelled set to check average impact",
+     "correct": true,
+     "rationale": "Correct: measuring across many queries reveals whether the average improved."
+    },
+    {
+     "key": "B",
+     "text": "Ship it because the demo looked good",
+     "correct": false,
+     "rationale": "A single demo can hide regressions."
+    },
+    {
+     "key": "C",
+     "text": "Disable retrieval entirely",
+     "correct": false,
+     "rationale": "That removes the capability rather than evaluating the change."
+    },
+    {
+     "key": "D",
+     "text": "Assume all rewrites always help",
+     "correct": false,
+     "rationale": "Rewrites can help some queries and hurt others."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: measuring across many queries reveals whether the average improved.",
+   "outcome_refs": [
+    "MST-0595-D05.01"
+   ],
+   "domain_ref": "Evaluating routing and rewriting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
