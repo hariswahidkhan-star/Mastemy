@@ -32,13 +32,17 @@ export function ConsentBanner() {
     const ro = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(update);
     ro?.observe(el);
     // Keep keyboard focus clear of the docked banner (WCAG 2.4.11): scroll a control it would cover.
-    const onFocus = (e: FocusEvent) => {
-      const target = e.target as HTMLElement | null;
+    const clear = (target: HTMLElement | null) => {
       if (!target?.getBoundingClientRect || el.contains(target)) return;
+      // Keyboard focus only: scrolling under a pointer press would move the target away from the click.
+      if (!target.matches(':focus-visible')) return;
       const limit = window.innerHeight - el.offsetHeight;
       const r = target.getBoundingClientRect();
-      if (r.bottom > limit) window.scrollBy({ top: r.bottom - limit + 8 });
+      if (r.bottom > limit) window.scrollBy({ top: r.bottom - limit + 8, behavior: 'instant' });
     };
+    const onFocus = (e: FocusEvent) => clear(e.target as HTMLElement | null);
+    // The banner may arrive after the visitor has started tabbing.
+    clear(document.activeElement as HTMLElement | null);
     document.addEventListener('focusin', onFocus);
     return () => {
       document.removeEventListener('focusin', onFocus);
