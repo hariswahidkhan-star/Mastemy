@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1001",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 456,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1001-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants to record why it chose event-driven integration over synchronous calls, including the alternatives it rejected. Which artifact fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An architecture decision record (ADR)",
+     "correct": true,
+     "rationale": "Correct: an ADR captures context, the decision, the alternatives and the consequences."
+    },
+    {
+     "key": "B",
+     "text": "A deployment runbook",
+     "correct": false,
+     "rationale": "A runbook documents operational steps, not design rationale."
+    },
+    {
+     "key": "C",
+     "text": "A sprint burndown chart",
+     "correct": false,
+     "rationale": "A burndown tracks progress, not architectural decisions."
+    },
+    {
+     "key": "D",
+     "text": "A unit test report",
+     "correct": false,
+     "rationale": "A test report shows test outcomes, not decision rationale."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ADRs exist to capture a decision together with its context and rejected alternatives.",
+   "outcome_refs": [
+    "MST-1001-D02.01"
+   ],
+   "domain_ref": "Architecture decision records (ADRs)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1001-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO elements make a good ADR more useful later? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The context and forces that drove the decision",
+     "correct": true,
+     "rationale": "Correct: future readers need the context to judge whether the decision still holds."
+    },
+    {
+     "key": "B",
+     "text": "The alternatives considered and why they were rejected",
+     "correct": true,
+     "rationale": "Correct: recorded alternatives let a later team re-evaluate without redoing the analysis."
+    },
+    {
+     "key": "C",
+     "text": "The author's job title in large font",
+     "correct": false,
+     "rationale": "Formatting of the author's title adds no decision value."
+    },
+    {
+     "key": "D",
+     "text": "A promise never to revisit the decision",
+     "correct": false,
+     "rationale": "ADRs are meant to be superseded, not frozen."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: context and rejected alternatives are what make an ADR valuable to future readers.",
+   "outcome_refs": [
+    "MST-1001-D02.01"
+   ],
+   "domain_ref": "Architecture decision records (ADRs)",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1001-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the C4 model, which diagram is most appropriate to show a non-technical stakeholder how the system fits among its users and external systems?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The system context diagram",
+     "correct": true,
+     "rationale": "Correct: the context diagram shows the system, its users and external systems at the highest level."
+    },
+    {
+     "key": "B",
+     "text": "The code-level class diagram",
+     "correct": false,
+     "rationale": "Class diagrams are too detailed for a stakeholder overview."
+    },
+    {
+     "key": "C",
+     "text": "The component diagram",
+     "correct": false,
+     "rationale": "Component diagrams expose internal structure beyond stakeholder needs."
+    },
+    {
+     "key": "D",
+     "text": "A database ER diagram",
+     "correct": false,
+     "rationale": "An ER diagram shows data structure, not the system's place among users."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the C4 context diagram is the highest-level view intended for a broad audience.",
+   "outcome_refs": [
+    "MST-1001-D03.01"
+   ],
+   "domain_ref": "The C4 model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1005",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 490,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 35,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1005-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A UI test fails intermittently because it clicks a button before the page finishes loading. What is the maintainable fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Replace the fixed sleep with an explicit wait for the element to be interactable",
+     "correct": true,
+     "rationale": "Correct: an explicit condition-based wait handles variable load times reliably."
+    },
+    {
+     "key": "B",
+     "text": "Add a longer fixed sleep before the click",
+     "correct": false,
+     "rationale": "Longer sleeps slow the suite and still fail under load spikes."
+    },
+    {
+     "key": "C",
+     "text": "Wrap the test in an automatic retry and move on",
+     "correct": false,
+     "rationale": "Retrying masks the timing defect rather than fixing it."
+    },
+    {
+     "key": "D",
+     "text": "Delete the assertion after the click",
+     "correct": false,
+     "rationale": "Removing the assertion removes the test's value."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: explicit waits on a condition are the reliable, maintainable answer to timing flakiness.",
+   "outcome_refs": [
+    "MST-1005-D04.02"
+   ],
+   "domain_ref": "Stable locators and waits",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1005-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce maintenance cost when the UI changes frequently? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Encapsulating each screen behind a page object",
+     "correct": true,
+     "rationale": "Correct: a page object localises UI changes to one place."
+    },
+    {
+     "key": "B",
+     "text": "Selecting elements by stable test IDs rather than layout-dependent paths",
+     "correct": true,
+     "rationale": "Correct: stable test IDs survive layout and styling changes."
+    },
+    {
+     "key": "C",
+     "text": "Duplicating selector strings in every test",
+     "correct": false,
+     "rationale": "Duplication multiplies the edits needed for one change."
+    },
+    {
+     "key": "D",
+     "text": "Selecting elements by their absolute XPath position",
+     "correct": false,
+     "rationale": "Absolute XPath breaks on minor structural changes."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: page objects and stable test IDs both confine the impact of UI changes.",
+   "outcome_refs": [
+    "MST-1005-D03.01"
+   ],
+   "domain_ref": "UI automation patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1005-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which distribution matches a healthy test pyramid?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Many fast unit tests, fewer service tests, few UI tests",
+     "correct": true,
+     "rationale": "Correct: the pyramid favours many cheap unit tests and few expensive UI tests."
+    },
+    {
+     "key": "B",
+     "text": "Mostly UI tests with few unit tests",
+     "correct": false,
+     "rationale": "That is the ice-cream-cone anti-pattern, which is slow and brittle."
+    },
+    {
+     "key": "C",
+     "text": "Only end-to-end tests",
+     "correct": false,
+     "rationale": "End-to-end-only suites are slow and hard to diagnose."
+    },
+    {
+     "key": "D",
+     "text": "Equal numbers at every level regardless of cost",
+     "correct": false,
+     "rationale": "Ignoring cost and speed defeats the purpose of the pyramid."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the pyramid concentrates tests at the fast, cheap unit level and minimises UI tests.",
+   "outcome_refs": [
+    "MST-1005-D01.02"
+   ],
+   "domain_ref": "Test automation strategy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

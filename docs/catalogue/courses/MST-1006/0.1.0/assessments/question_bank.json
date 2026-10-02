@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1006",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1006-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A report shows average response time of 120 ms but users complain of slowness. Which metric best reveals the problem?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The p99 (99th percentile) latency",
+     "correct": true,
+     "rationale": "Correct: tail percentiles expose the slow experiences the average hides."
+    },
+    {
+     "key": "B",
+     "text": "The arithmetic mean only",
+     "correct": false,
+     "rationale": "The mean is what already hid the problem."
+    },
+    {
+     "key": "C",
+     "text": "Total request count",
+     "correct": false,
+     "rationale": "Request count does not describe the slow experiences."
+    },
+    {
+     "key": "D",
+     "text": "Server uptime",
+     "correct": false,
+     "rationale": "Uptime is unrelated to per-request latency distribution."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: high-percentile (tail) latency surfaces the slow requests an average conceals.",
+   "outcome_refs": [
+    "MST-1006-D04.01"
+   ],
+   "domain_ref": "Metrics, percentiles and analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1006-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO test types are most appropriate to find a slow memory leak and to find behaviour beyond normal peak? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A soak test for the slow memory leak",
+     "correct": true,
+     "rationale": "Correct: a long-duration soak test reveals leaks that only appear over time."
+    },
+    {
+     "key": "B",
+     "text": "A stress test for behaviour beyond normal peak",
+     "correct": true,
+     "rationale": "Correct: stress testing pushes past expected peak to find the breaking point."
+    },
+    {
+     "key": "C",
+     "text": "A single short smoke test for both",
+     "correct": false,
+     "rationale": "A short smoke test cannot reveal leaks or breaking points."
+    },
+    {
+     "key": "D",
+     "text": "A static code review for both",
+     "correct": false,
+     "rationale": "A code review is not a performance test type."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: soak tests find time-dependent leaks and stress tests find beyond-peak behaviour.",
+   "outcome_refs": [
+    "MST-1006-D02.01"
+   ],
+   "domain_ref": "Test types and when to use them",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1006-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Throughput stops increasing while latency rises sharply as load grows. What does this indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A resource has saturated; the system is past the knee of the curve",
+     "correct": true,
+     "rationale": "Correct: flat throughput with rising latency marks resource saturation."
+    },
+    {
+     "key": "B",
+     "text": "The test client is too fast",
+     "correct": false,
+     "rationale": "A fast client does not cause server-side saturation symptoms."
+    },
+    {
+     "key": "C",
+     "text": "The SLO is set too low",
+     "correct": false,
+     "rationale": "The SLO setting does not change the observed saturation."
+    },
+    {
+     "key": "D",
+     "text": "Percentiles are being miscalculated",
+     "correct": false,
+     "rationale": "The pattern is a real saturation signal, not a metrics artifact."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: flat throughput with climbing latency is the classic signature of a saturated resource.",
+   "outcome_refs": [
+    "MST-1006-D05.01"
+   ],
+   "domain_ref": "Finding bottlenecks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

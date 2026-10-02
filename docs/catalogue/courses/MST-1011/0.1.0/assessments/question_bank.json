@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1011",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 456,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1011-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In STRIDE, which category covers an attacker pretending to be another legitimate user?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Spoofing",
+     "correct": true,
+     "rationale": "Correct: spoofing is impersonating another identity."
+    },
+    {
+     "key": "B",
+     "text": "Repudiation",
+     "correct": false,
+     "rationale": "Repudiation is denying having performed an action."
+    },
+    {
+     "key": "C",
+     "text": "Denial of service",
+     "correct": false,
+     "rationale": "Denial of service is making a resource unavailable."
+    },
+    {
+     "key": "D",
+     "text": "Information disclosure",
+     "correct": false,
+     "rationale": "Information disclosure is exposing data to unauthorised parties."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: impersonating another identity is the Spoofing category in STRIDE.",
+   "outcome_refs": [
+    "MST-1011-D03.01"
+   ],
+   "domain_ref": "Threat enumeration with STRIDE",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1011-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO elements must a data-flow diagram show for threat modelling to find boundary threats? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Trust boundaries where the level of trust changes",
+     "correct": true,
+     "rationale": "Correct: trust boundaries are where many threats arise and must be marked."
+    },
+    {
+     "key": "B",
+     "text": "External entry points into the system",
+     "correct": true,
+     "rationale": "Correct: entry points define the attack surface to analyse."
+    },
+    {
+     "key": "C",
+     "text": "The office seating plan of the team",
+     "correct": false,
+     "rationale": "Seating has no bearing on data-flow threats."
+    },
+    {
+     "key": "D",
+     "text": "The marketing roadmap",
+     "correct": false,
+     "rationale": "The roadmap is irrelevant to the DFD's security analysis."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: trust boundaries and entry points are the DFD elements that drive boundary threat discovery.",
+   "outcome_refs": [
+    "MST-1011-D02.01"
+   ],
+   "domain_ref": "System decomposition",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1011-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After enumerating many threats with limited budget, what is the right next step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rank them by likelihood and impact and mitigate the highest risks first",
+     "correct": true,
+     "rationale": "Correct: risk ranking directs limited resources to the biggest risks first."
+    },
+    {
+     "key": "B",
+     "text": "Mitigate them in the order they were written down",
+     "correct": false,
+     "rationale": "Discovery order does not reflect risk."
+    },
+    {
+     "key": "C",
+     "text": "Treat all threats as equally urgent",
+     "correct": false,
+     "rationale": "Equal urgency wastes limited resources."
+    },
+    {
+     "key": "D",
+     "text": "Ignore the low-likelihood high-impact ones by default",
+     "correct": false,
+     "rationale": "High-impact threats may warrant mitigation despite low likelihood."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: prioritising by likelihood and impact focuses limited resources on the highest risks.",
+   "outcome_refs": [
+    "MST-1011-D04.01"
+   ],
+   "domain_ref": "Risk ranking and prioritisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

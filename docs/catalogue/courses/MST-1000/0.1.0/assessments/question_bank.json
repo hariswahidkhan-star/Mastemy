@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1000",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 490,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 35,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1000-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A broker provides at-least-once delivery. What must a consumer do so duplicate deliveries do not double-charge a customer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Process each message idempotently using a stored idempotency key",
+     "correct": true,
+     "rationale": "Correct: idempotent handling makes a redelivered message a no-op."
+    },
+    {
+     "key": "B",
+     "text": "Acknowledge messages before processing them",
+     "correct": false,
+     "rationale": "Acking before processing risks losing messages on a crash, not preventing duplicates."
+    },
+    {
+     "key": "C",
+     "text": "Reduce the number of partitions to one",
+     "correct": false,
+     "rationale": "Partition count does not stop duplicate deliveries."
+    },
+    {
+     "key": "D",
+     "text": "Increase the broker retention period",
+     "correct": false,
+     "rationale": "Longer retention is unrelated to duplicate handling."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with at-least-once delivery, idempotent consumers are how duplicates are made harmless.",
+   "outcome_refs": [
+    "MST-1000-D03.01"
+   ],
+   "domain_ref": "Idempotency and deduplication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1000-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO problems does the transactional outbox pattern solve? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A database write succeeding while its event publish is lost",
+     "correct": true,
+     "rationale": "Correct: the outbox writes the event in the same transaction, so they cannot diverge."
+    },
+    {
+     "key": "B",
+     "text": "An event publish succeeding while the database write rolls back",
+     "correct": true,
+     "rationale": "Correct: both are committed together, preventing a published event with no persisted state."
+    },
+    {
+     "key": "C",
+     "text": "Consumers processing messages out of order",
+     "correct": false,
+     "rationale": "Ordering is handled by partitioning, not the outbox."
+    },
+    {
+     "key": "D",
+     "text": "Reducing the size of event payloads",
+     "correct": false,
+     "rationale": "The outbox does not address payload size."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the outbox keeps the DB change and the event atomic, closing the dual-write gap in both directions.",
+   "outcome_refs": [
+    "MST-1000-D05.01"
+   ],
+   "domain_ref": "Reliability: outbox, DLQ and replay",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1000-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Events for a given account must be processed in the order they occurred. Which design achieves this in a partitioned log?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use the account ID as the partition key",
+     "correct": true,
+     "rationale": "Correct: all events for one account land on one partition, preserving per-key order."
+    },
+    {
+     "key": "B",
+     "text": "Use a random partition key per event",
+     "correct": false,
+     "rationale": "Random keys spread an account's events across partitions, losing order."
+    },
+    {
+     "key": "C",
+     "text": "Increase consumer parallelism per partition",
+     "correct": false,
+     "rationale": "Multiple consumers per partition breaks ordering."
+    },
+    {
+     "key": "D",
+     "text": "Disable acknowledgements",
+     "correct": false,
+     "rationale": "Acknowledgements are unrelated to ordering."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: keying by account ID guarantees per-account ordering within its partition.",
+   "outcome_refs": [
+    "MST-1000-D04.01"
+   ],
+   "domain_ref": "Ordering and partitioning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

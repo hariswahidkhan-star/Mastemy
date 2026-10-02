@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0997",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 490,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 35,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0997-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A service calls a downstream dependency that occasionally hangs. Which change most directly prevents one slow call from exhausting the caller's threads?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set an explicit request timeout on the downstream call",
+     "correct": true,
+     "rationale": "Correct: a timeout bounds how long a call can hold a thread, preventing exhaustion from hangs."
+    },
+    {
+     "key": "B",
+     "text": "Increase the retry count to five",
+     "correct": false,
+     "rationale": "More retries without a timeout can worsen thread exhaustion, not prevent it."
+    },
+    {
+     "key": "C",
+     "text": "Add more log statements around the call",
+     "correct": false,
+     "rationale": "Logging aids diagnosis but does not bound the call duration."
+    },
+    {
+     "key": "D",
+     "text": "Cache the successful responses",
+     "correct": false,
+     "rationale": "Caching helps repeat reads but does nothing for a hanging first call."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an explicit timeout bounds resource use so a hung dependency cannot starve the caller.",
+   "outcome_refs": [
+    "MST-0997-D03.01"
+   ],
+   "domain_ref": "Resilience patterns for distributed calls",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0997-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO properties must hold before it is safe to automatically retry a failed write to a downstream service? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The operation is idempotent",
+     "correct": true,
+     "rationale": "Correct: idempotency means a repeated write does not create duplicate effects."
+    },
+    {
+     "key": "B",
+     "text": "Each attempt uses a bounded timeout",
+     "correct": true,
+     "rationale": "Correct: a timeout ensures each attempt releases resources so retries are controlled."
+    },
+    {
+     "key": "C",
+     "text": "The service shares a database with the caller",
+     "correct": false,
+     "rationale": "A shared database is an anti-pattern here and is unrelated to safe retries."
+    },
+    {
+     "key": "D",
+     "text": "The caller disables all logging during retries",
+     "correct": false,
+     "rationale": "Disabling logging removes diagnostics and does not make retries safe."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: safe automatic retries require idempotent operations and bounded per-attempt timeouts.",
+   "outcome_refs": [
+    "MST-0997-D03.01"
+   ],
+   "domain_ref": "Resilience patterns for distributed calls",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0997-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two microservices need to stay consistent after a multi-step business operation that cannot use a single ACID transaction. Which approach is designed for this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A saga coordinating local transactions with compensating actions",
+     "correct": true,
+     "rationale": "Correct: a saga sequences local transactions and compensations to reach eventual consistency."
+    },
+    {
+     "key": "B",
+     "text": "A distributed two-phase lock held for the whole operation",
+     "correct": false,
+     "rationale": "Long-held distributed locks harm availability and are avoided in this style."
+    },
+    {
+     "key": "C",
+     "text": "Pointing both services at one shared table",
+     "correct": false,
+     "rationale": "Shared tables reintroduce tight coupling and break service ownership."
+    },
+    {
+     "key": "D",
+     "text": "Disabling consistency checks entirely",
+     "correct": false,
+     "rationale": "Abandoning consistency is not a strategy; the saga exists to manage it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sagas provide eventual consistency across services via local transactions and compensations.",
+   "outcome_refs": [
+    "MST-0997-D04.02"
+   ],
+   "domain_ref": "Data management across services",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

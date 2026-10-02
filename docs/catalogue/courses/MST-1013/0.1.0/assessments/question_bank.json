@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1013",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1013-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A developer needs both confidentiality and tamper detection for a message in one step. Which choice is appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An authenticated encryption (AEAD) mode",
+     "correct": true,
+     "rationale": "Correct: AEAD provides confidentiality and integrity/authenticity together."
+    },
+    {
+     "key": "B",
+     "text": "An unauthenticated encryption mode alone",
+     "correct": false,
+     "rationale": "Encryption without authentication does not detect tampering."
+    },
+    {
+     "key": "C",
+     "text": "A plain cryptographic hash of the plaintext",
+     "correct": false,
+     "rationale": "A hash alone provides neither confidentiality nor keyed authenticity."
+    },
+    {
+     "key": "D",
+     "text": "Base64 encoding",
+     "correct": false,
+     "rationale": "Encoding is not encryption and provides no security."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AEAD modes deliver confidentiality and integrity in a single authenticated operation.",
+   "outcome_refs": [
+    "MST-1013-D02.01"
+   ],
+   "domain_ref": "Symmetric encryption",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1013-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices are required to store user passwords safely? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a slow password-hashing algorithm with a tunable work factor",
+     "correct": true,
+     "rationale": "Correct: a deliberately slow hash resists brute-force attacks."
+    },
+    {
+     "key": "B",
+     "text": "Use a unique random salt per password",
+     "correct": true,
+     "rationale": "Correct: per-password salts defeat precomputed (rainbow table) attacks."
+    },
+    {
+     "key": "C",
+     "text": "Encrypt passwords with a hard-coded key in the source",
+     "correct": false,
+     "rationale": "Hard-coded keys and reversible encryption are unsafe for passwords."
+    },
+    {
+     "key": "D",
+     "text": "Hash passwords with a single fast general-purpose hash",
+     "correct": false,
+     "rationale": "Fast hashes are easily brute-forced and are the wrong tool."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: safe password storage requires a slow, salted password-hashing algorithm.",
+   "outcome_refs": [
+    "MST-1013-D06.01"
+   ],
+   "domain_ref": "Password and credential protection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1013-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should teams avoid designing their own encryption algorithm?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Security should rest in the secret key, using algorithms publicly vetted by experts",
+     "correct": true,
+     "rationale": "Correct: Kerckhoffs's principle holds that only the key should be secret, and vetted algorithms are trusted."
+    },
+    {
+     "key": "B",
+     "text": "Custom algorithms are always faster and that is dangerous",
+     "correct": false,
+     "rationale": "Speed is not the reason; lack of public scrutiny is."
+    },
+    {
+     "key": "C",
+     "text": "Public algorithms cannot be used commercially",
+     "correct": false,
+     "rationale": "Vetted public algorithms are freely usable."
+    },
+    {
+     "key": "D",
+     "text": "Home-made algorithms are illegal",
+     "correct": false,
+     "rationale": "Legality is not the issue; unverified security is."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: vetted public algorithms with secrecy in the key are safer than unreviewed custom designs.",
+   "outcome_refs": [
+    "MST-1013-D01.01"
+   ],
+   "domain_ref": "Cryptography foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

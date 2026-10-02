@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1008",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 372,
+  "lesson_check_items": 72,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1008-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which condition is most important to test on mobile that is often overlooked on desktop web?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Behaviour when connectivity drops and later recovers",
+     "correct": true,
+     "rationale": "Correct: mobile networks are variable, so loss and recovery of connectivity is a core scenario."
+    },
+    {
+     "key": "B",
+     "text": "Mouse hover tooltips",
+     "correct": false,
+     "rationale": "Hover is a desktop concern, not a mobile priority."
+    },
+    {
+     "key": "C",
+     "text": "Browser print preview",
+     "correct": false,
+     "rationale": "Print preview is rarely relevant to a mobile app."
+    },
+    {
+     "key": "D",
+     "text": "Multi-window desktop tiling",
+     "correct": false,
+     "rationale": "Desktop tiling is not a mobile scenario."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: intermittent connectivity and recovery is a defining mobile condition to verify.",
+   "outcome_refs": [
+    "MST-1008-D03.01"
+   ],
+   "domain_ref": "Mobile-specific conditions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1008-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO interruptions should a mobile test suite verify do not corrupt an in-progress transaction? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "An incoming phone call",
+     "correct": true,
+     "rationale": "Correct: a call backgrounds the app and must not corrupt state."
+    },
+    {
+     "key": "B",
+     "text": "The OS revoking a permission while backgrounded",
+     "correct": true,
+     "rationale": "Correct: permission changes while backgrounded can break resumed flows."
+    },
+    {
+     "key": "C",
+     "text": "The user changing the device wallpaper",
+     "correct": false,
+     "rationale": "Changing wallpaper does not affect app transaction state."
+    },
+    {
+     "key": "D",
+     "text": "Rotating the home-screen icon layout",
+     "correct": false,
+     "rationale": "Icon layout changes are unrelated to in-app transactions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: calls and permission changes while backgrounded are real interruptions that can corrupt state.",
+   "outcome_refs": [
+    "MST-1008-D03.02"
+   ],
+   "domain_ref": "Mobile-specific conditions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on the exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1008-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a large, fragmented Android user base, how should a coverage matrix be chosen?",
+   "options": [
+    {
+     "key": "A",
+     "text": "By prioritising device/OS combinations that match real usage data",
+     "correct": true,
+     "rationale": "Correct: coverage should follow actual user device and OS distribution."
+    },
+    {
+     "key": "B",
+     "text": "By testing only the newest OS version",
+     "correct": false,
+     "rationale": "Many users run older OS versions that must be covered."
+    },
+    {
+     "key": "C",
+     "text": "By testing only one emulator configuration",
+     "correct": false,
+     "rationale": "A single emulator cannot represent fragmentation."
+    },
+    {
+     "key": "D",
+     "text": "By testing every possible device that exists",
+     "correct": false,
+     "rationale": "Exhaustive device coverage is infeasible; usage-based prioritisation is used."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a coverage matrix is prioritised by real-world usage data, not newest-only or exhaustive testing.",
+   "outcome_refs": [
+    "MST-1008-D01.02"
+   ],
+   "domain_ref": "Mobile testing landscape",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
