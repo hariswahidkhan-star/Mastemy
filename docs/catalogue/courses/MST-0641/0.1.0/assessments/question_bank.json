@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0641",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 308,
+  "lesson_check_items": 60,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0641-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "On a work package the planned value is 100, the earned value is 80 and the actual cost is 90 (all in thousands). What does this indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The package is behind schedule and over budget",
+     "correct": true,
+     "rationale": "Correct: earned value below planned value means behind schedule, and earned value below actual cost means over budget."
+    },
+    {
+     "key": "B",
+     "text": "The package is ahead of schedule and under budget",
+     "correct": false,
+     "rationale": "Ahead/under would require earned value above planned value and above actual cost."
+    },
+    {
+     "key": "C",
+     "text": "The package is exactly on plan",
+     "correct": false,
+     "rationale": "On plan would require earned value to equal both planned value and actual cost."
+    },
+    {
+     "key": "D",
+     "text": "The package is ahead of schedule but over budget",
+     "correct": false,
+     "rationale": "Earned value is below planned value, so it is behind schedule, not ahead."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: earned value below planned value means behind schedule, and earned value below actual cost means over budget.",
+   "outcome_refs": [
+    "MST-0641-D01.02"
+   ],
+   "domain_ref": "Cost baselines and budget structures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0641-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO earned-value formulas are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Schedule variance = earned value minus planned value",
+     "correct": true,
+     "rationale": "Correct: SV = EV - PV."
+    },
+    {
+     "key": "B",
+     "text": "Cost performance index = earned value divided by actual cost",
+     "correct": true,
+     "rationale": "Correct: CPI = EV / AC."
+    },
+    {
+     "key": "C",
+     "text": "Cost variance = actual cost minus earned value",
+     "correct": false,
+     "rationale": "Cost variance is EV - AC, not AC - EV."
+    },
+    {
+     "key": "D",
+     "text": "Schedule performance index = planned value divided by earned value",
+     "correct": false,
+     "rationale": "SPI is EV / PV, not PV / EV."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: SV = EV - PV and CPI = EV / AC are the standard definitions.",
+   "outcome_refs": [
+    "MST-0641-D03.01"
+   ],
+   "domain_ref": "Variance and performance indices",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0641-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A project reports a cost performance index of 1.1. What does this mean?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The project is earning more value than it is spending, so it is under budget",
+     "correct": true,
+     "rationale": "Correct: CPI above 1 means earned value exceeds actual cost."
+    },
+    {
+     "key": "B",
+     "text": "The project is over budget",
+     "correct": false,
+     "rationale": "CPI above 1 indicates under budget, not over."
+    },
+    {
+     "key": "C",
+     "text": "The project is behind schedule",
+     "correct": false,
+     "rationale": "CPI is a cost measure; schedule is read from SPI."
+    },
+    {
+     "key": "D",
+     "text": "The project has overspent its contingency",
+     "correct": false,
+     "rationale": "CPI does not describe contingency usage directly."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a cost performance index above 1 means earned value exceeds actual cost, so the work is under budget.",
+   "outcome_refs": [
+    "MST-0641-D03.01"
+   ],
+   "domain_ref": "Variance and performance indices",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

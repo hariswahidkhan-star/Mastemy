@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0642",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 308,
+  "lesson_check_items": 60,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0642-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want to pull an item description into a transactions table from an item master, returning blank when no match is found. Which approach is most robust in current Excel?",
+   "options": [
+    {
+     "key": "A",
+     "text": "XLOOKUP with an 'if not found' argument",
+     "correct": true,
+     "rationale": "Correct: XLOOKUP has a built-in if-not-found argument and does not depend on column position."
+    },
+    {
+     "key": "B",
+     "text": "VLOOKUP with the item column to the right of the key",
+     "correct": false,
+     "rationale": "VLOOKUP cannot look to the left of the key and has no native not-found argument."
+    },
+    {
+     "key": "C",
+     "text": "A manual copy-paste of descriptions",
+     "correct": false,
+     "rationale": "Manual copying breaks as data changes."
+    },
+    {
+     "key": "D",
+     "text": "Hard-coding descriptions in the transaction rows",
+     "correct": false,
+     "rationale": "Hard-coding duplicates data and cannot be maintained."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: XLOOKUP has a built-in if-not-found argument and is not tied to column position.",
+   "outcome_refs": [
+    "MST-0642-D01.02"
+   ],
+   "domain_ref": "Inventory data models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0642-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO quantities does a classic reorder point depend on? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Demand during the lead time",
+     "correct": true,
+     "rationale": "Correct: the reorder point covers expected demand over the lead time."
+    },
+    {
+     "key": "B",
+     "text": "Safety stock",
+     "correct": true,
+     "rationale": "Correct: safety stock buffers demand and lead-time variability."
+    },
+    {
+     "key": "C",
+     "text": "The supplier's invoice number",
+     "correct": false,
+     "rationale": "An invoice number is reference data, not a reorder input."
+    },
+    {
+     "key": "D",
+     "text": "The colour of the product label",
+     "correct": false,
+     "rationale": "Label colour is irrelevant to reorder calculation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a reorder point equals expected demand over the lead time plus safety stock.",
+   "outcome_refs": [
+    "MST-0642-D02.01"
+   ],
+   "domain_ref": "Reorder points and safety stock",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0642-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In ABC analysis, what characterises 'A' items?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A small number of SKUs accounting for a large share of value",
+     "correct": true,
+     "rationale": "Correct: A items are the vital few that drive most of the value."
+    },
+    {
+     "key": "B",
+     "text": "The cheapest items by unit cost",
+     "correct": false,
+     "rationale": "ABC ranks by total value contribution, not unit cost."
+    },
+    {
+     "key": "C",
+     "text": "Items with the longest supplier lead time",
+     "correct": false,
+     "rationale": "Lead time is not the ABC criterion."
+    },
+    {
+     "key": "D",
+     "text": "Items stored at the back of the warehouse",
+     "correct": false,
+     "rationale": "Physical location is not the ABC criterion."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: A items are the small share of SKUs that account for most of the inventory value.",
+   "outcome_refs": [
+    "MST-0642-D03.01"
+   ],
+   "domain_ref": "ABC analysis and valuation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0653",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 308,
+  "lesson_check_items": 60,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0653-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A formula suddenly shows #REF!. The most likely cause is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A cell or range the formula referred to was deleted",
+     "correct": true,
+     "rationale": "Correct: #REF! appears when a reference becomes invalid, often after a delete."
+    },
+    {
+     "key": "B",
+     "text": "The workbook is too large",
+     "correct": false,
+     "rationale": "File size does not cause #REF!."
+    },
+    {
+     "key": "C",
+     "text": "The formula is text",
+     "correct": false,
+     "rationale": "Text would not raise #REF!."
+    },
+    {
+     "key": "D",
+     "text": "Autosave is turned off",
+     "correct": false,
+     "rationale": "Autosave is unrelated to #REF!."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: #REF! indicates an invalid reference, typically because a referenced cell or range was deleted.",
+   "outcome_refs": [
+    "MST-0653-D02.01"
+   ],
+   "domain_ref": "Error types and handling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0653-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are Excel formula-auditing tools? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Trace Precedents",
+     "correct": true,
+     "rationale": "Correct: Trace Precedents highlights cells feeding a formula."
+    },
+    {
+     "key": "B",
+     "text": "Evaluate Formula",
+     "correct": true,
+     "rationale": "Correct: Evaluate Formula steps through a calculation."
+    },
+    {
+     "key": "C",
+     "text": "Freeze Panes",
+     "correct": false,
+     "rationale": "Freeze Panes is a view aid, not an auditing tool."
+    },
+    {
+     "key": "D",
+     "text": "Page Break Preview",
+     "correct": false,
+     "rationale": "A printing view, not an auditing tool."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Trace Precedents and Evaluate Formula are auditing tools; the others are view or print aids.",
+   "outcome_refs": [
+    "MST-0653-D01.01"
+   ],
+   "domain_ref": "Formula auditing tools",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0653-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the risk of wrapping every formula in IFERROR by default?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can mask genuine errors that should be investigated and fixed",
+     "correct": true,
+     "rationale": "Correct: blanket IFERROR hides the cause instead of fixing it."
+    },
+    {
+     "key": "B",
+     "text": "It makes the workbook calculate faster",
+     "correct": false,
+     "rationale": "Speed is not the concern here."
+    },
+    {
+     "key": "C",
+     "text": "It permanently deletes the data",
+     "correct": false,
+     "rationale": "IFERROR does not delete data."
+    },
+    {
+     "key": "D",
+     "text": "It converts numbers to text",
+     "correct": false,
+     "rationale": "IFERROR does not change data types by itself."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a blanket IFERROR can hide genuine errors that should be diagnosed and fixed.",
+   "outcome_refs": [
+    "MST-0653-D02.01"
+   ],
+   "domain_ref": "Error types and handling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

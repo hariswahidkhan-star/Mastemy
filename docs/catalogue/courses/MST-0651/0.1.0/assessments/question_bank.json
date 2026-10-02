@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0651",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 308,
+  "lesson_check_items": 60,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0651-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "FORECAST.ETS is most appropriate when the historical series:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Has a repeating seasonal pattern over a consistent timeline",
+     "correct": true,
+     "rationale": "Correct: FORECAST.ETS models trend and seasonality on a consistent time series."
+    },
+    {
+     "key": "B",
+     "text": "Has no time dimension at all",
+     "correct": false,
+     "rationale": "FORECAST.ETS needs a timeline."
+    },
+    {
+     "key": "C",
+     "text": "Contains only text labels",
+     "correct": false,
+     "rationale": "It forecasts numeric values over time."
+    },
+    {
+     "key": "D",
+     "text": "Is a single value",
+     "correct": false,
+     "rationale": "A single value cannot be forecast with seasonality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: FORECAST.ETS is designed for time series with trend and seasonality on a consistent timeline.",
+   "outcome_refs": [
+    "MST-0651-D01.02"
+   ],
+   "domain_ref": "Forecasting foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0651-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices when using Copilot to help build an Excel forecast? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recompute or spot-check any formula Copilot proposes",
+     "correct": true,
+     "rationale": "Correct: Copilot output must be verified against a manual check."
+    },
+    {
+     "key": "B",
+     "text": "State the assumptions and data range in the prompt",
+     "correct": true,
+     "rationale": "Correct: clear, grounded prompts give more reliable assistance."
+    },
+    {
+     "key": "C",
+     "text": "Publish Copilot's number without any review",
+     "correct": false,
+     "rationale": "Unverified output can be wrong."
+    },
+    {
+     "key": "D",
+     "text": "Assume Copilot has calibrated the forecast's accuracy",
+     "correct": false,
+     "rationale": "Copilot does not guarantee calibrated accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: verify Copilot's formulas and give it a clear, grounded prompt; never publish unreviewed output.",
+   "outcome_refs": [
+    "MST-0651-D02.01"
+   ],
+   "domain_ref": "Copilot-assisted analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0651-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why prefer a two-variable data table over changing inputs one at a time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It shows the combined effect of two drivers across a grid of values",
+     "correct": true,
+     "rationale": "Correct: a two-variable table reveals interaction across a grid."
+    },
+    {
+     "key": "B",
+     "text": "It is the only way Excel can multiply",
+     "correct": false,
+     "rationale": "Excel multiplies directly; this is about sensitivity analysis."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any assumptions",
+     "correct": false,
+     "rationale": "Assumptions still apply."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees the forecast is correct",
+     "correct": false,
+     "rationale": "It explores sensitivity, not correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a two-variable data table shows the combined effect of two drivers across a grid of values.",
+   "outcome_refs": [
+    "MST-0651-D03.01"
+   ],
+   "domain_ref": "Sensitivity and scenarios",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

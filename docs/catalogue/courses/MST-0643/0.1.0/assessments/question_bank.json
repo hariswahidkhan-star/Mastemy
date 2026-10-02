@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0643",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 308,
+  "lesson_check_items": 60,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0643-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which function returns the whole number of complete years between a hire date and today?",
+   "options": [
+    {
+     "key": "A",
+     "text": "DATEDIF with the \"Y\" unit",
+     "correct": true,
+     "rationale": "Correct: DATEDIF(start, end, \"Y\") returns complete years."
+    },
+    {
+     "key": "B",
+     "text": "TODAY only",
+     "correct": false,
+     "rationale": "TODAY returns the current date, not an interval."
+    },
+    {
+     "key": "C",
+     "text": "SUM of the two dates",
+     "correct": false,
+     "rationale": "Adding dates does not yield an interval in years."
+    },
+    {
+     "key": "D",
+     "text": "TEXT of the hire date",
+     "correct": false,
+     "rationale": "TEXT formats a value; it does not compute an interval."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: DATEDIF(start, end, \"Y\") returns the number of complete years.",
+   "outcome_refs": [
+    "MST-0643-D01.03"
+   ],
+   "domain_ref": "HR data and headcount",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0643-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are needed to compute a meaningful turnover rate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A clearly defined population (headcount base)",
+     "correct": true,
+     "rationale": "Correct: turnover needs a defined denominator."
+    },
+    {
+     "key": "B",
+     "text": "Annualisation of the period",
+     "correct": true,
+     "rationale": "Correct: rates from partial periods must be annualised to compare."
+    },
+    {
+     "key": "C",
+     "text": "Each employee's favourite colour",
+     "correct": false,
+     "rationale": "Irrelevant to turnover."
+    },
+    {
+     "key": "D",
+     "text": "The office floor plan",
+     "correct": false,
+     "rationale": "Irrelevant to turnover."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a turnover rate needs a defined population and consistent annualisation.",
+   "outcome_refs": [
+    "MST-0643-D03.01"
+   ],
+   "domain_ref": "Attendance, leave and turnover",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0643-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should payroll deduction rates live in a separate rate table rather than inside each formula?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So a rate change is made once and flows through every calculation",
+     "correct": true,
+     "rationale": "Correct: centralising rates makes updates safe and auditable."
+    },
+    {
+     "key": "B",
+     "text": "Because Excel cannot multiply without a table",
+     "correct": false,
+     "rationale": "Excel multiplies values directly; this is a design choice."
+    },
+    {
+     "key": "C",
+     "text": "To make the file smaller",
+     "correct": false,
+     "rationale": "A rate table does not meaningfully change file size."
+    },
+    {
+     "key": "D",
+     "text": "Because formulas cannot reference other cells",
+     "correct": false,
+     "rationale": "Formulas reference cells freely."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a central rate table means a change is made once and flows through every formula.",
+   "outcome_refs": [
+    "MST-0643-D02.01"
+   ],
+   "domain_ref": "Payroll calculations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0645",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 308,
+  "lesson_check_items": 60,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0645-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A correlation coefficient of 0.9 between ice-cream sales and drownings most likely indicates:",
+   "options": [
+    {
+     "key": "A",
+     "text": "A possible common cause (such as hot weather), not that one causes the other",
+     "correct": true,
+     "rationale": "Correct: correlation does not establish causation; a confounder is likely."
+    },
+    {
+     "key": "B",
+     "text": "That ice-cream sales cause drownings",
+     "correct": false,
+     "rationale": "Correlation does not prove causation."
+    },
+    {
+     "key": "C",
+     "text": "That the data is wrong",
+     "correct": false,
+     "rationale": "A high correlation is not itself evidence of bad data."
+    },
+    {
+     "key": "D",
+     "text": "That there is no relationship",
+     "correct": false,
+     "rationale": "0.9 is a strong correlation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a strong correlation can reflect a common cause; it does not establish causation.",
+   "outcome_refs": [
+    "MST-0645-D02.01"
+   ],
+   "domain_ref": "Correlation and regression",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0645-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO values does a simple linear fit provide for the line y = m*x + b? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The slope (m)",
+     "correct": true,
+     "rationale": "Correct: SLOPE/LINEST returns the slope."
+    },
+    {
+     "key": "B",
+     "text": "The intercept (b)",
+     "correct": true,
+     "rationale": "Correct: INTERCEPT/LINEST returns the intercept."
+    },
+    {
+     "key": "C",
+     "text": "The workbook file size",
+     "correct": false,
+     "rationale": "Not a regression output."
+    },
+    {
+     "key": "D",
+     "text": "The number of worksheets",
+     "correct": false,
+     "rationale": "Not a regression output."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a simple linear fit yields a slope and an intercept.",
+   "outcome_refs": [
+    "MST-0645-D02.02"
+   ],
+   "domain_ref": "Correlation and regression",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0645-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A two-sample t-test returns p = 0.03 at a 5% significance level. The most defensible reading is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "The difference is statistically significant at the 5% level",
+     "correct": true,
+     "rationale": "Correct: p below 0.05 is significant at the 5% level."
+    },
+    {
+     "key": "B",
+     "text": "There is a 3% chance the hypothesis is true",
+     "correct": false,
+     "rationale": "A p-value is not the probability the hypothesis is true."
+    },
+    {
+     "key": "C",
+     "text": "The effect is large and important",
+     "correct": false,
+     "rationale": "Significance does not imply a large or practically important effect."
+    },
+    {
+     "key": "D",
+     "text": "The result can never be due to chance",
+     "correct": false,
+     "rationale": "A p-value quantifies, not eliminates, chance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: p below the chosen level indicates statistical significance at that level, nothing more.",
+   "outcome_refs": [
+    "MST-0645-D03.01"
+   ],
+   "domain_ref": "Hypothesis testing basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

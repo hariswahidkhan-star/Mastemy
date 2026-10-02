@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0667",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 308,
+  "lesson_check_items": 60,
+  "module_check_items": 64,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0667-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You paste a Loop component into both a Teams chat and an Outlook email. What happens when someone edits it in Teams?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The change appears everywhere the component is shared, because it stays in sync",
+     "correct": true,
+     "rationale": "Correct: Loop components are live and sync across the places they are shared."
+    },
+    {
+     "key": "B",
+     "text": "Nothing; each paste is an independent static copy",
+     "correct": false,
+     "rationale": "Components are live, not static copies."
+    },
+    {
+     "key": "C",
+     "text": "The Outlook copy is deleted",
+     "correct": false,
+     "rationale": "The copies stay in sync, not deleted."
+    },
+    {
+     "key": "D",
+     "text": "Only the author can ever see the change",
+     "correct": false,
+     "rationale": "All recipients see synced changes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Loop component is live and stays in sync wherever it is shared.",
+   "outcome_refs": [
+    "MST-0667-D02.02"
+   ],
+   "domain_ref": "Components across Microsoft 365",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0667-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Microsoft Loop are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Components created in Teams or Outlook are stored as .loop files in OneDrive",
+     "correct": true,
+     "rationale": "Correct: such components are .loop files in the creator's OneDrive."
+    },
+    {
+     "key": "B",
+     "text": "Loop is positioned for real-time co-creation, not as an enterprise knowledge base like SharePoint",
+     "correct": true,
+     "rationale": "Correct: Loop is a co-creation layer, not a SharePoint replacement."
+    },
+    {
+     "key": "C",
+     "text": "Loop supports the same external sharing and Information Barriers as SharePoint sites",
+     "correct": false,
+     "rationale": "Loop has different external-sharing and Information Barrier behaviour."
+    },
+    {
+     "key": "D",
+     "text": "Loop components cannot be edited by anyone but their creator",
+     "correct": false,
+     "rationale": "Recipients can edit shared components."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Loop components are .loop files in OneDrive and Loop is a co-creation layer, not a SharePoint-grade knowledge base.",
+   "outcome_refs": [
+    "MST-0667-D01.03"
+   ],
+   "domain_ref": "Loop fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0667-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A shared Loop workspace's owners all leave the company. What happens?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The workspace becomes ownerless but remains, and an admin can assign a new owner",
+     "correct": true,
+     "rationale": "Correct: ownerless workspaces persist and can be reassigned by an admin."
+    },
+    {
+     "key": "B",
+     "text": "It is deleted immediately",
+     "correct": false,
+     "rationale": "It is not automatically deleted."
+    },
+    {
+     "key": "C",
+     "text": "It becomes public to the internet",
+     "correct": false,
+     "rationale": "It does not become public."
+    },
+    {
+     "key": "D",
+     "text": "All its components are converted to PDF",
+     "correct": false,
+     "rationale": "No such conversion occurs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the workspace becomes ownerless, remains in the tenant, and an administrator can assign a new owner.",
+   "outcome_refs": [
+    "MST-0667-D04.01"
+   ],
+   "domain_ref": "Governance and limits",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
