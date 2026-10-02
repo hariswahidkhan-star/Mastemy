@@ -256,6 +256,6 @@ public class AnalyticsTests(AnalyticsFixture f) : IClassFixture<AnalyticsFixture
         Assert.Contains(d.OrdersByCurrency, x => x.Currency == "SAR" && x.Count == 1 && x.Amount == 40m);
         Assert.Contains(d.RefundsByCurrency, x => x.Currency == "SAR" && x.Count == 1 && x.Amount == 10m);
         Assert.Equal(1, d.PendingRefundRequests);
-        Assert.Null(d.AiUsage);
+        Assert.NotNull(d.AiUsage); // real totals from Ai_Usage (zero here), never a fabricated placeholder
     }
 }

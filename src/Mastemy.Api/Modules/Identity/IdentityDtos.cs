@@ -6,7 +6,7 @@ public record RegisterRequest(string? Email, string? Password, string? DisplayNa
 public record LoginRequest(string? Email, string? Password);
 public record RefreshRequest(string? RefreshToken);
 public record UserDto(Guid Id, string Email, string DisplayName, string PreferredLanguage, string[] Roles,
-    bool EmailVerified = false, bool MfaEnabled = false)
+    bool EmailVerified = false, bool MfaEnabled = false, bool RequiresReauth = false)
 {
     public static UserDto From(User u, UserSecurity? sec = null) => new(u.Id, u.Email, u.DisplayName, u.PreferredLanguage,
         u.Roles.Select(r => r.Role).OrderBy(r => r, StringComparer.Ordinal).ToArray(),
@@ -43,7 +43,9 @@ public record SettingValueRequest(bool? Value);
 public record SetRolesRequest(string[]? Roles);
 public record SuspendRequest(bool? Suspended);
 public record AdminUserDto(Guid Id, string Email, string DisplayName, string PreferredLanguage, string[] Roles,
-    bool IsSuspended, DateTime? LockoutUntil, DateTime CreatedAt, bool EmailVerified = false, bool MfaEnabled = false);
+    bool IsSuspended, DateTime? LockoutUntil, DateTime CreatedAt, bool EmailVerified = false, bool MfaEnabled = false,
+    bool SignInAgainRequired = false, string? Notice = null);
+public record UserLookupDto(Guid Id, string DisplayName, string MaskedEmail, bool IsSuspended);
 public record AuditLogDto(long Id, Guid? ActorId, string Action, string EntityType, string EntityId, string? Details, DateTime CreatedAt);
 
 public record CreateInvitationRequest(string? Email);

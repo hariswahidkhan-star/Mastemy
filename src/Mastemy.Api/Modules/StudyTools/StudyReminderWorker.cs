@@ -35,7 +35,7 @@ public class StudyReminderWorker(IServiceScopeFactory scopes, ILogger<StudyRemin
                          join p in db.Set<StudyPlan>().AsNoTracking() on i.PlanId equals p.Id
                          where p.RemindersEnabled && i.ReminderSentAt == null && i.ScheduledAt > nowUtc - window && i.ScheduledAt <= nowUtc + window
                          orderby i.ScheduledAt, i.SortOrder
-                         select new { i.Id, i.UserId, i.ScheduledAt, i.CourseTitle, i.LessonId, i.SortOrder }).Take(5000).ToListAsync(ct);
+                         select new { i.Id, i.UserId, i.ScheduledAt, i.CourseTitle, i.LessonId, i.SortOrder, p.TimeZone }).Take(5000).ToListAsync(ct);
         var created = 0;
         foreach (var session in due.GroupBy(x => new { x.UserId, x.ScheduledAt }))
         {
@@ -46,7 +46,10 @@ public class StudyReminderWorker(IServiceScopeFactory scopes, ILogger<StudyRemin
             var optedOut = await db.NotificationPreferences.AnyAsync(p => p.UserId == session.Key.UserId && p.Kind == Kind && !p.InApp, ct);
             if (optedOut) continue;
             var first = session.OrderBy(x => x.SortOrder).First();
-            var title = $"Study session at {session.Key.ScheduledAt:HH:mm} UTC: {first.CourseTitle} ({session.Count()} lesson{(session.Count() == 1 ? "" : "s")})";
+            var tz = StudyPlanService.Zone(first.TimeZone);
+            var local = TimeZoneInfo.ConvertTimeFromUtc(DateTime.SpecifyKind(session.Key.ScheduledAt, DateTimeKind.Utc), tz);
+            var zoneLabel = tz == TimeZoneInfo.Utc ? "UTC" : tz.Id;
+            var title = $"Study session at {local:HH:mm} {zoneLabel}: {first.CourseTitle} ({session.Count()} lesson{(session.Count() == 1 ? "" : "s")})";
             db.Notifications.Add(new Notification
             {
                 UserId = session.Key.UserId, Kind = Kind, Title = title.Length > 300 ? title[..300] : title, Link = "/me/study-plan",

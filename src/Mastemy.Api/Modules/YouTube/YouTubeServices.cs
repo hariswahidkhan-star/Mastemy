@@ -221,6 +221,36 @@ public class VideoLinkService(AppDbContext db, ICurrentUser me, AccessService ac
         asset.MetadataEnteredManually = false;
     }
 
+    /// <summary>
+    /// Staff manual override: mark a video Restricted or Failed (e.g. YouTube removed it, wrong channel) with a reason.
+    /// Ready is never set here — it goes through reviewer confirmation. Upload-pipeline states cannot be overridden.
+    /// </summary>
+    public async Task<VideoAssetDto> StaffMark(Guid assetId, string? status, string? reason, CancellationToken ct)
+    {
+        me.RequireId();
+        if (!me.IsStaff) throw AppException.Forbidden();
+        if (string.Equals(status?.Trim(), nameof(VideoStatus.Ready), StringComparison.OrdinalIgnoreCase))
+            throw AppException.Bad("Videos become Ready only through reviewer confirmation (POST /api/admin/youtube/videos/{id}/confirm).", "use_confirm");
+        VideoStatus target = (status?.Trim().ToLowerInvariant()) switch
+        {
+            "restricted" => VideoStatus.Restricted,
+            "failed" => VideoStatus.Failed,
+            _ => throw AppException.Bad("status must be Restricted or Failed.", "invalid_status"),
+        };
+        reason = reason?.Trim();
+        if (string.IsNullOrEmpty(reason) || reason.Length > 1000) throw AppException.Bad("reason is required (max 1000 characters).");
+        var asset = await db.VideoAssets.FirstOrDefaultAsync(a => a.Id == assetId, ct) ?? throw AppException.NotFound("Video");
+        if (asset.Status is VideoStatus.Draft or VideoStatus.AwaitingApproval or VideoStatus.AwaitingSourceFile or VideoStatus.Uploading)
+            throw AppException.Conflict($"Video is {asset.Status}; manage it through its upload session instead.", "invalid_state");
+        var from = asset.Status;
+        asset.Status = target;
+        asset.StatusReason = reason;
+        asset.LastCheckedAt = DateTime.UtcNow;
+        audit.Record("video.marked", "VideoAsset", asset.Id, new { from = from.ToString(), to = target.ToString(), reason });
+        await db.SaveChangesAsync(ct);
+        return VideoAssetDto.From(asset);
+    }
+
     public async Task<VideoAssetDto> ReviewerConfirm(Guid assetId, bool approve, string? reason, CancellationToken ct)
     {
         me.RequireId();

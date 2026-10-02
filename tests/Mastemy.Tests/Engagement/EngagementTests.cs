@@ -166,7 +166,9 @@ public class DiscussionTests(EngagementFixture fx) : IClassFixture<EngagementFix
         Assert.Single((await mod.GetFromJsonAsync<ThreadDetailDto>($"/api/discussions/{t.Id}"))!.Replies);
 
         Assert.Equal(HttpStatusCode.NoContent, (await mod.PostAsJsonAsync($"/api/moderation/discussions/{t.Id}/hide", new HideInput(true, "spam"))).StatusCode);
-        Assert.Equal(HttpStatusCode.NotFound, (await lc.GetAsync($"/api/discussions/{t.Id}")).StatusCode);
+        // The author gets a moderation notice (reason + appeal link); everyone else gets 404.
+        Assert.NotNull((await lc.GetFromJsonAsync<ThreadDetailDto>($"/api/discussions/{t.Id}"))!.Moderation);
+        Assert.Equal(HttpStatusCode.NotFound, (await fx.Client().GetAsync($"/api/discussions/{t.Id}")).StatusCode);
         Assert.Equal(HttpStatusCode.NotFound, (await lc.PostAsJsonAsync($"/api/discussions/{t.Id}/replies", new ReplyInput("x"))).StatusCode);
         Assert.Equal(0, (await fx.Client().GetFromJsonAsync<EngagementPage<ThreadSummaryDto>>($"/api/courses/{s.Course.Id}/discussions"))!.Total);
         Assert.Equal(1, (await mod.GetFromJsonAsync<EngagementPage<ThreadSummaryDto>>($"/api/courses/{s.Course.Id}/discussions"))!.Total);

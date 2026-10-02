@@ -341,6 +341,7 @@ public class DataRightsService(AppDbContext db, ICurrentUser me, AuditService au
         await db.NotificationPreferences.Where(x => x.UserId == uid).ExecuteDeleteAsync();
         await db.Set<LearningGoals>().Where(x => x.UserId == uid).ExecuteDeleteAsync();
         await db.Set<UserSkill>().Where(x => x.UserId == uid).ExecuteDeleteAsync();
+        await db.Set<StudyTools.CalendarFeedToken>().Where(x => x.UserId == uid).ExecuteDeleteAsync(); // anonymous feed URL dies too
         await db.Certificates.Where(c => c.UserId == uid).ExecuteUpdateAsync(s => s.SetProperty(c => c.PubliclyVisible, false));
 
         var p = await db.Set<AccountProfile>().FirstOrDefaultAsync(x => x.UserId == uid);

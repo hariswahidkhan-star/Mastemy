@@ -29,6 +29,18 @@ public class PracticeController(PracticeService svc) : ControllerBase
     [HttpPost("api/practice/sessions/{id:guid}/finish")]
     public Task<PracticeResult> Finish(Guid id) => svc.Finish(id);
 
+    [HttpPost("api/practice/sessions/{id:guid}/items/{itemId:guid}/self-grade")]
+    public Task<ReviewCardDto> SelfGrade(Guid id, Guid itemId, SelfGradeInput input) => svc.SelfGradeItem(id, itemId, input);
+
+    [HttpPost("api/practice/review/{questionId:guid}/grade")]
+    public Task<ReviewCardDto> GradeReview(Guid questionId, SelfGradeInput input) => svc.SelfGradeReview(questionId, input);
+
+    [HttpPut("api/practice/sessions/{id:guid}/items/{itemId:guid}/bookmark")]
+    public async Task<IActionResult> BookmarkItem(Guid id, Guid itemId) => Ok(new { questionId = await svc.BookmarkPracticeItem(id, itemId) });
+
+    [HttpPut("api/attempts/{id:guid}/items/{itemId:guid}/bookmark")]
+    public async Task<IActionResult> BookmarkAttemptItem(Guid id, Guid itemId) { await svc.BookmarkAttemptItem(id, itemId); return NoContent(); }
+
     [HttpGet("api/practice/review/due")]
     public Task<List<DueReviewDto>> Due([FromQuery] int limit = 50) => svc.Due(limit);
 
@@ -58,6 +70,10 @@ public class AccommodationsController(AccommodationService svc) : ControllerBase
     [HttpDelete("api/admin/accommodations/{id:guid}")]
     public async Task<IActionResult> Revoke(Guid id) { await svc.Revoke(id); return NoContent(); }
 
+    [Authorize(Policy = "Staff")]
+    [HttpGet("api/admin/assessments")]
+    public Task<List<AssessmentPickerDto>> SearchAssessments([FromQuery] string? q, [FromQuery] int limit = 20) => svc.SearchAssessments(q, limit);
+
     [HttpGet("api/me/accommodations")]
     public Task<List<MyAccommodationDto>> Mine() => svc.Mine();
 
@@ -77,6 +93,9 @@ public class RegradeController(RegradeService svc, ItemAnalyticsService analytic
 
     [HttpGet("api/review/regrades")]
     public Task<List<RegradeDto>> List([FromQuery] RegradeStatus? status) => svc.List(status);
+
+    [HttpGet("api/review/regrades/{id:guid}/preview")]
+    public Task<RegradePreviewDto> Preview(Guid id) => svc.Preview(id);
 
     [HttpGet("api/review/regrades/{id:guid}")]
     public Task<RegradeDetailDto> Get(Guid id) => svc.Get(id);

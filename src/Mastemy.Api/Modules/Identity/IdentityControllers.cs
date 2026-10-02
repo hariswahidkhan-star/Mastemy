@@ -23,7 +23,7 @@ public class AuthController(AuthService auth, ICurrentUser me) : ControllerBase
     public async Task<IActionResult> Logout(RefreshRequest req) { await auth.Logout(req); return NoContent(); }
 
     [HttpGet("me"), Authorize, AllowMfaEnrollmentToken]
-    public Task<UserDto> Me() => auth.Me(me.RequireId());
+    public Task<UserDto> Me() => auth.Me(me.RequireId(), User);
 }
 
 [ApiController]
@@ -84,6 +84,10 @@ public class AccountSecurityController(EmailVerificationService verification, Pa
 [Authorize(Policy = "Staff")]
 public class AdminController(AdminService admin, FeatureFlagService flags, EmailVerificationService verification) : ControllerBase
 {
+    /// <summary>Minimal picker (trust suspensions etc.): id, display name, masked email. Exact email or id also match.</summary>
+    [HttpGet("users/lookup")]
+    public Task<List<UserLookupDto>> Lookup([FromQuery] string? q, [FromQuery] int limit = 10) => admin.Lookup(q, limit);
+
     [HttpGet("users/{id:guid}")]
     public Task<AdminUserDto> GetUser(Guid id) => admin.Get(id);
 

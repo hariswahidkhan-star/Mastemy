@@ -12,7 +12,10 @@ public class StudyPlan
     public DateTime TargetDate { get; set; }
     public int WeeklyMinutes { get; set; }
     public int SessionDaysMask { get; set; } // bit (1 << (int)DayOfWeek)
-    public int SessionHourUtc { get; set; }
+    /// <summary>Session start hour (0–23) in <see cref="TimeZone"/>.</summary>
+    public int SessionHour { get; set; }
+    /// <summary>IANA time zone the plan was scheduled in (the learner's profile zone at save time; UTC fallback).</summary>
+    public string TimeZone { get; set; } = "UTC";
     public bool RemindersEnabled { get; set; }
     public bool FitsBeforeTarget { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -79,6 +82,7 @@ public class StudyPlanConfig : IEntityTypeConfiguration<StudyPlan>
     {
         b.ToTable("StudyTools_Plans");
         b.HasKey(x => x.Id);
+        b.Property(x => x.TimeZone).HasMaxLength(64).IsRequired();
         b.HasIndex(x => x.UserId).IsUnique();
         b.HasOne<User>().WithMany().HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
     }

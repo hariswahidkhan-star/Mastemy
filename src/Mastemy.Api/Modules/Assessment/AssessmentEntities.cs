@@ -88,6 +88,8 @@ public class PracticeItem
     public string SelectedOptionIds { get; set; } = "";
     public DateTime? CheckedAt { get; set; }
     public decimal? Points { get; set; }
+    /// <summary>SM-2 quality (0–5) the learner chose after seeing the answer; replaces the automatic grade.</summary>
+    public int? SelfGrade { get; set; }
 }
 
 public class QuestionBookmark
@@ -108,6 +110,12 @@ public class ReviewCard
     public DateTime DueAt { get; set; }
     public DateTime LastReviewedAt { get; set; }
     public int LastQuality { get; set; }
+    /// <summary>State before the latest step, so a learner self-grade can replace an automatic grade instead of stacking.</summary>
+    public int PrevRepetitions { get; set; }
+    public decimal PrevEaseFactor { get; set; } = 2.5m;
+    public int PrevIntervalDays { get; set; }
+    /// <summary>Practice item whose automatic grade produced the latest step (null for attempts / self-grades).</summary>
+    public Guid? LastPracticeItemId { get; set; }
 }
 
 public enum RegradeStatus { Proposed, Applied, Rejected }
@@ -301,6 +309,7 @@ public class AssessmentEntityConfigs :
         b.HasKey(x => new { x.UserId, x.QuestionId });
         b.HasOne<Question>().WithMany().HasForeignKey(x => x.QuestionId);
         b.Property(x => x.EaseFactor).HasPrecision(18, 4);
+        b.Property(x => x.PrevEaseFactor).HasPrecision(18, 4);
         b.HasIndex(x => new { x.UserId, x.DueAt });
     }
 

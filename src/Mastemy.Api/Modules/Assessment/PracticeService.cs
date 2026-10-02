@@ -12,8 +12,8 @@ public record PracticeSessionInput(List<Guid>? CourseIds, List<string>? Topics, 
     List<string>? Objectives, bool UnseenOnly = false, bool PreviousMistakes = false, bool BookmarkedOnly = false, bool DueForReview = false,
     int? Count = null);
 
-public record PracticeItemView(Guid ItemId, int SortOrder, Guid CourseId, QuestionType Type, string Stem, List<LearnerOptionDto> Options,
-    List<Guid> SelectedOptionIds, bool Checked, Guid? CaseGroupId, string? CaseTitle, string? CaseExhibitMarkdown);
+public record PracticeItemView(Guid ItemId, Guid QuestionId, int SortOrder, Guid CourseId, QuestionType Type, string Stem, List<LearnerOptionDto> Options,
+    List<Guid> SelectedOptionIds, bool Checked, Guid? CaseGroupId, string? CaseTitle, string? CaseExhibitMarkdown, int? SelfGrade = null);
 
 public record PracticeSessionView(Guid Id, DateTime CreatedAt, DateTime? FinishedAt, MultiSelectScoring ScoringPolicy, List<PracticeItemView> Items);
 
@@ -26,19 +26,47 @@ public record PracticeAnswerInput(List<Guid>? SelectedOptionIds);
 
 public record BookmarkDto(Guid QuestionId, Guid CourseId, string Stem, DateTime CreatedAt);
 
+public record SelfGradeInput(int? Quality);
+
+public record ReviewCardDto(Guid QuestionId, DateTime DueAt, int IntervalDays, int Repetitions, decimal EaseFactor, int LastQuality);
+
 public record DueReviewDto(Guid QuestionId, Guid CourseId, DateTime DueAt, int IntervalDays, int Repetitions, decimal EaseFactor);
 
 /// <summary>Updates the SM-2 review card of (learner, question) from a scored answer. Caller saves.</summary>
 public static class ReviewScheduler
 {
-    public static async Task Record(AppDbContext db, Guid userId, Guid questionId, decimal points)
+    public static Task<ReviewCard> Record(AppDbContext db, Guid userId, Guid questionId, decimal points, Guid? practiceItemId = null) =>
+        Step(db, userId, questionId, Sm2.Quality(points), practiceItemId);
+
+    /// <summary>Applies one SM-2 step with an explicit quality (0–5).</summary>
+    public static async Task<ReviewCard> Step(AppDbContext db, Guid userId, Guid questionId, int quality, Guid? practiceItemId = null)
     {
         var set = db.Set<ReviewCard>();
         var card = set.Local.FirstOrDefault(c => c.UserId == userId && c.QuestionId == questionId)
                    ?? await set.FirstOrDefaultAsync(c => c.UserId == userId && c.QuestionId == questionId);
         if (card is null) { card = new ReviewCard { UserId = userId, QuestionId = questionId }; set.Add(card); }
-        var quality = Sm2.Quality(points);
-        var (reps, ease, interval) = Sm2.Next(card.Repetitions, card.EaseFactor, card.IntervalDays, quality);
+        card.PrevRepetitions = card.Repetitions; card.PrevEaseFactor = card.EaseFactor; card.PrevIntervalDays = card.IntervalDays;
+        Apply(card, quality, card.Repetitions, card.EaseFactor, card.IntervalDays);
+        card.LastPracticeItemId = practiceItemId;
+        return card;
+    }
+
+    /// <summary>
+    /// Learner self-grade for a practice item: when the card's latest step came from this item's automatic grade, that step
+    /// is replaced (recomputed from the previous state); otherwise a new step is applied.
+    /// </summary>
+    public static async Task<ReviewCard> SelfGrade(AppDbContext db, Guid userId, Guid questionId, int quality, Guid practiceItemId)
+    {
+        var card = await db.Set<ReviewCard>().FirstOrDefaultAsync(c => c.UserId == userId && c.QuestionId == questionId);
+        if (card is null || card.LastPracticeItemId != practiceItemId) return await Step(db, userId, questionId, quality);
+        Apply(card, quality, card.PrevRepetitions, card.PrevEaseFactor, card.PrevIntervalDays);
+        card.LastPracticeItemId = null;
+        return card;
+    }
+
+    private static void Apply(ReviewCard card, int quality, int reps0, decimal ease0, int interval0)
+    {
+        var (reps, ease, interval) = Sm2.Next(reps0, ease0, interval0, quality);
         var now = DateTime.UtcNow;
         card.Repetitions = reps; card.EaseFactor = ease; card.IntervalDays = interval;
         card.LastQuality = quality; card.LastReviewedAt = now; card.DueAt = now.AddDays(interval);
@@ -249,7 +277,7 @@ public class PracticeService(AppDbContext db, ICurrentUser me, AccessService acc
             {
                 item.CheckedAt = DateTime.UtcNow;
                 item.Points = points;
-                if (selected.Count > 0) await ReviewScheduler.Record(db, s.UserId, item.QuestionId, points);
+                if (selected.Count > 0) await ReviewScheduler.Record(db, s.UserId, item.QuestionId, points, item.Id);
             }
             result = new CheckResult(item.Id, points == 1m, correct, opts.Select(o => new RationaleDto(o.Id, o.Rationale)).ToList(), v.Explanation);
         });
@@ -269,7 +297,7 @@ public class PracticeService(AppDbContext db, ICurrentUser me, AccessService acc
                 var v = versions[item.QuestionVersionId];
                 var selected = Ids(item.SelectedOptionIds);
                 item.Points = Scoring.Item(v.Type, v.Options.Where(o => o.IsCorrect).Select(o => o.Id).ToList(), selected, s.ScoringPolicy);
-                if (selected.Count > 0) await ReviewScheduler.Record(db, s.UserId, item.QuestionId, item.Points.Value);
+                if (selected.Count > 0) await ReviewScheduler.Record(db, s.UserId, item.QuestionId, item.Points.Value, item.Id);
             }
             s.FinishedAt = DateTime.UtcNow;
         });
@@ -322,6 +350,73 @@ public class PracticeService(AppDbContext db, ICurrentUser me, AccessService acc
         try { await db.SaveChangesAsync(); }
         catch (DbUpdateException) { /* concurrent duplicate: already bookmarked */ }
     }
+
+    /// <summary>Bookmark the question behind a practice item (server resolves the question).</summary>
+    public async Task<Guid> BookmarkPracticeItem(Guid sessionId, Guid itemId)
+    {
+        var uid = me.RequireId();
+        var qid = await db.Set<PracticeItem>().AsNoTracking()
+            .Join(db.Set<PracticeSession>(), i => i.SessionId, s => s.Id, (i, s) => new { i, s })
+            .Where(x => x.s.Id == sessionId && x.s.UserId == uid && x.i.Id == itemId).Select(x => (Guid?)x.i.QuestionId).FirstOrDefaultAsync()
+            ?? throw AppException.NotFound("Practice item");
+        await Bookmark(qid);
+        return qid;
+    }
+
+    /// <summary>
+    /// Bookmark the question behind an exam/quiz attempt item. Only after the attempt is finished, so question identity is
+    /// never exposed while the attempt is in progress. The question id is not returned (attempt views never carry it).
+    /// </summary>
+    public async Task BookmarkAttemptItem(Guid attemptId, Guid itemId)
+    {
+        var uid = me.RequireId();
+        var row = await (from it in db.AttemptItems.AsNoTracking()
+                         join at in db.Attempts on it.AttemptId equals at.Id
+                         join v in db.QuestionVersions on it.QuestionVersionId equals v.Id
+                         where at.Id == attemptId && at.UserId == uid && it.Id == itemId
+                         select new { at.Status, v.QuestionId }).FirstOrDefaultAsync()
+                  ?? throw AppException.NotFound("Attempt item");
+        if (row.Status == AttemptStatus.InProgress)
+            throw AppException.Conflict("Questions can be bookmarked after the attempt is submitted.", "attempt_in_progress");
+        await Bookmark(row.QuestionId);
+    }
+
+    /// <summary>Learner-chosen SM-2 quality for a checked practice item (replaces that item's automatic grade).</summary>
+    public async Task<ReviewCardDto> SelfGradeItem(Guid id, Guid itemId, SelfGradeInput input)
+    {
+        var quality = ValidQuality(input);
+        ReviewCard? card = null;
+        await Locked(id, async s =>
+        {
+            var item = s.Items.FirstOrDefault(i => i.Id == itemId) ?? throw AppException.NotFound("Practice item");
+            if (item.CheckedAt is null && s.FinishedAt is null)
+                throw AppException.Conflict("Check the answer before grading your recall.", "not_checked");
+            await RequirePremium(item);
+            if (item.SelfGrade is not null) throw AppException.Conflict("This item was already self-graded.", "already_graded");
+            item.SelfGrade = quality;
+            card = await ReviewScheduler.SelfGrade(db, s.UserId, item.QuestionId, quality, item.Id);
+        });
+        return CardDto(card!);
+    }
+
+    /// <summary>Self-grade a question from the spaced-review queue (the learner already has a review card for it).</summary>
+    public async Task<ReviewCardDto> SelfGradeReview(Guid questionId, SelfGradeInput input)
+    {
+        var uid = me.RequireId();
+        var quality = ValidQuality(input);
+        if (!await db.Set<ReviewCard>().AnyAsync(c => c.UserId == uid && c.QuestionId == questionId)) throw AppException.NotFound("Review card");
+        var card = await ReviewScheduler.Step(db, uid, questionId, quality);
+        await db.SaveChangesAsync();
+        return CardDto(card);
+    }
+
+    private static int ValidQuality(SelfGradeInput? input)
+    {
+        if (input?.Quality is not { } q || q is < 0 or > 5) throw AppException.Bad("quality must be an integer between 0 and 5.");
+        return q;
+    }
+
+    private static ReviewCardDto CardDto(ReviewCard c) => new(c.QuestionId, c.DueAt, c.IntervalDays, c.Repetitions, c.EaseFactor, c.LastQuality);
 
     public async Task Unbookmark(Guid questionId)
     {
@@ -392,9 +487,9 @@ public class PracticeService(AppDbContext db, ICurrentUser me, AccessService acc
         return new PracticeSessionView(s.Id, s.CreatedAt, s.FinishedAt, s.ScoringPolicy, items);
     }
 
-    private static PracticeItemView ItemView(PracticeItem i, QuestionVersion v, CaseGroup? g) => new(i.Id, i.SortOrder, i.CourseId, v.Type, v.Stem,
+    private static PracticeItemView ItemView(PracticeItem i, QuestionVersion v, CaseGroup? g) => new(i.Id, i.QuestionId, i.SortOrder, i.CourseId, v.Type, v.Stem,
         Ids(i.OptionOrder).Select(id => v.Options.First(o => o.Id == id)).Select(o => new LearnerOptionDto(o.Id, o.Text)).ToList(),
-        Ids(i.SelectedOptionIds), i.CheckedAt is not null, g?.Id, g?.Title, g?.ExhibitMarkdown);
+        Ids(i.SelectedOptionIds), i.CheckedAt is not null, g?.Id, g?.Title, g?.ExhibitMarkdown, i.SelfGrade);
 
     private static List<Guid> Ids(string csv) =>
         string.IsNullOrEmpty(csv) ? [] : csv.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(Guid.Parse).ToList();

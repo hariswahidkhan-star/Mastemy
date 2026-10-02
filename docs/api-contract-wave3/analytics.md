@@ -26,3 +26,15 @@ Response: `enrollmentsOverTime[{bucket,value}]`, `enrollmentsInRange`, `totalEnr
 `GET /api/admin/analytics/dashboard?from&to&bucket` (Staff) → `totalUsers, newSignupsInRange, signupsOverTime, activeLearnersInRange, activeLearnersOverTime, publishedCourses, ordersByCurrency[{currency,count,amount}]` (paid/refunded orders by PaidAt), `revenueOverTime`, `refundsByCurrency` (completed refunds), `pendingRefundRequests`, `aiUsage: null` (no AI usage table exists yet — reported as null, never a fabricated 0), `videosNeedingRepair` + `videosNeedingRepairSample` (Restricted/Failed, top 50), `contentReviewMonths`, `overdueContentUpdates` + `overdueContentSample` (live courses whose latest snapshot publish is older than `Analytics:ContentReviewMonths`, default 12), `reviewQueues{coursesInReview, questionsAwaitingReview, questionsAwaitingApproval, instructorApplications, refundRequests, uploadApprovals}`.
 
 All aggregates run in MySQL (GROUP BY on `DATE_FORMAT` bucket expressions) and are cached in-memory for 5 minutes per report/scope/range/bucket (authorization is checked before the cache).
+
+
+## Retention (final wave)
+`AnalyticsRetentionWorker` deletes `Analytics_Events` whose `OccurredAt` is older than `Analytics:EventRetentionDays`
+(default **395**, clamped 1–3650), in batches of 5000, every `Analytics:RetentionIntervalHours` (default 24).
+`Analytics:RetentionEnabled=false` disables it.
+
+## Admin dashboard `aiUsage` (final wave)
+`aiUsage` is no longer null: totals of `Ai_Usage` rows created in `[from, to)` —
+`{ calls, distinctUsers, inputTokens, outputTokens, cacheReadTokens, cacheWriteTokens, costEstimate,
+byFeature: [{ feature, calls, inputTokens, outputTokens, costEstimate }] }` (byFeature sorted by cost, descending).
+Clients that rendered `aiUsage` as a scalar must render these fields instead.

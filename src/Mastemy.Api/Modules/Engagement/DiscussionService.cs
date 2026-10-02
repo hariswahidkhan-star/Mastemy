@@ -77,6 +77,16 @@ public class DiscussionService(AppDbContext db, ICurrentUser me, AccessService a
 
     public async Task<ThreadDetailDto> Get(Guid id)
     {
+        var own = await db.DiscussionThreads.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+        if (own is { Hidden: true } && !IsModerator && me.Id is { } uid && uid == own.AuthorId)
+        {
+            // The author learns why their post was hidden and how to appeal; nobody else can tell it exists.
+            var note = await db.Set<ModerationNote>().AsNoTracking()
+                .FirstOrDefaultAsync(n => n.TargetType == ModerationNote.Thread && n.TargetId == id);
+            var notice = new ModerationNoticeDto(true, note?.Reason ?? "This post was hidden by a moderator.", note?.HiddenAt,
+                ModerationNote.Thread, id, "/api/appeals", "/account/appeals");
+            return new ThreadDetailDto((await Summaries([own])).Single(), [], notice);
+        }
         var t = await VisibleThread(id);
         var mod = IsModerator;
         var replies = await db.DiscussionReplies.AsNoTracking().Where(r => r.ThreadId == id && (mod || !r.Hidden))
@@ -187,6 +197,8 @@ public class DiscussionService(AppDbContext db, ICurrentUser me, AccessService a
         if (input.Hidden && reason.Length is 0 or > 500) throw AppException.Bad("A reason (1-500 characters) is required to hide content.");
         if (t.Hidden == input.Hidden) return;
         t.Hidden = input.Hidden;
+        if (input.Hidden) await ModerationNotes.Set(db, ModerationNote.Thread, t.Id, reason);
+        else await ModerationNotes.Clear(db, ModerationNote.Thread, t.Id);
         audit.Record(input.Hidden ? "discussion.hidden" : "discussion.unhidden", "DiscussionThread", t.Id, new { reason, t.CourseId });
         await db.SaveChangesAsync();
     }
@@ -200,6 +212,8 @@ public class DiscussionService(AppDbContext db, ICurrentUser me, AccessService a
         if (input.Hidden && reason.Length is 0 or > 500) throw AppException.Bad("A reason (1-500 characters) is required to hide content.");
         if (r.Hidden == input.Hidden) return;
         r.Hidden = input.Hidden;
+        if (input.Hidden) await ModerationNotes.Set(db, ModerationNote.Reply, r.Id, reason);
+        else await ModerationNotes.Clear(db, ModerationNote.Reply, r.Id);
         audit.Record(input.Hidden ? "discussion_reply.hidden" : "discussion_reply.unhidden", "DiscussionReply", r.Id, new { reason, r.ThreadId });
         await db.SaveChangesAsync();
     }

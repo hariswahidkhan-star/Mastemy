@@ -9,6 +9,8 @@ public record AccommodationInput(Guid UserId, Guid? AssessmentId, int ExtraTimeP
 public record AccommodationDto(Guid Id, Guid UserId, Guid? AssessmentId, int ExtraTimePercent, bool Untimed, string Reason, Guid GrantedBy,
     DateTime CreatedAt, DateTime? RevokedAt);
 public record MyAccommodationDto(Guid Id, Guid? AssessmentId, int ExtraTimePercent, bool Untimed, DateTime CreatedAt);
+public record AssessmentPickerDto(Guid Id, string Title, Guid CourseId, string CourseCode, string CourseTitle, AssessmentKind Kind,
+    AssessmentMode Mode, int? TimeLimitMinutes, bool CountsTowardCertificate);
 public record AssessmentPolicyInput(bool AllowPause, int MaxPauseMinutes, int? MaxExposuresPerQuestion);
 public record AssessmentPolicyDto(Guid AssessmentId, bool AllowPause, int MaxPauseMinutes, int? MaxExposuresPerQuestion, DateTime? UpdatedAt);
 
@@ -27,6 +29,27 @@ public class AccommodationService(AppDbContext db, ICurrentUser me, AuditService
             .Where(x => x.UserId == userId && x.RevokedAt == null && (x.AssessmentId == assessmentId || x.AssessmentId == null)).ToListAsync();
         return list.Where(x => x.AssessmentId == assessmentId).OrderByDescending(x => x.CreatedAt).FirstOrDefault()
                ?? list.Where(x => x.AssessmentId == null).OrderByDescending(x => x.CreatedAt).FirstOrDefault();
+    }
+
+    /// <summary>Staff picker for the accommodations UI: assessments whose title, or whose course's title/code, contains q.</summary>
+    public async Task<List<AssessmentPickerDto>> SearchAssessments(string? q, int limit)
+    {
+        me.RequireId();
+        if (!me.IsStaff) throw AppException.Forbidden();
+        limit = Math.Clamp(limit, 1, 50);
+        var term = (q ?? "").Trim();
+        if (term.Length > 200) throw AppException.Bad("q is too long (max 200 characters).");
+        var query = from a in db.Assessments.AsNoTracking()
+                    join c in db.Courses on a.CourseId equals c.Id
+                    select new { a, c };
+        if (term.Length > 0)
+        {
+            var guid = Guid.TryParse(term, out var g) ? g : (Guid?)null;
+            query = query.Where(x => x.a.Title.Contains(term) || x.c.Title.Contains(term) || x.c.Code.Contains(term) || x.a.Id == guid || x.c.Id == guid);
+        }
+        return await query.OrderBy(x => x.c.Title).ThenBy(x => x.a.Title).Take(limit)
+            .Select(x => new AssessmentPickerDto(x.a.Id, x.a.Title, x.c.Id, x.c.Code, x.c.Title, x.a.Kind, x.a.Mode, x.a.TimeLimitMinutes, x.a.CountsTowardCertificate))
+            .ToListAsync();
     }
 
     public async Task<AccommodationDto> Grant(AccommodationInput input)

@@ -38,7 +38,8 @@ public record OverdueCourseDto(Guid CourseId, string Title, string Slug, CourseS
     DateTime LastPublishedAt, int MonthsSincePublish);
 
 /// <summary>Admin quality queues (spec §20): broken video links in live courses and overdue content updates.</summary>
-public class QualityQueueService(AppDbContext db, ICurrentUser me, AuditService audit, EmailOutbox email, OperationsOptions opt)
+public class QualityQueueService(AppDbContext db, ICurrentUser me, AuditService audit, EmailOutbox email, OperationsOptions opt,
+    Engagement.INotificationService notifications)
 {
     private const int MaxAssets = 500;
 
@@ -94,14 +95,16 @@ public class QualityQueueService(AppDbContext db, ICurrentUser me, AuditService 
         if (courses.Count == 0) throw AppException.Conflict("No live course lesson uses this video.", "not_linked");
         var recipients = courses.SelectMany(c => c.InstructorIds).Distinct().ToList();
         var now = DateTime.UtcNow;
+        // In-app via the shared notification service (per-kind preferences respected; opted-in users also get its email).
         foreach (var c in courses)
-            foreach (var uid in c.InstructorIds)
-                db.Notifications.Add(new Notification
-                {
-                    UserId = uid, Kind = "broken_video", CreatedAt = now, Link = $"/studio/courses/{c.CourseId}",
-                    Title = Trim($"A video in \"{c.Title}\" is unavailable on YouTube ({asset.Status}). Re-upload or relink {c.Lessons.Count} lesson(s)."),
-                });
-        var users = await db.Users.AsNoTracking().Where(u => recipients.Contains(u.Id) && !u.IsSuspended).Select(u => u.Email).ToListAsync(ct);
+            await notifications.Publish(c.InstructorIds, Engagement.NotificationKinds.BrokenVideo,
+                Trim($"A video in \"{c.Title}\" is unavailable on YouTube ({asset.Status}). Re-upload or relink {c.Lessons.Count} lesson(s)."),
+                $"/studio/courses/{c.CourseId}");
+        // The detailed action-needed email goes to instructors with no explicit email preference for this kind (default on);
+        // those who opted in already got the service's email, those who opted out get none.
+        var withPref = await db.NotificationPreferences.AsNoTracking()
+            .Where(p => p.Kind == Engagement.NotificationKinds.BrokenVideo && recipients.Contains(p.UserId)).Select(p => p.UserId).ToListAsync(ct);
+        var users = await db.Users.AsNoTracking().Where(u => recipients.Contains(u.Id) && !withPref.Contains(u.Id) && !u.IsSuspended).Select(u => u.Email).ToListAsync(ct);
         foreach (var to in users)
             email.Enqueue(to, "Action needed: a course video is unavailable",
                 $"The YouTube video \"{asset.Title}\" ({asset.YouTubeVideoId}) is {asset.Status}{(asset.StatusReason is null ? "" : $": {asset.StatusReason}")}.\n" +

@@ -156,6 +156,11 @@ public class DataRightsTests(AccountFixture f) : IClassFixture<AccountFixture>
         var seeded = await f.SeedLearningAndCommerce(u, "SKILL-D");
         var c = await f.As(u);
         await c.PutAsJsonAsync("/api/me/profile", new { headline = "Secret headline", publicInstructorProfile = true });
+        await using (var seedDb = f.NewDb())
+        {
+            seedDb.Set<Mastemy.Api.Modules.StudyTools.CalendarFeedToken>().Add(new Mastemy.Api.Modules.StudyTools.CalendarFeedToken { UserId = u.Id, TokenHash = new string('a', 64) });
+            await seedDb.SaveChangesAsync();
+        }
 
         Assert.Equal(HttpStatusCode.BadRequest, (await c.SendAsync(DeleteReq(new { password = AccountFixture.Password }))).StatusCode);
         Assert.Equal(HttpStatusCode.BadRequest, (await c.SendAsync(DeleteReq(new { password = "WrongPass123", confirm = "DELETE" }))).StatusCode);
@@ -174,6 +179,7 @@ public class DataRightsTests(AccountFixture f) : IClassFixture<AccountFixture>
         var cert = await db.Certificates.SingleAsync(x => x.Id == seeded.Certificate.Id);
         Assert.False(cert.PubliclyVisible);
         Assert.False(await db.RefreshTokens.AnyAsync(t => t.UserId == u.Id && t.RevokedAt == null));
+        Assert.False(await db.Set<Mastemy.Api.Modules.StudyTools.CalendarFeedToken>().AnyAsync(t => t.UserId == u.Id)); // calendar feed URL revoked
         Assert.True(await db.AuditLogs.AnyAsync(a => a.Action == "user.deleted" && a.EntityId == u.Id.ToString()));
         var profile = await db.Set<AccountProfile>().SingleAsync(p => p.UserId == u.Id);
         Assert.Equal("", profile.Headline);

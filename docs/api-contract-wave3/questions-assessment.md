@@ -196,3 +196,41 @@ with the corrected name (original issue date kept; audited `certificate.reissued
 |---|---|---|
 | `Questions:QueuedImportThresholdRows` | 500 | commits above this row count are queued |
 | `Questions:ImportWorkerPollSeconds` | 2 | queued-import worker poll interval |
+
+
+## 10. Final-wave additions
+
+### Self-graded spaced review (SM-2)
+Automatic grading still updates the learner's review card on check/finish. After seeing the answer the learner may choose
+their own recall quality (0–5); it **replaces** the automatic step of that item (recomputed from the card's state before the
+check, never stacked).
+
+| Method | Path | Auth | Notes |
+|---|---|---|---|
+| POST | `/api/practice/sessions/{id}/items/{itemId}/self-grade` | owner | Body `{ "quality": 0..5 }`. 409 `not_checked` before the item is checked (or the session finished); 409 `already_graded`; 400 for a missing/out-of-range quality; 403 `premium_required` when premium access lapsed. Returns `ReviewCardDto { questionId, dueAt, intervalDays, repetitions, easeFactor, lastQuality }`. |
+| POST | `/api/practice/review/{questionId}/grade` | learner | Self-grade from the due-review queue; applies one SM-2 step. 404 when the learner has no card for the question. |
+
+`PracticeItemView` now includes `questionId` (practice and review items only) and `selfGrade`. **Exam/quiz attempt views never
+include question ids.**
+
+### Bookmarking without exposing exam questions
+| Method | Path | Auth | Notes |
+|---|---|---|---|
+| PUT | `/api/practice/sessions/{id}/items/{itemId}/bookmark` | owner | Server resolves the question; returns `{ questionId }`. |
+| PUT | `/api/attempts/{id}/items/{itemId}/bookmark` | owner | 409 `attempt_in_progress` until the attempt is submitted/expired; 204 afterwards. The question id is not returned. |
+
+### Regrade preview
+`GET /api/review/regrades/{id}/preview` (Reviewer/Staff) — dry run of approval with the proposed key: nothing is written.
+Returns `RegradePreviewDto { regradeId, affectedAttempts, changedAttempts, newlyPassing, newlyFailing, certificatesToFlag,
+results: [{ attemptId, userId, oldPointsEarned, newPointsEarned, oldScorePercent, newScorePercent, oldPassed, newPassed }] }`.
+409 `regrade_decided` once the proposal was approved or rejected.
+
+### Certificate template preview
+`GET /api/admin/certificate-templates/{id}/preview.pdf` (Staff) — renders a sample certificate ("Sample Learner",
+"Sample Course: Foundations", code `SAMPLE-PREVIEW`) with that template's colours, title, signature and logo. Nothing is
+stored; the sample code never verifies. 404 for unknown templates.
+
+### Staff assessment picker (accommodations UI)
+`GET /api/admin/assessments?q=&limit=20` (Staff) — matches assessment title, course title, course code, or an exact
+assessment/course id. Returns `[{ id, title, courseId, courseCode, courseTitle, kind, mode, timeLimitMinutes,
+countsTowardCertificate }]` (max 50).
