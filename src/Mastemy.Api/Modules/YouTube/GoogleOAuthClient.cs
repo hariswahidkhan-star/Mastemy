@@ -16,7 +16,9 @@ public record OwnChannel(string ChannelId, string Title);
 /// </summary>
 public class GoogleOAuthClient(IHttpClientFactory http, IOptions<YouTubeOptions> options, SecretProtector secrets, ILogger<GoogleOAuthClient> log)
 {
-    public const string Scopes = "https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.readonly";
+    public const string Scopes = "https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.readonly " + ForceSslScope;
+    /// <summary>Needed for playlist maintenance and caption uploads (spec §10.5).</summary>
+    public const string ForceSslScope = "https://www.googleapis.com/auth/youtube.force-ssl";
     private static readonly ConcurrentDictionary<Guid, (string Token, DateTime ExpiresAt, string CipherHash)> AccessCache = new();
 
     private YouTubeOptions O => options.Value;

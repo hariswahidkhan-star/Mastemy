@@ -20,21 +20,54 @@ public record OAuthStartDto(string AuthorizationUrl);
 public record OAuthStartResult(OAuthStartDto Dto, string Nonce);
 
 /// <summary>
-/// Single-use registry of consumed OAuth state nonces (replay protection). In-memory per process: in a multi-instance
-/// deployment a replay routed to a different instance within the 15-minute state lifetime is not detected there; the
-/// browser-bound nonce cookie (cleared on callback) still prevents cross-user/login-CSRF use of a stolen state.
+/// Single-use OAuth state nonces persisted in the OAuthNonces table, so replay protection holds across app instances.
+/// A nonce is inserted when the flow starts and consumed with one conditional UPDATE (unconsumed, unexpired, same user).
 /// </summary>
-public class OAuthNonceStore
+public class OAuthNonceStore(AppDbContext db)
 {
-    private readonly System.Collections.Concurrent.ConcurrentDictionary<string, DateTime> _used = new(StringComparer.Ordinal);
+    public async Task Issue(string nonce, Guid userId, DateTime expiresAt, CancellationToken ct = default)
+    {
+        db.OAuthNonces.Add(new OAuthNonce { Nonce = nonce, UserId = userId, ExpiresAt = expiresAt });
+        await db.SaveChangesAsync(ct);
+    }
 
-    /// <summary>Marks the nonce consumed; false if it was already used.</summary>
-    public bool TryConsume(string nonce, DateTime expiresAt)
+    /// <summary>Marks the nonce consumed; false if it is unknown, expired, for another user, or already used.</summary>
+    public async Task<bool> TryConsume(string nonce, Guid userId, CancellationToken ct = default)
     {
         var now = DateTime.UtcNow;
-        if (_used.Count > 1024)
-            foreach (var kv in _used) if (kv.Value < now) _used.TryRemove(kv.Key, out _);
-        return _used.TryAdd(nonce, expiresAt);
+        var n = await db.OAuthNonces.Where(x => x.Nonce == nonce && x.UserId == userId && x.ConsumedAt == null && x.ExpiresAt > now)
+            .ExecuteUpdateAsync(u => u.SetProperty(x => x.ConsumedAt, now), ct);
+        return n == 1;
+    }
+
+    /// <summary>Deletes nonces that expired more than an hour ago (consumed or not).</summary>
+    public Task<int> CleanupExpired(CancellationToken ct = default)
+    {
+        var cutoff = DateTime.UtcNow.AddHours(-1);
+        return db.OAuthNonces.Where(x => x.ExpiresAt < cutoff).ExecuteDeleteAsync(ct);
+    }
+}
+
+/// <summary>Hourly removal of expired OAuth nonces.</summary>
+public class OAuthNonceCleanupService(IServiceScopeFactory scopes, ILogger<OAuthNonceCleanupService> log) : BackgroundService
+{
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        using var timer = new PeriodicTimer(TimeSpan.FromHours(1));
+        try
+        {
+            while (await timer.WaitForNextTickAsync(stoppingToken))
+            {
+                try
+                {
+                    using var scope = scopes.CreateScope();
+                    var n = await scope.ServiceProvider.GetRequiredService<OAuthNonceStore>().CleanupExpired(stoppingToken);
+                    if (n > 0) log.LogInformation("Removed {Count} expired OAuth nonces", n);
+                }
+                catch (Exception ex) when (ex is not OperationCanceledException) { log.LogWarning(ex, "OAuth nonce cleanup failed"); }
+            }
+        }
+        catch (OperationCanceledException) { }
     }
 }
 
@@ -97,6 +130,7 @@ public partial class ChannelService(AppDbContext db, ICurrentUser me, AuditServi
         var nonce = Tokens.Random(24);
         var payload = JsonSerializer.Serialize(new StatePayload(uid, mode, nonce));
         var state = StateProtector.Protect(payload, StateLifetime);
+        await nonces.Issue(nonce, uid, DateTime.UtcNow.Add(StateLifetime));
         return new OAuthStartResult(new OAuthStartDto(google.BuildAuthorizationUrl(state)), nonce);
     }
 
@@ -120,7 +154,7 @@ public partial class ChannelService(AppDbContext db, ICurrentUser me, AuditServi
             throw AppException.Bad("The authorization request is invalid or expired. Start again.", "oauth_state_invalid");
         if (me.Id is { } current && current != p.UserId)
             throw AppException.Bad("The authorization request belongs to a different user.", "oauth_state_invalid");
-        if (!nonces.TryConsume(p.Nonce, DateTime.UtcNow.Add(StateLifetime)))
+        if (!await nonces.TryConsume(p.Nonce, p.UserId, ct))
             throw AppException.Bad("This authorization request was already used. Start again.", "oauth_state_invalid");
 
         var user = await db.Users.Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == p.UserId, ct);

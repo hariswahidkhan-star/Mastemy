@@ -7,6 +7,12 @@ namespace Mastemy.Api.Modules.Identity;
 /// distributed attacker cannot hammer one account, while per-account exponential backoff bounds the delay a
 /// victim can be forced into.
 /// </summary>
+/// <remarks>
+/// Multi-instance behaviour: this per-email minute window is held in memory and is therefore enforced per instance
+/// (N instances allow up to N x the configured permits per minute for one email). That is an accepted trade-off because the
+/// security-relevant control is global: the per-account backoff (User.FailedLoginCount / User.LockoutUntil, see AuthService)
+/// is persisted in the database and applies on every instance. No extra schema is used for the minute window.
+/// </remarks>
 public sealed class LoginEmailRateLimiter : IDisposable
 {
     private readonly PartitionedRateLimiter<string> limiter;

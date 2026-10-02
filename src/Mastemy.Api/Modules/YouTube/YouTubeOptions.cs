@@ -13,6 +13,10 @@ public class YouTubeOptions
     public string OAuthRedirectUri { get; set; } = "";
     public long UploadChunkBytes { get; set; } = 8 * 1024 * 1024;
     public int MaxConcurrentUploadsPerUser { get; set; } = 2;
+    /// <summary>Cross-instance chunk lease duration (renewed while a chunk is streaming).</summary>
+    public int UploadLeaseSeconds { get; set; } = 120;
+    /// <summary>Max caption file pushed to YouTube.</summary>
+    public long MaxCaptionBytes { get; set; } = 10 * 1024 * 1024;
     public double RecheckHours { get; set; } = 24;
     public int PlaylistImportMaxItems { get; set; } = 200;
 

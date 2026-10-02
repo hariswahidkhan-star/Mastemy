@@ -1,4 +1,3 @@
-using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
@@ -39,10 +38,10 @@ public class UploadOffsetMismatchException(long confirmedOffset)
 /// The upstream session URI and OAuth tokens never leave the server.
 /// </summary>
 public partial class UploadRelayService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit, FeatureFlagService flags,
-    ChannelPolicy channels, GoogleOAuthClient google, IHttpClientFactory http, IOptions<YouTubeOptions> options, ILogger<UploadRelayService> log)
+    ChannelPolicy channels, GoogleOAuthClient google, IHttpClientFactory http, IOptions<YouTubeOptions> options, ILogger<UploadRelayService> log,
+    IServiceScopeFactory scopes)
 {
     public const long MaxFileBytes = 256L * 1024 * 1024 * 1024; // YouTube limit: 256 GB
-    private static readonly ConcurrentDictionary<Guid, SemaphoreSlim> Locks = new();
     private static readonly UploadSessionStatus[] ActiveStatuses =
         [UploadSessionStatus.AwaitingApproval, UploadSessionStatus.Approved, UploadSessionStatus.AwaitingSourceFile, UploadSessionStatus.Uploading];
 
@@ -141,16 +140,15 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
     }
 
     /// <summary>
-    /// Cancels an upload. Takes the per-session gate when it is free (briefly waiting); if a chunk transfer is in flight the
-    /// cancellation is still applied with a conditional update, and the in-flight chunk's own conditional writes then fail,
-    /// so a cancelled session is never overwritten. The gate is never removed here (removing it while in use would let a
-    /// second gate be created for the same session).
+    /// Cancels an upload. Takes the session's database lease when it is free (polling for up to 2 seconds); if a chunk transfer
+    /// is in flight on any instance the cancellation is still applied with a conditional update (the cancel request is recorded
+    /// in the row), and the in-flight chunk holder's own conditional writes then fail, so a cancelled session is never overwritten.
     /// </summary>
     public async Task<UploadDto> Cancel(Guid id, CancellationToken ct)
     {
         var s = await Own(id, ct, allowStaff: true);
-        var gate = Locks.GetOrAdd(s.Id, _ => new SemaphoreSlim(1, 1));
-        var held = await gate.WaitAsync(TimeSpan.FromSeconds(2), ct);
+        var lease = await WaitLease(s.Id, TimeSpan.FromSeconds(2), ct);
+        var held = lease is not null;
         try
         {
             await db.Entry(s).ReloadAsync(ct);
@@ -172,7 +170,79 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
             await db.SaveChangesAsync(ct);
             return Dto(s);
         }
-        finally { if (held) gate.Release(); }
+        finally { if (lease is not null) await ReleaseLease(s.Id, lease); }
+    }
+
+    // ---- Cross-instance chunk lease (YouTubeUploadSession.LockToken / LockedUntil) ----
+
+    private TimeSpan LeaseDuration => TimeSpan.FromSeconds(Math.Max(5, O.UploadLeaseSeconds));
+
+    /// <summary>Single conditional UPDATE: takes the lease only when it is free or expired. Returns the lease token or null.</summary>
+    private async Task<string?> TryLease(Guid id, CancellationToken ct)
+    {
+        var token = Tokens.Random(16);
+        var now = DateTime.UtcNow;
+        var until = now.Add(LeaseDuration);
+        var n = await db.UploadSessions.Where(x => x.Id == id && (x.LockedUntil == null || x.LockedUntil < now))
+            .ExecuteUpdateAsync(u => u.SetProperty(x => x.LockToken, token).SetProperty(x => x.LockedUntil, until), ct);
+        return n == 1 ? token : null;
+    }
+
+    private async Task<string?> WaitLease(Guid id, TimeSpan wait, CancellationToken ct)
+    {
+        var deadline = DateTime.UtcNow + wait;
+        while (true)
+        {
+            if (await TryLease(id, ct) is { } token) return token;
+            if (DateTime.UtcNow >= deadline) return null;
+            await Task.Delay(100, ct);
+        }
+    }
+
+    /// <summary>Releases the lease only if this holder still owns it (by token).</summary>
+    private Task ReleaseLease(Guid id, string token) => db.UploadSessions.Where(x => x.Id == id && x.LockToken == token)
+        .ExecuteUpdateAsync(u => u.SetProperty(x => x.LockToken, (string?)null).SetProperty(x => x.LockedUntil, (DateTime?)null), CancellationToken.None);
+
+    /// <summary>
+    /// Keeps a lease alive while a long upstream write is in progress (renews every third of the lease duration through its own
+    /// DbContext, since the request's context is busy). Renewal is by token, so a lease that was lost is never re-taken.
+    /// </summary>
+    private sealed class LeaseRenewer : IAsyncDisposable
+    {
+        private readonly CancellationTokenSource _stop = new();
+        private readonly Task _loop;
+
+        public LeaseRenewer(IServiceScopeFactory scopes, Guid id, string token, TimeSpan lease, ILogger log)
+        {
+            _loop = Task.Run(async () =>
+            {
+                using var timer = new PeriodicTimer(lease / 3);
+                try
+                {
+                    while (await timer.WaitForNextTickAsync(_stop.Token))
+                    {
+                        try
+                        {
+                            using var scope = scopes.CreateScope();
+                            var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                            var until = DateTime.UtcNow.Add(lease);
+                            var n = await db.UploadSessions.Where(x => x.Id == id && x.LockToken == token)
+                                .ExecuteUpdateAsync(u => u.SetProperty(x => x.LockedUntil, until), _stop.Token);
+                            if (n == 0) { log.LogWarning("Upload lease for session {Session} was lost", id); return; }
+                        }
+                        catch (Exception ex) when (ex is not OperationCanceledException) { log.LogWarning(ex, "Upload lease renewal failed for {Session}", id); }
+                    }
+                }
+                catch (OperationCanceledException) { }
+            });
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            await _stop.CancelAsync();
+            try { await _loop; } catch (OperationCanceledException) { }
+            _stop.Dispose();
+        }
     }
 
     /// <summary>Statuses from which the relay itself may write session state (never Cancelled/Completed/Failed).</summary>
@@ -209,10 +279,11 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
         var s = await Own(id, ct);
         if (!string.Equals(req.FileFingerprint?.Trim(), s.FileFingerprint, StringComparison.Ordinal))
             throw AppException.Conflict("The selected file does not match the file this upload was started with.", YouTubeErrors.FileMismatch);
-        var gate = Locks.GetOrAdd(s.Id, _ => new SemaphoreSlim(1, 1));
-        if (!await gate.WaitAsync(0, ct)) throw AppException.Conflict("A chunk is being transferred for this upload.", "chunk_in_progress");
+        var lease = await TryLease(s.Id, ct) ?? throw AppException.Conflict("A chunk is being transferred for this upload.", "chunk_in_progress");
         try
         {
+            await db.Entry(s).ReloadAsync(ct);
+            await using var renew = new LeaseRenewer(scopes, s.Id, lease, LeaseDuration, log);
             switch (s.Status)
             {
                 case UploadSessionStatus.Expired:
@@ -233,7 +304,7 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
             await Persist(s);
             return Dto(s);
         }
-        finally { gate.Release(); }
+        finally { await ReleaseLease(s.Id, lease); }
     }
 
     /// <summary>Streams one chunk of the request body to the upstream resumable session.</summary>
@@ -256,11 +327,11 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
         if (!isFinal && length % YouTubeOptions.ChunkGranularity != 0)
             throw AppException.Bad("Non-final chunks must be a multiple of 256 KiB.", "invalid_chunk_size");
 
-        var gate = Locks.GetOrAdd(s.Id, _ => new SemaphoreSlim(1, 1));
-        if (!await gate.WaitAsync(0, ct)) throw AppException.Conflict("A chunk is already being transferred for this upload.", "chunk_in_progress");
+        var lease = await TryLease(s.Id, ct) ?? throw AppException.Conflict("A chunk is already being transferred for this upload.", "chunk_in_progress");
         try
         {
             await db.Entry(s).ReloadAsync(ct);
+            await using var renew = new LeaseRenewer(scopes, s.Id, lease, LeaseDuration, log);
             switch (s.Status)
             {
                 case UploadSessionStatus.Approved or UploadSessionStatus.Uploading: break;
@@ -302,7 +373,7 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
             using (resp) await HandleUpstreamResponse(s, resp, channel, ct);
             return Dto(s);
         }
-        finally { gate.Release(); }
+        finally { await ReleaseLease(s.Id, lease); }
     }
 
     private async Task Interrupted(YouTubeUploadSession s, string reason)
