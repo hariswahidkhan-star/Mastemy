@@ -12,7 +12,7 @@ namespace Mastemy.Api.Modules.Assessment;
 /// the certificate) — never for watching videos. Issuance is idempotent per (user, course).
 /// </summary>
 public class CertificateService(AppDbContext db, ICurrentUser me, AuditService audit, IConfiguration cfg,
-    Mastemy.Api.Modules.Engagement.INotificationService notifications)
+    Mastemy.Api.Modules.Engagement.INotificationService notifications, Resources.IResourceStorage storage)
 {
     /// <summary>Unambiguous alphabet: no 0/O, 1/I/L.</summary>
     public const string Alphabet = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
@@ -95,7 +95,25 @@ public class CertificateService(AppDbContext db, ICurrentUser me, AuditService a
         var isOwner = me.Id is { } uid && uid == c.UserId;
         if (!isOwner && !c.PubliclyVisible) throw AppException.NotFound("Certificate");
         if (c.Status == CertificateStatus.Revoked) throw new AppException(410, "This certificate has been revoked.", "certificate_revoked");
-        return (CertificatePdf.Render(c, VerificationUrl(c.Code)), c.Code);
+        return (CertificatePdf.Render(c, VerificationUrl(c.Code), await Design(c.CourseId)), c.Code);
+    }
+
+    /// <summary>The course's selected certificate template (if any), with its logo bytes when the logo file is available.</summary>
+    private async Task<CertificateDesign?> Design(Guid courseId)
+    {
+        var t = await db.Set<CourseCertificateSetting>().AsNoTracking().Where(s => s.CourseId == courseId)
+            .Join(db.Set<CertificateTemplate>(), s => s.TemplateId, t => t.Id, (s, t) => t).FirstOrDefaultAsync();
+        if (t is null) return null;
+        byte[]? logo = null;
+        if (t.LogoResourceId is { } lid && await db.ResourceFiles.AsNoTracking().FirstOrDefaultAsync(r => r.Id == lid && r.DeletedAt == null) is { } file
+            && file.SizeBytes <= 2 * 1024 * 1024 && storage.Exists(file.StorageKey))
+        {
+            await using var s = storage.OpenRead(file.StorageKey);
+            using var ms = new MemoryStream();
+            await s.CopyToAsync(ms);
+            logo = ms.ToArray();
+        }
+        return new CertificateDesign(t.TitleText, t.PrimaryColor, t.AccentColor, t.SignatureName, t.SignatureTitle, logo);
     }
 
     /// <summary>Learner controls whether their certificate is publicly verifiable/downloadable.</summary>

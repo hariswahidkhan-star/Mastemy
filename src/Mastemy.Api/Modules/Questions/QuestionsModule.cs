@@ -6,5 +6,9 @@ public static class QuestionsModule
     {
         s.AddScoped<QuestionService>();
         s.AddScoped<QuestionImportService>();
+        s.AddScoped<CaseGroupService>();
+        s.AddScoped<QuestionReuseService>();
+        s.AddScoped<QuestionChallengeService>();
+        s.AddHostedService<QuestionImportWorker>();
     }
 }

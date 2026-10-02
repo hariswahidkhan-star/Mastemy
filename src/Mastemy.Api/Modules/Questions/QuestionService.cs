@@ -29,8 +29,10 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         var ids = items.Select(x => x.Id).ToList();
         var versions = await db.QuestionVersions.AsNoTracking().Include(v => v.Options)
             .Where(v => ids.Contains(v.QuestionId)).ToListAsync();
+        var metas = await db.Set<QuestionMeta>().AsNoTracking().Where(m => ids.Contains(m.QuestionId)).ToDictionaryAsync(m => m.QuestionId);
         var dtos = items.Select(x => QuestionRules.ToDto(x, versions.First(v => v.QuestionId == x.Id && v.Version == x.CurrentVersion),
-            x.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.QuestionId == x.Id && v.Version == pv) : null)).ToList();
+            x.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.QuestionId == x.Id && v.Version == pv) : null)
+            with { Meta = QuestionMetaDto.From(metas.GetValueOrDefault(x.Id)) }).ToList();
         return new Paged<QuestionDto>(dtos, total, page, pageSize);
     }
 
@@ -41,7 +43,8 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         var versions = await db.QuestionVersions.AsNoTracking().Include(v => v.Options).Where(v => v.QuestionId == id).OrderBy(v => v.Version).ToListAsync();
         var current = versions.First(v => v.Version == q.CurrentVersion);
         var pending = q.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.Version == pv) : null;
-        return new QuestionDetailDto(QuestionRules.ToDto(q, current, pending),
+        var meta = await db.Set<QuestionMeta>().AsNoTracking().FirstOrDefaultAsync(m => m.QuestionId == id);
+        return new QuestionDetailDto(QuestionRules.ToDto(q, current, pending) with { Meta = QuestionMetaDto.From(meta) },
             versions.Select(v => new QuestionVersionSummary(v.Id, v.Version, v.CreatedAt, v.EditedBy, v.ReviewedBy)).ToList());
     }
 
@@ -61,9 +64,12 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         var v = NewVersion(q.Id, 1, input, uid);
         db.Questions.Add(q);
         db.QuestionVersions.Add(v);
+        var meta = new QuestionMeta { QuestionId = q.Id };
+        ApplyMeta(meta, input);
+        db.Set<QuestionMeta>().Add(meta);
         audit.Record("question.created", "Question", q.Id, new { q.ExternalId, courseId });
         await db.SaveChangesAsync();
-        return QuestionRules.ToDto(q, v);
+        return QuestionRules.ToDto(q, v) with { Meta = QuestionMetaDto.From(meta) };
     }
 
     public async Task<QuestionDto> Update(Guid id, QuestionInput input)
@@ -104,7 +110,7 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
                         existing = new QuestionOption { QuestionVersionId = current.Id };
                         db.QuestionOptions.Add(existing);
                     }
-                    existing.SortOrder = order++; existing.Text = o.Text.Trim(); existing.IsCorrect = o.IsCorrect; existing.Rationale = o.Rationale.Trim();
+                    existing.SortOrder = order++; existing.Text = RichText.Normalize(o.Text).Trim(); existing.IsCorrect = o.IsCorrect; existing.Rationale = RichText.Normalize(o.Rationale).Trim();
                     keep.Add(existing.Id);
                 }
                 db.QuestionOptions.RemoveRange(current.Options.Where(x => !keep.Contains(x.Id)).ToList());
@@ -123,6 +129,9 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         q.ExternalId = input.ExternalId.Trim();
         q.ModuleId = input.ModuleId; q.LessonId = input.LessonId;
         q.UpdatedAt = DateTime.UtcNow;
+        var meta = await db.Set<QuestionMeta>().FirstOrDefaultAsync(m => m.QuestionId == q.Id);
+        if (meta is null) { meta = new QuestionMeta { QuestionId = q.Id }; db.Set<QuestionMeta>().Add(meta); }
+        ApplyMeta(meta, input);
         audit.Record(action, "Question", q.Id,
             new { version = q.CurrentVersion, pendingVersion = q.PendingVersion, previousState = previousState.ToString() });
         await db.SaveChangesAsync();
@@ -135,12 +144,21 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
     private async Task<int> NextVersionNumber(Guid questionId) =>
         (await db.QuestionVersions.Where(v => v.QuestionId == questionId).MaxAsync(v => (int?)v.Version) ?? 0) + 1;
 
-    private async Task<QuestionDto> Dto(Question q)
+    internal async Task<QuestionDto> Dto(Question q)
     {
         var versions = await db.QuestionVersions.AsNoTracking().Include(v => v.Options)
             .Where(v => v.QuestionId == q.Id && (v.Version == q.CurrentVersion || v.Version == q.PendingVersion)).ToListAsync();
+        var meta = await db.Set<QuestionMeta>().AsNoTracking().FirstOrDefaultAsync(m => m.QuestionId == q.Id);
         return QuestionRules.ToDto(q, versions.First(v => v.Version == q.CurrentVersion),
-            q.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.Version == pv) : null);
+            q.PendingVersion is { } pv ? versions.FirstOrDefault(v => v.Version == pv) : null) with { Meta = QuestionMetaDto.From(meta) };
+    }
+
+    internal static void ApplyMeta(QuestionMeta meta, QuestionInput input)
+    {
+        meta.CognitiveLevel = input.CognitiveLevel;
+        meta.CaseGroupId = input.CaseGroupId;
+        meta.CaseGroupOrder = input.CaseGroupId is null ? 0 : input.CaseGroupOrder ?? 0;
+        meta.UpdatedAt = DateTime.UtcNow;
     }
 
     private static readonly Dictionary<QuestionState, QuestionState[]> Allowed = new()
@@ -215,14 +233,14 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
         ApplyContent(v, input);
         v.Options = input.Options.Select((o, i) => new QuestionOption
         {
-            QuestionVersionId = v.Id, SortOrder = i, Text = o.Text.Trim(), IsCorrect = o.IsCorrect, Rationale = o.Rationale.Trim(),
+            QuestionVersionId = v.Id, SortOrder = i, Text = RichText.Normalize(o.Text).Trim(), IsCorrect = o.IsCorrect, Rationale = RichText.Normalize(o.Rationale).Trim(),
         }).ToList();
         return v;
     }
 
     private static void ApplyContent(QuestionVersion v, QuestionInput i)
     {
-        v.Type = i.Type; v.Language = i.Language; v.Stem = i.Stem.Trim(); v.Explanation = i.Explanation.Trim(); v.Difficulty = i.Difficulty;
+        v.Type = i.Type; v.Language = i.Language; v.Stem = RichText.Normalize(i.Stem).Trim(); v.Explanation = RichText.Normalize(i.Explanation).Trim(); v.Difficulty = i.Difficulty;
         v.SkillCode = i.SkillCode?.Trim() ?? ""; v.CertificationObjective = i.CertificationObjective?.Trim() ?? "";
         v.Tags = string.Join(';', QuestionRules.NormalizeTags(i.Tags)); v.SourceReference = i.SourceReference?.Trim() ?? "";
         v.AllowShuffle = i.AllowShuffle;
@@ -240,6 +258,7 @@ public class QuestionService(AppDbContext db, ICurrentUser me, AccessService acc
             if (lesson is null || lesson.CourseId != courseId) errors.Add("lessonId does not belong to this course.");
             else if (input.ModuleId is { } m2 && lesson.ModuleId != m2) errors.Add("lessonId does not belong to moduleId.");
         }
+        if (errors.Count == 0) errors.AddRange(await QuestionAssets.Check(db, courseId, QuestionRules.ResourceIds(input), input.CaseGroupId));
         if (errors.Count > 0) throw AppException.Bad(string.Join(" ", errors), "validation_failed");
     }
 

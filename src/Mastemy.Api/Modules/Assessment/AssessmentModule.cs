@@ -7,5 +7,10 @@ public static class AssessmentModule
         s.AddScoped<AssessmentStudioService>();
         s.AddScoped<AttemptService>();
         s.AddScoped<CertificateService>();
+        s.AddScoped<AccommodationService>();
+        s.AddScoped<PracticeService>();
+        s.AddScoped<RegradeService>();
+        s.AddScoped<ItemAnalyticsService>();
+        s.AddScoped<CertificateWorkflowService>();
     }
 }

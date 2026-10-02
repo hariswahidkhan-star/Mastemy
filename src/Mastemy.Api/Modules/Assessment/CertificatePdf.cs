@@ -46,9 +46,19 @@ public sealed class BundledFontResolver : IFontResolver
     }
 }
 
+/// <summary>Staff-managed certificate design applied when rendering (colours as #RRGGBB, optional PNG/JPEG logo bytes).</summary>
+public record CertificateDesign(string TitleText, string PrimaryColor, string AccentColor, string SignatureName, string SignatureTitle, byte[]? Logo);
+
 /// <summary>Single-page A4 landscape certificate (spec §17), generated on demand from the stored certificate record.</summary>
 public static class CertificatePdf
 {
+    private static XColor Hex(string? hex, XColor fallback)
+    {
+        if (hex is not { Length: 7 } || hex[0] != '#') return fallback;
+        try { return XColor.FromArgb(Convert.ToInt32(hex[1..3], 16), Convert.ToInt32(hex[3..5], 16), Convert.ToInt32(hex[5..7], 16)); }
+        catch (FormatException) { return fallback; }
+    }
+
     private static readonly XColor Ink = XColor.FromArgb(0x1F, 0x29, 0x37);
     private static readonly XColor Muted = XColor.FromArgb(0x4B, 0x55, 0x63);
     private static readonly XColor Accent = XColor.FromArgb(0x1D, 0x4E, 0xD8);
@@ -57,8 +67,10 @@ public static class CertificatePdf
         "This certificate attests knowledge assessed through server-scored multiple-choice questions on Mastemy. " +
         "It is not a professional licence, accreditation or qualification, and it does not certify video viewing or course completion.";
 
-    public static byte[] Render(Certificate c, string verificationUrl)
+    public static byte[] Render(Certificate c, string verificationUrl, CertificateDesign? design = null)
     {
+        var ink = Hex(design?.PrimaryColor, Ink);
+        var accent = Hex(design?.AccentColor, Accent);
         BundledFontResolver.EnsureInstalled();
         using var doc = new PdfDocument();
         doc.Info.Title = $"Mastemy certificate {c.Code}";
@@ -72,18 +84,28 @@ public static class CertificatePdf
         using (var g = XGraphics.FromPdfPage(page))
         {
             double w = page.Width.Point, h = page.Height.Point;
-            g.DrawRectangle(new XPen(Accent, 3), 24, 24, w - 48, h - 48);
-            g.DrawRectangle(new XPen(Accent, 0.75), 32, 32, w - 64, h - 64);
+            g.DrawRectangle(new XPen(accent, 3), 24, 24, w - 48, h - 48);
+            g.DrawRectangle(new XPen(accent, 0.75), 32, 32, w - 64, h - 64);
+            if (design?.Logo is { Length: > 0 } logo)
+            {
+                try
+                {
+                    using var img = XImage.FromStream(new MemoryStream(logo));
+                    var scale = Math.Min(64.0 / img.PointWidth, 64.0 / img.PointHeight);
+                    g.DrawImage(img, 48, 44, img.PointWidth * scale, img.PointHeight * scale);
+                }
+                catch (Exception) { /* unreadable logo: render without it */ }
+            }
 
             var y = 62.0;
-            Centered(g, "MASTEMY", 12, true, Accent, w, ref y, 6);
-            Centered(g, "Certificate of Assessed Knowledge", 26, true, Ink, w, ref y, 14);
+            Centered(g, "MASTEMY", 12, true, accent, w, ref y, 6);
+            Centered(g, string.IsNullOrWhiteSpace(design?.TitleText) ? "Certificate of Assessed Knowledge" : design!.TitleText, 26, true, ink, w, ref y, 14);
             Centered(g, "This certifies that", 12, false, Muted, w, ref y, 6);
-            Centered(g, c.RecipientName, 30, true, Ink, w, ref y, 8);
+            Centered(g, c.RecipientName, 30, true, ink, w, ref y, 8);
             Centered(g, "passed the assessment for the course", 12, false, Muted, w, ref y, 6);
-            Centered(g, c.CourseTitle, 20, true, Ink, w, ref y, 10);
+            Centered(g, c.CourseTitle, 20, true, ink, w, ref y, 10);
             var issued = c.IssuedAt.ToString("d MMMM yyyy", CultureInfo.InvariantCulture);
-            Centered(g, $"Issued {issued}   |   Score {c.ScorePercent.ToString("0.##", CultureInfo.InvariantCulture)}%", 12, false, Ink, w, ref y, 10);
+            Centered(g, $"Issued {issued}   |   Score {c.ScorePercent.ToString("0.##", CultureInfo.InvariantCulture)}%", 12, false, ink, w, ref y, 10);
 
             foreach (var line in Wrap(g, "Criteria: " + c.AssessmentCriteria, 9.5, w - 2 * 90))
                 Centered(g, line, 9.5, false, Muted, w, ref y, 2);
@@ -98,10 +120,19 @@ public static class CertificatePdf
             DrawQr(g, verificationUrl, qrX, qrY, qrSize);
             var fx = 60.0;
             var fy = h - 56 - qrSize + 8;
-            Left(g, "Issued by Mastemy", 11, true, Ink, fx, ref fy);
-            Left(g, $"Certificate code: {c.Code}", 11, false, Ink, fx, ref fy);
+            if (!string.IsNullOrWhiteSpace(design?.SignatureName))
+            {
+                var sx = w / 2 - 90;
+                var sy = h - 56 - qrSize + 4;
+                g.DrawLine(new XPen(ink, 0.75), sx, sy + 26, sx + 180, sy + 26);
+                var ly = sy + 30;
+                Left(g, design!.SignatureName, 10, true, ink, sx, ref ly);
+                if (!string.IsNullOrWhiteSpace(design.SignatureTitle)) Left(g, design.SignatureTitle, 9, false, Muted, sx, ref ly);
+            }
+            Left(g, "Issued by Mastemy", 11, true, ink, fx, ref fy);
+            Left(g, $"Certificate code: {c.Code}", 11, false, ink, fx, ref fy);
             Left(g, "Verify at:", 9, false, Muted, fx, ref fy);
-            foreach (var line in Wrap(g, verificationUrl, 9, qrX - fx - 20)) Left(g, line, 9, false, Accent, fx, ref fy);
+            foreach (var line in Wrap(g, verificationUrl, 9, qrX - fx - 20)) Left(g, line, 9, false, accent, fx, ref fy);
         }
         using var ms = new MemoryStream();
         doc.Save(ms, false);

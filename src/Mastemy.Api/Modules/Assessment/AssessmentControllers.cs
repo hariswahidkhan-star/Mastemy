@@ -54,6 +54,19 @@ public class AttemptsController(AttemptService svc) : ControllerBase
 
     [HttpPost("api/attempts/{id:guid}/submit")]
     public Task<AttemptResult> Submit(Guid id) => svc.Submit(id);
+
+    /// <summary>Only when the assessment's explicit pause policy allows it (timed attempts, bounded pause budget).</summary>
+    [HttpPost("api/attempts/{id:guid}/pause")]
+    public Task<AttemptView> Pause(Guid id) => svc.Pause(id);
+
+    [HttpPost("api/attempts/{id:guid}/resume")]
+    public Task<AttemptView> Resume(Guid id) => svc.Resume(id);
+
+    [HttpPost("api/attempts/{id:guid}/items/{itemId:guid}/challenge")]
+    public Task<Questions.MyChallengeDto> Challenge(Guid id, Guid itemId, Questions.ChallengeInput input) => svc.Challenge(id, itemId, input);
+
+    [HttpGet("api/attempts/{id:guid}/recommendations")]
+    public Task<RecommendationsDto> Recommendations(Guid id) => svc.Recommendations(id);
 }
 
 [ApiController]

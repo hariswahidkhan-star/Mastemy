@@ -9,7 +9,11 @@ namespace Mastemy.Api.Modules.Questions;
 
 public record ImportRowResult(int Row, string ExternalId, bool Ok, List<string> Errors);
 public record ImportPreviewResult(Guid BatchId, string Mode, string Status, List<ImportRowResult> Rows, int ValidCount, int ErrorCount);
-public record ImportCommitResult(Guid BatchId, string Status, int Created, int Updated);
+public record ImportCommitResult(Guid BatchId, string Status, int Created, int Updated, string? Error = null);
+public record ImportStatusResult(Guid BatchId, string Status, int RowCount, int ErrorCount, int Created, int Updated, string? Error,
+    DateTime CreatedAt, DateTime? QueuedAt, DateTime? FinishedAt);
+public record ImportInspectResult(string Format, List<string> Headers, Dictionary<string, string?> SuggestedMapping,
+    List<string> Columns, List<string> RequiredColumns, List<List<string>> SampleRows, int RowCount);
 
 /// <summary>Normalized row persisted in <see cref="QuestionImportBatch.PayloadJson"/>.</summary>
 public class ImportRowPayload
@@ -23,6 +27,8 @@ public class ImportRowPayload
 public class ImportPayload
 {
     public string Mode { get; set; } = "create";
+    public string Format { get; set; } = "csv";
+    public Dictionary<string, string>? Mapping { get; set; }
     public List<ImportRowPayload> Rows { get; set; } = [];
 }
 
@@ -31,8 +37,10 @@ public class ImportPayload
 /// Preview validates every row and stores the normalized rows; commit inserts them atomically, only when error-free,
 /// and is idempotent. Imported questions always land in Draft — imports never bypass review.
 /// </summary>
-public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit)
+public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit, IConfiguration cfg)
 {
+    /// <summary>Batches with more rows than this are committed by the queued <see cref="QuestionImportWorker"/> (Questions:QueuedImportThresholdRows).</summary>
+    public int QueueThreshold => Math.Max(1, cfg.GetValue("Questions:QueuedImportThresholdRows", 500));
     public const long MaxFileBytes = 5 * 1024 * 1024;
     public const int MaxRows = 5000;
     private static readonly string[] Letters = ["A", "B", "C", "D", "E", "F"];
@@ -42,7 +50,7 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
         "ExternalId", "QuestionType", "Language", "CourseCode", "ModuleCode", "LessonCode", "SkillCode", "CertificationObjective",
         "Stem", "OptionA", "OptionB", "OptionC", "OptionD", "OptionE", "OptionF", "CorrectOptions", "Explanation",
         "ExplanationA", "ExplanationB", "ExplanationC", "ExplanationD", "ExplanationE", "ExplanationF",
-        "Difficulty", "Tags", "SourceReference", "ReviewStatus",
+        "Difficulty", "Tags", "SourceReference", "ReviewStatus", "ImageResource",
     ];
 
     private static readonly string[] RequiredColumns =
@@ -55,7 +63,8 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
 
     // ---------------- Preview ----------------
 
-    public async Task<ImportPreviewResult> Preview(Guid courseId, Stream content, long length, string fileName, string? mode, string? idempotencyKey)
+    public async Task<ImportPreviewResult> Preview(Guid courseId, Stream content, long length, string fileName, string? mode, string? idempotencyKey,
+        string? mappingJson = null)
     {
         var uid = me.RequireId();
         var course = await db.Courses.AsNoTracking().FirstOrDefaultAsync(c => c.Id == courseId) ?? throw AppException.NotFound("Course");
@@ -70,19 +79,15 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
         if (existingBatch is not null) return FromBatch(existingBatch, courseId);
 
         if (length > MaxFileBytes) throw AppException.Bad("The file exceeds the 5 MB limit.", "file_too_large");
+        var mapping = ParseMapping(mappingJson);
         var bytes = await ReadLimited(content);
-        string text;
-        try { text = new UTF8Encoding(false, true).GetString(bytes); }
-        catch (DecoderFallbackException) { throw AppException.Bad("The file is not valid UTF-8 text.", "invalid_encoding"); }
-        if (text.Length > 0 && text[0] == '﻿') text = text[1..];
-
-        var isJson = fileName.EndsWith(".json", StringComparison.OrdinalIgnoreCase) ||
-                     (!fileName.EndsWith(".csv", StringComparison.OrdinalIgnoreCase) && text.TrimStart().StartsWith('['));
-        var raw = isJson ? ParseJson(text) : ParseCsv(text);
+        var (format, records, jsonText) = Load(bytes, fileName);
+        if (format == "json" && mapping is not null) throw AppException.Bad("Column mapping applies to CSV and XLSX files only.", "invalid_mapping");
+        var raw = format == "json" ? ParseJson(jsonText!) : ParseRecords(records!, mapping, strictWidth: format == "csv");
         if (raw.Count == 0) throw AppException.Bad("The file contains no question rows.", "empty_file");
         if (raw.Count > MaxRows) throw AppException.Bad($"The file contains {raw.Count} rows; the limit is {MaxRows}.", "too_many_rows");
 
-        var payload = new ImportPayload { Mode = mode, Rows = await ValidateRows(course, raw, mode) };
+        var payload = new ImportPayload { Mode = mode, Format = format, Mapping = mapping, Rows = await ValidateRows(course, raw, mode) };
         var batch = new QuestionImportBatch
         {
             CourseId = courseId, UserId = uid, IdempotencyKey = idempotencyKey, Status = "Previewed",
@@ -130,19 +135,77 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
 
     private record RawRow(int Row, Dictionary<string, string?> Fields, List<string> Errors);
 
-    private static List<RawRow> ParseCsv(string text)
+    /// <summary>Detects the format and returns tabular records (CSV/XLSX) or the JSON text.</summary>
+    private static (string Format, List<List<string>>? Records, string? Json) Load(byte[] bytes, string fileName)
     {
-        List<List<string>> records;
-        try { records = Csv.Parse(text); }
+        if (fileName.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase) || Xlsx.LooksLikeXlsx(bytes))
+        {
+            try
+            {
+                var rows = Xlsx.Read(bytes, MaxRows);
+                // Blank spreadsheet rows are ignored (keeping spreadsheet row numbers for the remaining rows is done by ParseRecords).
+                return ("xlsx", rows, null);
+            }
+            catch (XlsxFormatException ex) { throw AppException.Bad(ex.Message, "malformed_xlsx"); }
+        }
+        if (fileName.EndsWith(".xls", StringComparison.OrdinalIgnoreCase) || fileName.EndsWith(".xlsm", StringComparison.OrdinalIgnoreCase))
+            throw AppException.Bad("Only .xlsx, .csv and .json files are supported.", "unsupported_format");
+        string text;
+        try { text = new UTF8Encoding(false, true).GetString(bytes); }
+        catch (DecoderFallbackException) { throw AppException.Bad("The file is not valid UTF-8 text.", "invalid_encoding"); }
+        if (text.Length > 0 && text[0] == '﻿') text = text[1..];
+        var isJson = fileName.EndsWith(".json", StringComparison.OrdinalIgnoreCase) ||
+                     (!fileName.EndsWith(".csv", StringComparison.OrdinalIgnoreCase) && text.TrimStart().StartsWith('['));
+        if (isJson) return ("json", null, text);
+        try { return ("csv", Csv.Parse(text), null); }
         catch (CsvFormatException ex) { throw AppException.Bad($"Malformed CSV: {ex.Message}", "malformed_csv"); }
+    }
+
+    private static Dictionary<string, string>? ParseMapping(string? json)
+    {
+        if (string.IsNullOrWhiteSpace(json)) return null;
+        Dictionary<string, string?>? raw;
+        try { raw = JsonSerializer.Deserialize<Dictionary<string, string?>>(json, Json); }
+        catch (JsonException) { throw AppException.Bad("mapping must be a JSON object of {\"file header\": \"Column\"}.", "invalid_mapping"); }
+        if (raw is null || raw.Count > Xlsx.MaxColumns) throw AppException.Bad("mapping is invalid.", "invalid_mapping");
+        var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var (header, target) in raw)
+        {
+            if (string.IsNullOrWhiteSpace(target)) { result[header.Trim()] = ""; continue; } // explicitly ignored column
+            var canonical = Columns.FirstOrDefault(c => c.Equals(target.Trim(), StringComparison.OrdinalIgnoreCase))
+                ?? throw AppException.Bad($"mapping targets unknown column '{QuestionRules.Trunc(target)}'.", "invalid_mapping");
+            result[header.Trim()] = canonical;
+        }
+        var dup = result.Values.Where(v => v.Length > 0).GroupBy(v => v).FirstOrDefault(g => g.Count() > 1);
+        if (dup is not null) throw AppException.Bad($"mapping assigns more than one header to '{dup.Key}'.", "invalid_mapping");
+        return result;
+    }
+
+    private static List<RawRow> ParseRecords(List<List<string>> records, Dictionary<string, string>? mapping, bool strictWidth)
+    {
         if (records.Count == 0) return [];
         var header = records[0].Select(h => h.Trim()).ToList();
         var map = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
         for (var i = 0; i < header.Count; i++)
         {
-            var canonical = Columns.FirstOrDefault(c => c.Equals(header[i], StringComparison.OrdinalIgnoreCase))
-                ?? throw AppException.Bad($"Unknown column '{QuestionRules.Trunc(header[i])}' in header.", "invalid_header");
+            string? canonical;
+            if (mapping is not null)
+            {
+                // With an explicit mapping, unmapped or ignored headers are skipped.
+                if (!mapping.TryGetValue(header[i], out canonical) || canonical.Length == 0) continue;
+            }
+            else
+            {
+                if (header[i].Length == 0 && !strictWidth) continue;
+                canonical = Columns.FirstOrDefault(c => c.Equals(header[i], StringComparison.OrdinalIgnoreCase))
+                    ?? throw AppException.Bad($"Unknown column '{QuestionRules.Trunc(header[i])}' in header. Use the column mapping step for custom headers.", "invalid_header");
+            }
             if (!map.TryAdd(canonical, i)) throw AppException.Bad($"Duplicate column '{canonical}' in header.", "invalid_header");
+        }
+        if (mapping is not null)
+        {
+            var unknown = mapping.Keys.Where(k => !header.Contains(k, StringComparer.OrdinalIgnoreCase)).ToList();
+            if (unknown.Count > 0) throw AppException.Bad($"mapping refers to header(s) not in the file: {string.Join(", ", unknown.Select(QuestionRules.Trunc))}.", "invalid_mapping");
         }
         var missing = RequiredColumns.Where(c => !map.ContainsKey(c)).ToList();
         if (missing.Count > 0) throw AppException.Bad($"Missing required column(s): {string.Join(", ", missing)}.", "invalid_header");
@@ -152,8 +215,10 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
         for (var r = 1; r < records.Count; r++)
         {
             var rec = records[r];
+            if (!strictWidth && rec.All(string.IsNullOrWhiteSpace)) continue; // blank spreadsheet row
             var errs = new List<string>();
-            if (rec.Count != header.Count) errs.Add($"Row has {rec.Count} fields but the header has {header.Count}.");
+            if (strictWidth && rec.Count != header.Count) errs.Add($"Row has {rec.Count} fields but the header has {header.Count}.");
+            if (!strictWidth && rec.Count > header.Count && rec.Skip(header.Count).Any(x => x.Length > 0)) errs.Add("Row has values beyond the last header column.");
             var f = new Dictionary<string, string?>();
             foreach (var (col, idx) in map) f[col] = idx < rec.Count ? rec[idx] : null;
             rows.Add(new RawRow(r + 1, f, errs)); // spreadsheet row number (header is row 1)
@@ -209,6 +274,10 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
             .ToDictionaryAsync(q => q.ExternalId, q => q.State, StringComparer.OrdinalIgnoreCase);
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var result = new List<ImportRowPayload>();
+        var images = await db.ResourceFiles.AsNoTracking()
+            .Where(r => r.CourseId == course.Id && r.DeletedAt == null && r.Kind == "Resource" && !r.IsPremium && RichText.ImageContentTypes.Contains(r.ContentType))
+            .Select(r => new { r.Id, r.FileName }).ToListAsync();
+        var imageIds = images.Select(i => i.Id).ToHashSet();
 
         foreach (var r in raw)
         {
@@ -308,12 +377,28 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
             if (review.Length > 0 && !review.Equals("Draft", StringComparison.OrdinalIgnoreCase))
                 e.Add($"ReviewStatus '{QuestionRules.Trunc(review)}' is not allowed: imported questions always start as Draft and must go through review.");
 
-            var input = new QuestionInput(externalId, type, lang, Get("Stem"), Get("Explanation"), difficulty,
+            var stem = Get("Stem");
+            var imageName = Get("ImageResource");
+            if (imageName.Length > 0)
+            {
+                var matches = images.Where(i => i.FileName.Equals(imageName, StringComparison.OrdinalIgnoreCase)).ToList();
+                if (matches.Count == 0) e.Add($"ImageResource '{QuestionRules.Trunc(imageName)}' is not a non-premium image uploaded to this course's resources.");
+                else if (matches.Count > 1) e.Add($"ImageResource '{QuestionRules.Trunc(imageName)}' matches several course resources; rename one of them.");
+                else
+                {
+                    var alt = new string(Path.GetFileNameWithoutExtension(imageName).Where(ch => ch is not ('[' or ']' or '(' or ')')).ToArray());
+                    stem = $"{stem}\n\n![{alt}](resource:{matches[0].Id})";
+                }
+            }
+            var input = new QuestionInput(externalId, type, lang, stem, Get("Explanation"), difficulty,
                 Get("SkillCode"), Get("CertificationObjective"), QuestionRules.SplitTags(Get("Tags")), Get("SourceReference"), true,
                 moduleId, lessonId, options);
             // Shared content rules (lengths, distinct option text, rationale presence, correct-count) — avoid duplicate messages.
             if (e.Count == 0)
                 e.AddRange(QuestionRules.Validate(input));
+            if (e.Count == 0)
+                foreach (var rid in QuestionRules.ResourceIds(input).Where(id => !imageIds.Contains(id)))
+                    e.Add($"Image resource {rid} is not a non-premium image file of this course.");
 
             result.Add(new ImportRowPayload { Row = r.Row, ExternalId = externalId, Errors = e.Distinct().ToList(), Question = e.Count == 0 ? input : null });
         }
@@ -330,8 +415,31 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
         await access.RequireCourseEditor(courseId);
         var payload = Deserialize(batch);
         if (batch.Status == "Committed") return Committed(batch.Id, payload);
+        if (batch.Status is "Queued" or "Failed")
+        {
+            var job = await db.Set<QuestionImportJob>().AsNoTracking().FirstOrDefaultAsync(j => j.BatchId == batchId);
+            return new ImportCommitResult(batchId, job?.Status ?? batch.Status, 0, 0, job?.Error);
+        }
         if (batch.ErrorCount > 0 || payload.Rows.Any(r => r.Errors.Count > 0 || r.Question is null))
             throw AppException.Conflict($"The import has {batch.ErrorCount} row(s) with errors; fix the file and preview again. Nothing was imported.", "import_has_errors");
+
+        if (payload.Rows.Count > QueueThreshold)
+        {
+            // Large import: hand it to the background worker; the commit itself stays a single all-or-nothing transaction.
+            await using var qtx = await db.Database.BeginTransactionAsync();
+            var queued = await db.ImportBatches.Where(b => b.Id == batchId && b.Status == "Previewed")
+                .ExecuteUpdateAsync(s => s.SetProperty(b => b.Status, "Queued"));
+            if (queued == 0)
+            {
+                await qtx.RollbackAsync();
+                return await Commit(courseId, batchId);
+            }
+            db.Set<QuestionImportJob>().Add(new QuestionImportJob { BatchId = batchId, CourseId = courseId, UserId = uid });
+            audit.Record("question.import_queued", "QuestionImportBatch", batchId, new { courseId, rows = payload.Rows.Count });
+            await db.SaveChangesAsync();
+            await qtx.CommitAsync();
+            return new ImportCommitResult(batchId, "Queued", 0, 0);
+        }
 
         await using var tx = await db.Database.BeginTransactionAsync();
         // Claim the batch; the row lock serializes concurrent commits and makes a second commit a no-op.
@@ -344,7 +452,99 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
             if (now.Status == "Committed") return Committed(batchId, payload);
             throw AppException.Conflict("This import batch can no longer be committed.", "batch_not_committable");
         }
+        var conflict = await Apply(courseId, uid, payload);
+        if (conflict is not null)
+        {
+            await tx.RollbackAsync();
+            throw AppException.Conflict(conflict + " Preview the file again with a new idempotencyKey. Nothing was imported.", "import_stale");
+        }
+        var (created, updated) = Counts(payload);
+        audit.Record("question.import_committed", "QuestionImportBatch", batchId, new { courseId, payload.Mode, created, updated });
+        await db.SaveChangesAsync();
+        await tx.CommitAsync();
+        return new ImportCommitResult(batchId, "Committed", created, updated);
+    }
 
+    private static (int Created, int Updated) Counts(ImportPayload p) => p.Mode == "create" ? (p.Rows.Count, 0) : (0, p.Rows.Count);
+
+    /// <summary>
+    /// Processes one queued batch (called by <see cref="QuestionImportWorker"/>): re-checks that the requester may still edit
+    /// the course, then applies every row in one transaction. On any failure nothing is imported and the job is marked Failed.
+    /// Returns false when no job was waiting.
+    /// </summary>
+    public async Task<bool> ProcessNextQueued(CancellationToken ct = default)
+    {
+        var jobs = db.Set<QuestionImportJob>();
+        var job = await jobs.AsNoTracking().Where(j => j.Status == "Queued").OrderBy(j => j.QueuedAt).FirstOrDefaultAsync(ct);
+        if (job is null) return false;
+        var claimed = await jobs.Where(j => j.BatchId == job.BatchId && j.Status == "Queued")
+            .ExecuteUpdateAsync(s => s.SetProperty(j => j.Status, "Processing").SetProperty(j => j.StartedAt, DateTime.UtcNow), ct);
+        if (claimed == 0) return true; // another worker took it
+        string? error = null;
+        int created = 0, updated = 0;
+        try
+        {
+            db.ChangeTracker.Clear();
+            var batch = await db.ImportBatches.AsNoTracking().FirstAsync(b => b.Id == job.BatchId, ct);
+            var payload = Deserialize(batch);
+            var allowed = await access.IsCourseAuthor(job.CourseId, job.UserId)
+                          || await db.UserRoles.AnyAsync(r => r.UserId == job.UserId && (r.Role == Roles.Admin || r.Role == Roles.SuperAdmin), ct);
+            if (!allowed) error = "The requester is no longer allowed to edit this course. Nothing was imported.";
+            else
+            {
+                await using var tx = await db.Database.BeginTransactionAsync(ct);
+                var claimBatch = await db.ImportBatches.Where(b => b.Id == job.BatchId && b.Status == "Queued")
+                    .ExecuteUpdateAsync(s => s.SetProperty(b => b.Status, "Committed"), ct);
+                if (claimBatch == 0) { await tx.RollbackAsync(ct); return true; } // already committed by another instance
+                else
+                {
+                    var conflict = await Apply(job.CourseId, job.UserId, payload);
+                    if (conflict is not null) { await tx.RollbackAsync(ct); error = conflict + " Preview the file again with a new idempotencyKey. Nothing was imported."; }
+                    else
+                    {
+                        (created, updated) = Counts(payload);
+                        audit.Record("question.import_committed", "QuestionImportBatch", job.BatchId,
+                            new { job.CourseId, payload.Mode, created, updated, queued = true, actorId = job.UserId });
+                        await db.SaveChangesAsync(ct);
+                        await jobs.Where(j => j.BatchId == job.BatchId).ExecuteUpdateAsync(s => s
+                            .SetProperty(j => j.Status, "Completed").SetProperty(j => j.Created, created).SetProperty(j => j.Updated, updated)
+                            .SetProperty(j => j.FinishedAt, DateTime.UtcNow), ct);
+                        await tx.CommitAsync(ct);
+                        return true;
+                    }
+                }
+            }
+        }
+        catch (Exception ex) when (ex is not OperationCanceledException)
+        {
+            error = "The import failed unexpectedly and was rolled back; nothing was imported.";
+        }
+        db.ChangeTracker.Clear();
+        await db.ImportBatches.Where(b => b.Id == job.BatchId && b.Status != "Committed").ExecuteUpdateAsync(s => s.SetProperty(b => b.Status, "Failed"), ct);
+        await jobs.Where(j => j.BatchId == job.BatchId).ExecuteUpdateAsync(s => s
+            .SetProperty(j => j.Status, "Failed").SetProperty(j => j.Error, error).SetProperty(j => j.FinishedAt, DateTime.UtcNow), ct);
+        return true;
+    }
+
+    /// <summary>Jobs left in Processing by a crashed worker are re-queued (their transaction was rolled back).</summary>
+    public Task<int> RequeueAbandoned(CancellationToken ct) =>
+        db.Set<QuestionImportJob>().Where(j => j.Status == "Processing").ExecuteUpdateAsync(s => s.SetProperty(j => j.Status, "Queued"), ct);
+
+    public async Task<ImportStatusResult> Status(Guid courseId, Guid batchId)
+    {
+        var uid = me.RequireId();
+        var batch = await db.ImportBatches.AsNoTracking().FirstOrDefaultAsync(b => b.Id == batchId && b.CourseId == courseId && b.UserId == uid)
+            ?? throw AppException.NotFound("Import batch");
+        await access.RequireCourseEditor(courseId);
+        var job = await db.Set<QuestionImportJob>().AsNoTracking().FirstOrDefaultAsync(j => j.BatchId == batchId);
+        var (c, u) = batch.Status == "Committed" ? (job is null ? Counts(Deserialize(batch)) : (job.Created, job.Updated)) : (0, 0);
+        var status = job is not null && batch.Status != "Committed" ? job.Status : batch.Status;
+        return new ImportStatusResult(batchId, status, batch.RowCount, batch.ErrorCount, c, u, job?.Error, batch.CreatedAt, job?.QueuedAt, job?.FinishedAt);
+    }
+
+    /// <summary>Stages all rows of a validated payload (caller owns the transaction and saves). Returns a conflict message when stale.</summary>
+    private async Task<string?> Apply(Guid courseId, Guid uid, ImportPayload payload)
+    {
         var rows = payload.Rows.Select(r => r.Question!).ToList();
         var ids = rows.Select(r => r.ExternalId).ToList();
         var existing = await db.Questions.Where(q => q.CourseId == courseId && ids.Contains(q.ExternalId)).ToListAsync();
@@ -352,21 +552,16 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
         var lessonIds = rows.Where(r => r.LessonId != null).Select(r => r.LessonId!.Value).Distinct().ToList();
         var liveModules = await db.Modules.CountAsync(m => moduleIds.Contains(m.Id) && m.CourseId == courseId);
         var liveLessons = await db.Lessons.CountAsync(l => lessonIds.Contains(l.Id));
-        string? conflict = null;
-        if (liveModules != moduleIds.Count || liveLessons != lessonIds.Count) conflict = "Modules or lessons referenced by the import have changed since the preview.";
-        else if (payload.Mode == "create" && existing.Count > 0) conflict = $"ExternalId '{existing[0].ExternalId}' was created after the preview.";
-        else if (payload.Mode == "update" && (existing.Count != ids.Count || existing.Any(q => q.State == QuestionState.Retired)))
-            conflict = "Some questions to update no longer exist or were retired after the preview.";
-        if (conflict is not null)
-        {
-            await tx.RollbackAsync();
-            throw AppException.Conflict(conflict + " Preview the file again with a new idempotencyKey. Nothing was imported.", "import_stale");
-        }
+        var resourceIds = rows.SelectMany(QuestionRules.ResourceIds).Distinct().ToList();
+        if (liveModules != moduleIds.Count || liveLessons != lessonIds.Count) return "Modules or lessons referenced by the import have changed since the preview.";
+        if (payload.Mode == "create" && existing.Count > 0) return $"ExternalId '{existing[0].ExternalId}' was created after the preview.";
+        if (payload.Mode == "update" && (existing.Count != ids.Count || existing.Any(q => q.State == QuestionState.Retired)))
+            return "Some questions to update no longer exist or were retired after the preview.";
+        if ((await QuestionAssets.Check(db, courseId, resourceIds, null)).Count > 0) return "Image resources referenced by the import were removed after the preview.";
 
         var existingIds = existing.Select(q => q.Id).ToList();
         var maxVersions = await db.QuestionVersions.Where(v => existingIds.Contains(v.QuestionId)).GroupBy(v => v.QuestionId)
             .Select(g => new { g.Key, Max = g.Max(v => v.Version) }).ToDictionaryAsync(x => x.Key, x => x.Max);
-        var created = 0; var updated = 0;
         var nowUtc = DateTime.UtcNow;
         foreach (var input in rows)
         {
@@ -375,7 +570,6 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
                 var q = new Question { CourseId = courseId, ExternalId = input.ExternalId, ModuleId = input.ModuleId, LessonId = input.LessonId, CreatedBy = uid, State = QuestionState.Draft };
                 db.Questions.Add(q);
                 db.QuestionVersions.Add(QuestionService.NewVersion(q.Id, 1, input, uid));
-                created++;
             }
             else
             {
@@ -393,13 +587,9 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
                     q.State = QuestionState.Draft; q.ReviewedBy = null;
                 }
                 q.ModuleId = input.ModuleId; q.LessonId = input.LessonId; q.UpdatedAt = nowUtc;
-                updated++;
             }
         }
-        audit.Record("question.import_committed", "QuestionImportBatch", batchId, new { courseId, payload.Mode, created, updated });
-        await db.SaveChangesAsync();
-        await tx.CommitAsync();
-        return new ImportCommitResult(batchId, "Committed", created, updated);
+        return null;
     }
 
     private static ImportCommitResult Committed(Guid id, ImportPayload p) =>
@@ -420,7 +610,11 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
 
     // ---------------- Export / template ----------------
 
-    public async Task<byte[]> Export(Guid courseId)
+    public async Task<byte[]> Export(Guid courseId) => Csv.ToUtf8WithBom(Csv.Write(await ExportRows(courseId, "csv")));
+
+    public async Task<byte[]> ExportXlsx(Guid courseId) => Xlsx.Write("Questions", await ExportRows(courseId, "xlsx"));
+
+    private async Task<List<string?[]>> ExportRows(Guid courseId, string format)
     {
         me.RequireId();
         var course = await db.Courses.AsNoTracking().FirstOrDefaultAsync(c => c.Id == courseId) ?? throw AppException.NotFound("Course");
@@ -448,17 +642,79 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
                 Opt(0), Opt(1), Opt(2), Opt(3), Opt(4), Opt(5),
                 string.Join(';', opts.Select((o, i) => (o, i)).Where(x => x.o.IsCorrect).Select(x => Letters[x.i])),
                 v.Explanation, Why(0), Why(1), Why(2), Why(3), Why(4), Why(5),
-                v.Difficulty.ToString(), v.Tags, v.SourceReference, q.State.ToString(),
+                v.Difficulty.ToString(), v.Tags, v.SourceReference, q.State.ToString(), "",
             ]);
         }
-        audit.Record("question.exported", "Course", courseId, new { count = questions.Count });
+        audit.Record("question.exported", "Course", courseId, new { count = questions.Count, format });
         await db.SaveChangesAsync();
-        return Csv.ToUtf8WithBom(Csv.Write(rows));
+        return rows;
     }
 
-    public static byte[] Template()
+    /// <summary>Column-mapping step: detected headers, suggested mapping to template columns and a short sample (no batch is stored).</summary>
+    public async Task<ImportInspectResult> Inspect(Guid courseId, Stream content, long length, string fileName)
     {
-        var rows = new List<string?[]>
+        me.RequireId();
+        if (!await db.Courses.AnyAsync(c => c.Id == courseId)) throw AppException.NotFound("Course");
+        await access.RequireCourseEditor(courseId);
+        if (length > MaxFileBytes) throw AppException.Bad("The file exceeds the 5 MB limit.", "file_too_large");
+        var (format, records, _) = Load(await ReadLimited(content), fileName);
+        if (format == "json") throw AppException.Bad("JSON imports use the documented schema and need no column mapping.", "mapping_not_applicable");
+        if (records!.Count == 0) throw AppException.Bad("The file contains no header row.", "empty_file");
+        var headers = records[0].Select(h => h.Trim()).ToList();
+        var suggested = SuggestMapping(headers);
+        var dataRows = records.Skip(1).Where(r => r.Any(x => !string.IsNullOrWhiteSpace(x))).ToList();
+        var sample = dataRows.Take(5).Select(r => r.Select(v => v.Length > 200 ? v[..200] + "…" : v).ToList()).ToList();
+        return new ImportInspectResult(format, headers, suggested, [.. Columns], [.. RequiredColumns], sample, dataRows.Count);
+    }
+
+    private static readonly Dictionary<string, string> Synonyms = new()
+    {
+        ["id"] = "ExternalId", ["questionid"] = "ExternalId", ["externalid"] = "ExternalId", ["itemid"] = "ExternalId",
+        ["type"] = "QuestionType", ["questiontype"] = "QuestionType", ["lang"] = "Language", ["language"] = "Language",
+        ["course"] = "CourseCode", ["module"] = "ModuleCode", ["lesson"] = "LessonCode", ["skill"] = "SkillCode",
+        ["objective"] = "CertificationObjective", ["examobjective"] = "CertificationObjective",
+        ["question"] = "Stem", ["questiontext"] = "Stem", ["stem"] = "Stem", ["prompt"] = "Stem",
+        ["answer"] = "CorrectOptions", ["answers"] = "CorrectOptions", ["correct"] = "CorrectOptions", ["correctanswer"] = "CorrectOptions",
+        ["correctanswers"] = "CorrectOptions", ["key"] = "CorrectOptions",
+        ["explanation"] = "Explanation", ["rationale"] = "Explanation", ["overallexplanation"] = "Explanation",
+        ["difficulty"] = "Difficulty", ["level"] = "Difficulty", ["tags"] = "Tags", ["tag"] = "Tags", ["topics"] = "Tags",
+        ["source"] = "SourceReference", ["reference"] = "SourceReference", ["status"] = "ReviewStatus",
+        ["image"] = "ImageResource", ["imagefile"] = "ImageResource", ["picture"] = "ImageResource", ["media"] = "ImageResource",
+    };
+
+    public static Dictionary<string, string?> SuggestMapping(IEnumerable<string> headers)
+    {
+        static string Norm(string h) => new(h.ToLowerInvariant().Where(char.IsAsciiLetterOrDigit).ToArray());
+        var used = new HashSet<string>();
+        var result = new Dictionary<string, string?>();
+        foreach (var h in headers)
+        {
+            if (result.ContainsKey(h)) continue;
+            var n = Norm(h);
+            string? target = Columns.FirstOrDefault(c => Norm(c) == n);
+            if (target is null && Synonyms.TryGetValue(n, out var syn)) target = syn;
+            if (target is null)
+            {
+                foreach (var L in Letters)
+                {
+                    var l = L.ToLowerInvariant();
+                    if (n is var x && (x == "option" + l || x == "choice" + l || x == "answer" + l || x == l)) target = "Option" + L;
+                    else if (n == "rationale" + l || n == "explanation" + l || n == "feedback" + l || n == "option" + l + "explanation") target = "Explanation" + L;
+                    if (target is not null) break;
+                }
+            }
+            if (target is not null && !used.Add(target)) target = null;
+            result[h] = target;
+        }
+        return result;
+    }
+
+    public static byte[] TemplateXlsx() => Xlsx.Write("Questions", TemplateRows());
+
+    public static byte[] Template() => Csv.ToUtf8WithBom(Csv.Write(TemplateRows()));
+
+    private static List<string?[]> TemplateRows() =>
+        new()
         {
             Columns,
             new string?[]
@@ -468,9 +724,7 @@ public class QuestionImportService(AppDbContext db, ICurrentUser me, AccessServi
                 "A database that retrieves stored answers", "A model that predicts the next text based on learned patterns", "", "", "", "",
                 "B", "LLMs generate text probabilistically and do not guarantee correctness.",
                 "Incorrect: the model does not store ready-made answers.", "Correct: it predicts the next tokens from patterns in training data.", "", "", "", "",
-                "Easy", "basics;llm", "Mastemy original", "Draft",
+                "Easy", "basics;llm", "Mastemy original", "Draft", "",
             },
         };
-        return Csv.ToUtf8WithBom(Csv.Write(rows));
-    }
 }
