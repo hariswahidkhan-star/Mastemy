@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0713",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0713-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A critical action occasionally fails due to a transient network issue. Which retry policy does Microsoft prefer, and why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Exponential, because it spaces retries out and raises the chance of success",
+     "correct": true,
+     "rationale": "Correct: exponential retry increases the interval over time, avoiding overwhelming the service and improving success odds."
+    },
+    {
+     "key": "B",
+     "text": "No retries, to fail fast every time",
+     "correct": false,
+     "rationale": "Failing fast abandons recoverable transient faults."
+    },
+    {
+     "key": "C",
+     "text": "Fixed one-second retries forever",
+     "correct": false,
+     "rationale": "Frequent fixed retries can overwhelm a throttled service and never back off."
+    },
+    {
+     "key": "D",
+     "text": "Retrying only after a manual restart",
+     "correct": false,
+     "rationale": "Manual restarts defeat the purpose of automated transient-fault recovery."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: exponential retry increases the interval over time, avoiding overwhelming the service and improving success odds.",
+   "outcome_refs": [
+    "MST-0713-01.01"
+   ],
+   "domain_ref": "Design reliable cloud flows",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0713-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A cloud flow action returns a 401 error. What is the correct first fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Re-authenticate the connection",
+     "correct": true,
+     "rationale": "Correct: a 401 means authentication failed, so the connection should be re-authenticated."
+    },
+    {
+     "key": "B",
+     "text": "Rename the SharePoint list",
+     "correct": false,
+     "rationale": "Renaming a resource addresses a 404, not a 401 authentication failure."
+    },
+    {
+     "key": "C",
+     "text": "Add more columns to the output",
+     "correct": false,
+     "rationale": "Column changes do not resolve an authentication error."
+    },
+    {
+     "key": "D",
+     "text": "Pause the environment",
+     "correct": false,
+     "rationale": "Pausing the environment does not fix an expired or invalid credential."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a 401 means authentication failed, so the connection should be re-authenticated.",
+   "outcome_refs": [
+    "MST-0713-02.01"
+   ],
+   "domain_ref": "Handle errors robustly",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0713-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques implement robust error handling in a cloud flow? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Group actions in a Try scope and a Catch scope set to run after failure",
+     "correct": true,
+     "rationale": "Correct: the Try/Catch scope pattern with run-after handles errors collectively."
+    },
+    {
+     "key": "B",
+     "text": "Use the Terminate action to stop with a Failed status on a critical error",
+     "correct": true,
+     "rationale": "Correct: Terminate stops the flow and records a status/message for diagnosis."
+    },
+    {
+     "key": "C",
+     "text": "Ignore the run history",
+     "correct": false,
+     "rationale": "Ignoring run history removes the primary diagnostic signal."
+    },
+    {
+     "key": "D",
+     "text": "Disable all connection references",
+     "correct": false,
+     "rationale": "Disabling connection references breaks the flow rather than handling errors."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the Try/Catch scope pattern with run-after handles errors collectively.",
+   "outcome_refs": [
+    "MST-0713-03.01"
+   ],
+   "domain_ref": "Recover from transient faults",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

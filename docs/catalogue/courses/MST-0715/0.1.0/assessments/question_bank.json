@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0715",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0715-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Power Pages site must let signed-in members see only their own related records. Which table-permission access type fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Contact access",
+     "correct": true,
+     "rationale": "Correct: Contact access scopes records to those related to the signed-in user's contact."
+    },
+    {
+     "key": "B",
+     "text": "Global access",
+     "correct": false,
+     "rationale": "Global access exposes all records in the table to the web role."
+    },
+    {
+     "key": "C",
+     "text": "Anonymous access",
+     "correct": false,
+     "rationale": "Anonymous access is for unauthenticated users and does not scope to a signed-in member."
+    },
+    {
+     "key": "D",
+     "text": "No permission at all",
+     "correct": false,
+     "rationale": "Without a table permission, users cannot access the records at all."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Contact access scopes records to those related to the signed-in user's contact.",
+   "outcome_refs": [
+    "MST-0715-01.01"
+   ],
+   "domain_ref": "Build a Power Pages site",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0715-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is client-side JavaScript filtering not an acceptable security boundary in Power Pages?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Users can bypass or modify it, so authorization must be enforced server-side",
+     "correct": true,
+     "rationale": "Correct: client-side filters can be bypassed; table permissions enforce authorization server-side."
+    },
+    {
+     "key": "B",
+     "text": "It changes the site theme",
+     "correct": false,
+     "rationale": "Theming is unrelated to authorization."
+    },
+    {
+     "key": "C",
+     "text": "It disables the Web API",
+     "correct": false,
+     "rationale": "Client filtering does not disable the Web API."
+    },
+    {
+     "key": "D",
+     "text": "It automatically grants Global access",
+     "correct": false,
+     "rationale": "Client filtering does not alter table-permission access types."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: client-side filters can be bypassed; table permissions enforce authorization server-side.",
+   "outcome_refs": [
+    "MST-0715-02.01"
+   ],
+   "domain_ref": "Authenticate users",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0715-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are correct about Power Pages security? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Table permissions must be associated with web roles to grant data access",
+     "correct": true,
+     "rationale": "Correct: access to Dataverse records is granted by table permissions tied to web roles."
+    },
+    {
+     "key": "B",
+     "text": "Granting the Anonymous users web role access to a table exposes that data to anyone",
+     "correct": true,
+     "rationale": "Correct: anonymous table permissions make the data visible to any visitor."
+    },
+    {
+     "key": "C",
+     "text": "Hiding a page from navigation secures the page",
+     "correct": false,
+     "rationale": "Hiding from navigation is not security; page permissions are required."
+    },
+    {
+     "key": "D",
+     "text": "Site visibility defaults to public on creation",
+     "correct": false,
+     "rationale": "Sites default to private/internal until explicitly made public."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: access to Dataverse records is granted by table permissions tied to web roles.",
+   "outcome_refs": [
+    "MST-0715-03.01"
+   ],
+   "domain_ref": "Secure data with web roles and permissions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

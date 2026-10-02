@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0689",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0689-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A finance team wants to be warned before projected monthly spend exceeds the limit, not only after. Which budget alert type should they configure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A forecast cost alert",
+     "correct": true,
+     "rationale": "Correct: forecast alerts fire on projected spend, giving warning before the actual amount is reached."
+    },
+    {
+     "key": "B",
+     "text": "An actual cost alert only",
+     "correct": false,
+     "rationale": "Actual alerts fire only once spend has already crossed the threshold, giving no early warning."
+    },
+    {
+     "key": "C",
+     "text": "A resource lock",
+     "correct": false,
+     "rationale": "Resource locks prevent changes or deletion; they do not monitor spend."
+    },
+    {
+     "key": "D",
+     "text": "A reservation",
+     "correct": false,
+     "rationale": "Reservations pre-pay for capacity; they do not alert on budget thresholds."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: forecast alerts fire on projected spend, giving warning before the actual amount is reached.",
+   "outcome_refs": [
+    "MST-0689-01.01"
+   ],
+   "domain_ref": "Understand Azure billing and cost structure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0689-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team enables tag inheritance in Cost Management today. What happens to cost records that were emitted last month without the tag?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They are not retroactively changed",
+     "correct": true,
+     "rationale": "Correct: tag inheritance applies going forward; historical cost records are not rewritten."
+    },
+    {
+     "key": "B",
+     "text": "They are automatically re-tagged back to resource creation",
+     "correct": false,
+     "rationale": "Inheritance does not rewrite previously emitted cost records."
+    },
+    {
+     "key": "C",
+     "text": "All historical invoices are reissued",
+     "correct": false,
+     "rationale": "Invoices are not reissued because a tag setting changed."
+    },
+    {
+     "key": "D",
+     "text": "The subscription is suspended",
+     "correct": false,
+     "rationale": "Enabling tag inheritance has no effect on subscription state."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: tag inheritance applies going forward; historical cost records are not rewritten.",
+   "outcome_refs": [
+    "MST-0689-02.01"
+   ],
+   "domain_ref": "Analyze costs with Cost analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0689-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO Microsoft Cost Management capabilities help an organization proactively monitor cloud spend? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Budgets with threshold alerts",
+     "correct": true,
+     "rationale": "Correct: budgets with alerts notify stakeholders as spend approaches a limit."
+    },
+    {
+     "key": "B",
+     "text": "Anomaly detection in Cost analysis",
+     "correct": true,
+     "rationale": "Correct: anomaly detection surfaces unexpected cost spikes for investigation."
+    },
+    {
+     "key": "C",
+     "text": "Deleting the billing account",
+     "correct": false,
+     "rationale": "Deleting the billing account removes access to data; it is not a monitoring control."
+    },
+    {
+     "key": "D",
+     "text": "Disabling Azure Advisor",
+     "correct": false,
+     "rationale": "Advisor provides cost recommendations; disabling it reduces visibility."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: budgets with alerts notify stakeholders as spend approaches a limit.",
+   "outcome_refs": [
+    "MST-0689-03.01"
+   ],
+   "domain_ref": "Control spend with budgets and alerts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

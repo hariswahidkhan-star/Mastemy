@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0696",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0696-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A developer needs an agent that runs custom Python with their own libraries under a managed runtime. Which Foundry agent type fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A hosted (code-first) agent",
+     "correct": true,
+     "rationale": "Correct: hosted agents run your own code with a managed runtime that handles provisioning and scaling."
+    },
+    {
+     "key": "B",
+     "text": "A declarative prompt agent",
+     "correct": false,
+     "rationale": "Declarative agents rely on model reasoning and instructions, not custom code libraries."
+    },
+    {
+     "key": "C",
+     "text": "A content filter",
+     "correct": false,
+     "rationale": "Content filters screen content; they do not run application code."
+    },
+    {
+     "key": "D",
+     "text": "A semantic model",
+     "correct": false,
+     "rationale": "A semantic model is a Power BI/analytics concept, not a Foundry agent type."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: hosted agents run your own code with a managed runtime that handles provisioning and scaling.",
+   "outcome_refs": [
+    "MST-0696-01.01"
+   ],
+   "domain_ref": "Orient to Microsoft Foundry",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0696-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload is confidential and must integrate privately with existing Azure resources. Which Foundry setup should be chosen?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Standard setup with private networking",
+     "correct": true,
+     "rationale": "Correct: the standard setup provides fine-grained data, security and network isolation for confidential workloads."
+    },
+    {
+     "key": "B",
+     "text": "Basic setup",
+     "correct": false,
+     "rationale": "Basic setup is for rapid prototyping and lacks network isolation."
+    },
+    {
+     "key": "C",
+     "text": "No project at all",
+     "correct": false,
+     "rationale": "A project is required to build in Foundry."
+    },
+    {
+     "key": "D",
+     "text": "A public playground only",
+     "correct": false,
+     "rationale": "The playground alone does not provide private networking for production workloads."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the standard setup provides fine-grained data, security and network isolation for confidential workloads.",
+   "outcome_refs": [
+    "MST-0696-02.01"
+   ],
+   "domain_ref": "Work with models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0696-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO Foundry capabilities help an organization govern and observe agents in production? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tracing and evaluation",
+     "correct": true,
+     "rationale": "Correct: observability through tracing and evaluation monitors agent behavior."
+    },
+    {
+     "key": "B",
+     "text": "Microsoft Entra identity and RBAC",
+     "correct": true,
+     "rationale": "Correct: Entra identity and role-based access control govern who can do what."
+    },
+    {
+     "key": "C",
+     "text": "Deleting the model catalog",
+     "correct": false,
+     "rationale": "There is no such action and it would not provide governance."
+    },
+    {
+     "key": "D",
+     "text": "Turning off all content filters",
+     "correct": false,
+     "rationale": "Disabling content filters reduces safety rather than improving governance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: observability through tracing and evaluation monitors agent behavior.",
+   "outcome_refs": [
+    "MST-0696-03.01"
+   ],
+   "domain_ref": "Build agents",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

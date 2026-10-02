@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0712",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0712-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What must a model-driven app use as its data source?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Microsoft Dataverse",
+     "correct": true,
+     "rationale": "Correct: model-driven apps can only be defined using Dataverse as the data model."
+    },
+    {
+     "key": "B",
+     "text": "Any SharePoint list",
+     "correct": false,
+     "rationale": "Model-driven apps require Dataverse, not arbitrary SharePoint lists."
+    },
+    {
+     "key": "C",
+     "text": "A local Excel file",
+     "correct": false,
+     "rationale": "A local Excel file cannot back a model-driven app."
+    },
+    {
+     "key": "D",
+     "text": "An Azure Blob container",
+     "correct": false,
+     "rationale": "Blob storage is not a model-driven app data source."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: model-driven apps can only be defined using Dataverse as the data model.",
+   "outcome_refs": [
+    "MST-0712-01.01"
+   ],
+   "domain_ref": "Start from the data model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0712-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A maker wants no-code validation that runs on the form and at the server for a table. Which Dataverse feature fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A business rule",
+     "correct": true,
+     "rationale": "Correct: business rules apply no-code logic and validation across a table's forms and at the server level."
+    },
+    {
+     "key": "B",
+     "text": "A Power BI measure",
+     "correct": false,
+     "rationale": "A measure is a reporting calculation, not a Dataverse validation."
+    },
+    {
+     "key": "C",
+     "text": "A deployment pipeline",
+     "correct": false,
+     "rationale": "Deployment pipelines move solutions; they are not form validation."
+    },
+    {
+     "key": "D",
+     "text": "A resource lock",
+     "correct": false,
+     "rationale": "Resource locks are an Azure governance control, unrelated to Dataverse logic."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: business rules apply no-code logic and validation across a table's forms and at the server level.",
+   "outcome_refs": [
+    "MST-0712-02.01"
+   ],
+   "domain_ref": "Build forms and views",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0712-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO components are defined at the Dataverse table level for a model-driven app? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Views",
+     "correct": true,
+     "rationale": "Correct: views are defined on a table as named, filtered queries."
+    },
+    {
+     "key": "B",
+     "text": "Forms",
+     "correct": true,
+     "rationale": "Correct: forms are defined on a table for data entry and display."
+    },
+    {
+     "key": "C",
+     "text": "The Azure subscription",
+     "correct": false,
+     "rationale": "The Azure subscription is cloud infrastructure, not a table component."
+    },
+    {
+     "key": "D",
+     "text": "A Fabric capacity",
+     "correct": false,
+     "rationale": "A Fabric capacity is analytics compute, unrelated to table components."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: views are defined on a table as named, filtered queries.",
+   "outcome_refs": [
+    "MST-0712-03.01"
+   ],
+   "domain_ref": "Add business logic",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

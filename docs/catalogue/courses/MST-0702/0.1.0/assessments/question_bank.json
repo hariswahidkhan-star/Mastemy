@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0702",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0702-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A data engineer uses Spark and an analyst uses T-SQL on the same lakehouse table without exporting data. What makes this possible?",
+   "options": [
+    {
+     "key": "A",
+     "text": "OneLake stores the table once in open Delta format",
+     "correct": true,
+     "rationale": "Correct: OneLake stores one copy in open Delta Parquet that every Fabric engine can read."
+    },
+    {
+     "key": "B",
+     "text": "Each engine keeps its own private copy",
+     "correct": false,
+     "rationale": "The point of OneLake is one copy shared across engines, not per-engine copies."
+    },
+    {
+     "key": "C",
+     "text": "The table is duplicated nightly",
+     "correct": false,
+     "rationale": "No duplication is needed; engines read the same Delta files."
+    },
+    {
+     "key": "D",
+     "text": "Spark converts the table to a proprietary format",
+     "correct": false,
+     "rationale": "Delta is an open format; no proprietary conversion occurs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: OneLake stores one copy in open Delta Parquet that every Fabric engine can read.",
+   "outcome_refs": [
+    "MST-0702-01.01"
+   ],
+   "domain_ref": "Understand the lakehouse and OneLake",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0702-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team needs to query data that lives in an external storage account from the lakehouse without copying it. Which feature should they use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A OneLake shortcut",
+     "correct": true,
+     "rationale": "Correct: shortcuts provide live access to external data without copying it into the lakehouse."
+    },
+    {
+     "key": "B",
+     "text": "A full nightly copy pipeline",
+     "correct": false,
+     "rationale": "A copy pipeline duplicates data, which is what the team wants to avoid."
+    },
+    {
+     "key": "C",
+     "text": "A semantic model",
+     "correct": false,
+     "rationale": "A semantic model is a reporting layer, not a no-copy access mechanism."
+    },
+    {
+     "key": "D",
+     "text": "A resource lock",
+     "correct": false,
+     "rationale": "Resource locks are an Azure governance control, unrelated to lakehouse access."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: shortcuts provide live access to external data without copying it into the lakehouse.",
+   "outcome_refs": [
+    "MST-0702-02.01"
+   ],
+   "domain_ref": "Ingest data into the lakehouse",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0702-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about a Fabric lakehouse are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It stores tables in Delta Lake format",
+     "correct": true,
+     "rationale": "Correct: the lakehouse manages tables with Delta Lake."
+    },
+    {
+     "key": "B",
+     "text": "Spark notebooks and T-SQL can both read its tables",
+     "correct": true,
+     "rationale": "Correct: data engineers use Spark while analysts use the T-SQL SQL analytics endpoint over the same data."
+    },
+    {
+     "key": "C",
+     "text": "It requires converting data out of Delta before Power BI can use it",
+     "correct": false,
+     "rationale": "Direct Lake reads Delta directly; no conversion is required."
+    },
+    {
+     "key": "D",
+     "text": "Its SQL analytics endpoint is used to update table data",
+     "correct": false,
+     "rationale": "The SQL analytics endpoint is read-optimized and does not modify the data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the lakehouse manages tables with Delta Lake.",
+   "outcome_refs": [
+    "MST-0702-03.01"
+   ],
+   "domain_ref": "Transform with Spark notebooks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
