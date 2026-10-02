@@ -50,9 +50,9 @@ public static class NotificationKinds
     public const string Announcement = "announcement", Reply = "reply", ReviewReply = "review_reply",
         CourseUpdated = "course_updated", Certificate = "certificate", IssueReported = "issue_reported",
         StudyReminder = "study_reminder", TrustSafety = "trust_safety", BrokenVideo = "broken_video",
-        QuestionChallenge = "question_challenge", Regrade = "regrade";
+        QuestionChallenge = "question_challenge", Regrade = "regrade", Message = "message";
     public static readonly string[] All = [Announcement, Reply, ReviewReply, CourseUpdated, Certificate, IssueReported,
-        StudyReminder, TrustSafety, BrokenVideo, QuestionChallenge, Regrade];
+        StudyReminder, TrustSafety, BrokenVideo, QuestionChallenge, Regrade, Message];
 }
 
 public static partial class TextRules

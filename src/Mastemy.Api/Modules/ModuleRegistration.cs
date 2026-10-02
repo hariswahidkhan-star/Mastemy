@@ -20,6 +20,7 @@ public static class ModuleRegistration
         Trust.TrustModule.Add(s, cfg);
         Operations.OperationsModule.Add(s, cfg);
         Authoring.AuthoringModule.Add(s, cfg); Analytics.AnalyticsModule.Add(s, cfg); StudyTools.StudyToolsModule.Add(s, cfg);
+        Messaging.MessagingModule.Add(s, cfg);
         return s;
     }
 }
