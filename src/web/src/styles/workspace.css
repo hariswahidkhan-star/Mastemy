@@ -1,0 +1,251 @@
+/* Wave 3 workspace screens. Logical properties only (RTL-safe); colours from tokens.css. */
+
+.ws-chart {
+  margin: 0 0 var(--space-5);
+  position: relative;
+}
+.ws-chart__title {
+  font-weight: 600;
+  margin-block-end: var(--space-2);
+  font-size: var(--text-md);
+}
+.ws-chart__plot {
+  position: relative;
+}
+.ws-chart svg {
+  inline-size: 100%;
+  block-size: auto;
+  max-block-size: 220px;
+  display: block;
+}
+.ws-chart__grid {
+  stroke: var(--c-border);
+  stroke-width: 1;
+}
+.ws-chart__axis {
+  fill: var(--c-text-muted);
+  font-size: 11px;
+}
+.ws-chart__bar {
+  fill: var(--c-primary);
+}
+.ws-chart__bar--on {
+  fill: var(--c-primary-hover);
+}
+.ws-chart__hit {
+  fill: transparent;
+  outline: none;
+}
+.ws-chart__hit:focus-visible {
+  stroke: var(--c-focus);
+  stroke-width: 2;
+}
+.ws-chart__tip {
+  position: absolute;
+  inset-block-start: 0;
+  transform: translateX(-50%);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+}
+[dir='rtl'] .ws-chart__tip {
+  transform: translateX(50%);
+}
+.ws-chart__data summary {
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--c-text-muted);
+}
+.ws-meters {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+.ws-meter {
+  block-size: 8px;
+  background: var(--c-surface-2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.ws-meter > span {
+  display: block;
+  block-size: 100%;
+  background: var(--c-primary);
+  border-radius: 4px;
+}
+.ws-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-3);
+  margin-block-end: var(--space-5);
+}
+.ws-stat {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4);
+}
+.ws-stat__label {
+  font-size: var(--text-xs);
+  color: var(--c-text-muted);
+}
+.ws-stat__value {
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+/* Consent banner */
+.ws-consent {
+  /* In the page flow (not an overlay) so it never covers content or controls. */
+  max-inline-size: var(--container);
+  margin: var(--space-3) auto 0;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4);
+}
+@media (max-width: 1240px) {
+  .ws-consent {
+    margin-inline: var(--space-4);
+  }
+}
+.ws-consent h2 {
+  font-size: var(--text-md);
+  margin: 0 0 var(--space-2);
+}
+
+/* Drawer */
+.ws-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 0.35);
+  z-index: 70;
+}
+.ws-drawer {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-end: 0;
+  inline-size: min(520px, 100vw);
+  background: var(--c-surface);
+  border-inline-start: 1px solid var(--c-border);
+  box-shadow: var(--shadow-lg);
+  z-index: 71;
+  display: flex;
+  flex-direction: column;
+}
+.ws-drawer__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-block-end: 1px solid var(--c-border);
+}
+.ws-drawer__head h2 {
+  margin: 0;
+  font-size: var(--text-lg);
+}
+.ws-drawer__body {
+  overflow: auto;
+  padding: var(--space-4);
+  flex: 1;
+}
+
+.ws-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+.ws-pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--c-surface-2);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  max-block-size: 320px;
+  overflow: auto;
+}
+.ws-conflict {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .ws-conflict {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Learner preview frames */
+.ws-frame {
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  background: var(--c-bg);
+  margin-inline: auto;
+  overflow: auto;
+}
+.ws-frame--desktop {
+  max-inline-size: 100%;
+}
+.ws-frame--mobile {
+  max-inline-size: 390px;
+  border-width: 10px;
+  border-radius: 28px;
+  max-block-size: 720px;
+}
+
+/* Tutor */
+.ws-chat {
+  display: grid;
+  gap: var(--space-3);
+}
+.ws-msg {
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  background: var(--c-surface-2);
+}
+.ws-msg--user {
+  background: var(--c-primary-soft);
+}
+.ws-cites {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+/* Weekly schedule */
+.ws-week {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-block-end: var(--space-3);
+}
+.ws-week h3 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-md);
+}
+.ws-day {
+  margin-block-end: var(--space-2);
+}
+.ws-day ul {
+  margin: 0;
+  padding-inline-start: var(--space-5);
+}
+.ws-done {
+  text-decoration: line-through;
+  color: var(--c-text-muted);
+}

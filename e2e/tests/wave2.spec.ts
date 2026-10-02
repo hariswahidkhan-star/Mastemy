@@ -20,10 +20,17 @@ class Api {
     private request: APIRequestContext,
     public token = '',
   ) {}
-  async call<T = Json>(method: string, path: string, body?: unknown, expected = [200, 201, 204]) {
+  async call<T = Json>(
+    method: string,
+    path: string,
+    body?: unknown,
+    expected = [200, 201, 204],
+    extraHeaders: Record<string, string> = {},
+  ) {
     const res = await this.request.fetch(`${API}${path}`, {
       method,
       headers: {
+        ...extraHeaders,
         ...(this.token ? { Authorization: `Bearer ${this.token}` } : {}),
         ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}),
       },
@@ -124,10 +131,18 @@ test.describe.serial('wave 2: discovery, engagement, resources, certificates, en
         objective: 'Understand the basics.',
         isPreview: true,
       });
-      await inst.put(`/api/studio/lessons/${l.id}/notes`, {
-        notesMarkdown: 'FREE-NOTES: start with the basics.',
-        premiumNotesMarkdown: `PREMIUM-W2-${suffix}: the full checklist.`,
-      });
+      // Notes saves need the current notes ETag (optimistic concurrency, wave 3).
+      const { eTag } = await inst.get<{ eTag: string }>(`/api/studio/lessons/${l.id}/notes`);
+      await inst.call(
+        'PUT',
+        `/api/studio/lessons/${l.id}/notes`,
+        {
+          notesMarkdown: 'FREE-NOTES: start with the basics.',
+          premiumNotesMarkdown: `PREMIUM-W2-${suffix}: the full checklist.`,
+        },
+        [200],
+        { 'If-Match': eTag },
+      );
       const video = await inst.post<{ id: string }>(`/api/studio/lessons/${l.id}/video`, {
         url: `https://youtu.be/${ytId(suffix)}`,
         channelId: channel.id,

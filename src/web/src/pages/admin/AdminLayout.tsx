@@ -4,7 +4,7 @@ import type { Role } from '../../api/types';
 import { useAuth } from '../../auth/AuthProvider';
 import { useI18n } from '../../i18n/I18nProvider';
 
-export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[] }[] = [
+export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[]; labelKey?: string }[] = [
   { to: '/admin', key: 'review', roles: ['Reviewer', 'Admin', 'SuperAdmin'] },
   { to: '/admin/applications', key: 'applications', roles: ['Reviewer', 'Admin', 'SuperAdmin'] },
   { to: '/admin/videos', key: 'videos', roles: ['Reviewer', 'Admin', 'SuperAdmin'] },
@@ -14,6 +14,25 @@ export const ADMIN_SECTIONS: { to: string; key: string; roles: Role[] }[] = [
   { to: '/admin/orgs', key: 'orgs', roles: ['Admin', 'SuperAdmin'] },
   { to: '/admin/settings', key: 'settings', roles: ['Admin', 'SuperAdmin'] },
   { to: '/admin/audit', key: 'audit', roles: ['Finance', 'Admin', 'SuperAdmin'] },
+  {
+    to: '/admin/analytics',
+    key: 'wsAnalytics',
+    roles: ['Admin', 'SuperAdmin'],
+    labelKey: 'workspace.nav.analytics',
+  },
+  {
+    to: '/admin/trust',
+    key: 'wsTrust',
+    roles: ['Admin', 'SuperAdmin'],
+    labelKey: 'workspace.nav.trust',
+  },
+  {
+    to: '/admin/operations',
+    key: 'wsOps',
+    roles: ['Admin', 'SuperAdmin'],
+    labelKey: 'workspace.nav.operations',
+  },
+  { to: '/admin/ai', key: 'wsAi', roles: ['Admin', 'SuperAdmin'], labelKey: 'workspace.nav.ai' },
 ];
 
 export function AdminLayout() {
@@ -26,7 +45,7 @@ export function AdminLayout() {
           {ADMIN_SECTIONS.filter((s) => hasRole(...s.roles)).map((s) => (
             <li key={s.to}>
               <NavLink to={s.to} end>
-                {t(`admin.section.${s.key}`)}
+                {t(s.labelKey ?? `admin.section.${s.key}`)}
               </NavLink>
             </li>
           ))}

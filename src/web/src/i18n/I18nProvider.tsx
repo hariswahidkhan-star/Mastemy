@@ -2,11 +2,16 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import type { ReactNode } from 'react';
 import en from './en.json';
 import ar from './ar.json';
+import workspaceEn from './workspace.en.json';
+import workspaceAr from './workspace.ar.json';
 
 export type Lang = 'en' | 'ar';
 type Dict = { [key: string]: string | Dict };
 
 const DICTS: Record<Lang, Dict> = { en: en as Dict, ar: ar as Dict };
+/** Area dictionaries are namespaced (top-level key per area) and merged additively. */
+Object.assign(DICTS.en, workspaceEn);
+Object.assign(DICTS.ar, workspaceAr);
 const STORAGE_KEY = 'mastemy.lang';
 
 function lookup(dict: Dict, key: string): string | undefined {

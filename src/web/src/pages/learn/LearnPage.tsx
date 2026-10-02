@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { RefObject } from 'react';
 import { Link, Navigate, useNavigate, useParams, useSearchParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
-import { api } from '../../api/client';
+import { api, ApiError } from '../../api/client';
 import { keys, useApiMutation, useLearnCourse, useLesson } from '../../api/hooks';
 import type {
   AssessmentSummary,
@@ -34,6 +34,10 @@ import {
   ReportIssueButton,
   TranscriptPanel,
 } from '../engagement/LessonExtras';
+import { useTrackEvent } from '../../lib/analytics';
+import { AiPracticePanel, TutorPanel } from '../workspace/AiPanels';
+import { BookmarksPanel } from '../workspace/Study';
+import { HeldLessonNotice, ReportContentButton } from '../workspace/Trust';
 
 const PROGRESS_INTERVAL_MS = 15_000;
 
@@ -327,6 +331,7 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
   const lessonId = view.lesson.id;
   const isAuthor = useIsCourseAuthor(course.id);
   const save = useProgressSaver(lessonId, !!user, player);
+  useTrackEvent('lesson_view', course.id, lessonId);
   const flat = course.modules.flatMap((m) => m.lessons);
   const idx = flat.findIndex((l) => l.id === lessonId);
   const prev = idx > 0 ? flat[idx - 1] : undefined;
@@ -370,6 +375,7 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
         </h1>
         <div className="row">
           <ReportIssueButton courseId={course.id} lessonId={lessonId} />
+          <ReportContentButton targetType="Lesson" targetId={lessonId} />
           {prev ? (
             <ButtonLink variant="secondary" size="sm" to={`/learn/${course.slug}/${prev.id}`}>
               {t('learn.previous')}
@@ -449,6 +455,38 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
             id: 'practice',
             label: t('learn.practice'),
             content: <PracticeList assessments={view.assessments} />,
+          },
+          {
+            id: 'bookmarks',
+            label: t('workspace.bookmarks.tab'),
+            content: user ? (
+              <BookmarksPanel lessonId={lessonId} player={player} />
+            ) : (
+              <p className="muted">{t('workspace.bookmarks.login')}</p>
+            ),
+          },
+          {
+            id: 'tutor',
+            label: t('workspace.tutor.tab'),
+            content: user ? (
+              <TutorPanel
+                courseId={course.id}
+                courseSlug={course.slug}
+                lessonId={lessonId}
+                player={player}
+              />
+            ) : (
+              <p className="muted">{t('workspace.tutor.login')}</p>
+            ),
+          },
+          {
+            id: 'aiPractice',
+            label: t('workspace.practice.tab'),
+            content: user ? (
+              <AiPracticePanel courseId={course.id} lessonId={lessonId} />
+            ) : (
+              <p className="muted">{t('workspace.tutor.login')}</p>
+            ),
           },
           {
             id: 'resources',
@@ -561,7 +599,9 @@ export function LearnPage() {
                 </nav>
               </aside>
               <section aria-label={t('learn.lesson')}>
-                {lessonId ? (
+                {lessonId && lesson.error instanceof ApiError && lesson.error.status === 451 ? (
+                  <HeldLessonNotice />
+                ) : lessonId ? (
                   <QueryState query={lesson}>
                     {(v) => <LessonWorkspace course={c} view={v} />}
                   </QueryState>

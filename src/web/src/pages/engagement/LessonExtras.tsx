@@ -24,6 +24,7 @@ import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
+import { ReportContentButton } from '../workspace/Trust';
 
 // ---------- Announcements ----------
 
@@ -156,6 +157,7 @@ export function LessonResources({
                       {t('resources.download')}
                     </Button>
                   )}
+                  <ReportContentButton targetType="Resource" targetId={r.id} />
                 </li>
               ))}
             </ul>

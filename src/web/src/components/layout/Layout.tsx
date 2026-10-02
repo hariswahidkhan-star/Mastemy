@@ -6,6 +6,7 @@ import { useTheme } from '../../theme/ThemeProvider';
 import { Button } from '../ui/Button';
 import { CompareTray } from '../Discovery';
 import { NotificationBell } from '../NotificationBell';
+import { ConsentBanner, ConsentSettingsButton } from '../../pages/workspace/Consent';
 
 function Logo() {
   return (
@@ -136,6 +137,7 @@ export function Layout() {
           </nav>
         </div>
       </header>
+      <ConsentBanner />
       <main id="main" className="site-main" tabIndex={-1}>
         <Outlet />
       </main>
@@ -162,6 +164,9 @@ export function Layout() {
               </li>
               <li>
                 <Link to="/verify">{t('nav.verify')}</Link>
+              </li>
+              <li>
+                <ConsentSettingsButton />
               </li>
             </ul>
           </nav>

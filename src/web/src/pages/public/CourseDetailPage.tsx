@@ -19,6 +19,8 @@ import { CompareToggle, WishlistButton } from '../../components/Discovery';
 import { DiscussionsPanel, EnrollToPost, useIsCourseAuthor } from '../engagement/Discussions';
 import { RelatedCourses, useTrackCourseView } from './ComparePage';
 import { useLearnCourse } from '../../api/hooks';
+import { useEventSender, useTrackEvent } from '../../lib/analytics';
+import { ReportContentButton } from '../workspace/Trust';
 
 /** Signed-in only: enrollment decides whether the learner may post. */
 function SignedInQa({ course }: { course: CourseDetailDto }) {
@@ -70,13 +72,14 @@ export function FreeVideoNotice() {
   );
 }
 
-function PackageCard({ pkg }: { pkg: PackageDto }) {
+function PackageCard({ pkg, courseId }: { pkg: PackageDto; courseId?: string }) {
   const { t, fmtMoney } = useI18n();
   const { user } = useAuth();
   const toast = useToast();
   const navigate = useNavigate();
   const [busy, setBusy] = useState(false);
   const [problem, setProblem] = useState<string | null>(null);
+  const track = useEventSender();
 
   const buy = async () => {
     if (!user) {
@@ -85,6 +88,7 @@ function PackageCard({ pkg }: { pkg: PackageDto }) {
     }
     setBusy(true);
     setProblem(null);
+    track('checkout_start', courseId);
     try {
       const res = await api<{ checkoutUrl: string }>('/api/checkout', {
         method: 'POST',
@@ -175,6 +179,7 @@ function Reviews({ course }: { course: CourseDetailDto }) {
                       <strong>{t('reviews.instructorReply')}</strong> {r.instructorReply}
                     </blockquote>
                   ) : null}
+                  <ReportContentButton targetType="Review" targetId={r.id} />
                 </li>
               ))}
             </ul>
@@ -226,6 +231,7 @@ export function CourseDetailView({ course }: { course: CourseDetailDto }) {
   const firstLesson = course.modules.flatMap((m) => m.lessons).find((l) => l.hasVideo);
   const previews = course.modules.flatMap((m) => m.lessons).filter((l) => l.isPreview);
   useTrackCourseView(course.id);
+  useTrackEvent('course_view', course.id);
   const enroll = useApiMutation(
     () => api(`/api/learn/courses/${course.id}/enroll`, { method: 'POST' }),
     [keys.dashboard, keys.learnCourse(course.slug)],
@@ -255,6 +261,7 @@ export function CourseDetailView({ course }: { course: CourseDetailDto }) {
           <div className="row" style={{ marginBlockEnd: 'var(--space-3)' }}>
             <WishlistButton courseId={course.id} title={course.title} />
             <CompareToggle item={{ id: course.id, slug: course.slug, title: course.title }} />
+            <ReportContentButton targetType="Course" targetId={course.id} />
           </div>
           <FreeVideoNotice />
           <dl className="facts">
@@ -433,7 +440,7 @@ export function CourseDetailView({ course }: { course: CourseDetailDto }) {
             ) : (
               <div className="stack">
                 {course.packages.map((p) => (
-                  <PackageCard key={p.id} pkg={p} />
+                  <PackageCard key={p.id} pkg={p} courseId={course.id} />
                 ))}
               </div>
             )}
