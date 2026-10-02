@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0736",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0736-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main benefit of grounding a Gemini response in your own Drive documents?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Answers draw on your specific content rather than only general knowledge",
+     "correct": true,
+     "rationale": "Correct: grounding ties the response to your documents."
+    },
+    {
+     "key": "B",
+     "text": "It guarantees the answer is always factually correct",
+     "correct": false,
+     "rationale": "Grounding improves relevance but does not guarantee correctness."
+    },
+    {
+     "key": "C",
+     "text": "It makes the model train on your data permanently",
+     "correct": false,
+     "rationale": "Grounding is retrieval at answer time, not training."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need to review the output",
+     "correct": false,
+     "rationale": "Review is still required regardless of grounding."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: grounding makes answers draw on your own content.",
+   "outcome_refs": [
+    "MST-0736.D04.01"
+   ],
+   "domain_ref": "Grounding in your data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0736-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which element most improves a prompt's reliability for a specific task?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Clear task, context and desired output format",
+     "correct": true,
+     "rationale": "Correct: structure and context make outputs more reliable."
+    },
+    {
+     "key": "B",
+     "text": "Maximum possible length regardless of relevance",
+     "correct": false,
+     "rationale": "Length alone does not improve reliability."
+    },
+    {
+     "key": "C",
+     "text": "All-capital letters for emphasis",
+     "correct": false,
+     "rationale": "Capitalisation does not meaningfully change reliability."
+    },
+    {
+     "key": "D",
+     "text": "Removing all context to keep it short",
+     "correct": false,
+     "rationale": "Removing context usually degrades results."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: clear task, context and format improve reliability.",
+   "outcome_refs": [
+    "MST-0736.D02.01"
+   ],
+   "domain_ref": "Prompting fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0736-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good responsible-use practices when using Gemini for work? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify facts and figures before acting on them",
+     "correct": true,
+     "rationale": "Correct: verification guards against errors."
+    },
+    {
+     "key": "B",
+     "text": "Avoid pasting data you are not permitted to share",
+     "correct": true,
+     "rationale": "Correct: respect confidentiality and data-handling rules."
+    },
+    {
+     "key": "C",
+     "text": "Assume every output is confidential automatically",
+     "correct": false,
+     "rationale": "Confidentiality depends on context and settings, not assumption."
+    },
+    {
+     "key": "D",
+     "text": "Skip human review for customer-facing messages",
+     "correct": false,
+     "rationale": "Customer-facing content needs human review."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: verify outputs and respect data-sharing rules.",
+   "outcome_refs": [
+    "MST-0736.D06.01"
+   ],
+   "domain_ref": "Responsible use",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

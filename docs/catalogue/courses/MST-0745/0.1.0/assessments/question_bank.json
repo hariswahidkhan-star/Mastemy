@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0745",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0745-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does blending data in Looker Studio let you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Combine fields from multiple sources on a common join key",
+     "correct": true,
+     "rationale": "Correct: blending joins sources on shared keys."
+    },
+    {
+     "key": "B",
+     "text": "Permanently merge the underlying databases",
+     "correct": false,
+     "rationale": "Blending is in-report, not a database merge."
+    },
+    {
+     "key": "C",
+     "text": "Delete rows from the source system",
+     "correct": false,
+     "rationale": "Blending does not modify sources."
+    },
+    {
+     "key": "D",
+     "text": "Disable all filters automatically",
+     "correct": false,
+     "rationale": "Blending does not affect filters that way."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: blending combines sources on a common key.",
+   "outcome_refs": [
+    "MST-0745.D01.02"
+   ],
+   "domain_ref": "Data sources",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0745-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can averaging a per-row conversion rate give a wrong total rate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The correct total rate must be recomputed from summed numerator and denominator",
+     "correct": true,
+     "rationale": "Correct: ratios should be aggregated from totals, not averaged."
+    },
+    {
+     "key": "B",
+     "text": "Looker Studio cannot display ratios at all",
+     "correct": false,
+     "rationale": "It can display ratios; the issue is how they aggregate."
+    },
+    {
+     "key": "C",
+     "text": "Calculated fields are never allowed",
+     "correct": false,
+     "rationale": "Calculated fields are allowed."
+    },
+    {
+     "key": "D",
+     "text": "Averages are always disabled",
+     "correct": false,
+     "rationale": "Averages are available but wrong for ratios here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: recompute ratios from summed totals.",
+   "outcome_refs": [
+    "MST-0745.D03.02"
+   ],
+   "domain_ref": "Calculated fields",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0745-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO improve a Looker Studio dashboard's usability? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Provide date-range and relevant filter controls",
+     "correct": true,
+     "rationale": "Correct: controls let viewers focus the data."
+    },
+    {
+     "key": "B",
+     "text": "Use clear layout with sufficient colour contrast",
+     "correct": true,
+     "rationale": "Correct: clarity and contrast aid readability."
+    },
+    {
+     "key": "C",
+     "text": "Place as many charts as possible on one page",
+     "correct": false,
+     "rationale": "Overcrowding reduces usability."
+    },
+    {
+     "key": "D",
+     "text": "Rely on default colours regardless of contrast",
+     "correct": false,
+     "rationale": "Poor contrast harms accessibility."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: controls and clear, high-contrast layout help usability.",
+   "outcome_refs": [
+    "MST-0745.D05.01"
+   ],
+   "domain_ref": "Dashboard design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

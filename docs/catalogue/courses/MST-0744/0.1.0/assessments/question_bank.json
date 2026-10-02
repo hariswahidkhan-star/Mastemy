@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0744",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0744-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is LookML used for in Looker?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Defining a reusable semantic model of dimensions, measures and joins",
+     "correct": true,
+     "rationale": "Correct: LookML describes the governed semantic model."
+    },
+    {
+     "key": "B",
+     "text": "Storing the raw data instead of the warehouse",
+     "correct": false,
+     "rationale": "Looker queries the warehouse; it does not store the raw data."
+    },
+    {
+     "key": "C",
+     "text": "Replacing SQL entirely with no database",
+     "correct": false,
+     "rationale": "Looker generates SQL against a database."
+    },
+    {
+     "key": "D",
+     "text": "Rendering pixel-perfect print layouts only",
+     "correct": false,
+     "rationale": "That is not LookML's purpose."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: LookML defines the reusable semantic model.",
+   "outcome_refs": [
+    "MST-0744.D02.01"
+   ],
+   "domain_ref": "LookML views",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0744-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An incorrect join relationship in an explore most commonly causes:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Double-counted or inflated measure values",
+     "correct": true,
+     "rationale": "Correct: wrong relationships fan out rows and inflate aggregates."
+    },
+    {
+     "key": "B",
+     "text": "A change to the database schema",
+     "correct": false,
+     "rationale": "Explores do not alter the database schema."
+    },
+    {
+     "key": "C",
+     "text": "Loss of the LookML project history",
+     "correct": false,
+     "rationale": "Joins do not affect version history."
+    },
+    {
+     "key": "D",
+     "text": "Automatic row-level security",
+     "correct": false,
+     "rationale": "Joins do not provide security."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: wrong join relationships inflate measures.",
+   "outcome_refs": [
+    "MST-0744.D03.02"
+   ],
+   "domain_ref": "Measures and joins",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0744-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO support governed BI in Looker? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Row-level access filters in the model",
+     "correct": true,
+     "rationale": "Correct: access filters enforce row-level security."
+    },
+    {
+     "key": "B",
+     "text": "Git-backed LookML development with validation",
+     "correct": true,
+     "rationale": "Correct: version control and validation govern changes."
+    },
+    {
+     "key": "C",
+     "text": "Editing production LookML directly for speed",
+     "correct": false,
+     "rationale": "Direct production edits bypass governance."
+    },
+    {
+     "key": "D",
+     "text": "Relying only on dashboard colours for control",
+     "correct": false,
+     "rationale": "Colours do not govern access."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: access filters and Git-backed development govern BI.",
+   "outcome_refs": [
+    "MST-0744.D05.01"
+   ],
+   "domain_ref": "Governance and access",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0771",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 512,
+  "lesson_check_items": 90,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0771-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What role does the partition key play in a Kinesis Data Stream?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It determines which shard a record goes to and preserves per-key ordering",
+     "correct": true,
+     "rationale": "Correct: the partition key maps records to shards and orders records per key."
+    },
+    {
+     "key": "B",
+     "text": "It encrypts the record payload",
+     "correct": false,
+     "rationale": "Encryption is separate from the partition key."
+    },
+    {
+     "key": "C",
+     "text": "It sets the data retention period",
+     "correct": false,
+     "rationale": "Retention is a stream setting, not the partition key."
+    },
+    {
+     "key": "D",
+     "text": "It deletes records after reading",
+     "correct": false,
+     "rationale": "Records persist for the retention window."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the partition key maps records to shards and orders them per key.",
+   "outcome_refs": [
+    "MST-0771.D02.02"
+   ],
+   "domain_ref": "Data Streams design",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0771-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is Kinesis Data Firehose a better fit than consuming a Data Stream directly?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When you want managed, near-real-time delivery to destinations like S3 with little code",
+     "correct": true,
+     "rationale": "Correct: Firehose is managed delivery with buffering and transforms."
+    },
+    {
+     "key": "B",
+     "text": "When you need sub-second, record-level custom processing",
+     "correct": false,
+     "rationale": "That calls for Data Streams with a custom consumer."
+    },
+    {
+     "key": "C",
+     "text": "When you must never store the data",
+     "correct": false,
+     "rationale": "Firehose delivers to storage destinations."
+    },
+    {
+     "key": "D",
+     "text": "When ordering per key must be guaranteed to a custom app",
+     "correct": false,
+     "rationale": "Fine-grained ordering control is a Data Streams concern."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Firehose suits managed near-real-time delivery.",
+   "outcome_refs": [
+    "MST-0771.D04.01"
+   ],
+   "domain_ref": "Firehose delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0771-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO help avoid a hot shard and throttling in Kinesis Data Streams? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Choose a high-cardinality partition key that spreads load",
+     "correct": true,
+     "rationale": "Correct: a well-distributed key balances records across shards."
+    },
+    {
+     "key": "B",
+     "text": "Reshard or scale shards as throughput grows",
+     "correct": true,
+     "rationale": "Correct: adding shards raises capacity."
+    },
+    {
+     "key": "C",
+     "text": "Send all records with a single constant partition key",
+     "correct": false,
+     "rationale": "A constant key concentrates load on one shard."
+    },
+    {
+     "key": "D",
+     "text": "Ignore throughput-exceeded errors",
+     "correct": false,
+     "rationale": "Ignoring throttling drops records."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: spread load with a good key and scale shards.",
+   "outcome_refs": [
+    "MST-0771.D06.01"
+   ],
+   "domain_ref": "Operations and scale",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

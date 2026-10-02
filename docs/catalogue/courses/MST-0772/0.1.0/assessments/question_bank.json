@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0772",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0772-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In OpenSearch, what does an index mapping define?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The fields in documents and their data types",
+     "correct": true,
+     "rationale": "Correct: a mapping defines fields and their types."
+    },
+    {
+     "key": "B",
+     "text": "The billing plan for the domain",
+     "correct": false,
+     "rationale": "Mappings are not billing settings."
+    },
+    {
+     "key": "C",
+     "text": "The number of AWS regions used",
+     "correct": false,
+     "rationale": "Mappings are per-index field definitions."
+    },
+    {
+     "key": "D",
+     "text": "The dashboard colour theme",
+     "correct": false,
+     "rationale": "Mappings are unrelated to theming."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a mapping defines document fields and types.",
+   "outcome_refs": [
+    "MST-0772.D02.01"
+   ],
+   "domain_ref": "Indices and mappings",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0772-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why use the bulk API instead of indexing one document per request for high-volume logs?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Batching many documents per request greatly improves ingest throughput",
+     "correct": true,
+     "rationale": "Correct: bulk requests reduce overhead and raise throughput."
+    },
+    {
+     "key": "B",
+     "text": "It changes the mapping automatically",
+     "correct": false,
+     "rationale": "Bulk does not redefine mappings."
+    },
+    {
+     "key": "C",
+     "text": "It encrypts the cluster",
+     "correct": false,
+     "rationale": "Bulk is unrelated to encryption."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for shards",
+     "correct": false,
+     "rationale": "Shards are still used."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: bulk indexing improves ingest throughput.",
+   "outcome_refs": [
+    "MST-0772.D03.01"
+   ],
+   "domain_ref": "Ingestion",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0772-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO help operate an OpenSearch domain well over time? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use index lifecycle/state management to tier or delete old data",
+     "correct": true,
+     "rationale": "Correct: lifecycle management controls storage growth."
+    },
+    {
+     "key": "B",
+     "text": "Apply fine-grained access control to indices",
+     "correct": true,
+     "rationale": "Correct: access control secures data."
+    },
+    {
+     "key": "C",
+     "text": "Keep all data hot forever",
+     "correct": false,
+     "rationale": "Unbounded hot data wastes resources."
+    },
+    {
+     "key": "D",
+     "text": "Run a single node for production",
+     "correct": false,
+     "rationale": "A single node is not resilient."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: manage lifecycle and secure access.",
+   "outcome_refs": [
+    "MST-0772.D06.01"
+   ],
+   "domain_ref": "Security and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

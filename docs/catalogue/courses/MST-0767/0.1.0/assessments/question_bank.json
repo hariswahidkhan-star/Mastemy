@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0767",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0767-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does RPO (Recovery Point Objective) specify?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The maximum acceptable amount of data loss measured in time",
+     "correct": true,
+     "rationale": "Correct: RPO is how much data, in time, you can afford to lose."
+    },
+    {
+     "key": "B",
+     "text": "How long recovery is allowed to take",
+     "correct": false,
+     "rationale": "That is RTO, not RPO."
+    },
+    {
+     "key": "C",
+     "text": "The number of availability zones in a region",
+     "correct": false,
+     "rationale": "RPO is not about AZ count."
+    },
+    {
+     "key": "D",
+     "text": "The cost of the backup vault",
+     "correct": false,
+     "rationale": "RPO is a data-loss target, not a cost."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RPO is the acceptable data loss in time.",
+   "outcome_refs": [
+    "MST-0767.D01.01"
+   ],
+   "domain_ref": "Resilience goals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0767-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a multi-AZ deployment alone insufficient for regional disaster recovery?",
+   "options": [
+    {
+     "key": "A",
+     "text": "All AZs are within one region, so a regional outage can affect them together",
+     "correct": true,
+     "rationale": "Correct: multi-AZ does not survive a whole-region event."
+    },
+    {
+     "key": "B",
+     "text": "Multi-AZ increases data loss",
+     "correct": false,
+     "rationale": "Multi-AZ improves availability within a region."
+    },
+    {
+     "key": "C",
+     "text": "AZs cannot run databases",
+     "correct": false,
+     "rationale": "AZs commonly run databases."
+    },
+    {
+     "key": "D",
+     "text": "Regions have only one AZ",
+     "correct": false,
+     "rationale": "Regions contain multiple AZs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AZs share a region, so cross-region is needed for regional DR.",
+   "outcome_refs": [
+    "MST-0767.D04.01"
+   ],
+   "domain_ref": "Multi-AZ and multi-region",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0767-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO strengthen a backup and DR posture on AWS? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Copy backups to a separate region and/or account",
+     "correct": true,
+     "rationale": "Correct: isolation protects against regional or account-level loss."
+    },
+    {
+     "key": "B",
+     "text": "Regularly test restores against RTO targets",
+     "correct": true,
+     "rationale": "Correct: tested restores validate recovery."
+    },
+    {
+     "key": "C",
+     "text": "Keep backups only in the production account and region",
+     "correct": false,
+     "rationale": "Single-location backups are a single point of failure."
+    },
+    {
+     "key": "D",
+     "text": "Never test restores to save effort",
+     "correct": false,
+     "rationale": "Untested backups may not restore."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: isolate backups and test restores.",
+   "outcome_refs": [
+    "MST-0767.D06.01"
+   ],
+   "domain_ref": "Testing and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

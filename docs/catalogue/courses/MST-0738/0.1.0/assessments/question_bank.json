@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0738",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0738-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary purpose of Google AI Studio?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Prototype, test and tune prompts before exporting them to code",
+     "correct": true,
+     "rationale": "Correct: AI Studio is for prototyping and tuning prompts."
+    },
+    {
+     "key": "B",
+     "text": "Host production traffic at scale with SLAs",
+     "correct": false,
+     "rationale": "Production hosting is handled by the API, not the studio."
+    },
+    {
+     "key": "C",
+     "text": "Train new foundation models from scratch",
+     "correct": false,
+     "rationale": "The studio does not train base models."
+    },
+    {
+     "key": "D",
+     "text": "Manage billing accounts only",
+     "correct": false,
+     "rationale": "Billing is not its purpose."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AI Studio is a prototyping and tuning environment.",
+   "outcome_refs": [
+    "MST-0738.D01.01"
+   ],
+   "domain_ref": "AI Studio basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0738-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Lowering the temperature parameter tends to make outputs:",
+   "options": [
+    {
+     "key": "A",
+     "text": "More focused and consistent",
+     "correct": true,
+     "rationale": "Correct: lower temperature reduces randomness."
+    },
+    {
+     "key": "B",
+     "text": "More random and varied",
+     "correct": false,
+     "rationale": "Higher temperature increases variation, not lower."
+    },
+    {
+     "key": "C",
+     "text": "Longer regardless of content",
+     "correct": false,
+     "rationale": "Temperature does not control length."
+    },
+    {
+     "key": "D",
+     "text": "Always factually correct",
+     "correct": false,
+     "rationale": "Temperature does not control accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: lower temperature yields more consistent output.",
+   "outcome_refs": [
+    "MST-0738.D03.01"
+   ],
+   "domain_ref": "Parameter tuning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0738-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices give a trustworthy evaluation of a prompt in AI Studio? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Test across several representative inputs",
+     "correct": true,
+     "rationale": "Correct: multiple inputs reveal real behaviour."
+    },
+    {
+     "key": "B",
+     "text": "Compare variants under the same conditions",
+     "correct": true,
+     "rationale": "Correct: controlled comparison isolates the change."
+    },
+    {
+     "key": "C",
+     "text": "Judge on a single favourable example",
+     "correct": false,
+     "rationale": "One example is not representative."
+    },
+    {
+     "key": "D",
+     "text": "Change several settings at once while comparing",
+     "correct": false,
+     "rationale": "Changing many things at once confounds the result."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: use representative inputs and controlled comparison.",
+   "outcome_refs": [
+    "MST-0738.D05.01"
+   ],
+   "domain_ref": "Evaluation and iteration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

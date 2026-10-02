@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0743",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0743-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is distinctive about BigQuery ML?",
+   "options": [
+    {
+     "key": "A",
+     "text": "You create and run models using SQL inside BigQuery",
+     "correct": true,
+     "rationale": "Correct: BQML lets you build models with SQL where the data lives."
+    },
+    {
+     "key": "B",
+     "text": "It requires exporting data to a separate notebook first",
+     "correct": false,
+     "rationale": "BQML runs inside BigQuery without exporting data."
+    },
+    {
+     "key": "C",
+     "text": "It only supports deep neural networks",
+     "correct": false,
+     "rationale": "It supports many model types, not only DNNs."
+    },
+    {
+     "key": "D",
+     "text": "It cannot evaluate model quality",
+     "correct": false,
+     "rationale": "ML.EVALUATE provides quality metrics."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: BQML builds models with SQL inside BigQuery.",
+   "outcome_refs": [
+    "MST-0743.D01.01"
+   ],
+   "domain_ref": "BQML fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0743-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which function returns quality metrics for a trained BigQuery ML model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "ML.EVALUATE",
+     "correct": true,
+     "rationale": "Correct: ML.EVALUATE returns evaluation metrics."
+    },
+    {
+     "key": "B",
+     "text": "ML.PREDICT",
+     "correct": false,
+     "rationale": "ML.PREDICT generates predictions, not metrics."
+    },
+    {
+     "key": "C",
+     "text": "CREATE MODEL",
+     "correct": false,
+     "rationale": "CREATE MODEL trains; it does not report evaluation metrics."
+    },
+    {
+     "key": "D",
+     "text": "ML.TRANSFORM only",
+     "correct": false,
+     "rationale": "TRANSFORM handles preprocessing, not evaluation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ML.EVALUATE returns model quality metrics.",
+   "outcome_refs": [
+    "MST-0743.D03.01"
+   ],
+   "domain_ref": "Evaluation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0743-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help avoid misleading BigQuery ML results? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Evaluate on held-out data, not training data",
+     "correct": true,
+     "rationale": "Correct: held-out evaluation avoids over-optimistic metrics."
+    },
+    {
+     "key": "B",
+     "text": "Exclude any feature that leaks the label",
+     "correct": true,
+     "rationale": "Correct: label leakage inflates apparent accuracy."
+    },
+    {
+     "key": "C",
+     "text": "Score forever without retraining as data drifts",
+     "correct": false,
+     "rationale": "Drift requires retraining."
+    },
+    {
+     "key": "D",
+     "text": "Judge the model on one lucky query",
+     "correct": false,
+     "rationale": "A single query is not a sound evaluation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: use held-out evaluation and avoid label leakage.",
+   "outcome_refs": [
+    "MST-0743.D02.02"
+   ],
+   "domain_ref": "Feature engineering",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

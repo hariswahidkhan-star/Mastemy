@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0735",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0735-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does AppSheet use as the system of record for an app's data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The connected data source such as Google Sheets or a database",
+     "correct": true,
+     "rationale": "Correct: AppSheet reads and writes to the connected source; it is not a separate datastore."
+    },
+    {
+     "key": "B",
+     "text": "An internal AppSheet-only database that replaces the source",
+     "correct": false,
+     "rationale": "AppSheet does not replace the source; it operates on the connected data."
+    },
+    {
+     "key": "C",
+     "text": "The user's device local storage only",
+     "correct": false,
+     "rationale": "Device storage is a cache, not the system of record."
+    },
+    {
+     "key": "D",
+     "text": "A static export taken at build time",
+     "correct": false,
+     "rationale": "Data is live against the source, not a one-time export."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the connected data source is the system of record.",
+   "outcome_refs": [
+    "MST-0735.D01.01"
+   ],
+   "domain_ref": "Data sources and app creation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0735-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which column type links a row in one table to a row in another table?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ref column",
+     "correct": true,
+     "rationale": "Correct: a Ref column creates a relationship to another table's key."
+    },
+    {
+     "key": "B",
+     "text": "Text column",
+     "correct": false,
+     "rationale": "Text stores free text, not a relationship."
+    },
+    {
+     "key": "C",
+     "text": "Number column",
+     "correct": false,
+     "rationale": "Number stores numeric values, not relationships."
+    },
+    {
+     "key": "D",
+     "text": "Enum column",
+     "correct": false,
+     "rationale": "Enum restricts to a fixed value list, not a table link."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Ref columns model relationships between tables.",
+   "outcome_refs": [
+    "MST-0735.D02.02"
+   ],
+   "domain_ref": "Data modelling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0735-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid ways to limit the rows a user can see or edit in an AppSheet app? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply a security filter on the table",
+     "correct": true,
+     "rationale": "Correct: security filters restrict which rows sync to the user."
+    },
+    {
+     "key": "B",
+     "text": "Set column or table permissions by role",
+     "correct": true,
+     "rationale": "Correct: role-based permissions constrain access."
+    },
+    {
+     "key": "C",
+     "text": "Rely only on hiding a view from the menu",
+     "correct": false,
+     "rationale": "Hiding a view is cosmetic and does not restrict data."
+    },
+    {
+     "key": "D",
+     "text": "Change the thumbnail of the app",
+     "correct": false,
+     "rationale": "The thumbnail has no effect on access."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: security filters and role permissions both limit access.",
+   "outcome_refs": [
+    "MST-0735.D05.01"
+   ],
+   "domain_ref": "Security and access",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

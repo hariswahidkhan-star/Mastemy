@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0769",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0769-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the AWS Glue Data Catalog provide?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A central metadata store of table definitions and schemas for your data",
+     "correct": true,
+     "rationale": "Correct: the Data Catalog holds table and schema metadata."
+    },
+    {
+     "key": "B",
+     "text": "The physical storage of the data itself",
+     "correct": false,
+     "rationale": "Data stays in S3; the catalog stores metadata."
+    },
+    {
+     "key": "C",
+     "text": "A relational database engine",
+     "correct": false,
+     "rationale": "It is a metadata catalog, not a database engine."
+    },
+    {
+     "key": "D",
+     "text": "A billing dashboard",
+     "correct": false,
+     "rationale": "It is not a billing tool."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the Data Catalog is a central metadata store.",
+   "outcome_refs": [
+    "MST-0769.D01.02"
+   ],
+   "domain_ref": "Data lake and catalog",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0769-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main governance advantage of Lake Formation over S3 bucket policies alone?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fine-grained table- and column-level access control",
+     "correct": true,
+     "rationale": "Correct: Lake Formation adds table/column-level permissions."
+    },
+    {
+     "key": "B",
+     "text": "Cheaper storage pricing",
+     "correct": false,
+     "rationale": "Lake Formation is about governance, not storage price."
+    },
+    {
+     "key": "C",
+     "text": "Automatic schema inference",
+     "correct": false,
+     "rationale": "Schema inference is a crawler function."
+    },
+    {
+     "key": "D",
+     "text": "Faster network throughput",
+     "correct": false,
+     "rationale": "It does not change network throughput."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Lake Formation enables fine-grained access control.",
+   "outcome_refs": [
+    "MST-0769.D05.02"
+   ],
+   "domain_ref": "Lake Formation governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0769-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve data-lake query performance and cost? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store data in a columnar format such as Parquet",
+     "correct": true,
+     "rationale": "Correct: columnar formats cut scan cost."
+    },
+    {
+     "key": "B",
+     "text": "Partition data by a commonly filtered key",
+     "correct": true,
+     "rationale": "Correct: partitioning prunes data scanned."
+    },
+    {
+     "key": "C",
+     "text": "Keep everything as uncompressed CSV",
+     "correct": false,
+     "rationale": "Uncompressed CSV scans more data and costs more."
+    },
+    {
+     "key": "D",
+     "text": "Reprocess all data on every run",
+     "correct": false,
+     "rationale": "Full reprocessing wastes compute."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: columnar formats and partitioning cut scan cost.",
+   "outcome_refs": [
+    "MST-0769.D06.01"
+   ],
+   "domain_ref": "Quality and cost",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

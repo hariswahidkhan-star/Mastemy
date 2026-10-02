@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0739",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0739-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does it mean that NotebookLM is 'source-grounded'?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its answers are based on the sources you add to the notebook",
+     "correct": true,
+     "rationale": "Correct: responses draw on the added sources with citations."
+    },
+    {
+     "key": "B",
+     "text": "It answers from the open web by default",
+     "correct": false,
+     "rationale": "It grounds in your added sources, not the open web by default."
+    },
+    {
+     "key": "C",
+     "text": "It never needs citations",
+     "correct": false,
+     "rationale": "Citations are central to its grounding."
+    },
+    {
+     "key": "D",
+     "text": "It trains a model on your documents permanently",
+     "correct": false,
+     "rationale": "Grounding is retrieval, not permanent training."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: answers are grounded in the sources you add.",
+   "outcome_refs": [
+    "MST-0739.D02.01"
+   ],
+   "domain_ref": "Grounded questions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0739-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should you open the citation behind a NotebookLM answer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To confirm the answer matches the source passage",
+     "correct": true,
+     "rationale": "Correct: citations let you verify the answer against the source."
+    },
+    {
+     "key": "B",
+     "text": "To train the model faster",
+     "correct": false,
+     "rationale": "Citations do not affect training."
+    },
+    {
+     "key": "C",
+     "text": "To add a new source automatically",
+     "correct": false,
+     "rationale": "Opening a citation does not add sources."
+    },
+    {
+     "key": "D",
+     "text": "To remove the answer from history",
+     "correct": false,
+     "rationale": "Citations do not delete history."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: citations let you verify the answer against its source.",
+   "outcome_refs": [
+    "MST-0739.D02.02"
+   ],
+   "domain_ref": "Grounded questions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0739-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate uses of NotebookLM? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Summarising and querying a set of documents you added",
+     "correct": true,
+     "rationale": "Correct: it is built for querying your sources."
+    },
+    {
+     "key": "B",
+     "text": "Generating study aids grounded in your sources",
+     "correct": true,
+     "rationale": "Correct: briefings and FAQs are grounded study aids."
+    },
+    {
+     "key": "C",
+     "text": "Answering questions about topics with no added source",
+     "correct": false,
+     "rationale": "Without a source it cannot ground the answer."
+    },
+    {
+     "key": "D",
+     "text": "Guaranteeing facts without any verification",
+     "correct": false,
+     "rationale": "Verification is still needed."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: query and study your added sources.",
+   "outcome_refs": [
+    "MST-0739.D03.01"
+   ],
+   "domain_ref": "Summaries and study aids",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

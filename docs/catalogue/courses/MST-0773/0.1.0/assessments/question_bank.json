@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0773",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0773-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which SageMaker capability is best for offline scoring of a large dataset with no need for a live endpoint?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Batch transform",
+     "correct": true,
+     "rationale": "Correct: batch transform scores datasets without a persistent endpoint."
+    },
+    {
+     "key": "B",
+     "text": "A real-time endpoint running 24/7",
+     "correct": false,
+     "rationale": "A live endpoint is for low-latency online inference, not one-off batch scoring."
+    },
+    {
+     "key": "C",
+     "text": "A processing job for feature prep only",
+     "correct": false,
+     "rationale": "Processing jobs prepare data; they are not the scoring mechanism here."
+    },
+    {
+     "key": "D",
+     "text": "The model registry",
+     "correct": false,
+     "rationale": "The registry versions models; it does not score data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: batch transform suits offline bulk scoring.",
+   "outcome_refs": [
+    "MST-0773.D04.02"
+   ],
+   "domain_ref": "Deployment and inference",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0773-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does SageMaker Model Monitor help detect after deployment?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data and quality drift that can degrade predictions over time",
+     "correct": true,
+     "rationale": "Correct: Model Monitor watches for drift and quality issues."
+    },
+    {
+     "key": "B",
+     "text": "The price of EC2 instances",
+     "correct": false,
+     "rationale": "It monitors model data, not pricing."
+    },
+    {
+     "key": "C",
+     "text": "The colour scheme of Studio",
+     "correct": false,
+     "rationale": "It is not a UI setting."
+    },
+    {
+     "key": "D",
+     "text": "The number of S3 buckets",
+     "correct": false,
+     "rationale": "It is unrelated to bucket counts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Model Monitor detects drift and quality issues.",
+   "outcome_refs": [
+    "MST-0773.D06.01"
+   ],
+   "domain_ref": "Monitoring and governance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0773-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support a reliable, repeatable ML workflow on SageMaker? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Define the steps as a SageMaker Pipeline",
+     "correct": true,
+     "rationale": "Correct: pipelines make the workflow reproducible."
+    },
+    {
+     "key": "B",
+     "text": "Register and version models for approval",
+     "correct": true,
+     "rationale": "Correct: a model registry governs promotion."
+    },
+    {
+     "key": "C",
+     "text": "Tune hyperparameters on the test set",
+     "correct": false,
+     "rationale": "Tuning on the test set leaks information."
+    },
+    {
+     "key": "D",
+     "text": "Deploy manually with no automation",
+     "correct": false,
+     "rationale": "Manual deploys are error-prone and not repeatable."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pipelines and a model registry give repeatability.",
+   "outcome_refs": [
+    "MST-0773.D05.01"
+   ],
+   "domain_ref": "Pipelines and automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

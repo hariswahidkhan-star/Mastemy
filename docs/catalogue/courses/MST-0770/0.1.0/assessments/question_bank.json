@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0770",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0770-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Redshift is optimised primarily for which workload?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Analytical (OLAP) queries over large datasets",
+     "correct": true,
+     "rationale": "Correct: Redshift is a columnar analytical warehouse."
+    },
+    {
+     "key": "B",
+     "text": "High-frequency single-row transactional writes",
+     "correct": false,
+     "rationale": "That is an OLTP pattern, not Redshift's strength."
+    },
+    {
+     "key": "C",
+     "text": "Object storage of media files",
+     "correct": false,
+     "rationale": "Object storage is S3's role."
+    },
+    {
+     "key": "D",
+     "text": "Low-latency key-value lookups",
+     "correct": false,
+     "rationale": "That suits DynamoDB, not Redshift."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Redshift targets analytical (OLAP) workloads.",
+   "outcome_refs": [
+    "MST-0770.D01.01"
+   ],
+   "domain_ref": "Architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0770-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Choosing a poor distribution key most directly causes:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data skew that overloads some nodes and slows queries",
+     "correct": true,
+     "rationale": "Correct: skew concentrates data and work on a few slices."
+    },
+    {
+     "key": "B",
+     "text": "Loss of encryption on the cluster",
+     "correct": false,
+     "rationale": "Distribution does not affect encryption."
+    },
+    {
+     "key": "C",
+     "text": "Automatic deletion of tables",
+     "correct": false,
+     "rationale": "Distribution does not delete data."
+    },
+    {
+     "key": "D",
+     "text": "A change to IAM roles",
+     "correct": false,
+     "rationale": "Distribution is unrelated to IAM."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a poor distribution key causes skew and slow queries.",
+   "outcome_refs": [
+    "MST-0770.D02.01"
+   ],
+   "domain_ref": "Table design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0770-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO features let Redshift work with data beyond its local storage? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Redshift Spectrum to query data in S3",
+     "correct": true,
+     "rationale": "Correct: Spectrum queries external S3 data."
+    },
+    {
+     "key": "B",
+     "text": "Data sharing to access another cluster's data",
+     "correct": true,
+     "rationale": "Correct: data sharing exposes datasets across clusters."
+    },
+    {
+     "key": "C",
+     "text": "Deleting the cluster to free data",
+     "correct": false,
+     "rationale": "Deleting a cluster removes access, not a way to use data."
+    },
+    {
+     "key": "D",
+     "text": "Disabling compression",
+     "correct": false,
+     "rationale": "Compression settings do not access external data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Spectrum and data sharing extend Redshift's reach.",
+   "outcome_refs": [
+    "MST-0770.D05.01"
+   ],
+   "domain_ref": "Spectrum and sharing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

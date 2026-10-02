@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0737",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0737-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main advantage of requesting a response schema (JSON mode) from the Gemini API?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The output conforms to a defined structure that code can parse reliably",
+     "correct": true,
+     "rationale": "Correct: a response schema constrains output to a parseable structure."
+    },
+    {
+     "key": "B",
+     "text": "It guarantees the content is factually true",
+     "correct": false,
+     "rationale": "Schema controls structure, not factual accuracy."
+    },
+    {
+     "key": "C",
+     "text": "It removes all token costs",
+     "correct": false,
+     "rationale": "Structured output still consumes tokens."
+    },
+    {
+     "key": "D",
+     "text": "It disables safety filtering",
+     "correct": false,
+     "rationale": "Schema has no effect on safety settings."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a schema yields reliably parseable structured output.",
+   "outcome_refs": [
+    "MST-0737.D03.01"
+   ],
+   "domain_ref": "Structured outputs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0737-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In function calling, what does the model return when it decides a tool is needed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A structured function call with a name and arguments for your code to execute",
+     "correct": true,
+     "rationale": "Correct: the model proposes a function call that your code runs."
+    },
+    {
+     "key": "B",
+     "text": "The final executed result of the function",
+     "correct": false,
+     "rationale": "The model proposes the call; your code executes it."
+    },
+    {
+     "key": "C",
+     "text": "A direct database connection",
+     "correct": false,
+     "rationale": "The model does not open connections."
+    },
+    {
+     "key": "D",
+     "text": "Nothing until you poll a queue",
+     "correct": false,
+     "rationale": "The call is returned in the response, not via polling."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the model returns a proposed function call for your code to execute.",
+   "outcome_refs": [
+    "MST-0737.D04.01"
+   ],
+   "domain_ref": "Function calling and tools",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0737-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound production practices for a Gemini API service? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keep API keys server-side, not in client code",
+     "correct": true,
+     "rationale": "Correct: keys must stay server-side."
+    },
+    {
+     "key": "B",
+     "text": "Monitor token usage to control cost",
+     "correct": true,
+     "rationale": "Correct: usage monitoring controls cost."
+    },
+    {
+     "key": "C",
+     "text": "Assume quotas never apply",
+     "correct": false,
+     "rationale": "Quotas and rate limits apply and must be handled."
+    },
+    {
+     "key": "D",
+     "text": "Trust returned JSON without validation",
+     "correct": false,
+     "rationale": "Returned data should be validated."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: protect keys and monitor usage.",
+   "outcome_refs": [
+    "MST-0737.D06.02"
+   ],
+   "domain_ref": "Safety and production",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
