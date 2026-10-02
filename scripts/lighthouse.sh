@@ -8,7 +8,7 @@
 # on the key public pages and writes JSON reports + summary.json/summary.md to $LH_OUT.
 #
 # Environment (all optional): MYSQL_HOST/MYSQL_USER/MYSQL_PASSWORD, LH_DB (mastemy_lighthouse),
-# LH_PORT_BASE (6400 -> API 6400, SSR 6401), LH_OUT ($TMPDIR/mastemy-lighthouse), LH_WEB_DIR (src/web: a web
+# LH_PORT_BASE (6400 -> API 6400, SSR 6401, fake oEmbed 6402), LH_OUT ($TMPDIR/mastemy-lighthouse), LH_WEB_DIR (src/web: a web
 # checkout whose dist/ and dist-server/ are used), LH_SKIP_BUILD=1, LH_MIN (95; 0 = report only),
 # LH_RUNS (1: runs per page/form factor, the median performance run is kept), CHROME_PATH.
 # Only processes started here are stopped on exit.
@@ -23,6 +23,7 @@ LH_DB=${LH_DB:-mastemy_lighthouse}
 BASE=${LH_PORT_BASE:-6400}
 API_PORT=$BASE
 SSR_PORT=$((BASE + 1))
+OEMBED_PORT=$((BASE + 2))
 OUT=$(mkdir -p "${LH_OUT:-${TMPDIR:-/tmp}/mastemy-lighthouse}" && cd "${LH_OUT:-${TMPDIR:-/tmp}/mastemy-lighthouse}" && pwd)
 WEB_DIR=$(cd "${LH_WEB_DIR:-$ROOT/src/web}" && pwd)
 LH_MIN=${LH_MIN:-95}
@@ -49,7 +50,7 @@ wait_for() { # url name pid
   echo "$2 did not answer at $1"; tail -40 "$OUT/$2.log"; return 1
 }
 
-for port in $API_PORT $SSR_PORT; do
+for port in $API_PORT $SSR_PORT $OEMBED_PORT; do
   if (exec 3<>"/dev/tcp/127.0.0.1/$port") 2>/dev/null; then
     echo "port $port is already in use; pick another LH_PORT_BASE" >&2
     exit 1
@@ -65,9 +66,14 @@ echo "== fresh database $LH_DB"
 mysql -h"$MYSQL_HOST" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" \
   -e "DROP DATABASE IF EXISTS \`$LH_DB\`; CREATE DATABASE \`$LH_DB\` CHARACTER SET utf8mb4;" 2>/dev/null
 
+# YouTube oEmbed is faked so the seed's manual video path behaves the same whether or not youtube.com is reachable.
+FAKE_OEMBED_PORT=$OEMBED_PORT node e2e/fake-youtube-oembed.mjs >"$OUT/fake-oembed.log" 2>&1 & OEMBED_PID=$!; PIDS+=($OEMBED_PID)
+wait_for "http://127.0.0.1:$OEMBED_PORT/healthz" fake-oembed "$OEMBED_PID"
+
 (
   export ASPNETCORE_ENVIRONMENT=Development
   export ASPNETCORE_URLS=http://localhost:$API_PORT
+  export YouTube__OEmbedUrl=http://127.0.0.1:$OEMBED_PORT/oembed
   export ConnectionStrings__Default="Server=$MYSQL_HOST;Port=3306;Database=$LH_DB;User=$MYSQL_USER;Password=$MYSQL_PASSWORD;"
   export Database__MigrateOnStartup=true
   export Security__RequireMfaForPrivileged=false

@@ -34,6 +34,14 @@ export Email__PublicBaseUrl=http://localhost:$WEB_PORT
 export Email__PollIntervalSeconds=1
 # Privileged roles need MFA (the default); the e2e helpers enroll and answer TOTP challenges.
 export Security__RequireMfaForPrivileged=${Security__RequireMfaForPrivileged:-true}
+# YouTube oEmbed goes to the local fake (started here unless it already answers).
+FAKE_OEMBED_PORT=${FAKE_OEMBED_PORT:-12151}
+export YouTube__OEmbedUrl=http://127.0.0.1:$FAKE_OEMBED_PORT/oembed
+OEMBED_PID=""
+if ! (exec 3<>"/dev/tcp/127.0.0.1/$FAKE_OEMBED_PORT") 2>/dev/null; then
+  FAKE_OEMBED_PORT=$FAKE_OEMBED_PORT node e2e/fake-youtube-oembed.mjs &
+  OEMBED_PID=$!
+fi
 
 SINK_PID=""
 if ! (exec 3<>"/dev/tcp/127.0.0.1/$SMTP_SINK_HTTP_PORT") 2>/dev/null; then
@@ -44,6 +52,7 @@ API_PID=""
 cleanup() {
   [ -n "$API_PID" ] && kill "$API_PID" 2>/dev/null || true
   [ -n "$SINK_PID" ] && kill "$SINK_PID" 2>/dev/null || true
+  [ -n "$OEMBED_PID" ] && kill "$OEMBED_PID" 2>/dev/null || true
 }
 trap cleanup EXIT INT TERM
 dotnet run --project src/Mastemy.Api --no-launch-profile ${API_CONFIGURATION:+-c $API_CONFIGURATION} &

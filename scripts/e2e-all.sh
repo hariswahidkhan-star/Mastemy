@@ -2,7 +2,7 @@
 # One command for the whole browser suite: starts a production-like stack on a fresh MySQL database and runs
 # every Playwright spec in e2e/tests (functional flows + accessibility). Nothing external is contacted:
 #   fake Stripe (e2e/fake-stripe.mjs), fake Anthropic (e2e/fake-anthropic.mjs), fake OIDC (e2e/fake-oidc.mjs),
-#   SMTP sink (e2e/smtp-sink.mjs). MFA is required for privileged roles and refresh tokens travel only in the
+#   SMTP sink (e2e/smtp-sink.mjs), YouTube oEmbed (e2e/fake-youtube-oembed.mjs). MFA is required for privileged roles and refresh tokens travel only in the
 #   HttpOnly cookie (Auth:AllowBodyRefreshToken=false), as in production.
 #
 #   scripts/e2e-all.sh                    # whole suite
@@ -31,6 +31,7 @@ SSR_PORT=$((5190 + OFF))
 STRIPE_PORT=$((12111 + OFF))
 AI_PORT=$((12131 + OFF))
 OIDC_PORT=$((12592 + OFF))
+OEMBED_PORT=$((12151 + OFF))
 SMTP_PORT=$((2525 + OFF))
 SMTP_HTTP_PORT=$((2580 + OFF))
 LOG_DIR=${E2E_LOG_DIR:-$ROOT/e2e/stack-logs}
@@ -54,7 +55,7 @@ wait_for() { # url name pid
 }
 
 # A leftover server on one of our ports would answer the readiness checks in place of the fresh one.
-for port in $API_PORT $WEB_PORT $SSR_PORT $STRIPE_PORT $AI_PORT $OIDC_PORT $SMTP_PORT $SMTP_HTTP_PORT; do
+for port in $API_PORT $WEB_PORT $SSR_PORT $STRIPE_PORT $AI_PORT $OIDC_PORT $OEMBED_PORT $SMTP_PORT $SMTP_HTTP_PORT; do
   if (exec 3<>"/dev/tcp/127.0.0.1/$port") 2>/dev/null; then
     echo "port $port is already in use; stop that process or pick another E2E_PORT_BASE" >&2
     exit 1
@@ -81,6 +82,7 @@ FAKE_STRIPE_PORT=$STRIPE_PORT node e2e/fake-stripe.mjs >"$LOG_DIR/fake-stripe.lo
 FAKE_AI_PORT=$AI_PORT node e2e/fake-anthropic.mjs >"$LOG_DIR/fake-anthropic.log" 2>&1 & PIDS+=($!)
 FAKE_OIDC_PORT=$OIDC_PORT node e2e/fake-oidc.mjs >"$LOG_DIR/fake-oidc.log" 2>&1 & PIDS+=($!)
 SMTP_SINK_PORT=$SMTP_PORT SMTP_SINK_HTTP_PORT=$SMTP_HTTP_PORT node e2e/smtp-sink.mjs >"$LOG_DIR/smtp-sink.log" 2>&1 & PIDS+=($!)
+FAKE_OEMBED_PORT=$OEMBED_PORT node e2e/fake-youtube-oembed.mjs >"$LOG_DIR/fake-oembed.log" 2>&1 & OEMBED_PID=$!; PIDS+=($OEMBED_PID)
 
 (
   export ASPNETCORE_ENVIRONMENT=Development # dev seed admin + migrations; everything security-relevant set below
@@ -103,6 +105,7 @@ SMTP_SINK_PORT=$SMTP_PORT SMTP_SINK_HTTP_PORT=$SMTP_HTTP_PORT node e2e/smtp-sink
   export Sso__RedirectUri=http://localhost:$API_PORT/api/sso/callback
   export Sso__CompletionUrl=http://localhost:$WEB_PORT/sso/complete
   export Sso__AllowInsecureHttp=true
+  export YouTube__OEmbedUrl=http://127.0.0.1:$OEMBED_PORT/oembed
   export Resources__RootPath=$RES_DIR
   export Email__SmtpHost=127.0.0.1 Email__SmtpPort=$SMTP_PORT Email__EnableSsl=false
   export Email__From=no-reply@e2e.mastemy.test Email__PublicBaseUrl=http://localhost:$WEB_PORT Email__PollIntervalSeconds=1
@@ -127,6 +130,7 @@ wait_for "http://localhost:$API_PORT/api/categories" api "$API_PID"
 wait_for "http://localhost:$WEB_PORT/" web "$WEB_PID"
 wait_for "http://localhost:$SSR_PORT/healthz" ssr "$SSR_PID"
 wait_for "http://localhost:$SMTP_HTTP_PORT/messages" smtp-sink "${PIDS[3]}"
+wait_for "http://127.0.0.1:$OEMBED_PORT/healthz" fake-oembed "$OEMBED_PID"
 echo "== stack up: web :$WEB_PORT ssr :$SSR_PORT api :$API_PORT"
 
 # The MFA secret cache belongs to this database; start clean.
