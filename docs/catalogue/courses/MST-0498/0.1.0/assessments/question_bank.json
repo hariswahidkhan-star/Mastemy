@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0498",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0498-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why constrain model output to a defined schema in an extraction pipeline?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Downstream code can rely on a predictable, parseable shape",
+     "correct": true,
+     "rationale": "Correct: a schema makes output structure predictable for downstream consumers."
+    },
+    {
+     "key": "B",
+     "text": "It guarantees the extracted values are factually correct",
+     "correct": false,
+     "rationale": "A schema constrains shape, not factual correctness of values."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need to validate the output",
+     "correct": false,
+     "rationale": "Validation is still needed; models can still deviate or omit fields."
+    },
+    {
+     "key": "D",
+     "text": "It makes the model cheaper per token",
+     "correct": false,
+     "rationale": "Schemas do not change token pricing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a schema makes output structure predictable for downstream consumers.",
+   "outcome_refs": [
+    "MST-0498-01.01"
+   ],
+   "domain_ref": "Defining output schemas",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0498-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A structured response is missing a required field. What is the safe action?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reject or recover from it; do not pass it downstream",
+     "correct": true,
+     "rationale": "Correct: failing validation must stop bad data from propagating."
+    },
+    {
+     "key": "B",
+     "text": "Insert it into the database as-is",
+     "correct": false,
+     "rationale": "Storing invalid data corrupts downstream systems."
+    },
+    {
+     "key": "C",
+     "text": "Assume the field is empty and continue silently",
+     "correct": false,
+     "rationale": "Silently assuming values hides data-quality failures."
+    },
+    {
+     "key": "D",
+     "text": "Disable validation to avoid the error",
+     "correct": false,
+     "rationale": "Disabling validation defeats its purpose."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: failing validation must stop bad data from propagating.",
+   "outcome_refs": [
+    "MST-0498-03.01"
+   ],
+   "domain_ref": "Validating and handling failures",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0498-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices protect consumers when an output schema must change? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Version the schema so old consumers keep working",
+     "correct": true,
+     "rationale": "Correct: versioning avoids breaking existing consumers on a change."
+    },
+    {
+     "key": "B",
+     "text": "Validate output against the correct schema version",
+     "correct": true,
+     "rationale": "Correct: validating per version keeps the contract enforceable."
+    },
+    {
+     "key": "C",
+     "text": "Change the contract silently in place",
+     "correct": false,
+     "rationale": "Silent changes break downstream consumers without warning."
+    },
+    {
+     "key": "D",
+     "text": "Stop validating to speed things up",
+     "correct": false,
+     "rationale": "Dropping validation lets malformed data through."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: versioning avoids breaking existing consumers on a change.",
+   "outcome_refs": [
+    "MST-0498-04.01"
+   ],
+   "domain_ref": "Contracts and safety",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

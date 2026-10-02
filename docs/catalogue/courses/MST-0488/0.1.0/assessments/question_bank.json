@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0488",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0488-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "ChatGPT proposes a fix for a bug you cannot reproduce. What should you do before shipping it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reproduce the bug and confirm the fix resolves it against the real program",
+     "correct": true,
+     "rationale": "Correct: a suggested fix must be verified against the actual failing behaviour before release."
+    },
+    {
+     "key": "B",
+     "text": "Ship it because the explanation sounded convincing",
+     "correct": false,
+     "rationale": "A convincing explanation is not evidence the fix works."
+    },
+    {
+     "key": "C",
+     "text": "Ask the model to rate its own confidence and trust that",
+     "correct": false,
+     "rationale": "Self-reported confidence does not verify real behaviour."
+    },
+    {
+     "key": "D",
+     "text": "Rewrite the whole module to be safe",
+     "correct": false,
+     "rationale": "A large rewrite adds risk and still is not verification."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a suggested fix must be verified against the actual failing behaviour before release.",
+   "outcome_refs": [
+    "MST-0488-04.01"
+   ],
+   "domain_ref": "Verifying and governing AI debugging",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0488-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why ask ChatGPT for a minimal diff rather than a full rewrite when fixing a bug?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A small, scoped change is easier to review and less likely to introduce new defects",
+     "correct": true,
+     "rationale": "Correct: minimal diffs keep review tractable and limit blast radius."
+    },
+    {
+     "key": "B",
+     "text": "Smaller changes always run faster at runtime",
+     "correct": false,
+     "rationale": "Diff size does not determine runtime performance."
+    },
+    {
+     "key": "C",
+     "text": "The model cannot produce large outputs",
+     "correct": false,
+     "rationale": "Models can produce large outputs; that is not the reason."
+    },
+    {
+     "key": "D",
+     "text": "Rewrites are never correct",
+     "correct": false,
+     "rationale": "Rewrites can be correct; the issue is reviewability and risk, not correctness in principle."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: minimal diffs keep review tractable and limit blast radius.",
+   "outcome_refs": [
+    "MST-0488-03.01"
+   ],
+   "domain_ref": "Getting reviewable fixes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0488-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO inputs should be removed before pasting a log into a consumer ChatGPT session? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "API keys and access tokens",
+     "correct": true,
+     "rationale": "Correct: credentials must never be pasted into a consumer chat."
+    },
+    {
+     "key": "B",
+     "text": "Customer personal data",
+     "correct": true,
+     "rationale": "Correct: personal data should be redacted to protect confidentiality and comply with policy."
+    },
+    {
+     "key": "C",
+     "text": "The generic error type name",
+     "correct": false,
+     "rationale": "The error type carries no secret and is needed for diagnosis."
+    },
+    {
+     "key": "D",
+     "text": "The line number of the failure",
+     "correct": false,
+     "rationale": "A line number is not sensitive and helps locate the bug."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: credentials must never be pasted into a consumer chat.",
+   "outcome_refs": [
+    "MST-0488-04.02"
+   ],
+   "domain_ref": "Verifying and governing AI debugging",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

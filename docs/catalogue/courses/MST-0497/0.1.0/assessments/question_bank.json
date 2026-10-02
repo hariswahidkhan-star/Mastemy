@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0497",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 612,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 108,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0497-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How is multi-turn conversation state maintained across Responses API calls?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The application sends the needed prior context (or a state reference) with each request",
+     "correct": true,
+     "rationale": "Correct: the client is responsible for supplying context/state on each call."
+    },
+    {
+     "key": "B",
+     "text": "The API automatically remembers all past calls for your key",
+     "correct": false,
+     "rationale": "State is not implicitly retained for you across independent calls."
+    },
+    {
+     "key": "C",
+     "text": "State is stored in the client's CSS",
+     "correct": false,
+     "rationale": "CSS is unrelated to conversation state."
+    },
+    {
+     "key": "D",
+     "text": "You cannot build multi-turn features at all",
+     "correct": false,
+     "rationale": "Multi-turn features are possible by managing context yourself."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the client is responsible for supplying context/state on each call.",
+   "outcome_refs": [
+    "MST-0497-02.01"
+   ],
+   "domain_ref": "State, streaming and tools",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0497-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which call is unsafe to blindly retry on any error?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A non-idempotent write that creates a record",
+     "correct": true,
+     "rationale": "Correct: retrying a non-idempotent write can create duplicates; it needs idempotency protection."
+    },
+    {
+     "key": "B",
+     "text": "A read that returns the same data each time",
+     "correct": false,
+     "rationale": "Idempotent reads are safe to retry."
+    },
+    {
+     "key": "C",
+     "text": "A health-check ping",
+     "correct": false,
+     "rationale": "A stateless check is safe to retry."
+    },
+    {
+     "key": "D",
+     "text": "Fetching a static config value",
+     "correct": false,
+     "rationale": "A pure read is safe to retry."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: retrying a non-idempotent write can create duplicates; it needs idempotency protection.",
+   "outcome_refs": [
+    "MST-0497-03.01"
+   ],
+   "domain_ref": "Reliability at scale",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0497-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls improve reliability of a production Responses API call? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retry with exponential backoff on transient errors",
+     "correct": true,
+     "rationale": "Correct: backoff handles transient failures without hammering the API."
+    },
+    {
+     "key": "B",
+     "text": "Set a request timeout so a hung call fails fast",
+     "correct": true,
+     "rationale": "Correct: timeouts prevent indefinite waits and resource exhaustion."
+    },
+    {
+     "key": "C",
+     "text": "Remove all logging to save space",
+     "correct": false,
+     "rationale": "Removing logging harms diagnosability and reliability."
+    },
+    {
+     "key": "D",
+     "text": "Retry non-idempotent writes unconditionally",
+     "correct": false,
+     "rationale": "Unconditional retry of writes risks duplicate side effects."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: backoff handles transient failures without hammering the API.",
+   "outcome_refs": [
+    "MST-0497-03.01"
+   ],
+   "domain_ref": "Reliability at scale",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

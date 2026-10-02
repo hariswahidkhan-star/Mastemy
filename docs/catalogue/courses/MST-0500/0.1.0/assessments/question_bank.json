@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0500",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0500-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of a handoff between agents in an orchestrated workflow?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To pass a request to a more suitable specialised agent to continue the work",
+     "correct": true,
+     "rationale": "Correct: a handoff routes work to the agent best suited to it."
+    },
+    {
+     "key": "B",
+     "text": "To delete the conversation history",
+     "correct": false,
+     "rationale": "A handoff transfers work; it does not erase history."
+    },
+    {
+     "key": "C",
+     "text": "To switch to a cheaper billing plan",
+     "correct": false,
+     "rationale": "Handoffs are about routing, not billing."
+    },
+    {
+     "key": "D",
+     "text": "To disable guardrails",
+     "correct": false,
+     "rationale": "Handoffs do not remove guardrails."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a handoff routes work to the agent best suited to it.",
+   "outcome_refs": [
+    "MST-0500-02.01"
+   ],
+   "domain_ref": "Handoffs and routing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0500-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is a single-agent design preferable to multiple agents?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When the task is cohesive and multiple agents would add needless complexity",
+     "correct": true,
+     "rationale": "Correct: use the simplest design that meets the need; extra agents add overhead."
+    },
+    {
+     "key": "B",
+     "text": "Always, because multiple agents never work",
+     "correct": false,
+     "rationale": "Multiple agents are valuable for genuinely distinct responsibilities."
+    },
+    {
+     "key": "C",
+     "text": "Never, because more agents is always better",
+     "correct": false,
+     "rationale": "More agents is not inherently better and can add complexity."
+    },
+    {
+     "key": "D",
+     "text": "Only when the newest model is used",
+     "correct": false,
+     "rationale": "Model version does not decide single vs multi-agent design."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: use the simplest design that meets the need; extra agents add overhead.",
+   "outcome_refs": [
+    "MST-0500-01.02"
+   ],
+   "domain_ref": "Agents SDK foundations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0500-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls should be in place before releasing an orchestrated multi-agent workflow? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tracing so each step and handoff can be diagnosed",
+     "correct": true,
+     "rationale": "Correct: tracing is essential to understand and debug orchestrated runs."
+    },
+    {
+     "key": "B",
+     "text": "Tests that verify requests route to the correct agent",
+     "correct": true,
+     "rationale": "Correct: routing/handoff tests confirm the orchestration behaves as designed."
+    },
+    {
+     "key": "C",
+     "text": "Removing all guardrails to simplify the flow",
+     "correct": false,
+     "rationale": "Removing guardrails increases risk."
+    },
+    {
+     "key": "D",
+     "text": "Letting any agent perform any action",
+     "correct": false,
+     "rationale": "Unbounded agent actions undermine safety and scope control."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: tracing is essential to understand and debug orchestrated runs.",
+   "outcome_refs": [
+    "MST-0500-04.02"
+   ],
+   "domain_ref": "Tracing and testing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

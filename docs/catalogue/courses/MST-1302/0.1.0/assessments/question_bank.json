@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1302",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 612,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 54,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 600-1,500+ for large certifications (associate-level sits at the lower end)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1302-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why are GPUs widely used to accelerate deep-learning training compared with CPUs alone?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They provide massive parallelism well suited to the matrix operations in neural networks",
+     "correct": true,
+     "rationale": "Correct: GPUs excel at the highly parallel matrix/tensor math that dominates deep-learning training."
+    },
+    {
+     "key": "B",
+     "text": "They store far more long-term data than any CPU system",
+     "correct": false,
+     "rationale": "Acceleration comes from parallel compute, not from storage capacity."
+    },
+    {
+     "key": "C",
+     "text": "They remove the need for any networking in a cluster",
+     "correct": false,
+     "rationale": "Networking remains essential in multi-GPU and multi-node training."
+    },
+    {
+     "key": "D",
+     "text": "They make all training finish in a fixed one second",
+     "correct": false,
+     "rationale": "No hardware guarantees a fixed training time; this is not how acceleration works."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GPUs excel at the highly parallel matrix/tensor math that dominates deep-learning training.",
+   "outcome_refs": [
+    "MST-1302-M01.02"
+   ],
+   "domain_ref": "AI infrastructure foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1302-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model trains successfully in a notebook. Why is the AI workflow not yet complete?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The model still needs deployment, monitoring and lifecycle management in operation",
+     "correct": true,
+     "rationale": "Correct: a trained model must be deployed and operated with monitoring to deliver value."
+    },
+    {
+     "key": "B",
+     "text": "Training success means the workflow is finished",
+     "correct": false,
+     "rationale": "Training is one stage; deployment and operations follow."
+    },
+    {
+     "key": "C",
+     "text": "Notebooks cannot train models at all",
+     "correct": false,
+     "rationale": "Notebooks can train models; the point is later stages remain."
+    },
+    {
+     "key": "D",
+     "text": "Monitoring only applies before training",
+     "correct": false,
+     "rationale": "Monitoring is central after deployment, not only before training."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a trained model must be deployed and operated with monitoring to deliver value.",
+   "outcome_refs": [
+    "MST-1302-M02.01"
+   ],
+   "domain_ref": "GPU-accelerated AI operations workflow",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1302-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors most favour an on-premises GPU deployment over public cloud for a workload? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Strict data-residency or regulatory constraints on where data may run",
+     "correct": true,
+     "rationale": "Correct: data-residency/regulatory limits often push workloads on-prem."
+    },
+    {
+     "key": "B",
+     "text": "Sustained, highly predictable utilisation over a long period",
+     "correct": true,
+     "rationale": "Correct: steady high utilisation can make owned hardware more cost-effective than metered cloud."
+    },
+    {
+     "key": "C",
+     "text": "Highly variable, short-lived bursts of demand",
+     "correct": false,
+     "rationale": "Bursty, short-lived demand typically favours elastic cloud capacity."
+    },
+    {
+     "key": "D",
+     "text": "A need to avoid any capital expenditure",
+     "correct": false,
+     "rationale": "Avoiding capex favours cloud's operating-expense model, not on-prem."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: data-residency/regulatory limits often push workloads on-prem.",
+   "outcome_refs": [
+    "MST-1302-M03.02"
+   ],
+   "domain_ref": "AI data centre and deployment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

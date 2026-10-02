@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0493",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0493-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workflow uses ChatGPT to draft and then send customer emails automatically. What control most reduces risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A human approval checkpoint before any email is sent",
+     "correct": true,
+     "rationale": "Correct: a human gate before an irreversible external action limits the impact of errors."
+    },
+    {
+     "key": "B",
+     "text": "Using a longer system prompt",
+     "correct": false,
+     "rationale": "Prompt length does not control an irreversible action."
+    },
+    {
+     "key": "C",
+     "text": "Sending from the newest model",
+     "correct": false,
+     "rationale": "Model version does not add an approval control."
+    },
+    {
+     "key": "D",
+     "text": "Increasing the sending rate limit",
+     "correct": false,
+     "rationale": "Raising limits increases, not reduces, risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a human gate before an irreversible external action limits the impact of errors.",
+   "outcome_refs": [
+    "MST-0493-02.02"
+   ],
+   "domain_ref": "Designing connected workflows",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0493-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which connector configuration best follows least privilege for a summarisation task over one project folder?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read-only access scoped to that single folder",
+     "correct": true,
+     "rationale": "Correct: read-only, narrowly scoped access grants only what the task needs."
+    },
+    {
+     "key": "B",
+     "text": "Full read-write access to the entire drive",
+     "correct": false,
+     "rationale": "This grants far more than the task requires."
+    },
+    {
+     "key": "C",
+     "text": "Admin access to the whole workspace",
+     "correct": false,
+     "rationale": "Workspace admin is grossly over-privileged for summarisation."
+    },
+    {
+     "key": "D",
+     "text": "Write access to all folders",
+     "correct": false,
+     "rationale": "Write access is unnecessary and risky for a read task."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: read-only, narrowly scoped access grants only what the task needs.",
+   "outcome_refs": [
+    "MST-0493-01.02"
+   ],
+   "domain_ref": "Connecting apps",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0493-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce standing risk from connected apps over time? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Monitor connected-action activity",
+     "correct": true,
+     "rationale": "Correct: monitoring surfaces misuse or anomalies in connected actions."
+    },
+    {
+     "key": "B",
+     "text": "Revoke connector access when it is no longer needed",
+     "correct": true,
+     "rationale": "Correct: removing unused access reduces the standing attack surface."
+    },
+    {
+     "key": "C",
+     "text": "Keep every connector authorised permanently",
+     "correct": false,
+     "rationale": "Permanent authorisation grows standing risk."
+    },
+    {
+     "key": "D",
+     "text": "Grant write access by default to save time",
+     "correct": false,
+     "rationale": "Default write access increases risk and violates least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: monitoring surfaces misuse or anomalies in connected actions.",
+   "outcome_refs": [
+    "MST-0493-04.02"
+   ],
+   "domain_ref": "Monitoring and revocation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

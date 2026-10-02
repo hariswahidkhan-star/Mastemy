@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0499",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 408,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0499-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before executing a function call the model requested, what must the application do with the arguments?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate them against the expected schema and permitted values",
+     "correct": true,
+     "rationale": "Correct: arguments must be validated before any execution, especially for sensitive actions."
+    },
+    {
+     "key": "B",
+     "text": "Execute them immediately without checks",
+     "correct": false,
+     "rationale": "Executing unvalidated arguments is unsafe."
+    },
+    {
+     "key": "C",
+     "text": "Email them to the user",
+     "correct": false,
+     "rationale": "Emailing arguments is irrelevant and risky."
+    },
+    {
+     "key": "D",
+     "text": "Ignore them and run a default",
+     "correct": false,
+     "rationale": "Ignoring requested arguments breaks the feature."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: arguments must be validated before any execution, especially for sensitive actions.",
+   "outcome_refs": [
+    "MST-0499-03.01"
+   ],
+   "domain_ref": "Safe execution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0499-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What makes the model more likely to call a tool with correct parameters?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A clear function description and a precise parameter schema",
+     "correct": true,
+     "rationale": "Correct: clear descriptions and schemas guide correct tool calls."
+    },
+    {
+     "key": "B",
+     "text": "A longer system prompt full of adjectives",
+     "correct": false,
+     "rationale": "Verbose adjectives do not clarify the tool's contract."
+    },
+    {
+     "key": "C",
+     "text": "Using the newest model only",
+     "correct": false,
+     "rationale": "Model version does not replace a clear tool definition."
+    },
+    {
+     "key": "D",
+     "text": "Hiding the parameters from the model",
+     "correct": false,
+     "rationale": "The model cannot fill parameters it was not told about."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: clear descriptions and schemas guide correct tool calls.",
+   "outcome_refs": [
+    "MST-0499-01.02"
+   ],
+   "domain_ref": "Defining tools",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0499-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls make a refund tool safe to expose via function calling? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Permission the tool to a maximum refund amount",
+     "correct": true,
+     "rationale": "Correct: bounding the action limits damage from an erroneous call."
+    },
+    {
+     "key": "B",
+     "text": "Audit every tool call and its outcome",
+     "correct": true,
+     "rationale": "Correct: auditing provides traceability for sensitive actions."
+    },
+    {
+     "key": "C",
+     "text": "Let the model refund any amount with no limit",
+     "correct": false,
+     "rationale": "Unbounded refunds are a serious risk."
+    },
+    {
+     "key": "D",
+     "text": "Skip validation to reduce latency",
+     "correct": false,
+     "rationale": "Skipping validation enables unsafe executions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: bounding the action limits damage from an erroneous call.",
+   "outcome_refs": [
+    "MST-0499-04.02"
+   ],
+   "domain_ref": "Errors and auditing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
