@@ -15,6 +15,7 @@ public static class ModuleRegistration
         Enterprise.EnterpriseModule.Add(s, cfg);
         Resources.ResourcesModule.Add(s, cfg);
         Ai.AiModule.Add(s, cfg);
+        Account.AccountModule.Add(s, cfg);
         return s;
     }
 }

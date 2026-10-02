@@ -8,5 +8,12 @@ public static class IdentityModule
         s.AddScoped<AuthService>();
         s.AddScoped<AdminService>();
         s.AddScoped<OnboardingService>();
+        s.AddSingleton<AccessTokenFactory>();
+        s.AddScoped<EmailVerificationService>();
+        s.AddScoped<PasswordService>();
+        s.AddScoped<MfaService>();
+        s.AddScoped<SessionService>();
+        // Global MVC filter: restricted MFA-enrollment tokens and MFA enforcement for privileged roles (spec §21).
+        s.Configure<Microsoft.AspNetCore.Mvc.MvcOptions>(o => o.Filters.Add<MfaEnforcementFilter>());
     }
 }

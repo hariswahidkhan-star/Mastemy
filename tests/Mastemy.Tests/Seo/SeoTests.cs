@@ -21,6 +21,7 @@ public sealed class SeoFixture : IAsyncLifetime
         {
             b.UseSetting("ConnectionStrings:Default", conn);
             b.UseSetting("Jwt:Key", "seo-tests-signing-key-0123456789-abcdefghijklmnopqrs");
+            b.UseSetting("Security:RequireMfaForPrivileged", "false");
             b.UseSetting("Database:MigrateOnStartup", "false");
             b.UseSetting("Seed:Enabled", "false");
             b.UseSetting("Seo:PublicBaseUrl", baseUrl ?? "");

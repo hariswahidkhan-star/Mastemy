@@ -34,6 +34,7 @@ public sealed class CatalogFixture : IAsyncLifetime
         {
             b.UseSetting("ConnectionStrings:Default", conn);
             b.UseSetting("Jwt:Key", "catalog-tests-signing-key-0123456789-abcdefghijklmnop");
+            b.UseSetting("Security:RequireMfaForPrivileged", "false");
             b.UseSetting("Database:MigrateOnStartup", "false");
             b.UseSetting("Seed:Enabled", "false");
         });

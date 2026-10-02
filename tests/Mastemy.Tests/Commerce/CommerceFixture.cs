@@ -67,6 +67,7 @@ public class CommerceFixture : IAsyncLifetime
             b.UseEnvironment("Testing");
             b.UseSetting("ConnectionStrings:Default", ConnectionString);
             b.UseSetting("Jwt:Key", "test-signing-key-0123456789abcdef0123456789abcdef");
+            b.UseSetting("Security:RequireMfaForPrivileged", "false");
             b.UseSetting("Database:MigrateOnStartup", "false");
             b.UseSetting("Stripe:SecretKey", stripeConfigured ? SecretKey : "");
             b.UseSetting("Stripe:WebhookSecret", stripeConfigured ? WebhookSecret : "");

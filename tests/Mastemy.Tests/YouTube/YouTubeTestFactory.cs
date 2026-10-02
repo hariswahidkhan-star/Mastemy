@@ -185,6 +185,7 @@ public class YouTubeTestFactory : WebApplicationFactory<Program>
         {
             ["ConnectionStrings:Default"] = $"server=localhost;port=3306;database={DbName};user=mastemy;password=mastemy_dev_pw",
             ["Jwt:Key"] = "test-signing-key-that-is-long-enough-0123456789",
+            ["Security:RequireMfaForPrivileged"] = "false",
             ["Database:MigrateOnStartup"] = "false",
             ["YouTube:ApiKey"] = apiKey ? "fake-api-key" : "",
             ["YouTube:OAuthClientId"] = oauth ? "client-id" : "",

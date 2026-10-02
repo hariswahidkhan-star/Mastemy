@@ -20,6 +20,7 @@ public class EnterpriseFixture : IAsyncLifetime
             b.UseEnvironment("Testing");
             b.UseSetting("ConnectionStrings:Default", $"Server=localhost;Port=3306;Database={DbName};User=mastemy;Password=mastemy_dev_pw;");
             b.UseSetting("Jwt:Key", "test-signing-key-0123456789abcdef0123456789abcdef");
+            b.UseSetting("Security:RequireMfaForPrivileged", "false");
             b.UseSetting("Database:MigrateOnStartup", "false");
         });
         await Db(d => d.Database.EnsureCreatedAsync());

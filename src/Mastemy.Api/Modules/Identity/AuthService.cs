@@ -1,11 +1,13 @@
 using Mastemy.Api.Data;
 using Mastemy.Api.Domain;
 using Mastemy.Api.Infrastructure;
+using Mastemy.Api.Modules.Engagement;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mastemy.Api.Modules.Identity;
 
-public class AuthService(AppDbContext db, JwtIssuer jwt, JwtOptions opt, AuditService audit, LoginEmailRateLimiter emailLimiter)
+public class AuthService(AppDbContext db, AccessTokenFactory jwt, JwtOptions opt, AuditService audit, LoginEmailRateLimiter emailLimiter,
+    IHttpContextAccessor http, IConfiguration cfg, EmailVerificationService verification)
 {
     /// <summary>Failures tolerated before per-account exponential backoff starts.</summary>
     public const int BackoffThreshold = 5;
@@ -50,7 +52,10 @@ public class AuthService(AppDbContext db, JwtIssuer jwt, JwtOptions opt, AuditSe
             // Lost a race with a concurrent registration for the same email (unique index).
             throw AppException.Conflict("An account with this email already exists.", "email_taken");
         }
-        return await IssueTokens(user, Guid.NewGuid());
+        // Registration never depends on email delivery: when SMTP is not configured the account stays unverified and
+        // staff can resend or mark it verified (GET /api/admin/users shows the state).
+        await verification.TrySend(user);
+        return await IssueTokens(user, Guid.NewGuid(), false);
     }
 
     public async Task<AuthResponse> Login(LoginRequest req)
@@ -89,7 +94,25 @@ public class AuthService(AppDbContext db, JwtIssuer jwt, JwtOptions opt, AuditSe
 
         user.FailedLoginCount = 0;
         user.LockoutUntil = null;
-        return await IssueTokens(user, Guid.NewGuid());
+
+        var sec = await db.Set<UserSecurity>().AsNoTracking().FirstOrDefaultAsync(s => s.UserId == user.Id);
+        if (sec?.MfaEnabledAt is not null)
+        {
+            var raw = Tokens.Random(32);
+            db.Set<MfaChallenge>().Add(new MfaChallenge
+            {
+                UserId = user.Id, TokenHash = Tokens.Sha256(raw), ExpiresAt = now.Add(MfaChallengeLifetime),
+            });
+            await db.SaveChangesAsync();
+            return new AuthResponse(null, null, null, UserDto.From(user, sec), LoginStatus.MfaRequired, raw);
+        }
+        if (SecurityOptions.RequireMfaForPrivileged(cfg) && SecurityClaims.IsPrivileged(user.Roles.Select(r => r.Role)))
+        {
+            await db.SaveChangesAsync();
+            return new AuthResponse(jwt.IssueEnrollmentToken(user), null, now.Add(AccessTokenFactory.EnrollmentTokenLifetime),
+                UserDto.From(user, sec), LoginStatus.MfaEnrollmentRequired);
+        }
+        return await IssueTokens(user, Guid.NewGuid(), false);
     }
 
     public async Task<AuthResponse> Refresh(RefreshRequest req)
@@ -121,8 +144,10 @@ public class AuthService(AppDbContext db, JwtIssuer jwt, JwtOptions opt, AuditSe
             await RevokeAllForUser(token.UserId);
             throw Unauthorized(InvalidRefresh, "invalid_refresh_token");
         }
-        var res = await IssueTokens(user, token.FamilyId, token.Id);
-        return res;
+        var session = await db.Set<AuthSession>().FirstOrDefaultAsync(x => x.FamilyId == token.FamilyId);
+        if (session is not null) { session.LastUsedAt = now; session.LastIpAddress = Ip(); }
+        // A privileged user may not keep refreshing a session that was not MFA-authenticated once MFA is required.
+        return await IssueTokens(user, token.FamilyId, session?.MfaAuthenticated ?? false, token.Id);
     }
 
     public async Task Logout(RefreshRequest req)
@@ -140,15 +165,32 @@ public class AuthService(AppDbContext db, JwtIssuer jwt, JwtOptions opt, AuditSe
     {
         var user = await db.Users.AsNoTracking().Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == userId)
                    ?? throw AppException.NotFound("User");
-        return UserDto.From(user);
+        var sec = await db.Set<UserSecurity>().AsNoTracking().FirstOrDefaultAsync(s => s.UserId == userId);
+        return UserDto.From(user, sec);
     }
 
     public Task RevokeAllForUser(Guid userId) =>
         db.RefreshTokens.Where(t => t.UserId == userId && t.RevokedAt == null)
             .ExecuteUpdateAsync(s => s.SetProperty(t => t.RevokedAt, DateTime.UtcNow));
 
-    private async Task<AuthResponse> IssueTokens(User user, Guid familyId, Guid? replacing = null)
+    public static readonly TimeSpan MfaChallengeLifetime = TimeSpan.FromMinutes(5);
+
+    /// <summary>Starts a new session (refresh-token family) for an authenticated user.</summary>
+    public Task<AuthResponse> StartSession(User user, bool mfa) => IssueTokens(user, Guid.NewGuid(), mfa);
+
+    private string Ip() => Trunc(http.HttpContext?.Connection.RemoteIpAddress?.ToString() ?? "", 64);
+    private static string Trunc(string s, int n) => s.Length > n ? s[..n] : s;
+
+    private async Task<AuthResponse> IssueTokens(User user, Guid familyId, bool mfa, Guid? replacing = null)
     {
+        if (replacing is null)
+        {
+            db.Set<AuthSession>().Add(new AuthSession
+            {
+                FamilyId = familyId, UserId = user.Id, MfaAuthenticated = mfa,
+                UserAgent = Trunc(http.HttpContext?.Request.Headers.UserAgent.ToString() ?? "", 512), IpAddress = Ip(), LastIpAddress = Ip(),
+            });
+        }
         var raw = Tokens.Random(48);
         var rt = new RefreshToken
         {
@@ -159,8 +201,9 @@ public class AuthService(AppDbContext db, JwtIssuer jwt, JwtOptions opt, AuditSe
         await db.SaveChangesAsync();
         if (replacing is { } oldId)
             await db.RefreshTokens.Where(t => t.Id == oldId).ExecuteUpdateAsync(s => s.SetProperty(t => t.ReplacedById, rt.Id));
-        var access = jwt.Issue(user);
-        return new AuthResponse(access, raw, DateTime.UtcNow.AddMinutes(opt.AccessTokenMinutes), UserDto.From(user));
+        var access = jwt.Issue(user, familyId, mfa);
+        var sec = await db.Set<UserSecurity>().AsNoTracking().FirstOrDefaultAsync(s => s.UserId == user.Id);
+        return new AuthResponse(access, raw, DateTime.UtcNow.AddMinutes(opt.AccessTokenMinutes), UserDto.From(user, sec));
     }
 
     private static readonly string DummyHash = PasswordHasher.Hash(Tokens.Random(16));

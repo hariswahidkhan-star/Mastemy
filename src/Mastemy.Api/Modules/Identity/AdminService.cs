@@ -20,7 +20,9 @@ public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, 
         var total = await query.CountAsync();
         var items = await query.OrderBy(u => u.NormalizedEmail).Skip((page - 1) * pageSize).Take(pageSize)
             .Include(u => u.Roles).ToListAsync();
-        return new(items.Select(ToDto).ToList(), total, page, pageSize);
+        var ids = items.Select(u => u.Id).ToList();
+        var sec = await db.Set<UserSecurity>().AsNoTracking().Where(s => ids.Contains(s.UserId)).ToDictionaryAsync(s => s.UserId);
+        return new(items.Select(u => ToDto(u, sec.GetValueOrDefault(u.Id))).ToList(), total, page, pageSize);
     }
 
     public async Task<AdminUserDto> SetRoles(Guid userId, SetRolesRequest req)
@@ -35,12 +37,23 @@ public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, 
 
         var user = await db.Users.Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == userId) ?? throw AppException.NotFound("User");
         var old = user.Roles.Select(r => r.Role).OrderBy(r => r).ToArray();
+        var sec = await db.Set<UserSecurity>().AsNoTracking().FirstOrDefaultAsync(s => s.UserId == userId);
+        var addedPrivileged = wanted.Where(r => SecurityClaims.PrivilegedRoles.Contains(r) && !old.Contains(r)).ToArray();
+        if (addedPrivileged.Length > 0 && !EmailVerificationService.IsVerified(user, sec))
+            throw AppException.Conflict($"The user's email address must be verified before granting {string.Join(", ", addedPrivileged)}.", "email_not_verified");
         foreach (var r in user.Roles.Where(r => !wanted.Contains(r.Role)).ToList()) user.Roles.Remove(r);
         foreach (var r in wanted.Where(r => user.Roles.All(x => x.Role != r))) user.Roles.Add(new UserRole { UserId = user.Id, Role = r });
         var @new = user.Roles.Select(r => r.Role).OrderBy(r => r).ToArray();
         audit.Record("user.roles_changed", "User", user.Id, new { old, @new });
         await db.SaveChangesAsync();
-        return ToDto(user);
+        return ToDto(user, sec);
+    }
+
+    public async Task<AdminUserDto> Get(Guid userId)
+    {
+        var user = await db.Users.AsNoTracking().Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == userId) ?? throw AppException.NotFound("User");
+        var sec = await db.Set<UserSecurity>().AsNoTracking().FirstOrDefaultAsync(s => s.UserId == userId);
+        return ToDto(user, sec);
     }
 
     public async Task<AdminUserDto> Suspend(Guid userId, SuspendRequest req)
@@ -57,7 +70,7 @@ public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, 
             await db.SaveChangesAsync();
         }
         if (suspended) await auth.RevokeAllForUser(user.Id);
-        return ToDto(user);
+        return ToDto(user, await db.Set<UserSecurity>().AsNoTracking().FirstOrDefaultAsync(s => s.UserId == userId));
     }
 
     public async Task<PagedResult<AuditLogDto>> Audit(string? entityType, int page, int pageSize)
@@ -72,6 +85,7 @@ public class AdminService(AppDbContext db, AuditService audit, ICurrentUser me, 
         return new(items, total, page, pageSize);
     }
 
-    private static AdminUserDto ToDto(User u) => new(u.Id, u.Email, u.DisplayName, u.PreferredLanguage,
-        u.Roles.Select(r => r.Role).OrderBy(r => r, StringComparer.Ordinal).ToArray(), u.IsSuspended, u.LockoutUntil, u.CreatedAt);
+    private static AdminUserDto ToDto(User u, UserSecurity? sec) => new(u.Id, u.Email, u.DisplayName, u.PreferredLanguage,
+        u.Roles.Select(r => r.Role).OrderBy(r => r, StringComparer.Ordinal).ToArray(), u.IsSuspended, u.LockoutUntil, u.CreatedAt,
+        EmailVerificationService.IsVerified(u, sec), sec?.MfaEnabledAt is not null);
 }
