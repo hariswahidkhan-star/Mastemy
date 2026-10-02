@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1652",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1652-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A denial-of-service attack makes a website unavailable to users. Which part of the CIA triad does it primarily attack?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Availability",
+     "correct": true,
+     "rationale": "Correct: a denial-of-service attack targets availability by blocking legitimate access."
+    },
+    {
+     "key": "B",
+     "text": "Confidentiality",
+     "correct": false,
+     "rationale": "Confidentiality concerns unauthorised disclosure, not availability."
+    },
+    {
+     "key": "C",
+     "text": "Integrity",
+     "correct": false,
+     "rationale": "Integrity concerns unauthorised modification, not access being blocked."
+    },
+    {
+     "key": "D",
+     "text": "Authentication",
+     "correct": false,
+     "rationale": "Authentication is a control, not one of the three CIA properties."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a denial-of-service attack targets availability by blocking legitimate access.",
+   "outcome_refs": [
+    "MST-1652-D01.01"
+   ],
+   "domain_ref": "Core security concepts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1652-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which of the following are strong defences against account takeover? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Enabling multi-factor authentication",
+     "correct": true,
+     "rationale": "Correct: MFA blocks most attacks that rely on a stolen password alone."
+    },
+    {
+     "key": "B",
+     "text": "Using unique passwords stored in a password manager",
+     "correct": true,
+     "rationale": "Correct: unique passwords stop one breach from unlocking many accounts."
+    },
+    {
+     "key": "C",
+     "text": "Reusing one strong password everywhere for convenience",
+     "correct": false,
+     "rationale": "Reuse means one breach compromises every account."
+    },
+    {
+     "key": "D",
+     "text": "Emailing the password to yourself as a backup",
+     "correct": false,
+     "rationale": "Email is not a secure store and can itself be compromised."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: MFA blocks most attacks that rely on a stolen password alone.",
+   "outcome_refs": [
+    "MST-1652-D03.01"
+   ],
+   "domain_ref": "Protecting identity and data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1652-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do offline or immutable backups specifically help against ransomware?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They cannot be encrypted or deleted by malware that reaches the live network",
+     "correct": true,
+     "rationale": "Correct: backups the attacker cannot reach allow recovery without paying."
+    },
+    {
+     "key": "B",
+     "text": "They make the network faster",
+     "correct": false,
+     "rationale": "Backup type does not affect network speed and is unrelated to the threat."
+    },
+    {
+     "key": "C",
+     "text": "They stop phishing emails from arriving",
+     "correct": false,
+     "rationale": "Backups aid recovery; they do not block the initial phishing vector."
+    },
+    {
+     "key": "D",
+     "text": "They encrypt all user passwords",
+     "correct": false,
+     "rationale": "Backups store data copies; they do not manage passwords."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: backups the attacker cannot reach allow recovery without paying.",
+   "outcome_refs": [
+    "MST-1652-D05.01"
+   ],
+   "domain_ref": "Operations, response and governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

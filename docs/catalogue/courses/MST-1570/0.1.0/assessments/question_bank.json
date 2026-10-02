@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1570",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 338,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1570-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In test-driven development, what do you do FIRST when adding a new behaviour?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Write a failing test that describes the new behaviour",
+     "correct": true,
+     "rationale": "Correct: TDD starts with a failing (red) test before any implementation."
+    },
+    {
+     "key": "B",
+     "text": "Write the implementation, then a test to confirm it",
+     "correct": false,
+     "rationale": "That is test-after, not test-driven development."
+    },
+    {
+     "key": "C",
+     "text": "Refactor the existing code",
+     "correct": false,
+     "rationale": "Refactoring is the last step of the cycle, after the test passes."
+    },
+    {
+     "key": "D",
+     "text": "Delete the old tests",
+     "correct": false,
+     "rationale": "Existing tests are kept; TDD adds a new failing test."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: TDD starts with a failing (red) test before any implementation.",
+   "outcome_refs": [
+    "MST-1570-D03.01"
+   ],
+   "domain_ref": "Test-driven development",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1570-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which are properties of a good unit test? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It runs fast and in isolation from other tests",
+     "correct": true,
+     "rationale": "Correct: fast, isolated tests are central to the F.I.R.S.T. properties."
+    },
+    {
+     "key": "B",
+     "text": "It fails for one clear reason",
+     "correct": true,
+     "rationale": "Correct: a focused test points to a single cause when it fails."
+    },
+    {
+     "key": "C",
+     "text": "It depends on the order other tests run in",
+     "correct": false,
+     "rationale": "Order dependence makes tests fragile and is undesirable."
+    },
+    {
+     "key": "D",
+     "text": "It calls the real external payment API every run",
+     "correct": false,
+     "rationale": "Calling real external services makes tests slow and unreliable; use a double."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fast, isolated tests are central to the F.I.R.S.T. properties.",
+   "outcome_refs": [
+    "MST-1570-D02.02"
+   ],
+   "domain_ref": "Writing good unit tests",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1570-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A test replaces a slow external service with an object that returns canned data so the unit can be tested in isolation. What is this called?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A stub",
+     "correct": true,
+     "rationale": "Correct: a stub supplies canned responses to isolate the unit under test."
+    },
+    {
+     "key": "B",
+     "text": "A production adapter",
+     "correct": false,
+     "rationale": "An adapter is real integration code, not a test double."
+    },
+    {
+     "key": "C",
+     "text": "A coverage report",
+     "correct": false,
+     "rationale": "Coverage measures executed lines; it is not a test double."
+    },
+    {
+     "key": "D",
+     "text": "A refactor",
+     "correct": false,
+     "rationale": "Refactoring changes structure without changing behaviour; it is not a test double."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a stub supplies canned responses to isolate the unit under test.",
+   "outcome_refs": [
+    "MST-1570-D04.01"
+   ],
+   "domain_ref": "Isolation and test doubles",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

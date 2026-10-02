@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1523",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 422,
+  "lesson_check_items": 60,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1523-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does comparing two String variables with == sometimes give an unexpected result in Java?",
+   "options": [
+    {
+     "key": "A",
+     "text": "== compares object references, not the character contents",
+     "correct": true,
+     "rationale": "Correct: == tests reference identity; equals compares the character contents."
+    },
+    {
+     "key": "B",
+     "text": "== is not a valid operator for any type in Java",
+     "correct": false,
+     "rationale": "== is valid; it compares references for objects and values for primitives."
+    },
+    {
+     "key": "C",
+     "text": "Strings cannot be compared in Java at all",
+     "correct": false,
+     "rationale": "Strings can be compared, using equals or compareTo."
+    },
+    {
+     "key": "D",
+     "text": "== automatically converts both Strings to integers",
+     "correct": false,
+     "rationale": "No such conversion happens; == does not parse Strings."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: == tests reference identity; equals compares the character contents.",
+   "outcome_refs": [
+    "MST-1523-D02.02"
+   ],
+   "domain_ref": "Types, variables and operators",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1523-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about Java methods are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A method can be overloaded by changing its parameter list",
+     "correct": true,
+     "rationale": "Correct: overloading distinguishes methods by their parameter lists."
+    },
+    {
+     "key": "B",
+     "text": "Primitive arguments are passed by value, so the method gets a copy",
+     "correct": true,
+     "rationale": "Correct: primitives are copied, so changes inside the method do not affect the caller's variable."
+    },
+    {
+     "key": "C",
+     "text": "A void method must return a value",
+     "correct": false,
+     "rationale": "A void method returns nothing by definition."
+    },
+    {
+     "key": "D",
+     "text": "Two methods with the same name and same parameters are allowed",
+     "correct": false,
+     "rationale": "Methods must differ in name or parameter list; identical signatures clash."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: overloading distinguishes methods by their parameter lists.",
+   "outcome_refs": [
+    "MST-1523-D03.02"
+   ],
+   "domain_ref": "Control flow and methods",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1523-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A checked exception in Java must be either caught or declared. What does this mean for a method that calls code throwing IOException?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The method must catch IOException or declare it with throws",
+     "correct": true,
+     "rationale": "Correct: checked exceptions must be handled or declared in the method signature."
+    },
+    {
+     "key": "B",
+     "text": "The method will not compile under any circumstances",
+     "correct": false,
+     "rationale": "It compiles once the exception is caught or declared."
+    },
+    {
+     "key": "C",
+     "text": "IOException is ignored automatically at runtime",
+     "correct": false,
+     "rationale": "Checked exceptions are not ignored; the compiler enforces handling."
+    },
+    {
+     "key": "D",
+     "text": "The method must convert it to a RuntimeException first",
+     "correct": false,
+     "rationale": "Conversion is optional, not required, to satisfy the compiler."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: checked exceptions must be handled or declared in the method signature.",
+   "outcome_refs": [
+    "MST-1523-D05.01"
+   ],
+   "domain_ref": "Exceptions, inheritance and tooling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

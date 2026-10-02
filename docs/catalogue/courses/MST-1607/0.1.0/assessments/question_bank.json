@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1607",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 304,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 20,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1607-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Without an ORDER BY clause, what can you assume about the order of rows a SELECT returns?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Nothing is guaranteed; the order is undefined",
+     "correct": true,
+     "rationale": "Correct: result order is not guaranteed unless you specify ORDER BY."
+    },
+    {
+     "key": "B",
+     "text": "Rows always come back in primary-key order",
+     "correct": false,
+     "rationale": "Primary-key order is not guaranteed by the standard."
+    },
+    {
+     "key": "C",
+     "text": "Rows come back in insertion order",
+     "correct": false,
+     "rationale": "Insertion order is not guaranteed without ORDER BY."
+    },
+    {
+     "key": "D",
+     "text": "Rows are always alphabetical",
+     "correct": false,
+     "rationale": "There is no implicit alphabetical ordering."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: result order is not guaranteed unless you specify ORDER BY.",
+   "outcome_refs": [
+    "MST-1607-D01.02"
+   ],
+   "domain_ref": "Databases and basic queries",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1607-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about GROUP BY are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Non-aggregated columns in the SELECT generally must appear in the GROUP BY",
+     "correct": true,
+     "rationale": "Correct: columns not wrapped in an aggregate must be grouped on in standard SQL."
+    },
+    {
+     "key": "B",
+     "text": "HAVING filters groups after aggregation",
+     "correct": true,
+     "rationale": "Correct: HAVING applies conditions to the grouped, aggregated rows."
+    },
+    {
+     "key": "C",
+     "text": "GROUP BY sorts the final result set for you",
+     "correct": false,
+     "rationale": "Grouping does not guarantee ordering; use ORDER BY for that."
+    },
+    {
+     "key": "D",
+     "text": "WHERE can filter on an aggregate such as COUNT(*)",
+     "correct": false,
+     "rationale": "Aggregate conditions belong in HAVING, not WHERE."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: columns not wrapped in an aggregate must be grouped on in standard SQL.",
+   "outcome_refs": [
+    "MST-1607-D02.02"
+   ],
+   "domain_ref": "Functions, filtering and grouping",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1607-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need every department listed, including those with no employees. Which join does this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A LEFT JOIN from departments to employees",
+     "correct": true,
+     "rationale": "Correct: a LEFT JOIN keeps all department rows even with no matching employee."
+    },
+    {
+     "key": "B",
+     "text": "An INNER JOIN between the two tables",
+     "correct": false,
+     "rationale": "An INNER JOIN drops departments with no employees."
+    },
+    {
+     "key": "C",
+     "text": "A cross join of both tables",
+     "correct": false,
+     "rationale": "A cross join pairs every row with every row and does not answer this need."
+    },
+    {
+     "key": "D",
+     "text": "A self join on employees",
+     "correct": false,
+     "rationale": "A self join relates a table to itself and does not include empty departments."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a LEFT JOIN keeps all department rows even with no matching employee.",
+   "outcome_refs": [
+    "MST-1607-D03.01"
+   ],
+   "domain_ref": "Combining tables",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

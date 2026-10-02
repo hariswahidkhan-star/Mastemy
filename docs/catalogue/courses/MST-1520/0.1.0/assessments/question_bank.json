@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1520",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 422,
+  "lesson_check_items": 60,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1520-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A loop keeps running and never stops. Which description names this problem?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An infinite loop caused by a condition that never becomes false",
+     "correct": true,
+     "rationale": "Correct: the loop condition is never made false, so the loop never ends."
+    },
+    {
+     "key": "B",
+     "text": "A syntax error that stops the program compiling",
+     "correct": false,
+     "rationale": "A syntax error prevents the program from running at all; this program runs but will not stop."
+    },
+    {
+     "key": "C",
+     "text": "A type mismatch between two variables",
+     "correct": false,
+     "rationale": "A type mismatch is unrelated to whether the loop terminates."
+    },
+    {
+     "key": "D",
+     "text": "A missing return value from a procedure",
+     "correct": false,
+     "rationale": "A missing return value does not by itself cause a loop to run forever."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the loop condition is never made false, so the loop never ends.",
+   "outcome_refs": [
+    "MST-1520-D03.02"
+   ],
+   "domain_ref": "Control flow: selection and iteration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1520-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which of the following are good reasons to break a program into procedures? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each piece of logic can be named, reused and tested on its own",
+     "correct": true,
+     "rationale": "Correct: procedures let you name, reuse and test a unit of logic independently."
+    },
+    {
+     "key": "B",
+     "text": "It removes the need to decompose the problem first",
+     "correct": false,
+     "rationale": "Decomposition is what leads you to the procedures; it is not replaced by them."
+    },
+    {
+     "key": "C",
+     "text": "Repeated steps can be written once and called many times",
+     "correct": true,
+     "rationale": "Correct: shared logic lives in one place instead of being copied."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees the program has no bugs",
+     "correct": false,
+     "rationale": "Procedures help organise code but do not guarantee correctness."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Correct: procedures let you name, reuse and test a unit of logic independently.",
+   "outcome_refs": [
+    "MST-1520-D04.01"
+   ],
+   "domain_ref": "Procedures, data structures and quality",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1520-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A program runs with no error messages but produces the wrong total. What kind of error is this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A logic error",
+     "correct": true,
+     "rationale": "Correct: the program runs but the logic produces an incorrect result."
+    },
+    {
+     "key": "B",
+     "text": "A syntax error",
+     "correct": false,
+     "rationale": "A syntax error would stop the program from running at all."
+    },
+    {
+     "key": "C",
+     "text": "A hardware fault",
+     "correct": false,
+     "rationale": "Nothing indicates a hardware fault; the symptom is a wrong computed value."
+    },
+    {
+     "key": "D",
+     "text": "A missing input",
+     "correct": false,
+     "rationale": "The program produced an output, so input was received; the fault is in the logic."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the program runs but the logic produces an incorrect result.",
+   "outcome_refs": [
+    "MST-1520-D05.01"
+   ],
+   "domain_ref": "Debugging, testing and reading code",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

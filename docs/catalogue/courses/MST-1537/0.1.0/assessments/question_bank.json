@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1537",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 422,
+  "lesson_check_items": 60,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1537-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which clause filters rows AFTER aggregation, so you can keep only groups meeting a condition on an aggregate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "HAVING",
+     "correct": true,
+     "rationale": "Correct: HAVING filters grouped results using aggregate conditions."
+    },
+    {
+     "key": "B",
+     "text": "WHERE",
+     "correct": false,
+     "rationale": "WHERE filters individual rows before grouping and cannot reference aggregates."
+    },
+    {
+     "key": "C",
+     "text": "ORDER BY",
+     "correct": false,
+     "rationale": "ORDER BY sorts results; it does not filter groups."
+    },
+    {
+     "key": "D",
+     "text": "LIMIT",
+     "correct": false,
+     "rationale": "LIMIT caps the number of returned rows; it does not filter on aggregates."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: HAVING filters grouped results using aggregate conditions.",
+   "outcome_refs": [
+    "MST-1537-D02.02"
+   ],
+   "domain_ref": "Filtering, functions and grouping",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1537-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements about a LEFT OUTER JOIN are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It returns every row from the left table even when there is no match on the right",
+     "correct": true,
+     "rationale": "Correct: unmatched left rows are kept, with NULLs for the right columns."
+    },
+    {
+     "key": "B",
+     "text": "Unmatched right-side columns appear as NULL",
+     "correct": true,
+     "rationale": "Correct: columns from the right table are NULL when no match exists."
+    },
+    {
+     "key": "C",
+     "text": "It returns only rows that match in both tables",
+     "correct": false,
+     "rationale": "That describes an INNER JOIN, not a LEFT OUTER JOIN."
+    },
+    {
+     "key": "D",
+     "text": "It automatically removes duplicate rows",
+     "correct": false,
+     "rationale": "A join does not deduplicate; use DISTINCT or grouping for that."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: unmatched left rows are kept, with NULLs for the right columns.",
+   "outcome_refs": [
+    "MST-1537-D03.01"
+   ],
+   "domain_ref": "Joins and set operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1537-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You run UPDATE products SET price = price * 1.1; with no WHERE clause. What happens?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Every row in the table is updated",
+     "correct": true,
+     "rationale": "Correct: with no WHERE clause the UPDATE applies to all rows."
+    },
+    {
+     "key": "B",
+     "text": "The statement is rejected because WHERE is required",
+     "correct": false,
+     "rationale": "WHERE is optional; omitting it is legal and affects all rows."
+    },
+    {
+     "key": "C",
+     "text": "Only the first row is updated",
+     "correct": false,
+     "rationale": "UPDATE affects all matching rows, which here is every row."
+    },
+    {
+     "key": "D",
+     "text": "Nothing changes until an index is added",
+     "correct": false,
+     "rationale": "Indexes do not gate whether an UPDATE runs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with no WHERE clause the UPDATE applies to all rows.",
+   "outcome_refs": [
+    "MST-1537-D04.01"
+   ],
+   "domain_ref": "Modifying data and transactions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

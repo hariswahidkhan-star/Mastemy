@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1653",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 296,
+  "lesson_check_items": 60,
+  "module_check_items": 63,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1653-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which device forwards traffic BETWEEN different networks, choosing a path based on IP addresses?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A router",
+     "correct": true,
+     "rationale": "Correct: a router forwards packets between networks using IP addressing."
+    },
+    {
+     "key": "B",
+     "text": "A switch",
+     "correct": false,
+     "rationale": "A switch forwards frames within a single local network using MAC addresses."
+    },
+    {
+     "key": "C",
+     "text": "A hub",
+     "correct": false,
+     "rationale": "A hub simply repeats signals to all ports within one segment."
+    },
+    {
+     "key": "D",
+     "text": "A network cable",
+     "correct": false,
+     "rationale": "A cable is a medium; it does not make forwarding decisions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a router forwards packets between networks using IP addressing.",
+   "outcome_refs": [
+    "MST-1653-D01.02"
+   ],
+   "domain_ref": "Network models and components",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1653-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select ALL that apply",
+   "stem": "Which statements correctly contrast TCP and UDP? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "TCP establishes a connection and retransmits lost data",
+     "correct": true,
+     "rationale": "Correct: TCP is connection-oriented and reliable."
+    },
+    {
+     "key": "B",
+     "text": "UDP sends datagrams without guaranteeing delivery or order",
+     "correct": true,
+     "rationale": "Correct: UDP is connectionless and does not guarantee delivery."
+    },
+    {
+     "key": "C",
+     "text": "UDP always encrypts its payload",
+     "correct": false,
+     "rationale": "UDP does not provide encryption by itself."
+    },
+    {
+     "key": "D",
+     "text": "TCP is faster than UDP because it does less work",
+     "correct": false,
+     "rationale": "TCP does more work (acknowledgements, ordering), so it is generally not faster than UDP."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: TCP is connection-oriented and reliable.",
+   "outcome_refs": [
+    "MST-1653-D03.01"
+   ],
+   "domain_ref": "Core protocols and services",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1653-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A PC gets an IP address but cannot resolve website names, though it can ping public IP addresses. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A DNS problem",
+     "correct": true,
+     "rationale": "Correct: reaching IPs but not names points to name resolution (DNS) failing."
+    },
+    {
+     "key": "B",
+     "text": "A faulty network cable",
+     "correct": false,
+     "rationale": "A cable fault would usually stop all connectivity, including pinging IPs."
+    },
+    {
+     "key": "C",
+     "text": "No IP address assigned",
+     "correct": false,
+     "rationale": "The PC has an IP and can reach IPs, so addressing is working."
+    },
+    {
+     "key": "D",
+     "text": "The firewall blocking all traffic",
+     "correct": false,
+     "rationale": "If all traffic were blocked, pinging public IPs would also fail."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reaching IPs but not names points to name resolution (DNS) failing.",
+   "outcome_refs": [
+    "MST-1653-D05.02"
+   ],
+   "domain_ref": "Troubleshooting and tools",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
