@@ -2796,6 +2796,10 @@ namespace Mastemy.Api.Data.Migrations
                     b.Property<int>("MaxPauseMinutes")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("NegativeMarkingPerWrong")
+                        .HasPrecision(18, 4)
+                        .HasColumnType("decimal(18,4)");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -2850,6 +2854,10 @@ namespace Mastemy.Api.Data.Migrations
 
                     b.Property<int>("ExtraTimePercent")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("NegativeMarkingPerWrong")
+                        .HasPrecision(18, 4)
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<int>("PauseAllowanceSeconds")
                         .HasColumnType("int");
@@ -3087,6 +3095,65 @@ namespace Mastemy.Api.Data.Migrations
                     b.ToTable("Assessment_CertificateTemplates", (string)null);
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Assessment.CompletionAward", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)");
+
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("CourseTitle")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
+
+                    b.Property<DateTime>("IssuedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("LessonCount")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("PubliclyVisible")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("RecipientName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("RevocationReason")
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<int>("SnapshotVersion")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("UserId", "CourseId")
+                        .IsUnique();
+
+                    b.ToTable("Assessment_CompletionAwards", (string)null);
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Assessment.CourseCertificateSetting", b =>
                 {
                     b.Property<Guid>("CourseId")
@@ -3106,6 +3173,25 @@ namespace Mastemy.Api.Data.Migrations
                     b.HasIndex("TemplateId");
 
                     b.ToTable("Assessment_CourseCertificateSettings", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Assessment.CourseCompletionAwardSetting", b =>
+                {
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("CourseId");
+
+                    b.ToTable("Assessment_CompletionAwardSettings", (string)null);
                 });
 
             modelBuilder.Entity("Mastemy.Api.Modules.Assessment.PracticeItem", b =>
@@ -3142,6 +3228,9 @@ namespace Mastemy.Api.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(512)
                         .HasColumnType("longtext");
+
+                    b.Property<int?>("SelfGrade")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("SessionId")
                         .HasColumnType("char(36)");
@@ -3336,11 +3425,24 @@ namespace Mastemy.Api.Data.Migrations
                     b.Property<int>("IntervalDays")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("LastPracticeItemId")
+                        .HasColumnType("char(36)");
+
                     b.Property<int>("LastQuality")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LastReviewedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<decimal>("PrevEaseFactor")
+                        .HasPrecision(18, 4)
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<int>("PrevIntervalDays")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrevRepetitions")
+                        .HasColumnType("int");
 
                     b.Property<int>("Repetitions")
                         .HasColumnType("int");
@@ -4100,6 +4202,34 @@ namespace Mastemy.Api.Data.Migrations
                     b.ToTable("Commerce_InvoiceCounters", (string)null);
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Commerce.InvoiceSellerSnapshot", b =>
+                {
+                    b.Property<Guid>("InvoiceId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CapturedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("TaxId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("InvoiceId");
+
+                    b.ToTable("Commerce_InvoiceSellerSnapshots", (string)null);
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Commerce.LedgerSource", b =>
                 {
                     b.Property<Guid>("LedgerEntryId")
@@ -4791,6 +4921,406 @@ namespace Mastemy.Api.Data.Migrations
                     b.ToTable("Commerce_TaxRates", (string)null);
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Engagement.ModerationNote", b =>
+                {
+                    b.Property<string>("TargetType")
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)");
+
+                    b.Property<Guid>("TargetId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("HiddenAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
+
+                    b.HasKey("TargetType", "TargetId");
+
+                    b.ToTable("Engagement_ModerationNotes", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.EnterpriseOrder", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("varchar(3)");
+
+                    b.Property<Guid>("InvoiceId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("PaidAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("PaidMarkedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("PaymentReference")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SeatLimitAfter")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SeatLimitBefore")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("SeatRequestId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)");
+
+                    b.Property<decimal>("Total")
+                        .HasPrecision(18, 4)
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 4)
+                        .HasColumnType("decimal(18,4)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId")
+                        .IsUnique();
+
+                    b.HasIndex("OrganizationId");
+
+                    b.HasIndex("SeatRequestId")
+                        .IsUnique();
+
+                    b.ToTable("Enterprise_Orders", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.OrgMaterial", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Department")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ScanEngine")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)");
+
+                    b.Property<string>("ScanVerdict")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)");
+
+                    b.Property<string>("Sha256")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.Property<long>("SizeBytes")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("StorageKey")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<Guid>("UploadedBy")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "DeletedAt");
+
+                    b.ToTable("Enterprise_OrgMaterials", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.OrgPathwayAssignment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("AssignedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Department")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<DateTime?>("DueAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("GrantsPremium")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("PathwayId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "PathwayId");
+
+                    b.ToTable("Enterprise_PathwayAssignments", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.OrgPathwayAssignmentCourse", b =>
+                {
+                    b.Property<Guid>("PathwayAssignmentId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("OrganizationAssignmentId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("PathwayAssignmentId", "OrganizationAssignmentId");
+
+                    b.HasIndex("OrganizationAssignmentId");
+
+                    b.ToTable("Enterprise_PathwayAssignmentCourses", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.OrgSsoConfig", b =>
+                {
+                    b.Property<Guid>("OrganizationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("AllowedDomains")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
+
+                    b.Property<string>("ClientId")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("ClientSecretProtected")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Issuer")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("UpdatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("OrganizationId");
+
+                    b.ToTable("Enterprise_SsoConfigs", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.SeatRequest", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DecidedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("DecidedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("DecisionNote")
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("RequestedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.HasIndex("Status", "CreatedAt");
+
+                    b.ToTable("Enterprise_SeatRequests", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.SsoIdentity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Issuer")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<DateTime>("LastLoginAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("OrganizationId", "Subject")
+                        .IsUnique();
+
+                    b.ToTable("Enterprise_SsoIdentities", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Enterprise.SsoLoginState", b =>
+                {
+                    b.Property<string>("StateHash")
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.Property<string>("CodeVerifierProtected")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("ConsumedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("HandoffExpiresAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("HandoffHash")
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.Property<DateTime?>("HandoffUsedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Nonce")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ReturnPath")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("StateHash");
+
+                    b.HasIndex("ExpiresAt");
+
+                    b.HasIndex("HandoffHash")
+                        .IsUnique();
+
+                    b.ToTable("Enterprise_SsoLoginStates", (string)null);
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Identity.AuthSession", b =>
                 {
                     b.Property<Guid>("FamilyId")
@@ -4894,6 +5424,36 @@ namespace Mastemy.Api.Data.Migrations
                     b.ToTable("Identity_MfaRecoveryCodes", (string)null);
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Identity.MfaResetRecord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("ActorId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<DateTime?>("ReenrolledAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId", "ReenrolledAt");
+
+                    b.ToTable("Identity_MfaResets", (string)null);
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Identity.OneTimeToken", b =>
                 {
                     b.Property<Guid>("Id")
@@ -4970,6 +5530,211 @@ namespace Mastemy.Api.Data.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Identity_UserSecurity", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Messaging.AutoMessageDelivery", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Kind")
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)");
+
+                    b.Property<DateTime>("DeliveredAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("MessageId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("UserId", "CourseId", "Kind");
+
+                    b.ToTable("Messaging_AutoMessageDeliveries", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Messaging.Conversation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("LastMessageAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("LearnerId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId", "LastMessageAt");
+
+                    b.HasIndex("CourseId", "LearnerId")
+                        .IsUnique();
+
+                    b.HasIndex("LearnerId", "LastMessageAt");
+
+                    b.ToTable("Messaging_Conversations", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Messaging.ConversationRead", b =>
+                {
+                    b.Property<Guid>("ConversationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("LastReadAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("ConversationId", "UserId");
+
+                    b.ToTable("Messaging_ReadMarkers", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Messaging.CourseAutoMessage", b =>
+                {
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Kind")
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)");
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("EnabledSince")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("UpdatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("CourseId", "Kind");
+
+                    b.ToTable("Messaging_CourseAutoMessages", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Messaging.Message", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("ConversationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("HiddenAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("HiddenBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("HiddenReason")
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)");
+
+                    b.Property<Guid>("SenderId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConversationId", "CreatedAt");
+
+                    b.HasIndex("SenderId", "CreatedAt");
+
+                    b.ToTable("Messaging_Messages", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Messaging.MessageBlock", b =>
+                {
+                    b.Property<Guid>("BlockerId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("BlockedId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("BlockerId", "BlockedId");
+
+                    b.ToTable("Messaging_Blocks", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Messaging.MessageReport", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("ComplaintId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("MessageId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
+
+                    b.Property<Guid>("ReporterId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageId", "ReporterId")
+                        .IsUnique();
+
+                    b.ToTable("Messaging_Reports", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Messaging.MessagingWorkerState", b =>
+                {
+                    b.Property<string>("Key")
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.Property<DateTime>("LastRunAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Key");
+
+                    b.ToTable("Messaging_WorkerState", (string)null);
                 });
 
             modelBuilder.Entity("Mastemy.Api.Modules.Operations.BrokenLinkNotice", b =>
@@ -5177,6 +5942,24 @@ namespace Mastemy.Api.Data.Migrations
                     b.ToTable("Questions_Meta", (string)null);
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Questions.QuestionWorkedSolution", b =>
+                {
+                    b.Property<Guid>("QuestionVersionId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("QuestionVersionId");
+
+                    b.ToTable("Questions_WorkedSolutions", (string)null);
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Resources.ResourceScanRecord", b =>
                 {
                     b.Property<Guid>("ResourceFileId")
@@ -5203,6 +5986,30 @@ namespace Mastemy.Api.Data.Migrations
                     b.HasKey("ResourceFileId");
 
                     b.ToTable("Resources_ScanRecords", (string)null);
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.StudyTools.CalendarFeedToken", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("LastUsedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("TokenHash")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("TokenHash")
+                        .IsUnique();
+
+                    b.ToTable("StudyTools_CalendarTokens", (string)null);
                 });
 
             modelBuilder.Entity("Mastemy.Api.Modules.StudyTools.CourseFolder", b =>
@@ -5315,11 +6122,16 @@ namespace Mastemy.Api.Data.Migrations
                     b.Property<int>("SessionDaysMask")
                         .HasColumnType("int");
 
-                    b.Property<int>("SessionHourUtc")
+                    b.Property<int>("SessionHour")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TargetDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("TimeZone")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -6669,6 +7481,21 @@ namespace Mastemy.Api.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Assessment.CompletionAward", b =>
+                {
+                    b.HasOne("Mastemy.Api.Domain.Course", null)
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Mastemy.Api.Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Assessment.CourseCertificateSetting", b =>
                 {
                     b.HasOne("Mastemy.Api.Domain.Course", null)
@@ -6680,6 +7507,15 @@ namespace Mastemy.Api.Data.Migrations
                     b.HasOne("Mastemy.Api.Modules.Assessment.CertificateTemplate", null)
                         .WithMany()
                         .HasForeignKey("TemplateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Assessment.CourseCompletionAwardSetting", b =>
+                {
+                    b.HasOne("Mastemy.Api.Domain.Course", null)
+                        .WithOne()
+                        .HasForeignKey("Mastemy.Api.Modules.Assessment.CourseCompletionAwardSetting", "CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -6861,6 +7697,15 @@ namespace Mastemy.Api.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Commerce.InvoiceSellerSnapshot", b =>
+                {
+                    b.HasOne("Mastemy.Api.Modules.Commerce.Invoice", null)
+                        .WithOne()
+                        .HasForeignKey("Mastemy.Api.Modules.Commerce.InvoiceSellerSnapshot", "InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Commerce.LedgerSource", b =>
                 {
                     b.HasOne("Mastemy.Api.Domain.CommissionLedgerEntry", null)
@@ -7008,6 +7853,15 @@ namespace Mastemy.Api.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Identity.MfaResetRecord", b =>
+                {
+                    b.HasOne("Mastemy.Api.Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Identity.OneTimeToken", b =>
                 {
                     b.HasOne("Mastemy.Api.Domain.User", null)
@@ -7022,6 +7876,15 @@ namespace Mastemy.Api.Data.Migrations
                     b.HasOne("Mastemy.Api.Domain.User", null)
                         .WithOne()
                         .HasForeignKey("Mastemy.Api.Modules.Identity.UserSecurity", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.Messaging.Message", b =>
+                {
+                    b.HasOne("Mastemy.Api.Modules.Messaging.Conversation", null)
+                        .WithMany()
+                        .HasForeignKey("ConversationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -7062,11 +7925,29 @@ namespace Mastemy.Api.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Mastemy.Api.Modules.Questions.QuestionWorkedSolution", b =>
+                {
+                    b.HasOne("Mastemy.Api.Domain.QuestionVersion", null)
+                        .WithOne()
+                        .HasForeignKey("Mastemy.Api.Modules.Questions.QuestionWorkedSolution", "QuestionVersionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Mastemy.Api.Modules.Resources.ResourceScanRecord", b =>
                 {
                     b.HasOne("Mastemy.Api.Domain.ResourceFile", null)
                         .WithOne()
                         .HasForeignKey("Mastemy.Api.Modules.Resources.ResourceScanRecord", "ResourceFileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Mastemy.Api.Modules.StudyTools.CalendarFeedToken", b =>
+                {
+                    b.HasOne("Mastemy.Api.Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

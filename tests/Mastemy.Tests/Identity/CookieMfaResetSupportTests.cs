@@ -182,9 +182,11 @@ public class CookieMfaResetSupportTests(SecurityFixture f) : IClassFixture<Secur
     [Fact]
     public async Task Support_role_has_read_only_masked_lookup_and_can_resend_verification_only()
     {
-        var supportUser = await f.CreateUser(true, Roles.Support);
-        var sc = f.Anon();
-        SecurityFixture.WithToken(sc, (await SecurityFixture.Read(await f.Login(sc, supportUser))).AccessToken);
+        // Support sees (masked) personal data, so it is an MFA-required role.
+        var plain = f.Anon();
+        var supportProbe = await f.CreateUser(true, Roles.Support);
+        Assert.Equal("mfa_enrollment_required", (await SecurityFixture.Read(await f.Login(plain, supportProbe))).Status);
+        var (sc, supportUser, _, _) = await f.SignedInWithMfa(Roles.Support);
         var learner = await f.CreateUser(false);
         await using (var db = f.NewDb())
         {

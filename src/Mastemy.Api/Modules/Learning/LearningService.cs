@@ -38,7 +38,7 @@ public record DashboardDto(List<DashboardEnrollmentDto> Enrollments, List<Dashbo
 /// so working-copy edits made while a course is Updating or in re-review are not visible until re-published. Progress is
 /// keyed by lesson id and keeps working for lessons removed from the working copy after the snapshot.
 /// </summary>
-public class LearningService(AppDbContext db, ICurrentUser me, AccessService access, CourseSnapshotService snapshots)
+public class LearningService(AppDbContext db, ICurrentUser me, AccessService access, CourseSnapshotService snapshots, Assessment.CompletionAwardService completionAwards)
 {
     public async Task<CurriculumDto> GetCourse(string slug)
     {
@@ -119,6 +119,7 @@ public class LearningService(AppDbContext db, ICurrentUser me, AccessService acc
             db.LessonProgress.Add(p);
         }
         p.PositionSeconds = pos;
+        var newlyCompleted = input.Completed && !p.Completed;
         p.Completed = p.Completed || input.Completed; // completion is sticky
         p.UpdatedAt = DateTime.UtcNow;
         try { await db.SaveChangesAsync(); }
@@ -130,6 +131,8 @@ public class LearningService(AppDbContext db, ICurrentUser me, AccessService acc
             p.PositionSeconds = pos; p.Completed = p.Completed || input.Completed; p.UpdatedAt = DateTime.UtcNow;
             await db.SaveChangesAsync();
         }
+        // Completion awards are issued as soon as the last snapshot lesson is completed (no-op when disabled/incomplete).
+        if (newlyCompleted) await completionAwards.TryIssue(uid, c.Id);
         return new LessonProgressDto(p.PositionSeconds, p.Completed, p.UpdatedAt);
     }
 

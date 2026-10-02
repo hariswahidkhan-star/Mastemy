@@ -267,7 +267,9 @@
             },
             "type": "array"
           },
-          "aiUsage": {},
+          "aiUsage": {
+            "$ref": "#/components/schemas/AiUsageSummaryDto"
+          },
           "bucket": {
             "type": "string"
           },
@@ -404,6 +406,463 @@
         ],
         "type": "object"
       },
+      "AdminDisputeDto": {
+        "properties": {
+          "amount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "closedAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "amount",
+          "currency",
+          "status",
+          "reason",
+          "createdAt",
+          "closedAt"
+        ],
+        "type": "object"
+      },
+      "AdminInvoiceDto": {
+        "properties": {
+          "currency": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "issuedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          },
+          "total": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "number",
+          "kind",
+          "total",
+          "currency",
+          "issuedAt"
+        ],
+        "type": "object"
+      },
+      "AdminLedgerDto": {
+        "properties": {
+          "courseId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "grossAmount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "instructorAmount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "instructorId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "payoutBatchId": {
+            "format": "uuid",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "platformAmount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "instructorId",
+          "courseId",
+          "kind",
+          "grossAmount",
+          "instructorAmount",
+          "platformAmount",
+          "currency",
+          "payoutBatchId",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "AdminOrderDetailDto": {
+        "properties": {
+          "country": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "disputes": {
+            "items": {
+              "$ref": "#/components/schemas/AdminDisputeDto"
+            },
+            "type": "array"
+          },
+          "invoices": {
+            "items": {
+              "$ref": "#/components/schemas/AdminInvoiceDto"
+            },
+            "type": "array"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AdminOrderItemDto"
+            },
+            "type": "array"
+          },
+          "ledger": {
+            "items": {
+              "$ref": "#/components/schemas/AdminLedgerDto"
+            },
+            "type": "array"
+          },
+          "listAmount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "order": {
+            "$ref": "#/components/schemas/AdminOrderRowDto"
+          },
+          "payments": {
+            "items": {
+              "$ref": "#/components/schemas/AdminPaymentDto"
+            },
+            "type": "array"
+          },
+          "priceSource": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "refunds": {
+            "items": {
+              "$ref": "#/components/schemas/AdminRefundDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "order",
+          "priceSource",
+          "country",
+          "listAmount",
+          "items",
+          "payments",
+          "refunds",
+          "invoices",
+          "ledger",
+          "disputes"
+        ],
+        "type": "object"
+      },
+      "AdminOrderItemDto": {
+        "properties": {
+          "courseId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "courseTitle": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "packageId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "unitPrice": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "packageId",
+          "courseId",
+          "courseTitle",
+          "unitPrice"
+        ],
+        "type": "object"
+      },
+      "AdminOrderRowDto": {
+        "properties": {
+          "buyerEmail": {
+            "type": "string"
+          },
+          "couponCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "discountAmount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "itemCount": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "kind": {
+            "type": "string"
+          },
+          "paidAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "refundedAmount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/OrderStatus"
+          },
+          "total": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "buyerEmail",
+          "status",
+          "kind",
+          "total",
+          "currency",
+          "discountAmount",
+          "refundedAmount",
+          "couponCode",
+          "itemCount",
+          "createdAt",
+          "paidAt"
+        ],
+        "type": "object"
+      },
+      "AdminPaymentDto": {
+        "properties": {
+          "amount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "providerPaymentId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "provider",
+          "providerPaymentId",
+          "amount",
+          "currency",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "AdminRefundDto": {
+        "properties": {
+          "amount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "decidedAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "decidedBy": {
+            "format": "uuid",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "providerRefundId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "requestedBy": {
+            "format": "uuid",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "amount",
+          "reason",
+          "status",
+          "requestedBy",
+          "decidedBy",
+          "decidedAt",
+          "providerRefundId",
+          "createdAt"
+        ],
+        "type": "object"
+      },
       "AdminRefundInput": {
         "properties": {
           "amount": {
@@ -531,6 +990,12 @@
             "default": false,
             "type": "boolean"
           },
+          "notice": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
           "preferredLanguage": {
             "type": "string"
           },
@@ -539,6 +1004,10 @@
               "type": "string"
             },
             "type": "array"
+          },
+          "signInAgainRequired": {
+            "default": false,
+            "type": "boolean"
           }
         },
         "required": [
@@ -758,6 +1227,53 @@
         ],
         "type": "object"
       },
+      "AiFeatureUsageDto": {
+        "properties": {
+          "calls": {
+            "format": "int64",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "costEstimate": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "feature": {
+            "type": "string"
+          },
+          "inputTokens": {
+            "format": "int64",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "outputTokens": {
+            "format": "int64",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "feature",
+          "calls",
+          "inputTokens",
+          "outputTokens",
+          "costEstimate"
+        ],
+        "type": "object"
+      },
       "AiStatusDto": {
         "properties": {
           "configured": {
@@ -780,6 +1296,83 @@
           "configured",
           "model",
           "message"
+        ],
+        "type": "object"
+      },
+      "AiUsageSummaryDto": {
+        "properties": {
+          "byFeature": {
+            "items": {
+              "$ref": "#/components/schemas/AiFeatureUsageDto"
+            },
+            "type": "array"
+          },
+          "cacheReadTokens": {
+            "format": "int64",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "cacheWriteTokens": {
+            "format": "int64",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "calls": {
+            "format": "int64",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "costEstimate": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "distinctUsers": {
+            "format": "int64",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "inputTokens": {
+            "format": "int64",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "outputTokens": {
+            "format": "int64",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "calls",
+          "distinctUsers",
+          "inputTokens",
+          "outputTokens",
+          "cacheReadTokens",
+          "cacheWriteTokens",
+          "costEstimate",
+          "byFeature"
         ],
         "type": "object"
       },
@@ -1363,6 +1956,57 @@
       "AssessmentMode": {
         "type": "integer"
       },
+      "AssessmentPickerDto": {
+        "properties": {
+          "countsTowardCertificate": {
+            "type": "boolean"
+          },
+          "courseCode": {
+            "type": "string"
+          },
+          "courseId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "courseTitle": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/AssessmentKind"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/AssessmentMode"
+          },
+          "timeLimitMinutes": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ]
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "courseId",
+          "courseCode",
+          "courseTitle",
+          "kind",
+          "mode",
+          "timeLimitMinutes",
+          "countsTowardCertificate"
+        ],
+        "type": "object"
+      },
       "AssessmentPolicyDto": {
         "properties": {
           "allowPause": {
@@ -1386,6 +2030,15 @@
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",
+              "string"
+            ]
+          },
+          "negativeMarkingPerWrong": {
+            "default": 0,
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
               "string"
             ]
           },
@@ -1425,6 +2078,15 @@
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",
+              "string"
+            ]
+          },
+          "negativeMarkingPerWrong": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
               "string"
             ]
           }
@@ -1585,6 +2247,21 @@
           },
           "multiSelectScoring": {
             "$ref": "#/components/schemas/MultiSelectScoring"
+          },
+          "negativeMarkingPerWrong": {
+            "default": 0,
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "negativeMarkingRules": {
+            "type": [
+              "null",
+              "string"
+            ]
           },
           "passPercent": {
             "format": "double",
@@ -2323,6 +3000,59 @@
         ],
         "type": "object"
       },
+      "AutoMessageDto": {
+        "properties": {
+          "body": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "enabledSince": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "kind": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "body",
+          "enabled",
+          "enabledSince",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "AutoMessageInput": {
+        "properties": {
+          "body": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "body",
+          "enabled"
+        ],
+        "type": "object"
+      },
       "BatchRequestsInput": {
         "properties": {
           "requestIds": {
@@ -2362,6 +3092,58 @@
         ],
         "type": "object"
       },
+      "BestsellerRowDto": {
+        "properties": {
+          "computedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "courseId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "courseSlug": {
+            "type": "string"
+          },
+          "courseTitle": {
+            "type": "string"
+          },
+          "distinctBuyers": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "eligible": {
+            "type": "boolean"
+          },
+          "netRevenue": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "windowStart": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "courseId",
+          "courseTitle",
+          "courseSlug",
+          "distinctBuyers",
+          "netRevenue",
+          "eligible",
+          "windowStart",
+          "computedAt"
+        ],
+        "type": "object"
+      },
       "BestsellerRunDto": {
         "properties": {
           "computedAt": {
@@ -2397,40 +3179,37 @@
         ],
         "type": "object"
       },
-      "BestsellerStat": {
+      "BlockDto": {
         "properties": {
-          "computedAt": {
+          "createdAt": {
             "format": "date-time",
             "type": "string"
           },
-          "courseId": {
+          "displayName": {
+            "type": "string"
+          },
+          "userId": {
             "format": "uuid",
-            "type": "string"
-          },
-          "distinctBuyers": {
-            "format": "int32",
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ]
-          },
-          "eligible": {
-            "type": "boolean"
-          },
-          "netRevenue": {
-            "format": "double",
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "number",
-              "string"
-            ]
-          },
-          "windowStart": {
-            "format": "date-time",
             "type": "string"
           }
         },
+        "required": [
+          "userId",
+          "displayName",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "BlockInput": {
+        "properties": {
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId"
+        ],
         "type": "object"
       },
       "BookmarkDto": {
@@ -2949,6 +3728,53 @@
         ],
         "type": "object"
       },
+      "CalendarTokenDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "token",
+          "url",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "CalendarTokenStatusDto": {
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "lastUsedAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "active",
+          "createdAt",
+          "lastUsedAt"
+        ],
+        "type": "object"
+      },
       "CaptionPushRequest": {
         "properties": {
           "resourceFileId": {
@@ -3083,6 +3909,126 @@
           "title",
           "exhibitMarkdown",
           "resourceIds"
+        ],
+        "type": "object"
+      },
+      "CategoryAdminDto": {
+        "properties": {
+          "childCount": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "courseCount": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "id": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "isAcademy": {
+            "type": "boolean"
+          },
+          "nameAr": {
+            "type": "string"
+          },
+          "nameEn": {
+            "type": "string"
+          },
+          "parentId": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ]
+          },
+          "slug": {
+            "type": "string"
+          },
+          "sortOrder": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "nameEn",
+          "nameAr",
+          "parentId",
+          "isAcademy",
+          "sortOrder",
+          "courseCount",
+          "childCount"
+        ],
+        "type": "object"
+      },
+      "CategoryAdminInput": {
+        "properties": {
+          "isAcademy": {
+            "type": "boolean"
+          },
+          "nameAr": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "nameEn": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "parentId": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ]
+          },
+          "slug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sortOrder": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "slug",
+          "nameEn",
+          "nameAr",
+          "parentId",
+          "isAcademy",
+          "sortOrder"
         ],
         "type": "object"
       },
@@ -3228,6 +4174,34 @@
       "CertificateRequestStatus": {
         "type": "integer"
       },
+      "CertificateShareDto": {
+        "properties": {
+          "certificationName": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "linkedInAddToProfileUrl": {
+            "type": "string"
+          },
+          "verificationUrl": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "certificationName",
+          "linkedInAddToProfileUrl",
+          "verificationUrl"
+        ],
+        "type": "object"
+      },
       "CertificateStatus": {
         "type": "integer"
       },
@@ -3343,11 +4317,23 @@
             "format": "date-time",
             "type": "string"
           },
+          "kind": {
+            "default": "AssessedKnowledge",
+            "type": "string"
+          },
           "recipientName": {
             "type": "string"
           },
           "status": {
             "$ref": "#/components/schemas/CertificateStatus"
+          },
+          "title": {
+            "default": "Certificate of Assessed Knowledge",
+            "type": "string"
+          },
+          "verificationLabel": {
+            "default": "Assessed-knowledge certificate: issued for passing a server-scored assessment.",
+            "type": "string"
           }
         },
         "required": [
@@ -3538,6 +4524,34 @@
       },
       "CertificationKind": {
         "type": "integer"
+      },
+      "CertificationMappingsDto": {
+        "properties": {
+          "certificationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "courseId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "linked": {
+            "type": "boolean"
+          },
+          "objectives": {
+            "items": {
+              "$ref": "#/components/schemas/ObjectiveMappingDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "certificationId",
+          "courseId",
+          "linked",
+          "objectives"
+        ],
+        "type": "object"
       },
       "CertificationState": {
         "type": "integer"
@@ -3930,6 +4944,12 @@
               "$ref": "#/components/schemas/RationaleDto"
             },
             "type": "array"
+          },
+          "workedSolution": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         },
         "required": [
@@ -4155,45 +5175,6 @@
         ],
         "type": "object"
       },
-      "CitationDto": {
-        "properties": {
-          "chunkId": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "lessonId": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "lessonTitle": {
-            "type": "string"
-          },
-          "section": {
-            "type": "string"
-          },
-          "sourceKind": {
-            "type": "string"
-          },
-          "startSeconds": {
-            "format": "int32",
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "null",
-              "integer",
-              "string"
-            ]
-          }
-        },
-        "required": [
-          "chunkId",
-          "lessonId",
-          "lessonTitle",
-          "section",
-          "sourceKind",
-          "startSeconds"
-        ],
-        "type": "object"
-      },
       "CoInstructorRequest": {
         "properties": {
           "email": {
@@ -4404,6 +5385,103 @@
           "activeTo",
           "sortOrder",
           "courseIds"
+        ],
+        "type": "object"
+      },
+      "CommercePolicyDto": {
+        "properties": {
+          "affiliateMaxPercent": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "couponReservationMinutes": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "instructorCouponMaxPercent": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "instructorSharePercent": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "maxRegionalCountriesPerPrice": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "maxScholarshipDomains": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "maxScholarshipEmails": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "payoutMinimumAmount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "promotionMaxPercent": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "refundWindowDays": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "instructorCouponMaxPercent",
+          "couponReservationMinutes",
+          "promotionMaxPercent",
+          "affiliateMaxPercent",
+          "refundWindowDays",
+          "instructorSharePercent",
+          "payoutMinimumAmount",
+          "maxScholarshipEmails",
+          "maxScholarshipDomains",
+          "maxRegionalCountriesPerPrice"
         ],
         "type": "object"
       },
@@ -4680,6 +5758,112 @@
       "ComplaintType": {
         "type": "integer"
       },
+      "CompletionAwardDto": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "courseId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "courseTitle": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "issuedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "lessonCount": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "publiclyVisible": {
+            "type": "boolean"
+          },
+          "recipientName": {
+            "type": "string"
+          },
+          "snapshotVersion": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/CertificateStatus"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "kind",
+          "title",
+          "courseId",
+          "courseTitle",
+          "recipientName",
+          "lessonCount",
+          "snapshotVersion",
+          "status",
+          "publiclyVisible",
+          "issuedAt"
+        ],
+        "type": "object"
+      },
+      "CompletionAwardSettingDto": {
+        "properties": {
+          "courseId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "courseId",
+          "enabled",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "CompletionAwardSettingInput": {
+        "properties": {
+          "enabled": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          }
+        },
+        "required": [
+          "enabled"
+        ],
+        "type": "object"
+      },
       "ConfirmVideoRequest": {
         "properties": {
           "approve": {
@@ -4883,8 +6067,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "createdAt": {
-            "format": "date-time",
+          "courseTitle": {
             "type": "string"
           },
           "id": {
@@ -4895,25 +6078,34 @@
             "format": "date-time",
             "type": "string"
           },
-          "messageCount": {
+          "learnerId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "learnerName": {
+            "type": "string"
+          },
+          "myRole": {
+            "type": "string"
+          },
+          "unread": {
             "format": "int32",
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",
               "string"
             ]
-          },
-          "title": {
-            "type": "string"
           }
         },
         "required": [
           "id",
           "courseId",
-          "title",
-          "messageCount",
-          "createdAt",
-          "lastMessageAt"
+          "courseTitle",
+          "learnerId",
+          "learnerName",
+          "myRole",
+          "lastMessageAt",
+          "unread"
         ],
         "type": "object"
       },
@@ -4955,6 +6147,28 @@
           "messageCount",
           "createdAt",
           "lastMessageAt"
+        ],
+        "type": "object"
+      },
+      "ConversationPageDto": {
+        "properties": {
+          "conversation": {
+            "$ref": "#/components/schemas/ConversationDto"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/MessageDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "conversation",
+          "messages",
+          "hasMore"
         ],
         "type": "object"
       },
@@ -5316,6 +6530,10 @@
               "null",
               "string"
             ]
+          },
+          "allowsGifts": {
+            "default": false,
+            "type": "boolean"
           },
           "amountOff": {
             "format": "double",
@@ -7129,6 +8347,42 @@
         ],
         "type": "object"
       },
+      "CurrencyOptionDto": {
+        "properties": {
+          "amount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "countries": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "isBase": {
+            "type": "boolean"
+          },
+          "packageId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "packageId",
+          "currency",
+          "countries",
+          "amount",
+          "isBase"
+        ],
+        "type": "object"
+      },
       "CurrencyTotal": {
         "properties": {
           "currency": {
@@ -8013,6 +9267,174 @@
         ],
         "type": "object"
       },
+      "EnterpriseOrderDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "invoiceId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "invoiceNumber": {
+            "type": "string"
+          },
+          "orderId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "organizationName": {
+            "type": "string"
+          },
+          "paidAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "paymentInstructions": {
+            "type": "string"
+          },
+          "paymentReference": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "quantity": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "seatLimitAfter": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ]
+          },
+          "seatLimitBefore": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ]
+          },
+          "seatRequestId": {
+            "format": "uuid",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "total": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "unitPrice": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "organizationId",
+          "organizationName",
+          "seatRequestId",
+          "orderId",
+          "invoiceId",
+          "invoiceNumber",
+          "quantity",
+          "unitPrice",
+          "currency",
+          "total",
+          "status",
+          "paymentInstructions",
+          "createdAt",
+          "paidAt",
+          "paymentReference",
+          "seatLimitBefore",
+          "seatLimitAfter"
+        ],
+        "type": "object"
+      },
+      "EnterpriseOrderInput": {
+        "properties": {
+          "currency": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "quantity": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ]
+          },
+          "seatRequestId": {
+            "format": "uuid",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "unitPrice": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "organizationId",
+          "seatRequestId",
+          "quantity",
+          "unitPrice",
+          "currency"
+        ],
+        "type": "object"
+      },
       "FieldChangeDto": {
         "properties": {
           "after": {
@@ -8343,6 +9765,20 @@
         },
         "required": [
           "hidden",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "HideMessageInput": {
+        "properties": {
+          "reason": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
           "reason"
         ],
         "type": "object"
@@ -8690,6 +10126,12 @@
       },
       "InstructorProfileDto": {
         "properties": {
+          "bio": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
           "courses": {
             "items": {
               "$ref": "#/components/schemas/CourseCardDto"
@@ -8698,6 +10140,12 @@
           },
           "displayName": {
             "type": "string"
+          },
+          "headline": {
+            "type": [
+              "null",
+              "string"
+            ]
           },
           "id": {
             "format": "uuid",
@@ -8743,6 +10191,12 @@
         "properties": {
           "displayName": {
             "type": "string"
+          },
+          "headline": {
+            "type": [
+              "null",
+              "string"
+            ]
           },
           "id": {
             "format": "uuid",
@@ -10114,6 +11568,39 @@
         ],
         "type": "object"
       },
+      "LinkedCourseDto": {
+        "properties": {
+          "courseId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "isLive": {
+            "type": "boolean"
+          },
+          "linkedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CourseStatus"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "courseId",
+          "slug",
+          "title",
+          "status",
+          "isLive",
+          "linkedAt"
+        ],
+        "type": "object"
+      },
       "LoginRequest": {
         "properties": {
           "email": {
@@ -10147,6 +11634,41 @@
         },
         "required": [
           "ids"
+        ],
+        "type": "object"
+      },
+      "MarkPaidInput": {
+        "properties": {
+          "paymentReference": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "paymentReference"
+        ],
+        "type": "object"
+      },
+      "MarkVideoRequest": {
+        "properties": {
+          "reason": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "status": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "reason"
         ],
         "type": "object"
       },
@@ -10250,43 +11772,57 @@
       },
       "MessageDto": {
         "properties": {
-          "citations": {
-            "items": {
-              "$ref": "#/components/schemas/CitationDto"
-            },
-            "type": "array"
+          "body": {
+            "type": [
+              "null",
+              "string"
+            ]
           },
-          "content": {
+          "conversationId": {
+            "format": "uuid",
             "type": "string"
           },
           "createdAt": {
             "format": "date-time",
             "type": "string"
           },
-          "grounded": {
+          "hidden": {
             "type": "boolean"
           },
-          "id": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "outcome": {
+          "hiddenReason": {
             "type": [
               "null",
               "string"
             ]
           },
-          "role": {
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "senderId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "senderName": {
+            "type": "string"
+          },
+          "senderRole": {
             "type": "string"
           }
         },
         "required": [
           "id",
-          "role",
-          "content",
-          "citations",
-          "grounded",
-          "outcome",
+          "conversationId",
+          "senderId",
+          "senderName",
+          "senderRole",
+          "kind",
+          "body",
+          "hidden",
+          "hiddenReason",
           "createdAt"
         ],
         "type": "object"
@@ -10381,6 +11917,50 @@
         ],
         "type": "object"
       },
+      "MfaResetRequest": {
+        "properties": {
+          "reason": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "reason"
+        ],
+        "type": "object"
+      },
+      "MfaResetResultDto": {
+        "properties": {
+          "reenrollmentRequired": {
+            "type": "boolean"
+          },
+          "resetAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "resetId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "sessionsRevoked": {
+            "type": "boolean"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId",
+          "resetId",
+          "resetAt",
+          "sessionsRevoked",
+          "reenrollmentRequired"
+        ],
+        "type": "object"
+      },
       "MfaStatusDto": {
         "properties": {
           "enabled": {
@@ -10438,6 +12018,109 @@
           "mfaToken",
           "code",
           "recoveryCode"
+        ],
+        "type": "object"
+      },
+      "ModerationNoticeDto": {
+        "properties": {
+          "appealTargetId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "appealTargetType": {
+            "type": "string"
+          },
+          "appealUrl": {
+            "type": "string"
+          },
+          "appealsPage": {
+            "type": "string"
+          },
+          "hidden": {
+            "type": "boolean"
+          },
+          "hiddenAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "hidden",
+          "reason",
+          "hiddenAt",
+          "appealTargetType",
+          "appealTargetId",
+          "appealUrl",
+          "appealsPage"
+        ],
+        "type": "object"
+      },
+      "ModerationReportDto": {
+        "properties": {
+          "body": {
+            "type": "string"
+          },
+          "complaintId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "conversationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "courseId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "hidden": {
+            "type": "boolean"
+          },
+          "messageId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "reportId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "reporterId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "senderId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "senderName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "reportId",
+          "messageId",
+          "conversationId",
+          "courseId",
+          "senderId",
+          "senderName",
+          "reporterId",
+          "reason",
+          "body",
+          "hidden",
+          "complaintId",
+          "createdAt"
         ],
         "type": "object"
       },
@@ -10539,6 +12222,10 @@
             "format": "date-time",
             "type": "string"
           },
+          "kind": {
+            "default": "AssessedKnowledge",
+            "type": "string"
+          },
           "publiclyVisible": {
             "type": "boolean"
           },
@@ -10555,6 +12242,10 @@
           },
           "status": {
             "$ref": "#/components/schemas/CertificateStatus"
+          },
+          "title": {
+            "default": "Certificate of Assessed Knowledge",
+            "type": "string"
           }
         },
         "required": [
@@ -10834,6 +12525,30 @@
         ],
         "type": "object"
       },
+      "NotesLibraryItemDto": {
+        "properties": {
+          "course": {
+            "$ref": "#/components/schemas/CourseCardDto"
+          },
+          "hasNotes": {
+            "type": "boolean"
+          },
+          "lessonsWithNotes": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "course",
+          "hasNotes",
+          "lessonsWithNotes"
+        ],
+        "type": "object"
+      },
       "NotificationDto": {
         "properties": {
           "createdAt": {
@@ -10967,6 +12682,42 @@
           "title",
           "weightPercent",
           "sortOrder"
+        ],
+        "type": "object"
+      },
+      "ObjectiveMappingDto": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "lessonIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "objectiveId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "questionIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "objectiveId",
+          "code",
+          "title",
+          "lessonIds",
+          "questionIds"
         ],
         "type": "object"
       },
@@ -11167,9 +12918,23 @@
           "currency": {
             "type": "string"
           },
+          "giftCodeRevealed": {
+            "default": false,
+            "type": "boolean"
+          },
+          "giftStatus": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
           "id": {
             "format": "uuid",
             "type": "string"
+          },
+          "isGift": {
+            "default": false,
+            "type": "boolean"
           },
           "items": {
             "items": {
@@ -11252,6 +13017,50 @@
         ],
         "type": "object"
       },
+      "OrderPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AdminOrderRowDto"
+            },
+            "type": "array"
+          },
+          "page": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "pageSize": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "total": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ],
+        "type": "object"
+      },
+      "OrderStatus": {
+        "type": "integer"
+      },
       "OrgDto": {
         "properties": {
           "createdAt": {
@@ -11320,6 +13129,59 @@
           "name",
           "slug",
           "seatLimit"
+        ],
+        "type": "object"
+      },
+      "OrgMaterialDto": {
+        "properties": {
+          "contentType": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "department": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "downloadUrl": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "scanVerdict": {
+            "type": "string"
+          },
+          "sizeBytes": {
+            "format": "int64",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "department",
+          "fileName",
+          "contentType",
+          "sizeBytes",
+          "scanVerdict",
+          "createdAt",
+          "downloadUrl"
         ],
         "type": "object"
       },
@@ -11911,6 +13773,47 @@
         ],
         "type": "object"
       },
+      "PagedResultOfNotesLibraryItemDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/NotesLibraryItemDto"
+            },
+            "type": "array"
+          },
+          "page": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "pageSize": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "total": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ],
+        "type": "object"
+      },
       "PagedResultOfVideoAssetDto": {
         "properties": {
           "items": {
@@ -12028,6 +13931,118 @@
           "courseIds",
           "skillCodes",
           "updatedAt"
+        ],
+        "type": "object"
+      },
+      "PathwayAssignmentDto": {
+        "properties": {
+          "courseIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "department": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "dueAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "grantsPremium": {
+            "type": "boolean"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "pathwayId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "pathwayTitle": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "skippedCourseIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "pathwayId",
+          "pathwayTitle",
+          "scope",
+          "userId",
+          "department",
+          "grantsPremium",
+          "dueAt",
+          "courseIds",
+          "skippedCourseIds",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "PathwayAssignmentInput": {
+        "properties": {
+          "department": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "dueAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "grantsPremium": {
+            "type": "boolean"
+          },
+          "pathwayId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "pathwayId",
+          "userId",
+          "department",
+          "dueAt",
+          "grantsPremium"
         ],
         "type": "object"
       },
@@ -13265,12 +15280,25 @@
             },
             "type": "array"
           },
+          "questionId": {
+            "format": "uuid",
+            "type": "string"
+          },
           "selectedOptionIds": {
             "items": {
               "format": "uuid",
               "type": "string"
             },
             "type": "array"
+          },
+          "selfGrade": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ]
           },
           "sortOrder": {
             "format": "int32",
@@ -13289,6 +15317,7 @@
         },
         "required": [
           "itemId",
+          "questionId",
           "sortOrder",
           "courseId",
           "type",
@@ -14482,6 +16511,12 @@
           },
           "type": {
             "$ref": "#/components/schemas/QuestionType"
+          },
+          "workedSolution": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         },
         "required": [
@@ -14695,6 +16730,12 @@
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",
+              "string"
+            ]
+          },
+          "workedSolution": {
+            "type": [
+              "null",
               "string"
             ]
           }
@@ -15082,6 +17123,24 @@
             ]
           },
           "payments": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "platformOnlyPayments": {
+            "default": 0,
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "platformOnlyRefunds": {
+            "default": 0,
             "format": "double",
             "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
             "type": [
@@ -15494,6 +17553,70 @@
         ],
         "type": "object"
       },
+      "RegradePreviewDto": {
+        "properties": {
+          "affectedAttempts": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "certificatesToFlag": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "changedAttempts": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "newlyFailing": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "newlyPassing": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "regradeId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/RegradeResultDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "regradeId",
+          "affectedAttempts",
+          "changedAttempts",
+          "newlyPassing",
+          "newlyFailing",
+          "certificatesToFlag",
+          "results"
+        ],
+        "type": "object"
+      },
       "RegradeProposalInput": {
         "properties": {
           "correctOptionIds": {
@@ -15616,6 +17739,20 @@
         ],
         "type": "object"
       },
+      "RejectSeatRequestInput": {
+        "properties": {
+          "note": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "note"
+        ],
+        "type": "object"
+      },
       "ReleaseInput": {
         "properties": {
           "note": {
@@ -15696,6 +17833,20 @@
         },
         "required": [
           "reply"
+        ],
+        "type": "object"
+      },
+      "ReportMessageInput": {
+        "properties": {
+          "reason": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "reason"
         ],
         "type": "object"
       },
@@ -15925,6 +18076,59 @@
         },
         "required": [
           "reusable"
+        ],
+        "type": "object"
+      },
+      "ReviewCardDto": {
+        "properties": {
+          "dueAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "easeFactor": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "intervalDays": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "lastQuality": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "questionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "repetitions": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "questionId",
+          "dueAt",
+          "intervalDays",
+          "repetitions",
+          "easeFactor",
+          "lastQuality"
         ],
         "type": "object"
       },
@@ -16172,6 +18376,12 @@
           },
           "type": {
             "$ref": "#/components/schemas/QuestionType"
+          },
+          "workedSolution": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         },
         "required": [
@@ -16453,14 +18663,120 @@
         ],
         "type": "object"
       },
-      "SendMessageInput": {
+      "SeatRequestDto": {
         "properties": {
-          "content": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "decisionNote": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "enterpriseOrderId": {
+            "format": "uuid",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "organizationName": {
+            "type": "string"
+          },
+          "quantity": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "requestedBy": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "status": {
             "type": "string"
           }
         },
         "required": [
-          "content"
+          "id",
+          "organizationId",
+          "organizationName",
+          "quantity",
+          "note",
+          "requestedBy",
+          "status",
+          "createdAt",
+          "decisionNote",
+          "enterpriseOrderId"
+        ],
+        "type": "object"
+      },
+      "SeatRequestInput": {
+        "properties": {
+          "note": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "quantity": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "quantity",
+          "note"
+        ],
+        "type": "object"
+      },
+      "SelfGradeInput": {
+        "properties": {
+          "quality": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "quality"
+        ],
+        "type": "object"
+      },
+      "SendMessageInput": {
+        "properties": {
+          "body": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "body"
         ],
         "type": "object"
       },
@@ -16878,6 +19194,15 @@
           "multiSelectScoring": {
             "$ref": "#/components/schemas/MultiSelectScoring"
           },
+          "negativeMarkingPerWrong": {
+            "default": 0,
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
           "passPercent": {
             "format": "double",
             "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
@@ -17108,6 +19433,113 @@
           "version",
           "storageKey",
           "sha256"
+        ],
+        "type": "object"
+      },
+      "SsoConfigDto": {
+        "properties": {
+          "allowedDomains": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "hasClientSecret": {
+            "type": "boolean"
+          },
+          "issuer": {
+            "type": "string"
+          },
+          "loginUrl": {
+            "type": "string"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "redirectUri": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "organizationId",
+          "issuer",
+          "clientId",
+          "hasClientSecret",
+          "allowedDomains",
+          "enabled",
+          "redirectUri",
+          "loginUrl",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "SsoConfigInput": {
+        "properties": {
+          "allowedDomains": {
+            "items": {
+              "type": "string"
+            },
+            "type": [
+              "null",
+              "array"
+            ]
+          },
+          "clientId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "clientSecret": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "issuer": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "issuer",
+          "clientId",
+          "clientSecret",
+          "allowedDomains",
+          "enabled"
+        ],
+        "type": "object"
+      },
+      "SsoExchangeInput": {
+        "properties": {
+          "handoff": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "handoff"
         ],
         "type": "object"
       },
@@ -17549,6 +19981,15 @@
             },
             "type": "array"
           },
+          "sessionHour": {
+            "default": 0,
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
           "sessionHourUtc": {
             "format": "int32",
             "pattern": "^-?(?:0|[1-9]\\d*)$",
@@ -17559,6 +20000,10 @@
           },
           "targetDate": {
             "format": "date-time",
+            "type": "string"
+          },
+          "timeZone": {
+            "default": "UTC",
             "type": "string"
           },
           "totalLessons": {
@@ -17678,6 +20123,15 @@
             "type": [
               "null",
               "array"
+            ]
+          },
+          "sessionHour": {
+            "format": "int32",
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
             ]
           },
           "sessionHourUtc": {
@@ -17902,6 +20356,252 @@
         ],
         "type": "object"
       },
+      "SupportCertificateDto": {
+        "properties": {
+          "courseTitle": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "issuedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "courseTitle",
+          "status",
+          "issuedAt"
+        ],
+        "type": "object"
+      },
+      "SupportEnrollmentDto": {
+        "properties": {
+          "courseId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "courseTitle": {
+            "type": "string"
+          },
+          "enrolledAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "courseId",
+          "courseTitle",
+          "enrolledAt"
+        ],
+        "type": "object"
+      },
+      "SupportOrderDto": {
+        "properties": {
+          "courseTitles": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "invoiceNumbers": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "maskedBuyerEmail": {
+            "type": "string"
+          },
+          "maskedPaymentIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "paidAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "refunds": {
+            "items": {
+              "$ref": "#/components/schemas/SupportRefundDto"
+            },
+            "type": "array"
+          },
+          "status": {
+            "$ref": "#/components/schemas/OrderStatus"
+          },
+          "total": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "maskedBuyerEmail",
+          "status",
+          "total",
+          "currency",
+          "createdAt",
+          "paidAt",
+          "courseTitles",
+          "maskedPaymentIds",
+          "refunds",
+          "invoiceNumbers"
+        ],
+        "type": "object"
+      },
+      "SupportOrderSummaryDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/OrderStatus"
+          },
+          "total": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "total",
+          "currency",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "SupportRefundDto": {
+        "properties": {
+          "amount": {
+            "format": "double",
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "status",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "SupportUserDto": {
+        "properties": {
+          "certificates": {
+            "items": {
+              "$ref": "#/components/schemas/SupportCertificateDto"
+            },
+            "type": "array"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "enrollments": {
+            "items": {
+              "$ref": "#/components/schemas/SupportEnrollmentDto"
+            },
+            "type": "array"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "isSuspended": {
+            "type": "boolean"
+          },
+          "maskedEmail": {
+            "type": "string"
+          },
+          "mfaEnabled": {
+            "type": "boolean"
+          },
+          "orders": {
+            "items": {
+              "$ref": "#/components/schemas/SupportOrderSummaryDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "displayName",
+          "maskedEmail",
+          "emailVerified",
+          "isSuspended",
+          "mfaEnabled",
+          "createdAt",
+          "enrollments",
+          "orders",
+          "certificates"
+        ],
+        "type": "object"
+      },
       "SuspendInput": {
         "properties": {
           "reason": {
@@ -18098,6 +20798,19 @@
       },
       "ThreadDetailDto": {
         "properties": {
+          "hidden": {
+            "type": "boolean"
+          },
+          "moderation": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ModerationNoticeDto"
+              }
+            ]
+          },
           "replies": {
             "items": {
               "$ref": "#/components/schemas/ReplyDto"
@@ -18831,6 +21544,10 @@
           "preferredLanguage": {
             "type": "string"
           },
+          "requiresReauth": {
+            "default": false,
+            "type": "boolean"
+          },
           "roles": {
             "items": {
               "type": "string"
@@ -18844,6 +21561,30 @@
           "displayName",
           "preferredLanguage",
           "roles"
+        ],
+        "type": "object"
+      },
+      "UserLookupDto": {
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "isSuspended": {
+            "type": "boolean"
+          },
+          "maskedEmail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "displayName",
+          "maskedEmail",
+          "isSuspended"
         ],
         "type": "object"
       },
@@ -19609,6 +22350,66 @@
         ]
       }
     },
+    "/api/admin/assessments": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 20,
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AssessmentPickerDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AssessmentPickerDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AssessmentPickerDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Accommodations"
+        ]
+      }
+    },
     "/api/admin/audit": {
       "get": {
         "parameters": [
@@ -19681,7 +22482,7 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "$ref": "#/components/schemas/BestsellerStat"
+                    "$ref": "#/components/schemas/BestsellerRowDto"
                   },
                   "type": "array"
                 }
@@ -19689,7 +22490,7 @@
               "text/json": {
                 "schema": {
                   "items": {
-                    "$ref": "#/components/schemas/BestsellerStat"
+                    "$ref": "#/components/schemas/BestsellerRowDto"
                   },
                   "type": "array"
                 }
@@ -19697,7 +22498,7 @@
               "text/plain": {
                 "schema": {
                   "items": {
-                    "$ref": "#/components/schemas/BestsellerStat"
+                    "$ref": "#/components/schemas/BestsellerRowDto"
                   },
                   "type": "array"
                 }
@@ -19741,6 +22542,52 @@
       }
     },
     "/api/admin/bundles": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeInactive",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BundleDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BundleDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BundleDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CommerceAdmin"
+        ]
+      },
       "post": {
         "requestBody": {
           "content": {
@@ -19846,6 +22693,196 @@
         },
         "tags": [
           "CommerceAdmin"
+        ]
+      }
+    },
+    "/api/admin/categories": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryAdminDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryAdminDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryAdminDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CategoryAdmin"
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryAdminInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryAdminInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryAdminInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CategoryAdmin"
+        ]
+      }
+    },
+    "/api/admin/categories/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CategoryAdmin"
+        ]
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryAdminDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryAdminDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryAdminDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CategoryAdmin"
+        ]
+      },
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryAdminInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryAdminInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryAdminInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryAdminDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryAdminDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryAdminDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CategoryAdmin"
         ]
       }
     },
@@ -20297,6 +23334,29 @@
         },
         "tags": [
           "CertificateWorkflow"
+        ]
+      }
+    },
+    "/api/admin/certificate-templates/{id}/preview.pdf": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CertificatePdf"
         ]
       }
     },
@@ -20780,6 +23840,55 @@
         ]
       }
     },
+    "/api/admin/certifications/{id}/courses": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LinkedCourseDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LinkedCourseDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LinkedCourseDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "AdminCertifications"
+        ]
+      }
+    },
     "/api/admin/certifications/{id}/courses/{courseId}": {
       "delete": {
         "parameters": [
@@ -20879,6 +23988,54 @@
               "text/plain": {
                 "schema": {
                   "$ref": "#/components/schemas/CoverageReportDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "AdminCertifications"
+        ]
+      }
+    },
+    "/api/admin/certifications/{id}/mappings": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "courseId",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificationMappingsDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificationMappingsDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificationMappingsDto"
                 }
               }
             },
@@ -22001,6 +25158,241 @@
         ]
       }
     },
+    "/api/admin/enterprise/orders": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EnterpriseOrderDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EnterpriseOrderDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EnterpriseOrderDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "AdminEnterprise"
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnterpriseOrderInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnterpriseOrderInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnterpriseOrderInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "AdminEnterprise"
+        ]
+      }
+    },
+    "/api/admin/enterprise/orders/{id}/mark-paid": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarkPaidInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarkPaidInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarkPaidInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EnterpriseOrderDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EnterpriseOrderDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EnterpriseOrderDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "AdminEnterprise"
+        ]
+      }
+    },
+    "/api/admin/enterprise/seat-requests": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SeatRequestDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SeatRequestDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SeatRequestDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "AdminEnterprise"
+        ]
+      }
+    },
+    "/api/admin/enterprise/seat-requests/{id}/reject": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RejectSeatRequestInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RejectSeatRequestInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RejectSeatRequestInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeatRequestDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeatRequestDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeatRequestDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "AdminEnterprise"
+        ]
+      }
+    },
     "/api/admin/instructor-applications": {
       "get": {
         "parameters": [
@@ -22438,6 +25830,155 @@
         },
         "tags": [
           "QualityQueues"
+        ]
+      }
+    },
+    "/api/admin/orders": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "email",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "courseId",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "currency",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "coupon",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "default": 25,
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderPage"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderPage"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderPage"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrderBrowser"
+        ]
+      }
+    },
+    "/api/admin/orders/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminOrderDetailDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminOrderDetailDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminOrderDetailDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrderBrowser"
         ]
       }
     },
@@ -25195,6 +28736,66 @@
         ]
       }
     },
+    "/api/admin/users/lookup": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UserLookupDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UserLookupDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UserLookupDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Admin"
+        ]
+      }
+    },
     "/api/admin/users/{id}": {
       "get": {
         "parameters": [
@@ -25295,6 +28896,66 @@
         },
         "tags": [
           "Admin"
+        ]
+      }
+    },
+    "/api/admin/users/{id}/mfa/reset": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MfaResetRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MfaResetRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MfaResetRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MfaResetResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MfaResetResultDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MfaResetResultDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "MfaReset"
         ]
       }
     },
@@ -25646,6 +29307,66 @@
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/ConfirmVideoRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoAssetDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoAssetDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoAssetDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "YouTubeVideos"
+        ]
+      }
+    },
+    "/api/admin/youtube/videos/{id}/mark": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarkVideoRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarkVideoRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarkVideoRequest"
               }
             }
           },
@@ -26582,6 +30303,38 @@
         ]
       }
     },
+    "/api/attempts/{id}/items/{itemId}/bookmark": {
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Practice"
+        ]
+      }
+    },
     "/api/attempts/{id}/items/{itemId}/challenge": {
       "post": {
         "parameters": [
@@ -26959,21 +30712,41 @@
           "content": {
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshRequest"
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RefreshRequest"
+                  }
+                ]
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshRequest"
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RefreshRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshRequest"
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RefreshRequest"
+                  }
+                ]
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -27353,21 +31126,41 @@
           "content": {
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshRequest"
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RefreshRequest"
+                  }
+                ]
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshRequest"
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RefreshRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshRequest"
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RefreshRequest"
+                  }
+                ]
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -27551,6 +31344,28 @@
         },
         "tags": [
           "CommercePublic"
+        ]
+      }
+    },
+    "/api/calendar/{token}.ics": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CalendarFeed"
         ]
       }
     },
@@ -27939,6 +31754,62 @@
         ]
       }
     },
+    "/api/commerce/currencies": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "packageId",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "courseId",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CurrencyOptionDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CurrencyOptionDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CurrencyOptionDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CommercePublic"
+        ]
+      }
+    },
     "/api/complaints": {
       "post": {
         "requestBody": {
@@ -28184,6 +32055,49 @@
         },
         "tags": [
           "Discovery"
+        ]
+      }
+    },
+    "/api/courses/{courseId}/messages": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courseId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
         ]
       }
     },
@@ -30228,6 +34142,46 @@
         ]
       }
     },
+    "/api/me/certificates/{id}/share": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificateShareDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificateShareDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificateShareDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CompletionAwards"
+        ]
+      }
+    },
     "/api/me/certificates/{id}/visibility": {
       "put": {
         "parameters": [
@@ -30338,6 +34292,46 @@
         },
         "tags": [
           "StudyTools"
+        ]
+      }
+    },
+    "/api/me/courses/{courseId}/completion-award": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courseId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompletionAwardDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompletionAwardDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompletionAwardDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CompletionAwards"
         ]
       }
     },
@@ -31738,6 +35732,72 @@
         ]
       }
     },
+    "/api/me/study-plan/calendar-token": {
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CalendarFeed"
+        ]
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalendarTokenStatusDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalendarTokenStatusDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalendarTokenStatusDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CalendarFeed"
+        ]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalendarTokenDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalendarTokenDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalendarTokenDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CalendarFeed"
+        ]
+      }
+    },
     "/api/me/study-plan/regenerate": {
       "post": {
         "responses": {
@@ -31967,6 +36027,299 @@
         ]
       }
     },
+    "/api/messages/blocks": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BlockDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BlockDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BlockDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlockInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlockInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlockInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
+    "/api/messages/blocks/{userId}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
+    "/api/messages/conversations": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ConversationDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ConversationDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ConversationDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
+    "/api/messages/conversations/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "before",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 50,
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversationPageDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversationPageDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversationPageDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
+    "/api/messages/conversations/{id}/messages": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
+    "/api/messages/{messageId}/report": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "messageId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportMessageInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportMessageInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportMessageInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
     "/api/moderation/discussion-replies/{id}/hide": {
       "post": {
         "parameters": [
@@ -32050,6 +36403,218 @@
         },
         "tags": [
           "Discussions"
+        ]
+      }
+    },
+    "/api/moderation/messages/reports": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeHidden",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ModerationReportDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ModerationReportDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ModerationReportDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
+    "/api/moderation/messages/{messageId}/hide": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "messageId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HideMessageInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HideMessageInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HideMessageInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
+    "/api/moderation/messages/{messageId}/unhide": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "messageId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
+    "/api/notes-library": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "default": 20,
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResultOfNotesLibraryItemDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResultOfNotesLibraryItemDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResultOfNotesLibraryItemDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Discovery"
         ]
       }
     },
@@ -32281,6 +36846,55 @@
         ]
       }
     },
+    "/api/orgs/{id}/enterprise-orders": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EnterpriseOrderDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EnterpriseOrderDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EnterpriseOrderDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      }
+    },
     "/api/orgs/{id}/invitations": {
       "get": {
         "parameters": [
@@ -32359,6 +36973,154 @@
         },
         "tags": [
           "Orgs"
+        ]
+      }
+    },
+    "/api/orgs/{id}/materials": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OrgMaterialDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OrgMaterialDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OrgMaterialDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "title",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "department",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      }
+    },
+    "/api/orgs/{id}/materials/{materialId}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "materialId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      }
+    },
+    "/api/orgs/{id}/materials/{materialId}/download": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "materialId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
         ]
       }
     },
@@ -32688,6 +37450,145 @@
         ]
       }
     },
+    "/api/orgs/{id}/pathway-assignments": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PathwayAssignmentDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PathwayAssignmentDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PathwayAssignmentDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PathwayAssignmentInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PathwayAssignmentInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PathwayAssignmentInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PathwayAssignmentDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PathwayAssignmentDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PathwayAssignmentDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      }
+    },
+    "/api/orgs/{id}/pathway-assignments/{assignmentId}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "assignmentId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      }
+    },
     "/api/orgs/{id}/reports/progress": {
       "get": {
         "parameters": [
@@ -32715,6 +37616,215 @@
         },
         "tags": [
           "Orgs"
+        ]
+      }
+    },
+    "/api/orgs/{id}/seat-requests": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SeatRequestDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SeatRequestDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SeatRequestDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SeatRequestInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SeatRequestInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SeatRequestInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      }
+    },
+    "/api/orgs/{id}/sso": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoConfigDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoConfigDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoConfigDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      },
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoConfigInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoConfigInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoConfigInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoConfigDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoConfigDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoConfigDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
         ]
       }
     },
@@ -32988,6 +38098,66 @@
         ]
       }
     },
+    "/api/practice/review/{questionId}/grade": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "questionId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SelfGradeInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SelfGradeInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SelfGradeInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewCardDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewCardDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewCardDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Practice"
+        ]
+      }
+    },
     "/api/practice/sessions": {
       "get": {
         "responses": {
@@ -33222,6 +38392,38 @@
         ]
       }
     },
+    "/api/practice/sessions/{id}/items/{itemId}/bookmark": {
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Practice"
+        ]
+      }
+    },
     "/api/practice/sessions/{id}/items/{itemId}/challenge": {
       "post": {
         "parameters": [
@@ -33329,6 +38531,75 @@
               "text/plain": {
                 "schema": {
                   "$ref": "#/components/schemas/CheckResult"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Practice"
+        ]
+      }
+    },
+    "/api/practice/sessions/{id}/items/{itemId}/self-grade": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SelfGradeInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SelfGradeInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SelfGradeInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewCardDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewCardDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewCardDto"
                 }
               }
             },
@@ -33896,6 +39167,46 @@
         ]
       }
     },
+    "/api/review/regrades/{id}/preview": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegradePreviewDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegradePreviewDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegradePreviewDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Regrade"
+        ]
+      }
+    },
     "/api/search/suggestions": {
       "get": {
         "parameters": [
@@ -34002,6 +39313,119 @@
         },
         "tags": [
           "Discovery"
+        ]
+      }
+    },
+    "/api/sso/callback": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "state",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Sso"
+        ]
+      }
+    },
+    "/api/sso/exchange": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoExchangeInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoExchangeInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoExchangeInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Sso"
+        ]
+      }
+    },
+    "/api/sso/{orgSlug}/start": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orgSlug",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "returnTo",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Sso"
         ]
       }
     },
@@ -34506,6 +39930,35 @@
         ]
       }
     },
+    "/api/studio/commerce/policy": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommercePolicyDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommercePolicyDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommercePolicyDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CommerceStudio"
+        ]
+      }
+    },
     "/api/studio/coupons": {
       "get": {
         "responses": {
@@ -34950,6 +40403,123 @@
         ]
       }
     },
+    "/api/studio/courses/{courseId}/auto-messages": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courseId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AutoMessageDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AutoMessageDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AutoMessageDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
+    "/api/studio/courses/{courseId}/auto-messages/{kind}": {
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courseId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "kind",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoMessageInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoMessageInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoMessageInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutoMessageDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutoMessageDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutoMessageDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
+        ]
+      }
+    },
     "/api/studio/courses/{courseId}/case-groups": {
       "get": {
         "parameters": [
@@ -35201,6 +40771,205 @@
         },
         "tags": [
           "TaxonomyStudio"
+        ]
+      }
+    },
+    "/api/studio/courses/{courseId}/certifications/{certId}/mappings": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courseId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "certId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificationMappingsDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificationMappingsDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificationMappingsDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "TaxonomyStudio"
+        ]
+      }
+    },
+    "/api/studio/courses/{courseId}/completion-award": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courseId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompletionAwardSettingDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompletionAwardSettingDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompletionAwardSettingDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CompletionAwards"
+        ]
+      },
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courseId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompletionAwardSettingInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompletionAwardSettingInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompletionAwardSettingInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompletionAwardSettingDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompletionAwardSettingDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompletionAwardSettingDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "CompletionAwards"
+        ]
+      }
+    },
+    "/api/studio/courses/{courseId}/learners/{learnerId}/messages": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "courseId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "learnerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Messaging"
         ]
       }
     },
@@ -35782,6 +41551,20 @@
             "required": true,
             "schema": {
               "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "kind",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "schema": {
               "type": "string"
             }
           }
@@ -39629,6 +45412,184 @@
         ]
       }
     },
+    "/api/support/orders": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "email",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "orderId",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SupportOrderDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SupportOrderDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SupportOrderDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrderBrowser"
+        ]
+      }
+    },
+    "/api/support/users/lookup": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "format": "int32",
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UserLookupDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UserLookupDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UserLookupDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Support"
+        ]
+      }
+    },
+    "/api/support/users/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupportUserDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupportUserDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupportUserDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Support"
+        ]
+      }
+    },
+    "/api/support/users/{id}/email-verification/resend": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Support"
+        ]
+      }
+    },
     "/api/templates/mcq-import.csv": {
       "get": {
         "responses": {
@@ -40145,6 +46106,9 @@
       "name": "AdminDiscovery"
     },
     {
+      "name": "CalendarFeed"
+    },
+    {
       "name": "StudyTools"
     },
     {
@@ -40172,6 +46136,9 @@
       "name": "QualityQueues"
     },
     {
+      "name": "Messaging"
+    },
+    {
       "name": "Learn"
     },
     {
@@ -40196,6 +46163,12 @@
       "name": "Onboarding"
     },
     {
+      "name": "Support"
+    },
+    {
+      "name": "MfaReset"
+    },
+    {
       "name": "AdminOrgs"
     },
     {
@@ -40203,6 +46176,15 @@
     },
     {
       "name": "MyOrgs"
+    },
+    {
+      "name": "OrgPhase2"
+    },
+    {
+      "name": "AdminEnterprise"
+    },
+    {
+      "name": "Sso"
     },
     {
       "name": "Discussions"
@@ -40238,6 +46220,9 @@
       "name": "CommerceFinance"
     },
     {
+      "name": "OrderBrowser"
+    },
+    {
       "name": "Catalog"
     },
     {
@@ -40254,6 +46239,9 @@
     },
     {
       "name": "PublishedPreview"
+    },
+    {
+      "name": "CategoryAdmin"
     },
     {
       "name": "LearnerPreview"
@@ -40287,6 +46275,9 @@
     },
     {
       "name": "CertificatePdf"
+    },
+    {
+      "name": "CompletionAwards"
     },
     {
       "name": "Analytics"

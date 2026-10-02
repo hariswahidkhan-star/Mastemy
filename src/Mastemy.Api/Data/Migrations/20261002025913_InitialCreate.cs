@@ -549,6 +549,189 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Engagement_ModerationNotes",
+                columns: table => new
+                {
+                    TargetType = table.Column<string>(type: "varchar(32)", maxLength: 32, nullable: false),
+                    TargetId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Reason = table.Column<string>(type: "varchar(2000)", maxLength: 2000, nullable: false),
+                    HiddenAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Engagement_ModerationNotes", x => new { x.TargetType, x.TargetId });
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Enterprise_Orders",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    SeatRequestId = table.Column<Guid>(type: "char(36)", nullable: true),
+                    OrderId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    InvoiceId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    UnitPrice = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    Currency = table.Column<string>(type: "varchar(3)", maxLength: 3, nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    Status = table.Column<string>(type: "varchar(16)", maxLength: 16, nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    PaidMarkedBy = table.Column<Guid>(type: "char(36)", nullable: true),
+                    PaidAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    PaymentReference = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true),
+                    SeatLimitBefore = table.Column<int>(type: "int", nullable: true),
+                    SeatLimitAfter = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enterprise_Orders", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Enterprise_OrgMaterials",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Title = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false),
+                    Department = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    FileName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
+                    ContentType = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
+                    SizeBytes = table.Column<long>(type: "bigint", nullable: false),
+                    Sha256 = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: false),
+                    StorageKey = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false),
+                    ScanVerdict = table.Column<string>(type: "varchar(16)", maxLength: 16, nullable: false),
+                    ScanEngine = table.Column<string>(type: "varchar(32)", maxLength: 32, nullable: false),
+                    UploadedBy = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enterprise_OrgMaterials", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Enterprise_PathwayAssignmentCourses",
+                columns: table => new
+                {
+                    PathwayAssignmentId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    OrganizationAssignmentId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enterprise_PathwayAssignmentCourses", x => new { x.PathwayAssignmentId, x.OrganizationAssignmentId });
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Enterprise_PathwayAssignments",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    PathwayId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: true),
+                    Department = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    GrantsPremium = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DueAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    AssignedBy = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enterprise_PathwayAssignments", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Enterprise_SeatRequests",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Note = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: false),
+                    RequestedBy = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Status = table.Column<string>(type: "varchar(16)", maxLength: 16, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DecidedBy = table.Column<Guid>(type: "char(36)", nullable: true),
+                    DecidedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DecisionNote = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enterprise_SeatRequests", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Enterprise_SsoConfigs",
+                columns: table => new
+                {
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Issuer = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
+                    ClientId = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
+                    ClientSecretProtected = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
+                    AllowedDomains = table.Column<string>(type: "varchar(2000)", maxLength: 2000, nullable: false),
+                    Enabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    UpdatedBy = table.Column<Guid>(type: "char(36)", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enterprise_SsoConfigs", x => x.OrganizationId);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Enterprise_SsoIdentities",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Issuer = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
+                    Subject = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    LastLoginAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enterprise_SsoIdentities", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Enterprise_SsoLoginStates",
+                columns: table => new
+                {
+                    StateHash = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: false),
+                    OrganizationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Nonce = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
+                    CodeVerifierProtected = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
+                    ReturnPath = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
+                    ExpiresAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ConsumedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    HandoffHash = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: true),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: true),
+                    HandoffExpiresAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    HandoffUsedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enterprise_SsoLoginStates", x => x.StateHash);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Entitlements",
                 columns: table => new
                 {
@@ -619,6 +802,114 @@ namespace Mastemy.Api.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LessonProgress", x => new { x.UserId, x.LessonId });
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Messaging_AutoMessageDeliveries",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Kind = table.Column<string>(type: "varchar(16)", maxLength: 16, nullable: false),
+                    MessageId = table.Column<Guid>(type: "char(36)", nullable: true),
+                    DeliveredAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messaging_AutoMessageDeliveries", x => new { x.UserId, x.CourseId, x.Kind });
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Messaging_Blocks",
+                columns: table => new
+                {
+                    BlockerId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    BlockedId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messaging_Blocks", x => new { x.BlockerId, x.BlockedId });
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Messaging_Conversations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    LearnerId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    LastMessageAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messaging_Conversations", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Messaging_CourseAutoMessages",
+                columns: table => new
+                {
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Kind = table.Column<string>(type: "varchar(16)", maxLength: 16, nullable: false),
+                    Body = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
+                    Enabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    EnabledSince = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    UpdatedBy = table.Column<Guid>(type: "char(36)", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messaging_CourseAutoMessages", x => new { x.CourseId, x.Kind });
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Messaging_ReadMarkers",
+                columns: table => new
+                {
+                    ConversationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    LastReadAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messaging_ReadMarkers", x => new { x.ConversationId, x.UserId });
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Messaging_Reports",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    MessageId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    ReporterId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    ComplaintId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Reason = table.Column<string>(type: "varchar(2000)", maxLength: 2000, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messaging_Reports", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Messaging_WorkerState",
+                columns: table => new
+                {
+                    Key = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: false),
+                    LastRunAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messaging_WorkerState", x => x.Key);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -1492,6 +1783,32 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Messaging_Messages",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    ConversationId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    SenderId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Kind = table.Column<string>(type: "varchar(16)", maxLength: 16, nullable: false),
+                    Body = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    HiddenAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    HiddenBy = table.Column<Guid>(type: "char(36)", nullable: true),
+                    HiddenReason = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messaging_Messages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Messaging_Messages_Messaging_Conversations_ConversationId",
+                        column: x => x.ConversationId,
+                        principalTable: "Messaging_Conversations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Commerce_Disputes",
                 columns: table => new
                 {
@@ -1986,6 +2303,29 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Identity_MfaResets",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    ActorId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Reason = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ReenrolledAt = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Identity_MfaResets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Identity_MfaResets_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Identity_OneTimeTokens",
                 columns: table => new
                 {
@@ -2147,6 +2487,27 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "StudyTools_CalendarTokens",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    TokenHash = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    LastUsedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StudyTools_CalendarTokens", x => x.UserId);
+                    table.ForeignKey(
+                        name: "FK_StudyTools_CalendarTokens_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "StudyTools_Folders",
                 columns: table => new
                 {
@@ -2177,7 +2538,8 @@ namespace Mastemy.Api.Data.Migrations
                     TargetDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     WeeklyMinutes = table.Column<int>(type: "int", nullable: false),
                     SessionDaysMask = table.Column<int>(type: "int", nullable: false),
-                    SessionHourUtc = table.Column<int>(type: "int", nullable: false),
+                    SessionHour = table.Column<int>(type: "int", nullable: false),
+                    TimeZone = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: false),
                     RemindersEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     FitsBeforeTarget = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -2365,6 +2727,28 @@ namespace Mastemy.Api.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Commerce_InvoiceSellerSnapshots",
+                columns: table => new
+                {
+                    InvoiceId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Name = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
+                    Address = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
+                    TaxId = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    CapturedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Commerce_InvoiceSellerSnapshots", x => x.InvoiceId);
+                    table.ForeignKey(
+                        name: "FK_Commerce_InvoiceSellerSnapshots_Commerce_Invoices_InvoiceId",
+                        column: x => x.InvoiceId,
+                        principalTable: "Commerce_Invoices",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "StudyTools_PlanItems",
                 columns: table => new
                 {
@@ -2409,6 +2793,62 @@ namespace Mastemy.Api.Data.Migrations
                     table.PrimaryKey("PK_Announcements", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Announcements_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Assessment_CompletionAwards",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Code = table.Column<string>(type: "varchar(32)", maxLength: 32, nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    SnapshotVersion = table.Column<int>(type: "int", nullable: false),
+                    LessonCount = table.Column<int>(type: "int", nullable: false),
+                    RecipientName = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false),
+                    CourseTitle = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    RevocationReason = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true),
+                    PubliclyVisible = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IssuedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assessment_CompletionAwards", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Assessment_CompletionAwards_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Assessment_CompletionAwards_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Assessment_CompletionAwardSettings",
+                columns: table => new
+                {
+                    CourseId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Enabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    UpdatedBy = table.Column<Guid>(type: "char(36)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assessment_CompletionAwardSettings", x => x.CourseId);
+                    table.ForeignKey(
+                        name: "FK_Assessment_CompletionAwardSettings_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
@@ -2971,6 +3411,7 @@ namespace Mastemy.Api.Data.Migrations
                     AllowPause = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     MaxPauseMinutes = table.Column<int>(type: "int", nullable: false),
                     MaxExposuresPerQuestion = table.Column<int>(type: "int", nullable: true),
+                    NegativeMarkingPerWrong = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
@@ -3229,7 +3670,11 @@ namespace Mastemy.Api.Data.Migrations
                     IntervalDays = table.Column<int>(type: "int", nullable: false),
                     DueAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     LastReviewedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    LastQuality = table.Column<int>(type: "int", nullable: false)
+                    LastQuality = table.Column<int>(type: "int", nullable: false),
+                    PrevRepetitions = table.Column<int>(type: "int", nullable: false),
+                    PrevEaseFactor = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    PrevIntervalDays = table.Column<int>(type: "int", nullable: false),
+                    LastPracticeItemId = table.Column<Guid>(type: "char(36)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3414,7 +3859,8 @@ namespace Mastemy.Api.Data.Migrations
                     Untimed = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     PausedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     PausedSecondsUsed = table.Column<int>(type: "int", nullable: false),
-                    PauseAllowanceSeconds = table.Column<int>(type: "int", nullable: false)
+                    PauseAllowanceSeconds = table.Column<int>(type: "int", nullable: false),
+                    NegativeMarkingPerWrong = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -3518,7 +3964,8 @@ namespace Mastemy.Api.Data.Migrations
                     OptionOrder = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
                     SelectedOptionIds = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
                     CheckedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    Points = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: true)
+                    Points = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: true),
+                    SelfGrade = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -3617,6 +4064,26 @@ namespace Mastemy.Api.Data.Migrations
                     table.PrimaryKey("PK_QuestionOptions", x => x.Id);
                     table.ForeignKey(
                         name: "FK_QuestionOptions_QuestionVersions_QuestionVersionId",
+                        column: x => x.QuestionVersionId,
+                        principalTable: "QuestionVersions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Questions_WorkedSolutions",
+                columns: table => new
+                {
+                    QuestionVersionId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Text = table.Column<string>(type: "longtext", maxLength: 512, nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Questions_WorkedSolutions", x => x.QuestionVersionId);
+                    table.ForeignKey(
+                        name: "FK_Questions_WorkedSolutions_QuestionVersions_QuestionVersionId",
                         column: x => x.QuestionVersionId,
                         principalTable: "QuestionVersions",
                         principalColumn: "Id",
@@ -3757,6 +4224,23 @@ namespace Mastemy.Api.Data.Migrations
                 name: "IX_Assessment_CertificateFlags_Status",
                 table: "Assessment_CertificateFlags",
                 column: "Status");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Assessment_CompletionAwards_Code",
+                table: "Assessment_CompletionAwards",
+                column: "Code",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Assessment_CompletionAwards_CourseId",
+                table: "Assessment_CompletionAwards",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Assessment_CompletionAwards_UserId_CourseId",
+                table: "Assessment_CompletionAwards",
+                columns: new[] { "UserId", "CourseId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Assessment_CourseCertificateSettings_TemplateId",
@@ -4219,6 +4703,70 @@ namespace Mastemy.Api.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_Orders_OrderId",
+                table: "Enterprise_Orders",
+                column: "OrderId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_Orders_OrganizationId",
+                table: "Enterprise_Orders",
+                column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_Orders_SeatRequestId",
+                table: "Enterprise_Orders",
+                column: "SeatRequestId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_OrgMaterials_OrganizationId_DeletedAt",
+                table: "Enterprise_OrgMaterials",
+                columns: new[] { "OrganizationId", "DeletedAt" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_PathwayAssignmentCourses_OrganizationAssignmentId",
+                table: "Enterprise_PathwayAssignmentCourses",
+                column: "OrganizationAssignmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_PathwayAssignments_OrganizationId_PathwayId",
+                table: "Enterprise_PathwayAssignments",
+                columns: new[] { "OrganizationId", "PathwayId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_SeatRequests_OrganizationId",
+                table: "Enterprise_SeatRequests",
+                column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_SeatRequests_Status_CreatedAt",
+                table: "Enterprise_SeatRequests",
+                columns: new[] { "Status", "CreatedAt" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_SsoIdentities_OrganizationId_Subject",
+                table: "Enterprise_SsoIdentities",
+                columns: new[] { "OrganizationId", "Subject" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_SsoIdentities_UserId",
+                table: "Enterprise_SsoIdentities",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_SsoLoginStates_ExpiresAt",
+                table: "Enterprise_SsoLoginStates",
+                column: "ExpiresAt");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enterprise_SsoLoginStates_HandoffHash",
+                table: "Enterprise_SsoLoginStates",
+                column: "HandoffHash",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Entitlements_UserId_CourseId",
                 table: "Entitlements",
                 columns: new[] { "UserId", "CourseId" });
@@ -4243,6 +4791,11 @@ namespace Mastemy.Api.Data.Migrations
                 name: "IX_Identity_MfaRecoveryCodes_UserId_CodeHash",
                 table: "Identity_MfaRecoveryCodes",
                 columns: new[] { "UserId", "CodeHash" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Identity_MfaResets_UserId_ReenrolledAt",
+                table: "Identity_MfaResets",
+                columns: new[] { "UserId", "ReenrolledAt" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Identity_OneTimeTokens_TokenHash",
@@ -4296,6 +4849,38 @@ namespace Mastemy.Api.Data.Migrations
                 name: "IX_Lessons_VideoAssetId",
                 table: "Lessons",
                 column: "VideoAssetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messaging_Conversations_CourseId_LastMessageAt",
+                table: "Messaging_Conversations",
+                columns: new[] { "CourseId", "LastMessageAt" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messaging_Conversations_CourseId_LearnerId",
+                table: "Messaging_Conversations",
+                columns: new[] { "CourseId", "LearnerId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messaging_Conversations_LearnerId_LastMessageAt",
+                table: "Messaging_Conversations",
+                columns: new[] { "LearnerId", "LastMessageAt" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messaging_Messages_ConversationId_CreatedAt",
+                table: "Messaging_Messages",
+                columns: new[] { "ConversationId", "CreatedAt" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messaging_Messages_SenderId_CreatedAt",
+                table: "Messaging_Messages",
+                columns: new[] { "SenderId", "CreatedAt" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messaging_Reports_MessageId_ReporterId",
+                table: "Messaging_Reports",
+                columns: new[] { "MessageId", "ReporterId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Modules_CourseId",
@@ -4478,6 +5063,12 @@ namespace Mastemy.Api.Data.Migrations
                 name: "IX_StudyTools_Bookmarks_UserId_LessonId_TimestampSeconds",
                 table: "StudyTools_Bookmarks",
                 columns: new[] { "UserId", "LessonId", "TimestampSeconds" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StudyTools_CalendarTokens_TokenHash",
+                table: "StudyTools_CalendarTokens",
+                column: "TokenHash",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -4721,6 +5312,12 @@ namespace Mastemy.Api.Data.Migrations
                 name: "Assessment_CertificateFlags");
 
             migrationBuilder.DropTable(
+                name: "Assessment_CompletionAwards");
+
+            migrationBuilder.DropTable(
+                name: "Assessment_CompletionAwardSettings");
+
+            migrationBuilder.DropTable(
                 name: "Assessment_CourseCertificateSettings");
 
             migrationBuilder.DropTable(
@@ -4784,7 +5381,7 @@ namespace Mastemy.Api.Data.Migrations
                 name: "Commerce_InvoiceCounters");
 
             migrationBuilder.DropTable(
-                name: "Commerce_Invoices");
+                name: "Commerce_InvoiceSellerSnapshots");
 
             migrationBuilder.DropTable(
                 name: "Commerce_LedgerSources");
@@ -4838,7 +5435,34 @@ namespace Mastemy.Api.Data.Migrations
                 name: "EmailOutbox");
 
             migrationBuilder.DropTable(
+                name: "Engagement_ModerationNotes");
+
+            migrationBuilder.DropTable(
                 name: "Enrollments");
+
+            migrationBuilder.DropTable(
+                name: "Enterprise_Orders");
+
+            migrationBuilder.DropTable(
+                name: "Enterprise_OrgMaterials");
+
+            migrationBuilder.DropTable(
+                name: "Enterprise_PathwayAssignmentCourses");
+
+            migrationBuilder.DropTable(
+                name: "Enterprise_PathwayAssignments");
+
+            migrationBuilder.DropTable(
+                name: "Enterprise_SeatRequests");
+
+            migrationBuilder.DropTable(
+                name: "Enterprise_SsoConfigs");
+
+            migrationBuilder.DropTable(
+                name: "Enterprise_SsoIdentities");
+
+            migrationBuilder.DropTable(
+                name: "Enterprise_SsoLoginStates");
 
             migrationBuilder.DropTable(
                 name: "Identity_AuthSessions");
@@ -4848,6 +5472,9 @@ namespace Mastemy.Api.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Identity_MfaRecoveryCodes");
+
+            migrationBuilder.DropTable(
+                name: "Identity_MfaResets");
 
             migrationBuilder.DropTable(
                 name: "Identity_OneTimeTokens");
@@ -4866,6 +5493,27 @@ namespace Mastemy.Api.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "LessonProgress");
+
+            migrationBuilder.DropTable(
+                name: "Messaging_AutoMessageDeliveries");
+
+            migrationBuilder.DropTable(
+                name: "Messaging_Blocks");
+
+            migrationBuilder.DropTable(
+                name: "Messaging_CourseAutoMessages");
+
+            migrationBuilder.DropTable(
+                name: "Messaging_Messages");
+
+            migrationBuilder.DropTable(
+                name: "Messaging_ReadMarkers");
+
+            migrationBuilder.DropTable(
+                name: "Messaging_Reports");
+
+            migrationBuilder.DropTable(
+                name: "Messaging_WorkerState");
 
             migrationBuilder.DropTable(
                 name: "NotificationPreferences");
@@ -4919,6 +5567,9 @@ namespace Mastemy.Api.Data.Migrations
                 name: "Questions_Meta");
 
             migrationBuilder.DropTable(
+                name: "Questions_WorkedSolutions");
+
+            migrationBuilder.DropTable(
                 name: "RecentlyViewed");
 
             migrationBuilder.DropTable(
@@ -4938,6 +5589,9 @@ namespace Mastemy.Api.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "StudyTools_Bookmarks");
+
+            migrationBuilder.DropTable(
+                name: "StudyTools_CalendarTokens");
 
             migrationBuilder.DropTable(
                 name: "StudyTools_FolderCourses");
@@ -5045,6 +5699,9 @@ namespace Mastemy.Api.Data.Migrations
                 name: "Commerce_Coupons");
 
             migrationBuilder.DropTable(
+                name: "Commerce_Invoices");
+
+            migrationBuilder.DropTable(
                 name: "CommissionLedger");
 
             migrationBuilder.DropTable(
@@ -5075,13 +5732,13 @@ namespace Mastemy.Api.Data.Migrations
                 name: "Lessons");
 
             migrationBuilder.DropTable(
+                name: "Messaging_Conversations");
+
+            migrationBuilder.DropTable(
                 name: "Organizations");
 
             migrationBuilder.DropTable(
                 name: "ImportBatches");
-
-            migrationBuilder.DropTable(
-                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "ResourceFiles");
@@ -5100,6 +5757,9 @@ namespace Mastemy.Api.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Assessments");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Commerce_Plans");

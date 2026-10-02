@@ -23,7 +23,7 @@ public static class SecurityClaims
     public const string MfaEnrollmentUse = "mfa_enrollment";
 
     /// <summary>Roles that must use MFA (and a verified email) — spec §21 "MFA for privileged users".</summary>
-    public static readonly string[] PrivilegedRoles = [Roles.Admin, Roles.SuperAdmin, Roles.Finance, Roles.Reviewer, Roles.Moderator];
+    public static readonly string[] PrivilegedRoles = [Roles.Admin, Roles.SuperAdmin, Roles.Finance, Roles.Reviewer, Roles.Moderator, Roles.Support];
 
     public static bool IsPrivileged(IEnumerable<string> roles) => roles.Any(r => PrivilegedRoles.Contains(r));
 }
