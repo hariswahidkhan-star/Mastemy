@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1484",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1484-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How is the Well-Architected Framework best used over a system's life?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As an ongoing, repeated review practice as the workload evolves",
+     "correct": true,
+     "rationale": "Correct: Well-Architected is iterative and revisited as the system changes."
+    },
+    {
+     "key": "B",
+     "text": "As a one-time certification completed before launch",
+     "correct": false,
+     "rationale": "It is not a one-time check; architectures change and should be re-reviewed."
+    },
+    {
+     "key": "C",
+     "text": "As a replacement for monitoring and operations",
+     "correct": false,
+     "rationale": "It complements, not replaces, operational practices."
+    },
+    {
+     "key": "D",
+     "text": "As a billing feature that reduces cost automatically",
+     "correct": false,
+     "rationale": "It is a review framework, not an automatic cost reducer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Well-Architected is an ongoing review practice, not a one-time event.",
+   "outcome_refs": [
+    "MST-1484-D01.01"
+   ],
+   "domain_ref": "Framework overview",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1484-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO align with the Reliability pillar? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Deploy across multiple Availability Zones",
+     "correct": true,
+     "rationale": "Correct: multi-AZ deployment removes a single-AZ point of failure."
+    },
+    {
+     "key": "B",
+     "text": "Define recovery objectives (RTO/RPO) and test failover",
+     "correct": true,
+     "rationale": "Correct: defining and testing recovery targets is core to reliability."
+    },
+    {
+     "key": "C",
+     "text": "Run everything in one AZ to simplify networking",
+     "correct": false,
+     "rationale": "A single AZ is a reliability risk, not a reliability practice."
+    },
+    {
+     "key": "D",
+     "text": "Skip backups to save storage cost",
+     "correct": false,
+     "rationale": "Skipping backups directly undermines reliability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: multi-AZ deployment and tested recovery objectives both support reliability.",
+   "outcome_refs": [
+    "MST-1484-D04.02"
+   ],
+   "domain_ref": "Reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1484-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which practice best reflects the Security pillar's principle of least privilege?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant each identity only the permissions its task requires",
+     "correct": true,
+     "rationale": "Correct: least privilege limits permissions to what is needed."
+    },
+    {
+     "key": "B",
+     "text": "Give all users administrator access for convenience",
+     "correct": false,
+     "rationale": "Blanket admin access violates least privilege."
+    },
+    {
+     "key": "C",
+     "text": "Share one root account among the team",
+     "correct": false,
+     "rationale": "Sharing root is a serious security anti-pattern."
+    },
+    {
+     "key": "D",
+     "text": "Disable logging to reduce noise",
+     "correct": false,
+     "rationale": "Disabling logging weakens detection, not a security practice."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: granting only required permissions is least privilege.",
+   "outcome_refs": [
+    "MST-1484-D03.01"
+   ],
+   "domain_ref": "Security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

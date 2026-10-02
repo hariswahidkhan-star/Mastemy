@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1487",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1487-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a service control policy (SCP) do in AWS Organizations?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sets the maximum permissions (a guardrail) for accounts, without granting access",
+     "correct": true,
+     "rationale": "Correct: SCPs define the permission ceiling; IAM still grants actual access."
+    },
+    {
+     "key": "B",
+     "text": "Grants IAM permissions directly to users",
+     "correct": false,
+     "rationale": "SCPs limit permissions; they do not grant them."
+    },
+    {
+     "key": "C",
+     "text": "Replaces the need for IAM policies",
+     "correct": false,
+     "rationale": "IAM policies are still required to grant access within the SCP ceiling."
+    },
+    {
+     "key": "D",
+     "text": "Controls billing allocation between accounts",
+     "correct": false,
+     "rationale": "SCPs govern permissions, not billing allocation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an SCP sets the permission ceiling and does not itself grant access.",
+   "outcome_refs": [
+    "MST-1487-D03.01"
+   ],
+   "domain_ref": "Service control policies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1487-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are benefits of a governed multi-account setup with Control Tower? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Centralized logging to a dedicated log-archive account",
+     "correct": true,
+     "rationale": "Correct: Control Tower centralizes audit logs for the organization."
+    },
+    {
+     "key": "B",
+     "text": "Consistent guardrails applied across enrolled accounts",
+     "correct": true,
+     "rationale": "Correct: guardrails enforce baseline governance across accounts."
+    },
+    {
+     "key": "C",
+     "text": "A single shared root user for all teams",
+     "correct": false,
+     "rationale": "Sharing a root user is an anti-pattern, not a benefit."
+    },
+    {
+     "key": "D",
+     "text": "Eliminating the need for any IAM controls",
+     "correct": false,
+     "rationale": "IAM is still required within each account."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: centralized logging and consistent guardrails are core Control Tower benefits.",
+   "outcome_refs": [
+    "MST-1487-D04.02"
+   ],
+   "domain_ref": "Control Tower landing zone",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1487-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should user access be managed across many AWS accounts?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Centralize with IAM Identity Center and federation",
+     "correct": true,
+     "rationale": "Correct: Identity Center centralizes access instead of per-account users."
+    },
+    {
+     "key": "B",
+     "text": "Create separate IAM users in every account",
+     "correct": false,
+     "rationale": "Per-account users are hard to manage and audit at scale."
+    },
+    {
+     "key": "C",
+     "text": "Share one access key across all accounts",
+     "correct": false,
+     "rationale": "Sharing keys is insecure and unauditable."
+    },
+    {
+     "key": "D",
+     "text": "Use the management account root for daily work",
+     "correct": false,
+     "rationale": "Root should not be used for daily operations."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: IAM Identity Center centralizes multi-account access.",
+   "outcome_refs": [
+    "MST-1487-D05.01"
+   ],
+   "domain_ref": "Centralized identity and logging",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

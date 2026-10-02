@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1455",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1455-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want to predict whether each customer will churn (yes/no) from data in BigQuery. Which model type fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Logistic regression",
+     "correct": true,
+     "rationale": "Correct: logistic regression is a classifier for binary outcomes."
+    },
+    {
+     "key": "B",
+     "text": "Linear regression",
+     "correct": false,
+     "rationale": "Linear regression predicts a continuous value, not a class."
+    },
+    {
+     "key": "C",
+     "text": "ARIMA_PLUS time series",
+     "correct": false,
+     "rationale": "Time-series models forecast values over time, not a yes/no label."
+    },
+    {
+     "key": "D",
+     "text": "K-means clustering",
+     "correct": false,
+     "rationale": "Clustering groups unlabeled data; it does not predict a known label."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a binary churn target calls for logistic regression.",
+   "outcome_refs": [
+    "MST-1455-D03.01"
+   ],
+   "domain_ref": "Model types",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1455-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce the risk of a misleading BigQuery ML model? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Hold out an evaluation split separate from training data",
+     "correct": true,
+     "rationale": "Correct: evaluating on held-out data gives an honest estimate."
+    },
+    {
+     "key": "B",
+     "text": "Remove features that leak the label",
+     "correct": true,
+     "rationale": "Correct: leakage inflates metrics and fails in production."
+    },
+    {
+     "key": "C",
+     "text": "Evaluate only on the rows used for training",
+     "correct": false,
+     "rationale": "Training-set evaluation overstates performance."
+    },
+    {
+     "key": "D",
+     "text": "Judge an imbalanced classifier by accuracy alone",
+     "correct": false,
+     "rationale": "Accuracy hides poor recall on the minority class."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a held-out split and removing leakage both protect model honesty.",
+   "outcome_refs": [
+    "MST-1455-D06.02"
+   ],
+   "domain_ref": "Feature engineering and responsible use",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1455-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement creates and trains a model directly in BigQuery?",
+   "options": [
+    {
+     "key": "A",
+     "text": "CREATE MODEL ... OPTIONS(...) AS SELECT ...",
+     "correct": true,
+     "rationale": "Correct: CREATE MODEL defines and trains a model from a query."
+    },
+    {
+     "key": "B",
+     "text": "ML.EVALUATE(...)",
+     "correct": false,
+     "rationale": "ML.EVALUATE measures a trained model; it does not create one."
+    },
+    {
+     "key": "C",
+     "text": "ML.PREDICT(...)",
+     "correct": false,
+     "rationale": "ML.PREDICT scores with an existing model."
+    },
+    {
+     "key": "D",
+     "text": "TRAIN TABLE ...",
+     "correct": false,
+     "rationale": "There is no TRAIN TABLE statement in BigQuery ML."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: CREATE MODEL is the statement that trains a model in BigQuery ML.",
+   "outcome_refs": [
+    "MST-1455-D02.01"
+   ],
+   "domain_ref": "Creating and training models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

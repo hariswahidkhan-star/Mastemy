@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1457",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1457-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Gemini Code Assist generates a shell command to delete resources. What is the safest next step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Review the command and confirm it against official docs before running",
+     "correct": true,
+     "rationale": "Correct: generated commands must be verified before any destructive action."
+    },
+    {
+     "key": "B",
+     "text": "Run it immediately to save time",
+     "correct": false,
+     "rationale": "Running an unreviewed destructive command risks data loss."
+    },
+    {
+     "key": "C",
+     "text": "Assume it is correct because it cites a doc",
+     "correct": false,
+     "rationale": "Citations can be wrong; verification is still required."
+    },
+    {
+     "key": "D",
+     "text": "Grant the model owner permissions so it can run itself",
+     "correct": false,
+     "rationale": "Over-granting IAM to an assistant is unsafe and unnecessary."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: verify generated commands, especially destructive ones, before running.",
+   "outcome_refs": [
+    "MST-1457-D05.02"
+   ],
+   "domain_ref": "Verifying output",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1457-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices when prompting Gemini for Google Cloud? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Provide specific context and constraints in the prompt",
+     "correct": true,
+     "rationale": "Correct: context and constraints produce more useful, scoped output."
+    },
+    {
+     "key": "B",
+     "text": "Keep secrets and regulated data out of prompts",
+     "correct": true,
+     "rationale": "Correct: sensitive data should not be placed in prompts."
+    },
+    {
+     "key": "C",
+     "text": "Paste production credentials so the model can act directly",
+     "correct": false,
+     "rationale": "Credentials must never be shared in prompts."
+    },
+    {
+     "key": "D",
+     "text": "Accept the first answer without iterating",
+     "correct": false,
+     "rationale": "Iterating and refining usually improves the result."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: specific context and keeping sensitive data out are both sound prompting practices.",
+   "outcome_refs": [
+    "MST-1457-D06.01"
+   ],
+   "domain_ref": "Data, privacy and responsible use",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1457-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which surface is designed to help you write and explain code inside your IDE?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Gemini Code Assist",
+     "correct": true,
+     "rationale": "Correct: Code Assist is the coding surface in the IDE and Cloud Shell."
+    },
+    {
+     "key": "B",
+     "text": "The BigQuery console",
+     "correct": false,
+     "rationale": "The BigQuery console is for queries, not IDE coding assistance."
+    },
+    {
+     "key": "C",
+     "text": "Cloud Billing reports",
+     "correct": false,
+     "rationale": "Billing reports show cost, not code help."
+    },
+    {
+     "key": "D",
+     "text": "Cloud Storage browser",
+     "correct": false,
+     "rationale": "The Storage browser manages objects, not code."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Gemini Code Assist is the IDE and Cloud Shell coding surface.",
+   "outcome_refs": [
+    "MST-1457-D02.01"
+   ],
+   "domain_ref": "Gemini Code Assist",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

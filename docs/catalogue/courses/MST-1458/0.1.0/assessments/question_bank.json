@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1458",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1458-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A dataset is read a few times a year for audits and must be retained cheaply. Which storage class fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Archive",
+     "correct": true,
+     "rationale": "Correct: Archive is the lowest-cost class for data accessed less than once a year."
+    },
+    {
+     "key": "B",
+     "text": "Standard",
+     "correct": false,
+     "rationale": "Standard is for frequently accessed data and costs the most to store."
+    },
+    {
+     "key": "C",
+     "text": "Nearline",
+     "correct": false,
+     "rationale": "Nearline targets roughly monthly access, more frequent than this case."
+    },
+    {
+     "key": "D",
+     "text": "A local SSD",
+     "correct": false,
+     "rationale": "Local SSD is instance storage, not an object storage class."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Archive is the cheapest class for rarely accessed, long-retained data.",
+   "outcome_refs": [
+    "MST-1458-D02.02"
+   ],
+   "domain_ref": "Storage classes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1458-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO give access to a single object without making a bucket public? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Generate a time-limited signed URL for the object",
+     "correct": true,
+     "rationale": "Correct: a signed URL grants scoped, temporary access to one object."
+    },
+    {
+     "key": "B",
+     "text": "Grant a specific principal an IAM role on the object or bucket",
+     "correct": true,
+     "rationale": "Correct: IAM grants least-privilege access to named principals."
+    },
+    {
+     "key": "C",
+     "text": "Set the bucket to allUsers with Storage Object Viewer",
+     "correct": false,
+     "rationale": "Granting allUsers makes the data public."
+    },
+    {
+     "key": "D",
+     "text": "Disable public access prevention for the project",
+     "correct": false,
+     "rationale": "That weakens protection and does not scope access to one object."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: signed URLs and targeted IAM grants both avoid making the bucket public.",
+   "outcome_refs": [
+    "MST-1458-D03.02"
+   ],
+   "domain_ref": "Access control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1458-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want deleted objects to be recoverable. What must be enabled first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Object versioning on the bucket",
+     "correct": true,
+     "rationale": "Correct: versioning preserves noncurrent versions so deletes can be restored."
+    },
+    {
+     "key": "B",
+     "text": "A coldline storage class",
+     "correct": false,
+     "rationale": "Storage class affects cost, not recoverability of deletes."
+    },
+    {
+     "key": "C",
+     "text": "A customer-managed encryption key",
+     "correct": false,
+     "rationale": "CMEK controls encryption, not delete recovery."
+    },
+    {
+     "key": "D",
+     "text": "A static website configuration",
+     "correct": false,
+     "rationale": "Website config is unrelated to object recovery."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: object versioning is required to recover deleted objects.",
+   "outcome_refs": [
+    "MST-1458-D04.02"
+   ],
+   "domain_ref": "Lifecycle and versioning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

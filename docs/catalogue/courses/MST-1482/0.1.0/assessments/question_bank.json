@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1482",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1482-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Backups are accessed a few times a year but must be retrievable within milliseconds when needed. Which storage class best balances cost and access?",
+   "options": [
+    {
+     "key": "A",
+     "text": "S3 Glacier Instant Retrieval",
+     "correct": true,
+     "rationale": "Correct: Glacier Instant Retrieval offers low-cost storage with millisecond access for rarely read data."
+    },
+    {
+     "key": "B",
+     "text": "S3 Standard",
+     "correct": false,
+     "rationale": "Standard costs more and targets frequent access."
+    },
+    {
+     "key": "C",
+     "text": "S3 Glacier Deep Archive",
+     "correct": false,
+     "rationale": "Deep Archive is cheapest but retrieval takes hours, not milliseconds."
+    },
+    {
+     "key": "D",
+     "text": "EBS",
+     "correct": false,
+     "rationale": "EBS is block storage for instances, not an S3 class."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Glacier Instant Retrieval fits rarely accessed data that still needs instant retrieval.",
+   "outcome_refs": [
+    "MST-1482-D02.02"
+   ],
+   "domain_ref": "Storage classes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1482-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO grant temporary or scoped access without making a bucket public? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Generate a presigned URL for a specific object",
+     "correct": true,
+     "rationale": "Correct: a presigned URL grants time-limited access to one object."
+    },
+    {
+     "key": "B",
+     "text": "Attach a least-privilege IAM policy to the principal",
+     "correct": true,
+     "rationale": "Correct: IAM policies scope access to named identities."
+    },
+    {
+     "key": "C",
+     "text": "Disable Block Public Access and allow public reads",
+     "correct": false,
+     "rationale": "That makes the bucket public, the opposite of least privilege."
+    },
+    {
+     "key": "D",
+     "text": "Set an ACL granting AllUsers read",
+     "correct": false,
+     "rationale": "Granting AllUsers exposes the data publicly."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: presigned URLs and least-privilege IAM both avoid public exposure.",
+   "outcome_refs": [
+    "MST-1482-D03.02"
+   ],
+   "domain_ref": "Access control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1482-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To recover objects after an accidental delete, what must be enabled on the bucket beforehand?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Versioning",
+     "correct": true,
+     "rationale": "Correct: versioning retains prior versions so deletes can be undone."
+    },
+    {
+     "key": "B",
+     "text": "A Glacier storage class",
+     "correct": false,
+     "rationale": "Storage class affects cost, not delete recovery."
+    },
+    {
+     "key": "C",
+     "text": "Transfer Acceleration",
+     "correct": false,
+     "rationale": "Acceleration speeds transfers, unrelated to recovery."
+    },
+    {
+     "key": "D",
+     "text": "Requester Pays",
+     "correct": false,
+     "rationale": "Requester Pays shifts cost; it does not protect against deletes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: bucket versioning is required to recover deleted objects.",
+   "outcome_refs": [
+    "MST-1482-D04.02"
+   ],
+   "domain_ref": "Lifecycle and versioning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

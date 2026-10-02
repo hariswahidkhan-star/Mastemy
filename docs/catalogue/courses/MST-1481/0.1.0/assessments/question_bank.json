@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1481",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1481-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A fault-tolerant batch job can be interrupted and resumed. Which EC2 purchasing option minimizes its cost?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Spot Instances",
+     "correct": true,
+     "rationale": "Correct: Spot offers the deepest discount for interruption-tolerant workloads."
+    },
+    {
+     "key": "B",
+     "text": "On-Demand Instances",
+     "correct": false,
+     "rationale": "On-Demand costs more and is unnecessary for an interruptible job."
+    },
+    {
+     "key": "C",
+     "text": "A 3-year Reserved Instance",
+     "correct": false,
+     "rationale": "Reservations suit steady long-running load, not a one-off batch job."
+    },
+    {
+     "key": "D",
+     "text": "Dedicated Hosts",
+     "correct": false,
+     "rationale": "Dedicated Hosts add cost for isolation the job does not need."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Spot Instances are cheapest for interruption-tolerant workloads.",
+   "outcome_refs": [
+    "MST-1481-D06.02"
+   ],
+   "domain_ref": "Cost optimization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1481-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO improve the security of an EC2 instance? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Restrict the SSH security-group rule to known source IP ranges",
+     "correct": true,
+     "rationale": "Correct: limiting source ranges reduces exposure."
+    },
+    {
+     "key": "B",
+     "text": "Attach an IAM role instead of storing static access keys on the instance",
+     "correct": true,
+     "rationale": "Correct: instance roles supply temporary credentials with no static keys."
+    },
+    {
+     "key": "C",
+     "text": "Open all ports to 0.0.0.0/0 so nothing is blocked",
+     "correct": false,
+     "rationale": "Opening all ports widely exposes the instance."
+    },
+    {
+     "key": "D",
+     "text": "Embed long-lived access keys in the AMI",
+     "correct": false,
+     "rationale": "Baking keys into an AMI is a serious credential-leak risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: scoping SSH rules and using an IAM role both strengthen instance security.",
+   "outcome_refs": [
+    "MST-1481-D03.02"
+   ],
+   "domain_ref": "Security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1481-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need capacity to recover automatically if an instance fails and to scale with demand. What should you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An Auto Scaling group with a launch template and health checks",
+     "correct": true,
+     "rationale": "Correct: an ASG replaces unhealthy instances and scales to demand."
+    },
+    {
+     "key": "B",
+     "text": "A single large standalone instance",
+     "correct": false,
+     "rationale": "A standalone instance has no self-healing or scaling."
+    },
+    {
+     "key": "C",
+     "text": "An S3 bucket",
+     "correct": false,
+     "rationale": "S3 stores objects and does not run compute."
+    },
+    {
+     "key": "D",
+     "text": "A manually launched fleet with no group",
+     "correct": false,
+     "rationale": "Unmanaged instances do not auto-heal or scale."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an Auto Scaling group provides self-healing and demand-based scaling.",
+   "outcome_refs": [
+    "MST-1481-D04.01"
+   ],
+   "domain_ref": "Scaling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

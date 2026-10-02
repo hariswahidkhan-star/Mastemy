@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1459",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1459-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Private instances with no external IP need to download OS updates from the internet. What provides outbound access?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cloud NAT",
+     "correct": true,
+     "rationale": "Correct: Cloud NAT gives private instances outbound internet access without external IPs."
+    },
+    {
+     "key": "B",
+     "text": "Assigning each instance an external IP",
+     "correct": false,
+     "rationale": "That works but exposes instances and is not least-privilege."
+    },
+    {
+     "key": "C",
+     "text": "A VPC peering connection",
+     "correct": false,
+     "rationale": "Peering connects VPCs, not the public internet."
+    },
+    {
+     "key": "D",
+     "text": "An internal load balancer",
+     "correct": false,
+     "rationale": "Internal load balancers route internal traffic, not internet egress."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Cloud NAT enables outbound internet access for instances without external IPs.",
+   "outcome_refs": [
+    "MST-1459-D04.01"
+   ],
+   "domain_ref": "Internet and NAT",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1459-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about VPC firewall rules on Google Cloud? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "They are stateful, so return traffic is allowed automatically",
+     "correct": true,
+     "rationale": "Correct: stateful rules permit return traffic without a reverse rule."
+    },
+    {
+     "key": "B",
+     "text": "They can be scoped to instances using network tags",
+     "correct": true,
+     "rationale": "Correct: tags target rules to specific instances."
+    },
+    {
+     "key": "C",
+     "text": "They require opening both directions for a single connection",
+     "correct": false,
+     "rationale": "Stateful rules do not need a separate return-direction rule."
+    },
+    {
+     "key": "D",
+     "text": "They apply only to the default network",
+     "correct": false,
+     "rationale": "Rules apply to the VPC in which they are defined."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: VPC firewall rules are stateful and can be scoped with network tags.",
+   "outcome_refs": [
+    "MST-1459-D02.02"
+   ],
+   "domain_ref": "Routes and firewall rules",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1459-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two VPCs, A and B, are peered; B is peered with C. Can A reach C through B?",
+   "options": [
+    {
+     "key": "A",
+     "text": "No, because VPC peering is non-transitive",
+     "correct": true,
+     "rationale": "Correct: peering does not provide transitive routing between A and C."
+    },
+    {
+     "key": "B",
+     "text": "Yes, peering is always transitive",
+     "correct": false,
+     "rationale": "Peering is explicitly non-transitive."
+    },
+    {
+     "key": "C",
+     "text": "Yes, if A and C share a subnet",
+     "correct": false,
+     "rationale": "Shared subnets are not how peered VPCs route."
+    },
+    {
+     "key": "D",
+     "text": "Only if Cloud NAT is enabled",
+     "correct": false,
+     "rationale": "NAT concerns internet egress, not inter-VPC routing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: VPC peering is non-transitive, so A cannot reach C through B.",
+   "outcome_refs": [
+    "MST-1459-D03.01"
+   ],
+   "domain_ref": "Connecting networks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

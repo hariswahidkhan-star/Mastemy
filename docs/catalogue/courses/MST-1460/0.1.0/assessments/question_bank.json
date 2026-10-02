@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1460",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1460-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An application needs a globally distributed relational database with strong consistency and horizontal scale. Which service fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cloud Spanner",
+     "correct": true,
+     "rationale": "Correct: Spanner provides horizontal scale with strong consistency globally."
+    },
+    {
+     "key": "B",
+     "text": "Cloud SQL",
+     "correct": false,
+     "rationale": "Cloud SQL is a single-region managed instance, not globally horizontally scaled."
+    },
+    {
+     "key": "C",
+     "text": "Cloud Storage",
+     "correct": false,
+     "rationale": "Cloud Storage is object storage, not a relational database."
+    },
+    {
+     "key": "D",
+     "text": "BigQuery",
+     "correct": false,
+     "rationale": "BigQuery is an analytics warehouse, not an OLTP relational database."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Spanner is built for global scale with strong consistency.",
+   "outcome_refs": [
+    "MST-1460-D04.01"
+   ],
+   "domain_ref": "Cloud Spanner",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1460-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO protect a Cloud SQL instance's connectivity? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use private IP instead of a public IP where possible",
+     "correct": true,
+     "rationale": "Correct: private IP keeps traffic off the public internet."
+    },
+    {
+     "key": "B",
+     "text": "Connect through the Cloud SQL Auth Proxy",
+     "correct": true,
+     "rationale": "Correct: the Auth Proxy provides secure, IAM-based connections."
+    },
+    {
+     "key": "C",
+     "text": "Open the instance to 0.0.0.0/0 for convenience",
+     "correct": false,
+     "rationale": "Opening to all addresses exposes the database broadly."
+    },
+    {
+     "key": "D",
+     "text": "Share the root password in the application repo",
+     "correct": false,
+     "rationale": "Hardcoding credentials in a repo is a serious leak risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: private IP and the Auth Proxy both secure Cloud SQL connectivity.",
+   "outcome_refs": [
+    "MST-1460-D06.01"
+   ],
+   "domain_ref": "Security and cost",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1460-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "To recover a Cloud SQL database to the moment just before an accidental deletion, what must be enabled?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Point-in-time recovery (binary logging / PITR)",
+     "correct": true,
+     "rationale": "Correct: PITR lets you restore to a specific time before the error."
+    },
+    {
+     "key": "B",
+     "text": "Only a single nightly backup",
+     "correct": false,
+     "rationale": "A nightly backup restores to that snapshot, not an arbitrary moment."
+    },
+    {
+     "key": "C",
+     "text": "Read replicas",
+     "correct": false,
+     "rationale": "Replicas serve reads; they are not a recovery mechanism for this."
+    },
+    {
+     "key": "D",
+     "text": "A larger machine tier",
+     "correct": false,
+     "rationale": "Tier affects performance, not recovery granularity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: point-in-time recovery is required to restore to a precise moment.",
+   "outcome_refs": [
+    "MST-1460-D03.02"
+   ],
+   "domain_ref": "Availability and recovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1461",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1461-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "GPS events sometimes arrive seconds after they occurred due to network delays. Which concept distinguishes when an event happened from when it is processed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Event time vs processing time",
+     "correct": true,
+     "rationale": "Correct: event time is when it occurred; processing time is when the pipeline handles it."
+    },
+    {
+     "key": "B",
+     "text": "Batch size",
+     "correct": false,
+     "rationale": "Batch size concerns throughput, not timing semantics."
+    },
+    {
+     "key": "C",
+     "text": "Topic retention",
+     "correct": false,
+     "rationale": "Retention is how long messages are kept, not timing semantics."
+    },
+    {
+     "key": "D",
+     "text": "Worker count",
+     "correct": false,
+     "rationale": "Worker count affects capacity, not event vs processing time."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: event time vs processing time captures this distinction.",
+   "outcome_refs": [
+    "MST-1461-D01.02"
+   ],
+   "domain_ref": "Streaming fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1461-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO help a Dataflow streaming job handle problem messages correctly? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Send unparseable messages to a dead-letter topic",
+     "correct": true,
+     "rationale": "Correct: dead-lettering isolates bad messages without stopping the pipeline."
+    },
+    {
+     "key": "B",
+     "text": "Design transforms to be idempotent",
+     "correct": true,
+     "rationale": "Correct: idempotency makes reprocessing safe under at-least-once delivery."
+    },
+    {
+     "key": "C",
+     "text": "Drop any message that arrives late without recording it",
+     "correct": false,
+     "rationale": "Silently dropping late data loses information and is rarely acceptable."
+    },
+    {
+     "key": "D",
+     "text": "Assume exactly-once removes all need for idempotency",
+     "correct": false,
+     "rationale": "Robust pipelines still design for safe reprocessing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: dead-letter topics and idempotent transforms both improve correctness.",
+   "outcome_refs": [
+    "MST-1461-D05.01"
+   ],
+   "domain_ref": "Reliability and correctness",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1461-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need per-minute counts from a continuous event stream. Which windowing approach fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fixed (tumbling) one-minute windows",
+     "correct": true,
+     "rationale": "Correct: fixed one-minute windows produce non-overlapping per-minute aggregates."
+    },
+    {
+     "key": "B",
+     "text": "A single global window with no trigger",
+     "correct": false,
+     "rationale": "A global window without triggers never emits interim results."
+    },
+    {
+     "key": "C",
+     "text": "No windowing at all",
+     "correct": false,
+     "rationale": "Unbounded streams need windows to aggregate over time."
+    },
+    {
+     "key": "D",
+     "text": "Batch mode only",
+     "correct": false,
+     "rationale": "Per-minute counts on a live stream require streaming windows."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fixed one-minute windows yield per-minute counts.",
+   "outcome_refs": [
+    "MST-1461-D04.01"
+   ],
+   "domain_ref": "Windowing and triggers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
