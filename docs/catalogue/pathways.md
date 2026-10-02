@@ -230,7 +230,7 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 | Step | Course ID | Title | Hours |
 |---|---|---|---|
 | 1 | `MST-0865` | HTML and CSS: Accessible Responsive Web Development | 20 |
-| 2 | `MST-0861` | JavaScript: Complete Language Foundations | 40 |
+| 2 | `MST-0861` | JavaScript: Complete Language Foundations | 30 |
 | 3 | `MST-0869` | React: Complete Application Development | 40 |
 | 4 | `MST-0883` | Node.js: Backend Application Foundations | 20 |
 | 5 | `MST-0998` | API Design, Versioning, and Developer Experience | 20 |

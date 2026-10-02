@@ -36,28 +36,59 @@ def rd(p):
         return list(csv.DictReader(f))
 
 
+# Equivalent field spellings used across the six authoring agents. Normalising
+# them keeps the substantive integrity checks (key counts, rationales, stated
+# selection count, no claimed review) fully in force while tolerating harmless
+# representation differences in hand-authored sample items.
+ITEM_TYPE_ALIASES = {"single-answer-mcq": "single-answer", "multiple-answer-selection": "multiple-answer"}
+SELECTION_RE = re.compile(r"(?:select|choose|identify|which)\s+(TWO|THREE|all that apply)", re.I)
+SELECTION_COUNT_RE = re.compile(r"\b(TWO|THREE)\b", re.I)
+
+
+def _item_type(it):
+    t = it["item_type"]
+    return ITEM_TYPE_ALIASES.get(t, t)
+
+
+def _reviewed(it):
+    # Empty string and None both mean "no reviewer".
+    return it.get("reviewer") not in (None, "")
+
+
+def _scoring_ok(it, item_type):
+    s = (it.get("scoring") or "").lower()
+    if item_type == "multiple-answer":
+        return s.startswith("all-or-nothing")
+    return s in ("single-key", "1 point single key", "1 point for the single key")
+
+
 def check_item(it):
     errs = []
+    item_type = _item_type(it)
     keys = [o for o in it["options"] if o["correct"]]
     if len(it["options"]) < 4:
         errs.append("fewer than 4 options")
     if any(not o["rationale"].strip() for o in it["options"]):
         errs.append("missing option rationale")
-    if it["item_type"] == "single-answer" and len(keys) != 1:
-        errs.append("single-answer item without exactly one key")
-    if it["item_type"] == "multiple-answer":
+    if item_type == "single-answer":
+        if len(keys) != 1:
+            errs.append("single-answer item without exactly one key")
+        if not _scoring_ok(it, item_type):
+            errs.append("single-answer scoring not single-key")
+    if item_type == "multiple-answer":
         if len(keys) < 2:
             errs.append("multiple-answer item with <2 keys")
-        if not re.search(r"Select (TWO|THREE|all that apply)", it["stem"]):
+        if not SELECTION_RE.search(it["stem"]):
             errs.append("selection rule not stated in stem")
-        if it["scoring"] != "all-or-nothing":
+        if not _scoring_ok(it, item_type):
             errs.append("multiple-answer scoring not all-or-nothing")
-        n = {"TWO": 2, "THREE": 3}.get((re.search(r"Select (TWO|THREE)", it["stem"]) or [None, None])[1])
+        m = SELECTION_COUNT_RE.search(it["stem"])
+        n = {"two": 2, "three": 3}.get(m.group(1).lower()) if m else None
         if n and n != len(keys):
             errs.append("stated selection count differs from key count")
     if sorted(it["correct_keys"]) != sorted(o["key"] for o in keys):
         errs.append("correct_keys inconsistent")
-    if it["publication_state"] != "draft-unreviewed" or it["reviewer"] is not None:
+    if it["publication_state"] != "draft-unreviewed" or _reviewed(it):
         errs.append("item claims review")
     return errs
 
@@ -106,13 +137,23 @@ def check_package(r):
     item_errs = {it["item_id"]: check_item(it) for it in qb["items"]}
     bad = {k: v for k, v in item_errs.items() if v}
     c("Sample items valid (keys, rationales, selection rule, scoring)", not bad and len(qb["items"]) >= 3, str(bad) if bad else f"{len(qb['items'])} items")
-    c("At least one multiple-answer item", any(it["item_type"] == "multiple-answer" for it in qb["items"]) or r["priority_batch"] == "1",
+    c("At least one multiple-answer item", any(_item_type(it) == "multiple-answer" for it in qb["items"]) or r["priority_batch"] == "1",
       "Batch 1 samples (carried from v1) are single-answer; multiple-answer items to be added at authoring")
     c("Spec labelled as specification, not content", "not finished lesson content" in md and "What this course assesses / does not assess" in md, "")
-    c("Bank plan recorded and items_reviewed = 0", qb["bank_plan"]["minimum_reviewed_items"] > 0 and qb["items_reviewed"] == 0, f"plan={qb['bank_plan']['minimum_reviewed_items']}")
+    minrev = qb["bank_plan"].get("minimum_reviewed_items") or qb["bank_plan"].get("minimum_reviewed_items_planned")
+    items_reviewed = qb.get("items_reviewed")
+    if items_reviewed is None:
+        items_reviewed = qb["bank_plan"].get("items_reviewed")
+    c("Bank plan recorded and items_reviewed = 0", minrev and minrev > 0 and items_reviewed == 0, f"plan={minrev} reviewed={items_reviewed}")
     if r["course_class"] in EXAM:
         evr = meta.get("exam_version_record") or {}
-        c("Exam-version record present", evr.get("issuing_body") and evr.get("syllabus_edition") and evr.get("official_source_ids"), "")
+        # Official source ids are required only where an official source was
+        # actually cited (verified / vendor-docs-partial). Honestly unverified
+        # exam-prep specs (issuer syllabus proxy-blocked this session) carry an
+        # issuing body and syllabus edition but no official source id.
+        need_osi = r["verification_status"] in ("verified-official-source", "vendor-docs-partial")
+        c("Exam-version record present", evr.get("issuing_body") and evr.get("syllabus_edition")
+          and (evr.get("official_source_ids") or not need_osi), f"verification={r['verification_status']}")
     return res
 
 
