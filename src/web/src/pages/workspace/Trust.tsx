@@ -26,6 +26,8 @@ import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { fmtDateTime, WsError, wsError } from './common';
+import { UserPicker } from '../finala/Pickers';
+import type { UserLookupDto } from '../../api/finala';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -589,7 +591,7 @@ function SuspensionsTab() {
   const { t, lang } = useI18n();
   const toast = useToast();
   const [all, setAll] = useState(false);
-  const [userRef, setUserRef] = useState('');
+  const [picked, setPicked] = useState<UserLookupDto | null>(null);
   const [suspending, setSuspending] = useState(false);
   const [reinstating, setReinstating] = useState<SuspensionDto | null>(null);
   const list = useQuery({
@@ -605,7 +607,7 @@ function SuspensionsTab() {
     [['ws', 'suspensions']],
     () => {
       setSuspending(false);
-      setUserRef('');
+      setPicked(null);
       toast.success(t('workspace.trust.suspended'));
     },
   );
@@ -621,7 +623,7 @@ function SuspensionsTab() {
       toast.success(t('workspace.trust.reinstated'));
     },
   );
-  const userId = extractGuid(userRef);
+  const userId = picked?.id ?? null;
   return (
     <div className="stack">
       <form
@@ -631,12 +633,7 @@ function SuspensionsTab() {
           if (userId) setSuspending(true);
         }}
       >
-        <Field
-          label={t('workspace.trust.instructorId')}
-          hint={t('workspace.trust.instructorIdHint')}
-        >
-          <Input value={userRef} onChange={(e) => setUserRef(e.target.value)} />
-        </Field>
+        <UserPicker label={t('finala.picker.instructor')} selected={picked} onChange={setPicked} />
         <Button type="submit" variant="danger" disabled={!userId}>
           {t('workspace.trust.suspend')}
         </Button>

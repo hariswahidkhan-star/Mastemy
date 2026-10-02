@@ -17,6 +17,8 @@ import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { HiddenContentNotice, ReportContentButton } from '../workspace/Trust';
+import { HiddenThreadNotice } from '../finala/Account';
+import { MessageLearnerButton } from '../finala/Messaging';
 
 const EDIT_WINDOW_MS = 24 * 60 * 60 * 1000;
 export const MODERATOR_ROLES = ['Moderator', 'Admin', 'SuperAdmin'] as const;
@@ -470,7 +472,7 @@ export function ThreadView({ threadId }: { threadId: string }) {
 
   return (
     <QueryState query={thread}>
-      {({ thread: th, replies }) => {
+      {({ thread: th, replies, moderation }) => {
         const mine = user?.id === th.authorId;
         return (
           <article className="stack">
@@ -524,7 +526,15 @@ export function ThreadView({ threadId }: { threadId: string }) {
                 </Button>
               ) : null}
               {!mine ? <ReportContentButton targetType="Discussion" targetId={th.id} /> : null}
+              {isAuthor && !mine ? (
+                <MessageLearnerButton
+                  courseId={th.courseId}
+                  learnerId={th.authorId}
+                  learnerName={th.authorName}
+                />
+              ) : null}
             </div>
+            {mine ? <HiddenThreadNotice moderation={moderation} /> : null}
             {resolve.isError ? (
               <Notice tone="danger">{errorMessage(resolve.error, t)}</Notice>
             ) : null}

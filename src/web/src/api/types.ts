@@ -87,6 +87,8 @@ export interface UserDto {
   roles: Role[];
   emailVerified?: boolean;
   mfaEnabled?: boolean;
+  /** True when roles/MFA changed since this access token was issued (sign in again to pick them up). */
+  requiresReauth?: boolean;
 }
 /** `status`: "ok" (token pair), "mfa_required" (post `mfaToken` + code to /api/auth/mfa/verify) or
  * "mfa_enrollment_required" (`accessToken` is a restricted enrollment-only token, no refresh token). */
@@ -357,6 +359,8 @@ export interface AssessmentSummary {
   isPremium: boolean;
   countsTowardCertificate: boolean;
   attemptsUsed?: number;
+  /** Exam-mode penalty per wrong answer (0 = none), frozen at publish. */
+  negativeMarkingPerWrong?: number;
 }
 export interface LessonViewDto {
   lesson: {
@@ -407,6 +411,9 @@ export interface CertificateDto {
   status: 'Valid' | 'Revoked';
   issuedAt: IsoDate;
   revocationReason?: string | null;
+  kind?: 'AssessedKnowledge' | 'Completion';
+  title?: string;
+  verificationLabel?: string;
 }
 export interface AttemptSummaryDto {
   id: Guid;
@@ -526,6 +533,7 @@ export interface ReviewItem {
   selectedOptionIds?: Guid[];
   explanation?: string;
   rationales?: Record<Guid, string> | { optionId: Guid; text: string }[];
+  workedSolution?: string | null;
 }
 export interface AttemptResult {
   scorePercent: number;

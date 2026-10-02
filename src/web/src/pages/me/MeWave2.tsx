@@ -27,6 +27,11 @@ import {
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
+import {
+  CredentialKindBadge,
+  CredentialKindNote,
+  LinkedInShareButton,
+} from '../finala/Credentials';
 
 // ---------- Notifications page ----------
 
@@ -277,8 +282,11 @@ function CertificateRow({ cert }: { cert: MyCertificateDto }) {
   );
   const revoked = cert.status === 'Revoked';
   return (
-    <li>
-      <strong>{cert.courseTitle}</strong> <StatusBadge status={cert.status} />{' '}
+    <li
+      className={cert.kind === 'Completion' ? 'finala-cert finala-cert--completion' : 'finala-cert'}
+    >
+      <CredentialKindBadge kind={cert.kind} /> <strong>{cert.courseTitle}</strong>{' '}
+      <StatusBadge status={cert.status} />{' '}
       <Badge tone={visible ? 'success' : 'neutral'}>
         {visible ? t('certificates.public') : t('certificates.private')}
       </Badge>
@@ -286,6 +294,7 @@ function CertificateRow({ cert }: { cert: MyCertificateDto }) {
         <Link to={`/verify/${encodeURIComponent(cert.code)}`}>{cert.code}</Link> ·{' '}
         {fmtDate(cert.issuedAt)}
       </div>
+      <CredentialKindNote kind={cert.kind} />
       <div className="row" style={{ marginBlockStart: 'var(--space-2)' }}>
         <Button
           size="sm"
@@ -308,8 +317,11 @@ function CertificateRow({ cert }: { cert: MyCertificateDto }) {
               .finally(() => setDownloading(false));
           }}
         >
-          {t('certificates.downloadPdf')}
+          {cert.kind === 'Completion'
+            ? t('finala.cred.pdfCompletion')
+            : t('certificates.downloadPdf')}
         </Button>
+        {!revoked ? <LinkedInShareButton certificateId={cert.id} /> : null}
         <Checkbox
           label={t('certificates.publicToggle')}
           hint={t('certificates.publicHint')}

@@ -10,6 +10,7 @@ import { MegaMenu } from '../discover/MegaMenu';
 import { EmailVerificationBanner } from '../../pages/account/EmailPages';
 import { ConsentBanner, ConsentSettingsButton } from '../../pages/workspace/Consent';
 import { AttributionCapture } from '../../pages/commerce/shared';
+import { ReauthBanner } from '../../pages/finala/Reauth';
 
 function Logo() {
   return (
@@ -51,6 +52,7 @@ export function Layout() {
     { to: '/me', label: t('nav.dashboard'), show: !!user },
     { to: '/me/profile', label: t('account.nav.account'), show: !!user },
     { to: '/practice', label: t('exams.nav.practice'), show: !!user },
+    { to: '/messages', label: t('finala.nav.messages'), show: !!user },
     {
       to: '/staff/exams',
       label: t('exams.nav.staff'),
@@ -58,6 +60,11 @@ export function Layout() {
     },
     { to: '/studio', label: t('nav.studio'), show: hasRole(...AUTHOR_ROLES) },
     { to: '/admin', label: t('nav.admin'), show: hasRole(...STAFF_ROLES) },
+    {
+      to: '/support',
+      label: t('finala.nav.support'),
+      show: hasRole('Support', 'Admin', 'SuperAdmin'),
+    },
   ];
 
   return (
@@ -152,6 +159,7 @@ export function Layout() {
       <ConsentBanner />
       <main id="main" className="site-main" tabIndex={-1}>
         <EmailVerificationBanner />
+        <ReauthBanner />
         <AttributionCapture />
         <Outlet />
       </main>

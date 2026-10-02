@@ -28,6 +28,7 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { CaseExhibit, ChallengeButton } from './AttemptExtras';
 import { examError, isPremiumError } from './examErrors';
+import { BookmarkItemButton, SelfGradePanel, WorkedSolutionPanel } from '../finala/Learning';
 
 const DIFFICULTIES: Difficulty[] = ['Easy', 'Medium', 'Hard'];
 const splitList = (s: string) =>
@@ -442,12 +443,25 @@ function PracticeItemCard({
             ) : null}
           </Notice>
           {check.explanation ? <RichContent source={check.explanation} className="small" /> : null}
-          <ChallengeButton
-            path={`/api/practice/sessions/${sessionId}/items/${item.itemId}/challenge`}
-          />
+          <WorkedSolutionPanel source={check.workedSolution} />
+          {!finished ? (
+            <SelfGradePanel sessionId={sessionId} itemId={item.itemId} initial={item.selfGrade} />
+          ) : null}
+          <div className="row">
+            <BookmarkItemButton source="practice" ownerId={sessionId} itemId={item.itemId} />
+            <ChallengeButton
+              path={`/api/practice/sessions/${sessionId}/items/${item.itemId}/challenge`}
+            />
+          </div>
         </>
       ) : item.checked ? (
-        <p className="small muted">{t('exams.practice.alreadyChecked')}</p>
+        <>
+          <p className="small muted">{t('exams.practice.alreadyChecked')}</p>
+          {!finished ? (
+            <SelfGradePanel sessionId={sessionId} itemId={item.itemId} initial={item.selfGrade} />
+          ) : null}
+          <BookmarkItemButton source="practice" ownerId={sessionId} itemId={item.itemId} />
+        </>
       ) : null}
       {error ? (
         <Notice tone={isPremiumError(error) ? 'warning' : 'danger'}>{examError(error, t)}</Notice>
@@ -618,9 +632,13 @@ function PracticeResultView({ result, sessionId }: { result: PracticeResult; ses
                 ))}
               </ul>
               {r.explanation ? <RichContent source={r.explanation} className="small" /> : null}
-              <ChallengeButton
-                path={`/api/practice/sessions/${sessionId}/items/${r.itemId}/challenge`}
-              />
+              <WorkedSolutionPanel source={r.workedSolution} />
+              <div className="row">
+                <BookmarkItemButton source="practice" ownerId={sessionId} itemId={r.itemId} />
+                <ChallengeButton
+                  path={`/api/practice/sessions/${sessionId}/items/${r.itemId}/challenge`}
+                />
+              </div>
             </li>
           ))}
         </ol>

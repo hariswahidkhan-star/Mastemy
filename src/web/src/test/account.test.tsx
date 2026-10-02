@@ -172,6 +172,7 @@ describe('MFA components', () => {
       mfaToken: 'mt',
       code: '123456',
     });
-    expect(localStorage.getItem('mastemy.refreshToken')).toBe('rt');
+    expect(localStorage.getItem('mastemy.refreshToken')).toBeNull();
+    expect(localStorage.getItem('mastemy.session')).toBe('1');
   });
 });

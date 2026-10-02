@@ -31,6 +31,9 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { examError } from './examErrors';
 import '../../styles/exams.css';
+import { AssessmentPicker, ImageResourcePicker } from '../finala/Pickers';
+import { RegradePreviewPanel, TemplatePreviewButton } from '../finala/Learning';
+import type { AssessmentPickerDto } from '../../api/finala';
 
 const REVIEW: Role[] = ['Reviewer', 'Admin', 'SuperAdmin'];
 const STAFF: Role[] = ['Admin', 'SuperAdmin'];
@@ -540,6 +543,7 @@ function RegradeDetailDialog({ id, onClose }: { id: string; onClose: () => void 
                 <Notice tone="info">{t('exams.regrade.notOwn')}</Notice>
               ) : (
                 <>
+                  <RegradePreviewPanel regradeId={id} />
                   <Notice tone="warning">{t('exams.regrade.approveWarning')}</Notice>
                   <Field label={t('exams.regrade.note')} required>
                     <Textarea rows={2} value={note} onChange={(e) => setNote(e.target.value)} />
@@ -683,7 +687,7 @@ export function AccommodationsPage() {
   const [submitted, setSubmitted] = useState('');
   const [user, setUser] = useState<AdminUserDto | null>(null);
   const [includeRevoked, setIncludeRevoked] = useState(false);
-  const [assessmentId, setAssessmentId] = useState('');
+  const [assessment, setAssessment] = useState<AssessmentPickerDto | null>(null);
   const [extra, setExtra] = useState(50);
   const [untimed, setUntimed] = useState(false);
   const [reason, setReason] = useState('');
@@ -705,7 +709,7 @@ export function AccommodationsPage() {
         method: 'POST',
         body: {
           userId: user?.id,
-          assessmentId: assessmentId.trim() || null,
+          assessmentId: assessment?.id ?? null,
           extraTimePercent: untimed ? 0 : extra,
           untimed,
           reason: reason.trim(),
@@ -723,7 +727,6 @@ export function AccommodationsPage() {
     () => toast.success(t('exams.acc.revoked')),
   );
   const extraOk = untimed || (Number.isInteger(extra) && extra >= 0 && extra <= 300);
-  const guidOk = !assessmentId.trim() || /^[0-9a-f-]{36}$/i.test(assessmentId.trim());
   return (
     <div className="stack">
       <PageHeader title={t('exams.staff.section.accommodations')} subtitle={t('exams.acc.intro')} />
@@ -772,17 +775,16 @@ export function AccommodationsPage() {
           noValidate
           onSubmit={(e) => {
             e.preventDefault();
-            if (extraOk && guidOk && reason.trim()) grant.mutate(undefined);
+            if (extraOk && reason.trim()) grant.mutate(undefined);
           }}
         >
           <h2>{t('exams.acc.grantFor', { name: user.displayName })}</h2>
-          <Field
-            label={t('exams.acc.assessment')}
-            hint={t('exams.acc.assessmentHint')}
-            error={guidOk ? undefined : t('exams.acc.guidRule')}
-          >
-            <Input value={assessmentId} onChange={(e) => setAssessmentId(e.target.value)} />
-          </Field>
+          <AssessmentPicker
+            label={t('finala.picker.assessmentOptional')}
+            selected={assessment}
+            onChange={setAssessment}
+          />
+          <p className="small muted">{t('exams.acc.assessmentHint')}</p>
           <Checkbox
             label={t('exams.acc.untimedLabel')}
             checked={untimed}
@@ -1006,16 +1008,10 @@ function TemplateForm({
             />
           </Field>
         </div>
-        <Field
-          label={t('exams.cert.logo')}
-          hint={t('exams.cert.logoHint')}
-          error={logoOk ? undefined : t('exams.acc.guidRule')}
-        >
-          <Input
-            value={v.logoResourceId ?? ''}
-            onChange={(e) => set('logoResourceId', e.target.value.trim() || null)}
-          />
-        </Field>
+        <ImageResourcePicker
+          value={v.logoResourceId}
+          onChange={(id) => set('logoResourceId', id)}
+        />
         <Field label={t('exams.cert.signatureName')}>
           <Input
             value={v.signatureName}
@@ -1109,6 +1105,7 @@ export function TemplatesPage() {
                     <Button size="sm" variant="secondary" onClick={() => setEditing(tp)}>
                       {t('common.edit')}
                     </Button>
+                    <TemplatePreviewButton templateId={tp.id} />
                     {!tp.archived ? (
                       <Button
                         size="sm"

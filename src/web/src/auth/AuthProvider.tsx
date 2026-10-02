@@ -1,7 +1,14 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { api, getRefreshToken, onSessionChange, refreshSession, setSession } from '../api/client';
+import {
+  api,
+  hasSessionHint,
+  logoutSession,
+  onSessionChange,
+  refreshSession,
+  setSession,
+} from '../api/client';
 import type { AuthResponse, Role, UserDto } from '../api/types';
 
 interface AuthValue {
@@ -33,7 +40,7 @@ export const AUTHOR_ROLES: Role[] = ['Instructor', 'Admin', 'SuperAdmin'];
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserDto | null>(null);
-  const [initializing, setInitializing] = useState<boolean>(() => !!getRefreshToken());
+  const [initializing, setInitializing] = useState<boolean>(() => hasSessionHint());
   const qc = useQueryClient();
 
   useEffect(
@@ -45,7 +52,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   useEffect(() => {
-    if (!getRefreshToken()) return;
+    if (!hasSessionHint()) return;
     let cancelled = false;
     refreshSession()
       .then(async (ok) => {
@@ -116,14 +123,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   const logout = useCallback(async () => {
-    const refreshToken = getRefreshToken();
-    try {
-      if (refreshToken)
-        await api('/api/auth/logout', { method: 'POST', body: { refreshToken }, noRetry: true });
-    } catch {
-      /* server-side revoke is best-effort; local session is cleared regardless */
-    }
-    setSession(null);
+    // Server-side revoke is best-effort; the local session is cleared regardless.
+    await logoutSession();
     qc.clear();
   }, [qc]);
 

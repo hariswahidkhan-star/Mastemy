@@ -18,6 +18,7 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { ColumnChart, DataTable, MeterList, StatTile } from './Charts';
 import { WsError } from './common';
+import { AiUsagePanel } from '../finala/Admin';
 
 // ---------- helpers ----------
 const RANGES = [
@@ -334,9 +335,14 @@ export function AdminDashboardPage() {
               />
               <StatTile
                 label={t('workspace.dashboard.aiUsage')}
-                value={d.aiUsage == null ? t('workspace.dashboard.notTracked') : String(d.aiUsage)}
+                value={
+                  d.aiUsage == null
+                    ? t('workspace.dashboard.notTracked')
+                    : fmtNumber(d.aiUsage.calls)
+                }
               />
             </div>
+            <AiUsagePanel usage={d.aiUsage} />
             <ColumnChart
               title={t('workspace.dashboard.signupsOverTime')}
               points={d.signupsOverTime.map((p) => ({ label: p.bucket, value: p.value }))}

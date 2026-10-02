@@ -20,6 +20,7 @@ import { discoverRoutes } from './routes/discoverRoutes';
 import { accountRoutes } from './routes/accountRoutes';
 import { examsRoutes } from './routes/examsRoutes';
 import { workspaceRoutes } from './routes/workspaceRoutes';
+import { finalaRoutes } from './routes/finalaRoutes';
 import { commerceAdminRoutes, commerceRoutes, commerceStudioRoutes } from './routes/commerceRoutes';
 
 const LearnPage = lazy(() =>
@@ -384,6 +385,7 @@ export function App() {
         {examsRoutes}
         {workspaceRoutes}
         {commerceRoutes}
+        {finalaRoutes}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

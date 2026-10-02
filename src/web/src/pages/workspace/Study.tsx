@@ -24,6 +24,8 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
 import { fmtDateTime, WsError, wsError } from './common';
+import { accountApi, accountKeys } from '../../api/account';
+import { CalendarSubscription } from '../finala/Account';
 
 function useContinueLearning(limit = 10) {
   return useQuery({
@@ -114,7 +116,14 @@ function PlanForm({
   const [days, setDays] = useState<WeekDay[]>(
     initial?.sessionDays ?? ['Monday', 'Wednesday', 'Friday'],
   );
-  const [hour, setHour] = useState(String(initial?.sessionHourUtc ?? 18));
+  const [hour, setHour] = useState(String(initial?.sessionHour ?? initial?.sessionHourUtc ?? 18));
+  // Sessions are scheduled at a local hour in the profile time zone (UTC when unset).
+  const profile = useQuery({
+    queryKey: accountKeys.profile,
+    queryFn: accountApi.profile,
+    enabled: !initial?.timeZone,
+  });
+  const zone = initial?.timeZone ?? (profile.data?.timeZone || 'UTC');
   const [reminders, setReminders] = useState(initial?.remindersEnabled ?? false);
   const mins = Number(minutes);
   const valid =
@@ -134,7 +143,7 @@ function PlanForm({
           targetDate: `${target}T00:00:00Z`,
           weeklyMinutes: mins,
           sessionDays: days,
-          sessionHourUtc: Number(hour),
+          sessionHour: Number(hour),
           remindersEnabled: reminders,
         } satisfies StudyPlanRequest,
       }),
@@ -208,13 +217,20 @@ function PlanForm({
           ))}
         </div>
       </fieldset>
-      <Field label={t('workspace.plan.hour')} hint={t('workspace.plan.hourHint')}>
+      <Field
+        label={t('workspace.plan.hour')}
+        hint={
+          <>
+            {t('finala.tz.hint', { zone })} <Link to="/me/profile">{t('finala.tz.change')}</Link>
+          </>
+        }
+      >
         <Select
           value={hour}
           onChange={(e) => setHour(e.target.value)}
           options={Array.from({ length: 24 }, (_, h) => ({
             value: String(h),
-            label: `${String(h).padStart(2, '0')}:00 UTC`,
+            label: `${String(h).padStart(2, '0')}:00 ${zone}`,
           }))}
         />
       </Field>
@@ -324,6 +340,13 @@ export function StudyPlanPage() {
                   {t('workspace.plan.delete')}
                 </Button>
               </div>
+              <p className="small" data-testid="plan-zone">
+                {t('finala.tz.planAt', {
+                  hour: `${String(p.sessionHour ?? p.sessionHourUtc).padStart(2, '0')}:00`,
+                  zone: p.timeZone ?? 'UTC',
+                })}
+              </p>
+              <CalendarSubscription />
               <p className="small muted">
                 {p.remindersEnabled
                   ? t('workspace.plan.remindersOn')

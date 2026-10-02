@@ -327,7 +327,7 @@ export interface AdminDashboardDto {
   revenueOverTime: CurrencyBucketDto[];
   refundsByCurrency: CurrencyTotalDto[];
   pendingRefundRequests: number;
-  aiUsage: unknown;
+  aiUsage: import('./finala').AiUsageSummaryDto | null;
   videosNeedingRepair: number;
   videosNeedingRepairSample: {
     id: Guid;
@@ -383,6 +383,9 @@ export interface StudyPlanDto {
   weeklyMinutes: number;
   sessionDays: WeekDay[];
   sessionHourUtc: number;
+  /** Local hour (0–23) in `timeZone`, the learner's profile zone. */
+  sessionHour?: number;
+  timeZone?: string;
   remindersEnabled: boolean;
   fitsBeforeTarget: boolean;
   finishesAt: IsoDate | null;
@@ -396,7 +399,8 @@ export interface StudyPlanRequest {
   targetDate: string;
   weeklyMinutes: number;
   sessionDays: WeekDay[];
-  sessionHourUtc: number;
+  /** Local hour in the profile time zone. */
+  sessionHour: number;
   remindersEnabled: boolean;
 }
 export interface FolderDto {

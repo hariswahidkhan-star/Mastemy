@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import { hydrate } from '@tanstack/react-query';
-import { getRefreshToken } from './api/client';
+import { hasSessionHint } from './api/client';
 import { readStoredLang } from './i18n/I18nProvider';
 import { AppTree, createQueryClient, SSR_GLOBAL } from './ssr/AppTree';
 import type { SsrPayload } from './ssr/AppTree';
@@ -28,7 +28,7 @@ const canHydrate =
   !!ssr &&
   container.hasChildNodes() &&
   readStoredLang() === ssr.lang &&
-  !getRefreshToken() &&
+  !hasSessionHint() &&
   !hasStoredTheme();
 
 const tree = (

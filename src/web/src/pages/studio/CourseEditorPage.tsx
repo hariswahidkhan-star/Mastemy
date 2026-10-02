@@ -28,6 +28,7 @@ import { QuestionBank } from './QuestionBank';
 import { EngagementPanel, PublicationPanel, ResourcesManager } from './Wave2Panels';
 import { workspaceCourseTabs } from '../workspace/CourseTabs';
 import { useAgreementGate } from '../workspace/Authoring';
+import { finalaCourseTabs } from '../finala/StudioTabs';
 
 function DetailsForm({ course }: { course: StudioCourseDto }) {
   const { t, lang } = useI18n();
@@ -332,6 +333,7 @@ export function CourseEditorPage() {
                 content: <StudioTaxonomyPanel course={c} />,
               },
               ...workspaceCourseTabs(c, t),
+              ...finalaCourseTabs(c, t),
             ]}
           />
         </>

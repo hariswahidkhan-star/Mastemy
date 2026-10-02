@@ -10,6 +10,7 @@ import { Notice, PageHeader } from '../../components/ui/misc';
 import { Spinner } from '../../components/ui/Spinner';
 import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
+import { CredentialKindBadge } from '../finala/Credentials';
 
 function VerifyResult({ code }: { code: string }) {
   const { t, fmtDate } = useI18n();
@@ -38,6 +39,15 @@ function VerifyResult({ code }: { code: string }) {
       >
         {valid ? t('verify.validBody') : (c.revocationReason ?? t('verify.revokedBody'))}
       </Notice>
+      <p className="row" style={{ marginBlock: 'var(--space-3)' }}>
+        <CredentialKindBadge kind={c.kind} />
+        {c.title ? <strong>{c.title}</strong> : null}
+      </p>
+      {c.verificationLabel ? (
+        <p className="small" data-testid="verification-label">
+          {c.verificationLabel}
+        </p>
+      ) : null}
       <dl className="kv">
         <dt>{t('verify.code')}</dt>
         <dd className="mono">{c.code}</dd>

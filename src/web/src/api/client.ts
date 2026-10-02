@@ -1,7 +1,6 @@
 import type { AuthResponse, ProblemDetails } from './types';
 
 const BASE_URL: string = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/$/, '');
-const REFRESH_KEY = 'mastemy.refreshToken';
 
 /** Error thrown for any non-2xx response; carries the RFC 7807 problem body when available. */
 export class ApiError extends Error {
@@ -24,32 +23,70 @@ export class ApiError extends Error {
   }
 }
 
-// ---- token storage: access token in memory only, refresh token in localStorage ----
+// ---- session: access token in memory only; the refresh token lives in an HttpOnly cookie (path /api/auth)
+// set by the server. The browser keeps only a non-secret "a session probably exists" hint so anonymous
+// visitors do not fire a refresh request on every page load.
+const LEGACY_REFRESH_KEY = 'mastemy.refreshToken';
+const SESSION_HINT_KEY = 'mastemy.session';
+/** Header required by the API for cookie-based refresh/logout (CSRF guard). */
+export const CSRF_HEADER = { 'X-Requested-With': 'mastemy' } as const;
+
 let accessToken: string | null = null;
 type Listener = (auth: AuthResponse | null) => void;
 const listeners = new Set<Listener>();
 
-export function getAccessToken(): string | null {
-  return accessToken;
-}
-export function getRefreshToken(): string | null {
+function storageGet(key: string): string | null {
   try {
-    return localStorage.getItem(REFRESH_KEY);
+    return typeof localStorage === 'undefined' ? null : localStorage.getItem(key);
   } catch {
     return null;
   }
 }
-function storeRefreshToken(token: string | null): void {
+function storageSet(key: string, value: string | null): void {
   try {
-    if (token) localStorage.setItem(REFRESH_KEY, token);
-    else localStorage.removeItem(REFRESH_KEY);
+    if (typeof localStorage === 'undefined') return;
+    if (value === null) localStorage.removeItem(key);
+    else localStorage.setItem(key, value);
   } catch {
-    /* storage unavailable: session lasts for this tab only */
+    /* storage unavailable */
   }
+}
+
+/** One-time migration: refresh tokens used to be kept in localStorage. Removes the stored value and returns it
+ * so the first refresh can exchange it (the server answers by setting the HttpOnly cookie). */
+let legacyToken: string | null | undefined;
+function takeLegacyRefreshToken(): string | null {
+  if (legacyToken === undefined) {
+    legacyToken = storageGet(LEGACY_REFRESH_KEY);
+    if (legacyToken) storageSet(LEGACY_REFRESH_KEY, null);
+  }
+  const t = legacyToken;
+  legacyToken = null;
+  return t;
+}
+/** Removes any refresh token left in localStorage by older builds (kept in memory for one migration refresh). */
+export function purgeLegacyRefreshToken(): void {
+  if (legacyToken === undefined) {
+    legacyToken = storageGet(LEGACY_REFRESH_KEY);
+    if (legacyToken) storageSet(LEGACY_REFRESH_KEY, null);
+  }
+}
+
+export function getAccessToken(): string | null {
+  return accessToken;
+}
+/** True when a refresh cookie probably exists (a session was established in this browser and not ended). */
+export function hasSessionHint(): boolean {
+  purgeLegacyRefreshToken();
+  return !!legacyToken || storageGet(SESSION_HINT_KEY) === '1';
 }
 export function setSession(auth: AuthResponse | null): void {
   accessToken = auth?.accessToken ?? null;
-  storeRefreshToken(auth?.refreshToken ?? null);
+  // Only full sessions carry a refresh cookie; MFA-pending/enrollment responses do not.
+  storageSet(
+    SESSION_HINT_KEY,
+    auth?.accessToken && (!auth.status || auth.status === 'ok') ? '1' : null,
+  );
   listeners.forEach((l) => l(auth));
 }
 export function onSessionChange(listener: Listener): () => void {
@@ -57,19 +94,20 @@ export function onSessionChange(listener: Listener): () => void {
   return () => listeners.delete(listener);
 }
 
-// ---- single-flight refresh ----
+// ---- single-flight refresh (cookie) ----
 let refreshInFlight: Promise<boolean> | null = null;
 
 export function refreshSession(): Promise<boolean> {
   if (refreshInFlight) return refreshInFlight;
-  const token = getRefreshToken();
-  if (!token) return Promise.resolve(false);
+  if (!hasSessionHint()) return Promise.resolve(false);
   refreshInFlight = (async () => {
     try {
+      const legacy = takeLegacyRefreshToken();
       const res = await fetch(`${BASE_URL}/api/auth/refresh`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ refreshToken: token }),
+        credentials: 'include',
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json', ...CSRF_HEADER },
+        body: legacy ? JSON.stringify({ refreshToken: legacy }) : '{}',
       });
       if (!res.ok) {
         setSession(null);
@@ -86,6 +124,21 @@ export function refreshSession(): Promise<boolean> {
   return refreshInFlight;
 }
 
+/** Revokes the refresh cookie server-side (best effort) and clears the local session. */
+export async function logoutSession(): Promise<void> {
+  try {
+    await fetch(`${BASE_URL}/api/auth/logout`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { Accept: 'application/json', 'Content-Type': 'application/json', ...CSRF_HEADER },
+      body: '{}',
+    });
+  } catch {
+    /* best effort */
+  }
+  setSession(null);
+}
+
 export interface RequestOptions {
   method?: string;
   body?: unknown;
@@ -98,7 +151,7 @@ export interface RequestOptions {
   keepalive?: boolean;
 }
 
-function buildInit(opts: RequestOptions): RequestInit {
+function buildInit(path: string, opts: RequestOptions): RequestInit {
   const headers: Record<string, string> = { Accept: 'application/json', ...opts.headers };
   let body: BodyInit | undefined;
   if (opts.body instanceof FormData || opts.body instanceof Blob) {
@@ -114,6 +167,8 @@ function buildInit(opts: RequestOptions): RequestInit {
     body,
     signal: opts.signal,
     keepalive: opts.keepalive,
+    // Auth endpoints set/clear the HttpOnly refresh cookie.
+    ...(path.startsWith('/api/auth/') ? { credentials: 'include' as const } : {}),
   };
 }
 
@@ -139,10 +194,10 @@ async function toError(res: Response): Promise<ApiError> {
 
 export async function apiFetch(path: string, opts: RequestOptions = {}): Promise<Response> {
   const url = `${BASE_URL}${path}`;
-  let res = await fetch(url, buildInit(opts));
-  if (res.status === 401 && !opts.noRetry && getRefreshToken()) {
+  let res = await fetch(url, buildInit(path, opts));
+  if (res.status === 401 && !opts.noRetry && hasSessionHint()) {
     const ok = await refreshSession();
-    if (ok) res = await fetch(url, buildInit(opts));
+    if (ok) res = await fetch(url, buildInit(path, opts));
   }
   if (!res.ok) throw await toError(res);
   return res;

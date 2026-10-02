@@ -21,6 +21,7 @@ import { RelatedCourses, useTrackCourseView } from './ComparePage';
 import { useLearnCourse } from '../../api/hooks';
 import { useEventSender, useTrackEvent } from '../../lib/analytics';
 import { ReportContentButton } from '../workspace/Trust';
+import { CourseLearnerActions } from '../finala/Messaging';
 
 /** Signed-in only: enrollment decides whether the learner may post. */
 function SignedInQa({ course }: { course: CourseDetailDto }) {
@@ -245,6 +246,7 @@ export function CourseDetailView({ course }: { course: CourseDetailDto }) {
             <CompareToggle item={{ id: course.id, slug: course.slug, title: course.title }} />
             <ReportContentButton targetType="Course" targetId={course.id} />
           </div>
+          <CourseLearnerActions courseId={course.id} slug={course.slug} />
           <FreeVideoNotice />
           <dl className="facts">
             <div>

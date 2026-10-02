@@ -186,6 +186,7 @@ export interface ReviewItemDto {
   selectedOptionIds: Guid[];
   correctOptionIds: Guid[];
   options: ReviewOptionDto[];
+  workedSolution?: string | null;
 }
 export interface SkillResultDto {
   skill: string;
@@ -215,6 +216,7 @@ export interface CheckResultDto {
   correctOptionIds: Guid[];
   rationales: { optionId: Guid; rationale: string }[];
   explanation: string;
+  workedSolution?: string | null;
 }
 
 // ---------- practice ----------
@@ -242,6 +244,9 @@ export interface PracticeItemView {
   caseGroupId: Guid | null;
   caseTitle: string | null;
   caseExhibitMarkdown: string | null;
+  questionId?: Guid;
+  /** SM-2 quality (0–5) the learner chose after checking, when any. */
+  selfGrade?: number | null;
 }
 export interface PracticeSessionView {
   id: Guid;

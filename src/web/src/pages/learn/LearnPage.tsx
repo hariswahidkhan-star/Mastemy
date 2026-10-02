@@ -38,6 +38,9 @@ import { useTrackEvent } from '../../lib/analytics';
 import { AiPracticePanel, TutorPanel } from '../workspace/AiPanels';
 import { BookmarksPanel } from '../workspace/Study';
 import { HeldLessonNotice, ReportContentButton } from '../workspace/Trust';
+import { NegativeMarkingDisclosure } from '../finala/Learning';
+import { MessageInstructorButton } from '../finala/Messaging';
+import { CompletionAwardClaim } from '../finala/Credentials';
 
 const PROGRESS_INTERVAL_MS = 15_000;
 
@@ -305,6 +308,7 @@ export function PracticeList({ assessments }: { assessments: AssessmentSummary[]
             {a.maxAttempts ? t('assessment.maxAttempts', { n: a.maxAttempts }) : null}
           </p>
           <p className="small">{t(`assessment.scoring.${a.multiSelectScoring}`)}</p>
+          <NegativeMarkingDisclosure assessmentId={a.id} rate={a.negativeMarkingPerWrong} />
           {user ? (
             <Button size="sm" loading={starting === a.id} onClick={() => void start(a)}>
               {t('assessment.start')}
@@ -374,6 +378,7 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
           {view.lesson.title}
         </h1>
         <div className="row">
+          <MessageInstructorButton courseId={course.id} enrolled={!!course.enrolled} />
           <ReportIssueButton courseId={course.id} lessonId={lessonId} />
           <ReportContentButton targetType="Lesson" targetId={lessonId} />
           {prev ? (
@@ -391,6 +396,7 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
       {resume > 0 ? (
         <p className="small muted">{t('learn.resumed', { time: formatTimestamp(resume) })}</p>
       ) : null}
+      {!next ? <CompletionAwardClaim courseId={course.id} enrolled={!!course.enrolled} /> : null}
       <Tabs
         label={t('learn.tabsLabel')}
         value={tab}

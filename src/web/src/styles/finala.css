@@ -1,0 +1,95 @@
+/* Area "finala": messaging, credentials, self-grade, pickers. Logical properties only (RTL-safe). */
+.finala-thread {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.finala-msg {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-3);
+  max-inline-size: 48rem;
+  overflow-wrap: anywhere;
+}
+.finala-msg--mine {
+  margin-inline-start: auto;
+  background: var(--color-surface-2, var(--color-surface));
+}
+.finala-msg__body {
+  margin-block: var(--space-2);
+}
+.finala-quote {
+  margin: 0;
+  padding-inline-start: var(--space-3);
+  border-inline-start: 3px solid var(--color-border);
+  overflow-wrap: anywhere;
+}
+.finala-conv__link {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.finala-counter--over,
+.finala-error {
+  color: var(--color-danger);
+}
+.finala-kind {
+  display: inline-block;
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  padding-block: 0.1rem;
+  padding-inline: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+.finala-kind--AssessedKnowledge {
+  color: var(--color-success);
+}
+.finala-kind--Completion {
+  color: var(--color-info, var(--color-text-muted));
+  border-style: dashed;
+}
+.finala-cert--completion {
+  border-inline-start: 3px dashed var(--color-border);
+  padding-inline-start: var(--space-3);
+}
+.finala-selfgrade {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-3);
+}
+.finala-selfgrade__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: var(--space-2);
+}
+.finala-selfgrade__n {
+  font-weight: 700;
+}
+.finala-worked__body {
+  border-inline-start: 3px solid var(--color-border);
+  padding-inline-start: var(--space-3);
+}
+.finala-picker__option {
+  inline-size: 100%;
+  text-align: start;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-2);
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+.finala-picker__option:focus-visible {
+  outline: 2px solid var(--color-focus, currentColor);
+  outline-offset: 2px;
+}
+.finala-picker__option[aria-pressed='true'] {
+  border-color: currentColor;
+  font-weight: 600;
+}

@@ -20,6 +20,11 @@ import { AttemptPlayer } from './AttemptPlayer';
 import type { WaveAttempt } from './AttemptPlayer';
 import { RichContent } from '../../components/RichContent';
 import { ChallengeButton, RecommendationsPanel } from '../exams/AttemptExtras';
+import {
+  BookmarkItemButton,
+  NegativeMarkingResultNotice,
+  WorkedSolutionPanel,
+} from '../finala/Learning';
 
 /** Server review items carry per-option rationales inside `options`. */
 type ServerReviewItem = ReviewItem & { options?: { id: string; rationale: string }[] };
@@ -62,10 +67,12 @@ export function AttemptResultView({
   result,
   items,
   attemptId,
+  assessmentId,
 }: {
   result: AttemptResult & { readinessDisclaimer?: string; regraded?: boolean };
   items: AttemptItemView[];
   attemptId?: string;
+  assessmentId?: string;
 }) {
   const { t } = useI18n();
   const byId = new Map(items.map((i) => [i.itemId, i]));
@@ -113,6 +120,9 @@ export function AttemptResultView({
           </Notice>
         ) : null}
         {result.regraded ? <Notice tone="info">{t('exams.result.regraded')}</Notice> : null}
+        {assessmentId ? (
+          <NegativeMarkingResultNotice assessmentId={assessmentId} incorrect={result.incorrect} />
+        ) : null}
         <p className="small muted">{result.readinessDisclaimer ?? t('result.disclaimer')}</p>
       </div>
       {attemptId ? <RecommendationsPanel attemptId={attemptId} /> : null}
@@ -196,10 +206,14 @@ export function AttemptResultView({
                       <RichContent source={r.explanation} />
                     </div>
                   ) : null}
+                  <WorkedSolutionPanel source={r.workedSolution} />
                   {attemptId ? (
-                    <ChallengeButton
-                      path={`/api/attempts/${attemptId}/items/${r.itemId}/challenge`}
-                    />
+                    <div className="row">
+                      <BookmarkItemButton source="attempt" ownerId={attemptId} itemId={r.itemId} />
+                      <ChallengeButton
+                        path={`/api/attempts/${attemptId}/items/${r.itemId}/challenge`}
+                      />
+                    </div>
                   ) : null}
                 </li>
               );
@@ -310,7 +324,12 @@ export function AttemptPage() {
                 }
               />
               {finalResult ? (
-                <AttemptResultView result={finalResult} items={a.items} attemptId={a.id} />
+                <AttemptResultView
+                  result={finalResult}
+                  items={a.items}
+                  attemptId={a.id}
+                  assessmentId={a.assessmentId}
+                />
               ) : a.status !== 'InProgress' ? (
                 <Notice tone="info">{t('attempt.closed')}</Notice>
               ) : (

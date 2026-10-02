@@ -38,6 +38,7 @@ import { splitLines } from '../../lib/format';
 import { usePageMeta } from '../../lib/seo';
 import { youtubeWatchUrl } from '../../lib/youtube';
 import { AdminUserSecurityCell } from '../account/AdminUserSecurity';
+import { MfaResetButton, VideoMarkButton } from '../finala/Admin';
 
 // ---------------- Settings ----------------
 export function SettingsPage() {
@@ -238,6 +239,7 @@ export function UsersPage() {
                                 {u.isSuspended ? t('users.unsuspend') : t('users.suspend')}
                               </Button>
                             ) : null}
+                            <MfaResetButton user={u} />
                           </div>
                         </td>
                       </tr>
@@ -886,6 +888,7 @@ export function VideosPage() {
                             </Button>
                           </div>
                         ) : null}
+                        <VideoMarkButton video={v} />
                       </td>
                     </tr>
                   ))}

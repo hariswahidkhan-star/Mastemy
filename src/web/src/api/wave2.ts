@@ -79,6 +79,8 @@ export interface ReplyDto {
 export interface ThreadDetailDto {
   thread: ThreadSummaryDto;
   replies: ReplyDto[];
+  /** Author-only notice when the thread was hidden by moderation. */
+  moderation?: import('./finala').ModerationNoticeDto | null;
 }
 export interface EngagementPage<T> {
   items: T[];
@@ -212,6 +214,8 @@ export interface MyCertificateDto {
   scorePercent: number;
   assessmentCriteria: string;
   publiclyVisible: boolean;
+  kind?: 'AssessedKnowledge' | 'Completion';
+  title?: string;
 }
 
 // ---------- Snapshots and diff ----------
