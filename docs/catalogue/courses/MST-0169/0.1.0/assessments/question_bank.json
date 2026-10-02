@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0169",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 710,
+  "lesson_check_items": 90,
+  "module_check_items": 175,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0169-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You must lift-and-shift a SQL Server instance that relies on SQL Agent, cross-database queries, and the broadest surface of SQL Server features with minimal code change. Which Azure offering fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure SQL Managed Instance",
+     "correct": true,
+     "rationale": "Correct: Managed Instance offers near-full SQL Server compatibility including SQL Agent and cross-database queries."
+    },
+    {
+     "key": "B",
+     "text": "Azure SQL Database (single database)",
+     "correct": false,
+     "rationale": "Single database lacks instance-scoped features like SQL Agent and easy cross-database queries."
+    },
+    {
+     "key": "C",
+     "text": "Azure Cosmos DB",
+     "correct": false,
+     "rationale": "Cosmos DB is a NoSQL service, not a SQL Server migration target."
+    },
+    {
+     "key": "D",
+     "text": "Azure Blob Storage",
+     "correct": false,
+     "rationale": "Blob Storage is object storage, not a relational database engine."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Managed Instance offers near-full SQL Server compatibility including SQL Agent and cross-database queries.",
+   "outcome_refs": [
+    "MST-0169-D02.01"
+   ],
+   "domain_ref": "Implement a secure environment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0169-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which feature encrypts an Azure SQL database's data files at rest transparently to the application?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Transparent Data Encryption (TDE)",
+     "correct": true,
+     "rationale": "Correct: TDE encrypts data and log files at rest without application changes."
+    },
+    {
+     "key": "B",
+     "text": "Dynamic data masking",
+     "correct": false,
+     "rationale": "Masking obscures query results for some users; it does not encrypt files at rest."
+    },
+    {
+     "key": "C",
+     "text": "Row-level security",
+     "correct": false,
+     "rationale": "Row-level security filters rows by predicate; it is not encryption."
+    },
+    {
+     "key": "D",
+     "text": "A server firewall rule",
+     "correct": false,
+     "rationale": "Firewall rules control network access, not encryption at rest."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: TDE encrypts data and log files at rest without application changes.",
+   "outcome_refs": [
+    "MST-0169-D03.01"
+   ],
+   "domain_ref": "Monitor, configure, and optimize database resources",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0169-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO configurations help meet a strict recovery time objective for an Azure SQL Database? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Auto-failover groups",
+     "correct": true,
+     "rationale": "Correct: failover groups automate endpoint redirection on failover, cutting RTO."
+    },
+    {
+     "key": "B",
+     "text": "Active geo-replication",
+     "correct": true,
+     "rationale": "Correct: geo-replication maintains readable secondaries you can fail over to."
+    },
+    {
+     "key": "C",
+     "text": "Dynamic data masking",
+     "correct": false,
+     "rationale": "Masking is a data-protection feature, unrelated to recovery time."
+    },
+    {
+     "key": "D",
+     "text": "Query Store",
+     "correct": false,
+     "rationale": "Query Store aids performance tuning, not disaster recovery."
+    },
+    {
+     "key": "E",
+     "text": "Resource Governor",
+     "correct": false,
+     "rationale": "Resource Governor caps resource usage; it does not provide failover."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: failover groups automate endpoint redirection on failover, cutting RTO. Correct: geo-replication maintains readable secondaries you can fail over to.",
+   "outcome_refs": [
+    "MST-0169-D05.01"
+   ],
+   "domain_ref": "Plan and configure a high availability and disaster recovery (HA/DR) environment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0180",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 498,
+  "lesson_check_items": 54,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0180-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You must detect a specific set of known employee ID values exactly, with no false positives from similar patterns. Which classification method fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Exact Data Match (EDM) based sensitive info type",
+     "correct": true,
+     "rationale": "Correct: EDM matches against a hashed table of exact known values."
+    },
+    {
+     "key": "B",
+     "text": "A built-in credit card sensitive info type",
+     "correct": false,
+     "rationale": "That detects card patterns, not your specific ID list."
+    },
+    {
+     "key": "C",
+     "text": "A trainable classifier",
+     "correct": false,
+     "rationale": "Trainable classifiers detect categories by example, not exact known values."
+    },
+    {
+     "key": "D",
+     "text": "A retention label",
+     "correct": false,
+     "rationale": "Retention labels govern lifecycle, not classification matching."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: EDM matches against a hashed table of exact known values.",
+   "outcome_refs": [
+    "MST-0180-D01.01"
+   ],
+   "domain_ref": "Implement information protection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0180-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Purview capability prevents sensitive content from being copied to a USB drive on a managed Windows device?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Endpoint DLP",
+     "correct": true,
+     "rationale": "Correct: Endpoint DLP enforces data-loss rules on device actions like USB copy."
+    },
+    {
+     "key": "B",
+     "text": "A retention policy",
+     "correct": false,
+     "rationale": "Retention controls how long content is kept, not device egress."
+    },
+    {
+     "key": "C",
+     "text": "A sensitivity label alone",
+     "correct": false,
+     "rationale": "A label classifies and can encrypt, but Endpoint DLP enforces the device action."
+    },
+    {
+     "key": "D",
+     "text": "An eDiscovery case",
+     "correct": false,
+     "rationale": "eDiscovery finds content for legal review; it does not block USB copy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Endpoint DLP enforces data-loss rules on device actions like USB copy.",
+   "outcome_refs": [
+    "MST-0180-D02.01"
+   ],
+   "domain_ref": "Implement data loss prevention and retention",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0180-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO tools help an administrator investigate information-protection and insider-risk activity? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Activity explorer",
+     "correct": true,
+     "rationale": "Correct: Activity explorer surfaces label and DLP activity across the estate."
+    },
+    {
+     "key": "B",
+     "text": "Microsoft Purview Audit",
+     "correct": true,
+     "rationale": "Correct: Purview Audit records and lets you investigate user and admin activities."
+    },
+    {
+     "key": "C",
+     "text": "Azure Load Balancer",
+     "correct": false,
+     "rationale": "Load Balancer is a networking service, unrelated to Purview investigation."
+    },
+    {
+     "key": "D",
+     "text": "A Conditional Access policy",
+     "correct": false,
+     "rationale": "Conditional Access governs sign-in, not Purview activity investigation."
+    },
+    {
+     "key": "E",
+     "text": "A OneLake shortcut",
+     "correct": false,
+     "rationale": "OneLake shortcuts are a Fabric data feature, not an investigation tool."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Activity explorer surfaces label and DLP activity across the estate. Correct: Purview Audit records and lets you investigate user and admin activities.",
+   "outcome_refs": [
+    "MST-0180-D03.01"
+   ],
+   "domain_ref": "Manage risks, alerts, and activities",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

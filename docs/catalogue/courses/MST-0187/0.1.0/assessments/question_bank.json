@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0187",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 724,
+  "lesson_check_items": 132,
+  "module_check_items": 140,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0187-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Business Central, which object lets you load master and setup data in bulk when creating a new company?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A configuration package",
+     "correct": true,
+     "rationale": "Correct: configuration packages import setup and master data in bulk via Excel/RapidStart."
+    },
+    {
+     "key": "B",
+     "text": "A dimension value",
+     "correct": false,
+     "rationale": "Dimension values categorize entries; they do not import data in bulk."
+    },
+    {
+     "key": "C",
+     "text": "A permission set",
+     "correct": false,
+     "rationale": "Permission sets grant access rights, not data import."
+    },
+    {
+     "key": "D",
+     "text": "A number series",
+     "correct": false,
+     "rationale": "Number series assign document numbers; they do not load data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: configuration packages import setup and master data in bulk via Excel/RapidStart.",
+   "outcome_refs": [
+    "MST-0187-D01.01"
+   ],
+   "domain_ref": "Set up Business Central",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0187-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which setup tells Business Central which general ledger accounts to use when posting a sale between a customer group and an item group?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The general posting setup",
+     "correct": true,
+     "rationale": "Correct: the general posting setup maps business/product posting groups to G/L accounts."
+    },
+    {
+     "key": "B",
+     "text": "A number series",
+     "correct": false,
+     "rationale": "Number series assign document numbers, not G/L accounts."
+    },
+    {
+     "key": "C",
+     "text": "A dimension",
+     "correct": false,
+     "rationale": "Dimensions tag entries for analysis; they do not map posting accounts."
+    },
+    {
+     "key": "D",
+     "text": "A payment term",
+     "correct": false,
+     "rationale": "Payment terms set due dates, not posting accounts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the general posting setup maps business/product posting groups to G/L accounts.",
+   "outcome_refs": [
+    "MST-0187-D02.01"
+   ],
+   "domain_ref": "Configure financials",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0187-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps are part of processing a purchase from a vendor in Business Central? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Receive items against the purchase order",
+     "correct": true,
+     "rationale": "Correct: receiving records the goods received for the order."
+    },
+    {
+     "key": "B",
+     "text": "Post a purchase invoice from the order",
+     "correct": true,
+     "rationale": "Correct: posting the invoice records the vendor liability and cost."
+    },
+    {
+     "key": "C",
+     "text": "Publish a sensitivity label",
+     "correct": false,
+     "rationale": "Sensitivity labels are a Microsoft Purview feature, not a BC purchase step."
+    },
+    {
+     "key": "D",
+     "text": "Configure a Conditional Access policy",
+     "correct": false,
+     "rationale": "Conditional Access is an identity control, unrelated to purchasing."
+    },
+    {
+     "key": "E",
+     "text": "Run Planning Optimization",
+     "correct": false,
+     "rationale": "Planning Optimization is a Supply Chain Management (MB-330) feature, not BC purchasing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: receiving records the goods received for the order. Correct: posting the invoice records the vendor liability and cost.",
+   "outcome_refs": [
+    "MST-0187-D04.01"
+   ],
+   "domain_ref": "Perform Business Central operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0165",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 722,
+  "lesson_check_items": 96,
+  "module_check_items": 175,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0165-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An app needs a private IP inside a VNet to reach an Azure Storage account so traffic never traverses the public endpoint. Which feature do you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A private endpoint (Azure Private Link)",
+     "correct": true,
+     "rationale": "Correct: a private endpoint projects the PaaS service into the VNet with a private IP."
+    },
+    {
+     "key": "B",
+     "text": "A service endpoint",
+     "correct": false,
+     "rationale": "A service endpoint keeps traffic on the Azure backbone but does not give the service a private IP in your VNet."
+    },
+    {
+     "key": "C",
+     "text": "A public IP prefix",
+     "correct": false,
+     "rationale": "A public IP prefix allocates public addresses, the opposite of private access."
+    },
+    {
+     "key": "D",
+     "text": "A NAT gateway",
+     "correct": false,
+     "rationale": "NAT gateway provides outbound SNAT; it does not privatize access to a PaaS service."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a private endpoint projects the PaaS service into the VNet with a private IP.",
+   "outcome_refs": [
+    "MST-0165-D04.01"
+   ],
+   "domain_ref": "Design and implement private access to Azure services",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0165-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which gateway type is required to connect an entire on-premises site to an Azure VNet over IPsec?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A site-to-site VPN gateway",
+     "correct": true,
+     "rationale": "Correct: site-to-site connects a whole on-prem network to Azure over IPsec/IKE."
+    },
+    {
+     "key": "B",
+     "text": "A point-to-site VPN gateway",
+     "correct": false,
+     "rationale": "Point-to-site connects individual client devices, not a whole site."
+    },
+    {
+     "key": "C",
+     "text": "An application gateway",
+     "correct": false,
+     "rationale": "Application Gateway is a layer-7 load balancer, not a cross-premises VPN."
+    },
+    {
+     "key": "D",
+     "text": "A NAT gateway",
+     "correct": false,
+     "rationale": "NAT gateway handles outbound address translation only."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: site-to-site connects a whole on-prem network to Azure over IPsec/IKE.",
+   "outcome_refs": [
+    "MST-0165-D03.01"
+   ],
+   "domain_ref": "Design and implement application delivery services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0165-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO services can filter and protect inbound HTTP/S application traffic with a Web Application Firewall policy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Azure Front Door",
+     "correct": true,
+     "rationale": "Correct: WAF policies can be attached to Azure Front Door."
+    },
+    {
+     "key": "B",
+     "text": "Azure Application Gateway",
+     "correct": true,
+     "rationale": "Correct: Application Gateway supports WAF policies for layer-7 protection."
+    },
+    {
+     "key": "C",
+     "text": "Azure Route Server",
+     "correct": false,
+     "rationale": "Route Server exchanges BGP routes; it does not run a WAF."
+    },
+    {
+     "key": "D",
+     "text": "A network security group",
+     "correct": false,
+     "rationale": "An NSG filters by IP/port, not by HTTP inspection with a WAF ruleset."
+    },
+    {
+     "key": "E",
+     "text": "Azure Bastion",
+     "correct": false,
+     "rationale": "Bastion provides secure RDP/SSH, not web application firewalling."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: WAF policies can be attached to Azure Front Door. Correct: Application Gateway supports WAF policies for layer-7 protection.",
+   "outcome_refs": [
+    "MST-0165-D05.01"
+   ],
+   "domain_ref": "Design and implement Azure network security services",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

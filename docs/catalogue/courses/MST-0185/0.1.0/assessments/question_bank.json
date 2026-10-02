@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0185",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 722,
+  "lesson_check_items": 96,
+  "module_check_items": 175,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0185-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Dynamics 365 Finance, which element records the natural account (for example, 'Sales revenue') as opposed to an analysis segment like Department?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A main account",
+     "correct": true,
+     "rationale": "Correct: the main account is the natural account; financial dimensions capture segments like Department."
+    },
+    {
+     "key": "B",
+     "text": "A financial dimension",
+     "correct": false,
+     "rationale": "Financial dimensions capture analysis segments, not the natural account."
+    },
+    {
+     "key": "C",
+     "text": "A posting layer",
+     "correct": false,
+     "rationale": "Posting layers separate current/operations/tax entries, not the natural account."
+    },
+    {
+     "key": "D",
+     "text": "A ledger allocation rule",
+     "correct": false,
+     "rationale": "Allocation rules distribute amounts; they are not the account itself."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the main account is the natural account; financial dimensions capture segments like Department.",
+   "outcome_refs": [
+    "MST-0185-D01.01"
+   ],
+   "domain_ref": "Implement financial management",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0185-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A customer invoice not tied to any sales order or item must be raised for a one-off consulting fee. Which document do you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A free text invoice",
+     "correct": true,
+     "rationale": "Correct: free text invoices bill amounts not linked to items or sales orders."
+    },
+    {
+     "key": "B",
+     "text": "A sales order invoice",
+     "correct": false,
+     "rationale": "A sales order invoice requires an underlying sales order with items."
+    },
+    {
+     "key": "C",
+     "text": "A vendor invoice",
+     "correct": false,
+     "rationale": "Vendor invoices record amounts owed to suppliers, not customer billing."
+    },
+    {
+     "key": "D",
+     "text": "A purchase order",
+     "correct": false,
+     "rationale": "A purchase order is a procurement document, not a customer invoice."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: free text invoices bill amounts not linked to items or sales orders.",
+   "outcome_refs": [
+    "MST-0185-D02.01"
+   ],
+   "domain_ref": "Implement accounts receivable, credit, collections, and subscription billing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0185-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are required to depreciate a fixed asset correctly in Dynamics 365 Finance? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A fixed asset book",
+     "correct": true,
+     "rationale": "Correct: the asset book links the asset to valuation and depreciation settings."
+    },
+    {
+     "key": "B",
+     "text": "A depreciation profile",
+     "correct": true,
+     "rationale": "Correct: the depreciation profile defines the method and rate."
+    },
+    {
+     "key": "C",
+     "text": "A collection letter sequence",
+     "correct": false,
+     "rationale": "Collection letters belong to receivables, not asset depreciation."
+    },
+    {
+     "key": "D",
+     "text": "A sales tax authority",
+     "correct": false,
+     "rationale": "Tax authorities handle tax settlement, not depreciation."
+    },
+    {
+     "key": "E",
+     "text": "A budget planning scenario",
+     "correct": false,
+     "rationale": "Budget planning scenarios are for budgeting, not depreciation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the asset book links the asset to valuation and depreciation settings. Correct: the depreciation profile defines the method and rate.",
+   "outcome_refs": [
+    "MST-0185-D05.01"
+   ],
+   "domain_ref": "Manage fixed assets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

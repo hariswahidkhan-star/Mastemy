@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0197",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 698,
+  "lesson_check_items": 84,
+  "module_check_items": 175,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0197-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workflow deploys to AWS and must not store long-lived cloud credentials in the repository. Which approach should you use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "OIDC federation with an id-token permission",
+     "correct": true,
+     "rationale": "Correct: OIDC lets the workflow obtain short-lived cloud credentials with no stored secret."
+    },
+    {
+     "key": "B",
+     "text": "A personal access token stored as a repo secret",
+     "correct": false,
+     "rationale": "A PAT is a long-lived credential, which the requirement forbids."
+    },
+    {
+     "key": "C",
+     "text": "Hardcoding keys in the workflow YAML",
+     "correct": false,
+     "rationale": "Hardcoding credentials is a severe security anti-pattern."
+    },
+    {
+     "key": "D",
+     "text": "A GITHUB_TOKEN with write-all scope",
+     "correct": false,
+     "rationale": "GITHUB_TOKEN authenticates to GitHub, not AWS, and write-all violates least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: OIDC lets the workflow obtain short-lived cloud credentials with no stored secret.",
+   "outcome_refs": [
+    "MST-0197-D05.01"
+   ],
+   "domain_ref": "Secure and optimize automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0197-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the key difference between a starter workflow and a reusable workflow?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A starter workflow is a scaffold copied into a repo and then independent; a reusable workflow is a central definition invoked via workflow_call",
+     "correct": true,
+     "rationale": "Correct: starter workflows seed new files; reusable workflows are called centrally and stay versioned."
+    },
+    {
+     "key": "B",
+     "text": "They are identical and interchangeable",
+     "correct": false,
+     "rationale": "They differ in how they are consumed and maintained."
+    },
+    {
+     "key": "C",
+     "text": "A reusable workflow can only run on self-hosted runners",
+     "correct": false,
+     "rationale": "Reusable workflows run on any permitted runner."
+    },
+    {
+     "key": "D",
+     "text": "A starter workflow cannot contain jobs",
+     "correct": false,
+     "rationale": "Starter workflows are full workflows with jobs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: starter workflows seed new files; reusable workflows are called centrally and stay versioned.",
+   "outcome_refs": [
+    "MST-0197-D02.01"
+   ],
+   "domain_ref": "Consume and troubleshoot workflows",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0197-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce the risk of using untrusted third-party actions? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Pin the action to a full commit SHA",
+     "correct": true,
+     "rationale": "Correct: SHA pinning prevents a moved tag from pulling in unexpected code."
+    },
+    {
+     "key": "B",
+     "text": "Enforce an organization allow list for actions",
+     "correct": true,
+     "rationale": "Correct: allow lists restrict which actions can run in the org."
+    },
+    {
+     "key": "C",
+     "text": "Reference the action with @main always",
+     "correct": false,
+     "rationale": "Floating @main pulls the latest, possibly malicious, commit."
+    },
+    {
+     "key": "D",
+     "text": "Grant the workflow write-all permissions",
+     "correct": false,
+     "rationale": "Broad permissions increase blast radius, not safety."
+    },
+    {
+     "key": "E",
+     "text": "Disable all logging",
+     "correct": false,
+     "rationale": "Disabling logs hinders auditing and does not vet actions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: SHA pinning prevents a moved tag from pulling in unexpected code. Correct: allow lists restrict which actions can run in the org.",
+   "outcome_refs": [
+    "MST-0197-D05.01"
+   ],
+   "domain_ref": "Secure and optimize automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0179",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 652,
+  "lesson_check_items": 96,
+  "module_check_items": 140,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0179-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Access to a finance app must require multifactor authentication only when sign-in risk is elevated. Which control enforces this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Conditional Access policy using sign-in risk as a condition",
+     "correct": true,
+     "rationale": "Correct: Conditional Access can require MFA conditioned on sign-in risk."
+    },
+    {
+     "key": "B",
+     "text": "Tenant-wide security defaults",
+     "correct": false,
+     "rationale": "Security defaults apply broadly and cannot condition on per-sign-in risk."
+    },
+    {
+     "key": "C",
+     "text": "A per-user MFA setting",
+     "correct": false,
+     "rationale": "Legacy per-user MFA is always-on and not risk-conditioned."
+    },
+    {
+     "key": "D",
+     "text": "An administrative unit",
+     "correct": false,
+     "rationale": "Admin units scope management; they do not enforce authentication conditions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Conditional Access can require MFA conditioned on sign-in risk.",
+   "outcome_refs": [
+    "MST-0179-D02.01"
+   ],
+   "domain_ref": "Implement authentication and access management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0179-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which identity should an Azure VM use to access Key Vault without any stored credential?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A managed identity",
+     "correct": true,
+     "rationale": "Correct: a managed identity lets the resource authenticate to Azure services with no stored secret."
+    },
+    {
+     "key": "B",
+     "text": "A service principal with a client secret",
+     "correct": false,
+     "rationale": "That stores a long-lived secret, which the requirement forbids."
+    },
+    {
+     "key": "C",
+     "text": "A guest user account",
+     "correct": false,
+     "rationale": "Guest accounts are for external collaboration, not resource authentication."
+    },
+    {
+     "key": "D",
+     "text": "A shared mailbox",
+     "correct": false,
+     "rationale": "A mailbox is not an authentication identity for a VM."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a managed identity lets the resource authenticate to Azure services with no stored secret.",
+   "outcome_refs": [
+    "MST-0179-D03.01"
+   ],
+   "domain_ref": "Plan and implement workload identities",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0179-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO Microsoft Entra features support just-enough, just-in-time privileged access governance? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Privileged Identity Management (PIM) eligible assignments",
+     "correct": true,
+     "rationale": "Correct: PIM grants time-bound, approval-gated role activation."
+    },
+    {
+     "key": "B",
+     "text": "Access reviews",
+     "correct": true,
+     "rationale": "Correct: access reviews periodically recertify that access is still needed."
+    },
+    {
+     "key": "C",
+     "text": "Dynamic data masking",
+     "correct": false,
+     "rationale": "Masking is a database feature, not identity governance."
+    },
+    {
+     "key": "D",
+     "text": "A network security group",
+     "correct": false,
+     "rationale": "NSGs filter network traffic, not role access."
+    },
+    {
+     "key": "E",
+     "text": "A public IP prefix",
+     "correct": false,
+     "rationale": "IP prefixes are a networking construct, unrelated to privileged access."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: PIM grants time-bound, approval-gated role activation. Correct: access reviews periodically recertify that access is still needed.",
+   "outcome_refs": [
+    "MST-0179-D04.01"
+   ],
+   "domain_ref": "Plan and automate identity governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0186",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 734,
+  "lesson_check_items": 102,
+  "module_check_items": 175,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0186-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which configuration determines whether an item is tracked by batch and/or serial number in Dynamics 365 Supply Chain Management?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tracking dimension group",
+     "correct": true,
+     "rationale": "Correct: the tracking dimension group controls batch and serial tracking."
+    },
+    {
+     "key": "B",
+     "text": "A costing version",
+     "correct": false,
+     "rationale": "Costing versions hold standard/planned costs, not tracking behaviour."
+    },
+    {
+     "key": "C",
+     "text": "A coverage group",
+     "correct": false,
+     "rationale": "Coverage groups drive master planning, not item tracking."
+    },
+    {
+     "key": "D",
+     "text": "A wave template",
+     "correct": false,
+     "rationale": "Wave templates drive warehouse wave processing, not item tracking."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the tracking dimension group controls batch and serial tracking.",
+   "outcome_refs": [
+    "MST-0186-D01.01"
+   ],
+   "domain_ref": "Implement product information management",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0186-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You must capture freight, insurance, and customs charges and apportion them to inbound inventory cost. Which feature do you implement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Landed cost with voyages",
+     "correct": true,
+     "rationale": "Correct: landed cost tracks inbound charges and apportions them to inventory cost."
+    },
+    {
+     "key": "B",
+     "text": "A trade agreement",
+     "correct": false,
+     "rationale": "Trade agreements set prices/discounts, not inbound cost apportionment."
+    },
+    {
+     "key": "C",
+     "text": "A quality association",
+     "correct": false,
+     "rationale": "Quality associations trigger inspections, not cost apportionment."
+    },
+    {
+     "key": "D",
+     "text": "A coverage group",
+     "correct": false,
+     "rationale": "Coverage groups drive planning, not landed cost."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: landed cost tracks inbound charges and apportions them to inventory cost.",
+   "outcome_refs": [
+    "MST-0186-D04.01"
+   ],
+   "domain_ref": "Implement warehouse management and transportation management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0186-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are configured to direct where warehouse work puts away or picks inventory? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Location directives",
+     "correct": true,
+     "rationale": "Correct: location directives determine source/target locations for work."
+    },
+    {
+     "key": "B",
+     "text": "Work templates",
+     "correct": true,
+     "rationale": "Correct: work templates define the work created for an inbound/outbound process."
+    },
+    {
+     "key": "C",
+     "text": "A costing version",
+     "correct": false,
+     "rationale": "Costing versions store costs, not warehouse work direction."
+    },
+    {
+     "key": "D",
+     "text": "A budget model",
+     "correct": false,
+     "rationale": "Budget models belong to finance budgeting, not warehousing."
+    },
+    {
+     "key": "E",
+     "text": "A sales tax group",
+     "correct": false,
+     "rationale": "Sales tax groups handle tax, not warehouse work."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: location directives determine source/target locations for work. Correct: work templates define the work created for an inbound/outbound process.",
+   "outcome_refs": [
+    "MST-0186-D04.01"
+   ],
+   "domain_ref": "Implement warehouse management and transportation management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

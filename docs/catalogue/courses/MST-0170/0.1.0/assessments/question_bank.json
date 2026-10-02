@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0170",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 534,
+  "lesson_check_items": 72,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0170-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Writes in an Azure Cosmos DB container are concentrating on one logical partition, throttling throughput. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A partition key with low cardinality creating a hot partition",
+     "correct": true,
+     "rationale": "Correct: a poorly chosen, low-cardinality key funnels load to one partition."
+    },
+    {
+     "key": "B",
+     "text": "Using the .NET SDK instead of the Python SDK",
+     "correct": false,
+     "rationale": "SDK choice does not cause hot partitions."
+    },
+    {
+     "key": "C",
+     "text": "Enabling Time to Live on items",
+     "correct": false,
+     "rationale": "TTL expires items; it does not concentrate writes."
+    },
+    {
+     "key": "D",
+     "text": "Setting session consistency",
+     "correct": false,
+     "rationale": "Consistency level does not determine partition distribution."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a poorly chosen, low-cardinality key funnels load to one partition.",
+   "outcome_refs": [
+    "MST-0170-D01.01"
+   ],
+   "domain_ref": "Design and develop database solutions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0170-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which capability best supports retrieving semantically similar documents for a Retrieval-Augmented Generation (RAG) pattern in Azure Cosmos DB?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Vector search over a vector index",
+     "correct": true,
+     "rationale": "Correct: vector search finds nearest-neighbour embeddings for semantic retrieval."
+    },
+    {
+     "key": "B",
+     "text": "A unique key policy",
+     "correct": false,
+     "rationale": "Unique key policies enforce uniqueness, not semantic similarity."
+    },
+    {
+     "key": "C",
+     "text": "A composite index for ORDER BY",
+     "correct": false,
+     "rationale": "Composite indexes speed ordering/filtering, not embedding similarity."
+    },
+    {
+     "key": "D",
+     "text": "Time to Live (TTL)",
+     "correct": false,
+     "rationale": "TTL controls item expiry, not retrieval relevance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: vector search finds nearest-neighbour embeddings for semantic retrieval.",
+   "outcome_refs": [
+    "MST-0170-D03.01"
+   ],
+   "domain_ref": "Implement AI and analytics capabilities in database solutions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0170-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions improve availability of an Azure Cosmos DB solution? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Enable multi-region writes",
+     "correct": true,
+     "rationale": "Correct: multi-region writes let the app write to the nearest region and survive regional loss."
+    },
+    {
+     "key": "B",
+     "text": "Configure service-managed partition failover",
+     "correct": true,
+     "rationale": "Correct: automatic failover promotes a healthy region when one becomes unavailable."
+    },
+    {
+     "key": "C",
+     "text": "Lower throughput to the minimum RU/s",
+     "correct": false,
+     "rationale": "Reducing RU/s risks throttling and does not improve availability."
+    },
+    {
+     "key": "D",
+     "text": "Disable all indexing",
+     "correct": false,
+     "rationale": "Disabling indexing affects query cost, not availability."
+    },
+    {
+     "key": "E",
+     "text": "Set consistency to strong in a single region",
+     "correct": false,
+     "rationale": "Single-region strong consistency does not improve regional availability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: multi-region writes let the app write to the nearest region and survive regional loss. Correct: automatic failover promotes a healthy region when one becomes unavailable.",
+   "outcome_refs": [
+    "MST-0170-D02.01"
+   ],
+   "domain_ref": "Secure, optimize, and deploy database solutions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

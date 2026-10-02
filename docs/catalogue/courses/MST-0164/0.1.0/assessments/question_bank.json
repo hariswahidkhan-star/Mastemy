@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0164",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 722,
+  "lesson_check_items": 96,
+  "module_check_items": 175,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0164-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A pipeline must deploy to a production environment only after a named approver signs off. Which Azure Pipelines feature enforces this inside YAML?",
+   "options": [
+    {
+     "key": "A",
+     "text": "YAML-based environments with checks and approvals",
+     "correct": true,
+     "rationale": "Correct: environment checks let you require approvals and other gates before a stage deploys."
+    },
+    {
+     "key": "B",
+     "text": "A variable group",
+     "correct": false,
+     "rationale": "Variable groups share values across pipelines; they do not gate deployments."
+    },
+    {
+     "key": "C",
+     "text": "A branch policy",
+     "correct": false,
+     "rationale": "Branch policies gate pull requests into a branch, not deployment to an environment."
+    },
+    {
+     "key": "D",
+     "text": "A task group",
+     "correct": false,
+     "rationale": "Task groups package reusable tasks; they add no approval gate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: environment checks let you require approvals and other gates before a stage deploys.",
+   "outcome_refs": [
+    "MST-0164-D03.01"
+   ],
+   "domain_ref": "Design and implement build and release pipelines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0164-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You want GitHub Actions to deploy to Azure without storing a long-lived cloud secret. Which approach should you choose?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Workload identity federation (OpenID Connect)",
+     "correct": true,
+     "rationale": "Correct: OIDC federation lets the workflow obtain short-lived Azure tokens with no stored secret."
+    },
+    {
+     "key": "B",
+     "text": "A personal access token stored as a repo secret",
+     "correct": false,
+     "rationale": "A PAT is a long-lived credential and is not a cloud federation mechanism."
+    },
+    {
+     "key": "C",
+     "text": "A service connection password in a variable group",
+     "correct": false,
+     "rationale": "That stores a long-lived secret, the opposite of what is required."
+    },
+    {
+     "key": "D",
+     "text": "A self-hosted runner registration token",
+     "correct": false,
+     "rationale": "Runner tokens register runners; they do not authenticate deployments to Azure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: OIDC federation lets the workflow obtain short-lived Azure tokens with no stored secret.",
+   "outcome_refs": [
+    "MST-0164-D04.01"
+   ],
+   "domain_ref": "Develop a security and compliance plan",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0164-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques reduce the blast radius of a bad production deployment? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Blue-green deployment with slot swap",
+     "correct": true,
+     "rationale": "Correct: blue-green keeps a standby environment so you can swap back instantly."
+    },
+    {
+     "key": "B",
+     "text": "Canary (progressive exposure) rollout",
+     "correct": true,
+     "rationale": "Correct: canary exposes the change to a small slice first, limiting impact."
+    },
+    {
+     "key": "C",
+     "text": "Disabling all automated tests to deploy faster",
+     "correct": false,
+     "rationale": "Removing tests increases risk; it does not contain a bad deploy."
+    },
+    {
+     "key": "D",
+     "text": "Committing secrets directly into the pipeline YAML",
+     "correct": false,
+     "rationale": "This is a security anti-pattern unrelated to deployment safety."
+    },
+    {
+     "key": "E",
+     "text": "Deleting the previous artifact immediately after deploy",
+     "correct": false,
+     "rationale": "Removing the prior artifact makes rollback harder, not safer."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: blue-green keeps a standby environment so you can swap back instantly. Correct: canary exposes the change to a small slice first, limiting impact.",
+   "outcome_refs": [
+    "MST-0164-D04.01"
+   ],
+   "domain_ref": "Develop a security and compliance plan",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

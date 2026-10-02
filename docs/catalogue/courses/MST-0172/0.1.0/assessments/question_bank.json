@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0172",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 510,
+  "lesson_check_items": 60,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0172-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A fact table receives millions of new rows daily and reprocessing everything is too slow. Which loading pattern should you implement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Incremental load of only changed/new data",
+     "correct": true,
+     "rationale": "Correct: incremental loading processes just the delta, avoiding full reloads."
+    },
+    {
+     "key": "B",
+     "text": "Full load on every run",
+     "correct": false,
+     "rationale": "Full loads reprocess all data and do not scale to daily millions of rows."
+    },
+    {
+     "key": "C",
+     "text": "Disabling the pipeline schedule",
+     "correct": false,
+     "rationale": "Not loading data does not solve the ingestion requirement."
+    },
+    {
+     "key": "D",
+     "text": "Converting the table to a view only",
+     "correct": false,
+     "rationale": "A view does not address bulk ingestion performance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: incremental loading processes just the delta, avoiding full reloads.",
+   "outcome_refs": [
+    "MST-0172-D02.01"
+   ],
+   "domain_ref": "Ingest and transform data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0172-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Fabric capability lets you reference data in another storage location without copying it into OneLake?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A OneLake shortcut",
+     "correct": true,
+     "rationale": "Correct: shortcuts reference external or internal data in place without duplication."
+    },
+    {
+     "key": "B",
+     "text": "A deployment pipeline",
+     "correct": false,
+     "rationale": "Deployment pipelines move content between workspaces, not data references."
+    },
+    {
+     "key": "C",
+     "text": "A sensitivity label",
+     "correct": false,
+     "rationale": "Sensitivity labels classify items; they do not reference data."
+    },
+    {
+     "key": "D",
+     "text": "A warehouse stored procedure",
+     "correct": false,
+     "rationale": "Stored procedures run logic; they do not create in-place references."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: shortcuts reference external or internal data in place without duplication.",
+   "outcome_refs": [
+    "MST-0172-D02.01"
+   ],
+   "domain_ref": "Ingest and transform data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0172-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO engines are appropriate choices for transforming batch data in Microsoft Fabric? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Dataflows Gen2",
+     "correct": true,
+     "rationale": "Correct: Dataflows Gen2 is a supported batch transformation engine."
+    },
+    {
+     "key": "B",
+     "text": "Spark notebooks (PySpark/SQL)",
+     "correct": true,
+     "rationale": "Correct: notebooks transform batch data with PySpark or SQL."
+    },
+    {
+     "key": "C",
+     "text": "Azure Bastion",
+     "correct": false,
+     "rationale": "Bastion is a secure remote-access service, unrelated to data transformation."
+    },
+    {
+     "key": "D",
+     "text": "A network security group",
+     "correct": false,
+     "rationale": "An NSG filters network traffic, not data."
+    },
+    {
+     "key": "E",
+     "text": "Azure Traffic Manager",
+     "correct": false,
+     "rationale": "Traffic Manager is DNS-based load balancing, not a data engine."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Dataflows Gen2 is a supported batch transformation engine. Correct: notebooks transform batch data with PySpark or SQL.",
+   "outcome_refs": [
+    "MST-0172-D02.01"
+   ],
+   "domain_ref": "Ingest and transform data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

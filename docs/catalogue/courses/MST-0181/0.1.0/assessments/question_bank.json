@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0181",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 686,
+  "lesson_check_items": 78,
+  "module_check_items": 175,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0181-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Corporate Windows laptops must be fully managed and sign in with organizational Entra credentials. Which device identity state is required?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Microsoft Entra joined",
+     "correct": true,
+     "rationale": "Correct: Entra join makes the device org-owned and signs in with Entra credentials."
+    },
+    {
+     "key": "B",
+     "text": "Microsoft Entra registered",
+     "correct": false,
+     "rationale": "Registration is for personal (BYOD) devices with limited management."
+    },
+    {
+     "key": "C",
+     "text": "Workgroup only",
+     "correct": false,
+     "rationale": "A workgroup device is not managed by Entra at all."
+    },
+    {
+     "key": "D",
+     "text": "Hybrid unmanaged",
+     "correct": false,
+     "rationale": "This is not a valid managed corporate join state for cloud-first management."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Entra join makes the device org-owned and signs in with Entra credentials.",
+   "outcome_refs": [
+    "MST-0181-D01.01"
+   ],
+   "domain_ref": "Prepare infrastructure for devices",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0181-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which cloud-based tool provisions a new Windows device straight from the OEM into a managed, ready-to-use state?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Windows Autopilot",
+     "correct": true,
+     "rationale": "Correct: Autopilot provisions devices from OEM state into a managed configuration."
+    },
+    {
+     "key": "B",
+     "text": "BitLocker",
+     "correct": false,
+     "rationale": "BitLocker encrypts disks; it does not provision devices."
+    },
+    {
+     "key": "C",
+     "text": "Endpoint Analytics",
+     "correct": false,
+     "rationale": "Endpoint Analytics reports on health; it does not provision devices."
+    },
+    {
+     "key": "D",
+     "text": "A compliance policy",
+     "correct": false,
+     "rationale": "Compliance policies evaluate state; they do not perform provisioning."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Autopilot provisions devices from OEM state into a managed configuration.",
+   "outcome_refs": [
+    "MST-0181-D02.01"
+   ],
+   "domain_ref": "Manage and maintain devices",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0181-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO Intune capabilities protect data on devices? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Disk encryption policy (BitLocker) with key escrow",
+     "correct": true,
+     "rationale": "Correct: BitLocker policies encrypt the disk and escrow recovery keys."
+    },
+    {
+     "key": "B",
+     "text": "App protection policy for managed apps",
+     "correct": true,
+     "rationale": "Correct: app protection policies protect org data inside apps, including on BYOD."
+    },
+    {
+     "key": "C",
+     "text": "A OneLake shortcut",
+     "correct": false,
+     "rationale": "OneLake shortcuts are a Fabric data feature, not device protection."
+    },
+    {
+     "key": "D",
+     "text": "A Conditional Access named location only",
+     "correct": false,
+     "rationale": "A named location is a condition input, not by itself device data protection."
+    },
+    {
+     "key": "E",
+     "text": "An Azure Firewall rule",
+     "correct": false,
+     "rationale": "Azure Firewall protects network traffic, not on-device data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: BitLocker policies encrypt the disk and escrow recovery keys. Correct: app protection policies protect org data inside apps, including on BYOD.",
+   "outcome_refs": [
+    "MST-0181-D03.01"
+   ],
+   "domain_ref": "Protect devices",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

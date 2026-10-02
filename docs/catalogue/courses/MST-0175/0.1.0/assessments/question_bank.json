@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0175",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 640,
+  "lesson_check_items": 90,
+  "module_check_items": 140,
+  "alternates_factor": 2,
+  "cumulative_forms": 4,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0175-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Business logic must run inside the Dataverse transaction and roll back the operation if validation fails. Where should it be implemented?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A synchronous plug-in on the correct pipeline stage",
+     "correct": true,
+     "rationale": "Correct: a synchronous plug-in runs in the transaction and can throw to roll back."
+    },
+    {
+     "key": "B",
+     "text": "A scheduled Power Automate cloud flow",
+     "correct": false,
+     "rationale": "A scheduled flow runs asynchronously and cannot roll back the originating transaction."
+    },
+    {
+     "key": "C",
+     "text": "A canvas app formula",
+     "correct": false,
+     "rationale": "Canvas formulas run client-side and cannot enforce a server transaction."
+    },
+    {
+     "key": "D",
+     "text": "A Power BI measure",
+     "correct": false,
+     "rationale": "Power BI measures are for reporting, not transactional validation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a synchronous plug-in runs in the transaction and can throw to roll back.",
+   "outcome_refs": [
+    "MST-0175-D03.01"
+   ],
+   "domain_ref": "Extend Microsoft Power Platform",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0175-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When promoting a solution from development to production, which solution type should you export to prevent direct edits in the target environment?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A managed solution",
+     "correct": true,
+     "rationale": "Correct: managed solutions are locked in the target environment, preventing ad-hoc edits."
+    },
+    {
+     "key": "B",
+     "text": "An unmanaged solution",
+     "correct": false,
+     "rationale": "Unmanaged solutions remain editable and are intended for development only."
+    },
+    {
+     "key": "C",
+     "text": "A default solution",
+     "correct": false,
+     "rationale": "The default solution is the environment's working container, not a transport artifact."
+    },
+    {
+     "key": "D",
+     "text": "A solution without a publisher",
+     "correct": false,
+     "rationale": "A publisher is required; this is not a promotion strategy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: managed solutions are locked in the target environment, preventing ad-hoc edits.",
+   "outcome_refs": [
+    "MST-0175-D01.01"
+   ],
+   "domain_ref": "Build Microsoft Power Platform solutions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0175-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO options let an external system be notified when a Dataverse row changes? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Register a webhook service endpoint",
+     "correct": true,
+     "rationale": "Correct: webhooks push Dataverse events to an external HTTP endpoint."
+    },
+    {
+     "key": "B",
+     "text": "Register an Azure Service Bus endpoint",
+     "correct": true,
+     "rationale": "Correct: Service Bus endpoints relay Dataverse events for external consumers."
+    },
+    {
+     "key": "C",
+     "text": "Add a business rule",
+     "correct": false,
+     "rationale": "Business rules run inside the app; they do not notify external systems."
+    },
+    {
+     "key": "D",
+     "text": "Create a Power BI dashboard",
+     "correct": false,
+     "rationale": "Dashboards visualize data; they do not emit change events."
+    },
+    {
+     "key": "E",
+     "text": "Set a column as required",
+     "correct": false,
+     "rationale": "Field requirement is validation, not eventing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: webhooks push Dataverse events to an external HTTP endpoint. Correct: Service Bus endpoints relay Dataverse events for external consumers.",
+   "outcome_refs": [
+    "MST-0175-D03.01"
+   ],
+   "domain_ref": "Extend Microsoft Power Platform",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
