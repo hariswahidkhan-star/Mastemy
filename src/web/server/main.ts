@@ -262,7 +262,7 @@ async function proxyApiText(pathname: string, res: ServerResponse) {
 
 async function handle(req: IncomingMessage, res: ServerResponse) {
   securityHeaders(req, res);
-  if (PROXY_API && /^\/(api\/|health)/.test(req.url ?? '')) {
+  if (PROXY_API && /^\/(api\/|health(\/|$|\?))/.test(req.url ?? '')) {
     proxyApi(req, res);
     return;
   }
