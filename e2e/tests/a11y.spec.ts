@@ -132,7 +132,8 @@ function report(findings: Finding[]) {
 /** Presses Tab (or Shift+Tab) until `target` has focus; fails after `max` presses. */
 async function tabTo(page: Page, target: Locator, { max = 80, back = false } = {}) {
   for (let i = 0; i < max; i++) {
-    if (await target.evaluate((el) => el === document.activeElement).catch(() => false)) return;
+    // count() does not wait, so a missing target fails fast at the final assertion instead of per press.
+    if ((await target.count()) === 1 && (await target.evaluate((el) => el === document.activeElement))) return;
     await page.keyboard.press(back ? 'Shift+Tab' : 'Tab');
   }
   await expect(target).toBeFocused();
@@ -369,12 +370,13 @@ test.describe.serial('accessibility: axe on key pages (en/ar, light/dark) and ke
     const main = page.locator('main');
     await expect(main.getByRole('heading', { name: 'Question 1 of 2' })).toBeVisible();
 
-    // Question 1: Tab to the first option, select it with Space, flag it, go Next.
-    const tabOption = main.getByRole('radio', { name: 'Tab' });
+    // Question order may be randomised; the options of each question are not (allowShuffle: false).
+    // Question 1: Tab into the radio group (focus lands on the first option), select it with Space, flag it, go Next.
+    const firstOption = main.getByRole('radio').first();
     await page.locator('body').focus();
-    await tabTo(page, tabOption);
+    await tabTo(page, firstOption);
     await page.keyboard.press('Space');
-    await expect(tabOption).toBeChecked();
+    await expect(firstOption).toBeChecked();
     const flag = main.getByRole('button', { name: 'Flag for review' });
     await tabTo(page, flag);
     await page.keyboard.press('Enter');
@@ -385,17 +387,17 @@ test.describe.serial('accessibility: axe on key pages (en/ar, light/dark) and ke
     // Focus moves to the new question heading.
     await expect(main.getByRole('heading', { name: 'Question 2 of 2' })).toBeFocused();
 
-    // Question 2: arrow keys move within the radio group.
-    const f12 = main.getByRole('radio', { name: 'F12' });
-    const esc = main.getByRole('radio', { name: 'Escape' });
-    await tabTo(page, esc);
+    // Question 2: arrow keys move the selection within the radio group.
+    const right = main.getByRole('radio').nth(0);
+    const wrong = main.getByRole('radio', { name: 'F12' });
+    await tabTo(page, right);
     await page.keyboard.press('Space');
-    await expect(esc).toBeChecked();
+    await expect(right).toBeChecked();
     await page.keyboard.press('ArrowDown');
-    await expect(f12).toBeChecked();
-    await expect(f12).toBeFocused();
+    await expect(wrong).toBeChecked();
+    await expect(wrong).toBeFocused();
     await page.keyboard.press('ArrowUp');
-    await expect(esc).toBeChecked();
+    await expect(right).toBeChecked();
 
     // The navigator reflects answered/flagged state and is reachable by keyboard.
     const nav = page.getByRole('complementary', { name: /navigator/i });

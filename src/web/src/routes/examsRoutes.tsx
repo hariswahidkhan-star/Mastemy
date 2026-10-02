@@ -1,11 +1,12 @@
 import { lazy, Suspense } from 'react';
 import type { ReactNode } from 'react';
 import { Route } from 'react-router';
-import { AUTHOR_ROLES } from '../auth/AuthProvider';
+import { AUTHOR_ROLES, useAuth } from '../auth/AuthProvider';
 import { RequireRole } from '../auth/RequireRole';
 import type { Role } from '../api/types';
 import { Spinner } from '../components/ui/Spinner';
 import { useI18n } from '../i18n/I18nProvider';
+import { PracticePage } from '../pages/discover/PublicDiscoverPages';
 
 const practice = () => import('../pages/exams/PracticePages');
 const staff = () => import('../pages/exams/StaffExamsPages');
@@ -39,6 +40,23 @@ function Lazy({ children }: { children: ReactNode }) {
   return <Suspense fallback={<Spinner label={t('common.loading')} block />}>{children}</Suspense>;
 }
 
+/**
+ * /practice: the practice hub for signed-in learners, the public "how practice works" page for visitors.
+ * (One route for both; two routes with the same path made the public page shadow the hub.)
+ */
+function PracticeRoute() {
+  const { user, initializing } = useAuth();
+  const { t } = useI18n();
+  if (initializing) return <Spinner label={t('common.loading')} block />;
+  return user ? (
+    <Lazy>
+      <PracticeHubPage />
+    </Lazy>
+  ) : (
+    <PracticePage />
+  );
+}
+
 function Guard({ roles, children }: { roles?: Role[]; children: ReactNode }) {
   return (
     <RequireRole roles={roles}>
@@ -49,15 +67,7 @@ function Guard({ roles, children }: { roles?: Role[]; children: ReactNode }) {
 
 /** Wave 3 "exams" area routes (practice, spaced review, studio exam tools, staff queues). */
 export const examsRoutes = [
-  <Route
-    key="ex-practice"
-    path="practice"
-    element={
-      <Guard>
-        <PracticeHubPage />
-      </Guard>
-    }
-  />,
+  <Route key="ex-practice" path="practice" element={<PracticeRoute />} />,
   <Route
     key="ex-builder"
     path="practice/session/new"

@@ -20,7 +20,6 @@ import {
   PackagesPage,
   PathwayDetailPage,
   PathwaysPage,
-  PracticePage,
 } from '../pages/discover/PublicDiscoverPages';
 
 const adminPages = () => import('../pages/discover/AdminDiscoverPages');
@@ -75,7 +74,7 @@ export const discoverRoutes = (
     <Route path="collections/:slug" element={<CollectionPage />} />
     <Route path="instructors" element={<InstructorsPage />} />
     <Route path="packages" element={<PackagesPage />} />
-    <Route path="practice" element={<PracticePage />} />
+    {/* /practice is served by examsRoutes (hub when signed in, this public page otherwise). */}
     <Route path="notes-library" element={<NotesLibraryPage />} />
     <Route path="business" element={<BusinessPage />} />
     <Route path="bestseller-rule" element={<BestsellerRulePage />} />
