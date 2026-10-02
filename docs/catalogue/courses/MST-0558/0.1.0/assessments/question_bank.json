@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0558",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0558-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An agent change in Spring Boot altered transaction boundaries. What is the right response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reject the change, re-scope the task and review the corrected diff",
+     "correct": true,
+     "rationale": "Correct: transaction-affecting changes must be reviewed and re-scoped."
+    },
+    {
+     "key": "B",
+     "text": "Merge it since the application still starts",
+     "correct": false,
+     "rationale": "Starting is not evidence that transactions are correct."
+    },
+    {
+     "key": "C",
+     "text": "Disable transactions to avoid the problem",
+     "correct": false,
+     "rationale": "Removing transactions introduces data-integrity risk."
+    },
+    {
+     "key": "D",
+     "text": "Let the agent keep editing until tests pass",
+     "correct": false,
+     "rationale": "Blind iteration can mask the real defect."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: transaction-affecting changes must be reviewed and re-scoped.",
+   "outcome_refs": [
+    "MST-0558-D03.02"
+   ],
+   "domain_ref": "Agent-driven feature work across layers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0558-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps make AI-generated Spring Boot components trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Check bean wiring, scope and configuration after generation",
+     "correct": true,
+     "rationale": "Correct: generated wiring can be subtly wrong and must be verified."
+    },
+    {
+     "key": "B",
+     "text": "Run and read the tests that exercise the component",
+     "correct": true,
+     "rationale": "Correct: executing tests confirms behaviour, not just compilation."
+    },
+    {
+     "key": "C",
+     "text": "Assume injection is correct because it compiles",
+     "correct": false,
+     "rationale": "Compilation does not prove correct runtime wiring."
+    },
+    {
+     "key": "D",
+     "text": "Paste the production datasource password for context",
+     "correct": false,
+     "rationale": "Secrets must never go into prompts."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: generated wiring can be subtly wrong and must be verified.",
+   "outcome_refs": [
+    "MST-0558-D02.01"
+   ],
+   "domain_ref": "Generating Spring Boot components",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0558-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should datasource passwords live when working in Cursor?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In externalised configuration or a secret store, never in a prompt",
+     "correct": true,
+     "rationale": "Correct: credentials stay in configuration and out of prompts."
+    },
+    {
+     "key": "B",
+     "text": "Pasted into the chat so the agent has full context",
+     "correct": false,
+     "rationale": "Prompts should never carry live credentials."
+    },
+    {
+     "key": "C",
+     "text": "Hard-coded in the application properties committed to git",
+     "correct": false,
+     "rationale": "Committed secrets leak and cannot be rotated safely."
+    },
+    {
+     "key": "D",
+     "text": "In a code comment for convenience",
+     "correct": false,
+     "rationale": "Comments are committed source and expose the secret."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: credentials stay in configuration and out of prompts.",
+   "outcome_refs": [
+    "MST-0558-D05.01"
+   ],
+   "domain_ref": "Responsible Java delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

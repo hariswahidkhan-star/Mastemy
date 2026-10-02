@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0559",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0559-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What makes an AI-generated schema migration safe to run?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is reversible, reviewed, and tested on a copy before production",
+     "correct": true,
+     "rationale": "Correct: reversibility, review and a tested dry run are the safeguards."
+    },
+    {
+     "key": "B",
+     "text": "It ran once without an error message",
+     "correct": false,
+     "rationale": "Running without error does not prove data was preserved."
+    },
+    {
+     "key": "C",
+     "text": "It was generated quickly by the agent",
+     "correct": false,
+     "rationale": "Speed is unrelated to safety."
+    },
+    {
+     "key": "D",
+     "text": "It drops the old table to keep things clean",
+     "correct": false,
+     "rationale": "A destructive drop with no rollback is the opposite of safe."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reversibility, review and a tested dry run are the safeguards.",
+   "outcome_refs": [
+    "MST-0559-D03.01"
+   ],
+   "domain_ref": "Refactoring schemas safely",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0559-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices confirm a refactor preserved the data? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Run a verification query comparing results before and after",
+     "correct": true,
+     "rationale": "Correct: comparing results proves the data is preserved."
+    },
+    {
+     "key": "B",
+     "text": "Generate edge-case test rows and check the constraints hold",
+     "correct": true,
+     "rationale": "Correct: edge-case data exposes broken constraints."
+    },
+    {
+     "key": "C",
+     "text": "Assume success because the migration script ran",
+     "correct": false,
+     "rationale": "Running is not evidence of correctness."
+    },
+    {
+     "key": "D",
+     "text": "Delete the backup to save space",
+     "correct": false,
+     "rationale": "Removing the backup removes your recovery path."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: comparing results proves the data is preserved.",
+   "outcome_refs": [
+    "MST-0559-D04.01"
+   ],
+   "domain_ref": "Validating correctness",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0559-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should never be pasted into a Cursor prompt for a database task?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A production connection string or live credentials",
+     "correct": true,
+     "rationale": "Correct: credentials and connection strings must stay out of prompts."
+    },
+    {
+     "key": "B",
+     "text": "An anonymised schema definition",
+     "correct": false,
+     "rationale": "A schema without secrets is appropriate context."
+    },
+    {
+     "key": "C",
+     "text": "A plain-language description of the report needed",
+     "correct": false,
+     "rationale": "Requirements are safe and useful context."
+    },
+    {
+     "key": "D",
+     "text": "A sample of synthetic test rows",
+     "correct": false,
+     "rationale": "Synthetic data carries no confidentiality risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: credentials and connection strings must stay out of prompts.",
+   "outcome_refs": [
+    "MST-0559-D05.01"
+   ],
+   "domain_ref": "Responsible database delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

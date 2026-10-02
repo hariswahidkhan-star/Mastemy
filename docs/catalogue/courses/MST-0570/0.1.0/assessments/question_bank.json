@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0570",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0570-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should a Copilot summary of a diff be used in review?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As a starting point while the reviewer still reads the diff",
+     "correct": true,
+     "rationale": "Correct: a summary aids review but does not replace reading the change."
+    },
+    {
+     "key": "B",
+     "text": "As a full replacement for reading the diff",
+     "correct": false,
+     "rationale": "A summary can miss exactly the risky detail that matters."
+    },
+    {
+     "key": "C",
+     "text": "As the sole record, with no human reviewer",
+     "correct": false,
+     "rationale": "A human must stay accountable for the review."
+    },
+    {
+     "key": "D",
+     "text": "Ignored entirely as useless",
+     "correct": false,
+     "rationale": "A summary is useful context when used alongside the diff."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a summary aids review but does not replace reading the change.",
+   "outcome_refs": [
+    "MST-0570-D03.01"
+   ],
+   "domain_ref": "Assisting code review",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0570-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO checks confirm a generated test is worth keeping? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It asserts the intended behaviour",
+     "correct": true,
+     "rationale": "Correct: meaningful assertions give a test its value."
+    },
+    {
+     "key": "B",
+     "text": "It fails when the behaviour is broken",
+     "correct": true,
+     "rationale": "Correct: a test that cannot fail protects nothing."
+    },
+    {
+     "key": "C",
+     "text": "It raises coverage with no assertions",
+     "correct": false,
+     "rationale": "Coverage without assertions is false confidence."
+    },
+    {
+     "key": "D",
+     "text": "It always passes regardless of the code",
+     "correct": false,
+     "rationale": "A never-failing test is worthless."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: meaningful assertions give a test its value.",
+   "outcome_refs": [
+    "MST-0570-D02.01"
+   ],
+   "domain_ref": "Generating useful tests",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0570-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A generated test raised coverage but asserts nothing meaningful. What should you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reject or rewrite it to assert real behaviour",
+     "correct": true,
+     "rationale": "Correct: coverage without assertions gives false confidence."
+    },
+    {
+     "key": "B",
+     "text": "Keep it because coverage went up",
+     "correct": false,
+     "rationale": "A higher number with no assertions protects nothing."
+    },
+    {
+     "key": "C",
+     "text": "Delete all other tests to match its style",
+     "correct": false,
+     "rationale": "That spreads the problem."
+    },
+    {
+     "key": "D",
+     "text": "Merge it and move on",
+     "correct": false,
+     "rationale": "Merging a meaningless test adds no quality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: coverage without assertions gives false confidence.",
+   "outcome_refs": [
+    "MST-0570-D04.02"
+   ],
+   "domain_ref": "Judging generated quality artifacts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

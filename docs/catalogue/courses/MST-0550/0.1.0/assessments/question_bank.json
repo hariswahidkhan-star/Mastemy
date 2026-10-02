@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0550",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0550-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should the Claude API key be stored in an ASP.NET Core knowledge assistant?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In application configuration or a secret store read at runtime",
+     "correct": true,
+     "rationale": "Correct: secrets belong in configuration or a secret store, never in source."
+    },
+    {
+     "key": "B",
+     "text": "Hard-coded as a constant in the C# client class",
+     "correct": false,
+     "rationale": "Hard-coded keys leak through source control and cannot be rotated safely."
+    },
+    {
+     "key": "C",
+     "text": "In a comment next to the request code",
+     "correct": false,
+     "rationale": "Comments are still committed source and expose the key."
+    },
+    {
+     "key": "D",
+     "text": "In the MySQL table with the knowledge content",
+     "correct": false,
+     "rationale": "Mixing a credential into content storage widens its exposure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: secrets belong in configuration or a secret store, never in source.",
+   "outcome_refs": [
+    "MST-0550-D02.01"
+   ],
+   "domain_ref": "Calling the Claude API from ASP.NET Core",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0550-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep answers grounded in your MySQL knowledge base rather than the model's memory? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retrieve relevant passages and include them in the prompt context",
+     "correct": true,
+     "rationale": "Correct: supplying retrieved passages grounds the answer in your content."
+    },
+    {
+     "key": "B",
+     "text": "Ask the model to cite the source rows it used",
+     "correct": true,
+     "rationale": "Correct: requiring citations ties the answer back to stored content."
+    },
+    {
+     "key": "C",
+     "text": "Send the entire database contents in every request",
+     "correct": false,
+     "rationale": "Sending everything wastes tokens and does not improve grounding."
+    },
+    {
+     "key": "D",
+     "text": "Rely on the model to recall the policy from training",
+     "correct": false,
+     "rationale": "The model has no reliable memory of your private policy content."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: supplying retrieved passages grounds the answer in your content.",
+   "outcome_refs": [
+    "MST-0550-D03.01"
+   ],
+   "domain_ref": "Grounding answers in MySQL content",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0550-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Retrieval returns no relevant passages for a user's question. What should the assistant do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Return a clear no-answer response instead of inventing content",
+     "correct": true,
+     "rationale": "Correct: a no-answer fallback prevents fabricated, ungrounded answers."
+    },
+    {
+     "key": "B",
+     "text": "Let the model answer from general knowledge anyway",
+     "correct": false,
+     "rationale": "That produces ungrounded answers the knowledge base cannot support."
+    },
+    {
+     "key": "C",
+     "text": "Retry the same query until something is returned",
+     "correct": false,
+     "rationale": "Repeating an empty query changes nothing and wastes cost."
+    },
+    {
+     "key": "D",
+     "text": "Return the most recently cached answer for any question",
+     "correct": false,
+     "rationale": "An unrelated cached answer misleads the user."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a no-answer fallback prevents fabricated, ungrounded answers.",
+   "outcome_refs": [
+    "MST-0550-D04.02"
+   ],
+   "domain_ref": "Reliability, cost and safety",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

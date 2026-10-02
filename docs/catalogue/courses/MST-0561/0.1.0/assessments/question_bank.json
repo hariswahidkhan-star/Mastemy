@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0561",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0561-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should come before refactoring untested legacy code?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Writing characterization tests that capture current behaviour",
+     "correct": true,
+     "rationale": "Correct: a behavioural safety net lets you refactor with confidence."
+    },
+    {
+     "key": "B",
+     "text": "Deleting the parts that look unused",
+     "correct": false,
+     "rationale": "Deleting code you do not understand is risky."
+    },
+    {
+     "key": "C",
+     "text": "A full big-bang rewrite",
+     "correct": false,
+     "rationale": "Big-bang rewrites discard the safety net and raise risk."
+    },
+    {
+     "key": "D",
+     "text": "Upgrading every dependency first",
+     "correct": false,
+     "rationale": "Mass upgrades add risk before you can detect regressions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a behavioural safety net lets you refactor with confidence.",
+   "outcome_refs": [
+    "MST-0561-D02.01"
+   ],
+   "domain_ref": "Characterization tests first",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0561-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO principles make legacy modernization with Cursor safer? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Make small, reversible steps reviewed against tests",
+     "correct": true,
+     "rationale": "Correct: small reversible steps limit and localise risk."
+    },
+    {
+     "key": "B",
+     "text": "Understand callers and dependencies before changing code",
+     "correct": true,
+     "rationale": "Correct: knowing the blast radius prevents surprises."
+    },
+    {
+     "key": "C",
+     "text": "Replace everything in a single large change",
+     "correct": false,
+     "rationale": "Big-bang changes are hard to review and revert."
+    },
+    {
+     "key": "D",
+     "text": "Skip tests because the code is old",
+     "correct": false,
+     "rationale": "Old code needs a safety net more, not less."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: small reversible steps limit and localise risk.",
+   "outcome_refs": [
+    "MST-0561-D03.01"
+   ],
+   "domain_ref": "Incremental modernization with the agent",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0561-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Tests still pass after a change, but the suite is thin. What does that tell you?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Passing thin tests is weak evidence; behaviour may still have changed",
+     "correct": true,
+     "rationale": "Correct: a thin suite cannot prove behaviour was preserved."
+    },
+    {
+     "key": "B",
+     "text": "The change is definitely safe to ship",
+     "correct": false,
+     "rationale": "Thin tests do not prove safety."
+    },
+    {
+     "key": "C",
+     "text": "No further review is needed",
+     "correct": false,
+     "rationale": "Behaviour-affecting changes still need review."
+    },
+    {
+     "key": "D",
+     "text": "Coverage must already be complete",
+     "correct": false,
+     "rationale": "Passing tests say nothing about coverage completeness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a thin suite cannot prove behaviour was preserved.",
+   "outcome_refs": [
+    "MST-0561-D05.02"
+   ],
+   "domain_ref": "Responsible modernization delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

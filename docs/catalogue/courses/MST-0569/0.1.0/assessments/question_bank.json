@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0569",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0569-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the right default reaction to a Copilot inline suggestion?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read it and decide to accept, edit or reject",
+     "correct": true,
+     "rationale": "Correct: suggestions must be read and judged, not accepted by reflex."
+    },
+    {
+     "key": "B",
+     "text": "Accept every suggestion to move faster",
+     "correct": false,
+     "rationale": "Reflex acceptance introduces unread, possibly wrong code."
+    },
+    {
+     "key": "C",
+     "text": "Reject every suggestion on principle",
+     "correct": false,
+     "rationale": "Blanket rejection discards useful help."
+    },
+    {
+     "key": "D",
+     "text": "Assume it is correct because it appeared",
+     "correct": false,
+     "rationale": "Appearance is not correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: suggestions must be read and judged, not accepted by reflex.",
+   "outcome_refs": [
+    "MST-0569-D01.02"
+   ],
+   "domain_ref": "How Copilot assists you",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0569-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO habits keep everyday Copilot use safe? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Review and test suggested code before committing",
+     "correct": true,
+     "rationale": "Correct: review and tests catch plausible-but-wrong code."
+    },
+    {
+     "key": "B",
+     "text": "Keep secrets and private code out of prompts",
+     "correct": true,
+     "rationale": "Correct: prompts should never carry secrets or confidential code."
+    },
+    {
+     "key": "C",
+     "text": "Commit boilerplate you never read",
+     "correct": false,
+     "rationale": "Unread code can be wrong or unsafe."
+    },
+    {
+     "key": "D",
+     "text": "Assume compiling code is correct",
+     "correct": false,
+     "rationale": "Compilation does not prove correctness."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: review and tests catch plausible-but-wrong code.",
+   "outcome_refs": [
+    "MST-0569-D05.01"
+   ],
+   "domain_ref": "Responsible everyday use",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0569-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Copilot chat gives a weak answer about code it was not shown. What is the likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It lacked the context of the relevant files",
+     "correct": true,
+     "rationale": "Correct: chat answers poorly when it cannot see the relevant code."
+    },
+    {
+     "key": "B",
+     "text": "The model is permanently broken",
+     "correct": false,
+     "rationale": "A weak answer usually means missing context, not a broken model."
+    },
+    {
+     "key": "C",
+     "text": "Chat never works on real code",
+     "correct": false,
+     "rationale": "Chat works well when given the right context."
+    },
+    {
+     "key": "D",
+     "text": "The code is too simple for Copilot",
+     "correct": false,
+     "rationale": "Simplicity does not cause weak answers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: chat answers poorly when it cannot see the relevant code.",
+   "outcome_refs": [
+    "MST-0569-D02.02"
+   ],
+   "domain_ref": "Writing code with Copilot chat",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0562",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0562-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What permission level should a new tool connection start from?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Least privilege: only the access the task actually needs",
+     "correct": true,
+     "rationale": "Correct: least privilege limits the damage of any mistake or breach."
+    },
+    {
+     "key": "B",
+     "text": "Full administrative access for convenience",
+     "correct": false,
+     "rationale": "Broad access widens risk far beyond the task."
+    },
+    {
+     "key": "C",
+     "text": "Whatever the default happens to be",
+     "correct": false,
+     "rationale": "Defaults may grant more than the task needs."
+    },
+    {
+     "key": "D",
+     "text": "Write access to every system it can reach",
+     "correct": false,
+     "rationale": "Unneeded write access is a serious liability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: least privilege limits the damage of any mistake or breach.",
+   "outcome_refs": [
+    "MST-0562-D02.02"
+   ],
+   "domain_ref": "Configuring a tool server",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0562-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls govern enterprise tool connections well? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rotate tokens and audit the actions connections take",
+     "correct": true,
+     "rationale": "Correct: rotation and auditing limit and surface misuse."
+    },
+    {
+     "key": "B",
+     "text": "Require approval before a new connection is added",
+     "correct": true,
+     "rationale": "Correct: an approval step prevents ungoverned connections."
+    },
+    {
+     "key": "C",
+     "text": "Share one personal token across the whole team",
+     "correct": false,
+     "rationale": "Shared personal tokens defeat auditing and rotation."
+    },
+    {
+     "key": "D",
+     "text": "Leave unused connections active indefinitely",
+     "correct": false,
+     "rationale": "Stale connections are an unnecessary attack surface."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: rotation and auditing limit and surface misuse.",
+   "outcome_refs": [
+    "MST-0562-D04.01"
+   ],
+   "domain_ref": "Security and governance of connections",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0562-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After an agent completes a task using a connected tool, what should you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Audit the actions the tool actually performed",
+     "correct": true,
+     "rationale": "Correct: reviewing effects catches unintended actions."
+    },
+    {
+     "key": "B",
+     "text": "Assume it did exactly what was asked",
+     "correct": false,
+     "rationale": "Unreviewed tool actions can have side effects."
+    },
+    {
+     "key": "C",
+     "text": "Immediately widen the connection's permissions",
+     "correct": false,
+     "rationale": "Widening access without need increases risk."
+    },
+    {
+     "key": "D",
+     "text": "Delete the task history to save space",
+     "correct": false,
+     "rationale": "History is what lets you audit what happened."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reviewing effects catches unintended actions.",
+   "outcome_refs": [
+    "MST-0562-D03.02"
+   ],
+   "domain_ref": "Using connected tools in agent tasks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

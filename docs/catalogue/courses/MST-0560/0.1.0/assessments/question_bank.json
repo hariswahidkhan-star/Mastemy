@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0560",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0560-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the first step when repairing a reported defect in Cursor?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reproduce the defect as a failing test",
+     "correct": true,
+     "rationale": "Correct: a failing test gives a precise signal to fix against."
+    },
+    {
+     "key": "B",
+     "text": "Rewrite the whole module to be safe",
+     "correct": false,
+     "rationale": "A broad rewrite ignores the specific defect."
+    },
+    {
+     "key": "C",
+     "text": "Increase the coverage percentage first",
+     "correct": false,
+     "rationale": "Coverage does not reproduce the bug."
+    },
+    {
+     "key": "D",
+     "text": "Delete the failing feature",
+     "correct": false,
+     "rationale": "Removing the feature is not a repair."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a failing test gives a precise signal to fix against.",
+   "outcome_refs": [
+    "MST-0560-D03.01"
+   ],
+   "domain_ref": "Reproducing and repairing defects",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0560-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO signs show a generated test is actually useful? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It asserts the intended behaviour, not just that code ran",
+     "correct": true,
+     "rationale": "Correct: meaningful assertions are what give a test value."
+    },
+    {
+     "key": "B",
+     "text": "It fails when the behaviour is broken",
+     "correct": true,
+     "rationale": "Correct: a test that cannot fail protects nothing."
+    },
+    {
+     "key": "C",
+     "text": "It always passes regardless of the code",
+     "correct": false,
+     "rationale": "A test that never fails gives false confidence."
+    },
+    {
+     "key": "D",
+     "text": "It raises the coverage number with no assertions",
+     "correct": false,
+     "rationale": "Coverage without assertions is false confidence."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: meaningful assertions are what give a test value.",
+   "outcome_refs": [
+    "MST-0560-D02.01"
+   ],
+   "domain_ref": "Generating meaningful tests",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0560-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI fix makes the failing test pass. What still must be confirmed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "That the fix addresses the root cause, not just the symptom",
+     "correct": true,
+     "rationale": "Correct: a green test can still leave the root cause in place."
+    },
+    {
+     "key": "B",
+     "text": "That the commit message is long enough",
+     "correct": false,
+     "rationale": "Message length is irrelevant to correctness."
+    },
+    {
+     "key": "C",
+     "text": "That coverage reached 100 percent",
+     "correct": false,
+     "rationale": "Total coverage is not the goal here."
+    },
+    {
+     "key": "D",
+     "text": "That the agent wrote it quickly",
+     "correct": false,
+     "rationale": "Speed says nothing about correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a green test can still leave the root cause in place.",
+   "outcome_refs": [
+    "MST-0560-D05.02"
+   ],
+   "domain_ref": "Responsible test delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

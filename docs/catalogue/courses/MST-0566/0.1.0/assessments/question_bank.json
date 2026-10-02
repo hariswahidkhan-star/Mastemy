@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0566",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0566-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the right relationship between automated PR review and human review?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automated review assists; a human stays accountable for the merge",
+     "correct": true,
+     "rationale": "Correct: automation supports review but does not replace human judgement."
+    },
+    {
+     "key": "B",
+     "text": "Automated review fully replaces human review",
+     "correct": false,
+     "rationale": "Automation misses judgement and context a human provides."
+    },
+    {
+     "key": "C",
+     "text": "Human review is unnecessary once a bot is enabled",
+     "correct": false,
+     "rationale": "A bot cannot own accountability for a merge."
+    },
+    {
+     "key": "D",
+     "text": "Both can be skipped if tests pass",
+     "correct": false,
+     "rationale": "Tests do not cover design, security and context review."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: automation supports review but does not replace human judgement.",
+   "outcome_refs": [
+    "MST-0566-D01.01"
+   ],
+   "domain_ref": "AI in the review workflow",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0566-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO habits keep automated review valuable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tune the reviewer to reduce noise",
+     "correct": true,
+     "rationale": "Correct: a noisy reviewer gets ignored, hiding real issues."
+    },
+    {
+     "key": "B",
+     "text": "Verify a suggested fix actually resolves the finding",
+     "correct": true,
+     "rationale": "Correct: suggested fixes must be checked, not applied blindly."
+    },
+    {
+     "key": "C",
+     "text": "Apply every suggestion automatically",
+     "correct": false,
+     "rationale": "Blind application introduces unreviewed changes."
+    },
+    {
+     "key": "D",
+     "text": "Treat review as a box to tick",
+     "correct": false,
+     "rationale": "A rubber-stamp gate adds no quality."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a noisy reviewer gets ignored, hiding real issues.",
+   "outcome_refs": [
+    "MST-0566-D03.02"
+   ],
+   "domain_ref": "Acting on review findings",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0566-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The review bot produces so many low-value flags that developers ignore it. What should you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Tune what it flags so real issues stand out",
+     "correct": true,
+     "rationale": "Correct: reducing noise restores the signal developers act on."
+    },
+    {
+     "key": "B",
+     "text": "Disable human review instead",
+     "correct": false,
+     "rationale": "Removing human review makes the problem worse."
+    },
+    {
+     "key": "C",
+     "text": "Merge without reading any findings",
+     "correct": false,
+     "rationale": "Ignoring findings defeats the purpose of review."
+    },
+    {
+     "key": "D",
+     "text": "Accept that review no longer adds value",
+     "correct": false,
+     "rationale": "The fix is tuning, not abandoning review."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reducing noise restores the signal developers act on.",
+   "outcome_refs": [
+    "MST-0566-D04.01"
+   ],
+   "domain_ref": "Quality gates and signal",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

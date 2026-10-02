@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0568",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0568-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When does choosing a smaller, cheaper model make sense?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When the task is simple enough that the smaller model does it correctly",
+     "correct": true,
+     "rationale": "Correct: match the model to the task; a smaller model suffices for simple work."
+    },
+    {
+     "key": "B",
+     "text": "Never; always use the largest model",
+     "correct": false,
+     "rationale": "Always using the largest model wastes cost on simple tasks."
+    },
+    {
+     "key": "C",
+     "text": "Only when cost is literally zero",
+     "correct": false,
+     "rationale": "Cost is rarely zero; the decision is about task fit."
+    },
+    {
+     "key": "D",
+     "text": "Whenever you are in a hurry, regardless of correctness",
+     "correct": false,
+     "rationale": "Speed must not override correctness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: match the model to the task; a smaller model suffices for simple work.",
+   "outcome_refs": [
+    "MST-0568-D01.01"
+   ],
+   "domain_ref": "Understanding model choices",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0568-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps reduce Cursor cost without guessing? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Measure where spend concentrates before optimising",
+     "correct": true,
+     "rationale": "Correct: measuring targets the real cost drivers."
+    },
+    {
+     "key": "B",
+     "text": "Trim context to what the task actually needs",
+     "correct": true,
+     "rationale": "Correct: smaller context cuts cost and latency."
+    },
+    {
+     "key": "C",
+     "text": "Skip tests to save model calls",
+     "correct": false,
+     "rationale": "Cutting tests trades away correctness, not waste."
+    },
+    {
+     "key": "D",
+     "text": "Dump the whole repo into every prompt",
+     "correct": false,
+     "rationale": "Oversized context raises cost with no benefit."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: measuring targets the real cost drivers.",
+   "outcome_refs": [
+    "MST-0568-D02.01"
+   ],
+   "domain_ref": "Controlling context and cost",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0568-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A proposed cost saving would skip the review step on AI-written changes. What is the right call?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reject it; correctness and review must not be traded for cost",
+     "correct": true,
+     "rationale": "Correct: skipping review to save cost ships unreviewed risk."
+    },
+    {
+     "key": "B",
+     "text": "Accept it to hit the budget",
+     "correct": false,
+     "rationale": "Hitting a budget by removing review is a false saving."
+    },
+    {
+     "key": "C",
+     "text": "Accept it only on Fridays",
+     "correct": false,
+     "rationale": "The day does not change the risk."
+    },
+    {
+     "key": "D",
+     "text": "Accept it and remove tests too",
+     "correct": false,
+     "rationale": "That compounds the risk further."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: skipping review to save cost ships unreviewed risk.",
+   "outcome_refs": [
+    "MST-0568-D05.01"
+   ],
+   "domain_ref": "Responsible optimization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

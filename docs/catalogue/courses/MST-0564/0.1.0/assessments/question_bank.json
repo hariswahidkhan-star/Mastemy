@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0564",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 330,
+  "lesson_check_items": 55,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0564-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After a headless CLI run, what determines the next pipeline step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The run's exit status and captured result",
+     "correct": true,
+     "rationale": "Correct: exit status and output are how a pipeline gates on a run."
+    },
+    {
+     "key": "B",
+     "text": "How long the run took",
+     "correct": false,
+     "rationale": "Duration does not indicate success or failure."
+    },
+    {
+     "key": "C",
+     "text": "Whether anyone was watching",
+     "correct": false,
+     "rationale": "Unattended runs still report status."
+    },
+    {
+     "key": "D",
+     "text": "The size of the log file",
+     "correct": false,
+     "rationale": "Log size is unrelated to the outcome."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: exit status and output are how a pipeline gates on a run.",
+   "outcome_refs": [
+    "MST-0564-D02.02"
+   ],
+   "domain_ref": "Running tasks from the CLI",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0564-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls make unattended Cursor runs safe? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Limit what the run is allowed to change",
+     "correct": true,
+     "rationale": "Correct: scope limits contain the impact of an unattended run."
+    },
+    {
+     "key": "B",
+     "text": "Require human review before changes are applied",
+     "correct": true,
+     "rationale": "Correct: a review gate prevents unwatched bad changes from shipping."
+    },
+    {
+     "key": "C",
+     "text": "Grant unrestricted write access for flexibility",
+     "correct": false,
+     "rationale": "Unrestricted access removes the safety boundary."
+    },
+    {
+     "key": "D",
+     "text": "Pass credentials as plain command-line arguments",
+     "correct": false,
+     "rationale": "Plain-argument secrets leak into process lists and logs."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: scope limits contain the impact of an unattended run.",
+   "outcome_refs": [
+    "MST-0564-D04.01"
+   ],
+   "domain_ref": "Safety in unattended runs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0564-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should secrets go for a scripted headless run?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In environment or a secret store, not in command-line arguments",
+     "correct": true,
+     "rationale": "Correct: command-line arguments are visible and logged; secrets belong elsewhere."
+    },
+    {
+     "key": "B",
+     "text": "As plain text in the command invocation",
+     "correct": false,
+     "rationale": "Command-line secrets leak through process lists and history."
+    },
+    {
+     "key": "C",
+     "text": "Hard-coded in the pipeline script",
+     "correct": false,
+     "rationale": "Committed secrets cannot be rotated and leak."
+    },
+    {
+     "key": "D",
+     "text": "Printed to the log for traceability",
+     "correct": false,
+     "rationale": "Logging secrets exposes them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: command-line arguments are visible and logged; secrets belong elsewhere.",
+   "outcome_refs": [
+    "MST-0564-D05.01"
+   ],
+   "domain_ref": "Operating headless automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
