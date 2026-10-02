@@ -21,6 +21,8 @@ log="$tmp/api.log"
   export ConnectionStrings__Default="Server=127.0.0.1;Port=1;Database=openapi_export;User=none;Password=none;"
   export Jwt__Key="openapi-export-only-key-not-a-secret-0123456789"
   export Database__MigrateOnStartup=false
+  export OpenApi__Enabled=true
+  export BackgroundJobs__Enabled=false
   export Resources__RootPath="$tmp/resources"
   exec dotnet "src/Mastemy.Api/bin/$config/net10.0/Mastemy.Api.dll" --contentRoot "$PWD/src/Mastemy.Api"
 ) >"$log" 2>&1 &

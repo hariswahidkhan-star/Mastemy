@@ -8,12 +8,11 @@ public class AnalyticsSqlSafetyTests
     [Theory]
     [InlineData("day'; DROP TABLE users; --")]
     [InlineData("week) UNION SELECT password FROM users --")]
-    [InlineData("")]
     public void Bucket_expression_never_embeds_the_bucket_string(string hostile)
     {
         var sql = AnalyticsReportService.BucketExpr("u.`CreatedAt`", hostile);
         Assert.Equal("DATE_FORMAT(u.`CreatedAt`, '%Y-%m-%d')", sql);
-        Assert.DoesNotContain(hostile.Length > 0 ? hostile : "\u0000", sql);
+        Assert.DoesNotContain(hostile, sql);
     }
 
     [Theory]

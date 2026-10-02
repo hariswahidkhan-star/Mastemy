@@ -42,6 +42,15 @@ var dp = builder.Services.AddDataProtection().SetApplicationName("Mastemy");
 if (!string.IsNullOrWhiteSpace(dpDir)) dp.PersistKeysToFileSystem(new DirectoryInfo(dpDir));
 
 builder.Services.AddMastemyModules(cfg);
+// BackgroundJobs:Enabled=false removes Mastemy's own hosted workers (outbox, sweepers, reminders, ...) while keeping
+// their classes resolvable. Used by tooling that boots the app without a database (e.g. scripts/export-openapi.sh).
+if (!cfg.GetValue("BackgroundJobs:Enabled", true))
+{
+    var own = typeof(Program).Assembly;
+    var workers = builder.Services.Where(d => d.ServiceType == typeof(IHostedService)
+        && (d.ImplementationType?.Assembly == own || d.ImplementationFactory?.Method.Module.Assembly == own)).ToList();
+    foreach (var d in workers) builder.Services.Remove(d);
+}
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
 {

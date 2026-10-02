@@ -19447,6 +19447,12 @@
           "clientId": {
             "type": "string"
           },
+          "domains": {
+            "items": {
+              "$ref": "#/components/schemas/SsoDomainDto"
+            },
+            "type": "array"
+          },
           "enabled": {
             "type": "boolean"
           },
@@ -19483,7 +19489,8 @@
           "enabled",
           "redirectUri",
           "loginUrl",
-          "updatedAt"
+          "updatedAt",
+          "domains"
         ],
         "type": "object"
       },
@@ -19529,6 +19536,78 @@
         ],
         "type": "object"
       },
+      "SsoDomainDecisionInput": {
+        "properties": {
+          "note": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "note"
+        ],
+        "type": "object"
+      },
+      "SsoDomainDto": {
+        "properties": {
+          "decisionNote": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "domain": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "lastDnsCheckAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "txtRecordName": {
+            "type": "string"
+          },
+          "txtRecordValue": {
+            "type": "string"
+          },
+          "verifiedAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "verifiedVia": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "domain",
+          "status",
+          "txtRecordName",
+          "txtRecordValue",
+          "verifiedVia",
+          "verifiedAt",
+          "decisionNote",
+          "lastDnsCheckAt"
+        ],
+        "type": "object"
+      },
       "SsoExchangeInput": {
         "properties": {
           "handoff": {
@@ -19540,6 +19619,91 @@
         },
         "required": [
           "handoff"
+        ],
+        "type": "object"
+      },
+      "SsoLinkStartDto": {
+        "properties": {
+          "authorizationUrl": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "authorizationUrl"
+        ],
+        "type": "object"
+      },
+      "SsoLinkStartInput": {
+        "properties": {
+          "returnTo": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "returnTo"
+        ],
+        "type": "object"
+      },
+      "StaffSsoDomainDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "decisionNote": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "domain": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "organizationName": {
+            "type": "string"
+          },
+          "organizationSlug": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "verifiedAt": {
+            "format": "date-time",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "verifiedVia": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "organizationId",
+          "organizationName",
+          "organizationSlug",
+          "domain",
+          "status",
+          "verifiedVia",
+          "verifiedAt",
+          "decisionNote",
+          "createdAt"
         ],
         "type": "object"
       },
@@ -25382,6 +25546,173 @@
               "text/plain": {
                 "schema": {
                   "$ref": "#/components/schemas/SeatRequestDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "AdminEnterprise"
+        ]
+      }
+    },
+    "/api/admin/enterprise/sso-domains": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StaffSsoDomainDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StaffSsoDomainDto"
+                  },
+                  "type": "array"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StaffSsoDomainDto"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "AdminEnterprise"
+        ]
+      }
+    },
+    "/api/admin/enterprise/sso-domains/{id}/approve": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoDomainDecisionInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoDomainDecisionInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoDomainDecisionInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StaffSsoDomainDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StaffSsoDomainDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StaffSsoDomainDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "AdminEnterprise"
+        ]
+      }
+    },
+    "/api/admin/enterprise/sso-domains/{id}/reject": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoDomainDecisionInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoDomainDecisionInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SsoDomainDecisionInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StaffSsoDomainDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StaffSsoDomainDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StaffSsoDomainDto"
                 }
               }
             },
@@ -37828,6 +38159,55 @@
         ]
       }
     },
+    "/api/orgs/{id}/sso/domains/{domainId}/verify": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "domainId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoDomainDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoDomainDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoDomainDto"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "OrgPhase2"
+        ]
+      }
+    },
     "/api/packages/{id}/price": {
       "get": {
         "parameters": [
@@ -38003,7 +38383,7 @@
           }
         },
         "tags": [
-          "Discovery"
+          "PathwayEnrollment"
         ]
       }
     },
@@ -39389,6 +39769,85 @@
               "text/plain": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Sso"
+        ]
+      }
+    },
+    "/api/sso/{orgSlug}/link/start": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orgSlug",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SsoLinkStartInput"
+                  }
+                ]
+              }
+            },
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SsoLinkStartInput"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SsoLinkStartInput"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoLinkStartDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoLinkStartDto"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SsoLinkStartDto"
                 }
               }
             },
@@ -46089,6 +46548,9 @@
     },
     {
       "name": "TrustAdmin"
+    },
+    {
+      "name": "PathwayEnrollment"
     },
     {
       "name": "Discovery"
