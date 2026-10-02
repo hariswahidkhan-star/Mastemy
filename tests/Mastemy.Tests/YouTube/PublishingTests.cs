@@ -6,6 +6,7 @@ using System.Text;
 using Mastemy.Api.Domain;
 using Mastemy.Api.Modules.YouTube;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Mastemy.Tests.YouTube;
 
@@ -186,11 +187,13 @@ public class PublishingTests(PublishingFactory f) : IClassFixture<PublishingFact
     {
         var bytes = Encoding.UTF8.GetBytes("WEBVTT\n\n00:00.000 --> 00:01.000\nHello\n");
         var sha = Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
-        var key = storageKey ?? Path.Combine(sha[..2], sha);
+        var key = storageKey ?? Mastemy.Api.Modules.Resources.ResourceStorageKeys.For(course, sha);
         if (storageKey is null)
         {
-            Directory.CreateDirectory(Path.Combine(PublishingFactory.Root, sha[..2]));
-            await File.WriteAllBytesAsync(Path.Combine(PublishingFactory.Root, key), bytes);
+            // Write through the real storage abstraction so the test exercises the same key layout as uploads.
+            var storage = f.Services.GetRequiredService<Mastemy.Api.Modules.Resources.IResourceStorage>();
+            await using var staged = await storage.StageAsync(new MemoryStream(bytes), 1_000_000, default);
+            await storage.CommitAsync(staged, key, default);
         }
         var rf = new ResourceFile
         {

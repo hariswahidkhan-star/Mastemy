@@ -24,7 +24,8 @@ public record ThumbnailResult(string VideoId);
 /// (or staff). The caller must also be an author of the course concerned (or staff). Nothing is stored locally.
 /// </summary>
 public partial class PublishingService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit, GoogleOAuthClient google,
-    IHttpClientFactory http, IOptions<YouTubeOptions> options, IConfiguration cfg, IWebHostEnvironment env)
+    IHttpClientFactory http, IOptions<YouTubeOptions> options, IConfiguration cfg, IWebHostEnvironment env,
+    Mastemy.Api.Modules.Resources.IResourceStorage storage)
 {
     public const long MaxThumbnailBytes = 2 * 1024 * 1024;
     public const string PlaylistTitlePrefix = "Mastemy: ";
@@ -300,20 +301,24 @@ public partial class PublishingService(AppDbContext db, ICurrentUser me, AccessS
         return new CaptionPushResult(captionId, asset.YouTubeVideoId, rf.Language!);
     }
 
-    /// <summary>Reads a content-addressed resource from Resources:RootPath/StorageKey, refusing paths that escape the root.</summary>
+    /// <summary>Reads a caption resource through the resource storage abstraction (same keys the Resources module writes).</summary>
     private async Task<byte[]> ReadResource(ResourceFile rf, CancellationToken ct)
     {
-        var rootSetting = cfg["Resources:RootPath"];
-        if (string.IsNullOrWhiteSpace(rootSetting)) throw new AppException(503, "Resource storage is not configured.", "resource_storage_unavailable");
-        var root = Path.GetFullPath(rootSetting, env.ContentRootPath);
-        if (string.IsNullOrWhiteSpace(rf.StorageKey)) throw AppException.Conflict("The caption file content is missing.", "resource_missing");
-        var path = Path.GetFullPath(Path.Combine(root, rf.StorageKey));
-        if (!path.StartsWith(Path.TrimEndingDirectorySeparator(root) + Path.DirectorySeparatorChar, StringComparison.Ordinal))
-            throw AppException.Conflict("The caption file content is missing.", "resource_missing");
-        if (!File.Exists(path)) throw AppException.Conflict("The caption file content is missing.", "resource_missing");
-        var info = new FileInfo(path);
-        if (info.Length > O.MaxCaptionBytes) throw AppException.Bad("Caption file size is not allowed.", "invalid_caption");
-        var bytes = await File.ReadAllBytesAsync(path, ct);
+        bool exists;
+        try { exists = !string.IsNullOrWhiteSpace(rf.StorageKey) && storage.Exists(rf.StorageKey); }
+        catch (ArgumentException) { exists = false; } // malformed key (e.g. traversal attempt) never resolves to a path
+        if (!exists) throw AppException.Conflict("The caption file content is missing.", "resource_missing");
+        if (rf.SizeBytes > O.MaxCaptionBytes) throw AppException.Bad("Caption file size is not allowed.", "invalid_caption");
+        await using var src = storage.OpenRead(rf.StorageKey);
+        using var ms = new MemoryStream();
+        var buffer = new byte[81920];
+        int n;
+        while ((n = await src.ReadAsync(buffer, ct)) > 0)
+        {
+            if (ms.Length + n > O.MaxCaptionBytes) throw AppException.Bad("Caption file size is not allowed.", "invalid_caption");
+            ms.Write(buffer, 0, n);
+        }
+        var bytes = ms.ToArray();
         if (!string.IsNullOrEmpty(rf.Sha256)
             && !string.Equals(Convert.ToHexString(SHA256.HashData(bytes)), rf.Sha256, StringComparison.OrdinalIgnoreCase))
             throw AppException.Conflict("The caption file failed its integrity check.", "resource_integrity");
