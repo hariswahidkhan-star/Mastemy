@@ -15,7 +15,8 @@ namespace Mastemy.Api.Modules.Commerce;
 public record AdminRefundInput(decimal Amount, string Reason, bool? RevokeEntitlements);
 public record DisputeDto(Guid Id, string ProviderDisputeId, Guid OrderId, decimal Amount, string Currency, string Status, string Reason, DateTime CreatedAt, DateTime? ClosedAt);
 public record ReconciliationRow(DateOnly Day, string Currency, decimal Payments, decimal SubscriptionPayments, decimal LedgerSales, decimal SalesDifference,
-    decimal Refunds, decimal LedgerRefundReversals, decimal RefundDifference, decimal Chargebacks, string Status);
+    decimal Refunds, decimal LedgerRefundReversals, decimal RefundDifference, decimal Chargebacks, string Status,
+    decimal PlatformOnlyPayments = 0, decimal PlatformOnlyRefunds = 0);
 public record ReconciliationDto(DateOnly From, DateOnly To, List<ReconciliationRow> Rows, int MismatchedDays);
 public record PayoutProfileInput(string LegalName, string Country, string Method, string Destination, bool? TaxFormSubmitted);
 public record PayoutProfileDto(Guid UserId, string LegalName, string Country, string Method, string DestinationMasked, string TaxFormStatus, DateTime UpdatedAt);
@@ -266,6 +267,9 @@ public class FinanceService(AppDbContext db, ICurrentUser me, AuditService audit
     /// (ledger sales = Σ instructor + platform of Sale entries, i.e. the gross recognised for package/bundle/gift orders;
     /// subscription revenue reaches the ledger through the monthly pool instead). RefundDifference = package refunds +
     /// RefundReversal ledger totals. Non-zero differences are flagged "mismatch".
+    /// Platform-only revenue — order items whose course has no instructor with a revenue share, which by design never
+    /// reach the ledger (see <see cref="CommissionSplit"/>) — is reported in PlatformOnlyPayments / PlatformOnlyRefunds and
+    /// excluded from both differences so it is not flagged. Shares are evaluated against the current course instructors.
     /// </summary>
     public async Task<ReconciliationDto> Reconcile(DateOnly from, DateOnly to)
     {
@@ -274,7 +278,7 @@ public class FinanceService(AppDbContext db, ICurrentUser me, AuditService audit
         var start = from.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc);
         var end = to.AddDays(1).ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc);
         var payments = await db.Payments.AsNoTracking().Where(p => p.CreatedAt >= start && p.CreatedAt < end)
-            .Select(p => new { p.CreatedAt, p.Currency, p.Amount }).ToListAsync();
+            .Select(p => new { p.CreatedAt, p.Currency, p.Amount, p.OrderId }).ToListAsync();
         var subs = await db.Set<SubscriptionInvoice>().AsNoTracking().Where(s => s.PaidAt >= start && s.PaidAt < end)
             .Select(s => new { s.PaidAt, s.Currency, s.Amount, s.OrderId }).ToListAsync();
         var subOrderIds = await db.Set<OrderDetail>().AsNoTracking().Where(d => d.Kind == "SubscriptionInvoice").Select(d => d.OrderId).ToListAsync();
@@ -284,6 +288,22 @@ public class FinanceService(AppDbContext db, ICurrentUser me, AuditService audit
                              join o in db.Orders.AsNoTracking() on r.OrderId equals o.Id
                              where r.Status == "Completed" && r.DecidedAt >= start && r.DecidedAt < end
                              select new { At = r.DecidedAt!.Value, o.Currency, r.Amount, r.OrderId }).ToListAsync();
+        // Fraction of each relevant order's value that belongs to platform-only courses.
+        var orderIds = payments.Select(p => p.OrderId).Concat(refunds.Select(r => r.OrderId)).Distinct().ToList();
+        var items = await db.OrderItems.AsNoTracking().Where(i => orderIds.Contains(i.OrderId)).Select(i => new { i.OrderId, i.CourseId, i.UnitPrice }).ToListAsync();
+        var itemCourses = items.Select(i => i.CourseId).Distinct().ToList();
+        var sharedCourses = (await db.CourseInstructors.AsNoTracking().Where(ci => itemCourses.Contains(ci.CourseId) && ci.RevenueSharePercent > 0)
+            .Select(ci => ci.CourseId).Distinct().ToListAsync()).ToHashSet();
+        var platformShare = items.GroupBy(i => i.OrderId).ToDictionary(g => g.Key, g =>
+            (Total: g.Sum(i => i.UnitPrice), Only: g.Where(i => !sharedCourses.Contains(i.CourseId)).Sum(i => i.UnitPrice),
+             All: g.All(i => !sharedCourses.Contains(i.CourseId))));
+        decimal PlatformPart(Guid orderId, decimal amount, string currency)
+        {
+            if (subOrderIds.Contains(orderId) || !platformShare.TryGetValue(orderId, out var s)) return 0m;
+            if (s.All) return amount;
+            if (s.Only == 0m) return 0m;
+            return amount == s.Total ? s.Only : Money.Round(amount * s.Only / s.Total, currency);
+        }
         var keys = payments.Select(p => (DateOnly.FromDateTime(p.CreatedAt), p.Currency))
             .Concat(ledgerRows.Select(l => (DateOnly.FromDateTime(l.CreatedAt), l.Currency)))
             .Concat(refunds.Select(r => (DateOnly.FromDateTime(r.At), r.Currency))).Distinct().OrderBy(k => k.Item1).ThenBy(k => k.Item2).ToList();
@@ -297,10 +317,12 @@ public class FinanceService(AppDbContext db, ICurrentUser me, AuditService audit
             var refundsPkg = refunds.Where(r => Same(r.At, r.Currency) && !subOrderIds.Contains(r.OrderId)).Sum(r => r.Amount);
             var reversals = ledgerRows.Where(l => l.Kind == "RefundReversal" && Same(l.CreatedAt, l.Currency)).Sum(l => l.Total);
             var chargebacks = ledgerRows.Where(l => l.Kind == "Chargeback" && Same(l.CreatedAt, l.Currency)).Sum(l => l.Total);
-            var salesDiff = pay - sub - sales;
-            var refundDiff = refundsPkg + reversals;
+            var platformPay = payments.Where(p => Same(p.CreatedAt, p.Currency)).Sum(p => PlatformPart(p.OrderId, p.Amount, p.Currency));
+            var platformRefunds = refunds.Where(r => Same(r.At, r.Currency) && !subOrderIds.Contains(r.OrderId)).Sum(r => PlatformPart(r.OrderId, r.Amount, r.Currency));
+            var salesDiff = pay - sub - platformPay - sales;
+            var refundDiff = refundsPkg - platformRefunds + reversals;
             rows.Add(new ReconciliationRow(day, cur, pay, sub, sales, salesDiff, refundsPkg, reversals, refundDiff, chargebacks,
-                salesDiff == 0 && refundDiff == 0 ? "ok" : "mismatch"));
+                salesDiff == 0 && refundDiff == 0 ? "ok" : "mismatch", platformPay, platformRefunds));
         }
         return new ReconciliationDto(from, to, rows, rows.Where(r => r.Status == "mismatch").Select(r => r.Day).Distinct().Count());
     }

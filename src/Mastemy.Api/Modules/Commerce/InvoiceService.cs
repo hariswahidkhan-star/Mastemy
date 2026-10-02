@@ -65,6 +65,7 @@ public class InvoiceService(AppDbContext db, ICurrentUser me, AuditService audit
             Total = order.Total, LinesJson = JsonSerializer.Serialize(lines), IssuedAt = now,
         };
         db.Set<Invoice>().Add(inv);
+        SnapshotSeller(inv.Id, Seller());
         audit.Record("invoice.issued", nameof(Invoice), inv.Id, new { inv.Number, order.Id, inv.Total, inv.Currency });
         return inv;
     }
@@ -84,9 +85,22 @@ public class InvoiceService(AppDbContext db, ICurrentUser me, AuditService audit
             LinesJson = JsonSerializer.Serialize(new List<InvoiceLine> { new($"Credit for invoice {original.Number}: {refund.Reason}", amount) }), IssuedAt = now,
         };
         db.Set<Invoice>().Add(cn);
+        // The credit note carries the seller as configured when it is issued; if configuration was removed since, reuse the
+        // original invoice's snapshot so the document still names the legal seller.
+        SnapshotSeller(cn.Id, Seller() ?? await SnapshotOf(original.Id));
         audit.Record("credit_note.issued", nameof(Invoice), cn.Id, new { cn.Number, order.Id, refundId = refund.Id, amount });
         return cn;
     }
+
+    private void SnapshotSeller(Guid invoiceId, SellerDetails? seller)
+    {
+        if (seller is null) return;
+        db.Set<InvoiceSellerSnapshot>().Add(new InvoiceSellerSnapshot { InvoiceId = invoiceId, Name = seller.Name, Address = seller.Address, TaxId = seller.TaxId });
+    }
+
+    private async Task<SellerDetails?> SnapshotOf(Guid invoiceId) =>
+        await db.Set<InvoiceSellerSnapshot>().AsNoTracking().Where(s => s.InvoiceId == invoiceId)
+            .Select(s => new SellerDetails(s.Name, s.Address, s.TaxId)).FirstOrDefaultAsync();
 
     public static InvoiceDto ToDto(Invoice i) => new(i.Id, i.Number, i.Kind, i.OrderId, i.RefundId, i.RelatedInvoiceId, i.BuyerName, i.BuyerCountry,
         i.Currency, i.Subtotal, i.TaxAmount, i.TaxRatePercent, i.TaxMode, i.Total,
@@ -111,7 +125,8 @@ public class InvoiceService(AppDbContext db, ICurrentUser me, AuditService audit
         var uid = me.RequireId();
         var inv = await db.Set<Invoice>().AsNoTracking().FirstOrDefaultAsync(i => i.Id == id) ?? throw AppException.NotFound("Invoice");
         if (!asFinance && inv.UserId != uid) throw AppException.NotFound("Invoice");
-        var seller = Seller() ?? throw new AppException(503, "Invoicing is not configured on this server (seller name, address and tax id are required).", "invoicing_not_configured");
+        // Render from the seller captured at issue time; documents issued before snapshots existed fall back to current config.
+        var seller = await SnapshotOf(inv.Id) ?? Seller() ?? throw new AppException(503, "Invoicing is not configured on this server (seller name, address and tax id are required).", "invoicing_not_configured");
         return (InvoicePdf.Render(inv, seller), inv.Number + ".pdf");
     }
 

@@ -61,8 +61,8 @@ public class Coupon
     public DateTime StartsAt { get; set; } = DateTime.UtcNow;
     public DateTime? ExpiresAt { get; set; }
     public decimal? MinAmount { get; set; }
-    public string AllowedEmails { get; set; } = ""; // newline separated, upper-case
-    public string AllowedDomains { get; set; } = ""; // newline separated, upper-case
+    public string AllowedEmails { get; set; } = ""; // newline separated, lower-case (IDN punycode); legacy rows may be upper-case and are compared case-insensitively
+    public string AllowedDomains { get; set; } = ""; // newline separated, lower-case (IDN punycode); legacy rows may be upper-case and are compared case-insensitively
     public Guid? AllowedOrganizationId { get; set; }
     public string Status { get; set; } = "Active"; // Active, PendingApproval, Rejected, Disabled
     public Guid CreatedBy { get; set; }
@@ -608,6 +608,27 @@ public class GiftCodeConfig : IEntityTypeConfiguration<GiftCode>
         b.Property(x => x.CodeCipher).HasColumnType("longtext");
         b.Property(x => x.RecipientEmail).HasMaxLength(255); b.Property(x => x.Status).HasMaxLength(16);
         b.HasOne<Order>().WithMany().HasForeignKey(x => x.OrderId);
+    }
+}
+
+/// <summary>1:1 side table of <see cref="Invoice"/>: the seller's legal details as they were when the document was issued.</summary>
+public class InvoiceSellerSnapshot
+{
+    public Guid InvoiceId { get; set; }
+    public string Name { get; set; } = "";
+    public string Address { get; set; } = "";
+    public string TaxId { get; set; } = "";
+    public DateTime CapturedAt { get; set; } = DateTime.UtcNow;
+}
+
+public class InvoiceSellerSnapshotConfig : IEntityTypeConfiguration<InvoiceSellerSnapshot>
+{
+    public void Configure(EntityTypeBuilder<InvoiceSellerSnapshot> b)
+    {
+        b.ToTable("Commerce_InvoiceSellerSnapshots");
+        b.HasKey(x => x.InvoiceId);
+        b.Property(x => x.Name).HasMaxLength(255); b.Property(x => x.Address).HasColumnType("longtext"); b.Property(x => x.TaxId).HasMaxLength(100);
+        b.HasOne<Invoice>().WithOne().HasForeignKey<InvoiceSellerSnapshot>(x => x.InvoiceId);
     }
 }
 

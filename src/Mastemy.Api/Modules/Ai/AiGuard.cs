@@ -41,6 +41,18 @@ public class AiBudgetService(AppDbContext db, AiOptions opt)
         var now = DateTime.UtcNow;
         if (await db.UserRoles.AnyAsync(r => r.UserId == userId && (r.Role == Roles.Instructor || r.Role == Roles.Admin || r.Role == Roles.SuperAdmin)))
             return ("instructor", opt.InstructorMonthlyTokens);
+        // Subscribers: the active plan's explicit AI allowance (largest one if several), converted to tokens.
+        var allowance = await (from e in db.Entitlements.AsNoTracking()
+                               join se in db.Set<Mastemy.Api.Modules.Commerce.SubscriptionEntitlement>().AsNoTracking() on e.Id equals se.EntitlementId
+                               join s in db.Set<Mastemy.Api.Modules.Commerce.Subscription>().AsNoTracking() on se.SubscriptionId equals s.Id
+                               join p in db.Set<Mastemy.Api.Modules.Commerce.Plan>().AsNoTracking() on s.PlanId equals p.Id
+                               where e.UserId == userId && e.Source == EntitlementSource.Subscription && e.RevokedAt == null
+                                     && e.StartsAt <= now && (e.EndsAt == null || e.EndsAt > now)
+                                     && s.UserId == userId && (s.Status == "Active" || s.Status == "PastDue")
+                               orderby p.AiAllowance descending
+                               select new { p.Code, p.AiAllowance }).FirstOrDefaultAsync();
+        if (allowance is { AiAllowance: > 0 })
+            return ("subscription:" + allowance.Code, (long)allowance.AiAllowance * Math.Max(1, opt.TokensPerAllowanceRequest));
         if (await db.Entitlements.AnyAsync(e => e.UserId == userId && e.RevokedAt == null && e.StartsAt <= now && (e.EndsAt == null || e.EndsAt > now)))
             return ("premium", opt.PremiumUserMonthlyTokens);
         return ("free", opt.UserMonthlyTokens);

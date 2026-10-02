@@ -40,6 +40,10 @@ public record QuoteInput(Guid? PackageId, Guid? BundleId = null, string? CouponC
 public record QuoteDto(string Kind, string Currency, decimal ListAmount, decimal Amount, decimal Discount, string PriceSource, decimal? CompareAtAmount,
     DateTime? OfferEndsAt, bool CouponApplied, List<QuoteItem> Items, string FreeVideoNotice);
 
+public record CurrencyOptionDto(Guid PackageId, string Currency, List<string> Countries, decimal Amount, bool IsBase);
+public record CommercePolicyDto(decimal InstructorCouponMaxPercent, int CouponReservationMinutes, decimal PromotionMaxPercent, decimal AffiliateMaxPercent,
+    int RefundWindowDays, decimal InstructorSharePercent, decimal PayoutMinimumAmount, int MaxScholarshipEmails, int MaxScholarshipDomains, int MaxRegionalCountriesPerPrice);
+
 public record QuoteItem(Guid PackageId, Guid CourseId, string Title, decimal ListPrice, decimal UnitPrice, int AccessDays);
 
 /// <summary>Server-side computed price for a purchase. The client never supplies amounts.</summary>
@@ -113,6 +117,27 @@ public static class CommerceText
     }
 
     public static List<string> Lines(string s) => s.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
+
+    private static readonly IdnMapping Idn = new();
+
+    /// <summary>Canonical domain form used for every restriction write and compare: trimmed, no leading '@' or trailing '.',
+    /// lower-case ASCII (IDN labels converted to punycode). Returns "" when the value cannot be mapped.</summary>
+    public static string NormalizeDomain(string? domain)
+    {
+        var d = (domain ?? "").Trim().TrimStart('@').TrimEnd('.');
+        if (d.Length == 0) return "";
+        try { return Idn.GetAscii(d).ToLowerInvariant(); }
+        catch (ArgumentException) { return d.ToLowerInvariant(); }
+    }
+
+    /// <summary>Canonical e-mail form: trimmed local part lower-cased (matches Identity's NormalizedEmail) and IDN-normalized domain.</summary>
+    public static string NormalizeEmail(string? email)
+    {
+        var e = (email ?? "").Trim();
+        var at = e.LastIndexOf('@');
+        if (at <= 0 || at == e.Length - 1) return e.ToLowerInvariant();
+        return e[..at].ToLowerInvariant() + "@" + NormalizeDomain(e[(at + 1)..]);
+    }
 }
 
 public class PricingService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit, IConfiguration cfg,
@@ -120,6 +145,52 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
 {
     private decimal InstructorCouponMaxPercent => Math.Clamp(cfg.GetValue("Commerce:InstructorCouponMaxPercent", 50m), 0m, 100m);
     private int ReservationMinutes => Math.Max(1, cfg.GetValue("Commerce:CouponReservationMinutes", 60));
+    private decimal PromotionMaxPercent => Math.Clamp(cfg.GetValue("Commerce:PromotionMaxPercent", 70m), 1m, 95m);
+    private decimal AffiliateMaxPercent => Math.Clamp(cfg.GetValue("Commerce:AffiliateMaxPercent", 30m), 0m, 100m);
+    public const int MaxScholarshipEmails = 5000, MaxScholarshipDomains = 100, MaxRegionalCountries = 60;
+
+    /// <summary>Commercial limits an instructor works within (read-only; values come from configuration).</summary>
+    public CommercePolicyDto Policy() => new(InstructorCouponMaxPercent, ReservationMinutes, PromotionMaxPercent, AffiliateMaxPercent,
+        Math.Max(0, cfg.GetValue("Commerce:RefundWindowDays", 30)), Math.Clamp(cfg.GetValue("Commission:InstructorSharePercent", 70m), 0m, 100m),
+        cfg.GetValue("Payouts:MinimumAmount", 50m), MaxScholarshipEmails, MaxScholarshipDomains, MaxRegionalCountries);
+
+    /// <summary>Public list of currencies a package (or every sellable package of a course) can be bought in: the base price plus
+    /// approved regional prices. Lets checkout offer real choices instead of probing currencies one by one.</summary>
+    public async Task<List<CurrencyOptionDto>> PublicCurrencies(Guid? packageId, Guid? courseId)
+    {
+        if (packageId is null == courseId is null) throw AppException.Bad("Pass exactly one of packageId or courseId.", "invalid_query");
+        var pq = db.Packages.AsNoTracking().Where(p => p.IsActive && p.ApprovalStatus == "Approved");
+        pq = packageId is { } pid ? pq.Where(p => p.Id == pid) : pq.Where(p => p.CourseId == courseId);
+        var pkgs = await pq.ToListAsync();
+        var cids = pkgs.Select(p => p.CourseId).Distinct().ToList();
+        var live = await db.Courses.AsNoTracking().Where(c => cids.Contains(c.Id)).Where(AccessService.IsLiveExpr).Select(c => c.Id).ToListAsync();
+        pkgs = pkgs.Where(p => live.Contains(p.CourseId)).ToList();
+        if (pkgs.Count == 0) throw AppException.NotFound(packageId is null ? "Course" : "Package");
+        var ids = pkgs.Select(p => p.Id).ToList();
+        var regional = await db.Set<PackagePrice>().AsNoTracking().Where(p => ids.Contains(p.PackageId) && p.Status == "Approved").ToListAsync();
+        var res = new List<CurrencyOptionDto>();
+        foreach (var pkg in pkgs.OrderBy(p => p.Title).ThenBy(p => p.Id))
+        {
+            var rows = regional.Where(r => r.PackageId == pkg.Id).ToList();
+            // A generic (country-less) approved price in the base currency would override the base price; mirror ResolveRegularPrice.
+            if (!rows.Any(r => r.Currency == pkg.Currency && r.Countries == ""))
+                res.Add(new CurrencyOptionDto(pkg.Id, pkg.Currency, [], pkg.Price, true));
+            res.AddRange(rows.OrderBy(r => r.Currency).ThenBy(r => r.Countries)
+                .Select(r => new CurrencyOptionDto(pkg.Id, r.Currency, SplitCountries(r.Countries), r.Amount, false)));
+        }
+        return res;
+    }
+
+    /// <summary>Staff bundle list; inactive bundles are included on request so they can be re-activated.</summary>
+    public async Task<List<BundleDto>> AdminBundles(bool includeInactive)
+    {
+        var q = db.Set<Bundle>().AsNoTracking();
+        if (!includeInactive) q = q.Where(b => b.Status == "Active");
+        var list = await q.OrderBy(b => b.Title).ThenBy(b => b.Id).Take(500).ToListAsync();
+        var res = new List<BundleDto>();
+        foreach (var b in list) res.Add(await ToDto(b));
+        return res;
+    }
 
     // ===================== Quote =====================
 
@@ -198,7 +269,7 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
                       ?? throw AppException.Bad("Affiliate referral is not valid.", "affiliate_invalid");
             if (click.CreatedAt.AddDays(aff.AttributionWindowDays) < now) throw AppException.Bad("Affiliate referral has expired.", "affiliate_expired");
             var email = await db.Users.Where(u => u.Id == userId).Select(u => u.NormalizedEmail).FirstOrDefaultAsync();
-            if (email is not null && email == aff.Email.ToUpperInvariant()) throw AppException.Bad("Affiliates cannot earn commission on their own purchases.", "affiliate_self_referral");
+            if (email is not null && CommerceText.NormalizeEmail(email) == CommerceText.NormalizeEmail(aff.Email)) throw AppException.Bad("Affiliates cannot earn commission on their own purchases.", "affiliate_self_referral");
             q.AffiliateId = aff.Id;
         }
 
@@ -310,10 +381,12 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
         {
             if (gift) throw AppException.Bad("Scholarship codes cannot be used for gifts.", "coupon_not_applicable");
             var user = await db.Users.AsNoTracking().FirstAsync(u => u.Id == userId);
-            var emails = CommerceText.Lines(c.AllowedEmails);
-            var domains = CommerceText.Lines(c.AllowedDomains);
-            var domain = user.NormalizedEmail.Contains('@') ? user.NormalizedEmail[(user.NormalizedEmail.LastIndexOf('@') + 1)..] : "";
-            var eligible = emails.Contains(user.NormalizedEmail) || domains.Contains(domain)
+            // Stored values are normalized on read too, so legacy upper-case rows written before the fix still match.
+            var emails = CommerceText.Lines(c.AllowedEmails).Select(CommerceText.NormalizeEmail).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            var domains = CommerceText.Lines(c.AllowedDomains).Select(CommerceText.NormalizeDomain).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            var userEmail = CommerceText.NormalizeEmail(user.NormalizedEmail.Length > 0 ? user.NormalizedEmail : user.Email);
+            var domain = userEmail.Contains('@') ? userEmail[(userEmail.LastIndexOf('@') + 1)..] : "";
+            var eligible = emails.Contains(userEmail) || (domain.Length > 0 && domains.Contains(domain))
                 || (c.AllowedOrganizationId is { } org && await db.OrganizationMembers.AnyAsync(m => m.OrganizationId == org && m.UserId == userId));
             if (!eligible) throw AppException.Bad("This scholarship code is restricted to specific recipients.", "coupon_not_eligible");
         }
@@ -417,14 +490,14 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
                     throw AppException.Bad($"Instructor coupons may give at most {InstructorCouponMaxPercent}% off.", "coupon_exceeds_policy");
                 break;
             case "Scholarship":
-                var emails = (input.AllowedEmails ?? []).Select(e => (e ?? "").Trim().ToUpperInvariant()).Where(e => e.Length > 0).Distinct().ToList();
-                var domains = (input.AllowedDomains ?? []).Select(e => (e ?? "").Trim().TrimStart('@').ToUpperInvariant()).Where(e => e.Length > 0).Distinct().ToList();
+                var emails = (input.AllowedEmails ?? []).Select(CommerceText.NormalizeEmail).Where(e => e.Length > 0).Distinct().ToList();
+                var domains = (input.AllowedDomains ?? []).Select(CommerceText.NormalizeDomain).Where(e => e.Length > 0).Distinct().ToList();
                 if (emails.Any(e => !Regex.IsMatch(e, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))) throw AppException.Bad("allowedEmails contains an invalid address.");
-                if (domains.Any(d => !Regex.IsMatch(d, @"^[A-Z0-9.-]+\.[A-Z]{2,}$"))) throw AppException.Bad("allowedDomains contains an invalid domain.");
+                if (domains.Any(d => !Regex.IsMatch(d, @"^[a-z0-9.-]+\.[a-z0-9-]{2,}$"))) throw AppException.Bad("allowedDomains contains an invalid domain.");
                 if (input.AllowedOrganizationId is { } org && !await db.Organizations.AnyAsync(o => o.Id == org)) throw AppException.NotFound("Organization");
                 if (emails.Count == 0 && domains.Count == 0 && input.AllowedOrganizationId is null)
                     throw AppException.Bad("Scholarship codes must be restricted to specific emails, domains or an organization.", "scholarship_unrestricted");
-                if (emails.Count > 5000 || domains.Count > 100) throw AppException.Bad("Too many restrictions (max 5000 emails, 100 domains).");
+                if (emails.Count > MaxScholarshipEmails || domains.Count > MaxScholarshipDomains) throw AppException.Bad("Too many restrictions (max 5000 emails, 100 domains).");
                 c.AllowedEmails = string.Join('\n', emails); c.AllowedDomains = string.Join('\n', domains);
                 c.AllowedOrganizationId = input.AllowedOrganizationId;
                 c.Status = "PendingApproval"; // scholarships always need a second person's approval
@@ -579,7 +652,7 @@ public class PricingService(AppDbContext db, ICurrentUser me, AccessService acce
         CommerceText.ValidAmount(input.Amount, cur);
         var countries = (input.Countries ?? []).Select(c => CommerceText.OptionalCountry(c) ?? throw AppException.Bad("Country codes must not be empty.", "invalid_country"))
             .Distinct().OrderBy(c => c).ToList();
-        if (countries.Count > 60) throw AppException.Bad("At most 60 countries per price.");
+        if (countries.Count > MaxRegionalCountries) throw AppException.Bad("At most 60 countries per price.");
         if (cur == pkg.Currency && countries.Count == 0) throw AppException.Bad("The base currency price is the package price; regional prices in it must name countries.", "duplicate_base_price");
         var p = new PackagePrice { PackageId = packageId, Currency = cur, Countries = string.Join(',', countries), Amount = input.Amount, ProposedBy = uid };
         db.Set<PackagePrice>().Add(p);
