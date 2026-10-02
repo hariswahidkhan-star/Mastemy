@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0699",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0699-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team must extract fields from a non-standard vendor form with varying layouts and the highest practical accuracy. Which approach does Microsoft recommend first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Train a custom neural model",
+     "correct": true,
+     "rationale": "Correct: for supported languages and variable layouts, Microsoft recommends neural models over template models for higher accuracy."
+    },
+    {
+     "key": "B",
+     "text": "Use the prebuilt receipt model",
+     "correct": false,
+     "rationale": "The receipt model targets receipts, not an arbitrary custom vendor form."
+    },
+    {
+     "key": "C",
+     "text": "Use Read only",
+     "correct": false,
+     "rationale": "Read extracts raw text and locations, not labeled business fields."
+    },
+    {
+     "key": "D",
+     "text": "Skip training and rely on confidence scores",
+     "correct": false,
+     "rationale": "Confidence scores describe certainty; they do not extract custom fields without a model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: for supported languages and variable layouts, Microsoft recommends neural models over template models for higher accuracy.",
+   "outcome_refs": [
+    "MST-0699-01.01"
+   ],
+   "domain_ref": "Understand Document Intelligence",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0699-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An extracted invoice total returns a confidence score of 0.62. What is the most appropriate action in a production workflow?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Route the field for human review",
+     "correct": true,
+     "rationale": "Correct: low-confidence fields should be routed to a human-in-the-loop review before being trusted."
+    },
+    {
+     "key": "B",
+     "text": "Post it to finance automatically",
+     "correct": false,
+     "rationale": "A low confidence score means the value should not be trusted without review."
+    },
+    {
+     "key": "C",
+     "text": "Delete the document",
+     "correct": false,
+     "rationale": "Deleting the document loses the data instead of validating it."
+    },
+    {
+     "key": "D",
+     "text": "Retrain the model on this single document",
+     "correct": false,
+     "rationale": "A single low-confidence result is not a basis for retraining; it should be reviewed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: low-confidence fields should be routed to a human-in-the-loop review before being trusted.",
+   "outcome_refs": [
+    "MST-0699-02.01"
+   ],
+   "domain_ref": "Use prebuilt models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0699-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid Document Intelligence custom model capabilities? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Custom classifier models identify a document's type",
+     "correct": true,
+     "rationale": "Correct: classifier models identify the document type before an extraction model is invoked."
+    },
+    {
+     "key": "B",
+     "text": "Composed models combine several custom models for similar form types",
+     "correct": true,
+     "rationale": "Correct: composed models group custom models to analyze similar form types."
+    },
+    {
+     "key": "C",
+     "text": "Prebuilt models require labeling five examples before use",
+     "correct": false,
+     "rationale": "Prebuilt models require no custom training; labeling applies to custom models."
+    },
+    {
+     "key": "D",
+     "text": "Custom models eliminate the need for any confidence review",
+     "correct": false,
+     "rationale": "Confidence scores and review remain relevant regardless of model type."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: classifier models identify the document type before an extraction model is invoked.",
+   "outcome_refs": [
+    "MST-0699-03.01"
+   ],
+   "domain_ref": "Build custom models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

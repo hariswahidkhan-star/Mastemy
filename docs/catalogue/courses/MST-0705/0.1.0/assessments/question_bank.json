@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0705",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0705-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Real-Time Intelligence component ingests streaming data from sources like Event Hubs and routes it to a destination with a no-code experience?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Eventstream",
+     "correct": true,
+     "rationale": "Correct: eventstream is the no-code pipeline that captures, transforms and routes real-time events."
+    },
+    {
+     "key": "B",
+     "text": "Eventhouse",
+     "correct": false,
+     "rationale": "An eventhouse stores and analyzes the data; it is the destination, not the ingestion pipeline."
+    },
+    {
+     "key": "C",
+     "text": "A semantic model",
+     "correct": false,
+     "rationale": "A semantic model is a Power BI concept, not a streaming ingestion component."
+    },
+    {
+     "key": "D",
+     "text": "A deployment pipeline",
+     "correct": false,
+     "rationale": "Deployment pipelines promote content between stages; they do not ingest streams."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: eventstream is the no-code pipeline that captures, transforms and routes real-time events.",
+   "outcome_refs": [
+    "MST-0705-01.01"
+   ],
+   "domain_ref": "Understand Real-Time Intelligence",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0705-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team needs fast filtering and aggregation over billions of time-series events. Which store and language are purpose-built for this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Eventhouse queried with KQL",
+     "correct": true,
+     "rationale": "Correct: eventhouses are built for streaming/time-series data and use KQL for fast queries."
+    },
+    {
+     "key": "B",
+     "text": "A warehouse queried only with batch exports",
+     "correct": false,
+     "rationale": "Batch exports do not provide the low-latency event analysis an eventhouse does."
+    },
+    {
+     "key": "C",
+     "text": "A Power BI dashboard alone",
+     "correct": false,
+     "rationale": "A dashboard visualizes results; it is not the analytics store or query language."
+    },
+    {
+     "key": "D",
+     "text": "A Dataverse table",
+     "correct": false,
+     "rationale": "Dataverse is an application data platform, not a time-series event store."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: eventhouses are built for streaming/time-series data and use KQL for fast queries.",
+   "outcome_refs": [
+    "MST-0705-02.01"
+   ],
+   "domain_ref": "Ingest with Eventstream",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0705-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO things can Activator do in Real-Time Intelligence? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Send a notification when a defined condition is met",
+     "correct": true,
+     "rationale": "Correct: Activator is a no-code rules engine that alerts on conditions."
+    },
+    {
+     "key": "B",
+     "text": "Trigger a Fabric job when a rule fires",
+     "correct": true,
+     "rationale": "Correct: Activator can trigger Fabric jobs when a condition is met."
+    },
+    {
+     "key": "C",
+     "text": "Store billions of events for KQL queries",
+     "correct": false,
+     "rationale": "Storing events is the eventhouse's role, not Activator's."
+    },
+    {
+     "key": "D",
+     "text": "Replace the eventstream ingestion pipeline",
+     "correct": false,
+     "rationale": "Activator acts on data; it does not ingest streams."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Activator is a no-code rules engine that alerts on conditions.",
+   "outcome_refs": [
+    "MST-0705-03.01"
+   ],
+   "domain_ref": "Store and query with Eventhouse and KQL",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

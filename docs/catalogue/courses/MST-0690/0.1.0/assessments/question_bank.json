@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0690",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0690-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An organization needs to validate its disaster recovery plan without disrupting production. Which Azure Site Recovery capability should it use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Test failover",
+     "correct": true,
+     "rationale": "Correct: test failover runs the recovery in an isolated network without affecting the production workload."
+    },
+    {
+     "key": "B",
+     "text": "Unplanned failover",
+     "correct": false,
+     "rationale": "Unplanned failover switches production to the secondary site and is for real outages."
+    },
+    {
+     "key": "C",
+     "text": "Deleting the Recovery Services vault",
+     "correct": false,
+     "rationale": "Deleting the vault removes replication configuration; it does not test recovery."
+    },
+    {
+     "key": "D",
+     "text": "Disabling replication",
+     "correct": false,
+     "rationale": "Disabling replication stops protection and tests nothing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: test failover runs the recovery in an isolated network without affecting the production workload.",
+   "outcome_refs": [
+    "MST-0690-01.01"
+   ],
+   "domain_ref": "Plan a BCDR strategy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0690-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload must recover with no more than 30 seconds of data loss. Which objective does this define?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recovery point objective (RPO)",
+     "correct": true,
+     "rationale": "Correct: RPO defines the maximum acceptable data loss, measured as time."
+    },
+    {
+     "key": "B",
+     "text": "Recovery time objective (RTO)",
+     "correct": false,
+     "rationale": "RTO defines how long recovery may take, not how much data may be lost."
+    },
+    {
+     "key": "C",
+     "text": "Service-level agreement credit",
+     "correct": false,
+     "rationale": "SLA credits are financial remedies, not recovery objectives."
+    },
+    {
+     "key": "D",
+     "text": "Mean time between failures",
+     "correct": false,
+     "rationale": "MTBF is a reliability metric, not a recovery objective."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RPO defines the maximum acceptable data loss, measured as time.",
+   "outcome_refs": [
+    "MST-0690-02.01"
+   ],
+   "domain_ref": "Protect workloads with Azure Site Recovery",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0690-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Azure Backup and Azure Site Recovery are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Site Recovery replicates and fails over running workloads",
+     "correct": true,
+     "rationale": "Correct: Site Recovery keeps apps running by replicating to a secondary location and failing over."
+    },
+    {
+     "key": "B",
+     "text": "Azure Backup keeps recoverable copies of data",
+     "correct": true,
+     "rationale": "Correct: Azure Backup protects data by keeping recoverable copies."
+    },
+    {
+     "key": "C",
+     "text": "Site Recovery removes the need for any backups",
+     "correct": false,
+     "rationale": "DR replication and backup serve different purposes and are complementary."
+    },
+    {
+     "key": "D",
+     "text": "Azure Backup orchestrates multi-tier application failover",
+     "correct": false,
+     "rationale": "Orchestrated failover of multi-tier apps is a Site Recovery recovery-plan feature."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Site Recovery keeps apps running by replicating to a secondary location and failing over.",
+   "outcome_refs": [
+    "MST-0690-03.01"
+   ],
+   "domain_ref": "Orchestrate failover and failback",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

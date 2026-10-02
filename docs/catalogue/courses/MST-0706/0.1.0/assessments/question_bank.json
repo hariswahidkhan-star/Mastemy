@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0706",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0706-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A stakeholder only needs to view reports in a workspace and change nothing. Which workspace role follows least privilege?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Viewer",
+     "correct": true,
+     "rationale": "Correct: the Viewer role grants read access without edit or management rights."
+    },
+    {
+     "key": "B",
+     "text": "Admin",
+     "correct": false,
+     "rationale": "Admin grants full control, far beyond read-only needs."
+    },
+    {
+     "key": "C",
+     "text": "Member",
+     "correct": false,
+     "rationale": "Member can edit and share content, which exceeds view-only needs."
+    },
+    {
+     "key": "D",
+     "text": "Contributor",
+     "correct": false,
+     "rationale": "Contributor can create and edit items, which a viewer does not need."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the Viewer role grants read access without edit or management rights.",
+   "outcome_refs": [
+    "MST-0706-01.01"
+   ],
+   "domain_ref": "Govern the Fabric data estate",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0706-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Microsoft Fabric, what is a capacity primarily used as?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The compute resource and isolation boundary for workloads",
+     "correct": true,
+     "rationale": "Correct: capacities are the compute resources used by all workloads and can isolate compute (for example by DTAP)."
+    },
+    {
+     "key": "B",
+     "text": "A security boundary that controls data access",
+     "correct": false,
+     "rationale": "Data access is controlled by workspace roles and item security, not the capacity."
+    },
+    {
+     "key": "C",
+     "text": "A replacement for workspaces",
+     "correct": false,
+     "rationale": "Workspaces organize content; capacities provide their compute."
+    },
+    {
+     "key": "D",
+     "text": "A Power BI report type",
+     "correct": false,
+     "rationale": "A capacity is infrastructure, not a report."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: capacities are the compute resources used by all workloads and can isolate compute (for example by DTAP).",
+   "outcome_refs": [
+    "MST-0706-02.01"
+   ],
+   "domain_ref": "Secure content and access",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0706-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are governance capabilities surfaced in the OneLake catalog Govern section? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Domains for grouping organizational data",
+     "correct": true,
+     "rationale": "Correct: domains logically group data by area and support delegated governance."
+    },
+    {
+     "key": "B",
+     "text": "Endorsement of trusted items",
+     "correct": true,
+     "rationale": "Correct: endorsement (promote/certify) highlights trusted content."
+    },
+    {
+     "key": "C",
+     "text": "Writing DAX measures",
+     "correct": false,
+     "rationale": "DAX authoring is a Power BI modeling task, not a Govern-section capability."
+    },
+    {
+     "key": "D",
+     "text": "Running Spark notebooks",
+     "correct": false,
+     "rationale": "Spark notebooks are a data-engineering tool, not a governance capability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: domains logically group data by area and support delegated governance.",
+   "outcome_refs": [
+    "MST-0706-03.01"
+   ],
+   "domain_ref": "Manage capacities",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

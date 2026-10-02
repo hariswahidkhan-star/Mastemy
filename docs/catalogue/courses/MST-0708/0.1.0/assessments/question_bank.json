@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0708",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0708-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which DAX function evaluates an expression in a modified filter context and is the basis for most advanced measures?",
+   "options": [
+    {
+     "key": "A",
+     "text": "CALCULATE",
+     "correct": true,
+     "rationale": "Correct: CALCULATE evaluates an expression in a modified filter context and underpins most advanced DAX."
+    },
+    {
+     "key": "B",
+     "text": "SUM",
+     "correct": false,
+     "rationale": "SUM is a simple aggregation; it does not modify filter context."
+    },
+    {
+     "key": "C",
+     "text": "CONCATENATE",
+     "correct": false,
+     "rationale": "CONCATENATE joins text and has nothing to do with filter context."
+    },
+    {
+     "key": "D",
+     "text": "FORMAT",
+     "correct": false,
+     "rationale": "FORMAT converts a value to text; it does not change filter context."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: CALCULATE evaluates an expression in a modified filter context and underpins most advanced DAX.",
+   "outcome_refs": [
+    "MST-0708-01.01"
+   ],
+   "domain_ref": "DAX foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0708-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A measure using time-intelligence functions returns blanks across the matrix. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "There is no properly marked date table in the model",
+     "correct": true,
+     "rationale": "Correct: most time-intelligence functions require a proper, contiguous date table."
+    },
+    {
+     "key": "B",
+     "text": "The report theme is set to dark mode",
+     "correct": false,
+     "rationale": "Visual theming does not affect DAX evaluation."
+    },
+    {
+     "key": "C",
+     "text": "The capacity is paused",
+     "correct": false,
+     "rationale": "A paused capacity would stop everything, not blank one measure."
+    },
+    {
+     "key": "D",
+     "text": "The measure name is too long",
+     "correct": false,
+     "rationale": "Measure name length does not cause blank time-intelligence results."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: most time-intelligence functions require a proper, contiguous date table.",
+   "outcome_refs": [
+    "MST-0708-02.01"
+   ],
+   "domain_ref": "Modify context with CALCULATE",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0708-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about DAX measures and calculated columns are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A measure is evaluated in the filter context of each cell at query time",
+     "correct": true,
+     "rationale": "Correct: measures are dynamic and evaluated per cell in the current context."
+    },
+    {
+     "key": "B",
+     "text": "A calculated column is computed row by row and stored in the model",
+     "correct": true,
+     "rationale": "Correct: calculated columns use row context and are materialized in the model."
+    },
+    {
+     "key": "C",
+     "text": "A measure stores one static value in the table",
+     "correct": false,
+     "rationale": "Measures are dynamic, not a single stored value."
+    },
+    {
+     "key": "D",
+     "text": "A calculated column changes with each slicer selection",
+     "correct": false,
+     "rationale": "Calculated columns are computed at refresh, not per slicer selection."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: measures are dynamic and evaluated per cell in the current context.",
+   "outcome_refs": [
+    "MST-0708-03.01"
+   ],
+   "domain_ref": "Time intelligence",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

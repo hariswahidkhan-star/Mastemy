@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0716",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0716-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the mechanism for moving related Power Platform components between environments in ALM?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A solution",
+     "correct": true,
+     "rationale": "Correct: solutions are the container used to distribute components across environments via export and import."
+    },
+    {
+     "key": "B",
+     "text": "A single screenshot",
+     "correct": false,
+     "rationale": "Screenshots do not transport components."
+    },
+    {
+     "key": "C",
+     "text": "A Power BI report",
+     "correct": false,
+     "rationale": "A report is content, not an ALM transport container."
+    },
+    {
+     "key": "D",
+     "text": "A resource lock",
+     "correct": false,
+     "rationale": "Resource locks are an Azure control, not a Power Platform transport mechanism."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: solutions are the container used to distribute components across environments via export and import.",
+   "outcome_refs": [
+    "MST-0716-01.01"
+   ],
+   "domain_ref": "ALM foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0716-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants makers to deploy solutions across environments with minimal setup and built-in CI/CD. Which Power Platform feature fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Power Platform pipelines",
+     "correct": true,
+     "rationale": "Correct: pipelines democratize ALM by bringing automated deployment and CI/CD into the service."
+    },
+    {
+     "key": "B",
+     "text": "Manually emailing the solution file",
+     "correct": false,
+     "rationale": "Manual email is error-prone and lacks automation and governance."
+    },
+    {
+     "key": "C",
+     "text": "Deleting the dev environment",
+     "correct": false,
+     "rationale": "Deleting the dev environment removes the source of the work."
+    },
+    {
+     "key": "D",
+     "text": "A Fabric capacity",
+     "correct": false,
+     "rationale": "A Fabric capacity is analytics compute, not a Power Platform deployment tool."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: pipelines democratize ALM by bringing automated deployment and CI/CD into the service.",
+   "outcome_refs": [
+    "MST-0716-02.01"
+   ],
+   "domain_ref": "Work with solutions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0716-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are ALM best practices in Power Platform? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use source control as the source of truth for components",
+     "correct": true,
+     "rationale": "Correct: source control should be the source of truth for storing and collaborating on components."
+    },
+    {
+     "key": "B",
+     "text": "Use environment variables so configuration can change per environment",
+     "correct": true,
+     "rationale": "Correct: environment variables separate parameters from objects so values change across environments."
+    },
+    {
+     "key": "C",
+     "text": "Develop and edit solutions directly in production",
+     "correct": false,
+     "rationale": "Direct production development bypasses healthy ALM and risks instability."
+    },
+    {
+     "key": "D",
+     "text": "Deploy to production before test",
+     "correct": false,
+     "rationale": "Pipelines require stages in order; test precedes production."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: source control should be the source of truth for storing and collaborating on components.",
+   "outcome_refs": [
+    "MST-0716-03.01"
+   ],
+   "domain_ref": "Deploy with Power Platform pipelines",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

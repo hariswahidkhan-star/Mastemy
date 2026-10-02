@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0709",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 96,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 72,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design range 200-600 for substantial skills courses"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0709-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Who is allowed to apply the Certified endorsement to a Power BI semantic model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Only reviewers authorized by the Power BI administrator",
+     "correct": true,
+     "rationale": "Correct: certification can be applied only by a select group of authorized reviewers defined by the admin."
+    },
+    {
+     "key": "B",
+     "text": "Any user with read access",
+     "correct": false,
+     "rationale": "Read access does not permit certification."
+    },
+    {
+     "key": "C",
+     "text": "Anyone in the workspace",
+     "correct": false,
+     "rationale": "General workspace membership does not grant certification rights."
+    },
+    {
+     "key": "D",
+     "text": "Only external guests",
+     "correct": false,
+     "rationale": "External guests are not the authorized certifiers; admins define reviewers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: certification can be applied only by a select group of authorized reviewers defined by the admin.",
+   "outcome_refs": [
+    "MST-0709-01.01"
+   ],
+   "domain_ref": "Design semantic models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0709-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A report author wants to reuse an existing shared semantic model rather than duplicate data. Which approach is preferred?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A live connection to the shared semantic model",
+     "correct": true,
+     "rationale": "Correct: a live connection reuses the existing model and avoids creating a duplicate."
+    },
+    {
+     "key": "B",
+     "text": "Export the data to a new Excel file",
+     "correct": false,
+     "rationale": "Exporting duplicates data and loses the governed single source of truth."
+    },
+    {
+     "key": "C",
+     "text": "Rebuild the model from scratch",
+     "correct": false,
+     "rationale": "Rebuilding defeats reuse and creates another model to maintain."
+    },
+    {
+     "key": "D",
+     "text": "Delete the shared model",
+     "correct": false,
+     "rationale": "Deleting the shared model removes the single source of truth."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a live connection reuses the existing model and avoids creating a duplicate.",
+   "outcome_refs": [
+    "MST-0709-02.01"
+   ],
+   "domain_ref": "Reuse and connect",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0709-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Power BI endorsement are correct? (Select TWO)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Promotion can be done by any user with write permission on the item",
+     "correct": true,
+     "rationale": "Correct: any content owner or member with write permission can promote content."
+    },
+    {
+     "key": "B",
+     "text": "Certification indicates the content meets org quality standards and is authoritative",
+     "correct": true,
+     "rationale": "Correct: certification signals reliable, authoritative, ready-to-use content."
+    },
+    {
+     "key": "C",
+     "text": "Endorsement grants data access to everyone automatically",
+     "correct": false,
+     "rationale": "Endorsement affects discoverability and trust signals, not access rights."
+    },
+    {
+     "key": "D",
+     "text": "Only dashboards can be endorsed",
+     "correct": false,
+     "rationale": "Dashboards are the exception; most items can be endorsed, dashboards cannot."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: any content owner or member with write permission can promote content.",
+   "outcome_refs": [
+    "MST-0709-03.01"
+   ],
+   "domain_ref": "Endorse and make discoverable",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
