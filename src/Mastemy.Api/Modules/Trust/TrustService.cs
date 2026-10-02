@@ -243,6 +243,11 @@ public class TrustService(AppDbContext db, ICurrentUser me, AuditService audit, 
                 reply.Hidden = true;
                 await ModerationNotes.Set(db, ModerationNote.Reply, reply.Id, $"Removed after a {c.Type} complaint. {note}".Trim());
                 return new { hidden = "discussion_reply" };
+            case ComplaintTarget.Message:
+                var msg = await db.Set<Messaging.Message>().FirstAsync(x => x.Id == c.TargetId);
+                msg.HiddenAt ??= DateTime.UtcNow; msg.HiddenBy ??= staff;
+                msg.HiddenReason = $"Removed after a {c.Type} complaint. {note}".Trim();
+                return new { hidden = "message" };
             default:
                 var holdType = c.TargetType == ComplaintTarget.Lesson ? HoldTarget.Lesson : HoldTarget.Resource;
                 var existing = await db.Set<ContentHold>().FirstOrDefaultAsync(h => h.TargetId == c.TargetId && h.TargetType == holdType && h.ReleasedAt == null);

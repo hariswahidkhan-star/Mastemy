@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Mastemy.Api.Modules.Trust;
 
 public enum ComplaintType { Copyright, Rights, Abuse, Privacy, Other }
-public enum ComplaintTarget { Course, Lesson, Discussion, DiscussionReply, Review, Resource }
+public enum ComplaintTarget { Course, Lesson, Discussion, DiscussionReply, Review, Resource, Message = 100 }
 public enum ComplaintStatus { Open, Dismissed, Actioned }
 public enum ComplaintAction { None, Dismiss, Hide, Archive }
 public enum AppealStatus { Pending, Upheld, Reinstated }
