@@ -49,11 +49,9 @@ public sealed class SecurityFixture : IAsyncLifetime
         await db.Database.EnsureCreatedAsync();
     }
 
-    public async Task DisposeAsync()
-    {
-        await using (var db = NewDb()) await db.Database.EnsureDeletedAsync();
-        await Factory.DisposeAsync();
-    }
+    // Stop the host (and its background workers) before dropping the database; dropping first made a
+    // worker's in-flight query fail during shutdown (CI: AdminTests class cleanup AggregateException).
+    public Task DisposeAsync() => TestDatabase.DisposeHostsThenDropAsync(ConnectionString, Factory);
 
     public AppDbContext NewDb() => new(new DbContextOptionsBuilder<AppDbContext>().UseMySQL(ConnectionString).Options);
 
