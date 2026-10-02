@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0807",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0807-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before matching an ERP export, what check best confirms the file is complete?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Compare the export's control total and row count to the source system",
+     "correct": true,
+     "rationale": "Correct: reconciling control totals and counts detects truncated or partial exports."
+    },
+    {
+     "key": "B",
+     "text": "Open the file and read the first ten rows",
+     "correct": false,
+     "rationale": "Reading a few rows does not confirm the whole file arrived."
+    },
+    {
+     "key": "C",
+     "text": "Trust the file because it downloaded without an error",
+     "correct": false,
+     "rationale": "A clean download can still be incomplete or filtered."
+    },
+    {
+     "key": "D",
+     "text": "Delete rows that look unusual",
+     "correct": false,
+     "rationale": "Deleting rows corrupts the reconciliation and hides real items."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reconciling control totals and counts detects truncated or partial exports.",
+   "outcome_refs": [
+    "MST-0807-D02.02"
+   ],
+   "domain_ref": "ERP exports and data hygiene",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0807-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep ChatGPT-assisted variance analysis trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Trace each AI explanation back to the underlying source rows",
+     "correct": true,
+     "rationale": "Correct: verification against source keeps conclusions grounded."
+    },
+    {
+     "key": "B",
+     "text": "Keep the AI output as a draft that a preparer confirms",
+     "correct": true,
+     "rationale": "Correct: treating output as a draft preserves human accountability."
+    },
+    {
+     "key": "C",
+     "text": "Post AI conclusions straight into the final report",
+     "correct": false,
+     "rationale": "Unverified conclusions can carry errors into the report."
+    },
+    {
+     "key": "D",
+     "text": "Hide the prompt so the method cannot be reviewed",
+     "correct": false,
+     "rationale": "Hiding the method undermines auditability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: verification against source keeps conclusions grounded.",
+   "outcome_refs": [
+    "MST-0807-D04.02"
+   ],
+   "domain_ref": "ChatGPT-assisted analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0807-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why parameterise the source file path in a Power Query reconciliation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So the query refreshes cleanly against next period's file",
+     "correct": true,
+     "rationale": "Correct: a parameter lets the same query run each period without edits."
+    },
+    {
+     "key": "B",
+     "text": "Because parameters encrypt the data",
+     "correct": false,
+     "rationale": "Parameters do not encrypt data."
+    },
+    {
+     "key": "C",
+     "text": "Because it removes the need to validate inputs",
+     "correct": false,
+     "rationale": "Validation is still required regardless of parameters."
+    },
+    {
+     "key": "D",
+     "text": "Because it deletes old data automatically",
+     "correct": false,
+     "rationale": "Parameters do not delete data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a parameter lets the same query run each period without edits.",
+   "outcome_refs": [
+    "MST-0807-D03.01"
+   ],
+   "domain_ref": "Power Query transformation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

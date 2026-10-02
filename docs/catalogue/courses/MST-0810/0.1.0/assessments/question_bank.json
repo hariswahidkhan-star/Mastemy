@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0810",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0810-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why review the output of terraform plan before running apply?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Plan shows exactly what will be created, changed or destroyed before it happens",
+     "correct": true,
+     "rationale": "Correct: reviewing the plan catches unintended or destructive changes first."
+    },
+    {
+     "key": "B",
+     "text": "Plan encrypts the state file",
+     "correct": false,
+     "rationale": "Plan does not encrypt state."
+    },
+    {
+     "key": "C",
+     "text": "Apply cannot change anything, so review is optional",
+     "correct": false,
+     "rationale": "Apply makes real changes; that is why plan review matters."
+    },
+    {
+     "key": "D",
+     "text": "Plan automatically approves the change",
+     "correct": false,
+     "rationale": "Plan does not approve; a human still decides."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reviewing the plan catches unintended or destructive changes first.",
+   "outcome_refs": [
+    "MST-0810-D03.02"
+   ],
+   "domain_ref": "Claude Code assisted authoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0810-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make a production infrastructure change safer? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Require a human approval after a reviewed plan",
+     "correct": true,
+     "rationale": "Correct: human approval on a reviewed plan is a deliberate gate."
+    },
+    {
+     "key": "B",
+     "text": "Document a rollback path before applying",
+     "correct": true,
+     "rationale": "Correct: a rollback plan limits damage if the change fails."
+    },
+    {
+     "key": "C",
+     "text": "Apply directly from AI output without review",
+     "correct": false,
+     "rationale": "Unreviewed apply can make unintended changes."
+    },
+    {
+     "key": "D",
+     "text": "Use administrator credentials for every change",
+     "correct": false,
+     "rationale": "Over-broad credentials widen the blast radius."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: human approval on a reviewed plan is a deliberate gate.",
+   "outcome_refs": [
+    "MST-0810-D05.01"
+   ],
+   "domain_ref": "Safe apply and rollback",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0810-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A change touches one S3 bucket. What IAM scope follows least privilege?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Permissions limited to that bucket and the required actions",
+     "correct": true,
+     "rationale": "Correct: least privilege grants only what the change needs."
+    },
+    {
+     "key": "B",
+     "text": "Full administrator access for convenience",
+     "correct": false,
+     "rationale": "Administrator access far exceeds what the change needs."
+    },
+    {
+     "key": "C",
+     "text": "No permissions, relying on the console UI",
+     "correct": false,
+     "rationale": "The change still needs scoped permissions to run."
+    },
+    {
+     "key": "D",
+     "text": "Permissions to all buckets in the account",
+     "correct": false,
+     "rationale": "Account-wide access is broader than the change requires."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: least privilege grants only what the change needs.",
+   "outcome_refs": [
+    "MST-0810-D04.02"
+   ],
+   "domain_ref": "AWS resources and least privilege",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

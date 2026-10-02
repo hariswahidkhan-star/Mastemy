@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0813",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0813-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Shopify order count and GA4 purchase count differ for the same week. What is the correct interpretation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The two systems measure differently, so differences are expected and must be reconciled",
+     "correct": true,
+     "rationale": "Correct: GA4 event tracking and Shopify order records use different definitions."
+    },
+    {
+     "key": "B",
+     "text": "One system is simply broken",
+     "correct": false,
+     "rationale": "A difference usually reflects measurement, not a broken system."
+    },
+    {
+     "key": "C",
+     "text": "The numbers should always match exactly",
+     "correct": false,
+     "rationale": "Exact agreement is not expected across these tools."
+    },
+    {
+     "key": "D",
+     "text": "GA4 is always the source of truth for revenue",
+     "correct": false,
+     "rationale": "Shopify order records are the authoritative sales record."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: GA4 event tracking and Shopify order records use different definitions.",
+   "outcome_refs": [
+    "MST-0813-D04.01"
+   ],
+   "domain_ref": "ChatGPT-assisted interpretation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0813-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep an ecommerce performance report honest? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "State the limitations of the data behind each finding",
+     "correct": true,
+     "rationale": "Correct: caveats stop readers over-interpreting the numbers."
+    },
+    {
+     "key": "B",
+     "text": "Verify AI-suggested causes against the actual figures",
+     "correct": true,
+     "rationale": "Correct: verification separates hypotheses from findings."
+    },
+    {
+     "key": "C",
+     "text": "Present a hypothesis as a proven cause",
+     "correct": false,
+     "rationale": "Unverified hypotheses are not findings."
+    },
+    {
+     "key": "D",
+     "text": "Report one metric with no segmentation",
+     "correct": false,
+     "rationale": "Unsegmented single metrics mislead."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: caveats stop readers over-interpreting the numbers.",
+   "outcome_refs": [
+    "MST-0813-D05.01"
+   ],
+   "domain_ref": "Reporting and action",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0813-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why validate a Shopify orders export's totals before analysis?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To ensure the export is complete and matches the store records",
+     "correct": true,
+     "rationale": "Correct: validating totals catches partial or filtered exports."
+    },
+    {
+     "key": "B",
+     "text": "Because exports are always wrong",
+     "correct": false,
+     "rationale": "Exports are not always wrong; validation confirms them."
+    },
+    {
+     "key": "C",
+     "text": "Because GA4 requires it",
+     "correct": false,
+     "rationale": "Validation is about data integrity, not a GA4 requirement."
+    },
+    {
+     "key": "D",
+     "text": "Because it encrypts the file",
+     "correct": false,
+     "rationale": "Validation does not encrypt anything."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: validating totals catches partial or filtered exports.",
+   "outcome_refs": [
+    "MST-0813-D02.02"
+   ],
+   "domain_ref": "Shopify data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

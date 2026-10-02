@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0809",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0809-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why embed a live Jira query in a Confluence release page instead of pasting issue details by hand?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So the page stays in sync with the tracked issues and links do not rot",
+     "correct": true,
+     "rationale": "Correct: a live link keeps the page consistent with the source of truth."
+    },
+    {
+     "key": "B",
+     "text": "Because pasted text is encrypted",
+     "correct": false,
+     "rationale": "Pasting does not encrypt anything."
+    },
+    {
+     "key": "C",
+     "text": "Because it removes the need to review the notes",
+     "correct": false,
+     "rationale": "Review is still required regardless of linking."
+    },
+    {
+     "key": "D",
+     "text": "Because Confluence cannot display text",
+     "correct": false,
+     "rationale": "Confluence displays text; the issue is drift, not capability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a live link keeps the page consistent with the source of truth.",
+   "outcome_refs": [
+    "MST-0809-D04.02"
+   ],
+   "domain_ref": "Confluence publishing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0809-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep ChatGPT-drafted release notes trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify each drafted line against its Jira issue",
+     "correct": true,
+     "rationale": "Correct: verification ties the note to the actual work record."
+    },
+    {
+     "key": "B",
+     "text": "Use a consistent prompt template for structure",
+     "correct": true,
+     "rationale": "Correct: a template yields consistent, reviewable output."
+    },
+    {
+     "key": "C",
+     "text": "Publish drafts before anyone reads them",
+     "correct": false,
+     "rationale": "Unreviewed drafts can misstate what shipped."
+    },
+    {
+     "key": "D",
+     "text": "Invent issue keys that look plausible",
+     "correct": false,
+     "rationale": "Fabricated keys break traceability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: verification ties the note to the actual work record.",
+   "outcome_refs": [
+    "MST-0809-D03.01"
+   ],
+   "domain_ref": "ChatGPT-assisted drafting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0809-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Jira comments contain useful context but are free text. What is the limitation for reporting?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Free text is not reliably queryable, so structured fields are needed for reporting",
+     "correct": true,
+     "rationale": "Correct: structured fields support consistent queries; comments do not."
+    },
+    {
+     "key": "B",
+     "text": "Comments are automatically structured data",
+     "correct": false,
+     "rationale": "Comments are unstructured free text."
+    },
+    {
+     "key": "C",
+     "text": "Comments cannot be read by people",
+     "correct": false,
+     "rationale": "Comments are readable; they are just not queryable."
+    },
+    {
+     "key": "D",
+     "text": "Reporting never needs structure",
+     "correct": false,
+     "rationale": "Consistent reporting relies on structured fields."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: structured fields support consistent queries; comments do not.",
+   "outcome_refs": [
+    "MST-0809-D02.02"
+   ],
+   "domain_ref": "Jira as the work record",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

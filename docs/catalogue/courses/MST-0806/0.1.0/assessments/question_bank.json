@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0806",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0806-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Power Automate flow called from the agent updates a Dataverse record but can be triggered twice for one request. What design choice keeps this safe?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Make the action idempotent so a repeat run does not double-apply",
+     "correct": true,
+     "rationale": "Correct: idempotent actions tolerate retries and duplicate triggers without side effects."
+    },
+    {
+     "key": "B",
+     "text": "Remove all error handling to simplify the flow",
+     "correct": false,
+     "rationale": "Removing error handling makes duplicate and failed runs more dangerous, not safer."
+    },
+    {
+     "key": "C",
+     "text": "Run the flow without logging",
+     "correct": false,
+     "rationale": "No logging hides failures; it does not prevent double-application."
+    },
+    {
+     "key": "D",
+     "text": "Give the flow a longer timeout only",
+     "correct": false,
+     "rationale": "A longer timeout does not stop a duplicate trigger from applying twice."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: idempotent actions tolerate retries and duplicate triggers without side effects.",
+   "outcome_refs": [
+    "MST-0806-D03.01"
+   ],
+   "domain_ref": "Power Automate orchestration",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0806-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls keep a generative service agent safe before it changes a customer account? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A human-confirmation step before the irreversible action",
+     "correct": true,
+     "rationale": "Correct: confirmation gives a person the chance to stop a wrong action."
+    },
+    {
+     "key": "B",
+     "text": "Least-privilege security roles on the data it can write",
+     "correct": true,
+     "rationale": "Correct: limiting write access bounds the damage any single action can do."
+    },
+    {
+     "key": "C",
+     "text": "Allowing the agent to self-approve high-risk actions",
+     "correct": false,
+     "rationale": "Self-approval removes the oversight the control is meant to provide."
+    },
+    {
+     "key": "D",
+     "text": "Publishing to all users before any pilot",
+     "correct": false,
+     "rationale": "Skipping a monitored pilot increases, not reduces, release risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: confirmation gives a person the chance to stop a wrong action.",
+   "outcome_refs": [
+    "MST-0806-D05.01"
+   ],
+   "domain_ref": "Human oversight and release",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0806-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should a Copilot Studio generative answer be grounded on an approved knowledge source?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To keep answers tied to vetted, current content rather than unverified output",
+     "correct": true,
+     "rationale": "Correct: grounding constrains answers to approved material and reduces fabrication."
+    },
+    {
+     "key": "B",
+     "text": "Because grounding disables all generative behaviour",
+     "correct": false,
+     "rationale": "Grounding steers generation; it does not disable it."
+    },
+    {
+     "key": "C",
+     "text": "Because it removes the need for any testing",
+     "correct": false,
+     "rationale": "Grounded answers still require testing and review."
+    },
+    {
+     "key": "D",
+     "text": "Because it guarantees legal compliance automatically",
+     "correct": false,
+     "rationale": "Compliance depends on the content and review, not grounding alone."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: grounding constrains answers to approved material and reduces fabrication.",
+   "outcome_refs": [
+    "MST-0806-D02.02"
+   ],
+   "domain_ref": "Copilot Studio topics and generative answers",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

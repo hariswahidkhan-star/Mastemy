@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0816",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0816-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why require human confirmation before a voice agent writes a change to the CRM?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Speech recognition can mishear, so a person should confirm before committing",
+     "correct": true,
+     "rationale": "Correct: human confirmation guards against acting on misheard input."
+    },
+    {
+     "key": "B",
+     "text": "Because the CRM cannot accept writes otherwise",
+     "correct": false,
+     "rationale": "The CRM can accept writes; the control is about safety."
+    },
+    {
+     "key": "C",
+     "text": "Because transcripts are always accurate",
+     "correct": false,
+     "rationale": "Transcripts can contain recognition errors."
+    },
+    {
+     "key": "D",
+     "text": "Because confirmation speeds up the call",
+     "correct": false,
+     "rationale": "Confirmation adds a safety step, not speed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: human confirmation guards against acting on misheard input.",
+   "outcome_refs": [
+    "MST-0816-D04.02"
+   ],
+   "domain_ref": "CRM integration and oversight",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0816-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong in a supervised voice-service design? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A defined point at which the call escalates to a human",
+     "correct": true,
+     "rationale": "Correct: escalation handles cases beyond the agent's safe scope."
+    },
+    {
+     "key": "B",
+     "text": "Consent and disclosure that the caller is speaking to an assistant",
+     "correct": true,
+     "rationale": "Correct: disclosure and consent are baseline requirements."
+    },
+    {
+     "key": "C",
+     "text": "Unsupervised completion of high-risk actions",
+     "correct": false,
+     "rationale": "High-risk actions should not be unsupervised."
+    },
+    {
+     "key": "D",
+     "text": "Launching to all callers with no pilot",
+     "correct": false,
+     "rationale": "A supervised pilot should precede full launch."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: escalation handles cases beyond the agent's safe scope.",
+   "outcome_refs": [
+    "MST-0816-D01.01"
+   ],
+   "domain_ref": "Voice-service scope and risk",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0816-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A caller interrupts the agent mid-sentence. What must a realtime voice design handle?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Turn interruption, stopping the agent and listening to the caller",
+     "correct": true,
+     "rationale": "Correct: natural calls require handling interruptions gracefully."
+    },
+    {
+     "key": "B",
+     "text": "Ignoring the caller until the agent finishes",
+     "correct": false,
+     "rationale": "Ignoring interruptions produces an unusable experience."
+    },
+    {
+     "key": "C",
+     "text": "Ending the call on any interruption",
+     "correct": false,
+     "rationale": "Ending the call on interruption is not acceptable handling."
+    },
+    {
+     "key": "D",
+     "text": "Assuming callers never interrupt",
+     "correct": false,
+     "rationale": "Callers interrupt routinely."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: natural calls require handling interruptions gracefully.",
+   "outcome_refs": [
+    "MST-0816-D02.02"
+   ],
+   "domain_ref": "OpenAI Realtime basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

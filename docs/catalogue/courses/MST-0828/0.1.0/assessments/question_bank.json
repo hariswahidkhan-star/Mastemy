@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0828",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0828-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In ASP.NET Core MVC, why does the model not depend on the view or controller?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So the model can be built and tested independently of presentation",
+     "correct": true,
+     "rationale": "Correct: one-way dependency is a key benefit of the separation."
+    },
+    {
+     "key": "B",
+     "text": "Because the model is written in a different language",
+     "correct": false,
+     "rationale": "All three are typically C#; the point is dependency direction."
+    },
+    {
+     "key": "C",
+     "text": "Because views cannot use models",
+     "correct": false,
+     "rationale": "Views do use models; the model just does not depend on them."
+    },
+    {
+     "key": "D",
+     "text": "Because controllers never use models",
+     "correct": false,
+     "rationale": "Controllers do use models."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: one-way dependency is a key benefit of the separation.",
+   "outcome_refs": [
+    "MST-0828-D01.01"
+   ],
+   "domain_ref": "MVC pattern and setup",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0828-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are benefits of a dedicated view model over using the business model in the view? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The view can vary independently of the business/data model",
+     "correct": true,
+     "rationale": "Correct: separation lets presentation change without touching business types."
+    },
+    {
+     "key": "B",
+     "text": "It limits what data is exposed to the view and to model binding",
+     "correct": true,
+     "rationale": "Correct: a view model offers a security and shaping benefit."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any model binding",
+     "correct": false,
+     "rationale": "Model binding is still used with view models."
+    },
+    {
+     "key": "D",
+     "text": "It makes validation impossible",
+     "correct": false,
+     "rationale": "View models are commonly where validation attributes live."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: separation lets presentation change without touching business types.",
+   "outcome_refs": [
+    "MST-0828-D03.01"
+   ],
+   "domain_ref": "Views and Razor",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0828-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A posted form fails validation. What should the action typically do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Return the view with the invalid ModelState so errors show",
+     "correct": true,
+     "rationale": "Correct: redisplaying the view with ModelState surfaces validation errors."
+    },
+    {
+     "key": "B",
+     "text": "Save the data anyway",
+     "correct": false,
+     "rationale": "Saving invalid data defeats validation."
+    },
+    {
+     "key": "C",
+     "text": "Throw an unhandled exception",
+     "correct": false,
+     "rationale": "Validation failure is expected flow, not an exception to crash on."
+    },
+    {
+     "key": "D",
+     "text": "Ignore the errors and redirect to success",
+     "correct": false,
+     "rationale": "Ignoring errors stores or confirms bad data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: redisplaying the view with ModelState surfaces validation errors.",
+   "outcome_refs": [
+    "MST-0828-D04.02"
+   ],
+   "domain_ref": "Model binding and validation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

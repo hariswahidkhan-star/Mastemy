@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0811",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0811-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the safest way to use a GitHub Copilot suggestion in production code?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read it, understand it, and cover it with a test before relying on it",
+     "correct": true,
+     "rationale": "Correct: reviewed and tested suggestions are accountable code."
+    },
+    {
+     "key": "B",
+     "text": "Accept every suggestion to save time",
+     "correct": false,
+     "rationale": "Blind acceptance ships unreviewed, possibly wrong code."
+    },
+    {
+     "key": "C",
+     "text": "Assume generated code needs no tests",
+     "correct": false,
+     "rationale": "Generated code needs the same testing as hand-written code."
+    },
+    {
+     "key": "D",
+     "text": "Delete the tests Copilot writes",
+     "correct": false,
+     "rationale": "Removing tests reduces, not increases, confidence."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reviewed and tested suggestions are accountable code.",
+   "outcome_refs": [
+    "MST-0811-D02.02"
+   ],
+   "domain_ref": "GitHub Copilot in VS Code",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0811-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices protect an enterprise .NET API? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Require authentication and an authorization check on protected endpoints",
+     "correct": true,
+     "rationale": "Correct: authN/authZ restrict access to permitted callers."
+    },
+    {
+     "key": "B",
+     "text": "Keep connection secrets in configuration, not in source",
+     "correct": true,
+     "rationale": "Correct: secrets in source control leak to everyone with repo access."
+    },
+    {
+     "key": "C",
+     "text": "Skip validation when the client is internal",
+     "correct": false,
+     "rationale": "Internal clients still send bad or malicious input."
+    },
+    {
+     "key": "D",
+     "text": "Hard-code the database password in the controller",
+     "correct": false,
+     "rationale": "Hard-coded secrets are exposed in source history."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: authN/authZ restrict access to permitted callers.",
+   "outcome_refs": [
+    "MST-0811-D04.02"
+   ],
+   "domain_ref": "Security and configuration",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0811-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why run the API's tests in CI on every pull request?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To catch regressions before changes merge",
+     "correct": true,
+     "rationale": "Correct: CI tests gate merges and catch breakage early."
+    },
+    {
+     "key": "B",
+     "text": "Because CI encrypts the code",
+     "correct": false,
+     "rationale": "CI does not encrypt code."
+    },
+    {
+     "key": "C",
+     "text": "Because it removes the need for a version policy",
+     "correct": false,
+     "rationale": "Versioning and testing address different concerns."
+    },
+    {
+     "key": "D",
+     "text": "Because tests in CI never need maintenance",
+     "correct": false,
+     "rationale": "Tests are maintained like any other code."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: CI tests gate merges and catch breakage early.",
+   "outcome_refs": [
+    "MST-0811-D05.01"
+   ],
+   "domain_ref": "Quality and delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

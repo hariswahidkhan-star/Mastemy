@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0831",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0831-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the difference between authentication and authorization?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Authentication determines who the user is; authorization determines what they may do",
+     "correct": true,
+     "rationale": "Correct: identity vs access decision is the standard distinction."
+    },
+    {
+     "key": "B",
+     "text": "They are two names for the same process",
+     "correct": false,
+     "rationale": "They are distinct, though authorization relies on authentication."
+    },
+    {
+     "key": "C",
+     "text": "Authorization happens before authentication",
+     "correct": false,
+     "rationale": "Authorization depends on an established identity."
+    },
+    {
+     "key": "D",
+     "text": "Authentication decides access to resources",
+     "correct": false,
+     "rationale": "Deciding access is authorization, not authentication."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: identity vs access decision is the standard distinction.",
+   "outcome_refs": [
+    "MST-0831-D01.01"
+   ],
+   "domain_ref": "Authentication vs authorization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0831-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true about ASP.NET Core auth middleware? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "UseAuthentication must run before middleware that depends on the user",
+     "correct": true,
+     "rationale": "Correct: the user must be established before it is used."
+    },
+    {
+     "key": "B",
+     "text": "Configuring authentication alone does not restrict endpoint access",
+     "correct": true,
+     "rationale": "Correct: a fallback policy or [Authorize] is needed to restrict access."
+    },
+    {
+     "key": "C",
+     "text": "UseAuthorization can be omitted if authentication is configured",
+     "correct": false,
+     "rationale": "Authorization middleware is needed to enforce access rules."
+    },
+    {
+     "key": "D",
+     "text": "Middleware order does not matter for auth",
+     "correct": false,
+     "rationale": "Order is significant for authentication and authorization."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the user must be established before it is used.",
+   "outcome_refs": [
+    "MST-0831-D03.01"
+   ],
+   "domain_ref": "Middleware and pipeline order",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0831-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An authenticated user without the required permission calls a protected endpoint. What status is appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "403 Forbidden",
+     "correct": true,
+     "rationale": "Correct: the user is authenticated but not authorized, which is 403."
+    },
+    {
+     "key": "B",
+     "text": "401 Unauthorized",
+     "correct": false,
+     "rationale": "401 is for unauthenticated requests, not authenticated-but-forbidden."
+    },
+    {
+     "key": "C",
+     "text": "200 OK",
+     "correct": false,
+     "rationale": "Returning 200 would wrongly grant access."
+    },
+    {
+     "key": "D",
+     "text": "500 Internal Server Error",
+     "correct": false,
+     "rationale": "A permission failure is not a server error."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the user is authenticated but not authorized, which is 403.",
+   "outcome_refs": [
+    "MST-0831-D05.01"
+   ],
+   "domain_ref": "Applying and testing auth",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

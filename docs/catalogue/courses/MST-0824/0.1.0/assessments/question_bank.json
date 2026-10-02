@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0824",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0824-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why are frequent large temporary objects (over the LOH threshold) a performance concern?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They land on the Large Object Heap and trigger expensive Gen 2 collections",
+     "correct": true,
+     "rationale": "Correct: large objects go to the LOH and cause costly Gen 2 work."
+    },
+    {
+     "key": "B",
+     "text": "They are stored on the stack and overflow it",
+     "correct": false,
+     "rationale": "Large objects are heap-allocated, not stack-allocated."
+    },
+    {
+     "key": "C",
+     "text": "They are never collected at all",
+     "correct": false,
+     "rationale": "They are collected, but in expensive Gen 2 collections."
+    },
+    {
+     "key": "D",
+     "text": "They disable the garbage collector",
+     "correct": false,
+     "rationale": "They do not disable the GC."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: large objects go to the LOH and cause costly Gen 2 work.",
+   "outcome_refs": [
+    "MST-0824-D02.02"
+   ],
+   "domain_ref": "Allocations and the LOH",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0824-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are correct about resource lifetime in .NET? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "HttpClient should be reused rather than created and disposed per call",
+     "correct": true,
+     "rationale": "Correct: creating an HttpClient per call can exhaust sockets."
+    },
+    {
+     "key": "B",
+     "text": "Objects implementing IDisposable should be disposed, e.g. with using",
+     "correct": true,
+     "rationale": "Correct: disposing releases unmanaged or scarce resources promptly."
+    },
+    {
+     "key": "C",
+     "text": "GC.Collect should be called on every request",
+     "correct": false,
+     "rationale": "Forcing collections in production hurts performance."
+    },
+    {
+     "key": "D",
+     "text": "Finalizers are the preferred way to release resources deterministically",
+     "correct": false,
+     "rationale": "Dispose is deterministic; finalizers are not."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: creating an HttpClient per call can exhaust sockets.",
+   "outcome_refs": [
+    "MST-0824-D05.01"
+   ],
+   "domain_ref": "Resource lifetime",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0824-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Task Manager shows a high working set for a .NET process. What does that tell you about the managed heap?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Not much directly; working set is not the same as managed-heap usage",
+     "correct": true,
+     "rationale": "Correct: working set includes more than the managed heap, so measure the heap specifically."
+    },
+    {
+     "key": "B",
+     "text": "The managed heap is exactly that size",
+     "correct": false,
+     "rationale": "Working set is not a direct measure of the managed heap."
+    },
+    {
+     "key": "C",
+     "text": "There is definitely a managed memory leak",
+     "correct": false,
+     "rationale": "High working set alone does not prove a managed leak."
+    },
+    {
+     "key": "D",
+     "text": "The GC has stopped running",
+     "correct": false,
+     "rationale": "A high working set does not mean the GC stopped."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: working set includes more than the managed heap, so measure the heap specifically.",
+   "outcome_refs": [
+    "MST-0824-D04.02"
+   ],
+   "domain_ref": "Diagnosing issues",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

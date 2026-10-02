@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0827",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 430,
+  "lesson_check_items": 70,
+  "module_check_items": 105,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0827-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why give an endpoint a name with WithName and use link generation instead of hard-coding paths?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Named endpoints let you generate URLs without hard-coding, so paths can change safely",
+     "correct": true,
+     "rationale": "Correct: link generation from names avoids brittle hard-coded paths."
+    },
+    {
+     "key": "B",
+     "text": "Because names encrypt the route",
+     "correct": false,
+     "rationale": "Names do not encrypt anything."
+    },
+    {
+     "key": "C",
+     "text": "Because unnamed endpoints cannot be called",
+     "correct": false,
+     "rationale": "Unnamed endpoints are still routable."
+    },
+    {
+     "key": "D",
+     "text": "Because names remove the need for route parameters",
+     "correct": false,
+     "rationale": "Parameters are separate from endpoint names."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: link generation from names avoids brittle hard-coded paths.",
+   "outcome_refs": [
+    "MST-0827-D02.02"
+   ],
+   "domain_ref": "Routing and parameters",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0827-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good practices for minimal API results? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Return TypedResults.Created with a location for a successful create",
+     "correct": true,
+     "rationale": "Correct: a 201 with a location is the correct created response."
+    },
+    {
+     "key": "B",
+     "text": "Return a not-found result when the resource does not exist",
+     "correct": true,
+     "rationale": "Correct: status codes should reflect the actual outcome."
+    },
+    {
+     "key": "C",
+     "text": "Return 200 OK for every response including errors",
+     "correct": false,
+     "rationale": "Uniform 200s hide real outcomes from clients."
+    },
+    {
+     "key": "D",
+     "text": "Never set a status code",
+     "correct": false,
+     "rationale": "Correct status codes are part of a usable API."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a 201 with a location is the correct created response.",
+   "outcome_refs": [
+    "MST-0827-D03.01"
+   ],
+   "domain_ref": "Parameter binding and results",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0827-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the route template /todos/{id:int} do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Matches only when the id segment parses as an integer",
+     "correct": true,
+     "rationale": "Correct: the :int constraint restricts matching to integer values."
+    },
+    {
+     "key": "B",
+     "text": "Matches any value for id including text",
+     "correct": false,
+     "rationale": "The :int constraint excludes non-integer values."
+    },
+    {
+     "key": "C",
+     "text": "Rejects all requests",
+     "correct": false,
+     "rationale": "It matches integer ids."
+    },
+    {
+     "key": "D",
+     "text": "Binds id as a string always",
+     "correct": false,
+     "rationale": "The constraint binds and validates it as an int."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the :int constraint restricts matching to integer values.",
+   "outcome_refs": [
+    "MST-0827-D02.02"
+   ],
+   "domain_ref": "Routing and parameters",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
