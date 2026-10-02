@@ -13,11 +13,15 @@ services:
     build: { context: ., dockerfile: src/Mastemy.Api/Dockerfile }
     env_file: .env
     environment:
+      Seo__PublicBaseUrl: ${PUBLIC_BASE_URL:?set PUBLIC_BASE_URL in .env}
       ConnectionStrings__Default: "Server=db;Port=3306;Database=mastemy;User=mastemy;Password=${MYSQL_PASSWORD};"
     depends_on: { db: { condition: service_healthy } }
     volumes: [appdata:/app/data]
   web:
     build: { context: ., dockerfile: deploy/web.Dockerfile }
+    environment:
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:?set PUBLIC_BASE_URL in .env}
+      API_INTERNAL_URL: http://api:8080
     ports: ["8080:80"]
     depends_on: [api]
 volumes: { dbdata: {}, appdata: {} }
