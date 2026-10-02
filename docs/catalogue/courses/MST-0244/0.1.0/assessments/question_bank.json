@@ -1,0 +1,174 @@
+{
+ "course_id": "MST-0244",
+ "version": "0.1.0",
+ "bank_plan": {
+  "formula": "(lesson_check_items + module_check_items) x 2 alternates + forms x form_length",
+  "lesson_check_items": 108,
+  "module_check_items": 252,
+  "alternates_multiplier": 2,
+  "forms_count": 4,
+  "form_length": 108,
+  "minimum_reviewed_items_planned": 1152,
+  "eighty_twenty_note": "80% instruction / 20% assessment honoured at course level (I+A=T); bank serves lesson checks, module checks, 3 practice forms and a protected final.",
+  "items_drafted": 3,
+  "items_reviewed": 0,
+  "size_band_note": "Planning range per assessment standard (200-600 skills; 600-1500+ large certification). This is a planning guide, not proof of quality."
+ },
+ "mcq_limitation_note": "Knowledge-practice forms use MCQ/MR only; official item formats not reproducible in this format are listed in the exam-version record.",
+ "items": [
+  {
+   "item_id": "MST-0244-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer-mcq",
+   "selection_rule": "Select ONE",
+   "stem": "In an IaaS deployment, which responsibility always remains with the customer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Operating system patching and data protection",
+     "correct": true,
+     "rationale": "Correct: in IaaS the customer manages the OS upward, including data."
+    },
+    {
+     "key": "B",
+     "text": "Physical datacentre security",
+     "correct": false,
+     "rationale": "Physical security is always the provider's responsibility."
+    },
+    {
+     "key": "C",
+     "text": "Hypervisor maintenance",
+     "correct": false,
+     "rationale": "The provider maintains the virtualisation layer."
+    },
+    {
+     "key": "D",
+     "text": "Hardware disposal",
+     "correct": false,
+     "rationale": "Hardware lifecycle is the provider's responsibility."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "IaaS leaves OS, runtime and data to the customer; the provider owns the physical and virtualisation layers.",
+   "outcome_refs": [
+    "MST-0244-LO1"
+   ],
+   "domain_ref": "M01",
+   "cognitive_level": "apply",
+   "difficulty": "medium",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "1 point single key",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0244-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer-mcq",
+   "selection_rule": "Select ONE",
+   "stem": "A company must keep encryption keys outside the cloud provider's control for a sensitive dataset. Which approach fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Customer-managed keys held in the customer's own key service (BYOK/HYOK)",
+     "correct": true,
+     "rationale": "Correct: holding keys under customer control keeps the provider from decrypting data."
+    },
+    {
+     "key": "B",
+     "text": "Provider-managed default encryption keys",
+     "correct": false,
+     "rationale": "Default provider keys leave the provider able to decrypt."
+    },
+    {
+     "key": "C",
+     "text": "Disabling encryption to simplify access",
+     "correct": false,
+     "rationale": "Removing encryption increases exposure and fails the requirement."
+    },
+    {
+     "key": "D",
+     "text": "Relying on transport encryption only",
+     "correct": false,
+     "rationale": "Transport encryption does not protect data at rest or control keys."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Customer-held keys ensure the provider cannot decrypt the data.",
+   "outcome_refs": [
+    "MST-0244-LO2"
+   ],
+   "domain_ref": "M02",
+   "cognitive_level": "apply",
+   "difficulty": "medium",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "1 point single key",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0244-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer-selection",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls most directly reduce the risk of a publicly exposed cloud storage bucket?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Enforce default-deny public access at the account level",
+     "correct": true,
+     "rationale": "Correct: blocking public access by default prevents accidental exposure."
+    },
+    {
+     "key": "B",
+     "text": "Continuously scan configuration for public buckets",
+     "correct": true,
+     "rationale": "Correct: configuration monitoring catches drift that exposes data."
+    },
+    {
+     "key": "C",
+     "text": "Increase the storage tier performance",
+     "correct": false,
+     "rationale": "Performance tier is unrelated to access exposure."
+    },
+    {
+     "key": "D",
+     "text": "Add more object versions",
+     "correct": false,
+     "rationale": "Versioning does not restrict who can read the objects."
+    },
+    {
+     "key": "E",
+     "text": "Rotate the bucket name monthly",
+     "correct": false,
+     "rationale": "Renaming does not control access permissions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Default-deny public access and configuration monitoring address exposure directly.",
+   "outcome_refs": [
+    "MST-0244-LO3"
+   ],
+   "domain_ref": "M03",
+   "cognitive_level": "apply",
+   "difficulty": "medium",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

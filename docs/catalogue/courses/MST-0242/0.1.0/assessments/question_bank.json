@@ -1,0 +1,174 @@
+{
+ "course_id": "MST-0242",
+ "version": "0.1.0",
+ "bank_plan": {
+  "formula": "(lesson_check_items + module_check_items) x 2 alternates + forms x form_length",
+  "lesson_check_items": 108,
+  "module_check_items": 189,
+  "alternates_multiplier": 2,
+  "forms_count": 4,
+  "form_length": 81,
+  "minimum_reviewed_items_planned": 918,
+  "eighty_twenty_note": "80% instruction / 20% assessment honoured at course level (I+A=T); bank serves lesson checks, module checks, 3 practice forms and a protected final.",
+  "items_drafted": 3,
+  "items_reviewed": 0,
+  "size_band_note": "Planning range per assessment standard (200-600 skills; 600-1500+ large certification). This is a planning guide, not proof of quality."
+ },
+ "mcq_limitation_note": "Knowledge-practice forms use MCQ/MR only; official item formats not reproducible in this format are listed in the exam-version record.",
+ "items": [
+  {
+   "item_id": "MST-0242-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer-mcq",
+   "selection_rule": "Select ONE",
+   "stem": "A practitioner must choose a control that prevents a terminated employee from accessing systems the same day. Which control is most effective?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automated deprovisioning tied to the HR termination event",
+     "correct": true,
+     "rationale": "Correct: event-driven deprovisioning removes access immediately and reliably."
+    },
+    {
+     "key": "B",
+     "text": "Quarterly access reviews",
+     "correct": false,
+     "rationale": "Quarterly reviews leave a window of up to three months of access."
+    },
+    {
+     "key": "C",
+     "text": "Annual security awareness training",
+     "correct": false,
+     "rationale": "Training does not remove a departed user's access."
+    },
+    {
+     "key": "D",
+     "text": "Longer password complexity rules",
+     "correct": false,
+     "rationale": "Password rules do not disable an existing valid account."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Timely, event-driven deprovisioning closes the access window immediately.",
+   "outcome_refs": [
+    "MST-0242-LO1"
+   ],
+   "domain_ref": "M01",
+   "cognitive_level": "apply",
+   "difficulty": "medium",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "1 point single key",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0242-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer-mcq",
+   "selection_rule": "Select ONE",
+   "stem": "Which cryptographic service provides proof that a specific sender created a message?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Digital signature",
+     "correct": true,
+     "rationale": "Correct: a digital signature binds the message to the sender's private key, giving non-repudiation."
+    },
+    {
+     "key": "B",
+     "text": "Symmetric encryption",
+     "correct": false,
+     "rationale": "A shared symmetric key cannot prove which party sent the message."
+    },
+    {
+     "key": "C",
+     "text": "Hashing alone",
+     "correct": false,
+     "rationale": "A bare hash gives integrity but not sender identity."
+    },
+    {
+     "key": "D",
+     "text": "Salting",
+     "correct": false,
+     "rationale": "Salting strengthens stored password hashes; it is unrelated to sender proof."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Digital signatures provide authentication, integrity and non-repudiation of origin.",
+   "outcome_refs": [
+    "MST-0242-LO2"
+   ],
+   "domain_ref": "M02",
+   "cognitive_level": "apply",
+   "difficulty": "medium",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "1 point single key",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0242-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer-selection",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO actions best preserve forensic evidence during incident response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Capture a bit-for-bit image of affected storage",
+     "correct": true,
+     "rationale": "Correct: an exact image preserves the original state for analysis."
+    },
+    {
+     "key": "B",
+     "text": "Document a chain of custody for collected evidence",
+     "correct": true,
+     "rationale": "Correct: chain of custody keeps evidence admissible and trustworthy."
+    },
+    {
+     "key": "C",
+     "text": "Reboot the affected host to clear the malware",
+     "correct": false,
+     "rationale": "Rebooting destroys volatile memory and running-state evidence."
+    },
+    {
+     "key": "D",
+     "text": "Edit logs to highlight the suspicious entries",
+     "correct": false,
+     "rationale": "Altering logs destroys evidence integrity."
+    },
+    {
+     "key": "E",
+     "text": "Delete the malicious files immediately",
+     "correct": false,
+     "rationale": "Deleting removes evidence needed for analysis."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Imaging and chain of custody preserve evidence integrity and admissibility.",
+   "outcome_refs": [
+    "MST-0242-LO3"
+   ],
+   "domain_ref": "M03",
+   "cognitive_level": "apply",
+   "difficulty": "medium",
+   "expected_seconds": 75,
+   "provenance": "AI-drafted original item, not from any proprietary, leaked or paid exam source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": "",
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
