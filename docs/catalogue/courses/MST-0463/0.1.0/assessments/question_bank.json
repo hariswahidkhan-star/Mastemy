@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0463",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0463-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A task has high harm potential and low model reliability. Which oversight pattern fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Human-in-the-loop reviewing each consequential decision",
+     "correct": true,
+     "rationale": "Correct: high harm and low reliability demand per-decision human review."
+    },
+    {
+     "key": "B",
+     "text": "Full automation with no review",
+     "correct": false,
+     "rationale": "Unsafe given high harm and low reliability."
+    },
+    {
+     "key": "C",
+     "text": "No monitoring at all",
+     "correct": false,
+     "rationale": "This abandons oversight entirely."
+    },
+    {
+     "key": "D",
+     "text": "Human review once per quarter only",
+     "correct": false,
+     "rationale": "Too infrequent for high-harm decisions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: high harm and low reliability demand per-decision human review.",
+   "outcome_refs": [
+    "MST-0463-D01.02"
+   ],
+   "domain_ref": "Why humans in the loop",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0463-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce automation bias among reviewers? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Show model uncertainty and any dissenting evidence",
+     "correct": true,
+     "rationale": "Correct: surfacing uncertainty prompts genuine review."
+    },
+    {
+     "key": "B",
+     "text": "Rotate reviewers and cap their load",
+     "correct": true,
+     "rationale": "Correct: limiting load reduces fatigue-driven rubber-stamping."
+    },
+    {
+     "key": "C",
+     "text": "Always hide confidence and force agreement with the model",
+     "correct": false,
+     "rationale": "This increases, not reduces, automation bias."
+    },
+    {
+     "key": "D",
+     "text": "Reward the fastest approvals",
+     "correct": false,
+     "rationale": "Speed incentives encourage rubber-stamping."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: surfacing uncertainty prompts genuine review.",
+   "outcome_refs": [
+    "MST-0463-D04.02"
+   ],
+   "domain_ref": "Feedback and learning loops",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0463-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Selective prediction means the model should…",
+   "options": [
+    {
+     "key": "A",
+     "text": "Abstain and defer low-confidence cases to humans",
+     "correct": true,
+     "rationale": "Correct: selective prediction routes uncertain cases to review."
+    },
+    {
+     "key": "B",
+     "text": "Always produce an answer",
+     "correct": false,
+     "rationale": "That defeats the purpose of abstention."
+    },
+    {
+     "key": "C",
+     "text": "Never produce any answer",
+     "correct": false,
+     "rationale": "The model still answers confident cases."
+    },
+    {
+     "key": "D",
+     "text": "Delete uncertain data",
+     "correct": false,
+     "rationale": "Abstaining is not deleting data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: selective prediction routes uncertain cases to review.",
+   "outcome_refs": [
+    "MST-0463-D02.02"
+   ],
+   "domain_ref": "Routing and confidence",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

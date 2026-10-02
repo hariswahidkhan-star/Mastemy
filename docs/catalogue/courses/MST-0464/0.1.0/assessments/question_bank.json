@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0464",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0464-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two annotators disagree often on one class. What is the most likely first fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Clarify the annotation guidelines and edge-case rules",
+     "correct": true,
+     "rationale": "Correct: ambiguity in guidelines is the usual cause of disagreement."
+    },
+    {
+     "key": "B",
+     "text": "Hire more annotators",
+     "correct": false,
+     "rationale": "More people repeating an ambiguous rule will not help."
+    },
+    {
+     "key": "C",
+     "text": "Increase the model size",
+     "correct": false,
+     "rationale": "The problem is in labeling, not the model."
+    },
+    {
+     "key": "D",
+     "text": "Delete the class entirely",
+     "correct": false,
+     "rationale": "Removing the class discards needed signal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ambiguity in guidelines is the usual cause of disagreement.",
+   "outcome_refs": [
+    "MST-0464-D02.01"
+   ],
+   "domain_ref": "Writing guidelines",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0464-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve label quality in an operation? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Insert gold-standard check tasks",
+     "correct": true,
+     "rationale": "Correct: known-answer tasks catch drifting annotators."
+    },
+    {
+     "key": "B",
+     "text": "Provide clear guidelines with worked examples",
+     "correct": true,
+     "rationale": "Correct: explicit rules and examples reduce ambiguity."
+    },
+    {
+     "key": "C",
+     "text": "Pay per item with no review",
+     "correct": false,
+     "rationale": "This incentivises speed over accuracy."
+    },
+    {
+     "key": "D",
+     "text": "Hide the schema from annotators",
+     "correct": false,
+     "rationale": "Annotators cannot label consistently without the schema."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: known-answer tasks catch drifting annotators.",
+   "outcome_refs": [
+    "MST-0464-D04.01"
+   ],
+   "domain_ref": "Measuring label quality",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0464-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Cohen's kappa is used to measure…",
+   "options": [
+    {
+     "key": "A",
+     "text": "Inter-annotator agreement beyond chance",
+     "correct": true,
+     "rationale": "Correct: kappa corrects raw agreement for chance."
+    },
+    {
+     "key": "B",
+     "text": "Model accuracy",
+     "correct": false,
+     "rationale": "Kappa is about annotator agreement, not model accuracy here."
+    },
+    {
+     "key": "C",
+     "text": "Dataset size",
+     "correct": false,
+     "rationale": "Kappa is not a size measure."
+    },
+    {
+     "key": "D",
+     "text": "Labeling cost",
+     "correct": false,
+     "rationale": "Kappa does not measure cost."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: kappa corrects raw agreement for chance.",
+   "outcome_refs": [
+    "MST-0464-D04.01"
+   ],
+   "domain_ref": "Measuring label quality",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

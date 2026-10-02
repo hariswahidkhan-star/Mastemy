@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0462",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0462-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can a model score highly on a public benchmark yet fail in production?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The benchmark may not represent the real distribution, or be contaminated",
+     "correct": true,
+     "rationale": "Correct: benchmark gains need not transfer to the production population."
+    },
+    {
+     "key": "B",
+     "text": "Accuracy is always wrong",
+     "correct": false,
+     "rationale": "Accuracy is sometimes appropriate; the issue is representativeness."
+    },
+    {
+     "key": "C",
+     "text": "Benchmarks cannot be used legally",
+     "correct": false,
+     "rationale": "This is not the reason."
+    },
+    {
+     "key": "D",
+     "text": "Production systems have no data",
+     "correct": false,
+     "rationale": "Production has data; the mismatch is distributional."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: benchmark gains need not transfer to the production population.",
+   "outcome_refs": [
+    "MST-0462-D01.01"
+   ],
+   "domain_ref": "Foundations of evaluation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0462-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce data leakage in evaluation? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Split time-series data by time rather than randomly",
+     "correct": true,
+     "rationale": "Correct: random shuffling lets future rows leak into training."
+    },
+    {
+     "key": "B",
+     "text": "Fit preprocessing on the training split only",
+     "correct": true,
+     "rationale": "Correct: fitting on all data leaks test information."
+    },
+    {
+     "key": "C",
+     "text": "Tune hyperparameters on the test set",
+     "correct": false,
+     "rationale": "This leaks the test set into model selection."
+    },
+    {
+     "key": "D",
+     "text": "Copy some test rows into training",
+     "correct": false,
+     "rationale": "This is direct leakage and inflates scores."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: random shuffling lets future rows leak into training.",
+   "outcome_refs": [
+    "MST-0462-D03.01"
+   ],
+   "domain_ref": "Valid experimental design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0462-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For a highly imbalanced fraud dataset, which metric is most informative?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Precision-recall (AUPRC)",
+     "correct": true,
+     "rationale": "Correct: PR curves focus on the rare positive class."
+    },
+    {
+     "key": "B",
+     "text": "Raw accuracy",
+     "correct": false,
+     "rationale": "Accuracy is dominated by the majority class and can be misleading."
+    },
+    {
+     "key": "C",
+     "text": "Number of rows",
+     "correct": false,
+     "rationale": "Dataset size is not a performance metric."
+    },
+    {
+     "key": "D",
+     "text": "Training time",
+     "correct": false,
+     "rationale": "Speed is not a quality metric."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: PR curves focus on the rare positive class.",
+   "outcome_refs": [
+    "MST-0462-D02.01"
+   ],
+   "domain_ref": "Choosing metrics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

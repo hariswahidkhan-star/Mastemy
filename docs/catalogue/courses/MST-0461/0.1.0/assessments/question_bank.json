@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0461",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0461-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model's input feature distribution shifts while the true relationship between inputs and target stays the same. What is this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data drift",
+     "correct": true,
+     "rationale": "Correct: the inputs changed while the input-output relationship did not."
+    },
+    {
+     "key": "B",
+     "text": "Concept drift",
+     "correct": false,
+     "rationale": "Concept drift is when the input-output relationship itself changes."
+    },
+    {
+     "key": "C",
+     "text": "Label leakage",
+     "correct": false,
+     "rationale": "Leakage is a training-time flaw, not a production distribution shift."
+    },
+    {
+     "key": "D",
+     "text": "Overfitting",
+     "correct": false,
+     "rationale": "Overfitting is a training issue, not a live distribution change."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the inputs changed while the input-output relationship did not.",
+   "outcome_refs": [
+    "MST-0461-D01.02"
+   ],
+   "domain_ref": "Why models degrade in production",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0461-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO signals can be monitored before ground-truth labels arrive? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The input feature distribution",
+     "correct": true,
+     "rationale": "Correct: inputs are available immediately at scoring time."
+    },
+    {
+     "key": "B",
+     "text": "The prediction score distribution",
+     "correct": true,
+     "rationale": "Correct: prediction outputs are available without labels."
+    },
+    {
+     "key": "C",
+     "text": "Realised accuracy against true labels",
+     "correct": false,
+     "rationale": "Requires labels, which arrive later."
+    },
+    {
+     "key": "D",
+     "text": "F1 computed against ground truth",
+     "correct": false,
+     "rationale": "Requires labels, which are delayed."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: inputs are available immediately at scoring time.",
+   "outcome_refs": [
+    "MST-0461-D02.02"
+   ],
+   "domain_ref": "Building a monitoring stack",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0461-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A sudden precision drop coincides with an upstream schema change. What is the best first action?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Investigate the pipeline and data before retraining",
+     "correct": true,
+     "rationale": "Correct: a data or pipeline fault is the likely cause and retraining would not fix it."
+    },
+    {
+     "key": "B",
+     "text": "Immediately retrain the model",
+     "correct": false,
+     "rationale": "Retraining on broken data wastes effort and can worsen things."
+    },
+    {
+     "key": "C",
+     "text": "Ignore the alert",
+     "correct": false,
+     "rationale": "A sharp precision drop is a real incident."
+    },
+    {
+     "key": "D",
+     "text": "Lower the alert threshold",
+     "correct": false,
+     "rationale": "This hides the problem rather than diagnosing it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a data or pipeline fault is the likely cause and retraining would not fix it.",
+   "outcome_refs": [
+    "MST-0461-D04.01"
+   ],
+   "domain_ref": "Diagnosing root causes",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

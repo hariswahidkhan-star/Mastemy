@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0467",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0467-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Bayesian inference, the posterior is proportional to…",
+   "options": [
+    {
+     "key": "A",
+     "text": "The prior times the likelihood",
+     "correct": true,
+     "rationale": "Correct: posterior ∝ prior × likelihood."
+    },
+    {
+     "key": "B",
+     "text": "The prior minus the likelihood",
+     "correct": false,
+     "rationale": "Bayes' rule multiplies, it does not subtract."
+    },
+    {
+     "key": "C",
+     "text": "The likelihood only",
+     "correct": false,
+     "rationale": "That ignores the prior."
+    },
+    {
+     "key": "D",
+     "text": "A single point estimate",
+     "correct": false,
+     "rationale": "The posterior is a distribution, not a point."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: posterior ∝ prior × likelihood.",
+   "outcome_refs": [
+    "MST-0467-D01.01"
+   ],
+   "domain_ref": "Bayesian thinking",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0467-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about a 95% credible interval are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The parameter lies in it with 95% posterior probability",
+     "correct": true,
+     "rationale": "Correct: that is the Bayesian interpretation."
+    },
+    {
+     "key": "B",
+     "text": "It depends on both the prior and the data",
+     "correct": true,
+     "rationale": "Correct: the posterior combines prior and likelihood."
+    },
+    {
+     "key": "C",
+     "text": "It is exactly the same as a frequentist confidence interval",
+     "correct": false,
+     "rationale": "Their interpretations differ."
+    },
+    {
+     "key": "D",
+     "text": "It can be computed without any model",
+     "correct": false,
+     "rationale": "A model is required to form a posterior."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: that is the Bayesian interpretation.",
+   "outcome_refs": [
+    "MST-0467-D02.02"
+   ],
+   "domain_ref": "Building probabilistic models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0467-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "As more data is observed, the prior's influence on the posterior generally…",
+   "options": [
+    {
+     "key": "A",
+     "text": "Decreases relative to the likelihood",
+     "correct": true,
+     "rationale": "Correct: data increasingly dominates the posterior."
+    },
+    {
+     "key": "B",
+     "text": "Always overrides the likelihood",
+     "correct": false,
+     "rationale": "The opposite tends to happen."
+    },
+    {
+     "key": "C",
+     "text": "Removes all uncertainty",
+     "correct": false,
+     "rationale": "Uncertainty shrinks but does not vanish."
+    },
+    {
+     "key": "D",
+     "text": "Becomes mandatory to specify",
+     "correct": false,
+     "rationale": "A prior is always specified, data does not change that."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: data increasingly dominates the posterior.",
+   "outcome_refs": [
+    "MST-0467-D03.02"
+   ],
+   "domain_ref": "Priors and their influence",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

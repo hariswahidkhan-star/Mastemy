@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0466",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0466-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model shows ice-cream sales predict drownings. Acting to cut ice-cream sales would not reduce drownings because…",
+   "options": [
+    {
+     "key": "A",
+     "text": "A confounder (hot weather) drives both",
+     "correct": true,
+     "rationale": "Correct: a common cause creates the correlation without causation."
+    },
+    {
+     "key": "B",
+     "text": "The model is overfit",
+     "correct": false,
+     "rationale": "Overfitting is not the issue here."
+    },
+    {
+     "key": "C",
+     "text": "Correlation always equals causation",
+     "correct": false,
+     "rationale": "This is exactly the fallacy to avoid."
+    },
+    {
+     "key": "D",
+     "text": "The sample is too small",
+     "correct": false,
+     "rationale": "Sample size is not the core problem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a common cause creates the correlation without causation.",
+   "outcome_refs": [
+    "MST-0466-D02.01"
+   ],
+   "domain_ref": "Confounding and bias",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0466-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO support a causal, not merely predictive, conclusion? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A randomised experiment",
+     "correct": true,
+     "rationale": "Correct: randomisation breaks confounding."
+    },
+    {
+     "key": "B",
+     "text": "A valid instrument or quasi-experiment with checked assumptions",
+     "correct": true,
+     "rationale": "Correct: a sound design can identify a causal effect."
+    },
+    {
+     "key": "C",
+     "text": "A high R-squared alone",
+     "correct": false,
+     "rationale": "Fit does not establish causation."
+    },
+    {
+     "key": "D",
+     "text": "A large correlation coefficient",
+     "correct": false,
+     "rationale": "Correlation alone is not causation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: randomisation breaks confounding.",
+   "outcome_refs": [
+    "MST-0466-D03.02"
+   ],
+   "domain_ref": "Experiments and quasi-experiments",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0466-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Uplift modelling targets customers who are…",
+   "options": [
+    {
+     "key": "A",
+     "text": "Persuadable — they act only if treated",
+     "correct": true,
+     "rationale": "Correct: uplift targets those whose behaviour the treatment changes."
+    },
+    {
+     "key": "B",
+     "text": "Already certain to buy regardless",
+     "correct": false,
+     "rationale": "Treating sure buyers wastes the intervention."
+    },
+    {
+     "key": "C",
+     "text": "Impossible to reach",
+     "correct": false,
+     "rationale": "Unreachable customers are not the target."
+    },
+    {
+     "key": "D",
+     "text": "Chosen at random",
+     "correct": false,
+     "rationale": "Uplift targeting is the opposite of random."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: uplift targets those whose behaviour the treatment changes.",
+   "outcome_refs": [
+    "MST-0466-D04.02"
+   ],
+   "domain_ref": "Estimating effects and uplift",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0465",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 378,
+  "lesson_check_items": 80,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0465-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Federated learning primarily avoids…",
+   "options": [
+    {
+     "key": "A",
+     "text": "Centralising raw training data in one place",
+     "correct": true,
+     "rationale": "Correct: clients train locally and share only model updates."
+    },
+    {
+     "key": "B",
+     "text": "Using any model at all",
+     "correct": false,
+     "rationale": "A model is still trained; only data stays local."
+    },
+    {
+     "key": "C",
+     "text": "All privacy risk automatically",
+     "correct": false,
+     "rationale": "Updates can still leak; extra measures are needed."
+    },
+    {
+     "key": "D",
+     "text": "The need for data entirely",
+     "correct": false,
+     "rationale": "Data is still used, just kept local."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: clients train locally and share only model updates.",
+   "outcome_refs": [
+    "MST-0465-D02.01"
+   ],
+   "domain_ref": "Federated learning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0465-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about differential privacy are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It bounds how much any single record can affect the output",
+     "correct": true,
+     "rationale": "Correct: that bound is the core DP guarantee."
+    },
+    {
+     "key": "B",
+     "text": "A smaller epsilon means stronger privacy",
+     "correct": true,
+     "rationale": "Correct: lower epsilon means tighter privacy, usually at some utility cost."
+    },
+    {
+     "key": "C",
+     "text": "It requires sharing raw data centrally",
+     "correct": false,
+     "rationale": "DP does not require centralising raw data."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees zero utility loss",
+     "correct": false,
+     "rationale": "Adding noise trades some utility for privacy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: that bound is the core DP guarantee.",
+   "outcome_refs": [
+    "MST-0465-D03.01"
+   ],
+   "domain_ref": "Differential privacy",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0465-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is removing names not sufficient for anonymisation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Records can be re-identified by linking other attributes",
+     "correct": true,
+     "rationale": "Correct: quasi-identifiers enable linkage attacks."
+    },
+    {
+     "key": "B",
+     "text": "Names are the only possible identifier",
+     "correct": false,
+     "rationale": "Many attributes can identify a person."
+    },
+    {
+     "key": "C",
+     "text": "It fully anonymises the data",
+     "correct": false,
+     "rationale": "It does not; linkage remains possible."
+    },
+    {
+     "key": "D",
+     "text": "Encryption is never needed afterwards",
+     "correct": false,
+     "rationale": "This does not follow and is false."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: quasi-identifiers enable linkage attacks.",
+   "outcome_refs": [
+    "MST-0465-D04.02"
+   ],
+   "domain_ref": "Cryptographic and anonymisation methods",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
