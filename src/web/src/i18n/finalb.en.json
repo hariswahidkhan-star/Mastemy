@@ -210,7 +210,13 @@
         "seat_limit_below_usage": "The seat limit cannot go below the seats in use.",
         "tooLarge": "The file is too large.",
         "fileType": "This file type is not allowed (documents only; no video, audio or archives).",
-        "scanner": "The malware scanner is unavailable; try again later."
+        "scanner": "The malware scanner is unavailable; try again later.",
+        "public_email_domain": "Public email providers (such as gmail.com or outlook.com) can never be used for SSO.",
+        "domain_verification_failed": "The TXT record was not found yet. DNS changes can take a while to appear; try again later.",
+        "dns_unavailable": "DNS could not be checked right now. Try again later.",
+        "domain_claimed": "Another organization has already verified this domain.",
+        "domain_rejected": "Mastemy staff rejected this domain. Remove it or contact support.",
+        "note_required": "A reason is required."
       }
     },
     "staffEnt": {
@@ -228,11 +234,20 @@
       "markPaidBody": "Record the bank transfer for invoice {number}. The seat limit rises by {n}.",
       "reference": "Payment reference",
       "paid": "Marked paid. Seat limit {before} → {after}",
-      "paidLine": "Paid {date} · ref {ref} · seats {before} → {after}"
+      "paidLine": "Paid {date} · ref {ref} · seats {before} → {after}",
+      "dom": {
+        "title": "SSO domain approvals",
+        "note": "Approve a domain only after confirming the organization controls it. Public email providers are refused automatically.",
+        "none": "No domains in this state.",
+        "approve": "Approve",
+        "approvedToast": "{domain} approved",
+        "rejectTitle": "Reject {domain}",
+        "reason": "Reason (shown to the organization)"
+      }
     },
     "sso": {
       "title": "Single sign-on (OIDC)",
-      "note": "Members sign in with your identity provider. Users are created just in time as Members; SAML and SCIM are not supported. Staff accounts cannot use SSO.",
+      "note": "Members sign in with your identity provider. New people on your verified domains are created just in time as Members; people who already have a Mastemy account link it themselves from their security settings. SAML and SCIM are not supported. Staff accounts cannot use SSO.",
       "none": "SSO is not configured for this organization yet.",
       "enabled": "Enabled",
       "disabled": "Disabled",
@@ -244,7 +259,7 @@
       "secretKeep": "A secret is stored and never shown. Leave empty to keep it; type a new one to replace it.",
       "secretRequired": "Required for the first setup. It is stored encrypted and never shown again.",
       "domains": "Allowed email domains",
-      "domainsHint": "One per line (1–50), e.g. example.com.",
+      "domainsHint": "One per line (1–50), e.g. example.com. Public email providers (gmail.com, outlook.com, …) are never allowed. Each domain must be verified before its users can sign in.",
       "enable": "Enable SSO sign-in",
       "redirectUri": "Register this redirect URI at your provider:",
       "serverNotConfigured": "SSO is not configured on this Mastemy server yet (no redirect URI), so sign-in will not start.",
@@ -273,13 +288,47 @@
         "sso_email_missing": "Your identity provider did not share a valid email address.",
         "sso_email_unverified": "Your email address is not verified by your identity provider.",
         "sso_domain_not_allowed": "Your email domain is not allowed for this organization.",
-        "sso_link_requires_verified_email": "A Mastemy account with this email exists but its email is not verified. Verify it with a password sign-in first.",
+        "sso_link_requires_verified_email": "Verify your Mastemy email address before linking organization sign-in.",
         "sso_privileged_not_allowed": "Staff accounts must sign in with password and two-step verification.",
         "sso_provider_unavailable": "Your identity provider could not be reached. Try again later.",
         "sso_not_available": "Single sign-on is not available for this organization.",
         "sso_not_configured": "Single sign-on is not configured on this server.",
         "seat_limit_reached": "Your organization has no free seats. Ask an administrator for help.",
-        "invalid_handoff": "This sign-in link is invalid or has expired. Start again."
+        "invalid_handoff": "This sign-in link is invalid or has expired. Start again.",
+        "sso_link_required": "A Mastemy account already uses this email. For your security it is not linked automatically.",
+        "sso_session_mismatch": "This sign-in was started in a different browser or the session expired. Start again from this browser.",
+        "sso_link_email_mismatch": "Your organization account's email does not match the email of the account you are signed in with.",
+        "sso_identity_in_use": "This organization account is already linked to another Mastemy account.",
+        "sso_already_linked": "Your account is already linked to a different identity in this organization.",
+        "sso_account_suspended": "This account is suspended.",
+        "sso_conflict": "Another sign-in is in progress. Try again."
+      },
+      "linkTitle": "Link organization SSO",
+      "linkNote": "Already have a Mastemy account with your work email? Link it to your organization's sign-in here. Your organization account's email must match this account's verified email.",
+      "linkButton": "Link organization SSO",
+      "linkSignIn": "Sign in again to link organization sign-in.",
+      "linkHelpTitle": "Link your existing account",
+      "linkHelp": "Sign in with password, then link SSO from your profile (Security settings → Link organization SSO). After that you can use your organization's sign-in.",
+      "signInWithPassword": "Sign in with password",
+      "linked": "Organization sign-in ({org}) is now linked to your account.",
+      "linkedContinue": "Back to security settings",
+      "dom": {
+        "title": "Domain verification",
+        "note": "Sign-ins are accepted only from verified domains. Verify a domain by adding a DNS TXT record, or wait for Mastemy staff to approve it.",
+        "status": {
+          "Pending": "Pending verification",
+          "Verified": "Verified",
+          "Rejected": "Rejected"
+        },
+        "pending": "Add this DNS TXT record, then select “Check DNS”. Mastemy staff can also approve the domain. Until then, sign-ins from this domain are refused.",
+        "txtName": "TXT record name",
+        "txtValue": "TXT record value",
+        "check": "Check DNS",
+        "lastCheck": "Last DNS check: {date}",
+        "viaDns": "Verified through DNS on {date}.",
+        "viaStaff": "Approved by Mastemy staff on {date}.",
+        "rejected": "Rejected by Mastemy staff: {note}",
+        "verifiedToast": "{domain} verified"
       }
     }
   }

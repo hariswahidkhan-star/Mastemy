@@ -18,7 +18,7 @@ import finalbEn from '../i18n/finalb.en.json';
 import finalbAr from '../i18n/finalb.ar.json';
 import { CheckoutPage } from '../pages/commerce/CheckoutPage';
 import { OrderBrowserPage } from '../pages/finalb/CommerceB';
-import { SsoCompletePage } from '../pages/finalb/Sso';
+import { OrgSsoLinkSection, SsoCompletePage } from '../pages/finalb/Sso';
 import { StudioTaxonomyPanel } from '../pages/discover/StudioTaxonomyPanel';
 import { renderWithProviders } from './utils';
 
@@ -314,6 +314,8 @@ describe('SSO completion page', () => {
     const fetchMock = vi.fn((url: string, init?: RequestInit) => {
       if (url === '/api/sso/exchange') {
         expect(JSON.parse(String(init?.body))).toEqual({ handoff: 'h-123' });
+        // The HttpOnly browser-binding cookie (path /api/sso) must travel with the exchange.
+        expect(init?.credentials).toBe('include');
         return Promise.resolve(json(AUTH));
       }
       return Promise.resolve(json(AUTH.user));
@@ -362,6 +364,58 @@ describe('SSO completion page', () => {
       { route: '/sso/complete?handoff=old' },
     );
     expect(await screen.findByTestId('sso-error')).toHaveTextContent('invalid or has expired');
+  });
+
+  it('explains sso_link_required with a password sign-in path to link SSO from the profile', async () => {
+    vi.stubGlobal('fetch', vi.fn());
+    renderWithProviders(<SsoCompletePage />, { route: '/sso/complete?error=sso_link_required' });
+    expect(await screen.findByTestId('sso-error')).toHaveTextContent('not linked automatically');
+    expect(
+      screen.getByText(/Sign in with password, then link SSO from your profile/),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Sign in with password' })).toHaveAttribute(
+      'href',
+      '/login?next=%2Fme%2Fsecurity',
+    );
+  });
+
+  it('confirms a completed account link without exchanging anything', async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal('fetch', fetchMock);
+    renderWithProviders(<SsoCompletePage />, {
+      route: '/sso/complete?linked=acme&returnTo=%2Fme%2Fsecurity',
+    });
+    expect(await screen.findByTestId('sso-linked')).toHaveTextContent('(acme) is now linked');
+    expect(fetchMock.mock.calls.some((c) => c[0] === '/api/sso/exchange')).toBe(false);
+  });
+
+  it('starts an explicit account link from the security page with cookies included', async () => {
+    const assign = vi.fn();
+    vi.stubGlobal('location', { ...window.location, assign });
+    const fetchMock = vi.fn((url: string, init?: RequestInit) => {
+      expect(url).toBe('/api/sso/acme/link/start');
+      expect(init?.method).toBe('POST');
+      expect(init?.credentials).toBe('include');
+      return Promise.resolve(json({ authorizationUrl: 'https://idp.example/authorize?x=1' }));
+    });
+    vi.stubGlobal('fetch', fetchMock);
+    renderWithProviders(<OrgSsoLinkSection />);
+    await userEvent.type(screen.getByLabelText(/Organization ID/), 'acme');
+    await userEvent.click(screen.getByRole('button', { name: 'Link organization SSO' }));
+    await waitFor(() => expect(assign).toHaveBeenCalledWith('https://idp.example/authorize?x=1'));
+  });
+
+  it('shows why a link cannot start', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(() => Promise.resolve(problem(403, 'sso_link_requires_verified_email'))),
+    );
+    renderWithProviders(<OrgSsoLinkSection />);
+    await userEvent.type(screen.getByLabelText(/Organization ID/), 'acme');
+    await userEvent.click(screen.getByRole('button', { name: 'Link organization SSO' }));
+    expect(await screen.findByTestId('sso-link-error')).toHaveTextContent(
+      'Verify your Mastemy email address',
+    );
   });
 
   it('never follows an off-site returnTo', () => {

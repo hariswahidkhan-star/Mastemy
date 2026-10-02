@@ -113,6 +113,12 @@ public class SsoLoginState
     public Guid? UserId { get; set; }
     public DateTime? HandoffExpiresAt { get; set; }
     public DateTime? HandoffUsedAt { get; set; }
+    /// <summary>SHA-256 of the browser-binding cookie set by start; the callback must present it (login CSRF).</summary>
+    public string BinderHash { get; set; } = "";
+    /// <summary>SHA-256 of the fresh binder cookie set by the callback; the handoff exchange must present it.</summary>
+    public string? HandoffBinderHash { get; set; }
+    /// <summary>Set for an explicit account-link flow started by this signed-in user.</summary>
+    public Guid? LinkUserId { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
 
@@ -123,6 +129,8 @@ public class SsoIdentity
     public Guid OrganizationId { get; set; }
     public string Issuer { get; set; } = "";
     public string Subject { get; set; } = "";
+    /// <summary>SHA-256 (hex) of <see cref="Issuer"/>; identities are keyed by (organization, issuer, subject).</summary>
+    public string IssuerHash { get; set; } = "";
     public Guid UserId { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime LastLoginAt { get; set; } = DateTime.UtcNow;
@@ -202,6 +210,8 @@ public class EnterprisePhase2Configurations : IEntityTypeConfiguration<OrgPathwa
         b.Property(x => x.CodeVerifierProtected).HasColumnType("longtext");
         b.Property(x => x.ReturnPath).HasMaxLength(500);
         b.Property(x => x.HandoffHash).HasMaxLength(64);
+        b.Property(x => x.BinderHash).HasMaxLength(64);
+        b.Property(x => x.HandoffBinderHash).HasMaxLength(64);
         b.HasIndex(x => x.HandoffHash).IsUnique();
         b.HasIndex(x => x.ExpiresAt);
     }
@@ -211,7 +221,9 @@ public class EnterprisePhase2Configurations : IEntityTypeConfiguration<OrgPathwa
         b.ToTable("Enterprise_SsoIdentities");
         b.Property(x => x.Issuer).HasMaxLength(500);
         b.Property(x => x.Subject).HasMaxLength(255);
-        b.HasIndex(x => new { x.OrganizationId, x.Subject }).IsUnique();
+        b.Property(x => x.IssuerHash).HasMaxLength(64);
+        b.HasIndex(x => new { x.OrganizationId, x.IssuerHash, x.Subject }).IsUnique();
+        b.HasIndex(x => new { x.OrganizationId, x.UserId });
         b.HasIndex(x => x.UserId);
     }
 }

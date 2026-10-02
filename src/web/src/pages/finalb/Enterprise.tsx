@@ -11,7 +11,7 @@ import type {
   OrgMaterialDto,
   PathwayAssignmentDto,
   SeatRequestDto,
-  SsoConfigDto,
+  SsoConfigDto as SsoConfigBase,
   SsoConfigInput,
 } from '../../api/finalb';
 import { useApiMutation } from '../../api/hooks';
@@ -29,7 +29,41 @@ import type { TFunction } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { CStatus } from '../commerce/shared';
 
+/** OidcSso.cs / SsoDomains.cs: one row per allowed domain; only Verified ones are honoured at sign-in. */
+export interface SsoDomainDto {
+  id: string;
+  domain: string;
+  status: 'Pending' | 'Verified' | 'Rejected';
+  txtRecordName: string;
+  txtRecordValue: string;
+  verifiedVia: 'dns' | 'staff' | null;
+  verifiedAt: string | null;
+  decisionNote: string | null;
+  lastDnsCheckAt: string | null;
+}
+export interface SsoConfigDto extends SsoConfigBase {
+  domains: SsoDomainDto[];
+}
+export interface StaffSsoDomainDto {
+  id: string;
+  organizationId: string;
+  organizationName: string;
+  organizationSlug: string;
+  domain: string;
+  status: SsoDomainDto['status'];
+  verifiedVia: string | null;
+  verifiedAt: string | null;
+  decisionNote: string | null;
+  createdAt: string;
+}
+
 const CODES = [
+  'public_email_domain',
+  'domain_verification_failed',
+  'dns_unavailable',
+  'domain_claimed',
+  'domain_rejected',
+  'note_required',
   'pathway_has_no_live_courses',
   'duplicate_assignment',
   'premium_scope_requires_admin',
@@ -794,6 +828,9 @@ function SsoForm({
           ) : null}
         </div>
       </form>
+      {current && current.domains.length > 0 ? (
+        <SsoDomainsCard org={org} current={current} />
+      ) : null}
       {current?.enabled ? (
         <section className="card" aria-labelledby="sso-test-h">
           <h3 id="sso-test-h">{t('finalb.sso.testTitle')}</h3>
@@ -824,6 +861,213 @@ function SsoForm({
         onConfirm={() => remove.mutate(undefined)}
       />
     </div>
+  );
+}
+
+function SsoDomainsCard({ org, current }: { org: OrgDto; current: SsoConfigDto }) {
+  const { t, fmtDate } = useI18n();
+  const toast = useToast();
+  const [checking, setChecking] = useState<string | null>(null);
+  const verify = useApiMutation(
+    (id: string) =>
+      api<SsoDomainDto>(`/api/orgs/${org.id}/sso/domains/${id}/verify`, { method: 'POST' }),
+    [fbKeys.sso(org.id)],
+    (d) => toast.success(t('finalb.sso.dom.verifiedToast', { domain: d.domain })),
+  );
+  const tone = (s: SsoDomainDto['status']) =>
+    s === 'Verified' ? 'success' : s === 'Rejected' ? 'danger' : 'warning';
+  return (
+    <section className="card stack" aria-labelledby="sso-dom-h">
+      <h3 id="sso-dom-h">{t('finalb.sso.dom.title')}</h3>
+      <p className="small muted">{t('finalb.sso.dom.note')}</p>
+      <ul className="stack" style={{ listStyle: 'none', padding: 0 }} data-testid="sso-domains">
+        {current.domains.map((d) => (
+          <li key={d.id} className="card card--flat stack" data-domain={d.domain}>
+            <div className="row row--between">
+              <strong>{d.domain}</strong>
+              <Badge tone={tone(d.status)}>{t(`finalb.sso.dom.status.${d.status}`)}</Badge>
+            </div>
+            {d.status === 'Verified' ? (
+              <p className="small">
+                {d.verifiedVia === 'staff'
+                  ? t('finalb.sso.dom.viaStaff', {
+                      date: d.verifiedAt ? fmtDate(d.verifiedAt) : '',
+                    })
+                  : t('finalb.sso.dom.viaDns', { date: d.verifiedAt ? fmtDate(d.verifiedAt) : '' })}
+              </p>
+            ) : d.status === 'Rejected' ? (
+              <Notice tone="danger">
+                {t('finalb.sso.dom.rejected', { note: d.decisionNote ?? '' })}
+              </Notice>
+            ) : (
+              <>
+                <p className="small">{t('finalb.sso.dom.pending')}</p>
+                <dl className="small" style={{ margin: 0 }}>
+                  <dt>{t('finalb.sso.dom.txtName')}</dt>
+                  <dd>
+                    <code>{d.txtRecordName}</code>
+                  </dd>
+                  <dt>{t('finalb.sso.dom.txtValue')}</dt>
+                  <dd>
+                    <code style={{ wordBreak: 'break-all' }}>{d.txtRecordValue}</code>
+                  </dd>
+                </dl>
+                {d.lastDnsCheckAt ? (
+                  <p className="small muted">
+                    {t('finalb.sso.dom.lastCheck', { date: fmtDate(d.lastDnsCheckAt) })}
+                  </p>
+                ) : null}
+                <div>
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    loading={verify.isPending && checking === d.id}
+                    onClick={() => {
+                      setChecking(d.id);
+                      verify.mutate(d.id);
+                    }}
+                  >
+                    {t('finalb.sso.dom.check')}
+                  </Button>
+                </div>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+      {verify.isError ? <Notice tone="danger">{enterpriseError(verify.error, t)}</Notice> : null}
+    </section>
+  );
+}
+
+// ---------------- Staff: SSO domain approvals ----------------
+function StaffSsoDomains() {
+  const { t, fmtDate } = useI18n();
+  const toast = useToast();
+  const [status, setStatus] = useState('Pending');
+  const [rejecting, setRejecting] = useState<StaffSsoDomainDto | null>(null);
+  const key = ['admin', 'enterprise', 'sso-domains', status];
+  const rows = useQuery({
+    queryKey: key,
+    queryFn: () =>
+      api<StaffSsoDomainDto[]>(
+        `/api/admin/enterprise/sso-domains${status ? `?status=${encodeURIComponent(status)}` : ''}`,
+      ),
+  });
+  const approve = useApiMutation(
+    (id: string) =>
+      api<StaffSsoDomainDto>(`/api/admin/enterprise/sso-domains/${id}/approve`, {
+        method: 'POST',
+        body: { note: null },
+      }),
+    [['admin', 'enterprise']],
+    (d) => toast.success(t('finalb.staffEnt.dom.approvedToast', { domain: d.domain })),
+  );
+  return (
+    <section className="section" aria-labelledby="se-dom-h">
+      <h2 className="section__title" id="se-dom-h">
+        {t('finalb.staffEnt.dom.title')}
+      </h2>
+      <p className="small muted">{t('finalb.staffEnt.dom.note')}</p>
+      <Field label={t('dashboard.status')}>
+        <Select
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+          placeholder={t('finalb.orders.any')}
+          options={['Pending', 'Verified', 'Rejected'].map((s) => ({
+            value: s,
+            label: t(`finalb.sso.dom.status.${s}`),
+          }))}
+        />
+      </Field>
+      {approve.isError ? <Notice tone="danger">{enterpriseError(approve.error, t)}</Notice> : null}
+      <QueryState query={rows}>
+        {(list) =>
+          list.length === 0 ? (
+            <EmptyState title={t('finalb.staffEnt.dom.none')} />
+          ) : (
+            <ul
+              className="stack"
+              style={{ listStyle: 'none', padding: 0 }}
+              data-testid="staff-sso-domains"
+            >
+              {list.map((d) => (
+                <li key={d.id} className="card card--flat row row--between" data-domain={d.domain}>
+                  <span>
+                    <strong>{d.domain}</strong> · {d.organizationName} ({d.organizationSlug}) ·{' '}
+                    {t(`finalb.sso.dom.status.${d.status}`)} · {fmtDate(d.createdAt)}
+                    {d.decisionNote ? (
+                      <span className="small muted"> · {d.decisionNote}</span>
+                    ) : null}
+                  </span>
+                  {d.status === 'Pending' ? (
+                    <span className="row">
+                      <Button
+                        size="sm"
+                        loading={approve.isPending && approve.variables === d.id}
+                        onClick={() => approve.mutate(d.id)}
+                      >
+                        {t('finalb.staffEnt.dom.approve')}
+                      </Button>
+                      <Button size="sm" variant="secondary" onClick={() => setRejecting(d)}>
+                        {t('finalb.staffEnt.reject')}
+                      </Button>
+                    </span>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </QueryState>
+      {rejecting ? <RejectDomainDialog row={rejecting} onClose={() => setRejecting(null)} /> : null}
+    </section>
+  );
+}
+
+function RejectDomainDialog({ row, onClose }: { row: StaffSsoDomainDto; onClose: () => void }) {
+  const { t } = useI18n();
+  const [note, setNote] = useState('');
+  const reject = useApiMutation(
+    () =>
+      api(`/api/admin/enterprise/sso-domains/${row.id}/reject`, {
+        method: 'POST',
+        body: { note: note.trim() },
+      }),
+    [['admin', 'enterprise']],
+    onClose,
+  );
+  return (
+    <Dialog
+      open
+      title={t('finalb.staffEnt.dom.rejectTitle', { domain: row.domain })}
+      onClose={onClose}
+      footer={
+        <>
+          <Button variant="secondary" onClick={onClose}>
+            {t('common.cancel')}
+          </Button>
+          <Button
+            variant="danger"
+            disabled={!note.trim()}
+            loading={reject.isPending}
+            onClick={() => reject.mutate(undefined)}
+          >
+            {t('finalb.staffEnt.reject')}
+          </Button>
+        </>
+      }
+    >
+      <Field label={t('finalb.staffEnt.dom.reason')} required>
+        <Textarea
+          rows={3}
+          value={note}
+          maxLength={1000}
+          onChange={(e) => setNote(e.target.value)}
+        />
+      </Field>
+      {reject.isError ? <Notice tone="danger">{enterpriseError(reject.error, t)}</Notice> : null}
+    </Dialog>
   );
 }
 
@@ -1010,6 +1254,7 @@ export function StaffEnterprisePage() {
   return (
     <div className="page">
       <PageHeader title={t('finalb.staffEnt.title')} subtitle={t('finalb.staffEnt.subtitle')} />
+      <StaffSsoDomains />
       <section className="section" aria-labelledby="se-req-h">
         <h2 className="section__title" id="se-req-h">
           {t('finalb.ent.seats.requests')}

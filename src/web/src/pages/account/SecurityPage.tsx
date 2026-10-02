@@ -18,6 +18,7 @@ import { useI18n } from '../../i18n/I18nProvider';
 import { usePageMeta } from '../../lib/seo';
 import { passwordSchema } from './EmailPages';
 import { accountError, cleanCode, MfaEnrollmentWizard, RecoveryCodesPanel } from './Mfa';
+import { OrgSsoLinkSection } from '../finalb/Sso';
 
 /** Sub-navigation shared by the account settings pages. */
 export function AccountNav() {
@@ -444,6 +445,7 @@ export function SecurityPage() {
       <MfaSection />
       <PasswordSection />
       <SessionsSection />
+      <OrgSsoLinkSection />
     </AccountShell>
   );
 }
