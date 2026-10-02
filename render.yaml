@@ -1,0 +1,128 @@
+# Render Blueprint for Mastemy — https://render.com/docs/blueprint-spec
+#
+# Three services on Render's private network:
+#   api  (private)  .NET 10 API            src/Mastemy.Api/Dockerfile   :8080
+#   web  (public)   nginx + Node SSR        deploy/web.Dockerfile        :80   <- the public site
+#   db   (private)  MySQL 8.4 + a disk      docker.io library image      :3306
+#
+# IMPORTANT NOTES BEFORE YOU APPLY THIS BLUEPRINT
+# 1. Render has no managed MySQL (its managed database is PostgreSQL). This app needs MySQL, so `db`
+#    runs the official MySQL image as a private service with a persistent disk. You operate it yourself
+#    (backups via scripts/backup.sh, upgrades). For a fully managed datastore you would use an external
+#    MySQL provider and point ConnectionStrings__Default at it instead of this `db` service.
+# 2. The web container's nginx proxies /api to the literal host `api:8080`, so the API service MUST keep
+#    the name `api` below — renaming it breaks the proxy.
+# 3. Disks and private services require a paid instance type (Starter or higher); they are not on the free tier.
+# 4. Secrets are never committed. Every value marked `sync: false` must be filled in the Render dashboard
+#    after the first apply (Render will prompt for them). `generateValue: true` lets Render create the value.
+# 5. Run the database migration once after `db` and `api` are up (see the deploy steps in chat / the runbook).
+
+databases: [] # intentionally empty: Render managed databases are PostgreSQL only; MySQL runs as the `db` service.
+
+envVarGroups:
+  - name: mastemy-db
+    # Shared, non-secret MySQL identifiers. The password is NOT here because the API needs it inside a
+    # composed connection string that a blueprint cannot interpolate — set it on both services (see below).
+    envVars:
+      - key: MYSQL_DATABASE
+        value: mastemy
+      - key: MYSQL_USER
+        value: mastemy
+
+services:
+  # ---------------------------------------------------------------------------------------------------
+  # MySQL 8.4 — private service with a persistent disk. Reachable from `api` at db:3306 on the private net.
+  # ---------------------------------------------------------------------------------------------------
+  - type: pserv
+    name: db
+    runtime: image
+    region: oregon
+    plan: standard # size the DB for your data; raise as needed
+    image:
+      url: docker.io/library/mysql:8.4
+    # Passed to the image ENTRYPOINT (docker-entrypoint.sh) -> mysqld, matching docker-compose.yml.
+    dockerCommand: --character-set-server=utf8mb4 --collation-server=utf8mb4_0900_ai_ci --port=3306
+    envVars:
+      - fromGroup: mastemy-db
+      - key: MYSQL_PASSWORD # the application user's password; reuse the SAME value in api -> ConnectionStrings__Default
+        sync: false
+      - key: MYSQL_ROOT_PASSWORD
+        sync: false
+    disk:
+      name: mysql-data
+      mountPath: /var/lib/mysql
+      sizeGB: 20
+
+  # ---------------------------------------------------------------------------------------------------
+  # .NET 10 API — private service (only the web container talks to it). Must stay named `api`.
+  # ---------------------------------------------------------------------------------------------------
+  - type: pserv
+    name: api
+    runtime: docker
+    region: oregon
+    plan: starter
+    dockerfilePath: ./src/Mastemy.Api/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health/live
+    envVars:
+      # Bind the container to the port nginx proxies to (api:8080).
+      - key: ASPNETCORE_URLS
+        value: http://+:8080
+      - key: PORT
+        value: "8080"
+      # Full MySQL connection string. Render cannot interpolate the generated password, so set this whole
+      # value in the dashboard, using the SAME password you set for db -> MYSQL_PASSWORD:
+      #   Server=db;Port=3306;Database=mastemy;User=mastemy;Password=<MYSQL_PASSWORD>;CharSet=utf8mb4;
+      - key: ConnectionStrings__Default
+        sync: false
+      # JWT signing key (>= 32 bytes). Rotating it invalidates all sessions.
+      - key: Jwt__Key
+        generateValue: true
+      # Absolute public origin of the site, e.g. https://mastemy.com (or the web service's onrender.com URL).
+      - key: Seo__PublicBaseUrl
+        sync: false
+      # Host-header allowlist: your public host plus the internal names. e.g. "mastemy.com;api;localhost"
+      - key: AllowedHosts
+        sync: false
+      # Trust the forwarded proto/IP from Render's private network (the nginx web container is the peer).
+      - key: Network__TrustedProxies__0
+        value: 10.0.0.0/8
+      - key: DataProtection__KeysPath
+        value: /app/data/keys
+      # Optional integrations — leave unset to disable; fill in the dashboard to enable.
+      - key: Stripe__SecretKey
+        sync: false
+      - key: Stripe__WebhookSecret
+        sync: false
+      - key: YouTube__ApiKey
+        sync: false
+    disk:
+      # DataProtection keys (/app/data/keys) and content-addressed resource blobs (/app/data/resources).
+      # Must persist across deploys; back it up with the database (scripts/backup.sh).
+      name: api-data
+      mountPath: /app/data
+      sizeGB: 10
+
+  # ---------------------------------------------------------------------------------------------------
+  # Web — the only public service. nginx serves the client build + proxies /api to api:8080; the Node SSR
+  # renderer (127.0.0.1:3000) renders public pages. nginx listens on :80.
+  # ---------------------------------------------------------------------------------------------------
+  - type: web
+    name: web
+    runtime: docker
+    region: oregon
+    plan: starter
+    dockerfilePath: ./deploy/web.Dockerfile
+    dockerContext: .
+    healthCheckPath: /health/live
+    envVars:
+      # Render routes public traffic to this port; nginx in the image listens on 80.
+      - key: PORT
+        value: "80"
+      # Absolute public origin — must match Seo__PublicBaseUrl on the api service. Set to your domain, or
+      # to this service's https://<name>.onrender.com URL for a first deploy.
+      - key: PUBLIC_BASE_URL
+        sync: false
+      # The SSR renderer's server-side API address (private network). nginx also uses api:8080 directly.
+      - key: API_INTERNAL_URL
+        value: http://api:8080
