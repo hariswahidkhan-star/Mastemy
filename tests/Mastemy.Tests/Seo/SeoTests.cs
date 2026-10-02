@@ -12,6 +12,7 @@ namespace Mastemy.Tests.Seo;
 public sealed class SeoFixture : IAsyncLifetime
 {
     private readonly string _dbName = "mastemy_t_" + Guid.NewGuid().ToString("N");
+    private string _conn = "";
     public WebApplicationFactory<Program> Factory { get; private set; } = null!;
     public WebApplicationFactory<Program> Unconfigured { get; private set; } = null!;
     public static readonly DateTime Updated = new(2026, 9, 1, 10, 0, 0, DateTimeKind.Utc);
@@ -30,7 +31,7 @@ public sealed class SeoFixture : IAsyncLifetime
     public async Task InitializeAsync()
     {
         var host = Environment.GetEnvironmentVariable("MASTEMY_TEST_MYSQL") ?? "Server=localhost;Port=3306;User=mastemy;Password=mastemy_dev_pw";
-        var conn = $"{host};Database={_dbName}";
+        var conn = _conn = $"{host};Database={_dbName}";
         Factory = Build(conn, "https://mastemy.example/");
         Unconfigured = Build(conn, null);
         using var scope = Factory.Services.CreateScope();
@@ -57,19 +58,7 @@ public sealed class SeoFixture : IAsyncLifetime
         await db.SaveChangesAsync();
     }
 
-    public async Task DisposeAsync()
-    {
-        try
-        {
-            using var scope = Factory.Services.CreateScope();
-            await scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.EnsureDeletedAsync();
-        }
-        finally
-        {
-            await Factory.DisposeAsync();
-            await Unconfigured.DisposeAsync();
-        }
-    }
+    public Task DisposeAsync() => TestDatabase.DisposeHostsThenDropAsync(_conn, Factory, Unconfigured);
 }
 
 public class SeoTests(SeoFixture fx) : IClassFixture<SeoFixture>

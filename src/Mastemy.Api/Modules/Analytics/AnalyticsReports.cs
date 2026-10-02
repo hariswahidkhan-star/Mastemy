@@ -76,9 +76,18 @@ public class AnalyticsReportService(AppDbContext db, ICurrentUser me, CourseScop
         _ => $"DATE_FORMAT({column}, '%Y-%m-%d')",
     };
 
-    private string T<TEntity>() => "`" + db.Model.FindEntityType(typeof(TEntity))!.GetTableName() + "`";
+    // SQL-injection safety of the raw report queries below:
+    //  * every user-influenced VALUE (course id, date range, statuses) is passed as a positional DbParameter ({0}, {1}, ...);
+    //  * the only interpolated fragments are identifiers/expressions produced here from compile-time constants:
+    //    table names from EF model metadata (validated by SafeIdentifier) and BucketExpr, whose output is chosen by a
+    //    switch over fixed literals and never embeds the bucket string itself.
+    private string T<TEntity>() => "`" + SafeIdentifier(db.Model.FindEntityType(typeof(TEntity))!.GetTableName()!) + "`";
+
+    public static string SafeIdentifier(string name) =>
+        System.Text.RegularExpressions.Regex.IsMatch(name, "^[A-Za-z0-9_]{1,64}$") ? name : throw new InvalidOperationException($"Unsafe SQL identifier '{name}'.");
 
     private Task<List<BucketRow>> Buckets(string sql, params object[] args) => db.Database.SqlQueryRaw<BucketRow>(sql, args).ToListAsync();
+    private Task<List<CurrencyBucketRow>> CurrencyBuckets(string sql, params object[] args) => db.Database.SqlQueryRaw<CurrencyBucketRow>(sql, args).ToListAsync();
 
     // ---------- Instructor ----------
     public async Task<CourseAnalyticsDto> Course(Guid courseId, DateTime? from, DateTime? to, string? bucket)
@@ -152,10 +161,10 @@ public class AnalyticsReportService(AppDbContext db, ICurrentUser me, CourseScop
         var ledger = db.CommissionLedger.AsNoTracking().Where(l => l.CourseId == course.Id && l.CreatedAt >= f && l.CreatedAt < t);
         var revenue = await LedgerTotals(ledger);
         var mine = await LedgerTotals(ledger.Where(l => l.InstructorId == uid));
-        var revenueOverTime = await db.Database.SqlQueryRaw<CurrencyBucketRow>(
+        var revenueOverTime = await CurrencyBuckets(
             $"SELECT {BucketExpr("l.`CreatedAt`", b)} AS `Bucket`, l.`Currency` AS `Currency`, SUM(l.`GrossAmount`) AS `Amount` " +
             $"FROM {T<CommissionLedgerEntry>()} l WHERE l.`CourseId` = {{0}} AND l.`CreatedAt` >= {{1}} AND l.`CreatedAt` < {{2}} " +
-            "GROUP BY `Bucket`, `Currency` ORDER BY `Bucket`, `Currency`", cid, f, t).ToListAsync();
+            "GROUP BY `Bucket`, `Currency` ORDER BY `Bucket`, `Currency`", cid, f, t);
 
         return new CourseAnalyticsDto(course.Id, f, t, b, DateTime.UtcNow, Points(enrollOverTime), enrollInRange, totalEnroll,
             Points(activeOverTime), activeInRange, funnel, avgProgress, assessments, $"/api/studio/courses/{course.Id}/analytics/questions",
@@ -234,10 +243,13 @@ public class AnalyticsReportService(AppDbContext db, ICurrentUser me, CourseScop
         var orders = (await db.Orders.AsNoTracking().Where(o => PaidStatuses.Contains(o.Status) && o.PaidAt >= f && o.PaidAt < t)
                 .GroupBy(o => o.Currency).Select(g => new { Currency = g.Key, N = g.LongCount(), Sum = g.Sum(o => o.Total) }).ToListAsync())
             .OrderBy(x => x.Currency).Select(x => new CurrencyTotalDto(x.Currency, x.N, x.Sum)).ToList();
-        var paidList = string.Join(",", PaidStatuses.Select(s => (int)s));
-        var revenueOverTime = await db.Database.SqlQueryRaw<CurrencyBucketRow>(
+        // Paid statuses are bound as parameters {2}..{n} too.
+        var statusArgs = PaidStatuses.Select(s => (object)(int)s).ToArray();
+        var statusParams = string.Join(",", statusArgs.Select((_, i) => $"{{{i + 2}}}"));
+        var revenueOverTime = await CurrencyBuckets(
             $"SELECT {BucketExpr("o.`PaidAt`", b)} AS `Bucket`, o.`Currency` AS `Currency`, SUM(o.`Total`) AS `Amount` FROM {T<Order>()} o " +
-            $"WHERE o.`Status` IN ({paidList}) AND o.`PaidAt` >= {{0}} AND o.`PaidAt` < {{1}} GROUP BY `Bucket`, `Currency` ORDER BY `Bucket`, `Currency`", f, t).ToListAsync();
+            $"WHERE o.`Status` IN ({statusParams}) AND o.`PaidAt` >= {{0}} AND o.`PaidAt` < {{1}} GROUP BY `Bucket`, `Currency` ORDER BY `Bucket`, `Currency`",
+            [f, t, .. statusArgs]);
         var refunds = (await (from r in db.Refunds.AsNoTracking()
                               join o in db.Orders.AsNoTracking() on r.OrderId equals o.Id
                               where r.Status == "Completed" && (r.DecidedAt ?? r.CreatedAt) >= f && (r.DecidedAt ?? r.CreatedAt) < t

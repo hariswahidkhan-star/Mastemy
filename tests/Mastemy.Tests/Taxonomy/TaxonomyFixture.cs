@@ -16,6 +16,7 @@ public sealed class TaxonomyFixture : IAsyncLifetime
 {
     public static readonly JsonSerializerOptions Json = new(JsonSerializerDefaults.Web) { Converters = { new JsonStringEnumConverter() } };
     private readonly string _dbName = "mastemy_t_" + Guid.NewGuid().ToString("N");
+    private string _conn = "";
     public WebApplicationFactory<Program> Factory { get; private set; } = null!;
 
     public User InstructorA { get; private set; } = null!;
@@ -30,9 +31,10 @@ public sealed class TaxonomyFixture : IAsyncLifetime
     public async Task InitializeAsync()
     {
         var host = Environment.GetEnvironmentVariable("MASTEMY_TEST_MYSQL") ?? "Server=localhost;Port=3306;User=mastemy;Password=mastemy_dev_pw";
+        _conn = $"{host};Database={_dbName}";
         Factory = new WebApplicationFactory<Program>().WithWebHostBuilder(b =>
         {
-            b.UseSetting("ConnectionStrings:Default", $"{host};Database={_dbName}");
+            b.UseSetting("ConnectionStrings:Default", _conn);
             b.UseSetting("Jwt:Key", "taxonomy-tests-signing-key-0123456789-abcdefghijklmnop");
             b.UseSetting("Security:RequireMfaForPrivileged", "false");
             b.UseSetting("Database:MigrateOnStartup", "false");
@@ -145,15 +147,7 @@ public sealed class TaxonomyFixture : IAsyncLifetime
         return JsonSerializer.Deserialize<T>(body, Json)!;
     }
 
-    public async Task DisposeAsync()
-    {
-        try
-        {
-            using var scope = Factory.Services.CreateScope();
-            await scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.EnsureDeletedAsync();
-        }
-        finally { await Factory.DisposeAsync(); }
-    }
+    public Task DisposeAsync() => TestDatabase.DisposeHostsThenDropAsync(_conn, Factory);
 }
 
 public static class TaxHttp

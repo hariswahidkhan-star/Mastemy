@@ -108,7 +108,7 @@ public class AnnouncementService(AppDbContext db, ICurrentUser me, AccessService
 public enum IssueCategory { VideoUnavailable, ContentError, QuestionError, Other }
 
 /// <summary>Learner issue reports, stored as audit entries ("issue.reported" on the Course) and pushed to course authors.</summary>
-public class IssueReportService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit, INotificationService notify)
+public class IssueReportService(AppDbContext db, ICurrentUser me, AccessService access, INotificationService notify)
 {
     public const string Action = "issue.reported";
     public const int BodyMax = 2000, MaxPerUserPerDay = 10;

@@ -58,9 +58,12 @@ public sealed class TestHooksStartupFilter : IStartupFilter
             await nxt();
         });
         next(app);
-        app.Run(ctx => ctx.Request.Path == "/__test/throw"
-            ? throw new InvalidOperationException("secret-internal-detail at Mastemy.Internal.Thing")
-            : Task.FromResult(ctx.Response.StatusCode = StatusCodes.Status404NotFound));
+        app.Run(ctx =>
+        {
+            if (ctx.Request.Path == "/__test/throw") throw new InvalidOperationException("secret-internal-detail at Mastemy.Internal.Thing");
+            ctx.Response.StatusCode = StatusCodes.Status404NotFound;
+            return Task.CompletedTask;
+        });
     };
 }
 

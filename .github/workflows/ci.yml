@@ -37,7 +37,7 @@ jobs:
       - run: mysql -h127.0.0.1 -uroot -proot -e "GRANT ALL ON *.* TO 'mastemy'@'%'; FLUSH PRIVILEGES;"
       - run: dotnet build Mastemy.slnx -c Release
       - run: dotnet test Mastemy.slnx -c Release --no-build
-        env: { MASTEMY_TEST_MYSQL: "Server=127.0.0.1;Port=3306;User=mastemy;Password=mastemy_dev_pw;" }
+        env: { MASTEMY_TEST_MYSQL: "Server=127.0.0.1;Port=3306;User=mastemy;Password=mastemy_dev_pw;SslMode=Disabled;AllowPublicKeyRetrieval=true;" }
 
   openapi:
     name: OpenAPI drift

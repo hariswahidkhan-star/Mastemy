@@ -609,12 +609,13 @@ public partial class UploadRelayService(AppDbContext db, ICurrentUser me, Access
 /// <summary>Read-only forward stream exposing exactly <c>length</c> bytes of the inner stream (never buffers).</summary>
 public sealed class BoundedReadStream(Stream inner, long length) : Stream
 {
+    private readonly long _length = length;
     private long _remaining = length;
     public override bool CanRead => true;
     public override bool CanSeek => false;
     public override bool CanWrite => false;
-    public override long Length => length;
-    public override long Position { get => length - _remaining; set => throw new NotSupportedException(); }
+    public override long Length => _length;
+    public override long Position { get => _length - _remaining; set => throw new NotSupportedException(); }
     public override void Flush() { }
     public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
     public override void SetLength(long value) => throw new NotSupportedException();

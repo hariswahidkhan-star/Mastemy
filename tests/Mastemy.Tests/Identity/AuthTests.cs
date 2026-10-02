@@ -178,14 +178,14 @@ public class AuthTests(IdentityFixture f) : IClassFixture<IdentityFixture>
         await using (var db = f.NewDb())
         {
             Assert.False(await db.RefreshTokens.AnyAsync(t => t.TokenHash == first.RefreshToken || t.TokenHash == second.RefreshToken));
-            var old = await db.RefreshTokens.SingleAsync(t => t.TokenHash == Tokens.Sha256(first.RefreshToken));
+            var old = await db.RefreshTokens.SingleAsync(t => t.TokenHash == Tokens.Sha256(first.RefreshToken!));
             Assert.NotNull(old.RevokedAt);
             Assert.NotNull(old.ReplacedById);
         }
 
         // Reuse of the rotated-out token outside the grace window: rejected and the whole family is revoked.
         await using (var db = f.NewDb())
-            await db.RefreshTokens.Where(t => t.TokenHash == Tokens.Sha256(first.RefreshToken))
+            await db.RefreshTokens.Where(t => t.TokenHash == Tokens.Sha256(first.RefreshToken!))
                 .ExecuteUpdateAsync(x => x.SetProperty(t => t.RevokedAt, DateTime.UtcNow.AddMinutes(-5)));
         var reuse = await c.PostAsJsonAsync("/api/auth/refresh", new { refreshToken = first.RefreshToken });
         Assert.Equal(HttpStatusCode.Unauthorized, reuse.StatusCode);

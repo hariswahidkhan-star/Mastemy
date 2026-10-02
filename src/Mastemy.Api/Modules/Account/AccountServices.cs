@@ -77,7 +77,7 @@ internal static partial class AccountRules
     }
 }
 
-public class ProfileService(AppDbContext db, ICurrentUser me, AuditService audit)
+public class ProfileService(AppDbContext db, ICurrentUser me)
 {
     private async Task<AccountProfile> GetOrCreate(Guid uid)
     {

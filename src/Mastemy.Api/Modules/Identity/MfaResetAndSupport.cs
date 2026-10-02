@@ -141,7 +141,7 @@ public class SupportController(SupportService support) : ControllerBase
     public Task<List<UserLookupDto>> Lookup([FromQuery] string? q, [FromQuery] int limit = 10) => support.Lookup(q, limit);
 
     [HttpGet("users/{id:guid}")]
-    public Task<SupportUserDto> User(Guid id) => support.User(id);
+    public Task<SupportUserDto> GetUser(Guid id) => support.User(id);
 
     [HttpPost("users/{id:guid}/email-verification/resend")]
     public async Task<IActionResult> Resend(Guid id) { await support.ResendVerification(id); return Accepted(); }

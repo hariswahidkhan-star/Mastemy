@@ -54,8 +54,7 @@ public class TrustDb : IAsyncLifetime
 
     public virtual async Task DisposeAsync()
     {
-        await WithDb(db => db.Database.EnsureDeletedAsync());
-        foreach (var f in _factories) await f.DisposeAsync();
+        await TestDatabase.DisposeHostsThenDropAsync(ConnectionString, [.. _factories]);
         try { Directory.Delete(RootPath, true); } catch (IOException) { }
     }
 

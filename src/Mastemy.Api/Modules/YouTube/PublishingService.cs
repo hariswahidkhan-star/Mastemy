@@ -24,7 +24,7 @@ public record ThumbnailResult(string VideoId);
 /// (or staff). The caller must also be an author of the course concerned (or staff). Nothing is stored locally.
 /// </summary>
 public partial class PublishingService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit, GoogleOAuthClient google,
-    IHttpClientFactory http, IOptions<YouTubeOptions> options, IConfiguration cfg, IWebHostEnvironment env,
+    IHttpClientFactory http, IOptions<YouTubeOptions> options,
     Mastemy.Api.Modules.Resources.IResourceStorage storage)
 {
     public const long MaxThumbnailBytes = 2 * 1024 * 1024;

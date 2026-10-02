@@ -163,7 +163,7 @@ public static class Bm25
 }
 
 /// <summary>Rebuilds a course's chunk index from its CURRENT PUBLISHED snapshot (never from working rows or the question bank).</summary>
-public class AiIndexer(AppDbContext db, CourseSnapshotService snapshots, IResourceStorage storage, AiOptions opt, ILogger<AiIndexer> log)
+public class AiIndexer(AppDbContext db, IResourceStorage storage, AiOptions opt, ILogger<AiIndexer> log)
 {
     /// <summary>Ensures the index matches the course's published version; returns the indexed version (0 = nothing indexable).</summary>
     public async Task<int> EnsureIndexed(Guid courseId, CancellationToken ct, bool force = false)
