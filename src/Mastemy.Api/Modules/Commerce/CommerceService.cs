@@ -20,7 +20,7 @@ public record CheckoutResponse(Guid OrderId, string? CheckoutUrl, string Status 
     decimal ListAmount = 0, decimal Discount = 0, string PriceSource = "Base", decimal? CompareAtAmount = null, DateTime? OfferEndsAt = null);
 public record OrderItemDto(Guid PackageId, Guid CourseId, string PackageTitle, string CourseTitle, decimal UnitPrice);
 public record OrderDto(Guid Id, string Status, decimal Total, string Currency, DateTime CreatedAt, DateTime? PaidAt,
-    List<OrderItemDto> Items, string? RefundStatus, bool RefundEligible);
+    List<OrderItemDto> Items, string? RefundStatus, bool RefundEligible, bool IsGift = false, string? GiftStatus = null, bool GiftCodeRevealed = false);
 public record RefundRequestInput(string Reason);
 public record RefundDto(Guid Id, Guid OrderId, Guid UserId, decimal Amount, string Currency, string Reason, string Status,
     string? ProviderRefundId, DateTime CreatedAt);
@@ -381,11 +381,15 @@ public class CommerceService(AppDbContext db, ICurrentUser me, AccessService acc
         var courses = await db.Courses.AsNoTracking().Where(c => courseIds.Contains(c.Id)).ToDictionaryAsync(c => c.Id, c => c.Title);
         var refunds = (await db.Refunds.AsNoTracking().Where(r => ids.Contains(r.OrderId)).OrderBy(r => r.CreatedAt).ToListAsync())
             .GroupBy(r => r.OrderId).ToDictionary(g => g.Key, g => g.Last().Status);
+        var gifts = await db.Set<GiftCode>().AsNoTracking().Where(g => ids.Contains(g.OrderId))
+            .Select(g => new { g.OrderId, g.Status, g.RevealedAt }).ToDictionaryAsync(g => g.OrderId);
+        var giftOrders = (await db.Set<OrderDetail>().AsNoTracking().Where(d => ids.Contains(d.OrderId) && d.Kind == "Gift").Select(d => d.OrderId).ToListAsync()).ToHashSet();
         var cutoff = DateTime.UtcNow.AddDays(-RefundWindowDays);
         return orders.Select(o => new OrderDto(o.Id, o.Status.ToString(), o.Total, o.Currency, o.CreatedAt, o.PaidAt,
             o.Items.Select(i => new OrderItemDto(i.PackageId, i.CourseId, pkgs.GetValueOrDefault(i.PackageId, ""), courses.GetValueOrDefault(i.CourseId, ""), i.UnitPrice)).ToList(),
             refunds.GetValueOrDefault(o.Id),
-            o.Status == OrderStatus.Paid && o.PaidAt >= cutoff && refunds.GetValueOrDefault(o.Id) is null or "Rejected")).ToList();
+            o.Status == OrderStatus.Paid && o.PaidAt >= cutoff && refunds.GetValueOrDefault(o.Id) is null or "Rejected",
+            giftOrders.Contains(o.Id) || gifts.ContainsKey(o.Id), gifts.GetValueOrDefault(o.Id)?.Status ?? (giftOrders.Contains(o.Id) ? "Pending" : null), gifts.GetValueOrDefault(o.Id)?.RevealedAt is not null)).ToList();
     }
 
     public async Task<RefundDto> RequestRefund(Guid orderId, RefundRequestInput input)

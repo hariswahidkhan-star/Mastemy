@@ -262,7 +262,11 @@ public partial class CatalogQueryService(AppDbContext db, CourseSnapshotService 
 
     private const string VocabCacheKey = "catalog:vocabulary";
 
-    /// <summary>Lower-cased words (≥ 3 chars) of live snapshot titles/subtitles and active skill names; cached in memory for 10 minutes.</summary>
+    /// <summary>
+    /// Lower-cased words (≥ 3 chars) of live snapshot titles/subtitles and active skill names; cached in memory for 10 minutes.
+    /// Publish/archive invalidate the cache of the instance that handled the request; other instances of a multi-instance
+    /// deployment keep their copy until the 10-minute TTL expires, so new titles reach their "did you mean" vocabulary within that window.
+    /// </summary>
     public async Task<HashSet<string>> Vocabulary()
     {
         if (cache.TryGetValue(VocabCacheKey, out HashSet<string>? v) && v is not null) return v;
@@ -274,7 +278,10 @@ public partial class CatalogQueryService(AppDbContext db, CourseSnapshotService 
         return words;
     }
 
-    public void InvalidateVocabulary() => cache.Remove(VocabCacheKey);
+    public void InvalidateVocabulary() => InvalidateVocabulary(cache);
+
+    /// <summary>Drops this process's cached vocabulary (in-process only; see <see cref="Vocabulary"/> for the multi-instance TTL).</summary>
+    public static void InvalidateVocabulary(IMemoryCache cache) => cache.Remove(VocabCacheKey);
 
     [System.Text.RegularExpressions.GeneratedRegex(@"[^\p{L}\p{N}]+")] private static partial System.Text.RegularExpressions.Regex WordRx();
 

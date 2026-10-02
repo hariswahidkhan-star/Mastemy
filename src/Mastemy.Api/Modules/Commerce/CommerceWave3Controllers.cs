@@ -11,6 +11,9 @@ public class CommercePublicController(PricingService pricing, SubscriptionServic
     [HttpGet("api/packages/{id:guid}/price")]
     public Task<PriceView> Price(Guid id, [FromQuery] string? currency, [FromQuery] string? country) => pricing.PublicPrice(id, currency, country);
 
+    [HttpGet("api/commerce/currencies")]
+    public Task<List<CurrencyOptionDto>> Currencies([FromQuery] Guid? packageId, [FromQuery] Guid? courseId) => pricing.PublicCurrencies(packageId, courseId);
+
     [HttpGet("api/bundles")]
     public Task<List<BundleDto>> Bundles() => pricing.PublicBundles();
 
@@ -63,6 +66,9 @@ public class CommerceBuyerController(PricingService pricing, SubscriptionService
 [Authorize(Policy = "Instructor")]
 public class CommerceStudioController(PricingService pricing, FinanceService finance, Mastemy.Api.Infrastructure.ICurrentUser me) : ControllerBase
 {
+    [HttpGet("api/studio/commerce/policy")]
+    public CommercePolicyDto Policy() => pricing.Policy();
+
     [HttpPost("api/studio/coupons")]
     public Task<CouponDto> CreateCoupon(CouponInput input) => pricing.CreateCoupon(input, false);
 
@@ -147,6 +153,9 @@ public class CommerceAdminController(PricingService pricing, SubscriptionService
 
     [HttpPost("api/admin/bundles")]
     public Task<BundleDto> CreateBundle(BundleInput input) => pricing.CreateBundle(input);
+
+    [HttpGet("api/admin/bundles")]
+    public Task<List<BundleDto>> AdminBundles([FromQuery] bool includeInactive = false) => pricing.AdminBundles(includeInactive);
 
     [HttpPost("api/admin/bundles/{id:guid}/status")]
     public Task<BundleDto> BundleStatus(Guid id, BundleStatusInput input) => pricing.SetBundleStatus(id, input);

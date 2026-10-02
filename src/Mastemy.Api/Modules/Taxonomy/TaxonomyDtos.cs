@@ -70,9 +70,18 @@ public record AcademyDto(CategoryDto Category, IReadOnlyList<PathwaySummaryDto> 
 public record BestsellerRunDto(int CoursesConsidered, int Eligible, DateTime WindowStart, DateTime ComputedAt);
 
 // ---------- Instructors ----------
-public record InstructorSummaryDto(Guid Id, string DisplayName, int LiveCourseCount, decimal? RatingAverage, int RatingCount);
+/// <summary>Headline/Bio come from the instructor's account profile and are present only when they opted into a public profile.</summary>
+public record InstructorSummaryDto(Guid Id, string DisplayName, int LiveCourseCount, decimal? RatingAverage, int RatingCount, string? Headline = null);
 public record InstructorProfileDto(Guid Id, string DisplayName, int LiveCourseCount, decimal? RatingAverage, int RatingCount,
-    IReadOnlyList<CourseCardDto> Courses);
+    IReadOnlyList<CourseCardDto> Courses, string? Headline = null, string? Bio = null);
+
+// ---------- Objective mappings / linked courses / bestsellers / notes library ----------
+public record ObjectiveMappingDto(Guid ObjectiveId, string Code, string Title, IReadOnlyList<Guid> LessonIds, IReadOnlyList<Guid> QuestionIds);
+public record CertificationMappingsDto(Guid CertificationId, Guid CourseId, bool Linked, IReadOnlyList<ObjectiveMappingDto> Objectives);
+public record LinkedCourseDto(Guid CourseId, string Slug, string Title, CourseStatus Status, bool IsLive, DateTime LinkedAt);
+public record BestsellerRowDto(Guid CourseId, string CourseTitle, string CourseSlug, int DistinctBuyers, decimal NetRevenue, bool Eligible,
+    DateTime WindowStart, DateTime ComputedAt);
+public record NotesLibraryItemDto(CourseCardDto Course, bool HasNotes, int LessonsWithNotes);
 
 // ---------- Backlog ----------
 public record CourseIdeaUpsertRequest(string Title, string? Audience, string? Rationale, string? DemandEvidence, string? Group,

@@ -297,6 +297,47 @@ public partial class CertificationService(AppDbContext db, ICurrentUser me, Audi
         return await Coverage(o.CertificationId, courseId);
     }
 
+    /// <summary>
+    /// Current lesson/question → objective mappings of one course for a certification (course authors, reviewers, staff).
+    /// Only mappings to the course's own lessons/questions are returned.
+    /// </summary>
+    public async Task<CertificationMappingsDto> Mappings(Guid certId, Guid courseId)
+    {
+        if (!await db.Set<Certification>().AnyAsync(x => x.Id == certId)) throw AppException.NotFound("Certification");
+        if (!await db.Courses.AnyAsync(x => x.Id == courseId)) throw AppException.NotFound("Course");
+        await access.RequireCourseAuthorOrStaff(courseId);
+        var linked = await db.Set<CourseCertification>().AnyAsync(x => x.CertificationId == certId && x.CourseId == courseId);
+        var objectives = await db.Set<CertificationObjective>().AsNoTracking().Where(o => o.CertificationId == certId)
+            .OrderBy(o => o.SortOrder).ThenBy(o => o.Code).ToListAsync();
+        var objIds = objectives.Select(o => o.Id).ToList();
+        var lessons = await (from ol in db.Set<ObjectiveLesson>().AsNoTracking()
+                             join l in db.Lessons.AsNoTracking() on ol.LessonId equals l.Id
+                             join m in db.Modules.AsNoTracking() on l.ModuleId equals m.Id
+                             where objIds.Contains(ol.ObjectiveId) && m.CourseId == courseId
+                             orderby m.SortOrder, l.SortOrder
+                             select new { ol.ObjectiveId, ol.LessonId }).ToListAsync();
+        var questions = await (from oq in db.Set<ObjectiveQuestion>().AsNoTracking()
+                               join q in db.Questions.AsNoTracking() on oq.QuestionId equals q.Id
+                               where objIds.Contains(oq.ObjectiveId) && q.CourseId == courseId
+                               orderby q.Id
+                               select new { oq.ObjectiveId, oq.QuestionId }).ToListAsync();
+        return new CertificationMappingsDto(certId, courseId, linked, objectives.Select(o => new ObjectiveMappingDto(o.Id, o.Code, o.Title,
+            lessons.Where(x => x.ObjectiveId == o.Id).Select(x => x.LessonId).ToList(),
+            questions.Where(x => x.ObjectiveId == o.Id).Select(x => x.QuestionId).ToList())).ToList());
+    }
+
+    /// <summary>Courses linked to a certification, live or not (reviewers/staff).</summary>
+    public async Task<List<LinkedCourseDto>> LinkedCourses(Guid certId)
+    {
+        if (!await db.Set<Certification>().AnyAsync(x => x.Id == certId)) throw AppException.NotFound("Certification");
+        var rows = await (from l in db.Set<CourseCertification>().AsNoTracking()
+                          join c in db.Courses.AsNoTracking() on l.CourseId equals c.Id
+                          where l.CertificationId == certId
+                          orderby c.Title
+                          select new { c.Id, c.Slug, c.Title, c.Status, c.PublishedAt, l.CreatedAt }).ToListAsync();
+        return rows.Select(r => new LinkedCourseDto(r.Id, r.Slug, r.Title, r.Status, AccessService.IsLive(r.Status, r.PublishedAt), r.CreatedAt)).ToList();
+    }
+
     /// <summary>Course authors/reviewers/staff: coverage of a certification's objectives by one course.</summary>
     public async Task<CoverageReportDto> CourseCoverage(Guid certId, Guid courseId)
     {

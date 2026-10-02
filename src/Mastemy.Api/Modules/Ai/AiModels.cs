@@ -228,6 +228,8 @@ public class AiOptions
     public int UserMonthlyTokens { get; set; } = 200_000;
     public int PremiumUserMonthlyTokens { get; set; } = 600_000;
     public int InstructorMonthlyTokens { get; set; } = 2_000_000;
+    /// <summary>Token budget granted per AI request of a subscription plan's AiAllowance (plan allowance × this = monthly tokens).</summary>
+    public int TokensPerAllowanceRequest { get; set; } = 8_000;
     public long OrgMonthlyTokens { get; set; } = 5_000_000;
     public long GlobalMonthlyTokens { get; set; } = 200_000_000;
     public int PerUserPerMinute { get; set; } = 10;
