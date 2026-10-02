@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0917",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 476,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0917-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Laravel, what is the primary purpose of a FormRequest class?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Encapsulate authorization and validation rules for an incoming request",
+     "correct": true,
+     "rationale": "Correct: a FormRequest holds both the authorize() check and the validation rules, keeping controllers thin."
+    },
+    {
+     "key": "B",
+     "text": "Render the HTML form shown to the user",
+     "correct": false,
+     "rationale": "Rendering is Blade's job; a FormRequest never produces HTML."
+    },
+    {
+     "key": "C",
+     "text": "Open a database transaction for every request",
+     "correct": false,
+     "rationale": "FormRequests do not manage transactions; that is done explicitly or via the model layer."
+    },
+    {
+     "key": "D",
+     "text": "Define the application's route table",
+     "correct": false,
+     "rationale": "Routes are declared in the routes files, not in a FormRequest."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a FormRequest holds both the authorize() check and the validation rules, keeping controllers thin.",
+   "outcome_refs": [
+    "MST-0917-D03.02"
+   ],
+   "domain_ref": "Blade, forms and validation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0917-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques reduce the N+1 query problem when listing projects with their tasks in Eloquent?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Eager load the tasks relationship with with('tasks')",
+     "correct": true,
+     "rationale": "Correct: eager loading fetches related tasks in one additional query instead of one per project."
+    },
+    {
+     "key": "B",
+     "text": "Use lazy eager loading via load('tasks') after fetching the projects",
+     "correct": true,
+     "rationale": "Correct: load() eager loads on an existing collection, also collapsing the per-row queries."
+    },
+    {
+     "key": "C",
+     "text": "Wrap the loop in a database transaction",
+     "correct": false,
+     "rationale": "A transaction controls atomicity, not how many SELECT queries run."
+    },
+    {
+     "key": "D",
+     "text": "Call each task relationship inside the Blade view with no preloading",
+     "correct": false,
+     "rationale": "Accessing the relationship per row inside the view is exactly what triggers the N+1 problem."
+    },
+    {
+     "key": "E",
+     "text": "Increase the database connection pool size",
+     "correct": false,
+     "rationale": "A larger pool does not reduce the number of queries each request issues."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: eager loading fetches related tasks in one additional query instead of one per project.",
+   "outcome_refs": [
+    "MST-0917-D02.02"
+   ],
+   "domain_ref": "Eloquent ORM and the database",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0917-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A queued job in Laravel appears never to run in production. Which is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "No queue worker process is running to consume the jobs",
+     "correct": true,
+     "rationale": "Correct: queued jobs sit on the queue until a worker (queue:work) processes them."
+    },
+    {
+     "key": "B",
+     "text": "The job class is missing a constructor",
+     "correct": false,
+     "rationale": "A constructor is optional; its absence does not stop dispatch."
+    },
+    {
+     "key": "C",
+     "text": "Blade cannot render the job output",
+     "correct": false,
+     "rationale": "Jobs do not render Blade views, so this is unrelated."
+    },
+    {
+     "key": "D",
+     "text": "The route cache is stale",
+     "correct": false,
+     "rationale": "Route caching affects HTTP routing, not queue consumption."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: queued jobs sit on the queue until a worker (queue:work) processes them.",
+   "outcome_refs": [
+    "MST-0917-D05.01"
+   ],
+   "domain_ref": "Queues, events and the ecosystem",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

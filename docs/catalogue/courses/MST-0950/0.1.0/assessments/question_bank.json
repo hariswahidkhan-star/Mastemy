@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0950",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 344,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0950-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Redis data structure is the natural fit for a score-ranked leaderboard?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A sorted set (ZSET)",
+     "correct": true,
+     "rationale": "Correct: sorted sets keep members ordered by score, ideal for ranking."
+    },
+    {
+     "key": "B",
+     "text": "A plain string",
+     "correct": false,
+     "rationale": "A string cannot rank many members by score."
+    },
+    {
+     "key": "C",
+     "text": "A list",
+     "correct": false,
+     "rationale": "Lists preserve insertion order, not score order."
+    },
+    {
+     "key": "D",
+     "text": "A hash",
+     "correct": false,
+     "rationale": "A hash maps fields to values but does not rank by score."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sorted sets keep members ordered by score, ideal for ranking.",
+   "outcome_refs": [
+    "MST-0950-D02.02"
+   ],
+   "domain_ref": "Core data structures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0950-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about the cache-aside pattern with Redis are correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "On a cache miss the application loads from the source and then populates Redis",
+     "correct": true,
+     "rationale": "Correct: cache-aside fills the cache lazily on a miss."
+    },
+    {
+     "key": "B",
+     "text": "A TTL helps bound how long stale data can be served",
+     "correct": true,
+     "rationale": "Correct: an expiry limits the staleness window when the source changes."
+    },
+    {
+     "key": "C",
+     "text": "Redis automatically detects source changes and refreshes the cache",
+     "correct": false,
+     "rationale": "Redis has no knowledge of the source; invalidation is the application's job."
+    },
+    {
+     "key": "D",
+     "text": "Cache-aside guarantees the cache is always consistent with the source",
+     "correct": false,
+     "rationale": "There is always a window where cache and source can diverge."
+    },
+    {
+     "key": "E",
+     "text": "Cache-aside requires disabling expiry entirely",
+     "correct": false,
+     "rationale": "Expiry is commonly used alongside cache-aside."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: cache-aside fills the cache lazily on a miss.",
+   "outcome_refs": [
+    "MST-0950-D03.01"
+   ],
+   "domain_ref": "Caching patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0950-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main durability trade-off of RDB snapshots versus AOF in Redis?",
+   "options": [
+    {
+     "key": "A",
+     "text": "RDB can lose writes since the last snapshot, while AOF logs each write for better durability",
+     "correct": true,
+     "rationale": "Correct: RDB persists point-in-time snapshots; AOF appends operations for finer-grained recovery."
+    },
+    {
+     "key": "B",
+     "text": "AOF uses less disk and is always faster to load",
+     "correct": false,
+     "rationale": "AOF files are typically larger and can be slower to replay."
+    },
+    {
+     "key": "C",
+     "text": "RDB keeps every single write with no loss",
+     "correct": false,
+     "rationale": "RDB only captures state as of the last snapshot."
+    },
+    {
+     "key": "D",
+     "text": "Neither option affects durability",
+     "correct": false,
+     "rationale": "Both are precisely about durability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RDB persists point-in-time snapshots; AOF appends operations for finer-grained recovery.",
+   "outcome_refs": [
+    "MST-0950-D04.01"
+   ],
+   "domain_ref": "Persistence, performance and operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

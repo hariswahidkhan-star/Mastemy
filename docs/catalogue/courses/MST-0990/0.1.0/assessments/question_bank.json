@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0990",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 476,
+  "lesson_check_items": 72,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0990-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What distinguishes continuous deployment from continuous delivery?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Continuous deployment releases every passing change to production automatically, with no manual gate",
+     "correct": true,
+     "rationale": "Correct: continuous delivery keeps a manual release decision; continuous deployment automates it."
+    },
+    {
+     "key": "B",
+     "text": "Continuous deployment skips automated testing",
+     "correct": false,
+     "rationale": "Both rely heavily on automated testing."
+    },
+    {
+     "key": "C",
+     "text": "Continuous delivery never builds artifacts",
+     "correct": false,
+     "rationale": "Continuous delivery still builds and prepares releasable artifacts."
+    },
+    {
+     "key": "D",
+     "text": "They are identical terms",
+     "correct": false,
+     "rationale": "They differ specifically on whether the final production release is automatic."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: continuous delivery keeps a manual release decision; continuous deployment automates it.",
+   "outcome_refs": [
+    "MST-0990-D01.01"
+   ],
+   "domain_ref": "CI/CD foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0990-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices strengthen the security of a release pipeline?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Granting each pipeline job only the scoped credentials it needs",
+     "correct": true,
+     "rationale": "Correct: least privilege limits the blast radius of a compromised job."
+    },
+    {
+     "key": "B",
+     "text": "Scanning dependencies and artifacts for known vulnerabilities in the pipeline",
+     "correct": true,
+     "rationale": "Correct: supply-chain scanning catches vulnerable components before release."
+    },
+    {
+     "key": "C",
+     "text": "Storing production secrets in the repository for convenience",
+     "correct": false,
+     "rationale": "Committed secrets are a serious exposure and should be kept in a secret store."
+    },
+    {
+     "key": "D",
+     "text": "Sharing one admin token across every pipeline",
+     "correct": false,
+     "rationale": "A shared broad token violates least privilege and widens risk."
+    },
+    {
+     "key": "E",
+     "text": "Disabling approvals to deploy faster",
+     "correct": false,
+     "rationale": "Removing gates for sensitive environments weakens control, not security."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: least privilege limits the blast radius of a compromised job.",
+   "outcome_refs": [
+    "MST-0990-D03.02"
+   ],
+   "domain_ref": "Pipeline security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0990-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is promoting a single built artifact through environments preferred over rebuilding per environment?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It guarantees the tested artifact is the one that reaches production",
+     "correct": true,
+     "rationale": "Correct: promoting one immutable artifact avoids environment-specific build drift."
+    },
+    {
+     "key": "B",
+     "text": "It makes builds slower on purpose",
+     "correct": false,
+     "rationale": "Promotion is about consistency, not slowing builds."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any testing",
+     "correct": false,
+     "rationale": "Testing is still essential; promotion does not replace it."
+    },
+    {
+     "key": "D",
+     "text": "It stores secrets inside the artifact",
+     "correct": false,
+     "rationale": "Secrets should be injected at deploy time, not baked in."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: promoting one immutable artifact avoids environment-specific build drift.",
+   "outcome_refs": [
+    "MST-0990-D02.01"
+   ],
+   "domain_ref": "Build and test automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

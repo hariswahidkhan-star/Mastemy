@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0991",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 344,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0991-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In GitHub Actions, what is the relationship between jobs in a single workflow by default?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each job runs on its own fresh runner and they run in parallel unless a dependency is declared",
+     "correct": true,
+     "rationale": "Correct: jobs are isolated and parallel by default; needs declares ordering."
+    },
+    {
+     "key": "B",
+     "text": "All jobs run as steps in one shared shell session",
+     "correct": false,
+     "rationale": "Steps share a runner within a job, but jobs are separate."
+    },
+    {
+     "key": "C",
+     "text": "Jobs always run strictly in file order on one runner",
+     "correct": false,
+     "rationale": "Jobs are parallel unless ordered with needs."
+    },
+    {
+     "key": "D",
+     "text": "Jobs cannot run in parallel",
+     "correct": false,
+     "rationale": "Parallelism is the default when there is no dependency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: jobs are isolated and parallel by default; needs declares ordering.",
+   "outcome_refs": [
+    "MST-0991-D01.01"
+   ],
+   "domain_ref": "Workflow fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0991-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve the security of a GitHub Actions workflow?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Pinning third-party actions to a specific commit SHA or reviewed version",
+     "correct": true,
+     "rationale": "Correct: pinning prevents a moved tag from introducing unreviewed code."
+    },
+    {
+     "key": "B",
+     "text": "Setting the workflow permissions to the least the jobs require",
+     "correct": true,
+     "rationale": "Correct: scoping GITHUB_TOKEN permissions limits what a compromised run can do."
+    },
+    {
+     "key": "C",
+     "text": "Echoing secrets to the log to confirm their values",
+     "correct": false,
+     "rationale": "Printing secrets risks exposing them in logs."
+    },
+    {
+     "key": "D",
+     "text": "Running untrusted fork pull requests with full secret access",
+     "correct": false,
+     "rationale": "Forked PRs should not receive privileged secrets."
+    },
+    {
+     "key": "E",
+     "text": "Using a single personal access token with admin scope everywhere",
+     "correct": false,
+     "rationale": "A broad shared token violates least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pinning prevents a moved tag from introducing unreviewed code.",
+   "outcome_refs": [
+    "MST-0991-D03.01"
+   ],
+   "domain_ref": "Secrets, permissions and security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0991-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How do you ensure a test workflow actually blocks a merge when it fails?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Configure it as a required status check in branch protection",
+     "correct": true,
+     "rationale": "Correct: branch protection with required checks enforces that the workflow must pass to merge."
+    },
+    {
+     "key": "B",
+     "text": "Add a comment asking reviewers to check it",
+     "correct": false,
+     "rationale": "A comment does not enforce anything automatically."
+    },
+    {
+     "key": "C",
+     "text": "Name the workflow 'required' in the YAML",
+     "correct": false,
+     "rationale": "The file name does not enforce merge rules."
+    },
+    {
+     "key": "D",
+     "text": "Run the workflow only on a schedule",
+     "correct": false,
+     "rationale": "A scheduled run does not gate pull-request merges."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: branch protection with required checks enforces that the workflow must pass to merge.",
+   "outcome_refs": [
+    "MST-0991-D04.02"
+   ],
+   "domain_ref": "Deployment and governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0922",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 344,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0922-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the key difference between val and var in Scala?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A val binding cannot be reassigned, while a var can",
+     "correct": true,
+     "rationale": "Correct: val is an immutable binding; var allows reassignment."
+    },
+    {
+     "key": "B",
+     "text": "A val is typed and a var is untyped",
+     "correct": false,
+     "rationale": "Both are statically typed; immutability is the distinction."
+    },
+    {
+     "key": "C",
+     "text": "A val lives on the heap and a var on the stack",
+     "correct": false,
+     "rationale": "Memory placement is not what distinguishes them."
+    },
+    {
+     "key": "D",
+     "text": "A val can only hold numbers",
+     "correct": false,
+     "rationale": "A val can hold any type."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: val is an immutable binding; var allows reassignment.",
+   "outcome_refs": [
+    "MST-0922-D01.01"
+   ],
+   "domain_ref": "Scala language foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0922-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are idiomatic ways to represent the possible absence or failure of a value in Scala?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Option, with Some and None",
+     "correct": true,
+     "rationale": "Correct: Option models a value that may be absent."
+    },
+    {
+     "key": "B",
+     "text": "Either, with Left for error and Right for success",
+     "correct": true,
+     "rationale": "Correct: Either carries either an error or a successful value."
+    },
+    {
+     "key": "C",
+     "text": "Returning null when no value exists",
+     "correct": false,
+     "rationale": "null defeats the type system's absence handling and is discouraged."
+    },
+    {
+     "key": "D",
+     "text": "Throwing an exception for every empty result",
+     "correct": false,
+     "rationale": "Routine absence is better modelled with Option than with exceptions."
+    },
+    {
+     "key": "E",
+     "text": "Using a var set to -1 as a sentinel",
+     "correct": false,
+     "rationale": "Sentinel values are error-prone and non-idiomatic in Scala."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Option models a value that may be absent.",
+   "outcome_refs": [
+    "MST-0922-D03.02"
+   ],
+   "domain_ref": "Collections and error handling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0922-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When matching on a sealed trait, why does the compiler help you?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can warn when the match does not cover all subtypes",
+     "correct": true,
+     "rationale": "Correct: a sealed trait has a known set of subtypes, so the compiler can check exhaustiveness."
+    },
+    {
+     "key": "B",
+     "text": "It automatically parallelises the match",
+     "correct": false,
+     "rationale": "Pattern matching is not parallelised by sealing a trait."
+    },
+    {
+     "key": "C",
+     "text": "It converts the match into a database query",
+     "correct": false,
+     "rationale": "Matching has nothing to do with databases."
+    },
+    {
+     "key": "D",
+     "text": "It makes the match run at compile time only",
+     "correct": false,
+     "rationale": "The match still executes at runtime."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a sealed trait has a known set of subtypes, so the compiler can check exhaustiveness.",
+   "outcome_refs": [
+    "MST-0922-D02.02"
+   ],
+   "domain_ref": "Functional programming core",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

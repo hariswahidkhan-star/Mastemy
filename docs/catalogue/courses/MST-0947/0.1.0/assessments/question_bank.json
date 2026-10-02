@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0947",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 344,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0947-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Oracle SQL, which operator concatenates two strings?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The || operator",
+     "correct": true,
+     "rationale": "Correct: Oracle uses || (or the CONCAT function) for string concatenation."
+    },
+    {
+     "key": "B",
+     "text": "The + operator",
+     "correct": false,
+     "rationale": "+ performs arithmetic in Oracle, not string concatenation."
+    },
+    {
+     "key": "C",
+     "text": "The & operator",
+     "correct": false,
+     "rationale": "& is a substitution-variable prefix in SQL*Plus, not concatenation."
+    },
+    {
+     "key": "D",
+     "text": "The . operator",
+     "correct": false,
+     "rationale": ". qualifies object names; it does not join strings."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Oracle uses || (or the CONCAT function) for string concatenation.",
+   "outcome_refs": [
+    "MST-0947-D01.02"
+   ],
+   "domain_ref": "Oracle SQL foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0947-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid reasons to group related PL/SQL procedures into a package?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To group related logic behind a published specification",
+     "correct": true,
+     "rationale": "Correct: the package spec defines a public interface, hiding body details."
+    },
+    {
+     "key": "B",
+     "text": "To allow shared package-level state across calls in a session",
+     "correct": true,
+     "rationale": "Correct: package variables can persist for the duration of a session."
+    },
+    {
+     "key": "C",
+     "text": "To bypass all privilege checks on the underlying tables",
+     "correct": false,
+     "rationale": "Packages do not remove privilege requirements."
+    },
+    {
+     "key": "D",
+     "text": "To guarantee queries never need indexes",
+     "correct": false,
+     "rationale": "Packaging code has no effect on index needs."
+    },
+    {
+     "key": "E",
+     "text": "To convert PL/SQL into plain SQL automatically",
+     "correct": false,
+     "rationale": "A package still contains PL/SQL; it is not translated to SQL."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the package spec defines a public interface, hiding body details.",
+   "outcome_refs": [
+    "MST-0947-D03.02"
+   ],
+   "domain_ref": "PL/SQL programming",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0947-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why grant privileges through a role rather than directly to each user?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A role centralises privilege management and can be granted to many users at once",
+     "correct": true,
+     "rationale": "Correct: roles make privileges easier to assign, revoke and audit consistently."
+    },
+    {
+     "key": "B",
+     "text": "Roles make queries run faster",
+     "correct": false,
+     "rationale": "Roles are an access-control construct, not a performance feature."
+    },
+    {
+     "key": "C",
+     "text": "Roles remove the need for a password",
+     "correct": false,
+     "rationale": "Authentication is separate from role-based authorization."
+    },
+    {
+     "key": "D",
+     "text": "Roles automatically create indexes",
+     "correct": false,
+     "rationale": "Roles have nothing to do with indexing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: roles make privileges easier to assign, revoke and audit consistently.",
+   "outcome_refs": [
+    "MST-0947-D04.01"
+   ],
+   "domain_ref": "Administration foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

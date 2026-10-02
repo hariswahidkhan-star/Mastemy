@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0944",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 344,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0944-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a MySQL EXPLAIN plan, what does an access type of 'ALL' usually indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A full table scan, meaning no usable index was found for the query",
+     "correct": true,
+     "rationale": "Correct: type ALL means every row is examined, often a sign a helpful index is missing."
+    },
+    {
+     "key": "B",
+     "text": "The query is using the primary key efficiently",
+     "correct": false,
+     "rationale": "Primary-key access shows as const or eq_ref, not ALL."
+    },
+    {
+     "key": "C",
+     "text": "All columns are covered by an index",
+     "correct": false,
+     "rationale": "A covering index shows 'Using index' in Extra, not type ALL."
+    },
+    {
+     "key": "D",
+     "text": "The query returns all rows by design and is optimal",
+     "correct": false,
+     "rationale": "Returning all rows does not make a full scan optimal for a selective filter."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: type ALL means every row is examined, often a sign a helpful index is missing.",
+   "outcome_refs": [
+    "MST-0944-D01.02"
+   ],
+   "domain_ref": "How MySQL executes queries",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0944-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO conditions let a composite index on (status, created_at) be used effectively?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A query filtering on status alone",
+     "correct": true,
+     "rationale": "Correct: the left-prefix rule lets a leading-column filter use the index."
+    },
+    {
+     "key": "B",
+     "text": "A query filtering on status and ordering by created_at",
+     "correct": true,
+     "rationale": "Correct: this matches both the filter prefix and the index's sort order."
+    },
+    {
+     "key": "C",
+     "text": "A query filtering only on created_at",
+     "correct": false,
+     "rationale": "Skipping the leading status column means the index prefix cannot be used."
+    },
+    {
+     "key": "D",
+     "text": "A query that selects every row with no WHERE clause",
+     "correct": false,
+     "rationale": "With no filter the optimiser typically scans rather than seeks the index."
+    },
+    {
+     "key": "E",
+     "text": "A query filtering on an unrelated column",
+     "correct": false,
+     "rationale": "An unrelated filter cannot benefit from this index."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the left-prefix rule lets a leading-column filter use the index.",
+   "outcome_refs": [
+    "MST-0944-D02.02"
+   ],
+   "domain_ref": "Indexing strategy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0944-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a covering index valuable for a read-heavy query?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The query can be satisfied from the index without reading the table rows",
+     "correct": true,
+     "rationale": "Correct: when the index contains all needed columns MySQL avoids extra row lookups."
+    },
+    {
+     "key": "B",
+     "text": "It removes the need for a WHERE clause",
+     "correct": false,
+     "rationale": "A covering index does not change filtering logic."
+    },
+    {
+     "key": "C",
+     "text": "It automatically caches the result set forever",
+     "correct": false,
+     "rationale": "Covering indexes are not a result cache."
+    },
+    {
+     "key": "D",
+     "text": "It converts the table to an in-memory engine",
+     "correct": false,
+     "rationale": "The storage engine is unchanged by adding an index."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: when the index contains all needed columns MySQL avoids extra row lookups.",
+   "outcome_refs": [
+    "MST-0944-D02.01"
+   ],
+   "domain_ref": "Indexing strategy",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

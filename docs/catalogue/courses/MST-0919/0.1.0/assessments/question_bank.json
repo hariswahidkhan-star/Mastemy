@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0919",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 344,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0919-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the Rails convention 'resources :books' primarily generate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The seven RESTful routes mapping to standard controller actions",
+     "correct": true,
+     "rationale": "Correct: resources generates index, show, new, create, edit, update and destroy routes."
+    },
+    {
+     "key": "B",
+     "text": "A database table named books",
+     "correct": false,
+     "rationale": "Tables are created by migrations, not by the routes file."
+    },
+    {
+     "key": "C",
+     "text": "A Book model class with validations",
+     "correct": false,
+     "rationale": "Models are generated separately; the routes file only maps URLs."
+    },
+    {
+     "key": "D",
+     "text": "Compiled CSS for the books views",
+     "correct": false,
+     "rationale": "Asset compilation is unrelated to route declarations."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: resources generates index, show, new, create, edit, update and destroy routes.",
+   "outcome_refs": [
+    "MST-0919-D01.01"
+   ],
+   "domain_ref": "Rails fundamentals and MVC",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0919-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Active Record validations are correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They run when you call save or create on a model instance",
+     "correct": true,
+     "rationale": "Correct: validations fire during the normal save lifecycle."
+    },
+    {
+     "key": "B",
+     "text": "They can be bypassed by methods like update_column that skip validation",
+     "correct": true,
+     "rationale": "Correct: some methods write directly to the database and skip validations and callbacks."
+    },
+    {
+     "key": "C",
+     "text": "They are enforced automatically by every SQL statement in the database",
+     "correct": false,
+     "rationale": "Validations live in Ruby; the database only enforces its own constraints."
+    },
+    {
+     "key": "D",
+     "text": "They prevent the Rails server from starting if a record is invalid",
+     "correct": false,
+     "rationale": "Validations concern record persistence, not server boot."
+    },
+    {
+     "key": "E",
+     "text": "They require a separate validations table",
+     "correct": false,
+     "rationale": "Validations are declared in the model class, needing no extra table."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: validations fire during the normal save lifecycle.",
+   "outcome_refs": [
+    "MST-0919-D02.01"
+   ],
+   "domain_ref": "Active Record and the database",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0919-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does Rails use strong parameters in controllers?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To whitelist permitted attributes and prevent mass-assignment vulnerabilities",
+     "correct": true,
+     "rationale": "Correct: strong parameters require explicitly permitting attributes before assignment."
+    },
+    {
+     "key": "B",
+     "text": "To speed up database queries",
+     "correct": false,
+     "rationale": "Strong parameters are a security filter, not a query optimization."
+    },
+    {
+     "key": "C",
+     "text": "To compile view templates",
+     "correct": false,
+     "rationale": "They have nothing to do with template compilation."
+    },
+    {
+     "key": "D",
+     "text": "To define model associations",
+     "correct": false,
+     "rationale": "Associations are declared in the model, not via parameters."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: strong parameters require explicitly permitting attributes before assignment.",
+   "outcome_refs": [
+    "MST-0919-D03.02"
+   ],
+   "domain_ref": "Views, forms and the asset pipeline",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

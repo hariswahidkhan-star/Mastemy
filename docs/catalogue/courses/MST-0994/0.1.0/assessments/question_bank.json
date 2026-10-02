@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-0994",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 344,
+  "lesson_check_items": 48,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0994-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the difference between an SLO and an SLA?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An SLO is an internal reliability target; an SLA is an external commitment often with consequences",
+     "correct": true,
+     "rationale": "Correct: SLOs are internal goals, SLAs are contractual promises to customers."
+    },
+    {
+     "key": "B",
+     "text": "An SLO is contractual and an SLA is internal",
+     "correct": false,
+     "rationale": "This reverses the two definitions."
+    },
+    {
+     "key": "C",
+     "text": "They are two names for the same metric",
+     "correct": false,
+     "rationale": "They are distinct: target versus agreement."
+    },
+    {
+     "key": "D",
+     "text": "An SLA is a single measurement and an SLO is a dashboard",
+     "correct": false,
+     "rationale": "Neither is defined by being a measurement or a dashboard."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SLOs are internal goals, SLAs are contractual promises to customers.",
+   "outcome_refs": [
+    "MST-0994-D01.02"
+   ],
+   "domain_ref": "SRE foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0994-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about error budgets are correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An error budget is the allowed unreliability implied by the SLO",
+     "correct": true,
+     "rationale": "Correct: a 99.9% SLO implies a 0.1% error budget."
+    },
+    {
+     "key": "B",
+     "text": "When the budget is nearly spent, teams may slow risky releases to protect reliability",
+     "correct": true,
+     "rationale": "Correct: the budget is a shared signal for balancing change against stability."
+    },
+    {
+     "key": "C",
+     "text": "A 100% SLO is ideal because it gives the largest error budget",
+     "correct": false,
+     "rationale": "A 100% SLO leaves no error budget and no room to ship changes."
+    },
+    {
+     "key": "D",
+     "text": "Error budgets require alerting on every individual error",
+     "correct": false,
+     "rationale": "Good practice alerts on burn rate, not on each error."
+    },
+    {
+     "key": "E",
+     "text": "An error budget is the number of engineers on call",
+     "correct": false,
+     "rationale": "It is a reliability allowance, not a staffing count."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a 99.9% SLO implies a 0.1% error budget.",
+   "outcome_refs": [
+    "MST-0994-D03.01"
+   ],
+   "domain_ref": "Error budgets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing on exact key set",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0994-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why alert on error-budget burn rate rather than on every error?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Burn-rate alerting pages when loss is significant, reducing noise and alert fatigue",
+     "correct": true,
+     "rationale": "Correct: it focuses attention on meaningful budget consumption, not isolated errors."
+    },
+    {
+     "key": "B",
+     "text": "Burn-rate alerts remove the need for any SLO",
+     "correct": false,
+     "rationale": "Burn rate is derived from the SLO and error budget."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees zero incidents",
+     "correct": false,
+     "rationale": "No alerting strategy guarantees zero incidents."
+    },
+    {
+     "key": "D",
+     "text": "It replaces monitoring entirely",
+     "correct": false,
+     "rationale": "It is part of monitoring, not a replacement."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it focuses attention on meaningful budget consumption, not isolated errors.",
+   "outcome_refs": [
+    "MST-0994-D04.01"
+   ],
+   "domain_ref": "Reliability in practice",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
