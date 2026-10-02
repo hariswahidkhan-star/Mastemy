@@ -179,7 +179,7 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 
 | Step | Course ID | Title | Hours |
 |---|---|---|---|
-| 1 | `MST-1741` | Lean Six Sigma White Belt | 8 |
+| 1 | `MST-1741` | Lean Six Sigma White Belt | 25 |
 | 2 | `MST-0311` | ASQ Certified Six Sigma Yellow Belt: CSSYB | 45 |
 | 3 | `MST-0312` | ASQ Certified Six Sigma Green Belt: CSSGB | 45 |
 | 4 | `MST-0313` | ASQ Certified Six Sigma Black Belt: CSSBB | 25 |

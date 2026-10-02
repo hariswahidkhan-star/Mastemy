@@ -40,7 +40,8 @@ def rd(p):
 # them keeps the substantive integrity checks (key counts, rationales, stated
 # selection count, no claimed review) fully in force while tolerating harmless
 # representation differences in hand-authored sample items.
-ITEM_TYPE_ALIASES = {"single-answer-mcq": "single-answer", "multiple-answer-selection": "multiple-answer"}
+ITEM_TYPE_ALIASES = {"single-answer-mcq": "single-answer", "multiple-answer-selection": "multiple-answer",
+                     "single": "single-answer", "multiple": "multiple-answer"}
 SELECTION_RE = re.compile(r"(?:select|choose|identify|which)\s+(TWO|THREE|all that apply)", re.I)
 SELECTION_COUNT_RE = re.compile(r"\b(TWO|THREE)\b", re.I)
 
