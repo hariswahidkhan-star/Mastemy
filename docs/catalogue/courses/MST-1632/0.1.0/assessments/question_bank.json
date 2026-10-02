@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1632",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1632-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why hold out a separate test set when evaluating a model?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To estimate performance on data the model has not seen",
+     "correct": true,
+     "rationale": "Correct: a held-out set estimates generalisation."
+    },
+    {
+     "key": "B",
+     "text": "To give the model more data to learn from",
+     "correct": false,
+     "rationale": "The test set is not used for training."
+    },
+    {
+     "key": "C",
+     "text": "To guarantee the model is unbiased",
+     "correct": false,
+     "rationale": "A test set does not guarantee fairness."
+    },
+    {
+     "key": "D",
+     "text": "To speed up training",
+     "correct": false,
+     "rationale": "It does not affect training speed meaningfully."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a held-out set estimates generalisation.",
+   "outcome_refs": [
+    "MST-1632-D04.01"
+   ],
+   "domain_ref": "Modelling and evaluation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1632-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are forms of data leakage? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Using future information not available at prediction time",
+     "correct": true,
+     "rationale": "Correct: leaking the future inflates performance."
+    },
+    {
+     "key": "B",
+     "text": "Fitting a scaler on the full dataset before splitting",
+     "correct": true,
+     "rationale": "Correct: that leaks test statistics into training."
+    },
+    {
+     "key": "C",
+     "text": "Splitting data before any preprocessing",
+     "correct": false,
+     "rationale": "Splitting first is the correct practice."
+    },
+    {
+     "key": "D",
+     "text": "Reporting a confidence interval",
+     "correct": false,
+     "rationale": "That is good practice, not leakage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: leaking the future inflates performance.",
+   "outcome_refs": [
+    "MST-1632-D05.01"
+   ],
+   "domain_ref": "Pitfalls and communication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1632-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A p-value of 0.03 most accurately means what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "If the null hypothesis were true, data this extreme would occur about 3% of the time",
+     "correct": true,
+     "rationale": "Correct: that is the definition of a p-value."
+    },
+    {
+     "key": "B",
+     "text": "There is a 97% chance the result is real",
+     "correct": false,
+     "rationale": "A p-value is not the probability the hypothesis is true."
+    },
+    {
+     "key": "C",
+     "text": "The effect size is large",
+     "correct": false,
+     "rationale": "p-values do not measure effect size."
+    },
+    {
+     "key": "D",
+     "text": "The sample is representative",
+     "correct": false,
+     "rationale": "p-values say nothing about representativeness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: that is the definition of a p-value.",
+   "outcome_refs": [
+    "MST-1632-D03.01"
+   ],
+   "domain_ref": "Statistics for data science",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

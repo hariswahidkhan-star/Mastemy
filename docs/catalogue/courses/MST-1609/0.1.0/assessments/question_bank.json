@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1609",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1609-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is embedding preferable to referencing in MongoDB?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When related data is accessed together and bounded in size",
+     "correct": true,
+     "rationale": "Correct: embedding suits tightly-coupled, bounded data read together."
+    },
+    {
+     "key": "B",
+     "text": "Whenever the data could ever grow unbounded",
+     "correct": false,
+     "rationale": "Unbounded growth argues for referencing."
+    },
+    {
+     "key": "C",
+     "text": "Only for numeric fields",
+     "correct": false,
+     "rationale": "Field type is not the deciding factor."
+    },
+    {
+     "key": "D",
+     "text": "Never; MongoDB forbids embedding",
+     "correct": false,
+     "rationale": "Embedding is a core modelling technique."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: embedding suits tightly-coupled, bounded data read together.",
+   "outcome_refs": [
+    "MST-1609-D01.01"
+   ],
+   "domain_ref": "Documents and data modelling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1609-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good reasons to add a compound index? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A frequent query filters and sorts on the same two fields",
+     "correct": true,
+     "rationale": "Correct: compound indexes serve combined filter/sort patterns."
+    },
+    {
+     "key": "B",
+     "text": "The field order matches the query's equality-then-range pattern",
+     "correct": true,
+     "rationale": "Correct: index prefix order should match query usage."
+    },
+    {
+     "key": "C",
+     "text": "To store more copies of the data for backup",
+     "correct": false,
+     "rationale": "Indexes are not backups."
+    },
+    {
+     "key": "D",
+     "text": "Because every field should always be indexed",
+     "correct": false,
+     "rationale": "Unused indexes add write cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: compound indexes serve combined filter/sort patterns.",
+   "outcome_refs": [
+    "MST-1609-D04.01"
+   ],
+   "domain_ref": "Indexing and performance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1609-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the aggregation $lookup stage do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Performs a left outer join to another collection",
+     "correct": true,
+     "rationale": "Correct: $lookup joins documents from another collection."
+    },
+    {
+     "key": "B",
+     "text": "Deletes matching documents",
+     "correct": false,
+     "rationale": "It does not delete anything."
+    },
+    {
+     "key": "C",
+     "text": "Creates an index",
+     "correct": false,
+     "rationale": "Indexing is separate from aggregation."
+    },
+    {
+     "key": "D",
+     "text": "Validates a schema",
+     "correct": false,
+     "rationale": "Validation is a separate feature."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: $lookup joins documents from another collection.",
+   "outcome_refs": [
+    "MST-1609-D03.01"
+   ],
+   "domain_ref": "Aggregation framework",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

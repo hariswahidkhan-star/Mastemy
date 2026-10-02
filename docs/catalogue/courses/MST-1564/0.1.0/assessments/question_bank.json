@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1564",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1564-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the difference between merge and rebase?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Merge preserves history with a merge commit; rebase replays commits onto a new base",
+     "correct": true,
+     "rationale": "Correct: that is the core distinction."
+    },
+    {
+     "key": "B",
+     "text": "Rebase deletes all your commits",
+     "correct": false,
+     "rationale": "Rebase moves commits, it does not delete work."
+    },
+    {
+     "key": "C",
+     "text": "Merge can only be done once per repo",
+     "correct": false,
+     "rationale": "There is no such limit."
+    },
+    {
+     "key": "D",
+     "text": "They produce identical history in all cases",
+     "correct": false,
+     "rationale": "Their histories differ by design."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: that is the core distinction.",
+   "outcome_refs": [
+    "MST-1564-D02.01"
+   ],
+   "domain_ref": "Branching and merging",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1564-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are safe recovery tools after a bad change? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "git reflog to find a lost commit",
+     "correct": true,
+     "rationale": "Correct: reflog tracks recent HEAD positions."
+    },
+    {
+     "key": "B",
+     "text": "git revert to undo a commit with a new commit",
+     "correct": true,
+     "rationale": "Correct: revert safely undoes without rewriting history."
+    },
+    {
+     "key": "C",
+     "text": "Force-pushing over shared history without warning",
+     "correct": false,
+     "rationale": "That can destroy collaborators' work."
+    },
+    {
+     "key": "D",
+     "text": "Deleting the .git folder",
+     "correct": false,
+     "rationale": "That discards all version history."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reflog tracks recent HEAD positions.",
+   "outcome_refs": [
+    "MST-1564-D03.01"
+   ],
+   "domain_ref": "Conflicts and recovery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1564-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why avoid rebasing branches others have already pulled?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It rewrites commit history and causes divergence for collaborators",
+     "correct": true,
+     "rationale": "Correct: rewriting shared history creates conflicts for others."
+    },
+    {
+     "key": "B",
+     "text": "Rebase is slower than merge",
+     "correct": false,
+     "rationale": "Speed is not the concern here."
+    },
+    {
+     "key": "C",
+     "text": "GitHub forbids all rebasing",
+     "correct": false,
+     "rationale": "Rebasing is allowed; the issue is shared history."
+    },
+    {
+     "key": "D",
+     "text": "It permanently corrupts the repository",
+     "correct": false,
+     "rationale": "It does not corrupt the repo."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: rewriting shared history creates conflicts for others.",
+   "outcome_refs": [
+    "MST-1564-D05.01"
+   ],
+   "domain_ref": "Workflow and GitHub features",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

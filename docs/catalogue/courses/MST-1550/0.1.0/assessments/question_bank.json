@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1550",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1550-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should you do first when given an ambiguous interview problem?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ask clarifying questions to pin down inputs, outputs and constraints",
+     "correct": true,
+     "rationale": "Correct: clarifying prevents solving the wrong problem."
+    },
+    {
+     "key": "B",
+     "text": "Start coding the first idea immediately",
+     "correct": false,
+     "rationale": "Coding early risks solving the wrong problem."
+    },
+    {
+     "key": "C",
+     "text": "State the final complexity",
+     "correct": false,
+     "rationale": "You cannot state complexity before a plan."
+    },
+    {
+     "key": "D",
+     "text": "Ask for the answer",
+     "correct": false,
+     "rationale": "That is not problem solving."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: clarifying prevents solving the wrong problem.",
+   "outcome_refs": [
+    "MST-1550-D01.01"
+   ],
+   "domain_ref": "Interview approach and communication",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1550-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO patterns suit finding a contiguous subarray meeting a condition? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sliding window",
+     "correct": true,
+     "rationale": "Correct: windows handle contiguous ranges efficiently."
+    },
+    {
+     "key": "B",
+     "text": "Prefix sums",
+     "correct": true,
+     "rationale": "Correct: prefix sums answer range-sum queries in O(1)."
+    },
+    {
+     "key": "C",
+     "text": "Full pairwise nested loops as the intended optimum",
+     "correct": false,
+     "rationale": "That is the brute force, not the optimal pattern."
+    },
+    {
+     "key": "D",
+     "text": "Random shuffling",
+     "correct": false,
+     "rationale": "Randomisation does not apply here."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: windows handle contiguous ranges efficiently.",
+   "outcome_refs": [
+    "MST-1550-D02.01"
+   ],
+   "domain_ref": "Arrays, strings and hashing patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1550-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is a greedy approach safe to use over DP?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When a greedy-choice property and optimal substructure can be shown",
+     "correct": true,
+     "rationale": "Correct: greedy needs those properties to be provably optimal."
+    },
+    {
+     "key": "B",
+     "text": "Whenever it runs faster",
+     "correct": false,
+     "rationale": "Speed does not guarantee correctness."
+    },
+    {
+     "key": "C",
+     "text": "Only on sorted input",
+     "correct": false,
+     "rationale": "Sorting may help but is not the deciding factor."
+    },
+    {
+     "key": "D",
+     "text": "Never; DP is always required",
+     "correct": false,
+     "rationale": "Greedy is optimal for some problems."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: greedy needs those properties to be provably optimal.",
+   "outcome_refs": [
+    "MST-1550-D04.01"
+   ],
+   "domain_ref": "Dynamic programming and greedy patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

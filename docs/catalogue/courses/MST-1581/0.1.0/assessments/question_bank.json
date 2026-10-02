@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1581",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1581-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why review the output of terraform plan before applying?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It shows the changes Terraform will make so you can catch unintended ones",
+     "correct": true,
+     "rationale": "Correct: plan previews create/update/destroy actions."
+    },
+    {
+     "key": "B",
+     "text": "It applies the changes immediately",
+     "correct": false,
+     "rationale": "plan does not apply; apply does."
+    },
+    {
+     "key": "C",
+     "text": "It deletes the state file",
+     "correct": false,
+     "rationale": "plan does not touch state destructively."
+    },
+    {
+     "key": "D",
+     "text": "It is required to format the code",
+     "correct": false,
+     "rationale": "Formatting is a separate command."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: plan previews create/update/destroy actions.",
+   "outcome_refs": [
+    "MST-1581-D05.01"
+   ],
+   "domain_ref": "Workflow and practices",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1581-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good state-management practices? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use a remote backend with state locking for teams",
+     "correct": true,
+     "rationale": "Correct: remote state with locking prevents concurrent corruption."
+    },
+    {
+     "key": "B",
+     "text": "Keep state out of plain version control because it can hold secrets",
+     "correct": true,
+     "rationale": "Correct: state may contain sensitive values."
+    },
+    {
+     "key": "C",
+     "text": "Email the state file around to share it",
+     "correct": false,
+     "rationale": "That leaks secrets and causes drift."
+    },
+    {
+     "key": "D",
+     "text": "Edit state by hand as the normal workflow",
+     "correct": false,
+     "rationale": "Manual edits are error-prone and avoided."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: remote state with locking prevents concurrent corruption.",
+   "outcome_refs": [
+    "MST-1581-D03.01"
+   ],
+   "domain_ref": "State management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1581-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main benefit of a Terraform module?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reusable, parameterised grouping of resources",
+     "correct": true,
+     "rationale": "Correct: modules package reusable configuration."
+    },
+    {
+     "key": "B",
+     "text": "It stores cloud credentials",
+     "correct": false,
+     "rationale": "Modules do not store credentials."
+    },
+    {
+     "key": "C",
+     "text": "It replaces the need for providers",
+     "correct": false,
+     "rationale": "Providers are still required."
+    },
+    {
+     "key": "D",
+     "text": "It runs apply automatically on a schedule",
+     "correct": false,
+     "rationale": "Modules do not schedule applies."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: modules package reusable configuration.",
+   "outcome_refs": [
+    "MST-1581-D04.01"
+   ],
+   "domain_ref": "Providers, data sources and modules",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

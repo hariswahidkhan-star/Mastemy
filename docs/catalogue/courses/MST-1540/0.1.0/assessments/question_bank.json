@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1540",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1540-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does O(n log n) describe for a comparison sort?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A lower bound no comparison sort can beat in the worst case",
+     "correct": true,
+     "rationale": "Correct: comparison sorts cannot do better than n log n in the worst case."
+    },
+    {
+     "key": "B",
+     "text": "The exact number of comparisons for every input",
+     "correct": false,
+     "rationale": "Big-O is an asymptotic bound, not an exact count."
+    },
+    {
+     "key": "C",
+     "text": "Memory used by the sort",
+     "correct": false,
+     "rationale": "It describes time growth, not space."
+    },
+    {
+     "key": "D",
+     "text": "That the sort is always faster than O(n^2) for all inputs",
+     "correct": false,
+     "rationale": "For small or special inputs an O(n^2) sort can be faster."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: comparison sorts cannot do better than n log n in the worst case.",
+   "outcome_refs": [
+    "MST-1540-D01.01"
+   ],
+   "domain_ref": "Complexity and analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1540-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about hash tables are accurate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Average lookup is O(1) with a good hash and load factor",
+     "correct": true,
+     "rationale": "Correct: amortised O(1) under good conditions."
+    },
+    {
+     "key": "B",
+     "text": "Worst-case lookup can degrade to O(n) with many collisions",
+     "correct": true,
+     "rationale": "Correct: pathological collisions linearise the bucket."
+    },
+    {
+     "key": "C",
+     "text": "They keep keys in sorted order",
+     "correct": false,
+     "rationale": "Hash tables do not maintain sorted order."
+    },
+    {
+     "key": "D",
+     "text": "They guarantee O(1) in every case",
+     "correct": false,
+     "rationale": "No such guarantee; collisions break it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: amortised O(1) under good conditions.",
+   "outcome_refs": [
+    "MST-1540-D02.01"
+   ],
+   "domain_ref": "Core data structures",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1540-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why memoise in a dynamic-programming solution?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To avoid recomputing overlapping subproblems",
+     "correct": true,
+     "rationale": "Correct: memoisation caches subproblem results."
+    },
+    {
+     "key": "B",
+     "text": "To change the problem's optimal answer",
+     "correct": false,
+     "rationale": "It does not change the answer, only the work done."
+    },
+    {
+     "key": "C",
+     "text": "To reduce the number of distinct subproblems",
+     "correct": false,
+     "rationale": "The set of subproblems is unchanged."
+    },
+    {
+     "key": "D",
+     "text": "To make the recursion infinite",
+     "correct": false,
+     "rationale": "Memoisation helps terminate repeated work."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: memoisation caches subproblem results.",
+   "outcome_refs": [
+    "MST-1540-D05.01"
+   ],
+   "domain_ref": "Graphs and dynamic programming",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

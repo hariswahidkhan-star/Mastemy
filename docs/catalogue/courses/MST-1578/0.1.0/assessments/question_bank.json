@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1578",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1578-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the pipe operator | do between two commands?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sends the first command's standard output to the second's standard input",
+     "correct": true,
+     "rationale": "Correct: pipes connect stdout to stdin."
+    },
+    {
+     "key": "B",
+     "text": "Runs both commands in parallel with no connection",
+     "correct": false,
+     "rationale": "They are connected by the pipe."
+    },
+    {
+     "key": "C",
+     "text": "Writes the first command's output to a file",
+     "correct": false,
+     "rationale": "That is redirection with >."
+    },
+    {
+     "key": "D",
+     "text": "Comments out the second command",
+     "correct": false,
+     "rationale": "Pipe does not comment anything."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: pipes connect stdout to stdin.",
+   "outcome_refs": [
+    "MST-1578-D02.01"
+   ],
+   "domain_ref": "Text processing and pipelines",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1578-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good security practices on a Linux server? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant the least privilege needed for a task",
+     "correct": true,
+     "rationale": "Correct: least privilege limits blast radius."
+    },
+    {
+     "key": "B",
+     "text": "Use SSH keys instead of password logins where possible",
+     "correct": true,
+     "rationale": "Correct: keys are stronger than passwords."
+    },
+    {
+     "key": "C",
+     "text": "Run all daily work as the root user",
+     "correct": false,
+     "rationale": "Routine root use is risky."
+    },
+    {
+     "key": "D",
+     "text": "Set 777 on all files for convenience",
+     "correct": false,
+     "rationale": "World-writable files are a security hole."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: least privilege limits blast radius.",
+   "outcome_refs": [
+    "MST-1578-D04.01"
+   ],
+   "domain_ref": "Permissions and security basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1578-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why quote variables like \"$file\" in a shell script?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To prevent word splitting and globbing on spaces or special characters",
+     "correct": true,
+     "rationale": "Correct: quoting protects values with spaces or wildcards."
+    },
+    {
+     "key": "B",
+     "text": "To make the script run faster",
+     "correct": false,
+     "rationale": "Quoting is about correctness, not speed."
+    },
+    {
+     "key": "C",
+     "text": "To convert the variable to a number",
+     "correct": false,
+     "rationale": "Quoting does not change type."
+    },
+    {
+     "key": "D",
+     "text": "Because unquoted variables are a syntax error",
+     "correct": false,
+     "rationale": "They are not a syntax error, just unsafe."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: quoting protects values with spaces or wildcards.",
+   "outcome_refs": [
+    "MST-1578-D05.01"
+   ],
+   "domain_ref": "Scripting and system basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

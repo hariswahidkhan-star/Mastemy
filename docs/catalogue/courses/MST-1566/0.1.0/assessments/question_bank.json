@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1566",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1566-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main goal of intention-revealing names?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To let a reader understand purpose without extra comments",
+     "correct": true,
+     "rationale": "Correct: good names reduce the need for comments."
+    },
+    {
+     "key": "B",
+     "text": "To make names as short as possible",
+     "correct": false,
+     "rationale": "Brevity is not the goal; clarity is."
+    },
+    {
+     "key": "C",
+     "text": "To encode the variable's type in the name",
+     "correct": false,
+     "rationale": "Type encoding is discouraged in clean code."
+    },
+    {
+     "key": "D",
+     "text": "To match the database column names",
+     "correct": false,
+     "rationale": "That is incidental, not the goal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: good names reduce the need for comments.",
+   "outcome_refs": [
+    "MST-1566-D01.01"
+   ],
+   "domain_ref": "Naming and readability",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1566-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are signs a function should be split? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It does several unrelated things",
+     "correct": true,
+     "rationale": "Correct: multiple responsibilities signal a split."
+    },
+    {
+     "key": "B",
+     "text": "It has many levels of nested logic",
+     "correct": true,
+     "rationale": "Correct: deep nesting often hides separable steps."
+    },
+    {
+     "key": "C",
+     "text": "It has a descriptive name",
+     "correct": false,
+     "rationale": "A good name is positive, not a smell."
+    },
+    {
+     "key": "D",
+     "text": "It is covered by tests",
+     "correct": false,
+     "rationale": "Test coverage is not a reason to split."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: multiple responsibilities signal a split.",
+   "outcome_refs": [
+    "MST-1566-D02.01"
+   ],
+   "domain_ref": "Functions and modules",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1566-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why avoid swallowing exceptions silently?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It hides failures and makes debugging harder",
+     "correct": true,
+     "rationale": "Correct: silent catches obscure real problems."
+    },
+    {
+     "key": "B",
+     "text": "It always crashes the program",
+     "correct": false,
+     "rationale": "Silent swallowing does the opposite of crashing."
+    },
+    {
+     "key": "C",
+     "text": "It improves performance",
+     "correct": false,
+     "rationale": "Performance is not the issue."
+    },
+    {
+     "key": "D",
+     "text": "It is required by all style guides",
+     "correct": false,
+     "rationale": "It is discouraged, not required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: silent catches obscure real problems.",
+   "outcome_refs": [
+    "MST-1566-D03.01"
+   ],
+   "domain_ref": "Error handling and edge cases",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

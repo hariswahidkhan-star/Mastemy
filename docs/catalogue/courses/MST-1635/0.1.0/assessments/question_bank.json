@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1635",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1635-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What distinguishes ELT from ETL?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Transformation happens after loading into the target system",
+     "correct": true,
+     "rationale": "Correct: ELT loads raw data first, then transforms in the warehouse."
+    },
+    {
+     "key": "B",
+     "text": "ELT never transforms data",
+     "correct": false,
+     "rationale": "ELT does transform, just later."
+    },
+    {
+     "key": "C",
+     "text": "ELT only works on streaming data",
+     "correct": false,
+     "rationale": "ELT applies to batch too."
+    },
+    {
+     "key": "D",
+     "text": "ELT requires no storage",
+     "correct": false,
+     "rationale": "ELT loads into storage first."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ELT loads raw data first, then transforms in the warehouse.",
+   "outcome_refs": [
+    "MST-1635-D02.01"
+   ],
+   "domain_ref": "Ingestion and pipelines",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1635-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO make a pipeline step safe to re-run? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Idempotent writes that do not duplicate data",
+     "correct": true,
+     "rationale": "Correct: idempotency allows safe reruns."
+    },
+    {
+     "key": "B",
+     "text": "Deterministic, bounded processing of a defined input window",
+     "correct": true,
+     "rationale": "Correct: a well-defined input window makes reruns predictable."
+    },
+    {
+     "key": "C",
+     "text": "Appending blindly on every run",
+     "correct": false,
+     "rationale": "Blind appends duplicate data on rerun."
+    },
+    {
+     "key": "D",
+     "text": "Relying on wall-clock time inside the logic",
+     "correct": false,
+     "rationale": "Time-dependent logic breaks reruns."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: idempotency allows safe reruns.",
+   "outcome_refs": [
+    "MST-1635-D05.01"
+   ],
+   "domain_ref": "Orchestration and reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1635-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why prefer a columnar format for analytical scans?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It reads only the needed columns, reducing I/O",
+     "correct": true,
+     "rationale": "Correct: columnar storage prunes unread columns."
+    },
+    {
+     "key": "B",
+     "text": "It is always smaller than any row format",
+     "correct": false,
+     "rationale": "Size depends on data and encoding."
+    },
+    {
+     "key": "C",
+     "text": "It supports row-by-row transactional updates best",
+     "correct": false,
+     "rationale": "Row formats suit OLTP updates better."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for partitioning",
+     "correct": false,
+     "rationale": "Partitioning still helps pruning."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: columnar storage prunes unread columns.",
+   "outcome_refs": [
+    "MST-1635-D03.01"
+   ],
+   "domain_ref": "Storage and formats",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

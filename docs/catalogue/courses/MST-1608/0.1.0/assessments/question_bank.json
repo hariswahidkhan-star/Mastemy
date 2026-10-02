@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1608",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1608-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a window function add that GROUP BY cannot?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Per-row results computed over a related set of rows without collapsing them",
+     "correct": true,
+     "rationale": "Correct: window functions keep individual rows while computing over a partition."
+    },
+    {
+     "key": "B",
+     "text": "The ability to join tables",
+     "correct": false,
+     "rationale": "Joins are a separate feature."
+    },
+    {
+     "key": "C",
+     "text": "Automatic indexing",
+     "correct": false,
+     "rationale": "Window functions do not create indexes."
+    },
+    {
+     "key": "D",
+     "text": "Transaction isolation",
+     "correct": false,
+     "rationale": "That is unrelated to window functions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: window functions keep individual rows while computing over a partition.",
+   "outcome_refs": [
+    "MST-1608-D03.01"
+   ],
+   "domain_ref": "Window functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1608-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO can cause an accidental cartesian product? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Omitting the ON condition in a join",
+     "correct": true,
+     "rationale": "Correct: a missing join predicate pairs every row."
+    },
+    {
+     "key": "B",
+     "text": "Joining on a non-unique key without further filtering",
+     "correct": true,
+     "rationale": "Correct: many-to-many joins can explode row counts."
+    },
+    {
+     "key": "C",
+     "text": "Adding an appropriate WHERE filter",
+     "correct": false,
+     "rationale": "Filtering reduces rows, not the cause."
+    },
+    {
+     "key": "D",
+     "text": "Using a primary-key equality join",
+     "correct": false,
+     "rationale": "A proper key join avoids the explosion."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a missing join predicate pairs every row.",
+   "outcome_refs": [
+    "MST-1608-D01.01"
+   ],
+   "domain_ref": "Joins and set operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1608-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is NULL = NULL not TRUE in SQL?",
+   "options": [
+    {
+     "key": "A",
+     "text": "NULL means unknown, so comparisons yield unknown, not true",
+     "correct": true,
+     "rationale": "Correct: three-valued logic treats NULL comparisons as unknown."
+    },
+    {
+     "key": "B",
+     "text": "It is a bug in most databases",
+     "correct": false,
+     "rationale": "It is defined behaviour, not a bug."
+    },
+    {
+     "key": "C",
+     "text": "NULL is always equal to zero",
+     "correct": false,
+     "rationale": "NULL is not zero."
+    },
+    {
+     "key": "D",
+     "text": "Only text columns allow NULL",
+     "correct": false,
+     "rationale": "Any nullable column behaves this way."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: three-valued logic treats NULL comparisons as unknown.",
+   "outcome_refs": [
+    "MST-1608-D05.01"
+   ],
+   "domain_ref": "Performance and correctness",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

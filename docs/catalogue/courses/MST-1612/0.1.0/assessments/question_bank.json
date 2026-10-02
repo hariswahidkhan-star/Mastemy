@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1612",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1612-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does normalisation to 3NF primarily reduce?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data redundancy and update anomalies",
+     "correct": true,
+     "rationale": "Correct: 3NF reduces redundancy and the anomalies it causes."
+    },
+    {
+     "key": "B",
+     "text": "Query latency in all cases",
+     "correct": false,
+     "rationale": "Normalisation can increase joins and latency."
+    },
+    {
+     "key": "C",
+     "text": "The need for primary keys",
+     "correct": false,
+     "rationale": "Keys are still required."
+    },
+    {
+     "key": "D",
+     "text": "Disk cost of indexes",
+     "correct": false,
+     "rationale": "Index cost is unrelated to normal form."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 3NF reduces redundancy and the anomalies it causes.",
+   "outcome_refs": [
+    "MST-1612-D02.01"
+   ],
+   "domain_ref": "Normalisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1612-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO describe a star schema? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A central fact table referencing dimension tables",
+     "correct": true,
+     "rationale": "Correct: that is the star shape."
+    },
+    {
+     "key": "B",
+     "text": "Denormalised dimensions for simpler, faster reporting queries",
+     "correct": true,
+     "rationale": "Correct: star schemas denormalise dimensions."
+    },
+    {
+     "key": "C",
+     "text": "Full third-normal-form across all tables",
+     "correct": false,
+     "rationale": "Star schemas intentionally denormalise."
+    },
+    {
+     "key": "D",
+     "text": "No measurable metrics stored at all",
+     "correct": false,
+     "rationale": "Facts store the measures."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: that is the star shape.",
+   "outcome_refs": [
+    "MST-1612-D03.01"
+   ],
+   "domain_ref": "Dimensional modelling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1612-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why version a schema and plan migrations?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To change structure without breaking existing consumers",
+     "correct": true,
+     "rationale": "Correct: versioning and migrations preserve compatibility."
+    },
+    {
+     "key": "B",
+     "text": "To avoid ever changing the schema",
+     "correct": false,
+     "rationale": "The goal is safe change, not no change."
+    },
+    {
+     "key": "C",
+     "text": "To remove the need for a data dictionary",
+     "correct": false,
+     "rationale": "Documentation is still needed."
+    },
+    {
+     "key": "D",
+     "text": "Because schemas cannot change once created",
+     "correct": false,
+     "rationale": "Schemas do evolve; that is the point."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: versioning and migrations preserve compatibility.",
+   "outcome_refs": [
+    "MST-1612-D05.01"
+   ],
+   "domain_ref": "Documentation and evolution",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

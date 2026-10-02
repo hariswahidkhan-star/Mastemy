@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1579",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1579-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a Kubernetes Deployment primarily provide?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Declarative management and rollout of a set of replica Pods",
+     "correct": true,
+     "rationale": "Correct: Deployments manage ReplicaSets and rollouts declaratively."
+    },
+    {
+     "key": "B",
+     "text": "Persistent block storage",
+     "correct": false,
+     "rationale": "Storage is provided by volumes, not Deployments."
+    },
+    {
+     "key": "C",
+     "text": "A DNS server for the cluster",
+     "correct": false,
+     "rationale": "DNS is a cluster add-on, not a Deployment's job."
+    },
+    {
+     "key": "D",
+     "text": "Node-level operating-system patching",
+     "correct": false,
+     "rationale": "That is outside the Deployment's scope."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Deployments manage ReplicaSets and rollouts declaratively.",
+   "outcome_refs": [
+    "MST-1579-D02.01"
+   ],
+   "domain_ref": "Workloads",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1579-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about liveness and readiness probes are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A failing readiness probe removes the Pod from Service endpoints",
+     "correct": true,
+     "rationale": "Correct: not-ready Pods stop receiving traffic."
+    },
+    {
+     "key": "B",
+     "text": "A failing liveness probe causes the Pod to be restarted",
+     "correct": true,
+     "rationale": "Correct: liveness failure triggers a restart."
+    },
+    {
+     "key": "C",
+     "text": "Both probes do exactly the same thing",
+     "correct": false,
+     "rationale": "They serve different purposes."
+    },
+    {
+     "key": "D",
+     "text": "Probes are forbidden in production",
+     "correct": false,
+     "rationale": "Probes are recommended in production."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: not-ready Pods stop receiving traffic.",
+   "outcome_refs": [
+    "MST-1579-D05.01"
+   ],
+   "domain_ref": "Storage, scaling and operations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1579-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should configuration not be baked into container images?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It couples config to the image and prevents reuse across environments",
+     "correct": true,
+     "rationale": "Correct: externalising config lets one image run everywhere."
+    },
+    {
+     "key": "B",
+     "text": "Images cannot contain text files",
+     "correct": false,
+     "rationale": "Images can contain files; that is not the issue."
+    },
+    {
+     "key": "C",
+     "text": "ConfigMaps are slower than image builds",
+     "correct": false,
+     "rationale": "Speed is not the reason."
+    },
+    {
+     "key": "D",
+     "text": "Kubernetes rejects images with config",
+     "correct": false,
+     "rationale": "It does not reject them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: externalising config lets one image run everywhere.",
+   "outcome_refs": [
+    "MST-1579-D03.01"
+   ],
+   "domain_ref": "Configuration and resources",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

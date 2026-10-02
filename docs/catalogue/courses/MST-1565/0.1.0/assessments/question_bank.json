@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1565",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1565-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does the Strategy pattern primarily address?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Selecting an interchangeable algorithm at runtime",
+     "correct": true,
+     "rationale": "Correct: Strategy encapsulates interchangeable behaviours."
+    },
+    {
+     "key": "B",
+     "text": "Creating a single shared instance",
+     "correct": false,
+     "rationale": "That is Singleton."
+    },
+    {
+     "key": "C",
+     "text": "Giving an incompatible interface a compatible one",
+     "correct": false,
+     "rationale": "That is Adapter."
+    },
+    {
+     "key": "D",
+     "text": "Building complex objects step by step",
+     "correct": false,
+     "rationale": "That is Builder."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Strategy encapsulates interchangeable behaviours.",
+   "outcome_refs": [
+    "MST-1565-D04.01"
+   ],
+   "domain_ref": "Behavioural patterns",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1565-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are risks of overusing the Singleton pattern? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It introduces hidden global state",
+     "correct": true,
+     "rationale": "Correct: Singletons act like globals and hide dependencies."
+    },
+    {
+     "key": "B",
+     "text": "It makes unit testing harder",
+     "correct": true,
+     "rationale": "Correct: shared state complicates isolation in tests."
+    },
+    {
+     "key": "C",
+     "text": "It forces all classes to be abstract",
+     "correct": false,
+     "rationale": "Singleton does not require abstraction."
+    },
+    {
+     "key": "D",
+     "text": "It always improves performance",
+     "correct": false,
+     "rationale": "Performance is not its purpose or guarantee."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Singletons act like globals and hide dependencies.",
+   "outcome_refs": [
+    "MST-1565-D02.01"
+   ],
+   "domain_ref": "Creational patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1565-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The Adapter pattern is best described as doing what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Converting one interface into another clients expect",
+     "correct": true,
+     "rationale": "Correct: Adapter bridges incompatible interfaces."
+    },
+    {
+     "key": "B",
+     "text": "Adding responsibilities to an object dynamically",
+     "correct": false,
+     "rationale": "That is Decorator."
+    },
+    {
+     "key": "C",
+     "text": "Defining a family of related objects",
+     "correct": false,
+     "rationale": "That is Abstract Factory."
+    },
+    {
+     "key": "D",
+     "text": "Notifying dependents of state changes",
+     "correct": false,
+     "rationale": "That is Observer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Adapter bridges incompatible interfaces.",
+   "outcome_refs": [
+    "MST-1565-D03.01"
+   ],
+   "domain_ref": "Structural patterns",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

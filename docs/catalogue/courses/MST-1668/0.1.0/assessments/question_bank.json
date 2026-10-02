@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1668",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 504,
+  "lesson_check_items": 80,
+  "module_check_items": 147,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 25,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1668-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What must be in place before any penetration-testing activity begins?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Written authorisation defining scope and rules of engagement",
+     "correct": true,
+     "rationale": "Correct: explicit authorisation and scope are mandatory."
+    },
+    {
+     "key": "B",
+     "text": "A public announcement of the test",
+     "correct": false,
+     "rationale": "Public disclosure is not a prerequisite."
+    },
+    {
+     "key": "C",
+     "text": "Access to production customer data",
+     "correct": false,
+     "rationale": "That is not a prerequisite and may be out of scope."
+    },
+    {
+     "key": "D",
+     "text": "Permission is implied for any internet-facing system",
+     "correct": false,
+     "rationale": "Authorisation is never implied."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: explicit authorisation and scope are mandatory.",
+   "outcome_refs": [
+    "MST-1668-D01.01"
+   ],
+   "domain_ref": "Ethics, scope and authorisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1668-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are correct about validating scanner findings? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Automated findings can include false positives that need manual checks",
+     "correct": true,
+     "rationale": "Correct: scanners produce false positives."
+    },
+    {
+     "key": "B",
+     "text": "Manual validation improves report accuracy",
+     "correct": true,
+     "rationale": "Correct: validation confirms real risk."
+    },
+    {
+     "key": "C",
+     "text": "Scanner output should be reported verbatim as confirmed vulnerabilities",
+     "correct": false,
+     "rationale": "Unvalidated output is not confirmed."
+    },
+    {
+     "key": "D",
+     "text": "Every finding is always a true positive",
+     "correct": false,
+     "rationale": "That is not true."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: scanners produce false positives.",
+   "outcome_refs": [
+    "MST-1668-D03.01"
+   ],
+   "domain_ref": "Vulnerability identification",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1668-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why include remediation advice in a penetration-test report?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So the owner can fix the issues, not just learn they exist",
+     "correct": true,
+     "rationale": "Correct: actionable remediation is the report's value."
+    },
+    {
+     "key": "B",
+     "text": "To make the report longer",
+     "correct": false,
+     "rationale": "Length is not the purpose."
+    },
+    {
+     "key": "C",
+     "text": "Because findings cannot be rated without it",
+     "correct": false,
+     "rationale": "Ratings and remediation are separate."
+    },
+    {
+     "key": "D",
+     "text": "To avoid naming any vulnerabilities",
+     "correct": false,
+     "rationale": "Findings still name the issues."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: actionable remediation is the report's value.",
+   "outcome_refs": [
+    "MST-1668-D05.01"
+   ],
+   "domain_ref": "Web, network and reporting",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
