@@ -5,18 +5,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Mastemy.Api.Modules.Catalog;
 
-/// <summary>Public (anonymous) catalog reads. Only live courses (AccessService.IsLive) are ever returned.</summary>
-public class CatalogQueryService(AppDbContext db)
+/// <summary>
+/// Public (anonymous) catalog reads. Only live courses (AccessService.IsLive) are ever returned, and every learner-facing
+/// field (title, description, level, language, categories, curriculum, counts) comes from the course's latest published
+/// snapshot, never from the working copy, so unreviewed edits are invisible until the next publish.
+/// Search: SQL prefilters live courses with LIKE on the snapshot JSON (one predicate per term), then matches the terms
+/// exactly against the snapshot's title/subtitle/description and filters/sorts/pages in memory. Adequate for v1 scale
+/// (a few thousand live courses); the index plan is a denormalized CourseSnapshot search column with a FULLTEXT index.
+/// </summary>
+public class CatalogQueryService(AppDbContext db, CourseSnapshotService snapshots)
 {
     private IQueryable<Course> Live => db.Courses.AsNoTracking().Where(AccessService.IsLiveExpr);
 
     public async Task<List<CategoryDto>> Categories()
     {
-        var counts = await db.CourseCategories.AsNoTracking()
-            .Where(cc => db.Courses.Where(AccessService.IsLiveExpr).Any(c => c.Id == cc.CourseId))
-            .GroupBy(cc => cc.CategoryId)
-            .Select(g => new { g.Key, Count = g.Count() })
-            .ToDictionaryAsync(x => x.Key, x => x.Count);
+        var live = await Live.ToListAsync();
+        var published = await snapshots.ForCourses(live);
+        var counts = published.Values.SelectMany(p => p.Payload.Categories.Distinct()).GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
         var cats = await db.Categories.AsNoTracking().OrderBy(c => c.SortOrder).ThenBy(c => c.NameEn).ToListAsync();
         return cats.Select(c => new CategoryDto(c.Id, c.Slug, c.NameEn, c.NameAr, c.ParentId, c.IsAcademy, counts.GetValueOrDefault(c.Id))).ToList();
     }
@@ -29,66 +34,66 @@ public class CatalogQueryService(AppDbContext db)
     {
         page = Math.Max(1, page);
         pageSize = Math.Clamp(pageSize <= 0 ? 20 : pageSize, 1, 50);
+        var sortKey = (sort ?? "newest").ToLowerInvariant();
+        if (sortKey is not ("newest" or "updated" or "title")) throw AppException.Bad("sort must be one of newest, updated, title.");
         var query = Live;
 
-        if (!string.IsNullOrWhiteSpace(q))
+        var terms = string.IsNullOrWhiteSpace(q) ? [] : q.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .Select(t => t.Length > 64 ? t[..64] : t).Distinct().Take(8).ToList();
+        foreach (var t in terms)
         {
-            var terms = q.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-                .Select(t => t.Length > 64 ? t[..64] : t).Distinct().Take(8).ToList();
-            foreach (var t in terms)
-            {
-                var pattern = "%" + EscapeLike(t) + "%";
-                query = query.Where(c => EF.Functions.Like(c.Title, pattern, "!")
-                                         || EF.Functions.Like(c.Subtitle, pattern, "!")
-                                         || EF.Functions.Like(c.Description, pattern, "!"));
-            }
+            // Prefilter on the published snapshot (legacy never-snapshotted courses are prefiltered on their rows).
+            var pattern = "%" + EscapeLike(t) + "%";
+            query = query.Where(c => db.CourseSnapshots.Any(s => s.CourseId == c.Id && s.Version == c.PublishedVersion
+                                                                 && EF.Functions.Like(s.PayloadJson, pattern, "!"))
+                                     || (c.PublishedVersion == 0 && (EF.Functions.Like(c.Title, pattern, "!")
+                                         || EF.Functions.Like(c.Subtitle, pattern, "!") || EF.Functions.Like(c.Description, pattern, "!"))));
         }
+        HashSet<int>? catIds = null;
         if (!string.IsNullOrWhiteSpace(category))
         {
-            var catIds = await CategoryAndDescendants(category.Trim());
+            catIds = (await CategoryAndDescendants(category.Trim())).ToHashSet();
             if (catIds.Count == 0) return new PagedResult<CourseCardDto>([], 0, page, pageSize);
-            query = query.Where(c => db.CourseCategories.Any(cc => cc.CourseId == c.Id && catIds.Contains(cc.CategoryId)));
         }
-        if (level is not null) query = query.Where(c => c.Level == level);
-        if (!string.IsNullOrWhiteSpace(language)) { var lang = language.Trim(); query = query.Where(c => c.Language == lang); }
+        var lang = string.IsNullOrWhiteSpace(language) ? null : language.Trim();
 
-        query = (sort ?? "newest").ToLowerInvariant() switch
+        var candidates = await query.ToListAsync();
+        var published = await snapshots.ForCourses(candidates);
+        IEnumerable<PublishedCourse> filtered = published.Values.Where(p =>
+            terms.All(t => Contains(p.Payload.Title, t) || Contains(p.Payload.Subtitle, t) || Contains(p.Payload.Description, t))
+            && (catIds is null || p.Payload.Categories.Any(catIds.Contains))
+            && (level is null || p.Payload.Level == level)
+            && (lang is null || string.Equals(p.Payload.Language, lang, StringComparison.OrdinalIgnoreCase)));
+        filtered = sortKey switch
         {
-            "newest" => query.OrderByDescending(c => c.PublishedAt).ThenBy(c => c.Id),
-            "updated" => query.OrderByDescending(c => c.UpdatedAt).ThenBy(c => c.Id),
-            "title" => query.OrderBy(c => c.Title).ThenBy(c => c.Id),
-            _ => throw AppException.Bad("sort must be one of newest, updated, title."),
+            "newest" => filtered.OrderByDescending(p => p.Course.PublishedAt).ThenBy(p => p.Course.Id),
+            "updated" => filtered.OrderByDescending(p => p.Course.UpdatedAt).ThenBy(p => p.Course.Id),
+            _ => filtered.OrderBy(p => p.Payload.Title, StringComparer.OrdinalIgnoreCase).ThenBy(p => p.Course.Id),
         };
+        var all = filtered.ToList();
+        var pageItems = all.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        var ids = pageItems.Select(p => p.Course.Id).ToList();
 
-        var total = await query.CountAsync();
-        var courses = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-        var ids = courses.Select(c => c.Id).ToList();
-
-        var catNames = await (from cc in db.CourseCategories.AsNoTracking()
-                              join cat in db.Categories on cc.CategoryId equals cat.Id
-                              where ids.Contains(cc.CourseId)
-                              select new { cc.CourseId, cat.Slug }).ToListAsync();
+        var catSlugs = await db.Categories.AsNoTracking().ToDictionaryAsync(c => c.Id, c => c.Slug);
         var instr = await InstructorRows(ids);
-        var videos = await (from m in db.Modules.AsNoTracking()
-                            join l in db.Lessons on m.Id equals l.ModuleId
-                            join v in db.VideoAssets on l.VideoAssetId equals v.Id
-                            where ids.Contains(m.CourseId) && v.Status == VideoStatus.Ready
-                            group v by m.CourseId into g
-                            select new { CourseId = g.Key, Count = g.Count(), Duration = g.Sum(x => x.DurationSeconds) })
-            .ToDictionaryAsync(x => x.CourseId);
+        var videos = await snapshots.VideoStates(pageItems.SelectMany(p => p.Payload.Modules.SelectMany(m => m.Lessons)));
         var ratings = await RatingRows(ids);
 
-        var items = courses.Select(c =>
+        var items = pageItems.Select(p =>
         {
-            videos.TryGetValue(c.Id, out var v);
+            var c = p.Course;
             ratings.TryGetValue(c.Id, out var r);
-            return new CourseCardDto(c.Id, c.Slug, c.Code, c.Title, c.Subtitle, c.Level, c.Language,
-                catNames.Where(x => x.CourseId == c.Id).Select(x => x.Slug).ToArray(),
+            var states = p.Payload.Modules.SelectMany(m => m.Lessons).Select(l => videos[l.Id]).Where(v => v.Playable).ToList();
+            return new CourseCardDto(c.Id, c.Slug, c.Code, p.Payload.Title, p.Payload.Subtitle, p.Payload.Level, p.Payload.Language,
+                p.Payload.Categories.Where(catSlugs.ContainsKey).Select(x => catSlugs[x]).ToArray(),
                 instr.Where(x => x.CourseId == c.Id).Select(x => x.DisplayName).ToArray(),
-                v?.Count ?? 0, v?.Duration ?? 0, r?.Avg, r?.Count ?? 0, c.PublishedAt, c.UpdatedAt);
+                states.Count, states.Sum(v => v.DurationSeconds), r?.Avg, r?.Count ?? 0, c.PublishedAt, c.UpdatedAt);
         }).ToList();
-        return new PagedResult<CourseCardDto>(items, total, page, pageSize);
+        return new PagedResult<CourseCardDto>(items, all.Count, page, pageSize);
     }
+
+    private static bool Contains(string? haystack, string term) =>
+        haystack is not null && haystack.Contains(term, StringComparison.OrdinalIgnoreCase);
 
     private async Task<List<int>> CategoryAndDescendants(string slugOrId)
     {
@@ -120,34 +125,31 @@ public class CatalogQueryService(AppDbContext db)
 
     public async Task<CourseDetailDto> Detail(string slug)
     {
-        var c = await Live.FirstOrDefaultAsync(x => x.Slug == slug) ?? throw AppException.NotFound("Course");
+        var pc = await snapshots.LiveBySlug(slug);
+        var (c, p) = (pc.Course, pc.Payload);
         var ids = new List<Guid> { c.Id };
-        var modules = await db.Modules.AsNoTracking().Where(m => m.CourseId == c.Id).OrderBy(m => m.SortOrder)
-            .Include(m => m.Lessons).ThenInclude(l => l.VideoAsset).AsSplitQuery().ToListAsync();
-        var moduleDtos = modules.Select(m => new PublicModuleDto(m.Id, m.Title,
+        var videos = await snapshots.VideoStates(p.Modules.SelectMany(m => m.Lessons));
+        var moduleDtos = p.Modules.OrderBy(m => m.SortOrder).Select(m => new PublicModuleDto(m.Id, m.Title,
             m.Lessons.OrderBy(l => l.SortOrder).Select(l =>
             {
-                var ready = l.VideoAsset is { Status: VideoStatus.Ready };
-                return new PublicLessonDto(l.Id, l.Title, ready ? l.VideoAsset!.DurationSeconds : 0, l.IsPreview, ready);
+                var v = videos[l.Id];
+                return new PublicLessonDto(l.Id, l.Title, v.DurationSeconds, l.IsPreview, v.Playable);
             }).ToList())).ToList();
         var allLessons = moduleDtos.SelectMany(m => m.Lessons).ToList();
 
         var questionCount = await db.Questions.AsNoTracking().CountAsync(q => q.CourseId == c.Id && q.State == QuestionState.Active);
-        var catSlugs = await (from cc in db.CourseCategories.AsNoTracking()
-                              join cat in db.Categories on cc.CategoryId equals cat.Id
-                              where cc.CourseId == c.Id
-                              orderby cat.SortOrder
-                              select cat.Slug).ToArrayAsync();
+        var catSlugs = await db.Categories.AsNoTracking().Where(cat => p.Categories.Contains(cat.Id))
+            .OrderBy(cat => cat.SortOrder).Select(cat => cat.Slug).ToArrayAsync();
         var instructors = (await InstructorRows(ids)).Select(x => new InstructorDto(x.UserId, x.DisplayName, x.Role)).ToList();
         var packages = await db.Packages.AsNoTracking()
-            .Where(p => p.CourseId == c.Id && p.IsActive && p.ApprovalStatus == "Approved")
-            .OrderBy(p => p.Price)
-            .Select(p => new PackageDto(p.Id, p.Title, p.Contents, p.Price, p.Currency, p.AccessDays)).ToListAsync();
+            .Where(pk => pk.CourseId == c.Id && pk.IsActive && pk.ApprovalStatus == "Approved")
+            .OrderBy(pk => pk.Price)
+            .Select(pk => new PackageDto(pk.Id, pk.Title, pk.Contents, pk.Price, pk.Currency, pk.AccessDays)).ToListAsync();
         var ratings = await RatingRows(ids);
         ratings.TryGetValue(c.Id, out var r);
 
-        return new CourseDetailDto(c.Id, c.Slug, c.Code, c.Title, c.Subtitle, c.Description, c.Audience, c.Prerequisites,
-            SplitOutcomes(c.Outcomes), c.Language, c.Level, c.Status, c.CredentialType, c.PassThresholdPercent, c.PromoVideoId,
+        return new CourseDetailDto(c.Id, c.Slug, c.Code, p.Title, p.Subtitle, p.Description, p.Audience, p.Prerequisites,
+            SplitOutcomes(p.Outcomes), p.Language, p.Level, c.Status, p.CredentialType, p.PassThresholdPercent, p.PromoVideoId,
             catSlugs, moduleDtos, allLessons.Count(l => l.HasVideo), questionCount, allLessons.Sum(l => l.DurationSeconds),
             instructors, packages, c.ReviewedAt, c.PublishedAt, c.UpdatedAt, r?.Avg, r?.Count ?? 0);
     }

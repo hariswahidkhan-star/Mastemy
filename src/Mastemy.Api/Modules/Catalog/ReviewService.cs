@@ -6,7 +6,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Mastemy.Api.Modules.Catalog;
 
 /// <summary>Course review decisions, review comments, and staff publish/archive.</summary>
-public class ReviewService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit)
+public class ReviewService(AppDbContext db, ICurrentUser me, AccessService access, AuditService audit,
+    CourseSnapshotService snapshots)
 {
     public async Task<List<ReviewQueueItemDto>> Queue(CourseStatus? status)
     {
@@ -126,15 +127,22 @@ public class ReviewService(AppDbContext db, ICurrentUser me, AccessService acces
 
     public async Task<CourseStatusDto> Publish(Guid courseId)
     {
-        me.RequireId();
+        var uid = me.RequireId();
         var c = await db.Courses.FirstOrDefaultAsync(x => x.Id == courseId) ?? throw AppException.NotFound("Course");
         var from = c.Status;
         CourseStateMachine.Next(from, CourseAction.Publish);
         var v = await CourseValidator.Validate(db, courseId);
         if (!v.Ok) throw AppException.Conflict("Course can no longer be published: " + string.Join(" ", v.Issues), "validation_failed");
-        CourseStateMachine.Apply(c, CourseAction.Publish, DateTime.UtcNow);
-        audit.Record("course.published", nameof(Course), c.Id, new { from = from.ToString(), to = c.Status.ToString() });
-        await db.SaveChangesAsync();
+        var now = DateTime.UtcNow;
+        CourseStateMachine.Apply(c, CourseAction.Publish, now);
+        // Freeze the reviewed content: learners are served this snapshot until the next publish.
+        var snap = await snapshots.AddSnapshot(c, uid, now);
+        audit.Record("course.published", nameof(Course), c.Id, new { from = from.ToString(), to = c.Status.ToString(), version = snap.Version });
+        try { await db.SaveChangesAsync(); }
+        catch (DbUpdateException)
+        {
+            throw AppException.Conflict("The course was published concurrently; reload and try again.", "concurrent_publish");
+        }
         return new CourseStatusDto(c.Id, c.Status, c.ReviewedAt, c.PublishedAt);
     }
 

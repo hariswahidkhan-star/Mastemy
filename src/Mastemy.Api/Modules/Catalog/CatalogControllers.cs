@@ -71,6 +71,10 @@ public class CourseReviewController(ReviewService svc) : ControllerBase
     [HttpGet("{id:guid}/changes"), Authorize(Policy = "Reviewer")]
     public Task<CourseChangesDto> Changes(Guid id) => svc.Changes(id);
 
+    /// <summary>Structured diff between the working copy and the latest published snapshot (reviewers, staff, course authors).</summary>
+    [HttpGet("{id:guid}/diff"), Authorize]
+    public Task<CourseDiffDto> Diff(Guid id, [FromServices] CourseSnapshotService snapshots) => snapshots.Diff(id);
+
     [HttpGet("{id:guid}/comments"), Authorize]
     public Task<List<ReviewCommentDto>> Comments(Guid id) => svc.Comments(id);
 }
@@ -82,4 +86,13 @@ public class AdminCoursesController(ReviewService svc) : ControllerBase
 {
     [HttpPost("{id:guid}/publish")] public Task<CourseStatusDto> Publish(Guid id) => svc.Publish(id);
     [HttpPost("{id:guid}/archive")] public Task<CourseStatusDto> Archive(Guid id) => svc.Archive(id);
+}
+
+/// <summary>What learners currently see: the latest published snapshot (course authors, reviewers, staff).</summary>
+[ApiController]
+[Route("api/studio/courses")]
+[Authorize]
+public class PublishedPreviewController(CourseSnapshotService svc) : ControllerBase
+{
+    [HttpGet("{id:guid}/published-preview")] public Task<PublishedPreviewDto> Preview(Guid id) => svc.PublishedPreview(id);
 }
