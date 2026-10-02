@@ -157,3 +157,26 @@ The SSR server and nginx now send these headers:
 
 - **`quality-gates`:** bundle budgets, the loading/error state audit, and the TODO grep.
 - **`lighthouse`:** `scripts/lighthouse.sh`, median of 3 runs, requiring ≥ 95 in every category on mobile and desktop and LCP < 2.5 s, CLS < 0.1 and TBT < 200 ms.
+
+## Final verification on the merged branch (2026-10-02, commit 738b6d3)
+
+Full e2e suite (scripts/e2e-all.sh, MFA on): 111 passed. Lighthouse 12, median of 3 runs per page/form factor:
+
+| Page | Form factor | Performance | Accessibility | Best Practices | SEO | LCP (ms) | TBT (ms) | CLS |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| home (`/`) | mobile | 98 | 100 | 100 | 100 | 1869 | 78 | 0 |
+| home (`/`) | desktop | 100 | 100 | 100 | 100 | 483 | 0 | 0 |
+| courses (`/courses`) | mobile | 98 | 100 | 100 | 100 | 1809 | 80 | 0 |
+| courses (`/courses`) | desktop | 100 | 100 | 100 | 100 | 420 | 0 | 0.005 |
+| course-detail (`/courses/<slug>`) | mobile | 97 | 100 | 100 | 100 | 1958 | 119 | 0 |
+| course-detail (`/courses/<slug>`) | desktop | 100 | 100 | 100 | 100 | 571 | 0 | 0 |
+| category (`/categories/<slug>`) | mobile | 98 | 100 | 100 | 100 | 1894 | 75 | 0 |
+| category (`/categories/<slug>`) | desktop | 100 | 100 | 100 | 100 | 511 | 0 | 0.005 |
+| certifications (`/certifications`) | mobile | 98 | 100 | 100 | 100 | 1864 | 61 | 0 |
+| certifications (`/certifications`) | desktop | 100 | 100 | 100 | 100 | 522 | 0 | 0 |
+| article (`/articles/how-mcq-certificates-work`) | mobile | 98 | 100 | 100 | 100 | 1873 | 17 | 0 |
+| article (`/articles/how-mcq-certificates-work`) | desktop | 100 | 100 | 100 | 100 | 487 | 0 | 0 |
+| login (`/login`) | mobile | 98 | 100 | 100 | 100 | 1880 | 32 | 0 |
+| login (`/login`) | desktop | 100 | 100 | 100 | 100 | 593 | 0 | 0 |
+| verify (`/verify`) | mobile | 98 | 100 | 100 | 100 | 1866 | 44 | 0 |
+| verify (`/verify`) | desktop | 100 | 100 | 100 | 100 | 632 | 0 | 0.017 |
