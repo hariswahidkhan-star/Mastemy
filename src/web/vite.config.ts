@@ -21,7 +21,7 @@ export default defineConfig(({ isSsrBuild }) => ({
         emptyOutDir: true,
         copyPublicDir: false,
       }
-    : { sourcemap: true },
+    : { sourcemap: true, manifest: true },
   test: {
     environment: 'jsdom',
     globals: true,

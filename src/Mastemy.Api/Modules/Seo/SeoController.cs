@@ -25,7 +25,7 @@ public class SeoController(AppDbContext db, IConfiguration cfg, CourseSnapshotSe
     public static readonly string[] StaticPaths = ["/", "/courses", "/free-lessons", "/verify", "/teach", "/about", "/help", "/contact",
         "/categories", "/certifications", "/pathways", "/instructors", "/packages", "/practice", "/notes-library", "/business", "/articles",
         "/bestseller-rule", "/plans", "/bundles"];
-    public static readonly string[] DisallowedPaths = ["/me", "/studio", "/admin", "/attempts", "/learn/", "/api/", "/login", "/register",
+    public static readonly string[] DisallowedPaths = ["/me", "/studio", "/admin", "/attempts", "/learn/", "/api/",
         "/checkout", "/gift", "/orgs", "/staff", "/review", "/practice/session"];
 
     /// <summary>Editorial articles shipped with the web app (static content; slugs must match the web routes).</summary>

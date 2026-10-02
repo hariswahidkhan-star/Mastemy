@@ -6,7 +6,12 @@ import { RequireRole } from '../auth/RequireRole';
 import type { Role } from '../api/types';
 import { Spinner } from '../components/ui/Spinner';
 import { useI18n } from '../i18n/I18nProvider';
-import { PracticePage } from '../pages/discover/PublicDiscoverPages';
+import { lazyNamed } from '../lib/lazyNamed';
+
+const PracticePage = lazyNamed(
+  () => import('../pages/discover/PublicDiscoverPages'),
+  'PracticePage',
+);
 
 const practice = () => import('../pages/exams/PracticePages');
 const staff = () => import('../pages/exams/StaffExamsPages');
@@ -53,7 +58,9 @@ function PracticeRoute() {
       <PracticeHubPage />
     </Lazy>
   ) : (
-    <PracticePage />
+    <Lazy>
+      <PracticePage />
+    </Lazy>
   );
 }
 

@@ -102,9 +102,15 @@ describe('server rendering', () => {
     expect(html).not.toContain('Foundations </script><b>');
 
     // The client hydrates from the embedded cache instead of refetching.
-    const payload = /window\.__MASTEMY_SSR__=(.*?)<\/script>/.exec(html)?.[1] ?? '';
+    const payload =
+      /<script type="application\/json" id="__MASTEMY_SSR__">(.*?)<\/script>/.exec(html)?.[1] ?? '';
     expect(payload).toContain('"queryKey":["course","intro-ml"]');
     expect(fetchMock).toHaveBeenCalledWith('/api/courses/intro-ml', expect.anything());
+
+    // The lazy route chunk is rendered in place: no React inline runtime scripts for the CSP to block.
+    const scripts = [...html.matchAll(/<script(\s[^>]*)?>/g)].map((m) => m[1] ?? '');
+    for (const attrs of scripts) expect(attrs).toMatch(/src=|type="application\/(ld\+)?json"/);
+    expect(html).not.toContain('<template');
   });
 
   it('adds aggregateRating only from real reviews and localizes for ?lang=ar', async () => {

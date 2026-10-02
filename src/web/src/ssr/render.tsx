@@ -1,9 +1,11 @@
-import { renderToString } from 'react-dom/server';
+import type { ReactNode } from 'react';
+import { prerender } from 'react-dom/static';
 import { matchPath, StaticRouter } from 'react-router';
 import { dehydrate } from '@tanstack/react-query';
 import type { QueryClient } from '@tanstack/react-query';
 import { ApiError } from '../api/client';
 import type { CategoryDto, CourseDetailDto } from '../api/types';
+import { ensureLang } from '../i18n/I18nProvider';
 import type { Lang } from '../i18n/I18nProvider';
 import { HeadCollectorContext, SITE } from '../lib/seo';
 import type { PageMeta } from '../lib/seo';
@@ -31,6 +33,8 @@ export const PUBLIC_ROUTES = [
   '/about',
   '/help',
   '/contact',
+  '/login',
+  '/register',
   ...DISCOVER_PUBLIC_ROUTES,
   ...FINALB_PUBLIC_ROUTES,
 ] as const;
@@ -38,7 +42,16 @@ export const PUBLIC_ROUTES = [
 /** Certificate verification results are public but per-person: rendered, never indexed. */
 const NOINDEX_PUBLIC = ['/verify/:code'];
 
-const MAX_PASSES = 4;
+const MAX_PASSES = 5;
+
+/**
+ * Render to a complete HTML string. `prerender` (unlike `renderToString`) waits for every Suspense boundary,
+ * so route-level `React.lazy` chunks are loaded and rendered on the server instead of their fallbacks.
+ */
+async function renderComplete(node: ReactNode): Promise<string> {
+  const { prelude } = await prerender(node);
+  return new Response(prelude).text();
+}
 
 export interface RenderOptions {
   /** index.html produced by `vite build` (or the dev template). */
@@ -146,6 +159,7 @@ export async function renderPage(url: string, opts: RenderOptions): Promise<Rend
   const lang = langFromSearch(search);
   if (!isPublicRoute(pathname)) return { status: 200, html: renderShell(opts.template, lang) };
 
+  await ensureLang(lang);
   const qc = createQueryClient();
   // No retries on the server: one slow API call should not stall a crawler.
   qc.setDefaultOptions({ queries: { ...qc.getDefaultOptions().queries, retry: false } });
@@ -153,7 +167,7 @@ export async function renderPage(url: string, opts: RenderOptions): Promise<Rend
   let body = '';
   for (let pass = 0; pass < MAX_PASSES; pass++) {
     meta = { noindex: false };
-    body = renderToString(
+    body = await renderComplete(
       <HeadCollectorContext.Provider value={meta}>
         <AppTree
           queryClient={qc}
@@ -162,7 +176,10 @@ export async function renderPage(url: string, opts: RenderOptions): Promise<Rend
         />
       </HeadCollectorContext.Provider>,
     );
-    if ((await settle(qc)) === 0) break;
+    const fetched = await settle(qc);
+    // A pass that had to wait for a lazy route chunk reveals it with React's inline runtime scripts (which
+    // the CSP rightly blocks); once the chunk is loaded the next pass renders it in place, script-free.
+    if (fetched === 0 && !body.includes('<script')) break;
   }
 
   const categoryMatch = matchPath('/categories/:slug', pathname);
@@ -211,7 +228,8 @@ export async function renderPage(url: string, opts: RenderOptions): Promise<Rend
       lang,
       head,
       body,
-      tail: `<script>window.${SSR_GLOBAL}=${scriptJson(payload)}</script>`,
+      // A non-executing JSON block: no inline script for the Content-Security-Policy to allow.
+      tail: `<script type="application/json" id="${SSR_GLOBAL}">${scriptJson(payload)}</script>`,
     }),
   };
 }

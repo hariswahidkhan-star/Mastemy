@@ -6,16 +6,7 @@ import { RequireRole } from './auth/RequireRole';
 import { Layout } from './components/layout/Layout';
 import { Spinner } from './components/ui/Spinner';
 import { useI18n } from './i18n/I18nProvider';
-import { LoginPage, RegisterPage } from './pages/public/AuthPages';
-import { CourseDetailPage } from './pages/public/CourseDetailPage';
-import { CategoryPage, CoursesPage } from './pages/public/CoursesPage';
-import { FreeLessonsPage } from './pages/public/FreeLessonsPage';
-import { HomePage } from './pages/public/HomePage';
-import { AboutPage, ContactPage, HelpPage, NotFoundPage } from './pages/public/StaticPages';
-import { TeachPage } from './pages/public/TeachPage';
-import { VerifyPage } from './pages/public/VerifyPage';
-import { ComparePage } from './pages/public/ComparePage';
-import { ThreadPage } from './pages/engagement/Discussions';
+import { lazyNamed } from './lib/lazyNamed';
 import { discoverRoutes } from './routes/discoverRoutes';
 import { accountRoutes } from './routes/accountRoutes';
 import { examsRoutes } from './routes/examsRoutes';
@@ -24,6 +15,27 @@ import { finalaRoutes } from './routes/finalaRoutes';
 import { commerceAdminRoutes, commerceRoutes, commerceStudioRoutes } from './routes/commerceRoutes';
 import { finalbAdminRoutes, finalbRoutes } from './routes/finalbRoutes';
 
+const LoginPage = lazyNamed(() => import('./pages/public/AuthPages'), 'LoginPage');
+const RegisterPage = lazyNamed(() => import('./pages/public/AuthPages'), 'RegisterPage');
+const CourseDetailPage = lazyNamed(
+  () => import('./pages/public/CourseDetailPage'),
+  'CourseDetailPage',
+);
+const CategoryPage = lazyNamed(() => import('./pages/public/CoursesPage'), 'CategoryPage');
+const CoursesPage = lazyNamed(() => import('./pages/public/CoursesPage'), 'CoursesPage');
+const FreeLessonsPage = lazyNamed(
+  () => import('./pages/public/FreeLessonsPage'),
+  'FreeLessonsPage',
+);
+const HomePage = lazyNamed(() => import('./pages/public/HomePage'), 'HomePage');
+const AboutPage = lazyNamed(() => import('./pages/public/StaticPages'), 'AboutPage');
+const ContactPage = lazyNamed(() => import('./pages/public/StaticPages'), 'ContactPage');
+const HelpPage = lazyNamed(() => import('./pages/public/StaticPages'), 'HelpPage');
+const NotFoundPage = lazyNamed(() => import('./pages/public/StaticPages'), 'NotFoundPage');
+const TeachPage = lazyNamed(() => import('./pages/public/TeachPage'), 'TeachPage');
+const VerifyPage = lazyNamed(() => import('./pages/public/VerifyPage'), 'VerifyPage');
+const ComparePage = lazyNamed(() => import('./pages/public/ComparePage'), 'ComparePage');
+const ThreadPage = lazyNamed(() => import('./pages/engagement/Discussions'), 'ThreadPage');
 const LearnPage = lazy(() =>
   import('./pages/learn/LearnPage').then((m) => ({ default: m.LearnPage })),
 );
@@ -110,10 +122,38 @@ export function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="courses" element={<CoursesPage />} />
-        <Route path="courses/:slug" element={<CourseDetailPage />} />
-        <Route path="courses/:slug/discussions/:threadId" element={<ThreadPage />} />
+        <Route
+          index
+          element={
+            <Lazy>
+              <HomePage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="courses"
+          element={
+            <Lazy>
+              <CoursesPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="courses/:slug"
+          element={
+            <Lazy>
+              <CourseDetailPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="courses/:slug/discussions/:threadId"
+          element={
+            <Lazy>
+              <ThreadPage />
+            </Lazy>
+          }
+        />
         <Route
           path="courses/:slug/announcements"
           element={
@@ -122,7 +162,14 @@ export function App() {
             </Private>
           }
         />
-        <Route path="compare" element={<ComparePage />} />
+        <Route
+          path="compare"
+          element={
+            <Lazy>
+              <ComparePage />
+            </Lazy>
+          }
+        />
         <Route
           path="me/wishlist"
           element={
@@ -171,16 +218,86 @@ export function App() {
             </Private>
           }
         />
-        <Route path="categories/:slug" element={<CategoryPage />} />
-        <Route path="free-lessons" element={<FreeLessonsPage />} />
-        <Route path="verify" element={<VerifyPage />} />
-        <Route path="verify/:code" element={<VerifyPage />} />
-        <Route path="teach" element={<TeachPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="help" element={<HelpPage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="contact" element={<ContactPage />} />
+        <Route
+          path="categories/:slug"
+          element={
+            <Lazy>
+              <CategoryPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="free-lessons"
+          element={
+            <Lazy>
+              <FreeLessonsPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="verify"
+          element={
+            <Lazy>
+              <VerifyPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="verify/:code"
+          element={
+            <Lazy>
+              <VerifyPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="teach"
+          element={
+            <Lazy>
+              <TeachPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <Lazy>
+              <LoginPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <Lazy>
+              <RegisterPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="help"
+          element={
+            <Lazy>
+              <HelpPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="about"
+          element={
+            <Lazy>
+              <AboutPage />
+            </Lazy>
+          }
+        />
+        <Route
+          path="contact"
+          element={
+            <Lazy>
+              <ContactPage />
+            </Lazy>
+          }
+        />
         {/* Video lessons are never gated: no RequireRole on /learn. */}
         <Route
           path="learn/:slug"
@@ -389,7 +506,14 @@ export function App() {
         {commerceRoutes}
         {finalaRoutes}
         {finalbRoutes}
-        <Route path="*" element={<NotFoundPage />} />
+        <Route
+          path="*"
+          element={
+            <Lazy>
+              <NotFoundPage />
+            </Lazy>
+          }
+        />
       </Route>
     </Routes>
   );

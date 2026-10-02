@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../components/ui/Button';
 import { useI18n } from '../../i18n/I18nProvider';
 import { useConsent, useSetConsent } from '../../lib/analytics';
@@ -15,7 +15,23 @@ export function ConsentBanner() {
   const setConsent = useSetConsent();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<unknown>(null);
-  if (!consent.ready || consent.decided) return null;
+  const ref = useRef<HTMLElement>(null);
+  const shown = consent.ready && !consent.decided;
+  // Reserve the docked banner's height at the bottom of the page (see .ws-consent).
+  useEffect(() => {
+    const el = ref.current;
+    if (!shown || !el) return;
+    const root = document.documentElement;
+    const update = () => root.style.setProperty('--consent-h', `${el.offsetHeight}px`);
+    update();
+    const ro = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(update);
+    ro?.observe(el);
+    return () => {
+      ro?.disconnect();
+      root.style.removeProperty('--consent-h');
+    };
+  }, [shown]);
+  if (!shown) return null;
   const choose = (analytics: boolean) => {
     setBusy(true);
     setError(null);
@@ -24,7 +40,7 @@ export function ConsentBanner() {
       .finally(() => setBusy(false));
   };
   return (
-    <section className="ws-consent" role="region" aria-labelledby="ws-consent-h">
+    <section ref={ref} className="ws-consent" role="region" aria-labelledby="ws-consent-h">
       <h2 id="ws-consent-h">{t('workspace.consent.title')}</h2>
       <p className="small">{t('workspace.consent.body')}</p>
       <div className="row">

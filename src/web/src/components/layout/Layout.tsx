@@ -1,16 +1,23 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router';
 import { useAuth, AUTHOR_ROLES, STAFF_ROLES } from '../../auth/AuthProvider';
 import { useI18n } from '../../i18n/I18nProvider';
 import { useTheme } from '../../theme/ThemeProvider';
 import { Button } from '../ui/Button';
-import { CompareTray } from '../Discovery';
-import { NotificationBell } from '../NotificationBell';
+import { useCompareTray } from '../../lib/compare';
 import { MegaMenu } from '../discover/MegaMenu';
-import { EmailVerificationBanner } from '../../pages/account/EmailPages';
 import { ConsentBanner, ConsentSettingsButton } from '../../pages/workspace/Consent';
 import { AttributionCapture } from '../../pages/commerce/shared';
-import { ReauthBanner } from '../../pages/finala/Reauth';
+import { lazyNamed } from '../../lib/lazyNamed';
+
+// Signed-in-only banners: loaded on demand so their form code stays out of the initial bundle.
+const EmailVerificationBanner = lazyNamed(
+  () => import('../../pages/account/EmailPages'),
+  'EmailVerificationBanner',
+);
+const ReauthBanner = lazyNamed(() => import('../../pages/finala/Reauth'), 'ReauthBanner');
+const NotificationBell = lazyNamed(() => import('../NotificationBell'), 'NotificationBell');
+const CompareTray = lazyNamed(() => import('../Discovery'), 'CompareTray');
 
 function Logo() {
   return (
@@ -36,6 +43,7 @@ export function Layout() {
   const { resolved, toggle } = useTheme();
   const { user, hasRole, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const compareCount = useCompareTray().items.length;
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -128,7 +136,9 @@ export function Layout() {
               </Button>
               {user ? (
                 <>
-                  <NotificationBell />
+                  <Suspense fallback={null}>
+                    <NotificationBell />
+                  </Suspense>
                   <span className="header-user" title={user.email}>
                     {user.displayName}
                   </span>
@@ -158,12 +168,20 @@ export function Layout() {
       </header>
       <ConsentBanner />
       <main id="main" className="site-main" tabIndex={-1}>
-        <EmailVerificationBanner />
-        <ReauthBanner />
+        {user && (
+          <Suspense fallback={null}>
+            <EmailVerificationBanner />
+            <ReauthBanner />
+          </Suspense>
+        )}
         <AttributionCapture />
         <Outlet />
       </main>
-      <CompareTray />
+      {compareCount > 0 && (
+        <Suspense fallback={null}>
+          <CompareTray />
+        </Suspense>
+      )}
       <footer className="site-footer">
         <div className="container site-footer__inner">
           <div>

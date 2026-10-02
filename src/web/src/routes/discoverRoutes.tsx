@@ -5,22 +5,23 @@ import { STAFF_ROLES } from '../auth/AuthProvider';
 import { RequireRole } from '../auth/RequireRole';
 import { Spinner } from '../components/ui/Spinner';
 import { useI18n } from '../i18n/I18nProvider';
-import {
-  AcademyPage,
-  ArticlePage,
-  ArticlesPage,
-  BestsellerRulePage,
-  BusinessPage,
-  CategoriesIndexPage,
-  CertificationDetailPage,
-  CertificationsPage,
-  CollectionPage,
-  InstructorsPage,
-  NotesLibraryPage,
-  PackagesPage,
-  PathwayDetailPage,
-  PathwaysPage,
-} from '../pages/discover/PublicDiscoverPages';
+import { lazyNamed } from '../lib/lazyNamed';
+
+const pub = () => import('../pages/discover/PublicDiscoverPages');
+const AcademyPage = lazyNamed(pub, 'AcademyPage');
+const ArticlePage = lazyNamed(pub, 'ArticlePage');
+const ArticlesPage = lazyNamed(pub, 'ArticlesPage');
+const BestsellerRulePage = lazyNamed(pub, 'BestsellerRulePage');
+const BusinessPage = lazyNamed(pub, 'BusinessPage');
+const CategoriesIndexPage = lazyNamed(pub, 'CategoriesIndexPage');
+const CertificationDetailPage = lazyNamed(pub, 'CertificationDetailPage');
+const CertificationsPage = lazyNamed(pub, 'CertificationsPage');
+const CollectionPage = lazyNamed(pub, 'CollectionPage');
+const InstructorsPage = lazyNamed(pub, 'InstructorsPage');
+const NotesLibraryPage = lazyNamed(pub, 'NotesLibraryPage');
+const PackagesPage = lazyNamed(pub, 'PackagesPage');
+const PathwayDetailPage = lazyNamed(pub, 'PathwayDetailPage');
+const PathwaysPage = lazyNamed(pub, 'PathwaysPage');
 
 const adminPages = () => import('../pages/discover/AdminDiscoverPages');
 const AdminLayout = lazy(() =>
@@ -65,21 +66,119 @@ function Guard({ roles, children }: { roles: readonly string[]; children: ReactN
  */
 export const discoverRoutes = (
   <>
-    <Route path="categories" element={<CategoriesIndexPage />} />
-    <Route path="academies/:slug" element={<AcademyPage />} />
-    <Route path="certifications" element={<CertificationsPage />} />
-    <Route path="certifications/:slug" element={<CertificationDetailPage />} />
-    <Route path="pathways" element={<PathwaysPage />} />
-    <Route path="pathways/:slug" element={<PathwayDetailPage />} />
-    <Route path="collections/:slug" element={<CollectionPage />} />
-    <Route path="instructors" element={<InstructorsPage />} />
-    <Route path="packages" element={<PackagesPage />} />
+    <Route
+      path="categories"
+      element={
+        <Lazy>
+          <CategoriesIndexPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="academies/:slug"
+      element={
+        <Lazy>
+          <AcademyPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="certifications"
+      element={
+        <Lazy>
+          <CertificationsPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="certifications/:slug"
+      element={
+        <Lazy>
+          <CertificationDetailPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="pathways"
+      element={
+        <Lazy>
+          <PathwaysPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="pathways/:slug"
+      element={
+        <Lazy>
+          <PathwayDetailPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="collections/:slug"
+      element={
+        <Lazy>
+          <CollectionPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="instructors"
+      element={
+        <Lazy>
+          <InstructorsPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="packages"
+      element={
+        <Lazy>
+          <PackagesPage />
+        </Lazy>
+      }
+    />
     {/* /practice is served by examsRoutes (hub when signed in, this public page otherwise). */}
-    <Route path="notes-library" element={<NotesLibraryPage />} />
-    <Route path="business" element={<BusinessPage />} />
-    <Route path="bestseller-rule" element={<BestsellerRulePage />} />
-    <Route path="articles" element={<ArticlesPage />} />
-    <Route path="articles/:slug" element={<ArticlePage />} />
+    <Route
+      path="notes-library"
+      element={
+        <Lazy>
+          <NotesLibraryPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="business"
+      element={
+        <Lazy>
+          <BusinessPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="bestseller-rule"
+      element={
+        <Lazy>
+          <BestsellerRulePage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="articles"
+      element={
+        <Lazy>
+          <ArticlesPage />
+        </Lazy>
+      }
+    />
+    <Route
+      path="articles/:slug"
+      element={
+        <Lazy>
+          <ArticlePage />
+        </Lazy>
+      }
+    />
     <Route
       path="admin"
       element={

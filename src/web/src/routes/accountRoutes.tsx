@@ -4,12 +4,16 @@ import { Route } from 'react-router';
 import { RequireRole } from '../auth/RequireRole';
 import { Spinner } from '../components/ui/Spinner';
 import { useI18n } from '../i18n/I18nProvider';
-import {
-  ForgotPasswordPage,
-  ResetPasswordPage,
-  VerifyEmailPage,
-} from '../pages/account/EmailPages';
-import { InstructorProfilePage } from '../pages/account/InstructorProfilePage';
+import { lazyNamed } from '../lib/lazyNamed';
+
+const emailPages = () => import('../pages/account/EmailPages');
+const ForgotPasswordPage = lazyNamed(emailPages, 'ForgotPasswordPage');
+const ResetPasswordPage = lazyNamed(emailPages, 'ResetPasswordPage');
+const VerifyEmailPage = lazyNamed(emailPages, 'VerifyEmailPage');
+const InstructorProfilePage = lazyNamed(
+  () => import('../pages/account/InstructorProfilePage'),
+  'InstructorProfilePage',
+);
 
 const profilePages = () => import('../pages/account/ProfilePages');
 const ProfilePage = lazy(() => profilePages().then((m) => ({ default: m.ProfilePage })));
@@ -35,10 +39,42 @@ function Private({ children }: { children: ReactNode }) {
 
 /** Account area routes (identity security + account module), mounted inside the main Layout route. */
 export const accountRoutes = [
-  <Route key="verify-email" path="verify-email" element={<VerifyEmailPage />} />,
-  <Route key="forgot-password" path="forgot-password" element={<ForgotPasswordPage />} />,
-  <Route key="reset-password" path="reset-password" element={<ResetPasswordPage />} />,
-  <Route key="instructor" path="instructors/:id" element={<InstructorProfilePage />} />,
+  <Route
+    key="verify-email"
+    path="verify-email"
+    element={
+      <Loading>
+        <VerifyEmailPage />
+      </Loading>
+    }
+  />,
+  <Route
+    key="forgot-password"
+    path="forgot-password"
+    element={
+      <Loading>
+        <ForgotPasswordPage />
+      </Loading>
+    }
+  />,
+  <Route
+    key="reset-password"
+    path="reset-password"
+    element={
+      <Loading>
+        <ResetPasswordPage />
+      </Loading>
+    }
+  />,
+  <Route
+    key="instructor"
+    path="instructors/:id"
+    element={
+      <Loading>
+        <InstructorProfilePage />
+      </Loading>
+    }
+  />,
   <Route
     key="welcome"
     path="welcome"

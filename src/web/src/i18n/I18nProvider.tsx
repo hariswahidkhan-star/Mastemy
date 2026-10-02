@@ -1,50 +1,49 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import en from './en.json';
-import ar from './ar.json';
 import accountEn from './account.en.json';
-import accountAr from './account.ar.json';
 import commerceEn from './commerce.en.json';
-import commerceAr from './commerce.ar.json';
 import discoverEn from './discover.en.json';
-import discoverAr from './discover.ar.json';
 import examsEn from './exams.en.json';
-import examsAr from './exams.ar.json';
 import finalaEn from './finala.en.json';
-import finalaAr from './finala.ar.json';
 import finalbEn from './finalb.en.json';
-import finalbAr from './finalb.ar.json';
 import workspaceEn from './workspace.en.json';
-import workspaceAr from './workspace.ar.json';
 
 export type Lang = 'en' | 'ar';
 type Dict = { [key: string]: string | Dict };
 
 /** Area dictionaries (`<area>.en.json` / `<area>.ar.json`) hold one top-level namespace each and are merged in. */
-const EXTRA: Record<Lang, Dict[]> = {
-  en: [
-    accountEn as Dict,
-    commerceEn as Dict,
-    discoverEn as Dict,
-    examsEn as Dict,
-    finalaEn as Dict,
-    finalbEn as Dict,
-    workspaceEn as Dict,
-  ],
-  ar: [
-    accountAr as Dict,
-    commerceAr as Dict,
-    discoverAr as Dict,
-    examsAr as Dict,
-    finalaAr as Dict,
-    finalbAr as Dict,
-    workspaceAr as Dict,
-  ],
+const EXTRA_EN: Dict[] = [
+  accountEn as Dict,
+  commerceEn as Dict,
+  discoverEn as Dict,
+  examsEn as Dict,
+  finalaEn as Dict,
+  finalbEn as Dict,
+  workspaceEn as Dict,
+];
+/**
+ * English ships in the main bundle (it is also the fallback for missing keys); Arabic is a separate chunk
+ * loaded by `ensureLang` before the first render that needs it, so English visitors never download it.
+ */
+const DICTS: Partial<Record<Lang, Dict>> = {
+  en: Object.assign({}, en as Dict, ...EXTRA_EN),
 };
-const DICTS: Record<Lang, Dict> = {
-  en: Object.assign({}, en as Dict, ...EXTRA.en),
-  ar: Object.assign({}, ar as Dict, ...EXTRA.ar),
-};
+
+const loading: Partial<Record<Lang, Promise<void>>> = {};
+
+/** Load a language's dictionary (no-op when already loaded). Await it before rendering in that language. */
+export function ensureLang(lang: Lang): Promise<void> {
+  if (DICTS[lang]) return Promise.resolve();
+  loading[lang] ??= import('./ar').then((m) => {
+    DICTS.ar = m.AR_DICT as Dict;
+  });
+  return loading[lang];
+}
+
+export function isLangLoaded(lang: Lang): boolean {
+  return !!DICTS[lang];
+}
 
 const STORAGE_KEY = 'mastemy.lang';
 
@@ -60,7 +59,8 @@ function lookup(dict: Dict, key: string): string | undefined {
 export type TFunction = (key: string, vars?: Record<string, string | number>) => string;
 
 export function translate(lang: Lang, key: string, vars?: Record<string, string | number>): string {
-  const template = lookup(DICTS[lang], key) ?? lookup(DICTS.en, key) ?? key;
+  const dict = DICTS[lang];
+  const template = (dict && lookup(dict, key)) ?? lookup(DICTS.en as Dict, key) ?? key;
   if (!vars) return template;
   return template.replace(/\{(\w+)\}/g, (m, name: string) =>
     vars[name] !== undefined ? String(vars[name]) : m,
@@ -122,7 +122,7 @@ export function I18nProvider({
   }, [lang]);
 
   const setLang = useCallback((next: Lang) => {
-    setLangState(next);
+    void ensureLang(next).then(() => setLangState(next));
     try {
       localStorage.setItem(STORAGE_KEY, next);
     } catch {

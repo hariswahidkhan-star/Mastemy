@@ -103,18 +103,27 @@
 
 /* Consent banner */
 .ws-consent {
-  /* In the page flow (not an overlay) so it never covers content or controls. */
-  max-inline-size: var(--container);
-  margin: var(--space-3) auto 0;
+  /*
+   * Docked to the bottom so its late arrival (after the consent check) never shifts the page (CLS). It never
+   * covers content: the page reserves its height (--consent-h, set by ConsentBanner) as bottom padding and
+   * as scroll padding, so a focused control is scrolled clear of it (WCAG 2.4.11).
+   */
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 60;
+  max-block-size: 50vh;
+  overflow: auto;
   background: var(--c-surface);
-  border: 1px solid var(--c-border-strong);
-  border-radius: var(--radius);
-  padding: var(--space-3) var(--space-4);
+  border-block-start: 1px solid var(--c-border-strong);
+  box-shadow: 0 -4px 16px rgb(0 0 0 / 0.08);
+  padding: var(--space-3) max(var(--space-4), calc((100% - var(--container)) / 2));
 }
-@media (max-width: 1240px) {
-  .ws-consent {
-    margin-inline: var(--space-4);
-  }
+html:has(.ws-consent) {
+  scroll-padding-block-end: var(--consent-h, 0px);
+}
+html:has(.ws-consent) body {
+  padding-block-end: var(--consent-h, 0px);
 }
 .ws-consent h2 {
   font-size: var(--text-md);

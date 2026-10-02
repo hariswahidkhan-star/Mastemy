@@ -3,14 +3,24 @@ import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import { hydrate } from '@tanstack/react-query';
 import { hasSessionHint } from './api/client';
-import { readStoredLang } from './i18n/I18nProvider';
+import { ensureLang, readStoredLang } from './i18n/I18nProvider';
 import { AppTree, createQueryClient, SSR_GLOBAL } from './ssr/AppTree';
 import type { SsrPayload } from './ssr/AppTree';
 import './styles/tokens.css';
 import './styles/global.css';
 
 const queryClient = createQueryClient();
-const ssr = (window as unknown as Record<string, SsrPayload | undefined>)[SSR_GLOBAL];
+function readSsrPayload(): SsrPayload | undefined {
+  const el = document.getElementById(SSR_GLOBAL);
+  if (!el?.textContent) return undefined;
+  try {
+    return JSON.parse(el.textContent) as SsrPayload;
+  } catch {
+    return undefined;
+  }
+}
+
+const ssr = readSsrPayload();
 if (ssr?.state) hydrate(queryClient, ssr.state);
 
 function hasStoredTheme(): boolean {
@@ -41,9 +51,12 @@ const tree = (
   </StrictMode>
 );
 
-if (canHydrate) {
-  hydrateRoot(container, tree);
-} else {
-  container.textContent = '';
-  createRoot(container).render(tree);
-}
+// Arabic visitors fetch their dictionary (a separate chunk) before the first render.
+void ensureLang(canHydrate ? ssr.lang : readStoredLang()).then(() => {
+  if (canHydrate) {
+    hydrateRoot(container, tree);
+  } else {
+    container.textContent = '';
+    createRoot(container).render(tree);
+  }
+});

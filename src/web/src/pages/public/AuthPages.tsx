@@ -26,7 +26,7 @@ export function LoginPage() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const [pending, setPending] = useState<AuthResponse | null>(null);
-  usePageMeta(t('auth.loginTitle'), undefined, { noindex: true });
+  usePageMeta(t('auth.loginTitle'), t('auth.loginDescription'));
   const schema = useMemo(
     () =>
       z.object({
@@ -120,7 +120,7 @@ export function RegisterPage() {
   const { t, lang } = useI18n();
   const { register: registerUser } = useAuth();
   const navigate = useNavigate();
-  usePageMeta(t('auth.registerTitle'), undefined, { noindex: true });
+  usePageMeta(t('auth.registerTitle'), t('auth.registerDescription'));
   const schema = useMemo(
     () =>
       z
