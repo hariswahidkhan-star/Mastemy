@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0880",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 656,
+  "lesson_check_items": 112,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0880-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You write const { count } = reactive({ count: 0 }) and later update count. The template bound to the original object does not update. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Destructuring a reactive object yields plain values that lose the reactive connection",
+     "correct": true,
+     "rationale": "Correct: destructuring breaks reactivity; use toRefs or access via the object."
+    },
+    {
+     "key": "B",
+     "text": "reactive only works with arrays",
+     "correct": false,
+     "rationale": "reactive works with objects, including this one."
+    },
+    {
+     "key": "C",
+     "text": "count must be declared with let, not const",
+     "correct": false,
+     "rationale": "const vs let is irrelevant to reactivity tracking here."
+    },
+    {
+     "key": "D",
+     "text": "The template must use v-once",
+     "correct": false,
+     "rationale": "v-once would prevent updates, which is the opposite of the goal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: destructuring breaks reactivity; use toRefs or access via the object.",
+   "outcome_refs": [
+    "MST-0880-D01.01"
+   ],
+   "domain_ref": "Vue fundamentals and reactivity",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0880-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO caching strategy choices are appropriate for a PWA? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cache-first for hashed static assets",
+     "correct": true,
+     "rationale": "Correct: immutable hashed assets are safe to serve from cache first."
+    },
+    {
+     "key": "B",
+     "text": "Network-first for frequently changing API data",
+     "correct": true,
+     "rationale": "Correct: network-first keeps dynamic data fresh with a cache fallback."
+    },
+    {
+     "key": "C",
+     "text": "Cache-first for a stock-price API",
+     "correct": false,
+     "rationale": "Cache-first would serve stale prices indefinitely."
+    },
+    {
+     "key": "D",
+     "text": "Never using a service worker for any caching",
+     "correct": false,
+     "rationale": "That forgoes offline capability entirely."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: immutable hashed assets are safe to serve from cache first.",
+   "outcome_refs": [
+    "MST-0880-D02.01"
+   ],
+   "domain_ref": "Offline and caching strategies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0880-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "On a user's very first visit, does a newly registered service worker control the current page load?",
+   "options": [
+    {
+     "key": "A",
+     "text": "No; it installs and activates but controls the page on a later navigation unless it claims clients",
+     "correct": true,
+     "rationale": "Correct: by default the first load is not controlled until the SW claims clients or the page reloads."
+    },
+    {
+     "key": "B",
+     "text": "Yes, always immediately on first load",
+     "correct": false,
+     "rationale": "That is not the default lifecycle behaviour."
+    },
+    {
+     "key": "C",
+     "text": "Only if the page is served over HTTP",
+     "correct": false,
+     "rationale": "Service workers require HTTPS (or localhost); HTTP would prevent registration."
+    },
+    {
+     "key": "D",
+     "text": "Only in incognito mode",
+     "correct": false,
+     "rationale": "Incognito often disables service workers; it does not grant immediate control."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: by default the first load is not controlled until the SW claims clients or the page reloads.",
+   "outcome_refs": [
+    "MST-0880-D03.01"
+   ],
+   "domain_ref": "PWA fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

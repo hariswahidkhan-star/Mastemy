@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0859",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0859-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A JWT carries a user's roles and is signed with HS256. Why is it unsafe to put a secret API key inside the token's payload?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The payload is only Base64URL-encoded, not encrypted, so anyone can read it",
+     "correct": true,
+     "rationale": "Correct: a signed JWT guarantees integrity, not confidentiality; the claims are readable."
+    },
+    {
+     "key": "B",
+     "text": "HS256 cannot sign payloads larger than 256 bytes",
+     "correct": false,
+     "rationale": "HS256 refers to the HMAC-SHA-256 algorithm, not a size limit."
+    },
+    {
+     "key": "C",
+     "text": "JWTs are automatically encrypted, so keys rotate incorrectly",
+     "correct": false,
+     "rationale": "A plain JWS is not encrypted; that is the whole point of the risk."
+    },
+    {
+     "key": "D",
+     "text": "The signature prevents the client from reading any claims",
+     "correct": false,
+     "rationale": "The signature does not hide claims; clients routinely read them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a signed JWT guarantees integrity, not confidentiality; the claims are readable.",
+   "outcome_refs": [
+    "MST-0859-D01.01"
+   ],
+   "domain_ref": "Authentication, authorization and secrets",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0859-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices meaningfully reduce software supply-chain risk for a Java service? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Generating an SBOM and scanning it for known CVEs",
+     "correct": true,
+     "rationale": "Correct: an SBOM enables continuous vulnerability matching."
+    },
+    {
+     "key": "B",
+     "text": "Pinning and verifying dependency checksums",
+     "correct": true,
+     "rationale": "Correct: checksum verification detects tampered or substituted artifacts."
+    },
+    {
+     "key": "C",
+     "text": "Only scanning direct dependencies declared in the POM",
+     "correct": false,
+     "rationale": "Most risk hides in transitive dependencies, which this misses."
+    },
+    {
+     "key": "D",
+     "text": "Disabling TLS certificate validation to speed up downloads",
+     "correct": false,
+     "rationale": "That removes a key integrity control and increases risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an SBOM enables continuous vulnerability matching.",
+   "outcome_refs": [
+    "MST-0859-D02.01"
+   ],
+   "domain_ref": "Dependency and supply-chain governance",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0859-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An endpoint builds a query by concatenating user input into a JPA native query string. What is the correct fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use bound parameters (named or positional) instead of string concatenation",
+     "correct": true,
+     "rationale": "Correct: parameter binding separates code from data and stops injection."
+    },
+    {
+     "key": "B",
+     "text": "HTML-encode the user input before concatenating it",
+     "correct": false,
+     "rationale": "Output encoding defends against XSS, not SQL injection."
+    },
+    {
+     "key": "C",
+     "text": "Trust the ORM to sanitise the native query automatically",
+     "correct": false,
+     "rationale": "Native queries bypass the ORM's safety; the ORM does not sanitise them."
+    },
+    {
+     "key": "D",
+     "text": "Wrap the query in a try/catch block",
+     "correct": false,
+     "rationale": "Catching exceptions does not prevent the injection from executing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: parameter binding separates code from data and stops injection.",
+   "outcome_refs": [
+    "MST-0859-D03.01"
+   ],
+   "domain_ref": "Application security fundamentals for the JVM",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

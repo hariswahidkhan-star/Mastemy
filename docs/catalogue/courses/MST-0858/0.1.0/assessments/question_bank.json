@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0858",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0858-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Maven, which dependency scope means the dependency is available at compile time but is expected to be provided by the runtime container and is NOT packaged?",
+   "options": [
+    {
+     "key": "A",
+     "text": "provided",
+     "correct": true,
+     "rationale": "Correct: provided dependencies are on the compile classpath but not bundled; the container supplies them."
+    },
+    {
+     "key": "B",
+     "text": "compile",
+     "correct": false,
+     "rationale": "compile is the default and IS packaged into the artifact."
+    },
+    {
+     "key": "C",
+     "text": "runtime",
+     "correct": false,
+     "rationale": "runtime dependencies are packaged; they just are not needed at compile time."
+    },
+    {
+     "key": "D",
+     "text": "import",
+     "correct": false,
+     "rationale": "import applies only to dependencyManagement BOMs, not to a normal dependency at runtime."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: provided dependencies are on the compile classpath but not bundled; the container supplies them.",
+   "outcome_refs": [
+    "MST-0858-D01.01"
+   ],
+   "domain_ref": "Dependency management and repositories",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0858-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about the Gradle build correctly distinguish the configuration phase from the execution phase? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Code in a task's doLast block runs during the execution phase",
+     "correct": true,
+     "rationale": "Correct: doLast/doFirst actions run at execution."
+    },
+    {
+     "key": "B",
+     "text": "Top-level code in build.gradle runs during the configuration phase",
+     "correct": true,
+     "rationale": "Correct: the build script body is evaluated while the task graph is configured."
+    },
+    {
+     "key": "C",
+     "text": "The configuration phase runs only the tasks requested on the command line",
+     "correct": false,
+     "rationale": "All projects are configured regardless of which tasks were requested (without configuration avoidance)."
+    },
+    {
+     "key": "D",
+     "text": "Execution happens before configuration",
+     "correct": false,
+     "rationale": "Configuration always precedes execution."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: doLast/doFirst actions run at execution.",
+   "outcome_refs": [
+    "MST-0858-D02.01"
+   ],
+   "domain_ref": "Gradle fundamentals and the task graph",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0858-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A build must produce byte-for-byte identical artifacts across machines. Which practice most undermines that goal?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Depending on a SNAPSHOT version",
+     "correct": true,
+     "rationale": "Correct: SNAPSHOT resolves to the latest build and changes over time, so outputs are not reproducible."
+    },
+    {
+     "key": "B",
+     "text": "Using the Gradle wrapper",
+     "correct": false,
+     "rationale": "The wrapper pins the Gradle version, which helps reproducibility."
+    },
+    {
+     "key": "C",
+     "text": "Importing a BOM to fix versions",
+     "correct": false,
+     "rationale": "A BOM fixes versions, aiding reproducibility."
+    },
+    {
+     "key": "D",
+     "text": "Enabling the build cache",
+     "correct": false,
+     "rationale": "The cache reuses identical outputs; it does not make them differ."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SNAPSHOT resolves to the latest build and changes over time, so outputs are not reproducible.",
+   "outcome_refs": [
+    "MST-0858-D03.01"
+   ],
+   "domain_ref": "Reproducible and multi-module builds",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

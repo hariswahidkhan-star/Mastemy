@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0877",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0877-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the Next.js App Router, a fetch() in a Server Component has no cache options set. By default this request is:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cached (static) unless something opts the route into dynamic rendering",
+     "correct": true,
+     "rationale": "Correct: App Router fetches default to caching; dynamic behaviour must be triggered."
+    },
+    {
+     "key": "B",
+     "text": "Always dynamic and never cached",
+     "correct": false,
+     "rationale": "That was the Pages Router mental model; App Router caches by default."
+    },
+    {
+     "key": "C",
+     "text": "Cached only in production builds",
+     "correct": false,
+     "rationale": "The default caching applies in development reasoning and production builds alike for this model."
+    },
+    {
+     "key": "D",
+     "text": "Stored in the client router cache only",
+     "correct": false,
+     "rationale": "The router cache is a separate client-side layer, not where fetch results are stored."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: App Router fetches default to caching; dynamic behaviour must be triggered.",
+   "outcome_refs": [
+    "MST-0877-D01.01"
+   ],
+   "domain_ref": "Data fetching and the fetch cache",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0877-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid ways to invalidate cached data after a mutation in the App Router? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Call revalidateTag for a tag used on the fetch",
+     "correct": true,
+     "rationale": "Correct: revalidateTag purges all entries sharing that tag."
+    },
+    {
+     "key": "B",
+     "text": "Call revalidatePath for the affected route",
+     "correct": true,
+     "rationale": "Correct: revalidatePath invalidates the cached render for that path."
+    },
+    {
+     "key": "C",
+     "text": "Mutate a module-level variable on the server",
+     "correct": false,
+     "rationale": "That does not touch the data cache and is unsafe across requests."
+    },
+    {
+     "key": "D",
+     "text": "Ask the user to hard-refresh the browser",
+     "correct": false,
+     "rationale": "A hard refresh does not clear the server-side data cache."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: revalidateTag purges all entries sharing that tag.",
+   "outcome_refs": [
+    "MST-0877-D02.01"
+   ],
+   "domain_ref": "Caching layers and invalidation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0877-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can adding 'use client' to a shared layout component be a performance mistake?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It pushes the layout and its children toward client rendering, enlarging the JS bundle",
+     "correct": true,
+     "rationale": "Correct: the client boundary cascades to descendants, shipping more JavaScript."
+    },
+    {
+     "key": "B",
+     "text": "It disables all data fetching in the app",
+     "correct": false,
+     "rationale": "Client Components can still fetch; it does not disable fetching globally."
+    },
+    {
+     "key": "C",
+     "text": "It forces every route to use SSG",
+     "correct": false,
+     "rationale": "'use client' does not change the route's rendering strategy to SSG."
+    },
+    {
+     "key": "D",
+     "text": "It prevents the app from deploying",
+     "correct": false,
+     "rationale": "The app still deploys; the issue is bundle size and interactivity cost."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the client boundary cascades to descendants, shipping more JavaScript.",
+   "outcome_refs": [
+    "MST-0877-D03.01"
+   ],
+   "domain_ref": "The App Router and Server Components",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

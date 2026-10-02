@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0896",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0896-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During development, how does Vite serve your application modules?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Over native ES modules, transforming files on demand without bundling the whole app",
+     "correct": true,
+     "rationale": "Correct: Vite serves source as native ESM for fast startup and HMR."
+    },
+    {
+     "key": "B",
+     "text": "By bundling the entire app with Rollup on every change",
+     "correct": false,
+     "rationale": "Full bundling on each change is what Vite avoids in dev."
+    },
+    {
+     "key": "C",
+     "text": "By precompiling to a single CommonJS file",
+     "correct": false,
+     "rationale": "Vite dev uses ESM, not a CommonJS bundle."
+    },
+    {
+     "key": "D",
+     "text": "By running everything through Babel in the browser",
+     "correct": false,
+     "rationale": "Vite uses esbuild/native ESM, not in-browser Babel."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Vite serves source as native ESM for fast startup and HMR.",
+   "outcome_refs": [
+    "MST-0896-D01.01"
+   ],
+   "domain_ref": "Vite dev server and architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0896-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Vite production builds are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Production builds are bundled with Rollup",
+     "correct": true,
+     "rationale": "Correct: Vite uses Rollup for optimised production output."
+    },
+    {
+     "key": "B",
+     "text": "Content hashing in filenames enables long-term caching",
+     "correct": true,
+     "rationale": "Correct: hashed names bust caches only when content changes."
+    },
+    {
+     "key": "C",
+     "text": "The dev server output is byte-identical to the production bundle",
+     "correct": false,
+     "rationale": "Dev and prod pipelines differ, so behaviour can diverge."
+    },
+    {
+     "key": "D",
+     "text": "Code splitting is impossible in Vite",
+     "correct": false,
+     "rationale": "Rollup supports code splitting and dynamic imports."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Vite uses Rollup for optimised production output.",
+   "outcome_refs": [
+    "MST-0896-D02.01"
+   ],
+   "domain_ref": "Production builds with Rollup",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0896-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Vite, which environment variables are exposed to client code?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Only those prefixed with VITE_",
+     "correct": true,
+     "rationale": "Correct: Vite only exposes VITE_-prefixed vars to the client to avoid leaking secrets."
+    },
+    {
+     "key": "B",
+     "text": "All variables in the .env file",
+     "correct": false,
+     "rationale": "Unprefixed vars stay server/build-only and are not exposed."
+    },
+    {
+     "key": "C",
+     "text": "Only variables named SECRET_",
+     "correct": false,
+     "rationale": "There is no SECRET_ convention; the prefix is VITE_."
+    },
+    {
+     "key": "D",
+     "text": "None; Vite never exposes env vars",
+     "correct": false,
+     "rationale": "VITE_-prefixed vars are intentionally exposed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Vite only exposes VITE_-prefixed vars to the client to avoid leaking secrets.",
+   "outcome_refs": [
+    "MST-0896-D03.01"
+   ],
+   "domain_ref": "Configuration and optimization",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

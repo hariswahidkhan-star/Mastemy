@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0878",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0878-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A component uses ChangeDetectionStrategy.OnPush. You mutate an object's property in place without changing its reference. What happens to the view?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It may not update, because OnPush checks input reference identity",
+     "correct": true,
+     "rationale": "Correct: OnPush relies on reference changes; in-place mutation can be missed."
+    },
+    {
+     "key": "B",
+     "text": "It always updates immediately",
+     "correct": false,
+     "rationale": "That is default change detection, not OnPush."
+    },
+    {
+     "key": "C",
+     "text": "It throws a runtime error",
+     "correct": false,
+     "rationale": "No error is thrown; the view simply may go stale."
+    },
+    {
+     "key": "D",
+     "text": "It triggers a full application re-bootstrap",
+     "correct": false,
+     "rationale": "Change detection never re-bootstraps the app."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: OnPush relies on reference changes; in-place mutation can be missed.",
+   "outcome_refs": [
+    "MST-0878-D01.01"
+   ],
+   "domain_ref": "HTTP, state and change detection",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0878-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Angular dependency injection are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A service providedIn 'root' is a single app-wide instance",
+     "correct": true,
+     "rationale": "Correct: root providers yield one shared singleton."
+    },
+    {
+     "key": "B",
+     "text": "Providing a service in a component creates an instance scoped to that component tree",
+     "correct": true,
+     "rationale": "Correct: component-level providers scope the instance to that subtree."
+    },
+    {
+     "key": "C",
+     "text": "Every injected service is always a global singleton",
+     "correct": false,
+     "rationale": "Scope depends on where it is provided."
+    },
+    {
+     "key": "D",
+     "text": "Injectors cannot be hierarchical",
+     "correct": false,
+     "rationale": "Angular injectors are explicitly hierarchical."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: root providers yield one shared singleton.",
+   "outcome_refs": [
+    "MST-0878-D02.01"
+   ],
+   "domain_ref": "Dependency injection and services",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0878-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which binding syntax listens for a DOM event and calls a handler?",
+   "options": [
+    {
+     "key": "A",
+     "text": "(click)=\"onClick()\"",
+     "correct": true,
+     "rationale": "Correct: parentheses denote event binding."
+    },
+    {
+     "key": "B",
+     "text": "[click]=\"onClick()\"",
+     "correct": false,
+     "rationale": "Square brackets are property binding, not event binding."
+    },
+    {
+     "key": "C",
+     "text": "{{ onClick() }}",
+     "correct": false,
+     "rationale": "Interpolation renders a value; it is not for events."
+    },
+    {
+     "key": "D",
+     "text": "#click=\"onClick()\"",
+     "correct": false,
+     "rationale": "The hash defines a template reference variable."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: parentheses denote event binding.",
+   "outcome_refs": [
+    "MST-0878-D03.01"
+   ],
+   "domain_ref": "Angular architecture and components",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

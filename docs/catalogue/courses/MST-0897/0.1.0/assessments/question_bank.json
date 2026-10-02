@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0897",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 656,
+  "lesson_check_items": 112,
+  "module_check_items": 168,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 48,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0897-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A test is flaky because an element appears slightly late. What is the idiomatic Playwright fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rely on auto-waiting via a web-first assertion like expect(locator).toBeVisible()",
+     "correct": true,
+     "rationale": "Correct: Playwright auto-waits and retries the assertion until it passes or times out."
+    },
+    {
+     "key": "B",
+     "text": "Add page.waitForTimeout(3000) before the action",
+     "correct": false,
+     "rationale": "Fixed sleeps are brittle and slow; they hide rather than fix the race."
+    },
+    {
+     "key": "C",
+     "text": "Disable retries entirely",
+     "correct": false,
+     "rationale": "Disabling retries does not address the timing issue."
+    },
+    {
+     "key": "D",
+     "text": "Switch to a brittle nth-child CSS selector",
+     "correct": false,
+     "rationale": "Brittle selectors increase flakiness, not reduce it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Playwright auto-waits and retries the assertion until it passes or times out.",
+   "outcome_refs": [
+    "MST-0897-D01.01"
+   ],
+   "domain_ref": "Auto-waiting and assertions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0897-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make a Playwright suite faster and more reliable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reusing a saved authentication storage state across tests",
+     "correct": true,
+     "rationale": "Correct: reusing auth state avoids logging in through the UI every test."
+    },
+    {
+     "key": "B",
+     "text": "Using role-based, user-facing locators",
+     "correct": true,
+     "rationale": "Correct: accessible-role locators are more resilient than brittle CSS."
+    },
+    {
+     "key": "C",
+     "text": "Sharing mutable global state between parallel workers",
+     "correct": false,
+     "rationale": "Shared mutable state across workers causes flakiness."
+    },
+    {
+     "key": "D",
+     "text": "Adding long fixed sleeps everywhere",
+     "correct": false,
+     "rationale": "Fixed sleeps slow the suite and mask real timing issues."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reusing auth state avoids logging in through the UI every test.",
+   "outcome_refs": [
+    "MST-0897-D02.01"
+   ],
+   "domain_ref": "Network and state control",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0897-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the Playwright trace viewer primarily help you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Inspect a timeline of actions, DOM snapshots and network to diagnose a failure",
+     "correct": true,
+     "rationale": "Correct: the trace viewer reconstructs what happened during the run."
+    },
+    {
+     "key": "B",
+     "text": "Automatically rewrite failing selectors",
+     "correct": false,
+     "rationale": "The trace viewer inspects; it does not rewrite code."
+    },
+    {
+     "key": "C",
+     "text": "Guarantee a test can never be flaky again",
+     "correct": false,
+     "rationale": "It aids diagnosis but offers no such guarantee."
+    },
+    {
+     "key": "D",
+     "text": "Replace the need for assertions",
+     "correct": false,
+     "rationale": "Assertions remain essential; the trace only helps debugging."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the trace viewer reconstructs what happened during the run.",
+   "outcome_refs": [
+    "MST-0897-D03.01"
+   ],
+   "domain_ref": "Debugging and tracing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

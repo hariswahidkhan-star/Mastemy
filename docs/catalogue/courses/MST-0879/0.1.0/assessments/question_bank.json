@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0879",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0879-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A type-ahead search issues an HTTP request per keystroke. Which operator ensures only the latest request's result is used and in-flight older requests are cancelled?",
+   "options": [
+    {
+     "key": "A",
+     "text": "switchMap",
+     "correct": true,
+     "rationale": "Correct: switchMap unsubscribes from the previous inner observable when a new value arrives."
+    },
+    {
+     "key": "B",
+     "text": "mergeMap",
+     "correct": false,
+     "rationale": "mergeMap keeps all inner subscriptions, so stale responses can arrive late."
+    },
+    {
+     "key": "C",
+     "text": "concatMap",
+     "correct": false,
+     "rationale": "concatMap queues requests in order, delaying the latest result."
+    },
+    {
+     "key": "D",
+     "text": "exhaustMap",
+     "correct": false,
+     "rationale": "exhaustMap ignores new values while one is in flight, dropping newer keystrokes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: switchMap unsubscribes from the previous inner observable when a new value arrives.",
+   "outcome_refs": [
+    "MST-0879-D01.01"
+   ],
+   "domain_ref": "Higher-order mapping and flattening",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0879-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help an Angular app avoid memory and performance problems with RxJS? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Using the async pipe so subscriptions clean up with the component",
+     "correct": true,
+     "rationale": "Correct: the async pipe unsubscribes automatically on destroy."
+    },
+    {
+     "key": "B",
+     "text": "Using shareReplay to avoid duplicate HTTP calls for shared data",
+     "correct": true,
+     "rationale": "Correct: shareReplay multicasts one result to many subscribers."
+    },
+    {
+     "key": "C",
+     "text": "Manually subscribing in ngOnInit and never unsubscribing",
+     "correct": false,
+     "rationale": "That leaks subscriptions for long-lived streams."
+    },
+    {
+     "key": "D",
+     "text": "Calling subscribe inside a template expression",
+     "correct": false,
+     "rationale": "That creates repeated subscriptions on every change detection."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the async pipe unsubscribes automatically on destroy.",
+   "outcome_refs": [
+    "MST-0879-D02.01"
+   ],
+   "domain_ref": "RxJS observables and operators",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0879-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "*ngFor re-renders an entire list whenever the array reference changes. What does a correct trackBy function require to help?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A stable unique identity for each item (such as an id)",
+     "correct": true,
+     "rationale": "Correct: trackBy must return a stable key so Angular can reuse DOM nodes."
+    },
+    {
+     "key": "B",
+     "text": "The array index, which is always stable across reorders",
+     "correct": false,
+     "rationale": "Index is not stable when items are reordered or removed."
+    },
+    {
+     "key": "C",
+     "text": "A new object per render to force updates",
+     "correct": false,
+     "rationale": "New objects defeat tracking and cause more re-rendering."
+    },
+    {
+     "key": "D",
+     "text": "Nothing; trackBy works without a return value",
+     "correct": false,
+     "rationale": "trackBy must return a key to be effective."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: trackBy must return a stable key so Angular can reuse DOM nodes.",
+   "outcome_refs": [
+    "MST-0879-D03.01"
+   ],
+   "domain_ref": "Performance and change detection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

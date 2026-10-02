@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0891",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0891-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which element correctly renders a line of text in React Native?",
+   "options": [
+    {
+     "key": "A",
+     "text": "<Text>Hello</Text>",
+     "correct": true,
+     "rationale": "Correct: Text is the core component for displaying text."
+    },
+    {
+     "key": "B",
+     "text": "<p>Hello</p>",
+     "correct": false,
+     "rationale": "HTML elements like p do not exist in React Native."
+    },
+    {
+     "key": "C",
+     "text": "<div>Hello</div>",
+     "correct": false,
+     "rationale": "div is web-only; use View for containers."
+    },
+    {
+     "key": "D",
+     "text": "<span>Hello</span>",
+     "correct": false,
+     "rationale": "span is HTML; React Native uses Text."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Text is the core component for displaying text.",
+   "outcome_refs": [
+    "MST-0891-D01.01"
+   ],
+   "domain_ref": "React Native fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0891-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are correct about rendering long lists performantly in React Native? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "FlatList virtualises rows, rendering only what is near the viewport",
+     "correct": true,
+     "rationale": "Correct: virtualization keeps memory and work bounded."
+    },
+    {
+     "key": "B",
+     "text": "A stable keyExtractor helps avoid unnecessary re-renders",
+     "correct": true,
+     "rationale": "Correct: stable keys let the list reuse rows."
+    },
+    {
+     "key": "C",
+     "text": "ScrollView with mapped children scales best for thousands of rows",
+     "correct": false,
+     "rationale": "ScrollView renders all children at once and will not scale."
+    },
+    {
+     "key": "D",
+     "text": "Virtualization requires the web DOM",
+     "correct": false,
+     "rationale": "React Native virtualizes natively without a DOM."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: virtualization keeps memory and work bounded.",
+   "outcome_refs": [
+    "MST-0891-D02.01"
+   ],
+   "domain_ref": "Performance and release",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0891-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need slightly different padding on iOS and Android. What is an idiomatic approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use Platform.select or Platform.OS to branch the style",
+     "correct": true,
+     "rationale": "Correct: Platform APIs provide per-platform values cleanly."
+    },
+    {
+     "key": "B",
+     "text": "Ship two entirely separate codebases",
+     "correct": false,
+     "rationale": "That defeats the cross-platform purpose for a minor difference."
+    },
+    {
+     "key": "C",
+     "text": "Detect the user agent string",
+     "correct": false,
+     "rationale": "There is no browser user agent in React Native."
+    },
+    {
+     "key": "D",
+     "text": "Assume both platforms are identical and do nothing",
+     "correct": false,
+     "rationale": "The requirement is an explicit platform difference."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Platform APIs provide per-platform values cleanly.",
+   "outcome_refs": [
+    "MST-0891-D03.01"
+   ],
+   "domain_ref": "Native modules and platform APIs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

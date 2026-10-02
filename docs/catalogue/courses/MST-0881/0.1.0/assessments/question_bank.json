@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0881",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 500,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0881-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can referencing window directly in a component's setup break a Nuxt universal app?",
+   "options": [
+    {
+     "key": "A",
+     "text": "setup runs on the server during SSR, where window is undefined",
+     "correct": true,
+     "rationale": "Correct: server rendering has no browser globals; guard with onMounted or import.meta.client."
+    },
+    {
+     "key": "B",
+     "text": "window is reserved by Nuxt and cannot be used anywhere",
+     "correct": false,
+     "rationale": "window is fine in client-only contexts."
+    },
+    {
+     "key": "C",
+     "text": "Nuxt forbids all browser APIs permanently",
+     "correct": false,
+     "rationale": "Browser APIs work on the client; only SSR lacks them."
+    },
+    {
+     "key": "D",
+     "text": "window only works inside Pinia stores",
+     "correct": false,
+     "rationale": "Pinia does not change the availability of window."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: server rendering has no browser globals; guard with onMounted or import.meta.client.",
+   "outcome_refs": [
+    "MST-0881-D01.01"
+   ],
+   "domain_ref": "Nuxt fundamentals and rendering",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0881-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are correct about runtimeConfig in Nuxt? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Values under the public key are exposed to the client",
+     "correct": true,
+     "rationale": "Correct: public config is intentionally shipped to the browser."
+    },
+    {
+     "key": "B",
+     "text": "Private top-level config is available only on the server",
+     "correct": true,
+     "rationale": "Correct: non-public runtimeConfig stays server-side."
+    },
+    {
+     "key": "C",
+     "text": "All runtimeConfig values are always sent to the client",
+     "correct": false,
+     "rationale": "Only public values are; sending private ones would leak secrets."
+    },
+    {
+     "key": "D",
+     "text": "runtimeConfig cannot be overridden by environment variables",
+     "correct": false,
+     "rationale": "It is designed to be overridden by env vars at runtime."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: public config is intentionally shipped to the browser.",
+   "outcome_refs": [
+    "MST-0881-D02.01"
+   ],
+   "domain_ref": "Production operations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0881-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A developer stores per-request user data in a module-level variable in a Nuxt server route. What is the risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "State can leak across concurrent requests and between users on the server",
+     "correct": true,
+     "rationale": "Correct: module scope is shared on the server, so request data can bleed across users."
+    },
+    {
+     "key": "B",
+     "text": "Nothing; module variables are per-request by default",
+     "correct": false,
+     "rationale": "Module variables are shared, not per-request."
+    },
+    {
+     "key": "C",
+     "text": "It only affects client-side rendering",
+     "correct": false,
+     "rationale": "The risk is specifically on the shared server runtime."
+    },
+    {
+     "key": "D",
+     "text": "It improves performance with no downside",
+     "correct": false,
+     "rationale": "The correctness and security risk outweighs any perceived gain."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: module scope is shared on the server, so request data can bleed across users.",
+   "outcome_refs": [
+    "MST-0881-D03.01"
+   ],
+   "domain_ref": "State, composables and modules",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

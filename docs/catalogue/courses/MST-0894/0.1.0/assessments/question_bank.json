@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0894",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0894-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which responsibility belongs to the Electron main process, not the renderer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Creating native windows and accessing OS-level APIs",
+     "correct": true,
+     "rationale": "Correct: the main process manages windows and native integration."
+    },
+    {
+     "key": "B",
+     "text": "Rendering the DOM for a window",
+     "correct": false,
+     "rationale": "DOM rendering happens in the renderer process."
+    },
+    {
+     "key": "C",
+     "text": "Running the page's client-side JavaScript UI",
+     "correct": false,
+     "rationale": "UI JavaScript runs in the renderer."
+    },
+    {
+     "key": "D",
+     "text": "Handling CSS layout",
+     "correct": false,
+     "rationale": "Layout is a renderer concern."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the main process manages windows and native integration.",
+   "outcome_refs": [
+    "MST-0894-D01.01"
+   ],
+   "domain_ref": "Electron architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0894-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO settings harden an Electron renderer against untrusted content? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Enabling contextIsolation",
+     "correct": true,
+     "rationale": "Correct: contextIsolation separates preload and page contexts."
+    },
+    {
+     "key": "B",
+     "text": "Exposing only a minimal API via contextBridge",
+     "correct": true,
+     "rationale": "Correct: a narrow bridge limits what the page can do."
+    },
+    {
+     "key": "C",
+     "text": "Enabling nodeIntegration in the renderer",
+     "correct": false,
+     "rationale": "That gives page scripts full Node access, a major risk."
+    },
+    {
+     "key": "D",
+     "text": "Disabling the Content Security Policy",
+     "correct": false,
+     "rationale": "Removing CSP weakens defence against injected scripts."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: contextIsolation separates preload and page contexts.",
+   "outcome_refs": [
+    "MST-0894-D02.01"
+   ],
+   "domain_ref": "Security hardening",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0894-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should a renderer request a privileged action like reading a file?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Call a narrow function exposed via contextBridge that uses ipcRenderer.invoke to the main process",
+     "correct": true,
+     "rationale": "Correct: the main process performs the privileged work behind a safe bridge."
+    },
+    {
+     "key": "B",
+     "text": "Use Node's fs directly in the renderer",
+     "correct": false,
+     "rationale": "That requires unsafe nodeIntegration."
+    },
+    {
+     "key": "C",
+     "text": "Fetch the file over http from localhost",
+     "correct": false,
+     "rationale": "That is unnecessary and insecure compared with IPC."
+    },
+    {
+     "key": "D",
+     "text": "Store the file contents in the manifest",
+     "correct": false,
+     "rationale": "Manifests do not perform file I/O."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the main process performs the privileged work behind a safe bridge.",
+   "outcome_refs": [
+    "MST-0894-D03.01"
+   ],
+   "domain_ref": "Inter-process communication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

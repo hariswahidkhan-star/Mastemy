@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0886",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0886-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Given console.log order, which runs first after the current synchronous code: a queued Promise.then callback or a setTimeout(fn,0) callback?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Promise.then callback, because microtasks run before the next timer phase",
+     "correct": true,
+     "rationale": "Correct: the microtask queue drains before macrotasks like timers."
+    },
+    {
+     "key": "B",
+     "text": "The setTimeout callback, because 0ms means immediate",
+     "correct": false,
+     "rationale": "0ms still schedules a macrotask that runs after microtasks."
+    },
+    {
+     "key": "C",
+     "text": "They run simultaneously on two threads",
+     "correct": false,
+     "rationale": "Both run on the single main thread, not in parallel."
+    },
+    {
+     "key": "D",
+     "text": "Neither runs until I/O completes",
+     "correct": false,
+     "rationale": "Both are scheduled independently of I/O completion."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the microtask queue drains before macrotasks like timers.",
+   "outcome_refs": [
+    "MST-0886-D01.01"
+   ],
+   "domain_ref": "The event loop and async performance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0886-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Node.js streams and backpressure are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "writable.write returns false when the internal buffer is full",
+     "correct": true,
+     "rationale": "Correct: a false return signals the producer to pause."
+    },
+    {
+     "key": "B",
+     "text": "pipeline handles backpressure and cleanup automatically",
+     "correct": true,
+     "rationale": "Correct: stream.pipeline manages flow and error propagation."
+    },
+    {
+     "key": "C",
+     "text": "Streams keep the whole payload in memory to compute length first",
+     "correct": false,
+     "rationale": "Streams process data in chunks and do not buffer the entire payload."
+    },
+    {
+     "key": "D",
+     "text": "Streams always load the entire file into memory first",
+     "correct": false,
+     "rationale": "Streams process data in chunks, which is their advantage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a false return signals the producer to pause.",
+   "outcome_refs": [
+    "MST-0886-D02.01"
+   ],
+   "domain_ref": "Streams and backpressure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0886-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You move a CPU-bound computation into a worker thread. How does it share data with the main thread?",
+   "options": [
+    {
+     "key": "A",
+     "text": "By message passing (or SharedArrayBuffer); it does not share ordinary variables",
+     "correct": true,
+     "rationale": "Correct: workers have isolated memory and communicate via messages or shared buffers."
+    },
+    {
+     "key": "B",
+     "text": "By reading the main thread's variables directly",
+     "correct": false,
+     "rationale": "Worker memory is isolated; direct variable sharing is not possible."
+    },
+    {
+     "key": "C",
+     "text": "Through the DOM",
+     "correct": false,
+     "rationale": "There is no DOM in Node.js."
+    },
+    {
+     "key": "D",
+     "text": "Only through writing to a file",
+     "correct": false,
+     "rationale": "Files are possible but not the mechanism; messaging is built in."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: workers have isolated memory and communicate via messages or shared buffers.",
+   "outcome_refs": [
+    "MST-0886-D03.01"
+   ],
+   "domain_ref": "Worker threads and parallelism",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

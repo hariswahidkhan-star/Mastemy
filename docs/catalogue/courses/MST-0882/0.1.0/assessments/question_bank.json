@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0882",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0882-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Svelte, you call items.push(x) on an array bound in the template, but the view does not update. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Svelte reactivity triggers on assignment, not on in-place mutation",
+     "correct": true,
+     "rationale": "Correct: reassign (items = [...items, x]) or assign items = items to signal the change."
+    },
+    {
+     "key": "B",
+     "text": "Arrays cannot be reactive in Svelte",
+     "correct": false,
+     "rationale": "Arrays are reactive when reassigned."
+    },
+    {
+     "key": "C",
+     "text": "push is not a valid array method",
+     "correct": false,
+     "rationale": "push is valid; it just does not trigger Svelte's reactivity."
+    },
+    {
+     "key": "D",
+     "text": "The component must be wrapped in a store",
+     "correct": false,
+     "rationale": "A store is not required; an assignment suffices."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reassign (items = [...items, x]) or assign items = items to signal the change.",
+   "outcome_refs": [
+    "MST-0882-D01.01"
+   ],
+   "domain_ref": "Svelte fundamentals and reactivity",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0882-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about SvelteKit load functions are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A +page.server.js load runs only on the server",
+     "correct": true,
+     "rationale": "Correct: server load functions never ship to the client."
+    },
+    {
+     "key": "B",
+     "text": "A universal +page.js load can run on both server and client",
+     "correct": true,
+     "rationale": "Correct: universal loads run in both environments."
+    },
+    {
+     "key": "C",
+     "text": "Secrets in a universal load are safe because they never reach the browser",
+     "correct": false,
+     "rationale": "Universal loads run on the client too, so secrets would leak."
+    },
+    {
+     "key": "D",
+     "text": "load functions cannot return data to the page",
+     "correct": false,
+     "rationale": "Returning data to the page is their primary purpose."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: server load functions never ship to the client.",
+   "outcome_refs": [
+    "MST-0882-D02.01"
+   ],
+   "domain_ref": "Loading data and form actions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0882-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A route is prerendered at build time. Which operation will NOT work on that page?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reading a per-request cookie to personalise content",
+     "correct": true,
+     "rationale": "Correct: prerendered output is built once with no request context, so per-request cookies are unavailable."
+    },
+    {
+     "key": "B",
+     "text": "Rendering static marketing copy",
+     "correct": false,
+     "rationale": "Static content is exactly what prerendering is for."
+    },
+    {
+     "key": "C",
+     "text": "Including build-time data",
+     "correct": false,
+     "rationale": "Build-time data is available during prerendering."
+    },
+    {
+     "key": "D",
+     "text": "Linking to other routes",
+     "correct": false,
+     "rationale": "Links work fine on prerendered pages."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: prerendered output is built once with no request context, so per-request cookies are unavailable.",
+   "outcome_refs": [
+    "MST-0882-D03.01"
+   ],
+   "domain_ref": "Rendering, adapters and deployment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

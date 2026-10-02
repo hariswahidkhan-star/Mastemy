@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0890",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0890-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A site adds a valid web app manifest but no service worker. Which capability does it still LACK?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Offline access to previously visited pages",
+     "correct": true,
+     "rationale": "Correct: offline support requires a service worker to cache and serve responses."
+    },
+    {
+     "key": "B",
+     "text": "An install prompt entry via the manifest",
+     "correct": false,
+     "rationale": "The manifest contributes to installability criteria."
+    },
+    {
+     "key": "C",
+     "text": "A defined theme color",
+     "correct": false,
+     "rationale": "The manifest provides theme color."
+    },
+    {
+     "key": "D",
+     "text": "A home-screen icon",
+     "correct": false,
+     "rationale": "Icons come from the manifest."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: offline support requires a service worker to cache and serve responses.",
+   "outcome_refs": [
+    "MST-0890-D01.01"
+   ],
+   "domain_ref": "PWA foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0890-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO happen during the service worker lifecycle? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The install event is a good place to precache the app shell",
+     "correct": true,
+     "rationale": "Correct: install is used to populate caches."
+    },
+    {
+     "key": "B",
+     "text": "The activate event is a good place to delete old caches",
+     "correct": true,
+     "rationale": "Correct: activate commonly cleans up previous cache versions."
+    },
+    {
+     "key": "C",
+     "text": "The fetch event fires before install completes",
+     "correct": false,
+     "rationale": "fetch handling applies after activation, for controlled clients."
+    },
+    {
+     "key": "D",
+     "text": "A new worker always controls open pages immediately",
+     "correct": false,
+     "rationale": "It waits unless skipWaiting and clients.claim are used."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: install is used to populate caches.",
+   "outcome_refs": [
+    "MST-0890-D02.01"
+   ],
+   "domain_ref": "Service workers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0890-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is cache-first a poor strategy for a frequently updated news feed API?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It serves stale cached data and may never fetch fresh content",
+     "correct": true,
+     "rationale": "Correct: cache-first prefers the cache, so updates are missed without extra logic."
+    },
+    {
+     "key": "B",
+     "text": "It cannot be used over HTTPS",
+     "correct": false,
+     "rationale": "Caching strategies are unrelated to the HTTPS requirement."
+    },
+    {
+     "key": "C",
+     "text": "It blocks the main thread",
+     "correct": false,
+     "rationale": "Cache reads do not block the main thread."
+    },
+    {
+     "key": "D",
+     "text": "It disables the manifest",
+     "correct": false,
+     "rationale": "Caching strategy has no effect on the manifest."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: cache-first prefers the cache, so updates are missed without extra logic.",
+   "outcome_refs": [
+    "MST-0890-D03.01"
+   ],
+   "domain_ref": "Caching strategies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
