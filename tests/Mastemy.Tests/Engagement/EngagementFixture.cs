@@ -40,6 +40,7 @@ public class EngagementFixture : IAsyncLifetime
             b.UseEnvironment("Testing");
             b.UseSetting("ConnectionStrings:Default", ConnectionString);
             b.UseSetting("Jwt:Key", "test-signing-key-0123456789abcdef0123456789abcdef");
+            b.UseSetting("Security:RequireMfaForPrivileged", "false");
             b.UseSetting("Database:MigrateOnStartup", "false");
             b.UseSetting("Email:SmtpHost", "");
             b.UseSetting("Email:PollIntervalSeconds", "3600"); // tests drive the outbox worker explicitly

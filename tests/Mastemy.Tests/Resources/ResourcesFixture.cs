@@ -30,6 +30,7 @@ public class ResourcesFixture : IAsyncLifetime
         {
             b.UseSetting("ConnectionStrings:Default", ConnectionString);
             b.UseSetting("Jwt:Key", "test-signing-key-0123456789-abcdefghijklmnop");
+            b.UseSetting("Security:RequireMfaForPrivileged", "false");
             b.UseSetting("Database:MigrateOnStartup", "false");
             b.UseSetting("RateLimits:AuthPerMinute", "1000");
             b.UseSetting("Resources:RootPath", RootPath);

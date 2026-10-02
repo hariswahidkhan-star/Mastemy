@@ -21,6 +21,11 @@ public class AdminTests(IdentityFixture f) : IClassFixture<IdentityFixture>
 
         var sa = await f.AsNew(Roles.SuperAdmin);
         Assert.Equal(HttpStatusCode.BadRequest, (await sa.PutAsJsonAsync($"/api/admin/users/{target.Id}/roles", new { roles = new[] { "Wizard" } })).StatusCode);
+        // Privileged roles need a verified email first.
+        var unverified = await sa.PutAsJsonAsync($"/api/admin/users/{target.Id}/roles", new { roles = new[] { "Student", "Reviewer" } });
+        Assert.Equal(HttpStatusCode.Conflict, unverified.StatusCode);
+        Assert.Contains("email_not_verified", await unverified.Content.ReadAsStringAsync());
+        Assert.Equal(HttpStatusCode.OK, (await sa.PostAsync($"/api/admin/users/{target.Id}/email-verification/mark-verified", null)).StatusCode);
         var ok = await sa.PutAsJsonAsync($"/api/admin/users/{target.Id}/roles", new { roles = new[] { "Student", "Reviewer" } });
         Assert.Equal(HttpStatusCode.OK, ok.StatusCode);
         await using var db = f.NewDb();

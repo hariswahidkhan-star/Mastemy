@@ -5,19 +5,45 @@ namespace Mastemy.Api.Modules.Identity;
 public record RegisterRequest(string? Email, string? Password, string? DisplayName, string? PreferredLanguage);
 public record LoginRequest(string? Email, string? Password);
 public record RefreshRequest(string? RefreshToken);
-public record UserDto(Guid Id, string Email, string DisplayName, string PreferredLanguage, string[] Roles)
+public record UserDto(Guid Id, string Email, string DisplayName, string PreferredLanguage, string[] Roles,
+    bool EmailVerified = false, bool MfaEnabled = false)
 {
-    public static UserDto From(User u) => new(u.Id, u.Email, u.DisplayName, u.PreferredLanguage,
-        u.Roles.Select(r => r.Role).OrderBy(r => r, StringComparer.Ordinal).ToArray());
+    public static UserDto From(User u, UserSecurity? sec = null) => new(u.Id, u.Email, u.DisplayName, u.PreferredLanguage,
+        u.Roles.Select(r => r.Role).OrderBy(r => r, StringComparer.Ordinal).ToArray(),
+        EmailVerificationService.IsVerified(u, sec), sec?.MfaEnabledAt is not null);
 }
-public record AuthResponse(string AccessToken, string RefreshToken, DateTime ExpiresAt, UserDto User);
+
+public static class LoginStatus
+{
+    public const string Ok = "ok", MfaRequired = "mfa_required", MfaEnrollmentRequired = "mfa_enrollment_required";
+}
+
+/// <summary>Status "ok": full token pair. "mfa_required": no tokens, post MfaToken + code to /api/auth/mfa/verify.
+/// "mfa_enrollment_required": AccessToken is a short-lived restricted token accepted only by /api/auth/mfa enrollment endpoints.</summary>
+public record AuthResponse(string? AccessToken, string? RefreshToken, DateTime? ExpiresAt, UserDto User,
+    string Status = LoginStatus.Ok, string? MfaToken = null);
+
+public record MfaVerifyRequest(string? MfaToken, string? Code, string? RecoveryCode);
+public record MfaCodeRequest(string? Code);
+public record MfaDisableRequest(string? Password, string? Code);
+public record MfaEnrollmentDto(string Secret, string OtpAuthUri, int Digits, int PeriodSeconds, string Algorithm);
+public record MfaEnrolledDto(string[] RecoveryCodes, AuthResponse Session);
+public record MfaStatusDto(bool Enabled, DateTime? EnabledAt, int RemainingRecoveryCodes, bool Required);
+public record RecoveryCodesDto(string[] RecoveryCodes);
+public record TokenRequest(string? Token);
+public record ForgotPasswordRequest(string? Email);
+public record ResetPasswordRequest(string? Token, string? NewPassword);
+public record ChangePasswordRequest(string? CurrentPassword, string? NewPassword);
+public record MessageDto(string Message);
+public record SessionDto(Guid Id, DateTime CreatedAt, DateTime LastUsedAt, DateTime ExpiresAt, string UserAgent, string IpAddress,
+    string LastIpAddress, bool MfaAuthenticated, bool Current);
 
 public record PagedResult<T>(IReadOnlyList<T> Items, int Total, int Page, int PageSize);
 public record SettingValueRequest(bool? Value);
 public record SetRolesRequest(string[]? Roles);
 public record SuspendRequest(bool? Suspended);
 public record AdminUserDto(Guid Id, string Email, string DisplayName, string PreferredLanguage, string[] Roles,
-    bool IsSuspended, DateTime? LockoutUntil, DateTime CreatedAt);
+    bool IsSuspended, DateTime? LockoutUntil, DateTime CreatedAt, bool EmailVerified = false, bool MfaEnabled = false);
 public record AuditLogDto(long Id, Guid? ActorId, string Action, string EntityType, string EntityId, string? Details, DateTime CreatedAt);
 
 public record CreateInvitationRequest(string? Email);

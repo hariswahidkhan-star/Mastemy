@@ -27,6 +27,7 @@ public sealed class IdentityFixture : IAsyncLifetime
         {
             b.UseSetting("ConnectionStrings:Default", ConnectionString);
             b.UseSetting("Jwt:Key", "test-signing-key-identity-0123456789-abcdef");
+            b.UseSetting("Security:RequireMfaForPrivileged", "false");
             b.UseSetting("Database:MigrateOnStartup", "false");
             b.UseSetting("RateLimits:AuthPerMinute", "10000");
         });
