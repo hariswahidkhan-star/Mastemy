@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1494",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1494-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload needs consistent, high-bandwidth, low-latency connectivity between on-prem and AWS. Which is most appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "AWS Direct Connect",
+     "correct": true,
+     "rationale": "Correct: Direct Connect provides a dedicated, consistent high-bandwidth link."
+    },
+    {
+     "key": "B",
+     "text": "A single Site-to-Site VPN tunnel over the internet",
+     "correct": false,
+     "rationale": "VPN over the internet has variable latency and lower, less consistent throughput."
+    },
+    {
+     "key": "C",
+     "text": "Route 53 health checks",
+     "correct": false,
+     "rationale": "Health checks are DNS failover, not connectivity."
+    },
+    {
+     "key": "D",
+     "text": "CloudFront caching",
+     "correct": false,
+     "rationale": "CloudFront is a CDN, not a hybrid link."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: AWS Direct Connect.",
+   "outcome_refs": [
+    "MST-1494-D03.01"
+   ],
+   "domain_ref": "Direct Connect",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1494-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO improve resilience of hybrid connectivity to AWS? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Use both VPN tunnels (or a VPN as backup to Direct Connect)",
+     "correct": true,
+     "rationale": "Correct: redundant tunnels/links provide failover if one path fails."
+    },
+    {
+     "key": "B",
+     "text": "Connect many VPCs and on-prem through a Transit Gateway hub",
+     "correct": true,
+     "rationale": "Correct: a TGW hub simplifies and centralizes resilient connectivity."
+    },
+    {
+     "key": "C",
+     "text": "Rely on a single VPN tunnel with no backup",
+     "correct": false,
+     "rationale": "A single tunnel is a single point of failure."
+    },
+    {
+     "key": "D",
+     "text": "Disable route propagation so routes stay static forever",
+     "correct": false,
+     "rationale": "Disabling propagation harms failover and dynamic routing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Use both VPN tunnels (or a VPN as backup to Direct Connect), Connect many VPCs and on-prem through a Transit Gateway hub.",
+   "outcome_refs": [
+    "MST-1494-D05.02"
+   ],
+   "domain_ref": "Routing and redundancy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1494-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a correct statement about AWS Direct Connect security?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Direct Connect is private but not encrypted by default; add encryption (e.g., a VPN over it) if required",
+     "correct": true,
+     "rationale": "Correct: Direct Connect is a private link but is not encrypted unless you add encryption."
+    },
+    {
+     "key": "B",
+     "text": "Direct Connect encrypts all traffic automatically with no action",
+     "correct": false,
+     "rationale": "Direct Connect is not encrypted by default."
+    },
+    {
+     "key": "C",
+     "text": "Direct Connect is the same as a public internet VPN",
+     "correct": false,
+     "rationale": "Direct Connect is a dedicated private connection, not internet VPN."
+    },
+    {
+     "key": "D",
+     "text": "Direct Connect requires no routing configuration",
+     "correct": false,
+     "rationale": "Routing (often BGP) must be configured."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Direct Connect is private but not encrypted by default; add encryption (e.g., a VPN over it) if required.",
+   "outcome_refs": [
+    "MST-1494-D06.01"
+   ],
+   "domain_ref": "Security and monitoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1463",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1463-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An engineer needs read-only access to logs in one project and nothing else. Which approach follows least privilege?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grant a predefined role like Logs Viewer on that project",
+     "correct": true,
+     "rationale": "Correct: a predefined role scoped to the project grants only the needed read access."
+    },
+    {
+     "key": "B",
+     "text": "Grant the Editor role at the organization level",
+     "correct": false,
+     "rationale": "Editor is broad and organization scope is far wider than one project."
+    },
+    {
+     "key": "C",
+     "text": "Grant Owner on the project",
+     "correct": false,
+     "rationale": "Owner allows managing access and far exceeds read-only."
+    },
+    {
+     "key": "D",
+     "text": "Add the user to a group with the Security Admin role",
+     "correct": false,
+     "rationale": "Security Admin manages security resources, not read-only log access."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Grant a predefined role like Logs Viewer on that project.",
+   "outcome_refs": [
+    "MST-1463-D02.01"
+   ],
+   "domain_ref": "Identity and access management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1463-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO keep traffic to Google Cloud APIs off the public internet? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Enable Private Google Access on the subnet",
+     "correct": true,
+     "rationale": "Correct: Private Google Access lets instances without external IPs reach Google APIs privately."
+    },
+    {
+     "key": "B",
+     "text": "Use VPC Service Controls / private endpoints",
+     "correct": true,
+     "rationale": "Correct: a service perimeter and private endpoints keep API traffic within a private boundary."
+    },
+    {
+     "key": "C",
+     "text": "Assign every VM a public external IP",
+     "correct": false,
+     "rationale": "Public IPs push traffic over the internet, the opposite of the goal."
+    },
+    {
+     "key": "D",
+     "text": "Open firewall ingress to 0.0.0.0/0",
+     "correct": false,
+     "rationale": "A default-allow rule broadens exposure and does not make API access private."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Enable Private Google Access on the subnet, Use VPC Service Controls / private endpoints.",
+   "outcome_refs": [
+    "MST-1463-D03.02"
+   ],
+   "domain_ref": "Network security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1463-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "By default, which audit logs record who modified an IAM policy on a resource?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Admin Activity audit logs",
+     "correct": true,
+     "rationale": "Correct: Admin Activity logs capture configuration changes such as IAM edits and are on by default."
+    },
+    {
+     "key": "B",
+     "text": "Data Access audit logs",
+     "correct": false,
+     "rationale": "Data Access logs record data reads/writes and are mostly off by default."
+    },
+    {
+     "key": "C",
+     "text": "VPC Flow Logs",
+     "correct": false,
+     "rationale": "Flow Logs capture network traffic metadata, not IAM changes."
+    },
+    {
+     "key": "D",
+     "text": "Billing export logs",
+     "correct": false,
+     "rationale": "Billing export covers cost data, not IAM changes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Admin Activity audit logs.",
+   "outcome_refs": [
+    "MST-1463-D05.01"
+   ],
+   "domain_ref": "Detection and monitoring",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1490",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1490-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Step Functions state type is used to choose between branches based on input?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Choice state",
+     "correct": true,
+     "rationale": "Correct: a Choice state branches execution based on input conditions."
+    },
+    {
+     "key": "B",
+     "text": "Task state",
+     "correct": false,
+     "rationale": "A Task state does work; it does not branch."
+    },
+    {
+     "key": "C",
+     "text": "Pass state",
+     "correct": false,
+     "rationale": "A Pass state forwards input without branching."
+    },
+    {
+     "key": "D",
+     "text": "Succeed state",
+     "correct": false,
+     "rationale": "A Succeed state ends execution successfully."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Choice state.",
+   "outcome_refs": [
+    "MST-1490-D02.01"
+   ],
+   "domain_ref": "State types",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1490-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are true when choosing between Standard and Express workflows? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Standard suits long-running, auditable workflows with full execution history",
+     "correct": true,
+     "rationale": "Correct: Standard retains full history and supports long durations."
+    },
+    {
+     "key": "B",
+     "text": "Express suits very high-volume, short-duration workloads",
+     "correct": true,
+     "rationale": "Correct: Express is optimized for high event rates and short runs."
+    },
+    {
+     "key": "C",
+     "text": "Express keeps unlimited full execution history for a year by default",
+     "correct": false,
+     "rationale": "Express has limited history retention, unlike Standard."
+    },
+    {
+     "key": "D",
+     "text": "Standard is always cheaper than Express at any volume",
+     "correct": false,
+     "rationale": "Cost depends on volume and duration; neither is always cheaper."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Standard suits long-running, auditable workflows with full execution history, Express suits very high-volume, short-duration workloads.",
+   "outcome_refs": [
+    "MST-1490-D03.01"
+   ],
+   "domain_ref": "Workflow types",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1490-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "How should a task that may fail transiently be made more resilient in a state machine?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add a Retry policy with backoff, and a Catch for a fallback",
+     "correct": true,
+     "rationale": "Correct: Retry with backoff handles transient failures; Catch routes to a fallback."
+    },
+    {
+     "key": "B",
+     "text": "Remove all error handling so it fails fast every time",
+     "correct": false,
+     "rationale": "Removing handling makes transient failures fatal."
+    },
+    {
+     "key": "C",
+     "text": "Assume transient errors never occur",
+     "correct": false,
+     "rationale": "Transient errors do occur and must be handled."
+    },
+    {
+     "key": "D",
+     "text": "Delete the task state",
+     "correct": false,
+     "rationale": "Deleting the task removes the work, not the error risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Add a Retry policy with backoff, and a Catch for a fallback.",
+   "outcome_refs": [
+    "MST-1490-D05.01"
+   ],
+   "domain_ref": "Error handling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

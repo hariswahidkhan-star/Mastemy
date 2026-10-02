@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1469",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1469-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem does Anthos / GKE Enterprise fleet management primarily address?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Managing Kubernetes clusters consistently across on-prem and multiple clouds",
+     "correct": true,
+     "rationale": "Correct: fleets provide consistent management and policy across environments."
+    },
+    {
+     "key": "B",
+     "text": "Replacing Kubernetes with a proprietary container runtime",
+     "correct": false,
+     "rationale": "Anthos manages Kubernetes rather than replacing it."
+    },
+    {
+     "key": "C",
+     "text": "Eliminating the need for any networking",
+     "correct": false,
+     "rationale": "Networking is still required; Anthos does not remove it."
+    },
+    {
+     "key": "D",
+     "text": "Providing a single-region-only database",
+     "correct": false,
+     "rationale": "That is unrelated to fleet management."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Managing Kubernetes clusters consistently across on-prem and multiple clouds.",
+   "outcome_refs": [
+    "MST-1469-D02.01"
+   ],
+   "domain_ref": "Anthos and fleets",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1469-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are benefits of using a service mesh across clusters? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Mutual TLS between services without changing app code",
+     "correct": true,
+     "rationale": "Correct: the mesh adds mTLS transparently via sidecars."
+    },
+    {
+     "key": "B",
+     "text": "Traffic shifting for canary releases",
+     "correct": true,
+     "rationale": "Correct: the mesh can route a percentage of traffic for safe rollouts."
+    },
+    {
+     "key": "C",
+     "text": "Removing the need for any Kubernetes clusters",
+     "correct": false,
+     "rationale": "The mesh runs on clusters; it does not remove them."
+    },
+    {
+     "key": "D",
+     "text": "Guaranteeing zero cost for all traffic",
+     "correct": false,
+     "rationale": "A mesh does not make traffic free."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Mutual TLS between services without changing app code, Traffic shifting for canary releases.",
+   "outcome_refs": [
+    "MST-1469-D05.01"
+   ],
+   "domain_ref": "Service mesh",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1469-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Config Management with GitOps keeps clusters consistent by doing what?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Continuously reconciling clusters to a declared state stored in Git",
+     "correct": true,
+     "rationale": "Correct: GitOps applies and reconciles the Git-declared config across clusters."
+    },
+    {
+     "key": "B",
+     "text": "Letting admins edit each cluster manually and hoping they match",
+     "correct": false,
+     "rationale": "Manual edits cause drift, the opposite of GitOps."
+    },
+    {
+     "key": "C",
+     "text": "Deleting all clusters nightly",
+     "correct": false,
+     "rationale": "GitOps reconciles config; it does not delete clusters."
+    },
+    {
+     "key": "D",
+     "text": "Storing config only in each engineer's laptop",
+     "correct": false,
+     "rationale": "Config lives in a shared Git repo, not on laptops."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Continuously reconciling clusters to a declared state stored in Git.",
+   "outcome_refs": [
+    "MST-1469-D03.01"
+   ],
+   "domain_ref": "Config management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

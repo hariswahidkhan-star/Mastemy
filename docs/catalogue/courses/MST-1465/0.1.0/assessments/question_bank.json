@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1465",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1465-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team sets a Google Cloud budget of $5,000/month. What does the budget do when spend reaches it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sends alerts at configured thresholds; it does not stop spending",
+     "correct": true,
+     "rationale": "Correct: budgets notify at thresholds but do not cap or halt usage by themselves."
+    },
+    {
+     "key": "B",
+     "text": "Automatically shuts down all resources",
+     "correct": false,
+     "rationale": "Budgets do not stop resources unless you build an automated action."
+    },
+    {
+     "key": "C",
+     "text": "Refunds overspend to the billing account",
+     "correct": false,
+     "rationale": "There is no automatic refund for exceeding a budget."
+    },
+    {
+     "key": "D",
+     "text": "Blocks new API calls permanently",
+     "correct": false,
+     "rationale": "Budgets do not block API calls."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Sends alerts at configured thresholds; it does not stop spending.",
+   "outcome_refs": [
+    "MST-1465-D02.01"
+   ],
+   "domain_ref": "Budgets and alerts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1465-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO reduce cost for predictable, steady compute workloads? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Purchase committed-use discounts for the steady baseline",
+     "correct": true,
+     "rationale": "Correct: CUDs lower cost for committed, steady usage over a term."
+    },
+    {
+     "key": "B",
+     "text": "Right-size machine types to actual utilization",
+     "correct": true,
+     "rationale": "Correct: removing over-provisioning cuts cost without hurting steady workloads."
+    },
+    {
+     "key": "C",
+     "text": "Run the production baseline entirely on preemptible spot VMs",
+     "correct": false,
+     "rationale": "Spot VMs can be reclaimed, unsuitable for a steady production baseline."
+    },
+    {
+     "key": "D",
+     "text": "Delete all labels to simplify billing",
+     "correct": false,
+     "rationale": "Labels aid attribution and do not reduce cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Purchase committed-use discounts for the steady baseline, Right-size machine types to actual utilization.",
+   "outcome_refs": [
+    "MST-1465-D04.01"
+   ],
+   "domain_ref": "Discounts",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1465-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where can a team analyze detailed, line-item Google Cloud costs over time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The BigQuery billing export",
+     "correct": true,
+     "rationale": "Correct: exporting billing to BigQuery enables detailed, queryable line-item analysis."
+    },
+    {
+     "key": "B",
+     "text": "The VM serial console",
+     "correct": false,
+     "rationale": "The serial console is for instance debugging, not cost analysis."
+    },
+    {
+     "key": "C",
+     "text": "The firewall rules page",
+     "correct": false,
+     "rationale": "Firewall rules are network config, not cost data."
+    },
+    {
+     "key": "D",
+     "text": "The IAM policy editor",
+     "correct": false,
+     "rationale": "IAM manages access, not cost analysis."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: The BigQuery billing export.",
+   "outcome_refs": [
+    "MST-1465-D03.02"
+   ],
+   "domain_ref": "Cost analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

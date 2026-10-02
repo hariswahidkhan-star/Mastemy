@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1466",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1466-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Firestore app lets any client read and write all documents in production. What is the main problem?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Security rules are too permissive and must restrict access",
+     "correct": true,
+     "rationale": "Correct: open rules let anyone read/write data; rules must enforce per-user access."
+    },
+    {
+     "key": "B",
+     "text": "Firestore cannot store documents",
+     "correct": false,
+     "rationale": "Firestore is a document database; storing documents is its purpose."
+    },
+    {
+     "key": "C",
+     "text": "Analytics is disabled",
+     "correct": false,
+     "rationale": "Analytics is unrelated to the data-access problem."
+    },
+    {
+     "key": "D",
+     "text": "Hosting is misconfigured",
+     "correct": false,
+     "rationale": "Hosting serves content and is unrelated to database rules."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Security rules are too permissive and must restrict access.",
+   "outcome_refs": [
+    "MST-1466-D02.02"
+   ],
+   "domain_ref": "Databases and rules",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1466-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate uses of Cloud Functions for Firebase? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Run trusted server-side logic on a Firestore write trigger",
+     "correct": true,
+     "rationale": "Correct: functions run trusted backend logic in response to events."
+    },
+    {
+     "key": "B",
+     "text": "Expose an HTTPS callable endpoint for the app",
+     "correct": true,
+     "rationale": "Correct: callable functions give the client a secure backend endpoint."
+    },
+    {
+     "key": "C",
+     "text": "Store the app's primary user records instead of a database",
+     "correct": false,
+     "rationale": "Functions are compute, not storage; data belongs in Firestore/RTDB."
+    },
+    {
+     "key": "D",
+     "text": "Hold secret API keys in client code to avoid functions",
+     "correct": false,
+     "rationale": "Secrets must stay server-side; putting them in the client leaks them."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Run trusted server-side logic on a Firestore write trigger, Expose an HTTPS callable endpoint for the app.",
+   "outcome_refs": [
+    "MST-1466-D04.01"
+   ],
+   "domain_ref": "Cloud Functions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1466-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Firebase service should handle user sign-in with email and Google providers?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Firebase Authentication",
+     "correct": true,
+     "rationale": "Correct: Authentication manages sign-in providers and user identity."
+    },
+    {
+     "key": "B",
+     "text": "Firebase Hosting",
+     "correct": false,
+     "rationale": "Hosting serves static content, not sign-in."
+    },
+    {
+     "key": "C",
+     "text": "Crashlytics",
+     "correct": false,
+     "rationale": "Crashlytics reports crashes, not authentication."
+    },
+    {
+     "key": "D",
+     "text": "Cloud Storage for Firebase",
+     "correct": false,
+     "rationale": "Cloud Storage holds files, not sign-in."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Firebase Authentication.",
+   "outcome_refs": [
+    "MST-1466-D03.01"
+   ],
+   "domain_ref": "Authentication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

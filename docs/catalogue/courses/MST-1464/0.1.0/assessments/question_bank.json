@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1464",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1464-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Where should Terraform state be stored for a team working on shared Google Cloud infrastructure?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Cloud Storage backend with versioning and locking",
+     "correct": true,
+     "rationale": "Correct: a remote GCS backend gives shared, locked, versioned state."
+    },
+    {
+     "key": "B",
+     "text": "A local terraform.tfstate file committed to git",
+     "correct": false,
+     "rationale": "Local state in git causes conflicts and can leak secrets."
+    },
+    {
+     "key": "C",
+     "text": "Only in each engineer's memory of changes",
+     "correct": false,
+     "rationale": "State must be recorded; memory is not a backend."
+    },
+    {
+     "key": "D",
+     "text": "Inside the provider block as a string",
+     "correct": false,
+     "rationale": "State is not stored in the provider configuration."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: A Cloud Storage backend with versioning and locking.",
+   "outcome_refs": [
+    "MST-1464-D04.01"
+   ],
+   "domain_ref": "State management",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1464-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make Terraform runs safer in a CI/CD pipeline? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Run terraform plan and review it before apply",
+     "correct": true,
+     "rationale": "Correct: reviewing the plan catches unintended changes before they happen."
+    },
+    {
+     "key": "B",
+     "text": "Require a manual approval before applying to production",
+     "correct": true,
+     "rationale": "Correct: an approval gate prevents unreviewed changes reaching production."
+    },
+    {
+     "key": "C",
+     "text": "Pipe plan output straight into auto-apply with no review",
+     "correct": false,
+     "rationale": "Auto-applying unreviewed plans is exactly the risk to avoid."
+    },
+    {
+     "key": "D",
+     "text": "Store the service account key in the repository",
+     "correct": false,
+     "rationale": "Committing a key is a serious credential leak, not a safety practice."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Run terraform plan and review it before apply, Require a manual approval before applying to production.",
+   "outcome_refs": [
+    "MST-1464-D06.01"
+   ],
+   "domain_ref": "Terraform in automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1464-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the best way to authenticate the Google provider from a developer workstation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Application Default Credentials via gcloud auth",
+     "correct": true,
+     "rationale": "Correct: ADC lets Terraform use the developer's authenticated identity without embedded keys."
+    },
+    {
+     "key": "B",
+     "text": "A long-lived service account key pasted into main.tf",
+     "correct": false,
+     "rationale": "Embedding a key in config is a leak risk and poor practice."
+    },
+    {
+     "key": "C",
+     "text": "Disabling authentication for convenience",
+     "correct": false,
+     "rationale": "Google Cloud APIs require authentication; it cannot be disabled."
+    },
+    {
+     "key": "D",
+     "text": "Using the organization admin's personal password in a variable",
+     "correct": false,
+     "rationale": "Passwords are not used for API auth and sharing them is unsafe."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Application Default Credentials via gcloud auth.",
+   "outcome_refs": [
+    "MST-1464-D02.02"
+   ],
+   "domain_ref": "Provider and authentication",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

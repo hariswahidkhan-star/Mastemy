@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1493",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1493-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An application will move to the cloud with minimal changes, just re-hosting the VMs. Which of the 7 Rs is this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rehost (lift and shift)",
+     "correct": true,
+     "rationale": "Correct: rehosting moves workloads with minimal change."
+    },
+    {
+     "key": "B",
+     "text": "Refactor",
+     "correct": false,
+     "rationale": "Refactoring re-architects the application significantly."
+    },
+    {
+     "key": "C",
+     "text": "Retire",
+     "correct": false,
+     "rationale": "Retire means decommissioning, not migrating."
+    },
+    {
+     "key": "D",
+     "text": "Repurchase",
+     "correct": false,
+     "rationale": "Repurchase replaces the app with a SaaS product."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Rehost (lift and shift).",
+   "outcome_refs": [
+    "MST-1493-D03.01"
+   ],
+   "domain_ref": "The 7 Rs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1493-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound practices when planning migration waves? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sequence waves so dependencies migrate before dependents",
+     "correct": true,
+     "rationale": "Correct: dependencies must move first to avoid breaking apps."
+    },
+    {
+     "key": "B",
+     "text": "Start with lower-risk applications to build momentum and learning",
+     "correct": true,
+     "rationale": "Correct: early low-risk waves reduce risk and build capability."
+    },
+    {
+     "key": "C",
+     "text": "Migrate every application simultaneously with no sequencing",
+     "correct": false,
+     "rationale": "A big-bang move raises risk and ignores dependencies."
+    },
+    {
+     "key": "D",
+     "text": "Skip the portfolio assessment to save time",
+     "correct": false,
+     "rationale": "Skipping assessment leads to poor strategy choices."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Sequence waves so dependencies migrate before dependents, Start with lower-risk applications to build momentum and learning.",
+   "outcome_refs": [
+    "MST-1493-D04.01"
+   ],
+   "domain_ref": "Wave planning",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1493-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why build a business case and TCO comparison before migrating?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To justify the investment and choose the right strategy per application",
+     "correct": true,
+     "rationale": "Correct: the business case and TCO guide investment and strategy decisions."
+    },
+    {
+     "key": "B",
+     "text": "Because AWS refuses migrations without one",
+     "correct": false,
+     "rationale": "It is good practice, not an AWS gate."
+    },
+    {
+     "key": "C",
+     "text": "To permanently lock the architecture with no changes",
+     "correct": false,
+     "rationale": "A business case does not lock architecture."
+    },
+    {
+     "key": "D",
+     "text": "To avoid ever needing validation at cutover",
+     "correct": false,
+     "rationale": "Validation is still required at cutover regardless."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: To justify the investment and choose the right strategy per application.",
+   "outcome_refs": [
+    "MST-1493-D02.02"
+   ],
+   "domain_ref": "Assessment",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

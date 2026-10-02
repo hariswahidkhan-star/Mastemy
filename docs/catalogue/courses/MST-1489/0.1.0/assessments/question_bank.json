@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1489",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1489-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload must buffer tasks so a slow consumer can process them later with retries. Which service fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Amazon SQS",
+     "correct": true,
+     "rationale": "Correct: SQS is a durable queue that buffers messages for later processing with retries."
+    },
+    {
+     "key": "B",
+     "text": "Amazon SNS",
+     "correct": false,
+     "rationale": "SNS pushes to subscribers and does not store messages for polling."
+    },
+    {
+     "key": "C",
+     "text": "Amazon CloudFront",
+     "correct": false,
+     "rationale": "CloudFront is a CDN, not a message queue."
+    },
+    {
+     "key": "D",
+     "text": "Amazon Route 53",
+     "correct": false,
+     "rationale": "Route 53 is DNS, not messaging."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Amazon SQS.",
+   "outcome_refs": [
+    "MST-1489-D01.01"
+   ],
+   "domain_ref": "Messaging choices",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1489-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO improve reliability when consuming from an SQS queue? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Set the visibility timeout longer than the processing time",
+     "correct": true,
+     "rationale": "Correct: a longer visibility timeout prevents duplicate processing before completion."
+    },
+    {
+     "key": "B",
+     "text": "Configure a dead-letter queue for poison messages",
+     "correct": true,
+     "rationale": "Correct: a DLQ isolates messages that repeatedly fail."
+    },
+    {
+     "key": "C",
+     "text": "Assume messages are never delivered more than once",
+     "correct": false,
+     "rationale": "Standard queues are at-least-once; consumers must handle duplicates."
+    },
+    {
+     "key": "D",
+     "text": "Delete the message before processing completes",
+     "correct": false,
+     "rationale": "Deleting early risks losing work if processing fails."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Set the visibility timeout longer than the processing time, Configure a dead-letter queue for poison messages.",
+   "outcome_refs": [
+    "MST-1489-D03.01"
+   ],
+   "domain_ref": "Reliability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1489-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which service is designed to route events by pattern to many AWS and SaaS targets?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Amazon EventBridge",
+     "correct": true,
+     "rationale": "Correct: EventBridge routes events to targets based on event patterns."
+    },
+    {
+     "key": "B",
+     "text": "Amazon SQS FIFO",
+     "correct": false,
+     "rationale": "FIFO queues provide ordered delivery to consumers, not pattern routing."
+    },
+    {
+     "key": "C",
+     "text": "Amazon Route 53",
+     "correct": false,
+     "rationale": "Route 53 is DNS, not event routing."
+    },
+    {
+     "key": "D",
+     "text": "AWS Billing",
+     "correct": false,
+     "rationale": "Billing is unrelated to event routing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Amazon EventBridge.",
+   "outcome_refs": [
+    "MST-1489-D05.01"
+   ],
+   "domain_ref": "EventBridge",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

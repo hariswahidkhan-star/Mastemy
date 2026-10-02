@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1488",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 276,
+  "lesson_check_items": 60,
+  "module_check_items": 48,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1488-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which Route 53 routing policy sends users to the AWS region that gives them the lowest latency?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Latency-based routing",
+     "correct": true,
+     "rationale": "Correct: latency-based routing directs users to the lowest-latency region."
+    },
+    {
+     "key": "B",
+     "text": "Simple routing",
+     "correct": false,
+     "rationale": "Simple routing returns one record set without latency awareness."
+    },
+    {
+     "key": "C",
+     "text": "Weighted routing only",
+     "correct": false,
+     "rationale": "Weighted routing splits by weight, not by latency."
+    },
+    {
+     "key": "D",
+     "text": "Alias-only routing",
+     "correct": false,
+     "rationale": "ALIAS is a record type, not a latency policy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Latency-based routing.",
+   "outcome_refs": [
+    "MST-1488-D02.01"
+   ],
+   "domain_ref": "Routing policies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1488-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO improve a global web app's delivery with CloudFront? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Cache static assets at edge locations with appropriate TTLs",
+     "correct": true,
+     "rationale": "Correct: edge caching reduces latency and origin load."
+    },
+    {
+     "key": "B",
+     "text": "Serve HTTPS using an ACM certificate",
+     "correct": true,
+     "rationale": "Correct: TLS at the edge secures delivery for users."
+    },
+    {
+     "key": "C",
+     "text": "Make the S3 origin publicly readable to everyone",
+     "correct": false,
+     "rationale": "A public origin bypasses CloudFront protection and is a risk."
+    },
+    {
+     "key": "D",
+     "text": "Set a 1-second TTL on all static files to force constant refetch",
+     "correct": false,
+     "rationale": "Tiny TTLs defeat caching and raise origin load."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Cache static assets at edge locations with appropriate TTLs, Serve HTTPS using an ACM certificate.",
+   "outcome_refs": [
+    "MST-1488-D06.01"
+   ],
+   "domain_ref": "Securing delivery",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1488-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After updating a file at the origin, why might CloudFront still serve the old version?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The object is still cached at the edge until its TTL expires or it is invalidated",
+     "correct": true,
+     "rationale": "Correct: cached objects persist until TTL expiry or an invalidation."
+    },
+    {
+     "key": "B",
+     "text": "Route 53 deleted the DNS record",
+     "correct": false,
+     "rationale": "A deleted record would stop resolution, not serve a stale file."
+    },
+    {
+     "key": "C",
+     "text": "CloudFront never caches anything",
+     "correct": false,
+     "rationale": "CloudFront caches by design; that is the point."
+    },
+    {
+     "key": "D",
+     "text": "TLS certificates block updates",
+     "correct": false,
+     "rationale": "Certificates secure transport, not cache freshness."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: The object is still cached at the edge until its TTL expires or it is invalidated.",
+   "outcome_refs": [
+    "MST-1488-D05.02"
+   ],
+   "domain_ref": "Cache behavior",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
