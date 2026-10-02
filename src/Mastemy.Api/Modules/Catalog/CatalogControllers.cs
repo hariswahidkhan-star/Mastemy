@@ -12,10 +12,22 @@ public class CatalogController(CatalogQueryService svc) : ControllerBase
     [HttpGet("categories")]
     public Task<List<CategoryDto>> Categories() => svc.Categories();
 
+    /// <summary>
+    /// Catalog search. Extended filters: instructor (user id), duration (short|medium|long|extended), updatedWithinDays,
+    /// minPrice/maxPrice (cheapest active approved package), minRating (1-5), skill (code), certification (slug or exam code).
+    /// When nothing matches, a spelling-corrected query is tried and returned as didYouMean.
+    /// </summary>
     [HttpGet("courses")]
-    public Task<PagedResult<CourseCardDto>> Search([FromQuery] string? q, [FromQuery] string? category, [FromQuery] CourseLevel? level,
-        [FromQuery] string? language, [FromQuery] string? sort, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
-        => svc.Search(q, category, level, language, sort, page, pageSize);
+    public Task<CourseSearchResultDto> Search([FromQuery] string? q, [FromQuery] string? category, [FromQuery] CourseLevel? level,
+        [FromQuery] string? language, [FromQuery] string? sort, [FromQuery] Guid? instructor, [FromQuery] string? duration,
+        [FromQuery] int? updatedWithinDays, [FromQuery] decimal? minPrice, [FromQuery] decimal? maxPrice, [FromQuery] decimal? minRating,
+        [FromQuery] string? skill, [FromQuery] string? certification, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+        => svc.SearchTolerant(q, category, level, language, sort, page, pageSize,
+            new SearchFilters(instructor, duration, updatedWithinDays, minPrice, maxPrice, minRating, skill, certification));
+
+    /// <summary>Up to 8 prefix suggestions over live course titles, skills and public certifications.</summary>
+    [HttpGet("search/suggestions")]
+    public Task<List<SuggestionDto>> Suggestions([FromQuery] string? q) => svc.Suggestions(q);
 
     [HttpGet("courses/{slug}")]
     public Task<CourseDetailDto> Detail(string slug) => svc.Detail(slug);
