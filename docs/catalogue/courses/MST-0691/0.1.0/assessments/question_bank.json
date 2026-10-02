@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0691",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 512,
+  "lesson_check_items": 96,
+  "module_check_items": 120,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0691-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A design places a firewall at the datacentre edge and trusts everything inside. How does Zero Trust assess this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It violates 'assume breach' and 'verify explicitly'; internal traffic must also be verified and segmented",
+     "correct": true,
+     "rationale": "Correct: Zero Trust removes implicit internal trust."
+    },
+    {
+     "key": "B",
+     "text": "It fully satisfies Zero Trust because the perimeter is strong",
+     "correct": false,
+     "rationale": "A strong perimeter alone is not Zero Trust."
+    },
+    {
+     "key": "C",
+     "text": "Zero Trust only concerns passwords",
+     "correct": false,
+     "rationale": "Zero Trust spans identity, device, network, data and apps."
+    },
+    {
+     "key": "D",
+     "text": "Internal traffic never needs inspection",
+     "correct": false,
+     "rationale": "Assume-breach requires internal verification."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Zero Trust removes implicit internal trust.",
+   "outcome_refs": [
+    "MST-0691-D01.02"
+   ],
+   "domain_ref": "Zero Trust principles",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0691-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO strengthen identity verification under Zero Trust? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Phishing-resistant MFA (for example FIDO2 or certificate-based)",
+     "correct": true,
+     "rationale": "Correct: phishing-resistant MFA raises assurance."
+    },
+    {
+     "key": "B",
+     "text": "Risk-based Conditional Access that factors device and sign-in risk",
+     "correct": true,
+     "rationale": "Correct: conditional, risk-aware policy verifies explicitly."
+    },
+    {
+     "key": "C",
+     "text": "Allowing legacy protocols that bypass MFA",
+     "correct": false,
+     "rationale": "Legacy protocols undermine MFA."
+    },
+    {
+     "key": "D",
+     "text": "Permanent global admin for all IT staff",
+     "correct": false,
+     "rationale": "Standing privilege violates least privilege."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: phishing-resistant MFA raises assurance.",
+   "outcome_refs": [
+    "MST-0691-D02.01"
+   ],
+   "domain_ref": "Identity and access",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0691-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload needs to call a database and a storage account without storing any secret. What is the Zero Trust-aligned choice?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Managed/workload identity issuing short-lived tokens",
+     "correct": true,
+     "rationale": "Correct: secretless identity-based access verifies explicitly and limits exposure."
+    },
+    {
+     "key": "B",
+     "text": "A shared static connection string in config",
+     "correct": false,
+     "rationale": "Static secrets are a breach liability."
+    },
+    {
+     "key": "C",
+     "text": "Embedding credentials in the build image",
+     "correct": false,
+     "rationale": "Embedded secrets leak."
+    },
+    {
+     "key": "D",
+     "text": "Disabling authentication inside the trusted network",
+     "correct": false,
+     "rationale": "Internal trust is exactly what Zero Trust removes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: secretless identity-based access verifies explicitly and limits exposure.",
+   "outcome_refs": [
+    "MST-0691-D06.02"
+   ],
+   "domain_ref": "Applications and workloads",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

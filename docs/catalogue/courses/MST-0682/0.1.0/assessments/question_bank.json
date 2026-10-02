@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0682",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 348,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0682-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An operations team wants one query surface across logs from 30 services in different regions. What is the recommended baseline?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Route diagnostic settings from each service to a single centralised Log Analytics workspace",
+     "correct": true,
+     "rationale": "Correct: a central workspace enables cross-service KQL and correlation."
+    },
+    {
+     "key": "B",
+     "text": "Download logs from each service portal manually each morning",
+     "correct": false,
+     "rationale": "Manual export does not scale and loses queryability."
+    },
+    {
+     "key": "C",
+     "text": "Enable metrics only and disable log collection",
+     "correct": false,
+     "rationale": "Metrics alone cannot answer root-cause questions."
+    },
+    {
+     "key": "D",
+     "text": "Create one workspace per service and never join them",
+     "correct": false,
+     "rationale": "Fragmented workspaces defeat cross-service correlation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a central workspace enables cross-service KQL and correlation.",
+   "outcome_refs": [
+    "MST-0682-D03.01"
+   ],
+   "domain_ref": "Azure Monitor and Log Analytics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0682-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices support least-privilege administration in Azure? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assign the narrowest built-in or custom role scoped to the smallest resource group",
+     "correct": true,
+     "rationale": "Correct: scope and role granularity limit blast radius."
+    },
+    {
+     "key": "B",
+     "text": "Use Microsoft Entra PIM to make privileged roles eligible and time-bound",
+     "correct": true,
+     "rationale": "Correct: just-in-time elevation reduces standing privilege."
+    },
+    {
+     "key": "C",
+     "text": "Grant every engineer Owner on the subscription for convenience",
+     "correct": false,
+     "rationale": "Standing Owner access is excessive and risky."
+    },
+    {
+     "key": "D",
+     "text": "Share one administrator account among the team",
+     "correct": false,
+     "rationale": "Shared accounts destroy auditability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: scope and role granularity limit blast radius.",
+   "outcome_refs": [
+    "MST-0682-D01.02"
+   ],
+   "domain_ref": "Azure administration fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0682-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A storefront's CPU spikes during flash sales and users see timeouts. Which action group plus scaling response is most appropriate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A metric alert on sustained CPU with an autoscale rule adding instances",
+     "correct": true,
+     "rationale": "Correct: autoscale on a sustained signal absorbs load; the alert notifies on-call."
+    },
+    {
+     "key": "B",
+     "text": "A single email alert with no scaling configured",
+     "correct": false,
+     "rationale": "Notification without scaling does not resolve the overload."
+    },
+    {
+     "key": "C",
+     "text": "Manually add VMs after each incident",
+     "correct": false,
+     "rationale": "Manual response is too slow for flash traffic."
+    },
+    {
+     "key": "D",
+     "text": "Disable monitoring to reduce noise",
+     "correct": false,
+     "rationale": "Removing signals hides the problem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: autoscale on a sustained signal absorbs load; the alert notifies on-call.",
+   "outcome_refs": [
+    "MST-0682-D04.01"
+   ],
+   "domain_ref": "Alerts, action groups and autoscale",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

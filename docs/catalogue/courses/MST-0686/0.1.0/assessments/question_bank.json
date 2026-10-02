@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0686",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 348,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0686-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A function must run exactly one logical order creation even though the queue delivers a message at least once. What design handles this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Make the handler idempotent using a dedupe key so repeats are no-ops",
+     "correct": true,
+     "rationale": "Correct: at-least-once delivery requires idempotent handlers."
+    },
+    {
+     "key": "B",
+     "text": "Assume the queue delivers exactly once",
+     "correct": false,
+     "rationale": "Azure queues provide at-least-once delivery."
+    },
+    {
+     "key": "C",
+     "text": "Disable retries entirely",
+     "correct": false,
+     "rationale": "Disabling retries loses messages on transient failure."
+    },
+    {
+     "key": "D",
+     "text": "Increase the function timeout",
+     "correct": false,
+     "rationale": "Timeout does not address duplicate delivery."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: at-least-once delivery requires idempotent handlers.",
+   "outcome_refs": [
+    "MST-0686-D04.01"
+   ],
+   "domain_ref": "Resilient event processing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0686-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid reasons to choose the Premium (or Flex) plan over Consumption? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "To avoid cold starts with pre-warmed instances",
+     "correct": true,
+     "rationale": "Correct: Premium keeps warm instances ready."
+    },
+    {
+     "key": "B",
+     "text": "To access VNet integration for private resources",
+     "correct": true,
+     "rationale": "Correct: Premium supports VNet integration."
+    },
+    {
+     "key": "C",
+     "text": "Because Consumption cannot run any function",
+     "correct": false,
+     "rationale": "Consumption runs functions fine."
+    },
+    {
+     "key": "D",
+     "text": "Because Premium is always cheaper",
+     "correct": false,
+     "rationale": "Premium is typically more expensive."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Premium keeps warm instances ready.",
+   "outcome_refs": [
+    "MST-0686-D03.01"
+   ],
+   "domain_ref": "Hosting plans",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0686-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You must aggregate results from many parallel sub-tasks and continue when all finish. Which Durable Functions pattern fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fan-out/fan-in with an orchestrator awaiting all activities",
+     "correct": true,
+     "rationale": "Correct: fan-out/fan-in parallelises then aggregates."
+    },
+    {
+     "key": "B",
+     "text": "A single HTTP-triggered stateless function",
+     "correct": false,
+     "rationale": "A stateless function cannot track parallel completion reliably."
+    },
+    {
+     "key": "C",
+     "text": "A timer trigger every minute polling status",
+     "correct": false,
+     "rationale": "Polling is wasteful and fragile here."
+    },
+    {
+     "key": "D",
+     "text": "Storing state in a global variable",
+     "correct": false,
+     "rationale": "Global state is not durable across instances."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fan-out/fan-in parallelises then aggregates.",
+   "outcome_refs": [
+    "MST-0686-D05.01"
+   ],
+   "domain_ref": "Durable Functions",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

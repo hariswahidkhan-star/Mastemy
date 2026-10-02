@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0687",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 348,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0687-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants its pipeline definition reviewed, versioned and diffed like code. What should they use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A YAML pipeline stored in the repository",
+     "correct": true,
+     "rationale": "Correct: YAML pipelines are source-controlled and reviewable."
+    },
+    {
+     "key": "B",
+     "text": "A classic UI-only pipeline",
+     "correct": false,
+     "rationale": "UI pipelines are not diff-friendly source."
+    },
+    {
+     "key": "C",
+     "text": "Manual deployment scripts run by hand",
+     "correct": false,
+     "rationale": "Manual scripts are not a reviewable pipeline."
+    },
+    {
+     "key": "D",
+     "text": "A spreadsheet of deploy steps",
+     "correct": false,
+     "rationale": "A spreadsheet is not executable or versioned as code."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: YAML pipelines are source-controlled and reviewable.",
+   "outcome_refs": [
+    "MST-0687-D01.01"
+   ],
+   "domain_ref": "Continuous integration with YAML",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0687-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO controls help ensure only vetted changes reach production? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A manual approval check on the production environment",
+     "correct": true,
+     "rationale": "Correct: approvals gate promotion to prod."
+    },
+    {
+     "key": "B",
+     "text": "An automated gate that queries a health/monitoring signal",
+     "correct": true,
+     "rationale": "Correct: gates block promotion on objective signals."
+    },
+    {
+     "key": "C",
+     "text": "Granting every user permission to deploy to prod",
+     "correct": false,
+     "rationale": "Broad deploy rights weaken control."
+    },
+    {
+     "key": "D",
+     "text": "Removing all tests to speed up deployment",
+     "correct": false,
+     "rationale": "Removing tests reduces safety."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: approvals gate promotion to prod.",
+   "outcome_refs": [
+    "MST-0687-D03.02"
+   ],
+   "domain_ref": "Environments, approvals and gates",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0687-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A release must switch traffic to a new version instantly and allow immediate rollback to the old version. Which strategy fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Blue-green deployment with a swap between two environments",
+     "correct": true,
+     "rationale": "Correct: blue-green allows instant cutover and rollback."
+    },
+    {
+     "key": "B",
+     "text": "Deleting the old version before deploying the new one",
+     "correct": false,
+     "rationale": "That eliminates the rollback target."
+    },
+    {
+     "key": "C",
+     "text": "Editing production servers in place",
+     "correct": false,
+     "rationale": "In-place edits are not cleanly reversible."
+    },
+    {
+     "key": "D",
+     "text": "Deploying only on Fridays",
+     "correct": false,
+     "rationale": "Timing is not a release strategy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: blue-green allows instant cutover and rollback.",
+   "outcome_refs": [
+    "MST-0687-D04.01"
+   ],
+   "domain_ref": "Release strategies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

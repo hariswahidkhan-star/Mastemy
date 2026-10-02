@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0683",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 348,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0683-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Spoke A is peered to a hub, and the hub is peered to spoke B. Spoke A cannot reach spoke B. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "VNet peering is non-transitive; spoke-to-spoke needs gateway/route transit or a hub NVA",
+     "correct": true,
+     "rationale": "Correct: peering is not transitive by default."
+    },
+    {
+     "key": "B",
+     "text": "Peering always routes all traffic automatically",
+     "correct": false,
+     "rationale": "Peering is non-transitive."
+    },
+    {
+     "key": "C",
+     "text": "NSGs block all peered traffic by design",
+     "correct": false,
+     "rationale": "NSGs are explicit, not the cause here."
+    },
+    {
+     "key": "D",
+     "text": "Spokes cannot be peered to a hub",
+     "correct": false,
+     "rationale": "They can; transitivity is the issue."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: peering is not transitive by default.",
+   "outcome_refs": [
+    "MST-0683-D03.01"
+   ],
+   "domain_ref": "Peering and hub-and-spoke",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0683-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors favour ExpressRoute over a site-to-site VPN for a regulated workload? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Traffic stays off the public internet over a private circuit",
+     "correct": true,
+     "rationale": "Correct: ExpressRoute uses a private connection."
+    },
+    {
+     "key": "B",
+     "text": "Higher, more predictable bandwidth and SLA",
+     "correct": true,
+     "rationale": "Correct: ExpressRoute offers consistent throughput and an SLA."
+    },
+    {
+     "key": "C",
+     "text": "It is always cheaper than a VPN",
+     "correct": false,
+     "rationale": "ExpressRoute is typically more expensive."
+    },
+    {
+     "key": "D",
+     "text": "It needs no on-premises configuration",
+     "correct": false,
+     "rationale": "It requires provider and edge configuration."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: ExpressRoute uses a private connection.",
+   "outcome_refs": [
+    "MST-0683-D04.01"
+   ],
+   "domain_ref": "Hybrid connectivity",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0683-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A security team requires all internet egress to be inspected by a firewall appliance. What steers VNet traffic to it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A user-defined route sending 0.0.0.0/0 to the appliance's internal IP",
+     "correct": true,
+     "rationale": "Correct: a UDR overrides system routes to force egress through the NVA."
+    },
+    {
+     "key": "B",
+     "text": "An NSG allow rule on the subnet",
+     "correct": false,
+     "rationale": "NSGs filter but do not redirect routing."
+    },
+    {
+     "key": "C",
+     "text": "Enabling VNet peering",
+     "correct": false,
+     "rationale": "Peering connects networks; it does not force inspection."
+    },
+    {
+     "key": "D",
+     "text": "A private DNS zone",
+     "correct": false,
+     "rationale": "DNS resolves names; it does not route egress."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a UDR overrides system routes to force egress through the NVA.",
+   "outcome_refs": [
+    "MST-0683-D05.02"
+   ],
+   "domain_ref": "Routing and inspection",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

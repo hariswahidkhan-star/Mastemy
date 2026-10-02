@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0684",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 348,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0684-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After a node reboots, a bare Pod does not come back. What should run the workload so it self-heals?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A Deployment, which manages a ReplicaSet to keep the desired replica count",
+     "correct": true,
+     "rationale": "Correct: Deployments reconcile desired state and reschedule Pods."
+    },
+    {
+     "key": "B",
+     "text": "A single Pod manifest with no controller",
+     "correct": false,
+     "rationale": "A bare Pod is not rescheduled on failure."
+    },
+    {
+     "key": "C",
+     "text": "A one-off kubectl run command",
+     "correct": false,
+     "rationale": "That creates an unmanaged workload."
+    },
+    {
+     "key": "D",
+     "text": "A Service object alone",
+     "correct": false,
+     "rationale": "A Service exposes Pods; it does not create them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Deployments reconcile desired state and reschedule Pods.",
+   "outcome_refs": [
+    "MST-0684-D03.01"
+   ],
+   "domain_ref": "Deploying workloads",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0684-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are managed by AKS rather than the customer? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The Kubernetes control plane (API server, etcd, scheduler)",
+     "correct": true,
+     "rationale": "Correct: AKS operates the managed control plane."
+    },
+    {
+     "key": "B",
+     "text": "Control plane availability and patching",
+     "correct": true,
+     "rationale": "Correct: Azure maintains control plane health."
+    },
+    {
+     "key": "C",
+     "text": "The application container images",
+     "correct": false,
+     "rationale": "Images are the customer's responsibility."
+    },
+    {
+     "key": "D",
+     "text": "Workload manifests and scaling policy",
+     "correct": false,
+     "rationale": "These are authored by the customer."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: AKS operates the managed control plane.",
+   "outcome_refs": [
+    "MST-0684-D01.02"
+   ],
+   "domain_ref": "Kubernetes and AKS architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0684-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A cluster needs to access Azure Key Vault without storing long-lived credentials in the cluster. What is the recommended approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Microsoft Entra Workload Identity federated to the pod's service account",
+     "correct": true,
+     "rationale": "Correct: workload identity issues short-lived tokens, no stored secrets."
+    },
+    {
+     "key": "B",
+     "text": "A plain Kubernetes Secret holding a client secret",
+     "correct": false,
+     "rationale": "Long-lived secrets in the cluster are a risk."
+    },
+    {
+     "key": "C",
+     "text": "Hardcoding a key in the container image",
+     "correct": false,
+     "rationale": "Secrets in images leak widely."
+    },
+    {
+     "key": "D",
+     "text": "Disabling authentication to the vault",
+     "correct": false,
+     "rationale": "That removes access control entirely."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: workload identity issues short-lived tokens, no stored secrets.",
+   "outcome_refs": [
+    "MST-0684-D06.02"
+   ],
+   "domain_ref": "Operations and security",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

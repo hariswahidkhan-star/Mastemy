@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0694",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 348,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0694-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An attacker phishes a user, lands on an endpoint, then moves to a server. In Defender XDR, how is this best viewed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As a single incident with a cross-domain attack story across email, endpoint and identity",
+     "correct": true,
+     "rationale": "Correct: XDR correlates signals into one incident."
+    },
+    {
+     "key": "B",
+     "text": "As four unrelated alerts in separate products",
+     "correct": false,
+     "rationale": "XDR exists to correlate these, not silo them."
+    },
+    {
+     "key": "C",
+     "text": "Only as an endpoint alert",
+     "correct": false,
+     "rationale": "That misses the email and identity stages."
+    },
+    {
+     "key": "D",
+     "text": "As a billing event",
+     "correct": false,
+     "rationale": "It is a security incident, not billing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: XDR correlates signals into one incident.",
+   "outcome_refs": [
+    "MST-0694-D04.01"
+   ],
+   "domain_ref": "Incident investigation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0694-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound ways to configure automated investigation and response? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Auto-remediate high-confidence, low-risk detections",
+     "correct": true,
+     "rationale": "Correct: automating safe actions speeds response."
+    },
+    {
+     "key": "B",
+     "text": "Require analyst approval for disruptive remediation",
+     "correct": true,
+     "rationale": "Correct: approval tiers guard risky actions."
+    },
+    {
+     "key": "C",
+     "text": "Auto-isolate every device on any alert with no review",
+     "correct": false,
+     "rationale": "Over-aggressive automation harms operations."
+    },
+    {
+     "key": "D",
+     "text": "Disable all automation to avoid any mistakes",
+     "correct": false,
+     "rationale": "That forfeits speed on safe actions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: automating safe actions speeds response.",
+   "outcome_refs": [
+    "MST-0694-D05.02"
+   ],
+   "domain_ref": "Automated investigation and response",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0694-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A SOC wants to proactively search endpoint and identity telemetry for a technique before an alert fires. What should they use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Advanced hunting with KQL across the unified tables",
+     "correct": true,
+     "rationale": "Correct: advanced hunting queries telemetry proactively."
+    },
+    {
+     "key": "B",
+     "text": "Waiting for an incident to be created",
+     "correct": false,
+     "rationale": "That is reactive, not proactive hunting."
+    },
+    {
+     "key": "C",
+     "text": "Reading only the secure score page",
+     "correct": false,
+     "rationale": "Secure score is posture, not hunting."
+    },
+    {
+     "key": "D",
+     "text": "Exporting mailbox contents",
+     "correct": false,
+     "rationale": "That is not a hunting method."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: advanced hunting queries telemetry proactively.",
+   "outcome_refs": [
+    "MST-0694-D06.01"
+   ],
+   "domain_ref": "Hunting and improvement",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-0685",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 348,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 30,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-0685-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants to release a new version and validate it on production infrastructure before users hit it, with instant rollback. What should they use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A staging deployment slot with a slot swap (and swap with preview)",
+     "correct": true,
+     "rationale": "Correct: slot swap gives warmed, zero-downtime releases with instant rollback."
+    },
+    {
+     "key": "B",
+     "text": "Deleting and recreating the app each release",
+     "correct": false,
+     "rationale": "That causes downtime and data loss risk."
+    },
+    {
+     "key": "C",
+     "text": "Editing files on the production app in place",
+     "correct": false,
+     "rationale": "In-place edits are not safely reversible."
+    },
+    {
+     "key": "D",
+     "text": "Scaling up the plan tier",
+     "correct": false,
+     "rationale": "Tier changes do not provide release validation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: slot swap gives warmed, zero-downtime releases with instant rollback.",
+   "outcome_refs": [
+    "MST-0685-D03.01"
+   ],
+   "domain_ref": "Deployment slots",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0685-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO let an App Service app read a database password without storing the secret in configuration or code? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A system-assigned managed identity for the app",
+     "correct": true,
+     "rationale": "Correct: managed identity removes stored credentials."
+    },
+    {
+     "key": "B",
+     "text": "A Key Vault reference in app settings resolved by that identity",
+     "correct": true,
+     "rationale": "Correct: the app resolves the secret at runtime via the vault."
+    },
+    {
+     "key": "C",
+     "text": "Committing the password to the Git repo",
+     "correct": false,
+     "rationale": "Secrets must not be in source control."
+    },
+    {
+     "key": "D",
+     "text": "Putting the password in the container image",
+     "correct": false,
+     "rationale": "Image-embedded secrets leak."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: managed identity removes stored credentials.",
+   "outcome_refs": [
+    "MST-0685-D04.02"
+   ],
+   "domain_ref": "Configuration and identity",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-0685-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An app is CPU-bound under concurrent load but each request is light. What is the better first response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Scale out by adding instances",
+     "correct": true,
+     "rationale": "Correct: more instances spread concurrent requests."
+    },
+    {
+     "key": "B",
+     "text": "Scale up to a bigger single instance only",
+     "correct": false,
+     "rationale": "Scaling up alone may not help concurrency as well as scaling out."
+    },
+    {
+     "key": "C",
+     "text": "Disable Application Insights",
+     "correct": false,
+     "rationale": "Removing telemetry hides the cause."
+    },
+    {
+     "key": "D",
+     "text": "Move to the Free tier",
+     "correct": false,
+     "rationale": "The Free tier reduces capacity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: more instances spread concurrent requests.",
+   "outcome_refs": [
+    "MST-0685-D05.01"
+   ],
+   "domain_ref": "Scaling",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
