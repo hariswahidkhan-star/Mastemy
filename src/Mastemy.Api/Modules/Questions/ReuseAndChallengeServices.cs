@@ -233,11 +233,11 @@ public class QuestionChallengeService(AppDbContext db, ICurrentUser me, AccessSe
             ChallengeResolution.Revise => "accepted — the question will be revised",
             _ => "accepted — the question was retired",
         };
-        await notifications.Publish([c.UserId], Engagement.NotificationKinds.CourseUpdated, $"Your question challenge was {outcome}", "/me/question-challenges");
+        await notifications.Publish([c.UserId], Engagement.NotificationKinds.QuestionChallenge, $"Your question challenge was {outcome}", "/me/question-challenges");
         if (input.Resolution == ChallengeResolution.Revise)
         {
             var authors = await db.CourseInstructors.AsNoTracking().Where(x => x.CourseId == q.CourseId).Select(x => x.UserId).ToListAsync();
-            await notifications.Publish(authors, Engagement.NotificationKinds.CourseUpdated, $"Question {q.ExternalId} needs revision after a learner challenge", $"/studio/questions/{q.Id}");
+            await notifications.Publish(authors, Engagement.NotificationKinds.QuestionChallenge, $"Question {q.ExternalId} needs revision after a learner challenge", $"/studio/questions/{q.Id}");
         }
         return new ChallengeDto(c.Id, c.QuestionId, c.QuestionVersionId, c.CourseId, q.ExternalId, c.UserId, c.Reason, c.Status, c.Resolution,
             c.ResolutionNote, c.ResolvedBy, c.CreatedAt, c.ResolvedAt);
