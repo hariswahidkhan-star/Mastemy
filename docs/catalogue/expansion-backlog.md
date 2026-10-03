@@ -12,7 +12,11 @@ is `unverified-needs-official-check` with the code recorded only as a design ass
 
 Status: `planned` → `authoring` (agent assigned) → `integrated` (regenerated + validator green).
 
-## Wave A — in progress (first parallel wave)
+## Status log
+- Wave A (AI Governance + Blockchain, Trading, Bio, Chem, Physics, AI-Agents, History): **INTEGRATED** — catalogue 1878 → 1957 (24/24 validator PASS).
+- Wave B: launched (9 parallel domain agents).
+
+## Wave A — INTEGRATED ✓ (first parallel wave)
 | # | Domain | Category no | MST-ID range | Status |
 |---|--------|-------------|--------------|--------|
 | A1 | AI Governance & Frameworks (NIST AI RMF, ISO/IEC 42001, EU AI Act, responsible AI) | 33 | 1879–1908 | authoring |
