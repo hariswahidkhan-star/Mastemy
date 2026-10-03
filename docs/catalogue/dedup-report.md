@@ -4,9 +4,9 @@ Generated 2026-10-02 by `scripts/catalogue/build_catalogue.py`. Every number is 
 
 ## Result
 
-- Candidate rows after reconciliation: **1957** (Appendix A 1382 + v1 additions 575).
-- Distinct courses, inclusive count (excludes duplicates, component modules, retired and retirement-blocked rows): **1948**.
-- Distinct courses, strict count (also excludes rows still under differentiation, overlap, thin-scope or version review): **1822**.
+- Candidate rows after reconciliation: **2049** (Appendix A 1474 + v1 additions 575).
+- Distinct courses, inclusive count (excludes duplicates, component modules, retired and retirement-blocked rows): **2040**.
+- Distinct courses, strict count (also excludes rows still under differentiation, overlap, thin-scope or version review): **1911**.
 - Requirement of at least 1,000 genuinely distinct courses: **met** on the strict count.
 
 These are planning counts of distinct course *scopes*. None of these courses has content, videos or reviewed items yet.
@@ -41,11 +41,11 @@ Full detail: `catalog/id-crosswalk.csv`. Every v1 ID appears exactly once; none 
 |---|---|---|---|
 | content-reuse | 7 | yes | yes |
 | differentiation-review | 18 | yes | no |
-| distinct | 1815 | yes | yes |
+| distinct | 1904 | yes | yes |
 | duplicate-of | 2 | no | no |
 | module-of | 6 | no | no |
 | needs-version-check | 4 | yes | no |
-| overlap-review | 13 | yes | no |
+| overlap-review | 16 | yes | no |
 | retiring-blocked | 1 | no | no |
 | thin-scope-review | 91 | yes | no |
 
@@ -79,8 +79,8 @@ Full detail: `catalog/id-crosswalk.csv`. Every v1 ID appears exactly once; none 
 | 24 | Data Engineering, Databases, Statistics, And Analytics | 40 | 37 | 77 | 77 | 77 |
 | 25 | Devops, Cybersecurity, Testing, And Software Architecture | 40 | 55 | 95 | 95 | 94 |
 | 26 | Finance, Accounting, And Commercial Business Skills | 40 | 42 | 82 | 82 | 82 |
-| 27 | Leadership, Hr, Entrepreneurship, And Professional Skills | 40 | 28 | 68 | 67 | 54 |
-| 28 | Marketing, Sales, Design, And Digital-Content Skills | 40 | 23 | 63 | 63 | 59 |
+| 27 | Leadership, Hr, Entrepreneurship, And Professional Skills | 40 | 28 | 68 | 67 | 53 |
+| 28 | Marketing, Sales, Design, And Digital-Content Skills | 40 | 23 | 63 | 63 | 57 |
 | 29 | Engineering, Supply Chain, Sustainability, And Project Delivery | 40 | 33 | 73 | 73 | 69 |
 | 30 | Applied Ai By Industry And Professional Role | 40 | 0 | 40 | 40 | 40 |
 | 31 | Enterprise Platforms, It Service Management, And Ai Credentials | 40 | 18 | 58 | 58 | 52 |
@@ -93,7 +93,16 @@ Full detail: `catalog/id-crosswalk.csv`. Every v1 ID appears exactly once; none 
 | 38 | Physics And AI In Physics | 10 | 0 | 10 | 10 | 10 |
 | 39 | AI Agents And AI Engineering | 12 | 0 | 12 | 12 | 12 |
 | 40 | Country And World History | 10 | 0 | 10 | 10 | 10 |
-| | **Total** | 1382 | 575 | 1957 | 1948 | 1822 |
+| 41 | Medical Science And Clinical Foundations | 10 | 0 | 10 | 10 | 10 |
+| 42 | Defense And Space Systems | 10 | 0 | 10 | 10 | 10 |
+| 43 | Construction And Civil Engineering | 10 | 0 | 10 | 10 | 10 |
+| 44 | Design And Engineering | 10 | 0 | 10 | 10 | 10 |
+| 45 | Major Web And SaaS Platforms | 12 | 0 | 12 | 12 | 12 |
+| 46 | Computer Hardware And Systems Software | 10 | 0 | 10 | 10 | 10 |
+| 47 | Energy, Renewables And Efficiency | 10 | 0 | 10 | 10 | 10 |
+| 48 | Vehicles And Automotive Technology | 10 | 0 | 10 | 10 | 10 |
+| 49 | Art, Creative And Media | 10 | 0 | 10 | 10 | 10 |
+| | **Total** | 1474 | 575 | 2049 | 2040 | 1911 |
 
 ## Reviewed decisions
 
@@ -169,9 +178,9 @@ Generic titles ('Certification-Track', 'Certification Preparation', 'Current-Ver
 
 ## Automatically flagged v1 additions
 
-### overlap-review (13)
+### overlap-review (16)
 
-`MST-1324` Convolutional Neural Networks (near MST-0443); `MST-1339` Building AI Agents (near MST-2049); `MST-1367` EU AI Act Overview for Practitioners (near MST-1882); `MST-1418` Dynamics 365 Sales Functional Consultant (MB-210) Exam Prep (near MST-0185); `MST-1518` Salesforce Certified Platform Developer I Exam Prep (near MST-0239); `MST-1574` Technical Documentation for Developers (near MST-0604); `MST-1582` Infrastructure as Code Patterns (near MST-0988); `MST-1741` Lean Six Sigma White Belt (near MST-0311); `MST-1745` Hybrid Project Management (near MST-1141); `MST-1748` Project Cost Management (near MST-1141); `MST-1759` Project Communication Management (near MST-1141); `MST-1806` Construction Project Management (near MST-1141); `MST-1812` Salesforce Certified Platform App Builder Exam Prep (near MST-0239)
+`MST-1324` Convolutional Neural Networks (near MST-0443); `MST-1339` Building AI Agents (near MST-2049); `MST-1367` EU AI Act Overview for Practitioners (near MST-1882); `MST-1418` Dynamics 365 Sales Functional Consultant (MB-210) Exam Prep (near MST-0185); `MST-1518` Salesforce Certified Platform Developer I Exam Prep (near MST-0239); `MST-1574` Technical Documentation for Developers (near MST-0604); `MST-1582` Infrastructure as Code Patterns (near MST-0988); `MST-1741` Lean Six Sigma White Belt (near MST-0311); `MST-1745` Hybrid Project Management (near MST-1141); `MST-1748` Project Cost Management (near MST-1141); `MST-1753` Business Process Improvement (near MST-1195); `MST-1759` Project Communication Management (near MST-1141); `MST-1806` Construction Project Management (near MST-1141); `MST-1812` Salesforce Certified Platform App Builder Exam Prep (near MST-0239); `MST-1870` 3D Modelling with Blender (near MST-2231); `MST-1874` Illustration Fundamentals (near MST-2427)
 
 ### thin-scope-review (91)
 
