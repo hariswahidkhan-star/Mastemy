@@ -69,3 +69,25 @@ export type RunResult =
       passed: boolean;
     }
   | { type: 'result'; ok: false; error: string };
+
+// --- JavaScript engine types ---
+
+export interface JsRunRequest {
+  type: 'run';
+  code: string;
+  checks: JsLabCheck[];
+}
+
+export interface JsRunResultOk {
+  type: 'result';
+  ok: true;
+  logs: string[];
+  result: unknown;
+  checks: CheckResult[];
+  passed: boolean;
+}
+
+export type JsRunResult =
+  | { type: 'ready' }
+  | JsRunResultOk
+  | { type: 'result'; ok: false; error: string };
