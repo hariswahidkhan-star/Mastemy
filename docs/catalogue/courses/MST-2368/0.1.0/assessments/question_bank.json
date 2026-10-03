@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2368",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2368-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which problem is best framed as a forecasting task rather than an optimisation task?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Predicting tomorrow's hourly electricity demand",
+     "correct": true,
+     "rationale": "Estimating a future quantity from data is a forecasting task."
+    },
+    {
+     "key": "B",
+     "text": "Deciding the cheapest schedule to charge a battery",
+     "correct": false,
+     "rationale": "Choosing a schedule under constraints is optimisation."
+    },
+    {
+     "key": "C",
+     "text": "Allocating reserve across units to minimise cost",
+     "correct": false,
+     "rationale": "That is an optimisation problem."
+    },
+    {
+     "key": "D",
+     "text": "Selecting setpoints to minimise energy use",
+     "correct": false,
+     "rationale": "Choosing setpoints to minimise cost is optimisation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Estimating a future quantity from data is a forecasting task.",
+   "outcome_refs": [
+    "MST-2368-D01.01"
+   ],
+   "domain_ref": "Where AI helps",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2368-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make an AI-for-energy deployment more trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reporting forecast uncertainty alongside point predictions",
+     "correct": true,
+     "rationale": "Communicating uncertainty supports sound operating decisions."
+    },
+    {
+     "key": "B",
+     "text": "Keeping a human-in-the-loop check before automated control actions",
+     "correct": true,
+     "rationale": "Human oversight guards against unsafe model actions."
+    },
+    {
+     "key": "C",
+     "text": "Hiding model errors so operators stay confident",
+     "correct": false,
+     "rationale": "Concealing errors undermines safety and trust."
+    },
+    {
+     "key": "D",
+     "text": "Removing all monitoring once the model is live",
+     "correct": false,
+     "rationale": "Ongoing monitoring is essential for reliability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Communicating uncertainty supports sound operating decisions.",
+   "outcome_refs": [
+    "MST-2368-D02.01"
+   ],
+   "domain_ref": "Forecasting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2368-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should an AI optimiser controlling battery dispatch include explicit operating constraints?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To keep its actions within safe and physical limits such as state-of-charge and power bounds",
+     "correct": true,
+     "rationale": "Constraints prevent the optimiser from choosing unsafe or infeasible actions."
+    },
+    {
+     "key": "B",
+     "text": "Because constraints make the model train faster on any hardware",
+     "correct": false,
+     "rationale": "Constraints are about feasibility and safety, not training speed."
+    },
+    {
+     "key": "C",
+     "text": "Because without them the battery would produce more energy than it stores",
+     "correct": false,
+     "rationale": "Constraints do not create energy; they bound feasible actions."
+    },
+    {
+     "key": "D",
+     "text": "Because regulators require the model to be a neural network",
+     "correct": false,
+     "rationale": "No such requirement exists; constraints ensure safe operation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Constraints prevent the optimiser from choosing unsafe or infeasible actions.",
+   "outcome_refs": [
+    "MST-2368-D03.01"
+   ],
+   "domain_ref": "Optimisation and control",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

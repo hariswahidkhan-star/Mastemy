@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2360",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2360-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the photovoltaic effect describe?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Generation of an electric current when light frees charge carriers in a semiconductor",
+     "correct": true,
+     "rationale": "That is the photovoltaic effect at the heart of a PV cell."
+    },
+    {
+     "key": "B",
+     "text": "Storage of electricity in a chemical battery",
+     "correct": false,
+     "rationale": "That is electrochemical storage, not the PV effect."
+    },
+    {
+     "key": "C",
+     "text": "Conversion of sunlight directly into heat for hot water",
+     "correct": false,
+     "rationale": "That describes solar thermal, not photovoltaics."
+    },
+    {
+     "key": "D",
+     "text": "Rotation of a turbine by wind pressure",
+     "correct": false,
+     "rationale": "That is wind energy, unrelated to the PV effect."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "That is the photovoltaic effect at the heart of a PV cell.",
+   "outcome_refs": [
+    "MST-2360-D01.01"
+   ],
+   "domain_ref": "Cells and modules",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2360-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors reduce the real-world energy yield of a PV array below its nameplate rating? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "High cell temperature on hot sunny days",
+     "correct": true,
+     "rationale": "PV output falls as cell temperature rises above the rated condition."
+    },
+    {
+     "key": "B",
+     "text": "Partial shading of modules in a string",
+     "correct": true,
+     "rationale": "Shading on one module can disproportionately cut string output."
+    },
+    {
+     "key": "C",
+     "text": "Using a module with a higher efficiency rating",
+     "correct": false,
+     "rationale": "Higher efficiency raises, not reduces, yield."
+    },
+    {
+     "key": "D",
+     "text": "Orienting the array toward the equator at optimal tilt",
+     "correct": false,
+     "rationale": "Optimal orientation increases yield."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "PV output falls as cell temperature rises above the rated condition.",
+   "outcome_refs": [
+    "MST-2360-D02.01"
+   ],
+   "domain_ref": "System architectures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2360-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A grid-tied PV system without battery backup stops producing usable power during a grid outage. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The inverter must disconnect for safety (anti-islanding) when the grid is down",
+     "correct": true,
+     "rationale": "Anti-islanding protection prevents back-feeding a dead grid, so a basic grid-tied inverter shuts off."
+    },
+    {
+     "key": "B",
+     "text": "The panels physically stop absorbing light during outages",
+     "correct": false,
+     "rationale": "Panels still receive light; the inverter disconnects."
+    },
+    {
+     "key": "C",
+     "text": "Grid outages drain the panels of stored charge",
+     "correct": false,
+     "rationale": "Panels store no charge; there is no battery in this system."
+    },
+    {
+     "key": "D",
+     "text": "The array reverses polarity automatically",
+     "correct": false,
+     "rationale": "No polarity reversal occurs; the cause is anti-islanding."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Anti-islanding protection prevents back-feeding a dead grid, so a basic grid-tied inverter shuts off.",
+   "outcome_refs": [
+    "MST-2360-D03.01"
+   ],
+   "domain_ref": "Performance and yield",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2361",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2361-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does wind power available to a turbine rise with the cube of wind speed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Kinetic energy flux scales with velocity cubed, so small speed gains yield large power gains",
+     "correct": true,
+     "rationale": "Power in the wind is proportional to air density, area and the cube of wind speed."
+    },
+    {
+     "key": "B",
+     "text": "Because turbine blades double in length as wind rises",
+     "correct": false,
+     "rationale": "Blade length is fixed; it does not change with wind speed."
+    },
+    {
+     "key": "C",
+     "text": "Because air density triples in strong wind",
+     "correct": false,
+     "rationale": "Air density changes little; the cube law comes from velocity."
+    },
+    {
+     "key": "D",
+     "text": "Because the generator adds energy proportional to speed",
+     "correct": false,
+     "rationale": "The generator converts, it does not add, energy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Power in the wind is proportional to air density, area and the cube of wind speed.",
+   "outcome_refs": [
+    "MST-2361-D01.01"
+   ],
+   "domain_ref": "How turbines work",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2361-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are correct about a turbine's cut-in and cut-out speeds? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Below cut-in speed the turbine produces no useful power",
+     "correct": true,
+     "rationale": "There is too little energy to overcome losses below cut-in."
+    },
+    {
+     "key": "B",
+     "text": "Above cut-out speed the turbine shuts down to protect itself",
+     "correct": true,
+     "rationale": "Cut-out protects the machine from excessive loads in high winds."
+    },
+    {
+     "key": "C",
+     "text": "Between cut-in and cut-out the turbine always runs at nameplate power",
+     "correct": false,
+     "rationale": "Output follows the power curve and only reaches rated power above rated speed."
+    },
+    {
+     "key": "D",
+     "text": "Cut-out speed is where efficiency first reaches the Betz limit",
+     "correct": false,
+     "rationale": "Cut-out is a protection threshold, unrelated to the Betz limit."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "There is too little energy to overcome losses below cut-in.",
+   "outcome_refs": [
+    "MST-2361-D02.01"
+   ],
+   "domain_ref": "The wind resource",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2361-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the Betz limit tell us about a wind turbine?",
+   "options": [
+    {
+     "key": "A",
+     "text": "No turbine can extract more than about 59% of the kinetic energy in the wind",
+     "correct": true,
+     "rationale": "The Betz limit caps the theoretical fraction of wind energy any rotor can capture."
+    },
+    {
+     "key": "B",
+     "text": "Turbines can capture 100% of the wind's energy with perfect blades",
+     "correct": false,
+     "rationale": "That violates the Betz limit."
+    },
+    {
+     "key": "C",
+     "text": "Offshore turbines are exempt from the limit",
+     "correct": false,
+     "rationale": "The Betz limit applies regardless of location."
+    },
+    {
+     "key": "D",
+     "text": "It sets the maximum legal tip speed",
+     "correct": false,
+     "rationale": "It is a physical efficiency bound, not a regulation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "The Betz limit caps the theoretical fraction of wind energy any rotor can capture.",
+   "outcome_refs": [
+    "MST-2361-D03.01"
+   ],
+   "domain_ref": "Farms and siting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
