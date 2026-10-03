@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1979",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1979-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a BLAST search, what does a very small e-value indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The match is unlikely to have occurred by chance at that score",
+     "correct": true,
+     "rationale": "Correct: a low e-value means few such matches are expected by chance."
+    },
+    {
+     "key": "B",
+     "text": "The two sequences are functionally identical",
+     "correct": false,
+     "rationale": "Statistical significance is not proof of shared function."
+    },
+    {
+     "key": "C",
+     "text": "The alignment used no scoring matrix",
+     "correct": false,
+     "rationale": "A scoring matrix is always used."
+    },
+    {
+     "key": "D",
+     "text": "The query sequence is of low quality",
+     "correct": false,
+     "rationale": "The e-value reflects match significance, not input quality."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a low e-value means few such matches are expected by chance.",
+   "outcome_refs": [
+    "MST-1979-D01.01"
+   ],
+   "domain_ref": "Biological data and formats",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1979-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are common file formats for sequence data in bioinformatics? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "FASTA",
+     "correct": true,
+     "rationale": "Correct: FASTA stores sequences with header lines."
+    },
+    {
+     "key": "B",
+     "text": "FASTQ",
+     "correct": true,
+     "rationale": "Correct: FASTQ stores sequences with per-base quality scores."
+    },
+    {
+     "key": "C",
+     "text": "MP3",
+     "correct": false,
+     "rationale": "MP3 is an audio format, not sequence data."
+    },
+    {
+     "key": "D",
+     "text": "DOCX",
+     "correct": false,
+     "rationale": "DOCX is a word-processing format, not sequence data."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: FASTA stores sequences with header lines.",
+   "outcome_refs": [
+    "MST-1979-D02.01"
+   ],
+   "domain_ref": "Sequence alignment",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1979-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which practice most improves the reproducibility of a bioinformatics analysis?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recording tool versions and parameters in a scripted pipeline",
+     "correct": true,
+     "rationale": "Correct: captured versions and scripted steps let others reproduce the result."
+    },
+    {
+     "key": "B",
+     "text": "Running every step manually and not writing them down",
+     "correct": false,
+     "rationale": "Undocumented manual steps are hard to reproduce."
+    },
+    {
+     "key": "C",
+     "text": "Using default settings without noting them",
+     "correct": false,
+     "rationale": "Unrecorded defaults still hinder reproduction."
+    },
+    {
+     "key": "D",
+     "text": "Deleting intermediate files immediately",
+     "correct": false,
+     "rationale": "Removing provenance harms reproducibility."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: captured versions and scripted steps let others reproduce the result.",
+   "outcome_refs": [
+    "MST-1979-D03.01"
+   ],
+   "domain_ref": "Phylogenetics and annotation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1982",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1982-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A protein-structure predictor returns a high per-residue confidence score. What does this mean?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The model is confident in that region's predicted geometry, not that it is experimentally verified",
+     "correct": true,
+     "rationale": "Correct: confidence is a model estimate, not experimental validation."
+    },
+    {
+     "key": "B",
+     "text": "The structure has been confirmed in the laboratory",
+     "correct": false,
+     "rationale": "No experimental confirmation is implied."
+    },
+    {
+     "key": "C",
+     "text": "The protein's function is now known",
+     "correct": false,
+     "rationale": "Structural confidence does not establish function."
+    },
+    {
+     "key": "D",
+     "text": "The prediction cannot be wrong",
+     "correct": false,
+     "rationale": "High-confidence predictions can still be incorrect."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: confidence is a model estimate, not experimental validation.",
+   "outcome_refs": [
+    "MST-1982-D01.01"
+   ],
+   "domain_ref": "Omics data and representations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1982-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO precautions reduce data leakage in omics model evaluation? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Splitting the data by gene or protein family",
+     "correct": true,
+     "rationale": "Correct: family-aware splits prevent homologues leaking across folds."
+    },
+    {
+     "key": "B",
+     "text": "Keeping near-identical sequences out of both train and test",
+     "correct": true,
+     "rationale": "Correct: removing duplicates prevents inflated scores."
+    },
+    {
+     "key": "C",
+     "text": "Choosing the split that gives the best test score",
+     "correct": false,
+     "rationale": "Optimising the split for score invites leakage."
+    },
+    {
+     "key": "D",
+     "text": "Testing on the training data",
+     "correct": false,
+     "rationale": "Testing on training data directly causes leakage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: family-aware splits prevent homologues leaking across folds.",
+   "outcome_refs": [
+    "MST-1982-D02.01"
+   ],
+   "domain_ref": "Models for sequence and expression",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1982-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a variant-effect predictor primarily designed to output?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An estimate of how likely a variant is to alter function",
+     "correct": true,
+     "rationale": "Correct: it predicts functional impact as a hypothesis for testing."
+    },
+    {
+     "key": "B",
+     "text": "A definitive medical diagnosis",
+     "correct": false,
+     "rationale": "It is not a diagnosis or medical advice."
+    },
+    {
+     "key": "C",
+     "text": "The exact three-dimensional structure of DNA",
+     "correct": false,
+     "rationale": "That is not its purpose."
+    },
+    {
+     "key": "D",
+     "text": "A guarantee of the variant's real-world effect",
+     "correct": false,
+     "rationale": "Predictions are not guarantees."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it predicts functional impact as a hypothesis for testing.",
+   "outcome_refs": [
+    "MST-1982-D03.01"
+   ],
+   "domain_ref": "Structure and variant prediction",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

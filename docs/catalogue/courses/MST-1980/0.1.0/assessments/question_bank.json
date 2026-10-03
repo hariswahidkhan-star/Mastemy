@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1980",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1980-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can long-read sequencing resolve repetitive genomic regions better than short reads?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A single read can span the whole repeat, anchoring it uniquely",
+     "correct": true,
+     "rationale": "Correct: a read spanning the repeat removes ambiguity in its placement."
+    },
+    {
+     "key": "B",
+     "text": "Long reads never contain errors",
+     "correct": false,
+     "rationale": "Long reads can have higher per-base error rates."
+    },
+    {
+     "key": "C",
+     "text": "Short reads cannot be aligned at all",
+     "correct": false,
+     "rationale": "Short reads align well outside repetitive regions."
+    },
+    {
+     "key": "D",
+     "text": "Long reads never require assembly",
+     "correct": false,
+     "rationale": "Assembly can still be required with long reads."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a read spanning the repeat removes ambiguity in its placement.",
+   "outcome_refs": [
+    "MST-1980-D01.01"
+   ],
+   "domain_ref": "Sequencing technologies",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1980-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO fields help you judge confidence in a called variant? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read depth at the site",
+     "correct": true,
+     "rationale": "Correct: higher depth generally supports a more confident call."
+    },
+    {
+     "key": "B",
+     "text": "The variant quality score",
+     "correct": true,
+     "rationale": "Correct: the quality score reflects call confidence."
+    },
+    {
+     "key": "C",
+     "text": "The file's creation date",
+     "correct": false,
+     "rationale": "File date does not indicate variant confidence."
+    },
+    {
+     "key": "D",
+     "text": "The length of the sample's name",
+     "correct": false,
+     "rationale": "Sample-name length is irrelevant to confidence."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: higher depth generally supports a more confident call.",
+   "outcome_refs": [
+    "MST-1980-D02.01"
+   ],
+   "domain_ref": "Read processing and alignment",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1980-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Thousands of genes are tested for differential expression. Why must the p-values be corrected?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Many false positives arise by chance across thousands of tests",
+     "correct": true,
+     "rationale": "Correct: multiple testing inflates false positives without correction."
+    },
+    {
+     "key": "B",
+     "text": "Correction makes all genes significant",
+     "correct": false,
+     "rationale": "Correction is more conservative, not less."
+    },
+    {
+     "key": "C",
+     "text": "RNA-seq produces no p-values",
+     "correct": false,
+     "rationale": "Differential-expression analysis yields p-values."
+    },
+    {
+     "key": "D",
+     "text": "Only one gene is ever tested",
+     "correct": false,
+     "rationale": "Many genes are tested at the same time."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: multiple testing inflates false positives without correction.",
+   "outcome_refs": [
+    "MST-1980-D03.01"
+   ],
+   "domain_ref": "Variant and expression analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

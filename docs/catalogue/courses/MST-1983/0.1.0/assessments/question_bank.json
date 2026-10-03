@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1983",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1983-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "On a dataset where 95 percent of samples are class A, a model predicts class A every time. Why is 95 percent accuracy misleading?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It ignores performance on the rare class, which may be the one of interest",
+     "correct": true,
+     "rationale": "Correct: accuracy hides complete failure on the minority class."
+    },
+    {
+     "key": "B",
+     "text": "Accuracy cannot be computed for biological data",
+     "correct": false,
+     "rationale": "Accuracy is computable; it is just a poor summary here."
+    },
+    {
+     "key": "C",
+     "text": "95 percent is actually a poor accuracy",
+     "correct": false,
+     "rationale": "The problem is the choice of metric, not the number."
+    },
+    {
+     "key": "D",
+     "text": "The model must be overfitting the minority class",
+     "correct": false,
+     "rationale": "It never predicts the minority class at all."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: accuracy hides complete failure on the minority class.",
+   "outcome_refs": [
+    "MST-1983-D01.01"
+   ],
+   "domain_ref": "Framing and data preparation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1983-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help prevent data leakage in a biological machine-learning study? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fitting preprocessing such as scaling only on the training fold",
+     "correct": true,
+     "rationale": "Correct: fitting on the training fold avoids peeking at test data."
+    },
+    {
+     "key": "B",
+     "text": "Grouping related samples so they stay within one fold",
+     "correct": true,
+     "rationale": "Correct: grouped splits stop correlated samples leaking across folds."
+    },
+    {
+     "key": "C",
+     "text": "Choosing hyperparameters using the test set",
+     "correct": false,
+     "rationale": "That leaks test information into the model."
+    },
+    {
+     "key": "D",
+     "text": "Reporting the best of many test runs",
+     "correct": false,
+     "rationale": "Cherry-picking runs inflates reported performance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fitting on the training fold avoids peeking at test data.",
+   "outcome_refs": [
+    "MST-1983-D02.01"
+   ],
+   "domain_ref": "Modelling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1983-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Samples come from distinct donors. Which validation choice best estimates real-world performance?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Grouped cross-validation that keeps each donor within one fold",
+     "correct": true,
+     "rationale": "Correct: donor-grouped folds stop the model memorising a donor."
+    },
+    {
+     "key": "B",
+     "text": "A random split that ignores donor identity",
+     "correct": false,
+     "rationale": "That leaks donor-specific signal across folds."
+    },
+    {
+     "key": "C",
+     "text": "Testing on the training set",
+     "correct": false,
+     "rationale": "That massively overestimates performance."
+    },
+    {
+     "key": "D",
+     "text": "No validation at all",
+     "correct": false,
+     "rationale": "Validation is required for an honest estimate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: donor-grouped folds stop the model memorising a donor.",
+   "outcome_refs": [
+    "MST-1983-D03.01"
+   ],
+   "domain_ref": "Evaluation for biology",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
