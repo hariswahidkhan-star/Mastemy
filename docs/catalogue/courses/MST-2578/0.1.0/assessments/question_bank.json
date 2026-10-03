@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2578",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2578-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What problem do actors solve in Swift concurrency?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They serialise access to their mutable state, preventing data races",
+     "correct": true,
+     "rationale": "Actor isolation ensures only one task touches the actor's state at a time."
+    },
+    {
+     "key": "B",
+     "text": "They make synchronous code run faster",
+     "correct": false,
+     "rationale": "Actors are about safe state access, not raw speed."
+    },
+    {
+     "key": "C",
+     "text": "They replace all need for async/await",
+     "correct": false,
+     "rationale": "Actors are used together with async/await."
+    },
+    {
+     "key": "D",
+     "text": "They guarantee UI code runs off the main thread",
+     "correct": false,
+     "rationale": "MainActor specifically pins work to the main thread."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Actor isolation ensures only one task touches the actor's state at a time.",
+   "outcome_refs": [
+    "MST-2578-D01.01"
+   ],
+   "domain_ref": "Async/await",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2578-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO correct distinctions between some and any for a protocol P in Swift.",
+   "options": [
+    {
+     "key": "A",
+     "text": "some P is an opaque type: one concrete underlying type fixed at compile time",
+     "correct": true,
+     "rationale": "Opaque types hide but fix a single concrete type."
+    },
+    {
+     "key": "B",
+     "text": "any P is an existential that can hold different conforming types at runtime",
+     "correct": true,
+     "rationale": "Existentials box any conformer and can vary dynamically."
+    },
+    {
+     "key": "C",
+     "text": "some P can hold a different concrete type on each call",
+     "correct": false,
+     "rationale": "The underlying type is fixed per return position."
+    },
+    {
+     "key": "D",
+     "text": "any P is resolved entirely at compile time with no boxing",
+     "correct": false,
+     "rationale": "Existentials generally involve dynamic dispatch/boxing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Opaque types hide but fix a single concrete type.",
+   "outcome_refs": [
+    "MST-2578-D02.01"
+   ],
+   "domain_ref": "Actors",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2578-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can copy-on-write make Swift arrays efficient despite value semantics?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The underlying buffer is shared until a mutation forces a unique copy",
+     "correct": true,
+     "rationale": "COW defers copying until a write occurs on a shared buffer."
+    },
+    {
+     "key": "B",
+     "text": "Arrays are actually reference types",
+     "correct": false,
+     "rationale": "Arrays are value types; COW gives value semantics efficiently."
+    },
+    {
+     "key": "C",
+     "text": "Mutations never copy under any circumstances",
+     "correct": false,
+     "rationale": "A mutation of a shared buffer triggers a copy."
+    },
+    {
+     "key": "D",
+     "text": "COW disables bounds checking",
+     "correct": false,
+     "rationale": "COW is unrelated to bounds checking."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "COW defers copying until a write occurs on a shared buffer.",
+   "outcome_refs": [
+    "MST-2578-D03.01"
+   ],
+   "domain_ref": "Advanced generics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

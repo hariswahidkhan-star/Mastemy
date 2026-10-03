@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2582",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2582-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Ruby, which values are falsey?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Only nil and false",
+     "correct": true,
+     "rationale": "Everything except nil and false is truthy, including 0 and ''."
+    },
+    {
+     "key": "B",
+     "text": "nil, false, 0 and empty string",
+     "correct": false,
+     "rationale": "0 and '' are truthy in Ruby."
+    },
+    {
+     "key": "C",
+     "text": "Only false",
+     "correct": false,
+     "rationale": "nil is also falsey."
+    },
+    {
+     "key": "D",
+     "text": "nil, false and empty arrays",
+     "correct": false,
+     "rationale": "An empty array is truthy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Everything except nil and false is truthy, including 0 and ''.",
+   "outcome_refs": [
+    "MST-2582-D01.01"
+   ],
+   "domain_ref": "Getting started",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2582-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO reasons to use a symbol such as :name instead of the string 'name' as a hash key.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Symbols are immutable",
+     "correct": true,
+     "rationale": "Symbols cannot be mutated, making them stable keys."
+    },
+    {
+     "key": "B",
+     "text": "The same symbol references one object, saving allocations",
+     "correct": true,
+     "rationale": "Identical symbols are the same object, unlike new string instances."
+    },
+    {
+     "key": "C",
+     "text": "Symbols can store multi-line text better than strings",
+     "correct": false,
+     "rationale": "Symbols are identifiers, not text containers."
+    },
+    {
+     "key": "D",
+     "text": "Symbols are automatically sorted",
+     "correct": false,
+     "rationale": "Symbols carry no ordering guarantee as keys."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Symbols cannot be mutated, making them stable keys.",
+   "outcome_refs": [
+    "MST-2582-D02.01"
+   ],
+   "domain_ref": "Types and variables",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2582-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does passing a block to a method and calling yield do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It invokes the caller-supplied block from inside the method",
+     "correct": true,
+     "rationale": "yield runs the attached block, optionally passing arguments to it."
+    },
+    {
+     "key": "B",
+     "text": "It returns from the method immediately",
+     "correct": false,
+     "rationale": "yield calls the block; it does not return from the method."
+    },
+    {
+     "key": "C",
+     "text": "It defines a new method at runtime",
+     "correct": false,
+     "rationale": "yield does not define methods."
+    },
+    {
+     "key": "D",
+     "text": "It raises an error if a block is given",
+     "correct": false,
+     "rationale": "yield requires a block; it errors only when none is given."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "yield runs the attached block, optionally passing arguments to it.",
+   "outcome_refs": [
+    "MST-2582-D03.01"
+   ],
+   "domain_ref": "Methods and blocks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

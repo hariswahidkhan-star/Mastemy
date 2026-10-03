@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2574",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2574-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the receiver and return value of the scope function apply?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Receiver is this; it returns the same object after running the block",
+     "correct": true,
+     "rationale": "apply runs the block with the object as this and returns that object, ideal for configuration."
+    },
+    {
+     "key": "B",
+     "text": "Receiver is it; it returns the block's last expression",
+     "correct": false,
+     "rationale": "That describes let, not apply."
+    },
+    {
+     "key": "C",
+     "text": "It returns Unit always",
+     "correct": false,
+     "rationale": "apply returns the receiver object, not Unit."
+    },
+    {
+     "key": "D",
+     "text": "It cannot be chained",
+     "correct": false,
+     "rationale": "apply returns the object, so it chains naturally."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "apply runs the block with the object as this and returns that object, ideal for configuration.",
+   "outcome_refs": [
+    "MST-2574-D01.01"
+   ],
+   "domain_ref": "Lambdas and scope functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2574-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO reasons to prefer a Sequence over a List for a long transformation pipeline in Kotlin.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Operations are evaluated lazily, element by element",
+     "correct": true,
+     "rationale": "Sequences avoid building an intermediate collection per step."
+    },
+    {
+     "key": "B",
+     "text": "It avoids allocating an intermediate collection at each step",
+     "correct": true,
+     "rationale": "Lazy evaluation processes one element through the whole chain."
+    },
+    {
+     "key": "C",
+     "text": "It automatically parallelises across cores",
+     "correct": false,
+     "rationale": "Sequences are not parallel by default."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees the result is sorted",
+     "correct": false,
+     "rationale": "Sequences do not sort unless you ask them to."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Sequences avoid building an intermediate collection per step.",
+   "outcome_refs": [
+    "MST-2574-D02.01"
+   ],
+   "domain_ref": "Collection operators",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2574-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does an exhaustive when over a sealed class not need an else branch?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The compiler knows all subclasses, so covering each makes the when complete",
+     "correct": true,
+     "rationale": "Sealed hierarchies are closed, enabling exhaustiveness checking."
+    },
+    {
+     "key": "B",
+     "text": "else is never allowed with sealed classes",
+     "correct": false,
+     "rationale": "else is allowed but unnecessary when all cases are covered."
+    },
+    {
+     "key": "C",
+     "text": "Sealed classes can only have one subclass",
+     "correct": false,
+     "rationale": "They can have many, all known at compile time."
+    },
+    {
+     "key": "D",
+     "text": "when always requires else regardless",
+     "correct": false,
+     "rationale": "Exhaustive when expressions over sealed types do not require else."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Sealed hierarchies are closed, enabling exhaustiveness checking.",
+   "outcome_refs": [
+    "MST-2574-D03.01"
+   ],
+   "domain_ref": "OOP and sealed classes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

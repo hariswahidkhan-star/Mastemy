@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2588",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2588-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should you double-quote a variable expansion like \"$file\" in Bash?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To prevent word splitting and glob expansion when the value contains spaces or wildcards",
+     "correct": true,
+     "rationale": "Unquoted expansions are split on whitespace and globbed, breaking paths."
+    },
+    {
+     "key": "B",
+     "text": "Because single quotes also expand variables",
+     "correct": false,
+     "rationale": "Single quotes do not expand variables; double quotes do."
+    },
+    {
+     "key": "C",
+     "text": "To make the variable read-only",
+     "correct": false,
+     "rationale": "Quoting does not make a variable read-only."
+    },
+    {
+     "key": "D",
+     "text": "Because Bash cannot read unquoted variables at all",
+     "correct": false,
+     "rationale": "It reads them, but may split/glob the result."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Unquoted expansions are split on whitespace and globbed, breaking paths.",
+   "outcome_refs": [
+    "MST-2588-D01.01"
+   ],
+   "domain_ref": "Shell basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2588-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO correct statements about redirection in Bash.",
+   "options": [
+    {
+     "key": "A",
+     "text": "> truncates (overwrites) the target file",
+     "correct": true,
+     "rationale": "A single > replaces the file's contents."
+    },
+    {
+     "key": "B",
+     "text": ">> appends to the target file",
+     "correct": true,
+     "rationale": "Double >> adds to the end without truncating."
+    },
+    {
+     "key": "C",
+     "text": "2>&1 redirects stdout into stderr",
+     "correct": false,
+     "rationale": "2>&1 sends stderr to wherever stdout currently points."
+    },
+    {
+     "key": "D",
+     "text": "A pipe | connects a command's stdin to the previous stdout's error stream",
+     "correct": false,
+     "rationale": "A pipe connects stdout of one to stdin of the next, not stderr."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "A single > replaces the file's contents.",
+   "outcome_refs": [
+    "MST-2588-D02.01"
+   ],
+   "domain_ref": "Variables and quoting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2588-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does command substitution $(command) do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Runs the command and substitutes its standard output into the surrounding expression",
+     "correct": true,
+     "rationale": "$(...) captures the command's stdout for use inline."
+    },
+    {
+     "key": "B",
+     "text": "Runs the command in the background",
+     "correct": false,
+     "rationale": "Backgrounding uses &, not $(...)."
+    },
+    {
+     "key": "C",
+     "text": "Comments out the command",
+     "correct": false,
+     "rationale": "$(...) executes rather than comments."
+    },
+    {
+     "key": "D",
+     "text": "Redirects the command's output to a file",
+     "correct": false,
+     "rationale": "Redirection uses > ; $(...) captures into an expression."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "$(...) captures the command's stdout for use inline.",
+   "outcome_refs": [
+    "MST-2588-D03.01"
+   ],
+   "domain_ref": "Redirection and pipes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

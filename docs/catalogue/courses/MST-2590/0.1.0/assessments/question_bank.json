@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2590",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2590-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can piping into a while-read loop lose variable changes in some shells?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The piped loop runs in a subshell whose variable changes do not propagate to the parent",
+     "correct": true,
+     "rationale": "A pipeline segment runs in a subshell; its variable mutations are local to it."
+    },
+    {
+     "key": "B",
+     "text": "read -r corrupts the variables",
+     "correct": false,
+     "rationale": "read -r preserves backslashes; it does not lose state."
+    },
+    {
+     "key": "C",
+     "text": "while loops cannot assign variables",
+     "correct": false,
+     "rationale": "They can; the issue is subshell scope."
+    },
+    {
+     "key": "D",
+     "text": "The loop never executes when piped",
+     "correct": false,
+     "rationale": "It executes, but in a subshell."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "A pipeline segment runs in a subshell; its variable mutations are local to it.",
+   "outcome_refs": [
+    "MST-2590-D01.01"
+   ],
+   "domain_ref": "Portability and robustness",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2590-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices that make a shell script more robust.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Enabling set -euo pipefail at the top",
+     "correct": true,
+     "rationale": "Strict mode surfaces errors, unset variables and pipeline failures early."
+    },
+    {
+     "key": "B",
+     "text": "Using read -r to avoid mangling backslashes",
+     "correct": true,
+     "rationale": "-r stops read from interpreting backslash escapes."
+    },
+    {
+     "key": "C",
+     "text": "Parsing filenames by splitting command output with for on whitespace",
+     "correct": false,
+     "rationale": "That breaks on spaces and newlines in names."
+    },
+    {
+     "key": "D",
+     "text": "Relying on bashisms when the shebang is /bin/sh",
+     "correct": false,
+     "rationale": "That breaks portability under a POSIX shell."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Strict mode surfaces errors, unset variables and pipeline failures early.",
+   "outcome_refs": [
+    "MST-2590-D02.01"
+   ],
+   "domain_ref": "Advanced expansion and heredocs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2590-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the purpose of wait after launching background jobs with &?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It blocks until the specified (or all) background jobs finish before continuing",
+     "correct": true,
+     "rationale": "wait synchronises the script with its background children."
+    },
+    {
+     "key": "B",
+     "text": "It kills all background jobs immediately",
+     "correct": false,
+     "rationale": "wait waits for completion; it does not kill."
+    },
+    {
+     "key": "C",
+     "text": "It runs the next command in the background",
+     "correct": false,
+     "rationale": "& backgrounds; wait foregrounds the synchronisation."
+    },
+    {
+     "key": "D",
+     "text": "It disables job control",
+     "correct": false,
+     "rationale": "wait does not disable job control."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "wait synchronises the script with its background children.",
+   "outcome_refs": [
+    "MST-2590-D03.01"
+   ],
+   "domain_ref": "Concurrency",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2585",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2585-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must you use IS NULL rather than = NULL to test for missing values?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Any comparison with NULL using = yields unknown, never true",
+     "correct": true,
+     "rationale": "NULL is not a value to equal; three-valued logic requires IS NULL."
+    },
+    {
+     "key": "B",
+     "text": "= NULL is faster but less readable",
+     "correct": false,
+     "rationale": "= NULL does not work correctly at all, regardless of speed."
+    },
+    {
+     "key": "C",
+     "text": "NULL equals the empty string",
+     "correct": false,
+     "rationale": "NULL is distinct from an empty string."
+    },
+    {
+     "key": "D",
+     "text": "IS NULL only works on text columns",
+     "correct": false,
+     "rationale": "IS NULL applies to any column type."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "NULL is not a value to equal; three-valued logic requires IS NULL.",
+   "outcome_refs": [
+    "MST-2585-D01.01"
+   ],
+   "domain_ref": "SELECT basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2585-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO true statements about the difference between WHERE and HAVING.",
+   "options": [
+    {
+     "key": "A",
+     "text": "WHERE filters individual rows before grouping",
+     "correct": true,
+     "rationale": "WHERE applies to rows prior to aggregation."
+    },
+    {
+     "key": "B",
+     "text": "HAVING filters groups after aggregation",
+     "correct": true,
+     "rationale": "HAVING applies to aggregated groups."
+    },
+    {
+     "key": "C",
+     "text": "HAVING can only reference raw columns, never aggregates",
+     "correct": false,
+     "rationale": "HAVING is specifically for filtering on aggregates."
+    },
+    {
+     "key": "D",
+     "text": "WHERE can filter on an aggregate like COUNT(*)",
+     "correct": false,
+     "rationale": "Aggregates are not available to WHERE; use HAVING."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "WHERE applies to rows prior to aggregation.",
+   "outcome_refs": [
+    "MST-2585-D02.01"
+   ],
+   "domain_ref": "Filtering",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2585-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What distinguishes a LEFT OUTER JOIN from an INNER JOIN?",
+   "options": [
+    {
+     "key": "A",
+     "text": "LEFT JOIN keeps unmatched left-table rows with NULLs for the right side",
+     "correct": true,
+     "rationale": "Outer join preserves rows without a match, unlike inner join."
+    },
+    {
+     "key": "B",
+     "text": "LEFT JOIN returns only matching rows",
+     "correct": false,
+     "rationale": "That describes an inner join."
+    },
+    {
+     "key": "C",
+     "text": "LEFT JOIN removes duplicate rows automatically",
+     "correct": false,
+     "rationale": "It does not deduplicate."
+    },
+    {
+     "key": "D",
+     "text": "LEFT JOIN requires both tables to have the same columns",
+     "correct": false,
+     "rationale": "Joined tables need not share column sets."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Outer join preserves rows without a match, unlike inner join.",
+   "outcome_refs": [
+    "MST-2585-D03.01"
+   ],
+   "domain_ref": "Aggregation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

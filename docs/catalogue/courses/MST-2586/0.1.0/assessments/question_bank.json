@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2586",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2586-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does ROW_NUMBER() OVER (PARTITION BY customer ORDER BY date) produce?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A sequential number restarting at 1 within each customer, ordered by date",
+     "correct": true,
+     "rationale": "PARTITION BY resets numbering per group; ORDER BY sets the sequence."
+    },
+    {
+     "key": "B",
+     "text": "A single number for the whole result set",
+     "correct": false,
+     "rationale": "PARTITION BY restarts the count per partition."
+    },
+    {
+     "key": "C",
+     "text": "The same rank for tied dates",
+     "correct": false,
+     "rationale": "ROW_NUMBER is always distinct; RANK handles ties."
+    },
+    {
+     "key": "D",
+     "text": "A running sum of a column",
+     "correct": false,
+     "rationale": "ROW_NUMBER numbers rows; it does not sum."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "PARTITION BY resets numbering per group; ORDER BY sets the sequence.",
+   "outcome_refs": [
+    "MST-2586-D01.01"
+   ],
+   "domain_ref": "Subqueries",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2586-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO correct statements about UNION versus UNION ALL.",
+   "options": [
+    {
+     "key": "A",
+     "text": "UNION removes duplicate rows across the combined results",
+     "correct": true,
+     "rationale": "UNION performs a distinct operation on the union."
+    },
+    {
+     "key": "B",
+     "text": "UNION ALL keeps all rows including duplicates and is usually cheaper",
+     "correct": true,
+     "rationale": "UNION ALL skips the dedup step, saving work."
+    },
+    {
+     "key": "C",
+     "text": "UNION ALL sorts the result by the first column",
+     "correct": false,
+     "rationale": "Neither guarantees ordering without ORDER BY."
+    },
+    {
+     "key": "D",
+     "text": "UNION requires the inputs to have different column counts",
+     "correct": false,
+     "rationale": "Both require matching column counts and compatible types."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "UNION performs a distinct operation on the union.",
+   "outcome_refs": [
+    "MST-2586-D02.01"
+   ],
+   "domain_ref": "CTEs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2586-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can a recursive CTE be the right tool for hierarchical data?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can repeatedly join a table to itself to traverse parent-child levels",
+     "correct": true,
+     "rationale": "The recursive member walks the hierarchy until no new rows are produced."
+    },
+    {
+     "key": "B",
+     "text": "It automatically creates indexes on the hierarchy",
+     "correct": false,
+     "rationale": "A CTE does not create indexes."
+    },
+    {
+     "key": "C",
+     "text": "It is the only way to filter rows",
+     "correct": false,
+     "rationale": "Filtering uses WHERE; recursion is about traversal."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees better performance than any join",
+     "correct": false,
+     "rationale": "Recursion is about expressiveness, not guaranteed speed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "The recursive member walks the hierarchy until no new rows are produced.",
+   "outcome_refs": [
+    "MST-2586-D03.01"
+   ],
+   "domain_ref": "Window functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

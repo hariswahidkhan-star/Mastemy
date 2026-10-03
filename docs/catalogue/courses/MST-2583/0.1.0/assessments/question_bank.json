@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2583",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2583-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is a key difference between a lambda and a non-lambda Proc in Ruby?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A lambda checks argument count and return exits only the lambda",
+     "correct": true,
+     "rationale": "Lambdas enforce arity and their return is local; procs are lax and return from the enclosing method."
+    },
+    {
+     "key": "B",
+     "text": "A lambda cannot take arguments",
+     "correct": false,
+     "rationale": "Lambdas take arguments; they check their count."
+    },
+    {
+     "key": "C",
+     "text": "A proc cannot be stored in a variable",
+     "correct": false,
+     "rationale": "Both can be stored in variables."
+    },
+    {
+     "key": "D",
+     "text": "They are identical in all respects",
+     "correct": false,
+     "rationale": "Arity checking and return semantics differ."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Lambdas enforce arity and their return is local; procs are lax and return from the enclosing method.",
+   "outcome_refs": [
+    "MST-2583-D01.01"
+   ],
+   "domain_ref": "Classes and modules",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2583-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO sound uses of modules in Ruby.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Mixing shared instance methods into multiple classes with include",
+     "correct": true,
+     "rationale": "Modules provide mixin behaviour across unrelated classes."
+    },
+    {
+     "key": "B",
+     "text": "Namespacing related constants and classes",
+     "correct": true,
+     "rationale": "Modules act as namespaces to avoid name clashes."
+    },
+    {
+     "key": "C",
+     "text": "Instantiating the module directly with new",
+     "correct": false,
+     "rationale": "Modules cannot be instantiated."
+    },
+    {
+     "key": "D",
+     "text": "Replacing the need for any classes at all",
+     "correct": false,
+     "rationale": "Modules complement classes rather than replace them."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Modules provide mixin behaviour across unrelated classes.",
+   "outcome_refs": [
+    "MST-2583-D02.01"
+   ],
+   "domain_ref": "Enumerable",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2583-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why rescue StandardError rather than Exception in typical Ruby code?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rescuing Exception also traps signals and exit, which you usually should not",
+     "correct": true,
+     "rationale": "StandardError is the right base for ordinary errors; Exception is too broad."
+    },
+    {
+     "key": "B",
+     "text": "Exception cannot be rescued at all",
+     "correct": false,
+     "rationale": "It can be rescued, which is exactly the danger."
+    },
+    {
+     "key": "C",
+     "text": "StandardError is faster to rescue",
+     "correct": false,
+     "rationale": "The reason is scope of what is caught, not speed."
+    },
+    {
+     "key": "D",
+     "text": "Exception does not include runtime errors",
+     "correct": false,
+     "rationale": "Exception is the superclass of StandardError and its runtime errors."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "StandardError is the right base for ordinary errors; Exception is too broad.",
+   "outcome_refs": [
+    "MST-2583-D03.01"
+   ],
+   "domain_ref": "Blocks, procs and lambdas",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

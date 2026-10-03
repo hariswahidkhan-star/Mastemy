@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2581",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2581-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which practice correctly mitigates reflected cross-site scripting (XSS) in PHP output?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Escaping user-derived data for the HTML context before output",
+     "correct": true,
+     "rationale": "Context-appropriate output escaping neutralises injected markup/script."
+    },
+    {
+     "key": "B",
+     "text": "Storing the data in a session",
+     "correct": false,
+     "rationale": "Sessions do not neutralise XSS in output."
+    },
+    {
+     "key": "C",
+     "text": "Using == instead of === in comparisons",
+     "correct": false,
+     "rationale": "Comparison operators are unrelated to XSS."
+    },
+    {
+     "key": "D",
+     "text": "Compressing the HTTP response",
+     "correct": false,
+     "rationale": "Compression has no bearing on XSS."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Context-appropriate output escaping neutralises injected markup/script.",
+   "outcome_refs": [
+    "MST-2581-D01.01"
+   ],
+   "domain_ref": "Architecture and patterns",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2581-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO benefits of using a generator with yield for large datasets in PHP.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Values are produced lazily, keeping memory use low",
+     "correct": true,
+     "rationale": "Generators yield one item at a time instead of building a full array."
+    },
+    {
+     "key": "B",
+     "text": "It can represent an effectively unbounded sequence",
+     "correct": true,
+     "rationale": "Generators can stream without materialising everything."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the data is sorted",
+     "correct": false,
+     "rationale": "Generators do not sort."
+    },
+    {
+     "key": "D",
+     "text": "It loads the entire dataset into memory first",
+     "correct": false,
+     "rationale": "That is the opposite of a generator's purpose."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Generators yield one item at a time instead of building a full array.",
+   "outcome_refs": [
+    "MST-2581-D02.01"
+   ],
+   "domain_ref": "Generators and iterators",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2581-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why inject dependencies rather than instantiate them inside a class?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It decouples the class from concrete implementations and eases testing",
+     "correct": true,
+     "rationale": "Injection lets you substitute implementations and mocks, improving testability."
+    },
+    {
+     "key": "B",
+     "text": "It makes the class run without any dependencies",
+     "correct": false,
+     "rationale": "The dependencies still exist; only their wiring changes."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for interfaces",
+     "correct": false,
+     "rationale": "Injection often pairs with interfaces."
+    },
+    {
+     "key": "D",
+     "text": "It automatically caches every object",
+     "correct": false,
+     "rationale": "Injection is about wiring, not caching."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Injection lets you substitute implementations and mocks, improving testability.",
+   "outcome_refs": [
+    "MST-2581-D03.01"
+   ],
+   "domain_ref": "APIs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

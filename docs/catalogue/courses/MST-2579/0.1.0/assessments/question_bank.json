@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2579",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2579-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the difference between include and require in PHP?",
+   "options": [
+    {
+     "key": "A",
+     "text": "require raises a fatal error if the file is missing; include only a warning",
+     "correct": true,
+     "rationale": "require halts execution on failure; include continues with a warning."
+    },
+    {
+     "key": "B",
+     "text": "include is for functions and require is for classes",
+     "correct": false,
+     "rationale": "Both just bring in a file; the difference is failure behaviour."
+    },
+    {
+     "key": "C",
+     "text": "require runs faster than include",
+     "correct": false,
+     "rationale": "The difference is error handling, not speed."
+    },
+    {
+     "key": "D",
+     "text": "They are interchangeable with no difference",
+     "correct": false,
+     "rationale": "Their failure behaviour differs materially."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "require halts execution on failure; include continues with a warning.",
+   "outcome_refs": [
+    "MST-2579-D01.01"
+   ],
+   "domain_ref": "Environment and syntax",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2579-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO reasons to prefer === over == when comparing values in PHP.",
+   "options": [
+    {
+     "key": "A",
+     "text": "=== compares value and type without type juggling",
+     "correct": true,
+     "rationale": "Strict comparison avoids surprising loose conversions."
+    },
+    {
+     "key": "B",
+     "text": "== can treat '0' and false or '' and null as equal in confusing ways",
+     "correct": true,
+     "rationale": "Loose comparison applies type juggling that causes subtle bugs."
+    },
+    {
+     "key": "C",
+     "text": "=== automatically trims whitespace from strings",
+     "correct": false,
+     "rationale": "=== does no trimming."
+    },
+    {
+     "key": "D",
+     "text": "== is deprecated in modern PHP",
+     "correct": false,
+     "rationale": "== is not deprecated, merely riskier."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Strict comparison avoids surprising loose conversions.",
+   "outcome_refs": [
+    "MST-2579-D02.01"
+   ],
+   "domain_ref": "Types and variables",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2579-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why should form input read from $_POST be validated before use?",
+   "options": [
+    {
+     "key": "A",
+     "text": "User input is untrusted and may be missing, malformed or malicious",
+     "correct": true,
+     "rationale": "Validation guards against bad or hostile data before it is used."
+    },
+    {
+     "key": "B",
+     "text": "Because $_POST is always empty on the first request",
+     "correct": false,
+     "rationale": "Emptiness is only one case; validation covers more."
+    },
+    {
+     "key": "C",
+     "text": "Because PHP cannot read POST data otherwise",
+     "correct": false,
+     "rationale": "PHP reads it fine; the issue is trust."
+    },
+    {
+     "key": "D",
+     "text": "Because validation converts POST to GET",
+     "correct": false,
+     "rationale": "Validation does not change the HTTP method."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Validation guards against bad or hostile data before it is used.",
+   "outcome_refs": [
+    "MST-2579-D03.01"
+   ],
+   "domain_ref": "Control flow and functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

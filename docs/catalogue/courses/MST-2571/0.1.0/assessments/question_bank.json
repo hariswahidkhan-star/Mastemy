@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2571",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2571-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does the ? operator do when applied to a Result in a function returning Result?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Returns the error early from the function, otherwise unwraps the Ok value",
+     "correct": true,
+     "rationale": "? propagates Err via an early return and yields the Ok value on success."
+    },
+    {
+     "key": "B",
+     "text": "Panics immediately on an Err",
+     "correct": false,
+     "rationale": "That is unwrap/expect behaviour, not ?."
+    },
+    {
+     "key": "C",
+     "text": "Converts the Result into an Option",
+     "correct": false,
+     "rationale": "? keeps the Result flow; it does not change it to Option here."
+    },
+    {
+     "key": "D",
+     "text": "Silently ignores the error",
+     "correct": false,
+     "rationale": "? never discards the error; it returns it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "? propagates Err via an early return and yields the Ok value on success.",
+   "outcome_refs": [
+    "MST-2571-D01.01"
+   ],
+   "domain_ref": "Generics and traits",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2571-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO true statements about iterator adaptors like map and filter in Rust.",
+   "options": [
+    {
+     "key": "A",
+     "text": "They are lazy and do nothing until a consumer such as collect or for is used",
+     "correct": true,
+     "rationale": "Adaptors build a pipeline evaluated only when consumed."
+    },
+    {
+     "key": "B",
+     "text": "Each adaptor allocates a new Vec immediately",
+     "correct": false,
+     "rationale": "Adaptors are lazy and allocation-free until collected."
+    },
+    {
+     "key": "C",
+     "text": "They can be chained and fused by the compiler into efficient code",
+     "correct": true,
+     "rationale": "Chained adaptors compile to tight loops with no per-step allocation."
+    },
+    {
+     "key": "D",
+     "text": "filter can change the item type of the iterator",
+     "correct": false,
+     "rationale": "filter keeps the item type; map changes it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "Adaptors build a pipeline evaluated only when consumed.",
+   "outcome_refs": [
+    "MST-2571-D02.01"
+   ],
+   "domain_ref": "Error handling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2571-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why define a custom error enum with From implementations in a Rust library?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To unify different underlying errors behind one type that ? can convert into",
+     "correct": true,
+     "rationale": "From impls let ? auto-convert source errors into the library's error type."
+    },
+    {
+     "key": "B",
+     "text": "To make all functions return Option instead of Result",
+     "correct": false,
+     "rationale": "Custom error types are about Result, not Option."
+    },
+    {
+     "key": "C",
+     "text": "To force every caller to call unwrap",
+     "correct": false,
+     "rationale": "The goal is the opposite of forcing unwrap."
+    },
+    {
+     "key": "D",
+     "text": "To disable the borrow checker for error paths",
+     "correct": false,
+     "rationale": "Error types do not affect borrow checking."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "From impls let ? auto-convert source errors into the library's error type.",
+   "outcome_refs": [
+    "MST-2571-D03.01"
+   ],
+   "domain_ref": "Collections",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

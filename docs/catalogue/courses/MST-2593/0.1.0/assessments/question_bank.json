@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2593",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2593-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When interpreting an lm() summary from observational data, why is caution needed with coefficients?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An association in observational data does not establish causation",
+     "correct": true,
+     "rationale": "Confounding and design limits mean coefficients are not inherently causal."
+    },
+    {
+     "key": "B",
+     "text": "Coefficients from lm are always exactly zero",
+     "correct": false,
+     "rationale": "They are estimated values, not always zero."
+    },
+    {
+     "key": "C",
+     "text": "lm cannot be used on observational data",
+     "correct": false,
+     "rationale": "It can; the caution is about interpretation."
+    },
+    {
+     "key": "D",
+     "text": "A high R-squared proves causation",
+     "correct": false,
+     "rationale": "Fit quality does not establish causation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Confounding and design limits mean coefficients are not inherently causal.",
+   "outcome_refs": [
+    "MST-2593-D01.01"
+   ],
+   "domain_ref": "Statistical modelling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2593-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO practices that improve reproducibility of an R analysis.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Setting a random seed before stochastic steps",
+     "correct": true,
+     "rationale": "A fixed seed makes random results repeatable."
+    },
+    {
+     "key": "B",
+     "text": "Pinning package versions with a tool like renv",
+     "correct": true,
+     "rationale": "Recording exact dependency versions stabilises results across machines."
+    },
+    {
+     "key": "C",
+     "text": "Relying on the interactive global environment state",
+     "correct": false,
+     "rationale": "Hidden global state undermines reproducibility."
+    },
+    {
+     "key": "D",
+     "text": "Hardcoding absolute paths to your home directory",
+     "correct": false,
+     "rationale": "Machine-specific paths break portability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "A fixed seed makes random results repeatable.",
+   "outcome_refs": [
+    "MST-2593-D02.01"
+   ],
+   "domain_ref": "Performance",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2593-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can growing a vector inside a loop (e.g. x <- c(x, i)) be slow in R?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each append can copy the whole vector due to copy-on-modify, giving quadratic cost",
+     "correct": true,
+     "rationale": "Repeated reallocation and copying makes incremental growth expensive; preallocation avoids it."
+    },
+    {
+     "key": "B",
+     "text": "Loops are disallowed in R",
+     "correct": false,
+     "rationale": "Loops are allowed; the issue is repeated copying."
+    },
+    {
+     "key": "C",
+     "text": "c() always returns a list",
+     "correct": false,
+     "rationale": "c() returns a vector here; the cost is copying."
+    },
+    {
+     "key": "D",
+     "text": "The vector becomes a factor",
+     "correct": false,
+     "rationale": "Growth does not change the type to a factor."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Repeated reallocation and copying makes incremental growth expensive; preallocation avoids it.",
+   "outcome_refs": [
+    "MST-2593-D03.01"
+   ],
+   "domain_ref": "Reproducibility",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2570",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2570-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which statement about variable bindings in Rust is correct?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A binding declared with let is immutable unless mut is added",
+     "correct": true,
+     "rationale": "let bindings are immutable by default; mut opts into mutability."
+    },
+    {
+     "key": "B",
+     "text": "All let bindings are mutable by default",
+     "correct": false,
+     "rationale": "Immutability is the default; mut is required to mutate."
+    },
+    {
+     "key": "C",
+     "text": "Shadowing requires the mut keyword",
+     "correct": false,
+     "rationale": "Shadowing re-declares with a new let and can change type; mut is not involved."
+    },
+    {
+     "key": "D",
+     "text": "const and let behave identically",
+     "correct": false,
+     "rationale": "const must be a compile-time constant with an explicit type and cannot be shadowed in the same way."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "let bindings are immutable by default; mut opts into mutability.",
+   "outcome_refs": [
+    "MST-2570-D01.01"
+   ],
+   "domain_ref": "Toolchain and Cargo",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2570-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO consequences of Rust's ownership move semantics for a non-Copy value such as a String.",
+   "options": [
+    {
+     "key": "A",
+     "text": "After moving the value, the original variable can no longer be used",
+     "correct": true,
+     "rationale": "A move invalidates the source binding to prevent double frees."
+    },
+    {
+     "key": "B",
+     "text": "The value is deep-copied automatically on assignment",
+     "correct": false,
+     "rationale": "Non-Copy types move rather than copy; a deep copy needs an explicit clone()."
+    },
+    {
+     "key": "C",
+     "text": "Passing it to a function by value transfers ownership into the function",
+     "correct": true,
+     "rationale": "By-value arguments move ownership unless the type is Copy or a reference is passed."
+    },
+    {
+     "key": "D",
+     "text": "Borrowing it with & also ends the original binding's validity",
+     "correct": false,
+     "rationale": "A shared borrow does not move the value; the owner remains valid."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "A move invalidates the source binding to prevent double frees.",
+   "outcome_refs": [
+    "MST-2570-D02.01"
+   ],
+   "domain_ref": "Values, types and bindings",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2570-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does an Option<T> value let you express that a plain T cannot?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The explicit possibility that no value is present, checked by the compiler",
+     "correct": true,
+     "rationale": "Option encodes Some/None so absence must be handled, replacing null."
+    },
+    {
+     "key": "B",
+     "text": "A value that can be mutated from any thread",
+     "correct": false,
+     "rationale": "Option says nothing about threading or mutability."
+    },
+    {
+     "key": "C",
+     "text": "A guaranteed non-null pointer",
+     "correct": false,
+     "rationale": "That is the role of a plain reference, not Option."
+    },
+    {
+     "key": "D",
+     "text": "Automatic error logging when the value is missing",
+     "correct": false,
+     "rationale": "Option carries no logging behaviour of its own."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Option encodes Some/None so absence must be handled, replacing null.",
+   "outcome_refs": [
+    "MST-2570-D03.01"
+   ],
+   "domain_ref": "Functions and control flow",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2572",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2572-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does Rust require Arc rather than Rc to share ownership across threads?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Arc uses atomic reference counting so the count is safe under concurrent access",
+     "correct": true,
+     "rationale": "Arc's atomic counter is Send+Sync; Rc's non-atomic counter is not thread-safe."
+    },
+    {
+     "key": "B",
+     "text": "Rc is faster and therefore preferred across threads",
+     "correct": false,
+     "rationale": "Rc is non-atomic and not thread-safe, so it is rejected across threads."
+    },
+    {
+     "key": "C",
+     "text": "Arc disables the borrow checker",
+     "correct": false,
+     "rationale": "Arc does not affect borrow checking."
+    },
+    {
+     "key": "D",
+     "text": "Rc cannot allocate on the heap",
+     "correct": false,
+     "rationale": "Rc also heap-allocates; the difference is atomicity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Arc's atomic counter is Send+Sync; Rc's non-atomic counter is not thread-safe.",
+   "outcome_refs": [
+    "MST-2572-D01.01"
+   ],
+   "domain_ref": "Fearless concurrency",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2572-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO statements that correctly describe unsafe Rust.",
+   "options": [
+    {
+     "key": "A",
+     "text": "unsafe lets you dereference raw pointers and call unsafe functions",
+     "correct": true,
+     "rationale": "These operations are only permitted inside unsafe."
+    },
+    {
+     "key": "B",
+     "text": "unsafe disables all compiler borrow checking in the whole program",
+     "correct": false,
+     "rationale": "unsafe only unlocks specific operations; normal checks still apply."
+    },
+    {
+     "key": "C",
+     "text": "Code in unsafe should uphold invariants so a safe wrapper can be sound",
+     "correct": true,
+     "rationale": "The point of unsafe is to build sound safe abstractions."
+    },
+    {
+     "key": "D",
+     "text": "unsafe code is exempt from the type system",
+     "correct": false,
+     "rationale": "Type checking still applies inside unsafe."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "C"
+   ],
+   "explanation": "These operations are only permitted inside unsafe.",
+   "outcome_refs": [
+    "MST-2572-D02.01"
+   ],
+   "domain_ref": "Async programming",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2572-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the difference between concurrency and parallelism in an async Rust program?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Concurrency interleaves tasks; parallelism runs them on multiple cores at once",
+     "correct": true,
+     "rationale": "Async gives concurrency; parallelism needs multiple threads/cores."
+    },
+    {
+     "key": "B",
+     "text": "They are identical in Rust",
+     "correct": false,
+     "rationale": "They are distinct concepts even if related."
+    },
+    {
+     "key": "C",
+     "text": "Parallelism is impossible in Rust",
+     "correct": false,
+     "rationale": "Rust supports parallelism via threads and multi-threaded runtimes."
+    },
+    {
+     "key": "D",
+     "text": "Concurrency always requires unsafe",
+     "correct": false,
+     "rationale": "Concurrency does not require unsafe."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Async gives concurrency; parallelism needs multiple threads/cores.",
+   "outcome_refs": [
+    "MST-2572-D03.01"
+   ],
+   "domain_ref": "Smart pointers and lifetimes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2592",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2592-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does group_by followed by summarise produce in dplyr?",
+   "options": [
+    {
+     "key": "A",
+     "text": "One summary row per group, collapsing the grouped rows",
+     "correct": true,
+     "rationale": "summarise reduces each group to a single aggregated row."
+    },
+    {
+     "key": "B",
+     "text": "The original rows unchanged",
+     "correct": false,
+     "rationale": "summarise aggregates; it does not return raw rows."
+    },
+    {
+     "key": "C",
+     "text": "A plot of the groups",
+     "correct": false,
+     "rationale": "summarise returns a data frame, not a plot."
+    },
+    {
+     "key": "D",
+     "text": "A wide-to-long reshape",
+     "correct": false,
+     "rationale": "Reshaping is pivot_*, not summarise."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "summarise reduces each group to a single aggregated row.",
+   "outcome_refs": [
+    "MST-2592-D01.01"
+   ],
+   "domain_ref": "dplyr verbs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2592-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO accurate statements about pivot_longer in tidyr.",
+   "options": [
+    {
+     "key": "A",
+     "text": "It gathers multiple columns into key-value pairs, making data longer",
+     "correct": true,
+     "rationale": "pivot_longer stacks columns into name/value pairs."
+    },
+    {
+     "key": "B",
+     "text": "It increases the number of rows and reduces the number of columns",
+     "correct": true,
+     "rationale": "Reshaping wide to long adds rows and removes spread-out columns."
+    },
+    {
+     "key": "C",
+     "text": "It computes group means automatically",
+     "correct": false,
+     "rationale": "Aggregation is summarise's job, not pivot_longer's."
+    },
+    {
+     "key": "D",
+     "text": "It is the same operation as pivot_wider",
+     "correct": false,
+     "rationale": "pivot_wider does the opposite transformation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "pivot_longer stacks columns into name/value pairs.",
+   "outcome_refs": [
+    "MST-2592-D02.01"
+   ],
+   "domain_ref": "Reshaping",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2592-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why might an inner_join unintentionally drop data compared with a left_join?",
+   "options": [
+    {
+     "key": "A",
+     "text": "inner_join keeps only matching keys, discarding unmatched left-side rows",
+     "correct": true,
+     "rationale": "Unmatched rows are removed by an inner join but kept by a left join."
+    },
+    {
+     "key": "B",
+     "text": "inner_join reverses the column order",
+     "correct": false,
+     "rationale": "Column order is not the issue."
+    },
+    {
+     "key": "C",
+     "text": "left_join cannot match on multiple keys",
+     "correct": false,
+     "rationale": "Both can join on multiple keys."
+    },
+    {
+     "key": "D",
+     "text": "inner_join converts numbers to text",
+     "correct": false,
+     "rationale": "Joins do not coerce types this way."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Unmatched rows are removed by an inner join but kept by a left join.",
+   "outcome_refs": [
+    "MST-2592-D03.01"
+   ],
+   "domain_ref": "Grouped summaries",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

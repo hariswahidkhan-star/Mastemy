@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2580",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2580-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why use PDO prepared statements with bound parameters?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They separate SQL from data, preventing SQL injection",
+     "correct": true,
+     "rationale": "Bound parameters are never interpreted as SQL, closing the injection vector."
+    },
+    {
+     "key": "B",
+     "text": "They make queries run without a database connection",
+     "correct": false,
+     "rationale": "A connection is still required."
+    },
+    {
+     "key": "C",
+     "text": "They automatically create database tables",
+     "correct": false,
+     "rationale": "Prepared statements do not manage schema."
+    },
+    {
+     "key": "D",
+     "text": "They convert all results to JSON",
+     "correct": false,
+     "rationale": "Fetch modes handle result shape, not JSON by default."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Bound parameters are never interpreted as SQL, closing the injection vector.",
+   "outcome_refs": [
+    "MST-2580-D01.01"
+   ],
+   "domain_ref": "Object-oriented PHP",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2580-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO accurate statements about traits in PHP.",
+   "options": [
+    {
+     "key": "A",
+     "text": "A trait lets multiple classes share method implementations",
+     "correct": true,
+     "rationale": "Traits inject reusable methods into classes."
+    },
+    {
+     "key": "B",
+     "text": "A class can use several traits",
+     "correct": true,
+     "rationale": "Multiple traits can be composed into one class."
+    },
+    {
+     "key": "C",
+     "text": "A trait can be instantiated on its own",
+     "correct": false,
+     "rationale": "Traits cannot be instantiated directly."
+    },
+    {
+     "key": "D",
+     "text": "A trait enforces a contract the way an interface does",
+     "correct": false,
+     "rationale": "Contracts are the job of interfaces, not traits."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Traits inject reusable methods into classes.",
+   "outcome_refs": [
+    "MST-2580-D02.01"
+   ],
+   "domain_ref": "Namespaces and Composer",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2580-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does PSR-4 autoloading map?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Namespaces to directory paths so classes load on demand",
+     "correct": true,
+     "rationale": "PSR-4 resolves a fully-qualified class name to a file path."
+    },
+    {
+     "key": "B",
+     "text": "Database tables to classes automatically",
+     "correct": false,
+     "rationale": "That is an ORM concern, not PSR-4."
+    },
+    {
+     "key": "C",
+     "text": "HTTP routes to controllers",
+     "correct": false,
+     "rationale": "Routing is separate from autoloading."
+    },
+    {
+     "key": "D",
+     "text": "Composer packages to CDN URLs",
+     "correct": false,
+     "rationale": "PSR-4 is about local class resolution."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "PSR-4 resolves a fully-qualified class name to a file path.",
+   "outcome_refs": [
+    "MST-2580-D03.01"
+   ],
+   "domain_ref": "Errors and types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2589",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2589-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does set -o pipefail change about a pipeline's exit status?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The pipeline fails if any command in it fails, not just the last",
+     "correct": true,
+     "rationale": "Without pipefail only the last command's status counts; pipefail surfaces earlier failures."
+    },
+    {
+     "key": "B",
+     "text": "It makes every pipeline always succeed",
+     "correct": false,
+     "rationale": "It is the opposite: it propagates failures."
+    },
+    {
+     "key": "C",
+     "text": "It disables pipes entirely",
+     "correct": false,
+     "rationale": "Pipes still work; only status handling changes."
+    },
+    {
+     "key": "D",
+     "text": "It merges stderr into stdout",
+     "correct": false,
+     "rationale": "That is 2>&1, unrelated to pipefail."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Without pipefail only the last command's status counts; pipefail surfaces earlier failures.",
+   "outcome_refs": [
+    "MST-2589-D01.01"
+   ],
+   "domain_ref": "Functions and arguments",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2589-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO reasons to quote \"${arr[@]}\" when iterating a Bash array.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each element is preserved as a single word even if it contains spaces",
+     "correct": true,
+     "rationale": "Quoting [@] yields one word per element."
+    },
+    {
+     "key": "B",
+     "text": "It prevents elements from being split or glob-expanded",
+     "correct": true,
+     "rationale": "Quoting stops word-splitting and globbing of element contents."
+    },
+    {
+     "key": "C",
+     "text": "It sorts the array alphabetically",
+     "correct": false,
+     "rationale": "Quoting does not sort."
+    },
+    {
+     "key": "D",
+     "text": "It converts the array to an associative array",
+     "correct": false,
+     "rationale": "Quoting does not change the array type."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Quoting [@] yields one word per element.",
+   "outcome_refs": [
+    "MST-2589-D02.01"
+   ],
+   "domain_ref": "Arrays and expansion",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2589-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why use trap 'cleanup' EXIT in a script that creates a temporary file?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It runs cleanup when the script exits for any reason, removing the temp file",
+     "correct": true,
+     "rationale": "An EXIT trap ensures cleanup on normal exit, errors and signals."
+    },
+    {
+     "key": "B",
+     "text": "It prevents the script from ever exiting",
+     "correct": false,
+     "rationale": "The trap runs at exit; it does not block exit."
+    },
+    {
+     "key": "C",
+     "text": "It disables error checking",
+     "correct": false,
+     "rationale": "trap does not affect set -e behaviour."
+    },
+    {
+     "key": "D",
+     "text": "It automatically compresses the temp file",
+     "correct": false,
+     "rationale": "trap runs a handler; it does not compress."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "An EXIT trap ensures cleanup on normal exit, errors and signals.",
+   "outcome_refs": [
+    "MST-2589-D03.01"
+   ],
+   "domain_ref": "Defensive scripting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

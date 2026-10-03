@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2591",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2591-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does vectorised arithmetic in R mean for x + y when x and y are numeric vectors?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The operation is applied element-wise across the vectors",
+     "correct": true,
+     "rationale": "R applies + to each aligned pair, a core idiom avoiding explicit loops."
+    },
+    {
+     "key": "B",
+     "text": "Only the first elements are added",
+     "correct": false,
+     "rationale": "All aligned elements are combined, not just the first."
+    },
+    {
+     "key": "C",
+     "text": "It concatenates the two vectors",
+     "correct": false,
+     "rationale": "Concatenation is c(), not +."
+    },
+    {
+     "key": "D",
+     "text": "It raises an error unless lengths are equal",
+     "correct": false,
+     "rationale": "R recycles shorter vectors (with a warning if not a multiple), rather than always erroring."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "R applies + to each aligned pair, a core idiom avoiding explicit loops.",
+   "outcome_refs": [
+    "MST-2591-D01.01"
+   ],
+   "domain_ref": "Getting started",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2591-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO correct statements about subsetting in R.",
+   "options": [
+    {
+     "key": "A",
+     "text": "A logical vector can select elements where it is TRUE",
+     "correct": true,
+     "rationale": "Logical indexing keeps positions that are TRUE."
+    },
+    {
+     "key": "B",
+     "text": "Negative indices drop the elements at those positions",
+     "correct": true,
+     "rationale": "Negative subscripts exclude elements in R."
+    },
+    {
+     "key": "C",
+     "text": "Indexing in R starts at 0",
+     "correct": false,
+     "rationale": "R indexing is 1-based."
+    },
+    {
+     "key": "D",
+     "text": "df[df$x > 0] on a data frame filters rows like df[df$x > 0, ]",
+     "correct": false,
+     "rationale": "Single-bracket without a comma selects columns, not rows."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Logical indexing keeps positions that are TRUE.",
+   "outcome_refs": [
+    "MST-2591-D02.01"
+   ],
+   "domain_ref": "Vectors and types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2591-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why distinguish a factor from a character vector in R?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A factor stores a fixed set of levels and is treated as categorical in models and plots",
+     "correct": true,
+     "rationale": "Factors encode categories with levels, affecting modelling and plotting."
+    },
+    {
+     "key": "B",
+     "text": "A factor can only hold numbers",
+     "correct": false,
+     "rationale": "Factors represent categories, often from text."
+    },
+    {
+     "key": "C",
+     "text": "Characters cannot be stored in a data frame",
+     "correct": false,
+     "rationale": "Character vectors are perfectly valid columns."
+    },
+    {
+     "key": "D",
+     "text": "Factors are always faster for arithmetic",
+     "correct": false,
+     "rationale": "Arithmetic on factors is generally inappropriate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Factors encode categories with levels, affecting modelling and plotting.",
+   "outcome_refs": [
+    "MST-2591-D03.01"
+   ],
+   "domain_ref": "Subsetting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2577",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2577-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main benefit of a protocol extension providing a default implementation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Conforming types get shared behaviour without inheriting from a base class",
+     "correct": true,
+     "rationale": "Protocol extensions supply default methods, enabling protocol-oriented reuse."
+    },
+    {
+     "key": "B",
+     "text": "It forces all conformers to be classes",
+     "correct": false,
+     "rationale": "Structs and enums can conform too."
+    },
+    {
+     "key": "C",
+     "text": "It disables generics",
+     "correct": false,
+     "rationale": "Protocols and generics work together."
+    },
+    {
+     "key": "D",
+     "text": "It prevents the protocol from being adopted",
+     "correct": false,
+     "rationale": "Extensions add behaviour, not restrictions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Protocol extensions supply default methods, enabling protocol-oriented reuse.",
+   "outcome_refs": [
+    "MST-2577-D01.01"
+   ],
+   "domain_ref": "Protocols",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2577-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO ways to avoid a strong reference cycle when a closure captures self in Swift.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Capture self weakly with [weak self]",
+     "correct": true,
+     "rationale": "A weak capture does not keep self alive, breaking the cycle."
+    },
+    {
+     "key": "B",
+     "text": "Capture self as unowned when self is guaranteed to outlive the closure",
+     "correct": true,
+     "rationale": "unowned avoids the cycle without optionality when lifetime is guaranteed."
+    },
+    {
+     "key": "C",
+     "text": "Capture self strongly in an escaping closure",
+     "correct": false,
+     "rationale": "A strong capture in an escaping closure is what creates the cycle."
+    },
+    {
+     "key": "D",
+     "text": "Mark the closure non-escaping and capture self strongly",
+     "correct": false,
+     "rationale": "The scenario in question involves escaping closures needing weak/unowned."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "A weak capture does not keep self alive, breaking the cycle.",
+   "outcome_refs": [
+    "MST-2577-D02.01"
+   ],
+   "domain_ref": "Generics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2577-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does Swift distinguish escaping from non-escaping closures?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An escaping closure may be stored and run after the function returns, affecting memory",
+     "correct": true,
+     "rationale": "Escaping closures outlive the call, so capture and retain-cycle rules matter."
+    },
+    {
+     "key": "B",
+     "text": "Non-escaping closures cannot take parameters",
+     "correct": false,
+     "rationale": "Both can take parameters."
+    },
+    {
+     "key": "C",
+     "text": "Escaping closures run on the main thread automatically",
+     "correct": false,
+     "rationale": "Escaping says nothing about threads."
+    },
+    {
+     "key": "D",
+     "text": "Non-escaping closures are always asynchronous",
+     "correct": false,
+     "rationale": "Non-escaping closures typically run synchronously within the call."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Escaping closures outlive the call, so capture and retain-cycle rules matter.",
+   "outcome_refs": [
+    "MST-2577-D03.01"
+   ],
+   "domain_ref": "Error handling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

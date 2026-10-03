@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2576",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2576-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does optional binding with if let accomplish in Swift?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It safely unwraps an optional into a non-optional constant when a value exists",
+     "correct": true,
+     "rationale": "if let binds the wrapped value only when the optional is non-nil."
+    },
+    {
+     "key": "B",
+     "text": "It forces the optional to a value, crashing if nil",
+     "correct": false,
+     "rationale": "That is force-unwrapping with !, not if let."
+    },
+    {
+     "key": "C",
+     "text": "It converts any type into an optional",
+     "correct": false,
+     "rationale": "if let unwraps, it does not wrap."
+    },
+    {
+     "key": "D",
+     "text": "It makes the variable mutable",
+     "correct": false,
+     "rationale": "if let introduces a constant unless if var is used."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "if let binds the wrapped value only when the optional is non-nil.",
+   "outcome_refs": [
+    "MST-2576-D01.01"
+   ],
+   "domain_ref": "Getting started",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2576-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO true statements about structs as value types in Swift.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assigning a struct to a new variable copies it",
+     "correct": true,
+     "rationale": "Value types are copied on assignment."
+    },
+    {
+     "key": "B",
+     "text": "Mutating the copy does not affect the original",
+     "correct": true,
+     "rationale": "Independent copies have independent storage."
+    },
+    {
+     "key": "C",
+     "text": "Structs are reference types sharing one instance",
+     "correct": false,
+     "rationale": "Structs are value types, not reference types."
+    },
+    {
+     "key": "D",
+     "text": "Two struct variables always point to the same memory",
+     "correct": false,
+     "rationale": "Each copy has its own storage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Value types are copied on assignment.",
+   "outcome_refs": [
+    "MST-2576-D02.01"
+   ],
+   "domain_ref": "Values and types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2576-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why prefer the nil-coalescing operator ?? over force-unwrapping an optional?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It supplies a fallback value instead of crashing when the optional is nil",
+     "correct": true,
+     "rationale": "?? yields a default on nil, avoiding a runtime trap."
+    },
+    {
+     "key": "B",
+     "text": "It is faster at runtime than any alternative",
+     "correct": false,
+     "rationale": "Performance is not the reason; safety is."
+    },
+    {
+     "key": "C",
+     "text": "It converts the value to a String",
+     "correct": false,
+     "rationale": "?? does not change the type beyond removing optionality."
+    },
+    {
+     "key": "D",
+     "text": "It makes the optional non-optional permanently",
+     "correct": false,
+     "rationale": "?? affects only the evaluated expression."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "?? yields a default on nil, avoiding a runtime trap.",
+   "outcome_refs": [
+    "MST-2576-D03.01"
+   ],
+   "domain_ref": "Optionals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

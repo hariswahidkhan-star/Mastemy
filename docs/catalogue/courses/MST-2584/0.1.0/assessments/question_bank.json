@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2584",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2584-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does the Global VM Lock (GVL) in CRuby limit speedup for CPU-bound threads?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Only one thread runs Ruby bytecode at a time, so CPU work is not truly parallel",
+     "correct": true,
+     "rationale": "The GVL serialises Ruby execution; threads help mainly with IO waits."
+    },
+    {
+     "key": "B",
+     "text": "Threads are disabled entirely in CRuby",
+     "correct": false,
+     "rationale": "Threads exist; the GVL just serialises bytecode execution."
+    },
+    {
+     "key": "C",
+     "text": "The GVL speeds up all CPU work automatically",
+     "correct": false,
+     "rationale": "It constrains, not accelerates, CPU-bound parallelism."
+    },
+    {
+     "key": "D",
+     "text": "Fibers remove the GVL",
+     "correct": false,
+     "rationale": "Fibers are cooperative and still under the same model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "The GVL serialises Ruby execution; threads help mainly with IO waits.",
+   "outcome_refs": [
+    "MST-2584-D01.01"
+   ],
+   "domain_ref": "Object model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2584-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Select TWO accurate statements about method lookup in Ruby's object model.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Modules prepended to a class are searched before the class's own methods",
+     "correct": true,
+     "rationale": "prepend inserts the module earlier in the ancestor chain."
+    },
+    {
+     "key": "B",
+     "text": "The ancestors array reflects the order methods are searched",
+     "correct": true,
+     "rationale": "Lookup follows the ancestors order from the receiver upward."
+    },
+    {
+     "key": "C",
+     "text": "Singleton methods are never consulted during lookup",
+     "correct": false,
+     "rationale": "The singleton class is searched first."
+    },
+    {
+     "key": "D",
+     "text": "include inserts a module before the class itself in the chain",
+     "correct": false,
+     "rationale": "include inserts after the class; prepend inserts before."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "prepend inserts the module earlier in the ancestor chain.",
+   "outcome_refs": [
+    "MST-2584-D02.01"
+   ],
+   "domain_ref": "Metaprogramming",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2584-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the risk of memoising with @value ||= compute when compute may return nil or false?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Every access re-runs compute because the falsey result is never cached",
+     "correct": true,
+     "rationale": "||= treats nil/false as unset, defeating memoisation for those values."
+    },
+    {
+     "key": "B",
+     "text": "It caches the wrong type",
+     "correct": false,
+     "rationale": "The issue is re-computation, not type."
+    },
+    {
+     "key": "C",
+     "text": "It raises a NoMethodError",
+     "correct": false,
+     "rationale": "No error is raised; it just recomputes."
+    },
+    {
+     "key": "D",
+     "text": "It makes the method thread-safe",
+     "correct": false,
+     "rationale": "||= gives no thread-safety guarantee."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "||= treats nil/false as unset, defeating memoisation for those values.",
+   "outcome_refs": [
+    "MST-2584-D03.01"
+   ],
+   "domain_ref": "Internal DSLs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
