@@ -1,13 +1,14 @@
-/* Wave 3 workspace screens. Logical properties only (RTL-safe); colours from tokens.css. */
+/* Workspace screens. Logical properties only (RTL-safe); colours from tokens.css. */
 
 .ws-chart {
   margin: 0 0 var(--space-5);
   position: relative;
 }
 .ws-chart__title {
-  font-weight: 600;
+  font-weight: 700;
   margin-block-end: var(--space-2);
   font-size: var(--text-md);
+  letter-spacing: var(--tracking-tight);
 }
 .ws-chart__plot {
   position: relative;
@@ -28,6 +29,7 @@
 }
 .ws-chart__bar {
   fill: var(--c-primary);
+  transition: fill var(--duration-fast) var(--ease-out);
 }
 .ws-chart__bar--on {
   fill: var(--c-primary-hover);
@@ -52,6 +54,7 @@
   white-space: nowrap;
   pointer-events: none;
   box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(8px);
 }
 [dir='rtl'] .ws-chart__tip {
   transform: translateX(50%);
@@ -77,8 +80,9 @@
 .ws-meter > span {
   display: block;
   block-size: 100%;
-  background: var(--c-primary);
+  background: var(--c-shimmer);
   border-radius: 4px;
+  transition: inline-size var(--duration-slow) var(--ease-out);
 }
 .ws-stats {
   display: grid;
@@ -91,36 +95,42 @@
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
   padding: var(--space-3) var(--space-4);
+  transition: box-shadow var(--duration) var(--ease-out),
+              transform var(--duration) var(--ease-out);
+}
+.ws-stat:hover {
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
 }
 .ws-stat__label {
   font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
   color: var(--c-text-muted);
 }
 .ws-stat__value {
   font-size: var(--text-xl);
-  font-weight: 700;
+  font-weight: 800;
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-tight);
 }
 
 /* Consent banner */
 .ws-consent {
-  /*
-   * Docked to the bottom so its late arrival (after the consent check) never shifts the page (CLS). It never
-   * covers content: the page reserves its height (--consent-h, set by ConsentBanner) as bottom padding and
-   * as scroll padding, so a focused control is scrolled clear of it (WCAG 2.4.11).
-   */
   position: fixed;
   inset-inline: 0;
   inset-block-end: 0;
-  z-index: 45; /* below dialogs (50) and toasts */
+  z-index: 45;
   max-block-size: 50vh;
   overflow: auto;
-  background: var(--c-surface);
+  background: var(--c-surface-glass);
+  backdrop-filter: blur(16px) saturate(180%);
   border-block-start: 1px solid var(--c-border-strong);
-  box-shadow: 0 -4px 16px rgb(0 0 0 / 0.08);
+  box-shadow: 0 -4px 24px rgb(0 0 0 / 0.1);
   padding: var(--space-3) max(var(--space-4), calc((100% - var(--container)) / 2));
 }
 .ws-consent--yield {
-  /* Still in the tab order and announced; only moved off-screen while a covered control has keyboard focus. */
   transform: translateY(calc(100% + 8px));
 }
 html:has(.ws-consent) {
@@ -131,6 +141,7 @@ html:has(.ws-consent) body {
 }
 .ws-consent h2 {
   font-size: var(--text-md);
+  font-weight: 700;
   margin: 0 0 var(--space-2);
 }
 
@@ -138,7 +149,8 @@ html:has(.ws-consent) body {
 .ws-drawer-backdrop {
   position: fixed;
   inset: 0;
-  background: rgb(0 0 0 / 0.35);
+  background: rgb(0 0 0 / 0.4);
+  backdrop-filter: blur(4px);
   z-index: 70;
 }
 .ws-drawer {
@@ -163,6 +175,7 @@ html:has(.ws-consent) body {
 .ws-drawer__head h2 {
   margin: 0;
   font-size: var(--text-lg);
+  font-weight: 700;
 }
 .ws-drawer__body {
   overflow: auto;
@@ -187,6 +200,7 @@ html:has(.ws-consent) body {
   padding: var(--space-3);
   max-block-size: 320px;
   overflow: auto;
+  border: 1px solid var(--c-border);
 }
 .ws-conflict {
   display: grid;
@@ -207,6 +221,7 @@ html:has(.ws-consent) body {
   background: var(--c-bg);
   margin-inline: auto;
   overflow: auto;
+  box-shadow: var(--shadow);
 }
 .ws-frame--desktop {
   max-inline-size: 100%;
@@ -227,9 +242,11 @@ html:has(.ws-consent) body {
   border-radius: var(--radius);
   padding: var(--space-3);
   background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
 }
 .ws-msg--user {
   background: var(--c-primary-soft);
+  border-color: transparent;
 }
 .ws-cites {
   display: flex;
@@ -250,6 +267,7 @@ html:has(.ws-consent) body {
 .ws-week h3 {
   margin: 0 0 var(--space-2);
   font-size: var(--text-md);
+  font-weight: 700;
 }
 .ws-day {
   margin-block-end: var(--space-2);
@@ -267,5 +285,5 @@ html:has(.ws-consent) body {
 }
 .ws-consent__details > summary {
   cursor: pointer;
-  min-block-size: 24px; /* WCAG 2.5.8 target size */
+  min-block-size: 24px;
 }

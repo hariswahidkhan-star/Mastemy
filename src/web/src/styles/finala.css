@@ -8,15 +8,20 @@
   gap: var(--space-3);
 }
 .finala-msg {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
   padding: var(--space-3);
   max-inline-size: 48rem;
   overflow-wrap: anywhere;
+  transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+.finala-msg:hover {
+  box-shadow: var(--shadow-xs);
 }
 .finala-msg--mine {
   margin-inline-start: auto;
-  background: var(--color-surface-2, var(--color-surface));
+  background: var(--c-primary-soft);
+  border-color: transparent;
 }
 .finala-msg__body {
   margin-block: var(--space-2);
@@ -24,8 +29,9 @@
 .finala-quote {
   margin: 0;
   padding-inline-start: var(--space-3);
-  border-inline-start: 3px solid var(--color-border);
+  border-inline-start: 3px solid var(--c-border-strong);
   overflow-wrap: anywhere;
+  color: var(--c-text-muted);
 }
 .finala-conv__link {
   display: flex;
@@ -35,32 +41,34 @@
 }
 .finala-counter--over,
 .finala-error {
-  color: var(--color-danger);
+  color: var(--c-danger);
 }
 .finala-kind {
   display: inline-block;
-  font-size: var(--text-sm, 0.875rem);
-  font-weight: 600;
-  padding-block: 0.1rem;
-  padding-inline: 0.5rem;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding-block: 0.15rem;
+  padding-inline: 0.6rem;
   border-radius: 999px;
   border: 1px solid currentColor;
+  letter-spacing: 0.02em;
 }
 .finala-kind--AssessedKnowledge {
-  color: var(--color-success);
+  color: var(--c-success);
 }
 .finala-kind--Completion {
-  color: var(--color-info, var(--color-text-muted));
+  color: var(--c-text-muted);
   border-style: dashed;
 }
 .finala-cert--completion {
-  border-inline-start: 3px dashed var(--color-border);
+  border-inline-start: 3px dashed var(--c-border);
   padding-inline-start: var(--space-3);
 }
 .finala-selfgrade {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
   padding: var(--space-3);
+  background: var(--c-surface);
 }
 .finala-selfgrade__grid {
   display: grid;
@@ -68,28 +76,38 @@
   gap: var(--space-2);
 }
 .finala-selfgrade__n {
-  font-weight: 700;
+  font-weight: 800;
+  font-family: var(--font-display);
 }
 .finala-worked__body {
-  border-inline-start: 3px solid var(--color-border);
+  border-inline-start: 3px solid var(--c-border);
   padding-inline-start: var(--space-3);
 }
 .finala-picker__option {
   inline-size: 100%;
   text-align: start;
   background: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md, 8px);
-  padding: var(--space-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
   cursor: pointer;
   color: inherit;
   font: inherit;
+  transition: border-color var(--duration-fast) var(--ease-out),
+              background var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+.finala-picker__option:hover {
+  border-color: var(--c-border-strong);
+  background: var(--c-surface-2);
 }
 .finala-picker__option:focus-visible {
-  outline: 2px solid var(--color-focus, currentColor);
+  outline: 2px solid var(--c-focus);
   outline-offset: 2px;
 }
 .finala-picker__option[aria-pressed='true'] {
-  border-color: currentColor;
+  border-color: var(--c-primary);
+  background: var(--c-primary-soft);
   font-weight: 600;
+  box-shadow: var(--shadow-xs);
 }

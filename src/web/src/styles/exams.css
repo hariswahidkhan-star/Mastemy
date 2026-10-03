@@ -1,4 +1,4 @@
-/* Wave 3 exams area: rich question content, case exhibits, editors. Logical properties only (RTL-safe). */
+/* Exams area: rich question content, case exhibits, editors. Logical properties only (RTL-safe). */
 
 .rich {
   overflow-wrap: anywhere;
@@ -23,8 +23,15 @@
 .rich th,
 .rich td {
   border: 1px solid var(--c-border);
-  padding: var(--space-1) var(--space-2);
+  padding: var(--space-2) var(--space-3);
   text-align: start;
+}
+.rich th {
+  background: var(--c-surface-2);
+  font-weight: 700;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 .rich pre {
   background: var(--c-surface-2);
@@ -33,6 +40,7 @@
   overflow-x: auto;
   direction: ltr;
   text-align: start;
+  border: 1px solid var(--c-border);
 }
 .rich code {
   font-family: var(--font-mono);
@@ -50,7 +58,7 @@
 .rich__img {
   max-inline-size: 100%;
   block-size: auto;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
 }
 
 .exam-case {
@@ -64,10 +72,15 @@
   inset-block-start: var(--space-4);
   max-block-size: calc(100vh - 2 * var(--space-4));
   overflow: auto;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  background: var(--c-surface);
 }
 .exam-case__exhibit > summary {
   cursor: pointer;
   margin-block-end: var(--space-2);
+  font-weight: 600;
 }
 @media (max-width: 900px) {
   .exam-case {
@@ -98,29 +111,33 @@
 }
 
 .cert-preview {
-  border: 6px solid var(--cert-primary, #1f3a8a);
-  border-radius: var(--radius);
+  border: 6px solid var(--cert-primary, #1a2f7a);
+  border-radius: var(--radius-lg);
   padding: var(--space-5);
   text-align: center;
   background: #fff;
-  color: #141a2e;
+  color: #0f1629;
   aspect-ratio: 1.414 / 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: var(--space-3);
   max-inline-size: 36rem;
+  box-shadow: var(--shadow-lg);
 }
 .cert-preview__title {
-  color: var(--cert-primary, #1f3a8a);
+  color: var(--cert-primary, #1a2f7a);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 800;
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-tight);
 }
 .cert-preview__rule {
   block-size: 4px;
   inline-size: 40%;
   margin-inline: auto;
-  background: var(--cert-accent, #b45309);
+  background: var(--c-shimmer);
+  border-radius: 2px;
 }
 
 .stat-ci {
@@ -136,5 +153,6 @@
 .bar > span {
   display: block;
   block-size: 100%;
-  background: var(--c-primary);
+  background: var(--c-shimmer);
+  transition: inline-size var(--duration-slow) var(--ease-out);
 }

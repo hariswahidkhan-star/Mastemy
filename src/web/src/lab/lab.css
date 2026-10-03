@@ -1,5 +1,4 @@
-/* Practice-lab styles. Loaded only from the lazy lab chunk, so it rides in the route chunk's CSS, not the
-   initial CSS budget. Tokens + logical properties only (RTL-safe). */
+/* Practice-lab styles. Loaded only from the lazy lab chunk. Tokens + logical properties only (RTL-safe). */
 
 .lab {
   display: flex;
@@ -25,6 +24,15 @@
   background: var(--c-surface);
   color: var(--c-text);
   font-size: var(--text-sm);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+.lab__pick select:hover {
+  border-color: var(--c-border-strong);
+}
+.lab__pick select:focus {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 3px var(--c-primary-soft);
 }
 .lab__privacy {
   margin: 0;
@@ -50,10 +58,15 @@
 }
 .lab__editor {
   border: 1px solid var(--c-border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   overflow: hidden;
-  /* CodeMirror handles its own scrolling; cap the height so the panel stays usable. */
   max-block-size: 420px;
+  background: var(--c-surface);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+.lab__editor:focus-within {
+  box-shadow: var(--shadow-glow);
 }
 .lab__editor .cm-editor {
   max-block-size: 420px;
@@ -77,6 +90,7 @@
   overflow-x: auto;
   font-size: var(--text-sm);
   white-space: pre;
+  font-family: var(--font-mono);
 }
 .lab__output {
   display: flex;
@@ -84,24 +98,27 @@
   gap: var(--space-2);
 }
 .lab__error {
-  color: var(--c-danger, #b00020);
-  font-family: var(--font-mono, monospace);
+  color: var(--c-danger);
+  font-family: var(--font-mono);
   font-size: var(--text-sm);
   white-space: pre-wrap;
+  padding: var(--space-2) var(--space-3);
+  background: var(--c-danger-soft);
+  border-radius: var(--radius-sm);
 }
 .lab__verdict {
-  font-weight: 600;
+  font-weight: 700;
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-sm);
   inline-size: fit-content;
 }
 .lab__verdict.is-pass {
-  color: var(--c-success-text, #0a6b2e);
-  background: var(--c-success-soft, #e6f6ec);
+  color: var(--c-success);
+  background: var(--c-success-soft);
 }
 .lab__verdict.is-fail {
-  color: var(--c-warn-text, #8a5300);
-  background: var(--c-warn-soft, #fdf0d9);
+  color: var(--c-warning);
+  background: var(--c-warning-soft);
 }
 .lab__checks {
   list-style: none;
@@ -112,7 +129,7 @@
   gap: var(--space-1);
 }
 .lab__checks li.is-pass {
-  color: var(--c-success-text, #0a6b2e);
+  color: var(--c-success);
 }
 .lab__checks li.is-fail {
   color: var(--c-text);
@@ -120,7 +137,8 @@
 .lab__grid-wrap {
   overflow-x: auto;
   border: 1px solid var(--c-border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-xs);
 }
 .lab__grid {
   border-collapse: collapse;
@@ -136,5 +154,8 @@
 }
 .lab__grid th {
   background: var(--c-surface-2);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
