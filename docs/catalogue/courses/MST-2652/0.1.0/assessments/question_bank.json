@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2652",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2652-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "New rows added to the source are missing from a PivotTable's results. What is the most robust fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Base the PivotTable on an Excel Table so the range expands automatically",
+     "correct": true,
+     "rationale": "Correct: a Table reference grows with the data, so refresh captures new rows."
+    },
+    {
+     "key": "B",
+     "text": "Manually widen the range after every change",
+     "correct": false,
+     "rationale": "That is error-prone and easy to forget."
+    },
+    {
+     "key": "C",
+     "text": "Delete and rebuild the pivot each time",
+     "correct": false,
+     "rationale": "Unnecessary and inefficient compared with a Table source."
+    },
+    {
+     "key": "D",
+     "text": "Turn off GETPIVOTDATA",
+     "correct": false,
+     "rationale": "GETPIVOTDATA is unrelated to the source range growing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a Table reference grows with the data, so refresh captures new rows.",
+   "outcome_refs": [
+    "MST-2652-D01.01"
+   ],
+   "domain_ref": "Preparing data for analysis",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2652-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO habits keep PivotTable analysis trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Refresh the pivot after the source data changes",
+     "correct": true,
+     "rationale": "Correct: pivots do not update until refreshed."
+    },
+    {
+     "key": "B",
+     "text": "Cross-check a key total against an independent SUM or count",
+     "correct": true,
+     "rationale": "Correct: an independent check catches grouping or double-counting mistakes."
+    },
+    {
+     "key": "C",
+     "text": "Assume the Grand Total is always correct",
+     "correct": false,
+     "rationale": "Grand totals can mislead with blanks or double counting."
+    },
+    {
+     "key": "D",
+     "text": "Hide subtotals so numbers look cleaner regardless of accuracy",
+     "correct": false,
+     "rationale": "Hiding detail does not make a wrong number right."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pivots do not update until refreshed.",
+   "outcome_refs": [
+    "MST-2652-D02.01"
+   ],
+   "domain_ref": "Building PivotTables",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2652-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You grouped order dates by month but see a '(blank)' row. What does it most likely indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Some source rows have empty or non-date values in the date field",
+     "correct": true,
+     "rationale": "Correct: blanks or text in the date column fall outside the date groups."
+    },
+    {
+     "key": "B",
+     "text": "PivotTables always add a blank row",
+     "correct": false,
+     "rationale": "A '(blank)' appears only when the field actually contains blanks."
+    },
+    {
+     "key": "C",
+     "text": "The slicer is broken",
+     "correct": false,
+     "rationale": "Slicers do not create blank groupings."
+    },
+    {
+     "key": "D",
+     "text": "Excel ran out of memory",
+     "correct": false,
+     "rationale": "Memory limits do not produce a '(blank)' category."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: blanks or text in the date column fall outside the date groups.",
+   "outcome_refs": [
+    "MST-2652-D03.01"
+   ],
+   "domain_ref": "Grouping and calculations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

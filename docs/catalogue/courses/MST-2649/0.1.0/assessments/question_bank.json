@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2649",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2649-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A cell shows 1,250 but SUM ignores it and other obviously numeric cells. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The numbers are stored as text, so SUM does not add them",
+     "correct": true,
+     "rationale": "Correct: text that looks numeric is excluded by SUM; convert it to a number to fix the total."
+    },
+    {
+     "key": "B",
+     "text": "Excel can only SUM up to 100 cells",
+     "correct": false,
+     "rationale": "There is no such limit; SUM handles very large ranges."
+    },
+    {
+     "key": "C",
+     "text": "The AVERAGE function is interfering with SUM",
+     "correct": false,
+     "rationale": "Functions do not interfere with each other this way."
+    },
+    {
+     "key": "D",
+     "text": "Currency formatting disables arithmetic",
+     "correct": false,
+     "rationale": "Formatting changes appearance only, not whether a value is numeric."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: text that looks numeric is excluded by SUM; convert it to a number to fix the total.",
+   "outcome_refs": [
+    "MST-2649-D01.01"
+   ],
+   "domain_ref": "The Excel environment and workbook structure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2649-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "You copied =B2*C2 down a column but every row multiplies by the same tax rate in C2. Which TWO fixes make it copy correctly? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lock the rate with an absolute reference, e.g. =B2*$C$2",
+     "correct": true,
+     "rationale": "Correct: anchoring the rate keeps it fixed while B adjusts per row."
+    },
+    {
+     "key": "B",
+     "text": "Put the rate in the formula as a typed number repeated per row",
+     "correct": true,
+     "rationale": "Correct: hard-coding the same rate per row also yields correct results, though it is less maintainable."
+    },
+    {
+     "key": "C",
+     "text": "Delete the fill handle",
+     "correct": false,
+     "rationale": "The fill handle is a tool, not the cause of the error."
+    },
+    {
+     "key": "D",
+     "text": "Format the column as currency",
+     "correct": false,
+     "rationale": "Formatting does not change which cell a reference points to."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: anchoring the rate keeps it fixed while B adjusts per row.",
+   "outcome_refs": [
+    "MST-2649-D02.01"
+   ],
+   "domain_ref": "Entering and formatting data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2649-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Which action changes only how a value looks, not the value Excel stores?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Applying a number format such as currency or percentage",
+     "correct": true,
+     "rationale": "Correct: number formats affect display only; the underlying value is unchanged."
+    },
+    {
+     "key": "B",
+     "text": "Typing a new number into the cell",
+     "correct": false,
+     "rationale": "That replaces the stored value."
+    },
+    {
+     "key": "C",
+     "text": "Using ROUND in a formula",
+     "correct": false,
+     "rationale": "ROUND changes the computed value, not just its display."
+    },
+    {
+     "key": "D",
+     "text": "Deleting the cell contents",
+     "correct": false,
+     "rationale": "That removes the stored value."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: number formats affect display only; the underlying value is unchanged.",
+   "outcome_refs": [
+    "MST-2649-D03.01"
+   ],
+   "domain_ref": "First formulas and references",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

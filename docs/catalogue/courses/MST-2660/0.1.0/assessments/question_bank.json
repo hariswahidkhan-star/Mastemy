@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2660",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2660-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A % change column shows #DIV/0! whenever the prior period was zero. What is the cleanest fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Guard the division, e.g. =IF(prior=0,\"n/a\",(current-prior)/prior)",
+     "correct": true,
+     "rationale": "Correct: handling the zero denominator avoids the error and communicates clearly."
+    },
+    {
+     "key": "B",
+     "text": "Delete every row where prior is zero",
+     "correct": false,
+     "rationale": "That hides legitimate new items."
+    },
+    {
+     "key": "C",
+     "text": "Format the cell so the error is white text",
+     "correct": false,
+     "rationale": "Hiding the error leaves a wrong, confusing value."
+    },
+    {
+     "key": "D",
+     "text": "Set calculation to manual",
+     "correct": false,
+     "rationale": "That stops updates everywhere, not just this column."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: handling the zero denominator avoids the error and communicates clearly.",
+   "outcome_refs": [
+    "MST-2660-D01.01"
+   ],
+   "domain_ref": "Report design foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2660-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make a monthly report both trustworthy and efficient? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Link the report to Tables/PivotTables so it refreshes rather than being rebuilt",
+     "correct": true,
+     "rationale": "Correct: automated refresh reduces errors and effort each cycle."
+    },
+    {
+     "key": "B",
+     "text": "Keep dated versions and a change log for traceability",
+     "correct": true,
+     "rationale": "Correct: version control lets reviewers see what changed and when."
+    },
+    {
+     "key": "C",
+     "text": "Type each month's numbers in by hand for control",
+     "correct": false,
+     "rationale": "Manual re-entry is slow and error-prone."
+    },
+    {
+     "key": "D",
+     "text": "Overwrite the previous file to save space",
+     "correct": false,
+     "rationale": "That destroys the audit trail."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: automated refresh reduces errors and effort each cycle.",
+   "outcome_refs": [
+    "MST-2660-D02.01"
+   ],
+   "domain_ref": "Variance and period reporting",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2660-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why separate source data, calculations and presentation across different areas or tabs?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So the report can be refreshed and audited without breaking the layout",
+     "correct": true,
+     "rationale": "Correct: separation keeps refresh reliable and makes logic easy to review."
+    },
+    {
+     "key": "B",
+     "text": "Because Excel requires three tabs in every file",
+     "correct": false,
+     "rationale": "There is no such requirement."
+    },
+    {
+     "key": "C",
+     "text": "To make the workbook open faster",
+     "correct": false,
+     "rationale": "Speed is not the primary reason."
+    },
+    {
+     "key": "D",
+     "text": "Because formulas cannot span tabs",
+     "correct": false,
+     "rationale": "Formulas can reference across tabs freely."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: separation keeps refresh reliable and makes logic easy to review.",
+   "outcome_refs": [
+    "MST-2660-D03.01"
+   ],
+   "domain_ref": "Presentation and automation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

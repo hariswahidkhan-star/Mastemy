@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2650",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2650-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need the total of Sales where Region is 'North' and Quarter is 'Q1'. Which function fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "SUMIFS with two criteria ranges",
+     "correct": true,
+     "rationale": "Correct: SUMIFS sums with multiple conditions, one criterion per range."
+    },
+    {
+     "key": "B",
+     "text": "SUMIF, which supports two conditions",
+     "correct": false,
+     "rationale": "SUMIF takes only a single criterion."
+    },
+    {
+     "key": "C",
+     "text": "SUM wrapped in IF",
+     "correct": false,
+     "rationale": "That does not aggregate conditionally across rows the way SUMIFS does."
+    },
+    {
+     "key": "D",
+     "text": "COUNTIFS",
+     "correct": false,
+     "rationale": "COUNTIFS counts rows; it does not total a value."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SUMIFS sums with multiple conditions, one criterion per range.",
+   "outcome_refs": [
+    "MST-2650-D01.01"
+   ],
+   "domain_ref": "Logical and conditional logic",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2650-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A VLOOKUP returns #N/A for unmatched codes and you want a clean report. Which TWO are sound ways to handle it? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Wrap it as =IFERROR(VLOOKUP(...),\"Not found\")",
+     "correct": true,
+     "rationale": "Correct: IFERROR substitutes a friendly value when the lookup fails."
+    },
+    {
+     "key": "B",
+     "text": "Investigate whether the missing codes indicate a real data problem",
+     "correct": true,
+     "rationale": "Correct: suppressing the symbol is not enough; genuine gaps should be understood."
+    },
+    {
+     "key": "C",
+     "text": "Delete every row that shows #N/A without checking",
+     "correct": false,
+     "rationale": "Deleting data blindly can remove legitimate records."
+    },
+    {
+     "key": "D",
+     "text": "Turn off formula calculation",
+     "correct": false,
+     "rationale": "That stops all results updating, not just the error."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: IFERROR substitutes a friendly value when the lookup fails.",
+   "outcome_refs": [
+    "MST-2650-D02.01"
+   ],
+   "domain_ref": "Conditional aggregation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2650-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "LEFT(A2,3) returns the first three characters of a phone number, but a later SUM of that column fails. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "LEFT returns text, so the extracted values are not numbers",
+     "correct": true,
+     "rationale": "Correct: text-returning functions produce text; convert with VALUE or multiply by 1 if numbers are needed."
+    },
+    {
+     "key": "B",
+     "text": "LEFT only works on numbers",
+     "correct": false,
+     "rationale": "LEFT works on text and text representations of numbers."
+    },
+    {
+     "key": "C",
+     "text": "SUM cannot read column A",
+     "correct": false,
+     "rationale": "SUM can read any column; the issue is the data type."
+    },
+    {
+     "key": "D",
+     "text": "The cells are merged",
+     "correct": false,
+     "rationale": "Merging is unrelated to the text-vs-number cause here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: text-returning functions produce text; convert with VALUE or multiply by 1 if numbers are needed.",
+   "outcome_refs": [
+    "MST-2650-D03.01"
+   ],
+   "domain_ref": "Text and data cleaning functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

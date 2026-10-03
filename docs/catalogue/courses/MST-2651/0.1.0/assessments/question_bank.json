@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2651",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2651-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You must look up a price using a key that sits to the right of the return column, on unsorted data. Which approach is most reliable?",
+   "options": [
+    {
+     "key": "A",
+     "text": "XLOOKUP, or INDEX/MATCH, both of which look up in any direction",
+     "correct": true,
+     "rationale": "Correct: neither requires the return column to be to the right, and both default to exact match."
+    },
+    {
+     "key": "B",
+     "text": "VLOOKUP, which can look to the left",
+     "correct": false,
+     "rationale": "VLOOKUP cannot return a column to the left of the key."
+    },
+    {
+     "key": "C",
+     "text": "HLOOKUP with approximate match",
+     "correct": false,
+     "rationale": "HLOOKUP is for horizontal data and approximate match misfires on unsorted data."
+    },
+    {
+     "key": "D",
+     "text": "A manual sort then VLOOKUP approximate",
+     "correct": false,
+     "rationale": "That is fragile and still cannot look left."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: neither requires the return column to be to the right, and both default to exact match.",
+   "outcome_refs": [
+    "MST-2651-D01.01"
+   ],
+   "domain_ref": "Classic lookups and their limits",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2651-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about dynamic-array formulas are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "FILTER returns a spilling result that resizes as source data changes",
+     "correct": true,
+     "rationale": "Correct: dynamic arrays spill and recalculate automatically."
+    },
+    {
+     "key": "B",
+     "text": "You can reference a spill range with the # operator, e.g. A2#",
+     "correct": true,
+     "rationale": "Correct: the # suffix refers to the whole spilled range."
+    },
+    {
+     "key": "C",
+     "text": "Dynamic arrays require pressing Ctrl+Shift+Enter like legacy arrays",
+     "correct": false,
+     "rationale": "Modern dynamic arrays spill automatically with a normal Enter."
+    },
+    {
+     "key": "D",
+     "text": "A #SPILL! error means the formula syntax is wrong",
+     "correct": false,
+     "rationale": "#SPILL! means the output range is blocked, not that the syntax is invalid."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: dynamic arrays spill and recalculate automatically.",
+   "outcome_refs": [
+    "MST-2651-D02.01"
+   ],
+   "domain_ref": "XLOOKUP and XMATCH",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2651-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A formula shows #SPILL!. What is the correct first step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Clear the cells blocking the spill range below or beside the formula",
+     "correct": true,
+     "rationale": "Correct: #SPILL! occurs when something obstructs where the array needs to expand."
+    },
+    {
+     "key": "B",
+     "text": "Wrap the formula in IFERROR to hide it",
+     "correct": false,
+     "rationale": "That conceals the problem without resolving the blockage."
+    },
+    {
+     "key": "C",
+     "text": "Convert the workbook to an older format",
+     "correct": false,
+     "rationale": "File format is not the cause."
+    },
+    {
+     "key": "D",
+     "text": "Delete the formula entirely",
+     "correct": false,
+     "rationale": "The formula is valid; only the spill area must be cleared."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: #SPILL! occurs when something obstructs where the array needs to expand.",
+   "outcome_refs": [
+    "MST-2651-D03.01"
+   ],
+   "domain_ref": "Dynamic arrays",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

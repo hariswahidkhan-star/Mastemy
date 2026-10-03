@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2655",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2655-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A PivotTable from the Data Model shows the same sales total for every product. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "There is no relationship between the sales table and the product table",
+     "correct": true,
+     "rationale": "Correct: without a relationship, the product filter cannot reach the fact table, so totals do not vary."
+    },
+    {
+     "key": "B",
+     "text": "DAX cannot sum numbers",
+     "correct": false,
+     "rationale": "DAX sums values; the issue is the missing relationship."
+    },
+    {
+     "key": "C",
+     "text": "The date table is marked",
+     "correct": false,
+     "rationale": "Marking a date table does not cause identical product totals."
+    },
+    {
+     "key": "D",
+     "text": "Measures always return the grand total",
+     "correct": false,
+     "rationale": "Measures respect filter context when relationships exist."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without a relationship, the product filter cannot reach the fact table, so totals do not vary.",
+   "outcome_refs": [
+    "MST-2655-D01.01"
+   ],
+   "domain_ref": "The Data Model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2655-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Power Pivot are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A measure is calculated at query time within the current filter context",
+     "correct": true,
+     "rationale": "Correct: measures evaluate dynamically based on the pivot's filters."
+    },
+    {
+     "key": "B",
+     "text": "CALCULATE can change the filter context of an expression",
+     "correct": true,
+     "rationale": "Correct: CALCULATE modifies or overrides filters applied to the calculation."
+    },
+    {
+     "key": "C",
+     "text": "Calculated columns are always preferable to measures",
+     "correct": false,
+     "rationale": "Calculated columns consume memory and are not dynamic like measures."
+    },
+    {
+     "key": "D",
+     "text": "The Data Model cannot handle more rows than a worksheet",
+     "correct": false,
+     "rationale": "The model's columnar engine scales well beyond the 1,048,576-row grid."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: measures evaluate dynamically based on the pivot's filters.",
+   "outcome_refs": [
+    "MST-2655-D02.01"
+   ],
+   "domain_ref": "Relationships and schema",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2655-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need a Year-to-Date sales measure that resets each year. What must be in place for time intelligence to work reliably?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A contiguous date table marked as a date table and related to the fact table",
+     "correct": true,
+     "rationale": "Correct: time-intelligence functions require a proper, unbroken date dimension."
+    },
+    {
+     "key": "B",
+     "text": "Only that the fact table has a date column, with no date table",
+     "correct": false,
+     "rationale": "A dedicated marked date table is required for reliable time intelligence."
+    },
+    {
+     "key": "C",
+     "text": "Sorting the fact table by date",
+     "correct": false,
+     "rationale": "Sorting does not satisfy time-intelligence requirements."
+    },
+    {
+     "key": "D",
+     "text": "Formatting the dates as text",
+     "correct": false,
+     "rationale": "Text dates break date calculations entirely."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: time-intelligence functions require a proper, unbroken date dimension.",
+   "outcome_refs": [
+    "MST-2655-D03.01"
+   ],
+   "domain_ref": "DAX measures",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

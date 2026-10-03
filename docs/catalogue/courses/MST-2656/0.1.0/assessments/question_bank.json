@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2656",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2656-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is recording a macro the better starting point rather than writing VBA from scratch?",
+   "options": [
+    {
+     "key": "A",
+     "text": "For a simple, repetitive UI task where you can learn from the generated code",
+     "correct": true,
+     "rationale": "Correct: recording captures routine steps and is a good way to see the object model, then refine the code."
+    },
+    {
+     "key": "B",
+     "text": "For complex logic with loops and decisions across many files",
+     "correct": false,
+     "rationale": "Recorders cannot capture loops or conditional logic well."
+    },
+    {
+     "key": "C",
+     "text": "Whenever you want error handling built in automatically",
+     "correct": false,
+     "rationale": "Recorders do not add error handling."
+    },
+    {
+     "key": "D",
+     "text": "Never; recording produces no usable code",
+     "correct": false,
+     "rationale": "Recorded code is usable and often a helpful starting point."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: recording captures routine steps and is a good way to see the object model, then refine the code.",
+   "outcome_refs": [
+    "MST-2656-D01.01"
+   ],
+   "domain_ref": "Recording and the VBE",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2656-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make VBA more reliable and maintainable? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Turn on Option Explicit and declare variables",
+     "correct": true,
+     "rationale": "Correct: it catches typos and undeclared variables at compile time."
+    },
+    {
+     "key": "B",
+     "text": "Act on ranges directly instead of using .Select and ActiveCell",
+     "correct": true,
+     "rationale": "Correct: avoiding Select makes code faster and less fragile."
+    },
+    {
+     "key": "C",
+     "text": "Enable all macros from any source by default",
+     "correct": false,
+     "rationale": "That is a security risk, not a reliability practice."
+    },
+    {
+     "key": "D",
+     "text": "Put all logic in one giant unbroken procedure",
+     "correct": false,
+     "rationale": "Breaking work into procedures improves readability and reuse."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: it catches typos and undeclared variables at compile time.",
+   "outcome_refs": [
+    "MST-2656-D02.01"
+   ],
+   "domain_ref": "Core VBA language",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2656-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A macro-enabled file must be shared across a team with macro-security in mind. What is the appropriate step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Save as .xlsm and digitally sign the project so recipients can trust it",
+     "correct": true,
+     "rationale": "Correct: a signed .xlsm lets users enable macros based on a trusted publisher."
+    },
+    {
+     "key": "B",
+     "text": "Save as .xlsx to keep the macros embedded",
+     "correct": false,
+     "rationale": ".xlsx cannot store macros at all."
+    },
+    {
+     "key": "C",
+     "text": "Tell everyone to disable macro security entirely",
+     "correct": false,
+     "rationale": "Disabling security exposes users to malicious code."
+    },
+    {
+     "key": "D",
+     "text": "Email the code as plain text to paste manually",
+     "correct": false,
+     "rationale": "That is error-prone and bypasses signing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a signed .xlsm lets users enable macros based on a trusted publisher.",
+   "outcome_refs": [
+    "MST-2656-D03.01"
+   ],
+   "domain_ref": "Procedures and structure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

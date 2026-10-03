@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2654",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2654-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You have a folder of identically structured monthly CSV files and want one combined table that updates when a new file is added. What is the Power Query approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Connect to the folder and combine/append the files, then refresh",
+     "correct": true,
+     "rationale": "Correct: a folder query consolidates matching files and picks up new ones on refresh."
+    },
+    {
+     "key": "B",
+     "text": "Copy and paste each file into a sheet by hand",
+     "correct": false,
+     "rationale": "That is manual and not repeatable."
+    },
+    {
+     "key": "C",
+     "text": "Use VLOOKUP across twelve workbooks",
+     "correct": false,
+     "rationale": "VLOOKUP does not consolidate files."
+    },
+    {
+     "key": "D",
+     "text": "Email each file to yourself and merge in the body",
+     "correct": false,
+     "rationale": "That is not a data-transformation method."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a folder query consolidates matching files and picks up new ones on refresh.",
+   "outcome_refs": [
+    "MST-2654-D01.01"
+   ],
+   "domain_ref": "Getting data in",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2654-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Power Query are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Applied Steps record each transformation and replay on refresh",
+     "correct": true,
+     "rationale": "Correct: the recorded steps make the query repeatable."
+    },
+    {
+     "key": "B",
+     "text": "Unpivot turns wide cross-tab columns into tidy rows",
+     "correct": true,
+     "rationale": "Correct: unpivoting is the standard reshape for cross-tabs."
+    },
+    {
+     "key": "C",
+     "text": "Changes must be redone manually every time data changes",
+     "correct": false,
+     "rationale": "Refresh replays the steps automatically."
+    },
+    {
+     "key": "D",
+     "text": "Power Query can only read a single worksheet",
+     "correct": false,
+     "rationale": "It connects to files, folders, workbooks, databases and the web."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the recorded steps make the query repeatable.",
+   "outcome_refs": [
+    "MST-2654-D02.01"
+   ],
+   "domain_ref": "Cleaning and shaping",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2654-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A merge between Orders and Customers returns fewer rows than Orders had. Which join most likely caused this and what is the safer default when you want to keep all orders?",
+   "options": [
+    {
+     "key": "A",
+     "text": "An inner join dropped unmatched orders; a left outer join keeps all orders",
+     "correct": true,
+     "rationale": "Correct: inner joins keep only matches, whereas a left outer join preserves every order."
+    },
+    {
+     "key": "B",
+     "text": "A left outer join dropped them; switch to inner",
+     "correct": false,
+     "rationale": "That is backwards; inner drops unmatched rows."
+    },
+    {
+     "key": "C",
+     "text": "Append caused it; use merge instead",
+     "correct": false,
+     "rationale": "Append stacks rows and would not reduce order count this way."
+    },
+    {
+     "key": "D",
+     "text": "Type change caused it; remove all type changes",
+     "correct": false,
+     "rationale": "A type change does not drop rows based on matching."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: inner joins keep only matches, whereas a left outer join preserves every order.",
+   "outcome_refs": [
+    "MST-2654-D03.01"
+   ],
+   "domain_ref": "Combining queries",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

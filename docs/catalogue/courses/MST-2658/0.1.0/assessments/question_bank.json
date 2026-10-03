@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2658",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2658-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI assistant highlights several sales figures as outliers and offers to delete them. What is the sound analytical response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Investigate each flagged value to see whether it is an error or a genuine extreme",
+     "correct": true,
+     "rationale": "Correct: outliers may be real and meaningful; they should be understood before removal."
+    },
+    {
+     "key": "B",
+     "text": "Delete them all immediately to clean the data",
+     "correct": false,
+     "rationale": "Blind deletion can discard legitimate, important records."
+    },
+    {
+     "key": "C",
+     "text": "Ignore the flags entirely",
+     "correct": false,
+     "rationale": "Flags are worth reviewing even if not acted on automatically."
+    },
+    {
+     "key": "D",
+     "text": "Replace them with the average without checking",
+     "correct": false,
+     "rationale": "That fabricates data without understanding the cause."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: outliers may be real and meaningful; they should be understood before removal.",
+   "outcome_refs": [
+    "MST-2658-D01.01"
+   ],
+   "domain_ref": "Framing the question",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2658-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep AI-assisted conclusions honest? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "State the limitations and uncertainty behind a finding",
+     "correct": true,
+     "rationale": "Correct: honest analysis communicates caveats, not just headline numbers."
+    },
+    {
+     "key": "B",
+     "text": "Distinguish correlation from causation before claiming a cause",
+     "correct": true,
+     "rationale": "Correct: a relationship in the data does not prove one thing caused another."
+    },
+    {
+     "key": "C",
+     "text": "Present the most dramatic interpretation to get attention",
+     "correct": false,
+     "rationale": "Exaggeration misleads decision-makers."
+    },
+    {
+     "key": "D",
+     "text": "Omit the sample size so results look stronger",
+     "correct": false,
+     "rationale": "Hiding sample size conceals real uncertainty."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: honest analysis communicates caveats, not just headline numbers.",
+   "outcome_refs": [
+    "MST-2658-D02.01"
+   ],
+   "domain_ref": "AI-assisted cleaning and exploration",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2658-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You asked AI to compare this quarter with last quarter and it returns a confident percentage. Before reporting it, what is the best check?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Recompute the key figure independently from the source rows",
+     "correct": true,
+     "rationale": "Correct: an independent recomputation confirms the AI used the right data and periods."
+    },
+    {
+     "key": "B",
+     "text": "Round it to look cleaner and send it",
+     "correct": false,
+     "rationale": "Rounding does not verify correctness."
+    },
+    {
+     "key": "C",
+     "text": "Ask the AI if it is sure",
+     "correct": false,
+     "rationale": "Self-confirmation by the same tool is not independent."
+    },
+    {
+     "key": "D",
+     "text": "Assume quarter boundaries were handled correctly",
+     "correct": false,
+     "rationale": "Period boundaries are a common source of error worth checking."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an independent recomputation confirms the AI used the right data and periods.",
+   "outcome_refs": [
+    "MST-2658-D03.01"
+   ],
+   "domain_ref": "From analysis to answer",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

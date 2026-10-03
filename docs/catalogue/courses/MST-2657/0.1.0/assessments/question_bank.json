@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2657",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2657-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An AI assistant suggests a worksheet function you have never seen and it returns an error. What is the responsible next step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Verify the function exists and is valid for your Excel version before using it",
+     "correct": true,
+     "rationale": "Correct: assistants can suggest non-existent or version-specific functions, so verification is essential."
+    },
+    {
+     "key": "B",
+     "text": "Assume it is correct because the AI suggested it",
+     "correct": false,
+     "rationale": "AI output can be wrong or hallucinated and must be checked."
+    },
+    {
+     "key": "C",
+     "text": "Report the error and switch off all formulas",
+     "correct": false,
+     "rationale": "Disabling formulas does not address the suggestion."
+    },
+    {
+     "key": "D",
+     "text": "Paste it into every cell to see if it works somewhere",
+     "correct": false,
+     "rationale": "Guesswork is not verification."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: assistants can suggest non-existent or version-specific functions, so verification is essential.",
+   "outcome_refs": [
+    "MST-2657-D01.01"
+   ],
+   "domain_ref": "What AI in the spreadsheet can do",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2657-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO habits keep AI-assisted spreadsheet work trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Independently check a key AI-produced total against the source data",
+     "correct": true,
+     "rationale": "Correct: an independent check catches wrong ranges and hallucinated results."
+    },
+    {
+     "key": "B",
+     "text": "Avoid putting sensitive personal data into prompts unless permitted and protected",
+     "correct": true,
+     "rationale": "Correct: data privacy and permissions must be respected."
+    },
+    {
+     "key": "C",
+     "text": "Accept AI summaries verbatim to save time",
+     "correct": false,
+     "rationale": "Unverified summaries can carry errors into a decision."
+    },
+    {
+     "key": "D",
+     "text": "Assume the assistant can read files you cannot access",
+     "correct": false,
+     "rationale": "Assistants operate within your existing permissions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an independent check catches wrong ranges and hallucinated results.",
+   "outcome_refs": [
+    "MST-2657-D02.01"
+   ],
+   "domain_ref": "Prompting for formulas and explanations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2657-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The assistant writes a confident paragraph of insights that the underlying data does not actually support. What should you do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Rewrite the summary so every claim traces to a verifiable figure",
+     "correct": true,
+     "rationale": "Correct: narrative must match the data; unsupported claims should be removed or corrected."
+    },
+    {
+     "key": "B",
+     "text": "Keep it because it reads well",
+     "correct": false,
+     "rationale": "Readability does not make an unsupported claim true."
+    },
+    {
+     "key": "C",
+     "text": "Add more adjectives to strengthen it",
+     "correct": false,
+     "rationale": "That worsens the honesty problem."
+    },
+    {
+     "key": "D",
+     "text": "Hide the data so no one can check",
+     "correct": false,
+     "rationale": "Concealing evidence is never appropriate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: narrative must match the data; unsupported claims should be removed or corrected.",
+   "outcome_refs": [
+    "MST-2657-D03.01"
+   ],
+   "domain_ref": "AI-assisted analysis and visuals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
