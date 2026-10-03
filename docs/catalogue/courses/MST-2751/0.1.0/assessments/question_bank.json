@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2751",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2751-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is loading large classical datasets into a quantum computer a central challenge for quantum machine learning?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Encoding many data points into quantum states can cost as much as the computation you hoped to speed up",
+     "correct": true,
+     "rationale": "Correct: the data-loading/input bottleneck can erase any theoretical speedup for data-heavy tasks."
+    },
+    {
+     "key": "B",
+     "text": "Quantum computers cannot represent numbers at all",
+     "correct": false,
+     "rationale": "They can represent amplitudes; the issue is the cost of loading, not representation."
+    },
+    {
+     "key": "C",
+     "text": "Classical data must first be deleted to free qubits",
+     "correct": false,
+     "rationale": "This is not how encoding works; data is mapped into states, not deleted."
+    },
+    {
+     "key": "D",
+     "text": "Loading data is instantaneous so it is never a concern",
+     "correct": false,
+     "rationale": "Loading is often the dominant cost, not instantaneous."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the data-loading/input bottleneck can erase any theoretical speedup for data-heavy tasks.",
+   "outcome_refs": [
+    "MST-2751-D01.01"
+   ],
+   "domain_ref": "Framing QML",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2751-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are genuine near-term limitations of variational quantum machine learning? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Barren plateaus can make gradients vanish and training stall",
+     "correct": true,
+     "rationale": "Correct: barren plateaus are a well-documented trainability problem."
+    },
+    {
+     "key": "B",
+     "text": "Noise on NISQ hardware degrades the quality of the learned model",
+     "correct": true,
+     "rationale": "Correct: device noise is a major constraint on today's variational models."
+    },
+    {
+     "key": "C",
+     "text": "Variational circuits are proven to beat all classical models",
+     "correct": false,
+     "rationale": "No such general proof exists; advantage is problem-specific and unproven in general."
+    },
+    {
+     "key": "D",
+     "text": "They require no classical computation at all",
+     "correct": false,
+     "rationale": "They are hybrid: a classical optimiser updates the circuit parameters."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: barren plateaus are a well-documented trainability problem.",
+   "outcome_refs": [
+    "MST-2751-D02.01"
+   ],
+   "domain_ref": "Data encoding",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2751-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A pilot reports a quantum classifier reached 82% accuracy. What is the most important follow-up before claiming success?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Compare it against a strong classical baseline on the same data and splits",
+     "correct": true,
+     "rationale": "Correct: without a classical baseline the number says nothing about quantum advantage."
+    },
+    {
+     "key": "B",
+     "text": "Add more qubits because accuracy always rises with qubit count",
+     "correct": false,
+     "rationale": "Accuracy does not reliably rise with qubit count; baselines matter more."
+    },
+    {
+     "key": "C",
+     "text": "Publish immediately since 82% is above random",
+     "correct": false,
+     "rationale": "Being above random is not evidence of advantage over classical methods."
+    },
+    {
+     "key": "D",
+     "text": "Remove the classical optimiser to make it 'fully quantum'",
+     "correct": false,
+     "rationale": "Variational QML needs the classical optimiser; removing it is not a validity check."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without a classical baseline the number says nothing about quantum advantage.",
+   "outcome_refs": [
+    "MST-2751-D03.01"
+   ],
+   "domain_ref": "Variational models",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

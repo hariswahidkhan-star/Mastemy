@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2752",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2752-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does 'harvest now, decrypt later' make post-quantum migration urgent even before large quantum computers exist?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Adversaries can store today's encrypted long-lived data and decrypt it once capable quantum machines arrive",
+     "correct": true,
+     "rationale": "Correct: data with long secrecy requirements is at risk now because it can be stored and decrypted later."
+    },
+    {
+     "key": "B",
+     "text": "Because RSA is already broken by classical computers today",
+     "correct": false,
+     "rationale": "RSA is not broken classically; the risk is future quantum capability."
+    },
+    {
+     "key": "C",
+     "text": "Because post-quantum algorithms stop working after a few years",
+     "correct": false,
+     "rationale": "PQC schemes do not expire; the urgency is about long-lived captured data."
+    },
+    {
+     "key": "D",
+     "text": "Because quantum computers already exist at the needed scale",
+     "correct": false,
+     "rationale": "They do not yet exist at scale; urgency comes from captured-data risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: data with long secrecy requirements is at risk now because it can be stored and decrypted later.",
+   "outcome_refs": [
+    "MST-2752-D01.01"
+   ],
+   "domain_ref": "The quantum threat",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2752-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about the quantum threat to cryptography are accurate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Shor's algorithm would break RSA and elliptic-curve public-key cryptography",
+     "correct": true,
+     "rationale": "Correct: Shor targets the hardness assumptions behind RSA and ECC."
+    },
+    {
+     "key": "B",
+     "text": "Symmetric ciphers like AES mainly need larger key sizes, not replacement",
+     "correct": true,
+     "rationale": "Correct: Grover gives only a quadratic speedup, addressed by doubling symmetric key length."
+    },
+    {
+     "key": "C",
+     "text": "Hash functions and symmetric ciphers are completely broken by quantum computers",
+     "correct": false,
+     "rationale": "They are weakened at most quadratically, not broken, by known quantum attacks."
+    },
+    {
+     "key": "D",
+     "text": "Switching to longer RSA keys fully solves the quantum threat",
+     "correct": false,
+     "rationale": "Longer RSA keys do not defeat Shor; new algorithm families are required."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Shor targets the hardness assumptions behind RSA and ECC.",
+   "outcome_refs": [
+    "MST-2752-D02.01"
+   ],
+   "domain_ref": "PQC algorithm families",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2752-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the most responsible first step when planning a post-quantum migration for a large estate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Build an inventory of where and how cryptography is used, including long-lived secrets",
+     "correct": true,
+     "rationale": "Correct: you cannot migrate what you have not inventoried; crypto-agility starts with discovery."
+    },
+    {
+     "key": "B",
+     "text": "Immediately delete all existing keys and certificates",
+     "correct": false,
+     "rationale": "Deleting keys breaks services and is not a migration step."
+    },
+    {
+     "key": "C",
+     "text": "Wait until a cryptographically relevant quantum computer is announced",
+     "correct": false,
+     "rationale": "Waiting ignores harvest-now-decrypt-later risk to long-lived data."
+    },
+    {
+     "key": "D",
+     "text": "Adopt a single unstandardised scheme everywhere at once",
+     "correct": false,
+     "rationale": "Using unvetted schemes and a big-bang cut-over is risky and not crypto-agile."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: you cannot migrate what you have not inventoried; crypto-agility starts with discovery.",
+   "outcome_refs": [
+    "MST-2752-D03.01"
+   ],
+   "domain_ref": "Standards and schemes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

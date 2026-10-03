@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2749",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2749-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A qubit is measured many times and returns 0 about 25% of the time and 1 about 75% of the time. What does this tell you about its state before measurement?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It was in a superposition whose amplitudes gave probabilities of about 0.25 and 0.75",
+     "correct": true,
+     "rationale": "Correct: measurement probabilities are the squared magnitudes of the amplitudes of the pre-measurement superposition."
+    },
+    {
+     "key": "B",
+     "text": "It was definitely 1 and the 0 results are hardware errors",
+     "correct": false,
+     "rationale": "A stable 75/25 split reflects the state's amplitudes, not random hardware error."
+    },
+    {
+     "key": "C",
+     "text": "It was both 0 and 1 simultaneously in a classical sense",
+     "correct": false,
+     "rationale": "Superposition is a probability amplitude description, not a classical 'both values' object."
+    },
+    {
+     "key": "D",
+     "text": "The qubit had no defined state until the vendor assigned one",
+     "correct": false,
+     "rationale": "The state is defined by its amplitudes; measurement reveals an outcome probabilistically."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: measurement probabilities are the squared magnitudes of the amplitudes of the pre-measurement superposition.",
+   "outcome_refs": [
+    "MST-2749-D01.01"
+   ],
+   "domain_ref": "Classical to quantum intuition",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2749-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about entanglement are accurate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Measuring one entangled qubit is correlated with the outcome of its partner",
+     "correct": true,
+     "rationale": "Correct: entangled qubits show correlated measurement outcomes."
+    },
+    {
+     "key": "B",
+     "text": "Entanglement is a genuinely non-classical resource used by many quantum algorithms",
+     "correct": true,
+     "rationale": "Correct: entanglement has no classical analogue and underlies quantum advantage in several algorithms."
+    },
+    {
+     "key": "C",
+     "text": "Entanglement lets you send information faster than light",
+     "correct": false,
+     "rationale": "No usable signal travels faster than light; correlations cannot carry a message on their own."
+    },
+    {
+     "key": "D",
+     "text": "Entangled qubits can be freely copied to back them up",
+     "correct": false,
+     "rationale": "The no-cloning theorem forbids copying an unknown quantum state."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: entangled qubits show correlated measurement outcomes.",
+   "outcome_refs": [
+    "MST-2749-D02.01"
+   ],
+   "domain_ref": "Gates and circuits",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2749-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A vendor claims their 50-qubit noisy device already runs deep algorithms that break RSA. What is the most accurate response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Current noisy intermediate-scale devices cannot run the deep, error-corrected circuits RSA-breaking requires",
+     "correct": true,
+     "rationale": "Correct: breaking RSA needs far more logical, error-corrected qubits than today's noisy hardware provides."
+    },
+    {
+     "key": "B",
+     "text": "Any 50-qubit device can break RSA because 50 qubits exceed RSA key sizes",
+     "correct": false,
+     "rationale": "Qubit count does not map onto key bits that way; error correction and depth dominate."
+    },
+    {
+     "key": "C",
+     "text": "RSA is already broken by classical computers so the claim is routine",
+     "correct": false,
+     "rationale": "RSA is not broken classically; this misstates the baseline."
+    },
+    {
+     "key": "D",
+     "text": "The claim is plausible because noise improves algorithm accuracy",
+     "correct": false,
+     "rationale": "Noise degrades, not improves, circuit results."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: breaking RSA needs far more logical, error-corrected qubits than today's noisy hardware provides.",
+   "outcome_refs": [
+    "MST-2749-D03.01"
+   ],
+   "domain_ref": "Measurement and probability",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

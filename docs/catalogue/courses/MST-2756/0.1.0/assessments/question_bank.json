@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2756",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2756-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A robot arm must grasp parts whose exact 3D position varies. Which vision capability most directly provides what the gripper needs?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Pose estimation that recovers the object's position and orientation",
+     "correct": true,
+     "rationale": "Correct: grasping needs the object's 6-DoF pose, which pose estimation provides."
+    },
+    {
+     "key": "B",
+     "text": "A colour histogram of the whole image",
+     "correct": false,
+     "rationale": "A global colour histogram does not locate or orient the object."
+    },
+    {
+     "key": "C",
+     "text": "Increasing the image resolution only",
+     "correct": false,
+     "rationale": "Resolution alone does not yield the object's pose."
+    },
+    {
+     "key": "D",
+     "text": "Converting the image to grayscale",
+     "correct": false,
+     "rationale": "Grayscale conversion does not estimate position or orientation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: grasping needs the object's 6-DoF pose, which pose estimation provides.",
+   "outcome_refs": [
+    "MST-2756-D01.01"
+   ],
+   "domain_ref": "Vision basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2756-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid ways for a robot to perceive depth? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Stereo vision using the disparity between two cameras",
+     "correct": true,
+     "rationale": "Correct: stereo disparity yields depth."
+    },
+    {
+     "key": "B",
+     "text": "A time-of-flight or structured-light depth sensor",
+     "correct": true,
+     "rationale": "Correct: active depth sensors measure distance directly."
+    },
+    {
+     "key": "C",
+     "text": "A single uncalibrated 2D photo read as exact metric distances",
+     "correct": false,
+     "rationale": "One ordinary 2D image does not give metric depth without extra cues."
+    },
+    {
+     "key": "D",
+     "text": "Counting the number of pixels in the image",
+     "correct": false,
+     "rationale": "Pixel count is resolution, not depth."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: stereo disparity yields depth.",
+   "outcome_refs": [
+    "MST-2756-D02.01"
+   ],
+   "domain_ref": "Features and matching",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2756-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is camera calibration important in a vision-guided robot?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It relates image pixels to real-world geometry so measurements and poses are accurate",
+     "correct": true,
+     "rationale": "Correct: calibration maps pixels to metric space, enabling accurate positioning."
+    },
+    {
+     "key": "B",
+     "text": "It makes the camera capture images faster",
+     "correct": false,
+     "rationale": "Calibration concerns geometry, not frame rate."
+    },
+    {
+     "key": "C",
+     "text": "It removes the need for any lighting",
+     "correct": false,
+     "rationale": "Calibration does not address scene lighting."
+    },
+    {
+     "key": "D",
+     "text": "It encrypts the image for security",
+     "correct": false,
+     "rationale": "Calibration is geometric, not a security measure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: calibration maps pixels to metric space, enabling accurate positioning.",
+   "outcome_refs": [
+    "MST-2756-D03.01"
+   ],
+   "domain_ref": "Detection and segmentation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

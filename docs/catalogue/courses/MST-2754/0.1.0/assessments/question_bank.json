@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2754",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2754-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A robot continuously streams laser-scan data to a mapping node. Which ROS communication pattern fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A topic with publish/subscribe, because the data is a continuous stream",
+     "correct": true,
+     "rationale": "Correct: continuous, many-to-many streaming data is a natural fit for topics."
+    },
+    {
+     "key": "B",
+     "text": "A service, because every scan needs an immediate reply",
+     "correct": false,
+     "rationale": "Services are request/response; continuous streams do not fit that pattern well."
+    },
+    {
+     "key": "C",
+     "text": "A parameter, because the scan is configuration",
+     "correct": false,
+     "rationale": "Scan data is runtime data, not static configuration."
+    },
+    {
+     "key": "D",
+     "text": "A launch file, because launch files carry data",
+     "correct": false,
+     "rationale": "Launch files start nodes; they do not stream data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: continuous, many-to-many streaming data is a natural fit for topics.",
+   "outcome_refs": [
+    "MST-2754-D01.01"
+   ],
+   "domain_ref": "What ROS is",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2754-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about ROS communication are accurate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Nodes exchange typed messages over named topics",
+     "correct": true,
+     "rationale": "Correct: topics carry typed messages between publishing and subscribing nodes."
+    },
+    {
+     "key": "B",
+     "text": "Actions suit long-running goals that report feedback and can be cancelled",
+     "correct": true,
+     "rationale": "Correct: actions are designed for long tasks with feedback and preemption."
+    },
+    {
+     "key": "C",
+     "text": "A service is ideal for a never-ending sensor stream",
+     "correct": false,
+     "rationale": "Services are request/response, not suited to continuous streams."
+    },
+    {
+     "key": "D",
+     "text": "Topics guarantee a direct reply to every message",
+     "correct": false,
+     "rationale": "Publish/subscribe has no built-in reply; use services for that."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: topics carry typed messages between publishing and subscribing nodes.",
+   "outcome_refs": [
+    "MST-2754-D02.01"
+   ],
+   "domain_ref": "Nodes and topics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2754-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does ROS primarily provide to a robotics project?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A middleware and tooling layer that lets independent modules communicate and be reused",
+     "correct": true,
+     "rationale": "Correct: ROS standardises inter-process communication and tooling so components compose."
+    },
+    {
+     "key": "B",
+     "text": "A replacement for the computer's operating system kernel",
+     "correct": false,
+     "rationale": "ROS runs on top of an OS such as Linux; it is not a kernel."
+    },
+    {
+     "key": "C",
+     "text": "A guarantee that any robot hardware will work without drivers",
+     "correct": false,
+     "rationale": "Hardware still needs drivers; ROS does not remove that need."
+    },
+    {
+     "key": "D",
+     "text": "A single monolithic program that controls the whole robot",
+     "correct": false,
+     "rationale": "ROS encourages many small nodes, not one monolith."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ROS standardises inter-process communication and tooling so components compose.",
+   "outcome_refs": [
+    "MST-2754-D03.01"
+   ],
+   "domain_ref": "Services and actions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

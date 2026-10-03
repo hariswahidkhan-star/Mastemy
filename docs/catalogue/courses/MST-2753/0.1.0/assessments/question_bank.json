@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2753",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2753-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A robot must stop when a person steps into its area. Which design best ensures this behaviour?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A closed-loop system using presence sensors that feed back to halt motion",
+     "correct": true,
+     "rationale": "Correct: closed-loop feedback from presence sensing lets the robot react to the unplanned event."
+    },
+    {
+     "key": "B",
+     "text": "An open-loop sequence timed to the normal cycle",
+     "correct": false,
+     "rationale": "Open-loop timing cannot react to an unexpected person entering the area."
+    },
+    {
+     "key": "C",
+     "text": "A faster motor so the task finishes before anyone arrives",
+     "correct": false,
+     "rationale": "Speed does not provide safety against people entering the workspace."
+    },
+    {
+     "key": "D",
+     "text": "Removing all sensors to simplify the controller",
+     "correct": false,
+     "rationale": "Removing sensing eliminates the feedback needed to stop safely."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: closed-loop feedback from presence sensing lets the robot react to the unplanned event.",
+   "outcome_refs": [
+    "MST-2753-D01.01"
+   ],
+   "domain_ref": "Anatomy of a robot",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2753-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO belong to the 'sense' and 'act' parts of the sense-plan-act loop respectively? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A camera detecting an object's position is part of 'sense'",
+     "correct": true,
+     "rationale": "Correct: perception via a camera is sensing."
+    },
+    {
+     "key": "B",
+     "text": "A motor moving the gripper to the object is part of 'act'",
+     "correct": true,
+     "rationale": "Correct: driving actuators to affect the world is acting."
+    },
+    {
+     "key": "C",
+     "text": "Choosing which object to pick next is sensing",
+     "correct": false,
+     "rationale": "Deciding the next action is 'plan', not 'sense'."
+    },
+    {
+     "key": "D",
+     "text": "Converting sensor data into a world model is acting",
+     "correct": false,
+     "rationale": "Building a model from sensor data is sensing/perception, not acting."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: perception via a camera is sensing.",
+   "outcome_refs": [
+    "MST-2753-D02.01"
+   ],
+   "domain_ref": "Sensors and actuators",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2753-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does a robot need defined coordinate frames?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So positions sensed in one frame can be transformed into the frame needed to act",
+     "correct": true,
+     "rationale": "Correct: frames let the robot relate sensor, tool and world positions consistently."
+    },
+    {
+     "key": "B",
+     "text": "Because frames make the motors spin faster",
+     "correct": false,
+     "rationale": "Frames are a geometric bookkeeping tool, not a speed control."
+    },
+    {
+     "key": "C",
+     "text": "Because without frames a robot cannot be powered on",
+     "correct": false,
+     "rationale": "Power-up does not depend on coordinate frames."
+    },
+    {
+     "key": "D",
+     "text": "Because frames replace the need for any sensors",
+     "correct": false,
+     "rationale": "Frames organise spatial data but do not replace sensing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: frames let the robot relate sensor, tool and world positions consistently.",
+   "outcome_refs": [
+    "MST-2753-D03.01"
+   ],
+   "domain_ref": "Frames and kinematics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2755",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2755-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An indoor robot's wheel odometry says it has travelled straight, but it has actually drifted sideways. Which capability most directly corrects this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Localisation that fuses external sensing (e.g. LiDAR) with odometry to correct accumulated drift",
+     "correct": true,
+     "rationale": "Correct: odometry drifts over time; fusing it with external references corrects the pose estimate."
+    },
+    {
+     "key": "B",
+     "text": "Increasing motor torque to drive straighter",
+     "correct": false,
+     "rationale": "Torque does not fix an estimation error about where the robot is."
+    },
+    {
+     "key": "C",
+     "text": "Switching off all sensors to reduce noise",
+     "correct": false,
+     "rationale": "Removing sensing removes the information needed to correct drift."
+    },
+    {
+     "key": "D",
+     "text": "Using a larger global map",
+     "correct": false,
+     "rationale": "A bigger map does not by itself correct odometry drift."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: odometry drifts over time; fusing it with external references corrects the pose estimate.",
+   "outcome_refs": [
+    "MST-2755-D01.01"
+   ],
+   "domain_ref": "Navigation overview",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2755-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO responsibilities belong to an autonomous mobile robot's navigation stack? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Planning a path from the robot's pose to a goal",
+     "correct": true,
+     "rationale": "Correct: path planning is a core navigation responsibility."
+    },
+    {
+     "key": "B",
+     "text": "Avoiding obstacles detected along the way",
+     "correct": true,
+     "rationale": "Correct: local avoidance/replanning handles obstacles during motion."
+    },
+    {
+     "key": "C",
+     "text": "Signing the robot's firmware for security",
+     "correct": false,
+     "rationale": "Firmware signing is a security task, not part of navigation."
+    },
+    {
+     "key": "D",
+     "text": "Billing the customer for the delivery",
+     "correct": false,
+     "rationale": "Billing is a business function unrelated to navigation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: path planning is a core navigation responsibility.",
+   "outcome_refs": [
+    "MST-2755-D02.01"
+   ],
+   "domain_ref": "Localisation and SLAM",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2755-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is SLAM, in one sentence?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Building a map of an unknown environment while simultaneously tracking the robot's position within it",
+     "correct": true,
+     "rationale": "Correct: SLAM jointly estimates the map and the robot's pose."
+    },
+    {
+     "key": "B",
+     "text": "Pre-loading a perfect map so no sensing is needed",
+     "correct": false,
+     "rationale": "SLAM is used precisely when no prior map exists."
+    },
+    {
+     "key": "C",
+     "text": "A method to make motors run faster",
+     "correct": false,
+     "rationale": "SLAM concerns mapping and localisation, not motor speed."
+    },
+    {
+     "key": "D",
+     "text": "A way to delete obstacles from the real world",
+     "correct": false,
+     "rationale": "SLAM perceives obstacles; it cannot remove physical objects."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: SLAM jointly estimates the map and the robot's pose.",
+   "outcome_refs": [
+    "MST-2755-D03.01"
+   ],
+   "domain_ref": "Path planning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

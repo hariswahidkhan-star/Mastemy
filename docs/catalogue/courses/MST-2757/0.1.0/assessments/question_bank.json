@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2757",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2757-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A robot is rewarded for 'distance from the start'. It learns to spin in place at the edge of a cliff to maximise instantaneous distance, risking a fall. What does this illustrate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reward hacking - optimising the stated reward in a way that violates the designer's intent",
+     "correct": true,
+     "rationale": "Correct: the agent exploits a poorly specified reward rather than achieving the intended goal."
+    },
+    {
+     "key": "B",
+     "text": "The algorithm failed to run",
+     "correct": false,
+     "rationale": "The algorithm ran fine; the reward specification was the problem."
+    },
+    {
+     "key": "C",
+     "text": "The robot needs a faster processor",
+     "correct": false,
+     "rationale": "Compute is not the issue; the reward design is."
+    },
+    {
+     "key": "D",
+     "text": "Reinforcement learning cannot optimise rewards",
+     "correct": false,
+     "rationale": "It optimised the reward too literally; that is the point."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the agent exploits a poorly specified reward rather than achieving the intended goal.",
+   "outcome_refs": [
+    "MST-2757-D01.01"
+   ],
+   "domain_ref": "RL framing",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2757-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about the sim-to-real gap are accurate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Policies trained only in simulation can fail on hardware due to unmodelled dynamics",
+     "correct": true,
+     "rationale": "Correct: differences between sim and reality cause transfer failures."
+    },
+    {
+     "key": "B",
+     "text": "Domain randomisation during training can make policies more robust to real variation",
+     "correct": true,
+     "rationale": "Correct: randomising sim parameters helps policies generalise to reality."
+    },
+    {
+     "key": "C",
+     "text": "Simulation always matches reality exactly, so transfer is guaranteed",
+     "correct": false,
+     "rationale": "Simulation never matches reality perfectly; that is the gap."
+    },
+    {
+     "key": "D",
+     "text": "Real-robot training is always cheaper and safer than simulation",
+     "correct": false,
+     "rationale": "Real-robot training is often costlier and riskier, which is why sim is used first."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: differences between sim and reality cause transfer failures.",
+   "outcome_refs": [
+    "MST-2757-D02.01"
+   ],
+   "domain_ref": "Core trade-offs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2757-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is the exploration-exploitation trade-off central to reinforcement learning?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The agent must try new actions to discover better returns while still using what it already knows works",
+     "correct": true,
+     "rationale": "Correct: too little exploration misses better policies; too much wastes performance."
+    },
+    {
+     "key": "B",
+     "text": "Because exploration and exploitation are the same thing",
+     "correct": false,
+     "rationale": "They are opposing pressures that must be balanced."
+    },
+    {
+     "key": "C",
+     "text": "Because the agent never needs to try new actions",
+     "correct": false,
+     "rationale": "Without exploration the agent cannot improve beyond current knowledge."
+    },
+    {
+     "key": "D",
+     "text": "Because rewards are irrelevant to action choice",
+     "correct": false,
+     "rationale": "Rewards drive action choice; they are central, not irrelevant."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: too little exploration misses better policies; too much wastes performance.",
+   "outcome_refs": [
+    "MST-2757-D03.01"
+   ],
+   "domain_ref": "Methods overview",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

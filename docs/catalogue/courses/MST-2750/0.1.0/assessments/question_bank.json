@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2750",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2750-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "For unstructured search over N items, roughly how many evaluations does Grover's algorithm need compared with a classical search?",
+   "options": [
+    {
+     "key": "A",
+     "text": "About sqrt(N) versus about N classically - a quadratic speedup",
+     "correct": true,
+     "rationale": "Correct: Grover gives a quadratic speedup, needing on the order of sqrt(N) iterations."
+    },
+    {
+     "key": "B",
+     "text": "About log(N) versus N - an exponential speedup",
+     "correct": false,
+     "rationale": "Grover is quadratic, not exponential; log(N) overstates the advantage."
+    },
+    {
+     "key": "C",
+     "text": "About N versus N - no speedup at all",
+     "correct": false,
+     "rationale": "Grover does provide a quadratic advantage over classical search."
+    },
+    {
+     "key": "D",
+     "text": "About N^2 - it is slower than classical search",
+     "correct": false,
+     "rationale": "Grover is faster, not slower, scaling as sqrt(N)."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: Grover gives a quadratic speedup, needing on the order of sqrt(N) iterations.",
+   "outcome_refs": [
+    "MST-2750-D01.01"
+   ],
+   "domain_ref": "Algorithm anatomy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2750-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Shor's algorithm are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It can factor large integers efficiently, threatening RSA",
+     "correct": true,
+     "rationale": "Correct: Shor's algorithm factors integers in polynomial time, undermining RSA."
+    },
+    {
+     "key": "B",
+     "text": "It relies on quantum period finding via the quantum Fourier transform",
+     "correct": true,
+     "rationale": "Correct: Shor reduces factoring to period finding, solved with the QFT and phase estimation."
+    },
+    {
+     "key": "C",
+     "text": "It already runs on commercial noisy devices to break real keys",
+     "correct": false,
+     "rationale": "Fault-tolerant hardware at the needed scale does not yet exist."
+    },
+    {
+     "key": "D",
+     "text": "It speeds up every optimisation problem exponentially",
+     "correct": false,
+     "rationale": "Shor targets factoring/discrete-log structure, not arbitrary optimisation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: Shor's algorithm factors integers in polynomial time, undermining RSA.",
+   "outcome_refs": [
+    "MST-2750-D02.01"
+   ],
+   "domain_ref": "Grover search",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2750-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is interference essential to quantum algorithms rather than simply 'trying all inputs at once'?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Interference is engineered so wrong answers cancel and the right answer's amplitude grows before measurement",
+     "correct": true,
+     "rationale": "Correct: algorithms arrange constructive/destructive interference so measurement is likely to yield the answer."
+    },
+    {
+     "key": "B",
+     "text": "Because measurement returns all superposed answers simultaneously",
+     "correct": false,
+     "rationale": "Measurement returns one outcome; you cannot read all branches."
+    },
+    {
+     "key": "C",
+     "text": "Because qubits store exponentially many classical results you can print out",
+     "correct": false,
+     "rationale": "You cannot extract all amplitudes; only measurement statistics are accessible."
+    },
+    {
+     "key": "D",
+     "text": "Because interference copies the correct answer to every qubit",
+     "correct": false,
+     "rationale": "No-cloning forbids copying; interference reshapes amplitudes, it does not copy results."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: algorithms arrange constructive/destructive interference so measurement is likely to yield the answer.",
+   "outcome_refs": [
+    "MST-2750-D03.01"
+   ],
+   "domain_ref": "Fourier and period finding",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

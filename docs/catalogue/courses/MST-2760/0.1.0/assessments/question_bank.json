@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2760",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2760-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What most clearly distinguishes a digital twin from an ordinary 3D CAD model of an asset?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A digital twin is continuously updated with live data so it reflects the asset's current state",
+     "correct": true,
+     "rationale": "Correct: the defining feature is the live data link keeping the twin synchronised with reality."
+    },
+    {
+     "key": "B",
+     "text": "A digital twin is simply a higher-resolution 3D render",
+     "correct": false,
+     "rationale": "Resolution is not the distinction; the live data connection is."
+    },
+    {
+     "key": "C",
+     "text": "A digital twin must be printed in 3D",
+     "correct": false,
+     "rationale": "Printing is unrelated to what makes a twin."
+    },
+    {
+     "key": "D",
+     "text": "A digital twin never changes once built",
+     "correct": false,
+     "rationale": "A static model never changes; a twin updates with live data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the defining feature is the live data link keeping the twin synchronised with reality.",
+   "outcome_refs": [
+    "MST-2760-D01.01"
+   ],
+   "domain_ref": "Spatial computing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2760-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid uses of a digital twin? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Running what-if simulations to test changes before applying them physically",
+     "correct": true,
+     "rationale": "Correct: simulating scenarios on the twin avoids risky physical trials."
+    },
+    {
+     "key": "B",
+     "text": "Predicting maintenance needs from the asset's live behaviour",
+     "correct": true,
+     "rationale": "Correct: predictive maintenance is a core twin use case."
+    },
+    {
+     "key": "C",
+     "text": "Permanently replacing the physical asset so it can be switched off",
+     "correct": false,
+     "rationale": "A twin mirrors the asset; it does not replace the physical thing."
+    },
+    {
+     "key": "D",
+     "text": "Guaranteeing outcomes regardless of input data quality",
+     "correct": false,
+     "rationale": "Twin insights are only as good as their data; quality matters."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: simulating scenarios on the twin avoids risky physical trials.",
+   "outcome_refs": [
+    "MST-2760-D02.01"
+   ],
+   "domain_ref": "Digital twin basics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2760-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A factory twin gives misleading predictions. Investigation shows sensor data arrives hours late. What does this illustrate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Synchronisation and data quality are essential; a twin with stale data misrepresents reality",
+     "correct": true,
+     "rationale": "Correct: a twin depends on timely, accurate data to stay a faithful mirror."
+    },
+    {
+     "key": "B",
+     "text": "Digital twins do not need any data",
+     "correct": false,
+     "rationale": "Twins fundamentally depend on data; this is the opposite lesson."
+    },
+    {
+     "key": "C",
+     "text": "The 3D model's colours were wrong",
+     "correct": false,
+     "rationale": "The issue is data latency, not appearance."
+    },
+    {
+     "key": "D",
+     "text": "Simulations are always correct regardless of inputs",
+     "correct": false,
+     "rationale": "Garbage-in produces misleading output; inputs matter."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a twin depends on timely, accurate data to stay a faithful mirror.",
+   "outcome_refs": [
+    "MST-2760-D03.01"
+   ],
+   "domain_ref": "Data pipeline",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

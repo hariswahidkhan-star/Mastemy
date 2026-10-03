@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2761",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2761-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A battery sensor in a remote field must last two years and send small readings hourly. Which connectivity choice fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A low-power wide-area protocol designed for small, infrequent messages",
+     "correct": true,
+     "rationale": "Correct: LPWAN-style connectivity trades bandwidth for long range and very low power."
+    },
+    {
+     "key": "B",
+     "text": "Continuous high-bandwidth video streaming over Wi-Fi",
+     "correct": false,
+     "rationale": "High-bandwidth streaming drains batteries and exceeds the need."
+    },
+    {
+     "key": "C",
+     "text": "A wired Ethernet connection to each field sensor",
+     "correct": false,
+     "rationale": "Wiring remote field sensors is impractical and unnecessary for small readings."
+    },
+    {
+     "key": "D",
+     "text": "Keeping the radio powered on at full strength at all times",
+     "correct": false,
+     "rationale": "Always-on full-power radio defeats the two-year battery goal."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: LPWAN-style connectivity trades bandwidth for long range and very low power.",
+   "outcome_refs": [
+    "MST-2761-D01.01"
+   ],
+   "domain_ref": "IoT architecture",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2761-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are genuine reasons to run AI inference at the edge rather than in the cloud? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lower latency because data need not round-trip to the cloud",
+     "correct": true,
+     "rationale": "Correct: on-device inference avoids network round-trips, reducing latency."
+    },
+    {
+     "key": "B",
+     "text": "Reduced bandwidth and better privacy by processing data locally",
+     "correct": true,
+     "rationale": "Correct: processing locally cuts data sent and can keep sensitive data on-device."
+    },
+    {
+     "key": "C",
+     "text": "Edge devices have unlimited compute and memory",
+     "correct": false,
+     "rationale": "Edge devices are constrained; that is a challenge, not a reason."
+    },
+    {
+     "key": "D",
+     "text": "Edge AI removes any need for security",
+     "correct": false,
+     "rationale": "Edge AI still requires security; it does not remove the need."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: on-device inference avoids network round-trips, reducing latency.",
+   "outcome_refs": [
+    "MST-2761-D02.01"
+   ],
+   "domain_ref": "Devices and sensors",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2761-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is model optimisation (e.g. quantisation or pruning) often required before deploying AI to edge devices?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Edge devices have limited compute, memory and power, so models must be made smaller and cheaper to run",
+     "correct": true,
+     "rationale": "Correct: constrained hardware forces smaller, more efficient models."
+    },
+    {
+     "key": "B",
+     "text": "Because optimisation always improves accuracy",
+     "correct": false,
+     "rationale": "Optimisation trades some accuracy for efficiency; it does not always improve accuracy."
+    },
+    {
+     "key": "C",
+     "text": "Because edge devices cannot run any model without the cloud",
+     "correct": false,
+     "rationale": "The point of edge AI is on-device inference without the cloud."
+    },
+    {
+     "key": "D",
+     "text": "Because larger models always transfer faster over networks",
+     "correct": false,
+     "rationale": "Larger models are harder, not easier, to deploy on constrained devices."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: constrained hardware forces smaller, more efficient models.",
+   "outcome_refs": [
+    "MST-2761-D03.01"
+   ],
+   "domain_ref": "Connectivity",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
