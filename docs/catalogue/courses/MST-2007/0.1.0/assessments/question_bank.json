@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2007",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2007-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A reaction has a negative Gibbs free-energy change. What does this guarantee?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The reaction is thermodynamically spontaneous under the stated conditions",
+     "correct": true,
+     "rationale": "Correct: a negative delta-G indicates spontaneity, not speed."
+    },
+    {
+     "key": "B",
+     "text": "The reaction will proceed quickly",
+     "correct": false,
+     "rationale": "Rate depends on kinetics, not on the sign of delta-G."
+    },
+    {
+     "key": "C",
+     "text": "The reaction is exothermic",
+     "correct": false,
+     "rationale": "Spontaneity depends on both enthalpy and entropy, not enthalpy alone."
+    },
+    {
+     "key": "D",
+     "text": "The equilibrium constant is less than one",
+     "correct": false,
+     "rationale": "A negative delta-G corresponds to K greater than one."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a negative delta-G indicates spontaneity, not speed.",
+   "outcome_refs": [
+    "MST-2007-D01.01"
+   ],
+   "domain_ref": "Thermodynamics laws",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2007-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO quantities can be obtained from an Arrhenius analysis? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The activation energy of the reaction",
+     "correct": true,
+     "rationale": "Correct: the slope of ln k versus 1/T gives the activation energy."
+    },
+    {
+     "key": "B",
+     "text": "The pre-exponential (frequency) factor",
+     "correct": true,
+     "rationale": "Correct: the intercept yields the pre-exponential factor."
+    },
+    {
+     "key": "C",
+     "text": "The overall Gibbs free-energy change",
+     "correct": false,
+     "rationale": "Free energy is a thermodynamic quantity, not from Arrhenius kinetics."
+    },
+    {
+     "key": "D",
+     "text": "The equilibrium constant directly",
+     "correct": false,
+     "rationale": "Arrhenius analysis concerns rate constants, not equilibrium constants."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the slope of ln k versus 1/T gives the activation energy.",
+   "outcome_refs": [
+    "MST-2007-D02.01"
+   ],
+   "domain_ref": "Free energy and equilibrium",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2007-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is it unsafe to replace a physics simulation with a trained ML potential?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When the input configuration lies outside the model's training distribution",
+     "correct": true,
+     "rationale": "Correct: extrapolation beyond training data is unreliable."
+    },
+    {
+     "key": "B",
+     "text": "Whenever any approximation is used",
+     "correct": false,
+     "rationale": "Well-validated surrogates within their domain are acceptable."
+    },
+    {
+     "key": "C",
+     "text": "Only for gas-phase systems",
+     "correct": false,
+     "rationale": "The applicability-domain concern is general, not phase-specific."
+    },
+    {
+     "key": "D",
+     "text": "Never; ML potentials are always exact",
+     "correct": false,
+     "rationale": "No ML potential is exact everywhere."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: extrapolation beyond training data is unreliable.",
+   "outcome_refs": [
+    "MST-2007-D03.01"
+   ],
+   "domain_ref": "Chemical kinetics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

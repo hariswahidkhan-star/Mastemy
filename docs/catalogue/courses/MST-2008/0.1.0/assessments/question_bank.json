@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2008",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2008-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A method is very precise but consistently reads 5% high. How is it best described?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Precise but biased, so it is inaccurate until the systematic error is corrected",
+     "correct": true,
+     "rationale": "Correct: precision without accuracy indicates systematic bias."
+    },
+    {
+     "key": "B",
+     "text": "Both precise and accurate",
+     "correct": false,
+     "rationale": "A consistent 5% offset means it is not accurate."
+    },
+    {
+     "key": "C",
+     "text": "Imprecise and inaccurate",
+     "correct": false,
+     "rationale": "Consistent readings indicate good precision."
+    },
+    {
+     "key": "D",
+     "text": "Accurate but imprecise",
+     "correct": false,
+     "rationale": "A fixed offset is a bias, not random scatter."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: precision without accuracy indicates systematic bias.",
+   "outcome_refs": [
+    "MST-2008-D01.01"
+   ],
+   "domain_ref": "Analytical foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2008-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce the risk of an overfit chemometric model? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validating on an independent held-out data set",
+     "correct": true,
+     "rationale": "Correct: held-out validation reveals poor generalisation."
+    },
+    {
+     "key": "B",
+     "text": "Limiting model complexity relative to the number of samples",
+     "correct": true,
+     "rationale": "Correct: fewer free parameters reduce overfitting."
+    },
+    {
+     "key": "C",
+     "text": "Maximising the training-set fit at all costs",
+     "correct": false,
+     "rationale": "Chasing training fit increases overfitting."
+    },
+    {
+     "key": "D",
+     "text": "Using every available wavelength without selection",
+     "correct": false,
+     "rationale": "Unselected high-dimensional inputs worsen overfitting."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: held-out validation reveals poor generalisation.",
+   "outcome_refs": [
+    "MST-2008-D02.01"
+   ],
+   "domain_ref": "Error and statistics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2008-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why report a measurement with its uncertainty rather than a single number?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It communicates the range within which the true value plausibly lies",
+     "correct": true,
+     "rationale": "Correct: uncertainty conveys confidence in the result."
+    },
+    {
+     "key": "B",
+     "text": "Uncertainty makes the result look less reliable for no reason",
+     "correct": false,
+     "rationale": "Stating uncertainty is good practice, not a weakness."
+    },
+    {
+     "key": "C",
+     "text": "A single number is always sufficient",
+     "correct": false,
+     "rationale": "Without uncertainty the result cannot be judged fit for purpose."
+    },
+    {
+     "key": "D",
+     "text": "Uncertainty only matters in theory",
+     "correct": false,
+     "rationale": "It is essential for real decisions on data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: uncertainty conveys confidence in the result.",
+   "outcome_refs": [
+    "MST-2008-D03.01"
+   ],
+   "domain_ref": "Separation science",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

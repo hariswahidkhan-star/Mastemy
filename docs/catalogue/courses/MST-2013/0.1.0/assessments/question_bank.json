@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2013",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2013-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is an active-learning loop valuable in experimental materials discovery?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It chooses the most informative experiments next, reducing the number needed to find good materials",
+     "correct": true,
+     "rationale": "Correct: active learning targets experiments that most improve the model."
+    },
+    {
+     "key": "B",
+     "text": "It removes the need to ever run experiments",
+     "correct": false,
+     "rationale": "It guides experiments; it does not eliminate them."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the first candidate will be optimal",
+     "correct": false,
+     "rationale": "It improves efficiency, not a guarantee of optimality."
+    },
+    {
+     "key": "D",
+     "text": "It only works without any model",
+     "correct": false,
+     "rationale": "Active learning relies on a model to rank candidate experiments."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: active learning targets experiments that most improve the model.",
+   "outcome_refs": [
+    "MST-2013-D01.01"
+   ],
+   "domain_ref": "Data landscape",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2013-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO issues most threaten a materials machine-learning study's validity? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Data leakage between training and test sets",
+     "correct": true,
+     "rationale": "Correct: leakage inflates apparent performance."
+    },
+    {
+     "key": "B",
+     "text": "Biased or non-representative training data",
+     "correct": true,
+     "rationale": "Correct: biased data yields models that fail to generalise."
+    },
+    {
+     "key": "C",
+     "text": "Using version control for the analysis code",
+     "correct": false,
+     "rationale": "Version control helps reproducibility; it is not a threat."
+    },
+    {
+     "key": "D",
+     "text": "Documenting the data provenance",
+     "correct": false,
+     "rationale": "Documentation strengthens, not threatens, validity."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: leakage inflates apparent performance.",
+   "outcome_refs": [
+    "MST-2013-D02.01"
+   ],
+   "domain_ref": "Featurisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2013-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What should happen after a model flags a promising new material?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The candidate is experimentally synthesised and tested before any discovery claim",
+     "correct": true,
+     "rationale": "Correct: predictions are hypotheses that require experimental confirmation."
+    },
+    {
+     "key": "B",
+     "text": "The discovery is announced immediately without testing",
+     "correct": false,
+     "rationale": "Unvalidated predictions are not discoveries."
+    },
+    {
+     "key": "C",
+     "text": "The model output is treated as a finished material",
+     "correct": false,
+     "rationale": "A prediction is not a synthesised, verified material."
+    },
+    {
+     "key": "D",
+     "text": "No further work is needed",
+     "correct": false,
+     "rationale": "Experimental validation is the essential next step."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: predictions are hypotheses that require experimental confirmation.",
+   "outcome_refs": [
+    "MST-2013-D03.01"
+   ],
+   "domain_ref": "Models for discovery",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

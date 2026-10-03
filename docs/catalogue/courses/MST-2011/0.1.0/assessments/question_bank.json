@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2011",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2011-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can the same molecule be written as several different valid SMILES strings?",
+   "options": [
+    {
+     "key": "A",
+     "text": "SMILES depends on the chosen starting atom and traversal order, so canonicalisation is needed",
+     "correct": true,
+     "rationale": "Correct: canonical SMILES gives one standard string per molecule."
+    },
+    {
+     "key": "B",
+     "text": "SMILES strings are always unique for each molecule",
+     "correct": false,
+     "rationale": "Non-canonical SMILES are not unique."
+    },
+    {
+     "key": "C",
+     "text": "Because the molecule changes structure each time",
+     "correct": false,
+     "rationale": "The structure is unchanged; only the string representation differs."
+    },
+    {
+     "key": "D",
+     "text": "Because SMILES encodes three-dimensional coordinates",
+     "correct": false,
+     "rationale": "SMILES encodes connectivity, not 3D coordinates."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: canonical SMILES gives one standard string per molecule.",
+   "outcome_refs": [
+    "MST-2011-D01.01"
+   ],
+   "domain_ref": "Molecular representations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2011-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps help prevent data leakage in a cheminformatics model? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Splitting train and test sets by molecular scaffold",
+     "correct": true,
+     "rationale": "Correct: scaffold splits keep near-duplicates out of both sets."
+    },
+    {
+     "key": "B",
+     "text": "Removing duplicate structures before splitting",
+     "correct": true,
+     "rationale": "Correct: duplicates across splits leak information."
+    },
+    {
+     "key": "C",
+     "text": "Tuning hyperparameters on the test set",
+     "correct": false,
+     "rationale": "That leaks test information into training."
+    },
+    {
+     "key": "D",
+     "text": "Random splitting of highly similar analogues",
+     "correct": false,
+     "rationale": "Random splits let near-duplicates cross the boundary."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: scaffold splits keep near-duplicates out of both sets.",
+   "outcome_refs": [
+    "MST-2011-D02.01"
+   ],
+   "domain_ref": "Descriptors",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2011-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does a Tanimoto coefficient of 0.9 between two fingerprints indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The molecules are highly similar by that fingerprint, though not necessarily identical",
+     "correct": true,
+     "rationale": "Correct: high similarity is not proof of the same structure."
+    },
+    {
+     "key": "B",
+     "text": "The molecules are definitely the same compound",
+     "correct": false,
+     "rationale": "High similarity does not guarantee identity."
+    },
+    {
+     "key": "C",
+     "text": "The molecules share no features",
+     "correct": false,
+     "rationale": "A high value indicates many shared features."
+    },
+    {
+     "key": "D",
+     "text": "The value is invalid because it exceeds 0.5",
+     "correct": false,
+     "rationale": "Tanimoto values range from 0 to 1; 0.9 is valid."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: high similarity is not proof of the same structure.",
+   "outcome_refs": [
+    "MST-2011-D03.01"
+   ],
+   "domain_ref": "Chemical databases",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

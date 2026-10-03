@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2012",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2012-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is random cross-validation often too optimistic for molecular property prediction?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Structurally similar molecules can appear in both folds, leaking information",
+     "correct": true,
+     "rationale": "Correct: near-duplicates across folds inflate measured performance."
+    },
+    {
+     "key": "B",
+     "text": "Random splitting is always the most rigorous approach",
+     "correct": false,
+     "rationale": "For molecules, scaffold or time splits are usually more realistic."
+    },
+    {
+     "key": "C",
+     "text": "Cross-validation cannot be used in chemistry",
+     "correct": false,
+     "rationale": "It can, but the splitting strategy matters."
+    },
+    {
+     "key": "D",
+     "text": "It underestimates performance severely",
+     "correct": false,
+     "rationale": "The bias is typically toward over-optimism, not pessimism."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: near-duplicates across folds inflate measured performance.",
+   "outcome_refs": [
+    "MST-2012-D01.01"
+   ],
+   "domain_ref": "Problem framing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2012-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make a QSAR model's predictions more trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reporting an applicability domain for the model",
+     "correct": true,
+     "rationale": "Correct: predictions are reliable only within the applicability domain."
+    },
+    {
+     "key": "B",
+     "text": "Attaching uncertainty estimates to predictions",
+     "correct": true,
+     "rationale": "Correct: uncertainty tells users how much to trust each value."
+    },
+    {
+     "key": "C",
+     "text": "Reporting only the single best cross-validation score",
+     "correct": false,
+     "rationale": "A single cherry-picked score can mislead."
+    },
+    {
+     "key": "D",
+     "text": "Predicting confidently for any molecule regardless of domain",
+     "correct": false,
+     "rationale": "Out-of-domain predictions are unreliable."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: predictions are reliable only within the applicability domain.",
+   "outcome_refs": [
+    "MST-2012-D02.01"
+   ],
+   "domain_ref": "Featurisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2012-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A toxicity classifier reports 95% accuracy on data where 95% of compounds are non-toxic. What is the concern?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A trivial model that always predicts non-toxic reaches the same accuracy, so accuracy is uninformative",
+     "correct": true,
+     "rationale": "Correct: with class imbalance, accuracy hides poor minority-class performance."
+    },
+    {
+     "key": "B",
+     "text": "The model is clearly excellent and ready to deploy",
+     "correct": false,
+     "rationale": "High accuracy under imbalance can be meaningless."
+    },
+    {
+     "key": "C",
+     "text": "Accuracy is the only metric that matters here",
+     "correct": false,
+     "rationale": "Balanced metrics such as recall and AUC are needed."
+    },
+    {
+     "key": "D",
+     "text": "The data set is too large to evaluate",
+     "correct": false,
+     "rationale": "Size is not the issue; class imbalance is."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with class imbalance, accuracy hides poor minority-class performance.",
+   "outcome_refs": [
+    "MST-2012-D03.01"
+   ],
+   "domain_ref": "Model building",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
