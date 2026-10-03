@@ -1,4 +1,5 @@
 using Mastemy.Api.Domain;
+using Mastemy.Api.Modules.Lab;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mastemy.Api.Data;
@@ -60,6 +61,10 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Organization> Organizations => Set<Organization>();
     public DbSet<OrganizationMember> OrganizationMembers => Set<OrganizationMember>();
     public DbSet<OrganizationAssignment> OrganizationAssignments => Set<OrganizationAssignment>();
+
+    public DbSet<LabBlueprint> LabBlueprints => Set<LabBlueprint>();
+    public DbSet<LabSession> LabSessions => Set<LabSession>();
+    public DbSet<LabEvidence> LabEvidence => Set<LabEvidence>();
 
     protected override void ConfigureConventions(ModelConfigurationBuilder b)
     {

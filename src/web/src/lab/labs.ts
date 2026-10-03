@@ -60,6 +60,88 @@ export const BUILTIN_LABS: LabSpec[] = [
       },
     ],
   },
+  // --- JavaScript labs ---
+  {
+    id: 'js-playground',
+    engine: 'javascript' as const,
+    title: 'JavaScript playground',
+    instructions: [
+      'Write any JavaScript you like. Use `console.log()` to print output.',
+      '',
+      'The code runs in an isolated Web Worker — no DOM, `fetch`, or browser APIs are available. The engine resets on every run, so experiment freely.',
+    ].join('\n'),
+    seedSql: '',
+    starterCode: 'console.log("Hello, world!");\n\nconst sum = 1 + 2;\nconsole.log("1 + 2 =", sum);',
+    solutionCode: 'console.log("Hello, world!");\n\nconst sum = 1 + 2;\nconsole.log("1 + 2 =", sum);',
+    checks: [],
+    jsChecks: [],
+  },
+  {
+    id: 'js-fizzbuzz',
+    engine: 'javascript' as const,
+    title: 'Challenge: FizzBuzz',
+    instructions: [
+      '**Task:** Print the numbers 1 to 20, but:',
+      '- For multiples of 3, print `Fizz` instead of the number',
+      '- For multiples of 5, print `Buzz` instead of the number',
+      '- For multiples of both 3 and 5, print `FizzBuzz`',
+      '',
+      'Use `console.log()` for each line. Press **Run** to check your answer.',
+    ].join('\n'),
+    seedSql: '',
+    starterCode: '// Print FizzBuzz for numbers 1 to 20\nfor (let i = 1; i <= 20; i++) {\n  // your code here\n  console.log(i);\n}',
+    solutionCode:
+      'for (let i = 1; i <= 20; i++) {\n  if (i % 15 === 0) console.log("FizzBuzz");\n  else if (i % 3 === 0) console.log("Fizz");\n  else if (i % 5 === 0) console.log("Buzz");\n  else console.log(i);\n}',
+    checks: [],
+    jsChecks: [
+      {
+        name: 'Prints FizzBuzz for 15',
+        expectOutput: ['FizzBuzz'],
+      },
+      {
+        name: 'Prints Fizz for multiples of 3',
+        expectOutput: ['Fizz'],
+      },
+      {
+        name: 'Prints Buzz for multiples of 5',
+        expectOutput: ['Buzz'],
+      },
+    ],
+  },
+  {
+    id: 'js-array',
+    engine: 'javascript' as const,
+    title: 'Challenge: array manipulation',
+    instructions: [
+      '**Task:** Given the array `numbers`, use `filter`, `map`, and `reduce` to:',
+      '',
+      '1. Filter to only **even** numbers',
+      '2. Double each remaining number',
+      '3. Sum them all up',
+      '',
+      '`console.log` each step and `return` the final sum.',
+    ].join('\n'),
+    seedSql: '',
+    starterCode:
+      'const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\n\n// Step 1: filter even numbers\nconst evens = numbers; // fix this\nconsole.log("Evens:", evens);\n\n// Step 2: double each\nconst doubled = evens; // fix this\nconsole.log("Doubled:", doubled);\n\n// Step 3: sum\nconst total = 0; // fix this\nconsole.log("Total:", total);\n\nreturn total;',
+    solutionCode:
+      'const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\n\nconst evens = numbers.filter(n => n % 2 === 0);\nconsole.log("Evens:", evens);\n\nconst doubled = evens.map(n => n * 2);\nconsole.log("Doubled:", doubled);\n\nconst total = doubled.reduce((sum, n) => sum + n, 0);\nconsole.log("Total:", total);\n\nreturn total;',
+    checks: [],
+    jsChecks: [
+      {
+        name: 'Returns the correct sum (60)',
+        expectResult: 60,
+      },
+      {
+        name: 'Logs the even numbers',
+        expectOutput: ['Evens:'],
+      },
+      {
+        name: 'Logs the doubled values',
+        expectOutput: ['Doubled:'],
+      },
+    ],
+  },
   {
     id: 'sql-aggregate',
     engine: 'sql',

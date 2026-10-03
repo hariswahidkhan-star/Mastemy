@@ -4,6 +4,7 @@ import { EditorView, keymap } from '@codemirror/view';
 import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
 import { basicSetup } from 'codemirror';
 import { sql, SQLite } from '@codemirror/lang-sql';
+import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
 
 /** Minimal CodeMirror 6 editor bound to a value. Recreated via a `key` on lab switch / reset by the parent. */
@@ -11,10 +12,12 @@ export function CodeEditor({
   value,
   onChange,
   ariaLabel,
+  language = 'sql',
 }: {
   value: string;
   onChange: (v: string) => void;
   ariaLabel: string;
+  language?: 'sql' | 'javascript';
 }) {
   const host = useRef<HTMLDivElement>(null);
   const onChangeRef = useRef(onChange);
@@ -30,7 +33,7 @@ export function CodeEditor({
           basicSetup,
           history(),
           keymap.of([...defaultKeymap, ...historyKeymap]),
-          sql({ dialect: SQLite }),
+          language === 'javascript' ? javascript() : sql({ dialect: SQLite }),
           oneDark,
           EditorView.updateListener.of((u) => {
             if (u.docChanged) onChangeRef.current(u.state.doc.toString());

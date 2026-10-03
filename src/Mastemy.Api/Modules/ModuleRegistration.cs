@@ -21,6 +21,7 @@ public static class ModuleRegistration
         Operations.OperationsModule.Add(s, cfg);
         Authoring.AuthoringModule.Add(s, cfg); Analytics.AnalyticsModule.Add(s, cfg); StudyTools.StudyToolsModule.Add(s, cfg);
         Messaging.MessagingModule.Add(s, cfg);
+        Lab.LabModule.Add(s, cfg);
         return s;
     }
 }
