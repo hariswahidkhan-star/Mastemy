@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1913",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1913-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user grants a spending contract an unlimited token allowance. What is the main risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "If the contract is buggy or malicious it can move the user's full balance at any time",
+     "correct": true,
+     "rationale": "Correct: unlimited allowance exposes the entire balance indefinitely."
+    },
+    {
+     "key": "B",
+     "text": "The user can no longer receive tokens",
+     "correct": false,
+     "rationale": "Allowances govern spending, not receiving."
+    },
+    {
+     "key": "C",
+     "text": "The token's total supply decreases",
+     "correct": false,
+     "rationale": "Approvals do not change supply."
+    },
+    {
+     "key": "D",
+     "text": "Transfers become free",
+     "correct": false,
+     "rationale": "Gas is still required."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: unlimited allowance exposes the entire balance indefinitely.",
+   "outcome_refs": [
+    "MST-1913-D01.01"
+   ],
+   "domain_ref": "Fungible tokens",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1913-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are reasons to choose a multi-token standard over deploying one fungible-token contract per asset? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A single contract can manage many token types, reducing deployment overhead",
+     "correct": true,
+     "rationale": "Correct: multi-token standards hold many assets in one contract."
+    },
+    {
+     "key": "B",
+     "text": "Batch transfers of several token IDs can be done in one transaction",
+     "correct": true,
+     "rationale": "Correct: batching is a core multi-token feature."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees the token price will rise",
+     "correct": false,
+     "rationale": "Standards do not affect price."
+    },
+    {
+     "key": "D",
+     "text": "It makes tokens immune to approval risk",
+     "correct": false,
+     "rationale": "Approval risks still apply."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: multi-token standards hold many assets in one contract.",
+   "outcome_refs": [
+    "MST-1913-D02.01"
+   ],
+   "domain_ref": "Approvals and allowances",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1913-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can a fungible token's `decimals` value mislead a developer summing raw balances?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Raw on-chain balances are integers scaled by decimals, not human-readable amounts",
+     "correct": true,
+     "rationale": "Correct: you must scale by decimals to get display amounts."
+    },
+    {
+     "key": "B",
+     "text": "decimals changes the total supply each block",
+     "correct": false,
+     "rationale": "decimals is a fixed display scale."
+    },
+    {
+     "key": "C",
+     "text": "decimals encrypts the balance",
+     "correct": false,
+     "rationale": "It does not encrypt anything."
+    },
+    {
+     "key": "D",
+     "text": "decimals is the number of holders",
+     "correct": false,
+     "rationale": "It is not a holder count."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: you must scale by decimals to get display amounts.",
+   "outcome_refs": [
+    "MST-1913-D03.01"
+   ],
+   "domain_ref": "Non-fungible tokens",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

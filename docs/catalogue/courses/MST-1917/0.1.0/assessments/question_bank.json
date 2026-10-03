@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1917",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 510,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1917-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A withdraw function sends Ether before it updates the user's balance. Which vulnerability class is this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reentrancy, because an external call occurs before state is settled",
+     "correct": true,
+     "rationale": "Correct: the external call can re-enter before the balance updates."
+    },
+    {
+     "key": "B",
+     "text": "Integer overflow",
+     "correct": false,
+     "rationale": "No arithmetic overflow is described."
+    },
+    {
+     "key": "C",
+     "text": "Missing event emission",
+     "correct": false,
+     "rationale": "Events are a logging concern, not this bug."
+    },
+    {
+     "key": "D",
+     "text": "Gas griefing only",
+     "correct": false,
+     "rationale": "The core issue is reentrancy, not gas griefing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the external call can re-enter before the balance updates.",
+   "outcome_refs": [
+    "MST-1917-D01.01"
+   ],
+   "domain_ref": "Vulnerability taxonomy",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1917-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices strengthen a smart-contract audit beyond reading the code once? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Writing invariants and fuzzing them against the contract",
+     "correct": true,
+     "rationale": "Correct: fuzzing invariants surfaces edge cases."
+    },
+    {
+     "key": "B",
+     "text": "Reproducing a suspected exploit in a test to confirm severity",
+     "correct": true,
+     "rationale": "Correct: a working proof of concept validates the finding."
+    },
+    {
+     "key": "C",
+     "text": "Rating all findings as the same severity to be safe",
+     "correct": false,
+     "rationale": "Flattening severity destroys prioritisation."
+    },
+    {
+     "key": "D",
+     "text": "Skipping tests because the code looks clean",
+     "correct": false,
+     "rationale": "Looking clean is not evidence of safety."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fuzzing invariants surfaces edge cases.",
+   "outcome_refs": [
+    "MST-1917-D02.01"
+   ],
+   "domain_ref": "Reentrancy and state bugs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1917-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can a correct-looking contract still be drained by a flash-loan attack?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The attack manipulates economic inputs like a price oracle rather than breaking the code logic",
+     "correct": true,
+     "rationale": "Correct: economic manipulation exploits design assumptions, not code bugs."
+    },
+    {
+     "key": "B",
+     "text": "Flash loans overflow every integer",
+     "correct": false,
+     "rationale": "They do not rely on overflow."
+    },
+    {
+     "key": "C",
+     "text": "Flash loans delete the contract",
+     "correct": false,
+     "rationale": "They do not delete contracts."
+    },
+    {
+     "key": "D",
+     "text": "Correct code is immune to all attacks",
+     "correct": false,
+     "rationale": "Correct code can still have economic flaws."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: economic manipulation exploits design assumptions, not code bugs.",
+   "outcome_refs": [
+    "MST-1917-D03.01"
+   ],
+   "domain_ref": "Access control and arithmetic",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

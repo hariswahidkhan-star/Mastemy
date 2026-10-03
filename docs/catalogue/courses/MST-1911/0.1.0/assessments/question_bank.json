@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1911",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 384,
+  "lesson_check_items": 60,
+  "module_check_items": 90,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 42,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1911-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A contract call reverts but the user is still charged. Why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Gas is consumed by the executed computation up to the revert, so the work is paid for",
+     "correct": true,
+     "rationale": "Correct: gas pays for execution even when the final state change is undone."
+    },
+    {
+     "key": "B",
+     "text": "The network refunds all gas on any revert",
+     "correct": false,
+     "rationale": "Only unused gas is returned, not gas already spent."
+    },
+    {
+     "key": "C",
+     "text": "Reverts are always free",
+     "correct": false,
+     "rationale": "Reverts consume the gas used before the failure."
+    },
+    {
+     "key": "D",
+     "text": "The miner reimburses the user",
+     "correct": false,
+     "rationale": "Miners do not reimburse reverted gas."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: gas pays for execution even when the final state change is undone.",
+   "outcome_refs": [
+    "MST-1911-D01.01"
+   ],
+   "domain_ref": "The account model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1911-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about EIP-1559 are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The base fee is algorithmically adjusted per block based on demand",
+     "correct": true,
+     "rationale": "Correct: the base fee rises and falls with block fullness."
+    },
+    {
+     "key": "B",
+     "text": "The base fee is burned rather than paid to the validator",
+     "correct": true,
+     "rationale": "Correct: burning the base fee is a defining EIP-1559 feature."
+    },
+    {
+     "key": "C",
+     "text": "Users can no longer set any tip for validators",
+     "correct": false,
+     "rationale": "Users still set a priority fee (tip)."
+    },
+    {
+     "key": "D",
+     "text": "EIP-1559 removed gas entirely",
+     "correct": false,
+     "rationale": "Gas still measures computation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the base fee rises and falls with block fullness.",
+   "outcome_refs": [
+    "MST-1911-D02.01"
+   ],
+   "domain_ref": "The EVM",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1911-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What distinguishes a contract account from an externally owned account on Ethereum?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A contract account has associated code executed when it receives a message",
+     "correct": true,
+     "rationale": "Correct: contract accounts hold code; EOAs do not."
+    },
+    {
+     "key": "B",
+     "text": "A contract account is controlled by a private key",
+     "correct": false,
+     "rationale": "That describes an EOA, not a contract account."
+    },
+    {
+     "key": "C",
+     "text": "A contract account cannot hold a balance",
+     "correct": false,
+     "rationale": "Contract accounts can hold Ether."
+    },
+    {
+     "key": "D",
+     "text": "A contract account has no address",
+     "correct": false,
+     "rationale": "Contract accounts have addresses."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: contract accounts hold code; EOAs do not.",
+   "outcome_refs": [
+    "MST-1911-D03.01"
+   ],
+   "domain_ref": "Gas and fees",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

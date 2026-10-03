@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1918",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 426,
+  "lesson_check_items": 72,
+  "module_check_items": 96,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1918-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do enterprises often choose a permissioned blockchain over a public one for a consortium?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They need known, identity-verified participants and confidential data between specific members",
+     "correct": true,
+     "rationale": "Correct: permissioned networks provide identity and confidentiality controls."
+    },
+    {
+     "key": "B",
+     "text": "Public chains cannot store any data",
+     "correct": false,
+     "rationale": "Public chains store data; the issue is confidentiality and identity."
+    },
+    {
+     "key": "C",
+     "text": "Permissioned chains are always cheaper to run",
+     "correct": false,
+     "rationale": "Cost is not the defining reason."
+    },
+    {
+     "key": "D",
+     "text": "Public chains are illegal for businesses",
+     "correct": false,
+     "rationale": "That is not true."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: permissioned networks provide identity and confidentiality controls.",
+   "outcome_refs": [
+    "MST-1918-D01.01"
+   ],
+   "domain_ref": "Permissioned vs public",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1918-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO mechanisms let a permissioned network keep data visible only to specific members? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Channels that restrict a ledger to a subset of participants",
+     "correct": true,
+     "rationale": "Correct: channels partition visibility."
+    },
+    {
+     "key": "B",
+     "text": "Private data collections sharing only hashes on the shared ledger",
+     "correct": true,
+     "rationale": "Correct: private collections enforce need-to-know."
+    },
+    {
+     "key": "C",
+     "text": "Publishing all data to a public explorer",
+     "correct": false,
+     "rationale": "That defeats confidentiality."
+    },
+    {
+     "key": "D",
+     "text": "Giving every member the same admin certificate",
+     "correct": false,
+     "rationale": "That removes access control, not adds privacy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: channels partition visibility.",
+   "outcome_refs": [
+    "MST-1918-D02.01"
+   ],
+   "domain_ref": "Identity and membership",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1918-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is a permissioned blockchain the wrong choice for a consortium?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When a single trusted operator and a shared database would meet the trust and audit needs",
+     "correct": true,
+     "rationale": "Correct: if trust is centralisable, a database is simpler and sufficient."
+    },
+    {
+     "key": "B",
+     "text": "Whenever more than two companies are involved",
+     "correct": false,
+     "rationale": "Member count alone does not decide this."
+    },
+    {
+     "key": "C",
+     "text": "Whenever confidentiality is required",
+     "correct": false,
+     "rationale": "Permissioned chains handle confidentiality well."
+    },
+    {
+     "key": "D",
+     "text": "Whenever identity verification is needed",
+     "correct": false,
+     "rationale": "Permissioned chains support identity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: if trust is centralisable, a database is simpler and sufficient.",
+   "outcome_refs": [
+    "MST-1918-D03.01"
+   ],
+   "domain_ref": "Platforms and consensus",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

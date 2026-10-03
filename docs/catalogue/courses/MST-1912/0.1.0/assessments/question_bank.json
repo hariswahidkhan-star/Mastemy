@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1912",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 510,
+  "lesson_check_items": 84,
+  "module_check_items": 126,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1912-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is the checks-effects-interactions pattern important when sending Ether out of a contract?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Updating state before the external call prevents a reentrant call from draining funds",
+     "correct": true,
+     "rationale": "Correct: state is settled before control leaves the contract."
+    },
+    {
+     "key": "B",
+     "text": "It makes the contract compile faster",
+     "correct": false,
+     "rationale": "It is a security pattern, not a compile optimisation."
+    },
+    {
+     "key": "C",
+     "text": "It reduces the deployment bytecode size",
+     "correct": false,
+     "rationale": "Its purpose is reentrancy safety, not size."
+    },
+    {
+     "key": "D",
+     "text": "It lets the contract skip gas payment",
+     "correct": false,
+     "rationale": "Gas is still paid."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: state is settled before control leaves the contract.",
+   "outcome_refs": [
+    "MST-1912-D01.01"
+   ],
+   "domain_ref": "Language foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1912-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid reasons to prefer custom errors over long require strings in Solidity? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Custom errors typically cost less gas than storing revert strings",
+     "correct": true,
+     "rationale": "Correct: custom errors are more gas-efficient."
+    },
+    {
+     "key": "B",
+     "text": "Custom errors can carry structured parameters for off-chain decoding",
+     "correct": true,
+     "rationale": "Correct: they can include typed arguments."
+    },
+    {
+     "key": "C",
+     "text": "Custom errors disable all reverts",
+     "correct": false,
+     "rationale": "They are a way to revert, not to disable reverting."
+    },
+    {
+     "key": "D",
+     "text": "Custom errors remove the need for access control",
+     "correct": false,
+     "rationale": "They are unrelated to access control."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: custom errors are more gas-efficient.",
+   "outcome_refs": [
+    "MST-1912-D02.01"
+   ],
+   "domain_ref": "Contract structure",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1912-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A function marked `public` that only internal code should call is a problem because:",
+   "options": [
+    {
+     "key": "A",
+     "text": "External accounts can call it directly, bypassing intended control flow",
+     "correct": true,
+     "rationale": "Correct: public visibility exposes it to external callers."
+    },
+    {
+     "key": "B",
+     "text": "Public functions cannot emit events",
+     "correct": false,
+     "rationale": "Public functions can emit events."
+    },
+    {
+     "key": "C",
+     "text": "Public functions always run out of gas",
+     "correct": false,
+     "rationale": "Visibility does not cause out-of-gas."
+    },
+    {
+     "key": "D",
+     "text": "Public functions cannot read storage",
+     "correct": false,
+     "rationale": "They can read storage."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: public visibility exposes it to external callers.",
+   "outcome_refs": [
+    "MST-1912-D03.01"
+   ],
+   "domain_ref": "Value handling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

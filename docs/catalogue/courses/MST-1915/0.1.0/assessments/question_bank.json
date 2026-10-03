@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1915",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1915-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An NFT's metadata points to a normal web URL that later goes offline. What breaks?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The token still exists on-chain but its referenced media no longer resolves",
+     "correct": true,
+     "rationale": "Correct: on-chain ownership persists while off-chain media can disappear."
+    },
+    {
+     "key": "B",
+     "text": "The token is automatically burned",
+     "correct": false,
+     "rationale": "A dead link does not burn the token."
+    },
+    {
+     "key": "C",
+     "text": "The blockchain deletes the owner record",
+     "correct": false,
+     "rationale": "Ownership records are unaffected."
+    },
+    {
+     "key": "D",
+     "text": "The buyer's wallet is drained",
+     "correct": false,
+     "rationale": "A broken link does not drain funds."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: on-chain ownership persists while off-chain media can disappear.",
+   "outcome_refs": [
+    "MST-1915-D01.01"
+   ],
+   "domain_ref": "What an NFT is",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1915-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about NFT ownership are accurate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Owning the token proves control of the on-chain registry entry for that ID",
+     "correct": true,
+     "rationale": "Correct: the token records on-chain ownership."
+    },
+    {
+     "key": "B",
+     "text": "Owning the token does not by itself transfer copyright in the artwork",
+     "correct": true,
+     "rationale": "Correct: IP rights require a separate legal grant."
+    },
+    {
+     "key": "C",
+     "text": "Owning the token guarantees the media is stored on-chain",
+     "correct": false,
+     "rationale": "Media is often off-chain."
+    },
+    {
+     "key": "D",
+     "text": "Owning the token guarantees future royalties to the buyer",
+     "correct": false,
+     "rationale": "Royalties flow to the creator, not the buyer, and are not guaranteed."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the token records on-chain ownership.",
+   "outcome_refs": [
+    "MST-1915-D02.01"
+   ],
+   "domain_ref": "Metadata and media",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1915-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is decentralised, content-addressed storage preferred for NFT media meant to last?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The reference is tied to the content's hash, so the link does not silently change or rot",
+     "correct": true,
+     "rationale": "Correct: content addressing makes media verifiable and durable."
+    },
+    {
+     "key": "B",
+     "text": "It stores the media directly inside the token for free",
+     "correct": false,
+     "rationale": "It stores off-chain but addressably, not inside the token."
+    },
+    {
+     "key": "C",
+     "text": "It makes the NFT immune to all loss",
+     "correct": false,
+     "rationale": "Pinning still matters; it is not absolute."
+    },
+    {
+     "key": "D",
+     "text": "It encrypts the art so no one can view it",
+     "correct": false,
+     "rationale": "It does not encrypt by default."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: content addressing makes media verifiable and durable.",
+   "outcome_refs": [
+    "MST-1915-D03.01"
+   ],
+   "domain_ref": "Storage durability",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

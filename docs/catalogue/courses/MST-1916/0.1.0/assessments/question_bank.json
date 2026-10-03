@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1916",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1916-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user loses the device holding their self-custody wallet but still has the seed phrase. What is true?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They can restore the same accounts on a new device from the seed phrase",
+     "correct": true,
+     "rationale": "Correct: the seed phrase deterministically regenerates the keys."
+    },
+    {
+     "key": "B",
+     "text": "The funds are permanently lost with the device",
+     "correct": false,
+     "rationale": "The seed phrase enables recovery."
+    },
+    {
+     "key": "C",
+     "text": "They must contact the blockchain's support desk",
+     "correct": false,
+     "rationale": "There is no central support desk for self-custody."
+    },
+    {
+     "key": "D",
+     "text": "The addresses will be different and funds unreachable",
+     "correct": false,
+     "rationale": "HD derivation reproduces the same addresses."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the seed phrase deterministically regenerates the keys.",
+   "outcome_refs": [
+    "MST-1916-D01.01"
+   ],
+   "domain_ref": "Keys and addresses",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1916-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices meaningfully reduce the risk of a drained wallet? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reviewing exactly what a transaction or approval authorises before signing",
+     "correct": true,
+     "rationale": "Correct: understanding the request prevents malicious approvals."
+    },
+    {
+     "key": "B",
+     "text": "Keeping large balances in a hardware or multisig wallet rather than a hot wallet",
+     "correct": true,
+     "rationale": "Correct: cold and multisig storage reduce exposure."
+    },
+    {
+     "key": "C",
+     "text": "Sharing the seed phrase with a support agent to verify ownership",
+     "correct": false,
+     "rationale": "No legitimate agent needs your seed phrase."
+    },
+    {
+     "key": "D",
+     "text": "Posting the public key screenshot in a forum for help",
+     "correct": false,
+     "rationale": "This invites targeted phishing and reveals nothing useful for support."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: understanding the request prevents malicious approvals.",
+   "outcome_refs": [
+    "MST-1916-D02.01"
+   ],
+   "domain_ref": "Seed phrases and HD wallets",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1916-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is blind signing an opaque transaction dangerous?",
+   "options": [
+    {
+     "key": "A",
+     "text": "You may authorise an action, such as an unlimited approval, that you did not intend",
+     "correct": true,
+     "rationale": "Correct: without readable details you cannot judge what you approve."
+    },
+    {
+     "key": "B",
+     "text": "Blind signing always fails and wastes gas",
+     "correct": false,
+     "rationale": "It often succeeds, which is the danger."
+    },
+    {
+     "key": "C",
+     "text": "Blind signing reveals your seed phrase",
+     "correct": false,
+     "rationale": "Signing does not reveal the seed."
+    },
+    {
+     "key": "D",
+     "text": "Blind signing is required by all wallets",
+     "correct": false,
+     "rationale": "Readable signing is preferred and available."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without readable details you cannot judge what you approve.",
+   "outcome_refs": [
+    "MST-1916-D03.01"
+   ],
+   "domain_ref": "Wallet types",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

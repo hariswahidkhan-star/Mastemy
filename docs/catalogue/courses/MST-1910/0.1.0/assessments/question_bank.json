@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1910",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 426,
+  "lesson_check_items": 72,
+  "module_check_items": 96,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 45,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1910-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does a classic PBFT network require at least 3f+1 nodes to tolerate f Byzantine faults?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Honest nodes must form a quorum that overlaps across votes despite f malicious and f unreachable",
+     "correct": true,
+     "rationale": "Correct: the 3f+1 bound guarantees overlapping honest quorums."
+    },
+    {
+     "key": "B",
+     "text": "Because 3f+1 is the fastest possible number of nodes",
+     "correct": false,
+     "rationale": "It is a safety bound, not a speed optimisation."
+    },
+    {
+     "key": "C",
+     "text": "Because each fault needs exactly three backup nodes",
+     "correct": false,
+     "rationale": "That is not how the bound is derived."
+    },
+    {
+     "key": "D",
+     "text": "Because PBFT encrypts messages three times",
+     "correct": false,
+     "rationale": "PBFT is about agreement, not triple encryption."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the 3f+1 bound guarantees overlapping honest quorums.",
+   "outcome_refs": [
+    "MST-1910-D01.01"
+   ],
+   "domain_ref": "The consensus problem",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1910-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about Proof of Stake slashing are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A validator can lose staked funds for signing two conflicting blocks",
+     "correct": true,
+     "rationale": "Correct: equivocation is a slashable offence."
+    },
+    {
+     "key": "B",
+     "text": "Slashing makes attacking the chain economically costly for the attacker",
+     "correct": true,
+     "rationale": "Correct: putting stake at risk aligns incentives with honesty."
+    },
+    {
+     "key": "C",
+     "text": "Slashing rewards validators for going offline",
+     "correct": false,
+     "rationale": "Downtime is penalised, not rewarded."
+    },
+    {
+     "key": "D",
+     "text": "Slashing replaces the need for any cryptographic signatures",
+     "correct": false,
+     "rationale": "Signatures are still required to attribute actions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: equivocation is a slashable offence.",
+   "outcome_refs": [
+    "MST-1910-D02.01"
+   ],
+   "domain_ref": "Proof of Work",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1910-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user signs a transaction. What exactly proves to the network that the account owner authorised it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A digital signature verifiable against the account's public key",
+     "correct": true,
+     "rationale": "Correct: the signature verifies under the public key without revealing the private key."
+    },
+    {
+     "key": "B",
+     "text": "The plaintext private key included in the transaction",
+     "correct": false,
+     "rationale": "Private keys are never transmitted."
+    },
+    {
+     "key": "C",
+     "text": "The miner's approval stamp",
+     "correct": false,
+     "rationale": "Miners order transactions; they do not authorise them."
+    },
+    {
+     "key": "D",
+     "text": "The transaction fee amount",
+     "correct": false,
+     "rationale": "Fees do not authenticate the sender."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the signature verifies under the public key without revealing the private key.",
+   "outcome_refs": [
+    "MST-1910-D03.01"
+   ],
+   "domain_ref": "Proof of Stake",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

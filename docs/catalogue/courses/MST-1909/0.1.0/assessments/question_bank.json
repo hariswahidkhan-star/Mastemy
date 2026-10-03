@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1909",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1909-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A record stored in a blockchain block is altered after the block is chained. Why is this immediately detectable?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The block's hash changes, breaking the link every later block committed to",
+     "correct": true,
+     "rationale": "Correct: each block commits to the previous hash, so any edit cascades."
+    },
+    {
+     "key": "B",
+     "text": "The network sends an email alert",
+     "correct": false,
+     "rationale": "There is no such mechanism; detection is cryptographic."
+    },
+    {
+     "key": "C",
+     "text": "The ledger is encrypted so edits are impossible",
+     "correct": false,
+     "rationale": "Ledgers are tamper-evident, not encrypted against edits."
+    },
+    {
+     "key": "D",
+     "text": "Only the miner can see the change",
+     "correct": false,
+     "rationale": "Any verifying node recomputes hashes and detects the mismatch."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: each block commits to the previous hash, so any edit cascades.",
+   "outcome_refs": [
+    "MST-1909-D01.01"
+   ],
+   "domain_ref": "Distributed ledgers vs databases",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1909-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO properties genuinely require a decentralised blockchain rather than a well-run shared database? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "No single party can be trusted to control the write history",
+     "correct": true,
+     "rationale": "Correct: removing a trusted central writer is a core blockchain use case."
+    },
+    {
+     "key": "B",
+     "text": "Participants need verifiable, tamper-evident settlement without a central intermediary",
+     "correct": true,
+     "rationale": "Correct: trust-minimised settlement is a genuine blockchain property."
+    },
+    {
+     "key": "C",
+     "text": "The team wants faster queries than a database",
+     "correct": false,
+     "rationale": "Databases are faster; speed is not a blockchain advantage."
+    },
+    {
+     "key": "D",
+     "text": "The data must be stored only once to save disk",
+     "correct": false,
+     "rationale": "Blockchains replicate data across nodes, using more storage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: removing a trusted central writer is a core blockchain use case.",
+   "outcome_refs": [
+    "MST-1909-D02.01"
+   ],
+   "domain_ref": "Blocks, hashes and chaining",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1909-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A payment shows 1 confirmation on a public chain. Why might the merchant still wait before releasing goods?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A short chain reorganisation can orphan the block and revert the transaction",
+     "correct": true,
+     "rationale": "Correct: finality is probabilistic, so more confirmations reduce reorg risk."
+    },
+    {
+     "key": "B",
+     "text": "The transaction fee has not been paid yet",
+     "correct": false,
+     "rationale": "An included transaction has already paid its fee."
+    },
+    {
+     "key": "C",
+     "text": "One confirmation means the transaction failed",
+     "correct": false,
+     "rationale": "One confirmation means it was included once."
+    },
+    {
+     "key": "D",
+     "text": "The merchant must manually approve each block",
+     "correct": false,
+     "rationale": "Merchants do not approve blocks."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: finality is probabilistic, so more confirmations reduce reorg risk.",
+   "outcome_refs": [
+    "MST-1909-D03.01"
+   ],
+   "domain_ref": "Network types and trust models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
