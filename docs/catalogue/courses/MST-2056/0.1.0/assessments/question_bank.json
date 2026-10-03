@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2056",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2056-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Your LLM feature's cost is dominated by many repeated, identical prompts (same FAQ asked constantly). Which architectural change cuts cost most directly?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add a cache keyed on the prompt so identical requests return a stored response without calling the model",
+     "correct": true,
+     "rationale": "Correct: caching avoids paying for repeated identical generations."
+    },
+    {
+     "key": "B",
+     "text": "Switch every request to the largest model",
+     "correct": false,
+     "rationale": "A bigger model raises cost; it does not avoid repeated calls."
+    },
+    {
+     "key": "C",
+     "text": "Increase the context window",
+     "correct": false,
+     "rationale": "Context size does not reduce repeated identical calls."
+    },
+    {
+     "key": "D",
+     "text": "Disable streaming",
+     "correct": false,
+     "rationale": "Streaming affects perceived latency, not repeated-call cost."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: caching avoids paying for repeated identical generations.",
+   "outcome_refs": [
+    "MST-2056-D01.01"
+   ],
+   "domain_ref": "Components of an LLM app",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2056-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO techniques reduce the cost or latency of an LLM application? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Routing easy requests to a smaller, cheaper model",
+     "correct": true,
+     "rationale": "Correct: model routing matches request difficulty to model cost."
+    },
+    {
+     "key": "B",
+     "text": "Caching responses for repeated identical inputs",
+     "correct": true,
+     "rationale": "Correct: caching avoids redundant generations."
+    },
+    {
+     "key": "C",
+     "text": "Always sending the full conversation history on every call",
+     "correct": false,
+     "rationale": "Resending everything increases tokens, cost and latency."
+    },
+    {
+     "key": "D",
+     "text": "Adding more tools to every request",
+     "correct": false,
+     "rationale": "Extra tool definitions add tokens and do not reduce cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: model routing matches request difficulty to model cost.",
+   "outcome_refs": [
+    "MST-2056-D02.01"
+   ],
+   "domain_ref": "Interaction patterns",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2056-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why design explicit timeouts and fallbacks around model provider calls?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The provider can be slow, rate-limited or down, and the app must degrade gracefully instead of hanging or erroring",
+     "correct": true,
+     "rationale": "Correct: external dependencies fail, so the architecture must handle it."
+    },
+    {
+     "key": "B",
+     "text": "Because the model is always deterministic",
+     "correct": false,
+     "rationale": "Determinism is unrelated and not generally true."
+    },
+    {
+     "key": "C",
+     "text": "To avoid ever using retrieval",
+     "correct": false,
+     "rationale": "Timeouts are unrelated to whether retrieval is used."
+    },
+    {
+     "key": "D",
+     "text": "Because fallbacks remove the need for the model",
+     "correct": false,
+     "rationale": "Fallbacks handle failure; they do not replace the model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: external dependencies fail, so the architecture must handle it.",
+   "outcome_refs": [
+    "MST-2056-D03.01"
+   ],
+   "domain_ref": "Performance and cost",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

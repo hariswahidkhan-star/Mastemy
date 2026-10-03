@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2052",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2052-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A RAG bot gives a confident answer that is nowhere in the retrieved passages. The right passage was retrieved. What failure is this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ignored context: the model answered from parametric memory instead of the retrieved passages",
+     "correct": true,
+     "rationale": "Correct: when the right context is present but unused, the model ignored it, often fixable with stronger grounding instructions."
+    },
+    {
+     "key": "B",
+     "text": "Missing context: the retriever failed",
+     "correct": false,
+     "rationale": "The right passage was retrieved, so retrieval did not fail."
+    },
+    {
+     "key": "C",
+     "text": "A chunking bug",
+     "correct": false,
+     "rationale": "Chunking is not the issue when the correct passage was retrieved."
+    },
+    {
+     "key": "D",
+     "text": "An embedding dimension mismatch",
+     "correct": false,
+     "rationale": "That would break retrieval entirely, which did not happen here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: when the right context is present but unused, the model ignored it, often fixable with stronger grounding instructions.",
+   "outcome_refs": [
+    "MST-2052-D01.01"
+   ],
+   "domain_ref": "Why RAG",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2052-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good reasons to choose RAG over fine-tuning for a knowledge task? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The knowledge changes often and must stay current without retraining",
+     "correct": true,
+     "rationale": "Correct: RAG updates by changing the index, not the weights."
+    },
+    {
+     "key": "B",
+     "text": "You need answers grounded in specific source passages you can cite",
+     "correct": true,
+     "rationale": "Correct: RAG supplies and can cite the exact retrieved text."
+    },
+    {
+     "key": "C",
+     "text": "You want to permanently change the model's writing style",
+     "correct": false,
+     "rationale": "Style adaptation is a fine-tuning use case, not RAG's strength."
+    },
+    {
+     "key": "D",
+     "text": "You want to avoid storing any documents at all",
+     "correct": false,
+     "rationale": "RAG requires storing and indexing the documents."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: RAG updates by changing the index, not the weights.",
+   "outcome_refs": [
+    "MST-2052-D02.01"
+   ],
+   "domain_ref": "The RAG pipeline",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2052-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the RAG pipeline, what is the purpose of the embedding step?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Convert text into vectors so semantically similar passages can be found by similarity search",
+     "correct": true,
+     "rationale": "Correct: embeddings place similar meanings near each other for retrieval."
+    },
+    {
+     "key": "B",
+     "text": "Compress documents to save disk space",
+     "correct": false,
+     "rationale": "Embeddings are for similarity search, not primarily compression."
+    },
+    {
+     "key": "C",
+     "text": "Translate documents into English",
+     "correct": false,
+     "rationale": "Embedding is not translation."
+    },
+    {
+     "key": "D",
+     "text": "Generate the final answer",
+     "correct": false,
+     "rationale": "Generation is a later step performed by the LLM."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: embeddings place similar meanings near each other for retrieval.",
+   "outcome_refs": [
+    "MST-2052-D03.01"
+   ],
+   "domain_ref": "Building retrieval into prompts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

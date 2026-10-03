@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2059",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2059-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants the model to know this week's prices, which change constantly. Why is fine-tuning a poor fit?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fine-tuning bakes knowledge into weights and cannot be cheaply updated each week; retrieval keeps changing facts current",
+     "correct": true,
+     "rationale": "Correct: volatile facts belong in retrieval, not in fine-tuned weights."
+    },
+    {
+     "key": "B",
+     "text": "Fine-tuning can never change model behaviour",
+     "correct": false,
+     "rationale": "It can change behaviour; the issue is updating volatile facts."
+    },
+    {
+     "key": "C",
+     "text": "Prices cannot be represented as text",
+     "correct": false,
+     "rationale": "They can; the problem is update frequency."
+    },
+    {
+     "key": "D",
+     "text": "Fine-tuning is always cheaper than retrieval",
+     "correct": false,
+     "rationale": "For frequently changing data, re-tuning is costly, not cheaper."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: volatile facts belong in retrieval, not in fine-tuned weights.",
+   "outcome_refs": [
+    "MST-2059-D01.01"
+   ],
+   "domain_ref": "When to adapt a model",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2059-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are advantages of parameter-efficient fine-tuning (e.g. LoRA) over full fine-tuning? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lower compute and memory cost to train",
+     "correct": true,
+     "rationale": "Correct: only a small set of added parameters is trained."
+    },
+    {
+     "key": "B",
+     "text": "Smaller artefacts that are easier to store and swap",
+     "correct": true,
+     "rationale": "Correct: adapters are small compared with full model copies."
+    },
+    {
+     "key": "C",
+     "text": "It guarantees higher accuracy than full fine-tuning in all cases",
+     "correct": false,
+     "rationale": "It does not guarantee higher accuracy; it trades some capacity for efficiency."
+    },
+    {
+     "key": "D",
+     "text": "It removes the need for any training data",
+     "correct": false,
+     "rationale": "Training data is still required."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: only a small set of added parameters is trained.",
+   "outcome_refs": [
+    "MST-2059-D02.01"
+   ],
+   "domain_ref": "Methods of adaptation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2059-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Training loss keeps falling but validation loss starts rising. What does this indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Overfitting: the model is memorising the training set and generalising worse",
+     "correct": true,
+     "rationale": "Correct: a widening train/validation gap is the classic overfitting signal."
+    },
+    {
+     "key": "B",
+     "text": "The dataset is too small to train at all",
+     "correct": false,
+     "rationale": "Training loss is improving, so training is happening; the issue is generalisation."
+    },
+    {
+     "key": "C",
+     "text": "The learning rate is zero",
+     "correct": false,
+     "rationale": "A zero learning rate would not lower training loss."
+    },
+    {
+     "key": "D",
+     "text": "Fine-tuning has finished successfully",
+     "correct": false,
+     "rationale": "Rising validation loss means it should stop earlier, not that it succeeded."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a widening train/validation gap is the classic overfitting signal.",
+   "outcome_refs": [
+    "MST-2059-D03.01"
+   ],
+   "domain_ref": "Data for fine-tuning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

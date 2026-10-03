@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2054",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2054-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Search quality suddenly drops after a deploy. You find queries are embedded with model A but the documents were indexed with model B. Why does this break search?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Vectors from different models live in different spaces, so distances between them are meaningless",
+     "correct": true,
+     "rationale": "Correct: query and document embeddings must come from the same model to be comparable."
+    },
+    {
+     "key": "B",
+     "text": "Model B is always worse than model A",
+     "correct": false,
+     "rationale": "The issue is incompatibility, not that one model is worse."
+    },
+    {
+     "key": "C",
+     "text": "The database ran out of disk",
+     "correct": false,
+     "rationale": "This is a space-mismatch problem, not storage."
+    },
+    {
+     "key": "D",
+     "text": "Cosine distance is broken",
+     "correct": false,
+     "rationale": "The metric is fine; the inputs are incomparable."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: query and document embeddings must come from the same model to be comparable.",
+   "outcome_refs": [
+    "MST-2054-D01.01"
+   ],
+   "domain_ref": "Embeddings and similarity",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2054-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about approximate nearest-neighbour (ANN) indexes are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "They trade some recall for much faster search at scale",
+     "correct": true,
+     "rationale": "Correct: ANN accepts occasional misses to gain speed."
+    },
+    {
+     "key": "B",
+     "text": "They may not return the exact true nearest neighbours every time",
+     "correct": true,
+     "rationale": "Correct: results are approximate by design."
+    },
+    {
+     "key": "C",
+     "text": "They guarantee perfect recall like exact search",
+     "correct": false,
+     "rationale": "That is exact search, not approximate."
+    },
+    {
+     "key": "D",
+     "text": "They remove the need to choose a distance metric",
+     "correct": false,
+     "rationale": "A distance metric is still required."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: ANN accepts occasional misses to gain speed.",
+   "outcome_refs": [
+    "MST-2054-D02.01"
+   ],
+   "domain_ref": "Choosing embedding models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2054-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why use metadata filtering alongside vector similarity in a multi-tenant store?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To restrict similarity search to one tenant's or one category's vectors so results are both relevant and correctly scoped",
+     "correct": true,
+     "rationale": "Correct: metadata filters enforce scoping and tenancy on top of similarity."
+    },
+    {
+     "key": "B",
+     "text": "To replace embeddings entirely",
+     "correct": false,
+     "rationale": "Filtering complements, not replaces, vector search."
+    },
+    {
+     "key": "C",
+     "text": "To make the index smaller on disk",
+     "correct": false,
+     "rationale": "Metadata adds data; it is for scoping, not compression."
+    },
+    {
+     "key": "D",
+     "text": "To avoid needing an embedding model",
+     "correct": false,
+     "rationale": "Embeddings are still required for similarity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: metadata filters enforce scoping and tenancy on top of similarity.",
+   "outcome_refs": [
+    "MST-2054-D03.01"
+   ],
+   "domain_ref": "Indexes and search",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

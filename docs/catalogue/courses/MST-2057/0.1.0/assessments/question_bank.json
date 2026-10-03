@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2057",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2057-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team claims their agent 'got much better' after a prompt change, citing three good examples. Why is this insufficient evidence?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Three cherry-picked examples are not a representative, repeatable measurement and can hide regressions elsewhere",
+     "correct": true,
+     "rationale": "Correct: evaluation needs a representative dataset and metrics, not anecdotes."
+    },
+    {
+     "key": "B",
+     "text": "Three examples is the required minimum for statistical certainty",
+     "correct": false,
+     "rationale": "Three examples give no such certainty."
+    },
+    {
+     "key": "C",
+     "text": "Examples cannot be used in evaluation at all",
+     "correct": false,
+     "rationale": "Examples can inform evals; the problem is they are few and cherry-picked."
+    },
+    {
+     "key": "D",
+     "text": "Prompt changes never affect quality",
+     "correct": false,
+     "rationale": "They can; that is exactly why measurement is needed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: evaluation needs a representative dataset and metrics, not anecdotes.",
+   "outcome_refs": [
+    "MST-2057-D01.01"
+   ],
+   "domain_ref": "Why evaluate",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2057-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound practices when using LLM-as-judge for evaluation? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate the judge's scores against a sample of human labels",
+     "correct": true,
+     "rationale": "Correct: calibrating against humans checks the judge is trustworthy."
+    },
+    {
+     "key": "B",
+     "text": "Give the judge a clear, specific scoring rubric",
+     "correct": true,
+     "rationale": "Correct: a concrete rubric reduces inconsistent judging."
+    },
+    {
+     "key": "C",
+     "text": "Assume the judge is always correct and never audit it",
+     "correct": false,
+     "rationale": "Blind trust in the judge is the risk to avoid."
+    },
+    {
+     "key": "D",
+     "text": "Use the same model to generate and judge with no checks and treat the score as ground truth",
+     "correct": false,
+     "rationale": "Unaudited self-judging can be biased and must not be treated as ground truth."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: calibrating against humans checks the judge is trustworthy.",
+   "outcome_refs": [
+    "MST-2057-D02.01"
+   ],
+   "domain_ref": "Building evals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2057-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What does tracing add that logging only the final answer does not?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A step-by-step view of prompts, tool calls, intermediate outputs, latency and cost so failures can be localised",
+     "correct": true,
+     "rationale": "Correct: traces expose the internal steps needed to diagnose where a run failed."
+    },
+    {
+     "key": "B",
+     "text": "A guarantee the answer is correct",
+     "correct": false,
+     "rationale": "Tracing observes; it does not guarantee correctness."
+    },
+    {
+     "key": "C",
+     "text": "Automatic fixing of bad answers",
+     "correct": false,
+     "rationale": "Tracing diagnoses; it does not auto-fix."
+    },
+    {
+     "key": "D",
+     "text": "Elimination of the need for evaluation",
+     "correct": false,
+     "rationale": "Tracing and evaluation are complementary, not substitutes."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: traces expose the internal steps needed to diagnose where a run failed.",
+   "outcome_refs": [
+    "MST-2057-D03.01"
+   ],
+   "domain_ref": "Tracing and observability",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

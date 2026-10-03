@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2058",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2058-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A live-captioning feature must show words as the speaker talks. Which transcription mode fits, and why?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Streaming transcription, because it emits partial results continuously with low latency instead of waiting for the full audio",
+     "correct": true,
+     "rationale": "Correct: live captions need incremental, low-latency output that streaming provides."
+    },
+    {
+     "key": "B",
+     "text": "Batch transcription, because it is always more accurate",
+     "correct": false,
+     "rationale": "Batch waits for the whole file and cannot caption live, regardless of accuracy."
+    },
+    {
+     "key": "C",
+     "text": "Text-to-speech, because captions are audio",
+     "correct": false,
+     "rationale": "Captions are text from speech; that is STT, not TTS."
+    },
+    {
+     "key": "D",
+     "text": "No transcription is needed",
+     "correct": false,
+     "rationale": "Captions require speech-to-text."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: live captions need incremental, low-latency output that streaming provides.",
+   "outcome_refs": [
+    "MST-2058-D01.01"
+   ],
+   "domain_ref": "The speech pipeline",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2058-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors most affect speech-to-text word error rate in production? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Background noise in the audio",
+     "correct": true,
+     "rationale": "Correct: noise degrades recognition accuracy."
+    },
+    {
+     "key": "B",
+     "text": "Domain-specific or rare vocabulary the model was not tuned for",
+     "correct": true,
+     "rationale": "Correct: unusual terms raise error rates unless the model adapts."
+    },
+    {
+     "key": "C",
+     "text": "The colour of the user interface",
+     "correct": false,
+     "rationale": "UI colour is irrelevant to transcription accuracy."
+    },
+    {
+     "key": "D",
+     "text": "Whether the transcript is displayed in bold",
+     "correct": false,
+     "rationale": "Display styling does not affect recognition accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: noise degrades recognition accuracy.",
+   "outcome_refs": [
+    "MST-2058-D02.01"
+   ],
+   "domain_ref": "Speech-to-text in practice",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2058-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why add pronunciation markup to a text-to-speech request for a product named 'Xyla'?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To tell the synthesiser how to pronounce an unusual name the default voice would likely mispronounce",
+     "correct": true,
+     "rationale": "Correct: markup controls pronunciation of names and terms the model cannot infer."
+    },
+    {
+     "key": "B",
+     "text": "To translate the name into another language",
+     "correct": false,
+     "rationale": "Markup controls pronunciation, not translation."
+    },
+    {
+     "key": "C",
+     "text": "To transcribe the user's speech",
+     "correct": false,
+     "rationale": "That is STT; markup here is for synthesis."
+    },
+    {
+     "key": "D",
+     "text": "To reduce the audio sample rate",
+     "correct": false,
+     "rationale": "Pronunciation markup does not change sample rate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: markup controls pronunciation of names and terms the model cannot infer.",
+   "outcome_refs": [
+    "MST-2058-D03.01"
+   ],
+   "domain_ref": "Text-to-speech in practice",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2050",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2050-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You have a researcher agent and a writer agent. The writer sometimes invents facts the researcher never found. What coordination fix helps most?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A hand-off contract that passes the researcher's sourced findings and instructs the writer to use only those",
+     "correct": true,
+     "rationale": "Correct: an explicit hand-off contract constrains the writer to grounded inputs."
+    },
+    {
+     "key": "B",
+     "text": "Run both agents at a higher temperature",
+     "correct": false,
+     "rationale": "More randomness increases invention, not less."
+    },
+    {
+     "key": "C",
+     "text": "Remove the researcher and let the writer search too",
+     "correct": false,
+     "rationale": "That removes specialisation and does not stop fabrication."
+    },
+    {
+     "key": "D",
+     "text": "Give the writer more tools",
+     "correct": false,
+     "rationale": "Extra tools do not constrain the writer to the researcher's findings."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an explicit hand-off contract constrains the writer to grounded inputs.",
+   "outcome_refs": [
+    "MST-2050-D01.01"
+   ],
+   "domain_ref": "Why and when to use multiple agents",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2050-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are real risks that multi-agent orchestration adds over a single agent? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Higher total token cost from inter-agent messages",
+     "correct": true,
+     "rationale": "Correct: every hand-off and message consumes tokens."
+    },
+    {
+     "key": "B",
+     "text": "Hand-off loops where agents pass work back and forth without converging",
+     "correct": true,
+     "rationale": "Correct: unbounded delegation can cycle."
+    },
+    {
+     "key": "C",
+     "text": "The inability to use any tools at all",
+     "correct": false,
+     "rationale": "Multi-agent systems can still use tools; this is not a risk they add."
+    },
+    {
+     "key": "D",
+     "text": "A guarantee of lower latency",
+     "correct": false,
+     "rationale": "Coordination usually adds latency; it is not a benefit and not a risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: every hand-off and message consumes tokens.",
+   "outcome_refs": [
+    "MST-2050-D02.01"
+   ],
+   "domain_ref": "Orchestration topologies",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2050-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a supervisor topology, what is the supervisor agent primarily responsible for?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Deciding which specialist agent handles each sub-task and integrating their results",
+     "correct": true,
+     "rationale": "Correct: the supervisor routes and integrates rather than doing the specialist work itself."
+    },
+    {
+     "key": "B",
+     "text": "Executing every tool call personally",
+     "correct": false,
+     "rationale": "That defeats delegation; specialists do the work."
+    },
+    {
+     "key": "C",
+     "text": "Storing the vector database",
+     "correct": false,
+     "rationale": "Routing is unrelated to vector storage."
+    },
+    {
+     "key": "D",
+     "text": "Fine-tuning the underlying model",
+     "correct": false,
+     "rationale": "Orchestration does not fine-tune models."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the supervisor routes and integrates rather than doing the specialist work itself.",
+   "outcome_refs": [
+    "MST-2050-D03.01"
+   ],
+   "domain_ref": "Coordination and hand-offs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

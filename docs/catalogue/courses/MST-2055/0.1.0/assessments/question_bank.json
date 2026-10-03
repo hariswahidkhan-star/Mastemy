@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2055",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2055-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A classification prompt works in testing but occasionally obeys instructions hidden inside the user's message. What is the most direct mitigation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Separate user content from instructions with delimiters and tell the model to treat delimited text as data, not commands",
+     "correct": true,
+     "rationale": "Correct: isolating untrusted input reduces instruction injection."
+    },
+    {
+     "key": "B",
+     "text": "Increase max output tokens",
+     "correct": false,
+     "rationale": "Output length does not address injection."
+    },
+    {
+     "key": "C",
+     "text": "Switch to zero-shot",
+     "correct": false,
+     "rationale": "Few-shot vs zero-shot is unrelated to injection defence."
+    },
+    {
+     "key": "D",
+     "text": "Raise the temperature",
+     "correct": false,
+     "rationale": "More randomness does not prevent obeying injected instructions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: isolating untrusted input reduces instruction injection.",
+   "outcome_refs": [
+    "MST-2055-D01.01"
+   ],
+   "domain_ref": "Prompt anatomy",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2055-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make a production prompt maintainable like code? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keeping the prompt under version control with a change history",
+     "correct": true,
+     "rationale": "Correct: versioning tracks changes and enables rollback."
+    },
+    {
+     "key": "B",
+     "text": "Maintaining a regression test set run on every prompt change",
+     "correct": true,
+     "rationale": "Correct: tests catch quality regressions before release."
+    },
+    {
+     "key": "C",
+     "text": "Editing the live prompt by hand whenever output looks wrong",
+     "correct": false,
+     "rationale": "Untracked hand-edits are exactly what to avoid."
+    },
+    {
+     "key": "D",
+     "text": "Avoiding any examples because they take tokens",
+     "correct": false,
+     "rationale": "Dropping helpful examples to save tokens can hurt quality; it is not a maintainability practice."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: versioning tracks changes and enables rollback.",
+   "outcome_refs": [
+    "MST-2055-D02.01"
+   ],
+   "domain_ref": "Techniques that work",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2055-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "When is adding few-shot examples most likely to help?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When the desired output format or edge-case handling is hard to specify in words alone",
+     "correct": true,
+     "rationale": "Correct: examples convey format and edge cases that prose struggles to pin down."
+    },
+    {
+     "key": "B",
+     "text": "For every prompt, without exception",
+     "correct": false,
+     "rationale": "Examples add cost and are not always needed."
+    },
+    {
+     "key": "C",
+     "text": "Only when the temperature is zero",
+     "correct": false,
+     "rationale": "Few-shot usefulness is independent of temperature."
+    },
+    {
+     "key": "D",
+     "text": "Never, because examples always reduce accuracy",
+     "correct": false,
+     "rationale": "Examples often improve accuracy for format-sensitive tasks."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: examples convey format and edge cases that prose struggles to pin down.",
+   "outcome_refs": [
+    "MST-2055-D03.01"
+   ],
+   "domain_ref": "Robust prompts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

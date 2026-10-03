@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2049",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2049-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A task is a single, well-specified transformation (reformat this text) with no external lookups. Why is a looping agent usually the wrong choice here?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A single model call is cheaper, faster and more predictable; a loop adds cost and failure modes with no benefit",
+     "correct": true,
+     "rationale": "Correct: agency pays off only when the task needs iteration, tools or branching that a single call cannot do."
+    },
+    {
+     "key": "B",
+     "text": "Agents cannot reformat text",
+     "correct": false,
+     "rationale": "They can; the point is a loop is unnecessary overhead for a one-shot transformation."
+    },
+    {
+     "key": "C",
+     "text": "Single calls cannot use a system prompt",
+     "correct": false,
+     "rationale": "They can; this is irrelevant to the choice."
+    },
+    {
+     "key": "D",
+     "text": "Loops are always more accurate",
+     "correct": false,
+     "rationale": "A loop adds variance and cost; it is not inherently more accurate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: agency pays off only when the task needs iteration, tools or branching that a single call cannot do.",
+   "outcome_refs": [
+    "MST-2049-D01.01"
+   ],
+   "domain_ref": "What an agent is and when to use one",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2049-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are essential stopping conditions for an agent control loop? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A maximum number of steps or iterations",
+     "correct": true,
+     "rationale": "Correct: a step budget prevents an unbounded loop."
+    },
+    {
+     "key": "B",
+     "text": "An explicit success or goal-reached check",
+     "correct": true,
+     "rationale": "Correct: the loop must recognise when the task is done."
+    },
+    {
+     "key": "C",
+     "text": "A requirement that the model use every available tool",
+     "correct": false,
+     "rationale": "Forcing tool use is not a stopping condition and harms efficiency."
+    },
+    {
+     "key": "D",
+     "text": "A rule that the agent must always run at least ten steps",
+     "correct": false,
+     "rationale": "A minimum-steps rule delays completion; it is not a stopping condition."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a step budget prevents an unbounded loop.",
+   "outcome_refs": [
+    "MST-2049-D02.01"
+   ],
+   "domain_ref": "The agent control loop",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2049-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An agent keeps re-running the same failing search and never finishes. What control-loop fix most directly addresses this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Detect repeated identical actions and either replan or halt with an error after a bounded retry count",
+     "correct": true,
+     "rationale": "Correct: loop guards on repeated actions plus a retry bound break the cycle."
+    },
+    {
+     "key": "B",
+     "text": "Increase the model temperature to 1.5",
+     "correct": false,
+     "rationale": "More randomness does not fix a missing loop guard and hurts reliability."
+    },
+    {
+     "key": "C",
+     "text": "Remove the step limit entirely",
+     "correct": false,
+     "rationale": "That makes the runaway loop worse."
+    },
+    {
+     "key": "D",
+     "text": "Give the agent more tools",
+     "correct": false,
+     "rationale": "More tools do not stop a repeated-action loop."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: loop guards on repeated actions plus a retry bound break the cycle.",
+   "outcome_refs": [
+    "MST-2049-D03.01"
+   ],
+   "domain_ref": "Reasoning and planning strategies",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
