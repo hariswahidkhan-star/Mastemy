@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2568",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2568-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Go, when should you prefer composition over inheritance to reuse behaviour?",
+   "options": [
+    {
+     "key": "A",
+     "text": "When the classes do not form a genuine is-a relationship and you only need to reuse behaviour",
+     "correct": true,
+     "rationale": "Correct: composition avoids a brittle hierarchy when there is no true subtype relationship."
+    },
+    {
+     "key": "B",
+     "text": "Always, because inheritance is never useful",
+     "correct": false,
+     "rationale": "Inheritance is appropriate for real is-a relationships."
+    },
+    {
+     "key": "C",
+     "text": "Only when performance is the single concern",
+     "correct": false,
+     "rationale": "The choice is primarily about modelling, not raw performance."
+    },
+    {
+     "key": "D",
+     "text": "Never, because composition is slower",
+     "correct": false,
+     "rationale": "Composition is not inherently slow and is often clearer."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: composition avoids a brittle hierarchy when there is no true subtype relationship.",
+   "outcome_refs": [
+    "MST-2568-D01.01"
+   ],
+   "domain_ref": "Collections and data structures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2568-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are appropriate uses of exceptions in Go? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Signalling that a required file could not be opened",
+     "correct": true,
+     "rationale": "Correct: an unexpected, exceptional condition is a good fit for an exception."
+    },
+    {
+     "key": "B",
+     "text": "Reporting that user input failed validation at a boundary",
+     "correct": true,
+     "rationale": "Correct: raising a clear error lets the caller handle invalid input deliberately."
+    },
+    {
+     "key": "C",
+     "text": "Controlling normal loop iteration in place of a condition",
+     "correct": false,
+     "rationale": "Using exceptions for ordinary control flow is an anti-pattern."
+    },
+    {
+     "key": "D",
+     "text": "Hiding all errors by catching and ignoring them",
+     "correct": false,
+     "rationale": "Swallowing errors conceals real failures."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an unexpected, exceptional condition is a good fit for an exception.",
+   "outcome_refs": [
+    "MST-2568-D02.01"
+   ],
+   "domain_ref": "Object-oriented programming",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2568-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need fast membership tests on a large, unordered collection of unique keys. Which structure fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A hash-based set",
+     "correct": true,
+     "rationale": "Correct: a set gives average constant-time membership tests on unique keys."
+    },
+    {
+     "key": "B",
+     "text": "A plain sequential list scanned from the start",
+     "correct": false,
+     "rationale": "Linear scans are slow for membership on large collections."
+    },
+    {
+     "key": "C",
+     "text": "A fixed-size array indexed by position",
+     "correct": false,
+     "rationale": "Arrays do not give key-based membership without scanning."
+    },
+    {
+     "key": "D",
+     "text": "A single string containing all keys",
+     "correct": false,
+     "rationale": "String search is error-prone and slow for this purpose."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a set gives average constant-time membership tests on unique keys.",
+   "outcome_refs": [
+    "MST-2568-D03.01"
+   ],
+   "domain_ref": "Errors and robustness",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

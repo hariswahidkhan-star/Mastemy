@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2551",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2551-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Python, what precisely is a data race?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Two or more threads access the same memory concurrently, at least one writes, and there is no synchronisation",
+     "correct": true,
+     "rationale": "Correct: that unsynchronised concurrent access with a writer is the definition of a data race."
+    },
+    {
+     "key": "B",
+     "text": "Any program that uses more than one thread",
+     "correct": false,
+     "rationale": "Multithreading alone is not a data race."
+    },
+    {
+     "key": "C",
+     "text": "A loop that iterates faster than expected",
+     "correct": false,
+     "rationale": "Loop speed is unrelated to data races."
+    },
+    {
+     "key": "D",
+     "text": "Two functions defined with the same name",
+     "correct": false,
+     "rationale": "Naming collisions are a different concern."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: that unsynchronised concurrent access with a writer is the definition of a data race.",
+   "outcome_refs": [
+    "MST-2551-D01.01"
+   ],
+   "domain_ref": "Concurrency and parallelism",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2551-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices genuinely help performance in Python? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Profiling first to find the real bottleneck before changing code",
+     "correct": true,
+     "rationale": "Correct: measurement directs effort to where it matters."
+    },
+    {
+     "key": "B",
+     "text": "Reducing unnecessary allocations in a hot path",
+     "correct": true,
+     "rationale": "Correct: fewer allocations cut memory pressure and overhead in hot code."
+    },
+    {
+     "key": "C",
+     "text": "Rewriting every loop by hand before measuring anything",
+     "correct": false,
+     "rationale": "Premature optimisation wastes effort and can add bugs."
+    },
+    {
+     "key": "D",
+     "text": "Adding threads to code that is bound by a single shared lock",
+     "correct": false,
+     "rationale": "Contention on one lock means more threads will not help."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: measurement directs effort to where it matters.",
+   "outcome_refs": [
+    "MST-2551-D02.01"
+   ],
+   "domain_ref": "Performance and memory",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2551-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Python codebase applies the Singleton pattern to almost every class. What is the main risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Hidden global state and tight coupling that make the code hard to test and change",
+     "correct": true,
+     "rationale": "Correct: overusing singletons reintroduces global state and coupling."
+    },
+    {
+     "key": "B",
+     "text": "Programs will refuse to compile",
+     "correct": false,
+     "rationale": "Overuse is a design problem, not a compile error."
+    },
+    {
+     "key": "C",
+     "text": "The pattern makes all code automatically thread-safe",
+     "correct": false,
+     "rationale": "Singletons are not inherently thread-safe."
+    },
+    {
+     "key": "D",
+     "text": "Patterns can only be used once per program",
+     "correct": false,
+     "rationale": "There is no such rule."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: overusing singletons reintroduces global state and coupling.",
+   "outcome_refs": [
+    "MST-2551-D03.01"
+   ],
+   "domain_ref": "Design patterns and architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

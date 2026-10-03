@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2561",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2561-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In C#, what is the most reliable first step when the toolchain reports a syntax error on a line?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Read the error message and its location, then inspect that line and the one above it",
+     "correct": true,
+     "rationale": "Correct: the message and position point directly at the fault, which often starts on the previous line."
+    },
+    {
+     "key": "B",
+     "text": "Rewrite the whole program from scratch",
+     "correct": false,
+     "rationale": "Wasteful and does not teach you what was wrong."
+    },
+    {
+     "key": "C",
+     "text": "Ignore the error and run the program again",
+     "correct": false,
+     "rationale": "The error stops the program; running again changes nothing."
+    },
+    {
+     "key": "D",
+     "text": "Delete the reported line without reading it",
+     "correct": false,
+     "rationale": "This removes needed logic without understanding the cause."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the message and position point directly at the fault, which often starts on the previous line.",
+   "outcome_refs": [
+    "MST-2561-D01.01"
+   ],
+   "domain_ref": "Setting up and first programs",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2561-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about variables in C# are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A variable must be assigned a value before it is read",
+     "correct": true,
+     "rationale": "Correct: reading an unassigned variable is a common beginner error."
+    },
+    {
+     "key": "B",
+     "text": "A descriptive variable name makes a program easier to read and maintain",
+     "correct": true,
+     "rationale": "Correct: clear names communicate intent to future readers."
+    },
+    {
+     "key": "C",
+     "text": "Variable names may freely begin with a digit",
+     "correct": false,
+     "rationale": "Identifiers generally cannot start with a digit."
+    },
+    {
+     "key": "D",
+     "text": "Choosing a variable name changes how fast the program runs",
+     "correct": false,
+     "rationale": "Names do not affect runtime behaviour."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reading an unassigned variable is a common beginner error.",
+   "outcome_refs": [
+    "MST-2561-D02.01"
+   ],
+   "domain_ref": "Data types and operators",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2561-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A loop that should run ten times instead runs forever. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The loop's termination condition never becomes false because the counter is not updated",
+     "correct": true,
+     "rationale": "Correct: without progress toward the exit condition the loop never ends."
+    },
+    {
+     "key": "B",
+     "text": "The program has too many comments",
+     "correct": false,
+     "rationale": "Comments do not affect control flow."
+    },
+    {
+     "key": "C",
+     "text": "The computer is too slow",
+     "correct": false,
+     "rationale": "Speed does not cause an infinite loop."
+    },
+    {
+     "key": "D",
+     "text": "Loops are not allowed to run ten times",
+     "correct": false,
+     "rationale": "There is no such restriction."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: without progress toward the exit condition the loop never ends.",
+   "outcome_refs": [
+    "MST-2561-D03.01"
+   ],
+   "domain_ref": "Control flow",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
