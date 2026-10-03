@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-2403",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2403-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a modular autonomous-driving stack, what is the usual role of the prediction component?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To render the infotainment graphics",
+     "correct": false,
+     "rationale": "Prediction concerns road users' future motion, not graphics."
+    },
+    {
+     "key": "B",
+     "text": "To estimate the likely future trajectories and intentions of other road users",
+     "correct": true,
+     "rationale": "Prediction forecasts how other agents will move so the planner can act safely."
+    },
+    {
+     "key": "C",
+     "text": "To generate electricity for the motors",
+     "correct": false,
+     "rationale": "That is unrelated to the software stack."
+    },
+    {
+     "key": "D",
+     "text": "To store map tiles on disk",
+     "correct": false,
+     "rationale": "Map storage is a mapping/localisation concern, not prediction."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Prediction forecasts how other agents will move so the planner can act safely.",
+   "outcome_refs": [
+    "MST-2403-D01.01"
+   ],
+   "domain_ref": "AI across the stack",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2403-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is a safety filter or guard often placed around a learning-based driving policy?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Because learned policies are always slower than classical ones",
+     "correct": false,
+     "rationale": "Speed is not the reason for a safety filter."
+    },
+    {
+     "key": "B",
+     "text": "Because a learned policy can produce unsafe or out-of-distribution actions, and the filter enforces hard safety constraints",
+     "correct": true,
+     "rationale": "A safety filter constrains the learned output to provably safe actions, covering cases the policy was not trained on."
+    },
+    {
+     "key": "C",
+     "text": "Because it increases the model's parameter count",
+     "correct": false,
+     "rationale": "A safety filter is about constraints, not model size."
+    },
+    {
+     "key": "D",
+     "text": "Because it replaces the need for any perception",
+     "correct": false,
+     "rationale": "Perception is still required; the filter does not replace it."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "A safety filter constrains the learned output to provably safe actions, covering cases the policy was not trained on.",
+   "outcome_refs": [
+    "MST-2403-D02.01"
+   ],
+   "domain_ref": "Perception learning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2403-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A validation team assesses an AI perception model before deployment. Select TWO practices that specifically improve confidence in rare, safety-critical situations.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Testing against curated and generated edge-case scenarios",
+     "correct": true,
+     "rationale": "Edge-case and scenario-based testing targets exactly the rare situations average metrics miss."
+    },
+    {
+     "key": "B",
+     "text": "Estimating and monitoring model uncertainty on out-of-distribution inputs",
+     "correct": true,
+     "rationale": "Tracking uncertainty flags inputs the model is unsure about, which matters most in rare cases."
+    },
+    {
+     "key": "C",
+     "text": "Reporting only the average accuracy on the training set",
+     "correct": false,
+     "rationale": "Training-set averages hide rare-case failures and overstate safety."
+    },
+    {
+     "key": "D",
+     "text": "Removing all unusual samples from the test set",
+     "correct": false,
+     "rationale": "Discarding hard cases conceals precisely the risks that matter."
+    },
+    {
+     "key": "E",
+     "text": "Deploying immediately after one successful demo drive",
+     "correct": false,
+     "rationale": "A single demo cannot establish safety across rare conditions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Edge-case and scenario-based testing targets exactly the rare situations average metrics miss.",
+   "outcome_refs": [
+    "MST-2403-D03.01"
+   ],
+   "domain_ref": "Prediction",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

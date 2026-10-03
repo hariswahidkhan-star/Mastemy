@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-2401",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2401-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Under the SAE levels of driving automation, what is the key distinction of Level 3 compared with Level 2?",
+   "options": [
+    {
+     "key": "A",
+     "text": "At Level 3 no driver is ever required in the vehicle",
+     "correct": false,
+     "rationale": "That describes higher levels; Level 3 still relies on a fallback-ready user."
+    },
+    {
+     "key": "B",
+     "text": "At Level 3 the system performs the full driving task within its ODD and the driver need not monitor continuously, but must take over when requested",
+     "correct": true,
+     "rationale": "Level 3 is conditional automation: within its ODD the driver can disengage from monitoring but must resume control on a takeover request."
+    },
+    {
+     "key": "C",
+     "text": "Level 3 and Level 2 are identical in required driver attention",
+     "correct": false,
+     "rationale": "They differ precisely in monitoring requirements."
+    },
+    {
+     "key": "D",
+     "text": "Level 3 removes all sensors from the vehicle",
+     "correct": false,
+     "rationale": "Higher automation requires more capable sensing, not none."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Level 3 is conditional automation: within its ODD the driver can disengage from monitoring but must resume control on a takeover request.",
+   "outcome_refs": [
+    "MST-2401-D01.01"
+   ],
+   "domain_ref": "Automation levels",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2401-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is radar often fused with cameras in ADAS perception?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Radar provides high-resolution colour images",
+     "correct": false,
+     "rationale": "Radar does not provide colour or high spatial resolution; cameras do."
+    },
+    {
+     "key": "B",
+     "text": "Radar measures range and closing speed robustly in poor visibility, complementing the camera's rich but weather-sensitive imagery",
+     "correct": true,
+     "rationale": "Radar's direct range and velocity sensing in rain, fog and darkness complements the camera's detailed but light-dependent data."
+    },
+    {
+     "key": "C",
+     "text": "Radar is only used for infotainment",
+     "correct": false,
+     "rationale": "Radar is a perception sensor, not an entertainment feature."
+    },
+    {
+     "key": "D",
+     "text": "Cameras cannot detect anything at all",
+     "correct": false,
+     "rationale": "Cameras are highly capable; fusion combines complementary strengths."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Radar's direct range and velocity sensing in rain, fog and darkness complements the camera's detailed but light-dependent data.",
+   "outcome_refs": [
+    "MST-2401-D02.01"
+   ],
+   "domain_ref": "Perception sensors",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2401-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A validation lead reviews an ADAS feature before release. Select TWO limitations that are important to communicate honestly about a Level 2 system.",
+   "options": [
+    {
+     "key": "A",
+     "text": "The driver remains responsible and must supervise continuously",
+     "correct": true,
+     "rationale": "Level 2 requires constant driver supervision; this must be made clear."
+    },
+    {
+     "key": "B",
+     "text": "Performance can degrade outside the defined operational design domain",
+     "correct": true,
+     "rationale": "Behaviour is only assured within the ODD, so limits must be stated honestly."
+    },
+    {
+     "key": "C",
+     "text": "The system is fully autonomous and needs no driver",
+     "correct": false,
+     "rationale": "That is false for Level 2 and dangerous to imply."
+    },
+    {
+     "key": "D",
+     "text": "The system has been proven safe in every possible scenario",
+     "correct": false,
+     "rationale": "No finite test campaign proves safety in every scenario."
+    },
+    {
+     "key": "E",
+     "text": "Sensors work identically in all weather and lighting",
+     "correct": false,
+     "rationale": "Sensor performance varies with conditions, so this claim is false."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Level 2 requires constant driver supervision; this must be made clear.",
+   "outcome_refs": [
+    "MST-2401-D03.01"
+   ],
+   "domain_ref": "Fusion and localisation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

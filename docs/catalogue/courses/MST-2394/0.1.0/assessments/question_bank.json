@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-2394",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2394-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Torque at the crankshaft is 200 N·m and the overall gear ratio to the wheels is 10:1 (ignoring losses). What is the approximate torque delivered at the wheels?",
+   "options": [
+    {
+     "key": "A",
+     "text": "20 N·m",
+     "correct": false,
+     "rationale": "This divides by the ratio; a reduction ratio multiplies torque, it does not reduce it."
+    },
+    {
+     "key": "B",
+     "text": "200 N·m",
+     "correct": false,
+     "rationale": "The ratio changes the torque; it is not unchanged through the gearing."
+    },
+    {
+     "key": "C",
+     "text": "2000 N·m",
+     "correct": true,
+     "rationale": "A 10:1 reduction multiplies crankshaft torque by 10, giving roughly 2000 N·m at the wheels."
+    },
+    {
+     "key": "D",
+     "text": "210 N·m",
+     "correct": false,
+     "rationale": "Gear ratios multiply rather than add to the input torque."
+    }
+   ],
+   "correct_keys": [
+    "C"
+   ],
+   "explanation": "A 10:1 reduction multiplies crankshaft torque by 10, giving roughly 2000 N·m at the wheels.",
+   "outcome_refs": [
+    "MST-2394-D01.01"
+   ],
+   "domain_ref": "Vehicle systems overview",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2394-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A car travels at a steady speed on a level road. Which statement best describes the net longitudinal force on it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The net force is large and forward, proportional to engine power",
+     "correct": false,
+     "rationale": "Steady speed means zero acceleration, so the net force is not large."
+    },
+    {
+     "key": "B",
+     "text": "The net force is zero because tractive force balances resistance",
+     "correct": true,
+     "rationale": "At constant velocity acceleration is zero, so drive force equals the sum of rolling and aerodynamic resistance."
+    },
+    {
+     "key": "C",
+     "text": "The net force is backward because drag always dominates",
+     "correct": false,
+     "rationale": "If drag dominated, the car would decelerate; at steady speed forces balance."
+    },
+    {
+     "key": "D",
+     "text": "There is no force acting on the car at all",
+     "correct": false,
+     "rationale": "Several forces act; they simply sum to zero at constant speed."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "At constant velocity acceleration is zero, so drive force equals the sum of rolling and aerodynamic resistance.",
+   "outcome_refs": [
+    "MST-2394-D02.01"
+   ],
+   "domain_ref": "Engineering fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2394-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A team wants to reduce a vehicle's steady-state fuel consumption at highway speed. Select TWO changes that directly reduce the dominant resistive losses at that speed.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Lower the aerodynamic drag coefficient",
+     "correct": true,
+     "rationale": "Aerodynamic drag scales with speed squared and dominates at highway speed, so reducing Cd cuts the largest loss."
+    },
+    {
+     "key": "B",
+     "text": "Reduce rolling resistance with low-resistance tyres",
+     "correct": true,
+     "rationale": "Rolling resistance is a significant steady-speed loss, so lower-resistance tyres directly reduce consumption."
+    },
+    {
+     "key": "C",
+     "text": "Fit larger diameter brake discs",
+     "correct": false,
+     "rationale": "Brake size affects stopping, not steady-state cruising losses."
+    },
+    {
+     "key": "D",
+     "text": "Add a louder exhaust system",
+     "correct": false,
+     "rationale": "Exhaust sound does not change the resistive forces the engine must overcome."
+    },
+    {
+     "key": "E",
+     "text": "Install a larger infotainment screen",
+     "correct": false,
+     "rationale": "Cabin electronics have negligible effect on highway tractive losses."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Aerodynamic drag scales with speed squared and dominates at highway speed, so reducing Cd cuts the largest loss.",
+   "outcome_refs": [
+    "MST-2394-D03.01"
+   ],
+   "domain_ref": "Performance and dynamics basics",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

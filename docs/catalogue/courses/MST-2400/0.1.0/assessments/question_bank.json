@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-2400",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2400-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "On a Controller Area Network (CAN) bus, how is access to the bus resolved when two nodes transmit at the same time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A central master grants each node a fixed time slot",
+     "correct": false,
+     "rationale": "Classic CAN has no central master; access is decentralised."
+    },
+    {
+     "key": "B",
+     "text": "Non-destructive bit-wise arbitration based on message identifier priority",
+     "correct": true,
+     "rationale": "CAN uses bit-wise arbitration where the lower identifier (higher priority) wins without destroying the message."
+    },
+    {
+     "key": "C",
+     "text": "The node with the longest message always wins",
+     "correct": false,
+     "rationale": "Message length does not determine arbitration."
+    },
+    {
+     "key": "D",
+     "text": "Both messages are discarded and neither node retries",
+     "correct": false,
+     "rationale": "The winning message continues; the loser retries later."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "CAN uses bit-wise arbitration where the lower identifier (higher priority) wins without destroying the message.",
+   "outcome_refs": [
+    "MST-2400-D01.01"
+   ],
+   "domain_ref": "ECU hardware",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2400-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary purpose of signal conditioning between a sensor and an ECU input?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To convert the vehicle into a hybrid",
+     "correct": false,
+     "rationale": "Signal conditioning is unrelated to powertrain type."
+    },
+    {
+     "key": "B",
+     "text": "To scale, filter and protect the raw sensor signal so the ECU can read it accurately",
+     "correct": true,
+     "rationale": "Conditioning adjusts range, removes noise and protects the input so the microcontroller reads a valid value."
+    },
+    {
+     "key": "C",
+     "text": "To increase the engine's compression ratio",
+     "correct": false,
+     "rationale": "That is a mechanical engine parameter, not an electronics function."
+    },
+    {
+     "key": "D",
+     "text": "To store diagnostic trouble codes",
+     "correct": false,
+     "rationale": "DTC storage is a diagnostic function, not signal conditioning."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Conditioning adjusts range, removes noise and protects the input so the microcontroller reads a valid value.",
+   "outcome_refs": [
+    "MST-2400-D02.01"
+   ],
+   "domain_ref": "Sensors and actuators",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2400-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A technician is diagnosing an intermittent CAN communication fault. Select TWO checks that are appropriate early steps.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Measure the bus termination resistance",
+     "correct": true,
+     "rationale": "Incorrect or missing termination is a common CAN fault and is quick to check."
+    },
+    {
+     "key": "B",
+     "text": "Inspect connectors and wiring for intermittent open or short conditions",
+     "correct": true,
+     "rationale": "Intermittent faults frequently stem from wiring and connector problems."
+    },
+    {
+     "key": "C",
+     "text": "Replace every ECU on the vehicle immediately",
+     "correct": false,
+     "rationale": "Wholesale replacement is costly and not an appropriate early diagnostic step."
+    },
+    {
+     "key": "D",
+     "text": "Increase the tyre pressures",
+     "correct": false,
+     "rationale": "Tyre pressure has no bearing on CAN communication."
+    },
+    {
+     "key": "E",
+     "text": "Reflash the infotainment theme",
+     "correct": false,
+     "rationale": "A cosmetic change cannot address a physical-layer communication fault."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Incorrect or missing termination is a common CAN fault and is quick to check.",
+   "outcome_refs": [
+    "MST-2400-D03.01"
+   ],
+   "domain_ref": "In-vehicle networks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-2396",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2396-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary function of the power inverter in a battery electric vehicle?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To step the 12 V battery up to high voltage for the cabin heater",
+     "correct": false,
+     "rationale": "That is the role of a DC-DC converter and PTC heater, not the traction inverter."
+    },
+    {
+     "key": "B",
+     "text": "To convert the battery's DC into controlled AC to drive the traction motor",
+     "correct": true,
+     "rationale": "The inverter converts DC pack output into variable-frequency AC to control motor torque and speed."
+    },
+    {
+     "key": "C",
+     "text": "To store surplus energy during regenerative braking",
+     "correct": false,
+     "rationale": "Energy is stored in the battery; the inverter manages conversion, not storage."
+    },
+    {
+     "key": "D",
+     "text": "To filter coolant through the battery pack",
+     "correct": false,
+     "rationale": "Coolant flow is handled by the thermal management system, not the inverter."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "The inverter converts DC pack output into variable-frequency AC to control motor torque and speed.",
+   "outcome_refs": [
+    "MST-2396-D01.01"
+   ],
+   "domain_ref": "EV architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2396-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does DC fast charging typically slow down as the battery approaches a high state of charge?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The charger runs out of electricity",
+     "correct": false,
+     "rationale": "The supply is not exhausted; the vehicle limits the rate."
+    },
+    {
+     "key": "B",
+     "text": "The battery management system reduces current to protect the cells",
+     "correct": true,
+     "rationale": "At high state of charge the BMS tapers current to limit cell voltage and avoid damage or lithium plating."
+    },
+    {
+     "key": "C",
+     "text": "The connector physically shrinks when warm",
+     "correct": false,
+     "rationale": "Connector geometry does not change the charge taper."
+    },
+    {
+     "key": "D",
+     "text": "Regenerative braking takes over the charging",
+     "correct": false,
+     "rationale": "Regen is unrelated to stationary DC charging behaviour."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "At high state of charge the BMS tapers current to limit cell voltage and avoid damage or lithium plating.",
+   "outcome_refs": [
+    "MST-2396-D02.01"
+   ],
+   "domain_ref": "Electric machines and inverters",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2396-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "An engineer must make a BEV safe before touching the high-voltage system. Select TWO actions that are essential parts of a safe de-energisation procedure.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Remove or open the high-voltage service disconnect",
+     "correct": true,
+     "rationale": "Opening the service disconnect physically isolates the pack from the HV bus."
+    },
+    {
+     "key": "B",
+     "text": "Verify the absence of voltage with a rated meter after a wait period",
+     "correct": true,
+     "rationale": "Confirming zero voltage after capacitor discharge is essential before contact."
+    },
+    {
+     "key": "C",
+     "text": "Simply switch off the cabin infotainment",
+     "correct": false,
+     "rationale": "Infotainment is a low-voltage load and does not isolate the HV system."
+    },
+    {
+     "key": "D",
+     "text": "Rev the motor to drain the battery",
+     "correct": false,
+     "rationale": "This neither isolates nor safely discharges the HV system."
+    },
+    {
+     "key": "E",
+     "text": "Disconnect only the 12 V auxiliary battery",
+     "correct": false,
+     "rationale": "The 12 V battery is not the high-voltage hazard source."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Opening the service disconnect physically isolates the pack from the HV bus.",
+   "outcome_refs": [
+    "MST-2396-D03.01"
+   ],
+   "domain_ref": "Energy and range",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

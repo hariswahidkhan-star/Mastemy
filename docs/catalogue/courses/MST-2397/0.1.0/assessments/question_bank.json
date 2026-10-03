@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-2397",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2397-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A battery pack is built from 96 cells in series and 2 in parallel (96s2p). If each cell is nominally 3.7 V and 50 Ah, what is the approximate nominal pack voltage?",
+   "options": [
+    {
+     "key": "A",
+     "text": "3.7 V",
+     "correct": false,
+     "rationale": "That is a single cell; series cells add voltage."
+    },
+    {
+     "key": "B",
+     "text": "100 V",
+     "correct": false,
+     "rationale": "This does not reflect 96 series cells."
+    },
+    {
+     "key": "C",
+     "text": "355 V",
+     "correct": true,
+     "rationale": "Series cells add voltage: 96 × 3.7 V ≈ 355 V. Parallel cells increase capacity, not voltage."
+    },
+    {
+     "key": "D",
+     "text": "710 V",
+     "correct": false,
+     "rationale": "This doubles the voltage as if the parallel cells also added voltage, which they do not."
+    }
+   ],
+   "correct_keys": [
+    "C"
+   ],
+   "explanation": "Series cells add voltage: 96 × 3.7 V ≈ 355 V. Parallel cells increase capacity, not voltage.",
+   "outcome_refs": [
+    "MST-2397-D01.01"
+   ],
+   "domain_ref": "Cell fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2397-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary purpose of cell balancing in a battery management system?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To make every cell physically the same size",
+     "correct": false,
+     "rationale": "Balancing addresses charge state, not physical dimensions."
+    },
+    {
+     "key": "B",
+     "text": "To equalise the state of charge across cells so pack capacity is not limited by the weakest cell",
+     "correct": true,
+     "rationale": "Balancing brings cells to a similar state of charge so one cell does not prematurely limit charge or discharge."
+    },
+    {
+     "key": "C",
+     "text": "To increase the pack's nominal voltage",
+     "correct": false,
+     "rationale": "Balancing does not change nominal voltage."
+    },
+    {
+     "key": "D",
+     "text": "To cool the cells during fast charging",
+     "correct": false,
+     "rationale": "Cooling is handled by thermal management, not balancing."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Balancing brings cells to a similar state of charge so one cell does not prematurely limit charge or discharge.",
+   "outcome_refs": [
+    "MST-2397-D02.01"
+   ],
+   "domain_ref": "Pack architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2397-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A design review examines mitigations for lithium-ion thermal runaway. Select TWO measures that specifically help limit cell-to-cell propagation within a pack.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add thermal barriers or insulation between cells",
+     "correct": true,
+     "rationale": "Inter-cell barriers slow heat transfer, limiting propagation to neighbouring cells."
+    },
+    {
+     "key": "B",
+     "text": "Provide venting paths that direct hot gases away from adjacent cells",
+     "correct": true,
+     "rationale": "Directed venting reduces the chance that ejected hot gas ignites neighbours."
+    },
+    {
+     "key": "C",
+     "text": "Increase the pack's nominal voltage",
+     "correct": false,
+     "rationale": "Higher voltage does not reduce thermal propagation."
+    },
+    {
+     "key": "D",
+     "text": "Remove all temperature sensors to simplify wiring",
+     "correct": false,
+     "rationale": "Fewer sensors reduce early detection and worsen safety."
+    },
+    {
+     "key": "E",
+     "text": "Charge the pack at the highest possible current at all times",
+     "correct": false,
+     "rationale": "Aggressive charging increases heat generation and runaway risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Inter-cell barriers slow heat transfer, limiting propagation to neighbouring cells.",
+   "outcome_refs": [
+    "MST-2397-D03.01"
+   ],
+   "domain_ref": "Battery management systems",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

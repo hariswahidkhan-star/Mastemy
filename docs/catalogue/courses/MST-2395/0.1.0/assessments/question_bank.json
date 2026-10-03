@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-2395",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2395-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During which stroke of a four-stroke petrol engine does the spark plug normally fire to initiate combustion?",
+   "options": [
+    {
+     "key": "A",
+     "text": "At the end of the intake stroke",
+     "correct": false,
+     "rationale": "Firing during intake would ignite an incomplete, uncompressed charge."
+    },
+    {
+     "key": "B",
+     "text": "Near the end of the compression stroke",
+     "correct": true,
+     "rationale": "Ignition occurs shortly before top dead centre on compression so peak pressure arrives just after TDC on the power stroke."
+    },
+    {
+     "key": "C",
+     "text": "During the exhaust stroke",
+     "correct": false,
+     "rationale": "The exhaust stroke expels burned gas; igniting then does no useful work."
+    },
+    {
+     "key": "D",
+     "text": "At bottom dead centre of the power stroke",
+     "correct": false,
+     "rationale": "That is far too late; the useful expansion would already be lost."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Ignition occurs shortly before top dead centre on compression so peak pressure arrives just after TDC on the power stroke.",
+   "outcome_refs": [
+    "MST-2395-D01.01"
+   ],
+   "domain_ref": "Cycles and thermodynamics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2395-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An engine runs with lambda = 1.0. What does this indicate about the air-fuel mixture?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The mixture is exactly stoichiometric",
+     "correct": true,
+     "rationale": "Lambda = 1.0 means the actual air-fuel ratio equals the stoichiometric ratio."
+    },
+    {
+     "key": "B",
+     "text": "The mixture is rich with excess fuel",
+     "correct": false,
+     "rationale": "A rich mixture gives lambda below 1.0."
+    },
+    {
+     "key": "C",
+     "text": "The mixture is lean with excess air",
+     "correct": false,
+     "rationale": "A lean mixture gives lambda above 1.0."
+    },
+    {
+     "key": "D",
+     "text": "There is no fuel being injected",
+     "correct": false,
+     "rationale": "Zero fuel would not produce a defined lambda of 1.0."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Lambda = 1.0 means the actual air-fuel ratio equals the stoichiometric ratio.",
+   "outcome_refs": [
+    "MST-2395-D02.01"
+   ],
+   "domain_ref": "Engine architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2395-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A technician observes engine knock under load. Select TWO changes that would typically reduce the tendency to knock.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Retard the ignition timing",
+     "correct": true,
+     "rationale": "Later ignition lowers peak in-cylinder pressure and temperature, reducing end-gas auto-ignition."
+    },
+    {
+     "key": "B",
+     "text": "Use a higher-octane fuel",
+     "correct": true,
+     "rationale": "Higher octane resists auto-ignition, directly reducing knock under load."
+    },
+    {
+     "key": "C",
+     "text": "Increase the compression ratio further",
+     "correct": false,
+     "rationale": "Raising compression increases end-gas pressure and temperature, worsening knock."
+    },
+    {
+     "key": "D",
+     "text": "Lean the mixture significantly at high load",
+     "correct": false,
+     "rationale": "Leaning at high load raises combustion temperatures and tends to increase knock."
+    },
+    {
+     "key": "E",
+     "text": "Fit larger diameter wheels",
+     "correct": false,
+     "rationale": "Wheel size does not affect in-cylinder combustion conditions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Later ignition lowers peak in-cylinder pressure and temperature, reducing end-gas auto-ignition.",
+   "outcome_refs": [
+    "MST-2395-D03.01"
+   ],
+   "domain_ref": "Air, fuel and combustion",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-2402",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 60,
+  "module_check_items": 80,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2402-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A line must build 480 vehicles in an 8-hour shift with no breaks. What is the approximate takt time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "1 second per vehicle",
+     "correct": false,
+     "rationale": "This ignores that there are 28,800 seconds in the shift for 480 units."
+    },
+    {
+     "key": "B",
+     "text": "60 seconds per vehicle",
+     "correct": true,
+     "rationale": "Takt = available time / demand = 28,800 s / 480 = 60 s per vehicle."
+    },
+    {
+     "key": "C",
+     "text": "480 seconds per vehicle",
+     "correct": false,
+     "rationale": "This confuses demand count with time per unit."
+    },
+    {
+     "key": "D",
+     "text": "8 hours per vehicle",
+     "correct": false,
+     "rationale": "That is the whole shift, not the per-unit pace."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Takt = available time / demand = 28,800 s / 480 = 60 s per vehicle.",
+   "outcome_refs": [
+    "MST-2402-D01.01"
+   ],
+   "domain_ref": "Manufacturing processes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2402-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In the Toyota Production System, what does 'jidoka' (autonomation) primarily refer to?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Running every machine at maximum speed regardless of defects",
+     "correct": false,
+     "rationale": "That contradicts the quality focus of jidoka."
+    },
+    {
+     "key": "B",
+     "text": "Giving machines and operators the ability to stop production automatically when an abnormality is detected",
+     "correct": true,
+     "rationale": "Jidoka builds in the ability to halt when a defect or problem occurs, so quality issues are not passed downstream."
+    },
+    {
+     "key": "C",
+     "text": "Holding large buffer inventories between stations",
+     "correct": false,
+     "rationale": "That is the opposite of lean inventory practice."
+    },
+    {
+     "key": "D",
+     "text": "Eliminating all human workers from the plant",
+     "correct": false,
+     "rationale": "Jidoka is about human-machine quality cooperation, not removing people."
+    }
+   ],
+   "correct_keys": [
+    "B"
+   ],
+   "explanation": "Jidoka builds in the ability to halt when a defect or problem occurs, so quality issues are not passed downstream.",
+   "outcome_refs": [
+    "MST-2402-D02.01"
+   ],
+   "domain_ref": "Lean production",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2402-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "A continuous-improvement team wants to reduce waste on an assembly line. Select TWO activities that lean production classifies as waste (muda) to be reduced.",
+   "options": [
+    {
+     "key": "A",
+     "text": "Overproduction of parts ahead of demand",
+     "correct": true,
+     "rationale": "Overproduction is the foremost of the seven wastes in lean thinking."
+    },
+    {
+     "key": "B",
+     "text": "Operators waiting for parts that have not arrived",
+     "correct": true,
+     "rationale": "Waiting is a recognised form of waste that adds no value."
+    },
+    {
+     "key": "C",
+     "text": "Value-adding assembly operations the customer pays for",
+     "correct": false,
+     "rationale": "Value-adding work is not waste; it is the purpose of the line."
+    },
+    {
+     "key": "D",
+     "text": "Standardised work that stabilises the process",
+     "correct": false,
+     "rationale": "Standardised work is a lean enabler, not a waste."
+    },
+    {
+     "key": "E",
+     "text": "Scheduled preventive maintenance that avoids breakdowns",
+     "correct": false,
+     "rationale": "Planned maintenance reduces losses rather than being waste itself."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Overproduction is the foremost of the seven wastes in lean thinking.",
+   "outcome_refs": [
+    "MST-2402-D03.01"
+   ],
+   "domain_ref": "Line design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
