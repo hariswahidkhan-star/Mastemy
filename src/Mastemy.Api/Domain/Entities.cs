@@ -209,6 +209,7 @@ public enum VideoStatus { Draft, AwaitingApproval, AwaitingSourceFile, Uploading
 public class VideoAsset
 {
     public Guid Id { get; set; } = Guid.NewGuid();
+    public string ProviderKey { get; set; } = "youtube";
     public string YouTubeVideoId { get; set; } = "";
     public Guid? ChannelId { get; set; }
     public string? ObservedChannelId { get; set; }

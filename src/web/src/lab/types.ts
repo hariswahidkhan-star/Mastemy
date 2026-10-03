@@ -2,7 +2,7 @@
 // WebAssembly engine (currently SQLite via sql.js), so student code never leaves the browser and no server-side
 // execution is involved. More engines (JavaScript, Python) plug in behind the same RunRequest/RunResult protocol.
 
-export type LabEngine = 'sql';
+export type LabEngine = 'sql' | 'javascript';
 
 /** A single automated check: run `sql` against the database left behind by the student's code and compare rows. */
 export interface LabCheck {
@@ -11,6 +11,15 @@ export interface LabCheck {
   sql: string;
   /** Expected rows as arrays of cell values (column order as returned). */
   expect: Array<Array<string | number | null>>;
+}
+
+/** A check for JavaScript labs: verifies that console output contains expected strings. */
+export interface JsLabCheck {
+  name: string;
+  /** Expected substrings that must appear in the combined console output (order-insensitive). */
+  expectOutput?: string[];
+  /** Expected return value (compared via JSON.stringify). */
+  expectResult?: unknown;
 }
 
 export interface LabSpec {
@@ -27,6 +36,8 @@ export interface LabSpec {
   solutionCode: string;
   /** Automated checks; the lab passes when all pass. Empty => playground (run only, no grading). */
   checks: LabCheck[];
+  /** JavaScript-specific checks (used only when engine === 'javascript'). */
+  jsChecks?: JsLabCheck[];
 }
 
 /** One result grid (columns + rows) from a statement that returned data. */
