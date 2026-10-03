@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1879",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1879-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team reports their claims model is '94% accurate' and concludes it is responsible to deploy. Why is that conclusion unsound?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Accuracy says nothing about who the errors fall on, or about privacy, transparency and oversight",
+     "correct": true,
+     "rationale": "Correct: responsible AI spans fairness, privacy, transparency and accountability, not a single accuracy number."
+    },
+    {
+     "key": "B",
+     "text": "Because 94% is too low for any deployment",
+     "correct": false,
+     "rationale": "There is no universal accuracy threshold; the issue is the other principles are unexamined."
+    },
+    {
+     "key": "C",
+     "text": "Because accuracy cannot be measured for text models",
+     "correct": false,
+     "rationale": "Accuracy can be measured; the point is it is insufficient."
+    },
+    {
+     "key": "D",
+     "text": "Because responsible AI forbids automated decisions",
+     "correct": false,
+     "rationale": "Responsible AI permits automation with appropriate controls."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: responsible AI spans fairness, privacy, transparency and accountability, not a single accuracy number.",
+   "outcome_refs": [
+    "MST-1879-D01.01"
+   ],
+   "domain_ref": "Responsible-AI principles and motivation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1879-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are organisational (rather than technical) controls for responsible AI? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A documented accountability owner for each deployed model",
+     "correct": true,
+     "rationale": "Correct: assigning accountability is an organisational control."
+    },
+    {
+     "key": "B",
+     "text": "An approval policy with a responsible-AI review gate before launch",
+     "correct": true,
+     "rationale": "Correct: policy and review gates are organisational controls."
+    },
+    {
+     "key": "C",
+     "text": "A guardrail classifier that blocks unsafe generations",
+     "correct": false,
+     "rationale": "That is a technical control."
+    },
+    {
+     "key": "D",
+     "text": "Automated drift monitoring on input distributions",
+     "correct": false,
+     "rationale": "That is a technical control."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: assigning accountability is an organisational control.",
+   "outcome_refs": [
+    "MST-1879-D02.01"
+   ],
+   "domain_ref": "AI risk across the lifecycle",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1879-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A product manager wants to add 'the AI is always right' to the UI to build trust. What is the responsible-AI problem?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It misrepresents reliability and discourages the user oversight the system depends on",
+     "correct": true,
+     "rationale": "Correct: transparency requires honest communication of limitations."
+    },
+    {
+     "key": "B",
+     "text": "Nothing, confident messaging improves adoption",
+     "correct": false,
+     "rationale": "Overstating reliability undermines oversight and transparency."
+    },
+    {
+     "key": "C",
+     "text": "It violates copyright",
+     "correct": false,
+     "rationale": "The issue is transparency, not copyright."
+    },
+    {
+     "key": "D",
+     "text": "It only matters if the model is open source",
+     "correct": false,
+     "rationale": "It applies regardless of model provenance."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: transparency requires honest communication of limitations.",
+   "outcome_refs": [
+    "MST-1879-D03.01"
+   ],
+   "domain_ref": "Controls and mitigations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

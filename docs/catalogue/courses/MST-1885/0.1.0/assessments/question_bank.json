@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1885",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1885-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does a model card include 'out-of-scope uses' and not only intended uses?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It warns against foreseeable misuse the evaluation does not support, reducing harm from over-generalisation",
+     "correct": true,
+     "rationale": "Correct: out-of-scope statements guard against unsupported misuse."
+    },
+    {
+     "key": "B",
+     "text": "To make the document longer for auditors",
+     "correct": false,
+     "rationale": "It serves a safety purpose, not length."
+    },
+    {
+     "key": "C",
+     "text": "Because intended uses are optional",
+     "correct": false,
+     "rationale": "Intended uses are still required; out-of-scope complements them."
+    },
+    {
+     "key": "D",
+     "text": "To transfer all liability to the user",
+     "correct": false,
+     "rationale": "A disclaimer does not transfer accountability; it informs use."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: out-of-scope statements guard against unsupported misuse.",
+   "outcome_refs": [
+    "MST-1885-D01.01"
+   ],
+   "domain_ref": "Model governance and lifecycle",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1885-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO items most belong in a model card? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The evaluation data and metrics, with their conditions",
+     "correct": true,
+     "rationale": "Correct: evaluation details are core model-card content."
+    },
+    {
+     "key": "B",
+     "text": "Known limitations and conditions under which performance degrades",
+     "correct": true,
+     "rationale": "Correct: limitations are core model-card content."
+    },
+    {
+     "key": "C",
+     "text": "The marketing tagline for the product",
+     "correct": false,
+     "rationale": "Marketing copy is not model documentation."
+    },
+    {
+     "key": "D",
+     "text": "The CEO's biography",
+     "correct": false,
+     "rationale": "Unrelated to the model's documentation."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: evaluation details are core model-card content.",
+   "outcome_refs": [
+    "MST-1885-D02.01"
+   ],
+   "domain_ref": "Documentation artefacts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1885-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model is replaced by a better version but the old one still serves some traffic unnoticed. Which governance control was missing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A model inventory with versioning and a retirement trigger",
+     "correct": true,
+     "rationale": "Correct: inventory and retirement controls prevent orphaned models in production."
+    },
+    {
+     "key": "B",
+     "text": "A larger training dataset",
+     "correct": false,
+     "rationale": "Dataset size does not prevent orphaned deployments."
+    },
+    {
+     "key": "C",
+     "text": "A higher accuracy threshold",
+     "correct": false,
+     "rationale": "Accuracy does not address retirement."
+    },
+    {
+     "key": "D",
+     "text": "A longer model card",
+     "correct": false,
+     "rationale": "Documentation length does not retire a model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: inventory and retirement controls prevent orphaned models in production.",
+   "outcome_refs": [
+    "MST-1885-D03.01"
+   ],
+   "domain_ref": "Intended use and limitations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

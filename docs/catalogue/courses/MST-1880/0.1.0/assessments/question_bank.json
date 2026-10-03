@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1880",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1880-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A manager says 'we passed the NIST AI RMF audit, so we are compliant.' What is the misunderstanding?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The framework is a voluntary, outcome-oriented framework, not a pass/fail compliance certification",
+     "correct": true,
+     "rationale": "Correct: it is designed for voluntary adoption and continuous risk management, not certification."
+    },
+    {
+     "key": "B",
+     "text": "The audit should have been annual",
+     "correct": false,
+     "rationale": "The deeper error is treating it as a certifiable compliance regime at all."
+    },
+    {
+     "key": "C",
+     "text": "Only government agencies may use it",
+     "correct": false,
+     "rationale": "It is intended for broad voluntary use."
+    },
+    {
+     "key": "D",
+     "text": "It replaces the firm's enterprise risk management",
+     "correct": false,
+     "rationale": "It is meant to integrate with existing risk management, not replace it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: it is designed for voluntary adoption and continuous risk management, not certification.",
+   "outcome_refs": [
+    "MST-1880-D01.01"
+   ],
+   "domain_ref": "Framework purpose and trustworthiness characteristics",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1880-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO activities belong to the Map function (establishing context and identifying risks)? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Documenting the intended purpose, users and deployment setting of the AI system",
+     "correct": true,
+     "rationale": "Correct: establishing context is central to Map."
+    },
+    {
+     "key": "B",
+     "text": "Identifying who could be harmed and the plausible failure modes",
+     "correct": true,
+     "rationale": "Correct: risk identification is a Map activity."
+    },
+    {
+     "key": "C",
+     "text": "Defining the organisation's AI accountability roles and policies",
+     "correct": false,
+     "rationale": "That is a Govern activity."
+    },
+    {
+     "key": "D",
+     "text": "Selecting and running test metrics on the model",
+     "correct": false,
+     "rationale": "That is a Measure activity."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: establishing context is central to Map.",
+   "outcome_refs": [
+    "MST-1880-D02.01"
+   ],
+   "domain_ref": "Govern and Map",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1880-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Your team can measure latency and overall accuracy but cannot quantify a subtle dignity harm from automated rejections. What does the framework expect you to do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Document the limitation and manage the residual risk through judgement and oversight rather than ignore it",
+     "correct": true,
+     "rationale": "Correct: the framework acknowledges not all risks are quantifiable and expects them to be documented and managed."
+    },
+    {
+     "key": "B",
+     "text": "Drop the risk because it cannot be measured",
+     "correct": false,
+     "rationale": "Unmeasurable does not mean unmanaged under the framework."
+    },
+    {
+     "key": "C",
+     "text": "Replace it with accuracy as a proxy",
+     "correct": false,
+     "rationale": "An unrelated proxy misrepresents the risk."
+    },
+    {
+     "key": "D",
+     "text": "Wait until a metric exists before deploying",
+     "correct": false,
+     "rationale": "The framework expects documented management of residual risk, not indefinite delay by default."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the framework acknowledges not all risks are quantifiable and expects them to be documented and managed.",
+   "outcome_refs": [
+    "MST-1880-D03.01"
+   ],
+   "domain_ref": "Measure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

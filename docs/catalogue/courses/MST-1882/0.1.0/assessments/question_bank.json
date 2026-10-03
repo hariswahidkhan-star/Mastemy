@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1882",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1882-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A company says 'we only use a third-party AI tool, so the EU AI Act does not apply to us.' Why is that risky?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Obligations can attach to deployers, not only providers, so using an AI system can still create duties",
+     "correct": true,
+     "rationale": "Correct: the Act allocates obligations by role, and deployers of high-risk systems have duties too."
+    },
+    {
+     "key": "B",
+     "text": "The Act applies only to companies headquartered in the EU",
+     "correct": false,
+     "rationale": "Its reach can extend to systems used or placed on the EU market regardless of HQ."
+    },
+    {
+     "key": "C",
+     "text": "Third-party tools are always minimal-risk",
+     "correct": false,
+     "rationale": "Risk depends on use, not on whether the tool was bought."
+    },
+    {
+     "key": "D",
+     "text": "Only open-source AI is covered",
+     "correct": false,
+     "rationale": "Coverage is not limited to open-source systems."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the Act allocates obligations by role, and deployers of high-risk systems have duties too.",
+   "outcome_refs": [
+    "MST-1882-D01.01"
+   ],
+   "domain_ref": "Purpose and risk-based approach",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1882-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are commonly cited obligations associated with high-risk AI systems? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Maintaining technical documentation and records about the system",
+     "correct": true,
+     "rationale": "Correct: documentation and record-keeping are high-risk obligations."
+    },
+    {
+     "key": "B",
+     "text": "Ensuring appropriate human oversight of the system",
+     "correct": true,
+     "rationale": "Correct: human oversight is a high-risk obligation."
+    },
+    {
+     "key": "C",
+     "text": "Publishing the full model weights openly",
+     "correct": false,
+     "rationale": "Open weight publication is not a high-risk obligation."
+    },
+    {
+     "key": "D",
+     "text": "Guaranteeing zero errors in all outputs",
+     "correct": false,
+     "rationale": "No regime requires error-free outputs."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: documentation and record-keeping are high-risk obligations.",
+   "outcome_refs": [
+    "MST-1882-D02.01"
+   ],
+   "domain_ref": "Risk tiers",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1882-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "The same large language model powers a spam filter and a tool that screens job applicants. How should risk tier be assigned?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Per use: the applicant-screening use is likely higher-risk, while the spam filter is likely lower-risk",
+     "correct": true,
+     "rationale": "Correct: the Act's risk tier depends on the use context, not the underlying model alone."
+    },
+    {
+     "key": "B",
+     "text": "Both are high-risk because they share a model",
+     "correct": false,
+     "rationale": "Risk is assessed by use, not by shared components."
+    },
+    {
+     "key": "C",
+     "text": "Both are minimal-risk because it is one model",
+     "correct": false,
+     "rationale": "A shared model does not make every use minimal-risk."
+    },
+    {
+     "key": "D",
+     "text": "Risk cannot be assigned until regulators rule",
+     "correct": false,
+     "rationale": "Organisations are expected to classify uses themselves."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the Act's risk tier depends on the use context, not the underlying model alone.",
+   "outcome_refs": [
+    "MST-1882-D03.01"
+   ],
+   "domain_ref": "Roles and obligations",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

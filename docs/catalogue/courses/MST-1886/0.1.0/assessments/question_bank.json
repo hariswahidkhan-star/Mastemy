@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1886",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1886-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants to reuse customer-support transcripts (collected to answer tickets) to train a new product model. What principle does this most directly challenge?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Purpose limitation: data collected for one purpose should not be freely repurposed without a basis",
+     "correct": true,
+     "rationale": "Correct: repurposing engages purpose limitation."
+    },
+    {
+     "key": "B",
+     "text": "Data portability",
+     "correct": false,
+     "rationale": "Portability concerns moving data, not reuse for training."
+    },
+    {
+     "key": "C",
+     "text": "Network security",
+     "correct": false,
+     "rationale": "The issue is purpose, not security."
+    },
+    {
+     "key": "D",
+     "text": "Model accuracy",
+     "correct": false,
+     "rationale": "The challenge is a privacy principle, not accuracy."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: repurposing engages purpose limitation.",
+   "outcome_refs": [
+    "MST-1886-D01.01"
+   ],
+   "domain_ref": "Data governance foundations for AI",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1886-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about anonymisation for AI training data are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Re-identification can sometimes occur by combining an 'anonymised' dataset with other data",
+     "correct": true,
+     "rationale": "Correct: linkage attacks are a known limit of anonymisation."
+    },
+    {
+     "key": "B",
+     "text": "Pseudonymised data can often still be linked back and is not the same as anonymised",
+     "correct": true,
+     "rationale": "Correct: pseudonymisation is reversible and still personal data in many regimes."
+    },
+    {
+     "key": "C",
+     "text": "Hashing email addresses always makes data fully anonymous",
+     "correct": false,
+     "rationale": "Hashing is pseudonymisation, often reversible via guessing."
+    },
+    {
+     "key": "D",
+     "text": "Anonymised data needs no further governance ever",
+     "correct": false,
+     "rationale": "Residual re-identification risk still warrants governance."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: linkage attacks are a known limit of anonymisation.",
+   "outcome_refs": [
+    "MST-1886-D02.01"
+   ],
+   "domain_ref": "Privacy principles applied to AI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1886-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A user exercises a deletion right over data that was used to train a deployed model. What is the governance-aware response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Delete the source records and assess and document the effect on the model, following the defined process",
+     "correct": true,
+     "rationale": "Correct: rights handling must consider downstream model use, not just the database row."
+    },
+    {
+     "key": "B",
+     "text": "Only delete the database row and ignore the model",
+     "correct": false,
+     "rationale": "Ignoring the model's use of the data is incomplete."
+    },
+    {
+     "key": "C",
+     "text": "Refuse because the model already learned from it",
+     "correct": false,
+     "rationale": "The request cannot simply be refused by default."
+    },
+    {
+     "key": "D",
+     "text": "Retrain on everything with no record",
+     "correct": false,
+     "rationale": "Undocumented action is not governance-aware."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: rights handling must consider downstream model use, not just the database row.",
+   "outcome_refs": [
+    "MST-1886-D03.01"
+   ],
+   "domain_ref": "Provenance, quality and lineage",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

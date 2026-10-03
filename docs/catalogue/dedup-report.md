@@ -4,9 +4,9 @@ Generated 2026-10-02 by `scripts/catalogue/build_catalogue.py`. Every number is 
 
 ## Result
 
-- Candidate rows after reconciliation: **1878** (Appendix A 1300 + v1 additions 578).
-- Distinct courses, inclusive count (excludes duplicates, component modules, retired and retirement-blocked rows): **1869**.
-- Distinct courses, strict count (also excludes rows still under differentiation, overlap, thin-scope or version review): **1744**.
+- Candidate rows after reconciliation: **1885** (Appendix A 1310 + v1 additions 575).
+- Distinct courses, inclusive count (excludes duplicates, component modules, retired and retirement-blocked rows): **1876**.
+- Distinct courses, strict count (also excludes rows still under differentiation, overlap, thin-scope or version review): **1750**.
 - Requirement of at least 1,000 genuinely distinct courses: **met** on the strict count.
 
 These are planning counts of distinct course *scopes*. None of these courses has content, videos or reviewed items yet.
@@ -26,12 +26,12 @@ Limits: title-level comparison cannot prove two outlines are different. Rows mar
 
 | Action | v1 rows |
 |---|---|
-| addition | 578 |
-| mapped | 476 |
+| addition | 575 |
+| mapped | 479 |
 | merged-duplicate | 16 |
 | retired-excluded | 6 |
 
-Mapped by method: manual-override=134, title-similarity=342
+Mapped by method: manual-override=134, title-similarity=345
 
 Full detail: `catalog/id-crosswalk.csv`. Every v1 ID appears exactly once; none is dropped silently.
 
@@ -41,11 +41,11 @@ Full detail: `catalog/id-crosswalk.csv`. Every v1 ID appears exactly once; none 
 |---|---|---|---|
 | content-reuse | 7 | yes | yes |
 | differentiation-review | 18 | yes | no |
-| distinct | 1737 | yes | yes |
+| distinct | 1743 | yes | yes |
 | duplicate-of | 2 | no | no |
 | module-of | 6 | no | no |
 | needs-version-check | 4 | yes | no |
-| overlap-review | 12 | yes | no |
+| overlap-review | 13 | yes | no |
 | retiring-blocked | 1 | no | no |
 | thin-scope-review | 91 | yes | no |
 
@@ -63,7 +63,7 @@ Full detail: `catalog/id-crosswalk.csv`. Every v1 ID appears exactly once; none 
 | 08 | Hr, Supply Chain, Quality, And Safety Credentials | 50 | 2 | 52 | 52 | 51 |
 | 09 | Us Healthcare, Engineering, Education, And Licensing Examinations | 50 | 1 | 51 | 51 | 51 |
 | 10 | Language Proficiency, Admissions, And Academic Skills | 40 | 20 | 60 | 54 | 54 |
-| 11 | Artificial Intelligence And Machine-Learning Foundations | 40 | 112 | 152 | 152 | 102 |
+| 11 | Artificial Intelligence And Machine-Learning Foundations | 40 | 109 | 149 | 149 | 98 |
 | 12 | Chatgpt, Openai, And Codex Applications | 40 | 0 | 40 | 40 | 40 |
 | 13 | Claude, Anthropic, And Claude Code Applications | 40 | 0 | 40 | 40 | 30 |
 | 14 | Cursor And Ai-Assisted Software-Development Tools | 30 | 0 | 30 | 30 | 24 |
@@ -85,7 +85,8 @@ Full detail: `catalog/id-crosswalk.csv`. Every v1 ID appears exactly once; none 
 | 30 | Applied Ai By Industry And Professional Role | 40 | 0 | 40 | 40 | 40 |
 | 31 | Enterprise Platforms, It Service Management, And Ai Credentials | 40 | 18 | 58 | 58 | 52 |
 | 32 | Additional Global Credentials And Us Professional Examinations | 40 | 22 | 62 | 62 | 62 |
-| | **Total** | 1300 | 578 | 1878 | 1869 | 1744 |
+| 33 | AI Governance And Frameworks | 10 | 0 | 10 | 10 | 10 |
+| | **Total** | 1310 | 575 | 1885 | 1876 | 1750 |
 
 ## Reviewed decisions
 
@@ -153,17 +154,17 @@ Full detail: `catalog/id-crosswalk.csv`. Every v1 ID appears exactly once; none 
 | MST-ENG-CIPS-L4-001 | CIPS Level 4 Diploma in Procurement and Supply Knowledge Prep | merged-duplicate | MST-1261 | superseded by module split: Appendix A splits the CIPS L4 Diploma into L4M1-L4M8 (MST-1261..1268) |
 | MST-ENG-SK-DPF-001 | Demand Planning and Forecasting | merged-duplicate | MST-1164 | scope already covered by Appendix A row |
 
-## Exam rows needing exact exam/version resolution (316)
+## Exam rows needing exact exam/version resolution (315)
 
 Generic titles ('Certification-Track', 'Certification Preparation', 'Current-Version', 'Retirement-Aware', beta or transition tracks) and unverified rows without an issuer exam code. They stay in the backlog but cannot pass Source verification until the exact exam and edition are recorded.
 
-`MST-0043`, `MST-0044`, `MST-0045`, `MST-0046`, `MST-0047`, `MST-0048`, `MST-0049`, `MST-0050`, `MST-0058`, `MST-0059`, `MST-0061`, `MST-0062`, `MST-0063`, `MST-0064`, `MST-0065`, `MST-0066`, `MST-0067`, `MST-0068`, `MST-0069`, `MST-0070`, `MST-0071`, `MST-0072`, `MST-0073`, `MST-0074`, `MST-0075`, `MST-0076`, `MST-0077`, `MST-0078`, `MST-0079`, `MST-0080`, `MST-0081`, `MST-0082`, `MST-0083`, `MST-0084`, `MST-0085`, `MST-0086`, `MST-0087`, `MST-0088`, `MST-0089`, `MST-0090`, `MST-0099`, `MST-0100`, `MST-0101`, `MST-0102`, `MST-0103`, `MST-0104`, `MST-0105`, `MST-0106`, `MST-0107`, `MST-0108`, `MST-0109`, `MST-0111`, `MST-0112`, `MST-0113`, `MST-0114`, `MST-0115`, `MST-0116`, `MST-0117`, `MST-0118`, `MST-0119`, `MST-0120`, `MST-0121`, `MST-0129`, `MST-0130`, `MST-0136`, `MST-0141`, `MST-0142`, `MST-0143`, `MST-0144`, `MST-0145`, `MST-0149`, `MST-0150`, `MST-0151`, `MST-0155`, `MST-0156`, `MST-0157`, `MST-0158`, `MST-0159`, `MST-0160`, `MST-0196`, `MST-0197`, `MST-0198`, `MST-0199`, `MST-0205`, `MST-0210`, `MST-0211`, `MST-0212`, `MST-0214`, `MST-0216`, `MST-0217`, `MST-0221`, `MST-0225`, `MST-0226`, `MST-0227`, `MST-0228`, `MST-0229`, `MST-0230`, `MST-0231`, `MST-0232`, `MST-0234`, `MST-0235`, `MST-0236`, `MST-0237`, `MST-0238`, `MST-0239`, `MST-0240`, `MST-0254`, `MST-0257`, `MST-0258`, `MST-0263`, `MST-0264`, `MST-0265`, `MST-0266`, `MST-0267`, `MST-0271`, `MST-0272`, `MST-0273`, `MST-0274`, `MST-0275`, `MST-0276`, `MST-0277`, `MST-0278`, `MST-0279`, `MST-0280`, `MST-0281`, `MST-0282`, `MST-0284`, `MST-0285`, `MST-0286`, `MST-0287`, `MST-0288`, `MST-0290`, `MST-0296`, `MST-0297`, `MST-0298`, `MST-0299`, `MST-0300`, `MST-0301`, `MST-0302`, `MST-0306`, `MST-0308`, `MST-0309`, `MST-0310`, `MST-0319`, `MST-0320`, `MST-0321`, `MST-0322`, `MST-0323`, `MST-0324`, `MST-0325`, `MST-0326`, `MST-0327`, `MST-0328`, `MST-0329`, `MST-0330`, `MST-0331`, `MST-0332`, `MST-0333`, `MST-0334`, `MST-0335`, `MST-0336`, `MST-0337`, `MST-0338`, `MST-0339`, `MST-0340`, `MST-0346`, `MST-0350`, `MST-0352`, `MST-0355`, `MST-0357`, `MST-0358`, `MST-0359`, `MST-0360`, `MST-0362`, `MST-0363`, `MST-0364`, `MST-0365`, `MST-0366`, `MST-0367`, `MST-0368`, `MST-0369`, `MST-0370`, `MST-0378`, `MST-0379`, `MST-0380`, `MST-0381`, `MST-0382`, `MST-0383`, `MST-0384`, `MST-0385`, `MST-0386`, `MST-0387`, `MST-0388`, `MST-0389`, `MST-0390`, `MST-0407`, `MST-0408`, `MST-0409`, `MST-0410`, `MST-0411`, `MST-0412`, `MST-0413`, `MST-0414`, `MST-0415`, `MST-0416`, `MST-0417`, `MST-0418`, `MST-0419`, `MST-0420`, `MST-0421`, `MST-0422`, `MST-0423`, `MST-0424`, `MST-0425`, `MST-0426`, `MST-0428`, `MST-1129`, `MST-1130`, `MST-1131`, `MST-1132`, `MST-1133`, `MST-1153`, `MST-1221`, `MST-1222`, `MST-1223`, `MST-1224`, `MST-1225`, `MST-1226`, `MST-1227`, `MST-1231`, `MST-1232`, `MST-1233`, `MST-1234`, `MST-1235`, `MST-1236`, `MST-1237`, `MST-1238`, `MST-1239`, `MST-1240`, `MST-1241`, `MST-1242`, `MST-1243`, `MST-1244`, `MST-1245`, `MST-1246`, `MST-1247`, `MST-1248`, `MST-1249`, `MST-1250`, `MST-1251`, `MST-1252`, `MST-1253`, `MST-1254`, `MST-1257`, `MST-1259`, `MST-1260`, `MST-1261`, `MST-1262`, `MST-1263`, `MST-1264`, `MST-1265`, `MST-1266`, `MST-1267`, `MST-1268`, `MST-1269`, `MST-1270`, `MST-1271`, `MST-1272`, `MST-1273`, `MST-1274`, `MST-1275`, `MST-1276`, `MST-1277`, `MST-1278`, `MST-1279`, `MST-1280`, `MST-1281`, `MST-1282`, `MST-1283`, `MST-1284`, `MST-1287`, `MST-1288`, `MST-1289`, `MST-1290`, `MST-1291`, `MST-1292`, `MST-1293`, `MST-1295`, `MST-1296`, `MST-1297`, `MST-1298`, `MST-1299`, `MST-1300`, `MST-1303`, `MST-1518`, `MST-1519`, `MST-1601`, `MST-1602`, `MST-1603`, `MST-1604`, `MST-1646`, `MST-1647`, `MST-1648`, `MST-1650`, `MST-1741`, `MST-1811`, `MST-1812`, `MST-1813`, `MST-1814`, `MST-1815`, `MST-1816`, `MST-1817`, `MST-1818`, `MST-1819`, `MST-1820`, `MST-1863`
+`MST-0043`, `MST-0044`, `MST-0045`, `MST-0046`, `MST-0047`, `MST-0048`, `MST-0049`, `MST-0050`, `MST-0058`, `MST-0059`, `MST-0061`, `MST-0062`, `MST-0063`, `MST-0064`, `MST-0065`, `MST-0066`, `MST-0067`, `MST-0068`, `MST-0069`, `MST-0070`, `MST-0071`, `MST-0072`, `MST-0073`, `MST-0074`, `MST-0075`, `MST-0076`, `MST-0077`, `MST-0078`, `MST-0079`, `MST-0080`, `MST-0081`, `MST-0082`, `MST-0083`, `MST-0084`, `MST-0085`, `MST-0086`, `MST-0087`, `MST-0088`, `MST-0089`, `MST-0090`, `MST-0099`, `MST-0100`, `MST-0101`, `MST-0102`, `MST-0103`, `MST-0104`, `MST-0105`, `MST-0106`, `MST-0107`, `MST-0108`, `MST-0109`, `MST-0111`, `MST-0112`, `MST-0113`, `MST-0114`, `MST-0115`, `MST-0116`, `MST-0117`, `MST-0118`, `MST-0119`, `MST-0120`, `MST-0121`, `MST-0129`, `MST-0130`, `MST-0136`, `MST-0141`, `MST-0142`, `MST-0143`, `MST-0144`, `MST-0145`, `MST-0149`, `MST-0150`, `MST-0151`, `MST-0155`, `MST-0156`, `MST-0157`, `MST-0158`, `MST-0159`, `MST-0160`, `MST-0196`, `MST-0197`, `MST-0198`, `MST-0199`, `MST-0205`, `MST-0210`, `MST-0211`, `MST-0212`, `MST-0214`, `MST-0216`, `MST-0217`, `MST-0221`, `MST-0225`, `MST-0226`, `MST-0227`, `MST-0228`, `MST-0229`, `MST-0230`, `MST-0231`, `MST-0232`, `MST-0234`, `MST-0235`, `MST-0236`, `MST-0237`, `MST-0238`, `MST-0239`, `MST-0240`, `MST-0254`, `MST-0257`, `MST-0258`, `MST-0263`, `MST-0264`, `MST-0265`, `MST-0266`, `MST-0267`, `MST-0271`, `MST-0272`, `MST-0273`, `MST-0274`, `MST-0275`, `MST-0276`, `MST-0277`, `MST-0278`, `MST-0279`, `MST-0280`, `MST-0281`, `MST-0282`, `MST-0284`, `MST-0285`, `MST-0286`, `MST-0287`, `MST-0288`, `MST-0290`, `MST-0296`, `MST-0297`, `MST-0298`, `MST-0299`, `MST-0300`, `MST-0301`, `MST-0302`, `MST-0306`, `MST-0308`, `MST-0309`, `MST-0310`, `MST-0319`, `MST-0320`, `MST-0321`, `MST-0322`, `MST-0323`, `MST-0324`, `MST-0325`, `MST-0326`, `MST-0327`, `MST-0328`, `MST-0329`, `MST-0330`, `MST-0331`, `MST-0332`, `MST-0333`, `MST-0334`, `MST-0335`, `MST-0336`, `MST-0337`, `MST-0338`, `MST-0339`, `MST-0340`, `MST-0346`, `MST-0350`, `MST-0352`, `MST-0355`, `MST-0357`, `MST-0358`, `MST-0359`, `MST-0360`, `MST-0362`, `MST-0363`, `MST-0364`, `MST-0365`, `MST-0366`, `MST-0367`, `MST-0368`, `MST-0369`, `MST-0370`, `MST-0378`, `MST-0379`, `MST-0380`, `MST-0381`, `MST-0382`, `MST-0383`, `MST-0384`, `MST-0385`, `MST-0386`, `MST-0387`, `MST-0388`, `MST-0389`, `MST-0390`, `MST-0407`, `MST-0408`, `MST-0409`, `MST-0410`, `MST-0411`, `MST-0412`, `MST-0413`, `MST-0414`, `MST-0415`, `MST-0416`, `MST-0417`, `MST-0418`, `MST-0419`, `MST-0420`, `MST-0421`, `MST-0422`, `MST-0423`, `MST-0424`, `MST-0425`, `MST-0426`, `MST-0428`, `MST-1129`, `MST-1130`, `MST-1131`, `MST-1132`, `MST-1133`, `MST-1153`, `MST-1221`, `MST-1222`, `MST-1223`, `MST-1224`, `MST-1225`, `MST-1226`, `MST-1227`, `MST-1231`, `MST-1232`, `MST-1233`, `MST-1234`, `MST-1235`, `MST-1236`, `MST-1237`, `MST-1238`, `MST-1239`, `MST-1240`, `MST-1241`, `MST-1242`, `MST-1243`, `MST-1244`, `MST-1245`, `MST-1246`, `MST-1247`, `MST-1248`, `MST-1249`, `MST-1250`, `MST-1251`, `MST-1252`, `MST-1253`, `MST-1254`, `MST-1257`, `MST-1259`, `MST-1260`, `MST-1261`, `MST-1262`, `MST-1263`, `MST-1264`, `MST-1265`, `MST-1266`, `MST-1267`, `MST-1268`, `MST-1269`, `MST-1270`, `MST-1271`, `MST-1272`, `MST-1273`, `MST-1274`, `MST-1275`, `MST-1276`, `MST-1277`, `MST-1278`, `MST-1279`, `MST-1280`, `MST-1281`, `MST-1282`, `MST-1283`, `MST-1284`, `MST-1287`, `MST-1288`, `MST-1289`, `MST-1290`, `MST-1291`, `MST-1292`, `MST-1293`, `MST-1295`, `MST-1296`, `MST-1297`, `MST-1298`, `MST-1299`, `MST-1300`, `MST-1518`, `MST-1519`, `MST-1601`, `MST-1602`, `MST-1603`, `MST-1604`, `MST-1646`, `MST-1647`, `MST-1648`, `MST-1650`, `MST-1741`, `MST-1811`, `MST-1812`, `MST-1813`, `MST-1814`, `MST-1815`, `MST-1816`, `MST-1817`, `MST-1818`, `MST-1819`, `MST-1820`, `MST-1863`
 
 ## Automatically flagged v1 additions
 
-### overlap-review (12)
+### overlap-review (13)
 
-`MST-1324` Convolutional Neural Networks (near MST-0443); `MST-1339` Building AI Agents (near MST-0576); `MST-1418` Dynamics 365 Sales Functional Consultant (MB-210) Exam Prep (near MST-0185); `MST-1518` Salesforce Certified Platform Developer I Exam Prep (near MST-0239); `MST-1574` Technical Documentation for Developers (near MST-0604); `MST-1582` Infrastructure as Code Patterns (near MST-0988); `MST-1741` Lean Six Sigma White Belt (near MST-0311); `MST-1745` Hybrid Project Management (near MST-1141); `MST-1748` Project Cost Management (near MST-1141); `MST-1759` Project Communication Management (near MST-1141); `MST-1806` Construction Project Management (near MST-1141); `MST-1812` Salesforce Certified Platform App Builder Exam Prep (near MST-0239)
+`MST-1324` Convolutional Neural Networks (near MST-0443); `MST-1339` Building AI Agents (near MST-0576); `MST-1367` EU AI Act Overview for Practitioners (near MST-1882); `MST-1418` Dynamics 365 Sales Functional Consultant (MB-210) Exam Prep (near MST-0185); `MST-1518` Salesforce Certified Platform Developer I Exam Prep (near MST-0239); `MST-1574` Technical Documentation for Developers (near MST-0604); `MST-1582` Infrastructure as Code Patterns (near MST-0988); `MST-1741` Lean Six Sigma White Belt (near MST-0311); `MST-1745` Hybrid Project Management (near MST-1141); `MST-1748` Project Cost Management (near MST-1141); `MST-1759` Project Communication Management (near MST-1141); `MST-1806` Construction Project Management (near MST-1141); `MST-1812` Salesforce Certified Platform App Builder Exam Prep (near MST-0239)
 
 ### thin-scope-review (91)
 
