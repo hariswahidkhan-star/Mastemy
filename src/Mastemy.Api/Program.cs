@@ -146,6 +146,8 @@ if (cfg.GetValue("Database:MigrateOnStartup", false))
     await db.Database.MigrateAsync();
     await Seeder.SeedAsync(db, cfg, app.Logger,
         allowAccountSeed: app.Environment.IsDevelopment() || cfg.GetValue("Seed:AllowSuperAdminBootstrap", false));
+    await Mastemy.Api.Modules.SkillGraph.SkillGraphSeeder.SeedAsync(db);
+    await Mastemy.Api.Modules.Scenario.ScenarioSeeder.SeedAsync(db);
 }
 
 app.Run();

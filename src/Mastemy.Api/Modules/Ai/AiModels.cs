@@ -182,6 +182,25 @@ public class AiGeneratedQuestionConfig : IEntityTypeConfiguration<AiGeneratedQue
     }
 }
 
+public class FeynmanSessionConfig : IEntityTypeConfiguration<FeynmanSession>
+{
+    public void Configure(EntityTypeBuilder<FeynmanSession> b)
+    {
+        b.ToTable("Ai_FeynmanSessions");
+        b.HasKey(x => x.Id);
+        b.Property(x => x.Topic).HasMaxLength(500);
+        b.Property(x => x.TranscriptJson).HasColumnType("longtext");
+        b.Property(x => x.MisconceptionsJson).HasColumnType("longtext");
+        b.Property(x => x.FeedbackJson).HasColumnType("longtext");
+        b.Property(x => x.AccuracyScore).HasPrecision(5, 2);
+        b.Property(x => x.CompletenessScore).HasPrecision(5, 2);
+        b.Property(x => x.DepthScore).HasPrecision(5, 2);
+        b.Property(x => x.ClarityScore).HasPrecision(5, 2);
+        b.HasIndex(x => new { x.UserId, x.CourseId });
+        b.HasIndex(x => x.CreatedUtc);
+    }
+}
+
 public class AiPracticeSetConfig : IEntityTypeConfiguration<AiPracticeSet>
 {
     public void Configure(EntityTypeBuilder<AiPracticeSet> b)
@@ -193,6 +212,25 @@ public class AiPracticeSetConfig : IEntityTypeConfiguration<AiPracticeSet>
         b.HasIndex(x => new { x.UserId, x.CreatedAt });
         b.HasIndex(x => x.ExpiresAt);
     }
+}
+
+/// <summary>A Feynman "teach to learn" session where the learner explains a concept to a curious AI student.</summary>
+public class FeynmanSession
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid UserId { get; set; }
+    public Guid CourseId { get; set; }
+    public string Topic { get; set; } = "";
+    public string TranscriptJson { get; set; } = "[]";
+    public int ExchangeCount { get; set; }
+    public decimal? AccuracyScore { get; set; }
+    public decimal? CompletenessScore { get; set; }
+    public decimal? DepthScore { get; set; }
+    public decimal? ClarityScore { get; set; }
+    public string? MisconceptionsJson { get; set; }
+    public string? FeedbackJson { get; set; }
+    public DateTime CreatedUtc { get; set; } = DateTime.UtcNow;
+    public DateTime? EvaluatedUtc { get; set; }
 }
 
 // ---------- Options ----------
@@ -282,3 +320,14 @@ public record UsageRowDto(string Key, long InputTokens, long OutputTokens, decim
 public record AdminUsageDto(string Period, long TotalTokens, decimal TotalCost, long GlobalLimit, List<UsageRowDto> ByFeature,
     List<UsageRowDto> ByModel, List<UsageRowDto> TopUsers, List<UsageRowDto> ByOrganization);
 public record ConversationMetaDto(Guid Id, Guid UserId, Guid CourseId, int MessageCount, DateTime CreatedAt, DateTime LastMessageAt);
+
+// ---------- Feynman DTOs ----------
+public record FeynmanStartInput(Guid CourseId, string Topic);
+public record FeynmanExplainInput(string Message);
+public record FeynmanTranscriptEntry(string Role, string Content, DateTime Timestamp);
+public record FeynmanSessionDto(Guid Id, Guid CourseId, string Topic, int ExchangeCount, bool Evaluated, DateTime CreatedUtc, DateTime? EvaluatedUtc);
+public record FeynmanStartResult(FeynmanSessionDto Session, string AiMessage);
+public record FeynmanRubricDto(
+    decimal Accuracy, decimal Completeness, decimal Depth, decimal Clarity,
+    decimal OverallMastery, List<string> Misconceptions, FeynmanFeedbackDto Feedback);
+public record FeynmanFeedbackDto(List<string> WellExplained, List<string> NeedsWork, string Summary);

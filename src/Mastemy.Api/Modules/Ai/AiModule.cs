@@ -18,6 +18,7 @@ public static class AiModule
         s.AddScoped<AiIndexer>();
         s.AddScoped<AiTutorService>();
         s.AddScoped<AiAssistService>();
+        s.AddScoped<FeynmanService>();
         s.AddHostedService<AiMaintenanceWorker>();
     }
 }

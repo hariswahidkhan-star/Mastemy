@@ -37,6 +37,9 @@ import {
 } from '../engagement/LessonExtras';
 import { useTrackEvent } from '../../lib/analytics';
 import { AiPracticePanel, TutorPanel } from '../workspace/AiPanels';
+import { FeynmanPanel } from '../workspace/FeynmanPanel';
+import { ScenarioPanel } from '../workspace/ScenarioPanel';
+import { SkillGraphView } from '../workspace/SkillGraphView';
 import { BookmarksPanel } from '../workspace/Study';
 import { HeldLessonNotice, ReportContentButton } from '../workspace/Trust';
 import { NegativeMarkingDisclosure } from '../finala/Learning';
@@ -495,6 +498,33 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
             label: t('workspace.practice.tab'),
             content: user ? (
               <AiPracticePanel courseId={course.id} lessonId={lessonId} />
+            ) : (
+              <p className="muted">{t('workspace.tutor.login')}</p>
+            ),
+          },
+          {
+            id: 'feynman',
+            label: 'Explain to Learn',
+            content: user ? (
+              <FeynmanPanel courseId={course.id} />
+            ) : (
+              <p className="muted">{t('workspace.tutor.login')}</p>
+            ),
+          },
+          {
+            id: 'scenario',
+            label: 'Role Play',
+            content: user ? (
+              <ScenarioPanel courseId={course.id} />
+            ) : (
+              <p className="muted">{t('workspace.tutor.login')}</p>
+            ),
+          },
+          {
+            id: 'skills',
+            label: 'Skill Map',
+            content: user ? (
+              <SkillGraphView />
             ) : (
               <p className="muted">{t('workspace.tutor.login')}</p>
             ),

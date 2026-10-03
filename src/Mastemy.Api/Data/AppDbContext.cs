@@ -1,5 +1,8 @@
 using Mastemy.Api.Domain;
+using Mastemy.Api.Modules.Ai;
 using Mastemy.Api.Modules.Lab;
+using Mastemy.Api.Modules.Scenario;
+using Mastemy.Api.Modules.SkillGraph;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mastemy.Api.Data;
@@ -65,6 +68,15 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<LabBlueprint> LabBlueprints => Set<LabBlueprint>();
     public DbSet<LabSession> LabSessions => Set<LabSession>();
     public DbSet<LabEvidence> LabEvidence => Set<LabEvidence>();
+
+    public DbSet<ScenarioTemplate> ScenarioTemplates => Set<ScenarioTemplate>();
+    public DbSet<ScenarioSession> ScenarioSessions => Set<ScenarioSession>();
+
+    public DbSet<SkillNode> SkillNodes => Set<SkillNode>();
+    public DbSet<SkillEdge> SkillEdges => Set<SkillEdge>();
+    public DbSet<SkillMastery> SkillMasteries => Set<SkillMastery>();
+
+    public DbSet<FeynmanSession> FeynmanSessions => Set<FeynmanSession>();
 
     protected override void ConfigureConventions(ModelConfigurationBuilder b)
     {

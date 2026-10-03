@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Mastemy.Api.Modules.Ai;
 
 [ApiController, Route("api/ai"), Authorize]
-public class AiController(AiTutorService tutor, AiAssistService assist, AiBudgetService budget, IAiProvider provider, ICurrentUser me) : ControllerBase
+public class AiController(AiTutorService tutor, AiAssistService assist, FeynmanService feynman, AiBudgetService budget, IAiProvider provider, ICurrentUser me) : ControllerBase
 {
     /// <summary>Whether AI is available, so the UI can say "not configured" instead of failing.</summary>
     [HttpGet("status")]
@@ -81,6 +81,54 @@ public class AiController(AiTutorService tutor, AiAssistService assist, AiBudget
 
     [HttpPost("practice/{id:guid}/check")]
     public Task<PracticeCheckDto> Check(Guid id, PracticeCheckInput input) => assist.CheckPractice(id, input);
+
+    // ---------- Feynman Engine ----------
+
+    [HttpPost("feynman/start")]
+    public Task<FeynmanStartResult> FeynmanStart(FeynmanStartInput input, CancellationToken ct) => feynman.StartAsync(input, ct);
+
+    [HttpPost("feynman/{sessionId:guid}/explain")]
+    public async Task FeynmanExplain(Guid sessionId, FeynmanExplainInput input, CancellationToken ct)
+    {
+        var plan = await feynman.PrepareContinue(sessionId, input, ct);
+        Response.StatusCode = 200;
+        Response.ContentType = "text/event-stream; charset=utf-8";
+        Response.Headers.CacheControl = "no-cache, no-store";
+        Response.Headers["X-Accel-Buffering"] = "no";
+        await Response.StartAsync(ct);
+        var enumerator = feynman.ExecuteContinue(plan, ct).GetAsyncEnumerator(ct);
+        try
+        {
+            while (true)
+            {
+                SseEvent ev;
+                try
+                {
+                    if (!await enumerator.MoveNextAsync()) break;
+                    ev = enumerator.Current;
+                }
+                catch (AppException ex)
+                {
+                    await WriteSse(new SseEvent("error", new { code = ex.Code, message = ex.Message, status = ex.Status }), ct);
+                    break;
+                }
+                await WriteSse(ev, ct);
+            }
+        }
+        finally { await enumerator.DisposeAsync(); }
+    }
+
+    [HttpPost("feynman/{sessionId:guid}/evaluate")]
+    public Task<FeynmanRubricDto> FeynmanEvaluate(Guid sessionId, CancellationToken ct) => feynman.EvaluateAsync(sessionId, ct);
+
+    [HttpGet("feynman/sessions")]
+    public Task<List<FeynmanSessionDto>> FeynmanSessions([FromQuery] Guid? courseId) => feynman.ListAsync(courseId);
+
+    private async Task WriteSse(SseEvent e, CancellationToken ct)
+    {
+        await Response.WriteAsync($"event: {e.Event}\ndata: {JsonSerializer.Serialize(e.Data, AiTutorService.Json)}\n\n", ct);
+        await Response.Body.FlushAsync(ct);
+    }
 
     [HttpPost("studio/courses/{courseId:guid}/assist"), Authorize(Policy = "Instructor")]
     public Task<AssistResultDto> Assist(Guid courseId, AssistInput input, CancellationToken ct) => assist.Assist(courseId, input, ct);

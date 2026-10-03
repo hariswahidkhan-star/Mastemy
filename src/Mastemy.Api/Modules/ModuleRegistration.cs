@@ -22,6 +22,8 @@ public static class ModuleRegistration
         Authoring.AuthoringModule.Add(s, cfg); Analytics.AnalyticsModule.Add(s, cfg); StudyTools.StudyToolsModule.Add(s, cfg);
         Messaging.MessagingModule.Add(s, cfg);
         Lab.LabModule.Add(s, cfg);
+        Scenario.ScenarioModule.Add(s, cfg);
+        SkillGraph.SkillGraphModule.Add(s, cfg);
         return s;
     }
 }

@@ -44,6 +44,12 @@ export const wsKeys = {
   conversations: (courseId: string) => ['ws', 'conversations', courseId] as const,
   conversation: (id: string) => ['ws', 'conversation', id] as const,
   aiAdminUsage: (period: string) => ['ws', 'aiAdminUsage', period] as const,
+  feynmanSessions: (courseId: string) => ['ws', 'feynman', courseId] as const,
+  scenarioTemplates: (courseId: string) => ['ws', 'scenarioTemplates', courseId] as const,
+  scenarioSessions: (courseId: string) => ['ws', 'scenarioSessions', courseId] as const,
+  skillGraph: (categoryId?: number) => ['ws', 'skillGraph', categoryId] as const,
+  skillMastery: (categoryId?: number) => ['ws', 'skillMastery', categoryId] as const,
+  skillRecommendations: ['ws', 'skillRecommendations'] as const,
 };
 
 // ---------- Authoring ----------
@@ -673,4 +679,148 @@ export interface AdminUsageDto {
   byModel: UsageRowDto[];
   topUsers: UsageRowDto[];
   byOrganization: UsageRowDto[];
+}
+
+// ---------- Feynman Engine ----------
+export interface FeynmanSessionDto {
+  id: Guid;
+  courseId: Guid;
+  topic: string;
+  exchangeCount: number;
+  evaluated: boolean;
+  createdUtc: IsoDate;
+  evaluatedUtc: IsoDate | null;
+}
+export interface FeynmanStartResult {
+  session: FeynmanSessionDto;
+  aiMessage: string;
+}
+export interface FeynmanDone {
+  content: string;
+  exchangeCount: number;
+  maxExchanges: number;
+  canEvaluate: boolean;
+}
+export interface FeynmanFeedbackDto {
+  wellExplained: string[];
+  needsWork: string[];
+  summary: string;
+}
+// ---------- Scenario Engine ----------
+export interface ScenarioTemplateDto {
+  id: number;
+  courseId: Guid | null;
+  title: string;
+  description: string;
+  category: string;
+  characterName: string;
+  characterRole: string;
+  situationBrief: string;
+  maxTurns: number;
+  difficulty: string;
+  createdUtc: IsoDate;
+}
+export interface ScenarioSessionDto {
+  id: number;
+  templateId: number;
+  templateTitle: string;
+  characterName: string;
+  category: string;
+  turnCount: number;
+  maxTurns: number;
+  isCompleted: boolean;
+  overallScore: number | null;
+  startedUtc: IsoDate;
+  completedUtc: IsoDate | null;
+}
+export interface ScenarioMessageDto {
+  role: string;
+  content: string;
+  timestamp: IsoDate;
+}
+export interface ScenarioDimensionScoreDto {
+  dimension: string;
+  score: number;
+  weight: number;
+  feedback: string;
+}
+export interface ScenarioSessionDetailDto {
+  id: number;
+  templateId: number;
+  templateTitle: string;
+  characterName: string;
+  characterRole: string;
+  category: string;
+  situationBrief: string;
+  turnCount: number;
+  maxTurns: number;
+  isCompleted: boolean;
+  transcript: ScenarioMessageDto[];
+  scores: ScenarioDimensionScoreDto[] | null;
+  overallScore: number | null;
+  summaryFeedback: string | null;
+  startedUtc: IsoDate;
+  completedUtc: IsoDate | null;
+}
+export interface ScenarioDone {
+  content: string;
+  turnCount: number;
+  maxTurns: number;
+  isCompleted: boolean;
+}
+
+// ---------- Skill Graph ----------
+export interface SkillNodeDto {
+  id: number;
+  code: string;
+  name: string;
+  description: string | null;
+  categoryCode: string | null;
+  categoryId: number | null;
+}
+export interface SkillEdgeDto {
+  id: number;
+  fromSkillId: number;
+  toSkillId: number;
+}
+export interface SkillGraphDto {
+  nodes: SkillNodeDto[];
+  edges: SkillEdgeDto[];
+}
+export interface SkillMasteryDto {
+  skillId: number;
+  skillCode: string;
+  skillName: string;
+  masteryScore: number;
+  evidenceCount: number;
+  lastPracticedUtc: IsoDate;
+  nextReviewUtc: IsoDate | null;
+  stability: number;
+  difficulty: number;
+}
+export interface SkillMasterySummaryDto {
+  totalSkills: number;
+  masteredCount: number;
+  inProgressCount: number;
+  weakCount: number;
+  dueForReviewCount: number;
+  items: SkillMasteryDto[];
+}
+export interface SkillRecommendationDto {
+  skillId: number;
+  skillCode: string;
+  skillName: string;
+  reason: string;
+  masteryScore: number;
+  nextReviewUtc: IsoDate | null;
+}
+
+export interface FeynmanRubricDto {
+  accuracy: number;
+  completeness: number;
+  depth: number;
+  clarity: number;
+  overallMastery: number;
+  misconceptions: string[];
+  feedback: FeynmanFeedbackDto;
 }

@@ -6,6 +6,9 @@ import { Spinner } from '../components/ui/Spinner';
 import { useI18n } from '../i18n/I18nProvider';
 
 const study = () => import('../pages/workspace/Study');
+const SkillGraphView = lazy(() =>
+  import('../pages/workspace/SkillGraphView').then((m) => ({ default: m.SkillGraphView })),
+);
 const trust = () => import('../pages/workspace/Trust');
 const StudyPlanPage = lazy(() => study().then((m) => ({ default: m.StudyPlanPage })));
 const FoldersPage = lazy(() => study().then((m) => ({ default: m.FoldersPage })));
@@ -65,6 +68,15 @@ export const workspaceRoutes = [
     element={
       <Me>
         <BookmarksPage />
+      </Me>
+    }
+  />,
+  <Route
+    key="ws-skills"
+    path="me/skills"
+    element={
+      <Me>
+        <SkillGraphView />
       </Me>
     }
   />,
