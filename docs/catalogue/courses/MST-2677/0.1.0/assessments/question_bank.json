@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2677",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2677-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A vendor tells a healthcare organisation that its AI will 'replace clinicians entirely'. Why is that claim misleading for current AI?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Current AI automates specific tasks but cannot take on the full judgement, accountability and context of clinicians",
+     "correct": true,
+     "rationale": "Correct: today's systems are narrow and task-specific; they support rather than wholly replace skilled people."
+    },
+    {
+     "key": "B",
+     "text": "Because AI is always less accurate than people on every task",
+     "correct": false,
+     "rationale": "Overstated: AI can match or beat people on some narrow tasks; the real limit is scope, judgement and accountability."
+    },
+    {
+     "key": "C",
+     "text": "Because regulations forbid any use of AI in the field",
+     "correct": false,
+     "rationale": "Inaccurate: most uses are permitted with appropriate controls; the claim's problem is overreach, not legality."
+    },
+    {
+     "key": "D",
+     "text": "Because AI only works in laboratories, never in real settings",
+     "correct": false,
+     "rationale": "Inaccurate: AI is deployed in real settings; the issue is the breadth of the 'replace entirely' claim."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: today's systems are narrow and task-specific; they support rather than wholly replace skilled people.",
+   "outcome_refs": [
+    "MST-2677-D01.01"
+   ],
+   "domain_ref": "Foundations of AI in Healthcare",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2677-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are realistic near-term uses of AI in healthcare? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Summarising and drafting clinical documentation for clinician review",
+     "correct": true,
+     "rationale": "Correct: summarising and drafting clinical documentation for clinician review is an established, task-specific application today."
+    },
+    {
+     "key": "B",
+     "text": "Flagging possible findings in medical images for a radiologist to confirm",
+     "correct": true,
+     "rationale": "Correct: flagging possible findings in medical images for a radiologist to confirm is a realistic current application with human oversight."
+    },
+    {
+     "key": "C",
+     "text": "Autonomously diagnosing and treating patients without any clinician involvement",
+     "correct": false,
+     "rationale": "Overclaim: this presumes general autonomy that current AI does not reliably provide."
+    },
+    {
+     "key": "D",
+     "text": "Predicting each patient's exact lifespan from a single scan",
+     "correct": false,
+     "rationale": "Overclaim: this treats a speculative future capability as if it were available now."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: summarising and drafting clinical documentation for clinician review is an established, task-specific application today.",
+   "outcome_refs": [
+    "MST-2677-D02.01"
+   ],
+   "domain_ref": "AI applications across healthcare",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2677-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must a healthcare team validate AI outputs before relying on them for a decision that affects a person?",
+   "options": [
+    {
+     "key": "A",
+     "text": "AI can produce confident but wrong outputs, and health data is sensitive and often unrepresentative of some patient groups, so a person must check them in context",
+     "correct": true,
+     "rationale": "Correct: models can err and reflect data flaws; accountable human review protects the people affected."
+    },
+    {
+     "key": "B",
+     "text": "Validation is only needed while the model is new; once deployed it no longer makes mistakes",
+     "correct": false,
+     "rationale": "Incorrect: performance can drift and inputs change, so ongoing checking is required."
+    },
+    {
+     "key": "C",
+     "text": "Because AI outputs are copyrighted and cannot be used without review",
+     "correct": false,
+     "rationale": "Not the issue here: the concern is reliability and harm, not copyright."
+    },
+    {
+     "key": "D",
+     "text": "Validation is unnecessary if the vendor reports high accuracy",
+     "correct": false,
+     "rationale": "Incorrect: headline accuracy does not tell you how errors fall on individual people."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: models can err and reflect data flaws; accountable human review protects the people affected.",
+   "outcome_refs": [
+    "MST-2677-D03.01"
+   ],
+   "domain_ref": "Data, risk and ethics in healthcare AI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2693",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2693-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A vendor shows an AI agent completing a multi-step task in a demo and claims it can now run business processes autonomously. Why treat this cautiously?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Demos are curated and current agents remain brittle, so broad autonomous reliability is not shown by a demo",
+     "correct": true,
+     "rationale": "Correct: a successful demo does not establish robust, general, production-ready autonomy."
+    },
+    {
+     "key": "B",
+     "text": "Because AI agents never complete any task",
+     "correct": false,
+     "rationale": "Overstated: agents can complete some tasks; the issue is reliability and scope."
+    },
+    {
+     "key": "C",
+     "text": "Because autonomy is banned by law everywhere",
+     "correct": false,
+     "rationale": "Inaccurate: the concern is evidence and risk, not blanket illegality."
+    },
+    {
+     "key": "D",
+     "text": "Because demos always use fake software",
+     "correct": false,
+     "rationale": "Inaccurate and not the point; the issue is generalisation beyond the demo."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a successful demo does not establish robust, general, production-ready autonomy.",
+   "outcome_refs": [
+    "MST-2693-D01.01"
+   ],
+   "domain_ref": "Multimodal AI",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2693-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are sound ways to make an AI agent or reasoning system safer to use? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add human checkpoints before the system takes consequential actions",
+     "correct": true,
+     "rationale": "Correct: human-in-the-loop review limits harm from errors."
+    },
+    {
+     "key": "B",
+     "text": "Constrain its tools and scope and monitor what it does",
+     "correct": true,
+     "rationale": "Correct: limiting capabilities and observing behaviour are core guardrails."
+    },
+    {
+     "key": "C",
+     "text": "Give it unlimited permissions so it can work faster",
+     "correct": false,
+     "rationale": "Unsafe: broad autonomy without limits increases risk."
+    },
+    {
+     "key": "D",
+     "text": "Assume its step-by-step output proves it cannot be wrong",
+     "correct": false,
+     "rationale": "Incorrect: visible steps are not a guarantee of correctness."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: human-in-the-loop review limits harm from errors.",
+   "outcome_refs": [
+    "MST-2693-D02.01"
+   ],
+   "domain_ref": "Reasoning and tool use",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2693-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is step-by-step 'reasoning' output not proof that a model reasons like a human?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The visible steps are generated text that can look logical yet still be wrong or post-hoc",
+     "correct": true,
+     "rationale": "Correct: the format resembles reasoning but does not guarantee sound, human-like understanding."
+    },
+    {
+     "key": "B",
+     "text": "Because models never produce useful intermediate steps",
+     "correct": false,
+     "rationale": "Overstated: such steps can help; they just are not proof of understanding."
+    },
+    {
+     "key": "C",
+     "text": "Because only humans can write steps at all",
+     "correct": false,
+     "rationale": "Inaccurate: models clearly produce stepwise text."
+    },
+    {
+     "key": "D",
+     "text": "Because reasoning output is always hidden from users",
+     "correct": false,
+     "rationale": "Inaccurate: it is often shown; visibility is not the issue."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the format resembles reasoning but does not guarantee sound, human-like understanding.",
+   "outcome_refs": [
+    "MST-2693-D03.01"
+   ],
+   "domain_ref": "Agents and autonomous systems",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
