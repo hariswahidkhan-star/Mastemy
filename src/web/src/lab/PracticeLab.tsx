@@ -3,9 +3,11 @@ import { Markdown } from '../components/Markdown';
 import { Button } from '../components/ui/Button';
 import { useI18n } from '../i18n/I18nProvider';
 import { CodeEditor } from './CodeEditor';
+import { JsResultView } from './JsResultView';
 import { useLab } from './useLab';
+import { useJsLab } from './useJsLab';
 import { BUILTIN_LABS } from './labs';
-import type { CheckResult, LabSpec, ResultTable, RunResult } from './types';
+import type { CheckResult, LabSpec, ResultTable, RunResult, JsRunResult } from './types';
 import './lab.css';
 
 function ResultGrid({ table }: { table: ResultTable }) {
@@ -37,7 +39,9 @@ function ResultGrid({ table }: { table: ResultTable }) {
 
 export default function PracticeLab(_props: { courseId?: string; lessonId?: string }) {
   const { t } = useI18n();
-  const { ready, running, run } = useLab();
+  const sqlLab = useLab();
+  const jsLab = useJsLab();
+
   const [labId, setLabId] = useState(BUILTIN_LABS[0].id);
   const lab = useMemo<LabSpec>(
     () => BUILTIN_LABS.find((l) => l.id === labId) ?? BUILTIN_LABS[0],
@@ -45,32 +49,48 @@ export default function PracticeLab(_props: { courseId?: string; lessonId?: stri
   );
   const [code, setCode] = useState(lab.starterCode);
   const [editorKey, setEditorKey] = useState(0);
-  const [result, setResult] = useState<RunResult | null>(null);
+  const [sqlResult, setSqlResult] = useState<RunResult | null>(null);
+  const [jsResult, setJsResult] = useState<JsRunResult | null>(null);
   const [showSolution, setShowSolution] = useState(false);
+
+  const isJs = lab.engine === 'javascript';
+  const ready = isJs ? jsLab.ready : sqlLab.ready;
+  const running = isJs ? jsLab.running : sqlLab.running;
 
   // Reset editor + output when switching labs.
   useEffect(() => {
     setCode(lab.starterCode);
-    setResult(null);
+    setSqlResult(null);
+    setJsResult(null);
     setShowSolution(false);
     setEditorKey((k) => k + 1);
   }, [lab]);
 
   const doRun = async () => {
-    const r = await run({ seedSql: lab.seedSql, code, checks: lab.checks });
-    setResult(r);
+    if (isJs) {
+      const r = await jsLab.run({ code, checks: lab.jsChecks ?? [] });
+      setJsResult(r);
+    } else {
+      const r = await sqlLab.run({ seedSql: lab.seedSql, code, checks: lab.checks });
+      setSqlResult(r);
+    }
   };
+
   const reset = () => {
     setCode(lab.starterCode);
-    setResult(null);
+    setSqlResult(null);
+    setJsResult(null);
     setShowSolution(false);
     setEditorKey((k) => k + 1);
   };
 
-  const checks: CheckResult[] =
-    result && result.type === 'result' && result.ok ? result.checks : [];
-  const allPassed =
-    result?.type === 'result' && result.ok && result.passed && lab.checks.length > 0;
+  // SQL result helpers
+  const sqlChecks: CheckResult[] =
+    sqlResult && sqlResult.type === 'result' && sqlResult.ok ? sqlResult.checks : [];
+  const sqlAllPassed =
+    sqlResult?.type === 'result' && sqlResult.ok && sqlResult.passed && lab.checks.length > 0;
+
+  const engineLabel = isJs ? 'JavaScript' : t('workspace.lab.engineSql');
 
   return (
     <div className="lab">
@@ -89,7 +109,7 @@ export default function PracticeLab(_props: { courseId?: string; lessonId?: stri
             ))}
           </select>
         </label>
-        <span className="lab__engine small muted">{t('workspace.lab.engineSql')}</span>
+        <span className="lab__engine small muted">{engineLabel}</span>
       </div>
 
       <p className="small muted lab__privacy">{t('workspace.lab.privacy')}</p>
@@ -105,6 +125,7 @@ export default function PracticeLab(_props: { courseId?: string; lessonId?: stri
             value={code}
             onChange={setCode}
             ariaLabel={t('workspace.lab.editorLabel')}
+            language={isJs ? 'javascript' : 'sql'}
           />
           <div className="lab__actions">
             <Button onClick={doRun} disabled={running} aria-busy={running || !ready}>
@@ -129,36 +150,42 @@ export default function PracticeLab(_props: { courseId?: string; lessonId?: stri
           ) : null}
 
           <div className="lab__output" aria-live="polite">
-            {!result ? (
+            {isJs ? (
+              <JsResultView
+                result={jsResult}
+                hasChecks={(lab.jsChecks?.length ?? 0) > 0}
+                t={t}
+              />
+            ) : !sqlResult ? (
               <p className="muted">{t('workspace.lab.outputEmpty')}</p>
-            ) : result.type === 'result' && !result.ok ? (
+            ) : sqlResult.type === 'result' && !sqlResult.ok ? (
               <p className="lab__error" role="alert">
-                {t('workspace.lab.error')}: {result.error}
+                {t('workspace.lab.error')}: {sqlResult.error}
               </p>
-            ) : result.type === 'result' && result.ok ? (
+            ) : sqlResult.type === 'result' && sqlResult.ok ? (
               <>
                 {lab.checks.length > 0 ? (
                   <div
-                    className={`lab__verdict ${allPassed ? 'is-pass' : 'is-fail'}`}
+                    className={`lab__verdict ${sqlAllPassed ? 'is-pass' : 'is-fail'}`}
                     role="status"
                   >
-                    {allPassed ? t('workspace.lab.passed') : t('workspace.lab.notYet')}
+                    {sqlAllPassed ? t('workspace.lab.passed') : t('workspace.lab.notYet')}
                   </div>
                 ) : null}
-                {checks.length > 0 ? (
+                {sqlChecks.length > 0 ? (
                   <ul className="lab__checks">
-                    {checks.map((c, i) => (
+                    {sqlChecks.map((c, i) => (
                       <li key={i} className={c.passed ? 'is-pass' : 'is-fail'}>
                         <span aria-hidden="true">{c.passed ? '✓' : '✗'}</span> {c.name}
-                        {!c.passed ? <span className="small muted"> — {c.detail}</span> : null}
+                        {!c.passed ? <span className="small muted"> &mdash; {c.detail}</span> : null}
                       </li>
                     ))}
                   </ul>
                 ) : null}
-                {result.tables.length === 0 ? (
+                {sqlResult.tables.length === 0 ? (
                   <p className="muted">{t('workspace.lab.noRows')}</p>
                 ) : (
-                  result.tables.map((tbl, i) => <ResultGrid key={i} table={tbl} />)
+                  sqlResult.tables.map((tbl, i) => <ResultGrid key={i} table={tbl} />)
                 )}
               </>
             ) : null}
