@@ -1,0 +1,88 @@
+# Render Blueprint — DEMO / PREVIEW ONLY (just to see the site live quickly and cheaply).
+# For real deployment use render.yaml (private services + a managed/self-hosted MySQL + disks).
+#
+# What this does differently from render.yaml:
+#   * api and web run as FREE public web services (no disk, no private service) so there is nothing to pay for.
+#   * There is NO MySQL service here. Point ConnectionStrings__Default at a FREE EXTERNAL MySQL 8 instance
+#     (e.g. Aiven free trial, Railway, or db4free.net for a throwaway). The app is MySQL-only — SQLite cannot
+#     run it (it uses MySQL column types, utf8mb4 and `FOR UPDATE SKIP LOCKED`), so a real MySQL URL is needed.
+#   * The API creates and seeds the whole schema on first boot (Database:MigrateOnStartup=true), so an EMPTY
+#     database is fine — no manual migration step.
+#
+# TRADE-OFFS (fine for a preview, not for production):
+#   * Free web services sleep after ~15 min idle; the first request then takes ~30–60 s to wake.
+#   * No disk: DataProtection keys regenerate on each restart (everyone is logged out on redeploy) and any
+#     uploaded resource files are lost on restart.
+#   * AllowedHosts/proxy trust are relaxed below to avoid host-filter errors while you are just looking.
+#
+# HOW TO USE
+#   1. Create a free MySQL 8 database somewhere and copy its host/user/password/db name.
+#   2. In Render -> New -> Blueprint, set the Blueprint path to `render.demo.yaml`. Do NOT run this AND
+#      render.yaml at once: both name the API service `api` (required by the web nginx) and would collide.
+#   3. Fill the `sync: false` values when prompted (connection string + the seed admin login).
+#   4. Open the `web` service URL. Log in with the Seed admin you set.
+
+databases: []
+
+services:
+  # -------------------------------------------------------------------------------------------------
+  # .NET API — free public web service. Must stay named `api` (the web nginx proxies /api to api:8080).
+  # -------------------------------------------------------------------------------------------------
+  - type: web
+    name: api
+    runtime: docker
+    region: oregon
+    plan: free
+    dockerfilePath: ./src/Mastemy.Api/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: ASPNETCORE_URLS
+        value: http://+:8080
+      - key: PORT
+        value: "8080"
+      # Full MySQL connection string to your FREE external MySQL, e.g.:
+      #   Server=<host>;Port=3306;Database=<db>;User=<user>;Password=<pass>;CharSet=utf8mb4;SslMode=Required;
+      - key: ConnectionStrings__Default
+        sync: false
+      # Create the schema and seed on first boot (demo convenience).
+      - key: Database__MigrateOnStartup
+        value: "true"
+      - key: Seed__AllowSuperAdminBootstrap
+        value: "true"
+      - key: Seed__SuperAdminEmail
+        sync: false
+      - key: Seed__SuperAdminPassword
+        sync: false
+      - key: Jwt__Key
+        generateValue: true
+      # Public origin of the SITE (the web service URL), e.g. https://mastemy-web.onrender.com
+      - key: Seo__PublicBaseUrl
+        sync: false
+      # DEMO ONLY: accept any Host header so a first-look URL never 400s on host filtering.
+      # render.yaml keeps this locked to the real host.
+      - key: AllowedHosts
+        value: "*"
+      # DEMO ONLY: trust forwarded headers from Render's load balancer so HTTPS is detected.
+      - key: Network__TrustedProxies__0
+        value: 0.0.0.0/0
+
+  # -------------------------------------------------------------------------------------------------
+  # Web — free public web service. nginx serves the client build + proxies /api to api:8080; Node SSR
+  # renders public pages. nginx listens on :80.
+  # -------------------------------------------------------------------------------------------------
+  - type: web
+    name: web
+    runtime: docker
+    region: oregon
+    plan: free
+    dockerfilePath: ./deploy/web.Dockerfile
+    dockerContext: .
+    healthCheckPath: /health/live
+    envVars:
+      - key: PORT
+        value: "80"
+      # Must equal Seo__PublicBaseUrl on the api service — this service's own https URL.
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: API_INTERNAL_URL
+        value: http://api:8080
