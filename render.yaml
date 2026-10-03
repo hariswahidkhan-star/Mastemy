@@ -63,7 +63,8 @@ services:
     plan: starter
     dockerfilePath: ./src/Mastemy.Api/Dockerfile
     dockerContext: .
-    healthCheckPath: /health/live
+    # Private services do not take a healthCheckPath (Render checks the open port). The API still exposes
+    # /health/live and /health/ready for manual/automated probes through the web service.
     envVars:
       # Bind the container to the port nginx proxies to (api:8080).
       - key: ASPNETCORE_URLS
