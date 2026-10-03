@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2231",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2231-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is capturing design intent important in parametric CAD?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So the model updates predictably when dimensions or references change",
+     "correct": true,
+     "rationale": "Correct: good design intent makes edits propagate the way the designer expects."
+    },
+    {
+     "key": "B",
+     "text": "So the file renders in more colours",
+     "correct": false,
+     "rationale": "Rendering colour is unrelated to design intent."
+    },
+    {
+     "key": "C",
+     "text": "So the model uses less disk space",
+     "correct": false,
+     "rationale": "Design intent is about editability, not file size."
+    },
+    {
+     "key": "D",
+     "text": "So the part cannot be edited at all",
+     "correct": false,
+     "rationale": "The point is controlled editability, not locking the model."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: good design intent makes edits propagate the way the designer expects.",
+   "outcome_refs": [
+    "MST-2231-D01.01"
+   ],
+   "domain_ref": "Modelling fundamentals and design intent",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2231-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make a sketch robust and fully defined? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Add geometric constraints such as coincident and parallel",
+     "correct": true,
+     "rationale": "Correct: constraints remove unwanted degrees of freedom."
+    },
+    {
+     "key": "B",
+     "text": "Dimension the sketch so nothing is left under-defined",
+     "correct": true,
+     "rationale": "Correct: a fully dimensioned sketch resolves to a single geometry."
+    },
+    {
+     "key": "C",
+     "text": "Leave entities unconstrained for flexibility",
+     "correct": false,
+     "rationale": "Under-defined sketches shift unpredictably on edits."
+    },
+    {
+     "key": "D",
+     "text": "Delete all reference geometry",
+     "correct": false,
+     "rationale": "Removing references does not make a sketch robust; it often breaks it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: constraints remove unwanted degrees of freedom.",
+   "outcome_refs": [
+    "MST-2231-D02.01"
+   ],
+   "domain_ref": "Building solid parts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2231-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An assembly fails to update after you add a mate. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The assembly is over-constrained with conflicting mates",
+     "correct": true,
+     "rationale": "Correct: conflicting mates leave the solver no valid position."
+    },
+    {
+     "key": "B",
+     "text": "The parts are too colourful",
+     "correct": false,
+     "rationale": "Appearance does not affect mate solving."
+    },
+    {
+     "key": "C",
+     "text": "The drawing sheet is the wrong size",
+     "correct": false,
+     "rationale": "Sheet size is a documentation setting, not a mate constraint."
+    },
+    {
+     "key": "D",
+     "text": "The STL export resolution is too high",
+     "correct": false,
+     "rationale": "Export settings do not drive assembly mates."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: conflicting mates leave the solver no valid position.",
+   "outcome_refs": [
+    "MST-2231-D03.01"
+   ],
+   "domain_ref": "Assemblies and relationships",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

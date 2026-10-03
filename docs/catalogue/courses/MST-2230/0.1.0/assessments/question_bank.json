@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2230",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2230-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two 100-ohm resistors are connected in parallel across a 10 V source. What is the current drawn from the source?",
+   "options": [
+    {
+     "key": "A",
+     "text": "0.2 A",
+     "correct": true,
+     "rationale": "Correct: parallel 100||100 = 50 ohm, so I = 10/50 = 0.2 A."
+    },
+    {
+     "key": "B",
+     "text": "0.1 A",
+     "correct": false,
+     "rationale": "That treats the resistors as 100 ohm, ignoring the parallel combination."
+    },
+    {
+     "key": "C",
+     "text": "0.05 A",
+     "correct": false,
+     "rationale": "That uses 200 ohm, which would be the series value."
+    },
+    {
+     "key": "D",
+     "text": "2 A",
+     "correct": false,
+     "rationale": "That is off by an order of magnitude from Ohm's law here."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: parallel 100||100 = 50 ohm, so I = 10/50 = 0.2 A.",
+   "outcome_refs": [
+    "MST-2230-D01.01"
+   ],
+   "domain_ref": "DC circuit analysis",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2230-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about an ideal capacitor in a DC circuit are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It blocks steady DC current once fully charged",
+     "correct": true,
+     "rationale": "Correct: at steady state no current flows through an ideal capacitor."
+    },
+    {
+     "key": "B",
+     "text": "Its voltage cannot change instantaneously",
+     "correct": true,
+     "rationale": "Correct: capacitor voltage is continuous, set by the charge stored."
+    },
+    {
+     "key": "C",
+     "text": "It dissipates power as heat like a resistor",
+     "correct": false,
+     "rationale": "An ideal capacitor stores energy and dissipates none."
+    },
+    {
+     "key": "D",
+     "text": "It has zero impedance at all frequencies",
+     "correct": false,
+     "rationale": "Its impedance falls with frequency but is infinite at DC."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: at steady state no current flows through an ideal capacitor.",
+   "outcome_refs": [
+    "MST-2230-D02.01"
+   ],
+   "domain_ref": "AC and reactive components",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2230-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "You need to measure the current through a lamp. How should the ammeter be connected?",
+   "options": [
+    {
+     "key": "A",
+     "text": "In series with the lamp",
+     "correct": true,
+     "rationale": "Correct: an ammeter must carry the branch current, so it goes in series."
+    },
+    {
+     "key": "B",
+     "text": "In parallel with the lamp",
+     "correct": false,
+     "rationale": "A parallel ammeter short-circuits the load and can be damaged."
+    },
+    {
+     "key": "C",
+     "text": "Across the supply terminals",
+     "correct": false,
+     "rationale": "That measures nothing useful and risks a short."
+    },
+    {
+     "key": "D",
+     "text": "Between two grounds",
+     "correct": false,
+     "rationale": "That does not place the meter in the lamp's current path."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: an ammeter must carry the branch current, so it goes in series.",
+   "outcome_refs": [
+    "MST-2230-D03.01"
+   ],
+   "domain_ref": "Semiconductors and devices",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

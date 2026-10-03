@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2236",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2236-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the core idea behind the finite element method?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Dividing a complex domain into simple elements whose behaviour is summed",
+     "correct": true,
+     "rationale": "Correct: FEA approximates a continuous problem with many simple, connected elements."
+    },
+    {
+     "key": "B",
+     "text": "Solving the exact closed-form solution directly",
+     "correct": false,
+     "rationale": "FEA is an approximation; it does not give the exact continuous solution."
+    },
+    {
+     "key": "C",
+     "text": "Measuring the real part in a lab",
+     "correct": false,
+     "rationale": "FEA is a simulation method, not a physical test."
+    },
+    {
+     "key": "D",
+     "text": "Replacing material properties with colours",
+     "correct": false,
+     "rationale": "Colours only visualise results; they are not the method."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: FEA approximates a continuous problem with many simple, connected elements.",
+   "outcome_refs": [
+    "MST-2236-D01.01"
+   ],
+   "domain_ref": "FEA fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2236-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices improve confidence in an FEA result? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Performing a mesh-convergence study",
+     "correct": true,
+     "rationale": "Correct: convergence shows the result is mesh-independent."
+    },
+    {
+     "key": "B",
+     "text": "Validating against a hand calculation or test",
+     "correct": true,
+     "rationale": "Correct: independent checks catch setup errors."
+    },
+    {
+     "key": "C",
+     "text": "Choosing the prettiest contour colours",
+     "correct": false,
+     "rationale": "Colour choices do not affect correctness."
+    },
+    {
+     "key": "D",
+     "text": "Using the coarsest possible mesh to save time",
+     "correct": false,
+     "rationale": "An under-refined mesh can hide real stresses."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: convergence shows the result is mesh-independent.",
+   "outcome_refs": [
+    "MST-2236-D02.01"
+   ],
+   "domain_ref": "Problem setup",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2236-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Your model shows an extremely high stress at a perfectly sharp re-entrant corner that keeps rising as you refine the mesh. What is the right interpretation?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is likely a stress singularity, not a real finite stress",
+     "correct": true,
+     "rationale": "Correct: a sharp corner is a modelling artefact that produces an unbounded, unphysical stress."
+    },
+    {
+     "key": "B",
+     "text": "The part will definitely fail there",
+     "correct": false,
+     "rationale": "A singular value is a mesh artefact, not a reliable prediction."
+    },
+    {
+     "key": "C",
+     "text": "The mesh is converged and correct",
+     "correct": false,
+     "rationale": "A value that keeps rising with refinement is the opposite of converged."
+    },
+    {
+     "key": "D",
+     "text": "You should report the peak value as-is",
+     "correct": false,
+     "rationale": "A singular peak must be handled with a fillet or a different measure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a sharp corner is a modelling artefact that produces an unbounded, unphysical stress.",
+   "outcome_refs": [
+    "MST-2236-D03.01"
+   ],
+   "domain_ref": "Meshing and convergence",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

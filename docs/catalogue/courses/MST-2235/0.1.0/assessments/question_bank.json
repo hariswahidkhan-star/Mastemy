@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2235",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2235-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary benefit of closed-loop (feedback) control over open-loop control?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It corrects for disturbances and model errors using the measured output",
+     "correct": true,
+     "rationale": "Correct: feedback compares output to setpoint and acts on the error."
+    },
+    {
+     "key": "B",
+     "text": "It never needs a sensor",
+     "correct": false,
+     "rationale": "Closed-loop control depends on measuring the output."
+    },
+    {
+     "key": "C",
+     "text": "It is always cheaper",
+     "correct": false,
+     "rationale": "Feedback can add cost; its benefit is accuracy and robustness."
+    },
+    {
+     "key": "D",
+     "text": "It eliminates the need for an actuator",
+     "correct": false,
+     "rationale": "An actuator is still required to affect the plant."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: feedback compares output to setpoint and acts on the error.",
+   "outcome_refs": [
+    "MST-2235-D01.01"
+   ],
+   "domain_ref": "System modelling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2235-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO effects are typically associated with increasing the integral term in a PID controller? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It drives steady-state error toward zero",
+     "correct": true,
+     "rationale": "Correct: integral action accumulates error until it is removed."
+    },
+    {
+     "key": "B",
+     "text": "It can reduce stability margins and increase overshoot",
+     "correct": true,
+     "rationale": "Correct: too much integral action tends to destabilise the loop."
+    },
+    {
+     "key": "C",
+     "text": "It instantly removes all measurement noise",
+     "correct": false,
+     "rationale": "Noise handling is more about derivative filtering, not integral action."
+    },
+    {
+     "key": "D",
+     "text": "It has no effect on steady-state error",
+     "correct": false,
+     "rationale": "Removing steady-state error is exactly what integral action does."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: integral action accumulates error until it is removed.",
+   "outcome_refs": [
+    "MST-2235-D02.01"
+   ],
+   "domain_ref": "Feedback and control structure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2235-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A system's transfer function has a pole in the right half of the s-plane. What does this imply?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The system is unstable",
+     "correct": true,
+     "rationale": "Correct: a right-half-plane pole produces a growing response."
+    },
+    {
+     "key": "B",
+     "text": "The system is critically damped",
+     "correct": false,
+     "rationale": "Damping classification does not make an RHP pole stable."
+    },
+    {
+     "key": "C",
+     "text": "The system has no steady-state error",
+     "correct": false,
+     "rationale": "Pole location governs stability, not that claim."
+    },
+    {
+     "key": "D",
+     "text": "The system is faster but stable",
+     "correct": false,
+     "rationale": "An RHP pole means instability, not merely speed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a right-half-plane pole produces a growing response.",
+   "outcome_refs": [
+    "MST-2235-D03.01"
+   ],
+   "domain_ref": "PID control and tuning",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

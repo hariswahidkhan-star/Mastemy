@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2229",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2229-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A horizontal beam is pinned at one end and supported by a cable at the other. To find the cable tension, what should you do first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Draw a free-body diagram and sum moments about the pin",
+     "correct": true,
+     "rationale": "Correct: taking moments about the pin removes the unknown pin reaction and isolates the cable tension."
+    },
+    {
+     "key": "B",
+     "text": "Measure the beam's temperature",
+     "correct": false,
+     "rationale": "Temperature is irrelevant to a static force balance here."
+    },
+    {
+     "key": "C",
+     "text": "Assume the tension equals the beam's weight",
+     "correct": false,
+     "rationale": "Tension depends on geometry and load position, not simply the weight."
+    },
+    {
+     "key": "D",
+     "text": "Sum forces only in the horizontal direction",
+     "correct": false,
+     "rationale": "Horizontal equilibrium alone cannot solve a vertical load problem."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: taking moments about the pin removes the unknown pin reaction and isolates the cable tension.",
+   "outcome_refs": [
+    "MST-2229-D01.01"
+   ],
+   "domain_ref": "Statics and mechanics of materials",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2229-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO quantities must you know to compute the factor of safety of a ductile part in tension? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The material's yield strength",
+     "correct": true,
+     "rationale": "Correct: for a ductile part the yield strength sets the allowable stress."
+    },
+    {
+     "key": "B",
+     "text": "The applied (working) stress in the part",
+     "correct": true,
+     "rationale": "Correct: factor of safety is the yield strength divided by the working stress."
+    },
+    {
+     "key": "C",
+     "text": "The colour of the part",
+     "correct": false,
+     "rationale": "Colour has no bearing on mechanical strength."
+    },
+    {
+     "key": "D",
+     "text": "The ambient humidity",
+     "correct": false,
+     "rationale": "Humidity does not define the static factor of safety in this basic case."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: for a ductile part the yield strength sets the allowable stress.",
+   "outcome_refs": [
+    "MST-2229-D02.01"
+   ],
+   "domain_ref": "Thermodynamics and fluids",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2229-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A reducing gear train increases torque at the output. What necessarily happens to the output rotational speed?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It decreases in proportion to the gear ratio",
+     "correct": true,
+     "rationale": "Correct: in an ideal gear train speed drops as torque rises, conserving power."
+    },
+    {
+     "key": "B",
+     "text": "It increases with the torque",
+     "correct": false,
+     "rationale": "Speed and torque trade off inversely in a gear reduction."
+    },
+    {
+     "key": "C",
+     "text": "It stays the same as the input",
+     "correct": false,
+     "rationale": "A reduction changes the speed; only a 1:1 ratio keeps it equal."
+    },
+    {
+     "key": "D",
+     "text": "It becomes zero",
+     "correct": false,
+     "rationale": "The output still turns; it is only slower."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: in an ideal gear train speed drops as torque rises, conserving power.",
+   "outcome_refs": [
+    "MST-2229-D03.01"
+   ],
+   "domain_ref": "Dynamics and machine elements",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
