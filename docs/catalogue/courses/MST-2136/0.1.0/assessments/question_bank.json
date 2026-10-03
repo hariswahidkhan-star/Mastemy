@@ -1,0 +1,172 @@
+{
+ "course_id": "MST-2136",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 368,
+  "lesson_check_items": 60,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2136-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a diagnostic-support context, a model's SENSITIVITY refers to its ability to:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Correctly identify those who truly have the condition",
+     "correct": true,
+     "rationale": "Correct: sensitivity is the true-positive rate among those with the condition."
+    },
+    {
+     "key": "B",
+     "text": "Correctly identify those who are truly free of the condition",
+     "correct": false,
+     "rationale": "That describes specificity, not sensitivity."
+    },
+    {
+     "key": "C",
+     "text": "Run quickly on new hardware",
+     "correct": false,
+     "rationale": "That is a performance (speed) property, not sensitivity."
+    },
+    {
+     "key": "D",
+     "text": "Compress the input image",
+     "correct": false,
+     "rationale": "This is unrelated to sensitivity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sensitivity is the true-positive rate among those with the condition.",
+   "outcome_refs": [
+    "MST-2136-D01.01"
+   ],
+   "domain_ref": "Foundations of diagnostic AI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2136-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements reflect responsible use of a diagnostic AI model? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its output should be treated as decision-support that a clinician confirms",
+     "correct": true,
+     "rationale": "Correct: diagnostic AI informs but does not replace clinician judgement."
+    },
+    {
+     "key": "B",
+     "text": "Its performance should be checked for different patient subgroups",
+     "correct": true,
+     "rationale": "Correct: subgroup evaluation guards against hidden bias."
+    },
+    {
+     "key": "C",
+     "text": "A high overall accuracy means it is safe to use alone",
+     "correct": false,
+     "rationale": "Overall accuracy can hide subgroup failures and does not authorise standalone use."
+    },
+    {
+     "key": "D",
+     "text": "Clinician review can be skipped once AUC exceeds 0.9",
+     "correct": false,
+     "rationale": "No metric threshold removes the need for clinician confirmation."
+    },
+    {
+     "key": "E",
+     "text": "The model can issue a final diagnosis directly to the patient",
+     "correct": false,
+     "rationale": "AI outputs are not a standalone diagnosis."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: diagnostic AI informs but does not replace clinician judgement.",
+   "outcome_refs": [
+    "MST-2136-D02.01"
+   ],
+   "domain_ref": "Evaluating diagnostic models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2136-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model performs well in the hospital where it was trained but poorly in a new hospital with different scanners. This is an example of:",
+   "options": [
+    {
+     "key": "A",
+     "text": "Dataset shift (distribution shift)",
+     "correct": true,
+     "rationale": "Correct: changes in the input distribution between sites degrade performance."
+    },
+    {
+     "key": "B",
+     "text": "Overfitting to the test set only",
+     "correct": false,
+     "rationale": "The issue is a change between deployment settings, i.e. distribution shift."
+    },
+    {
+     "key": "C",
+     "text": "Perfect generalisation",
+     "correct": false,
+     "rationale": "Poor performance at the new site is the opposite of generalisation."
+    },
+    {
+     "key": "D",
+     "text": "A calibration that is guaranteed to transfer",
+     "correct": false,
+     "rationale": "Calibration does not automatically transfer across sites."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: changes in the input distribution between sites degrade performance.",
+   "outcome_refs": [
+    "MST-2136-D03.01"
+   ],
+   "domain_ref": "Limitations and risks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
