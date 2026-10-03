@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2893",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2893-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the 'sense-think-act' loop in a robot?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The robot reads a sensor, decides what to do, then moves or acts",
+     "correct": true,
+     "rationale": "Correct: sense (read), think (decide), act (move/output), repeated."
+    },
+    {
+     "key": "B",
+     "text": "The robot only sits and waits",
+     "correct": false,
+     "rationale": "A robot senses, decides and acts; it does not just wait."
+    },
+    {
+     "key": "C",
+     "text": "The robot reads minds",
+     "correct": false,
+     "rationale": "Robots use sensors, not mind-reading."
+    },
+    {
+     "key": "D",
+     "text": "The robot acts first and never senses",
+     "correct": false,
+     "rationale": "Sensing comes before acting in the loop."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: sense (read), think (decide), act (move/output), repeated.",
+   "outcome_refs": [
+    "MST-2893-D01.01"
+   ],
+   "domain_ref": "What is a robot?",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2893-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO of these are sensors that give a robot information? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A distance sensor",
+     "correct": true,
+     "rationale": "Correct: it senses how far away an object is."
+    },
+    {
+     "key": "B",
+     "text": "A light sensor",
+     "correct": true,
+     "rationale": "Correct: it senses how bright it is."
+    },
+    {
+     "key": "C",
+     "text": "A wheel motor",
+     "correct": false,
+     "rationale": "A motor makes the robot move; it is an output, not a sensor."
+    },
+    {
+     "key": "D",
+     "text": "A buzzer",
+     "correct": false,
+     "rationale": "A buzzer makes sound; it is an output, not a sensor."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: it senses how far away an object is.",
+   "outcome_refs": [
+    "MST-2893-D02.01"
+   ],
+   "domain_ref": "Sensors (sense)",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2893-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A robot should stop before the table edge but falls off. What is the best fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Adjust the program so it stops when the distance sensor reads a bigger gap (stops sooner)",
+     "correct": true,
+     "rationale": "Correct: change the sensor threshold so it reacts in time."
+    },
+    {
+     "key": "B",
+     "text": "Make the robot drive faster",
+     "correct": false,
+     "rationale": "Faster driving makes it fall off sooner, not safer."
+    },
+    {
+     "key": "C",
+     "text": "Remove the distance sensor",
+     "correct": false,
+     "rationale": "Without the sensor it cannot detect the edge."
+    },
+    {
+     "key": "D",
+     "text": "Hope it works next time",
+     "correct": false,
+     "rationale": "We fix the program instead of hoping."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: change the sensor threshold so it reacts in time.",
+   "outcome_refs": [
+    "MST-2893-D03.01"
+   ],
+   "domain_ref": "Motors and actions (act)",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

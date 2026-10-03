@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2905",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2905-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do machine-learning teams keep a separate 'test' dataset?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To measure how well the model performs on data it has not seen during training",
+     "correct": true,
+     "rationale": "Correct: test data estimates real-world generalisation."
+    },
+    {
+     "key": "B",
+     "text": "To give the model more examples to memorise",
+     "correct": false,
+     "rationale": "Test data is held back precisely so it is not memorised."
+    },
+    {
+     "key": "C",
+     "text": "Because training data is always wrong",
+     "correct": false,
+     "rationale": "Training data is used to learn; test data checks generalisation."
+    },
+    {
+     "key": "D",
+     "text": "To make training take longer on purpose",
+     "correct": false,
+     "rationale": "The purpose is honest evaluation, not slowing training."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: test data estimates real-world generalisation.",
+   "outcome_refs": [
+    "MST-2905-D01.01"
+   ],
+   "domain_ref": "ML foundations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2905-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO signs suggest a model is overfitting? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Very high accuracy on training data",
+     "correct": true,
+     "rationale": "Correct: near-perfect training scores can indicate memorisation."
+    },
+    {
+     "key": "B",
+     "text": "Much lower accuracy on new test data",
+     "correct": true,
+     "rationale": "Correct: a big train-test gap is a classic overfitting sign."
+    },
+    {
+     "key": "C",
+     "text": "Equal and reasonable accuracy on train and test",
+     "correct": false,
+     "rationale": "Similar scores suggest healthy generalisation, not overfitting."
+    },
+    {
+     "key": "D",
+     "text": "No training data at all",
+     "correct": false,
+     "rationale": "Without training data the model has not learned yet; that is not overfitting."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: near-perfect training scores can indicate memorisation.",
+   "outcome_refs": [
+    "MST-2905-D02.01"
+   ],
+   "domain_ref": "Types of tasks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2905-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A spam classifier scores 99% on training data but 60% on new messages. What is the likely issue?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It has overfit the training data and does not generalise to new messages",
+     "correct": true,
+     "rationale": "Correct: a large train-test gap points to overfitting."
+    },
+    {
+     "key": "B",
+     "text": "It is the best possible model",
+     "correct": false,
+     "rationale": "A large gap shows it is not generalising well."
+    },
+    {
+     "key": "C",
+     "text": "Test data is not needed",
+     "correct": false,
+     "rationale": "The test data is exactly what revealed the problem."
+    },
+    {
+     "key": "D",
+     "text": "The model has learned nothing at all",
+     "correct": false,
+     "rationale": "It learned the training set too closely, which is overfitting."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a large train-test gap points to overfitting.",
+   "outcome_refs": [
+    "MST-2905-D03.01"
+   ],
+   "domain_ref": "Training and evaluation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

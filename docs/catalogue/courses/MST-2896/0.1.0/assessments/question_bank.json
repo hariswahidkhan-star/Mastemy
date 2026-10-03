@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2896",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2896-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In Python, what does input() return by default when the user types 7?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The text '7' (a string), which must be converted before doing maths",
+     "correct": true,
+     "rationale": "Correct: input() returns a string; use int() to get a number."
+    },
+    {
+     "key": "B",
+     "text": "The number 7 ready for maths",
+     "correct": false,
+     "rationale": "input() returns text, not a number, by default."
+    },
+    {
+     "key": "C",
+     "text": "Nothing at all",
+     "correct": false,
+     "rationale": "input() returns what the user typed."
+    },
+    {
+     "key": "D",
+     "text": "A True/False value",
+     "correct": false,
+     "rationale": "input() returns a string, not a boolean."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: input() returns a string; use int() to get a number.",
+   "outcome_refs": [
+    "MST-2896-D01.01"
+   ],
+   "domain_ref": "First programs and variables",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2896-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are valid ways to repeat an action in Python? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A for loop",
+     "correct": true,
+     "rationale": "Correct: for loops repeat a set number of times or over items."
+    },
+    {
+     "key": "B",
+     "text": "A while loop",
+     "correct": true,
+     "rationale": "Correct: while loops repeat while a condition is true."
+    },
+    {
+     "key": "C",
+     "text": "An input() statement",
+     "correct": false,
+     "rationale": "input() reads one value; it does not repeat actions."
+    },
+    {
+     "key": "D",
+     "text": "A print() statement",
+     "correct": false,
+     "rationale": "print() shows output once; it does not loop."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: for loops repeat a set number of times or over items.",
+   "outcome_refs": [
+    "MST-2896-D02.01"
+   ],
+   "domain_ref": "Input and output",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2896-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Your while loop never stops. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The condition never becomes False because nothing inside the loop changes it",
+     "correct": true,
+     "rationale": "Correct: a while loop needs its condition to eventually become False."
+    },
+    {
+     "key": "B",
+     "text": "Python does not support while loops",
+     "correct": false,
+     "rationale": "Python does support while loops."
+    },
+    {
+     "key": "C",
+     "text": "while loops always run forever",
+     "correct": false,
+     "rationale": "A correct while loop stops when its condition is False."
+    },
+    {
+     "key": "D",
+     "text": "You used too many comments",
+     "correct": false,
+     "rationale": "Comments do not affect whether a loop stops."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a while loop needs its condition to eventually become False.",
+   "outcome_refs": [
+    "MST-2896-D03.01"
+   ],
+   "domain_ref": "Making decisions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

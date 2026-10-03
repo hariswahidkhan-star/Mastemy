@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2897",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2897-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why split a game into functions instead of one long block of code?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Functions organise the code into reusable, named parts that are easier to test and fix",
+     "correct": true,
+     "rationale": "Correct: functions make code reusable, readable and easier to debug."
+    },
+    {
+     "key": "B",
+     "text": "Functions make the game run without a computer",
+     "correct": false,
+     "rationale": "Code still needs a computer; functions just organise it."
+    },
+    {
+     "key": "C",
+     "text": "Python refuses to run code without functions",
+     "correct": false,
+     "rationale": "Python can run code without functions; they just help."
+    },
+    {
+     "key": "D",
+     "text": "Functions automatically win the game",
+     "correct": false,
+     "rationale": "Functions organise code; they do not play the game."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: functions make code reusable, readable and easier to debug.",
+   "outcome_refs": [
+    "MST-2897-D01.01"
+   ],
+   "domain_ref": "Game structure with functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2897-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good reasons to use the random module in a game? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "To make the computer's move unpredictable",
+     "correct": true,
+     "rationale": "Correct: randomness stops the computer always doing the same thing."
+    },
+    {
+     "key": "B",
+     "text": "To pick a secret number for a guessing game",
+     "correct": true,
+     "rationale": "Correct: random can choose a hidden value."
+    },
+    {
+     "key": "C",
+     "text": "To guarantee the player always wins",
+     "correct": false,
+     "rationale": "Randomness does not guarantee a win for anyone."
+    },
+    {
+     "key": "D",
+     "text": "To remove the need for a game loop",
+     "correct": false,
+     "rationale": "A game still needs a loop; random does not replace it."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: randomness stops the computer always doing the same thing.",
+   "outcome_refs": [
+    "MST-2897-D02.01"
+   ],
+   "domain_ref": "The game loop",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2897-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A player types 'banana' at a rock/paper/scissors prompt and the game crashes. What is the best fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validate the input and ask again if it is not a valid choice",
+     "correct": true,
+     "rationale": "Correct: input validation handles unexpected entries safely."
+    },
+    {
+     "key": "B",
+     "text": "Tell players never to make mistakes",
+     "correct": false,
+     "rationale": "Programs should handle mistakes, not just forbid them."
+    },
+    {
+     "key": "C",
+     "text": "Remove the input entirely",
+     "correct": false,
+     "rationale": "The game needs the player's choice."
+    },
+    {
+     "key": "D",
+     "text": "Ignore the crash",
+     "correct": false,
+     "rationale": "Crashes should be fixed with validation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: input validation handles unexpected entries safely.",
+   "outcome_refs": [
+    "MST-2897-D03.01"
+   ],
+   "domain_ref": "Rules and choices",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

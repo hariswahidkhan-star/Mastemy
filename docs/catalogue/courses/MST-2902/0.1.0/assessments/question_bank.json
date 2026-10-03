@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2902",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2902-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does a chatbot need a 'fallback' response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "So it can reply politely when it does not understand what the user typed",
+     "correct": true,
+     "rationale": "Correct: a fallback handles inputs the bot cannot match."
+    },
+    {
+     "key": "B",
+     "text": "So it can answer every possible question perfectly",
+     "correct": false,
+     "rationale": "A fallback is for when it cannot match, not perfect answers."
+    },
+    {
+     "key": "C",
+     "text": "So it never has to reply at all",
+     "correct": false,
+     "rationale": "A fallback is a reply for unknown input."
+    },
+    {
+     "key": "D",
+     "text": "So it can ignore the user",
+     "correct": false,
+     "rationale": "A fallback politely responds rather than ignoring."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a fallback handles inputs the bot cannot match.",
+   "outcome_refs": [
+    "MST-2902-D01.01"
+   ],
+   "domain_ref": "What is a chatbot?",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2902-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are good steps when planning a chatbot? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Choosing a clear purpose for the bot",
+     "correct": true,
+     "rationale": "Correct: a clear purpose keeps the bot focused."
+    },
+    {
+     "key": "B",
+     "text": "Listing the things users are likely to say",
+     "correct": true,
+     "rationale": "Correct: anticipating inputs helps design intents."
+    },
+    {
+     "key": "C",
+     "text": "Promising it can answer any question in the world",
+     "correct": false,
+     "rationale": "No bot can handle everything; scope should be realistic."
+    },
+    {
+     "key": "D",
+     "text": "Hiding what the bot is for from everyone",
+     "correct": false,
+     "rationale": "Users should know the bot's purpose to use it well."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a clear purpose keeps the bot focused.",
+   "outcome_refs": [
+    "MST-2902-D02.01"
+   ],
+   "domain_ref": "Planning a chatbot",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2902-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Several users type 'hi', 'hello' and 'hey'. How should your chatbot handle these?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Group them into one greeting intent that triggers the same friendly reply",
+     "correct": true,
+     "rationale": "Correct: similar phrases map to one intent with one response."
+    },
+    {
+     "key": "B",
+     "text": "Make a totally separate program for each word",
+     "correct": false,
+     "rationale": "Grouping them into one intent is far simpler."
+    },
+    {
+     "key": "C",
+     "text": "Only respond to the exact word 'hi'",
+     "correct": false,
+     "rationale": "An intent should cover similar phrasings."
+    },
+    {
+     "key": "D",
+     "text": "Ignore all of them",
+     "correct": false,
+     "rationale": "Greetings should get a friendly reply."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: similar phrases map to one intent with one response.",
+   "outcome_refs": [
+    "MST-2902-D03.01"
+   ],
+   "domain_ref": "Intents and responses",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

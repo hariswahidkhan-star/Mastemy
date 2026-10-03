@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2903",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2903-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main advantage of a function that uses 'return' rather than only printing?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The returned value can be reused elsewhere in the program, not just displayed",
+     "correct": true,
+     "rationale": "Correct: returning a value lets other code use the result."
+    },
+    {
+     "key": "B",
+     "text": "return makes the program run without a computer",
+     "correct": false,
+     "rationale": "Code still needs a computer; return just passes a value back."
+    },
+    {
+     "key": "C",
+     "text": "Printing and returning are exactly the same",
+     "correct": false,
+     "rationale": "Printing shows text; returning hands back a usable value."
+    },
+    {
+     "key": "D",
+     "text": "return deletes the function",
+     "correct": false,
+     "rationale": "return provides a result; it does not delete the function."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: returning a value lets other code use the result.",
+   "outcome_refs": [
+    "MST-2903-D01.01"
+   ],
+   "domain_ref": "Core Python and functions",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2903-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO situations are good reasons to use a dictionary instead of a list? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Looking up a student's score by their name",
+     "correct": true,
+     "rationale": "Correct: dictionaries map keys (names) to values (scores)."
+    },
+    {
+     "key": "B",
+     "text": "Storing settings as labelled key/value pairs",
+     "correct": true,
+     "rationale": "Correct: dictionaries are ideal for labelled values."
+    },
+    {
+     "key": "C",
+     "text": "Keeping a simple ordered sequence of numbers to total",
+     "correct": false,
+     "rationale": "A plain ordered sequence is better suited to a list."
+    },
+    {
+     "key": "D",
+     "text": "Repeating one action a fixed number of times",
+     "correct": false,
+     "rationale": "That is a loop concern, not a reason for a dictionary."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: dictionaries map keys (names) to values (scores).",
+   "outcome_refs": [
+    "MST-2903-D02.01"
+   ],
+   "domain_ref": "Data structures",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2903-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Your program crashes when a data file is missing. What is the best way to handle this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Wrap the file access in try/except and give a helpful message if the file is missing",
+     "correct": true,
+     "rationale": "Correct: error handling lets the program respond gracefully."
+    },
+    {
+     "key": "B",
+     "text": "Assume the file is always there",
+     "correct": false,
+     "rationale": "Files can be missing; the program should handle it."
+    },
+    {
+     "key": "C",
+     "text": "Delete the part of the program that reads files",
+     "correct": false,
+     "rationale": "The program needs to read the file; handle the error instead."
+    },
+    {
+     "key": "D",
+     "text": "Let it crash every time",
+     "correct": false,
+     "rationale": "Graceful handling is better than crashing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: error handling lets the program respond gracefully.",
+   "outcome_refs": [
+    "MST-2903-D03.01"
+   ],
+   "domain_ref": "Files and errors",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
