@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Mastemy.Api.Modules.Ai;
 
 [ApiController, Route("api/ai"), Authorize]
-public class AiController(AiTutorService tutor, AiAssistService assist, FeynmanService feynman, AiBudgetService budget, IAiProvider provider, ICurrentUser me) : ControllerBase
+public class AiController(AiTutorService tutor, AiAssistService assist, FeynmanService feynman, AiCoachService coach, AdaptiveExerciseService exercises, AiBudgetService budget, IAiProvider provider, ICurrentUser me) : ControllerBase
 {
     /// <summary>Whether AI is available, so the UI can say "not configured" instead of failing.</summary>
     [HttpGet("status")]
@@ -129,6 +129,25 @@ public class AiController(AiTutorService tutor, AiAssistService assist, FeynmanS
         await Response.WriteAsync($"event: {e.Event}\ndata: {JsonSerializer.Serialize(e.Data, AiTutorService.Json)}\n\n", ct);
         await Response.Body.FlushAsync(ct);
     }
+
+    // ---------- AI Coach ----------
+
+    [HttpPost("coach/hint")]
+    public Task<CoachHintDto> CoachHint(CoachHintInput input, CancellationToken ct) => coach.GetHintAsync(input, ct);
+
+    [HttpPost("coach/encourage")]
+    public Task<CoachHintDto> CoachEncourage(CoachEncourageInput input, CancellationToken ct) => coach.GetEncouragementAsync(input, ct);
+
+    // ---------- Adaptive Exercises ----------
+
+    [HttpPost("exercises/generate")]
+    public Task<GeneratedExerciseDto> GenerateExercise(GenerateExerciseInput input, CancellationToken ct) => exercises.GenerateAsync(input, ct);
+
+    [HttpPost("exercises/{id:guid}/attempt")]
+    public async Task<IActionResult> RecordAttempt(Guid id, RecordAttemptInput input, CancellationToken ct) { await exercises.RecordAttemptAsync(id, input, ct); return NoContent(); }
+
+    [HttpGet("exercises")]
+    public Task<List<GeneratedExerciseDto>> ExerciseHistory([FromQuery] Guid courseId, CancellationToken ct) => exercises.GetHistoryAsync(courseId, ct);
 
     [HttpPost("studio/courses/{courseId:guid}/assist"), Authorize(Policy = "Instructor")]
     public Task<AssistResultDto> Assist(Guid courseId, AssistInput input, CancellationToken ct) => assist.Assist(courseId, input, ct);

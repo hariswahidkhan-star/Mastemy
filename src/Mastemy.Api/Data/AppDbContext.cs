@@ -3,6 +3,7 @@ using Mastemy.Api.Modules.Ai;
 using Mastemy.Api.Modules.Lab;
 using Mastemy.Api.Modules.Scenario;
 using Mastemy.Api.Modules.SkillGraph;
+using Mastemy.Api.Modules.StudyPath;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mastemy.Api.Data;
@@ -77,6 +78,12 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<SkillMastery> SkillMasteries => Set<SkillMastery>();
 
     public DbSet<FeynmanSession> FeynmanSessions => Set<FeynmanSession>();
+
+    public DbSet<StudyPathRecommendation> StudyPathRecommendations => Set<StudyPathRecommendation>();
+    public DbSet<LearningStreak> LearningStreaks => Set<LearningStreak>();
+    public DbSet<DailyChallenge> DailyChallenges => Set<DailyChallenge>();
+    public DbSet<CoachHint> CoachHints => Set<CoachHint>();
+    public DbSet<GeneratedExercise> GeneratedExercises => Set<GeneratedExercise>();
 
     protected override void ConfigureConventions(ModelConfigurationBuilder b)
     {

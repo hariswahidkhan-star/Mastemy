@@ -50,6 +50,9 @@ export const wsKeys = {
   skillGraph: (categoryId?: number) => ['ws', 'skillGraph', categoryId] as const,
   skillMastery: (categoryId?: number) => ['ws', 'skillMastery', categoryId] as const,
   skillRecommendations: ['ws', 'skillRecommendations'] as const,
+  exerciseHistory: (courseId: string) => ['ws', 'exerciseHistory', courseId] as const,
+  studyPathStreak: ['ws', 'studyPathStreak'] as const,
+  studyPathChallenge: (courseId: string) => ['ws', 'studyPathChallenge', courseId] as const,
 };
 
 // ---------- Authoring ----------
@@ -813,6 +816,70 @@ export interface SkillRecommendationDto {
   reason: string;
   masteryScore: number;
   nextReviewUtc: IsoDate | null;
+}
+
+// ---------- AI Coach ----------
+export interface CoachHintDto {
+  id: Guid;
+  hintText: string;
+  hintType: 'Nudge' | 'Warning' | 'Encouragement' | 'Strategy';
+  createdUtc: IsoDate;
+}
+
+// ---------- Adaptive Exercises ----------
+export interface ExercisePayload {
+  title: string;
+  instructions: string;
+  starterCode: string | null;
+  expectedBehavior: string;
+  hints: string[];
+}
+export interface GeneratedExerciseDto {
+  id: Guid;
+  courseId: Guid;
+  lessonId: Guid;
+  skillArea: string;
+  difficulty: string;
+  exercise: ExercisePayload;
+  attemptedAt: IsoDate | null;
+  passed: boolean | null;
+  createdUtc: IsoDate;
+}
+
+// ---------- Study Path ----------
+export interface LearningStreakDto {
+  currentStreak: number;
+  longestStreak: number;
+  lastActivityUtc: IsoDate;
+  totalMinutesThisWeek: number;
+  weeklyGoalMinutes: number;
+}
+export interface OptimalOrderItem {
+  lessonId: Guid;
+  title: string;
+  reason: string;
+}
+export interface StudyPathRecommendationDto {
+  id: Guid;
+  courseId: Guid;
+  recommendedLessonIds: Guid[];
+  reasoning: string;
+  optimalOrder: OptimalOrderItem[];
+  estimatedMinutes: number;
+  createdUtc: IsoDate;
+}
+export interface DailyChallengeContent {
+  question: string;
+  hint: string;
+  type: string;
+}
+export interface DailyChallengeDto {
+  id: Guid;
+  courseId: Guid;
+  challengeType: string;
+  challenge: DailyChallengeContent;
+  completed: boolean;
+  createdUtc: IsoDate;
 }
 
 export interface FeynmanRubricDto {

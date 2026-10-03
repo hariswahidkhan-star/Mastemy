@@ -214,6 +214,65 @@ public class AiPracticeSetConfig : IEntityTypeConfiguration<AiPracticeSet>
     }
 }
 
+// ---------- Coach Hints ----------
+
+public enum CoachHintType { Nudge, Warning, Encouragement, Strategy }
+
+public class CoachHint
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid UserId { get; set; }
+    public Guid CourseId { get; set; }
+    public Guid LessonId { get; set; }
+    public string Context { get; set; } = "";
+    public string HintText { get; set; } = "";
+    public CoachHintType HintType { get; set; }
+    public DateTime CreatedUtc { get; set; } = DateTime.UtcNow;
+}
+
+public class CoachHintConfig : IEntityTypeConfiguration<CoachHint>
+{
+    public void Configure(EntityTypeBuilder<CoachHint> b)
+    {
+        b.ToTable("Ai_CoachHints");
+        b.HasKey(x => x.Id);
+        b.Property(x => x.Context).HasColumnType("longtext");
+        b.Property(x => x.HintText).HasColumnType("longtext");
+        b.Property(x => x.HintType).HasMaxLength(32).HasConversion<string>();
+        b.HasIndex(x => new { x.UserId, x.CourseId });
+    }
+}
+
+// ---------- Generated Exercises ----------
+
+public class GeneratedExercise
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid UserId { get; set; }
+    public Guid CourseId { get; set; }
+    public Guid LessonId { get; set; }
+    public string SkillArea { get; set; } = "";
+    public string Difficulty { get; set; } = "medium";
+    public string ExerciseJson { get; set; } = "{}";
+    public DateTime? AttemptedAt { get; set; }
+    public bool? Passed { get; set; }
+    public DateTime CreatedUtc { get; set; } = DateTime.UtcNow;
+}
+
+public class GeneratedExerciseConfig : IEntityTypeConfiguration<GeneratedExercise>
+{
+    public void Configure(EntityTypeBuilder<GeneratedExercise> b)
+    {
+        b.ToTable("Ai_GeneratedExercises");
+        b.HasKey(x => x.Id);
+        b.Property(x => x.SkillArea).HasMaxLength(255);
+        b.Property(x => x.Difficulty).HasMaxLength(32);
+        b.Property(x => x.ExerciseJson).HasColumnType("longtext");
+        b.HasIndex(x => new { x.UserId, x.CourseId });
+        b.HasIndex(x => x.CreatedUtc);
+    }
+}
+
 /// <summary>A Feynman "teach to learn" session where the learner explains a concept to a curious AI student.</summary>
 public class FeynmanSession
 {
@@ -331,3 +390,15 @@ public record FeynmanRubricDto(
     decimal Accuracy, decimal Completeness, decimal Depth, decimal Clarity,
     decimal OverallMastery, List<string> Misconceptions, FeynmanFeedbackDto Feedback);
 public record FeynmanFeedbackDto(List<string> WellExplained, List<string> NeedsWork, string Summary);
+
+// ---------- Coach DTOs ----------
+public record CoachHintInput(Guid CourseId, Guid LessonId, string Context, string? CurrentCode);
+public record CoachEncourageInput(Guid CourseId, string Action);
+public record CoachHintDto(Guid Id, string HintText, string HintType, DateTime CreatedUtc);
+
+// ---------- Adaptive Exercise DTOs ----------
+public record GenerateExerciseInput(Guid CourseId, Guid LessonId, string[]? WeakAreas);
+public record RecordAttemptInput(bool Passed);
+public record GeneratedExerciseDto(Guid Id, Guid CourseId, Guid LessonId, string SkillArea, string Difficulty,
+    ExercisePayload Exercise, DateTime? AttemptedAt, bool? Passed, DateTime CreatedUtc);
+public record ExercisePayload(string Title, string Instructions, string? StarterCode, string ExpectedBehavior, List<string> Hints);

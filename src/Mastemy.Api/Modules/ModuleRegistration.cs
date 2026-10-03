@@ -24,6 +24,7 @@ public static class ModuleRegistration
         Lab.LabModule.Add(s, cfg);
         Scenario.ScenarioModule.Add(s, cfg);
         SkillGraph.SkillGraphModule.Add(s, cfg);
+        StudyPath.StudyPathModule.Add(s, cfg);
         return s;
     }
 }

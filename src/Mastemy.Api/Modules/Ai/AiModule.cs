@@ -19,6 +19,8 @@ public static class AiModule
         s.AddScoped<AiTutorService>();
         s.AddScoped<AiAssistService>();
         s.AddScoped<FeynmanService>();
+        s.AddScoped<AiCoachService>();
+        s.AddScoped<AdaptiveExerciseService>();
         s.AddHostedService<AiMaintenanceWorker>();
     }
 }

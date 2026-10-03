@@ -38,8 +38,11 @@ import {
 import { useTrackEvent } from '../../lib/analytics';
 import { AiPracticePanel, TutorPanel } from '../workspace/AiPanels';
 import { FeynmanPanel } from '../workspace/FeynmanPanel';
+import { CoachWidget } from '../workspace/CoachWidget';
+import { AdaptiveExercisePanel } from '../workspace/AdaptiveExercisePanel';
 import { ScenarioPanel } from '../workspace/ScenarioPanel';
 import { SkillGraphView } from '../workspace/SkillGraphView';
+import { StudyPathPanel } from '../workspace/StudyPathPanel';
 import { BookmarksPanel } from '../workspace/Study';
 import { HeldLessonNotice, ReportContentButton } from '../workspace/Trust';
 import { NegativeMarkingDisclosure } from '../finala/Learning';
@@ -512,6 +515,24 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
             ),
           },
           {
+            id: 'coach',
+            label: 'AI Coach',
+            content: user ? (
+              <CoachWidget courseId={course.id} lessonId={lessonId} />
+            ) : (
+              <p className="muted">{t('workspace.tutor.login')}</p>
+            ),
+          },
+          {
+            id: 'smartPractice',
+            label: 'Smart Practice',
+            content: user ? (
+              <AdaptiveExercisePanel courseId={course.id} lessonId={lessonId} />
+            ) : (
+              <p className="muted">{t('workspace.tutor.login')}</p>
+            ),
+          },
+          {
             id: 'scenario',
             label: 'Role Play',
             content: user ? (
@@ -525,6 +546,15 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
             label: 'Skill Map',
             content: user ? (
               <SkillGraphView />
+            ) : (
+              <p className="muted">{t('workspace.tutor.login')}</p>
+            ),
+          },
+          {
+            id: 'studypath',
+            label: 'My Path',
+            content: user ? (
+              <StudyPathPanel courseId={course.id} />
             ) : (
               <p className="muted">{t('workspace.tutor.login')}</p>
             ),
