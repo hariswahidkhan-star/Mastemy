@@ -189,7 +189,11 @@ def main():
     check("course_id unique and formatted MST-NNNN", len(ids) == len(set(ids)) and all(ID_RE.match(i) for i in ids), f"{len(ids)} rows")
     check("CSV and JSON agree", len(cat) == js["count"] == len(js["courses"]), f"csv={len(cat)} json={js['count']}")
     miss_a = [a["mst_id"] for a in app if a["mst_id"] not in by_id or by_id[a["mst_id"]]["working_title"] != a["title"]]
-    check("All 1,300 Appendix A rows present with unchanged IDs and titles", len(app) == 1300 and not miss_a, f"missing/changed: {miss_a[:5]}")
+    # The original Appendix A is MST-0001..MST-1300; later expansion appends new rows (MST-1879+). Require the
+    # full original 1,300 to still be present (none deleted/renumbered) and every appendix row — original or
+    # appended — to be in the catalogue with an unchanged title.
+    orig_a = [a for a in app if int(a["mst_id"][4:]) <= 1300]
+    check("All 1,300 original Appendix A rows present with unchanged IDs and titles (additions allowed)", len(orig_a) == 1300 and not miss_a, f"original={len(orig_a)} missing/changed: {miss_a[:5]}")
     adds = [r for r in cat if r["origin"] == "legacy-addition"]
     check("Additions numbered from MST-1301, no gaps reused", all(int(r["course_id"][4:]) >= 1301 for r in adds), f"{len(adds)} additions")
     dropped = [v for v in reg.values() if v not in by_id]
