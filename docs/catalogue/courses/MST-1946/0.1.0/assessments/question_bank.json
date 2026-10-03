@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1946",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 424,
+  "lesson_check_items": 72,
+  "module_check_items": 100,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1946-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is the initial margin on a futures contract best described as a performance bond rather than a purchase price?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is a good-faith deposit securing the position, not the full contract value",
+     "correct": true,
+     "rationale": "Correct: futures margin is a performance bond; daily settlement adjusts it, unlike paying full value."
+    },
+    {
+     "key": "B",
+     "text": "It is a loan from the broker charged at interest",
+     "correct": false,
+     "rationale": "Unlike equity margin, futures margin is a deposit, not a borrowed sum."
+    },
+    {
+     "key": "C",
+     "text": "It is the total amount the trader can ever lose",
+     "correct": false,
+     "rationale": "Losses can exceed the initial margin through daily settlement."
+    },
+    {
+     "key": "D",
+     "text": "It is a fee kept by the exchange",
+     "correct": false,
+     "rationale": "Margin is a returnable deposit, not a fee."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: futures margin is a performance bond; daily settlement adjusts it, unlike paying full value.",
+   "outcome_refs": [
+    "MST-1946-D01.01"
+   ],
+   "domain_ref": "How futures work",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1946-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements describe a commodity futures curve in contango? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Longer-dated contracts trade at higher prices than nearer-dated ones",
+     "correct": true,
+     "rationale": "Correct: an upward-sloping curve with later months higher is contango."
+    },
+    {
+     "key": "B",
+     "text": "A holder rolling a long position may face a cost as the curve converges",
+     "correct": true,
+     "rationale": "Correct: rolling up the curve in contango can create a negative roll yield."
+    },
+    {
+     "key": "C",
+     "text": "Nearer-dated contracts always cost more than later ones",
+     "correct": false,
+     "rationale": "That describes backwardation, the opposite of contango."
+    },
+    {
+     "key": "D",
+     "text": "Contango means the market expects immediate shortage",
+     "correct": false,
+     "rationale": "An expected near-term shortage typically produces backwardation, not contango."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an upward-sloping curve with later months higher is contango.",
+   "outcome_refs": [
+    "MST-1946-D02.01"
+   ],
+   "domain_ref": "Commodity markets overview",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1946-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A speculator holds a long crude-oil future that is nearing expiry and does not want delivery. What should they do?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Close or roll the position to a later contract before expiry",
+     "correct": true,
+     "rationale": "Correct: closing or rolling avoids obligations tied to holding a physically settled contract into delivery."
+    },
+    {
+     "key": "B",
+     "text": "Hold it to expiry to avoid transaction costs",
+     "correct": false,
+     "rationale": "Holding a physically settled contract to expiry can trigger delivery obligations."
+    },
+    {
+     "key": "C",
+     "text": "Convert the contract into shares of the oil company",
+     "correct": false,
+     "rationale": "A futures contract cannot be converted into equity shares."
+    },
+    {
+     "key": "D",
+     "text": "Ignore the expiry date entirely",
+     "correct": false,
+     "rationale": "Ignoring expiry is exactly what creates delivery risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: closing or rolling avoids obligations tied to holding a physically settled contract into delivery.",
+   "outcome_refs": [
+    "MST-1946-D03.01"
+   ],
+   "domain_ref": "Participants and rollover",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

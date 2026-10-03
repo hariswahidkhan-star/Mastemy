@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1947",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 424,
+  "lesson_check_items": 72,
+  "module_check_items": 100,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1947-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A backtest uses each bar's closing price to decide a trade and assumes the fill happens at that same close. Why is this a problem?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It assumes information available only at the close can be acted on at the close, a form of lookahead bias",
+     "correct": true,
+     "rationale": "Correct: deciding and filling on the same close is unrealistic and inflates results through lookahead."
+    },
+    {
+     "key": "B",
+     "text": "Closing prices are never recorded",
+     "correct": false,
+     "rationale": "Closing prices are recorded; the issue is acting on them simultaneously."
+    },
+    {
+     "key": "C",
+     "text": "It makes the backtest run too slowly",
+     "correct": false,
+     "rationale": "The problem is bias in results, not speed."
+    },
+    {
+     "key": "D",
+     "text": "Backtests cannot use daily bars at all",
+     "correct": false,
+     "rationale": "Daily bars are fine; the timing assumption is the flaw."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: deciding and filling on the same close is unrealistic and inflates results through lookahead.",
+   "outcome_refs": [
+    "MST-1947-D01.01"
+   ],
+   "domain_ref": "From idea to algorithm",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1947-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices make a backtest more honest? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Including realistic commissions and slippage",
+     "correct": true,
+     "rationale": "Correct: frictionless backtests overstate performance."
+    },
+    {
+     "key": "B",
+     "text": "Validating on out-of-sample data the rules were not tuned on",
+     "correct": true,
+     "rationale": "Correct: out-of-sample testing checks for overfitting."
+    },
+    {
+     "key": "C",
+     "text": "Re-tuning parameters until the equity curve looks perfect",
+     "correct": false,
+     "rationale": "That is curve-fitting, which makes the backtest misleading."
+    },
+    {
+     "key": "D",
+     "text": "Removing all losing trades from the historical record",
+     "correct": false,
+     "rationale": "Deleting losses fabricates performance and destroys validity."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: frictionless backtests overstate performance.",
+   "outcome_refs": [
+    "MST-1947-D02.01"
+   ],
+   "domain_ref": "Building a strategy",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1947-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the main purpose of a kill switch in a live algorithmic system?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To halt trading automatically when predefined risk or error conditions are met",
+     "correct": true,
+     "rationale": "Correct: a kill switch stops the system when something goes wrong, limiting damage."
+    },
+    {
+     "key": "B",
+     "text": "To guarantee the strategy is always profitable",
+     "correct": false,
+     "rationale": "A kill switch limits losses; it cannot guarantee profit."
+    },
+    {
+     "key": "C",
+     "text": "To speed up order execution",
+     "correct": false,
+     "rationale": "Its purpose is safety, not latency reduction."
+    },
+    {
+     "key": "D",
+     "text": "To replace the need for backtesting",
+     "correct": false,
+     "rationale": "A kill switch is a live safeguard, not a substitute for testing."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a kill switch stops the system when something goes wrong, limiting damage.",
+   "outcome_refs": [
+    "MST-1947-D03.01"
+   ],
+   "domain_ref": "Backtesting honestly",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

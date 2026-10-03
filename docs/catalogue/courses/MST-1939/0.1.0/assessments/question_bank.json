@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1939",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1939-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A EUR/USD position is opened at 1.1000 and closed at 1.1030 on one standard lot (100,000 units). How many pips is that move?",
+   "options": [
+    {
+     "key": "A",
+     "text": "30 pips",
+     "correct": true,
+     "rationale": "Correct: one pip on EUR/USD is 0.0001, so 1.1030 - 1.1000 = 0.0030 = 30 pips."
+    },
+    {
+     "key": "B",
+     "text": "3 pips",
+     "correct": false,
+     "rationale": "That would be a 0.0003 move; the change here is ten times larger."
+    },
+    {
+     "key": "C",
+     "text": "300 pips",
+     "correct": false,
+     "rationale": "300 pips would be a 0.0300 move."
+    },
+    {
+     "key": "D",
+     "text": "0.3 pips",
+     "correct": false,
+     "rationale": "A pip is the fourth decimal; this is 30 of them."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: one pip on EUR/USD is 0.0001, so 1.1030 - 1.1000 = 0.0030 = 30 pips.",
+   "outcome_refs": [
+    "MST-1939-D01.01"
+   ],
+   "domain_ref": "How the FX market works",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1939-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about leverage in FX are accurate? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Higher leverage increases both potential gains and potential losses on the same price move",
+     "correct": true,
+     "rationale": "Correct: leverage amplifies the effect of a move in both directions."
+    },
+    {
+     "key": "B",
+     "text": "Leverage lets a trader control a larger position with less margin",
+     "correct": true,
+     "rationale": "Correct: that is the mechanical definition of leverage."
+    },
+    {
+     "key": "C",
+     "text": "Higher leverage reduces the risk of a position",
+     "correct": false,
+     "rationale": "Leverage does not reduce risk; it magnifies outcomes."
+    },
+    {
+     "key": "D",
+     "text": "Leverage guarantees a profit if the trade direction is correct",
+     "correct": false,
+     "rationale": "No position is guaranteed; leverage only scales the result."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: leverage amplifies the effect of a move in both directions.",
+   "outcome_refs": [
+    "MST-1939-D02.01"
+   ],
+   "domain_ref": "Orders and execution",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1939-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A trader wants to buy only if price falls to a specific better level and not pay the current market price. Which order type fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A buy limit order placed below the current price",
+     "correct": true,
+     "rationale": "Correct: a buy limit executes at the specified price or better, below the market."
+    },
+    {
+     "key": "B",
+     "text": "A market order",
+     "correct": false,
+     "rationale": "A market order fills immediately at the current price, not a better one."
+    },
+    {
+     "key": "C",
+     "text": "A buy stop order above the current price",
+     "correct": false,
+     "rationale": "A buy stop triggers above the market, used for breakouts, not better entries."
+    },
+    {
+     "key": "D",
+     "text": "A trailing stop",
+     "correct": false,
+     "rationale": "A trailing stop manages an exit, not a better entry."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a buy limit executes at the specified price or better, below the market.",
+   "outcome_refs": [
+    "MST-1939-D03.01"
+   ],
+   "domain_ref": "Drivers of exchange rates",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

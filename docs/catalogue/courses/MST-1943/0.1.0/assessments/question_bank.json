@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1943",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1943-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An account falls 25% in a drawdown. Approximately what percentage gain on the remaining balance is needed to get back to even?",
+   "options": [
+    {
+     "key": "A",
+     "text": "About 33%",
+     "correct": true,
+     "rationale": "Correct: losing 25% leaves 75%, and 0.25/0.75 is about 33%, so a larger gain is needed to recover."
+    },
+    {
+     "key": "B",
+     "text": "Exactly 25%",
+     "correct": false,
+     "rationale": "Recovery requires more than the percentage lost because the base is smaller."
+    },
+    {
+     "key": "C",
+     "text": "About 10%",
+     "correct": false,
+     "rationale": "That understates the required recovery after a 25% loss."
+    },
+    {
+     "key": "D",
+     "text": "About 75%",
+     "correct": false,
+     "rationale": "75% is the remaining balance, not the gain needed."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: losing 25% leaves 75%, and 0.25/0.75 is about 33%, so a larger gain is needed to recover.",
+   "outcome_refs": [
+    "MST-1943-D01.01"
+   ],
+   "domain_ref": "Risk-first thinking",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1943-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO inputs are needed to size a position to a fixed dollar risk? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The dollar amount the trader is willing to lose on the trade",
+     "correct": true,
+     "rationale": "Correct: the risk budget is a required input."
+    },
+    {
+     "key": "B",
+     "text": "The distance in price from entry to the protective stop",
+     "correct": true,
+     "rationale": "Correct: stop distance determines loss per unit and thus size."
+    },
+    {
+     "key": "C",
+     "text": "The all-time high of the market",
+     "correct": false,
+     "rationale": "A historical high does not determine position size."
+    },
+    {
+     "key": "D",
+     "text": "The trader's broker login name",
+     "correct": false,
+     "rationale": "Account identifiers are irrelevant to sizing."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: the risk budget is a required input.",
+   "outcome_refs": [
+    "MST-1943-D02.01"
+   ],
+   "domain_ref": "Position-sizing methods",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1943-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Two open positions are in highly correlated instruments, each risking 1%. Why is the combined risk greater than two independent 1% risks?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Correlated positions tend to lose together, so their risks add up rather than offset",
+     "correct": true,
+     "rationale": "Correct: positive correlation means the losses are likely to occur at the same time."
+    },
+    {
+     "key": "B",
+     "text": "Correlation always halves total risk",
+     "correct": false,
+     "rationale": "Positive correlation increases, not halves, concurrent risk."
+    },
+    {
+     "key": "C",
+     "text": "Each position automatically hedges the other",
+     "correct": false,
+     "rationale": "Hedging requires negative correlation, not positive."
+    },
+    {
+     "key": "D",
+     "text": "Correlation has no effect on portfolio risk",
+     "correct": false,
+     "rationale": "Correlation is central to portfolio-level risk."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: positive correlation means the losses are likely to occur at the same time.",
+   "outcome_refs": [
+    "MST-1943-D03.01"
+   ],
+   "domain_ref": "Managing drawdown",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

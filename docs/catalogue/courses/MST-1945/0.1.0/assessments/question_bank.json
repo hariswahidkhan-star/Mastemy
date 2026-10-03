@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1945",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 424,
+  "lesson_check_items": 72,
+  "module_check_items": 100,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1945-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A call option has a strike of 50 while the stock trades at 57. The call's premium is 9. What is its intrinsic and time value?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Intrinsic 7, time value 2",
+     "correct": true,
+     "rationale": "Correct: intrinsic value is 57 - 50 = 7, and the remaining 2 of the 9 premium is time value."
+    },
+    {
+     "key": "B",
+     "text": "Intrinsic 9, time value 0",
+     "correct": false,
+     "rationale": "Only 7 of the premium is intrinsic; the rest is time value."
+    },
+    {
+     "key": "C",
+     "text": "Intrinsic 2, time value 7",
+     "correct": false,
+     "rationale": "Intrinsic value equals how far in-the-money the option is, which is 7."
+    },
+    {
+     "key": "D",
+     "text": "Intrinsic 0, time value 9",
+     "correct": false,
+     "rationale": "The call is in-the-money, so intrinsic value is not zero."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: intrinsic value is 57 - 50 = 7, and the remaining 2 of the 9 premium is time value.",
+   "outcome_refs": [
+    "MST-1945-D01.01"
+   ],
+   "domain_ref": "Option building blocks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1945-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO statements about an option's time value are correct? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Time value tends to decay as expiration approaches, all else equal",
+     "correct": true,
+     "rationale": "Correct: theta decay accelerates toward expiration."
+    },
+    {
+     "key": "B",
+     "text": "Higher implied volatility generally raises time value",
+     "correct": true,
+     "rationale": "Correct: more expected movement makes the option's optionality more valuable."
+    },
+    {
+     "key": "C",
+     "text": "Time value is always equal to the strike price",
+     "correct": false,
+     "rationale": "Time value is a component of the premium, unrelated to the strike level directly."
+    },
+    {
+     "key": "D",
+     "text": "Time value cannot change once the option is bought",
+     "correct": false,
+     "rationale": "Time value changes continuously with time and volatility."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: theta decay accelerates toward expiration.",
+   "outcome_refs": [
+    "MST-1945-D02.01"
+   ],
+   "domain_ref": "What moves an option's price",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1945-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A trader sells a covered call against 100 shares they own. What is the main trade-off?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Premium income now in exchange for capping the upside above the strike",
+     "correct": true,
+     "rationale": "Correct: the covered call earns premium but limits gains if the stock rises past the strike."
+    },
+    {
+     "key": "B",
+     "text": "Unlimited additional upside with no obligation",
+     "correct": false,
+     "rationale": "The written call caps upside; it does not add unlimited gains."
+    },
+    {
+     "key": "C",
+     "text": "Elimination of all downside risk on the shares",
+     "correct": false,
+     "rationale": "The premium cushions slightly but does not remove downside risk."
+    },
+    {
+     "key": "D",
+     "text": "A guarantee the shares will not be called away",
+     "correct": false,
+     "rationale": "The shares can be assigned away if the call is in-the-money."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the covered call earns premium but limits gains if the stock rises past the strike.",
+   "outcome_refs": [
+    "MST-1945-D03.01"
+   ],
+   "domain_ref": "Core single-leg strategies",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

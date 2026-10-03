@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-1940",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-1940-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why does a market order for an illiquid stock carry more risk than one for a highly liquid stock?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A wide spread and thin depth can fill the order far from the last price",
+     "correct": true,
+     "rationale": "Correct: low liquidity means the market order can walk the book and fill at a poor price."
+    },
+    {
+     "key": "B",
+     "text": "Market orders are not allowed on illiquid stocks",
+     "correct": false,
+     "rationale": "Market orders are generally allowed; the risk is poor execution, not prohibition."
+    },
+    {
+     "key": "C",
+     "text": "Illiquid stocks never move in price",
+     "correct": false,
+     "rationale": "Illiquid stocks can move sharply, which is part of the risk."
+    },
+    {
+     "key": "D",
+     "text": "Commissions are always higher on illiquid stocks",
+     "correct": false,
+     "rationale": "Commissions are set by the broker, not by liquidity."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: low liquidity means the market order can walk the book and fill at a poor price.",
+   "outcome_refs": [
+    "MST-1940-D01.01"
+   ],
+   "domain_ref": "How equity markets work",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1940-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO are genuine costs of trading a stock that a learner should account for? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The bid-ask spread paid on entry and exit",
+     "correct": true,
+     "rationale": "Correct: crossing the spread is a real, recurring cost."
+    },
+    {
+     "key": "B",
+     "text": "Commissions or transaction fees charged by the broker",
+     "correct": true,
+     "rationale": "Correct: explicit fees reduce net returns."
+    },
+    {
+     "key": "C",
+     "text": "The ticker symbol of the stock",
+     "correct": false,
+     "rationale": "A ticker is an identifier, not a cost."
+    },
+    {
+     "key": "D",
+     "text": "The number of shares outstanding",
+     "correct": false,
+     "rationale": "Shares outstanding is a company metric, not a trading cost."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: crossing the spread is a real, recurring cost.",
+   "outcome_refs": [
+    "MST-1940-D02.01"
+   ],
+   "domain_ref": "Placing equity orders",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-1940-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "In a standard cash account, a trader sells shares and immediately uses the unsettled proceeds to buy again, then sells once more before settlement. What is the risk?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A good-faith or free-riding violation for trading on unsettled funds",
+     "correct": true,
+     "rationale": "Correct: cash accounts require settled funds, and reusing unsettled proceeds can trigger a violation."
+    },
+    {
+     "key": "B",
+     "text": "Nothing; cash accounts settle instantly",
+     "correct": false,
+     "rationale": "Cash trades settle after a defined cycle, not instantly."
+    },
+    {
+     "key": "C",
+     "text": "An automatic margin call",
+     "correct": false,
+     "rationale": "Cash accounts do not borrow, so there is no margin call."
+    },
+    {
+     "key": "D",
+     "text": "A guaranteed loss on the trade",
+     "correct": false,
+     "rationale": "The issue is a settlement rule, not an automatic loss."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: cash accounts require settled funds, and reusing unsettled proceeds can trigger a violation.",
+   "outcome_refs": [
+    "MST-1940-D03.01"
+   ],
+   "domain_ref": "Accounts, settlement and costs",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
