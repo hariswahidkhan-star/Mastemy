@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2280",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2280-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A Webflow user creates a brand-new class for every single element and styling changes become unmanageable. What practice fixes this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Reuse a shared class across similar elements so one change updates them all",
+     "correct": true,
+     "rationale": "Correct: reusing classes centralises styling and keeps a site maintainable."
+    },
+    {
+     "key": "B",
+     "text": "Add inline styles to each element instead",
+     "correct": false,
+     "rationale": "Inline styles scatter rules and make maintenance worse."
+    },
+    {
+     "key": "C",
+     "text": "Create one class per page regardless of element",
+     "correct": false,
+     "rationale": "Page-scoped single classes do not match elements to shared styles."
+    },
+    {
+     "key": "D",
+     "text": "Avoid classes and style the body only",
+     "correct": false,
+     "rationale": "Styling only the body cannot target individual components."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: reusing classes centralises styling and keeps a site maintainable.",
+   "outcome_refs": [
+    "MST-2280-D01.01"
+   ],
+   "domain_ref": "Visual canvas and the box model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2280-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO tasks should be completed before publishing a Webflow site so it is findable and functional? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Setting page titles and meta descriptions for SEO",
+     "correct": true,
+     "rationale": "Correct: page-level SEO settings help the site be found and described correctly."
+    },
+    {
+     "key": "B",
+     "text": "Verifying the contact form submits and routes correctly",
+     "correct": true,
+     "rationale": "Correct: a broken form means lost leads, so it must be tested before launch."
+    },
+    {
+     "key": "C",
+     "text": "Choosing a different logo animation style",
+     "correct": false,
+     "rationale": "Logo animation is cosmetic and not a launch prerequisite."
+    },
+    {
+     "key": "D",
+     "text": "Renaming internal layer labels",
+     "correct": false,
+     "rationale": "Internal labels are organisational and do not affect the published site."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: page-level SEO settings help the site be found and described correctly.",
+   "outcome_refs": [
+    "MST-2280-D02.01"
+   ],
+   "domain_ref": "Responsive layout",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2280-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A three-column layout looks right on desktop but columns are squashed and unreadable on phones. What is the correct approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Adjust the layout at the smaller breakpoints so the columns stack or resize for mobile",
+     "correct": true,
+     "rationale": "Correct: responsive layouts must be tuned per breakpoint, typically stacking columns on narrow screens."
+    },
+    {
+     "key": "B",
+     "text": "Tell users to zoom out",
+     "correct": false,
+     "rationale": "You cannot rely on users to compensate for a broken layout."
+    },
+    {
+     "key": "C",
+     "text": "Remove two of the columns permanently",
+     "correct": false,
+     "rationale": "Deleting content is unnecessary; the layout just needs responsive settings."
+    },
+    {
+     "key": "D",
+     "text": "Set a fixed pixel width for the page",
+     "correct": false,
+     "rationale": "A fixed width prevents the page from adapting to phone screens."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: responsive layouts must be tuned per breakpoint, typically stacking columns on narrow screens.",
+   "outcome_refs": [
+    "MST-2280-D03.01"
+   ],
+   "domain_ref": "Styling systems and CMS",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

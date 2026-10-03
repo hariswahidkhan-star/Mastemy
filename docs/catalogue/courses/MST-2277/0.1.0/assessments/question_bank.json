@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2277",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2277-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A designer changes the corner radius on one button and must repeat it on 20 others across the file. What should they have set up?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A single component used as instances, so one edit to the component updates every instance",
+     "correct": true,
+     "rationale": "Correct: components propagate changes to all their instances, avoiding repetitive manual edits."
+    },
+    {
+     "key": "B",
+     "text": "Twenty separate rectangles grouped together",
+     "correct": false,
+     "rationale": "Groups do not share a definition, so each must be edited individually."
+    },
+    {
+     "key": "C",
+     "text": "A locked layer",
+     "correct": false,
+     "rationale": "Locking prevents edits but does not share a definition."
+    },
+    {
+     "key": "D",
+     "text": "A larger canvas",
+     "correct": false,
+     "rationale": "Canvas size is irrelevant to component reuse."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: components propagate changes to all their instances, avoiding repetitive manual edits.",
+   "outcome_refs": [
+    "MST-2277-D01.01"
+   ],
+   "domain_ref": "Canvas and layout",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2277-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices directly support accessible, legible UI design? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Ensuring sufficient colour contrast between text and its background",
+     "correct": true,
+     "rationale": "Correct: adequate contrast is a core accessibility requirement for readable text."
+    },
+    {
+     "key": "B",
+     "text": "Using a consistent spacing and type scale for clear hierarchy",
+     "correct": true,
+     "rationale": "Correct: consistent spacing and type hierarchy aid readability and scanning."
+    },
+    {
+     "key": "C",
+     "text": "Using the smallest readable font to fit more content",
+     "correct": false,
+     "rationale": "Shrinking type to cram content harms legibility and accessibility."
+    },
+    {
+     "key": "D",
+     "text": "Removing all labels to reduce clutter",
+     "correct": false,
+     "rationale": "Removing labels hurts comprehension and accessibility."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: adequate contrast is a core accessibility requirement for readable text.",
+   "outcome_refs": [
+    "MST-2277-D02.01"
+   ],
+   "domain_ref": "Reusable systems",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2277-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A component built without auto layout breaks when its label text gets longer. What is the fix?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Apply auto layout so the component resizes to fit its content with consistent padding",
+     "correct": true,
+     "rationale": "Correct: auto layout makes a component adapt to content length while keeping spacing."
+    },
+    {
+     "key": "B",
+     "text": "Set a fixed width large enough for any text",
+     "correct": false,
+     "rationale": "A fixed width wastes space or still clips longer text."
+    },
+    {
+     "key": "C",
+     "text": "Rasterise the component to an image",
+     "correct": false,
+     "rationale": "Flattening to an image removes editability entirely."
+    },
+    {
+     "key": "D",
+     "text": "Delete the text layer",
+     "correct": false,
+     "rationale": "Removing the label defeats the component's purpose."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: auto layout makes a component adapt to content length while keeping spacing.",
+   "outcome_refs": [
+    "MST-2277-D03.01"
+   ],
+   "domain_ref": "Visual and accessible UI",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

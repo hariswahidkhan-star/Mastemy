@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2275",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2275-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team keeps copying client names into every task so reports are always out of date when a client is renamed. What is the better design?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Store clients once in a Clients database and relate tasks to it, so a rename updates everywhere",
+     "correct": true,
+     "rationale": "Correct: a relation to a single source avoids duplicated data and keeps everything consistent."
+    },
+    {
+     "key": "B",
+     "text": "Add a reminder to update every copy by hand",
+     "correct": false,
+     "rationale": "Manual updates are exactly the error-prone process to eliminate."
+    },
+    {
+     "key": "C",
+     "text": "Put client names only in page titles",
+     "correct": false,
+     "rationale": "Titles are still copies and do not stay in sync."
+    },
+    {
+     "key": "D",
+     "text": "Create a separate workspace per client",
+     "correct": false,
+     "rationale": "That fragments data and prevents cross-client reporting."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a relation to a single source avoids duplicated data and keeps everything consistent.",
+   "outcome_refs": [
+    "MST-2275-D01.01"
+   ],
+   "domain_ref": "Notion building blocks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2275-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO features let one task database serve different roles without duplicating the data? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Filtered views that show each role only its relevant tasks",
+     "correct": true,
+     "rationale": "Correct: multiple views filter the same underlying data per audience."
+    },
+    {
+     "key": "B",
+     "text": "Grouping and sorting a view by status or owner",
+     "correct": true,
+     "rationale": "Correct: grouping and sorting reshape the same data for different needs."
+    },
+    {
+     "key": "C",
+     "text": "Exporting a new copy for each person",
+     "correct": false,
+     "rationale": "Copies diverge and defeat a single source of truth."
+    },
+    {
+     "key": "D",
+     "text": "Changing the page icon",
+     "correct": false,
+     "rationale": "Icons are decorative and do not reshape data for roles."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: multiple views filter the same underlying data per audience.",
+   "outcome_refs": [
+    "MST-2275-D02.01"
+   ],
+   "domain_ref": "Designing databases",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2275-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An agency shares a project page with a client but is surprised the client can see internal sub-pages. What is the likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Sub-pages inherited the shared page's access, so permissions must be checked at the level that should be private",
+     "correct": true,
+     "rationale": "Correct: nested pages can inherit sharing, so access must be reviewed where privacy is required."
+    },
+    {
+     "key": "B",
+     "text": "Notion randomly exposes pages",
+     "correct": false,
+     "rationale": "Exposure follows the sharing model, not randomness."
+    },
+    {
+     "key": "C",
+     "text": "Clients can always see everything in a workspace",
+     "correct": false,
+     "rationale": "Access is controlled; the issue is inherited sharing, not blanket visibility."
+    },
+    {
+     "key": "D",
+     "text": "Sub-pages cannot be made private",
+     "correct": false,
+     "rationale": "Sub-page access can be set; inheritance just needs checking."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: nested pages can inherit sharing, so access must be reviewed where privacy is required.",
+   "outcome_refs": [
+    "MST-2275-D03.01"
+   ],
+   "domain_ref": "Knowledge and projects",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

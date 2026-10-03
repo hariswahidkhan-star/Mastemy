@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2274",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2274-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "After a customer pays, your app marks the order paid based on the browser redirect, but some orders are marked paid that later fail. What is the reliable source of truth?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The server-side webhook event confirming the payment succeeded, handled idempotently",
+     "correct": true,
+     "rationale": "Correct: webhooks delivered to the server are the authoritative, reliable record of payment state."
+    },
+    {
+     "key": "B",
+     "text": "The browser redirect URL parameters",
+     "correct": false,
+     "rationale": "Redirects can be tampered with or interrupted and are not authoritative."
+    },
+    {
+     "key": "C",
+     "text": "A screenshot from the customer",
+     "correct": false,
+     "rationale": "Customer screenshots are not a trustworthy system signal."
+    },
+    {
+     "key": "D",
+     "text": "The order's creation timestamp",
+     "correct": false,
+     "rationale": "A timestamp says when the order was made, not whether it was paid."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: webhooks delivered to the server are the authoritative, reliable record of payment state.",
+   "outcome_refs": [
+    "MST-2274-D01.01"
+   ],
+   "domain_ref": "Payments fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2274-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices reduce PCI compliance scope and protect credentials? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Using a hosted or tokenised field so raw card numbers never hit your server",
+     "correct": true,
+     "rationale": "Correct: keeping card data off your servers reduces PCI scope significantly."
+    },
+    {
+     "key": "B",
+     "text": "Keeping secret API keys only on the server, never in client code",
+     "correct": true,
+     "rationale": "Correct: secret keys in client code can be stolen and must stay server-side."
+    },
+    {
+     "key": "C",
+     "text": "Logging full card numbers for debugging",
+     "correct": false,
+     "rationale": "Storing or logging full card numbers increases scope and risk."
+    },
+    {
+     "key": "D",
+     "text": "Emailing keys to the whole team",
+     "correct": false,
+     "rationale": "Broad key distribution is a credential-exposure risk."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: keeping card data off your servers reduces PCI scope significantly.",
+   "outcome_refs": [
+    "MST-2274-D02.01"
+   ],
+   "domain_ref": "Integration approaches",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2274-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Your webhook endpoint occasionally receives the same event twice. What design prevents double-processing such as charging or fulfilling twice?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Make handling idempotent by recording processed event IDs and skipping repeats",
+     "correct": true,
+     "rationale": "Correct: idempotent handling keyed on the event ID makes duplicate deliveries harmless."
+    },
+    {
+     "key": "B",
+     "text": "Ignore all webhooks and poll hourly instead",
+     "correct": false,
+     "rationale": "Polling adds latency and still needs duplicate protection."
+    },
+    {
+     "key": "C",
+     "text": "Disable retries so events never repeat",
+     "correct": false,
+     "rationale": "Disabling retries risks losing events during transient failures."
+    },
+    {
+     "key": "D",
+     "text": "Process faster so duplicates cannot arrive",
+     "correct": false,
+     "rationale": "Speed does not prevent at-least-once delivery semantics."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: idempotent handling keyed on the event ID makes duplicate deliveries harmless.",
+   "outcome_refs": [
+    "MST-2274-D03.01"
+   ],
+   "domain_ref": "Reliability with webhooks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

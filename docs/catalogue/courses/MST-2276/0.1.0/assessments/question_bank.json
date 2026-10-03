@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2276",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2276-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants each project record to show how many of its linked tasks are still open. Which combination achieves this?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A link to the Tasks table plus a rollup that counts linked tasks where status is open",
+     "correct": true,
+     "rationale": "Correct: a rollup aggregates values from linked records, enabling the count."
+    },
+    {
+     "key": "B",
+     "text": "A single long text field listing tasks",
+     "correct": false,
+     "rationale": "Free text cannot be counted or kept in sync."
+    },
+    {
+     "key": "C",
+     "text": "Copying the task count in by hand each day",
+     "correct": false,
+     "rationale": "Manual counts go stale and are error-prone."
+    },
+    {
+     "key": "D",
+     "text": "A formula in the Tasks table only",
+     "correct": false,
+     "rationale": "Without a rollup on the project side, the project record cannot show the aggregate."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a rollup aggregates values from linked records, enabling the count.",
+   "outcome_refs": [
+    "MST-2276-D01.01"
+   ],
+   "domain_ref": "From spreadsheets to databases",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2276-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO choices make an Airtable base easier for a non-technical manager to use safely? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Building an interface that exposes only the needed fields and actions",
+     "correct": true,
+     "rationale": "Correct: an interface hides complexity and reduces accidental edits."
+    },
+    {
+     "key": "B",
+     "text": "Granting read-only or limited access instead of full base editing",
+     "correct": true,
+     "rationale": "Correct: limited permissions protect the underlying structure."
+    },
+    {
+     "key": "C",
+     "text": "Giving everyone creator access to the base",
+     "correct": false,
+     "rationale": "Broad creator access risks accidental structural damage."
+    },
+    {
+     "key": "D",
+     "text": "Hiding the field names entirely from the designer",
+     "correct": false,
+     "rationale": "Designers need field names; this does not help the manager."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: an interface hides complexity and reduces accidental edits.",
+   "outcome_refs": [
+    "MST-2276-D02.01"
+   ],
+   "domain_ref": "Relationships and derived data",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2276-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An automation that posts a reminder when a session has no room never fires, though matching records exist. What is the first thing to check?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Whether the trigger condition and its field actually match the records, by testing the automation",
+     "correct": true,
+     "rationale": "Correct: most non-firing automations have a mismatched or untested trigger condition."
+    },
+    {
+     "key": "B",
+     "text": "Whether the base has too many colours",
+     "correct": false,
+     "rationale": "Colour has no effect on automation triggers."
+    },
+    {
+     "key": "C",
+     "text": "Whether the records were created on a weekend",
+     "correct": false,
+     "rationale": "Creation day does not gate a condition-based trigger."
+    },
+    {
+     "key": "D",
+     "text": "Whether the table name is short enough",
+     "correct": false,
+     "rationale": "Table-name length does not affect triggers."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: most non-firing automations have a mismatched or untested trigger condition.",
+   "outcome_refs": [
+    "MST-2276-D03.01"
+   ],
+   "domain_ref": "Views and interfaces",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

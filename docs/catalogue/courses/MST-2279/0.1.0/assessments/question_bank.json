@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2279",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2279-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "An automation sometimes writes blank values into the CRM even though the form was filled in. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The fields were not mapped correctly between steps, so data landed in the wrong or empty fields",
+     "correct": true,
+     "rationale": "Correct: incorrect data mapping between trigger and action is the common cause of blank or misplaced values."
+    },
+    {
+     "key": "B",
+     "text": "The CRM deletes data at random",
+     "correct": false,
+     "rationale": "CRMs do not randomly blank fields; mapping is the issue."
+    },
+    {
+     "key": "C",
+     "text": "The form is too colourful",
+     "correct": false,
+     "rationale": "Appearance has no effect on data mapping."
+    },
+    {
+     "key": "D",
+     "text": "Automations cannot move text",
+     "correct": false,
+     "rationale": "Automations move text fine when fields are mapped correctly."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: incorrect data mapping between trigger and action is the common cause of blank or misplaced values.",
+   "outcome_refs": [
+    "MST-2279-D01.01"
+   ],
+   "domain_ref": "Automation fundamentals",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2279-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps make an automation dependable before you rely on it in production? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Testing the flow end to end with representative sample data",
+     "correct": true,
+     "rationale": "Correct: testing with real-shaped data surfaces mapping and logic errors early."
+    },
+    {
+     "key": "B",
+     "text": "Adding error handling or a fallback for failed steps",
+     "correct": true,
+     "rationale": "Correct: error handling keeps a run from failing silently."
+    },
+    {
+     "key": "C",
+     "text": "Running it only once and assuming it always works",
+     "correct": false,
+     "rationale": "A single run does not prove reliability across cases."
+    },
+    {
+     "key": "D",
+     "text": "Hiding the automation so no one can see it",
+     "correct": false,
+     "rationale": "Obscurity does not improve reliability."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: testing with real-shaped data surfaces mapping and logic errors early.",
+   "outcome_refs": [
+    "MST-2279-D02.01"
+   ],
+   "domain_ref": "Building multi-step flows",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2279-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A team wants high-value leads routed to a sales channel and everyone else to a nurture list, in one automation. What feature fits?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A filter or path that branches on the lead's value",
+     "correct": true,
+     "rationale": "Correct: paths/filters route records down different branches based on a condition."
+    },
+    {
+     "key": "B",
+     "text": "Two unrelated accounts",
+     "correct": false,
+     "rationale": "Separate accounts do not provide conditional routing within a flow."
+    },
+    {
+     "key": "C",
+     "text": "Sending everything to both destinations",
+     "correct": false,
+     "rationale": "That ignores the routing requirement entirely."
+    },
+    {
+     "key": "D",
+     "text": "Disabling the trigger",
+     "correct": false,
+     "rationale": "Disabling the trigger stops the automation rather than routing it."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: paths/filters route records down different branches based on a condition.",
+   "outcome_refs": [
+    "MST-2279-D03.01"
+   ],
+   "domain_ref": "Logic and transformation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

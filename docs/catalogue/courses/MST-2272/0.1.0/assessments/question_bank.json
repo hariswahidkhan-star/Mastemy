@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2272",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2272-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A new support agent needs read access to one extra object for a short project without changing their baseline job access. What is the cleanest way to grant it?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Assign a permission set that adds the extra access on top of their profile",
+     "correct": true,
+     "rationale": "Correct: permission sets grant additional access without altering the underlying profile."
+    },
+    {
+     "key": "B",
+     "text": "Change their profile and change it back later",
+     "correct": false,
+     "rationale": "Editing the profile affects everyone on it and is error-prone to reverse."
+    },
+    {
+     "key": "C",
+     "text": "Give them the System Administrator profile",
+     "correct": false,
+     "rationale": "That violates least privilege and over-grants access."
+    },
+    {
+     "key": "D",
+     "text": "Share your own login",
+     "correct": false,
+     "rationale": "Credential sharing is a security and audit failure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: permission sets grant additional access without altering the underlying profile.",
+   "outcome_refs": [
+    "MST-2272-D01.01"
+   ],
+   "domain_ref": "CRM and the data model",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2272-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO mechanisms determine whether one user can see another user's records? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Organisation-wide default sharing settings",
+     "correct": true,
+     "rationale": "Correct: org-wide defaults set the baseline record visibility."
+    },
+    {
+     "key": "B",
+     "text": "The role hierarchy and sharing rules",
+     "correct": true,
+     "rationale": "Correct: the role hierarchy and sharing rules open access above the baseline."
+    },
+    {
+     "key": "C",
+     "text": "The colour theme the user selected",
+     "correct": false,
+     "rationale": "Theming is cosmetic and does not affect record access."
+    },
+    {
+     "key": "D",
+     "text": "The user's email signature",
+     "correct": false,
+     "rationale": "An email signature has no bearing on data visibility."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: org-wide defaults set the baseline record visibility.",
+   "outcome_refs": [
+    "MST-2272-D02.01"
+   ],
+   "domain_ref": "Users, access and security",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2272-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Managers complain that close dates are sometimes entered in the past. Which tool prevents the bad data at entry?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A validation rule that rejects a close date earlier than today",
+     "correct": true,
+     "rationale": "Correct: validation rules enforce data integrity when a record is saved."
+    },
+    {
+     "key": "B",
+     "text": "A report that lists the bad records afterwards",
+     "correct": false,
+     "rationale": "A report finds problems after the fact; it does not prevent them."
+    },
+    {
+     "key": "C",
+     "text": "A dashboard chart of close dates",
+     "correct": false,
+     "rationale": "A dashboard visualises data but cannot block invalid entry."
+    },
+    {
+     "key": "D",
+     "text": "Asking users to be careful",
+     "correct": false,
+     "rationale": "Unenforced guidance does not reliably prevent bad data."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: validation rules enforce data integrity when a record is saved.",
+   "outcome_refs": [
+    "MST-2272-D03.01"
+   ],
+   "domain_ref": "Customisation and automation",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

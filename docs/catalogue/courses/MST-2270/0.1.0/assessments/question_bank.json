@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2270",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2270-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A small business cannot find where to install plugins and custom themes on their WordPress.com-hosted site. What is the most likely cause?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Plugin and theme installation is restricted on lower WordPress.com plans; the self-hosted software allows it fully",
+     "correct": true,
+     "rationale": "Correct: the hosted service limits extensibility on some plans, unlike a self-hosted WordPress install."
+    },
+    {
+     "key": "B",
+     "text": "Plugins no longer exist in WordPress",
+     "correct": false,
+     "rationale": "Plugins exist; the limitation is the hosting tier."
+    },
+    {
+     "key": "C",
+     "text": "Their domain is expired",
+     "correct": false,
+     "rationale": "An expired domain would take the whole site offline, not just hide plugin options."
+    },
+    {
+     "key": "D",
+     "text": "They must reinstall the browser",
+     "correct": false,
+     "rationale": "The browser is unrelated to plan-level feature limits."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the hosted service limits extensibility on some plans, unlike a self-hosted WordPress install.",
+   "outcome_refs": [
+    "MST-2270-D01.01"
+   ],
+   "domain_ref": "Foundations: hosting, domains and setup",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2270-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices most reduce the risk of losing a WordPress site to a failed update or attack? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keeping regular, tested off-site backups",
+     "correct": true,
+     "rationale": "Correct: restorable backups let you recover from a bad update or compromise."
+    },
+    {
+     "key": "B",
+     "text": "Applying core, theme and plugin updates promptly",
+     "correct": true,
+     "rationale": "Correct: timely updates close known vulnerabilities."
+    },
+    {
+     "key": "C",
+     "text": "Adding as many plugins as possible",
+     "correct": false,
+     "rationale": "More plugins increase the attack surface and maintenance burden."
+    },
+    {
+     "key": "D",
+     "text": "Using a longer site title",
+     "correct": false,
+     "rationale": "The title has no bearing on security or recovery."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: restorable backups let you recover from a bad update or compromise.",
+   "outcome_refs": [
+    "MST-2270-D02.01"
+   ],
+   "domain_ref": "Content and structure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2270-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A content editor wants the same styled call-to-action block on ten pages and the ability to update it everywhere at once. What is the best approach?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Create it once as a reusable/synced pattern and insert that pattern on each page",
+     "correct": true,
+     "rationale": "Correct: a synced pattern is edited in one place and updates every instance."
+    },
+    {
+     "key": "B",
+     "text": "Copy and paste the block onto each page separately",
+     "correct": false,
+     "rationale": "Copies must each be edited individually, defeating the goal."
+    },
+    {
+     "key": "C",
+     "text": "Install a new plugin for every page",
+     "correct": false,
+     "rationale": "That adds overhead and does not provide shared editing."
+    },
+    {
+     "key": "D",
+     "text": "Write the HTML by hand on each page",
+     "correct": false,
+     "rationale": "Hand-coding ten copies is error-prone and not centrally editable."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a synced pattern is edited in one place and updates every instance.",
+   "outcome_refs": [
+    "MST-2270-D03.01"
+   ],
+   "domain_ref": "Design with themes and blocks",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

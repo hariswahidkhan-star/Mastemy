@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2269",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2269-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A store owner wants a product sold in three sizes and two colours shown on a single product page with its own stock count per combination. How should this be modelled?",
+   "options": [
+    {
+     "key": "A",
+     "text": "As one product with size and colour options generating variants, each variant tracking its own inventory",
+     "correct": true,
+     "rationale": "Correct: variants represent purchasable combinations of a single product and each can hold its own stock and price."
+    },
+    {
+     "key": "B",
+     "text": "As six separate products linked in a collection",
+     "correct": false,
+     "rationale": "Separate products fragment the page and lose the single-page selector the owner asked for."
+    },
+    {
+     "key": "C",
+     "text": "As one product with the sizes listed only in the description text",
+     "correct": false,
+     "rationale": "Free-text sizes are not selectable or trackable as stock."
+    },
+    {
+     "key": "D",
+     "text": "As a collection with no products until checkout",
+     "correct": false,
+     "rationale": "A collection groups products; it is not a substitute for a product with variants."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: variants represent purchasable combinations of a single product and each can hold its own stock and price.",
+   "outcome_refs": [
+    "MST-2269-D01.01"
+   ],
+   "domain_ref": "Store planning and catalogue structure",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2269-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO settings directly affect what a customer is charged at checkout, rather than only how the store looks? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The shipping rates configured for the customer's destination",
+     "correct": true,
+     "rationale": "Correct: shipping rates are added to the order total at checkout."
+    },
+    {
+     "key": "B",
+     "text": "The tax rules that apply to the product and region",
+     "correct": true,
+     "rationale": "Correct: tax configuration changes the amount the customer pays."
+    },
+    {
+     "key": "C",
+     "text": "The homepage hero image",
+     "correct": false,
+     "rationale": "A hero image is presentation and does not change the charge."
+    },
+    {
+     "key": "D",
+     "text": "The font chosen in the theme",
+     "correct": false,
+     "rationale": "Typography is cosmetic and has no effect on the total."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: shipping rates are added to the order total at checkout.",
+   "outcome_refs": [
+    "MST-2269-D02.01"
+   ],
+   "domain_ref": "Selling: checkout, payments, shipping and tax",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2269-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Before launch, the owner previews the store only on their laptop and it looks correct. Why is that insufficient?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A large share of shoppers arrive on mobile, so the layout and checkout must be tested at phone width too",
+     "correct": true,
+     "rationale": "Correct: responsive behaviour and mobile checkout must be verified because much traffic is mobile."
+    },
+    {
+     "key": "B",
+     "text": "Previews are always wrong and must be ignored",
+     "correct": false,
+     "rationale": "Previews are useful; the gap is only that one screen size was checked."
+    },
+    {
+     "key": "C",
+     "text": "Laptops cannot display storefronts accurately",
+     "correct": false,
+     "rationale": "Laptops render the storefront fine; the issue is untested screen sizes."
+    },
+    {
+     "key": "D",
+     "text": "Mobile uses a completely different catalogue",
+     "correct": false,
+     "rationale": "The catalogue is the same; only the presentation adapts."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: responsive behaviour and mobile checkout must be verified because much traffic is mobile.",
+   "outcome_refs": [
+    "MST-2269-D03.01"
+   ],
+   "domain_ref": "Storefront design and content",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
