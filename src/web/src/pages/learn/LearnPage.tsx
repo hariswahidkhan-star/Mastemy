@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import type { RefObject } from 'react';
 import { Link, Navigate, useNavigate, useParams, useSearchParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
@@ -23,6 +23,7 @@ import { errorMessage } from '../../components/ui/ErrorState';
 import { Field, Input, Textarea } from '../../components/ui/Field';
 import { Badge, Notice, QueryState } from '../../components/ui/misc';
 import { Tabs } from '../../components/ui/Tabs';
+import { Spinner } from '../../components/ui/Spinner';
 import { useToast } from '../../components/ui/Toast';
 import { useI18n } from '../../i18n/I18nProvider';
 import { formatTimestamp } from '../../lib/format';
@@ -41,6 +42,10 @@ import { HeldLessonNotice, ReportContentButton } from '../workspace/Trust';
 import { NegativeMarkingDisclosure } from '../finala/Learning';
 import { MessageInstructorButton } from '../finala/Messaging';
 import { CompletionAwardClaim } from '../finala/Credentials';
+
+// The interactive practice lab (CodeMirror + a WebAssembly engine in a Web Worker) is a browser-only chunk,
+// loaded lazily so its editor/engine never enter the initial bundle or the server render.
+const PracticeLab = lazy(() => import('../../lab/PracticeLab'));
 
 const PROGRESS_INTERVAL_MS = 15_000;
 
@@ -490,6 +495,17 @@ function LessonWorkspace({ course, view }: { course: LearnCourseDto; view: Lesso
             label: t('workspace.practice.tab'),
             content: user ? (
               <AiPracticePanel courseId={course.id} lessonId={lessonId} />
+            ) : (
+              <p className="muted">{t('workspace.tutor.login')}</p>
+            ),
+          },
+          {
+            id: 'lab',
+            label: t('workspace.lab.tab'),
+            content: user ? (
+              <Suspense fallback={<Spinner label={t('common.loading')} block />}>
+                <PracticeLab courseId={course.id} lessonId={lessonId} />
+              </Suspense>
             ) : (
               <p className="muted">{t('workspace.tutor.login')}</p>
             ),

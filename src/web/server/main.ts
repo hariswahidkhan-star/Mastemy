@@ -116,7 +116,9 @@ const SCRIPT_HASHES = inlineScriptHashes(template).join(' ');
 function contentSecurityPolicy(https: boolean): string {
   return [
     "default-src 'self'",
-    `script-src 'self' ${SCRIPT_HASHES} https://www.youtube.com https://s.ytimg.com`.replace(
+    // 'wasm-unsafe-eval' lets the practice lab compile/instantiate its WebAssembly engine (sql.js) in a Web
+    // Worker. It permits WebAssembly only — not JavaScript eval()/new Function() — so the CSP stays strict.
+    `script-src 'self' 'wasm-unsafe-eval' ${SCRIPT_HASHES} https://www.youtube.com https://s.ytimg.com`.replace(
       /\s+/g,
       ' ',
     ),

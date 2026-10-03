@@ -1,0 +1,140 @@
+/* Practice-lab styles. Loaded only from the lazy lab chunk, so it rides in the route chunk's CSS, not the
+   initial CSS budget. Tokens + logical properties only (RTL-safe). */
+
+.lab {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.lab__bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.lab__pick {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.lab__pick select {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+  color: var(--c-text);
+  font-size: var(--text-sm);
+}
+.lab__privacy {
+  margin: 0;
+}
+.lab__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: var(--space-4);
+}
+@media (max-width: 860px) {
+  .lab__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.lab__instructions {
+  min-inline-size: 0;
+}
+.lab__work {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-inline-size: 0;
+}
+.lab__editor {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  /* CodeMirror handles its own scrolling; cap the height so the panel stays usable. */
+  max-block-size: 420px;
+}
+.lab__editor .cm-editor {
+  max-block-size: 420px;
+  font-size: var(--text-sm);
+}
+.lab__editor .cm-editor.cm-focused {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 0;
+}
+.lab__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.lab__solution {
+  margin: 0;
+  padding: var(--space-3);
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  font-size: var(--text-sm);
+  white-space: pre;
+}
+.lab__output {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.lab__error {
+  color: var(--c-danger, #b00020);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--text-sm);
+  white-space: pre-wrap;
+}
+.lab__verdict {
+  font-weight: 600;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  inline-size: fit-content;
+}
+.lab__verdict.is-pass {
+  color: var(--c-success-text, #0a6b2e);
+  background: var(--c-success-soft, #e6f6ec);
+}
+.lab__verdict.is-fail {
+  color: var(--c-warn-text, #8a5300);
+  background: var(--c-warn-soft, #fdf0d9);
+}
+.lab__checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.lab__checks li.is-pass {
+  color: var(--c-success-text, #0a6b2e);
+}
+.lab__checks li.is-fail {
+  color: var(--c-text);
+}
+.lab__grid-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+}
+.lab__grid {
+  border-collapse: collapse;
+  inline-size: 100%;
+  font-size: var(--text-sm);
+}
+.lab__grid th,
+.lab__grid td {
+  padding: var(--space-2) var(--space-3);
+  border-block-end: 1px solid var(--c-border);
+  text-align: start;
+  white-space: nowrap;
+}
+.lab__grid th {
+  background: var(--c-surface-2);
+  font-weight: 600;
+}

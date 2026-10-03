@@ -80,7 +80,8 @@ test.describe.serial('SSR server: headers, SEO metadata, CSP', () => {
     expect(csp).toContain("frame-ancestors 'none'");
     expect(csp).toContain("object-src 'none'");
     expect(csp).toContain('https://www.youtube-nocookie.com');
-    expect(csp).toMatch(/script-src 'self' 'sha256-[A-Za-z0-9+/=]+'/);
+    // 'wasm-unsafe-eval' is allowed (WebAssembly only, for the practice lab); real eval/inline stay forbidden.
+    expect(csp).toMatch(/script-src 'self' 'wasm-unsafe-eval' 'sha256-[A-Za-z0-9+/=]+'/);
     expect(csp).not.toMatch(/script-src[^;]*'unsafe-(inline|eval)'/);
     expect(h['x-content-type-options']).toBe('nosniff');
     expect(h['referrer-policy']).toBe('strict-origin-when-cross-origin');
