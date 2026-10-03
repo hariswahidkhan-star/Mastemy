@@ -15,7 +15,8 @@ Status: `planned` → `authoring` (agent assigned) → `integrated` (regenerated
 ## Status log
 - Wave A (AI Governance + Blockchain, Trading, Bio, Chem, Physics, AI-Agents, History): **INTEGRATED** — catalogue 1878 → 1957 (24/24 validator PASS).
 - Wave B (Medical, Defense/Space, Construction, Design/Eng, Platforms, Hardware, Energy, Vehicles, Art): **INTEGRATED** — catalogue 1957 → 2049 (24/24 PASS).
-- Wave C (CEO strategy, finance-for-non-finance, IFRS/IAS, programming languages x3, Excel+AI, futuristic AI, quantum/robotics): launched (8 parallel agents).
+- Wave C (CEO strategy, finance-for-non-finance, IFRS/IAS, programming languages x3 [15 langs], Excel+AI, futuristic AI, quantum/robotics): **INTEGRATED** — catalogue 2049 → 2186 (24/24 PASS).
+- Wave D (free Kids section) + app-side Kids area + gap-finder + AI-everywhere pass: next.
 
 ## Wave A — INTEGRATED ✓ (first parallel wave)
 | # | Domain | Category no | MST-ID range | Status |

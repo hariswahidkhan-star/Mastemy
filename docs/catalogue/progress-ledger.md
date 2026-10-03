@@ -6,15 +6,15 @@ Last generated: 2026-10-02, by the catalogue generator. Stages are counted separ
 
 | Field | Count |
 |---|---|
-| Candidate courses (rows) | 2049 |
-| Distinct courses after dedup - strict | 1911 |
-| Distinct courses after dedup - inclusive | 2040 |
+| Candidate courses (rows) | 2186 |
+| Distinct courses after dedup - strict | 2047 |
+| Distinct courses after dedup - inclusive | 2177 |
 | Courses verified against an official issuer source this session | 47 |
 | Courses with partial vendor-documentation evidence | 146 |
-| Full curriculum specifications | 2049 |
+| Full curriculum specifications | 2186 |
 | Full curricula completed as teaching content | 0 |
 | Lesson scripts completed | 0 |
-| Draft sample items (unreviewed) | 6147 |
+| Draft sample items (unreviewed) | 6558 |
 | Reviewed items | 0 |
 | Videos generated | 0 |
 | Videos uploaded | 0 |
@@ -26,7 +26,7 @@ Last generated: 2026-10-02, by the catalogue generator. Stages are counted separ
 
 - **inventory** (0): catalogue row with derived identity fields, 80/20 time plan, class, evidence status and dedup status.
 - **blueprint** (0): no separate blueprint stage was produced this run.
-- **full-curriculum-spec** (2049): course package in `courses/<id>/0.1.0/` - outcomes, modules and lessons with minutes, worked-application titles, misconceptions, integrative case, coverage matrix (mapped, not taught), assessment forms and bank plan, 3 draft sample items, YouTube manifest with no videos.
+- **full-curriculum-spec** (2186): course package in `courses/<id>/0.1.0/` - outcomes, modules and lessons with minutes, worked-application titles, misconceptions, integrative case, coverage matrix (mapped, not taught), assessment forms and bank plan, 3 draft sample items, YouTube manifest with no videos.
 - **produced** (0): no lesson scripts, notes, captions, item banks or videos exist.
 
 ## Batches
@@ -56,8 +56,8 @@ Last generated: 2026-10-02, by the catalogue generator. Stages are counted separ
 
 ## Verification position
 
-- n/a-no-official-syllabus: 1056
-- unverified-needs-official-check: 800
+- n/a-no-official-syllabus: 1173
+- unverified-needs-official-check: 820
 - vendor-docs-partial: 146
 - verified-official-source: 47
 
