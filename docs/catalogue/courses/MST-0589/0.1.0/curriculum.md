@@ -9,7 +9,7 @@
 | Exam code | n/a |
 | Version basis | No issuer syllabus. Outcomes are Mastemy internal IDs derived from master prompt section 11 (RAG scope list). Framework/product specifics must be verified at production. |
 | Evidence | **n/a-no-official-syllabus** - sources: SRC-MASTER-PROMPT-S11 |
-| Legacy IDs | MST-AI-SK-RAGR-001 |
+| Legacy IDs | none |
 | Planned time | T = 2400 min; instruction I = 1920 min (80%); assessment A = 480 min (20%) |
 | Assessment split | lesson checks 120 / module checks 168 / cumulative 192 min |
 | Certificate | Mastemy Certificate of Completion — Retrieval-Augmented Generation: Complete System Foundations (module checks >= 75%, final >= 80%) |

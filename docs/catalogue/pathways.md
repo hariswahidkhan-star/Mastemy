@@ -192,7 +192,7 @@ Notes: MST-MIC-MS-PL200-001 dropped (retired-excluded: retired 2026-08-31 per of
 | 1 | `MST-1313` | Machine Learning Fundamentals | 20 |
 | 2 | `MST-0451` | Generative AI Architecture and Model Capabilities | 30 |
 | 3 | `MST-0581` | Prompt Engineering: Foundations to Professional Application | 40 |
-| 4 | `MST-0589` | Retrieval-Augmented Generation: Complete System Foundations | 40 |
+| 4 | `MST-2052` | Retrieval-Augmented Generation (RAG) Foundations | 20 |
 | 5 | `MST-1339` | Building AI Agents | 15 |
 | 6 | `MST-1354` | LLMOps | 20 |
 

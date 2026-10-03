@@ -4,9 +4,9 @@ Generated 2026-10-02 by `scripts/catalogue/build_catalogue.py`. Every number is 
 
 ## Result
 
-- Candidate rows after reconciliation: **1885** (Appendix A 1310 + v1 additions 575).
-- Distinct courses, inclusive count (excludes duplicates, component modules, retired and retirement-blocked rows): **1876**.
-- Distinct courses, strict count (also excludes rows still under differentiation, overlap, thin-scope or version review): **1750**.
+- Candidate rows after reconciliation: **1957** (Appendix A 1382 + v1 additions 575).
+- Distinct courses, inclusive count (excludes duplicates, component modules, retired and retirement-blocked rows): **1948**.
+- Distinct courses, strict count (also excludes rows still under differentiation, overlap, thin-scope or version review): **1822**.
 - Requirement of at least 1,000 genuinely distinct courses: **met** on the strict count.
 
 These are planning counts of distinct course *scopes*. None of these courses has content, videos or reviewed items yet.
@@ -41,7 +41,7 @@ Full detail: `catalog/id-crosswalk.csv`. Every v1 ID appears exactly once; none 
 |---|---|---|---|
 | content-reuse | 7 | yes | yes |
 | differentiation-review | 18 | yes | no |
-| distinct | 1743 | yes | yes |
+| distinct | 1815 | yes | yes |
 | duplicate-of | 2 | no | no |
 | module-of | 6 | no | no |
 | needs-version-check | 4 | yes | no |
@@ -86,7 +86,14 @@ Full detail: `catalog/id-crosswalk.csv`. Every v1 ID appears exactly once; none 
 | 31 | Enterprise Platforms, It Service Management, And Ai Credentials | 40 | 18 | 58 | 58 | 52 |
 | 32 | Additional Global Credentials And Us Professional Examinations | 40 | 22 | 62 | 62 | 62 |
 | 33 | AI Governance And Frameworks | 10 | 0 | 10 | 10 | 10 |
-| | **Total** | 1310 | 575 | 1885 | 1876 | 1750 |
+| 34 | Blockchain And Web3 | 10 | 0 | 10 | 10 | 10 |
+| 35 | Trading And Financial Markets | 10 | 0 | 10 | 10 | 10 |
+| 36 | Biology And AI In Biology | 10 | 0 | 10 | 10 | 10 |
+| 37 | Chemistry And AI In Chemistry | 10 | 0 | 10 | 10 | 10 |
+| 38 | Physics And AI In Physics | 10 | 0 | 10 | 10 | 10 |
+| 39 | AI Agents And AI Engineering | 12 | 0 | 12 | 12 | 12 |
+| 40 | Country And World History | 10 | 0 | 10 | 10 | 10 |
+| | **Total** | 1382 | 575 | 1957 | 1948 | 1822 |
 
 ## Reviewed decisions
 
@@ -164,7 +171,7 @@ Generic titles ('Certification-Track', 'Certification Preparation', 'Current-Ver
 
 ### overlap-review (13)
 
-`MST-1324` Convolutional Neural Networks (near MST-0443); `MST-1339` Building AI Agents (near MST-0576); `MST-1367` EU AI Act Overview for Practitioners (near MST-1882); `MST-1418` Dynamics 365 Sales Functional Consultant (MB-210) Exam Prep (near MST-0185); `MST-1518` Salesforce Certified Platform Developer I Exam Prep (near MST-0239); `MST-1574` Technical Documentation for Developers (near MST-0604); `MST-1582` Infrastructure as Code Patterns (near MST-0988); `MST-1741` Lean Six Sigma White Belt (near MST-0311); `MST-1745` Hybrid Project Management (near MST-1141); `MST-1748` Project Cost Management (near MST-1141); `MST-1759` Project Communication Management (near MST-1141); `MST-1806` Construction Project Management (near MST-1141); `MST-1812` Salesforce Certified Platform App Builder Exam Prep (near MST-0239)
+`MST-1324` Convolutional Neural Networks (near MST-0443); `MST-1339` Building AI Agents (near MST-2049); `MST-1367` EU AI Act Overview for Practitioners (near MST-1882); `MST-1418` Dynamics 365 Sales Functional Consultant (MB-210) Exam Prep (near MST-0185); `MST-1518` Salesforce Certified Platform Developer I Exam Prep (near MST-0239); `MST-1574` Technical Documentation for Developers (near MST-0604); `MST-1582` Infrastructure as Code Patterns (near MST-0988); `MST-1741` Lean Six Sigma White Belt (near MST-0311); `MST-1745` Hybrid Project Management (near MST-1141); `MST-1748` Project Cost Management (near MST-1141); `MST-1759` Project Communication Management (near MST-1141); `MST-1806` Construction Project Management (near MST-1141); `MST-1812` Salesforce Certified Platform App Builder Exam Prep (near MST-0239)
 
 ### thin-scope-review (91)
 
