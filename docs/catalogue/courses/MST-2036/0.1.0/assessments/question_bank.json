@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2036",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2036-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Reducing the step size in an Euler integration of an ODE generally reduces truncation error but",
+   "options": [
+    {
+     "key": "A",
+     "text": "increases accumulated round-off error and run time, so there is an optimal step size",
+     "correct": true,
+     "rationale": "Correct: smaller steps reduce truncation error but accumulate more round-off and cost; an optimum exists."
+    },
+    {
+     "key": "B",
+     "text": "always makes the result exact",
+     "correct": false,
+     "rationale": "Floating-point and accumulated error prevent exactness."
+    },
+    {
+     "key": "C",
+     "text": "has no effect on accuracy",
+     "correct": false,
+     "rationale": "Step size directly affects truncation error."
+    },
+    {
+     "key": "D",
+     "text": "eliminates all numerical instability",
+     "correct": false,
+     "rationale": "Stability depends on the method and problem, not step size alone."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: smaller steps reduce truncation error but accumulate more round-off and cost; an optimum exists.",
+   "outcome_refs": [
+    "MST-2036-D01.01"
+   ],
+   "domain_ref": "From physics to computation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2036-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices help ensure a physics simulation's results are trustworthy? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Comparing output against an analytic solution in a limiting case",
+     "correct": true,
+     "rationale": "Correct: validation against a known limit builds trust."
+    },
+    {
+     "key": "B",
+     "text": "Checking that a conserved quantity such as energy stays bounded",
+     "correct": true,
+     "rationale": "Correct: monitoring conserved quantities reveals integration errors."
+    },
+    {
+     "key": "C",
+     "text": "Choosing the step size that produces the prettiest plot",
+     "correct": false,
+     "rationale": "Visual appeal is not a correctness criterion."
+    },
+    {
+     "key": "D",
+     "text": "Running only once with default settings",
+     "correct": false,
+     "rationale": "Convergence and sensitivity checks require varying parameters."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: validation against a known limit builds trust.",
+   "outcome_refs": [
+    "MST-2036-D02.01"
+   ],
+   "domain_ref": "Integration and root finding",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2036-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A fourth-order Runge-Kutta method is often preferred over the Euler method for the same step size because it",
+   "options": [
+    {
+     "key": "A",
+     "text": "achieves much smaller truncation error per step for a modest extra cost",
+     "correct": true,
+     "rationale": "Correct: RK4 has higher-order accuracy, greatly reducing error for a small cost increase."
+    },
+    {
+     "key": "B",
+     "text": "never becomes unstable",
+     "correct": false,
+     "rationale": "RK4 can still be unstable for stiff problems or large steps."
+    },
+    {
+     "key": "C",
+     "text": "uses no function evaluations",
+     "correct": false,
+     "rationale": "RK4 uses several evaluations per step."
+    },
+    {
+     "key": "D",
+     "text": "eliminates round-off error",
+     "correct": false,
+     "rationale": "Round-off error is independent of the integration order."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: RK4 has higher-order accuracy, greatly reducing error for a small cost increase.",
+   "outcome_refs": [
+    "MST-2036-D03.01"
+   ],
+   "domain_ref": "Differential equations",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

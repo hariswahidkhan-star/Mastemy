@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2037",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2037-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A model reports 99% accuracy classifying rare-signal events where only 1% of events are signal. Why is this metric misleading?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A classifier that labels everything 'background' also scores 99%, so accuracy ignores the rare class",
+     "correct": true,
+     "rationale": "Correct: with severe imbalance, accuracy is dominated by the majority class and hides poor signal recall."
+    },
+    {
+     "key": "B",
+     "text": "Accuracy cannot be computed for physics data",
+     "correct": false,
+     "rationale": "Accuracy is computable; it is simply the wrong summary here."
+    },
+    {
+     "key": "C",
+     "text": "99% is too low to report",
+     "correct": false,
+     "rationale": "The issue is the metric choice, not the value."
+    },
+    {
+     "key": "D",
+     "text": "The model must be overfitting",
+     "correct": false,
+     "rationale": "High accuracy here reflects imbalance, not necessarily overfitting."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: with severe imbalance, accuracy is dominated by the majority class and hides poor signal recall.",
+   "outcome_refs": [
+    "MST-2037-D01.01"
+   ],
+   "domain_ref": "Framing and data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2037-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps help prevent data leakage when training a model on physical measurements? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Fit scalers and preprocessing only on the training split, then apply to validation and test",
+     "correct": true,
+     "rationale": "Correct: fitting preprocessing on all data leaks test information."
+    },
+    {
+     "key": "B",
+     "text": "Keep repeated measurements of the same object within a single split",
+     "correct": true,
+     "rationale": "Correct: splitting correlated repeats across sets leaks information."
+    },
+    {
+     "key": "C",
+     "text": "Choose the test set to contain the easiest examples",
+     "correct": false,
+     "rationale": "That biases evaluation and does not prevent leakage."
+    },
+    {
+     "key": "D",
+     "text": "Train until the training loss reaches zero",
+     "correct": false,
+     "rationale": "That encourages overfitting and is unrelated to leakage."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: fitting preprocessing on all data leaks test information.",
+   "outcome_refs": [
+    "MST-2037-D02.01"
+   ],
+   "domain_ref": "Core models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2037-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Building a known conservation law into a model's loss function is beneficial mainly because it",
+   "options": [
+    {
+     "key": "A",
+     "text": "constrains predictions to be physically consistent and can improve generalisation from limited data",
+     "correct": true,
+     "rationale": "Correct: physics-informed constraints reduce unphysical solutions and help generalisation."
+    },
+    {
+     "key": "B",
+     "text": "guarantees the model will never make an error",
+     "correct": false,
+     "rationale": "Constraints reduce but do not eliminate error."
+    },
+    {
+     "key": "C",
+     "text": "removes the need for any training data",
+     "correct": false,
+     "rationale": "Data is still required to learn the task."
+    },
+    {
+     "key": "D",
+     "text": "makes the model train faster in every case",
+     "correct": false,
+     "rationale": "Added constraints can slow or complicate training."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: physics-informed constraints reduce unphysical solutions and help generalisation.",
+   "outcome_refs": [
+    "MST-2037-D03.01"
+   ],
+   "domain_ref": "Neural networks",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

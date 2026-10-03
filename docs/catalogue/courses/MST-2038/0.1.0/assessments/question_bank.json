@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2038",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2038-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A fast neural-network emulator replaces an expensive physics simulation. What is the main risk when using it for new parameter values?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It may extrapolate unreliably outside the range of its training data",
+     "correct": true,
+     "rationale": "Correct: emulators are trustworthy mainly within their training domain and can fail on extrapolation."
+    },
+    {
+     "key": "B",
+     "text": "It will always be slower than the original simulation",
+     "correct": false,
+     "rationale": "Emulators are used precisely because they are faster."
+    },
+    {
+     "key": "C",
+     "text": "It cannot represent any physical behaviour",
+     "correct": false,
+     "rationale": "A trained emulator can reproduce in-domain behaviour well."
+    },
+    {
+     "key": "D",
+     "text": "It eliminates the need to understand the physics",
+     "correct": false,
+     "rationale": "Interpreting and validating results still requires physics understanding."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: emulators are trustworthy mainly within their training domain and can fail on extrapolation.",
+   "outcome_refs": [
+    "MST-2038-D01.01"
+   ],
+   "domain_ref": "AI in the experimental loop",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2038-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices are essential before an AI-flagged anomaly is treated as a physics discovery? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Validating the model against known signals and simulated backgrounds",
+     "correct": true,
+     "rationale": "Correct: validation against known cases is essential before claiming discovery."
+    },
+    {
+     "key": "B",
+     "text": "Quantifying and reporting the statistical significance and uncertainty",
+     "correct": true,
+     "rationale": "Correct: significance and uncertainty must be established, not just a flag."
+    },
+    {
+     "key": "C",
+     "text": "Announcing the result immediately to establish priority",
+     "correct": false,
+     "rationale": "Premature announcement without verification is irresponsible."
+    },
+    {
+     "key": "D",
+     "text": "Removing all events the model is unsure about to clean the plot",
+     "correct": false,
+     "rationale": "Selectively discarding data biases the result."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: validation against known cases is essential before claiming discovery.",
+   "outcome_refs": [
+    "MST-2038-D02.01"
+   ],
+   "domain_ref": "Surrogates and emulators",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2038-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is calibration of predicted uncertainties important when AI informs a physics decision?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A model whose confidence does not match its true error rate can mislead decisions",
+     "correct": true,
+     "rationale": "Correct: well-calibrated uncertainties let decision-makers weigh AI outputs correctly."
+    },
+    {
+     "key": "B",
+     "text": "Calibration makes the model faster",
+     "correct": false,
+     "rationale": "Calibration concerns reliability of uncertainty, not speed."
+    },
+    {
+     "key": "C",
+     "text": "Calibration guarantees the prediction is correct",
+     "correct": false,
+     "rationale": "Calibration aligns stated confidence with accuracy; it does not guarantee correctness."
+    },
+    {
+     "key": "D",
+     "text": "Uncertainty is irrelevant if accuracy is high",
+     "correct": false,
+     "rationale": "Even accurate models need honest uncertainty for rare or novel cases."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: well-calibrated uncertainties let decision-makers weigh AI outputs correctly.",
+   "outcome_refs": [
+    "MST-2038-D03.01"
+   ],
+   "domain_ref": "Detection at scale",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
