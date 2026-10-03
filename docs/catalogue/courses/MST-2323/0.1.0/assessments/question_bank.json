@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2323",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2323-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "As data passes down the TCP/IP stack from application to network layer, what happens at each layer?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Each layer adds its own header, encapsulating the data from the layer above",
+     "correct": true,
+     "rationale": "Correct: encapsulation adds headers as the PDU descends the stack."
+    },
+    {
+     "key": "B",
+     "text": "Each layer removes a header added by the layer above",
+     "correct": false,
+     "rationale": "Headers are added going down and removed going up."
+    },
+    {
+     "key": "C",
+     "text": "The data is encrypted once at the physical layer",
+     "correct": false,
+     "rationale": "Encapsulation is not encryption and is not limited to one layer."
+    },
+    {
+     "key": "D",
+     "text": "Only the application layer touches the data",
+     "correct": false,
+     "rationale": "Every layer adds its header during encapsulation."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: encapsulation adds headers as the PDU descends the stack.",
+   "outcome_refs": [
+    "MST-2323-D01.01"
+   ],
+   "domain_ref": "Layered models",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2323-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO characteristics describe UDP compared with TCP? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is connectionless, sending datagrams without a handshake",
+     "correct": true,
+     "rationale": "Correct: UDP does not establish a connection before sending."
+    },
+    {
+     "key": "B",
+     "text": "It does not guarantee ordered, reliable delivery",
+     "correct": true,
+     "rationale": "Correct: UDP provides no retransmission or ordering guarantees."
+    },
+    {
+     "key": "C",
+     "text": "It uses a three-way handshake to open a connection",
+     "correct": false,
+     "rationale": "The handshake is a TCP feature, not UDP."
+    },
+    {
+     "key": "D",
+     "text": "It provides built-in congestion control",
+     "correct": false,
+     "rationale": "Congestion control is a TCP mechanism, not UDP."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: UDP does not establish a connection before sending.",
+   "outcome_refs": [
+    "MST-2323-D02.01"
+   ],
+   "domain_ref": "Addressing and routing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2323-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A host has IP 192.168.1.10 with mask 255.255.255.0. How many usable host addresses exist on its subnet?",
+   "options": [
+    {
+     "key": "A",
+     "text": "254, because 8 host bits give 256 addresses minus network and broadcast",
+     "correct": true,
+     "rationale": "Correct: 2^8 - 2 = 254 usable host addresses."
+    },
+    {
+     "key": "B",
+     "text": "256, counting every address in the range",
+     "correct": false,
+     "rationale": "The network and broadcast addresses are not usable hosts."
+    },
+    {
+     "key": "C",
+     "text": "255, subtracting only the broadcast address",
+     "correct": false,
+     "rationale": "Both the network and broadcast addresses are excluded."
+    },
+    {
+     "key": "D",
+     "text": "512, doubling the address count",
+     "correct": false,
+     "rationale": "A /24 has 256 total addresses, not 512."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 2^8 - 2 = 254 usable host addresses.",
+   "outcome_refs": [
+    "MST-2323-D03.01"
+   ],
+   "domain_ref": "Transport",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

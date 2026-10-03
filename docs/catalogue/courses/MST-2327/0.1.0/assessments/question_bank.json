@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2327",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2327-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the single most important precaution when handling internal PC components?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Guard against electrostatic discharge by grounding yourself and handling boards by the edges",
+     "correct": true,
+     "rationale": "Correct: ESD can silently damage components, so grounding and edge-handling are essential."
+    },
+    {
+     "key": "B",
+     "text": "Work as quickly as possible to reduce exposure",
+     "correct": false,
+     "rationale": "Speed does not protect components; ESD control does."
+    },
+    {
+     "key": "C",
+     "text": "Keep the power supply switched on for convenience",
+     "correct": false,
+     "rationale": "Live power while building risks shorts and shocks."
+    },
+    {
+     "key": "D",
+     "text": "Hold chips firmly by their gold contacts",
+     "correct": false,
+     "rationale": "Touching contacts risks ESD damage and contamination."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: ESD can silently damage components, so grounding and edge-handling are essential.",
+   "outcome_refs": [
+    "MST-2327-D01.01"
+   ],
+   "domain_ref": "Components and compatibility",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2327-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO symptoms most directly point to a memory (RAM) fault during bring-up? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "The system fails POST with a memory-specific beep or LED code",
+     "correct": true,
+     "rationale": "Correct: POST codes flag memory faults explicitly."
+    },
+    {
+     "key": "B",
+     "text": "Random crashes or memory errors that follow a specific stick when swapped",
+     "correct": true,
+     "rationale": "Correct: a fault that tracks one stick indicates that module."
+    },
+    {
+     "key": "C",
+     "text": "The desktop wallpaper looks different",
+     "correct": false,
+     "rationale": "A wallpaper change is cosmetic and unrelated to RAM."
+    },
+    {
+     "key": "D",
+     "text": "The keyboard LEDs are the wrong colour",
+     "correct": false,
+     "rationale": "Keyboard lighting is unrelated to a RAM fault."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: POST codes flag memory faults explicitly.",
+   "outcome_refs": [
+    "MST-2327-D02.01"
+   ],
+   "domain_ref": "Assembly",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2327-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A PC powers on but gives no display. Following a structured method, what should you check first?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The simplest causes first: power connections, monitor input and reseating the GPU/RAM",
+     "correct": true,
+     "rationale": "Correct: structured troubleshooting checks the simplest, most likely causes first."
+    },
+    {
+     "key": "B",
+     "text": "Immediately replace the motherboard",
+     "correct": false,
+     "rationale": "Replacing parts before diagnosis is wasteful and premature."
+    },
+    {
+     "key": "C",
+     "text": "Reinstall the operating system",
+     "correct": false,
+     "rationale": "No display at POST is a hardware-stage issue, not an OS one."
+    },
+    {
+     "key": "D",
+     "text": "Update the GPU driver from within the OS",
+     "correct": false,
+     "rationale": "You cannot reach the OS if there is no display at boot."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: structured troubleshooting checks the simplest, most likely causes first.",
+   "outcome_refs": [
+    "MST-2327-D03.01"
+   ],
+   "domain_ref": "Firmware and bring-up",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

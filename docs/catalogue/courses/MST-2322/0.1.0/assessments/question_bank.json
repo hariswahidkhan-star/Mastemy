@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2322",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2322-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "What is the primary purpose of the user/kernel mode distinction in an operating system?",
+   "options": [
+    {
+     "key": "A",
+     "text": "To protect privileged operations and hardware access behind controlled entry points",
+     "correct": true,
+     "rationale": "Correct: the boundary restricts privileged operations to the kernel via system calls."
+    },
+    {
+     "key": "B",
+     "text": "To make user programs run faster",
+     "correct": false,
+     "rationale": "The distinction is about protection, not raw speed."
+    },
+    {
+     "key": "C",
+     "text": "To avoid the need for a scheduler",
+     "correct": false,
+     "rationale": "Scheduling is still required regardless of the mode boundary."
+    },
+    {
+     "key": "D",
+     "text": "To eliminate the need for virtual memory",
+     "correct": false,
+     "rationale": "Virtual memory is a separate mechanism from the privilege boundary."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the boundary restricts privileged operations to the kernel via system calls.",
+   "outcome_refs": [
+    "MST-2322-D01.01"
+   ],
+   "domain_ref": "Kernel and processes",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2322-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO conditions must hold for a deadlock to be possible? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Mutual exclusion on at least one resource",
+     "correct": true,
+     "rationale": "Correct: mutual exclusion is one of the four Coffman conditions."
+    },
+    {
+     "key": "B",
+     "text": "Circular wait among the blocked processes",
+     "correct": true,
+     "rationale": "Correct: a cycle of waiting processes is a necessary condition."
+    },
+    {
+     "key": "C",
+     "text": "Preemption of all held resources",
+     "correct": false,
+     "rationale": "Deadlock requires no preemption, the opposite of this option."
+    },
+    {
+     "key": "D",
+     "text": "Unlimited free memory",
+     "correct": false,
+     "rationale": "Free memory is unrelated to the deadlock conditions."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: mutual exclusion is one of the four Coffman conditions.",
+   "outcome_refs": [
+    "MST-2322-D02.01"
+   ],
+   "domain_ref": "Scheduling",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2322-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Under a pure round-robin scheduler, what happens to a process when its time quantum expires?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is preempted and moved to the back of the ready queue",
+     "correct": true,
+     "rationale": "Correct: round-robin preempts and requeues the process at quantum expiry."
+    },
+    {
+     "key": "B",
+     "text": "It runs to completion before any other process",
+     "correct": false,
+     "rationale": "That describes non-preemptive scheduling, not round-robin."
+    },
+    {
+     "key": "C",
+     "text": "It is terminated by the kernel",
+     "correct": false,
+     "rationale": "Quantum expiry preempts, it does not kill the process."
+    },
+    {
+     "key": "D",
+     "text": "It is moved to permanent sleep",
+     "correct": false,
+     "rationale": "The process stays runnable and waits its next turn."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: round-robin preempts and requeues the process at quantum expiry.",
+   "outcome_refs": [
+    "MST-2322-D03.01"
+   ],
+   "domain_ref": "Memory management",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

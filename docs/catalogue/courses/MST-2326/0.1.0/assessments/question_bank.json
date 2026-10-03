@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2326",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2326-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why must a variable mapped to a hardware status register be declared volatile in C?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Because the hardware can change it independently, so the compiler must not cache or optimise away reads",
+     "correct": true,
+     "rationale": "Correct: volatile forces each access, since hardware may change the register at any time."
+    },
+    {
+     "key": "B",
+     "text": "Because it makes the access faster",
+     "correct": false,
+     "rationale": "Volatile prevents optimisation; it does not speed access up."
+    },
+    {
+     "key": "C",
+     "text": "Because volatile encrypts the register value",
+     "correct": false,
+     "rationale": "Volatile has nothing to do with encryption."
+    },
+    {
+     "key": "D",
+     "text": "Because the OS requires all variables to be volatile",
+     "correct": false,
+     "rationale": "Only hardware- or concurrency-affected values need volatile."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: volatile forces each access, since hardware may change the register at any time.",
+   "outcome_refs": [
+    "MST-2326-D01.01"
+   ],
+   "domain_ref": "Firmware fundamentals",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2326-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO practices keep an interrupt handler safe and responsive? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Keep the handler short and defer heavy work to a bottom half",
+     "correct": true,
+     "rationale": "Correct: short handlers plus deferred work keep latency low."
+    },
+    {
+     "key": "B",
+     "text": "Avoid blocking or sleeping inside the handler",
+     "correct": true,
+     "rationale": "Correct: handlers must not sleep, as they run in interrupt context."
+    },
+    {
+     "key": "C",
+     "text": "Perform long file I/O directly in the handler",
+     "correct": false,
+     "rationale": "Long I/O in a handler blocks other interrupts."
+    },
+    {
+     "key": "D",
+     "text": "Acquire a sleeping lock inside the handler",
+     "correct": false,
+     "rationale": "Sleeping locks are unsafe in interrupt context."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: short handlers plus deferred work keep latency low.",
+   "outcome_refs": [
+    "MST-2326-D02.01"
+   ],
+   "domain_ref": "Register-level hardware access",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2326-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During boot, what is the typical responsibility of firmware before the operating system takes over?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Initialise core hardware and load the OS or bootloader",
+     "correct": true,
+     "rationale": "Correct: firmware brings up essential hardware and hands off to the OS/bootloader."
+    },
+    {
+     "key": "B",
+     "text": "Run user applications directly",
+     "correct": false,
+     "rationale": "User applications run later, under the OS."
+    },
+    {
+     "key": "C",
+     "text": "Render the desktop user interface",
+     "correct": false,
+     "rationale": "The UI is an OS/application concern, not firmware's boot role."
+    },
+    {
+     "key": "D",
+     "text": "Manage virtual memory paging for processes",
+     "correct": false,
+     "rationale": "Paging is an OS responsibility, established after boot."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: firmware brings up essential hardware and hands off to the OS/bootloader.",
+   "outcome_refs": [
+    "MST-2326-D03.01"
+   ],
+   "domain_ref": "Interrupts and driver contexts",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

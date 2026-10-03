@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2320",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2320-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Applying De Morgan's law, the expression NOT(A AND B) is equivalent to which of the following?",
+   "options": [
+    {
+     "key": "A",
+     "text": "(NOT A) OR (NOT B)",
+     "correct": true,
+     "rationale": "Correct: De Morgan's law turns a negated AND into an OR of negations."
+    },
+    {
+     "key": "B",
+     "text": "(NOT A) AND (NOT B)",
+     "correct": false,
+     "rationale": "That is the negation of (A OR B), not of (A AND B)."
+    },
+    {
+     "key": "C",
+     "text": "A OR B",
+     "correct": false,
+     "rationale": "This drops the negations entirely and is not equivalent."
+    },
+    {
+     "key": "D",
+     "text": "A AND B",
+     "correct": false,
+     "rationale": "This is the un-negated original term."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: De Morgan's law turns a negated AND into an OR of negations.",
+   "outcome_refs": [
+    "MST-2320-D01.01"
+   ],
+   "domain_ref": "Boolean algebra and gates",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2320-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO components are purely combinational, producing outputs that depend only on current inputs? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A 4-to-1 multiplexer",
+     "correct": true,
+     "rationale": "Correct: a multiplexer's output depends only on its current inputs and select lines."
+    },
+    {
+     "key": "B",
+     "text": "A full adder",
+     "correct": true,
+     "rationale": "Correct: a full adder's sum and carry depend only on the present inputs."
+    },
+    {
+     "key": "C",
+     "text": "A D flip-flop",
+     "correct": false,
+     "rationale": "A flip-flop stores state, so its output depends on past inputs."
+    },
+    {
+     "key": "D",
+     "text": "A shift register",
+     "correct": false,
+     "rationale": "A shift register is sequential and holds state across clock edges."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a multiplexer's output depends only on its current inputs and select lines.",
+   "outcome_refs": [
+    "MST-2320-D02.01"
+   ],
+   "domain_ref": "Combinational design",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2320-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A D flip-flop has a setup time of 2 ns and the data arrives 1.5 ns before the clock edge. What happens?",
+   "options": [
+    {
+     "key": "A",
+     "text": "A setup-time violation, because data must be stable at least 2 ns before the edge",
+     "correct": true,
+     "rationale": "Correct: 1.5 ns < 2 ns, so the setup requirement is not met."
+    },
+    {
+     "key": "B",
+     "text": "Nothing, because 1.5 ns is enough margin",
+     "correct": false,
+     "rationale": "1.5 ns is less than the required 2 ns setup time."
+    },
+    {
+     "key": "C",
+     "text": "A hold-time violation only",
+     "correct": false,
+     "rationale": "Hold time concerns stability after the edge, not before."
+    },
+    {
+     "key": "D",
+     "text": "The clock frequency automatically increases",
+     "correct": false,
+     "rationale": "A violation does not change the clock; it risks metastability."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: 1.5 ns < 2 ns, so the setup requirement is not met.",
+   "outcome_refs": [
+    "MST-2320-D03.01"
+   ],
+   "domain_ref": "Minimisation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

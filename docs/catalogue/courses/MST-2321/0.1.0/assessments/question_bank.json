@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2321",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2321-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is it poor practice to perform a long computation inside an interrupt service routine?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It blocks other interrupts and increases latency for time-critical events",
+     "correct": true,
+     "rationale": "Correct: a long ISR delays or masks other interrupts, hurting responsiveness."
+    },
+    {
+     "key": "B",
+     "text": "Interrupt routines cannot contain arithmetic",
+     "correct": false,
+     "rationale": "ISRs can do arithmetic; the issue is how long they run."
+    },
+    {
+     "key": "C",
+     "text": "The main loop stops permanently after an interrupt",
+     "correct": false,
+     "rationale": "The main loop resumes after the ISR returns."
+    },
+    {
+     "key": "D",
+     "text": "Interrupts automatically disable the CPU clock",
+     "correct": false,
+     "rationale": "Interrupts do not stop the clock."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: a long ISR delays or masks other interrupts, hurting responsiveness.",
+   "outcome_refs": [
+    "MST-2321-D01.01"
+   ],
+   "domain_ref": "Microcontroller architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2321-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO signals are required by the I2C bus for communication? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "A serial data line (SDA)",
+     "correct": true,
+     "rationale": "Correct: I2C uses SDA to carry data bits."
+    },
+    {
+     "key": "B",
+     "text": "A serial clock line (SCL)",
+     "correct": true,
+     "rationale": "Correct: I2C uses SCL to synchronise transfers."
+    },
+    {
+     "key": "C",
+     "text": "Separate transmit and receive lines like UART",
+     "correct": false,
+     "rationale": "Those belong to UART, not the two-wire I2C bus."
+    },
+    {
+     "key": "D",
+     "text": "A dedicated chip-select line per device like SPI",
+     "correct": false,
+     "rationale": "I2C addresses devices in software, not with chip-select lines."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: I2C uses SDA to carry data bits.",
+   "outcome_refs": [
+    "MST-2321-D02.01"
+   ],
+   "domain_ref": "Digital and analogue I/O",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2321-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A system must react to an external event within 50 microseconds even while busy. Which I/O approach fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Interrupt-driven I/O, so the event preempts the current work",
+     "correct": true,
+     "rationale": "Correct: interrupts give bounded low-latency response regardless of main-loop work."
+    },
+    {
+     "key": "B",
+     "text": "Polling in a slow main loop",
+     "correct": false,
+     "rationale": "Polling latency depends on loop length and may exceed the deadline."
+    },
+    {
+     "key": "C",
+     "text": "Disabling all interrupts to save power",
+     "correct": false,
+     "rationale": "Disabling interrupts would prevent the required fast response."
+    },
+    {
+     "key": "D",
+     "text": "Adding a delay before checking the input",
+     "correct": false,
+     "rationale": "A delay increases, not decreases, response latency."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: interrupts give bounded low-latency response regardless of main-loop work.",
+   "outcome_refs": [
+    "MST-2321-D03.01"
+   ],
+   "domain_ref": "Interrupts and timing",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

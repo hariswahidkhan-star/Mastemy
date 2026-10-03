@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2328",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2328-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why do GPUs and TPUs outperform general-purpose CPUs on deep-learning matrix operations?",
+   "options": [
+    {
+     "key": "A",
+     "text": "They provide massive data parallelism and dedicated matrix units suited to these regular operations",
+     "correct": true,
+     "rationale": "Correct: accelerators exploit the regular, highly parallel structure of matrix math."
+    },
+    {
+     "key": "B",
+     "text": "They run at far higher clock frequencies than any CPU",
+     "correct": false,
+     "rationale": "Accelerators often clock lower; their advantage is parallelism, not clock speed."
+    },
+    {
+     "key": "C",
+     "text": "They execute Python source code directly in hardware",
+     "correct": false,
+     "rationale": "They do not execute Python directly; kernels are compiled."
+    },
+    {
+     "key": "D",
+     "text": "They avoid using memory entirely",
+     "correct": false,
+     "rationale": "Memory bandwidth is central; they do not avoid memory."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: accelerators exploit the regular, highly parallel structure of matrix math.",
+   "outcome_refs": [
+    "MST-2328-D01.01"
+   ],
+   "domain_ref": "Why accelerators",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2328-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO factors most strongly limit throughput for a memory-bound AI kernel? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Available memory bandwidth to feed the compute units",
+     "correct": true,
+     "rationale": "Correct: a memory-bound kernel is limited by how fast data can be delivered."
+    },
+    {
+     "key": "B",
+     "text": "The amount of data movement between memory and the chip",
+     "correct": true,
+     "rationale": "Correct: excess data movement starves the compute units."
+    },
+    {
+     "key": "C",
+     "text": "The number of comment lines in the source code",
+     "correct": false,
+     "rationale": "Source comments have no effect on runtime throughput."
+    },
+    {
+     "key": "D",
+     "text": "The colour of the accelerator's heatsink",
+     "correct": false,
+     "rationale": "Physical appearance is irrelevant to throughput."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: a memory-bound kernel is limited by how fast data can be delivered.",
+   "outcome_refs": [
+    "MST-2328-D02.01"
+   ],
+   "domain_ref": "GPU architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2328-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Using the roofline model, a kernel sits to the left of the ridge point. What does this indicate?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It is memory-bound, so improving data reuse or bandwidth helps most",
+     "correct": true,
+     "rationale": "Correct: left of the ridge point means performance is bounded by memory bandwidth."
+    },
+    {
+     "key": "B",
+     "text": "It is compute-bound and needs more arithmetic units",
+     "correct": false,
+     "rationale": "Compute-bound kernels sit to the right of the ridge point."
+    },
+    {
+     "key": "C",
+     "text": "It has reached the theoretical peak performance",
+     "correct": false,
+     "rationale": "Sitting left of the ridge means it is below peak, bounded by bandwidth."
+    },
+    {
+     "key": "D",
+     "text": "Precision format is the only possible bottleneck",
+     "correct": false,
+     "rationale": "The roofline position points to bandwidth, not solely precision."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: left of the ridge point means performance is bounded by memory bandwidth.",
+   "outcome_refs": [
+    "MST-2328-D03.01"
+   ],
+   "domain_ref": "TPUs and dataflow",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

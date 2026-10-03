@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2324",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2324-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why is pushing some processing to the edge often preferable to sending all raw data to the cloud?",
+   "options": [
+    {
+     "key": "A",
+     "text": "It reduces bandwidth and latency by filtering and acting on data near the source",
+     "correct": true,
+     "rationale": "Correct: edge processing cuts data volume and response time."
+    },
+    {
+     "key": "B",
+     "text": "It removes any need for cloud services at all",
+     "correct": false,
+     "rationale": "Edge processing complements, rather than eliminates, the cloud."
+    },
+    {
+     "key": "C",
+     "text": "It makes devices consume more power in every case",
+     "correct": false,
+     "rationale": "Edge processing often saves transmission power, not increases it."
+    },
+    {
+     "key": "D",
+     "text": "It guarantees perfect security by itself",
+     "correct": false,
+     "rationale": "Edge processing is not a security guarantee on its own."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: edge processing cuts data volume and response time.",
+   "outcome_refs": [
+    "MST-2324-D01.01"
+   ],
+   "domain_ref": "IoT architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2324-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO reasons make MQTT well suited to constrained IoT devices? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its lightweight publish/subscribe model decouples senders from receivers",
+     "correct": true,
+     "rationale": "Correct: pub/sub keeps device logic simple and decoupled."
+    },
+    {
+     "key": "B",
+     "text": "Its small message overhead suits low-bandwidth links",
+     "correct": true,
+     "rationale": "Correct: MQTT's compact framing fits constrained networks."
+    },
+    {
+     "key": "C",
+     "text": "It requires each device to poll a web server repeatedly",
+     "correct": false,
+     "rationale": "Polling is not how MQTT works; brokers push to subscribers."
+    },
+    {
+     "key": "D",
+     "text": "It mandates a permanent high-bandwidth connection",
+     "correct": false,
+     "rationale": "MQTT is designed for intermittent, low-bandwidth links."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: pub/sub keeps device logic simple and decoupled.",
+   "outcome_refs": [
+    "MST-2324-D02.01"
+   ],
+   "domain_ref": "Connectivity",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2324-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A remote sensor runs on a coin cell and reports a small reading once per hour. Which connectivity option fits best?",
+   "options": [
+    {
+     "key": "A",
+     "text": "LoRaWAN, a low-power wide-area technology for infrequent small messages",
+     "correct": true,
+     "rationale": "Correct: LoRaWAN suits low-power, long-range, low-data-rate reporting."
+    },
+    {
+     "key": "B",
+     "text": "Continuous Wi-Fi streaming",
+     "correct": false,
+     "rationale": "Continuous Wi-Fi would drain a coin cell quickly."
+    },
+    {
+     "key": "C",
+     "text": "A wired Ethernet connection",
+     "correct": false,
+     "rationale": "A wired link is impractical for a remote battery sensor."
+    },
+    {
+     "key": "D",
+     "text": "High-throughput 5G video uplink",
+     "correct": false,
+     "rationale": "A video uplink far exceeds the power and data needs."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: LoRaWAN suits low-power, long-range, low-data-rate reporting.",
+   "outcome_refs": [
+    "MST-2324-D03.01"
+   ],
+   "domain_ref": "Messaging and data",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

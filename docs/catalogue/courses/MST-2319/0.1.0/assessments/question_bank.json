@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2319",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2319-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "During the instruction cycle, which step places the address of the next instruction onto the memory bus so it can be retrieved?",
+   "options": [
+    {
+     "key": "A",
+     "text": "The fetch step, which uses the program counter to address memory",
+     "correct": true,
+     "rationale": "Correct: fetch uses the program counter to read the next instruction from memory."
+    },
+    {
+     "key": "B",
+     "text": "The execute step, after the ALU computes a result",
+     "correct": false,
+     "rationale": "Execute performs the operation; the instruction has already been fetched."
+    },
+    {
+     "key": "C",
+     "text": "The decode step, which only interprets the opcode",
+     "correct": false,
+     "rationale": "Decode interprets the fetched instruction; it does not fetch it."
+    },
+    {
+     "key": "D",
+     "text": "The write-back step, which stores results to registers",
+     "correct": false,
+     "rationale": "Write-back stores results; it does not fetch instructions."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: fetch uses the program counter to read the next instruction from memory.",
+   "outcome_refs": [
+    "MST-2319-D01.01"
+   ],
+   "domain_ref": "Processor organisation and the instruction cycle",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2319-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO properties of a program improve the hit rate of a CPU cache? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Temporal locality, where recently used data is reused soon",
+     "correct": true,
+     "rationale": "Correct: reused data stays resident in cache, raising the hit rate."
+    },
+    {
+     "key": "B",
+     "text": "Spatial locality, where nearby addresses are accessed together",
+     "correct": true,
+     "rationale": "Correct: fetching a cache line serves neighbouring accesses."
+    },
+    {
+     "key": "C",
+     "text": "A larger working set than the cache capacity",
+     "correct": false,
+     "rationale": "A working set exceeding capacity causes evictions and lowers the hit rate."
+    },
+    {
+     "key": "D",
+     "text": "Purely random access across a huge address range",
+     "correct": false,
+     "rationale": "Random wide access defeats both temporal and spatial locality."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: reused data stays resident in cache, raising the hit rate.",
+   "outcome_refs": [
+    "MST-2319-D02.01"
+   ],
+   "domain_ref": "Data representation",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2319-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A workload is 75% parallelisable. By Amdahl's law, what is the maximum speedup with unlimited processors?",
+   "options": [
+    {
+     "key": "A",
+     "text": "4x, because the serial 25% bounds the speedup to 1/0.25",
+     "correct": true,
+     "rationale": "Correct: the serial fraction 0.25 limits speedup to 1/0.25 = 4x."
+    },
+    {
+     "key": "B",
+     "text": "Unlimited, because all work can eventually be parallelised",
+     "correct": false,
+     "rationale": "The serial 25% can never be parallelised, so speedup is bounded."
+    },
+    {
+     "key": "C",
+     "text": "1.33x, because only the serial part speeds up",
+     "correct": false,
+     "rationale": "The parallel part speeds up; the serial part is the bound."
+    },
+    {
+     "key": "D",
+     "text": "75x, equal to the parallel percentage",
+     "correct": false,
+     "rationale": "Amdahl's law bounds speedup by the inverse of the serial fraction."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: the serial fraction 0.25 limits speedup to 1/0.25 = 4x.",
+   "outcome_refs": [
+    "MST-2319-D03.01"
+   ],
+   "domain_ref": "Memory hierarchy and caching",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}

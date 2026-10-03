@@ -1,0 +1,166 @@
+{
+ "course_id": "MST-2325",
+ "version": "0.1.0",
+ "status": "samples only - full bank not authored",
+ "bank_plan": {
+  "minimum_reviewed_items": 360,
+  "lesson_check_items": 56,
+  "module_check_items": 84,
+  "alternates_factor": 2,
+  "cumulative_forms": 2,
+  "items_per_form": 40,
+  "basis": "(lesson + module items) x 2 alternates + forms x form length; master prompt design ranges 200-600 (skills) / 600-1,500+ (large certifications)"
+ },
+ "items_authored": 3,
+ "items_reviewed": 0,
+ "items": [
+  {
+   "item_id": "MST-2325-Q0001",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "Why can an FPGA implement many independent operations that all run at the same time?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Its logic is spatial hardware, so separate circuits operate concurrently",
+     "correct": true,
+     "rationale": "Correct: FPGA logic is parallel hardware, not sequential instructions."
+    },
+    {
+     "key": "B",
+     "text": "It has an extremely high clock speed",
+     "correct": false,
+     "rationale": "Concurrency comes from spatial parallelism, not just clock speed."
+    },
+    {
+     "key": "C",
+     "text": "It runs a multithreaded operating system",
+     "correct": false,
+     "rationale": "An FPGA fabric is not running an operating system."
+    },
+    {
+     "key": "D",
+     "text": "It compiles HDL into fast machine code",
+     "correct": false,
+     "rationale": "HDL is synthesised into hardware, not into machine code."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: FPGA logic is parallel hardware, not sequential instructions.",
+   "outcome_refs": [
+    "MST-2325-D01.01"
+   ],
+   "domain_ref": "FPGA architecture",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2325-Q0002",
+   "item_version": "0.1.0",
+   "item_type": "multiple-answer",
+   "selection_rule": "Select TWO",
+   "stem": "Which TWO steps in the FPGA design flow convert HDL into a configuration the device can load? (Select TWO.)",
+   "options": [
+    {
+     "key": "A",
+     "text": "Synthesis, which maps HDL to logic primitives",
+     "correct": true,
+     "rationale": "Correct: synthesis translates RTL into gates and LUT/flip-flop primitives."
+    },
+    {
+     "key": "B",
+     "text": "Place-and-route, which assigns and connects those primitives on the fabric",
+     "correct": true,
+     "rationale": "Correct: place-and-route produces the physical implementation leading to the bitstream."
+    },
+    {
+     "key": "C",
+     "text": "Running the HDL on the host CPU",
+     "correct": false,
+     "rationale": "HDL is not executed on the CPU to program the device."
+    },
+    {
+     "key": "D",
+     "text": "Flashing a C firmware image",
+     "correct": false,
+     "rationale": "FPGAs load a bitstream, not a C firmware image."
+    }
+   ],
+   "correct_keys": [
+    "A",
+    "B"
+   ],
+   "explanation": "Correct: synthesis translates RTL into gates and LUT/flip-flop primitives.",
+   "outcome_refs": [
+    "MST-2325-D02.01"
+   ],
+   "domain_ref": "HDL and the design flow",
+   "cognitive_level": "understand",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 75,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "all-or-nothing",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  },
+  {
+   "item_id": "MST-2325-Q0003",
+   "item_version": "0.1.0",
+   "item_type": "single-answer",
+   "selection_rule": "Select ONE",
+   "stem": "A design fails to meet its 100 MHz timing target after place-and-route. What is the most appropriate first response?",
+   "options": [
+    {
+     "key": "A",
+     "text": "Examine the critical path and apply or tighten timing constraints and pipelining",
+     "correct": true,
+     "rationale": "Correct: analysing the critical path and adding constraints/pipelining addresses timing."
+    },
+    {
+     "key": "B",
+     "text": "Increase the supply voltage until it passes",
+     "correct": false,
+     "rationale": "Raising voltage is not a sound or safe first design response."
+    },
+    {
+     "key": "C",
+     "text": "Remove the testbench to speed up the tool",
+     "correct": false,
+     "rationale": "Removing verification does not fix timing and is risky."
+    },
+    {
+     "key": "D",
+     "text": "Switch the HDL file extension",
+     "correct": false,
+     "rationale": "The file extension has no effect on timing closure."
+    }
+   ],
+   "correct_keys": [
+    "A"
+   ],
+   "explanation": "Correct: analysing the critical path and adding constraints/pipelining addresses timing.",
+   "outcome_refs": [
+    "MST-2325-D03.01"
+   ],
+   "domain_ref": "Describing logic",
+   "cognitive_level": "apply",
+   "difficulty": "medium (estimated, not calibrated)",
+   "expected_seconds": 60,
+   "provenance": "original Mastemy item drafted by an AI agent; no external question source",
+   "scoring": "single-key",
+   "randomise_options": true,
+   "reviewer": null,
+   "publication_state": "draft-unreviewed"
+  }
+ ]
+}
